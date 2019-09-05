@@ -31,18 +31,10 @@ auth.verify-ticket:root
 
 
 /*
- * Dynamically extracts the database connection string, and
- * replaces the {database} part of it with "crm".
- */
-signal:magic.db.mysql.connection
-   database:crm
-
-
-/*
  * Applies the arguments given to the file into
  * the [magic.db.mysql.read] invocation below.
  */
-add:x:./*/signal/[1,1]/*/args
+add:x:./*/signal/*/args
    get-nodes:x:@.arguments/*
 
 
@@ -51,7 +43,7 @@ add:x:./*/signal/[1,1]/*/args
  */
 unwrap:x:+/*/connection
 signal:magic.db.mysql.read
-   connection:x:./@signal
+   database:{crm}
    table:roles
    args
    columns
