@@ -24,3 +24,7 @@ architecture, allowing you to intercept its core, using adapters and triggers.
 Magic is licensed as Affero GPL, which implies you'll have to create Free Software yourself. But if
 you are interested in using it to create Closed Source software, you can send me an email at
 thomas@gaiasoul.com to purchase a proprietary license.
+
+## Getting started
+
+[Follow the instructions given here](/getting-started)
