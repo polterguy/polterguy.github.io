@@ -30,3 +30,16 @@ Then download Magic, unzip it, and follow the instructions in the following vide
 If you're using the full version of Visual Studio, you might have to edit your `environment.ts` file and change
 its `apiURL` to become `http://localhost:55246/api/` and its `apiDomain`to be `localhost:55246`.
 
+## Creating your first CRUD Web API
+
+1. Login with _"root/root"_ as your username/password
+2. Click the _"Crudify"_ menu item
+3. Choose your database and your table
+4. Click the _"Crudify"_ button at the bottom of your page
+
+If you don't have a MySQL database, you can find a simple CRM database schema in the _"misc"_ folder of your
+Magic download, which you can run through the SQL executor, that you can find in the _"SQL"_ menu at the top
+of your page.
+
+Then you can click _"Endpoints"_ menu item, and try out your newly created HTTP RET endpoints. At this point
+you can start creating your frontend, in for instance Angular, to access your database over HTTP.
