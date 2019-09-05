@@ -82,6 +82,7 @@ container, you'll be given a FileService implementation class.
 
 If you take this approach, it's important that you also add a reference to your service
 implementation project into your _"magic.backend"_ project. Magic will automatically
-invoke all of your `IConfigureServices` implementations' `Configure` methods.
+invoke all of your `IConfigureServices` implementations' `Configure` methods, in all
+the assemblies that you are referencing from its _"magic.backend"_ project.
 
 [Home](/)
