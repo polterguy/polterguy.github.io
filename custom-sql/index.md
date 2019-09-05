@@ -57,7 +57,7 @@ signal:magic.db.mysql.read
 return-nodes:x:@signal/*
 ```
 
-The most important parts above are the content inside of the **[magic.db.mysql.read]** signal. This declares
+The most important parts above is the content inside of the **[magic.db.mysql.read]** signal. This declares
 which database to use, what table to select from, and which **[columns]** to select. If you wish to add or
 remove columns, you can simply add or remove one of the children nodes of your **[columns]** node, such as
 for instance the above **[role]** node.
