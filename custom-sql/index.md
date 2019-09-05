@@ -69,3 +69,14 @@ The most important parts above are the content inside of the **[magic.db.mysql.r
 which database to use, what table to select from, and which **[columns]** to select. If you wish to add or
 remove columns, you can simply add or remove one of the children nodes of your **[columns]** node, such as
 for instance the above **[role]** node.
+
+## SQL joins etc
+
+If you want to have complete control over the SQL that is generated, you can choose _"Custom SQL"_ after
+having chosen your database. This gives you complete control over the SQL and the parameters your endpoint
+accepts. Some 5 minutes out in the following video, this is being demonstrated.
+
+<div style="margin-left: auto; margin-right: auto; width: 560px;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/T3UaTkQ-SZc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
