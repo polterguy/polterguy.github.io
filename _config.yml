@@ -2,3 +2,5 @@ theme: jekyll-theme-cayman
 title: Magic
 description: CRUDify your database into HTTP REST endpoints
 show_downloads: true
+site.github.zip_url: https://github.com/polterguy/magic/archive/v4.3-BETA.zip
+site.github.tar_url: https://github.com/polterguy/magic/archive/v4.3-BETA.tar.gz
