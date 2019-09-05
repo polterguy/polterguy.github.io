@@ -8,7 +8,29 @@ into for instance your _"modules"_ folder in Visual Studio (Code).
 After you have created your project containing your `ControllerBase` class(es), you
 can simply reference this project into your _"magic.backend"_ project, and the endpoint(s)
 will automatically load up as your web app is started. Have a look at the _"magic.io/magic.io.controller"_
-project for an example of how to do this.
+project for an example of how to do this. Below is some example code illustrating it.
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+
+namespace acme
+{
+    [Route("api/acme")]
+    public class FilesController : ControllerBase
+    {
+        [HttpGet]
+        public string MeaningOfLife()
+        {
+             return "42 spoketh Zarathustra";
+        }
+    }
+}
+```
+
+## Automatically generated documentation
+
+Magic uses Swagger and the Open Web API, allowing you to immediately start playing around
+with your C# controller endpoints after having created them.
 
 ## Modularity and IoC/Dependency Injection
 
