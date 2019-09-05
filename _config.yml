@@ -9,3 +9,5 @@ github:
   repository_url: https://github.com/polterguy/magic
   owner_name: Thomas Hansen
   repository_name: Magic
+pages:
+  getting_started:/getting-started
