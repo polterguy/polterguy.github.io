@@ -64,4 +64,16 @@ have at your disposal, you can make sure your cursor is at the beginning of
 an empty line, and then click `CTRL+Space`. This pops up the autocompleter,
 and gives you a list of all Hyperlambda _"keywords"_, or slots to be more accurate.
 
+## Hyperlambda a DSL
+
+At this point you probably realise that Magic and its Hyperlambda actually
+is the perfect foundation for creating your own custom DSL, as 
+in _"Domain Specific Language"_. And that would be a correct assessment.
+Hyperlambda perfectly fits the requirements for creating your own high level
+DSL programming languages, using the `ISlot` interface and its _"Super Signal"_
+implementation. And in fact, the _"Crudifier"_ at its core is nothing but
+an SQL DSL language implementation, of such a high level abstraction,
+that the computer is able to automate the creation of the code needed
+to wrap your database into HTTP REST CRUD endpoint(s).
+
 [Home](/)
