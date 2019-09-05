@@ -8,9 +8,9 @@ Imagine the following piece of Hyperlambda code.
 
 ```
 acme.foo
-   first:int:7
-   second:int:7
-   third:int:7
+   first:7
+   second:7
+   third:7
 ```
 
 The above basically becomes a reference to a C# class, which implements the `ISlot`
