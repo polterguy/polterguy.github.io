@@ -30,3 +30,5 @@ from _"magic.common.contracts"_, then the Magic core will automatically invoke y
 
 If you take this approach, it's important that you also add a reference to your service
 implementation project into your _"magic.backend"_ project.
+
+[Back](/)
