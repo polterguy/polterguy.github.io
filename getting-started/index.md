@@ -41,5 +41,5 @@ If you don't have a MySQL database, you can find a simple CRM database schema in
 Magic download, which you can run through the SQL executor, that you can find in the _"SQL"_ menu at the top
 of your page.
 
-Then you can click _"Endpoints"_ menu item, and try out your newly created HTTP RET endpoints. At this point
+Then you can click _"Endpoints"_ menu item, and try out your newly created HTTP REST endpoints. At this point
 you can start creating your frontend, in for instance Angular, to access your database over HTTP.
