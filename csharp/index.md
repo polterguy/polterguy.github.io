@@ -20,11 +20,13 @@ parts here is inside of _"magic.io.services/init/"_, where you will find a _"Con
 file. This file adds up which services you want to use as implementations for whichever
 service interfaces you have created. Basically, it configures your `IServiceCollection`,
 making the .Net IoC DI container know which implementation class to use for whatever
-interface you need.
+interface you need. At which point you can just add an instance to your interface
+in your controller's constructor, and the .Net DI IoC container will automatically
+inject your service for you.
 
-If you create your own class, that implements `IConfigureServices` from _"magic.common.contracts"_,
-then the Magic core will automatically invoke your `Configure` method when it needs to
-wire up your IoC container during startup.
+**Important** - If you create your own class, that implements `IConfigureServices`
+from _"magic.common.contracts"_, then the Magic core will automatically invoke your
+`Configure` method when it needs to wire up your IoC container during startup.
 
 If you take this approach, it's important that you also add a reference to your service
 implementation project into your _"magic.backend"_ project.
