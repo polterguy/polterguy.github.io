@@ -39,9 +39,9 @@ add:x:./*/signal/*/args
 
 
 /*
- * Unwraps the expressions below, and executes your SQL.
+ * Executes your SQL by transforming the syntax tree
+ * into an SQL command.
  */
-unwrap:x:+/*/connection
 signal:magic.db.mysql.read
    database:{crm}
    table:roles
