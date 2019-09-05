@@ -48,6 +48,13 @@ the above code, your result should resemble the following.
 acme.foo:int:21
 ```
 
+**Notice** - To _"register"_ your slots into Magic and make them available for
+your Hyperlambda, you'll need to reference the assembly implementing your slot(s)
+somehow into your _"magic.backend"_ project. Normally you'd create a new assembly
+in the _"plugins"_ folder, create your slots in this assembly, and simply reference
+your assembly into the _"magic.backend"_ project - And you'll have access to
+it from your Hyperlambda.
+
 ## Evaluating custom Hyperlambda
 
 Magic contains a Hyperlambda evaluator, where you can paste in Hyperlambda code,
