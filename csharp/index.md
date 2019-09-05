@@ -34,7 +34,7 @@ with your C# controller endpoints after having created them.
 
 ## Modularity and IoC/Dependency Injection
 
-This makes your final solution extremely modular in its design, and you can even reuse
+The above makes your final solution extremely modular in its design, and you can even reuse
 controllers across multiple web apps if you wish. If you wish to separate the implementation
 and using interfaces, dependency injection, and service implementations for your module -
 You can have a look at how the _"magic.io"_ project(s) are wired together. The important
