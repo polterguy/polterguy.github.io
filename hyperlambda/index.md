@@ -42,3 +42,4 @@ Assuming you have the above C# code in your application somehow, you can invoke
 the Hyperlambda at the top, and your **[acme.foo]** invocation will return the
 sum of all of its arguments, which for our example becomes 21.
 
+[Home](/)
