@@ -80,3 +80,7 @@ accepts. Some 5 minutes out in the following video, this is being demonstrated.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/T3UaTkQ-SZc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
+Using the ideas demonstrated in the above video, give you 100% perfect control over the SQL and HTTP
+parameters your endpoints are generated with.
+
+[Extending Magic with C#](/csharp)
