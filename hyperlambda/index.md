@@ -14,7 +14,7 @@ acme.foo
 ```
 
 The above basically becomes a reference to a C# class, which implements the `ISlot`
-interface, where each of its children node are being passed into its `Signal` method
+interface, where each of its children nodes are being passed into its `Signal` method
 as arguments. Below is some C# code that illustrates how you could go about to
 implement a _"slot"_ that is able to handle the above Hyperlambda invocation.
 
