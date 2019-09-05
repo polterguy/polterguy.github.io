@@ -76,4 +76,7 @@ an SQL DSL language implementation, of such a high level abstraction,
 that the computer is able to automate the creation of the code needed
 to wrap your database into HTTP REST CRUD endpoint(s).
 
+However, creating scaffolding components able to automate the creation
+of other types of modules, is also easy.
+
 [Home](/)
