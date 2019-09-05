@@ -1,3 +1,4 @@
 theme: jekyll-theme-cayman
 title: Magic
 description: CRUDify your database into HTTP REST endpoints
+show_downloads: true
