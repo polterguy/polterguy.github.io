@@ -33,6 +33,7 @@ namespace acme
         public void Signal(Node input)
         {
             input.Value = input.Children.Sum(x => x.Get<int>());
+            input.Clear();
         }
     }
 }
@@ -40,7 +41,12 @@ namespace acme
 
 Assuming you have the above C# code in your application somehow, you can invoke
 the Hyperlambda at the top, and your **[acme.foo]** invocation will return the
-sum of all of its arguments, which for our example becomes 21.
+sum of all of its arguments, which for our example becomes 21. After evaluating
+the above code, your result should resemble the following.
+
+```
+acme.foo:int:21
+```
 
 ## Evaluating custom Hyperlambda
 
