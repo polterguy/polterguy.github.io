@@ -85,4 +85,4 @@ implementation project into your _"magic.backend"_ project. Magic will automatic
 invoke all of your `IConfigureServices` implementations' `Configure` methods, in all
 the assemblies that you are referencing from its _"magic.backend"_ project.
 
-[Home](/)
+[Hyperlambda 101](/hyperlambda)
