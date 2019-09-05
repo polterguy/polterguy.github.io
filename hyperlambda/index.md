@@ -46,6 +46,9 @@ sum of all of its arguments, which for our example becomes 21.
 
 Magic contains a Hyperlambda evaluator, where you can paste in Hyperlambda code,
 to play around with it yourself. When Magic is running, you can access this
-evaluator from the _"Evaluator"_ menu item.
+evaluator from the _"Evaluator"_ menu item. If you want to see all slots you
+have at your disposal, you can make sure your cursor is at the beginning of
+an empty line, and then click `CTRL+Space`. This pops up the autocompleter,
+and gives you a list of all Hyperlambda _"keywords"_, or slots to be more accurate.
 
 [Home](/)
