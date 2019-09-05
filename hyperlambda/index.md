@@ -42,4 +42,10 @@ Assuming you have the above C# code in your application somehow, you can invoke
 the Hyperlambda at the top, and your **[acme.foo]** invocation will return the
 sum of all of its arguments, which for our example becomes 21.
 
+## Evaluating custom Hyperlambda
+
+Magic contains a Hyperlambda evaluator, where you can paste in Hyperlambda code,
+to play around with it yourself. When Magic is running, you can access this
+evaluator from the _"Evaluator"_ menu item.
+
 [Home](/)
