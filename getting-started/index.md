@@ -19,10 +19,10 @@ Then download Magic, unzip it, and follow the instructions in the following vide
 1. Open Visual Studio Code in your magic folder
 2. Edit your `appsettings.json` file, and modify your MySQL connection string
 3. Open one terminal window and go to `magic.backend`
-4. Run `dotnet run`
+4. Run `dotnet run` in the magic.backend terminal
 5. Open another terminal window and go to `frontend`
-6. Run `npm install`
-7. When npm install from above is done, run `ng serve`
+6. Run `npm install` in this terminal
+7. When npm install from above is done, run `ng serve` in the frontend terminal
 
 If you're using the full version of Visual Studio, you might have to edit your `environment.ts` file and change
 its `apiURL` to become `http://localhost:55246/api/` and its `apiDomain`to be `localhost:55246`.
