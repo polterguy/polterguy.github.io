@@ -10,6 +10,8 @@ can simply reference this project into your _"magic.backend"_ project, and the e
 will automatically load up as your web app is started. Have a look at the _"magic.io/magic.io.controller"_
 project for an example of how to do this. Below is some example code illustrating it.
 
+**Example C# controller**
+
 ```csharp
 using Microsoft.AspNetCore.Mvc;
 
@@ -51,6 +53,8 @@ from _"magic.common.contracts"_, then the Magic core will automatically invoke y
 `Configure` method when it needs to wire up your IoC container during startup. You
 rarely if ever need to modify the actual backend web project to use Magic. Below
 is an example of how the IO module is wiring up its services.
+
+**Example of wiring up your IoC container**
 
 ```csharp
 using Microsoft.Extensions.Configuration;
