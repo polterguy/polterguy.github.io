@@ -27,4 +27,4 @@ thomas@gaiasoul.com to purchase a proprietary license.
 
 ## Getting started
 
-[Follow the instructions given here](/getting-started)
+[How to get started with Magic](/getting-started)
