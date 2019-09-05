@@ -3,5 +3,5 @@ title: Magic
 description: CRUDify your database into HTTP REST endpoints
 show_downloads: true
 github:
-  zip_url: https://github.com/polterguy/magic/releases/latest/download/package.zip
-  tar_url: https://github.com/polterguy/magic/releases/latest/download/package.tar.gz
+  zip_url: https://github.com/polterguy/magic/archive/v4.3-BETA.zip
+  tar_url: https://github.com/polterguy/magic/archive/v4.3-BETA.tar.gz
