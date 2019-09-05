@@ -48,9 +48,36 @@ inject your service for you.
 
 **Important** - If you create your own class, that implements `IConfigureServices`
 from _"magic.common.contracts"_, then the Magic core will automatically invoke your
-`Configure` method when it needs to wire up your IoC container during startup.
+`Configure` method when it needs to wire up your IoC container during startup. You
+rarely if ever need to modify the actual backend web project to use Magic. Below
+is an example of how the IO module is wiring up its services.
+
+```csharp
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using magic.io.contracts;
+using magic.common.contracts;
+
+namespace magic.io.services.init
+{
+    class ConfigureServices : IConfigureServices
+    {
+        public void Configure(IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddTransient<IFileService, FileService>();
+            services.AddTransient<IFolderService, FolderService>();
+            services.AddTransient<IAuthorize, AuthorizeService>();
+        }
+    }
+}
+```
+
+The above C# code basically associates the `IFileService`interface with your `FileService`
+implementation class. Implying that every time you request an IFileService from your IoC
+container, you'll be given a FileService implementation class.
 
 If you take this approach, it's important that you also add a reference to your service
-implementation project into your _"magic.backend"_ project.
+implementation project into your _"magic.backend"_ project. Magic will automatically
+invoke all of your `IConfigureServices` implementations' `Configure` methods.
 
 [Home](/)
