@@ -18,7 +18,7 @@ and using interfaces, dependency injection, and service implementations for your
 You can have a look at how the _"magic.io"_ project(s) are wired together. The important
 parts here is inside of _"magic.io.services/init/"_, where you will find a _"ConfigureServices.cs"_
 file. This file adds up which services you want to use as implementations for whichever
-service interfaces you have created. Basically,it configures your `IServiceCollection`,
+service interfaces you have created. Basically, it configures your `IServiceCollection`,
 making the .Net IoC DI container know which implementation class to use for whatever
 interface you need.
 
