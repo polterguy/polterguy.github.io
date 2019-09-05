@@ -11,6 +11,6 @@ To get started with Magic you'll need the following installed.
 Then download Magic, unzip it, and follow the instructions in the following video.
 
 <div style="margin-left: auto; margin-right: auto; width: 560px;">
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=Lpqco0BgYYY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Lpqco0BgYYY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
