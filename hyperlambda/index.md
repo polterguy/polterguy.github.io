@@ -4,8 +4,7 @@ Hyperlambda is similar to YAML. It therefor easily translates into a node struct
 where each node has a _"key"_, a _"value"_, and a bunch of _"children"_. This just
 so happens to perfectly describe an execution syntax tree, where the name of a node
 might reference a C# method, included into the core of the language using _"Super Signals"_.
-Imagine the following piece of Hyperlambda code. Notice the **[acme.foo]** parts in
-the code above and below.
+Imagine the following piece of Hyperlambda code.
 
 ```
 acme.foo
@@ -18,6 +17,8 @@ The above basically becomes a reference to a C# class, which implements the `ISl
 interface, where each of its children nodes are being passed into its `Signal` method
 as arguments. Below is some C# code that illustrates how you could go about to
 implement a _"slot"_ that is able to handle the above Hyperlambda invocation.
+Notice the **[acme.foo]** parts in the code above and below, that links together
+your C# class with your Hyperlambda.
 
 ```csharp
 using System;
