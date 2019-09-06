@@ -100,7 +100,7 @@ as _"slots"_, and invoke them from Hyperlambda.
 
 A good example of this is the database functions. Retrieving data from
 a database, is often requiring millions of CPU cycles, and hundres
-of milliseconds. The additional 10/20 CPU cycles required to instantiate
+of milliseconds. The additional 100/200 CPU cycles required to instantiate
 your _"slot"_, to invoke the C# method responsible for creating a
 data reader, and returning the result back to the caller, becomes
 insignificant in such a regard, and adds close to zero overhead
