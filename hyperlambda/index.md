@@ -100,7 +100,7 @@ is pure C#, and just as fast as C# in execution. This makes it perfect
 for creating CPU/RAM intensive functions in C#, for then to expose these
 as _"slots"_, and invoke them from Hyperlambda.
 
-A good example of this is the database functions. Retrieving data from
+A good example of this is its database functions. Retrieving data from
 a database, is often requiring millions of CPU cycles, and hundres
 of milliseconds. The additional 100/200 CPU cycles required to instantiate
 your _"slot"_, to invoke the C# method responsible for creating a

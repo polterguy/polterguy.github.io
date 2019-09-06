@@ -86,4 +86,22 @@ implementation project into your _"magic.backend"_ project. Magic will automatic
 invoke all of your `IConfigureServices` implementations' `Configure` methods, in all
 the assemblies that you are referencing from its _"magic.backend"_ project.
 
+## Utility classes
+
+Magic also contains a whole range of _"utility classes"_ to ease your life as a
+C# software developer. For instance, if you need to invoke another Web API from
+C#, this is literally as easy as creating a single line of C# code. Below is and
+example.
+
+```csharp
+var result = await client.PostAsync<RequestDTO, ResponseDTO>("https://foo.com", request);
+```
+
+The above code will automatically translate your `request` into JSON, post it to
+_"foo.com"_, translate the returned JSON into a `ResponseDTO` object, and return
+it to your code as `result`. This allows you to integrate your code with other
+HTTP REST APIs, with a single line of C#. The `client` above, is an instance
+of `IHttpClient` which you can retrieve using Dependency Injection the same
+way you would with any other service.
+
 [Hyperlambda 101](/hyperlambda)
