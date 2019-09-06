@@ -113,4 +113,10 @@ more easily created and maintained. To the point where your computer
 ends up doing most of the maintenance and coding for you
 (the Crudifier for example).
 
+> Choose the highest possible lever of abstraction, and see your
+productivity soar to unimaginable heights
+
+-- 
+Paul Graham
+
 [Home](/)
