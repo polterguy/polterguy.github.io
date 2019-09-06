@@ -1,7 +1,7 @@
 # Introduction
 
 Magic allows you to wrap your database into HTTP REST endpoints for each CRUD operation towards your tables
-by the click of a button. It works by extracting meta information from your database, for then to generate
+at the click of a button. It works by extracting meta information from your database, for then to generate
 a code file for POST, GET, PUT and DELETE, representing the **C**reate, **R**ead, **U**pdate and **D**elete
 operations. This allows you to create an HTTP REST backend wrapping your database, literally in seconds.
 
@@ -24,7 +24,5 @@ architecture, allowing you to intercept its core, using adapters and triggers.
 Magic is licensed as Affero GPL, which implies you'll have to create Free Software yourself. But if
 you are interested in using it to create Closed Source software, you can send me an email at
 thomas@gaiasoul.com to purchase a proprietary license.
-
-## Getting started
 
 [Getting started with Magic](/getting-started)

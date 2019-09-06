@@ -18,7 +18,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace acme
 {
     [Route("api/acme")]
-    public class FilesController : ControllerBase
+    public class AcmeController : ControllerBase
     {
         [HttpGet]
         public string MeaningOfLife()
@@ -39,14 +39,15 @@ with your C# controller endpoints after having created them.
 The above makes your final solution extremely modular in its design, and you can even reuse
 controllers across multiple web apps if you wish. If you wish to separate the implementation
 and using interfaces, dependency injection, and service implementations for your module -
-You can have a look at how the _"magic.io"_ project(s) are wired together. The important
-parts here is inside of _"magic.io.services/init/"_, where you will find a _"ConfigureServices.cs"_
-file. This file adds up which services you want to use as implementations for whichever
-service interfaces you have created. Basically, it configures your `IServiceCollection`,
-making the .Net IoC DI container know which implementation class to use for whatever
-interface you need. At which point you can just add an instance to your interface
-in your controller's constructor, and the .Net DI IoC container will automatically
-inject your service for you.
+You can have a look at how the _"magic.io"_ project(s) are wired together.
+
+The important parts here is inside of _"magic.io.services/init/"_, where you will find 
+a _"ConfigureServices.cs"_ file. This file adds up which services you want to use as
+implementations for whichever service interfaces you have created. Basically, it 
+configures your `IServiceCollection`, making the .Net IoC DI container know which
+implementation class to use for whatever interface you need. At which point you can
+just add an instance to your interface in your controller's constructor, and the .Net
+DI IoC container will automatically inject your service for you.
 
 **Important** - If you create your own class, that implements `IConfigureServices`
 from _"magic.common.contracts"_, then the Magic core will automatically invoke your

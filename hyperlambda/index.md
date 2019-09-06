@@ -79,4 +79,38 @@ to wrap your database into HTTP REST CRUD endpoint(s).
 However, creating scaffolding components able to automate the creation
 of other types of modules, is also easy.
 
+## Hyperlambda features
+
+Hyperlambda contains most functions you'll need on a daily basis, such
+as the ability to invoke HTTP REST APIs, loading files, saving files, etc.
+And in fact, Hyperlambda is Turing Complete, which means it's a _"full blown
+programming language"_ - At least in theory. This makes it easy for you
+to write a lot of your code in Hyperlambda, which after an initial learning
+curve, would be significantly faster than writing the equivalent in C#.
+
+However, I wouldn't encourage you to write CPU/RAM intensive code in it,
+since it has some overhead compared to C# code, such as the fact that
+it is de-referencing a `Dictionary` every time it invokes a _"function"_,
+and uses dependency injection to create an instance of the class
+implementing your _"function"_. When it has created an instance of
+your `ISlot` type, and is evaluating your `Signal` method, everything
+is pure C#, and just as fast as C# in execution. This makes it perfect
+for creating CPU/RAM intensive functions in C#, for then to expose these
+as _"slots"_, and invoke them from Hyperlambda.
+
+A good example of this is the database functions. Retrieving data from
+a database, is often requiring millions of CPU cycles, and hundres
+of milliseconds. The additional 10/20 CPU cycles required to instantiate
+your _"slot"_, to invoke the C# method responsible for creating a
+data reader, and returning the result back to the caller, becomes
+insignificant in such a regard, and adds close to zero overhead
+to your application.
+
+If you're a little bit careful when choosing what to do in Hyperlambda,
+and what to do in C#, Hyperlambda creates almost zero overhead for
+you - While at the same time making your apps an order of a magnitude
+more easily created and maintained. To the point where your computer
+ends up doing most of the maintenance and coding for you
+(the Crudifier for example).
+
 [Home](/)
