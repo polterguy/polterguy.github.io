@@ -4,7 +4,8 @@ Hyperlambda is similar to YAML. It therefor easily translates into a node struct
 where each node has a _"key"_, a _"value"_, and a bunch of _"children"_. This just
 so happens to perfectly describe an execution syntax tree, where the name of a node
 might reference a C# method, included into the core of the language using _"Super Signals"_.
-Imagine the following piece of Hyperlambda code.
+Imagine the following piece of Hyperlambda code. Notice the **[acme.foo]** parts in
+the code above and below.
 
 ```
 acme.foo
