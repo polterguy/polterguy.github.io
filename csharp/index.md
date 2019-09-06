@@ -102,6 +102,8 @@ _"foo.com"_, translate the returned JSON into a `ResponseDTO` object, and return
 it to your code as `result`. This allows you to integrate your code with other
 HTTP REST APIs, with a single line of C#. The `client` above, is an instance
 of `IHttpClient` which you can retrieve using Dependency Injection the same
-way you would with any other service.
+way you would with any other service. The above code assumes you have a reference
+in your assembly to _"magic.http.contracts"_, which contains the `IHttpClient`
+interface.
 
 [Hyperlambda 101](/hyperlambda)
