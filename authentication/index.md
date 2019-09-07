@@ -29,7 +29,7 @@ to your database. The **[crypto.password.verify]** reverses the process,
 and allows you to very that its **[hash]** argument is matching the specified
 password value.
 
-The **[auth.create-ticket]** slot, allow you to create a JWT token,
+The **[auth.create-ticket]** slot, allows you to create a JWT token,
 that you can use as a _"ticket"_ for future HTTP requests towards your backend.
 The **[auth.verify-ticket]** slot allows you to secure a piece of Hyperlambda,
 and associate it with a list of roles, in such a way that unless the user
