@@ -37,6 +37,23 @@ belongs to at least one of those roles, it will throw an exception, and
 abort the execution of the rest of the Hyperlambda you are trying to evaluate.
 
 All of the above slots can be found in the _"magic.lambda.auth"_ project, and
-the _"magic.lambda.crypto"_ project.
+the _"magic.lambda.crypto"_ project. Below are all the relevant slots listed
+for you for your convenience.
+
+* __[crypto.password.hash]__ Creates a cryptographically secured hash value from a password
+* __[crypto.password.verify]__ Verifies that some password is a match to some **[hash]** value of the same password
+* __[auth.create-ticket]__ Creates a JWT authentication token for you with the specified **[username]** and associated **[roles]**
+* __[auth.verify-ticket]__ Verifies that a user is authenticated, and that he or she belongs to the specified role
+* __[magic.authenticate]__ The slot invoked when a user for some reasons is trying to authenticate to the system
+
+## Security concerns! IMPORTANT!
+
+Before you actually implement Magic into production, _it is crucial that you change its 'auth' secret_.
+You can do this by editing the _"appsettings.json"_ file, and make sure you provide
+a fairly long string of _"random characters"_ to its _"auth:secret"_ configuration
+setting. This is used to salt the internal JWT generator in .Net, and unless you
+guard this _"random gibberish"_ the same way you'd guard the pin code to
+your ATM card, an adversary can easily reproduce the creation of your JWT tokens,
+and create fake tokens, to impersonate an actual user on your site.
 
 [Helper endpoints](/helper-endpoints)
