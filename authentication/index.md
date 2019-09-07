@@ -6,8 +6,10 @@ help you with authentication as you implement Magic in your own solution(s).
 The below video demonstrates a template you can use, that allows you to immediately
 secure your Magic installation, following all industry best practices, such
 as hashing your passwords with a per-user based salt, etc. The solution
-depends upon a database called _"magic_auth"_ and that you exchange the
-default (static) authentication slot in its system Hyperlambda files.
+depends upon a database called _"magic_auth"_, in addition to that you exchange
+the default (static) authentication slot in its system Hyperlambda files.
+But the video should be able to easily guide you through this process
+in less than 10 minutes.
 
 <div style="margin-left: auto; margin-right: auto; width: 560px;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/I0eN8XGlcqQ" 
