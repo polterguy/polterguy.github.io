@@ -106,4 +106,4 @@ way you would with any other service. The above code assumes you have a referenc
 in your assembly to _"magic.http.contracts"_, which contains the `IHttpClient`
 interface.
 
-[Helper endpoints](/helper-endpoints)
+[Authentication](/authentication)
