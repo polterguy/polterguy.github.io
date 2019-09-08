@@ -19,4 +19,10 @@ to access them by default. Modifying this is easy though, by diving into
 the C# source of Magic, and injecting your own authorization service,
 and remove the existing authorization service.
 
+In addition to the above endpoints, several other endpoints exists in
+your _"system"_ folder. The easiest way to see which endpoints you
+can use, is to open your _"Endpoints"_ menu item in Magic's dashboard,
+for then to make the system endpoints visible by checking the
+_"Show system ednpoints"_ checkbox.
+
 [Hyperlambda 101](/hyperlambda)
