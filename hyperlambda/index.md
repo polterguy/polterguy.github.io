@@ -1,5 +1,9 @@
 # Hyperlambda 101
 
+You rarely have to think much about Hyperlambda, since Magic automatically generates
+most of its Hyperlambda automatically for you - However, this page was created for
+those rare occasions you actually have to understand it.
+
 Hyperlambda is similar to YAML. It therefor easily translates into a node structure,
 where each node has a _"key"_, a _"value"_, and a bunch of _"children"_. This just
 so happens to perfectly describe an execution syntax tree, where the name of a node
