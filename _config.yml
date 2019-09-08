@@ -4,8 +4,8 @@ description: Database + Magic == CRUD HTTP REST endpoints
 show_downloads: true
 github:
   is_project_page: true
-  zip_url: https://github.com/polterguy/magic/archive/v4.4.zip
-  tar_url: https://github.com/polterguy/magic/archive/v4.4.tar.gz
+  zip_url: https://github.com/polterguy/magic/archive/v4.5.zip
+  tar_url: https://github.com/polterguy/magic/archive/v4.5.tar.gz
   repository_url: https://github.com/polterguy/magic
   owner_name: Thomas Hansen
   repository_name: Magic
