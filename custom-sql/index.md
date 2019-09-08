@@ -62,17 +62,24 @@ which database to use, what table to select from, and which **[columns]** to sel
 remove columns, you can simply add or remove one of the children nodes of your **[columns]** node, such as
 for instance the above **[id]** node.
 
-## SQL joins etc
+## SQL joins and complex SQL
 
 If you want to have complete control over the SQL that is generated, you can choose _"Custom SQL"_ after
 having chosen your database. This gives you complete control over the SQL and the parameters your endpoint
-accepts. Some 5 minutes out in the following video, this is being demonstrated.
+accepts. I demonstrate this in the following video.
 
 <div style="margin-left: auto; margin-right: auto; width: 560px;">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/T3UaTkQ-SZc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sXMmseG8rcM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Using the ideas demonstrated in the above video, gives you 100% perfect control over the SQL and HTTP
-parameters your endpoints are generated with.
+The above allows you to create any type of HTTP endpoint, de-reference HTTP arguments, and consume these
+in your SQL. Resulting in JSON returned to the client, based upon complex and rich SQL queries. Using
+the ideas demonstrated in the above video, gives you 100% perfect control over the SQL your endpoints
+are generated with, and which HTTP parameters it can accept. The basic idea is as follows.
+
+* Construct some complex SQL, possibly a join from multiple tables
+* Create a _"Custom SQL"_ endpoint, choosing your verb and URL
+* Parametrise your endpoint declaratively using the parameters collection
+* De-references these parameters in your SQL
 
 [Extending Magic with C#](/csharp)
