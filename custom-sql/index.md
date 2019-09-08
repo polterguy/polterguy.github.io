@@ -1,9 +1,9 @@
 # Custom SQL
 
-Sometimes you need to modify your automatically generated endpoints. You can do this by editing
-the file directly from your Magic dashboard using the _"Files"_ menu item. This works kind of
-like a file explorer, allowing you to traverse your file system, on your server, to modify
-your files.
+Sometimes you need more complex abilities than your automatically generated endpoints can
+give you. You can do this by editing the file directly from your Magic dashboard using the
+_"Files"_ menu item. This works kind of like a file explorer, allowing you to traverse your
+file system, on your server, to modify your files.
 
 Open up whatever endpoint file you want to modify, edit it using the integrated Hyperlambda
 CodeMirror editor, and save it. The endpoint will immediately change its behaviour. No
