@@ -1,7 +1,7 @@
 # Hyperlambda 101
 
 You rarely have to think much about Hyperlambda, since Magic automatically generates
-most of its Hyperlambda automatically for you - However, this page was created for
+most of its Hyperlambda for you - However, this page was created for
 those rare occasions you actually have to understand it.
 
 Hyperlambda is similar to YAML. It therefor easily translates into a node structure,
