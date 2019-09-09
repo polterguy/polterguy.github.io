@@ -19,14 +19,14 @@ allowfullscreen></iframe>
 
 ## Need more control?
 
-If the above is not an optimal solution for you, you can still use its
-demonstrated code, to use any other database and/or method to serve your
+If the above is not an optimal solution for you, you can still use the
+code and modify it to your own needs, to use any other database and/or method to serve your
 authentication and authorisation needs. For instance the **[crypto.password.hash]**
-slot, allows you to create a blowfish hashing algorithm, and per-user based salt
+slot, allows you to use a blowfish hashing algorithm, and per-user based salt
 for your passwords, allowing you to safely store them in a database, without
-fearing rainbow dictionary attacks, in case an adversary should gain access
-to your database. The **[crypto.password.verify]** reverses the process,
-and allows you to very that its **[hash]** argument is matching the specified
+fearing rainbow dictionary attacks - In the case of that an adversary should gain
+physical access to your database. The **[crypto.password.verify]** reverses the process,
+and allows you to verify that its **[hash]** argument is matching the specified
 password value.
 
 The **[auth.create-ticket]** slot, allows you to create a JWT token,
