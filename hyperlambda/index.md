@@ -63,7 +63,7 @@ it from your Hyperlambda.
 
 ## Evaluating custom Hyperlambda
 
-Magic contains a Hyperlambda evaluator, where you can paste in Hyperlambda code,
+Magic contains a Hyperlambda evaluator, where you can type in Hyperlambda code,
 to play around with. When Magic is running, you can access this
 evaluator from the _"Evaluator"_ menu item. If you want to see all slots you
 have at your disposal, you can make sure your cursor is at the beginning of
