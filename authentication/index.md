@@ -68,6 +68,7 @@ for you for your convenience.
 * __[auth.create-ticket]__ Creates a JWT authentication token for you with the specified **[username]** and associated **[roles]**
 * __[auth.verify-ticket]__ Verifies that a user is authenticated, and that he or she belongs to the specified role
 * __[magic.authenticate]__ The slot invoked when a user for some reasons is trying to authenticate to the system
+* __[auth.refresh-ticket]__ The slot that allows you to _"refresh"_ your JWT token. Should be invoked a couple of minutes before your existing token expires
 
 ## Security concerns! IMPORTANT!
 
