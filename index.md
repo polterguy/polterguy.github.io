@@ -26,3 +26,5 @@ you are interested in using it to create Closed Source software, you can send me
 thomas@gaiasoul.com to purchase a proprietary license.
 
 [Getting started with Magic](/getting-started)
+
+[![Build status](https://travis-ci.org/polterguy/magic.svg?master)](https://travis-ci.org/polterguy/magic)
