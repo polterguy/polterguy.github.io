@@ -12,7 +12,7 @@ But the video should be able to easily guide you through this process
 in less than 10 minutes.
 
 <div style="margin-left: auto; margin-right: auto; width: 560px;">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/I0eN8XGlcqQ" 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DCMY-uT0UVw" 
 frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
 allowfullscreen></iframe>
 </div>
