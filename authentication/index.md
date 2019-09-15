@@ -17,6 +17,29 @@ frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; pict
 allowfullscreen></iframe>
 </div>
 
+The code I am using in the above video to cryptographically hash my passwords
+using a BlowFish hashing algorithm, can be found below.
+
+```
+.arguments
+   username:string
+   password:string
+auth.verify-ticket:root
+
+crypto.password.hash:x:@.arguments/*/password
+
+add:x:./*/signal/*/values
+   get-nodes:x:@.arguments/*/username
+
+unwrap:x:+/*/values/*/password
+signal:magic.db.mysql.create
+   database:magic_auth
+   table:users
+   values
+      password:x:@crypto.password.hash
+return-nodes:x:@signal/*
+```
+
 ## Need more control?
 
 If the above is not an optimal solution for you, you can still use the
