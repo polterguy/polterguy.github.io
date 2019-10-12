@@ -7,7 +7,7 @@ those rare occasions you actually have to understand it.
 Hyperlambda is similar to YAML. It therefor easily translates into a node structure,
 where each node has a _"key"_, a _"value"_, and a bunch of _"children"_. This just
 so happens to perfectly describe an execution syntax tree, where the name of a node
-might reference a C# method, included into the core of the language using _"Super Signals"_.
+might reference a C# method, included into the core of the language using _"magic.signals"_.
 Imagine the following piece of Hyperlambda code.
 
 ```
@@ -76,7 +76,7 @@ At this point you probably realise that Magic and its Hyperlambda actually
 is the perfect foundation for creating your own custom DSL, as 
 in _"Domain Specific Language"_. And that would be a correct assessment.
 Hyperlambda perfectly fits the requirements for creating your own high level
-DSL programming languages, using the `ISlot` interface and its _"Super Signal"_
+DSL programming languages, using the `ISlot` interface and its _"magic.signals"_
 implementation. And in fact, the _"Crudifier"_ at its core is nothing but
 an SQL DSL language implementation, of such a high level abstraction,
 that the computer is able to automate the creation of the code needed
