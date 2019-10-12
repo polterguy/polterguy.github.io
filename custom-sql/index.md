@@ -34,7 +34,7 @@ auth..ticket.verify:root
  * Applies the arguments given to the file into
  * the [magic.db.mysql.read] invocation below.
  */
-add:x:./*/slots.signal/*/args
+add:x:+/*/args
    get-nodes:x:@.arguments/*
 
 
@@ -54,7 +54,7 @@ slots.signal:magic.db.mysql.read
 /*
  * Returns the result of the above SQL command.
  */
-slots.return-nodes:x:@signal/*
+slots.return-nodes:x:-/*
 ```
 
 The most important parts above is the content inside of the **[magic.db.mysql.read]** signal. This declares
