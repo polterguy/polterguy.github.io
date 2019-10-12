@@ -32,7 +32,7 @@ namespace acme
 
 Magic also contains a whole range of _"utility classes"_ to ease your life as a
 C# software developer. For instance, if you need to invoke another Web API from
-C#, this is literally as easy as creating a single line of C# code. Below is and
+C#, this is literally as easy as creating a single line of C# code. Below is an
 example.
 
 ```csharp
