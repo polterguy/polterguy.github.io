@@ -2,8 +2,7 @@
 
 Obviously CRUD alone doesn't result in a complete web app, at least not for more complex
 web applications. For those more complex occassions, where you need to add some custom C# code
-to your application, you can easily do so by adding a new .Net Standard 2.0 library
-into for instance your _"modules"_ folder in Visual Studio (Code).
+to your application, you can easily do so by creating a new .Net Standard 2.0 library.
 
 After you have created your project containing your `ControllerBase` class(es), you
 can simply reference this project into your _"magic.backend"_ project, and the endpoint(s)
