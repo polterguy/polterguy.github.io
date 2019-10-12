@@ -17,8 +17,8 @@ frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; pict
 allowfullscreen></iframe>
 </div>
 
-The code I am using in the above video to cryptographically hash my passwords
-using a BlowFish hashing algorithm, can be found below.
+The code I am using in the above video to cryptographically hash my passwords as a
+new user is created over the HTTP REST endpoint, can be found below.
 
 ```
 .arguments
