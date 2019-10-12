@@ -3,7 +3,7 @@
 Although authentication is arguably beyond the scope of Magic, since it seeks
 to be a database agnostic framework - I have added some helper functions to
 help you with authentication as you implement Magic in your own solution(s).
-The below video demonstrates a template you can use, that allows you to immediately
+The video below demonstrates a template you can use, that allows you to immediately
 secure your Magic installation, following all industry best practices, such
 as hashing your passwords with a per-user based salt, etc. The solution
 depends upon a database called _"magic_auth"_, in addition to that you exchange
