@@ -24,20 +24,20 @@ using a BlowFish hashing algorithm, can be found below.
 .arguments
    username:string
    password:string
-auth.verify-ticket:root
+auth.ticket.verify:root
 
 crypto.password.hash:x:@.arguments/*/password
 
-add:x:./*/signal/*/values
+add:x:./*/slots.signal/*/values
    get-nodes:x:@.arguments/*/username
 
 unwrap:x:+/*/values/*/password
-signal:magic.db.mysql.create
+slots.signal:magic.db.mysql.create
    database:magic_auth
    table:users
    values
       password:x:@crypto.password.hash
-return-nodes:x:@signal/*
+slots.return-nodes:x:@-/*
 ```
 
 ## Need more control?
