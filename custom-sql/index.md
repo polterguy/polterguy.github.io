@@ -27,14 +27,14 @@ done by the _"Crudifier"_ in order to make it more easily understood.
 /*
  * Verifies the user belongs to the "root" role.
  */
-auth.verify-ticket:root
+auth..ticket.verify:root
 
 
 /*
  * Applies the arguments given to the file into
  * the [magic.db.mysql.read] invocation below.
  */
-add:x:./*/signal/*/args
+add:x:./*/slots.signal/*/args
    get-nodes:x:@.arguments/*
 
 
@@ -42,7 +42,7 @@ add:x:./*/signal/*/args
  * Executes your SQL by transforming the syntax tree
  * into an SQL command.
  */
-signal:magic.db.mysql.read
+slots.signal:magic.db.mysql.read
    database:{crm}
    table:roles
    args
@@ -54,7 +54,7 @@ signal:magic.db.mysql.read
 /*
  * Returns the result of the above SQL command.
  */
-return-nodes:x:@signal/*
+slots.return-nodes:x:@signal/*
 ```
 
 The most important parts above is the content inside of the **[magic.db.mysql.read]** signal. This declares
