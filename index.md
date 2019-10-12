@@ -19,12 +19,6 @@ of using XML, it is using Hyperlambda.
 Magic is built in .Net Core, and allows you to add C# controllers to it easily. It's a highly modular
 architecture, allowing you to intercept its core, using adapters and triggers.
 
-## License
-
-Magic is licensed as Affero GPL, which implies you'll have to create Free Software yourself. But if
-you are interested in using it to create Closed Source software, you can send me an email at
-thomas@gaiasoul.com to purchase a proprietary license.
-
 [Getting started with Magic](/getting-started)
 
 [![Build status](https://travis-ci.org/polterguy/magic.svg?master)](https://travis-ci.org/polterguy/magic)
