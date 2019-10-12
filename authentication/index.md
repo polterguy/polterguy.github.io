@@ -52,9 +52,9 @@ physical access to your database. The **[crypto.password.verify]** reverses the 
 and allows you to verify that its **[hash]** argument is matching the specified
 password value.
 
-The **[auth.create-ticket]** slot, allows you to create a JWT token,
+The **[auth.ticket.create]** slot, allows you to create a JWT token,
 that you can use as a _"ticket"_ for future HTTP requests towards your backend.
-The **[auth.verify-ticket]** slot allows you to secure a piece of Hyperlambda,
+The **[auth.ticket.verify]** slot allows you to secure a piece of Hyperlambda,
 and associate it with a list of roles, in such a way that unless the user
 belongs to at least one of those roles, it will throw an exception, and
 abort the execution of the rest of the Hyperlambda you are trying to evaluate.
@@ -65,10 +65,10 @@ for you for your convenience.
 
 * __[crypto.password.hash]__ Creates a cryptographically secured hash value from a password
 * __[crypto.password.verify]__ Verifies that some password is a match to some **[hash]** value of the same password
-* __[auth.create-ticket]__ Creates a JWT authentication token for you with the specified **[username]** and associated **[roles]**
-* __[auth.verify-ticket]__ Verifies that a user is authenticated, and that he or she belongs to the specified role
+* __[auth.ticket.create]__ Creates a JWT authentication token for you with the specified **[username]** and associated **[roles]**
+* __[auth.ticket.verify]__ Verifies that a user is authenticated, and that he or she belongs to the specified role
 * __[magic.authenticate]__ The slot invoked when a user for some reasons is trying to authenticate to the system
-* __[auth.refresh-ticket]__ The slot that allows you to _"refresh"_ your JWT token. Should be invoked a couple of minutes before your existing token expires
+* __[auth.ticket.refresh]__ The slot that allows you to _"refresh"_ your JWT token. Should be invoked a couple of minutes before your existing token expires
 
 ## Security concerns! IMPORTANT!
 
