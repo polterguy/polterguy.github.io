@@ -29,11 +29,6 @@ namespace acme
 }
 ```
 
-## Automatically generated documentation
-
-Magic uses Swagger and the Open Web API, allowing you to immediately start playing around
-with your C# controller endpoints after having created them.
-
 ## Modularity and IoC/Dependency Injection
 
 The above makes your final solution extremely modular in its design, and you can even reuse
