@@ -2,7 +2,7 @@
 
 To get started with Magic you'll need the following installed.
 
-1. [MySQL](https://dev.mysql.com/downloads/mysql/) - Future versions will support MSSQL
+1. [MySQL](https://dev.mysql.com/downloads/mysql/) or [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads).
 2. [Visual Studio Code](https://code.visualstudio.com/download), or Visual Studio if you're on Windows
 3. [NodeJS](https://nodejs.org/en/download/) - To serve the frontend/dashboard
 4. [Angular](https://cli.angular.io), which is installed using `npm install -g @angular/cli` after installing NodeJS
