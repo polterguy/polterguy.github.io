@@ -32,13 +32,8 @@ Then download Magic, unzip it, and follow the instructions in the following vide
 3. Choose your database and your table
 4. Click the _"Crudify"_ button
 
-If you don't have a MySQL database, you can find a simple CRM database schema in the _"misc"_ folder of your
-Magic download, which you can run through the SQL executor, that you can find in the _"SQL"_ menu at the top
-of your page.
-
 When you have created your first CRUD endpoints, you can click the _"Endpoints"_ menu item, and try out your
-newly created HTTP REST endpoints. At this point you can start creating your frontend, in for instance Angular,
-to access your database over HTTP.
+newly created HTTP REST endpoints. At this point you can start create your frontend to access your CRUD backend.
 
 [Custom SQL](/custom-sql)
 
