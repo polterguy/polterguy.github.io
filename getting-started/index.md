@@ -25,12 +25,6 @@ Then download Magic, unzip it, and follow the instructions in the following vide
 7. When npm install from above is done, run `ng serve` in the frontend terminal
 8. Open your browser and point it to [http://localhost:4200](http://localhost:4200)
 
-### Visual Studio for Windows considerations
-
-If you're using the full version of Visual Studio, you might have to edit your
-`frontend/src/environments/environment.ts` file, and change its `apiURL` setting to
-`http://localhost:55246/api/`, and its `apiDomain`setting to `localhost:55246`.
-
 ## Creating your first CRUD Web API
 
 1. Login with _"root/root"_ as your username/password
