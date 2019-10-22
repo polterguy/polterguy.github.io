@@ -33,7 +33,7 @@ Then download Magic, unzip it, and follow the instructions in the following vide
 4. Click the _"Crudify"_ button
 
 When you have created your first CRUD endpoints, you can click the _"Endpoints"_ menu item, and try out your
-newly created HTTP REST endpoints. At this point you can start create your frontend to access your CRUD backend.
+newly created HTTP REST endpoints.
 
 [Custom SQL](/custom-sql)
 
