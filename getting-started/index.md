@@ -30,7 +30,7 @@ Then download Magic, unzip it, and follow the instructions in the following vide
 1. Login with _"root/root"_ as your username/password
 2. Click the _"Crudify"_ menu item
 3. Choose your database and your table
-4. Click the _"Crudify"_ button at the bottom of your page
+4. Click the _"Crudify"_ button
 
 If you don't have a MySQL database, you can find a simple CRM database schema in the _"misc"_ folder of your
 Magic download, which you can run through the SQL executor, that you can find in the _"SQL"_ menu at the top
