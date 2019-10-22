@@ -17,7 +17,7 @@ Then download Magic, unzip it, and follow the instructions in the following vide
 ## List of what to do
 
 1. Open Visual Studio Code in your magic folder
-2. Edit your `appsettings.json` file, and modify your MySQL connection string
+2. Edit your `appsettings.json` file, and modify your MySQL and/or MSSQL connection strings
 3. Open one terminal window and go to `magic.backend`
 4. Run `dotnet run` in the magic.backend terminal
 5. Open another terminal window and go to `frontend`
