@@ -125,11 +125,12 @@ productivity soar to unimaginable heights
 -- 
 Paul Graham
 
-## Pulling it al together
+## Pulling it all together
 
-In the following video which is 24 minutes long, I try to pull all
+In the following video, which is 24 minutes long, I try to pull all
 of the concepts we've gone through together, to make you understand
-how they relate to each other.
+how they relate to each other, and how Magic is really built, and
+what makes it tick.
 
 <div style="margin-left: auto; margin-right: auto; width: 560px;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TQg5BAyMcQc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
