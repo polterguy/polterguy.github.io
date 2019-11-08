@@ -22,7 +22,7 @@ architecture, allowing you to intercept its core, using adapters and triggers.
 ## License
 
 Although most of Magic's source code is publicly available, it is not Free Software or Open Source,
-and I do charge a fee for commercial usage. [Read more here](https://gaiasoul.com/license-magic/).
+and I do charge a fee for commercial usage. [Read more here](https://servergardens.com/buy/).
 
 [Getting started with Magic](/getting-started)
 
