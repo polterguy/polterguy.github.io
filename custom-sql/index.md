@@ -82,4 +82,4 @@ are generated with, and which HTTP parameters it can accept. The basic idea is a
 * Parametrise your endpoint declaratively using the parameters collection
 * De-references these parameters in your SQL
 
-[Extending Magic with C#](/csharp)
+[Scheduling your C# methods](/scheduler)
