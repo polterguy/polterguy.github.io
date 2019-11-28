@@ -19,6 +19,12 @@ of using XML, it is using Hyperlambda.
 Magic is built in .Net Core, and allows you to add C# controllers to it easily. It's a highly modular
 architecture, allowing you to intercept its core, using adapters and triggers.
 
+## Scheduling code execution
+
+In addition to the above, Magic also features a task scheduler, allowing you to dynamically create
+tasks, that might repeat according to some sort of pattern, that executes code at some specified
+point in time.
+
 ## License
 
 Although most of Magic's source code is publicly available, it is not Free Software or Open Source,
