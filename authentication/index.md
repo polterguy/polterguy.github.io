@@ -1,44 +1,20 @@
 # Authentication
 
-Although authentication is arguably beyond the scope of Magic, since it seeks
-to be a database agnostic framework - I have added some helper functions to
-help you with authentication as you implement Magic in your own solution(s).
-The video below demonstrates a template you can use, that allows you to immediately
-secure your Magic installation, following all industry best practices, such
-as hashing your passwords with a per-user based salt, etc. The solution
-depends upon a database called _"magic_auth"_, in addition to that you exchange
-the default (static) authentication slot in its system Hyperlambda files.
-But the video should be able to easily guide you through this process
-in less than 10 minutes.
+Magic contains an automagic JWT authentication module, that allows you to easily
+administrated your users, and create a really secure auth backend. Possibly also
+serving as a SSO (Single Sign On) for your enterprise apps. Watch the video below
+for a demonstration of this module.
 
 <div style="margin-left: auto; margin-right: auto; width: 560px;">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/DCMY-uT0UVw" 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oDf8EJhZu0s" 
 frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
 allowfullscreen></iframe>
 </div>
 
-The code I am using in the above video to cryptographically hash my passwords as a
-new user is created over the HTTP REST endpoint, can be found below.
-
-```
-.arguments
-   username:string
-   password:string
-auth.ticket.verify:root
-
-crypto.password.hash:x:@.arguments/*/password
-
-add:x:./*/slots.signal/*/values
-   get-nodes:x:@.arguments/*/username
-
-unwrap:x:+/*/values/*/password
-slots.signal:magic.db.mysql.create
-   database:magic_auth
-   table:users
-   values
-      password:x:@crypto.password.hash
-slots.return-nodes:x:@-/*
-```
+Notice, if you want to use Microsoft SQL Server, you'll have to make sure you correctly
+resolve the URL in your frontend's _"users-service.ts"_ file, and basically exchange all
+occurencies of _"magic_auth"_ with _"magic_auth/dbo"_, since MS SQL server is namespaced,
+in a way MySQL is not.
 
 ## Need more control?
 
