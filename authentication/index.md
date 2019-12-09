@@ -1,7 +1,7 @@
 # Authentication
 
 Magic contains an automagic JWT authentication module, that allows you to easily
-administrated your users, and create a really secure auth backend. Possibly also
+administrate your users, and create a really secure auth backend. Possibly also
 serving as a SSO (Single Sign On) for your enterprise apps. Watch the video below
 for a demonstration of this module.
 
