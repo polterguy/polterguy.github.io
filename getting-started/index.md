@@ -36,8 +36,3 @@ When you have created your first CRUD endpoints, you can click the _"Endpoints"_
 newly created HTTP REST endpoints.
 
 [Custom SQL](/custom-sql)
-
-Psst, I am officially supporting VSCode's x-mas hat, and hereby initiate a campaign to get it back :)
-
-![Support the x-mas hat on VS Code](https://servergardens.files.wordpress.com/2019/12/img_0645.jpg)
-
