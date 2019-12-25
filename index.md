@@ -33,10 +33,3 @@ and I do charge a fee for commercial usage. [Read more here](https://servergarde
 [Getting started with Magic](/getting-started)
 
 [![Build status](https://travis-ci.org/polterguy/magic.svg?master)](https://travis-ci.org/polterguy/magic)
-
-Psst, I am officially supporting VSCode's x-mas hat, and hereby initiate a campaign to get it back :)
-
-![Support the x-mas hat on VS Code](https://servergardens.files.wordpress.com/2019/12/img_0645.jpg)
-
-I also encourage all other GitHub repository owners to somehow mark their repositories with a x-mas hat!
-
