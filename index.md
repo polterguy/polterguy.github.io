@@ -5,7 +5,7 @@ automatically create your backend, by wrapping your database tables into HTTP RE
 second button will create an Angular frontend for you, wrapping your previously created backend
 into an entire Web application. See the screenshot below for an example.
 
-[![An example Magic CRUD app](https://servergardens.files.wordpress.com/2020/01/magic-crud-1.png)]
+![An example Magic CRUD app](https://servergardens.files.wordpress.com/2020/01/magic-crud-1.png)]
 
 Or watch the following video for a demonstration of the above system, and how it was created.
 
