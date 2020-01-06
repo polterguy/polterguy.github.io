@@ -8,6 +8,7 @@ into an entire Web application. See the screenshot below for an example.
 ![An example Magic CRUD app](https://servergardens.files.wordpress.com/2020/01/magic-crud-1.png)
 
 Or watch the following video for a demonstration of the above system, and how it was created.
+Notice, the above Web app was created in its entirety _without writing a single line of code_!
 
 <div style="margin-left: auto; margin-right: auto; width: 560px;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7zNh4Ekd67c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
