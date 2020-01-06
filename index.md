@@ -15,19 +15,15 @@ Or watch the following video for a demonstration of the above system, and how it
 
 ## How it works
 
-Magic is built upon a YAML inspired syntax called _"Hyperlambda"_, that declares the code your endpoint
-will evaluate when accessed. This makes it fairly easy to have your computer generate code from the metadata
-extracted from your database. Think about these files as automatically generated XML files, except instead
-of using XML, it is using Hyperlambda.
+Magic will read metadata from your database. It will use this metadata to generate an HTTP REST Web
+API for you, wrapping all CRUD operations inside of REST endpoints. Then it will use metadata from
+the REST API to automatically generate Angular components, router links, menu items, datagrids, etc.
+The end result becomes that before you've even had to create as much as a single line of code 
+yourself, 90% of your job is already done.
 
 Magic is built in .Net Core, and allows you to add C# controllers to it easily. It's a highly modular
-architecture, allowing you to intercept its core, using adapters and triggers.
-
-## Scheduling code execution
-
-In addition to the above, Magic also features a task scheduler, allowing you to dynamically create
-tasks, that might repeat according to some sort of pattern, that executes code at some specified
-point in time.
+architecture, allowing you to intercept its core, using adapters and triggers. And the resulting 
+Angular code is also very clean, and easy to modify.
 
 ## License
 
