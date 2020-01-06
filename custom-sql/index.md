@@ -27,7 +27,7 @@ done by the _"Crudifier"_ in order to make it more easily understood.
 /*
  * Verifies the user belongs to the "root" role.
  */
-auth..ticket.verify:root
+auth.ticket.verify:root
 
 
 /*
