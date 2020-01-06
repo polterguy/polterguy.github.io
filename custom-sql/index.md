@@ -82,4 +82,8 @@ are generated with, and which HTTP parameters it can accept. The basic idea is a
 * Parametrise your endpoint declaratively using the parameters collection
 * De-references these parameters in your SQL
 
+Notice, custom SQL endpoints will not result in Angular datagrids automatically created
+for you, but they will have a service method in your frontend's Angular code, that you can
+use in your frontend code as you see fit.
+
 [Scheduling your C# methods](/scheduler)
