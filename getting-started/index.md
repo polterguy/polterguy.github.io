@@ -24,7 +24,7 @@ Then download Magic, unzip it, and follow the instructions in the following vide
 6. When npm install from above is done, run `ng serve` in the frontend terminal
 7. Open your browser and point it to [http://localhost:4200](http://localhost:4200)
 
-## Creating your first CRUD Web API
+## Creating your CRUD Web APIs
 
 1. Login with _"root/root"_ as your username/password
 2. Run through the _"Setup"_ wizard
