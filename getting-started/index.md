@@ -35,4 +35,24 @@ Then download Magic, unzip it, and follow the instructions in the following vide
 When you have created your first CRUD endpoints, you can click the _"Endpoints"_ menu item, and try out your
 newly created HTTP REST endpoints.
 
+**Notice** - If you want to use the default authentication and authorisation system that comes out of the
+box with Magic, you will have to _"Crudify"_ your _"magic\_auth"_ database.
+
+## Creating your Angular frontend
+
+After having created your backend, you can click the _"Endpoints"_ menu in the Magic dashboard, go to the
+bottom of this page, give your application a name, and click _"Generate"_. After some few seconds, a zip file
+with your Angular frontend code will be downloaded to your client. You can also decide which endpoints you
+wish to generate Angular code for by clicking the checkboxes before you click _"Generate"_. However, Magic
+will _"intelligently"_ generate your Angular code, according to which endpoints you choose during generation.
+
+## The scaffolded Angular code
+
+The generated Angular code will be highly modular in its structure, and one router link for each of your
+HTTP REST GET endpoints will be automatically created for you, in addition to a menu link for each GET endpoint.
+In addition, Magic will create one Angular component for each of these endpoints. This allows you to immediately
+start editing this code, to change your UI according to how you want it to look like. You might for instance
+want to use DateTime pickers for your date fields, or textareas for some of your string fields from your database.
+This is easily done by changing the generated Angular code.
+
 [Custom SQL](/custom-sql)
