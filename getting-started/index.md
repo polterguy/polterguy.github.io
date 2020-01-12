@@ -55,4 +55,8 @@ allows you to immediately start editing this code, to change your UI according t
 like. You might for instance want to use DateTime pickers for your date fields, or textareas for some of
 your string fields from your database. This is easily done by changing the generated Angular code.
 
+The generated code is created according to all Angular _"best practices"_, and it is highly componentised
+and modular in nature. This makes it a perfect starting point for learning Angular, with existing code,
+wrapping your entire database.
+
 [Custom SQL](/custom-sql)
