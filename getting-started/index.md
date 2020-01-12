@@ -49,10 +49,10 @@ will _"intelligently"_ generate your Angular code, according to which endpoints 
 ## The scaffolded Angular code
 
 The generated Angular code will be highly modular in its structure, and one router link for each of your
-HTTP REST GET endpoints will be automatically created for you, in addition to a menu link for each GET endpoint.
-Magic will also create one Angular component for each of these endpoints. This allows you to immediately
-start editing this code, to change your UI according to how you want it to look like. You might for instance
-want to use DateTime pickers for your date fields, or textareas for some of your string fields from your database.
-This is easily done by changing the generated Angular code.
+HTTP REST GET endpoints will be automatically created for you - In addition a menu link will be created
+for each GET endpoint. Magic will also create one Angular component for each of these endpoints. This
+allows you to immediately start editing this code, to change your UI according to how you want it to look
+like. You might for instance want to use DateTime pickers for your date fields, or textareas for some of
+your string fields from your database. This is easily done by changing the generated Angular code.
 
 [Custom SQL](/custom-sql)
