@@ -52,8 +52,6 @@ hashing algorithm - Making the auth system extremely secure.
 
 ## Download
 
-Click the image below to download the latest version of Magic.
-
 [![Download magic](https://servergardens.files.wordpress.com/2020/01/new-download-button-2.png)](https://github.com/polterguy/magic/archive/v5.7.3.zip)
 
 ## License
