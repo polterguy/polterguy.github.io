@@ -1,4 +1,4 @@
-# DB + Magic == Angular Web app
+# Database + Magic == Angular Web app
 
 Magic allows you to create your entire Web app by simply clicking two buttons. The first button will
 automatically create your backend, by wrapping your database tables into HTTP REST endpoints. The
