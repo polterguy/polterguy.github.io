@@ -22,11 +22,11 @@ the REST API to automatically generate Angular components, router links, menu it
 The end result becomes that before you've even had to create as much as a single line of code 
 yourself, 90% of your job is already done.
 
-The resulting frontend, gives you datagrids and tables for all your database tables, allowing you
-to create, read, update and delete from all of your database tables. It also features paging,
-sorting, filtering, etc automatically created for you. Magic also automagically takes care of
+The resulting frontend gives you a datagrid for all your database tables, allowing you
+to create, read, update and delete records in your database. It also automatically creates paging,
+sorting and filtering for you. Magic also automagically takes care of
 authentication and authorization for you, allowing you to restrict user access to specific tables
-and database objects.
+based upon what role(s) the user belongs to.
 
 Magic is built in .Net Core, and allows you to add C# controllers to it easily. It's a highly modular
 architecture, allowing you to intercept its core, using adapters and triggers. And the resulting 
