@@ -50,6 +50,13 @@ hashing algorithm - Making the auth system extremely secure.
 
 ![The integrated auth system](https://servergardens.files.wordpress.com/2020/01/auth.png)
 
+## Productivity
+
+If you run Magic towards a database with ~100 tables, Magic will generate roughly 5.000 lines of backend
+code for you, in addition to 80.000 lines of frontend code. According to neutral research in
+the topic, an average software developer can produce ~750 lines of code per month. This implies that
+5 seconds with Magic _equals the productivity of a single developer for more than 5 years_.
+
 ## Responsive
 
 All components generated will be highly responsive, allowing you to consume your generated apps
