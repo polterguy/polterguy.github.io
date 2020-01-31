@@ -36,7 +36,13 @@ An example Magic CRUD app, with its nav bar expanded.
 
 How the datagrid looks like when viewing your records.
 
-![An example Magic CRUD app](https://servergardens.files.wordpress.com/2020/01/magic-datagrid.png)
+![Viewing your database records in a datagrid](https://servergardens.files.wordpress.com/2020/01/magic-datagrid.png)
+
+Editing a database record. Notice how it creates the correct components for your columns, based upon
+what the underlying dta type of your table is. In this particular example for instance, we have a
+date and time picker, because one of the table's columns is of datetime type.
+
+![Editing database records](https://servergardens.files.wordpress.com/2020/01/editing.png)
 
 ## License
 
