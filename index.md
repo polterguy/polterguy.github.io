@@ -50,6 +50,12 @@ hashing algorithm - Making the auth system extremely secure.
 
 ![The integrated auth system](https://servergardens.files.wordpress.com/2020/01/auth.png)
 
+## Download
+
+Click the image below to download the latest version of Magic.
+
+[![Download magic](https://servergardens.files.wordpress.com/2020/01/new-download-magic.png)](https://github.com/polterguy/magic/releases)
+
 ## License
 
 Although most of Magic's source code is publicly available, it is not Free Software or Open Source,
