@@ -44,6 +44,12 @@ date and time picker, because one of the table's columns is of datetime type.
 
 ![Editing database records](https://servergardens.files.wordpress.com/2020/01/editing.png)
 
+Below you can see how the integrated authentication and authorisation components will look like.
+Notice, all passwords are securely stored using individual salting and hashed based upon the BlowFish
+hashing algorithm - Making the auth system extremely secure.
+
+![The integrated auth system](https://servergardens.files.wordpress.com/2020/01/auth.png)
+
 ## License
 
 Although most of Magic's source code is publicly available, it is not Free Software or Open Source,
