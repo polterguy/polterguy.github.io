@@ -3,12 +3,8 @@
 Magic allows you to create your entire Web app by simply clicking two buttons. The first button will
 automatically create your backend, by wrapping your database tables into HTTP REST endpoints. The
 second button will create an Angular frontend for you, wrapping your previously created backend
-into an entire Web application. See the screenshot below for an example.
-
-![An example Magic CRUD app](https://servergardens.files.wordpress.com/2020/01/magic-crud-1.png)
-
-Or watch the following video for a demonstration of the above system, and how it was created.
-Notice, the above Web app was created in its entirety _without writing a single line of code_!
+into an entire Web application. Watch the following video for a demonstration of how Magic works.
+Notice, the Web app in the video was created in its entirety _without writing a single line of code_!
 
 <div style="margin-left: auto; margin-right: auto; width: 560px;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7zNh4Ekd67c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -31,6 +27,16 @@ based upon what role(s) the user belongs to.
 Magic is built in .Net Core, and allows you to add C# controllers to it easily. It's a highly modular
 architecture, allowing you to intercept its core, using adapters and triggers. And the resulting 
 Angular code is also very clean, and easy to modify.
+
+## Screenshots
+
+An example Magic CRUD app, with its nav bar expanded.
+
+![An example Magic CRUD app](https://servergardens.files.wordpress.com/2020/01/magic-crud-1.png)
+
+How the datagrid looks like when viewing your records.
+
+![An example Magic CRUD app](https://servergardens.files.wordpress.com/2020/01/magic-datagrid.png)
 
 ## License
 
