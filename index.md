@@ -3,7 +3,7 @@
 Magic allows you to create your entire Web app by simply clicking two buttons. The first button will
 automatically create your backend, by wrapping your database tables into HTTP REST endpoints. The
 second button will create an Angular frontend for you, wrapping your previously created backend
-into an entire Web application. Watch the following video for a demonstration of how Magic works.
+into an Angular Web application. Watch the following video for a demonstration of how Magic works.
 Notice, the Web app in the video was created in its entirety _without writing a single line of code_!
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;">
