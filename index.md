@@ -55,7 +55,11 @@ hashing algorithm - Making the auth system extremely secure.
 If you run Magic towards a database with ~100 tables, Magic will generate roughly 5.000 lines of backend
 code for you, in addition to 80.000 lines of frontend code. According to neutral research in
 the topic, an average software developer can produce ~750 lines of code per month. This implies that
-5 seconds with Magic _equals the productivity of a single developer for more than 5 years_.
+5 seconds with Magic _equals the productivity of a single developer for more than 9 years_.
+
+Of course, these types of comparisons aren't fully fair some may argue, but there is no doubt that
+Magic will soar your productivity to unimaginable heights compared to having to manually create
+the equivalent product.
 
 ## Responsive
 
