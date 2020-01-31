@@ -25,8 +25,8 @@ authentication and authorization for you, allowing you to restrict user access t
 based upon what role(s) the user belongs to.
 
 Magic is built in .Net Core, and allows you to add C# controllers to it easily. It's a highly modular
-architecture, allowing you to intercept its core, using adapters and triggers. And the resulting 
-Angular code is also very clean, and easy to modify.
+architecture, allowing you to intercept its core, using adapters and triggers. The Angular code also
+perfectly follows all TSLint rules, making it highly readable and easily modified.
 
 ## Screenshots
 
