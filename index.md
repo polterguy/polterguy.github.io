@@ -64,7 +64,7 @@ the equivalent product.
 ## Maturity and security
 
 Magic has been featured in MSDN Magazine with several articles, and is currently the only product
-not produced my Microsoft that is documented at the main website for .Net and .Net Core. You can
+not produced by Microsoft that is documented at the main website for .Net and .Net Core. You can
 find some of its articles below.
 
 * [Make C# more dynamic with Hyperlambda](https://docs.microsoft.com/en-us/archive/msdn-magazine/2017/june/csharp-make-csharp-more-dynamic-with-hyperlambda)
