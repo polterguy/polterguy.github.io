@@ -78,6 +78,20 @@ are operating in markets moving 5.1 trillion dollars on a daily basis. Needles t
 _very, very, very_ secure. For some of these firms, Magic has saved millions of dollars
 in recruitment costs, and tightened existing security by at least 10x on all parameters.
 
+## Code quality and performance
+
+A Magic application will outperform the equivalent Entity Framework solution with at least 5x in speed
+and throughput, making it scale at least 5 times as well as an Entity Framework solution. In addition,
+its generated code has an extremely high quality, and will for the most parts, perfectly obey by all
+coding standards, and/or automated tools that are measuring code quality - Such as for instance TSlint,
+etc. In neutral tests, Magic has shown to outperform the average (human) software developer by 3-4 times
+on code quality, using neutral and objective metrics measuring such things. This results in that your
+resulting Magic application is extremely easy to maintain and modify if the need should arise.
+
+> I guarantee you that Magic will be able to create better code than every single human developer you have in your team
+
+Thomas Hansen, CEO at Server Gardens.
+
 ## Responsive
 
 All components generated will be highly responsive, allowing you to consume your generated apps
