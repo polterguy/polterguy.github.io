@@ -105,6 +105,4 @@ if you decide to use it commercially on your own server.
 
 [![Download magic](https://servergardens.files.wordpress.com/2020/01/new-download-button-2.png)](https://github.com/polterguy/magic/archive/v5.7.3.zip)
 
-[Getting started with Magic](/getting-started)
-
 [![Build status](https://travis-ci.org/polterguy/magic.svg?master)](https://travis-ci.org/polterguy/magic)
