@@ -106,7 +106,9 @@ All components generated will be highly responsive, allowing you to consume your
 from your favourite phone, tablet, or computer - Regardless of your device resolution.  But don't
 believe us, try it out for yourself. Magic is free to use locally, and will only cost you anything
 whenever you decide to deploy it unto a server. Magic also comes with [professional support](https://servergardens.com/)
-if you decide to use it commercially on your own server.
+if you decide to use it commercially on your own server, and Server Gardens also has a team of extremely
+brilliant developers, in all areas related to the operation of Magic, if you need help to deploy it into
+production.
 
 [![Download magic](https://servergardens.files.wordpress.com/2020/01/new-download-button-2.png)](https://github.com/polterguy/magic/archive/v5.7.3.zip)
 
