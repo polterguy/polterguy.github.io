@@ -61,7 +61,7 @@ Of course, these types of comparisons aren't fully fair some may argue, but ther
 Magic will soar your productivity to unimaginable heights compared to having to manually create
 the equivalent product.
 
-## Maturity
+## Maturity and security
 
 Magic has been featured in MSDN Magazine with several articles, and is currently the only product
 not produced my Microsoft that is documented at the main website for .Net and .Net Core. You can
@@ -75,7 +75,8 @@ find some of its articles below.
 The main architect of Magic has researched Magic and its underlying ideas for more than a decade, and
 has been working for some of the largest financial trading broker firms on the planet - Some of whom
 are operating in markets moving 5.1 trillion dollars on a daily basis. Needles to say, but Magic is
-_very, very, very_ secure.
+_very, very, very_ secure. For some of these firms, Magic has saved millions of dollars
+in recruitment costs, and tightened existing security by at least 10x on all parameters.
 
 ## Responsive
 
