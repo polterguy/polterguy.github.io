@@ -20,9 +20,8 @@ yourself, 90% of your job is already done.
 
 The resulting frontend gives you a datagrid for all your database tables, allowing you
 to create, read, update and delete records in your database. It also automatically creates paging,
-sorting and filtering for you. Magic also automagically takes care of
-authentication and authorization for you, allowing you to restrict user access to specific tables
-based upon what role(s) the user belongs to.
+sorting, and filtering for you - In addition to providing you with a _very, very, very_ secure
+authentication and authorisation system.
 
 Magic is built in .Net Core, and allows you to add C# controllers to it easily. It's a highly modular
 architecture, allowing you to intercept its core, using adapters and triggers. The Angular code also
