@@ -79,8 +79,8 @@ in recruitment costs, and tightened existing security by at least 10x on all par
 
 Magic was also built using a TDD approach, and there are hundreds of unit tests in the project, that
 verifies the integrity of every possible course of code flow, whenever we apply change to its underlying
-code. Magic's source code, has also been scrutinised by thousands of developers, without being able
-to find security holes in it.
+code. Magic's source code, has also been scrutinised by thousands of (human) developers, without being able
+to find any security holes in it.
 
 > I guarantee you that Magic, if setup correctly, will pass any penetration test on this planet
 
