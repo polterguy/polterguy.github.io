@@ -120,8 +120,7 @@ Thomas Hansen, CEO at Server Gardens
 
 > We realised there was a need for higher code quality, tightened security measures, and more automation
 in the enterprise software development space - So we released Magic to the public, allowing others
-to take advantage of the same quality improvements we could internally see within our own enterprise
-for ourselves.
+to take advantage of the same quality improvements we could internally see within our own enterprise.
 
 Thomas Hansen, CEO at Server Gardens
 
