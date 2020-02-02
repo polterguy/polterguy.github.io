@@ -78,6 +78,10 @@ are operating in markets moving 5.1 trillion dollars on a daily basis. Needles t
 _very, very, very_ secure. For some of these firms, Magic has saved millions of dollars
 in recruitment costs, and tightened existing security by at least 10x on all parameters.
 
+> I guarantee you that Magic, if setup correctly, will pass any penetration test on this planet
+
+Thomas Hansen, CEO at Server Gardens
+
 ## Code quality and performance
 
 A Magic application will outperform the equivalent Entity Framework solution with at least 5x in speed
@@ -90,7 +94,7 @@ resulting Magic application is extremely easy to maintain and modify if the need
 
 > I guarantee you that Magic will be able to create better code than every single human developer you have in your team
 
-Thomas Hansen, CEO at Server Gardens.
+Thomas Hansen, CEO at Server Gardens
 
 ## Responsive
 
