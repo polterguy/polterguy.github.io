@@ -91,6 +91,11 @@ etc. In neutral tests, Magic has shown to outperform the average (human) softwar
 on code quality, using neutral and objective metrics measuring such things. This results in that your
 resulting Magic application is extremely easy to maintain and modify if the need should arise.
 
+Magic was also built using a TDD approach, and there are hundreds of unit tests in the project, that
+verifies the integrity of every possible course of code flow, whenever we apply change to its underlying
+code. Magic's source code, has also been scrutinised by thousands of developers, without being able
+to find security holes in it.
+
 > I guarantee you that Magic will be able to create better code than every single human developer you have in your team
 
 Thomas Hansen, CEO at Server Gardens
