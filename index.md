@@ -118,6 +118,13 @@ production.
 
 Thomas Hansen, CEO at Server Gardens
 
+> We realised there was a need for higher code quality, tightened security measures, and more automation
+in the enterprise software development space - So we released Magic to the public, allowing others
+to take advantage of the same quality improvements we could internally see within our own enterprise
+for ourselves.
+
+Thomas Hansen, CEO at Server Gardens
+
 [![Download magic](https://servergardens.files.wordpress.com/2020/01/new-download-button-2.png)](https://github.com/polterguy/magic/archive/v5.7.3.zip)
 
 [![Build status](https://travis-ci.org/polterguy/magic.svg?master)](https://travis-ci.org/polterguy/magic)
