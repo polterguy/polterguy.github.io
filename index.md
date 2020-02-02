@@ -60,6 +60,10 @@ Of course, these types of comparisons aren't fully fair some may argue, but ther
 Magic will soar your productivity to unimaginable heights compared to having to manually create
 the equivalent product.
 
+> I guarantee you that with Magic, you can get away with 50% of your developers, still while being 10x as productive
+
+Thomas Hansen, CEO at Server Gardens
+
 ## Maturity and security
 
 Magic has been featured in MSDN Magazine with several articles, and is currently the only product
