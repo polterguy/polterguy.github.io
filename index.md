@@ -124,6 +124,12 @@ to take advantage of the same quality improvements we could internally see withi
 
 Thomas Hansen, CEO at Server Gardens
 
+## Our promise
+
+* 10x code quality
+* 10x productivity
+* 10x security
+
 [![Download magic](https://servergardens.files.wordpress.com/2020/01/new-download-button-2.png)](https://github.com/polterguy/magic/archive/v5.7.3.zip)
 
 [![Build status](https://travis-ci.org/polterguy/magic.svg?master)](https://travis-ci.org/polterguy/magic)
