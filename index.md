@@ -114,6 +114,10 @@ if you decide to use it commercially on your own server, and Server Gardens also
 brilliant developers, in all areas related to the operation of Magic, if you need help to deploy it into
 production.
 
+> I guarantee you that your Magic app, will perfectly work, on every single modern device in your enterprise
+
+Thomas Hansen, CEO at Server Gardens
+
 [![Download magic](https://servergardens.files.wordpress.com/2020/01/new-download-button-2.png)](https://github.com/polterguy/magic/archive/v5.7.3.zip)
 
 [![Build status](https://travis-ci.org/polterguy/magic.svg?master)](https://travis-ci.org/polterguy/magic)
