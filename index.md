@@ -61,6 +61,22 @@ Of course, these types of comparisons aren't fully fair some may argue, but ther
 Magic will soar your productivity to unimaginable heights compared to having to manually create
 the equivalent product.
 
+## Maturity
+
+Magic has been featured in MSDN Magazine with several articles, and is currently the only product
+not produced my Microsoft that is documented at the main website for .Net and .Net Core. You can
+find some of its articles below.
+
+* [Make C# more dynamic with Hyperlambda](https://docs.microsoft.com/en-us/archive/msdn-magazine/2017/june/csharp-make-csharp-more-dynamic-with-hyperlambda)
+* [Super-DRY development for ASP.NET Core](https://docs.microsoft.com/en-us/archive/msdn-magazine/2019/june/patterns-and-practices-super-dry-development-for-asp-net-core)
+* [Active Events One design pattern instead of a dozen](https://docs.microsoft.com/en-us/archive/msdn-magazine/2017/march/patterns-active-events-one-design-pattern-instead-of-a-dozen)
+* ++++
+
+The main architect of Magic has researched Magic and its underlying ideas for more than a decade, and
+has been working for some of the largest frinancial trading broker firms on the planet, in addition
+to being delivering software for some of the largest hospitals on the planet. Magic is _very, very, very_
+secure!
+
 ## Responsive
 
 All components generated will be highly responsive, allowing you to consume your generated apps
