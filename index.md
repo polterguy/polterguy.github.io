@@ -1,10 +1,9 @@
 # Database + Magic == Angular Web app
 
 Magic allows you to create your entire Web app by simply clicking two buttons. The first button will
-automatically create your backend, by wrapping your database tables into HTTP REST endpoints. The
+automatically create your backend, by wrapping your database tables into CRUD HTTP REST endpoints. The
 second button will create an Angular frontend for you, wrapping your previously created backend
 into an Angular Web application. Watch the following video for a demonstration of how Magic works.
-Notice, the Web app in the video was created in its entirety _without writing a single line of code_!
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/8xO9H-2Fejc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -23,9 +22,9 @@ to create, read, update and delete records in your database. It also automatical
 sorting, and filtering for you - In addition to providing you with a _very, very, very_ secure
 authentication and authorisation system.
 
-Magic is built in .Net Core, and allows you to add C# controllers to it easily. It's a highly modular
-architecture, allowing you to intercept its core, using adapters and triggers. The Angular code also
-perfectly follows all TSLint rules, making it highly readable and easily modified.
+Magic is built in .Net Core, and allows you to expand upon it with your own C# controllers easily.
+It's a highly modular architecture, allowing you to intercept its core, using adapters and triggers.
+The Angular code also perfectly follows TSLint rules, making it highly readable and easily modified.
 
 ## Screenshots
 
@@ -39,7 +38,7 @@ How the datagrid looks like when viewing your records.
 
 Editing a database record. Notice how it creates the correct components for your columns, based upon
 what the underlying data type of your table is. In this particular example for instance, we have a
-date and time picker, because one of the table's columns is of datetime type.
+datetime-picker, because one of the table's columns is a datetime.
 
 ![Editing database records](https://servergardens.files.wordpress.com/2020/01/editing.png)
 
@@ -58,11 +57,7 @@ the topic, an average software developer can produce ~750 lines of code per mont
 
 Of course, these types of comparisons aren't fully fair some may argue, but there is no doubt that
 Magic will soar your productivity to unimaginable heights compared to having to manually create
-the equivalent product.
-
-> I guarantee you that with Magic, you can get away with 50% of your developers, still while being 10x as productive
-
-Thomas Hansen, CEO at Server Gardens
+the equivalent project.
 
 ## Maturity and security
 
@@ -79,16 +74,12 @@ The main architect of Magic has researched Magic and its underlying ideas for mo
 has been working and consulting for some of the largest financial trading broker firms on the planet - Some of whom
 are operating in markets moving 5.1 trillion dollars on a daily basis. Needles to say, but Magic is
 _very, very, very_ secure. For some of these firms, Magic has saved millions of dollars
-in recruitment costs, and tightened existing security by at least 10x on all parameters.
+in recruitment costs, while at the same time tightened security significantly.
 
 Magic was also built using a TDD approach, and there are hundreds of unit tests in the project, that
 verifies the integrity of every possible course of code flow, whenever we apply change to its underlying
 code. Magic's source code, has also been scrutinised by thousands of (human) developers, without being able
 to find any security holes in it.
-
-> I guarantee you that Magic, if setup correctly, will pass any penetration test on this planet
-
-Thomas Hansen, CEO at Server Gardens
 
 ## Code quality and performance
 
@@ -97,26 +88,17 @@ and throughput, making it scale at least 5 times as well as an Entity Framework 
 its generated code has an extremely high quality, and will for the most parts, perfectly obey by all
 coding standards, and/or automated tools that are measuring code quality - Such as for instance TSlint,
 etc. In neutral tests, Magic has shown to outperform the average (human) software developer by 3-4 times
-on code quality, using neutral and objective metrics measuring such things. This results in that your
+on code quality, using neutral and objective metrics measuring quality. This results in that your
 resulting Magic application is extremely easy to maintain and modify if the need should arise.
-
-> I guarantee you that Magic will be able to create better code than every single human developer you have in your team
-
-Thomas Hansen, CEO at Server Gardens
 
 ## Responsive
 
 All components generated will be highly responsive, allowing you to consume your generated apps
 from your favourite phone, tablet, or computer - Regardless of your device resolution.  But don't
-believe us, try it out for yourself. Magic is free to use locally, and will only cost you anything
-whenever you decide to deploy it unto a server. Magic also comes with [professional support](https://servergardens.com/)
-if you decide to use it commercially on your own server, and Server Gardens also has a team of extremely
-brilliant developers, in all areas related to the operation of Magic, if you need help to deploy it into
-production.
-
-> I guarantee you that your Magic app, will perfectly work, on every single modern device in your enterprise
-
-Thomas Hansen, CEO at Server Gardens
+believe us, try it out for yourself. Magic is free to use locally, and will only cost you a nominal fee
+if you decide to deploy it unto a server. Magic also comes with [professional support](https://servergardens.com/)
+if you decide to use it commercially on your own server, and we have a team of brilliant developers,
+in all areas related to the operation of Magic, if you need help with it somehow.
 
 > We realised there was a need for higher code quality, tightened security measures, and more automation
 in the enterprise software development space - So we released Magic to the public, allowing others
@@ -126,13 +108,11 @@ Thomas Hansen, CEO at Server Gardens
 
 ## Our promise
 
-* 10x code quality
 * 10x productivity
+* 10x code quality
 * 10x security
 
 Magic is free to run over localhost, on your local development machine - But will cost you a nominal fee
 of €495 if you choose to install it unto a server.
 
 [![Download magic](https://servergardens.files.wordpress.com/2020/01/new-download-button-2.png)](https://github.com/polterguy/magic/archive/v5.7.3.zip)
-
-[![Build status](https://travis-ci.org/polterguy/magic.svg?master)](https://travis-ci.org/polterguy/magic)
