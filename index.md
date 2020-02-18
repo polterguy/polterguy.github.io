@@ -130,7 +130,7 @@ of €495 if you choose to install it unto a server.
 
 ## Documentation
 
-Documentation is automatically given to all whom [obtains a commercial license](https://servergardens.com/buy/)
+Documentation is automatically given to all whom somehow [obtains a commercial license](https://servergardens.com/buy/)
 of Magic, and comes in the form of additional videos, not publicly available - In addition to written documentation
 sent to the email you use as you obtain a license.
 
