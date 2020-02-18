@@ -48,6 +48,12 @@ hashing algorithm - Making the auth system extremely secure.
 
 ![The integrated auth system](https://servergardens.files.wordpress.com/2020/01/auth.png)
 
+Magic also allows you to automatically create charts, based upon statistics endpoints, that returns
+some sort of aggregate function grouped by some column from your database. Below you can see an example
+from the Sakila database.
+
+![Automatically generate statistical charts](https://servergardens.files.wordpress.com/2020/02/statistics-magic-sample.png)
+
 ## Productivity
 
 If you run Magic towards a database with ~100 tables, Magic will generate roughly 5.000 lines of backend
