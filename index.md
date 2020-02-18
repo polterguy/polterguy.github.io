@@ -54,6 +54,13 @@ from the Sakila database.
 
 ![Automatically generate statistical charts](https://servergardens.files.wordpress.com/2020/02/statistics-magic-sample.png)
 
+In addition to the above scaffolding features, Magic also contains a scheduler, allowing you to use your
+own domain specific programming language to declare your tasks. Watch the screenshot below for an example.
+Notice how you automatically get auto complete in the code editor, also for your own keyword extensions,
+as you declare your scheduled tasks.
+
+![Task scheduler](https://servergardens.files.wordpress.com/2019/11/create-database-backup.png)
+
 ## Productivity
 
 If you run Magic towards a database with ~100 tables, Magic will generate roughly 5.000 lines of backend
@@ -120,5 +127,18 @@ Thomas Hansen, CEO at Server Gardens
 
 Magic is free to run over localhost, on your local development machine - But will cost you a nominal fee
 of €495 if you choose to install it unto a server.
+
+## Documentation
+
+Documentation is automatically given to all whom [obtains a commercial license](https://servergardens.com/buy/)
+of Magic, and comes in the form of additional videos, not publicly available - In addition to written documentation
+sent to the email you use as you obtain a license.
+
+## Quid Pro Quo initiative
+
+Server Gardens believes strongly in the value of Open Source and sharing knowledge. Hence, if you are an author
+writing technical articles for [DZone](https://dzone.com), or similar websites, and/or you need a license for your
+Open Source Magic project, or to evaluate Magic - You can send an email to us at license@servergardens.com, and
+we _might_ give you a free license, if you explain your project, and or your intentions to use Magic.
 
 [![Download magic](https://servergardens.files.wordpress.com/2020/01/new-download-button-2.png)](https://github.com/polterguy/magic/archive/v5.7.3.zip)
