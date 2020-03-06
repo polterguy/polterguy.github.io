@@ -125,8 +125,8 @@ Thomas Hansen, CEO at Server Gardens
 * 10x code quality
 * 10x security
 
-Magic is free to run over localhost, on your local development machine - But will cost you a nominal fee
-of €495 if you choose to install it unto a server.
+Magic is free to run over localhost, on your local development machine - But will cost you a fee
+of €2.495 if you choose to install it unto a server.
 
 ## Documentation
 
