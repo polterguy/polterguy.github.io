@@ -108,10 +108,9 @@ resulting Magic application is extremely easy to maintain and modify if the need
 
 All components generated will be highly responsive, allowing you to consume your generated apps
 from your favourite phone, tablet, or computer - Regardless of your device resolution.  But don't
-believe us, try it out for yourself. Magic is free to use locally, and will only cost you a nominal fee
+believe us, try it out for yourself. Magic is free to use locally, and will only cost you a fee
 if you decide to deploy it unto a server. Magic also comes with [professional support](https://servergardens.com/)
-if you decide to use it commercially on your own server, and we have a team of brilliant developers,
-in all areas related to the operation of Magic, if you need help with it somehow.
+if you decide to use it commercially on your own server, if you need help with it somehow.
 
 > We realised there was a need for higher code quality, tightened security measures, and more automation
 in the enterprise software development space - So we released Magic to the public, allowing others
