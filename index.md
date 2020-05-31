@@ -140,4 +140,4 @@ writing technical articles for [DZone](https://dzone.com), or similar websites, 
 Open Source Magic project, or to evaluate Magic - You can send an email to us at license@servergardens.com, and
 we _might_ give you a free license, if you explain your project, and or your intentions to use Magic.
 
-[![Download magic](https://servergardens.files.wordpress.com/2020/01/new-download-button-2.png)](https://github.com/polterguy/magic/archive/v5.7.3.zip)
+[![Download magic](https://servergardens.files.wordpress.com/2020/01/new-download-button-2.png)](https://github.com/polterguy/magic/archive/v5.8.0.zip)
