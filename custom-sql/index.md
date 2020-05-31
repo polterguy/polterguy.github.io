@@ -42,7 +42,7 @@ add:x:+/*/args
  * Executes your SQL by transforming the syntax tree
  * into an SQL command.
  */
-slots.signal:magic.db.mysql.read
+signal:magic.db.mysql.read
    database:{crm}
    table:roles
    args
