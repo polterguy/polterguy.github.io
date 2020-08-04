@@ -13,7 +13,7 @@ allowfullscreen></iframe>
 
 Notice, if you want to use Microsoft SQL Server, you'll have to make sure you correctly
 resolve the URL in your frontend's _"users-service.ts"_ file, and basically exchange all
-occurencies of _"magic_auth"_ with _"magic_auth/dbo"_, since MS SQL server is namespaced,
+occurencies of _"magic"_ with _"magic/dbo"_, since MS SQL server is namespaced,
 in a way MySQL is not.
 
 ## Need more control?
