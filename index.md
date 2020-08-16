@@ -125,7 +125,7 @@ Thomas Hansen, CEO at Server Gardens
 * 10x security
 
 Magic is free to run over localhost, on your local development machine - But will
-[cost you a fee](https://servergardens.com/buy/) of ~~€2.495~~ ~~€495~~ €49 if you choose to install it unto a server. Notice this reduction in price, is a limited
+[cost you a fee](https://servergardens.com/buy/) of ~~€2.495~~ **€49** if you choose to install it unto a server. Notice this reduction in price, is a limited
 time offer.
 
 ## Documentation
