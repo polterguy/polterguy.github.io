@@ -130,9 +130,8 @@ time offer.
 
 ## Documentation
 
-Documentation is automatically given to all whom somehow [obtains a commercial license](https://servergardens.com/buy/)
-of Magic, and comes in the form of additional videos, not publicly available - In addition to written documentation
-sent to the email you use as you obtain a license.
+Documentation is integrated into Magic, and can be found through the Evaluator component for Hyperlambda and other
+parts of the system.
 
 ## Quid Pro Quo initiative
 
