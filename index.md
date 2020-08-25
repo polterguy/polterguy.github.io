@@ -130,7 +130,7 @@ This allows your developers to create and publish as many Magic applications as 
 ## Documentation
 
 Documentation is integrated into Magic, and can be found through the Evaluator component for Hyperlambda and other
-parts of the system.
+parts of the system. But you can also [watch the following playlist](https://www.youtube.com/watch?v=GgMZowl0-R4&list=PLgyI389Eb9HOE83cduBY4o9L07JY_FgYI) for a more rapid introduction, getting up to speed with Magic's main components.
 
 ## Quid Pro Quo initiative
 
