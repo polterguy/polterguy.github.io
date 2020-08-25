@@ -15,7 +15,7 @@ Magic will read metadata from your database. It will use this metadata to genera
 API for you, wrapping all CRUD operations inside of REST endpoints. Then it will use metadata from
 the REST API to automatically generate Angular components, router links, menu items, datagrids, etc.
 The end result becomes that before you've even had to create as much as a single line of code 
-yourself, 90% of your job is already done.
+yourself, 50% of your job is already done.
 
 The resulting frontend gives you a datagrid for all your database tables, allowing you
 to create, read, update and delete records in your database. It also automatically creates paging,
@@ -87,7 +87,7 @@ The main architect of Magic has researched Magic and its underlying ideas for mo
 has been working and consulting for some of the largest financial trading broker firms on the planet - Some of whom
 are operating in markets moving 5.1 trillion dollars on a daily basis. Needles to say, but Magic is
 _very, very, very_ secure. For some of these firms, Magic has saved millions of dollars
-in recruitment costs, while at the same time tightened security significantly.
+in development costs, while at the same time tightened security significantly.
 
 Magic was also built using a TDD approach, and there are hundreds of unit tests in the project, that
 verifies the integrity of every possible course of code flow, whenever we apply change to its underlying
@@ -100,7 +100,7 @@ A Magic application will outperform the equivalent Entity Framework solution wit
 and throughput, making it scale at least 5 times as well as an Entity Framework solution. In addition,
 its generated code has an extremely high quality, and will for the most parts, perfectly obey by all
 coding standards, and/or automated tools that are measuring code quality - Such as for instance TSlint,
-etc. In neutral tests, Magic has shown to outperform the average (human) software developer by 3-4 times
+SonarCube, etc. In neutral tests, Magic has shown to outperform the average (human) software developer by 3-4 times
 on code quality, using neutral and objective metrics measuring quality. This results in that your
 resulting Magic application is extremely easy to maintain and modify if the need should arise.
 
@@ -124,11 +124,8 @@ Thomas Hansen, CEO at Server Gardens
 * 10x code quality
 * 10x security
 
-Magic is free to run over localhost, on your local development machine - But will
-[cost you a fee](https://servergardens.com/buy/) of ~~€2.495~~ **€49** if you choose to install it unto a server.
-Notice this reduction in price, is a limited time offer and will be stopped without prior notice, at which point
-the standard price of €2.495 will be applied. A developer license of Magic, allows one developer to run Magic
-on an inifinite amount of servers.
+Magic will [cost you a fee](https://servergardens.com/buy/) of **€49** for each developer in your organisation.
+This allows your developers to create and publish as many Magic applications as they please (no royalties).
 
 ## Documentation
 
@@ -141,5 +138,3 @@ Server Gardens believes strongly in the value of Open Source and sharing knowled
 writing technical articles for [DZone](https://dzone.com), or similar websites, and/or you need a license for your
 Open Source Magic project, or to evaluate Magic - You can send an email to us at license@servergardens.com, and
 we _might_ give you a free license, if you explain your project, and or your intentions to use Magic.
-
-[![Download magic](https://servergardens.files.wordpress.com/2020/01/new-download-button-2.png)](https://github.com/polterguy/magic/archive/v5.8.0.zip)
