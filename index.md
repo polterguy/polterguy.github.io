@@ -124,8 +124,8 @@ Thomas Hansen, CEO at Server Gardens
 * 10x code quality
 * 10x security
 
-Magic will [cost you a fee](https://servergardens.com/buy/) of **€49** for each developer in your organisation.
-This allows your developers to create and publish as many Magic applications as they please (no royalties).
+Magic will [cost you a fee](https://servergardens.com/buy/) of €49 for a single developer license.
+This allows you to create and publish as many Magic applications as you please (no royalties).
 
 ## Documentation
 
