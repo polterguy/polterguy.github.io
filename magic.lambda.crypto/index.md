@@ -22,6 +22,14 @@ are as follows.
 The **[crypto.random]** can optionally take a **[min]** and **[max]** argument, which defines the min/max length of the
 string returned. If not supplied, the default values for these arguments are respectively 10 and 20. This slot is useful
 for creating random secrets, and similar types of random strings, where you need cryptographically secured random strings.
+An example of generating a cryptographically secure random string of text, between 50 and 100 characters in lenght,
+can be found below.
+
+```
+crypto.random
+   min:50
+   max:100
+```
 
 ## Quality gates
 
