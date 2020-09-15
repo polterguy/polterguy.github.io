@@ -1,12 +1,12 @@
 
 # Magic Lambda HTTP
 
-Provides HTTP REST capabilities for [Magic](https://github.com/polterguy/magic). More specifically it provides 4 slots.
+Provides HTTP REST capabilities for Magic. More specifically this project provides the following 4 slots.
 
-* __[http.get]__ - Returns some resource using the HTTP GET verb towards the specified URL.
-* __[http.delete]__ - Deletes some resource using the HTTP DELETE verb.
-* __[http.post]__ - Posts some resources to some URL using the HTTP POST verb.
-* __[http.put]__ - Puts some resources to some URL using the HTTP PUT verb.
+* __[http.get]__ - Returns some resource using the HTTP GET verb towards the specified URL
+* __[http.delete]__ - Deletes some resource using the HTTP DELETE verb
+* __[http.post]__ - Posts some resources to some URL using the HTTP POST verb
+* __[http.put]__ - Puts some resources to some URL using the HTTP PUT verb
 
 The __[http.put]__ and the __[http.post]__ slots requires you to provide a __[payload]__, which will be pass to the
 endpoint as a string. All 4 endpoints can (optionally) take a __[token]__ arguments, which will be transferred as
@@ -20,6 +20,17 @@ collection.
 
 ```
 http.get:"https://google.com"
+```
+
+## Posting and putting data
+
+Both the POST and PUT slots, requires a **[payload]** argument, which becomes the body to the endpoint.
+Below is an example illustrating how to create a POST request, with a Bearer token to access the end resource.
+
+```
+http.post
+   token:qwerty_secret_JWT_token_goes_here
+   payload:some mumbo jumbo payload, typically JSON and not text though ...
 ```
 
 ## Quality gates
