@@ -155,12 +155,6 @@ slot, which will be invoked once for each available email on your POP3 server.
  * Example of how to retrieve emails form a POP3 server.
  */
 mail.pop3.fetch
-   server
-      host:pop.gmail.com
-      port:int:995
-      secure:bool:true
-      username:gmail-username@gmail.com
-      password:Gmail-Password
    max:int:50
    raw:bool:false
    .lambda
