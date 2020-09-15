@@ -61,8 +61,9 @@ from the Sakila database.
 In addition to the CRUD backend and Angular frontend generator, Magic is also a complete DSL
 engine, or Domain Specific programming Language engine - Giving you workflow support, task
 scheduling, the ability to create your own DSL, etc. Even without even caring about its CRUD
-parts, it would still be highly valuable, due to its DSL capabilities. The DSL just so happens
-to easily lend itself to generating code, in addition to all the other things it gives you.
+parts, it would still be highly valuable, due to its DSL capabilities. The DSL engine just
+so happens to easily lend itself to generating backend code, and frontend Angular code, in
+addition to all the other things it gives you.
 
 ## Productivity
 
