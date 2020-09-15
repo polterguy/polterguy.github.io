@@ -1,8 +1,6 @@
 
 # Magic Lambda Logging
 
-[![Build status](https://travis-ci.com/polterguy/magic.lambda.logging.svg?master)](https://travis-ci.com/polterguy/magic.lambda.logging)
-
 Logging wrapper slots for [Magic](https://github.com/polterguy/magic). More specifically, this project provides the following slots.
 
 * __[log.info]__ - Information log entries, typically smaller pieces of information
