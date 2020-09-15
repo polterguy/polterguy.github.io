@@ -5,7 +5,8 @@
 
 .site-nav {
     li {
-        a:visited {
+        a:visited,
+        a:active {
             color: #aa7700;
         }
     }
