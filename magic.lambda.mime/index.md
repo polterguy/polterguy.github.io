@@ -3,12 +3,12 @@
 
 Magic Lambda MIME give you the ability to parse and create MIME messages from Hyperlambda. It contains 6 basic slots.
 
-1. **[mime.parse]** - Parses a MIME message, and returns as lambda.
-1. **[.mime.parse]** - Parses a native MimeEntity for you, and returns as lambda.
-2. **[mime.create]** - Creates a MIME message for you, and returns the entire message as text.
-3. **[.mime.create]** - Creates a MIME message for you, and returns it as a native MimeEntity object (not for usage directly from Hyperlambda code).
-4. **[pgp.keys.private.import]** - Imports an ASCII armored private PGP key bundle, in addition to any public keys found in the bundle.
-4. **[pgp.keys.public.import]** - Imports an ASCII armored public PGP key bundle.
+1. **[mime.parse]** - Parses a MIME message, and returns as lambda
+1. **[.mime.parse]** - Parses a native MimeEntity for you, and returns as lambda
+2. **[mime.create]** - Creates a MIME message for you, and returns the entire message as text
+3. **[.mime.create]** - Creates a MIME message for you, and returns it as a native MimeEntity object (not for usage directly from Hyperlambda code)
+4. **[pgp.keys.private.import]** - Imports an ASCII armored private PGP key bundle, in addition to any public keys found in the bundle
+4. **[pgp.keys.public.import]** - Imports an ASCII armored public PGP key bundle
 
 ## Parsing MIME messages
 
