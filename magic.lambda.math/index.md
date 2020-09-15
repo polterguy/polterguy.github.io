@@ -1,10 +1,7 @@
 
 # Magic Lambda Math
 
-[![Build status](https://travis-ci.com/polterguy/magic.lambda.math.svg?master)](https://travis-ci.com/polterguy/magic.lambda.math)
-
-This project provides math functions to Magic. More specifically, it provides the following
-slots.
+This project provides math functions to Magic. More specifically, it provides the following slots.
 
 * __[math.multiply]__ - Multiplication
 * __[math.divide]__ - Division
