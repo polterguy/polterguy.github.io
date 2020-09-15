@@ -92,7 +92,8 @@ this is another body text
 
 The **[.mime.create]** slot, will semantically do the exact same thing, but instead of returning a piece of text, being the MIME message,
 it will produce a raw `MimeEntity` that it returns to caller. This slot is used internally when the _"magic.lambda.mail"_ projects
-constructs emails to send over an SMTP connection for instance.
+constructs emails to send over an SMTP connection for instance. This slot can also only be invoked from C# since it starts
+with a period (.) as its name.
 
 ## PGP Cryptography
 
