@@ -41,6 +41,8 @@ After evaluating the above, you'll end up with something resembling the followin
 ```
 mime.parse
    entity:multipart/mixed
+      headers
+         MIME-Version:1.0
       entity:text/plain
          content:this is the body text
       entity:text/plain
