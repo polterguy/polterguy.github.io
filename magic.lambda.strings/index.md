@@ -1,24 +1,24 @@
 
 # Magic Lambda Strings
 
-String manipulation library for Magic. More specifically, it gives you the following slots.
+This project contains string manipulation slots for Magic. More specifically, it gives you the following slots.
 
-* __[strings.replace]__ - Replaces occurrencies of the specified argument with the value of its specified argument.
-* __[strings.replace-not-of]__ - Replaces all characters found in string, except those found in its single argument.
-* __[strings.capitalize]__ - Turns the first character in your string into a CAPS.
-* __[strings.concat]__ - Concatenates two or more strings.
-* __[strings.contains]__ - Returns true if specified string contains the given argument.
-* __[strings.ends-with]__ - Returns true if the specified string ends with the specified argument.
-* __[strings.starts-with]__ - Returns true if the specified string starts with its argument.
-* __[strings.join]__ - Joins multiple strings together, with a separating character between each.
-* __[strings.length]__ - Returns the length in characters of the given string.
-* __[strings.regex-replace]__ - Replaces occurrencies matching the given regular expression with its argument.
+* __[strings.replace]__ - Replaces occurrencies of the specified argument with the value of its specified argument
+* __[strings.replace-not-of]__ - Replaces all characters found in string, except those found in its single argument
+* __[strings.capitalize]__ - Turns the first character in your string into a CAPS
+* __[strings.concat]__ - Concatenates two or more strings
+* __[strings.contains]__ - Returns true if specified string contains the given argument
+* __[strings.ends-with]__ - Returns true if the specified string ends with the specified argument
+* __[strings.starts-with]__ - Returns true if the specified string starts with its argument
+* __[strings.join]__ - Joins multiple strings together, with a separating character between each
+* __[strings.length]__ - Returns the length in characters of the given string
+* __[strings.regex-replace]__ - Replaces occurrencies matching the given regular expression with its argument
 * __[strings.split]__ - Splits a string into multiple strings on every match of its given argument
 * __[strings.to-lower]__ - Returns the lower caps version of its given argument
-* __[strings.to-upper]__ - Returns the upper caps version of its specified argument.
-* __[strings.trim]__ - Trims a string, optionally for all characters found in its argument.
-* __[strings.trim-start]__ - Trims a string only to its left, optionally for all characters found in its argument.
-* __[strings.trim-end]__ - Trims a string only to its right, optionally for all characters found in its argument.
+* __[strings.to-upper]__ - Returns the upper caps version of its specified argument
+* __[strings.trim]__ - Trims a string, optionally for all characters found in its argument
+* __[strings.trim-start]__ - Trims a string only to its left, optionally for all characters found in its argument
+* __[strings.trim-end]__ - Trims a string only to its right, optionally for all characters found in its argument
 
 ## Usage
 
