@@ -110,7 +110,7 @@ The project also complies 100% perfectly towards SOLID coding standards, and eve
 is extendible, allowing you to inject custom logic, and/or change its existing logic, without knowing
 anything abouts its internals in any ways. There are probably very few .Net Core projects in this world,
 if any, with the same [Quality Gate results](https://sonarcloud.io/organizations/polterguy/projects?sort=-name)
-as Magic. Each sub module in Magic has on average between 85 - 100 percent Unit Test coverage.
+as Magic. Each sub module in Magic has on average between 85-100% Unit Test coverage.
 
 ## Responsive
 
