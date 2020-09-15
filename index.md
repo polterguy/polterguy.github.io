@@ -65,6 +65,22 @@ generator, it would still be highly valuable, due to its DSL capabilities. The D
 so happens to easily lend itself to generating backend and frontend code, in
 addition to all the other things it helps you with.
 
+## Task scheduler and workflows
+
+Magic also includes a task scheduler and a workflow engine, allowing you to create, persist,
+and execute serialized method invocations - Either periodically, or at a single point in the
+future, triggered by some action, or at a specific date and time. This gives you the most
+important features from Microsoft Workflow Foundation, without the weird and difficult to
+understand XML syntax. Magic workflows also perfectly integrates with .Net Core, contrary to
+MWF that only works for the full and obsolete .Net Framework.
+
+Hyperlambda hence gives you arguably the same dynamic features that Logic Apps and scheduled
+Azure functions gives you, only in a dynamic manner. Below is a screenshot of how you can
+manage your Magic workflows using the Magic Dashboard.
+
+![Automatically generate statistical charts](https://servergardens.files.wordpress.com/2020/09/task-scheduler.png)
+
+
 ## Productivity
 
 If you run Magic towards a database with ~100 tables, Magic will generate roughly 5.000 lines of backend
@@ -104,7 +120,7 @@ A Magic application will outperform the equivalent Entity Framework solution wit
 and throughput, making it scale at least 5 times as well as an Entity Framework solution. In addition,
 its generated code has an extremely high quality, and will for the most parts, perfectly obey by all
 coding standards, and/or automated tools that are measuring code quality - Such as for instance TSlint,
-SonarCube, etc. In neutral tests, Magic has shown to outperform the average (human) software developer by 10x
+SonarQube, etc. In neutral tests, Magic has shown to outperform the average (human) software developer by 10x
 on code quality, using neutral and objective metrics measuring quality. This results in that your
 resulting Magic application is extremely easy to maintain and modify if the need should arise.
 
@@ -122,16 +138,6 @@ modules where unit testing cannot be performed.
 Although 95% of Magic's source code is Open Source, and licensed as MIT, Magic will
 [cost you a fee](https://servergardens.com/buy/) of €49 for a single developer license. This allows you to
 create and publish as many Magic applications as you please (no royalties).
-
-## Quid Pro Quo initiative
-
-Magic is 95% Open Source, but you do need a license key to run it in your production server, otherwise
-Magic will stop working after 7 days. However, we believe strongly in the value of Open Source and
-sharing knowledge. Hence, if you are an author writing technical articles for [DZone](https://dzone.com),
-or similar websites, and/or you need a license for your Open Source Magic project, or to evaluate Magic -
-You can send an email to us at license@servergardens.com, and we _might_ give you a free license, if you
-explain your project, and or your intentions to use Magic, and you _do not_ share your license key with
-anybody else.
 
 ## Quality gates
 
