@@ -42,7 +42,7 @@ in a folder called _"magic.startup"_ in your module's folder, e.g. _"/files/modu
 All files inside of modules that exists within a _"magic.startup"_ folder will be executed every time your web
 server restarts for some reasons.
 
-### slots.create
+### [slots.create]
 
 Creates a dynamic slot that can be invoked using **[signal]** or **[wait.signal]** (async). Below is an example.
 
@@ -57,7 +57,7 @@ make sure you are somehow creating it during server startup, which can normally 
 a Hyperlambda file into your module's _"magic.startup"_ folder, which makes sure the code is executed during startup
 of your web app.
 
-### signal and wait.signal
+### [signal] and [wait.signal]
 
 Invokes a previously created dynamic slot. Assuming you have executed the above code snippet, you can invoke the slot using
 the following Hyperlambda.
@@ -71,7 +71,7 @@ After evaluating the above Hyperlambda, the **[signal]** node will end up having
 **Notice** - If your dynamically created slot contains async slot invocations, you will have to invoke
 it async, using the **[wait.signal]** override.
 
-### slots.get
+### [slots.get]
 
 Returns the entire lambda code for a previously created dynamic slot. Example can be found below.
 
@@ -81,7 +81,7 @@ slots.create:foo
 slots.get:foo
 ```
 
-### slots.delete
+### [slots.delete]
 
 Deletes a previously created dynamic slot. The following example _will throw an exception_.
 
@@ -94,7 +94,7 @@ slots.delete:foo
 slots.get:foo
 ```
 
-### return-nodes
+### [return-nodes]
 
 Returns a bunch of nodes (lambda) from your slot. Can only be invoked from the inside of
 a dynamically created slot. Example below.
@@ -107,7 +107,7 @@ slots.create:foo
 slots.invoke:foo
 ```
 
-### return-value
+### [return-value]
 
 Returns a single value from your slot. Can only be invoked from the inside of
 a dynamically created slot. Example below.
@@ -118,7 +118,7 @@ slots.create:foo
 slots.invoke:foo
 ```
 
-### slots.exists
+### [slots.exists]
 
 Returns true if the specified slot exists. Example can be found below.
 
@@ -129,7 +129,7 @@ slots.exists:foo
 slots.exists:DOES-NOT-EXISTS
 ```
 
-### slots.vocabulary
+### [slots.vocabulary]
 
 Returns the names of all dynamically created slots to caller. Example can be
 found below.
