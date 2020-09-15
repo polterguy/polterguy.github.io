@@ -28,7 +28,7 @@ and triggers. The Angular code also perfectly follows TSLint rules, making it hi
 easily modified. The process of creating your CRUD apps is also highly configurable, allowing you
 to modify any aspect of the end result, before you start coding.
 
-## Screenshots
+## Screenshots of example CRUD app
 
 An example Magic CRUD app, with its nav bar expanded.
 
