@@ -650,7 +650,7 @@ column _"foo"_ on _"table1"_. You can see the resulting SQL below.
 select * from 'table1' where 'table1.foo' = @0 limit 25
 ```
 
-## Meta data access
+## Meta data
 
 One of the really cool things with this structured approach to generating SQL (pun!), is that it
 allows you to retrieve meta data from your Hyperlambda snippets, asking questions such as for instance
