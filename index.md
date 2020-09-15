@@ -147,7 +147,7 @@ Below you can find the reference documentation for Magic's sub modules.
 * [Magic Lambda IO](/magic.lambda.io) - File manipulation using Hyperlambda
 * [Magic Lambda Hyperlambda](/magic.lambda.hyperlambda) - Parse Hyperlambda from text, and vice versa
 * [Magic Lambda HTTP](/magic.lambda.http) - Invoking HTTP REST endpoints from Hyperlambda
-* [Magic Lambda Crypto](/magic.lambda.crypto) - Cryptography helpers in Hyperlambda
+* [Magic Lambda Crypto](/magic.lambda.crypto) - Cryptography helpers for Hyperlambda
 * [Magic Lambda Config](/magic.lambda.config) - Accessing configuration values from Hyperlambda
 * [Magic Lambda Scheduler](/magic.lambda.scheduler) - Scheduled tasks from Hyperlambda
 * [Magic Lambda JSON](/magic.lambda.json) - Manipulating JSON from Hyperlambda
