@@ -60,9 +60,9 @@ result of invoking other slots as arguments to your original outer most slot.
 
 ### [strings.replace-not-of]
 
-This slot will replace every single character in your original string, that cannot be found in its second
-argument. This is useful if you want to remove all characters that cannot be found in another character set,
-such as the following illustrates.
+This slot will replace every single character in your original string, that cannot be found in its first
+argument, with the value of its second argument. This slot is useful if you want to remove all characters
+that cannot be found in another character set, such as the following illustrates.
 
 ```
 strings.replace-not-of:foo bar1howdy
@@ -70,7 +70,7 @@ strings.replace-not-of:foo bar1howdy
    .:-
 ```
 
-The above will result in the following result `strings.replace-not-of:foo bar-howdy`
+The above will result in the following result `strings.replace-not-of:foo-bar-howdy`
 
 ### [strings.capitalize]
 
