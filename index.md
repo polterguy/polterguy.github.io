@@ -100,6 +100,10 @@ Of course, these types of comparisons aren't fully fair some may argue, but ther
 Magic will soar your productivity to unimaginable heights compared to having to manually create
 the equivalent project.
 
+In addition, you can often accomplish the same with 5 lines of Hyperlambda code, as you'll
+need hundreds and sometimes thousands of lines of C# code to accomplish - Due to its extremely
+high level.
+
 ## Maturity and security
 
 Magic has been featured in MSDN Magazine with several articles, and is currently the only product
