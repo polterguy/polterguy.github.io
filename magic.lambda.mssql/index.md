@@ -36,8 +36,6 @@ them towards a Microsoft SQL Server database. You will also need to open a datab
 these slots, unless you're only interested in generating its specific SQL command text, and not actually execute
 the SQL.
 
-* [Magic Data Common](https://github.com/polterguy/magic.data.common)
-
 **Important!** You should prefer these CRUD slots, since they completely abstract away your underlaying
 database vendor's specific SQL syntax, overriding the SQL generation, such that you don't create yourself
 a lockin towards a single database vendor, and their specific SQL syntax in any ways.
