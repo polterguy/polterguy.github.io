@@ -33,7 +33,13 @@ allowing you to recursively raise signals to retrieve values that are supposed t
 The above **[math.increment]** and **[math.decrement]** slots, will instead of yielding a result, inline modify the
 value of the node(s) it is pointing to, assuming its value is an expression. In addition these two slots can take an
 _optional_ **[step]** argument, allowing you to declare how much the incrementation/decrementation process should add/reduce
-the original node's value by.
+the original node's value by. Below is an example that decrements the value found in its expression by 2.
+
+```
+.value:int:5
+math.decrement:x:-
+   step:int:2
+```
 
 ## Quality gates
 
