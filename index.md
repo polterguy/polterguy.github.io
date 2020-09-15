@@ -132,6 +132,16 @@ Although 95% of Magic's source code is Open Source, Magic will [cost you a fee](
 of €49 for a single developer license. This allows you to create and publish as many Magic applications as you
 please (no royalties).
 
+## Quid Pro Quo initiative
+
+Magic is 95% Open Source, but you do need a license key to run it in your production server, otherwise
+Magic will stop working after 7 days. However, we believe strongly in the value of Open Source and
+sharing knowledge. Hence, if you are an author writing technical articles for [DZone](https://dzone.com),
+or similar websites, and/or you need a license for your Open Source Magic project, or to evaluate Magic -
+You can send an email to us at license@servergardens.com, and we _might_ give you a free license, if you
+explain your project, and or your intentions to use Magic, and you _do not_ share your license key with
+anybody else.
+
 ## Reference documentation
 
 Below you can find the reference documentation for Magic's sub modules.
@@ -162,10 +172,3 @@ Below you can find the reference documentation for Magic's sub modules.
 * [Magic IO](/magic.io) - IO operations in Magic
 * [Magic HTTP](/magic.http) - HTTP rest invocations in Magic
 * [Magic Library](/magic.library) - A single NuGet package helper tying everything easily together
-
-## Quid Pro Quo initiative
-
-Server Gardens believes strongly in the value of Open Source and sharing knowledge. Hence, if you are an author
-writing technical articles for [DZone](https://dzone.com), or similar websites, and/or you need a license for your
-Open Source Magic project, or to evaluate Magic - You can send an email to us at license@servergardens.com, and
-we _might_ give you a free license, if you explain your project, and or your intentions to use Magic.
