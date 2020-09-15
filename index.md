@@ -71,7 +71,7 @@ that Microsoft had ever published..
 
 * [Read more about Hyperlambda I](/magic.node) - Node structure, and Hyperlambda parsing
 * [Read more about Hyperlambda II](/magic.lambda) - Default language specific slots/functions/keywords
-* [The 5th most read programming article throughout the history of Microsoft and MSDN Magazine](https://docs.microsoft.com/en-us/archive/msdn-magazine/2017/june/csharp-make-csharp-more-dynamic-with-hyperlambda)
+* [The 5th most read programming article](https://docs.microsoft.com/en-us/archive/msdn-magazine/2017/june/csharp-make-csharp-more-dynamic-with-hyperlambda) in the history of Microsoft
 
 ## Task scheduler and workflows
 
