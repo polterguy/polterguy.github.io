@@ -67,10 +67,11 @@ addition to all the other things it helps you with.
 
 When the architect behind Magic and Hyperlambda published a scientific article about Hyperlambda
 for MSDN Magazine the first time in 2017, the article became the 5th most read article
-that Microsoft had ever published. [Read the article here](https://docs.microsoft.com/en-us/archive/msdn-magazine/2017/june/csharp-make-csharp-more-dynamic-with-hyperlambda).
+that Microsoft had ever published..
 
 * [Read more about Hyperlambda I](/magic.node) - Node structure, and Hyperlambda parsing
 * [Read more about Hyperlambda II](/magic.lambda) - Default language specific slots/functions/keywords
+* [The 5th most read programming article throughout the history of Microsoft and MSDN Magazine](https://docs.microsoft.com/en-us/archive/msdn-magazine/2017/june/csharp-make-csharp-more-dynamic-with-hyperlambda)
 
 ## Task scheduler and workflows
 
