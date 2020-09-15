@@ -65,6 +65,8 @@ generator, it would still be highly valuable, due to its DSL capabilities. The D
 so happens to easily lend itself to generating backend and frontend code, in
 addition to all the other things it helps you with.
 
+* [Read more about Hyperlambda](/magic.lambda)
+
 ## Task scheduler and workflows
 
 Magic also includes a task scheduler and a workflow engine, allowing you to create, persist,
@@ -84,6 +86,8 @@ Below is an example of how it looks like as you're editing your tasks. Notice ho
 Hyperlambda editor in Magic's dashboard gives you perfect autocompletion.
 
 ![Editing a persisted tasks](https://servergardens.files.wordpress.com/2020/09/task-schedule-editing.png)
+
+* [Read more about the task scheduler and workflows](/magic.lambda.scheduler)
 
 ## Productivity
 
