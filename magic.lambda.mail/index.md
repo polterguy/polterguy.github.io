@@ -106,7 +106,7 @@ mail.smtp.send
            filename:foo.txt
 ```
 
-To construct your email's **[message]** part, see the documentation for the Magic Lambda Mime project.
+To construct your email's **[message]** part, see the documentation for the Magic Lambda MIME project.
 
 ## Retrieving emails
 
@@ -145,7 +145,7 @@ structured version of the MIME message wrapping the actual email message. Refer 
 see the Magic Lambda MIME documentation for details to understand this
 structure. If you choose to retrieve messages in **[raw]** format, the message node's value will contain
 the raw MIME message as text. If you choose this path, and you later want to actually parse the message,
-to make it become a structured lambda object - You can use the **[mime.parse]** slot from Magic Lambda Mime.
+to make it become a structured lambda object - You can use the **[mime.parse]** slot from Magic Lambda MIME.
 
 ## Quality gates
 
