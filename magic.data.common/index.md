@@ -1,8 +1,6 @@
 
 # Magic Data Common
 
-[![Build status](https://travis-ci.com/polterguy/magic.data.common.svg?master)](https://travis-ci.com/polterguy/magic.data.common)
-
 This is the generic data adapter, that transform dynamically from a lambda node structure, into SQL, intended
 to be executed towards your specific database implementation. If you wish to extend Magic to support a custom
 database type, this is the project you'd want to extend from, to make sure you keep the exact same structure as

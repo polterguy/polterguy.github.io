@@ -1,8 +1,6 @@
 
 # Magic Lambda Hyperlambda
 
-[![Build status](https://travis-ci.com/polterguy/magic.lambda.hyperlambda.svg?master)](https://travis-ci.com/polterguy/magic.lambda.hyperlambda)
-
 Hyperlambda parser and creator for [Magic](https://github.com/polterguy/magic). More specifically, this project provides you with two
 slots.
 

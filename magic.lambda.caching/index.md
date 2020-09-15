@@ -1,8 +1,6 @@
 
 # Magic Lambda Caching
 
-[![Build status](https://travis-ci.com/polterguy/magic.lambda.caching.svg?master)](https://travis-ci.com/polterguy/magic.lambda.caching)
-
 Cache helper slots for Magic, more specifically the following slots.
 
 * __[cache.set]__ - Adds the specified item to the cache.

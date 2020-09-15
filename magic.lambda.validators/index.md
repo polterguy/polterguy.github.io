@@ -1,8 +1,6 @@
 
 # Magic Lambda Validators
 
-[![Build status](https://travis-ci.com/polterguy/magic.lambda.auth.svg?master)](https://travis-ci.com/polterguy/magic.lambda.auth)
-
 This project contains input validators for Magic. More specifically it contains the following slots.
 
 * __[validators.date]__ - Verifies that some date input is between __[min]__ and __[max]__ value.

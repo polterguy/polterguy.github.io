@@ -1,8 +1,6 @@
 
 # Magic Library
 
-[![Build status](https://travis-ci.com/polterguy/magic.library.svg?master)](https://travis-ci.com/polterguy/magic.library)
-
 Helper project for [Magic](https://github.com/polterguy/magic), to wire up everything and initialize Magic.
 
 This project will help you to wire up everything related to Magic. Normally you'd use it simply like the following from

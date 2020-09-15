@@ -1,8 +1,6 @@
 
 # Magic Lambda MIME
 
-[![Build status](https://travis-ci.com/polterguy/magic.lambda.mime.svg?master)](https://travis-ci.com/polterguy/magic.lambda.mime)
-
 Magic Lambda MIME give you the ability to parse and create MIME messages from Hyperlambda. It contains 6 basic slots.
 
 1. **[mime.parse]** - Parses a MIME message, and returns as lambda.

@@ -1,8 +1,6 @@
 
 # Magic Lambda Crypto
 
-[![Build status](https://travis-ci.com/polterguy/magic.lambda.crypto.svg?master)](https://travis-ci.com/polterguy/magic.lambda.crypto)
-
 Provides cryptographic services to [Magic](https://github.com/polterguy/magic). More specifically, it provides two slots, that helps you
 with storing passwords secured in your database.
 

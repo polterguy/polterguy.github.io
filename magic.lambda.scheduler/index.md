@@ -1,8 +1,6 @@
 
 # Magic Lambda Scheduler
 
-[![Build status](https://travis-ci.com/polterguy/magic.lambda.scheduler.svg?master)](https://travis-ci.com/polterguy/magic.lambda.scheduler)
-
 This project provides the ability to create persisted, and/or scheduled Hyperlambda tasks,
 for [Magic](https://github.com/polterguy.magic). More specifically it provides the following slots.
 

@@ -1,8 +1,6 @@
 
 # Magic Lambda MS SQL
 
-[![Build status](https://travis-ci.com/polterguy/magic.lambda.mssql.svg?master)](https://travis-ci.com/polterguy/magic.lambda.mssql)
-
 These are the MS SQL Server data adapters for [Magic](https://github.com/polterguy/magic). They allow you to provide a semantic
 lambda strucutre to its slots, which in turn will dynamically create a MS SQL dialectic SQL statement for you, for all basic
 types of SQL statements. In addition, it provides slots to open a MS SQL database connection, and such, to allow you to

@@ -1,8 +1,6 @@
 
 # Magic Lambda HTTP
 
-[![Build status](https://travis-ci.com/polterguy/magic.lambda.http.svg?master)](https://travis-ci.com/polterguy/magic.lambda.http)
-
 Provides HTTP REST capabilities for [Magic](https://github.com/polterguy/magic). More specifically it provides 4 slots.
 
 * __[http.get]__ - Returns some resource using the HTTP GET verb towards the specified URL.

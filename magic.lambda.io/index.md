@@ -1,8 +1,6 @@
 
 # Magic Lambda IO
 
-[![Build status](https://travis-ci.com/polterguy/magic.lambda.io.svg?master)](https://travis-ci.com/polterguy/magic.lambda.io)
-
 This project provides file/folder slots for [Magic](https://github.com/polterguy/magic). More specifically, it provides the following slots.
 
 * __[io.folder.create]__ - Creates a folder on disc for you on your server.

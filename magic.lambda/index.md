@@ -1,8 +1,6 @@
 
 # Magic Lambda
 
-[![Build status](https://travis-ci.com/polterguy/magic.lambda.svg?master)](https://travis-ci.com/polterguy/magic.lambda)
-
 Magic Lambda is a microscopic Turing complete programming language based upon [Magic Node](https://github.com/polterguy/magic.node)
 and Magic Signals. It provides the familiar _"keywords"_, such as **[for-each]**
 and **[if]**, by exposing [Super Signal Slots](https://dzone.com/articles/super-signals-in-aspnet-core) for these keywords,
