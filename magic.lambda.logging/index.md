@@ -24,7 +24,7 @@ collection. This allows you to create rich log entries, based upon evaluating th
 This provides a convenient shortcut for you to create log entries that have as their content, strings concatenated
 together, without having to manually concatenate them yourself.
 
-An example of tha latter can be found below.
+An example of the latter can be found below.
 
 ```
 .a:foo bar
