@@ -32,6 +32,7 @@ mail.smtp.send
 ```
 
 You can send multiple **[message]** objects at the same time, using the same SMTP connection and credentials.
+
 The entirety of the **[server]** node above is optional, and if not given, will be fetched from your
 configuration settings, using the `IConfiguration` object, which is given through dependency injection.
 You can also override only one or two parts in your **[server]** segment above, and have the system
