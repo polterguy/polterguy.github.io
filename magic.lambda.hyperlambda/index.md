@@ -8,6 +8,25 @@ slots.
 * __[lambda2hyper]__ - Transforms a lambda hierarchy to Hyperlambda (text).
 
 Using these slots, you can both easily create, serialize, and parse Hyperlambda to lambda, and vice versa.
+Below is an example of parsing a piece of text as Hyperlambda, for then to dynamically execute it afterwards.
+
+```
+.hl:@"log.info:""This was logged from a piece of text"""
+hyper2lambda:x:-
+eval:x:-
+```
+
+You can also reverse the process, such as the following illustrates.
+
+```
+.hl
+   log.info:This is some example logging invocation
+lambda2hyper:x:-/*
+```
+
+The above two slots, allows you to dynamically generate plain text from a lambda structure, and vice versa,
+allowing you to for instance persist execution objects and structured data into files, your database, or for
+that matter transmit it over the network to another machine, etc.
 
 ## Quality gates
 
