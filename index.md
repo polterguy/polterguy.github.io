@@ -11,8 +11,8 @@ into an Angular Web application. Watch the following video for a demonstration o
 
 ## How it works
 
-Magic will read metadata from your database, and use this metadata to generate an HTTP REST Web
-API for you, wrapping all CRUD operations inside of REST endpoints. Then it will use metadata from
+Magic will read metadata from your database, and use this metadata to generate a Hyperlambda HTTP REST
+Web API for you, wrapping all CRUD operations inside of REST endpoints. Then it will use metadata from
 the REST API to automatically generate Angular components, router links, menu items, datagrids, etc.
 The end result becomes that before you've even had to create as much as a single line of code 
 yourself, 50% of your job is already done.
@@ -55,6 +55,14 @@ some sort of aggregate function grouped by some column from your database. Below
 from the Sakila database.
 
 ![Automatically generate statistical charts](https://servergardens.files.wordpress.com/2020/02/statistics-magic-sample.png)
+
+## Hyperlambda
+
+In addition to the CRUD backend and Angular frontend generator, Magic is also a complete DSL
+engine, or Domain Specific programming Language engine - Giving you workflow support, task
+scheduling, the ability to create your own DSL, etc. Even without even caring about its CRUD
+parts, it would still be highly valuable, due to its DSL capabilities. The DSL just so happens
+to easily lend itself to generating code, in addition to all the other things it gives you.
 
 ## Productivity
 
