@@ -106,7 +106,7 @@ mail.smtp.send
            filename:foo.txt
 ```
 
-To construct your email's **[message]** part, [see Magic Mime for details](https://github.com/polterguy/magic.lambda.mime).
+To construct your email's **[message]** part, see the documentation for the Magic Lambda Mime project.
 
 ## Retrieving emails
 
