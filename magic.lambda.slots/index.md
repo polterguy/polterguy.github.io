@@ -1,7 +1,7 @@
 
 # Magic Lambda Slots
 
-This project provides the ability to create, edit and delete dynamic slots for Magic. More specifically,
+This project provides the ability to create, edit, modify, and delete dynamic slots for Magic. More specifically,
 it provides the following slots.
 
 * __[signal]__ - Invokes a dynamically create slot that has been created with the __[slots.create]__ slot. Provides an async (wait.) overload.
