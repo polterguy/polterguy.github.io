@@ -11,7 +11,7 @@ into an Angular Web application. Watch the following video for a demonstration o
 
 ## How it works
 
-Magic will read metadata from your database. It will use this metadata to generate an HTTP REST Web
+Magic will read metadata from your database, and use this metadata to generate an HTTP REST Web
 API for you, wrapping all CRUD operations inside of REST endpoints. Then it will use metadata from
 the REST API to automatically generate Angular components, router links, menu items, datagrids, etc.
 The end result becomes that before you've even had to create as much as a single line of code 
@@ -23,8 +23,10 @@ sorting, and filtering for you - In addition to providing you with a _very, very
 authentication and authorisation system.
 
 Magic is built in .Net Core, and allows you to expand upon it with your own C# controllers easily.
-It's a highly modular architecture, allowing you to intercept its core, using adapters and triggers.
-The Angular code also perfectly follows TSLint rules, making it highly readable and easily modified.
+It's a highly modular and extendible architecture, allowing you to intercept its core, using adapters
+and triggers. The Angular code also perfectly follows TSLint rules, making it highly readable and
+easily modified. The process of creating your CRUD apps is also highly configurable, allowing you
+to modify any aspect of the end result, before you start coding.
 
 ## Screenshots
 
