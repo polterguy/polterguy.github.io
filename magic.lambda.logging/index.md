@@ -1,7 +1,7 @@
 
 # Magic Lambda Logging
 
-Logging wrapper slots for [Magic](https://github.com/polterguy/magic). More specifically, this project provides the following slots.
+Logging wrapper slots for Magic. More specifically, this project provides the following slots.
 
 * __[log.info]__ - Information log entries, typically smaller pieces of information
 * __[log.debug]__ - Debug log entries, typically additional debugging information not enabled in production
