@@ -35,8 +35,6 @@ log.info
    get-value:x:@.a
 ```
 
-* [Main documentation](https://polterguy.github.io/)
-
 ## Quality gates
 
 - [![Build status](https://travis-ci.com/polterguy/magic.lambda.logging.svg?master)](https://travis-ci.com/polterguy/magic.lambda.logging)

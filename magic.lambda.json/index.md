@@ -19,8 +19,6 @@ lambda2json:x:-/*
 The **[lambda2json]** slot can optionally take a **[format]** argument, with a boolean _"true"_ value, which implies the
 resulting JSON will be indeneted and nicely formated, making it more readable.
 
-* [Main documentation](https://polterguy.github.io/)
-
 ## Quality gates
 
 - [![Build status](https://travis-ci.com/polterguy/magic.lambda.json.svg?master)](https://travis-ci.com/polterguy/magic.lambda.json)

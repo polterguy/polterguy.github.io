@@ -339,8 +339,6 @@ all tasks in the past are immediately executed, which is important for you to un
 Tasks are by default persisted into your `magic.tasks` table, and schedules are persisted into your
 `magic.task_due` table.
 
-* [Main documentation](https://polterguy.github.io/)
-
 ## Quality gates
 
 - [![Build status](https://travis-ci.com/polterguy/magic.lambda.scheduler.svg?master)](https://travis-ci.com/polterguy/magic.lambda.scheduler)

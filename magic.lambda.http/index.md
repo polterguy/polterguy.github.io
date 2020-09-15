@@ -24,8 +24,6 @@ collection.
 http.get:"https://google.com"
 ```
 
-* [Main documentation](https://polterguy.github.io/)
-
 ## Quality gates
 
 - [![Build status](https://travis-ci.com/polterguy/magic.lambda.http.svg?master)](https://travis-ci.com/polterguy/magic.lambda.http)

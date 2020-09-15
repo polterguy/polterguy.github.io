@@ -85,8 +85,6 @@ are supplied as you invoke **[cache.set]** and **[cache.try-get]**. This can be 
     }
 ```
 
-* [Main documentation](https://polterguy.github.io/)
-
 ## Quality gates
 
 - [![Build status](https://travis-ci.com/polterguy/magic.lambda.caching.svg?master)](https://travis-ci.com/polterguy/magic.lambda.caching)

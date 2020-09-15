@@ -13,8 +13,6 @@ Date manipulation library for [Magic](https://github.com/polterguy/magic). More 
 timezone, you'll have to convert it explicitly. All dates and times internally in  Magic, also those stored into any database,
 are treated as UTC timezone.
 
-* [Main documentation](https://polterguy.github.io/)
-
 ## quality gates
 
 - [![Build status](https://travis-ci.com/polterguy/magic.lambda.dates.svg?master)](https://travis-ci.com/polterguy/magic.lambda.dates)

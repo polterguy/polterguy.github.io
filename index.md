@@ -124,33 +124,16 @@ You can send an email to us at license@servergardens.com, and we _might_ give yo
 explain your project, and or your intentions to use Magic, and you _do not_ share your license key with
 anybody else.
 
-## Reference documentation
+## Quality gates
 
-Below you can find the reference documentation for Magic's sub modules.
-
-* [Magic Node](/magic.node) - Explains nodes, Hyperlambda and Expressions
-* [Magic Lambda](/magic.lambda) - Explains all _"keywords"_ in Hyperlambda
-* [Magic Endpoint](/magic.endpoint) - Endpoint resolving in Magic
-* [Magic Data Common](/magic.data.common) - Commonalities for data adapters in Magic
-* [Magic Lambda MySQL](/magic.lambda.mysql) - Accessing your MySQL server from Hyperlambda
-* [Magic Lambda MS SQL](/magic.lambda.mssql) - Accessing your MS SQL Server from Hyperlambda
-* [Magic Lambda Logging](/magic.lambda.logging) - Logging from Hyperlambda
-* [Magic Lambda Caching](/magic.lambda.caching) - Caching from Hyperlambda
-* [Magic Lambda IO](/magic.lambda.io) - File manipulation using Hyperlambda
-* [Magic Lambda Hyperlambda](/magic.lambda.hyperlambda) - Parse Hyperlambda from text, and vice versa
-* [Magic Lambda HTTP](/magic.lambda.http) - Invoking HTTP REST endpoints from Hyperlambda
-* [Magic Lambda Crypto](/magic.lambda.crypto) - Cryptography helpers for Hyperlambda
-* [Magic Lambda Config](/magic.lambda.config) - Accessing configuration values from Hyperlambda
-* [Magic Lambda Scheduler](/magic.lambda.scheduler) - Create scheduled tasks and workflows from Hyperlambda
-* [Magic Lambda JSON](/magic.lambda.json) - Manipulating JSON from Hyperlambda
-* [Magic Lambda Mail](/magic.lambda.mail) - Sending and retrieving emails from Hyperlambda
-* [Magic Lambda MIME](/magic.lambda.mime) - Parsing email messages in Hyperlambda
-* [Magic Lambda Slots](/magic.lambda.slots) - Dynamically create your own slots/functions
-* [Magic Lambda Strings](/magic.lambda.strings) - Manipulate strings in Hyperlambda
-* [Magic Lambda Math](/magic.lambda.math) - Math operations from Hyperlambda
-* [Magic Lambda Dates](/magic.lambda.dates) - Allows you to manipulate DateTime objects from Hyperlambda
-* [Magic Lambda Auth](/magic.lambda.auth) - Authentication and authorisation from Hyperlambda
-* [Magic Lambda Validators](/magic.lambda.validators) - Validate input in Hyperlambda
-* [Magic IO](/magic.io) - IO operations in Magic
-* [Magic HTTP](/magic.http) - HTTP rest invocations in Magic
-* [Magic Library](/magic.library) - A single NuGet package helper tying everything easily together
+- [![Build status](https://travis-ci.com/polterguy/magic.svg?master)](https://travis-ci.com/polterguy/magic)
+- [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic)
+- [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic)
+- [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic)
+- [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=polterguy_magic)
+- [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic&metric=ncloc)](https://sonarcloud.io/dashboard?id=polterguy_magic)
+- [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic)
+- [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic)
+- [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic)
+- [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic)
+- [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic)

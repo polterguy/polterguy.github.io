@@ -777,8 +777,6 @@ will lead to thread starvation, if used too frequently.
 
 TODO: Document - Experimental slot! **DO NOT USE THIS SLOT!**
 
-* [Main documentation](https://polterguy.github.io/)
-
 ## Quality gates
 
 - [![Build status](https://travis-ci.com/polterguy/magic.lambda.svg?master)](https://travis-ci.com/polterguy/magic.lambda)

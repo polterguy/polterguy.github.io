@@ -31,8 +31,6 @@ Assuming your configuration file looks like the following.
 foo:int:42
 ```
 
-* [Main documentation](https://polterguy.github.io/)
-
 ## Quality gates
 
 - [![Build status](https://travis-ci.com/polterguy/magic.lambda.config.svg?master)](https://travis-ci.com/polterguy/magic.lambda.config)

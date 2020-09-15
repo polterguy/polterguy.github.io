@@ -38,8 +38,6 @@ value of the node(s) it is pointing to, assuming its value is an expression. In 
 _optional_ **[step]** argument, allowing you to declare how much the incrementation/decrementation process should add/reduce
 the original node's value by.
 
-* [Main documentation](https://polterguy.github.io/)
-
 ## Quality gates
 
 - [![Build status](https://travis-ci.com/polterguy/magic.lambda.math.svg?master)](https://travis-ci.com/polterguy/magic.lambda.math)

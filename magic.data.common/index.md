@@ -652,8 +652,6 @@ column _"foo"_ on _"table1"_. You can see the resulting SQL below.
 select * from 'table1' where 'table1.foo' = @0 limit 25
 ```
 
-* [Main documentation](https://polterguy.github.io/)
-
 ## Quality gates
 
 - [![Build status](https://travis-ci.com/polterguy/magic.data.common.svg?master)](https://travis-ci.com/polterguy/magic.data.common)

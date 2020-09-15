@@ -87,8 +87,6 @@ requirements from your method.
 Doing this is very powerful, and allows you to change the way the system behaves by default - But is also definitely
 considered an _"advanced exercise"_.
 
-* [Main documentation](https://polterguy.github.io/)
-
 ## Quality gates
 
 - [![Build status](https://travis-ci.com/polterguy/magic.library.svg?master)](https://travis-ci.com/polterguy/magic.library)

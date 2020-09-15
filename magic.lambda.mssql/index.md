@@ -146,8 +146,6 @@ mssql.connect:northwind
 after transaction has been rolled back, we'll need a _new_ connection, as the
 above example illustrates.
 
-* [Main documentation](https://polterguy.github.io/)
-
 ## Quality gates
 
 - [![Build status](https://travis-ci.com/polterguy/magic.lambda.mssql.svg?master)](https://travis-ci.com/polterguy/magic.lambda.mssql)
