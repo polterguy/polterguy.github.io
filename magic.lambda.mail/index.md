@@ -142,7 +142,7 @@ but passed into your **[.lambda]** as its raw MIME message instead. The default 
 
 Your **[.lambda]** callback will be invoked with a single **[.message]** node, containing the
 structured version of the MIME message wrapping the actual email message. Refer to
-[see Magic Mime for details](https://github.com/polterguy/magic.lambda.mime) to understand this
+see the Magic Lambda MIME documentation for details to understand this
 structure. If you choose to retrieve messages in **[raw]** format, the message node's value will contain
 the raw MIME message as text. If you choose this path, and you later want to actually parse the message,
 to make it become a structured lambda object - You can use the **[mime.parse]** slot from Magic Lambda Mime.
