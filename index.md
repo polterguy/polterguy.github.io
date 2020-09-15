@@ -149,7 +149,7 @@ Below you can find the reference documentation for Magic's sub modules.
 * [Magic Lambda HTTP](/magic.lambda.http) - Invoking HTTP REST endpoints from Hyperlambda
 * [Magic Lambda Crypto](/magic.lambda.crypto) - Cryptography helpers for Hyperlambda
 * [Magic Lambda Config](/magic.lambda.config) - Accessing configuration values from Hyperlambda
-* [Magic Lambda Scheduler](/magic.lambda.scheduler) - Scheduled tasks from Hyperlambda
+* [Magic Lambda Scheduler](/magic.lambda.scheduler) - Create scheduled tasks and workflows from Hyperlambda
 * [Magic Lambda JSON](/magic.lambda.json) - Manipulating JSON from Hyperlambda
 * [Magic Lambda Mail](/magic.lambda.mail) - Sending and retrieving emails from Hyperlambda
 * [Magic Lambda MIME](/magic.lambda.mime) - Parsing email messages in Hyperlambda
