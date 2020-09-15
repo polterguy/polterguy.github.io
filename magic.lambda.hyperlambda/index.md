@@ -1,8 +1,8 @@
 
 # Magic Lambda Hyperlambda
 
-Hyperlambda parser and creator for Magic. More specifically, this project provides you with two
-slots.
+This is the Hyperlambda parser and generator in Magic. More specifically, this project provides you
+with the following two slots.
 
 * __[hyper2lambda]__ - Transforms a piece of Hyperlambda (text) to a lambda hierarchy.
 * __[lambda2hyper]__ - Transforms a lambda hierarchy to Hyperlambda (text).
