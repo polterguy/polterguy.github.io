@@ -1,7 +1,7 @@
 
 # Magic Lambda Hyperlambda
 
-Hyperlambda parser and creator for [Magic](https://github.com/polterguy/magic). More specifically, this project provides you with two
+Hyperlambda parser and creator for Magic. More specifically, this project provides you with two
 slots.
 
 * __[hyper2lambda]__ - Transforms a piece of Hyperlambda (text) to a lambda hierarchy.
