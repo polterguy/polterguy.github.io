@@ -56,13 +56,6 @@ from the Sakila database.
 
 ![Automatically generate statistical charts](https://servergardens.files.wordpress.com/2020/02/statistics-magic-sample.png)
 
-In addition to the above scaffolding features, Magic also contains a scheduler, allowing you to use your
-own domain specific programming language to declare your tasks. Watch the screenshot below for an example.
-Notice how you automatically get auto complete in the code editor, also for your own keyword extensions,
-as you declare your scheduled tasks.
-
-![Task scheduler](https://servergardens.files.wordpress.com/2019/11/create-database-backup.png)
-
 ## Productivity
 
 If you run Magic towards a database with ~100 tables, Magic will generate roughly 5.000 lines of backend
