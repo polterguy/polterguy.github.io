@@ -153,7 +153,7 @@ strings.join:x:@.src/*
    .:,
 
 /*
- * Results becomes "foo, bar"
+ * Results in "foo,bar"
  */
 ```
 
