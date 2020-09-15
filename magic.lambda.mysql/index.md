@@ -6,17 +6,17 @@ lambda structure to its slots, which in turn will dynamically create a MySQL dia
 types of CRUD SQL statements. In addition, it provides slots to open a MySQL database connection, and such, to allow you to
 declare your own SQL statements, to be executed towards a MySQL database. Slots this project contains are as follows.
 
-* __[mysql.connect]__ - Connects to a database, either taking an entire connection string, or a reference to a configuration connection string.
-* __[mysql.create]__ - Creates a single record in the specified table.
-* __[mysql.read]__ - Reads multiple records from the specified table.
-* __[mysql.update]__ - Updates a single record in the specified table.
-* __[mysql.delete]__ - Deletes a single record in the specified table.
-* __[mysql.select]__ - Executes an arbitrary SQL statement, and returns results of reader as lambda object to caller.
-* __[mysql.scalar]__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller.
-* __[mysql.execute]__ - Executes an aribitrary SQL statement.
-* __[mysql.transaction.create]__ - Creates a new transaction, that will be explicitly rolled back as execution leaves scope, unless __[mysql.transaction.commit]__ is explicitly called before leaving scope.
-* __[mysql.transaction.commit]__ - Explicitly commits an open transaction.
-* __[mysql.transaction.rollback]__ - Explicitly rolls back an open transaction.
+* __[mysql.connect]__ - Connects to a database, either taking an entire connection string, or a reference to a configuration connection string
+* __[mysql.create]__ - Creates a single record in the specified table
+* __[mysql.read]__ - Reads multiple records from the specified table
+* __[mysql.update]__ - Updates a single record in the specified table
+* __[mysql.delete]__ - Deletes a single record in the specified table
+* __[mysql.select]__ - Executes an arbitrary SQL statement, and returns results of reader as lambda object to caller
+* __[mysql.scalar]__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
+* __[mysql.execute]__ - Executes an aribitrary SQL statement
+* __[mysql.transaction.create]__ - Creates a new transaction, that will be explicitly rolled back as execution leaves scope, unless __[mysql.transaction.commit]__ is explicitly called before leaving scope
+* __[mysql.transaction.commit]__ - Explicitly commits an open transaction
+* __[mysql.transaction.rollback]__ - Explicitly rolls back an open transaction
 
 Most of the above slots also have async (wait.) overloads.
 

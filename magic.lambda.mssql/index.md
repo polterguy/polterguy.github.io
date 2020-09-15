@@ -1,23 +1,23 @@
 
 # Magic Lambda MS SQL
 
-These are the MS SQL Server data adapters for [Magic](https://github.com/polterguy/magic). They allow you to provide a semantic
+These are the MS SQL Server data adapters for Magic. They allow you to provide a semantic
 lambda strucutre to its slots, which in turn will dynamically create a MS SQL dialectic SQL statement for you, for all basic
 types of SQL statements. In addition, it provides slots to open a MS SQL database connection, and such, to allow you to
 declare your own SQL statements, to be executed towards a MS SQL database. Slots this project encapsulates are as follows.
 
-* __[mssql.connect]__ - Connects to a database, either taking an entire connection string, or a reference to a configuration connection string.
-* __[mssql.create]__ - Creates a single redorc in the specified table.
-* __[mssql.delete]__ - Deletes a single record in the specified table.
-* __[mssql.read]__ - Reads multiple records from the specified table.
-* __[mssql.update]__ - Updates a single record in the specified table.
-* __[mssql.select]__ - Executes an arbitrary SQL statement, and returns results of reader as lambda object to caller.
-* __[mssql.scalar]__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller.
-* __[mssql.execute]__ - Executes an aribitrary SQL statement.
-* __[mssql.execute-batch]__ - Executes a _"batch"_ of SQL statements, where each statement is separated by the word _"GO"_.
-* __[mssql.transaction.create]__ - Creates a new transaction, that will be explicitly rolled back as execution leaves scope, unless __[mssql.transaction.commit]__ is explicitly called before leaving scope.
-* __[mssql.transaction.commit]__ - Explicitly commits an open transaction.
-* __[mssql.transaction.rollback]__ - Explicitly rolls back an open transaction.
+* __[mssql.connect]__ - Connects to a database, either taking an entire connection string, or a reference to a configuration connection string
+* __[mssql.create]__ - Creates a single redorc in the specified table
+* __[mssql.delete]__ - Deletes a single record in the specified table
+* __[mssql.read]__ - Reads multiple records from the specified table
+* __[mssql.update]__ - Updates a single record in the specified table
+* __[mssql.select]__ - Executes an arbitrary SQL statement, and returns results of reader as lambda object to caller
+* __[mssql.scalar]__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
+* __[mssql.execute]__ - Executes an aribitrary SQL statement
+* __[mssql.execute-batch]__ - Executes a _"batch"_ of SQL statements, where each statement is separated by the word _"GO"_
+* __[mssql.transaction.create]__ - Creates a new transaction, that will be explicitly rolled back as execution leaves scope, unless __[mssql.transaction.commit]__ is explicitly called before leaving scope
+* __[mssql.transaction.commit]__ - Explicitly commits an open transaction
+* __[mssql.transaction.rollback]__ - Explicitly rolls back an open transaction
 
 Most of the above slots also have async (wait.) overloads.
 
