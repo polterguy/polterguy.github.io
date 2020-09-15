@@ -22,10 +22,6 @@ input specified to an HTTP REST endpoint, to verify the input data conforms to s
 .foo
    number:int:11
 
-/*
- * This will throw an exception, since the expression's value is outside of the bounds
- * of the **[min]**/**[max]** range for the validator declaration.
- */
 validators.integer:x:@.foo/*/number
    min:int:5
    max:int:10
