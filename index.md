@@ -104,7 +104,13 @@ SonarCube, etc. In neutral tests, Magic has shown to outperform the average (hum
 on code quality, using neutral and objective metrics measuring quality. This results in that your
 resulting Magic application is extremely easy to maintain and modify if the need should arise.
 
-* [Check out the SonarQube quality gates for the project and its sub modules](https://sonarcloud.io/organizations/polterguy/projects?sort=-name)
+* [Check out the Sonar Cloud quality gates for the project and its sub modules](https://sonarcloud.io/organizations/polterguy/projects?sort=-name)
+
+The project also complies 100% perfectly towards SOLID coding standards, and every aspect of the framework
+is extendible, allowing you to inject custom logic, and/or change its existing logic, without knowing
+anything abouts its internals in any ways. There are probably very few .Net Core projects in this world,
+if any, with the same Quality Gate results](https://sonarcloud.io/organizations/polterguy/projects?sort=-name)
+as Magic. Each sub module in Magic has on average between 85 - 100 percent Unit Test coverage.
 
 ## Responsive
 
