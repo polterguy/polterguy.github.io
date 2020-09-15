@@ -10,12 +10,6 @@ making them easily available for you in your Hyperlambda code. Althought technic
 
 ```
 mail.smtp.send
-   server
-      host:foo.com
-      port:123
-      secure:true
-      username:xxx
-      password:yyy
    message
       to
          John Doe:john@doe.com
@@ -62,7 +56,7 @@ you might expect.
 <img alt="Hyperlambda Evaluator" title="Hyperlambda Evaluator" src="https://servergardens.files.wordpress.com/2020/05/evaluator.png" />
 
 Logically the Hyperlambda evaluator will signal each nodes in your Hyperlambda code, sequentially, assuming
-all of your nodes are referencing a `ISlot` class, unless the node's name starts with a _"."_ or has an empty name.
+all of your nodes are referencing an `ISlot` class, unless the node's name starts with a _"."_ or has an empty name.
 
 ## Hyperlambda structure
 
@@ -88,9 +82,10 @@ express idioms such as _"if"_, _"while"_, _"for-each"_, etc.
 
 Since each slot will be invoked with the node referencing the slot itself as the _"input"_ `Node`,
 this makes the Hyperlambda evaluator recursive in nature, allowing a slot to evaluate all of its children,
-after executing its custom logic, etc.
+after executing its custom logic, etc. And yes, before you ask, Hyperlambda has been heavily influenced by
+LISP. In many ways, Hyperlambda _is_ LISP for C#.
 
-### Extending Hyperlambda
+## Extending Hyperlambda
 
 To understand the relationship between C# and Hyperlambda, it might be beneficial for you to analyze the
 following code. The following code creates a new `ISlot` for you, implementing the interface found in
@@ -142,7 +137,7 @@ To create your own slots, follow the recipe below.
 
 **Notice** - You can also implement `ISlotAsync` if you want to create an `async` slot.
 
-### The gory details
+## The gory details
 
 At the heart of Hyperlambda is the **[eval]** slot, this slot is responsible for executing your lambda object,
 and it follows a couple of simple rules.
@@ -183,7 +178,7 @@ mail.pop3.fetch
 The `ISlot` called **[mail.pop3.fetch]** will invoke the above **[.lambda]** object once for each email
 it finds on the POP3 server it connects to.
 
-### Tokens
+## Tokens
 
 The separating of a node's name and its value, is done by using a ":" character. To the left is the node's
 name, and to the right is its value. The value of a node can also be a C# type of string, using double
