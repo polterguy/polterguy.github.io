@@ -9,7 +9,8 @@ Date manipulation library for Magic. More specifically, it gives you the followi
 
 **Notice** - Internally in Magic, everything is UTC Universal timezone, implying if you want to render it in user's
 timezone, you'll have to convert it explicitly in your client/frontend. All dates and times internally in  Magic,
-also those stored into any database, are treated as UTC timezone.
+also those stored into any database, are treated as UTC timezone. All dates transmitted _to_ the backend, is also
+assumed to be UTC.
 
 Below is an example of taking the current date and time, and adding two days to it.
 
