@@ -101,8 +101,22 @@ Magic will soar your productivity to unimaginable heights compared to having to 
 the equivalent project.
 
 In addition, you can often accomplish the same with 5 lines of Hyperlambda code, as you'll
-need hundreds and sometimes thousands of lines of C# code to accomplish - Due to its extremely
-high level.
+need hundreds and sometimes thousands of lines of C# code to accomplish. This is a fact since
+Hyperlambda is an extremely high level programming language, giving you a much higher entry
+level for your method invocations. Below is an example of sending an email for instance.
+Compare this code to its C# equivalent, and you'll get the idea.
+
+```
+mail.smtp.send
+   message
+      to
+         John Doe:john@doe.com
+      from
+         Jane Doe:jane@doe.com
+      subject:Subject line
+      entity:text/plain
+         content:Body content
+```
 
 ## Maturity and security
 
