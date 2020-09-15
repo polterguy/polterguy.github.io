@@ -32,9 +32,6 @@ This slot replaces occurrencies of a string inside a string, with some other str
 follows.
 
 ```
-/*
- * This will replace "hansen" with "tjobing hansen".
- */
 .foo:thomas hansen
 strings.replace:x:-
    .:hansen
@@ -42,12 +39,10 @@ strings.replace:x:-
 ```
 
 You can also reference slots and dynamic slots for that matter, assuming your slots somehow returns strings,
-or something that can be converted into a string, such as the following illustrates.
+or something that can be converted into a string, such as the following illustrates. Notice, this code will
+throw an exception, since there are probably no slots called _"some-slot-returning-string"_ in your installation.
 
 ```
-/*
- * This will replace "hansen" with "tjobing hansen".
- */
 .what:hansen
 .foo:thomas hansen
 strings.replace:x:-
