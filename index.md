@@ -161,7 +161,7 @@ Below you can find the reference documentation for Magic's sub modules.
 * [Magic Lambda Validators](/magic.lambda.validators) - Validate input in Hyperlambda
 * [Magic IO](/magic.io) - IO operations in Magic
 * [Magic HTTP](/magic.http) - HTTP rest in Magic
-* [Magic Library](/magic.library) - Explains how magic is tied together with ASP.NET
+* [Magic Library](/magic.library) - A single NuGet package helper tying everything easily together
 
 ## Quid Pro Quo initiative
 
