@@ -156,7 +156,7 @@ Below you can find the reference documentation for Magic's sub modules.
 * [Magic Lambda Slots](/magic.lambda.slots) - Dynamically create your own slots/functions
 * [Magic Lambda Strings](/magic.lambda.strings) - Manipulate strings in Hyperlambda
 * [Magic Lambda Math](/magic.lambda.math) - Math operations from Hyperlambda
-* [Magic Lambda Dates](/magic.lambda.dates) - Allows you to manipulate DateTime objects
+* [Magic Lambda Dates](/magic.lambda.dates) - Allows you to manipulate DateTime objects from Hyperlambda
 * [Magic Lambda Auth](/magic.lambda.auth) - Authentication and authorisation from Hyperlambda
 * [Magic Lambda Validators](/magic.lambda.validators) - Validate input in Hyperlambda
 * [Magic IO](/magic.io) - IO operations in Magic
