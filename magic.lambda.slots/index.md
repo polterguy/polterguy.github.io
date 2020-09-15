@@ -4,18 +4,18 @@
 This project provides the ability to create, modify, inspect, and delete dynamic slots for Magic. More specifically,
 this project provides the following slots.
 
-* __[signal]__ - Invokes a dynamically create slot that has been created with the __[slots.create]__ slot. Provides an async (wait.) overload.
-* __[slots.create]__ - Creates a dynamic slot, that can be invoked with the __[signal]__ slot.
-* __[slots.get]__ - Returns the entire lambda object for a slot that has been previously created with the __[slots.create]__ slot.
-* __[slots.delete]__ - Deletes a slot that has been previously created with the __[slots.create]__ slot.
-* __[slots.exists]__ - Returns true of the given slot exists.
-* __[return-nodes]__ - Returns a bunch of nodes to caller from inside of your slot.
-* __[return-value]__ - Returns a single value to caller from inside of your slot.
+* __[signal]__ - Invokes a dynamically create slot that has been created with the __[slots.create]__ slot
+* __[slots.create]__ - Creates a dynamic slot, that can be invoked with the __[signal]__ slot
+* __[slots.get]__ - Returns the entire lambda object for a slot that has been previously created with the __[slots.create]__ slot
+* __[slots.delete]__ - Deletes a slot that has been previously created with the __[slots.create]__ slot
+* __[slots.exists]__ - Returns true of the given slot exists
+* __[return-nodes]__ - Returns a bunch of nodes to caller from inside of your slot
+* __[return-value]__ - Returns a single value to caller from inside of your slot
 * __[return]__ - Returns either a list of nodes, or a single value, or both, depending upon the results of its expression,
-or whether or not it has a static value, or a list of nodes.
-* __[slots.vocabulary]__ - Returns the names of all dynamically created slots.
+or whether or not it has a static value, or a list of nodes
+* __[slots.vocabulary]__ - Returns the names of all dynamically created slots
 
-Below is an example of how to create and invoke a slot.
+Most of the above slots have async **[wait.xxx]** overloads. Below is an example of how to create and invoke a slot.
 
 ```
 /*
