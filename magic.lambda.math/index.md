@@ -3,7 +3,7 @@
 
 [![Build status](https://travis-ci.com/polterguy/magic.lambda.math.svg?master)](https://travis-ci.com/polterguy/magic.lambda.math)
 
-This project provides math functions to [Magic](https://github.com/polterguy/magic). More specifically, it provides the following
+This project provides math functions to Magic. More specifically, it provides the following
 slots.
 
 * __[math.multiply]__ - Multiplication

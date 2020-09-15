@@ -1,8 +1,9 @@
 
 # Magic Lambda Crypto
 
-Provides cryptographic services to [Magic](https://github.com/polterguy/magic). More specifically, it provides two slots, that helps you
-with storing passwords secured in your database.
+Provides cryptographic services to Magic. More specifically, this project provides the following slots, that
+among other things helps you with storing passwords securely in your database, in addition to other services,
+such as generating random pieces of text, etc.
 
 * __[crypto.hash]__ - Creates a hash of the specified string value/expression's value, using the specified **[algorithm]**.
 * __[crypto.password.hash]__ - Creates a cryptographically secure hash from the specified password, expected to be found in its value node.

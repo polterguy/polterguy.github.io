@@ -1,7 +1,7 @@
 
 # Magic Lambda Strings
 
-String manipulation library for [Magic](https://github.com/polterguy/magic). More specifically, it gives you the following slots.
+String manipulation library for Magic. More specifically, it gives you the following slots.
 
 * __[strings.replace]__ - Replaces occurrencies of the specified argument with the value of its specified argument.
 * __[strings.replace-not-of]__ - Replaces all characters found in string, except those found in its single argument.

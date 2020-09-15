@@ -1,7 +1,7 @@
 
 # Magic Lambda Auth
 
-Authentication and authorization helpers for [Magic](https://github.com/polterguy/magic). This project allows you to create and consume
+Authentication and authorization helpers for Magic. This project allows you to create and consume
 JWT tokens, to secure your magic installation. The project contains 3 slots.
 
 * __[auth.ticket.create]__ - Creates a new JWT token, that you can return to your client, any ways you see fit.

@@ -1,7 +1,7 @@
 
 # Magic Lambda Config
 
-This project provides configuration settings slots for [Magic](https://github.com/polterguy/magic). The project provides one
+This project provides configuration settings slots for Magic. The project provides one
 single slot, allowing you to retrieve configuration settings from your configuration file as follows.
 
 * __[config]__ - Returns the configuration value from your configuration file with the specified key.

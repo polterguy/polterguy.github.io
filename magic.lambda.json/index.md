@@ -3,7 +3,7 @@
 
 [![Build status](https://travis-ci.com/polterguy/magic.lambda.json.svg?master)](https://travis-ci.com/polterguy/magic.lambda.json)
 
-This project provides JSON helper slots for [Magic](https://github.com/polterguy/magic). More specifically, it provides the following slots.
+This project provides JSON helper slots for Magic. More specifically, it provides the following slots.
 
 * __[json2lambda]__ - Creates a lambda object out of a JSON input string.
 * __[lambda2json]__ - Creates JSON out of a lambda object.

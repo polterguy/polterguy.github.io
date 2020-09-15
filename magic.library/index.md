@@ -1,7 +1,7 @@
 
 # Magic Library
 
-Helper project for [Magic](https://github.com/polterguy/magic), to wire up everything and initialize Magic.
+Helper project for Magic, to wire up everything and initialize Magic.
 
 This project will help you to wire up everything related to Magic. Normally you'd use it simply like the following from
 your startup class in your .Net Core Web API project.

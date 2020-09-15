@@ -1,7 +1,7 @@
 
 # Magic Lambda IO
 
-This project provides file/folder slots for [Magic](https://github.com/polterguy/magic). More specifically, it provides the following slots.
+This project provides file/folder slots for Magic. More specifically, it provides the following slots.
 
 * __[io.folder.create]__ - Creates a folder on disc for you on your server.
 * __[io.folder.exists]__ - Returns true if folder exists, otherwise false.

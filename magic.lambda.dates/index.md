@@ -1,7 +1,7 @@
 
 # Magic Lambda Dates
 
-Date manipulation library for [Magic](https://github.com/polterguy/magic). More specifically, it gives you the following slots.
+Date manipulation library for Magic. More specifically, it gives you the following slots.
 
 * __[date.now]__ - Returns the now date, equivalent of `DateTime.Now`.
 * __[date.format]__ - Returns a string representation of some date, formatted according to the specified **[format]** argument.
