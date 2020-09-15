@@ -139,27 +139,27 @@ Below you can find the reference documentation for Magic's sub modules.
 * [Magic Node](/magic.node) - Explains nodes, Hyperlambda and Expressions
 * [Magic Lambda](/magic.lambda) - Explains all _"keywords"_ in Hyperlambda
 * [Magic Endpoint](/magic.endpoint) - Endpoint resolving in Magic
-* [Magic Data Common](/magic.data.common) - Commonalities for data adapters in Magic.
-* [Magic Lambda Auth](/magic.lambda.auth) - Authentication and authorisation from Hyperlambda.
-* [Magic Lambda Validators](/magic.lambda.validators) - Validate input in Hyperlambda.
-* [Magic Lambda Strings](/magic.lambda.strings) - Manipulate strings in Hyperlambda
-* [Magic Lambda Dates](/magic.lambda.dates) - Allows you to manipulate DateTime objects.
-* [Magic Lambda Slots](/magic.lambda.slots) - Dynamically create your own slots/functions
-* [Magic Lambda MySQL](/magic.lambda.mysql) - Accessing your MySQL server from Hyperlambda.
-* [Magic Lambda MS SQL](/magic.lambda.mssql) - Accessing your MS SQL Server from Hyperlambda.
-* [Magic Lambda Math](/magic.lambda.math) - Math operations from Hyperlambda.
-* [Magic Lambda Logging](/magic.lambda.logging) - Logging from Hyperlambda.
-* [Magic Lambda Caching](/magic.lambda.caching) - Caching from Hyperlambda.
-* [Magic Lambda JSON](/magic.lambda.json) - Manipulating JSON from Hyperlambda.
-* [Magic Lambda Mail](/magic.lambda.mail) - Sending and retrieving emails from Hyperlambda.
-* [Magic Lambda MIME](/magic.lambda.mime) - Parsing email messages in Hyperlambda.
+* [Magic Data Common](/magic.data.common) - Commonalities for data adapters in Magic
+* [Magic Lambda MySQL](/magic.lambda.mysql) - Accessing your MySQL server from Hyperlambda
+* [Magic Lambda MS SQL](/magic.lambda.mssql) - Accessing your MS SQL Server from Hyperlambda
+* [Magic Lambda Logging](/magic.lambda.logging) - Logging from Hyperlambda
+* [Magic Lambda Caching](/magic.lambda.caching) - Caching from Hyperlambda
 * [Magic Lambda IO](/magic.lambda.io) - File manipulation using Hyperlambda
-* [Magic Lambda Hyperlambda](/magic.lambda.hyperlambda) - Parse Hyperlambda from text, and vice versa.
-* [Magic Lambda HTTP](/magic.lambda.http) - Invoking HTTP REST endpoints from Hyperlambda.
-* [Magic Lambda Crypto](/magic.lambda.crypto) - Cryptography helpers in Hyperlambda.
-* [Magic Lambda Config](/magic.lambda.config) - Accessing configuration values from Hyperlambda.
-* [Magic Lambda Scheduler](/magic.lambda.scheduler) - Scheduled tasks from Hyperlambda.
-* [Magic IO](/magic.io) - IO operations in Magic.
+* [Magic Lambda Hyperlambda](/magic.lambda.hyperlambda) - Parse Hyperlambda from text, and vice versa
+* [Magic Lambda HTTP](/magic.lambda.http) - Invoking HTTP REST endpoints from Hyperlambda
+* [Magic Lambda Crypto](/magic.lambda.crypto) - Cryptography helpers in Hyperlambda
+* [Magic Lambda Config](/magic.lambda.config) - Accessing configuration values from Hyperlambda
+* [Magic Lambda Scheduler](/magic.lambda.scheduler) - Scheduled tasks from Hyperlambda
+* [Magic Lambda JSON](/magic.lambda.json) - Manipulating JSON from Hyperlambda
+* [Magic Lambda Mail](/magic.lambda.mail) - Sending and retrieving emails from Hyperlambda
+* [Magic Lambda MIME](/magic.lambda.mime) - Parsing email messages in Hyperlambda
+* [Magic Lambda Slots](/magic.lambda.slots) - Dynamically create your own slots/functions
+* [Magic Lambda Strings](/magic.lambda.strings) - Manipulate strings in Hyperlambda
+* [Magic Lambda Math](/magic.lambda.math) - Math operations from Hyperlambda
+* [Magic Lambda Dates](/magic.lambda.dates) - Allows you to manipulate DateTime objects
+* [Magic Lambda Auth](/magic.lambda.auth) - Authentication and authorisation from Hyperlambda
+* [Magic Lambda Validators](/magic.lambda.validators) - Validate input in Hyperlambda
+* [Magic IO](/magic.io) - IO operations in Magic
 * [Magic HTTP](/magic.http) - HTTP rest in Magic
 * [Magic Library](/magic.library) - Explains how magic is tied together with ASP.NET
 
