@@ -100,7 +100,7 @@ A Magic application will outperform the equivalent Entity Framework solution wit
 and throughput, making it scale at least 5 times as well as an Entity Framework solution. In addition,
 its generated code has an extremely high quality, and will for the most parts, perfectly obey by all
 coding standards, and/or automated tools that are measuring code quality - Such as for instance TSlint,
-SonarCube, etc. In neutral tests, Magic has shown to outperform the average (human) software developer by 3-4 times
+SonarCube, etc. In neutral tests, Magic has shown to outperform the average (human) software developer by 10x
 on code quality, using neutral and objective metrics measuring quality. This results in that your
 resulting Magic application is extremely easy to maintain and modify if the need should arise.
 
@@ -109,7 +109,7 @@ resulting Magic application is extremely easy to maintain and modify if the need
 The project also complies 100% perfectly towards SOLID coding standards, and every aspect of the framework
 is extendible, allowing you to inject custom logic, and/or change its existing logic, without knowing
 anything abouts its internals in any ways. There are probably very few .Net Core projects in this world,
-if any, with the same Quality Gate results](https://sonarcloud.io/organizations/polterguy/projects?sort=-name)
+if any, with the same [Quality Gate results](https://sonarcloud.io/organizations/polterguy/projects?sort=-name)
 as Magic. Each sub module in Magic has on average between 85 - 100 percent Unit Test coverage.
 
 ## Responsive
