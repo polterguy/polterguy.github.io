@@ -50,7 +50,7 @@ invocation.
 * magic.smtp.from.address
 
 An example of how your configuration might look like, if you choose to use configuration settings,
-instead of having to supply server configuration every time you invoke the slot.
+instead of having to supply server configuration every time you invoke the slot, can be found below.
 
 ```json
 {
