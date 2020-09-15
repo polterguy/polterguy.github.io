@@ -33,6 +33,17 @@ http.post
    payload:some mumbo jumbo payload, typically JSON and not text though ...
 ```
 
+## HTTP headers
+
+Below is another example invoking DELETE with an explicit **[headers]** collection.
+
+```
+http.delete:"https://foo-url.com"
+   headers
+      Accept:application/zip
+      X-Foo:Bar-Header-Value
+```
+
 ## Quality gates
 
 - [![Build status](https://travis-ci.com/polterguy/magic.lambda.http.svg?master)](https://travis-ci.com/polterguy/magic.lambda.http)
