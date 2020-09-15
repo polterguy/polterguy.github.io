@@ -78,8 +78,12 @@ Hyperlambda hence gives you arguably the same dynamic features that Logic Apps a
 Azure functions gives you, only in a dynamic manner. Below is a screenshot of how you can
 manage your Magic workflows using the Magic Dashboard.
 
-![Automatically generate statistical charts](https://servergardens.files.wordpress.com/2020/09/task-scheduler.png)
+![Managing and scheduling your persisted tasks](https://servergardens.files.wordpress.com/2020/09/task-scheduler.png)
 
+Below is an example of how it looks like as you're editing your tasks. Notice how the
+Hyperlambda editor in Magic's dashboard gives you perfect autocompletion.
+
+![Editing a persisted tasks](https://servergardens.files.wordpress.com/2020/09/task-schedule-editing.png)
 
 ## Productivity
 
