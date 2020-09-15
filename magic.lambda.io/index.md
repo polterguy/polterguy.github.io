@@ -196,6 +196,8 @@ If you want to do this, you would probably want to manually declare your own imp
 into _"magic.library"_ somehow, or not invoking its default method that binds towards the default implementation classes
 somehow.
 
+* [Main documentation](https://polterguy.github.io/)
+
 ## Quality gates
 
 - [![Build status](https://travis-ci.com/polterguy/magic.lambda.io.svg?master)](https://travis-ci.com/polterguy/magic.lambda.io)

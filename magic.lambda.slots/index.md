@@ -134,6 +134,8 @@ found below.
 slots.vocabulary
 ```
 
+* [Main documentation](https://polterguy.github.io/)
+
 ## Quality gates
 
 - [![Build status](https://travis-ci.com/polterguy/magic.lambda.slots.svg?master)](https://travis-ci.com/polterguy/magic.lambda.slots)

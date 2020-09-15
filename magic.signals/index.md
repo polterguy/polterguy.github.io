@@ -1,5 +1,5 @@
 
-# Magic Signals for .Net
+# Magic Signals
 
 [![Build status](https://travis-ci.com/polterguy/magic.signals.svg?master)](https://travis-ci.com/polterguy/magic.signals)
 
@@ -113,3 +113,5 @@ A lot of the idea behind Magic Signals is that combined with [Magic Node](https:
 and espcially its ability to parse _"Hyperlambda"_, it becomes a very good foundation for a DSL, or a Domain Specific
 programming Language implementation, allowing you to easily create your own programming languages, and keywords,
 based upon Hyperlambda syntax trees.
+
+* [Main documentation](https://polterguy.github.io/)

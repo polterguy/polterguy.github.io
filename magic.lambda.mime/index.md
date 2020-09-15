@@ -141,6 +141,8 @@ pgp.keys.public.import:@"-----BEGIN PGP PUBLIC KEY BLOCK----- ..... etc"
       log.info:x:-
 ```
 
+* [Main documentation](https://polterguy.github.io/)
+
 ## Quality gates
 
 - [![Build status](https://travis-ci.com/polterguy/magic.lambda.mime.svg?master)](https://travis-ci.com/polterguy/magic.lambda.mime)

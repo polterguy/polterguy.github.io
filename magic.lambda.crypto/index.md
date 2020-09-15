@@ -24,6 +24,8 @@ The **[crypto.random]** can optionally take a **[min]** and **[max]** argument, 
 string returned. If not supplied, the default values for these arguments are respectively 10 and 20. This slot is useful
 for creating random secrets, and similar types of random strings, where you need cryptographically secured random strings.
 
+* [Main documentation](https://polterguy.github.io/)
+
 ## Quality gates
 
 - [![Build status](https://travis-ci.com/polterguy/magic.lambda.crypto.svg?master)](https://travis-ci.com/polterguy/magic.lambda.crypto)

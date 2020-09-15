@@ -145,6 +145,8 @@ structure. If you choose to retrieve messages in **[raw]** format, the message n
 the raw MIME message as text. If you choose this path, and you later want to actually parse the message,
 to make it become a structured lambda object - You can use the **[mime.parse]** slot from Magic Lambda Mime.
 
+* [Main documentation](https://polterguy.github.io/)
+
 ## Quality gates
 
 - [![Build status](https://travis-ci.com/polterguy/magic.lambda.mail.svg?master)](https://travis-ci.com/polterguy/magic.lambda.mail)

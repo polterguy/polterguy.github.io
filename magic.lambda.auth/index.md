@@ -25,6 +25,8 @@ apply (don't use the exact same salt, the idea is to provide a _random_ salt, un
 The idea is that your `SymmetricSecretKey` is based upon the above configuration setting, implying you should safe keep it the
 same way you'd safe keep the pin code to your ATM card.
 
+* [Main documentation](https://polterguy.github.io/)
+
 ## Quality gates
 
 - [![Build status](https://travis-ci.com/polterguy/magic.lambda.auth.svg?master)](https://travis-ci.com/polterguy/magic.lambda.auth)
