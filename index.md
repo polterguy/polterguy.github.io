@@ -104,6 +104,8 @@ SonarCube, etc. In neutral tests, Magic has shown to outperform the average (hum
 on code quality, using neutral and objective metrics measuring quality. This results in that your
 resulting Magic application is extremely easy to maintain and modify if the need should arise.
 
+* [Check out the SonarQube quality gates for the project and its sub modules](https://sonarcloud.io/organizations/polterguy/projects?sort=-name)
+
 ## Responsive
 
 All components generated will be highly responsive, allowing you to consume your generated apps
