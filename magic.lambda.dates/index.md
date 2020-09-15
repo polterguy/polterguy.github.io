@@ -8,10 +8,19 @@ Date manipulation library for Magic. More specifically, it gives you the followi
 * __[time]__ - Creates a time span, useful for adding and subtracting offsets to date objects. Pass in **[days]**, **[hours]**, **[minutes]**, **[seconds]** and **[milliseconds]** to declare how large your offset is. All arguments are optional, but (of course) on argument should be passed in.
 
 **Notice** - Internally in Magic, everything is UTC us Universal timezone, implying if you want to render it in user's
-timezone, you'll have to convert it explicitly. All dates and times internally in  Magic, also those stored into any database,
-are treated as UTC timezone.
+timezone, you'll have to convert it explicitly in your client/frontend. All dates and times internally in  Magic,
+also those stored into any database, are treated as UTC timezone.
 
-## quality gates
+Below is an example of taking the current date and time, and adding two days to it.
+
+```
+math.add
+   date.now
+   time
+      days:2
+```
+
+## Quality gates
 
 - [![Build status](https://travis-ci.com/polterguy/magic.lambda.dates.svg?master)](https://travis-ci.com/polterguy/magic.lambda.dates)
 - [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.dates&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.dates)
