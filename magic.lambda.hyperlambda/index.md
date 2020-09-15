@@ -26,7 +26,18 @@ lambda2hyper:x:-/*
 
 The above two slots, allows you to dynamically generate plain text from a lambda structure, and vice versa,
 allowing you to for instance persist execution objects and structured data into files, your database, or for
-that matter transmit it over the network to another machine, etc.
+that matter transmit it over the network to another machine, etc. Below is an example of dynamically
+loading a Hyperlambda file from disc, for then to execute it. Notice, in order to have the following
+snippet function, you'll need an actual file called _"foo.hl"_ inside of your backend's _"files/"_ folder.
+
+```
+io.file.load:/foo.hl
+hyper2lambda:x:-
+eval:x:-/*
+```
+
+3 lines of code, allowing you to dynamically load and execute Hyperlambda, tied to your C# code dynamically,
+using `ISlot` implementations, and Super Signals. Not too bad for 3 lines of code ...
 
 ## Quality gates
 
