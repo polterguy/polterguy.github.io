@@ -3,7 +3,10 @@
 
 @import "{{ site.theme }}";
 
-.credits.left,
-.credits.right {
-    display: none;
+.site-nav {
+    li {
+        a:visited {
+            color: #aa7700;
+        }
+    }
 }
