@@ -229,8 +229,6 @@ What the above code basically translates into, is.
 
 > Set the value of the [.dest] node to the value of [.src]
 
-[Read more about Hyperlambda syntax and lambda expressions here](https://github.com/polterguy/magic.node)
-
 ## Reference documentation
 
 Magic Lambda contains the following slots. Most of these slots also have async (wait.) overrides, which
