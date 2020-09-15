@@ -160,7 +160,7 @@ Below you can find the reference documentation for Magic's sub modules.
 * [Magic Lambda Auth](/magic.lambda.auth) - Authentication and authorisation from Hyperlambda
 * [Magic Lambda Validators](/magic.lambda.validators) - Validate input in Hyperlambda
 * [Magic IO](/magic.io) - IO operations in Magic
-* [Magic HTTP](/magic.http) - HTTP rest in Magic
+* [Magic HTTP](/magic.http) - HTTP rest invocations in Magic
 * [Magic Library](/magic.library) - A single NuGet package helper tying everything easily together
 
 ## Quid Pro Quo initiative
