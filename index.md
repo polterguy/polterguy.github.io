@@ -65,6 +65,10 @@ generator, it would still be highly valuable, due to its DSL capabilities. The D
 so happens to easily lend itself to generating backend and frontend code, in
 addition to all the other things it helps you with.
 
+When the architect behind Hyperlambda published a scientific article about Hyperlambda
+for MSDN Magazine the first time in 2017, the article became the 5th most read article
+that Microsoft had ever published. [Read the article here](https://docs.microsoft.com/en-us/archive/msdn-magazine/2017/june/csharp-make-csharp-more-dynamic-with-hyperlambda).
+
 * [Read more about Hyperlambda](/magic.lambda)
 
 ## Task scheduler and workflows
