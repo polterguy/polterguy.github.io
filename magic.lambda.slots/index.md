@@ -36,7 +36,7 @@ new lambda object you pass into it. Also notice that if you try to invoke a slot
 to get its content, an exception will be thrown. The __[slots.return-xxx]__ slots, will also throw an exception if you
 attempt to invoke them outside a dynamically created slot somehow.
 
-Also realize that when you create a slot, its code is not persisted in any ways - Implying if the process
+Also realize that when you create a slot, it is not persisted in any ways - Implying if the process
 is restarted, your slot will disappear. To avoid this, have the creation of your slots inside of a file
 in a folder called _"magic.startup"_ in your module's folder, e.g. _"/files/modules/foo-module/magic.startup/create-slot.hl"_.
 
