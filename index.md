@@ -108,29 +108,11 @@ if any, with the same [Quality Gate results](https://sonarcloud.io/organizations
 as Magic. Each sub module in Magic has on average between 85-100% Unit Test coverage, ignoring some of the
 modules where unit testing cannot be performed.
 
-## Responsive
+## License Terms
 
-All components generated will be highly responsive, allowing you to consume your generated apps
-from your favourite phone, tablet, or computer - Regardless of your device resolution.  But don't
-believe us, try it out for yourself. Magic is free to use locally, and will only cost you a fee
-if you decide to deploy it unto a server. Magic also comes with [professional support](https://servergardens.com/)
-if you decide to use it commercially on your own server, if you need help with it somehow.
-
-> We realised there was a need for higher code quality, tightened security measures, and more automation
-in the enterprise software development space - So we released Magic to the public, allowing others
-to take advantage of the same quality improvements we could internally see within our own enterprise
-
-Thomas Hansen, CEO at Server Gardens
-
-## Our promise
-
-* 10x productivity
-* 10x code quality
-* 10x security
-
-Although 95% of Magic's source code is Open Source, Magic will [cost you a fee](https://servergardens.com/buy/)
-of €49 for a single developer license. This allows you to create and publish as many Magic applications as you
-please (no royalties).
+Although 95% of Magic's source code is Open Source, and licensed as MIT, Magic will
+[cost you a fee](https://servergardens.com/buy/) of €49 for a single developer license. This allows you to
+create and publish as many Magic applications as you please (no royalties).
 
 ## Quid Pro Quo initiative
 
