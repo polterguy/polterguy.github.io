@@ -23,14 +23,14 @@ Most of the above slots also have async (wait.) overloads.
 **Notice** - If you use any of the CRUD slots from above, the whole idea is that you can polymorphistically use the
 same lambda object, towards any of the underlaying database types, and the correct specific syntax for your particular
 database vendor's SQL syntax will be automatically generated.
-
 This allows you to transparently use the same lambda object, towards any of the supported database types, without
 having to change it in any ways.
 
 ## [mysql.create], [mysql.read], [mysql.update] and [mysql.delete]
 
 All of these slots have the _exact same syntax_ for all supported data adapters, which you can read about in the
-link below. Just make sure you start out your CRUD slot invocations with `mysql.` instead of `sql.` to use
+magic.data.common section of the documentation. Just make sure you start out your CRUD slot invocations with
+`mysql.` instead of `sql.` to use
 them towards a MySQL database. You will also need to open a database connection before you invoke these slots,
 unless you're only interested in generating its specific SQL command text, and not actually execute the SQL.
 
