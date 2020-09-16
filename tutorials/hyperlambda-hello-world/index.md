@@ -209,7 +209,7 @@ for how this should look like.
 ![Passing in arguments to Hyperlambda endpoints](https://servergardens.files.wordpress.com/2020/09/explicit-arguments.png)
 
 You can now add arguments to your file, by for instance pasting the following into
-your query parameters.
+your query parameters textbox.
 
 ```
 name=Thomas&age=25
@@ -224,15 +224,15 @@ If you invoke the endpoint now, you'll end up with the following result.
 }
 ```
 
-If you try to invoke it with a _"foo"_ argument however, such as the following illustrates,
-the endpoint will return an error.
+If you try to invoke the endpoint with a _"foo"_ argument however, such as the
+following illustrates, the endpoint will return an error.
 
 ![Invoking endpoint with unknown argument](https://servergardens.files.wordpress.com/2020/09/argument-exception.png)
 
 The Hyperlambda evaluator doesn't really discriminate between JSON payload arguments,
 and QUERY parameters. From your Hyperlambda file, an argument is an argument - Period.
 
-## Doing something interesting
+## Selecting data from your database
 
 So far, we've only done boring stuff, hence it's time to do something fun.
 
