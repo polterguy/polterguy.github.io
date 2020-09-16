@@ -76,11 +76,11 @@ and execute serialized method invocations - Either periodically, or at a single 
 future, triggered by some action, or at a specific date and time. This gives you the most
 important features from Microsoft Workflow Foundation, without the weird and difficult to
 understand XML syntax. Magic workflows also perfectly integrates with .Net Core, contrary to
-MWF that only works for the full and obsolete .Net Framework.
+MWF that only works for .Net Framework.
 
-Hyperlambda hence gives you arguably the same dynamic features that Logic Apps and scheduled
-Azure functions gives you, only in a dynamic manner. Below is a screenshot of how you can
-manage your Magic workflows using the Magic Dashboard.
+Hyperlambda arguably gives you the same dynamic features that Logic Apps and scheduled
+Azure functions in combination gives you. Below is a screenshot of how you can manage
+your Magic workflows using the dashboard.
 
 ![Managing and scheduling your persisted tasks](https://servergardens.files.wordpress.com/2020/09/task-scheduler.png)
 
