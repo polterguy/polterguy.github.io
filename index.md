@@ -140,7 +140,7 @@ its generated code has an extremely high quality, and will for the most parts, p
 coding standards, and/or automated tools that are measuring code quality - Such as for instance TSlint,
 SonarQube, etc. In neutral tests, Magic has shown to outperform the average (human) software developer by 10x
 on code quality, using neutral and objective metrics measuring quality. This results in that your
-resulting Magic application is extremely easy to maintain and modify if the need should arise.
+Magic applications becomes extremely easy to maintain and modify if the need should arise.
 
 * [Check out the Sonar Cloud quality gates for the project and its sub modules](https://sonarcloud.io/organizations/polterguy/projects?sort=-coverage)
 
