@@ -24,12 +24,12 @@ Then click the file to edit it, and replace its default content with the followi
 ```
 .arguments
    name:string
-http.response.headers.add
-   Content-Type:text/plain
 strings.concat
    .:"Hello "
    get-value:x:@.arguments/*/name
-return:x:-
+unwrap:x:+/*
+return
+   result:x:@strings.concat
 ```
 
 Save the file, and open up the _"Endpoints"_ dashboard link, in for instance a different tab
