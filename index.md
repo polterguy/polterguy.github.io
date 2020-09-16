@@ -144,18 +144,13 @@ Magic applications becomes extremely easy to maintain and modify if the need sho
 
 * [Check out the Sonar Cloud quality gates for the project and its sub modules](https://sonarcloud.io/organizations/polterguy/projects?sort=-coverage)
 
-The project also complies 100% perfectly towards SOLID coding standards, and every aspect of the framework
-is extendible, allowing you to inject custom logic, and/or change its existing logic, without knowing
-anything abouts its internals in any ways. There are probably very few .Net Core projects in this world,
-if any, with the same [Quality Gate results](https://sonarcloud.io/organizations/polterguy/projects?sort=-name)
-as Magic. Each sub module in Magic has on average between 85-100% Unit Test coverage, ignoring some of the
-modules where unit testing cannot be performed.
-
 ## License Terms
 
 Although 95% of Magic's source code is Open Source, and licensed as MIT, Magic will
-[cost you a fee](https://servergardens.com/buy/) of €49 for a single developer license. This allows you to
-create and publish as many Magic applications as you please (no royalties).
+[cost you a fee](https://servergardens.com/buy/) of €49 for a single developer license. One such license
+allows a single developer to create and publish as many Magic applications as needed (no royalties).
+The license is valid for the entirety of the current release cycle, which is the 8.x version, giving
+you free updates.
 
 ## Quality gates
 
