@@ -105,10 +105,9 @@ equivalent project(s).
 > Magic, the equivalent of a 3D printer for Web apps
 
 In addition, you can often accomplish the same with 5 lines of Hyperlambda code, as you'll
-need hundreds and sometimes thousands of lines of C# code to accomplish. This is a fact since
-Hyperlambda is an extremely high level programming language, giving you a much higher entry
-level for your method invocations. Below is an example of sending an email for instance.
-Compare this code to its C# equivalent, and you'll get the idea.
+need hundreds and sometimes thousands of lines of C# code to accomplish. This is due to that
+Hyperlambda is an extremely high level programming language. Below is an example of sending
+an email for instance. Compare this code to its C# equivalent.
 
 ```
 mail.smtp.send
