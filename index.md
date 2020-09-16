@@ -11,22 +11,16 @@ into an Angular Web application. Watch the following video for a demonstration o
 
 ## How it works
 
-Magic will read metadata from your database, and use this metadata to generate a Hyperlambda HTTP REST
-Web API for you, wrapping all CRUD operations inside of REST endpoints. Then it will use metadata from
-the REST API to automatically generate Angular components, router links, menu items, datagrids, etc.
-The end result becomes that before you've even had to create as much as a single line of code 
-yourself, 50% of your job is already done.
+Magic will read metadata from your database, and use this metadata to generate a Hyperlambda and .Net Core
+HTTP REST Web API for you, wrapping all CRUD operations inside of REST endpoints. Then it will use
+metadata from the REST API to automatically generate Angular components, router links, menu items,
+datagrids, etc. The end result becomes that before you've even had to create as much as a single
+line of code yourself, 50% of your job is already done.
 
 The resulting frontend gives you a datagrid for all your database tables, allowing you
 to create, read, update and delete records in your database. It also automatically creates paging,
 sorting, and filtering for you - In addition to providing you with a _very, very, very_ secure
-authentication and authorisation system.
-
-Magic is built in .Net Core, and allows you to expand upon it with your own C# controllers easily.
-It's a highly modular and extendible architecture, allowing you to intercept its core, using adapters
-and triggers. The Angular code also perfectly follows TSLint rules, making it highly readable and
-easily modified. The process of creating your CRUD apps is also highly configurable, allowing you
-to modify any aspect of the end result, before you start coding.
+authentication and authorization system.
 
 ## Screenshots of example CRUD app
 
@@ -61,7 +55,7 @@ from the Sakila database.
 In addition to the CRUD backend and Angular frontend generator, Magic is also a complete DSL
 engine, or Domain Specific programming Language engine - Giving you workflow support, task
 scheduling, the ability to create your own DSL, etc. Even if you don't care about its CRUD
-generator, Magic would still be highly valuable, due to its DSL capabilities. The DSL engine just
+generator, Magic would still be highly valuable, due to its DSL. The DSL engine just
 so happens to easily lend itself to generating backend and frontend code, in
 addition to all the other things it helps you with.
 
@@ -71,7 +65,9 @@ that Microsoft had ever published..
 
 * [Read more about Hyperlambda I](/magic.node) - Node structure, and Hyperlambda parsing
 * [Read more about Hyperlambda II](/magic.lambda) - Default language specific slots/functions/keywords
-* [The 5th most read programming article](https://docs.microsoft.com/en-us/archive/msdn-magazine/2017/june/csharp-make-csharp-more-dynamic-with-hyperlambda) in the history of Microsoft
+
+Magic and Hyperlambda is built in .Net Core and C#. It is a highly modular and extendible
+architecture, allowing you to intercept its core any ways you see fit.
 
 ## Task scheduler and workflows
 
