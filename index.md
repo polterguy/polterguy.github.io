@@ -127,9 +127,9 @@ Magic has been featured in MSDN Magazine with several articles, and is currently
 not produced by Microsoft that is documented at the main website for .Net and .Net Core. You can
 find some of its articles below.
 
-* [Make C# more dynamic with Hyperlambda](https://docs.microsoft.com/en-us/archive/msdn-magazine/2017/june/csharp-make-csharp-more-dynamic-with-hyperlambda) - The 5th most read article published by Microsoft _ever_.
-* [Super-DRY development for ASP.NET Core](https://docs.microsoft.com/en-us/archive/msdn-magazine/2019/june/patterns-and-practices-super-dry-development-for-asp-net-core)
-* [Active Events One design pattern instead of a dozen](https://docs.microsoft.com/en-us/archive/msdn-magazine/2017/march/patterns-active-events-one-design-pattern-instead-of-a-dozen)
+* [Make C# more dynamic with Hyperlambda](https://docs.microsoft.com/en-us/archive/msdn-magazine/2017/june/csharp-make-csharp-more-dynamic-with-hyperlambda) - The 5th most read article published by Microsoft _ever_
+* [Active Events One design pattern instead of a dozen](https://docs.microsoft.com/en-us/archive/msdn-magazine/2017/march/patterns-active-events-one-design-pattern-instead-of-a-dozen) - The 20th most read article published by Microsoft
+* [Super-DRY development for ASP.NET Core](https://docs.microsoft.com/en-us/archive/msdn-magazine/2019/june/patterns-and-practices-super-dry-development-for-asp-net-core) - Describes the idea of _"super DRY code"_, which is at the heart of Magic
 * ++++
 
 The main architect of Magic has researched Magic and its underlying ideas for more than a decade, and
