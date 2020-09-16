@@ -38,7 +38,7 @@ datetime-picker, because one of the table's columns is a datetime.
 
 ![Editing database records](https://servergardens.files.wordpress.com/2020/01/editing.png)
 
-Below you can see how the integrated authentication and authorisation components will look like.
+Below you can see how the integrated authentication and authorization components will look like.
 Notice, all passwords are securely stored using individual salting and hashed based upon the BlowFish
 hashing algorithm - Making the auth system extremely secure.
 
