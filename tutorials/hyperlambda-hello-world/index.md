@@ -202,7 +202,7 @@ return
 
 If you save the above Hyperlambda into some file called e.g. _"explicit-arguments.get.hl"_,
 and you refresh your _"Endpoints"_, and select the new endpoint - You will see that the
-endpoint evaluator automatically determines that this endpoint can (optionally) handle
+endpoint evaluator automatically determines that this endpoint can handle
 arguments, what the argument names are, and what their types are. See screenshot below
 for how this should look like.
 
