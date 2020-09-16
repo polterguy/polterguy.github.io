@@ -127,13 +127,13 @@ the top item - At which point you'll see something like the following.
 
 ![Log item result](https://servergardens.files.wordpress.com/2020/09/echo-log-item.png)
 
-As you can see, we were able to successfully transform the entire lambda object, as it
-was being executed, into a string - For the to store this string into our log. And as
+As you can see, we were able to successfully transform the entire lambda object into
+a string, as it was being executed - For then to put this string into our log. And as
 we did, we could clearly see the **[.arguments]** collection, that wasn't a part of
 our original Hyperlambda, but rather dynamically injected into the lambda object as
-arguments, after it had been parsed by the Hyperlambda parser. You can of course
-pass in any JSON object you wish to this endpoint, try the following JSON as your
-payload to understand how JSON is transformed into a lambda object during invocation.
+arguments. You can of course pass in any JSON object you wish to this endpoint, try
+the following JSON as your payload to understand how JSON is transformed into a lambda
+object during invocation.
 
 ```json
 {
@@ -181,13 +181,14 @@ add:x:../*/return
 return
 ```
 
-So obviously, the entire payload is transformed from JSON to lambda, and passed into your
-endpoint's execution, as an **[.argument]** node.
+So obviously, the entire payload is transformed from JSON to lambda, and sent into your
+endpoint as an **[.argument]** node. We will go through the structure of exactly _how_
+this is done later.
 
 ### Restricting arguments
 
 If you want to, you can explicitly declare what arguments your endpoint can handle,
-by creating a declaration **[.arguments]** node, in your Hyperlambda, such as the
+by creating a declaration **[.arguments]** node in your Hyperlambda, such as the
 following illustrates.
 
 ```
