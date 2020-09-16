@@ -110,7 +110,7 @@ add:x:../*/return
 return
 ```
 
-Of course, the above **[.arguments]** node, will contain whatever you pas into it,
+Of course, the above **[.arguments]** node, will contain whatever you pass into it,
 allowing you to pass in _any_ argument you wish. Try modifying the file to see
 this process, and change your _"echo"_ file's content to the following.
 
