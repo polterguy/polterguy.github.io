@@ -132,17 +132,6 @@ find some of its articles below.
 * [Super-DRY development for ASP.NET Core](https://docs.microsoft.com/en-us/archive/msdn-magazine/2019/june/patterns-and-practices-super-dry-development-for-asp-net-core) - Describes the idea of _"super DRY code"_, which is at the heart of Magic
 * ++++
 
-The main architect of Magic has researched Magic and its underlying ideas for more than a decade, and
-has been working and consulting for some of the largest financial trading broker firms on the planet - Some of whom
-are operating in markets moving 5.1 trillion dollars on a daily basis. Needles to say, but Magic is
-_very, very, very_ secure. For some of these firms, Magic has saved millions of dollars
-in development costs, while at the same time tightened security significantly.
-
-Magic was also built using a TDD approach, and there are hundreds of unit tests in the project, that
-verifies the integrity of every possible course of code flow, whenever we apply change to its underlying
-code. Magic's source code, has also been scrutinised by thousands of (human) developers, without being able
-to find any security holes in it.
-
 ## Code quality and performance
 
 A Magic application will outperform the equivalent Entity Framework solution with at least 5x in speed
