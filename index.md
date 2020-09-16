@@ -98,9 +98,11 @@ code for you, in addition to 80.000 lines of frontend code. According to neutral
 the topic, an average software developer can produce ~750 lines of code per month. This implies that
 5 seconds with Magic _equals the productivity of a single developer for more than 9 years_.
 
-Of course, these types of comparisons aren't fully fair some may argue, but there is no doubt that
-Magic will soar your productivity to unimaginable heights compared to having to manually create
-the equivalent project.
+The above comparisons isn't completely fair, but there is no doubt that
+Magic will increase your productivity compared to having to manually create the
+equivalent project(s).
+
+> Magic, the equivalent of a 3D printer for Web apps
 
 In addition, you can often accomplish the same with 5 lines of Hyperlambda code, as you'll
 need hundreds and sometimes thousands of lines of C# code to accomplish. This is a fact since
