@@ -63,8 +63,9 @@ When the architect behind Magic and Hyperlambda published a scientific article a
 for MSDN Magazine the first time in 2017, the article became the 5th most read article
 that Microsoft had ever published..
 
-* [Read more about Hyperlambda I](/magic.node) - Node structure, and Hyperlambda parsing
-* [Read more about Hyperlambda II](/magic.lambda) - Default language specific slots/functions/keywords
+* [Hyperlambda Hello World](/tutorials/hyperlambda-hello-world) - The Hyperlambda Hello World app
+* [Reference documentation for Hyperlambda I](/magic.node) - Node structure, and Hyperlambda parsing
+* [Reference documentation for Hyperlambda II](/magic.lambda) - Default language specific slots/functions/keywords
 
 Magic and Hyperlambda is built in .Net Core and C#. It is a highly modular and extendible
 architecture, allowing you to intercept its core any ways you see fit.
