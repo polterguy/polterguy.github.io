@@ -54,20 +54,25 @@ from the Sakila database.
 
 In addition to the CRUD backend and Angular frontend generator, Magic is also a complete DSL
 engine, or Domain Specific programming Language engine - Giving you workflow support, task
-scheduling, the ability to create your own DSL, etc. Even if you don't care about its CRUD
-generator, Magic would still be highly valuable, due to its DSL. The DSL engine just
-so happens to easily lend itself to generating backend and frontend code, in
-addition to all the other things it helps you with.
+scheduling, the ability to create your own DSL, dynamic HTTP endpoints, etc. Even if you
+don't care about its CRUD generator, Magic would still be highly valuable, due to Hyperlambda.
+Hyperlambda just so happens to easily lend itself towards generating backend and frontend
+code, in addition to all the other things it helps you with.
+
+* [Hyperlambda Hello World](/tutorials/hyperlambda-hello-world) - The Hyperlambda Hello World app
+
+Below is more of a reference type of documentation. You'd probably want to start out with
+the above tutorial first though.
+
+* [Reference documentation for Hyperlambda I](/magic.node) - Node structure, and Hyperlambda parsing
+* [Reference documentation for Hyperlambda II](/magic.lambda) - Default language specific slots/functions/keywords
+
+Magic and Hyperlambda is built in .Net Core and C#. It is a highly modular and extendible
+architecture, allowing you to intercept its core any ways you see fit.
 
 When the architect behind Magic and Hyperlambda published a scientific article about Hyperlambda
 for MSDN Magazine the first time in 2017, the article became the 5th most read article
 that Microsoft had ever published..
-
-* [Read more about Hyperlambda I](/magic.node) - Node structure, and Hyperlambda parsing
-* [Read more about Hyperlambda II](/magic.lambda) - Default language specific slots/functions/keywords
-
-Magic and Hyperlambda is built in .Net Core and C#. It is a highly modular and extendible
-architecture, allowing you to intercept its core any ways you see fit.
 
 ## Task scheduler and workflows
 
