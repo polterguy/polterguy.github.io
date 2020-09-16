@@ -64,6 +64,10 @@ for MSDN Magazine the first time in 2017, the article became the 5th most read a
 that Microsoft had ever published..
 
 * [Hyperlambda Hello World](/tutorials/hyperlambda-hello-world) - The Hyperlambda Hello World app
+
+Below is more of a reference type of documentation. You'd probably want to start out with
+the above tutorial first though.
+
 * [Reference documentation for Hyperlambda I](/magic.node) - Node structure, and Hyperlambda parsing
 * [Reference documentation for Hyperlambda II](/magic.lambda) - Default language specific slots/functions/keywords
 
