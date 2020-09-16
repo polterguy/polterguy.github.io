@@ -273,7 +273,7 @@ see something resembling the following.
     "first_name": "NICK",
     "last_name": "WAHLBERG",
     "last_update": "2006-02-15T02:34:33.000Z"
-  },/* ... etc ... */
+  }
 ```
 
 As you can see, we created 3 lines of code, and we selected 10 records from
