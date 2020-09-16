@@ -224,9 +224,58 @@ If you invoke the endpoint now, you'll end up with the following result.
 ```
 
 If you try to invoke it with a _"foo"_ argument however, such as the following illustrates,
-the endpoint will throw an exception.
+the endpoint will return an error.
 
 ![Invoking endpoint with unknown argument](https://servergardens.files.wordpress.com/2020/09/argument-exception.png)
 
 The Hyperlambda evaluator doesn't really discriminate between JSON payload arguments,
-and QUERY parameters. From your Hyperlambda file, an argument is an argument - Period!
+and QUERY parameters. From your Hyperlambda file, an argument is an argument - Period.
+
+## Doing something interesting
+
+So far, we've only done boring stuff, hence it's time to do something fun.
+
+**Notice** - This Hyperlambda assumes you've somehow got the _"Sakila"_ database from
+Oracle installed. If you don't, you can exchange the _"sakila"_ parts below with
+an existing database you've got somewhere, and modify the SQL to become valid SQL,
+towards that database somehow. Just make sure you restrict the number of records you
+you select, in case you have thousands of records in your table, to avoid having
+to wait too long for the result to show up.
+
+If you're not using MySQL, you'll also have to exchange the above **[mysql.]** parts
+with for instance **[mssql.]** to retrieve data from a Microsoft SQL Server installation.
+
+Anyways, with the database disclaimer out of the way, let's get started. Create a new
+file in your _"Files"_ menu, inside of your _"/modules/tutorials/"_ folder, and name
+it _"read-data.get.hl"_. Put the following content into your file.
+
+```
+mysql.connect:sakila
+   mysql.select:select * from actor limit 10
+   return:x:-/*
+```
+
+Go to your _"Endpoints"_ menu item, and refresh it if necessary, for then to
+choose the _"read-data"_ endpoint, and click _"get"_. At which point you'll
+see something resembling the following.
+
+```json
+[
+  {
+    "actor_id": 1,
+    "first_name": "PENELOPE",
+    "last_name": "GUINESS",
+    "last_update": "2006-02-15T02:34:33.000Z"
+  },
+  {
+    "actor_id": 2,
+    "first_name": "NICK",
+    "last_name": "WAHLBERG",
+    "last_update": "2006-02-15T02:34:33.000Z"
+  },/* ... etc ... */
+```
+
+As you can see, we created 3 lines of code, and we selected 10 records from
+our database table, and returned it to the client as JSON.
+
+> Now you understand why it's called Hyperlambda ... ;)
