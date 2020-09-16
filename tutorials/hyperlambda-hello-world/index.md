@@ -2,7 +2,7 @@
 
 The word _"Hyperlambda"_ originates from _"hyper"_ and _"lambda"_, implying _"web functions"_.
 In order to understand Hyperlambda's usefulness, it is therefor valuable to use Hyperlambda to create
-an HTTP REST endpoint.
+an HTTP REST endpoint, that's basically the definition of a web function.
 
 To create an HTTP REST endpoint, we will need to create a Hyperlambda file. Use for instance
 the _"Files"_ menu item in the Magic Dashboard, and open up the folder called _"modules"_.
@@ -14,6 +14,7 @@ the screenshot below for details.
 ![Creating a new tutorials folder](https://servergardens.files.wordpress.com/2020/09/create-folder.png)
 
 Then open this folder, and create a new Hyperlambda file and name it _exactly_ as follows.
+Notice, the naming conventions _is_ important.
 
 ```
 hello-world.get.hl
@@ -34,7 +35,7 @@ return
 
 Save the file, and open up the _"Endpoints"_ dashboard link, in for instance a different tab
 in your browser. Click the _"Show endpoints"_ slider, and filter for _"hello-world"_ if this
-gives you a lot of results. Click the endpoint, at which point you'll see something such
+gives you a lot of files. Click the endpoint, at which point you'll see something such
 as the following.
 
 ![How your Hello World endpoint will look like](https://servergardens.files.wordpress.com/2020/09/invoke-endpoint.png)
@@ -42,7 +43,11 @@ as the following.
 Type in the following into the _"Query parameters"_ input textbox.
 
 ```
-name=Your Name
+name=John
 ```
 
-The click the _"get"_ button.
+The click the _"get"_ button. This will give you the following result.
+
+screenshot-3
+
+
