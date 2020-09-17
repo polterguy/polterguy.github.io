@@ -124,9 +124,9 @@ having been evaluated, will be `5`. To understand more about how
 expressions works, in combination with nodes, and Hyperlambda's
 typing system, you might benefit from reading the following.
 
-* [magic.node reference documentation](/documentation/magic.node)
+* [magic.node](/documentation/magic.node)
 
 The above URL explains expressions, nodes, how they tie into
 Hyperlambda, and how the typing system in Hyperlambda works.
 
-* [To learn more read the reference documentation](/documentation)
+* [Reference documentation](/documentation)
