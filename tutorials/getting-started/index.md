@@ -47,7 +47,9 @@ Select all tables, and click the _"Crudify all"_ button. After a
 couple of seconds, Magic have created CRUD HTTP endpoints necessary
 to administrate your users and roles. At this point, you can already
 visit the _"Users"_ and _"Roles"_ menu items, and create new users
-or roles as you see fit.
+or roles as you see fit. At this point, you have a 100% perfectly
+working, and highly secure, authentication and authorization
+backend.
 
 ![Crudify your Magic database](https://servergardens.files.wordpress.com/2020/09/crudify-magic-database.png)
 
