@@ -71,7 +71,8 @@ through your AppDomain, find all classes implementing the
 property, and use that as the _"key"_ to your slot. Later
 as you invoke the slot in Hyperlambda, the key will be used
 to retrieve an instance of your slot, and its `Signal`
-method will be invoked.
+method will be invoked, passing in the slot node as its
+argument.
 
 If you want to create async slots, you'll have to
 implement the `ISlotAsync` interface, and make sure your
