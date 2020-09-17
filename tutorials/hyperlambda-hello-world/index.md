@@ -180,8 +180,7 @@ return
 ```
 
 So obviously, the entire payload is transformed from JSON to lambda, and sent into your
-endpoint as an **[.argument]** node. We will go through the structure of exactly _how_
-this is done later.
+endpoint as an **[.argument]** node.
 
 ### Restricting arguments
 
