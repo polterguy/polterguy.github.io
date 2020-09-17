@@ -359,4 +359,4 @@ mssql.connect:BikeStores
    return:x:-/*
 ```
 
-> Now you understand why it's called Hyperlambda
+* [Continue to database CRUD operations](/tutorials/database)
