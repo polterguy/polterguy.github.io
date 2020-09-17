@@ -20,7 +20,6 @@
   <body>
       <div id="header">
         <nav>
-          <li class="fork"><a href="{{ site.github.repository_url }}">View On GitHub</a></li>
           {% if site.show_downloads %}
             <li class="downloads">
                 <a href="/">HOME</a>
@@ -28,9 +27,18 @@
             <li class="downloads">
                 <a href="https://servergardens.com/buy">BUY</a>
             </li>
-            <li class="downloads"><a href="/documentation">DOCS</a></li>
-            <li class="downloads"><a href="/tutorials">TUTORIALS</a></li>
-            <li class="downloads"><a href="{{ site.github.zip_url }}">DOWNLOAD</a></li>
+            <li class="downloads">
+              <a href="/documentation">DOCS</a>
+            </li>
+            <li class="downloads">
+              <a href="/tutorials">TUTORIALS</a>
+            </li>
+            <li class="downloads">
+              <a href="{{ site.github.repository_url }}">View On GitHub</a>
+            </li>
+            <li class="downloads">
+              <a href="{{ site.github.zip_url }}">DOWNLOAD</a>
+            </li>
           {% endif %}
         </nav>
       </div><!-- end header -->
