@@ -190,11 +190,10 @@ The create slot cannot be given a where condition, but all 3 other slots can,
 and the syntax is of course the _exact same syntax_ for SQL Server, as it is
 for MySQL. The result of the **[where]** argument above, obviously results
 in an SQL _"where"_ condition, allowing you to restrict which items
-the SQL should end up reading/changing/deleting.
-
-The first thing you'll need to understand about the where condition, is
-that its boolean operator is its outer most argument. This implies that
-if I create something such as the following Hyperlambda.
+the SQL should end up reading/changing/deleting. The first thing you'll need
+to understand about the where condition, is that its boolean operator is its
+outer most argument. This implies that if I create something such as the
+following Hyperlambda.
 
 ```
 where
