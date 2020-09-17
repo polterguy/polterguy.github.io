@@ -326,14 +326,19 @@ readable, such as I have done below.
 .arguments
    limit:long
    offset:long
+
 // Making sure only root users can access the endpoint
+
 auth.ticket.verify:root
+
 // Connecting to our database
 mysql.connect:sakila
+
    // Selecting items from our database
    mysql.select:select * from actor limit @limit offset @offset
       @limit:x:@.arguments/*/limit
       @offset:x:@.arguments/*/offset
+
    // Returning the results of the above select statement
    return:x:-/*
 ```
