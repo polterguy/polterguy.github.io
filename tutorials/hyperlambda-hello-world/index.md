@@ -358,7 +358,7 @@ and modify your endpoint's Hyperlambda to become something as follows.
 auth.ticket.verify:root
 
 // Connecting to our database
-mssql.connect:sakila
+mssql.connect:BikeStores
 
    // Selecting items from our database
    mssql.select:select * from sales.customers order by first_name offset @offset rows fetch next @limit rows only
