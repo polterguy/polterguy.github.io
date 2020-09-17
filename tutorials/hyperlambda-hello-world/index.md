@@ -228,6 +228,8 @@ following illustrates, the endpoint will return an error.
 
 The Hyperlambda evaluator doesn't really discriminate between JSON payload arguments,
 and QUERY parameters. From your Hyperlambda file, an argument is an argument - Period.
+But if you try to pass in an argument that the endpoint doesn't allow for, the
+file will never be executed for security reasons.
 
 ## Selecting data from your database
 
