@@ -121,10 +121,9 @@ get-value:x:@.arguments/*/foo
 
 Will result in that the value of the **[get-value]** node, after
 having been evaluated, will be `5`. To understand more about how
-expressions works, in combination with nodes, and Hyperlambda's
-typing system, you might benefit from reading the following.
-
-* [magic.node](/documentation/magic.node)
+expressions work, in addition to nodes, and Hyperlambda's
+typing system - You might benefit from reading about
+[magic.node](/documentation/magic.node).
 
 The above URL explains expressions, nodes, how they tie into
 Hyperlambda, and how the typing system in Hyperlambda works.
