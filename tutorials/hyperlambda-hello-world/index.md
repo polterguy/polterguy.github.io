@@ -321,4 +321,28 @@ mysql.connect:sakila
    return:x:-/*
 ```
 
+If you want to, you can also comment the file, to make it more easily readable, such
+as I have done below.
+
+```
+// Arguments this endpoint can handle
+.arguments
+   limit:long
+   offset:long
+
+// Making sure only root users can access the endpoint
+auth.ticket.verify:root
+
+// Connecting to our database
+mysql.connect:sakila
+
+   // Selecting items from our database
+   mysql.select:select * from actor limit @limit offset @offset
+      @limit:x:@.arguments/*/limit
+      @offset:x:@.arguments/*/offset
+
+   // Returning the results of the above select statement
+   return:x:-/*
+```
+
 > Now you understand why it's called Hyperlambda
