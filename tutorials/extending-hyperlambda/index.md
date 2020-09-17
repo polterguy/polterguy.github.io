@@ -128,3 +128,5 @@ typing system, you might benefit from reading the following.
 
 The above URL explains expressions, nodes, how they tie into
 Hyperlambda, and how the typing system in Hyperlambda works.
+
+* [To learn more read the reference documentation](/documentation)
