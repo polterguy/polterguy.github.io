@@ -345,7 +345,7 @@ mysql.connect:sakila
 ```
 
 If you're using Microsoft SQL Server instead of MySQL, you can probably use the
-[Bike Store SQL database](https://www.sqlservertutorial.net/sql-server-sample-database/)
+[Bike Store SQL database](https://www.sqlservertutorial.net/sql-server-sample-database/),
 and modify your endpoint's Hyperlambda to become something as follows.
 
 ```
