@@ -184,7 +184,7 @@ endpoint as an **[.argument]** node.
 
 ### Restricting arguments
 
-If you want to, you can explicitly declare what arguments your endpoint can handle,
+You can also explicitly declare what arguments your endpoint can handle,
 by creating a declaration **[.arguments]** node in your Hyperlambda, such as the
 following illustrates.
 
