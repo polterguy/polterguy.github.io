@@ -14,7 +14,7 @@ the following.
 4. [Install MySQL](https://dev.mysql.com/downloads/mysql/) or [Microsoft SQL Server Developer Edition](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 5. Download Magic from the link above
 
-## 1. What to do
+## 1. Start Magic
 
 1. Open _"magic.sln"_ file in Visual Studio and click F5. If you're using a Mac, open a terminal window in its backend folder, and type _"dotnet run"_
 2. Open a command prompt/terminal in the frontend folder, and type _"npm link"_
