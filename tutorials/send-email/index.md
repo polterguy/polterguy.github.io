@@ -33,8 +33,8 @@ your backend, using for instance Visual Studio or VS Code.
 }
 ```
 
-**Notice** - The _"magic"_ parts already exists in your file, so
-the above content, the _"smtp"_ parts, needs to be added _inside_
+**Notice** - The _"magic"_ part already exists in your settings, so
+the above _"smtp"_ parts, needs to be added _inside_
 of your existing _"magic"_ section. You will also have to change
 the actual settings to point to a valid SMTP server. The above
 settings will normally work if you're using your GMail account,
