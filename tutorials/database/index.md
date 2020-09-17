@@ -132,7 +132,7 @@ mysql.connect:sakila
       values
       where
          and
-            actor_id.eq:x:@.arguments/*/actor_id
+            actor_id:x:@.arguments/*/actor_id
 ```
 
 **actor.delete.hl**
@@ -146,7 +146,7 @@ mysql.connect:sakila
       table:actor
       where
          and
-            actor_id.eq:x:@.arguments/*/actor_id
+            actor_id:x:@.arguments/*/actor_id
 ```
 
 Exactly 50 lines of code, and we have all 4 CRUD operations towards one of our
@@ -218,6 +218,13 @@ You can create any amount of complexity in your where statements as you wish.
 This is done by recursively applying more and more **[and]** or **[or]** conditions,
 such as the following illustrates.
 
+Also try to understand the relationahip with the **[bar.mteq]** parts,
+the **[foo.eq]** parts, and how this results in two different comparison operators
+being generated for your different fields. **[x.mteq]** besically means _"more than or equal"_,
+and **[x.eq]** implies _"equals"_. The different comparison operators are described
+in [magic.data.common](/magic.data.common). If no comparison operator is specified,
+equality (.eq) is assumed.
+
 ```
 sql.read
    table:table1
@@ -250,8 +257,8 @@ to our endpoint, and by applying input arguments to our SQL slot invocation,
 we can restrict which items are updated/deleted/selected, etc ...
 
 The SQL generator has lots of additional features, such as joining multiple
-tables, grouping by some column, selecting aggregate results, etc. You can
-see its reference documentation below.
+tables, changing the comparison operator, grouping by some column, selecting
+aggregate results, etc. You can see its reference documentation below.
 
 * [magic.data.common](/magic.data.common) reference documentation
 
