@@ -7,7 +7,7 @@ extend it with your own keywords?
 What our previous [sending emails tutorial](/tutorials/send-email) tried
 to hint at, is that Magic is more than CRUD. In this tutorial, we
 will prove it, by creating our own Hyperlambda keyword, that
-invokes your own C# method, resulting in that Magic and Hyperlambda
+invokes a C# method, resulting in that Magic and Hyperlambda
 perfectly ties into C#, and its possibilities effectively becomes
 endless.
 
