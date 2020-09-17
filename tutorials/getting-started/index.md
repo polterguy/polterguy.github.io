@@ -73,11 +73,11 @@ When you have created your database, or maybe you already had an
 existing database from before, you can create CRUD endpoint
 wrapping your database of choice.
 
-Go back to the _"Crudify"_ menu item, but this time another
-database, choose _"All tables"_ in the _"Select table"_
-dropdown, and click _"Crudify all"_. After a couple of seconds,
-you'll have CRUD HTTP endpoints wrapping every single table
-in your database.
+Go back to the _"Crudify"_ menu item, but this time choose another
+database, for instance Sakila or Bike Store. Then choose _"All tables"_
+in the _"Select table"_ dropdown, and click _"Crudify all"_. After
+a couple of seconds, you'll have CRUD HTTP endpoints wrapping every
+single table in your database.
 
 ## 5. Generate your frontend
 
