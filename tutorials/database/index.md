@@ -2,8 +2,8 @@
 
 In case you didn't finish the [Hyperlambda Hello World tutorial](/tutorials/hyperlambda-hello-world),
 you would probably benefit from reading it before going through with this one. This tutorial
-is roughly some 10 minutes read, and you can probably easily follow all examples, in less
-than 20 minutes of total coding time.
+is roughly some 15 minutes read, and you can probably easily follow all examples, in less
+than 25 minutes of total coding time.
 
 Hyperlambda supports 2 database types: Microsoft SQL Server and MySQL - But adding support
 for another database, is probably easy for a seasoned C# developer. In
