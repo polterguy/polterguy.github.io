@@ -3,14 +3,6 @@
 
 @import "{{ site.theme }}";
 
-.site-nav {
-    li {
-        a:visited {
-            color: #aa7700;
-        }
-    }
-}
-
 section {
     h1 {
         display: none;
