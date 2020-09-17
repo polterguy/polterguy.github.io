@@ -1,8 +1,8 @@
 # Hyperlambda CRUD database endpoints
 
-A 15 minute read, making you understand how to transparently perform CRUD
-operations towards your database, and create HTTP endpoints wrapping each
-CRUD operation using Hyperlambda. In case you didn't finish the [Hyperlambda Hello World tutorial](/tutorials/hyperlambda-hello-world),
+A 15 minute read, making you understand how to create CRUD
+HTTP endpoints wrapping your database using Hyperlambda. In case you
+didn't finish the [Hyperlambda Hello World tutorial](/tutorials/hyperlambda-hello-world),
 you would probably benefit from reading it before going through with this one.
 
 Hyperlambda supports 2 database types: Microsoft SQL Server and MySQL - But adding support
