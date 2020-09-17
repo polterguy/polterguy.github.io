@@ -40,7 +40,7 @@ upon what database type you want to use Magic with.
 
 Click _"Save"_, and Magic will spend some few seconds configuring.
 
-## Crudify your first database
+## Crudify your authentication and authorization database
 
 Click the _"Crudify"_ menu item, and choose the _"magic"_ database.
 Select all tables, and click the _"Crudify all"_ button. After a
@@ -52,6 +52,8 @@ working, and highly secure, authentication and authorization
 backend.
 
 ![Crudify your Magic database](https://servergardens.files.wordpress.com/2020/09/crudify-magic-database.png)
+
+## Crudify your first custom database
 
 **Notice** - At this point you'll need a database. Below are links
 to example database for MySQL and SQL Server. Make sure you download
