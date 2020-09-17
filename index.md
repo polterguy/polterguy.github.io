@@ -171,3 +171,4 @@ you free updates.
 - [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic)
 - [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic)
 - [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic)
+
