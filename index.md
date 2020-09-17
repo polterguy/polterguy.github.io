@@ -1,4 +1,4 @@
-# Magically create Angular and .Net Core Web Apps
+# Magically create Web Apps
 
 Magic allows you to create your entire Web app by simply clicking two buttons. The first button will
 automatically create your backend, by wrapping your database tables into CRUD HTTP REST endpoints. The
@@ -11,7 +11,7 @@ into an Angular Web application.
 
 ## How it works
 
-Magic will read metadata from your database, and use this metadata to generate a Hyperlambda and .Net Core
+Magic will read metadata from your database, and use this metadata to generate a Hyperlambda
 HTTP REST Web API for you, wrapping all CRUD operations inside of REST endpoints. Then it will use
 metadata from the REST API to automatically generate Angular components, router links, menu items,
 datagrids, etc. The end result becomes that before you've even had to create as much as a single
