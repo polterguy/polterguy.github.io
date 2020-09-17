@@ -1,8 +1,6 @@
 
 # Magic Lambda Mail
 
-[![Build status](https://travis-ci.com/polterguy/magic.lambda.mail.svg?master)](https://travis-ci.com/polterguy/magic.lambda.mail)
-
  SMTP and POP3 helpers for Magic. More specifically, this project contains the following POP3 and SMTP slots
  helpers for Magic.
 
