@@ -21,6 +21,8 @@ mysql.connect:sakila
 
 If you want to restrict the columns returned, simply add them up as columns into your SQL.
 
+## Semantic SQL
+
 However, there exists an even better method, that we refer to as the _"semantic SQL generator"_.
 This approach completely abstract away the underlaying database vendor,
 and allows you to semantically declare which columns are returned - In addition to your
