@@ -270,12 +270,16 @@ see something resembling the following.
     "last_update": "2006-02-15T02:34:33.000Z"
   }
 ```
+
 As you can see, we created 3 lines of code, and we selected 10 records from
 our database table, and returned it to the client as JSON.
+
 ### Parametrizing your SQL
+
 By combining the above endpoint with arguments, we can easily parametrize
 our SQL, to allow for things such as paging, filtering, sorting, etc. Modify your
 existing endpoint _"read-data"_ file, and put the following code into it.
+
 ```
 .arguments
    limit:long
@@ -286,18 +290,22 @@ mysql.connect:sakila
       @offset:x:@.arguments/*/offset
    return:x:-/*
 ```
+
 Then try invoking the endpoint, but this time with the following arguments.
 ![Paging your result](https://servergardens.files.wordpress.com/2020/09/sql-read-with-offset.png)
 8 lines of Hyperlambda code, and we created an HTTP REST endpoint, retrieving data
 from your database, allowing for paging. To finish up the tutorial, put the
 following line of code at the top of it, just below its **[.arguments]** node.
+
 ```
 auth.ticket.verify:root
 ```
+
 And you have now secured access to this endpoint, such that _only_ users belonging
 to the _"root"_ role can invoke the endpoint. 9 lines of code, duplicating what would
 probably require hundreds of lines of code in C#. The complete code we ended up with
 can be found below.
+
 ```
 .arguments
    limit:long
@@ -309,8 +317,10 @@ mysql.connect:sakila
       @offset:x:@.arguments/*/offset
    return:x:-/*
 ```
+
 If you want to, you can also add comments to the file, to make it more
 readable, such as I have done below.
+
 ```
 // Arguments this endpoint can handle
 .arguments
@@ -327,9 +337,11 @@ mysql.connect:sakila
    // Returning the results of the above select statement
    return:x:-/*
 ```
+
 If you're using Microsoft SQL Server instead of MySQL, you can probably use the
 [Bike Store SQL database](https://www.sqlservertutorial.net/sql-server-sample-database/),
 and modify your endpoint's Hyperlambda to become something as follows.
+
 ```
 // Arguments this endpoint can handle
 .arguments
@@ -346,4 +358,5 @@ mssql.connect:BikeStores
    // Returning the results of the above select statement
    return:x:-/*
 ```
+
 > Now you understand why it's called Hyperlambda
