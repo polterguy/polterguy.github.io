@@ -2,7 +2,11 @@
 
 The word _"Hyperlambda"_ originates from _"hyper"_ and _"lambda"_, implying _"web functions"_.
 In order to understand Hyperlambda's usefulness, it is therefor valuable to use Hyperlambda to create
-an HTTP REST endpoint, or a _"web function"_.
+an HTTP REST endpoint, or a _"web function"_. In this tutorial, we will start out with creating
+a simple _"web function"_, and end up with retrieving items from your database, and
+return these to the client as JSON. And for kicks, we'll secure our endpoint,
+only allowing authenticated users to access the endpoint. The tutorial is a 5
+minute read.
 
 To create an HTTP REST endpoint, we will need to create a Hyperlambda file. Use for instance
 the _"Files"_ menu item in the Magic Dashboard, and open up the folder called _"modules"_.
