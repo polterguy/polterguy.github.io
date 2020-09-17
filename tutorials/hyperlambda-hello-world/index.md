@@ -1,6 +1,6 @@
 # Hyperlambda Hello World
 
-15 minute read, bringing you from Hyperlambda _"hello world"_, to selecting items
+A 20 minute read, bringing you from Hyperlambda _"hello world"_, to selecting items
 from your database, and returning these over an HTTP REST endpoint as JSON,
 adding paging and authorization in the process.
 
