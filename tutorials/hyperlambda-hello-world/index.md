@@ -5,7 +5,7 @@ In order to understand Hyperlambda's usefulness, it is therefor valuable to use 
 an HTTP REST endpoint, or a _"web function"_. In this tutorial, we will start out with creating
 a simple _"web function"_, and end up with retrieving items from your database, and
 return these to the client as JSON. And for kicks, we'll secure our endpoint,
-only allowing authenticated users to access the endpoint. The tutorial is a 5
+only allowing authenticated users to access the endpoint. The tutorial is a 10
 minute read.
 
 To create an HTTP REST endpoint, we will need to create a Hyperlambda file. Use for instance
@@ -233,8 +233,6 @@ file will never be executed for security reasons.
 
 ## Selecting data from your database
 
-So far, we've only done boring stuff, hence it's time to do something fun.
-
 **Notice** - This Hyperlambda assumes you've somehow got the _"Sakila"_ database from
 Oracle installed. If you don't, you can exchange the _"sakila"_ parts below with
 an existing database you've got somewhere, and modify the SQL to become valid SQL,
@@ -245,9 +243,8 @@ to wait too long for the result to show up.
 If you're not using MySQL, you'll also have to exchange the above **[mysql.]** parts
 with for instance **[mssql.]** to retrieve data from a Microsoft SQL Server installation.
 
-Anyways, with the database disclaimer out of the way, let's get started. Create a new
-file in your _"Files"_ menu, inside of your _"/modules/tutorials/"_ folder, and name
-it _"read-data.get.hl"_. Put the following content into your file.
+Create a new file in your _"Files"_ menu, inside of your _"/modules/tutorials/"_ folder,
+and name it _"read-data.get.hl"_. Put the following content into your file.
 
 ```
 mysql.connect:sakila
@@ -278,6 +275,51 @@ see something resembling the following.
 As you can see, we created 3 lines of code, and we selected 10 records from
 our database table, and returned it to the client as JSON.
 
-## Combining what we've learned so far
+### Parametrizing your SQL
 
-> Now you understand why it's called Hyperlambda ... ;)
+By combining the above endpoint with arguments, we can easily parametrize
+our SQL, to allow for things such as paging, filtering, sorting, etc. Modify your
+existing endpoint _"read-data"_ file, and put the following code into it.
+
+```
+.arguments
+   limit:long
+   offset:long
+mysql.connect:sakila
+   mysql.select:select * from actor limit @limit offset @offset
+      @limit:x:@.arguments/*/limit
+      @offset:x:@.arguments/*/offset
+   return:x:-/*
+```
+
+Then try invoking the endpoint, but this time with the following arguments.
+
+![Paging your result](https://servergardens.files.wordpress.com/2020/09/sql-read-with-offset.png)
+
+8 lines of Hyperlambda code, and we created an HTTP REST endpoint, retrieving data
+from your database, allowing for paging. To finish up the tutorial, put the
+following line of code at the tope of it, just below its **[.arguments]** node.
+
+```
+auth.ticket.verify:root
+```
+
+And you have now secured access to this endpoint, such that _only_ users belonging
+to the _"root"_ role can invoke the endpoint. 9 lines of code, duplicating what would
+probably require hundreds of lines of code in C#.
+
+> Now you understand why it's called Hyperlambda
+
+The complete code we ended up with can be found below for reference purposes.
+
+```
+.arguments
+   limit:long
+   offset:long
+auth.ticket.verify:root
+mysql.connect:sakila
+   mysql.select:select * from actor limit @limit offset @offset
+      @limit:x:@.arguments/*/limit
+      @offset:x:@.arguments/*/offset
+   return:x:-/*
+```
