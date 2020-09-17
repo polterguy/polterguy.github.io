@@ -280,6 +280,24 @@ endpoints, and for instance updating or deleting _every single item_
 in our database - Which would probably be a bad thing ...
 
 * [Read more about validators here](/magic.lambda.validators)
+
+## Raw SQL access
+
+If the above _"semantic slots"_ doesn't serve you, Magic and Hyperlambda
+also provides _"raw access"_ to SQL, allowing you to execute any arbitrary
+SQL, towards any of your database types. To use these lots you'd probably
+want to check out your database specific adapter, but a list of the MySQL
+versions can be found below.
+
+* __[mysql.execute]__ - Wraps the `DbCommand.ExecuteNonQuery` method
+* __[mysql.scalar]__ - Wraps the `DbCommand.ExecuteScalar` method
+* __[mysql.select]__ - Wraps the `DbCommand.ExecuteReader` method
+
+In addition the database adapters in Magic also gives you transaction
+support, creating, committing, and rolling back database transactions,
+and lots of additional features. Please refer to your specific database
+adapter for more information about these slots.
+
 * [Read about MySQL adapters here](/magic.lambda.mysql)
 * [Read about SQL Server adapters here](/magic.lambda.mssql)
 
