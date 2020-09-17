@@ -1,6 +1,6 @@
-# Using Hyperlambda to perform CRUD operations towards your database
+# Hyperlambda CRUD database endpoints
 
-In case you didn't finish the [Hyperlambda Hello World tutorial](/hyperlambda-hello-world),
+In case you didn't finish the [Hyperlambda Hello World tutorial](/tutorials/hyperlambda-hello-world),
 you would probably benefit from reading it before going through with this one. This tutorial
 is roughly some 10 minutes read, and you can probably easily follow all examples, in less
 than 20 minutes of total coding time.
@@ -9,7 +9,7 @@ Hyperlambda supports 2 database types, Microsoft SQL Server and MySQL - But addi
 for another database type, is probably easy for a seasoned C# developer. As we saw in
 the previous tutorial, we could easily execute any arbitrary select SQL, and return the
 results of the DataReader back to the client, transforming it to JSON in the process.
-In case you don't remember how we did this, the code can be found below.
+In case you don't remember how we did this, some code that does this can be found below.
 
 ```
 mysql.connect:sakila
@@ -18,16 +18,17 @@ mysql.connect:sakila
 ```
 
 If you want to restrict the columns returned, simply add them up as columns into your SQL.
-However, there exists an even better way, which we refer to as _"semantic SQL generating"_.
+However, there exists an even better method, that we refer to as the _"semantic SQL generator"_.
 This approach completely abstract away the underlaying database vendor,
 and allows you to semantically declare which columns are returned - In addition to your
 where clause, order clause, and paging. And what's even better, is that it transparently
-works towards any of your existing Magic database adapters, allowing you to use the
-same structure for querying SQL Server as you would use to query MySQL - Assuming you
-have the relevant tables and columns in some database in your database type.
+generates correct SQL towards any of your existing Magic database adapters, allowing you to use the
+same structure for querying SQL Server as you would use to query MySQL.
+
 This approach arguably reduces your database type down to a _"configurable property"_
-in your end application. Below is an example resulting in the exact same SQL as the
-above Hyperlambda, except it's using the _"semantic structure"_, instead of raw SQL.
+in your end application, allowing you to serve any database, with the exact same code.
+Below is an example resulting in the same SQL as the above Hyperlambda, except
+this time we use the _"semantic structure"_, instead of providing _"raw"_ SQL.
 
 ```
 mysql.connect:sakila
@@ -39,8 +40,10 @@ mysql.connect:sakila
 
 Notice how the above doesn't explicitly provide any SQL, but as it's being
 executed towards your database adapter, its result becomes the same as the
-first handcoded SQL version. You can also restrict what columns you wish to
-return, such as the following illustrates.
+handcoded SQL version above.
+
+You can also restrict what columns you wish to return, such as the following
+illustrates.
 
 ```
 mysql.connect:sakila
@@ -54,8 +57,10 @@ mysql.connect:sakila
 ```
 
 The above of course, will only return the _"first_name"_ and _"last_name"_
-columns form your _"actor"_ table. The following slots exists for all CRUD
-operations towards your database.
+columns form your _"actor"_ table.
+
+The following _"semantic"_ slots exists for all CRUD operations towards
+your database.
 
 * __[mysql.create]__ - Creates (inserts) a new record into your database
 * __[mysql.read]__ - Reads records from your database
@@ -64,10 +69,9 @@ operations towards your database.
 
 All of the above slots have **[mssql.]** versions for Microsoft SQL Server.
 If you want to follow this tutorial towards a Microsoft SQL Server database
-instead of a MySQL database, then just replace _"mysql"_ with _"mssql"_, and
+instead of a MySQL database, just replace _"mysql"_ with _"mssql"_, and
 everything should work the same way, assuming you use some columns and
-tables that actually exists in your SQL Server database - And that you
-connect to an existing SQL Server database in your instance.
+tables that actually exists in your SQL Server database.
 
 ## Creating CRUD HTTP endpoints
 
@@ -79,8 +83,8 @@ files into your folder.
 
 ```
 .arguments
-   first_name
-   last_name
+   first_name:string
+   last_name:string
 mysql.connect:sakila
    add:x:./*/mysql.create/*/values
       get-nodes:x:@.arguments/*
@@ -115,9 +119,9 @@ mysql.connect:sakila
 
 ```
 .arguments
-   actor_id
-   first_name
-   last_name
+   actor_id:long
+   first_name:string
+   last_name:string
 validators.mandatory:x:@.arguments/*/actor_id
 mysql.connect:sakila
    add:x:./*/mysql.update/*/values
@@ -135,7 +139,7 @@ mysql.connect:sakila
 
 ```
 .arguments
-   actor_id
+   actor_id:long
 validators.mandatory:x:@.arguments/*/actor_id
 mysql.connect:sakila
    mysql.delete
@@ -149,20 +153,22 @@ Exactly 50 lines of code, and we have all 4 CRUD operations towards one of our
 database tables, with the read endpoint being able to page and limit its
 result set. Not too bad for 50 lines of code if you ask me.
 
-And in fact, if you automatically CRUDify your database tables, the Hyperlambda
+**Notice 1** - If you automatically CRUDify your database tables, the Hyperlambda
 generator creates its endpoint files more or less like we manually created
-above, except of course it does it in 1 second. And you can add authorization
-to your endpoints just as easily as we did in the previous _"hello world"_
-tutorial.
+them above, except of course it does it in 1 second.
 
-**Notice** - If you're using SQL Server instead of MySQL, simply change
+**Notice 2** - You can add authorization to your endpoints just as easily as we
+did in the previous _"hello world"_ tutorial.
+
+**Notice 3** - If you're using SQL Server instead of MySQL, simply change
 all occurencies of _"mysql"_ in the above code snippets to become _"mssql"_
 instead.
 
-Go to your _"Endpoints"_ menu item in your Magic Dashboard, and play around
+Now go to your _"Endpoints"_ menu item in your Magic Dashboard, and play around
 with your endpoints as you see fit. Try to create some few items, edit some
 items, delete a couple of items, and read items. The association between
-CRUD operations and endpoint verbs in the above code, is as follows.
+CRUD operations and endpoint verbs in the above code, is as follows in case
+you wonder.
 
 * `POST` - Create one item
 * `GET` - Read items
@@ -174,9 +180,9 @@ multiple items in its _"update"_ endpoint, and/or _"delete"_ endpoint, etc -
 But first, let's have a look at the **[where]** condition above, which is
 common for all 3 slots above, minus the **[mysql.create]** slot.
 
-## The [where] condition
+## The [where] argument
 
-The above **[where]** condition is possible to inject into the following 3 slots.
+The above **[where]** condition can be injected into the following 3 slots.
 
 * __[mysql.read]__
 * __[mysql.update]__
@@ -199,18 +205,18 @@ where
       bar.mteq:int:5
 ```
 
-This would result in something equivalent to the following being executed
-towards my database.
+This would result in something equivalent to the following SQL being generated.
 
 ```
 where foo = 'some value' and bar >= 5
 ```
 
 **Notice** - All values will be added as SQL parameters, making it
-impossible to inject malicious SQL into your database. You can create
-any complexity of wher statements you wish however, by recursively
-applying moer and more **[and]** or **[or]** conditions, such as the
-following illustrates.
+impossible to inject malicious SQL into your database.
+
+You can create any amount of complexity in your where statements as you wish.
+This is done by recursively applying more and more **[and]** or **[or]** conditions,
+such as the following illustrates.
 
 ```
 sql.read
@@ -233,12 +239,13 @@ sql.read:select * from 'table1' where 'field1' = @0 or ('field2' = @1 and 'field
    @2:dudes
 ```
 
-Notice how the `and` parts can be found inside of paranthesis, since they're
-considered a _"nested condition"_, where the outer condition is an _"or"_.
+Notice the relationship between the inner most `and` statement, and the paranthesis
+generated in your SQL above. Each boolean operator added to your **[where]** beyond
+its first, will create a new _"scope"_, adding paranthesis to your resulting SQL.
 Also notice how by setting **[limit]** to _"-1"_ we can completely avoid
 having the default limit of 25 applied to our end result.
 
-Hence, by intelligently combining our **[where]** node with input arguments
+By intelligently combining our **[where]** node with input arguments
 to our endpoint, and by applying input arguments to our SQL slot invocation,
 we can restrict which items are updated/deleted/selected, etc ...
 
@@ -265,4 +272,7 @@ code, we could in theory have some malicious client invoking our
 endpoints, and for instance updating or deleting _every single item_
 in our database - Which would probably be a bad thing ...
 
-And that's it for now :)
+* [Read more about validators here](/magic.lambda.validators)
+
+And that's it for now. Hopefully I didn't snatch more than 10 minues
+of your time :)
