@@ -321,8 +321,8 @@ mysql.connect:sakila
    return:x:-/*
 ```
 
-If you want to, you can also comment the file, to make it more easily readable, such
-as I have done below.
+If you want to, you can also add comments to the file, to make it more
+readable, such as I have done below.
 
 ```
 // Arguments this endpoint can handle
