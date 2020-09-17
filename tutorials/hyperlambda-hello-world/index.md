@@ -6,7 +6,7 @@ adding paging and authorization in the process.
 
 The word _"Hyperlambda"_ originates from _"hyper"_ and _"lambda"_, implying _"web functions"_.
 In order to understand Hyperlambda's usefulness, it is therefor valuable to use Hyperlambda to create
-an HTTP REST endpoint. To create an HTTP REST endpoint, we will need
+an HTTP REST endpoint. To create an endpoint, we will need
 to create a Hyperlambda file. Use for instance the _"Files"_ menu item in the Magic Dashboard,
 and open up the folder called _"modules"_. Create a new folder inside of this folder, and
 name your new folder _"tutorials"_.
