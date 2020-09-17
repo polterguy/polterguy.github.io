@@ -48,11 +48,11 @@ Click the _"get"_ button. This will invoke the endpoint, and give you the follow
 ## Gory details
 
 The first parts of the filename, the _"hello-world"_ parts, becomes it relative URL.
-Since we placed the file inside of our _"modules/documentation/tutorials/"_ folder, its relative URL
-becomes _"magic/modules/documentation/tutorials/hello-world"_. The initial _"magic/"_ parts of your
+Since we placed the file inside of our _"modules/tutorials/"_ folder, its relative URL
+becomes _"magic/modules/tutorials/hello-world"_. The initial _"magic/"_ parts of your
 endpoint's URL, informs Magic that this is a dynamic endpoint, and will resolve to the
 modules folder. If you're using Magic from your development machine on localhost, you can use
-[the following URL to invoke your endpoint](http://localhost:55247/magic/modules/documentation/tutorials/hello-world).
+[the following URL to invoke your endpoint](http://localhost:55247/magic/modules/tutorials/hello-world).
 
 The first parts of its extension, the _"get"_ parts, declares that our file is an HTTP GET
 endpoint, which we can invoke using the GET verb. The last parts, the _".hl"_ extension,
@@ -242,7 +242,7 @@ to wait too long for the result to show up.
 If you're not using MySQL, you'll also have to exchange the above **[mysql.]** parts
 with for instance **[mssql.]** to retrieve data from a Microsoft SQL Server installation.
 
-Create a new file in your _"Files"_ menu, inside of your _"/modules/documentation/tutorials/"_ folder,
+Create a new file in your _"Files"_ menu, inside of your _"/modules/tutorials/"_ folder,
 and name it _"read-data.get.hl"_. Put the following content into your file.
 
 ```
@@ -343,4 +343,4 @@ mysql.connect:sakila
    return:x:-/*
 ```
 
-* [Continue to database CRUD operations](/documentation/tutorials/database)
+* [Continue to database CRUD operations](/tutorials/database)

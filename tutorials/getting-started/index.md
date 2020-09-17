@@ -102,4 +102,4 @@ When ng serve is done transpiling your Angular project,
 [open localhost:4201](https://localhost:4201), and login with
 your root username and password.
 
-* [Continue to Hyperlambda Hello World](/documentation/tutorials/hyperlambda-hello-world)
+* [Continue to Hyperlambda Hello World](/tutorials/hyperlambda-hello-world)

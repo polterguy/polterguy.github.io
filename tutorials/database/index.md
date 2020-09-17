@@ -1,6 +1,6 @@
 # Hyperlambda CRUD database endpoints
 
-In case you didn't finish the [Hyperlambda Hello World tutorial](/documentation/tutorials/hyperlambda-hello-world),
+In case you didn't finish the [Hyperlambda Hello World tutorial](/tutorials/hyperlambda-hello-world),
 you would probably benefit from reading it before going through with this one. This tutorial
 is roughly some 15 minutes read, and you can probably easily follow all examples, in less
 than 25 minutes of total coding time.
@@ -11,7 +11,7 @@ our previous tutorial, we executed a select SQL statement, and returned
 the results back to the client as JSON. In case you don't remember how
 we did this, here is some example code doing such a thing.
 
-**Filename - "/modules/documentation/tutorials/read-data.get.hl"**
+**Filename - "/modules/tutorials/read-data.get.hl"**
 
 ```
 mysql.connect:sakila
@@ -306,4 +306,4 @@ adapter for more information about these slots.
 And that's it for now. Hopefully I didn't snatch more than 10 minues
 of your time :)
 
-* [Continue to sending emails](/documentation/tutorials/send-email)
+* [Continue to sending emails](/tutorials/send-email)

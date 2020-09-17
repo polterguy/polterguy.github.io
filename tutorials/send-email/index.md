@@ -42,7 +42,7 @@ you exchange your username/password combination with your GMail
 credentials, and you enable your GMail account for _"insecure apps"_.
 
 When you have done the above, you can create a new HTTP POST
-endpoint inside your _"/modules/documentation/tutorials/"_ folder, and name
+endpoint inside your _"/modules/tutorials/"_ folder, and name
 your file _"send-email.post.hl"_. Put the following content
 into your file.
 
@@ -91,4 +91,4 @@ your database, is really cool. But Magic can do _much_ more
 than CRUD. Hopefully this little 3 minute long read have
 opened your eyes in regards to this.
 
-* [Continue to extending Hyperlambda with C#](/documentation/tutorials/extending-hyperlambda)
+* [Continue to extending Hyperlambda with C#](/tutorials/extending-hyperlambda)
