@@ -63,7 +63,7 @@ you have the result of adding those two arguments.
 
 Fundamentally, there is _zero difference_ between the above
 `ISlot` class you just created, and any other slot you invoke
-using Hyperlambda - It's the _exact same thing_ in fact.
+using Hyperlambda - It's _the exact same thing_ in fact.
 
 The way this works, is that as Magic starts, it will run
 through your assembly, find all classes implementing the
