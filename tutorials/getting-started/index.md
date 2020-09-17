@@ -88,8 +88,8 @@ button, and after a couple of seconds, you'll get a zip file.
 
 Unzip the zip file Magic gave you, open a terminal/command
 prompt, go to the folder where the zip file was unzipped,
-and type _"npm link"_. Afterwards type the following into
-the same terminal window.
+and type _"npm link"_. When npm link is done, type the
+following into the same terminal window.
 
 ```
 ng serve --port 4201
