@@ -125,7 +125,4 @@ expressions work, in addition to nodes, and Hyperlambda's
 typing system - You might benefit from reading about
 [magic.node](/documentation/magic.node).
 
-The above URL explains expressions, nodes, how they tie into
-Hyperlambda, and how the typing system in Hyperlambda works.
-
 * [Reference documentation](/documentation)
