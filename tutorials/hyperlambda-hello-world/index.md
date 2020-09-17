@@ -344,4 +344,29 @@ mysql.connect:sakila
    return:x:-/*
 ```
 
+If you're using Microsoft SQL Server instead of MySQL, you can probably use the
+[Bike Store SQL database](https://www.sqlservertutorial.net/sql-server-sample-database/)
+and modify your endpoint's Hyperlambda to become something as follows.
+
+```
+// Arguments this endpoint can handle
+.arguments
+   limit:long
+   offset:long
+
+// Making sure only root users can access the endpoint
+auth.ticket.verify:root
+
+// Connecting to our database
+mssql.connect:sakila
+
+   // Selecting items from our database
+   mssql.select:select * from sales.customers order by first_name offset @offset rows fetch next @limit rows only
+      @limit:x:@.arguments/*/limit
+      @offset:x:@.arguments/*/offset
+
+   // Returning the results of the above select statement
+   return:x:-/*
+```
+
 > Now you understand why it's called Hyperlambda
