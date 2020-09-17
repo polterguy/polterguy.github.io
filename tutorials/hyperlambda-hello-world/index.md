@@ -54,6 +54,8 @@ the file inside of our _"modules/tutorials/"_ folder, its complete URL becomes
 _"magic/modules/tutorials/hello-world"_. If you're using Magic from your development machine
 on localhost, you can use
 [the following URL to invoke your endpoint](http://localhost:55247/magic/modules/tutorials/hello-world).
+The initial _"magic/"_ parts of your endpoint's URL, informs Magic that this is a dynamic
+endpoint, and will resolve to the modules folder.
 
 The first parts of its extension, the _"get"_ parts, declares that our file is an HTTP GET
 endpoint, which we can invoke using the GET verb.
