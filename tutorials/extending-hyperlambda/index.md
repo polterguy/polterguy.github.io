@@ -66,7 +66,7 @@ Fundamentally, there is _zero difference_ between the above
 using Hyperlambda - It's _the exact same thing_ in fact.
 
 The way this works, is that as Magic starts, it will run
-through your assembly, find all classes implementing the
+through your AppDomain, find all classes implementing the
 `ISlot` interface, retrieve its `Slot` attribute's name
 property, and use that as the _"key"_ to your slot. Later
 as you invoke the slot in Hyperlambda, the key will be used
