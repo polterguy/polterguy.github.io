@@ -94,12 +94,10 @@ the following payload into your file.
 ```
 
 When you click the _"post"_ button, the endpoint returns the exact same payload as it
-was given.
-
-The way this works, is that any arguments passed into your endpoint, will end up inside of
-an **[.arguments]** node, inside of your lambda, as it is being executed. So your
-lambda will actually look like the following when it's executed, due to its arguments collection
-being passed into it.
+was given. The way this works, is that any arguments passed into your endpoint, will
+end up inside of an **[.arguments]** node, inside of your lambda, as it is being executed.
+So your lambda will actually look like the following when it's executed, due to its
+arguments collection being passed into it.
 
 ```
 .arguments
