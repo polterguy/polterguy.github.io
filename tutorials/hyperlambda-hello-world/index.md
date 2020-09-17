@@ -297,7 +297,7 @@ Then try invoking the endpoint, but this time with the following arguments.
 
 8 lines of Hyperlambda code, and we created an HTTP REST endpoint, retrieving data
 from your database, allowing for paging. To finish up the tutorial, put the
-following line of code at the tope of it, just below its **[.arguments]** node.
+following line of code at the top of it, just below its **[.arguments]** node.
 
 ```
 auth.ticket.verify:root
