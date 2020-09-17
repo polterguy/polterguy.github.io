@@ -97,7 +97,6 @@ ng serve --port 4201
 
 This time we'll have to choose a different port, since
 port 4200 is already busy serving your Magic Dashboard.
-
 When ng serve is done transpiling your Angular project,
 open a browser in the following URL, and login with
 your root username and password.
