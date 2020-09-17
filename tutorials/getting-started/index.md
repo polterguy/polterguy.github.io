@@ -44,7 +44,7 @@ upon what database type you want to use Magic with.
 
 Click _"Save"_, and Magic will spend some few seconds configuring.
 
-## 3. Crudify your authentication and authorization database
+## 3. Crudify your auth database
 
 Click the _"Crudify"_ menu item, and choose the _"magic"_ database.
 Select all tables, and click the _"Crudify all"_ button. After a
