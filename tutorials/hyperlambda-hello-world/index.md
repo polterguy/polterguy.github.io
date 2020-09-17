@@ -343,4 +343,4 @@ mysql.connect:sakila
    return:x:-/*
 ```
 
-* [Continue to database CRUD operations](/tutorials/database)
+* [Continue to database CRUD operations](/tutorials/database-crud-operations)

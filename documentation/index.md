@@ -8,7 +8,7 @@ The tutorials are intended to be read from top to bottom.
 
 1. [Getting started](/tutorials/getting-started) - Teaches you how to get started with Magic
 2. [Hyperlambda Hello World](/tutorials/hyperlambda-hello-world) - Teaches you the basics of Hyperlambda
-3. [Database CRUD operations](/tutorials/database) - Teaches you the basics of CRUD database operations
+3. [Database CRUD operations](/tutorials/database-crud-operations) - Teaches you the basics of CRUD database operations
 4. [Sending an email](/tutorials/send-email) - Teaches you how to create a send email endpoint
 5. [Extending Hyperlambda with C#](/tutorials/extending-hyperlambda) - Teaches you how to extend Hyperlambda with C#
 
