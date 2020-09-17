@@ -12,7 +12,7 @@ perfectly ties into C#, and its possibilities effectively becomes
 endless.
 
 First expand your _"backend/slots/"_ folder, and create a new file,
-and name it for instance Add.cs. Add the following content to it.
+and name it _"Add.cs_". Add the following content to it.
 
 ```csharp
 using magic.node;
