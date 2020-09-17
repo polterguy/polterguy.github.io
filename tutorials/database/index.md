@@ -70,4 +70,86 @@ connect to an existing SQL Server database in your instance.
 
 ## Creating CRUD HTTP endpoints
 
+Let's create all 4 CRUD operations towards our MySQL Sakila _"actor"_ table.
+Create a new folder called _"/modules/data-crud/"_ and put the 4 following
+files into your folder.
 
+**actor.post.hl**
+
+```
+.arguments
+   first_name
+   last_name
+mysql.connect:sakila
+   add:x:./*/mysql.create/*/values
+      get-nodes:x:@.arguments/*
+   mysql.create
+      table:actor
+      values
+   unwrap:x:+/*
+   return
+      id:x:@mysql.create
+```
+
+**actor.get.hl**
+
+```
+.arguments
+   limit:long
+   offset:long
+mysql.connect:sakila
+   add:x:./*/mysql.read
+      get-nodes:x:@.arguments/*
+   mysql.read
+      table:actor
+      columns
+         actor_id
+         first_name
+         last_name
+         last_update
+   return:x:-/*
+```
+
+**actor.put.hl**
+
+```
+.arguments
+   actor_id
+   first_name
+   last_name
+validators.mandatory:x:@.arguments/*/actor_id
+mysql.connect:sakila
+   add:x:./*/mysql.update/*/values
+      get-nodes:x:@.arguments/*/first_name
+      get-nodes:x:@.arguments/*/last_name
+   mysql.update
+      table:actor
+      values
+      where
+         and
+            actor_id.eq:x:@.arguments/*/actor_id
+```
+
+**actor.delete.hl**
+
+```
+.arguments
+   actor_id
+validators.mandatory:x:@.arguments/*/actor_id
+mysql.connect:sakila
+   mysql.delete
+      table:actor
+      where
+         and
+            actor_id.eq:x:@.arguments/*/actor_id
+```
+
+Exactly 50 lines of code, and we have all 4 CRUD operations towards one of our
+database tables, with the read endpoint being able to page and limit its
+result set. Not too bad for 50 lines of code if you ask me.
+
+And in fact, if you automatically CRUDify your database tables, the Hyperlambda
+generator creates its endpoint files more or less like we manually created
+above, except of course it does it in 1 second. And you can add authorization
+to your endpoints just as easily as we did in the previous _"hello world"_
+tutorial.
