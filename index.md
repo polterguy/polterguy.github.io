@@ -60,6 +60,7 @@ Hyperlambda just so happens to easily lend itself towards generating backend and
 code, in addition to all the other things it helps you with.
 
 * [Hyperlambda Hello World](/tutorials/hyperlambda-hello-world) - The Hyperlambda Hello World app
+* [Hyperlambda CRUD functions towards your database](/tutorials/database) - Using Hyperlambda to create, read, update and delete database records
 
 Below is more of a reference type of documentation. You'd probably want to start out with
 the above tutorial first though.
