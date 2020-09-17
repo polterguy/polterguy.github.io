@@ -209,10 +209,9 @@ where foo = 'some value' and bar >= 5
 ```
 
 **Notice** - All values will be added as SQL parameters, making it
-impossible to inject malicious SQL into your database.
-
-Also try to understand the relationahip between the **[foo.eq]** parts,
-the **[bar.mteq]** parts, and how this results in two different comparison operators
+impossible to inject malicious SQL into your database. Also try to
+understand the relationship between the **[foo.eq]** parts, the
+**[bar.mteq]** parts, and how this results in two different comparison operators
 being generated for the fields. **[x.mteq]** besically means _"x more than or equals"_,
 while **[x.eq]** implies _"x equals"_. If no comparison operator is specified,
 equality (.eq) is assumed. The different comparison operators, and their logic,
