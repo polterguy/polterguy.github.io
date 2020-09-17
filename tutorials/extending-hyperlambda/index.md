@@ -1,6 +1,6 @@
 # Extending Hyperlambda with C#
 
-A 5 minute long read, about how you can extend Hyperlambda, with your own
+A 5 minute long read, about how you can extend Hyperlambda with your own
 C# methods. After all, what would a DLS engine be without the ability to
 extend it with your own keywords?
 
@@ -71,8 +71,10 @@ through your AppDomain, find all classes implementing the
 property, and use that as the _"key"_ to your slot. Later
 as you invoke the slot in Hyperlambda, the key will be used
 to retrieve an instance of your slot, and its `Signal`
-method will be invoked, passing in the slot node as its
-argument.
+method will be invoked, passing in the slot invocation node
+as its argument.
+
+### Async slots
 
 If you want to create async slots, you'll have to
 implement the `ISlotAsync` interface, and make sure your
