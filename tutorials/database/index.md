@@ -5,11 +5,13 @@ you would probably benefit from reading it before going through with this one. T
 is roughly some 10 minutes read, and you can probably easily follow all examples, in less
 than 20 minutes of total coding time.
 
-Hyperlambda supports 2 database types, Microsoft SQL Server and MySQL - But adding support
-for another database type, is probably easy for a seasoned C# developer. As we saw in
-the previous tutorial, we could easily execute any arbitrary select SQL, and return the
-results of the DataReader back to the client, transforming it to JSON in the process.
-In case you don't remember how we did this, some code that does this can be found below.
+Hyperlambda supports 2 database types: Microsoft SQL Server and MySQL - But adding support
+for another database, is probably easy for a seasoned C# developer. In
+our previous tutorial, we executed a select SQL statement, and returned
+the results back to the client as JSON. In case you don't remember how
+we did this, here is some example code doing such a thing.
+
+**Filename - "/modules/tutorials/read-data.get.hl"**
 
 ```
 mysql.connect:sakila
@@ -18,6 +20,7 @@ mysql.connect:sakila
 ```
 
 If you want to restrict the columns returned, simply add them up as columns into your SQL.
+
 However, there exists an even better method, that we refer to as the _"semantic SQL generator"_.
 This approach completely abstract away the underlaying database vendor,
 and allows you to semantically declare which columns are returned - In addition to your
