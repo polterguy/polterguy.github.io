@@ -205,8 +205,8 @@ for how this should look like.
 
 ![Passing in arguments to Hyperlambda endpoints](https://servergardens.files.wordpress.com/2020/09/explicit-arguments.png)
 
-You can now add arguments to your file, by for instance pasting the following into
-your query parameters textbox.
+You can now add arguments to your HTTP endpoint, by for instance
+pasting the following into your query parameters textbox.
 
 ```
 name=Thomas&age=25
