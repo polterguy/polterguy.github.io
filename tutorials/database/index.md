@@ -45,10 +45,8 @@ mysql.connect:sakila
 
 Notice how the above doesn't explicitly provide any SQL, but as it's being
 executed towards your database adapter, its result becomes the same as the
-handcoded SQL version above.
-
-You can also restrict what columns you wish to return, such as the following
-illustrates.
+handcoded SQL version above. You can also restrict what columns you wish to
+return, such as the following illustrates.
 
 ```
 mysql.connect:sakila
@@ -62,10 +60,8 @@ mysql.connect:sakila
 ```
 
 The above of course, will only return the _"first_name"_ and _"last_name"_
-columns form your _"actor"_ table.
-
-The following _"semantic"_ slots exists for all CRUD operations towards
-your database.
+columns form your _"actor"_ table. The following _"semantic SQL"_ slots
+exists for CRUD operations towards your database.
 
 * __[mysql.create]__ - Creates (inserts) a new record into your database
 * __[mysql.read]__ - Reads (selects) records from your database
@@ -159,11 +155,10 @@ Exactly 50 lines of code, and we have all 4 CRUD operations towards one of our
 database tables, with the read endpoint being able to page and limit its
 result set. Not too bad for 50 lines of code if you ask me.
 
-**Notice I** - If you automatically CRUDify your database tables, the Hyperlambda
+**Notice** - If you automatically CRUDify your database tables, the Hyperlambda
 generator creates its endpoint files more or less like we manually created
 them above, except of course it does it in 1 second automatically.
-
-**Notice II** - You can add authorization to your endpoints just as easily as we
+You can also add authorization to your endpoints just as easily as we
 did in the previous _"hello world"_ tutorial, by adding the **[auth.ticket.verify]**
 slot to your endpoint(s).
 
