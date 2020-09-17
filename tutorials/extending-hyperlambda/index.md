@@ -111,7 +111,7 @@ the raw value of our slot. But if you use its `GetEx` version instead,
 all expressions will be evaluated, until we're left with a
 non-expression value, and then that value will be returned.
 
-This means that the following Hyperlambda
+This means that the following Hyperlambda ...
 
 ```
 .arguments
@@ -119,7 +119,7 @@ This means that the following Hyperlambda
 get-value:x:@.arguments/*/foo
 ```
 
-Will result in that the value of the **[get-value]** node, after
+... will result in that the value of the **[get-value]** node, after
 having been evaluated, will be `5`. To understand more about how
 expressions work, in addition to nodes, and Hyperlambda's
 typing system - You might benefit from reading about
