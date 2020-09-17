@@ -18,7 +18,7 @@ folders here. See the screenshot below.
 
 ![Creating a new tutorials folder](https://servergardens.files.wordpress.com/2020/09/create-folder.png)
 
-Then open this folder, and create a new Hyperlambda file and name it _exactly_ as follows.
+Open this folder, and create a new Hyperlambda file and name it _exactly_ as follows.
 Its name _is_ important.
 
 ```
