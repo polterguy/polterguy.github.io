@@ -28,9 +28,7 @@ and authorization database. Magic will do this automatically for you,
 assuming you have some database installed somewhere - But you will have
 to give it a valid connection string to your database, in addition to
 choosing a _"root"_ password. This password is _very_ important to
-keep safe in a production environment. Locally on your
-development machine, you could use whatever you wish really,
-including _"admin"_ for that matter. This process will resemble the
+keep safe in a production environment. This process will resemble the
 following screenshot.
 
 ![Setup Magic](https://servergardens.files.wordpress.com/2020/09/setup-magic.png)
