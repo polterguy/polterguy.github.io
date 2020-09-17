@@ -183,4 +183,67 @@ The above **[where]** condition is possible to inject into the following 3 slots
 
 The create slot cannot be given a where condition, but all 3 other slots can,
 and the syntax is of course the _exact same syntax_ for SQL Server, as it is
-for MySQL.
+for MySQL. The result of the **[where]** argument above, obviously results
+in becoming an SQL _"where"_ condition, allowing you to restrict which items
+the SQL should end up reading/changing/deleting.
+
+The first thing you'll need to understand about the where condition, is
+that its boolean operator is its outer most argument. This implies that
+if I create something such as the following Hyperlambda.
+
+```
+where
+   and
+      foo.eq:some value
+      bar.mteq:int:5
+```
+
+This would result in something equivalent to the following being executed
+towards my database.
+
+```
+where foo = 'some value' and bar >= 5
+```
+
+**Notice** - All values will be added as SQL parameters, making it
+impossible to inject malicious SQL into your database. You can create
+any complexity of wher statements you wish however, by recursively
+applying moer and more **[and]** or **[or]** conditions, such as the
+following illustrates.
+
+```
+sql.read
+   table:table1
+   limit:-1
+   where
+      or
+         field1:howdy
+         and
+            field2:world
+            field3:dudes
+```
+
+The above would result in SQL resembling the following.
+
+```
+sql.read:select * from 'table1' where 'field1' = @0 or ('field2' = @1 and 'field3' = @2)
+   @0:howdy
+   @1:world
+   @2:dudes
+```
+
+Notice how the `and` parts can be found inside of paranthesis, since they're
+considered a _"nested condition"_, where the outer condition is an _"or"_.
+Also notice how by setting **[limit]** to _"-1"_ we can completely avoid
+having the default limit of 25 applied to our end result.
+
+Hence, by intelligently combining our **[where]** node with input arguments
+to our endpoint, and by applying input arguments to our SQL slot invocation,
+we can restrict which items are updated/deleted/selected, etc ...
+
+The SQL generator has lots of additional features, such as joining multiple
+tables, grouping by some column, selecting aggregate results, etc. You can
+see its reference documentation below.
+
+* [magic.data.common](/magic.data.common) reference documentation
+
