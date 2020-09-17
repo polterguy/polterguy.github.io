@@ -1,7 +1,7 @@
 
 # Magic Lambda Json
 
-[![Build status](https://travis-ci.com/polterguy/documentation/magic.lambda.json.svg?master)](https://travis-ci.com/polterguy/documentation/magic.lambda.json)
+[![Build status](https://travis-ci.com/polterguy/magic.lambda.json.svg?master)](https://travis-ci.com/polterguy/magic.lambda.json)
 
 This project provides JSON helper slots for Magic. More specifically, it provides the following slots.
 
@@ -25,7 +25,7 @@ multiple properties having the same key. Hence, have this in mind as you persist
 
 ## Quality gates
 
-- [![Build status](https://travis-ci.com/polterguy/documentation/magic.lambda.json.svg?master)](https://travis-ci.com/polterguy/documentation/magic.lambda.json)
+- [![Build status](https://travis-ci.com/polterguy/magic.lambda.json.svg?master)](https://travis-ci.com/polterguy/magic.lambda.json)
 - [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.json&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.json)
 - [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.json&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.json)
 - [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.json&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.json)

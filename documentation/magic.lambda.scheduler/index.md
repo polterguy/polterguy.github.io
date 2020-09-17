@@ -72,7 +72,7 @@ arguably giving you _"workflow capabilities"_ in your projects.
 
 **Notice** - By creating your own `ISlot` implementation, you can easily create your own C# classes that are Magic
 Signals, allowing you to persist an invocation to your method/class - For then to later execute this method as some
-condition occurs. Refer to the [documentation for Magic Lambda](https://github.com/polterguy/documentation/magic.lambda) to see how this
+condition occurs. Refer to the [documentation for Magic Lambda](https://github.com/polterguy/magic.lambda) to see how this
 is done, and more specifically the _"Extending Hyperlambda"_ section.
 
 ## Scheduled tasks
@@ -339,7 +339,7 @@ Tasks are by default persisted into your `magic.tasks` table, and schedules are 
 
 ## Quality gates
 
-- [![Build status](https://travis-ci.com/polterguy/documentation/magic.lambda.scheduler.svg?master)](https://travis-ci.com/polterguy/documentation/magic.lambda.scheduler)
+- [![Build status](https://travis-ci.com/polterguy/magic.lambda.scheduler.svg?master)](https://travis-ci.com/polterguy/magic.lambda.scheduler)
 - [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.scheduler&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.scheduler)
 - [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.scheduler&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.scheduler)
 - [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.scheduler&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.scheduler)

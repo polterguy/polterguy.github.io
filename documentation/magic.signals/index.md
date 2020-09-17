@@ -1,9 +1,9 @@
 
 # Magic Signals
 
-[![Build status](https://travis-ci.com/polterguy/documentation/magic.signals.svg?master)](https://travis-ci.com/polterguy/documentation/magic.signals)
+[![Build status](https://travis-ci.com/polterguy/magic.signals.svg?master)](https://travis-ci.com/polterguy/magic.signals)
 
-Magic Signals is a _"Super Signals"_ implementation for .Net Core built on top of [Magic Node](https://github.com/polterguy/documentation/magic.node),
+Magic Signals is a _"Super Signals"_ implementation for .Net Core built on top of [Magic Node](https://github.com/polterguy/magic.node),
 allowing you to invoke functions from one assembly in another assembly without having any direct references between the projects.
 
 ## Rationale
@@ -109,7 +109,7 @@ in a Node object as your parameters from the point of your signal, to the slot w
 
 ## Magic Signals a DSL
 
-A lot of the idea behind Magic Signals is that combined with [Magic Node](https://github.com/polterguy/documentation/magic.node),
+A lot of the idea behind Magic Signals is that combined with [Magic Node](https://github.com/polterguy/magic.node),
 and espcially its ability to parse _"Hyperlambda"_, it becomes a very good foundation for a DSL, or a Domain Specific
 programming Language implementation, allowing you to easily create your own programming languages, and keywords,
 based upon Hyperlambda syntax trees.

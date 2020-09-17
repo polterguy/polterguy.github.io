@@ -48,7 +48,7 @@ Apart from the above features, the library does not really give you much options
 HTTP REST library, and its purpose is not to support every possible configuration you can imagine, since its purpose
 is first and foremost to be dead simple to use, and force creation of better HTTP REST endpoint consumption and creation.
 However, if you have that _"one feature request you simply must have"_, feel free to supply a request in the
-[issues](https://github.com/polterguy/documentation/magic.http/issues). If it makes the API more complex, I might not want to support
+[issues](https://github.com/polterguy/magic.http/issues). If it makes the API more complex, I might not want to support
 it though.
 
 ## Installation
@@ -89,7 +89,7 @@ the `IHttpClientFactory` in .Net Core projects, without bringing in dependencies
 
 ## Quality gates
 
-- [![Build status](https://travis-ci.com/polterguy/documentation/magic.http.svg?master)](https://travis-ci.com/polterguy/documentation/magic.http)
+- [![Build status](https://travis-ci.com/polterguy/magic.http.svg?master)](https://travis-ci.com/polterguy/magic.http)
 - [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.http&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.http)
 - [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.http&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.http)
 - [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.http&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.http)
