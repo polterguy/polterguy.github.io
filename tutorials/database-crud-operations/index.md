@@ -265,7 +265,7 @@ this guy ...?
 validators.mandatory:x:@.arguments/*/actor_id
 ```
 
-It basically just ensures that our Hyperlambda file throws an exception,
+It basically ensures that our Hyperlambda file throws an exception,
 unless an **[actor_id]** argument is supplied. Without this line of
 code, we could in theory have some malicious client invoking our
 endpoints, and for instance updating or deleting _every single item_
