@@ -279,4 +279,6 @@ see something resembling the following.
 As you can see, we created 3 lines of code, and we selected 10 records from
 our database table, and returned it to the client as JSON.
 
+## Combining what we've learned so far
+
 > Now you understand why it's called Hyperlambda ... ;)
