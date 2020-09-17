@@ -299,8 +299,8 @@ support, creating, committing, and rolling back database transactions,
 and lots of additional features. Please refer to your specific database
 adapter for more information about these slots.
 
-* [Read about MySQL adapters here](/documentation/magic.lambda.mysql)
-* [Read about SQL Server adapters here](/documentation/magic.lambda.mssql)
+* [Read about the MySQL adapter here](/documentation/magic.lambda.mysql)
+* [Read about the SQL Server adapter here](/documentation/magic.lambda.mssql)
 
 And that's it for now. Hopefully I didn't snatch more than 10 minues
 of your time :)
