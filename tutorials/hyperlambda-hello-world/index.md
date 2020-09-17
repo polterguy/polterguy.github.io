@@ -25,7 +25,7 @@ Its name _is_ important.
 hello-world.get.hl
 ```
 
-Then click the file to edit it, and replace its default content with the following Hyperlambda.
+Click the file to edit it, and replace its default content with the following Hyperlambda.
 
 ```
 return
@@ -38,7 +38,7 @@ the following.
 
 ![How your Hello World endpoint will look like](https://servergardens.files.wordpress.com/2020/09/hello-world-endpoint.png)
 
-Then click the _"get"_ button. This will invoke the endpoint, and give you the following result.
+Click the _"get"_ button. This will invoke the endpoint, and give you the following result.
 
 ```json
 {
