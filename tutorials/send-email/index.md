@@ -1,6 +1,6 @@
 # Sending emails from your web app
 
-A 3 minute read, teaching you how to create an HTTP endpoint that allows
+A 5 minute read, teaching you how to create an HTTP endpoint that allows
 you to send an email. Also dives a bit into the async parts of Magic,
 making your Magic apps scale 100x better, by releasing threads back
 to the thread pool, during IO operations.
