@@ -214,8 +214,7 @@ understand the relationship between the **[foo.eq]** parts, the
 **[bar.mteq]** parts, and how this results in two different comparison operators
 being generated for the fields. **[x.mteq]** basically means _"x more than or equals"_,
 while **[x.eq]** implies _"x equals"_. If no comparison operator is specified,
-equality (.eq) is assumed. The different comparison operators, and their logic,
-is described in [magic.data.common](/documentation/magic.data.common).
+equality (.eq) is assumed.
 
 You can create any amount of complexity in your where statements as you wish.
 This is done by recursively applying more and more **[and]** or **[or]** conditions,
