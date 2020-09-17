@@ -153,3 +153,34 @@ generator creates its endpoint files more or less like we manually created
 above, except of course it does it in 1 second. And you can add authorization
 to your endpoints just as easily as we did in the previous _"hello world"_
 tutorial.
+
+**Notice** - If you're using SQL Server instead of MySQL, simply change
+all occurencies of _"mysql"_ in the above code snippets to become _"mssql"_
+instead.
+
+Go to your _"Endpoints"_ menu item in your Magic Dashboard, and play around
+with your endpoints as you see fit. Try to create some few items, edit some
+items, delete a couple of items, and read items. The association between
+CRUD operations and endpoint verbs in the above code, is as follows.
+
+* `POST` - Create one item
+* `GET` - Read items
+* `PUT` - Update one item
+* `DELETE` - Delete one item
+
+We could of course easily change the above code, to for instance accepting
+multiple items in its _"update"_ endpoint, and/or _"delete"_ endpoint, etc -
+But first, let's have a look at the **[where]** condition above, which is
+common for all 3 slots above, minus the **[mysql.create]** slot.
+
+## The [where] condition
+
+The above **[where]** condition is possible to inject into the following 3 slots.
+
+* __[mysql.read]__
+* __[mysql.update]__
+* __[mysql.delete]__
+
+The create slot cannot be given a where condition, but all 3 other slots can,
+and the syntax is of course the _exact same syntax_ for SQL Server, as it is
+for MySQL.
