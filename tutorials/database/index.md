@@ -1,8 +1,9 @@
 # Using Hyperlambda to perform CRUD operations towards your database
 
 In case you didn't finish the [Hyperlambda Hello World tutorial](/hyperlambda-hello-world),
-you would probably benefit from reading it before going through with this one. Anyways,
-lets get started.
+you would probably benefit from reading it before going through with this one. This tutorial
+is roughly some 10 minutes read, and you can probably easily follow all examples, in less
+than 20 minutes of total coding time.
 
 Hyperlambda supports 2 database types, Microsoft SQL Server and MySQL - But adding support
 for another database type, is probably easy for a seasoned C# developer. As we saw in
@@ -247,3 +248,21 @@ see its reference documentation below.
 
 * [magic.data.common](/magic.data.common) reference documentation
 
+## Validators
+
+As you are creating database CRUD endpoints, you will rapidly find
+yourself in the situation where you will need validators, such as
+we illustrate above, in the `PUT` and `DELETE` endpoints. Remember
+this guy ...?
+
+```
+validators.mandatory:x:@.arguments/*/actor_id
+```
+
+It basically just ensures that our Hyperlambda file throws an exception,
+unless an **[actor_id]** argument is supplied. Without this line of
+code, we could in theory have some malicious client invoking our
+endpoints, and for instance updating or deleting _every single item_
+in our database - Which would probably be a bad thing ...
+
+And that's it for now :)
