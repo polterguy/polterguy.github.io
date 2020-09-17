@@ -89,4 +89,4 @@ It's sometimes easy to get lost in Magic's CRUD parts, and
 sure, automatically creating CRUD HTTP endpoints, wrapping
 your database, is really cool. But Magic can do _much_ more
 than CRUD. Hopefully this little 3 minute long read have
-opened your eyes in these regards.
+opened your eyes in regards to this.
