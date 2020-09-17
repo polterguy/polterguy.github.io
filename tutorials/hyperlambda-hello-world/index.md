@@ -233,7 +233,7 @@ file will never be executed for security reasons.
 ## Selecting data from your database
 
 **Notice** - This Hyperlambda assumes you've somehow got the _"Sakila"_ database from
-Oracle installed. If you don't, you can exchange the _"sakila"_ parts below with
+MySQL installed. If you don't, you can exchange the _"sakila"_ parts below with
 an existing database you've got somewhere, and modify the SQL to become valid SQL,
 towards that database somehow. Just make sure you restrict the number of records you
 you select, in case you have thousands of records in your table, to avoid having
