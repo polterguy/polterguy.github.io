@@ -4,7 +4,7 @@ A 5 minute long read, about how you can extend Hyperlambda, with your own
 C# methods. After all, what would a DLS engine be without the ability to
 extend it with your own keywords?
 
-What our previous [/tutorials/send-email](sending emails tutorial) tried
+What our previous [sending emails tutorial](/tutorials/send-email) tried
 to hint at, is that Magic is more than CRUD. In this tutorial, we
 will show you just that, by creating our own Hyperlambda keyword, that
 invokes your own C# method, resulting in that Magic and Hyperlambda
