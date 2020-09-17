@@ -212,7 +212,7 @@ where foo = 'some value' and bar >= 5
 impossible to inject malicious SQL into your database. Also try to
 understand the relationship between the **[foo.eq]** parts, the
 **[bar.mteq]** parts, and how this results in two different comparison operators
-being generated for the fields. **[x.mteq]** besically means _"x more than or equals"_,
+being generated for the fields. **[x.mteq]** basically means _"x more than or equals"_,
 while **[x.eq]** implies _"x equals"_. If no comparison operator is specified,
 equality (.eq) is assumed. The different comparison operators, and their logic,
 is described in [magic.data.common](/magic.data.common).
@@ -236,10 +236,7 @@ sql.read
 The above would result in SQL resembling the following.
 
 ```
-sql.read:select * from 'table1' where 'field1' = @0 or ('field2' = @1 and 'field3' = @2)
-   @0:howdy
-   @1:world
-   @2:dudes
+select * from 'table1' where 'field1' = @0 or ('field2' = @1 and 'field3' = @2)
 ```
 
 Notice the relationship between the inner most `and` statement, and the paranthesis
