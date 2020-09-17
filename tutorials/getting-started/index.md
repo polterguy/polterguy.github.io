@@ -20,6 +20,7 @@ the following.
 2. Open a command prompt/terminal in the frontend folder, and type _"npm link"_
 3. After npm link is done, type _"ng serve"_ in the frontend folder
 4. Go to [localhost:4200](https://localhost:4200) with your browser
+5. Login with root/root
 
 ## 2. Setup Magic
 
