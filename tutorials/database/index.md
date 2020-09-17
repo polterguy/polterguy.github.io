@@ -247,9 +247,8 @@ having the default limit of 25 applied to our end result.
 
 By intelligently combining our **[where]** node with input arguments
 to our endpoint, and by applying input arguments to our SQL slot invocation,
-we can restrict which items are updated/deleted/selected, etc ...
-
-The SQL generator has a lot of additional features, such as joining multiple
+we can restrict which items are updated/deleted/selected, etc.
+The SQL generator has a lot of other features, such as joining multiple
 tables, changing the comparison operator, grouping by column(s), selecting
 aggregate results, etc. You can see its reference documentation below if
 you want to dive deeper.
@@ -306,3 +305,5 @@ adapter for more information about these slots.
 
 And that's it for now. Hopefully I didn't snatch more than 10 minues
 of your time :)
+
+* [Continue to sending emails](/tutorials/send-email)
