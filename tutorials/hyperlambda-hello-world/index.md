@@ -308,8 +308,6 @@ And you have now secured access to this endpoint, such that _only_ users belongi
 to the _"root"_ role can invoke the endpoint. 9 lines of code, duplicating what would
 probably require hundreds of lines of code in C#.
 
-> Now you understand why it's called Hyperlambda
-
 The complete code we ended up with can be found below for reference purposes.
 
 ```
@@ -323,3 +321,5 @@ mysql.connect:sakila
       @offset:x:@.arguments/*/offset
    return:x:-/*
 ```
+
+> Now you understand why it's called Hyperlambda
