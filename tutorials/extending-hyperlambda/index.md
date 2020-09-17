@@ -16,6 +16,7 @@ and name it _"Add.cs_". Add the following content to it.
 
 ```csharp
 using magic.node;
+using magic.node.extensions;
 using magic.signals.contracts;
 
 namespace tutorials.examples
