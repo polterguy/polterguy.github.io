@@ -37,6 +37,7 @@ with whatever database catalogue you want to query as you open a
 database connection later. You also need to choose the correct
 _database type_ - Implying MySQL or Microsoft SQL Server, depending
 upon what database type you want to use Magic with.
+
 Click _"Save"_, and Magic will spend some few seconds configuring.
 
 ## Crudify your first database
