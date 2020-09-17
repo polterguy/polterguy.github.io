@@ -214,16 +214,16 @@ where foo = 'some value' and bar >= 5
 **Notice** - All values will be added as SQL parameters, making it
 impossible to inject malicious SQL into your database.
 
+Also try to understand the relationahip between the **[foo.eq]** parts,
+the **[bar.mteq]** parts, and how this results in two different comparison operators
+are being generated for the fields. **[x.mteq]** besically means _"more than or equals"_,
+while **[x.eq]** implies _"equals"_. If no comparison operator is specified,
+equality (.eq) is assumed. The different comparison operators, and their logic,
+is described in [magic.data.common](/magic.data.common).
+
 You can create any amount of complexity in your where statements as you wish.
 This is done by recursively applying more and more **[and]** or **[or]** conditions,
 such as the following illustrates.
-
-Also try to understand the relationahip with the **[bar.mteq]** parts,
-the **[foo.eq]** parts, and how this results in two different comparison operators
-being generated for your different fields. **[x.mteq]** besically means _"more than or equal"_,
-and **[x.eq]** implies _"equals"_. The different comparison operators are described
-in [magic.data.common](/magic.data.common). If no comparison operator is specified,
-equality (.eq) is assumed.
 
 ```
 sql.read
@@ -249,7 +249,7 @@ sql.read:select * from 'table1' where 'field1' = @0 or ('field2' = @1 and 'field
 Notice the relationship between the inner most `and` statement, and the paranthesis
 generated in your SQL above. Each boolean operator added to your **[where]** beyond
 its first, will create a new _"scope"_, adding paranthesis to your resulting SQL.
-Also notice how by setting **[limit]** to _"-1"_ we can completely avoid
+Also notice how by setting **[limit]** to _"-1"_, we can completely avoid
 having the default limit of 25 applied to our end result.
 
 By intelligently combining our **[where]** node with input arguments
@@ -280,6 +280,8 @@ endpoints, and for instance updating or deleting _every single item_
 in our database - Which would probably be a bad thing ...
 
 * [Read more about validators here](/magic.lambda.validators)
+* [Read about MySQL adapters here](/magic.lambda.mysql)
+* [Read about SQL Server adapters here](/magic.lambda.mssql)
 
 And that's it for now. Hopefully I didn't snatch more than 10 minues
 of your time :)
