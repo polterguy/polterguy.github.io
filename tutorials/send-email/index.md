@@ -12,7 +12,7 @@ start sending emails, you'll have to configure your backend's
 _"appsettings.json"_ file, such that you have email configurations,
 that allows you to securely connect to an SMTP server.
 
-Add the following to your _"appsettings.json"_ file, inside of
+Add the following to your _"appsettings.json"_ file, inside
 your backend, using for instance Visual Studio or VS Code.
 
 ```json
@@ -74,17 +74,16 @@ a _lot_ of users simultaneously consuming your web app.
 We are also using the email validator above, before we
 try to send our email. This validator will throw an exception
 unless the expression it's pointing to, is a valid email
-address.
-
-After you have saved your file, go to your _"Endpoints"_,
+address. After you have saved your file, go to your _"Endpoints"_,
 and find your send-email endpoint, and fill it out as follows.
 
 ![Sending an email](https://servergardens.files.wordpress.com/2020/09/send-email-tutorial.png)
 
-Of course you should replace the above _"to"_ argument with
+Click the _"post"_ button, and your email is on its way.
+Of course, you should replace the above _"to"_ argument with
 a valid email address, preferably one of your own, such that
-you can verify it's actually working, and actually sending
-emails.
+you can verify it's actually working, and actually sends
+your email.
 
 It's sometimes easy to get lost in Magic's CRUD parts, and
 sure, automatically creating CRUD HTTP endpoints, wrapping
