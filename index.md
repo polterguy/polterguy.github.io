@@ -59,9 +59,6 @@ don't care about its CRUD generator, Magic would still be highly valuable, due t
 Hyperlambda just so happens to easily lend itself towards generating backend and frontend
 code, in addition to all the other things it helps you with.
 
-Magic and Hyperlambda is built in .Net Core and C#. It is a highly modular and extendible
-architecture, allowing you to intercept its core any ways you see fit.
-
 ## Task scheduler and workflows
 
 Magic also includes a task scheduler and a workflow engine, allowing you to create, persist,
@@ -69,11 +66,8 @@ and execute serialized method invocations - Either periodically, or at a single 
 future, triggered by some action, or at a specific date and time. This gives you the most
 important features from Microsoft Workflow Foundation, without the weird and difficult to
 understand XML syntax. Magic workflows also perfectly integrates with .Net Core, contrary to
-MWF that only works for .Net Framework.
-
-Hyperlambda arguably gives you the same dynamic features that Logic Apps and scheduled
-Azure functions in combination gives you. Below is a screenshot of how you can manage
-your Magic workflows using the dashboard.
+MWF that only works for .Net Framework. Below is a screenshot of how you can manage your
+tasks using the Magic Dashboard.
 
 ![Managing and scheduling your persisted tasks](https://servergardens.files.wordpress.com/2020/09/task-scheduler.png)
 
@@ -81,8 +75,6 @@ Below is an example of how it looks like as you're editing your tasks. Notice ho
 Hyperlambda editor in Magic's dashboard gives you perfect autocompletion.
 
 ![Editing a persisted tasks](https://servergardens.files.wordpress.com/2020/09/task-schedule-editing.png)
-
-* [Read more about the task scheduler and workflows](/magic.lambda.scheduler)
 
 ## Productivity
 
@@ -94,8 +86,6 @@ the topic, an average software developer can produce ~750 lines of code per mont
 The above comparisons isn't completely fair, but there is no doubt that
 Magic will increase your productivity compared to having to manually create the
 equivalent project(s).
-
-> Magic, the equivalent of a 3D printer for Web apps
 
 In addition, you can often accomplish the same with 5 lines of Hyperlambda code, as you'll
 need hundreds and sometimes thousands of lines of C# code to accomplish. This is due to that
