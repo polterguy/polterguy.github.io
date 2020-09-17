@@ -306,9 +306,8 @@ auth.ticket.verify:root
 
 And you have now secured access to this endpoint, such that _only_ users belonging
 to the _"root"_ role can invoke the endpoint. 9 lines of code, duplicating what would
-probably require hundreds of lines of code in C#.
-
-The complete code we ended up with can be found below for reference purposes.
+probably require hundreds of lines of code in C#. The complete code we ended up with
+can be found below.
 
 ```
 .arguments
