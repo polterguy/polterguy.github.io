@@ -48,9 +48,9 @@ Then click the _"get"_ button. This will invoke the endpoint, and give you the f
 
 ## Gory details
 
-Remember the filename we used for our endpoint, which was _"hello-world.get.hl"_. The first
-parts of the filename, before the _".get.hl"_ parts becomes it relative URL. Since we placed
-the file inside of our _"modules/tutorials/"_ folder, its complete URL becomes
+Remember the filename we used for our endpoint. The first parts of the filename,
+the _"hello-world"_ parts, becomes it relative URL. Since we placed the file inside of
+our _"modules/tutorials/"_ folder, its complete URL becomes
 _"magic/modules/tutorials/hello-world"_. The initial _"magic/"_ parts of your endpoint's
 URL, informs Magic that this is a dynamic endpoint, and will resolve to the modules folder.
 If you're using Magic from your development machine on localhost, you can use
