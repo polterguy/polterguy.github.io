@@ -1,6 +1,6 @@
 # Getting started with Magic
 
-A 5 minute read, teaching you how to get started with Magic.
+A 5 minute read, with 5 simple steps, teaching you how to get started with Magic.
 
 ## Prerequisites
 
@@ -10,14 +10,14 @@ A 5 minute read, teaching you how to get started with Magic.
 4. [Install MySQL](https://dev.mysql.com/downloads/mysql/) or [Microsoft SQL Server Developer Edition](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 5. Download Magic from the link above
 
-## What to do
+## 1. What to do
 
 1. Open _"magic.sln"_ file in Visual Studio and click F5. If you're using a Mac, open a terminal window in its backend folder, and type _"dotnet run"_
 2. Open a command prompt/terminal in the frontend folder, and type _"npm link"_
 3. After npm link is done, type _"ng serve"_ in the frontend folder
 4. Go to [localhost:4200](https://localhost:4200) with your browser
 
-## Setup Magic
+## 2. Setup Magic
 
 In order to get Magic to work, you'll have to create an authentication
 and authorization database. Magic will do this automatically for you,
@@ -40,7 +40,7 @@ upon what database type you want to use Magic with.
 
 Click _"Save"_, and Magic will spend some few seconds configuring.
 
-## Crudify your authentication and authorization database
+## 3. Crudify your authentication and authorization database
 
 Click the _"Crudify"_ menu item, and choose the _"magic"_ database.
 Select all tables, and click the _"Crudify all"_ button. After a
@@ -53,7 +53,7 @@ backend.
 
 ![Crudify your Magic database](https://servergardens.files.wordpress.com/2020/09/crudify-magic-database.png)
 
-## Crudify your first custom database
+## 4. Crudify your first custom database
 
 **Notice** - At this point you'll need a database. Below are links
 to example database for MySQL and SQL Server. Make sure you download
@@ -77,7 +77,7 @@ dropdown, and click _"Crudify all"_. After a couple of seconds,
 you'll have CRUD HTTP endpoints wrapping every single table
 in your database.
 
-## Generating your frontend
+## 5. Generate your frontend
 
 Go to _"Endpoints"_, give your application a name, and
 choose a template. You can optionally supply a file comment
