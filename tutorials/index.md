@@ -9,4 +9,5 @@ to bottom.
 1. [Hyperlambda Hello World](/tutorials/hyperlambda-hello-world) - Teaches you the basics of Hyperlambda
 2. [Database CRUD operations](/tutorials/database) - Teaches you the basics of CRUD database operations
 3. [Sending en email](/tutorials/send-email) - Teaches you how to create a send email endpoint
+4. [Extending Hyperlambda with C#](/tutorials/extending-hyperlambda) - Teaches you how to extend Hyperlambda with your own custom C# slots
 
