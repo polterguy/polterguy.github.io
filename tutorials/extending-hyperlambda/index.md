@@ -138,6 +138,6 @@ MVC, or Web APIs with Magic, utilizing the best from both worlds.
 Feel free to add any amount of Razor pages, Views, Controllers,
 etc, to your Magic apps. However, this is beyond
 the scope of this documentation. You might have to fiddle with
-your `Startup` class though, if you choose this path.
+your `Startup` class if you choose this path.
 
 * [Reference documentation](/documentation)
