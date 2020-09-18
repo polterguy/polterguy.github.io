@@ -26,9 +26,9 @@ the following.
 
 To setup Magic, you'll have to create an authentication
 and authorization database. Magic will do this automatically for you,
-assuming you have some database installed somewhere - But you will have
-to give it a valid connection string to your database, in addition to
-choosing a _"root"_ password.
+assuming you have MySQL or SQL Server somewhere, but you will have
+to give it a valid connection string, in addition to choosing
+a _"root"_ password.
 
 ![Setup Magic](https://servergardens.files.wordpress.com/2020/09/setup-magic.png)
 
