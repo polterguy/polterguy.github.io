@@ -8,7 +8,7 @@ the following.
 
 ## Prerequisites
 
-1. [Download Visual Studio](https://visualstudio.microsoft.com/downloads/) or [VS Code for OS X](https://code.visualstudio.com/download) + [DotNet CLI](https://dotnet.microsoft.com/download)
+1. [Download Visual Studio](https://visualstudio.microsoft.com/downloads/) or [VS Code](https://code.visualstudio.com/download) + [DotNet CLI](https://dotnet.microsoft.com/download)
 2. [Install NodeJS](https://nodejs.org/en/download/)
 3. [Install Angular](https://angular.io/cli)
 4. [Install MySQL](https://dev.mysql.com/downloads/mysql/) or [Microsoft SQL Server Developer Edition](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
@@ -16,9 +16,9 @@ the following.
 
 ## 1. Start Magic
 
-1. Open _"magic.sln"_ file in Visual Studio and click F5. If you're using a Mac, open a terminal window in its backend folder, and type _"dotnet run"_
-2. Open a command prompt/terminal in the frontend folder, and type _"npm link"_
-3. After npm link is done, type _"ng serve"_ in the frontend folder
+1. Open _"magic.sln"_ file in Visual Studio and click F5. If you're using a Mac, open a terminal window in its backend folder, and type `dotnet run`
+2. Open a command prompt/terminal in the frontend folder, and type `npm link`
+3. After npm link is done, type `ng serve` in the frontend folder
 4. Go to [localhost:4200](https://localhost:4200) with your browser
 5. Login with root/root
 
@@ -63,8 +63,8 @@ to example database for MySQL and SQL Server. Make sure you download
 the correct database schema, according to what database type you have
 installed.
 
-* [MySQL Sakila database](https://dev.mysql.com/doc/index-other.html)
-* [Bike Store example SQL Server database](https://www.sqlservertutorial.net/sql-server-sample-database/)
+* [MySQL Sakila database](https://downloads.mysql.com/docs/sakila-db.zip)
+* [Bike Store example SQL Server database](https://cdn.sqlservertutorial.net/wp-content/uploads/SQL-Server-Sample-Database.zip)
 
 Run the create database script(s) through _"MySQL Workbench"_ or
 _"SQL Server Management Studio"_. If you haven't already installed
@@ -89,7 +89,7 @@ button, and after a couple of seconds, you'll get a zip file.
 
 Unzip the zip file Magic gave you, open a terminal/command
 prompt, go to the folder where the zip file was unzipped,
-and type _"npm link"_. When npm link is done, type the
+and type `npm link`. When npm link is done, type the
 following into the same terminal window.
 
 ```
