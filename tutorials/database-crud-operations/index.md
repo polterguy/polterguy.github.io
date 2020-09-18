@@ -155,10 +155,6 @@ Exactly 50 lines of code, and we have all 4 CRUD operations towards one of our
 database tables, with the read endpoint being able to page and limit its
 result set. Not too bad for 50 lines of code if you ask me.
 
-**Notice** - If you automatically CRUDify your database tables, the Hyperlambda
-generator creates its endpoint files more or less like we manually created
-them above, except of course it does it in 1 second automatically.
-
 Now go to your _"Endpoints"_ menu item in your Magic Dashboard, and play around
 with your endpoints as you see fit. If you can't find your endpoints, you can
 add _"data-crud"_ as a filter. Try to create some few items, edit some
@@ -169,6 +165,10 @@ CRUD operations and endpoint verbs in the above code, is as follows.
 * `GET` - Read items
 * `PUT` - Update one item
 * `DELETE` - Delete one item
+
+**Notice** - If you automatically CRUDify your database tables, the Hyperlambda
+generator creates its endpoint files more or less like we manually created
+them above, except of course it does it in 1 second automatically.
 
 We could of course easily change the above code, to for instance accepting
 multiple items in its _"update"_ endpoint, and/or _"delete"_ endpoint, etc -
