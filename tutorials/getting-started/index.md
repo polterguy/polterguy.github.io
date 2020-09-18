@@ -1,11 +1,5 @@
 # Getting started with Magic
 
-A 5 minute read, with 5 simple steps, teaching you how to get started with Magic.
-When you're done following this tutorial, you'll have something resembling
-the following.
-
-![Example Magic application](https://servergardens.files.wordpress.com/2020/01/magic-datagrid.png)
-
 ## Prerequisites
 
 1. [Visual Studio](https://visualstudio.microsoft.com/downloads/) or [VS Code](https://code.visualstudio.com/download) + [DotNet CLI](https://dotnet.microsoft.com/download)
