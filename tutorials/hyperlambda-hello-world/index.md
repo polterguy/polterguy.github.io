@@ -35,7 +35,7 @@ return
 ```
 
 Save the file, and open up the _"Endpoints"_ dashboard link. Click the _"Show endpoints"_ slider,
-and click the the endpoint named _"hello-world"_, at which point you'll see something such as
+and click the endpoint named _"hello-world"_, at which point you'll see something such as
 the following.
 
 ![How your Hello World endpoint will look like](https://servergardens.files.wordpress.com/2020/09/hello-world-endpoint.png)
