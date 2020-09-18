@@ -24,7 +24,7 @@ the following.
 
 ## 2. Setup Magic
 
-In order to get Magic to work, you'll have to create an authentication
+To setup Magic, you'll have to create an authentication
 and authorization database. Magic will do this automatically for you,
 assuming you have some database installed somewhere - But you will have
 to give it a valid connection string to your database, in addition to
