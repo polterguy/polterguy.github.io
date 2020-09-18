@@ -128,7 +128,7 @@ You might benefit from reading about
 [magic.node](/documentation/magic.node) if you want to understand
 expressions better.
 
-## Custom controller endpoints
+## Custom controllers, Razor pages, etc
 
 There is nothing preventing you from combining your Hyperlambda
 endpoints, with completely custom C# Controller endpoints, as long as
