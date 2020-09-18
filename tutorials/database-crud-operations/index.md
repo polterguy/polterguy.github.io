@@ -158,9 +158,6 @@ result set. Not too bad for 50 lines of code if you ask me.
 **Notice** - If you automatically CRUDify your database tables, the Hyperlambda
 generator creates its endpoint files more or less like we manually created
 them above, except of course it does it in 1 second automatically.
-You can also add authorization to your endpoints just as easily as we
-did in the previous _"hello world"_ tutorial, by adding the **[auth.ticket.verify]**
-slot to your endpoint(s).
 
 Now go to your _"Endpoints"_ menu item in your Magic Dashboard, and play around
 with your endpoints as you see fit. If you can't find your endpoints, you can
