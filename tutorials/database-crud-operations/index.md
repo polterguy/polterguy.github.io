@@ -1,7 +1,7 @@
 # Hyperlambda CRUD database endpoints
 
-A 15 minute read, making you understand how to create CRUD
-HTTP endpoints wrapping your database using Hyperlambda. In case you
+A 15 minute read, teaching you how to create CRUD
+HTTP endpoints, wrapping your database using Hyperlambda. In case you
 didn't finish the [Hyperlambda Hello World tutorial](/tutorials/hyperlambda-hello-world),
 you would probably benefit from reading it before going through with this one.
 
