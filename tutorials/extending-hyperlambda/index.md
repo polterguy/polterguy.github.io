@@ -83,7 +83,7 @@ prefix your slot's name with _"wait."_ - And yes, you can
 of course implement _both_ interfaces on the same class,
 and also have multiple `Slot` attributes, with different
 names on the same class too. This allows you to create both
-a synchronous version, and an async version, of the same
+synchronous versions, and async versions, of the same
 slot, on the same class. And in fact, this is the way
 most slots in Magic are implemented.
 
@@ -109,7 +109,7 @@ it becomes as follows.
 Inside of our C# slots again, we can evaluate such expressions
 if we want to. The above `Get` method, in our C# slot, only returns
 the raw value of our slot. But if you use its `GetEx` version instead,
-all expressions will be evaluated, until we're left with a
+all expressions will be evaluated recursively, until we're left with a
 non-expression value, and then that value will be returned.
 
 This means that the following Hyperlambda ...
@@ -120,10 +120,12 @@ This means that the following Hyperlambda ...
 get-value:x:@.arguments/*/foo
 ```
 
-... will result in that the value of the **[get-value]** node, after
-having been evaluated, will be `5`. To understand more about how
-expressions work, in addition to nodes, and Hyperlambda's
-typing system - You might benefit from reading about
-[magic.node](/documentation/magic.node).
+... will result in that the value of the **[get-value]** node
+will be `5` after evaluation. Hyperlambda expressions are basically just
+piped `iEnumerable` functions. This results in _"chained Linq statements"_,
+allowing you to query your Hyperlambda's node structure.
+You might benefit from reading about
+[magic.node](/documentation/magic.node) if you want to understand
+expressions better.
 
 * [Reference documentation](/documentation)
