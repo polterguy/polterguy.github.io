@@ -1,5 +1,5 @@
 
-# Tutorials
+# Getting Started
 
 1. [Setup Magic](/tutorials/getting-started) - How to setup Magic
 2. [Hyperlambda Hello World](/tutorials/hyperlambda-hello-world) - From Hyperlambda Hello World to database HTTP endpoints
