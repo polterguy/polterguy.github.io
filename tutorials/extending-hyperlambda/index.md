@@ -36,7 +36,7 @@ namespace tutorials.examples
 ```
 
 Congratulations, you have now created your first Hyperlambda
-keyword. The above keyword, simply adds to integer values, and
+keyword. The above keyword, simply adds two integer values, and
 returns the result. If you recompile your Magic backend, you can
 immediately consume your keyword in an HTTP endpoint, by creating
 a new file in your _"/modules/tutorials/"_ folder, and name your
@@ -68,11 +68,12 @@ using Hyperlambda - It's _the exact same thing_ in fact.
 The way this works, is that as Magic starts, it will run
 through your AppDomain, find all classes implementing the
 `ISlot` interface, retrieve its `Slot` attribute's name
-property, and use that as the _"key"_ to your slot. Later
+property, and use that as the _"key"_ for your class. Later
 as you invoke the slot in Hyperlambda, the key will be used
-to retrieve an instance of your slot, and its `Signal`
+to retrieve an instance of your class, and its `Signal`
 method will be invoked, passing in the slot invocation node
-as its argument.
+as its argument. This allows you to pass any arbitrary
+arguments from Hyperlambda into your C# methods.
 
 ### Async slots
 
