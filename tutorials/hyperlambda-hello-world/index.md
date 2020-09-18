@@ -4,7 +4,8 @@ A 20 minute read, bringing you from Hyperlambda _"hello world"_, to selecting it
 from your database, and returning these over an HTTP REST endpoint as JSON,
 adding paging and authorization in the process. This is more or less what Magic
 does automatically for you as you _"Crudify"_ your database - So understanding
-Hyperlambda, will help you to customise your application.
+Hyperlambda, will help you to customise your application. Don't worry though,
+it's a _dead simple programming language_.
 
 The word _"Hyperlambda"_ originates from _"hyper"_ and _"lambda"_, implying _"web functions"_.
 In order to understand Hyperlambda's usefulness, it is therefor valuable to use Hyperlambda to create
