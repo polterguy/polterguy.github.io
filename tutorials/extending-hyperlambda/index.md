@@ -136,7 +136,7 @@ you resolve your endpoints with anything _but_ _"magic"_ as
 its first URL segment. This allows you to combine traditional C#,
 MVC, or Web APIs with Magic, utilizing the best from both worlds.
 Feel free to add any amount of Razor pages, Views, Controllers,
-etc, to your Magic apps, as you see fit. However, this is beyond
+etc, to your Magic apps. However, this is beyond
 the scope of this documentation. You might have to fiddle with
 your `Startup` class though, if you choose this path.
 
