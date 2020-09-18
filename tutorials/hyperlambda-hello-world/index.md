@@ -121,7 +121,7 @@ add:x:../*/return
 return
 ```
 
-Execute your endpoint, and go to your _"Logs"_ menu item, in your dashboard, and click
+Execute your endpoint, and go to your _"Logs"_ menu item in your dashboard, and click
 the top item - At which point you'll see something like the following.
 
 ![Log item result](https://servergardens.files.wordpress.com/2020/09/echo-log-item.png)
@@ -130,7 +130,7 @@ As you can see, we were able to successfully transform the entire lambda object 
 a string, as it was being executed - For then to put this string into our log. And as
 we did, we could clearly see the **[.arguments]** collection, that wasn't a part of
 our original Hyperlambda, but rather dynamically injected into the lambda object as
-arguments. You can of course pass in any JSON object you wish to this endpoint, try
+arguments. You can of course pass in any JSON object you wish to this endpoint. Try
 the following JSON as your payload to understand how JSON is transformed into a lambda
 object during invocation.
 
@@ -321,16 +321,24 @@ mysql.connect:sakila
 ```
 
 If you want to, you can also add comments to the file, to make it more
-readable, such as I have done below.
+readable, such as I have done below. You can create both multiline and
+single line comments in your Hyperlambda files - But you can _only_ have
+a comment on the same line. You cannot put a comment on any line where
+you have other things in addition to your comment.
 
 ```
+/*
+ * This file selects items from your Sakil actor
+ * database table, and returns them to the client
+ * as JSON.
+ */
+
 // Arguments this endpoint can handle
 .arguments
    limit:long
    offset:long
 
 // Making sure only root users can access the endpoint
-
 auth.ticket.verify:root
 
 // Connecting to our database
