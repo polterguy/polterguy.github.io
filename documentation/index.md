@@ -1,29 +1,5 @@
 
-# Magic and Hyperlambda Documentation
-
-If you are new to Magic and Hyperlambda, you will probably want to
-start out with the tutorials section below. If you are a seasoned
-Hyperlambda developer, you can dive even deeper by reading the
-reference documentation parts.
-
-## Tutorials
-
-These are the officials tutorials for Magic and Hyperlambda. Most of these
-tutorials are written such that you can read through them in 5-10 minutes,
-with a practical approach, solving some real world issue you might have.
-The tutorials are intended to be read from top to bottom.
-
-1. [Getting started](/tutorials/getting-started) - Teaches you how to get started with Magic
-2. [Hyperlambda Hello World](/tutorials/hyperlambda-hello-world) - Teaches you the basics of Hyperlambda
-3. [Database CRUD operations](/tutorials/database-crud-operations) - Teaches you the basics of CRUD database operations
-4. [Sending an email](/tutorials/send-email) - Teaches you how to create a send email endpoint
-5. [Extending Hyperlambda with C#](/tutorials/extending-hyperlambda) - Teaches you how to extend Hyperlambda with C#
-
-## Reference documentation
-
-This is the reference documentation for all Magic sub-modules. Notice, if
-you are looking to teach yourself the basics, you should probably start with
-the above tutorials section.
+# Documentation
 
 * [magic.node](/documentation/magic.node) - Explains nodes, Hyperlambda and Expressions
 * [magic.lambda](/documentation/magic.lambda) - Explains Hyperlambda as a DSL, and its keywords
