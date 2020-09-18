@@ -162,7 +162,6 @@ CRUD operations and endpoint verbs in the above code, is as follows.
 **Notice** - If you automatically CRUDify your database tables, the Hyperlambda
 generator creates its endpoint files more or less like we manually created
 them above, except of course it does it in 1 second automatically.
-
 We could of course easily change the above code, to for instance accepting
 multiple items in its _"update"_ endpoint, and/or _"delete"_ endpoint, etc -
 But first, let's have a look at the **[where]** condition above, which is
