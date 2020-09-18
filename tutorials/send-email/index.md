@@ -1,10 +1,5 @@
 # Creating a send email HTTP endpoint
 
-A 5 minute read, teaching you how to create an HTTP endpoint that allows
-you to send an email. This tutorial also dives into the async parts of Magic,
-making your Magic apps scale 100x better, by releasing threads back
-to the thread pool during IO operations.
-
 Although CRUD is important for most web apps, it's not enough, and
 sometimes you need more complex logic, such as for instance the
 ability to sending emails from your backend. But before you can
