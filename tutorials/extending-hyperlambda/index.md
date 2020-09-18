@@ -1,15 +1,9 @@
 # Extending Hyperlambda with C#
 
-A 5 minute long read, about how you can extend Hyperlambda with your own
-C# methods. After all, what would a DLS engine be without the ability to
-extend it with your own keywords?
-
 What our previous [sending emails tutorial](/tutorials/send-email) tried
 to hint at, is that Magic is more than CRUD. In this tutorial, we
 will prove it, by creating our own Hyperlambda keyword, that
-invokes a C# method, resulting in that Magic and Hyperlambda
-perfectly ties into C#, and its possibilities effectively becomes
-endless.
+invokes a C# method.
 
 First expand your _"backend/slots/"_ folder, and create a new file,
 and name it _"Add.cs_". Add the following content to it.
