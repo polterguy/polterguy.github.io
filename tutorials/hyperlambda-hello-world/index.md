@@ -337,8 +337,8 @@ will return this when meta data is requested.
    limit:long
    offset:long
 
-// Making sure only root users can access the endpoint
-auth.ticket.verify:root
+// Making sure only root and admin users can access the endpoint
+auth.ticket.verify:root, admin
 
 // Connecting to our database
 mysql.connect:sakila
