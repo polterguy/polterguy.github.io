@@ -352,4 +352,10 @@ mysql.connect:sakila
    return:x:-/*
 ```
 
+**Notice** - You can of course use your favourite IDE or text editor
+to edit your Hyperlambda, but the Dashboard's Hyperlambda editor
+happens to have kick ass Hyperlambda features, such as auto
+completion, syntax highlightning, etc, etc, etc - So it's probably
+easier to use the Dashboard Hyperlambda editor, than most other things.
+
 * [Continue to database CRUD operations](/tutorials/database-crud-operations)
