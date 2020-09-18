@@ -318,8 +318,8 @@ mysql.connect:sakila
 
 You can also add comments to the file, to make it more
 readable. Hyperlambda accepts both multiline and
-single line comments. You _cannot_ put a comment on any line where
-you have Hyperlambda code from before. The **[.description]**
+single line comments, but you _cannot_ put a comment on any line where
+you have Hyperlambda code. The **[.description]**
 node below, adds meta data to your endpoint, which gives it
 a humanly readable descriptive text. The meta data generator
 will return this when meta data is requested.
