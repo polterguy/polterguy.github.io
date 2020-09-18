@@ -28,7 +28,7 @@ namespace tutorials.examples
 }
 ```
 
-Congratulations, you have now created your first Hyperlambda
+You have now created your first Hyperlambda
 keyword. The above keyword, simply adds two integer values, and
 returns the result. If you recompile your Magic backend, you can
 immediately consume your keyword in an HTTP endpoint, by creating
