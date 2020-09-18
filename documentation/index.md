@@ -1,4 +1,11 @@
 
+# Magic and Hyperlambda Documentation
+
+If you are new to Magic and Hyperlambda, you will probably want to
+start out with the tutorials section below. If you are a seasoned
+Hyperlambda developer, you can dive even deeper by reading the
+reference documentation parts.
+
 ## Tutorials
 
 These are the officials tutorials for Magic and Hyperlambda. Most of these
