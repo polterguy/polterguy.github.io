@@ -83,11 +83,9 @@ single table in your database.
 ## 5. Generate your frontend
 
 Go to _"Endpoints"_, give your application a name, and
-choose a template. You can optionally supply a file comment
-header for your file at this point. Click the _"Generate"_
+choose a template. Click the _"Generate"_
 button, and after a couple of seconds, you'll get a zip file.
-
-Unzip the zip file Magic gave you, open a terminal/command
+Unzip the file Magic gave you, open a terminal/command
 prompt, go to the folder where the zip file was unzipped,
 and type `npm link`. When npm link is done, type the
 following into the same terminal window.
