@@ -1,4 +1,4 @@
-# Magically create Web Apps
+# The programming language that does your job
 
 Magic allows you to create your entire Web app by simply clicking two buttons. The first button will
 automatically create your backend, by wrapping your database tables into CRUD HTTP REST endpoints. The
