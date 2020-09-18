@@ -276,7 +276,7 @@ versions can be found below.
 
 For the record, if you can, you _should_ use the CRUD operations instead
 of the above _raw_ SQL slots, since this allows you to transparently
-support _any_ database type that Magic supports, This prevents _"lockin"_
+support _any_ database type that Magic supports. This prevents _"lockin"_
 of your application, allowing you to change database vendor as you see
 fit. Even if this is not something _you_ care about, your _customers_
 might care about it, since a lot of companies have
