@@ -76,13 +76,8 @@ Download one of these free database scripts for SQL Server or MySQL.
 * [MySQL Sakila database](https://downloads.mysql.com/docs/sakila-db.zip)
 * [Bike Store example SQL Server database](https://cdn.sqlservertutorial.net/wp-content/uploads/SQL-Server-Sample-Database.zip)
 
-Run the create database script(s) through _"MySQL Workbench"_ or
-_"SQL Server Management Studio"_. If you haven't already installed
-these components, you might want to install them at this point.
-They will make it simpler to administrate your database(s).
-When you have created your database, or maybe you already had an
-existing database from before, you can create CRUD endpoint
-wrapping your database of choice.
+Run the above create database script through _"MySQL Workbench"_ or
+_"SQL Server Management Studio"_.
 
 ## 5. Generate your frontend
 
