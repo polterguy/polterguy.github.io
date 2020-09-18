@@ -2,7 +2,7 @@
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/r91tIBy1QbA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## License Terms
+## License
 
 Although 95% of Magic's source code is Open Source, and licensed as MIT, Magic will
 [cost you a fee](https://servergardens.com/buy/) of €49 for a single developer license. One such license
