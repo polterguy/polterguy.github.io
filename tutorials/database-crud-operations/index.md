@@ -19,7 +19,7 @@ mysql.connect:sakila
    return:x:-/*
 ```
 
-If you want to restrict the columns returned, simply add them up as columns into your SQL.
+If you want to control the columns returned, simply add them up as columns into your SQL.
 
 ## Semantic SQL
 
@@ -249,10 +249,9 @@ to our endpoint, and by applying input arguments to our SQL slot invocation,
 we can restrict which items are updated/deleted/selected, etc.
 The SQL generator has a lot of other features, such as joining multiple
 tables, changing the comparison operator, grouping by column(s), selecting
-aggregate results, etc. You can see its reference documentation below if
-you want to dive deeper.
-
-* [magic.data.common reference documentation](/documentation/magic.data.common)
+aggregate results, etc. Check out [magic.data.common](/documentation/magic.data.common)'s
+reference documentation for more information about how to build
+semantic SQL.
 
 ## Validators
 
