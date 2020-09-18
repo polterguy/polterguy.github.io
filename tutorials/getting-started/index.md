@@ -6,13 +6,6 @@ the following.
 
 ![Example Magic application](https://servergardens.files.wordpress.com/2020/01/magic-datagrid.png)
 
-If you prefer to follow a video with instructions, you can watch the video below.
-
-<div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
-<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/8xO9H-2Fejc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
-
 ## Prerequisites
 
 1. [Download Visual Studio](https://visualstudio.microsoft.com/downloads/) or [VS Code](https://code.visualstudio.com/download) + [DotNet CLI](https://dotnet.microsoft.com/download)
@@ -20,6 +13,12 @@ If you prefer to follow a video with instructions, you can watch the video below
 3. [Install Angular](https://angular.io/cli)
 4. [Install MySQL](https://dev.mysql.com/downloads/mysql/) or [Microsoft SQL Server Developer Edition](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 5. Download Magic from the link above
+
+If you prefer to follow a video with instructions, you can watch the video below.
+
+<div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
+<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/8xO9H-2Fejc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 ## 1. Start Magic
 
