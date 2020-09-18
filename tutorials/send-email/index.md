@@ -64,8 +64,7 @@ released back to the operating system. This results
 in 100x better scaling of your web app, since no thread is
 blocked as Magic is waiting for IO to finish.
 
-We are also using the email validator above, before we
-try to send our email. This validator will throw an exception
+We are also using the email validator above. This validator will throw an exception
 unless the expression it's pointing to, is a valid email
 address. After you have saved your file, go to your _"Endpoints"_,
 and find your send-email endpoint, and fill it out as follows.
