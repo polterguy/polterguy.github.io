@@ -320,11 +320,10 @@ mysql.connect:sakila
    return:x:-/*
 ```
 
-If you want to, you can also add comments to the file, to make it more
-readable, such as I have done below. You can create both multiline and
-single line comments in your Hyperlambda files - But you can _only_ have
-a comment on the same line. You cannot put a comment on any line where
-you have other things in addition to your comment.
+You can also add comments to the file, to make it more
+readable. You can create both multiline and
+single line comments. You _cannot_ put a comment on any line where
+you have other things in addition to your comment though.
 
 ```
 /*
