@@ -20,8 +20,8 @@ If you want to control the columns returned, simply add them up as columns into 
 However, there exists an even better method, that we refer to as the _"semantic SQL generator"_.
 This approach completely abstract away the underlaying database vendor,
 and allows you to semantically declare which columns are returned - In addition to your
-where clause, order clause, and paging. And what's even better, is that it transparently
-generates the correct SQL towards any of your existing Magic database adapters, allowing
+where condition, ordering, and paging. And it transparently
+generates the correct SQL towards any of your existing database adapters, allowing
 you to use the same structure for querying SQL Server as you would use to query MySQL.
 
 This approach arguably reduces your database type down to a _"configurable property"_
