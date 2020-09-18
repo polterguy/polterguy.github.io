@@ -1,4 +1,11 @@
 
+# Tutorials
+
+1. [Hyperlambda Hello World](/tutorials/hyperlambda-hello-world) - From Hyperlambda Hello World to database HTTP endpoints
+2. [Database CRUD operations](/tutorials/database-crud-operations) - Basics of CRUD
+3. [Sending an email](/tutorials/send-email) - Sending emails using Hyperlambda
+4. [Extending Hyperlambda with C#](/tutorials/extending-hyperlambda) - Extending Hyperlambda with C#
+
 # Documentation
 
 * [magic.node](/documentation/magic.node) - Explains nodes, Hyperlambda and Expressions
