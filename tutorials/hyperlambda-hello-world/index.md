@@ -70,8 +70,8 @@ You can use the following verbs for your Hyperlambda files, as an extension befo
 * delete
 
 This allows you to easily create an HTTP endpoint, wrapping your HTTP verb, controlling
-its URL in the process. It sometimes helps to realise that Magic will treat your
-Hyperlambda file, as if it was a _"function"_.
+its URL in the process. Magic will treat your Hyperlambda file, as if it was a _"function"_,
+and use your file's extension to figure out what HTTP verb to use to invoke it.
 
 ## Creating an echo service
 
