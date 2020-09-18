@@ -1,15 +1,9 @@
 # Hyperlambda CRUD database endpoints
 
-A 15 minute read, teaching you how to create CRUD
-HTTP endpoints, wrapping your database using Hyperlambda. In case you
-didn't finish the [Hyperlambda Hello World tutorial](/tutorials/hyperlambda-hello-world),
-you would probably benefit from reading it before going through with this one.
-
-Hyperlambda supports 2 database types: Microsoft SQL Server and MySQL - But adding support
-for another database, is probably easy for a seasoned C# developer. In
+Hyperlambda supports 2 database types: Microsoft SQL Server and MySQL. In
 our previous tutorial, we executed a select SQL statement, and returned
-the results back to the client as JSON. In case you don't remember how
-we did this, here is some example code doing such a thing.
+the results back to the client as JSON. Below is Hyperlambda illustrating
+roughly how we did this.
 
 **Filename - "/modules/tutorials/read-data.get.hl"**
 
