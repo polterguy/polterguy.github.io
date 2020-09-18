@@ -131,7 +131,7 @@ expressions better.
 ## Custom controllers, Razor pages, etc
 
 There is nothing preventing you from combining your Hyperlambda
-endpoints, with completely custom C# Controller endpoints, as long as
+endpoints, with custom C# Controller endpoints, as long as
 you resolve your endpoints with anything _but_ _"magic"_ as
 its first URL segment. This allows you to combine traditional C#,
 MVC, or Web APIs with Magic, utilizing the best from both worlds.
