@@ -268,9 +268,10 @@ It basically ensures that our Hyperlambda file throws an exception,
 unless an **[actor_id]** argument is supplied. Without this line of
 code, we could in theory have some malicious client invoking our
 endpoints, and for instance updating or deleting _every single item_
-in our database - Which would probably be a bad thing ...
-
-* [Read more about validators here](/documentation/magic.lambda.validators)
+in our database. Combining
+validators with explicit **[.arguments]** declarations, and making
+sure your arguments are declared with the correct type, ensures that
+no malicious data can be sent into your endpoints. [Read more about validators here](/documentation/magic.lambda.validators)
 
 ## Raw SQL access
 
