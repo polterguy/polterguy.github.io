@@ -120,7 +120,7 @@ This means that the following Hyperlambda ...
 get-value:x:@.arguments/*/foo
 ```
 
-... will result in that the value of the **[get-value]** node
+... will result in that the value of the **[get-value]** node above
 will be `5` after evaluation. Hyperlambda expressions are basically just
 piped `iEnumerable` functions. This results in _"chained Linq statements"_,
 allowing you to query your Hyperlambda's node structure.
