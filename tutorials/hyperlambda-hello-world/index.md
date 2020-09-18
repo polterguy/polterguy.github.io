@@ -61,8 +61,8 @@ your development machine on localhost, you can use
 The first parts of its extension, the _"get"_ parts, declares that our file is an HTTP GET
 endpoint, which we can invoke using the GET verb. The last parts, the _".hl"_ extension,
 declares that this is a Hyperlambda file, making the Hyperlambda parser kick in and transform
-it to a lambda object, which then is evaluated, and whatever the file returns, is afterwards
-transformed to JSON, which again is returned to the client as its HTTP response object.
+it to a lambda object, which then is evaluated, and whatever the file returns, is
+transformed to JSON, which is returned to the client as its HTTP response object.
 
 You can use the following verbs for your Hyperlambda files, as an extension before the
 .hl parts.
