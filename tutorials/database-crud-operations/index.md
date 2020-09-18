@@ -262,10 +262,10 @@ validators with explicit **[.arguments]** declarations, and making
 sure your arguments are declared with the correct type, ensures that
 no malicious data can be sent into your endpoints. [Read more about validators here](/documentation/magic.lambda.validators)
 
-## Raw SQL access
+## Raw SQL
 
 If the above _"semantic slots"_ doesn't serve you, Magic and Hyperlambda
-also provides _"raw access"_ to SQL, allowing you to execute any arbitrary
+also allows you to supply _"raw SQL"_, allowing you to execute any arbitrary
 SQL, towards any of your database types. To use these lots you'd probably
 want to check out your database specific adapter, but a list of its MySQL
 versions can be found below.
