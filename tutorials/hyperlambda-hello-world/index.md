@@ -20,7 +20,7 @@ Its name _is_ important.
 hello-world.get.hl
 ```
 
-Click the file to edit it, and replace its default content with the following Hyperlambda.
+Click the file to edit it, and replace its default content with the following code.
 
 ```
 return
@@ -41,7 +41,7 @@ Click the _"get"_ button. This will invoke the endpoint, and give you the follow
 }
 ```
 
-## Gory details
+## Explanation
 
 The first parts of the filename, the _"hello-world"_ parts, becomes it relative URL.
 Since we placed the file inside of our _"modules/tutorials/"_ folder, its relative URL
@@ -54,10 +54,9 @@ your development machine on localhost, you can use
 The first parts of its extension, the _"get"_ parts, declares that our file is an HTTP GET
 endpoint, which we can invoke using the GET verb. The last parts, the _".hl"_ extension,
 declares that this is a Hyperlambda file, making the Hyperlambda parser kick in and transform
-it to a lambda object, which then is evaluated, and whatever the file returns, is
-transformed to JSON, which is returned to the client as its HTTP response object.
-
-You can use the following verbs for your Hyperlambda files, as an extension before the
+it to a lambda object. The lambda object is then evaluated, and whatever it returns, is
+transformed to JSON, which becomes the HTTP response.
+You can use the following verbs for your Hyperlambda files as an extension before the
 .hl parts.
 
 * get
@@ -66,8 +65,8 @@ You can use the following verbs for your Hyperlambda files, as an extension befo
 * delete
 
 This allows you to easily create an HTTP endpoint, wrapping your HTTP verb, controlling
-its URL in the process. Magic will treat your Hyperlambda file, as if it was a _"function"_,
-and use your file's extension to figure out what HTTP verb to use to invoke it.
+its URL in the process. Magic will treat your Hyperlambda files as if they were _"functions"_,
+and use your file extension to figure out what HTTP verb to use to resolve it.
 
 ## Creating an echo service
 
@@ -80,8 +79,8 @@ add:x:../*/return
 return
 ```
 
-Then go back to your _"Endpoints"_ menu item, filter for _"echo"_, click it, and paste in
-the following payload into your file.
+Then go back to your _"Endpoints"_ menu item, find your _"echo"_ endpoint, click it,
+and invoke it with the following JSON payload.
 
 ```json
 {
@@ -177,7 +176,8 @@ return
 ```
 
 So obviously, the entire payload is transformed from JSON to lambda, and sent into your
-endpoint as an **[.argument]** node.
+endpoint as an **[.arguments]** node. The `.` parts above, implies that `addresses` is an array,
+and each `.` is an entry in the array.
 
 ### Restricting arguments
 
@@ -233,14 +233,13 @@ file will never be executed for security reasons.
 **Notice** - This Hyperlambda assumes you've somehow got the _"Sakila"_ database from
 MySQL installed. If you don't, you can exchange the _"sakila"_ parts below with
 an existing database you've got somewhere, and modify the SQL to become valid SQL,
-towards that database somehow. Just make sure you restrict the number of records you
+towards that database. Just make sure you restrict the number of records you
 you select, in case you have thousands of records in your table, to avoid having
-to wait too long for the result to show up.
-
+to wait a long time for the result to show up.
 If you're not using MySQL, you'll also have to exchange the above **[mysql.]** parts
 with for instance **[mssql.]** to retrieve data from a Microsoft SQL Server installation.
 
-Create a new file in your _"Files"_ menu, inside of your _"/modules/tutorials/"_ folder,
+Create a new file in your _"Files"_ menu, inside your _"/modules/tutorials/"_ folder,
 and name it _"read-data.get.hl"_. Put the following content into your file.
 
 ```
@@ -269,14 +268,11 @@ see something resembling the following.
   }
 ```
 
-As you can see, we created 3 lines of code, and we selected 10 records from
-our database table, and returned it to the client as JSON.
-
 ### Parametrizing your SQL
 
 By combining the above endpoint with arguments, we can easily parametrize
 our SQL, to allow for things such as paging, filtering, sorting, etc. Modify your
-existing endpoint _"read-data"_ file, and put the following code into it.
+existing _"read-data.get.hl"_ file, and put the following code into it.
 
 ```
 .arguments
@@ -292,23 +288,27 @@ mysql.connect:sakila
 Then try invoking the endpoint, but this time with the following arguments.
 ![Paging your result](https://servergardens.files.wordpress.com/2020/09/sql-read-with-offset.png)
 8 lines of Hyperlambda code, and we created an HTTP REST endpoint, retrieving data
-from your database, allowing for paging. To finish up the tutorial, put the
-following line of code at the top of it, just below its **[.arguments]** node.
+from your database, allowing for paging.
+
+### Authorization
+
+Put the following line of code at the top of your file, just beneath its **[.arguments]** node.
 
 ```
-auth.ticket.verify:root
+auth.ticket.verify:root, admin
 ```
 
-And you have now secured access to this endpoint, such that _only_ users belonging
-to the _"root"_ role can invoke the endpoint. 9 lines of code, duplicating what would
-probably require hundreds of lines of code in C#. The complete code we ended up with
-can be found below.
+You have now secured access to this endpoint, such that _only_ users belonging
+to the _"root"_ or _"admin"_ roles can invoke it. The roles is a comma separated list
+of roles, allowing a user to access the endpoint, if he or she belongs
+to _any_ of the roles listed. All other users will be denied access. The
+complete code we ended up with can be found below.
 
 ```
 .arguments
    limit:long
    offset:long
-auth.ticket.verify:root
+auth.ticket.verify:root, admin
 mysql.connect:sakila
    mysql.select:select * from actor limit @limit offset @offset
       @limit:x:@.arguments/*/limit
@@ -317,16 +317,20 @@ mysql.connect:sakila
 ```
 
 You can also add comments to the file, to make it more
-readable. You can create both multiline and
+readable. Hyperlambda accepts both multiline and
 single line comments. You _cannot_ put a comment on any line where
-you have other things in addition to your comment though.
+you have Hyperlambda code from before. The **[.description]**
+node below, adds meta data to your endpoint, which gives it
+a humanly readable descriptive text. The meta data generator
+will return this when meta data is requested.
 
 ```
 /*
- * This file selects items from your Sakil actor
+ * This file selects items from your Sakila actor
  * database table, and returns them to the client
  * as JSON.
  */
+.description:Returns actors from your Sakila database
 
 // Arguments this endpoint can handle
 .arguments
