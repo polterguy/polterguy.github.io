@@ -286,7 +286,7 @@ versions can be found below.
 * __[mysql.select]__ - Wraps the `DbCommand.ExecuteReader` method
 
 For the record, if you can, you _should_ use the CRUD operations instead
-of the above _raw_ SQL slots - Since this allows you to transparently
+of the above _raw_ SQL slots, since this allows you to transparently
 support _any_ database type that Magic supports, This prevents _"lockin"_
 of your application, allowing you to change database vendor as you see
 fit. Even if this is not something _you_ care about, your _customers_
@@ -298,11 +298,5 @@ In addition the database adapters in Magic also gives you transaction
 support, creating, committing, and rolling back database transactions,
 and lots of additional features. Please refer to your specific database
 adapter for more information about these slots.
-
-* [Read about the MySQL adapter here](/documentation/magic.lambda.mysql)
-* [Read about the SQL Server adapter here](/documentation/magic.lambda.mssql)
-
-And that's it for now. Hopefully I didn't snatch more than 10 minues
-of your time :)
 
 * [Continue to sending emails](/tutorials/send-email)
