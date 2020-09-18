@@ -4,8 +4,7 @@ Although CRUD is important for most web apps, it's not enough, and
 sometimes you need more complex logic, such as for instance the
 ability to sending emails from your backend. But before you can
 start sending emails, you'll have to configure your backend's
-_"appsettings.json"_ file, such that you have configured your
-SMTP server.
+_"appsettings.json"_ file with valid SMTP connection settings.
 
 Add the following to your _"appsettings.json"_ file, inside
 your backend, using for instance Visual Studio or VS Code.
