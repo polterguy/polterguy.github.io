@@ -61,7 +61,7 @@ or roles as you see fit.
 **Notice** - At this point you'll need a database. Below are links
 to example database for MySQL and SQL Server. Make sure you download
 the correct database schema, according to what database type you have
-installed.
+installed, or use any of your existing databases.
 
 * [MySQL Sakila database](https://downloads.mysql.com/docs/sakila-db.zip)
 * [Bike Store example SQL Server database](https://cdn.sqlservertutorial.net/wp-content/uploads/SQL-Server-Sample-Database.zip)
