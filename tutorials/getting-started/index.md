@@ -14,9 +14,9 @@
 
 ## 1. Start Magic
 
-1. Open _"magic.sln"_ file in Visual Studio and click F5. If you're using a Mac, open a terminal window in its backend folder, and type `dotnet run`
-2. Open a command prompt/terminal in the frontend folder, and type `npm link`
-3. After npm link is done, type `ng serve` in the frontend folder
+1. Open the _"magic.sln"_ file in Visual Studio and click F5. If you're using Mac or Linux, open a terminal window in the backend folder and type `dotnet run`
+2. Open a command prompt/terminal in the frontend folder and execute `npm link`
+3. After npm link is done execute `ng serve`
 4. Go to [localhost:4200](https://localhost:4200) with your browser
 5. Login with root/root
 
@@ -24,9 +24,8 @@
 
 To setup Magic, you'll have to create an authentication
 and authorization database. Magic will do this automatically for you,
-assuming you have MySQL or SQL Server somewhere, but you will have
-to give it a valid connection string, in addition to choosing
-a _"root"_ password.
+but you will have to give it a valid connection string, in addition
+to choosing a _"root"_ password.
 
 **Notice** - It's important that you keep the `{database}` parts of your
 connection string as is. This is because Magic will substitute this
@@ -44,34 +43,27 @@ Click _"Save"_, and Magic will spend some few seconds configuring.
 Click the _"Crudify"_ menu item, and choose the _"magic"_ database.
 Select all tables, and click the _"Crudify all"_ button. After a
 couple of seconds, Magic have created CRUD HTTP endpoints necessary
-to administrate your users and roles. At this point, you can already
-visit the _"Users"_ and _"Roles"_ menu items, and create new users
-or roles as you see fit.
+to administrate your users and roles.
 
 ![Crudify your Magic database](https://servergardens.files.wordpress.com/2020/09/crudify-magic-database.png)
 
-## 4. Crudify your first custom database
+## 4. Crudify your own database
 
-**Notice** - At this point you'll need a database. Below are links
-to example database for MySQL and SQL Server. Make sure you download
-the correct database schema, according to what database type you have
-installed, or use any of your existing databases.
-
-Go to the _"Crudify"_ menu item, but this time choose another
-database, for instance Sakila or Bike Store. Then choose _"All tables"_
-in the _"Select table"_ dropdown, and click _"Crudify all"_. After
-a couple of seconds, you'll have CRUD HTTP endpoints wrapping every
-single table in your database.
+Select your own database, and then choose _"All tables"_.
+Click _"Crudify all"_. After a couple of seconds, you'll
+have CRUD HTTP endpoints wrapping every single table in
+your database.
 
 ### 4.5 - No existing database?
 
 Download one of these free database scripts for SQL Server or MySQL.
 
-* [MySQL Sakila database](https://downloads.mysql.com/docs/sakila-db.zip)
 * [Bike Store example SQL Server database](https://cdn.sqlservertutorial.net/wp-content/uploads/SQL-Server-Sample-Database.zip)
+* [MySQL Sakila database](https://downloads.mysql.com/docs/sakila-db.zip)
 
-Run the above create database script through _"MySQL Workbench"_ or
-_"SQL Server Management Studio"_.
+Run one of the above database scripts through
+_"SQL Server Management Studio"_ (SSMS) or
+_"MySQL Workbench"_.
 
 ## 5. Generate your frontend
 
