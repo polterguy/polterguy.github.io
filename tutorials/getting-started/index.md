@@ -71,7 +71,7 @@ single table in your database.
 
 ### 4.5 - No existing database?
 
-Download any one of these free database scripts for SQL Server or MySQL.
+Download one of these free database scripts for SQL Server or MySQL.
 
 * [MySQL Sakila database](https://downloads.mysql.com/docs/sakila-db.zip)
 * [Bike Store example SQL Server database](https://cdn.sqlservertutorial.net/wp-content/uploads/SQL-Server-Sample-Database.zip)
