@@ -356,6 +356,6 @@ mysql.connect:sakila
 to edit your Hyperlambda, but the Dashboard's Hyperlambda editor
 happens to have very good Hyperlambda support, such as auto
 completion, syntax highlightning, etc, etc, etc - So it's probably
-easier to use the Dashboard Hyperlambda editor, than most other things.
+easier to use the Dashboard Hyperlambda editor.
 
 * [Continue to database CRUD operations](/tutorials/database-crud-operations)
