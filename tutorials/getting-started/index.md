@@ -30,14 +30,14 @@ assuming you have MySQL or SQL Server somewhere, but you will have
 to give it a valid connection string, in addition to choosing
 a _"root"_ password.
 
-![Setup Magic](https://servergardens.files.wordpress.com/2020/09/setup-magic.png)
-
 **Notice** - It's important that you keep the `{database}` parts of your
 connection string as is. This is because Magic will substitute this
 with whatever database catalogue you want to query as you open a
 database connection later. You also need to choose the correct
 _database type_ - Implying MySQL or Microsoft SQL Server, depending
 upon what database type you want to use Magic with.
+
+![Setup Magic](https://servergardens.files.wordpress.com/2020/09/setup-magic.png)
 
 Click _"Save"_, and Magic will spend some few seconds configuring.
 
