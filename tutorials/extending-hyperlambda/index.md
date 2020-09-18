@@ -2,11 +2,10 @@
 
 What our previous [sending emails tutorial](/tutorials/send-email) tried
 to hint at, is that Magic is more than CRUD. In this tutorial, we
-will prove it, by creating our own Hyperlambda keyword, that
+will prove it, by creating our own Hyperlambda keyword that
 invokes a C# method.
-
-First expand your _"backend/slots/"_ folder, and create a new file,
-and name it _"Add.cs_". Add the following content to it.
+Expand your _"backend/slots/"_ folder in Visual Studio (Code), and create a new file,.
+Name your file _"Add.cs_", and add the following content to it.
 
 ```csharp
 using magic.node;
