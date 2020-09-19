@@ -234,7 +234,7 @@ file will never be executed for security reasons.
 MySQL installed. If you don't, you can exchange the _"sakila"_ parts below with
 an existing database you've got somewhere, and modify the SQL to become valid SQL,
 towards that database. Just make sure you restrict the number of records you
-you select, in case you have thousands of records in your table, to avoid having
+select, in case you have thousands of records in your table, to avoid having
 to wait a long time for the result to show up.
 If you're not using MySQL, you'll also have to exchange the above **[mysql.]** parts
 with for instance **[mssql.]** to retrieve data from a Microsoft SQL Server installation.
@@ -322,7 +322,9 @@ single line comments, but you _cannot_ put a comment on any line where
 you have Hyperlambda code. The **[.description]**
 node below, adds meta data to your endpoint, which gives it
 a humanly readable descriptive text. The meta data generator
-will return this when meta data is requested.
+will return this when meta data is requested. Below is our file
+from above, but this time with a meta description node, in
+addition to some comments.
 
 ```
 /*
