@@ -90,7 +90,7 @@ most slots in Magic are implemented.
 ## Expressions
 
 So far, we have largely ignored lambda expressions.
-However, now they become more important to understand. An
+However, now they become increasingly important to understand. An
 expression is basically any value of a node in Hyperlambda that
 resembles the following.
 
