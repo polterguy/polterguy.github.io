@@ -59,7 +59,7 @@ resemble the following.
 }
 ```
 
-## Custom slots
+## Explanation
 
 Fundamentally, there is _zero difference_ between the above
 `ISlot` class you just created, and any other slot you invoke
@@ -78,8 +78,8 @@ arguments from Hyperlambda into your C# methods.
 ### Async slots
 
 If you want to create async slots, you'll have to
-implement the `ISlotAsync` interface, and make sure your
-prefix your slot's name with _"wait."_ - And yes, you can
+implement the `ISlotAsync` interface, and make sure you
+prefix your slot's name with _"wait."_ - You can
 of course implement _both_ interfaces on the same class,
 and also have multiple `Slot` attributes, with different
 names on the same class too. This allows you to create both
