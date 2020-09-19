@@ -92,7 +92,8 @@ most slots in Magic are implemented.
 So far, we have largely ignored lambda expressions.
 However, now they become increasingly important to understand. An
 expression is basically any value of a node in Hyperlambda that
-resembles the following.
+have the type of `:x:`, which can be found between its name and
+its value.
 
 ```
 .foo:x:@.arguments/*
