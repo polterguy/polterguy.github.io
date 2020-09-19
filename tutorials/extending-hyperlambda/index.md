@@ -48,10 +48,16 @@ return
    result:x:@tutorials.add
 ```
 
-Then go to your endpoints, and invoke the file, and make sure
+Then go to your endpoints, and invoke _"add"_. Make sure
 you pass in integer values for its _"arg1"_ and _"arg2"_ QUERY
-parameters. Needless to say, but after invoking your endpoint,
-you have the result of adding those two arguments.
+parameters. After invoking your endpoint your result will
+resemble the following.
+
+```json
+{
+  "result": 7
+}
+```
 
 ## Custom slots
 
