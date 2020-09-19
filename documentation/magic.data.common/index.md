@@ -55,8 +55,8 @@ But you should _not_ allow any potentially insecure clients to dynamically decla
 to select, and/or field _names_ for your `where` clauses. It will only protect your _values_,
 and _not_ table names or column names against SQL injection attacks. Also, the project does not verify that
 the SQL is possible to execute towards your database, such as verifying that specified tables or columns
-actually exists on the database you're trying to execute your SQL towards. It does its best however, to verify
-that the syntax of your SQL, is to some extent legally structured, and is valid SQL.
+actually exists. It does its best however, to verify that your Hyperlambda is structured correctly, and that
+it will create valid SQL.
 
 ## [sql.create]
 
