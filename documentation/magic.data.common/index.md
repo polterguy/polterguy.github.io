@@ -60,8 +60,8 @@ it will create valid SQL.
 
 ## [sql.create]
 
-This slot will generate the SQL necessary to insert a record into a database for you. It can only be given
-one argument, which is __[values]__. Below is an example of usage.
+This slot will generate the SQL necessary to insert a record into a database for you. Besides the table
+argument, this slot can only be given one argument, which is __[values]__. Below is an example of usage.
 
 ```
 sql.create
@@ -81,9 +81,10 @@ sql.create:insert into 'table1' ('field1', 'field2') values (@0, @1)
    @1:world
 ```
 
-The basica idea is that everything that might be dynamically injected into your data access layer,
+The basic idea is that everything that might be dynamically injected into your data access layer,
 should be consumed as `SqlParameters`, or something equivalent, to prevent SQL injection attacks
 towards your database. This is true for all arguments passed in as data for all slots in the project.
+The slot will in its specialized implementations return the ID of the inserted record if possible.
 
 ## [sql.read]
 
