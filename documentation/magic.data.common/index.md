@@ -1,11 +1,10 @@
 
 # Magic Data Common
 
-This is the generic data adapter, that transform dynamically from a lambda node structure, into SQL, intended
+This is the generic data adapter, that transform dynamically from a lambda node structure into SQL, intended
 to be executed towards your specific database implementation. If you wish to extend Magic to support a custom
-database type, this is the project you'd want to extend from, to make sure you keep the exact same structure as
-you create your lambda objects, intended to be converted into SQL, and executed towards some database
-type. The project contains 4 base classes, which you should inherit from and extend to implement your custom logic.
+database type, this is the project you'd want to extend from. The project contains 4 base classes, which you
+should inherit from and extend to implement your custom logic.
 
 * `SqlCreateBuilder` - Helper class to generate insert SQL statements.
 * `SqlDeleteBuilder` - Helper class to generate delete SQL statements.
