@@ -8,6 +8,7 @@ Expand your _"backend/slots/"_ folder in Visual Studio (Code), and create a new 
 Name your file _"Add.cs_", and put the following content into it.
 
 ```csharp
+using System.Linq;
 using magic.node;
 using magic.node.extensions;
 using magic.signals.contracts;

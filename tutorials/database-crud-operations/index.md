@@ -283,7 +283,7 @@ might care about it, since a lot of companies have
 _"corporate database vendors"_, and don't even allow for purchasing
 products that somehow doesn't support their particular database type.
 
-In addition the database adapters in Magic also gives you transaction
+In addition some database adapters in Magic also gives you transaction
 support, creating, committing, and rolling back database transactions,
 and lots of additional features. Please refer to your specific database
 adapter for more information about these slots.
