@@ -48,6 +48,7 @@ An expression always starts out with an _"identity"_ node, being its initial
 set of node(s) that the first iterator will start out having as its input.
 This is normally the node that declares the expression as its value. For our
 above example, this is the **[get-value]** node.
+
 You could probably get away with only understanding a handful of iterators, so
 let's go through the most important ones.
 
@@ -59,7 +60,7 @@ Then it finds the first node _"upwards"_ in the hierarchy, having a name of what
 follows its `@` character. _"Upwards in the hierarchy_" here implies checking its
 older sibling nodes, then checking its parent node, then checking its parent node's
 older siblings, etc - Until it reaches the root node. If no match is found, it returns
-zero nodes as its result. When it finds a match, it yields that node as its result,
+zero nodes as its result. If it finds a match, it yields that node as its result,
 and stops looking for more nodes. This translates into the following in English.
 
 > Find the first node 'upwards' who's name is 'xxx'
@@ -90,11 +91,9 @@ get-nodes:x:./*/.data/*
 If you run the above Hyperlambda through your _"Evaluator"_, you will see that
 it returns _all_ **[itemX]** nodes. This is because the `.data` name filtering
 iterator, will actually return _two_ nodes, since we have two nodes with the name
-of _".data"_ in the above Hyperlambda. Then all children of all previous result
-sets will be returned to the caller. In fact, this is the logic of most iterators.
-
-The above expression is also using the _"parent iterator"_, which we'll explain
-further down in this tutorial.
+of _".data"_ in the above Hyperlambda. Hence, the result becomes that all item
+nodes are returned in the end. The above expression is also using the _"parent iterator"_,
+which we'll explain further down in this tutorial.
 
 ### The name filter iterator
 
@@ -111,6 +110,10 @@ expression removed.
 ```
 :x:@.data/*/item2
 ```
+
+In the above expression, _"item2"_ is a name filtering iterator, the asterix
+is the children iterator, and the `@` character denotes the beginning of
+a variable iterator.
 
 ## Useful built in iterators
 
