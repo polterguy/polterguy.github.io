@@ -49,7 +49,6 @@ An expression always starts out with an _"identity"_ node, being its initial
 set of node(s) that the first iterator will start out having as its input.
 This is normally the node that declares the expression as its value. For our
 above example, this is the **[get-value]** node.
-
 You could probably get away with only understanding a handful of iterators, so
 let's go through the most important ones.
 
