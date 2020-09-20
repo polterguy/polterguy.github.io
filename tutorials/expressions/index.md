@@ -153,12 +153,6 @@ is an example.
 get-name:x:@.data/*/=john
 ```
 
-These are the most important iterators in Hyperlambda, and you'd probably
-get away with only knowing these, not caring about any of the other iterators.
-However, if you're interested in seeing the full set of iterators, and
-the entirety of expression's power, you might want to read up on
-[magic node](/documentation/magic.node).
-
 ### The parent iterator
 
 This iterator contains one single character, the `.` character, and
@@ -181,5 +175,12 @@ The result of the above Hyperlambda becomes that it returns the **[.data]**
 node, since this node is the parent of the **[item1]** node, which is the
 node having a value of _"john"_.
 
-* [Documentation](/documentation)
+## Wrapping up
 
+These are the most important iterators in Hyperlambda, and you'd probably
+get away with only knowing these, not caring about any of the other iterators.
+However, if you're interested in seeing the full set of iterators, and
+the entirety of expression's power, you might want to read up on
+[magic node](/documentation/magic.node).
+
+* [Documentation](/documentation)
