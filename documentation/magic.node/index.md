@@ -254,7 +254,8 @@ for reference purposes, let's break it down into its individual parts.
 If you head hurts, just relax, and move onwards - I have never needed an expression as complex
 as the above myself as I have been using Hyperlambda myself. It's only an example to illustrate
 the power of expressions. However, the `{0}` parts basically becomes a string substitution,
-possibly evaluating its n'th child, if the value of that child is another expression.
+possibly evaluating its n'th child, if the value of that child is another expression. This
+allows you to _"parametrize"_ your expressions, which might be useful every now and then.
 
 ### Extending lambda expressions/iterators
 
