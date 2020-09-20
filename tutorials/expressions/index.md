@@ -58,8 +58,8 @@ zero nodes as its result. When it finds a match, it yields that node as its resu
 **Notice** - The `@` iterator will never traverse children nodes, only older sibling
 nodes and parent nodes. Think about this iterator as doing something similar to
 what's done in a traditional programming language as it's referencing a variable.
-It will never go inside of inner _"scopes"_, only upwards in the hierarchy to look
-for the variable name.
+It will never go inside of inner _"scopes"_, and never _"forward"_ in your code,
+only upwards and backwards in the hierarchy to look for the variable name.
 
 ### The * children iterator
 
