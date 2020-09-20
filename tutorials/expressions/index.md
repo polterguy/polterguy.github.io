@@ -181,6 +181,19 @@ The result of the above Hyperlambda becomes that it returns the **[.data]**
 node, since this node is the parent of the **[item1]** node, which is the
 node having a value of _"john"_.
 
+### The root iterator
+
+This iterator will always return _exactly_ one node, which is the
+_"root node"_ of your graph. It is composed of two characters,
+being `..`. Below is an example.
+
+```
+.foo:x:../*
+```
+
+The above implies _"give me all children of the root node"_, resulting
+in only the **[.foo]** node for the above example.
+
 ## Wrapping up
 
 These are the most important iterators in Hyperlambda, and you could probably
