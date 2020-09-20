@@ -59,7 +59,7 @@ Hyperlambda file inside your _"backend/files/"_ folder. If you're using Magic fr
 your development machine on localhost, you can use
 [the following URL to invoke your endpoint](http://localhost:55247/magic/modules/tutorials/hello-world).
 
-The first parts of its extension, the _"get"_ parts, declares that our file is an HTTP GET
+The first parts of the file extension, the _"get"_ parts, declares that our file is an HTTP GET
 endpoint, which we can invoke using the GET verb. The last parts, the _".hl"_ extension,
 declares that this is a Hyperlambda file, making the Hyperlambda parser kick in and transform
 it to a lambda object. The lambda object is then evaluated, and whatever it returns, is
@@ -295,8 +295,6 @@ mysql.connect:sakila
 
 Then try invoking the endpoint, but this time with the following arguments.
 ![Paging your result](https://servergardens.files.wordpress.com/2020/09/sql-read-with-offset.png)
-8 lines of Hyperlambda code, and we created an HTTP REST endpoint, retrieving data
-from your database, allowing for paging.
 
 ### Authorization
 
@@ -307,7 +305,7 @@ auth.ticket.verify:root, admin
 ```
 
 You have now secured access to this endpoint, such that _only_ users belonging
-to the _"root"_ or _"admin"_ roles can invoke it. The roles is a comma separated list
+to the _"root"_ or _"admin"_ roles can invoke it. The above value is a comma separated list
 of roles, allowing a user to access the endpoint, if he or she belongs
 to _any_ of the roles listed. All other users will be denied access. The
 complete code we ended up with can be found below.

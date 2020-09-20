@@ -1,9 +1,9 @@
 # Extending Hyperlambda with C#
 
-What our previous [sending emails tutorial](/tutorials/send-email) tried
-to hint at, is that Magic is more than CRUD. In this tutorial, we
-will prove it, by creating our own Hyperlambda keyword that
-invokes a C# method.
+[Our previous tutorial](/tutorials/send-email) showed
+how Hyperlambda is more than just CRUD. In this tutorial, we
+will show how Hyperlambda is more than Hyperlambda, by creating
+our own extension to its keywords using C#.
 Expand your _"backend/slots/"_ folder in Visual Studio (Code), and create a new file.
 Name your file _"Add.cs_", and put the following content into it.
 

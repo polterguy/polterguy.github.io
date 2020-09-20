@@ -62,7 +62,8 @@ from the socket connection it is using to actually transmit
 the email to your SMTP server, the web server thread will be
 released back to the operating system. This results
 in 100x better scaling of your web app, since no thread is
-blocked as Magic is waiting for IO to finish.
+blocked as Magic is waiting for IO to finish. You should use
+async slots if you can. These always starts out with _"wait."_.
 
 We are also using the email validator above. This validator will throw an exception
 unless the expression it's pointing to, is a valid email
