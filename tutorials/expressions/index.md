@@ -156,7 +156,7 @@ get-name:x:@.data/*/=john
 ### The parent iterator
 
 This iterator contains one single character, the `.` character, and
-simply implies _"give me the parent of your previous result set"_.
+simply implies _"give me the parent(s) of your previous result set"_.
 The iterator might return multiple nodes, if you somehow managed to
 compose an expression that contained multiple sub-graph objects,
 from different parts of your tree, before you appended the parent
