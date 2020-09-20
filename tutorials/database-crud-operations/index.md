@@ -3,6 +3,12 @@
 CRUD is at the core of everything relating to your database. It
 implies **C**reate, **R**ead, **U**pdate and **D**elete, and these
 are the 4 axioms that all database manipulation evolves around.
+Notice, if you prefer to watch video tutorials, here’s a video
+where I walk you through everything.
+
+<div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
+<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/fK3g_Aecx8Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 Hyperlambda supports 2 database types: Microsoft SQL Server and MySQL. In
 our previous tutorial, we executed a select SQL statement, and returned
