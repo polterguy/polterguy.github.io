@@ -18,6 +18,8 @@ get-value:x:@.data/*/item2
 
 Run the above Hyperlambda through your Magic Dashboard's _"Evaluator"_ to see its
 result. After execution the above **[get-value]** node will have a value of _"thomas"_.
+This is because the **[get-value]** invocation is given an expression, and the result
+of evaluating this expression, becomes the node with the value of _"thomas"_.
 
 **Notice** - Expressions are type declared as `:x:`, which you can see in the above
 code.
