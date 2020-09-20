@@ -3,7 +3,14 @@
 [Our previous tutorial](/tutorials/send-email) showed
 how Hyperlambda is more than just CRUD. In this tutorial, we
 will show how Hyperlambda is more than Hyperlambda, by creating
-our own extension to its keywords using C#.
+our own extension slot using C#.
+Notice, if you prefer to watch video tutorials, here’s a video
+where I walk you through everything.
+
+<div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
+<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/rUDm0u8zaGE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 Expand your _"backend/slots/"_ folder in Visual Studio (Code), and create a new file.
 Name your file _"Add.cs_", and put the following content into it.
 
