@@ -183,7 +183,7 @@ node having a value of _"john"_.
 ### The root iterator
 
 This iterator will always return _exactly_ one node, which is the
-_"root node"_ of your graph. It is composed of two characters,
+_"root node"_ of your graph object. It is composed of two characters,
 being `..`. Below is an example.
 
 ```
