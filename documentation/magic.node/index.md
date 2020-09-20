@@ -173,7 +173,15 @@ and hence allows you to modify _"anything"_ from _"anywhere"_.
 
 ### Iterators
 
-An expression is constructed from one or more _"iterators"_. Each iterator ends with a _"/"_ or a CR/LF
+An expression is constructed from one or more _"iterator"_. This makes an expression
+become _"dynamically chained Linq statements"_, where each iterator reacts upon
+the results of its previous iterator. Each iterator takes as input an `IEnumerable`,
+and returns as its result another `IEnumerable`, where the content of the iterator
+somehow changes its given input, according to whatever the particular iterator's
+implementation does. This approach just so happens to be perfect for retrieving
+sub-sections of graph objects.
+
+Each iterator ends with a _"/"_ or a CR/LF
 sequence, and before its end, its value defines what it does. For instance the above iterator in
 the __[get-value]__ invocation, starts out with a _"@"_. This implies that the iterator will find the
 first node having a name of whatever follows its _"@"_. For the above this means looking for the first
