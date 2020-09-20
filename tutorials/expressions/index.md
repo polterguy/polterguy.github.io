@@ -90,8 +90,8 @@ This is the default iterator, and the expression builder will result to this
 iterator, if it cannot find another match. It's fairly self explanatory and
 simply implies _"filter away everything from my current result set not having a name of 'xxx'"_.
 
-Our above expression is using the above iterators in the exact same sequence as
-we described the iterators, implying an `@` variable iterator, followed by an `*`
+Our first Hyperlambda is using the above iterators in the exact same sequence as
+we described the iterators here, implying an `@` variable iterator, followed by an `*`
 children iterator, followed by a name filtering iterator. For clarity reasons,
 it might help to see the expression once more now, with everything besides its
 expression removed.
