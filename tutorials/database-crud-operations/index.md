@@ -1,5 +1,9 @@
 # Hyperlambda CRUD database endpoints
 
+CRUD is at the core of everything relating to your database. It
+implies **C**reate, **R**ead, **U**pdate and **D**elete, and these
+are the 4 axioms around which all database manipulation evolves around.
+
 Hyperlambda supports 2 database types: Microsoft SQL Server and MySQL. In
 our previous tutorial, we executed a select SQL statement, and returned
 the results back to the client as JSON. Below is Hyperlambda illustrating
