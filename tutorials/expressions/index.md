@@ -3,11 +3,10 @@
 Expressions are the by far most complex subject in Hyperlambda. The bad news
 is that they also permutate the entire platform, and are crucial to understand
 in order to effectively use Magic. The good news is that you only need to
-understand 5% of expressions to use Hyperlambda efficiently - So don't
-let these guys scare you. In this tutorial, I'll lead you to an
-understanding of expressions in less than 10 minutes, at which point you'll
-know _everything_ you need to know about expressions. Let's start with
-some example Hyperlambda.
+understand 5% of expressions to use Hyperlambda efficiently. In this tutorial,
+I'll lead you to an understanding of expressions in less than 10 minutes,
+at which point you'll know _everything_ you need to know about expressions.
+Let's start with some Hyperlambda.
 
 ```
 .data
