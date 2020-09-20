@@ -30,17 +30,13 @@ the `:int:` parts between one of our **[foo]** nodes' name and value.
 To traverse the nodes later in for instance C#, you could do something such as the following.
 
 ```csharp
-// Parse some piece of Hyperlambda from a string.
 var root = var result = new Parser(hyperlambda).Lambda();
 
-// Retrieving name and value from root node.
-var name = root.Name;
-var value = root.Value;
-
-// Iterating children nodes of root node.
 foreach (var idxChild in root.Children)
 {
-   /* ... do stuff with idx here ... */
+   var name = idxChild.Name;
+   var value = idxChild.Value;
+   /* ... etc ... */
 }
 ```
 
@@ -118,9 +114,20 @@ Converter.AddConverter(
 ```
 
 The above will allow you to serialize instances of `Foo` into your Hyperlambda, and
-de-serialize these instances, once needed. Notice, you can (of course) only supply
-and create instance of the `Foo` class as _values_ of your nodes using C# if you execute
-the above code.
+de-serialize these instances once needed. An example of adding a `Foo` instance into
+your Hyperlambda can be found below.
+
+```
+.foo:foo:5-7
+```
+
+Later you can retrieve your `Foo` instances in your slots, using something
+resembling the following, and all parsing and conversion will be automatically
+taken care of.
+
+```csharp
+var foo = node.Get<Foo>();
+```
 
 ## String literals
 
