@@ -63,7 +63,7 @@ older siblings, etc - Until it reaches the root node. If no match is found, it r
 zero nodes as its result. When it finds a match, it yields that node as its result,
 and stops looking for more nodes. This translates into the following in English.
 
-> Find the first node who's name is 'xxx'
+> Find the first node 'upwards' who's name is 'xxx'
 
 **Notice** - The `@` iterator will never traverse children nodes, only older sibling
 nodes and parent nodes. Think about this iterator as doing something similar to
