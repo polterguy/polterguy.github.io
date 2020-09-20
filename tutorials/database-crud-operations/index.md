@@ -1,4 +1,4 @@
-# Hyperlambda CRUD database endpoints
+# Hyperlambda CRUD operations
 
 CRUD is at the core of everything relating to your database. It
 implies **C**reate, **R**ead, **U**pdate and **D**elete, and these
