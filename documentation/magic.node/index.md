@@ -252,7 +252,9 @@ for reference purposes, let's break it down into its individual parts.
 5. Find all nodes who's value is _"wo/rld"_.
 
 If you head hurts, just relax, and move onwards - I have never needed an expression as complex
-as the above myself as I have been using Hyperlambda myself.
+as the above myself as I have been using Hyperlambda myself. It's only an example to illustrate
+the power of expressions. However, the `{0}` parts basically becomes a string substitution,
+possibly evaluating its n'th child, if the value of that child is another expression.
 
 ### Extending lambda expressions/iterators
 
