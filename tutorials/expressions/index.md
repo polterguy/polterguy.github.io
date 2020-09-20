@@ -65,6 +65,24 @@ only upwards and backwards in the hierarchy to look for the variable name.
 
 This iterator will return all children of all nodes from its previous result set.
 It's fairly self explanatory, and is often referred to as the _"children iterator"_.
+However, as most iterators, it will return all children of _all_ nodes from its
+previous result set. To see this effect, consider the following code.
+
+```
+.data
+   item1:foo1
+   item2:foo2
+.data
+   item3:foo3
+   item4:foo4
+get-nodes:x:./*/.data/*
+```
+
+If you run the above Hyperlambda through your _"Evaluator"_, you will see that
+it returns _all_ **[itemX]** nodes. This is because the `.data` name filtering
+iterator, will actually return _two_ nodes, since we have two nodes with the name
+of _".data"_ in the above Hyperlambda. Then all children of all previous result
+sets will be returned to the caller. In fact, this is the logic of most iterators.
 
 ### The name filter iterator
 
