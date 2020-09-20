@@ -306,7 +306,7 @@ auth.ticket.verify:root, admin
 
 You have now secured access to this endpoint, such that _only_ users belonging
 to the _"root"_ or _"admin"_ roles can invoke it. The above value is a comma separated list
-of roles, allowing a user to access the endpoint, if he or she belongs
+of roles, allowing a user to access the endpoint, _only_ if he or she belongs
 to _any_ of the roles listed. All other users will be denied access. The
 complete code we ended up with can be found below.
 
