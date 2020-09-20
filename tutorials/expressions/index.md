@@ -84,6 +84,9 @@ iterator, will actually return _two_ nodes, since we have two nodes with the nam
 of _".data"_ in the above Hyperlambda. Then all children of all previous result
 sets will be returned to the caller. In fact, this is the logic of most iterators.
 
+The above expression is also using the _"parent iterator"_, which we'll explain
+further down in this tutorial.
+
 ### The name filter iterator
 
 This is the default iterator, and the expression builder will result to this
@@ -145,6 +148,28 @@ get away with only knowing these, not caring about any of the other iterators.
 However, if you're interested in seeing the full set of iterators, and
 the entirety of expression's power, you might want to read up on
 [magic node](/documentation/magic.node).
+
+### The parent iterator
+
+This iterator contains one single character, the `.` character, and
+simply implies _"give me the parent of your previous result set"_.
+The iterator might return multiple nodes, if you somehow managed to
+compose an expression that contained multiple sub-graph objects,
+from different parts of your tree, before you appended the parent
+iterator to it. Below is the exact same expression as in our previous
+example, except it appends the `.` iterator.
+
+```
+.data
+   item1:john
+   item2:thomas
+   item3:peter
+get-name:x:@.data/*/=john/.
+```
+
+The result of the above Hyperlambda becomes that it returns the **[.data]**
+node, since this node is the parent of the **[item1]** node, which is the
+node having a value of _"john"_.
 
 * [Documentation](/documentation)
 
