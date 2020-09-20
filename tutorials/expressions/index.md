@@ -155,6 +155,10 @@ is an example.
 get-name:x:@.data/*/=john
 ```
 
+The value of each node will be converted into a string if necessary,
+before the comparison is performed. This allows you to do comparisons
+towards boolean values, date values, etc.
+
 ### The parent iterator
 
 This iterator contains one single character, the `.` character, and
@@ -179,10 +183,12 @@ node having a value of _"john"_.
 
 ## Wrapping up
 
-These are the most important iterators in Hyperlambda, and you'd probably
+These are the most important iterators in Hyperlambda, and you could probably
 get away with only knowing these, not caring about any of the other iterators.
 However, if you're interested in seeing the full set of iterators, and
 the entirety of expression's power, you might want to read up on
-[magic node](/documentation/magic.node).
+[magic node](/documentation/magic.node). If the built in iterators
+aren't enough for you, you can also extend the expression builder,
+with your own extension iterators.
 
 * [Documentation](/documentation)
