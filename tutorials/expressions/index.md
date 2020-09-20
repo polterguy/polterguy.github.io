@@ -61,7 +61,10 @@ Then it finds the first node _"upwards"_ in the hierarchy, having a name of what
 follows its `@` character. _"Upwards in the hierarchy_" here implies checking its
 older sibling nodes, then checking its parent node, then checking its parent node's
 older siblings, etc - Until it reaches the root node. If no match is found, it returns
-zero nodes as its result. When it finds a match, it yields that node as its result.
+zero nodes as its result. When it finds a match, it yields that node as its result,
+and stops looking for more nodes. This translates into the following in English.
+
+> Find the first node who's name is 'xxx'
 
 **Notice** - The `@` iterator will never traverse children nodes, only older sibling
 nodes and parent nodes. Think about this iterator as doing something similar to
