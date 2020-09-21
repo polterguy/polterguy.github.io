@@ -1,8 +1,8 @@
 
 # Magic Lambda
 
-Magic Lambda is a microscopic Turing complete programming language based upon Magic Node
-and Magic Signals. It provides the familiar _"keywords"_, such as **[for-each]**
+Magic lambda is where you will find the _"keywords"_ of Hyperlambda.
+It is what makes Hyperlambda Turing complete, and contains slots such as **[for-each]**
 and **[if]**, by exposing [Super Signal Slots](https://dzone.com/articles/super-signals-in-aspnet-core) for these keywords,
 making them easily available for you in your Hyperlambda code. Althought technically not entirely true, this project is what allows Hyperlambda to become _"Turing complete"_, and gives you what most would consider to be a fully fledged _"programming language"_. Below is an example of sending an email with Hyperlambda.
 
