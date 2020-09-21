@@ -612,15 +612,13 @@ the expression evaluates to, and not the expression itself.
 
 ## Source slots
 
-### [get-count]
+### [get-value]
 
-This slot returns the number of nodes its expression is pointing to.
+Returns the value of the node its expression is pointing to.
 
 ```
-.data
-   foo1
-   foo2
-get-count:x:@.data/*
+.data:Hello World
+get-value:x:-
 ```
 
 ### [get-name]
@@ -632,6 +630,17 @@ Returns the name of the node referenced in its expression.
 get-name:x:-
 ```
 
+### [get-count]
+
+This slot returns the number of nodes its expression is pointing to.
+
+```
+.data
+   foo1
+   foo2
+get-count:x:@.data/*
+```
+
 ### [get-nodes]
 
 Returns the nodes its expression is referencing.
@@ -641,15 +650,6 @@ Returns the nodes its expression is referencing.
    foo1
    foo2
 get-nodes:x:-/*
-```
-
-### [get-value]
-
-Returns the value of the node its expression is pointing to.
-
-```
-.data:Hello World
-get-value:x:-
 ```
 
 ### [reference]
