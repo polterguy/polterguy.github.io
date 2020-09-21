@@ -40,7 +40,7 @@ you might expect.
 
 <img alt="Hyperlambda Evaluator" title="Hyperlambda Evaluator" src="https://servergardens.files.wordpress.com/2020/05/evaluator.png" />
 
-Logically the Hyperlambda evaluator will signal each nodes in your Hyperlambda code, sequentially, assuming
+Logically the Hyperlambda evaluator will signal each nodes in your Hyperlambda code sequentially, assuming
 all of your nodes are referencing an `ISlot` class, unless the node's name starts with a _"."_ or has an empty name.
 
 ## Hyperlambda structure
