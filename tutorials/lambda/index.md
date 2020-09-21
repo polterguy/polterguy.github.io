@@ -39,7 +39,7 @@ upon arguments given to your code.
 
 **Notice** - Hyperlambda _is_ first and foremost an orchastration
 programming language. This implies that some things are much easier
-to achieve, typically _"orhastration code"_ - While
+to achieve, typically _"orchestration code"_ - While
 other things are more difficult to achieve, which includes branching,
 looping, and more traditional programming constructs. Sometimes
 you still want to use Hyperlambda for such code, due to
@@ -125,9 +125,9 @@ else
 Notice how the **[and]** node above becomes a lambda
 object in itself, sequentially invoking its children,
 until all children have evaluated, and yielded true -
-_Or_ one of its children evaluates to false, at which it
+_Or_ one of its children evaluates to false, at which point it
 short circuits, and stops further evaluation of its
-children nodes. Only of _all_ children conditions
+children nodes. Only if _all_ children conditions
 evaluates to _"true"_, the **[and]** evaluates to _"true"_.
 
 If you exchange the above **[and]** with an **[or]**, it
@@ -136,7 +136,7 @@ _"true"_ condition, and the **[or]** as a whole yields _"true"_.
 
 Hence, short circuiting in Hyperlambda is logically
 similar to how it's implemented in traditional programming
-languages. Bot **[or]** and **[and]** can have as many
+languages. Both **[or]** and **[and]** can have as many
 children conditions as you wish, and you can also nest
 logical slots, and add inner boolean logical slots,
 effectively resulting in the same as you'd achieve using
@@ -166,7 +166,7 @@ else
 ```
 
 The above **[if]** will only evaluate to true if both 1+2 is true,
-or 3+4 is true. If 1+3 is true, and all others are false, the
+or both 3+4 is true. If 1+3 is true, and all others are false, the
 **[if]** will evaluate to false. This becomes the equivalent
 of the following more traditional programming construct.
 
@@ -217,7 +217,7 @@ The **[for-each]** slot, will execute once for each resulting
 onde in its expression - And as it does, it will _"inject"_
 the currently iterated node _by reference_ into its own
 lambda object. the name of this _"data pointer"_ argument,
-becomes **[.dp]**. Hence, by using the reference iteratr `#`,
+becomes **[.dp]**. Hence, by using the reference iterator `#`,
 we're able to extract a _direct reference_ to the node we're
 iterating.
 
@@ -303,7 +303,7 @@ slots.create:foo.bar
    return:bool:true
 ```
 
-the above creates a slot that simply returns the boolean value of _"true"_,
+The above creates a slot that simply returns the boolean value of _"true"_,
 but you can put any amount of Hyperlambda into your slots - And due to
 the functional aspect of Hyperlambda, you can use these slots as
 if they were normal C# slots. An example of invoking the
@@ -335,10 +335,19 @@ and also helps you separate dynamically created slots, from static
 C# slots. And in fact, all manipulation of dynamic slots, are slightly
 different than statically compiled C# slots. For instance, the invocation
 pattern of dynamic slots, doesn't allow us to pass in a _value_ to
-our slot invocations, and only childrne arguments can be passed in.
-
+our slot invocations, and only children arguments can be passed in.
 A dynamic slot can however _return_ a value, as we saw above,
 at which point the value will become the value of the **[signal]**
 node after invocation.
+
+**Notice** - Dynamic slots are _not_ persisted. This implies that
+if you restart your process for some reasons, the slot no longer
+exists. If you want to create dynamic slots that always exists in
+your app, you'll have to put your slot creation Hyperlambda
+into a _"magic.startup"_ folder, inside of your module's folder,
+and create your slot from this file. This ensures that your slot
+is re-created is the web server restarts for some reasons, since
+all files inside of module's _"magic.startup"_ folders are executed
+every time the process restarts.
 
 * [Documentation](/documentation)
