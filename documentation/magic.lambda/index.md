@@ -188,6 +188,8 @@ or single line comments, like the following example illustrates.
 // Single line comment.
 ```
 
+You _cannot_ put comments on lines containing nodes however.
+
 ## Lambda expressions
 
 To understand Hyperlambda, and how to efficiently create your own Hyperlambda, you'll have to understand
