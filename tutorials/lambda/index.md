@@ -210,7 +210,7 @@ The above will iterate once for each node beneath **[.data]**,
 and append the value of the currently iterated node, into
 the **[.result]** node.
 
-## The reference iterator
+### The reference iterator
 
 At this point the reference iterator becomes crucial to understand.
 The **[for-each]** slot, will execute once for each resulting
@@ -223,10 +223,10 @@ iterating.
 
 Normally when you're handling nodes in Hyperlambda, you're
 working on a _copy_ of the node. For reference nodes, containing
-other nodes by reference in their values, this is _not_ true,
-and you're actually working on the node you're iterating
-directly, and not a copy of it. to understand this, try executing
-the following Hyperlambda, and watch how the foo nodes are
+other nodes by reference as their values, this is _not_ true -
+And you're actually working on the node you're iterating
+directly, and not a copy of it. To understand this, try executing
+the following Hyperlambda, and watch how the **[fooX]** nodes are
 changing their values after execution.
 
 ```
@@ -241,7 +241,7 @@ for-each:x:@.data/*
 ```
 
 The whole point being that after execution, the **[.data]**
-node of course will resemble the following.
+node will resemble the following.
 
 ```
 .data
@@ -249,5 +249,7 @@ node of course will resemble the following.
    foo2:Thomas Hansen was here!
    foo3:Thomas Hansen was here!
 ```
+
+## Custom slots
 
 * [Documentation](/documentation)
