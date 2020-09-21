@@ -241,6 +241,21 @@ if
          .:yup!
 ```
 
+All conditional slots, including **[if]**, accepts optionally slots as their first condition argument.
+This allows you to invoke slots, treating the return value of the slot as the condition deciding
+whether or not the **[.lambda]** object should be executed or not. Below is an example.
+
+```
+.arguments
+   foo:bool:true
+.dest
+if
+   get-value:x:@.arguments/*/foo
+   .lambda
+      set-value:x:@.dest
+         .:yup!
+```
+
 ### [else-if]
 
 **[else-if]** is the younger brother of **[if]**, and must be preceeded by its older brother, or other **[else-if]** nodes,
