@@ -88,11 +88,102 @@ true. The **[else]** however, doesn't require a condition to
 evaluate, since it'll only be executed if all previous **[if]**
 and **[else-if]** invocations didn't evaluate their condition(s)
 to true - Hence, it just includes the lambda object which it
-executes if it should be executed as children, directly beneath
-the else node itself. Yet again, everything is a lambda block in
+executes if it should be executed directly as children, beneath
+the else node itself.
+
+Yet again, everything is a lambda block in
 Hyperlambda - Hence, thinking of only **[.lambda]** blocks
-as being lambda, is not productive.
+as being lambda, is not productive. Even the **[if]** node
+itself is evaluated using **[eval]**, which is why we can reference
+slots as conditions, and also why **[.lambda]** starts with a `.`,
+such that it won't be evaluated or attempted to be signaled as a
+slot invocation.
 
 ## Boolean "operators"
+
+Hyperlambda doesn't contain the construct of _"operators"_. Hence,
+what you'd normally refer to in a traditional programming language
+as boolean operators, is rather in fact slots by themselves in
+Hyperlambda. Let's illustrate with an example.
+
+```
+.arguments
+   condition1:bool
+   condition2:bool
+if
+   and
+      get-value:x:@.arguments/*/condition1
+      get-value:x:@.arguments/*/condition2
+   .lambda
+      return
+         result:Yup, both conditions are true
+else
+   return
+      result:Both conditions are not true!
+```
+
+Notice how the **[and]** node above becomes a lambda
+object in itself, sequentially invoking its children,
+until all children have evaluated, and yielded true -
+_Or_ one of its children evaluates to false, at which it
+short circuits, and stops further evaluation of its
+children nodes. Only of _all_ children conditions
+evaluates to _"true"_, the **[and]** evaluates to _"true"_.
+
+If you exchange the above **[and]** with an **[or]**, it
+will stop evaluating its children, once it has found its first
+_"true"_ condition, and the **[or]** as a whole yields _"true"_.
+
+Hence, short circuiting in Hyperlambda is logically
+similar to how it's implemented in traditional programming
+languages. Bot **[or]** and **[and]** can have as many
+children conditions as you wish, and you can also nest
+logical slots, and add inner boolean logical slots,
+effectively resulting in the same as you'd achieve using
+paranthesis in traditional programming languages. Below
+is an example.
+
+```
+.arguments
+   condition1:bool
+   condition2:bool
+   condition3:bool
+   condition4:bool
+if
+   or
+      and
+         get-value:x:@.arguments/*/condition1
+         get-value:x:@.arguments/*/condition2
+      and
+         get-value:x:@.arguments/*/condition3
+         get-value:x:@.arguments/*/condition4
+   .lambda
+      return
+         result:Condition 1+2 or 3+4 are true
+else
+   return
+      result:Neither condition 1+2 nor 3+4 are true
+```
+
+The above **[if]** will only evaluate to true if both 1+2 is true,
+or 3+4 is true. If 1+3 is true, and all others are false, the
+**[if]** will evaluate to false. This becomes the equivalent
+of the following more traditional programming construct.
+
+```csharp
+if ((condition1 && condition2) || (condition3 && condition4)) {
+   /* ... Do stuff! ... */
+}
+```
+
+Hence, although Hyperlambda _is_ a bit _"verbose"_ in these
+regards, there's nothing preventing you from creating just
+as complex conditions in Hyperlambda, as you could create in
+any other programming language.
+
+**Notice** - the **[while]** slot functions exactly the
+same is the **[if]** slot, except of course it will execute
+over and over again, until the condition for some reasons
+yields _"false"_.
 
 * [Documentation](/documentation)
