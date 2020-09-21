@@ -803,7 +803,7 @@ sleep:1000
 
 ### [vocabulary]
 
-Returns the name of every static slot in your system, optional passing in a string,or an expression leading to
+Returns the name of every static slot in your system, optional passing in a string, or an expression leading to
 a string, which is a filtering condition where the slot must _start_ with the filter in its name, to be considered
 a part of the end result.
 
