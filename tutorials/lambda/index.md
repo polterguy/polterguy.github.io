@@ -350,4 +350,24 @@ is re-created is the web server restarts for some reasons, since
 all files inside of module's _"magic.startup"_ folders are executed
 every time the process restarts.
 
+## Wrapping up
+
+Although Hyperlambda is super-expressive for some types of
+tasks, such as orchestration tasks, creating CRUD endpoints,
+sending emails, etc - Some things it is _less suited_ for. I don't
+advice you to add too much _"logic"_ into your Hyperlambda files,
+but rather resort to [C# extension slots](/tutorials/extending-hyperlambda)
+if you need a lot of business logic in your apps. If you find
+yourself at the point where you're creating dozens of if
+statements, loops, math operations, etc - It's probably smarter
+to implement these parts of your app in C#, due to Hyperlambda's
+sometimes cumbersome syntax to express complex branching and such.
+
+Also realize that Hyperlambda is _not_ as fast as C#. Every slot
+invocation carries some overhead. Hence, you should not use it for
+extremely CPU intensive operations, such as polygon rendering,
+cryptography, etc - But rather create low level C# methods,
+where you put your CPU intensive code, that you can _"orchestrate"_
+using Hyperlambda.
+
 * [Documentation](/documentation)
