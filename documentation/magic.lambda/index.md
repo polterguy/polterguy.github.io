@@ -492,7 +492,7 @@ with both **[or]** and **[and]**.
 
 ### [add]
 
-This slot allws you to dynamically add nodes into a destination node. Its primary argument is the destination,
+This slot allows you to dynamically add nodes into a destination node. Its primary argument is the destination,
 and it assumes that each children is a collection of nodes it should append to the destination node's children
 collection. The reasons for this additional level of indirection, is because the **[add]** slot might have
 children that are by themselves slot invocations, which it will evaluate before it starts adding the children
