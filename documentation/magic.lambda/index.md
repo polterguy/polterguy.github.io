@@ -202,7 +202,8 @@ might serve as both at the same time. This allows you to dynamically modify your
 traverse it, and execute it - But this creates another problem for you, which is that you will need
 a mechanism to store data. This is accomplished by prefixing a node's name with a "." character, at which point
 the Hyperlambda evaluator will ignore it, as it is traversing your tree, and _not_ attempt to signal
-that particular node as a slot.
+that particular node as a slot. Think of all nodes starting with a `.` character as _"data segments"_
+or variables for that matter.
 
 Combining _"data nodes"_ with expressions, allows you to use, modify and reference these as _"variables"_.
 Below is an example.
