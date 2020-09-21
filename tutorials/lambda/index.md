@@ -186,4 +186,68 @@ same is the **[if]** slot, except of course it will execute
 over and over again, until the condition for some reasons
 yields _"false"_.
 
+## Looping
+
+Since **[while]** is semantically the _exact same_ as
+**[if]**, we will focus on the **[for-each]** loop here,
+which allows you to iterate once for every node found through
+some expression. Try executing the following in your _"Evaluator"_.
+
+```
+.data
+   foo1:bar1
+   foo2:bar2
+   foo3:bar3
+.result:
+for-each:x:@.data/*
+   set-value:x:@.result
+      strings.concat
+         get-value:x:@.result
+         get-value:x:@.dp/#
+```
+
+The above will iterate once for each node beneath **[.data]**,
+and append the value of the currently iterated node, into
+the **[.result]** node.
+
+## The reference iterator
+
+At this point the reference iterator becomes crucial to understand.
+The **[for-each]** slot, will execute once for each resulting
+onde in its expression - And as it does, it will _"inject"_
+the currently iterated node _by reference_ into its own
+lambda object. the name of this _"data pointer"_ argument,
+becomes **[.dp]**. Hence, by using the reference iteratr `#`,
+we're able to extract a _direct reference_ to the node we're
+iterating.
+
+Normally when you're handling nodes in Hyperlambda, you're
+working on a _copy_ of the node. For reference nodes, containing
+other nodes by reference in their values, this is _not_ true,
+and you're actually working on the node you're iterating
+directly, and not a copy of it. to understand this, try executing
+the following Hyperlambda, and watch how the foo nodes are
+changing their values after execution.
+
+```
+.data
+   foo1:bar1
+   foo2:bar2
+   foo3:bar3
+.result:
+for-each:x:@.data/*
+   set-value:x:@.dp/#
+      .:Thomas Hansen was here!
+```
+
+The whole point being that after execution, the **[.data]**
+node of course will resemble the following.
+
+```
+.data
+   foo1:Thomas Hansen was here!
+   foo2:Thomas Hansen was here!
+   foo3:Thomas Hansen was here!
+```
+
 * [Documentation](/documentation)
