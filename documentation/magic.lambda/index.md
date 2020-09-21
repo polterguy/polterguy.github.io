@@ -127,7 +127,7 @@ To create your own slots, follow the recipe below.
 At the heart of Hyperlambda is the **[eval]** slot, this slot is responsible for executing your lambda object,
 and it follows a couple of simple rules.
 
-All nodes starting with a _"."_ will be ignored, and not attempted to raised from the Hyperlambda evaluator.
+All nodes starting with a _"."_ will be ignored, and **[eval]** will not try to raise these nodes as signals.
 This has two benefits.
 
 1. You can create _"hidden"_ slots, that are only accessible from C#.
