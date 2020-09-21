@@ -195,10 +195,10 @@ in only the **[.foo]** node for the above example.
 
 These are the most important iterators in Hyperlambda, and you could probably
 get away with only knowing these, not caring about any of the other iterators.
-However, if you're interested in seeing the full set of iterators, and
+If you're interested in seeing the full set of iterators, and
 the entirety of expression's power, you might want to read up on
 [magic node](/documentation/magic.node). If the built in iterators
-aren't enough for you, you can also extend the expression builder,
+aren't enough for you, you can also extend the expression builder
 with your own extension iterators.
 
 * [Documentation](/documentation)
