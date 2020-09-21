@@ -760,25 +760,18 @@ expression found in its value.
 eval:x:@.lambda
 ```
 
-### [vocabulary]
-
-Returns the name of every static slot in your system, optional passing in a string,or an expression leading to
-a string, which is a filtering condition where the slot must _start_ with the filter in its name, to be considered
-a part of the end result.
-
-```
-// Returns ALL slots in your system.
-vocabulary
-
-// Returns only slots starting with [io.file]
-vocabulary:io.file
-```
+## Threading
 
 ### [fork]
 
 Forks the given lambda into a new thread of execution, using a thread from the thread pool. This
 slot is useful for creating _"fire and forget"_ lambda objects, where you don't need to wait
 for the result of the execution before continuing executing the current scope.
+
+```
+fork
+   info.log:I was invoked from another thread
+```
 
 ### [semaphore]
 
@@ -804,6 +797,22 @@ to be passed in as its main value.
 ```
 // Sleeps the main thread for 1 second, or 1000 milliseconds.
 sleep:1000
+```
+
+## Miscellaneous slots
+
+### [vocabulary]
+
+Returns the name of every static slot in your system, optional passing in a string,or an expression leading to
+a string, which is a filtering condition where the slot must _start_ with the filter in its name, to be considered
+a part of the end result.
+
+```
+// Returns ALL slots in your system.
+vocabulary
+
+// Returns only slots starting with [io.file]
+vocabulary:io.file
 ```
 
 **Notice** - You should really use the _"wait."_ overload for this slot, since the synchronous version
