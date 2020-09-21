@@ -250,6 +250,47 @@ node will resemble the following.
    foo3:Thomas Hansen was here!
 ```
 
+## Changing your tree
+
+Since Hyperlambda doesn't really contain the notion of variables,
+we'll need a different mechanism to change nodes, values and names
+of nodes. This is done by using the following slots.
+
+* __[set-value]__ - Changes the value(s) of nodes
+* __[set-name]__ - Changes the name(s) of nodes
+* __[add]__ - Appends a list of nodes into some destination
+* __[insert-before]__ - Insert a bunch of nodes _after_ its destination(s)
+* __[insert-after]__ - Insert a bunch of nodes _before_ its destination(s)
+* __[remove-nodes]__ - Removes the nodes specified by its source expression
+* __[unwrap]__ - Forward evaluates expressions found in other nodes
+
+Some Hyperlambda illustrating usage of these can be found below.
+
+```
+.foo1:howdy
+.foo2:world
+.foo3
+set-value:x:@.foo1
+   .:Thomas was here
+set-name:x:@.foo2
+   .:Thomas was here too
+add:x:@.foo3
+   .
+      item2:howdy
+      item2:world
+```
+
+These slots are fairly self explanatory, but you can refer to the
+[reference documentation for Magic lambda](/documentation/magic.lambda)
+if you want to see what you can do with these slots.
+
+One important detail, is that _all_ of these slots takes the _destination_
+as their main argument, implying the expression value of their invocation node.
+While those requiring a source argument, normally acceps this as a child
+node to their invocation node. Some of these slots, such as **[add]**, **[insert-xx]**,
+etc, can also handle multiple sources - While others will throw exceptions
+if you have an expression leading to multiple sources, such as the **[set-xx]** nodes.
+
 ## Custom dynamic slots
 
 You can also create dynamic slots in Hyperlambda. Think _"your own functions"_
