@@ -371,6 +371,8 @@ mte
    .:int:5
 ```
 
+## Boolean logical conditions
+
 ### [exists]
 
 **[exists]** will evaluate to true if its specified expression yields one or more results. If not, it will
