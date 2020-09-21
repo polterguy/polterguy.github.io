@@ -490,6 +490,8 @@ not
 **[not]** will also evaluate its argument, allowing you to use it in richer comparison trees, the same you could do
 with both **[or]** and **[and]**.
 
+## Modifying your graph
+
 ### [add]
 
 This slot allows you to dynamically add nodes into a destination node. Its primary argument is the destination,
@@ -565,6 +567,19 @@ This slot will remove all nodes its expression is pointing to.
 remove-nodes:x:@.data/*/foo2
 ```
 
+### [set-value]
+
+Changes the value of a node referenced as its main expression to whatever its single source happens to be.
+Notice, when you invoke a slot that tries to change a value, name, or the node itself of some expression,
+and you supply a source expression to your invocation - Then the result of the source expression
+_cannot_ return more than one result.
+
+```
+.foo
+set-value:x:@.foo
+   .:SUCCESS
+```
+
 ### [set-name]
 
 Changes the name of a node referenced as its main expression to whatever its single source happens to be.
@@ -574,16 +589,6 @@ Changes the name of a node referenced as its main expression to whatever its sin
    old-name
 set-name:x:@.foo/*
    .:new-name
-```
-
-### [set-value]
-
-Changes the value of a node referenced as its main expression to whatever its single source happens to be.
-
-```
-.foo
-set-value:x:@.foo
-   .:SUCCESS
 ```
 
 ### [unwrap]
