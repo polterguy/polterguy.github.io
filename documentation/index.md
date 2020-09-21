@@ -6,6 +6,7 @@
 3. [Sending an email](/tutorials/send-email) - Sending emails using Hyperlambda
 4. [Extending Hyperlambda with C#](/tutorials/extending-hyperlambda) - Extending Hyperlambda with C#
 5. [Expressions](/tutorials/expressions) - Using expressions to reference nodes in your Hyperlambda
+6. [Magic lambda](/tutorials/lambda) - Real programming in Hyperlambda
 
 # Documentation
 
