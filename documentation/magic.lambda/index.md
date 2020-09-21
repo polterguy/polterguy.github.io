@@ -655,8 +655,9 @@ get-nodes:x:-/*
 ### [reference]
 
 This slot will evaluate its expression, and add the entire node the expression is pointing to, as a referenced node into
-its value. This allows you to pass a node _into_ a slot, and have that slot modify the node itself by reference,
-which might sometimes be useful to have slots modify some original graph object, or parts of a graph.
+its value. This allows you to pass a node _into_ a slot by reference, and have that slot modify the node itself, or
+its children. This might sometimes be useful to have slots modify some original graph object, or parts of a graph -
+Or get access to iterate over parts of your graph object's children.
 
 ```
 .foo
