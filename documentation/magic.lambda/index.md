@@ -605,6 +605,10 @@ unwrap:x:+
 
 In the above example, before the **[.dest]** node is reached by the Hyperlambda instruction pointer, the value
 of the **[.dest]** node will have been _"unwrapped"_ (evaluated), and its value will be _"Hello World"_.
+When you invoke lambda objects that are cloned for some reasons, this slot becomes very handy, since
+it allows you to _"forward evaluate"_ expressions inside your lambda object. It's also useful when
+you have expressions inside for instance a **[return]** slot, and you want to return the _value_
+the expression evaluates to, and not the expression itself.
 
 ### [get-count]
 
