@@ -666,9 +666,13 @@ set-value:x:-/#
    .:Yup!
 ```
 
-You can think of this slot as the singular version og **[get-nodes]**, except instead of returning multiple
+You can think of this slot as the singular version of **[get-nodes]**, except instead of returning multiple
 nodes, it assumes its expression only points to a single node, and instead of returning a copy of the node,
 it returns the actual node by reference.
+
+**Notice** - The `#` iterator above, will enter into the node referenced as a value of its current
+result - Implying it allows you to deeply traverse nodes passed in as references. This is sometimes
+useful in combination with referenced nodes, passed in as values of other nodes.
 
 ### [convert]
 
