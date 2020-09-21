@@ -37,9 +37,9 @@ together. The above expression in our **[get-value]** node has 3 iterators.
 When the above expressions is evaluated, we're left with one node, the **[item2]**
 node from inside our **[.data]** node.
 
-To understand iterators, realize they're simply chained `IEnumerable` functions.
-Or, if you wish, _"dynamically declared Linq statements"_, allowing us to combine iterators
-together, to create expressions, that will query our graph objects - Where graph object implies
+Iterators are simply chained `IEnumerable` functions.
+Or _"dynamically declared Linq statements"_, allowing you to combine iterators
+together to query your graph objects - Where graph object implies
 the node structure that Hyperlambda is parsed down to, often referred to as _"lambda"_
 in this documentation. Each iterator takes the result of its previous iterator
 as its input, and returns a new `IEnumerable`. Or to explain it in plain English.
