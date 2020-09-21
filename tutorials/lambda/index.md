@@ -284,11 +284,11 @@ These slots are fairly self explanatory, but you can refer to the
 [reference documentation for Magic lambda](/documentation/magic.lambda)
 if you want to see what you can do with these slots.
 
-One important detail, is that _all_ of these slots takes the _destination_
+One important detail here, is that _all_ of these slots takes the _destination_
 as their main argument, implying the expression value of their invocation node.
 While those requiring a source argument, normally acceps this as a child
 node to their invocation node. Some of these slots, such as **[add]**, **[insert-xx]**,
-etc, can also handle multiple sources - While others will throw exceptions
+can handle multiple sources - While others will throw exceptions
 if you have an expression leading to multiple sources, such as the **[set-xx]** nodes.
 
 ## Custom dynamic slots
