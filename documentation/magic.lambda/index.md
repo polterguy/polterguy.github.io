@@ -572,7 +572,8 @@ remove-nodes:x:@.data/*/foo2
 Changes the value of a node referenced as its main expression to whatever its single source happens to be.
 Notice, when you invoke a slot that tries to change the value, name, or the node itself of some expression,
 and you supply a source expression to your invocation - Then the result of the source expression
-_cannot_ return more than one result.
+_cannot_ return more than one result. The destination expression however can modify multiple nodes
+at the same time.
 
 ```
 .foo
