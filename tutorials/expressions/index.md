@@ -31,7 +31,7 @@ Each iterator is separated by a `/` character, allowing us to chain iterators
 together. The above expression in our **[get-value]** node has 3 iterators.
 
 1. `@.data` - Get the first node upwards in my hierarchy who's name is **[.data]**
-2. `*` - Return the previous iterator's children nodes
+2. `*` - Return its children nodes
 3. `item2` - Filter away everything not having a name of _"item2"_
 
 When the above expressions is evaluated, we're left with one node, the **[item2]**
