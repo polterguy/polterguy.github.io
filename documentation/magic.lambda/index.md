@@ -241,7 +241,7 @@ if
          .:yup!
 ```
 
-All conditional slots, including **[if]**, accepts optionally slots as their first condition argument.
+All conditional slots, including **[if]**, optionally accepts slots as their first condition argument.
 This allows you to invoke slots, treating the return value of the slot as the condition deciding
 whether or not the **[.lambda]** object should be executed or not. Below is an example.
 
