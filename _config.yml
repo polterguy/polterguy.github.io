@@ -5,8 +5,8 @@ show_downloads: true
 google_analytics: UA-147554379-1
 github:
   is_project_page: true
-  zip_url: https://github.com/polterguy/magic/archive/v8.1.19.zip
-  tar_url: https://github.com/polterguy/magic/archive/v8.1.19.tar.gz
+  zip_url: https://github.com/polterguy/magic/archive/v8.1.20.zip
+  tar_url: https://github.com/polterguy/magic/archive/v8.1.20.tar.gz
   repository_url: https://github.com/polterguy/magic
   owner_name: Server Gardens
   repository_name: Magic
