@@ -51,8 +51,8 @@ above example, this is the **[get-value]** node.
 
 ### The @ variable iterator
 
-This iterator will always return zero or one node. It starts at the _"identity"_
-node, which for our above example, is the **[get-value]** node itself.
+This iterator will always return zero or one node. Above its starts at the _"identity"_
+node since it's the first iterator. The identity node is the **[get-value]** node itself.
 Then it finds the first node _"upwards"_ in the hierarchy, having a name of whatever
 follows its `@` character. _"Upwards in the hierarchy_" here implies checking its
 older sibling nodes, then checking its parent node, then checking its parent node's
