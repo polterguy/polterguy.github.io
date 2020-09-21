@@ -728,6 +728,8 @@ for-each:x:-/*
       .:hello
 ```
 
+See the documentation for the **[reference]** slot to understand how reference nodes works.
+
 ### [while]
 
 Semantically similar to **[if]**, but instead of evaluating its lambda object once, will iterate it for
