@@ -42,9 +42,7 @@ Or _"dynamically declared Linq statements"_, allowing you to combine iterators
 together to query your graph objects - Where graph object implies
 the node structure that Hyperlambda is parsed down to, often referred to as _"lambda"_
 in this documentation. Each iterator takes the result of its previous iterator
-as its input, and returns a new `IEnumerable`. Or to explain it in plain English.
-
-> Lambda expressions is a graph object query language
+as its input, and returns a new `IEnumerable`.
 
 An expression always starts out with an _"identity"_ node, being its initial
 set of node(s) that the first iterator will start out having as its input.
