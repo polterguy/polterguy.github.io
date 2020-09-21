@@ -133,7 +133,7 @@ This has two benefits.
 1. You can create _"hidden"_ slots, that are only accessible from C#.
 2. You can use nodes starting with _"."_ as data nodes, separating function invocations from data.
 
-This trait of Hyperlambda makes it _"super functional"_ in nature. Below is an example of a Hyperlambda
+**[eval]** makes Hyperlambda _"super functional"_ in nature. Below is an example of a Hyperlambda
 piece of code, that illustrates this, by adding a _"callback"_ lambda object to its POP3 fetch emails
 slot, which will be invoked once for each available email on your POP3 server.
 
