@@ -3,20 +3,7 @@
 
 Magic lambda is where you will find the _"keywords"_ of Hyperlambda.
 It is what makes Hyperlambda Turing complete, and contains slots such as **[for-each]**
-and **[if]**, by exposing [Super Signal Slots](https://dzone.com/articles/super-signals-in-aspnet-core) for these keywords,
-making them easily available for you in your Hyperlambda code. Althought technically not entirely true, this project is what allows Hyperlambda to become _"Turing complete"_, and gives you what most would consider to be a fully fledged _"programming language"_. Below is an example of sending an email with Hyperlambda.
-
-```
-mail.smtp.send
-   message
-      to
-         John Doe:john@doe.com
-      from
-         Jane Doe:jane@doe.com
-      subject:Subject line
-      entity:text/plain
-         content:Body content
-```
+and **[if]**.
 
 ## Structure
 
