@@ -250,6 +250,54 @@ node will resemble the following.
    foo3:Thomas Hansen was here!
 ```
 
-## Custom slots
+## Custom dynamic slots
+
+You can also create dynamic slots in Hyperlambda. Think _"your own functions"_
+to understand its purpose. These basically becomes key/lambda dictionary
+lookups, allowing you to invoke them dynamically, as
+if they were pure C# slots. Below is an example.
+
+```
+slots.create:foo.bar
+   return:bool:true
+```
+
+the above creates a slot that simply returns the boolean value of _"true"_,
+but you can put any amount of Hyperlambda into your slots - And due to
+the functional aspect of Hyperlambda, you can use these slots as
+if they were normal C# slots. An example of invoking the
+above slot can be found below, where we combine it with
+conditional execution.
+
+```
+if
+   signal:foo.bar
+   .lambda
+      return
+         result:Dynamic slot returned true
+else
+   return
+      result:Dynamic slot did not return true
+```
+
+Of course, if you try to execute the above Hyperlambda, without first having
+created your **[foo.bar]** slot, an exception will be thrown, due to
+trying to invoke a slot that doesn't exist.
+
+Dynamic slots can also contain async slot invocations, but if
+they do, you'll have to invoke them using the async invocation slot,
+that's called **[wait.signal]**. Notice also the subtle difference in
+how we invoke a dynamically created slot, by explicitly invoking
+it through **[signal]**, instead of directly adding it as a node
+name. This is to avoid trying to reference the slot as a C# slot,
+and also helps you separate dynamically created slots, from static
+C# slots. And in fact, all manipulation of dynamic slots, are slightly
+different than statically compiled C# slots. For instance, the invocation
+pattern of dynamic slots, doesn't allow us to pass in a _value_ to
+our slot invocations, and only childrne arguments can be passed in.
+
+A dynamic slot can however _return_ a value, as we saw above,
+at which point the value will become the value of the **[signal]**
+node after invocation.
 
 * [Documentation](/documentation)
