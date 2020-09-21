@@ -219,7 +219,7 @@ What the above code basically translates into, is.
 
 > Set the value of the [.dest] node to the value of [.src]
 
-## Reference documentation
+## Branching and conditional execution
 
 Magic Lambda contains the following slots. Most of these slots also have async (wait.) overrides, which
 will be executed asynchronously using async tasks from .Net.
@@ -249,6 +249,7 @@ whether or not the **[.lambda]** object should be executed or not. Below is an e
 .arguments
    foo:bool:true
 .dest
+
 if
    get-value:x:@.arguments/*/foo
    .lambda
@@ -258,7 +259,7 @@ if
 
 ### [else-if]
 
-**[else-if]** is the younger brother of **[if]**, and must be preceeded by its older brother, or other **[else-if]** nodes,
+**[else-if]** is the younger sibling of **[if]**, and must be preceeded by its older sibling, or other **[else-if]** nodes,
 and will only be evaluated if all of its previous conditional slots evaluates to false - At which point **[else-if]** is
 allowed to test its condition - And only if it evaluates to true, evaluate its lambda object. Semantically **[else-if]**
 is similar to **[if]**, in that it requires exactly two arguments with the same structure as **[if]**.
@@ -305,6 +306,8 @@ else
    set-value:x:@.dest
       .:nope
 ```
+
+## Comparisons
 
 ### [eq]
 
