@@ -610,6 +610,8 @@ it allows you to _"forward evaluate"_ expressions inside your lambda object. It'
 you have expressions inside for instance a **[return]** slot, and you want to return the _value_
 the expression evaluates to, and not the expression itself.
 
+## Source slots
+
 ### [get-count]
 
 This slot returns the number of nodes its expression is pointing to.
