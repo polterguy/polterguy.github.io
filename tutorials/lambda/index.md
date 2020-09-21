@@ -214,12 +214,12 @@ the **[.result]** node.
 
 At this point the reference iterator becomes crucial to understand.
 The **[for-each]** slot, will execute once for each resulting
-onde in its expression - And as it does, it will _"inject"_
+node in its expression - And as it does, it will _"inject"_
 the currently iterated node _by reference_ into its own
-lambda object. the name of this _"data pointer"_ argument,
-becomes **[.dp]**. Hence, by using the reference iterator `#`,
-we're able to extract a _direct reference_ to the node we're
-iterating.
+lambda object. The name of this _"data pointer"_ argument,
+becomes **[.dp]**. Hence, by using the reference iterator `#`
+on the **[.dp]** node, we're able to extract a _direct reference_
+to the node we're currently iterating.
 
 Normally when you're handling nodes in Hyperlambda, you're
 working on a _copy_ of the node. For reference nodes, containing
@@ -346,15 +346,15 @@ exists. If you want to create dynamic slots that always exists in
 your app, you'll have to put your slot creation Hyperlambda
 into a _"magic.startup"_ folder, inside of your module's folder,
 and create your slot from this file. This ensures that your slot
-is re-created is the web server restarts for some reasons, since
-all files inside of module's _"magic.startup"_ folders are executed
+is re-created if the web server restarts for some reasons, since
+all files inside of a module's _"magic.startup"_ folder are executed
 every time the process restarts.
 
 ## Wrapping up
 
 Although Hyperlambda is super-expressive for some types of
 tasks, such as orchestration tasks, creating CRUD endpoints,
-sending emails, etc - Some things it is _less suited_ for. I don't
+sending emails, etc - Some things it's _less_ suited for. I don't
 advice you to add too much _"logic"_ into your Hyperlambda files,
 but rather resort to [C# extension slots](/tutorials/extending-hyperlambda)
 if you need a lot of business logic in your apps. If you find
@@ -367,7 +367,7 @@ Also realize that Hyperlambda is _not_ as fast as C#. Every slot
 invocation carries some overhead. Hence, you should not use it for
 extremely CPU intensive operations, such as polygon rendering,
 cryptography, etc - But rather create low level C# methods,
-where you put your CPU intensive code, that you can _"orchestrate"_
-using Hyperlambda.
+where you put your CPU intensive code, and then _"orchestrate"_
+these methods using Hyperlambda.
 
 * [Documentation](/documentation)
