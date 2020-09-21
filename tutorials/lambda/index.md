@@ -89,6 +89,10 @@ evaluate, since it'll only be executed if all previous **[if]**
 and **[else-if]** invocations didn't evaluate their condition(s)
 to true - Hence, it just includes the lambda object which it
 executes if it should be executed as children, directly beneath
-the else node itself.
+the else node itself. Yet again, everything is a lambda block in
+Hyperlambda - Hence, thinking of only **[.lambda]** blocks
+as being lambda, is not productive.
+
+## Boolean "operators"
 
 * [Documentation](/documentation)
