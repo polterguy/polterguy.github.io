@@ -799,6 +799,9 @@ to be passed in as its main value.
 sleep:1000
 ```
 
+**Notice** - You should really use the _"wait."_ overload for this slot, if you choose to use
+it at all - Since the synchronous version will lead to thread starvation, if used too frequently.
+
 ## Miscellaneous slots
 
 ### [vocabulary]
@@ -814,9 +817,6 @@ vocabulary
 // Returns only slots starting with [io.file]
 vocabulary:io.file
 ```
-
-**Notice** - You should really use the _"wait."_ overload for this slot, since the synchronous version
-will lead to thread starvation, if used too frequently.
 
 ### [apply]
 
