@@ -405,13 +405,19 @@ if you need a lot of business logic in your apps. If you find
 yourself at the point where you're creating dozens of if
 statements, loops, math operations, etc - It's probably smarter
 to implement these parts of your app in C#, due to Hyperlambda's
-sometimes cumbersome syntax to express complex branching and such.
+sometimes cumbersome syntax to express complex branching and logic.
 
 Also realize that Hyperlambda is _not_ as fast as C#. Every slot
 invocation carries some overhead. Hence, you should not use it for
 extremely CPU intensive operations, such as polygon rendering,
 cryptography, etc - But rather create low level C# methods,
 where you put your CPU intensive code, and then _"orchestrate"_
-these methods using Hyperlambda.
+these methods together using Hyperlambda.
+
+However, the beauty of Hyperlambda, is that once you've created
+an intelligently architected slot, you can easily reuse this
+slot, in many parts of your logic - By assembling together
+your slot invocations using Hyperlambda, almost the same way
+you'd assemble something with LEGO in the real world.
 
 * [Documentation](/documentation)
