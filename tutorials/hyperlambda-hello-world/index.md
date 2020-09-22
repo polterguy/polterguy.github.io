@@ -2,8 +2,9 @@
 
 The word _"Hyperlambda"_ originates from _"hyper"_ and _"lambda"_, implying _"web functions"_.
 In order to understand Hyperlambda's usefulness, it is therefor valuable to use Hyperlambda to create
-an HTTP REST endpoint. Notice, if you prefer to watch video tutorials, here's a video where I walk
-you through everything.
+HTTP REST endpoints. In this tutorial, I will take you from creating your first HTTP endpoint, to
+selecting and querying your database, and I will do it in 10 minutes. Notice, if you prefer to watch
+video tutorials, here's a video where I walk you through everything.
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/5CRhCpxM8Ho" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
