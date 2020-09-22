@@ -2,10 +2,10 @@
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/r91tIBy1QbA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## License
+## How it works
 
-Although 95% of Magic's source code is Open Source, and licensed as MIT, Magic will
-[cost you a fee](https://servergardens.com/buy/) of €49 for a single developer license. One such license
-allows a single developer to create and publish as many Magic applications as needed (no royalties).
-The license is valid for the entirety of the current release cycle, which is the 8.x version, giving
-you free updates.
+Magic will read meta data from your database, and use this meta data to generate Hyperlambda
+backend HTTP REST endpoints for you, 100% automatically. Then it will use meta data from
+your backend to generate a complete Angular frontend. The end result, is that you're
+arguably almost completely done with your web app, before you had to create a single line
+of code yourself!
