@@ -252,12 +252,12 @@ node will resemble the following.
 ## Changing your tree
 
 Since Hyperlambda doesn't really contain the notion of variables,
-we'll need a different mechanism to change nodes, values and names
+we'll need a different mechanism to change nodes, values, and names
 of nodes. This is done by using the following slots.
 
 * __[set-value]__ - Changes the value(s) of nodes
 * __[set-name]__ - Changes the name(s) of nodes
-* __[add]__ - Appends a list of nodes into some destination
+* __[add]__ - Appends a list of nodes into your destination(s)
 * __[insert-before]__ - Insert a bunch of nodes _after_ its destination(s)
 * __[insert-after]__ - Insert a bunch of nodes _before_ its destination(s)
 * __[remove-nodes]__ - Removes the nodes specified by its source expression
@@ -286,7 +286,7 @@ if you want to see what you can do with these slots.
 One important detail here, is that _all_ of these slots takes the _destination_
 as their main argument, implying the expression value of their invocation node.
 While those requiring a source argument, normally acceps this as a child
-node to their invocation node. Some of these slots, such as **[add]**, **[insert-xx]**,
+node to their invocation node. Some of these slots, such as **[add]** and **[insert-xx]**,
 can handle multiple sources - While others will throw exceptions
 if you have an expression leading to multiple sources, such as the **[set-xx]** nodes.
 
