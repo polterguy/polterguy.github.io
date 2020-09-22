@@ -240,7 +240,6 @@ changing their values after execution.
    foo1:bar1
    foo2:bar2
    foo3:bar3
-.result:
 for-each:x:@.data/*
    set-value:x:@.dp/#
       .:Thomas Hansen was here!
