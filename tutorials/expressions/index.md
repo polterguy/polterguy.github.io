@@ -206,4 +206,4 @@ the entirety of expression's power, you might want to read up on
 aren't enough for you, you can also extend the expression builder
 with your own extension iterators.
 
-* [Real programming with Hyperlambda](/tutorials/lambda)
+* [Branching and looping with Hyperlambda](/tutorials/lambda)
