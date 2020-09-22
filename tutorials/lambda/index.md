@@ -351,7 +351,48 @@ into a _"magic.startup"_ folder, inside of your module's folder,
 and create your slot from this file. This ensures that your slot
 is re-created if the web server restarts for some reasons, since
 all files inside of a module's _"magic.startup"_ folder are executed
-every time the process restarts.
+every time the process restarts. You can see how this works in
+your _"/modules/system/magic.startup/"_ folder, which contains
+Hyperlambda files that creates dynamic slots during startup.
+
+## [unwrap]
+
+This is a special keyword, since it allows you to _"forward evaluate"_
+expressions found as values in nodes. In a way, it's Hyperlambda's
+version of _"apply"_, and often used in combination with dynamic
+slots, to make sure we correctly pass in arguments to dynamic slots.
+Consider the following code to understand what it does.
+
+```
+slots.create:foo.bar
+   math.add
+      get-value:x:@.arguments/*/arg1
+      get-value:x:@.arguments/*/arg2
+   return:x:@math.add
+
+.arg1:int:5
+.arg2:int:7
+
+// Notice unwrap!
+unwrap:x:+/*
+
+signal:foo.bar
+   arg1:x:@.arg1
+   arg2:x:@.arg2
+```
+
+In the above Hyperlambda, we obviously want to pass in the _value_ of **[.arg1]**
+and **[.arg2]** to our **[foo.bar]** slot. However, since each dynamic slot is
+executed in isolation, on a copy of the lambda object, passed in as we created
+the slot - This implies that the slot doesn't have access to our **[.arg1]**
+or **[.arg2]** nodes as it's executing. This would result in that unless we
+explicitly **[unwrap]** the invocation arguments we pass in as we invoke the
+slot using **[signal]**, the slot will only see two expressions, leading
+into _"oblivion"_. By _"unwrapping"_ the arguments before we invoke the slot though,
+the invocation to our slot no longer contains expressions, but rather the _value_
+of evaluating those expressions instead. So hence, the slot will be given
+the values of 5 and 7 as its arguments, which of course it adds together, and
+returns back to the caller as its result.
 
 ## Wrapping up
 
