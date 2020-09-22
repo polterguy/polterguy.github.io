@@ -281,7 +281,7 @@ set-name:x:@.foo2
    .:Thomas was here too
 add:x:@.foo3
    .
-      item2:howdy
+      item1:howdy
       item2:world
 ```
 
