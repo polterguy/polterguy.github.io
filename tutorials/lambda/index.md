@@ -86,7 +86,7 @@ including slot invocations - While the second argument, the **[.lambda]**,
 is simply the block of lambda to execute if the condition yields
 true. The **[else]** however, doesn't require a condition to
 evaluate, since it'll only be executed if all previous **[if]**
-and **[else-if]** invocations didn't evaluate their condition(s)
+and **[else-if]** invocations didn't evaluate
 to true - Hence, it just includes its lambda object directly as
 children, beneath the else node itself.
 
