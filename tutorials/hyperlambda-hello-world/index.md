@@ -10,7 +10,6 @@ video tutorials, here's a video where I walk you through everything.
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/5CRhCpxM8Ho" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-
 To create an endpoint, we will need
 to create a Hyperlambda file. Use for instance the _"Files"_ menu item in the Magic Dashboard,
 and open up the folder called _"modules"_. Create a new folder inside of this folder, and

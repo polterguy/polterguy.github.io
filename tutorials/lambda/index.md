@@ -1,9 +1,16 @@
 # Real programming with Hyperlambda
 
 So far what we have done, have probably felt more like _"configuring"_ than
-programming. In this article, we will take the step into the Turing complete
+real programming. In this article, we will take the step into the Turing complete
 parts of Hyperlambda, and create some real code, with branching, loops, and
 everything you normally associate with a _"real programming language"_.
+If you prefer to watch video tutorials, you can see me run through the code
+in the video below.
+
+<div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
+<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/mx64KpLjFyc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 Create a file in your _"/modules/tutorials/"_ folder, and give it the
 name _"branching.get.hl"_. Put the following code into it.
 
