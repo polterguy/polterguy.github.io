@@ -6,7 +6,12 @@ in order to effectively use Magic. The good news is that you only need to
 understand 5% of expressions to use Hyperlambda efficiently. In this tutorial,
 I'll lead you to an understanding of expressions in less than 10 minutes,
 at which point you'll know _everything_ you need to know about expressions.
-Let's start with some Hyperlambda.
+If you prefer to watch a video tutorial where I walk you through expressions,
+you can watch the following video.
+
+<div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
+<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/5aryFBciBSo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 ```
 .data
