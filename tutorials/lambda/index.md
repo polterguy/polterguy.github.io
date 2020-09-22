@@ -87,9 +87,8 @@ is simply the block of lambda to execute if the condition yields
 true. The **[else]** however, doesn't require a condition to
 evaluate, since it'll only be executed if all previous **[if]**
 and **[else-if]** invocations didn't evaluate their condition(s)
-to true - Hence, it just includes the lambda object which it
-executes if it should be executed directly as children, beneath
-the else node itself.
+to true - Hence, it just includes its lambda object directly as
+children, beneath the else node itself.
 
 Yet again, everything is a lambda block in
 Hyperlambda - Hence, thinking of only **[.lambda]** blocks
