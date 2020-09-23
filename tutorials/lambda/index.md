@@ -188,10 +188,49 @@ regards, there's nothing preventing you from creating just
 as complex conditions in Hyperlambda, as you could create in
 any other programming language.
 
-**Notice** - the **[while]** slot functions exactly the
-same is the **[if]** slot, except of course it will execute
+The **[not]** slot works in a similar way, and it negates
+the value of its single child node, and can be combined with
+**[or]** and **[and]** invocations, or standalone. If
+we were to completely **[not]** the above code, it would
+resemble something such as the following.
+
+```
+.arguments
+   condition1:bool
+   condition2:bool
+   condition3:bool
+   condition4:bool
+if
+   not
+      or
+         and
+            get-value:x:@.arguments/*/condition1
+            get-value:x:@.arguments/*/condition2
+         and
+            get-value:x:@.arguments/*/condition3
+            get-value:x:@.arguments/*/condition4
+   .lambda
+      return
+         result:Not product of condition 1+2 or 3+4 are true
+else
+   return
+      result:Not product of condition 1+2 nor 3+4 is not true
+```
+
+The above of course would be the equivalent of the following pseudo
+C# code.
+
+```csharp
+if (!((condition1 && condition2) || (condition3 && condition4))) {
+   /* ... Do stuff! ... */
+}
+```
+
+The **[while]** slot works exactly similar
+to the **[if]** slot, except of course that it will execute
 over and over again, until the condition for some reasons
-yields _"false"_.
+yields _"false"_. Check out [magic lambda](/documentation/magic.lambda)
+documentation for details about **[while]**.
 
 ## Looping
 
