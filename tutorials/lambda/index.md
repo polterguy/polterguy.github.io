@@ -232,6 +232,11 @@ if (!((condition1 && condition2) || (condition3 && condition4))) {
 }
 ```
 
+There exists some special slots in Hyperlambda, such as the **[exists]**
+slot, which returns true if some expression would yield any result, etc.
+Check out the [magic lambda](/documentation/magic.lambda) documentation for
+details.
+
 ## Looping
 
 Since **[while]** is semantically the _exact same_ as
