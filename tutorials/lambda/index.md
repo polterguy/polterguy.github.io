@@ -106,6 +106,12 @@ slots as conditions, and also why **[.lambda]** starts with a `.`,
 such that it won't be evaluated or attempted to be signaled as a
 slot invocation.
 
+The **[while]** slot works exactly similar
+to the **[if]** slot, except of course that it will execute
+over and over again, until the condition for some reasons
+yields _"false"_. Check out [magic lambda](/documentation/magic.lambda)
+documentation for details about **[while]**.
+
 ## Boolean "operators"
 
 Hyperlambda doesn't contain the construct of _"operators"_. Hence,
@@ -225,12 +231,6 @@ if (!((condition1 && condition2) || (condition3 && condition4))) {
    /* ... Do stuff! ... */
 }
 ```
-
-The **[while]** slot works exactly similar
-to the **[if]** slot, except of course that it will execute
-over and over again, until the condition for some reasons
-yields _"false"_. Check out [magic lambda](/documentation/magic.lambda)
-documentation for details about **[while]**.
 
 ## Looping
 
