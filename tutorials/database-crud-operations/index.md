@@ -3,7 +3,7 @@
 CRUD is at the core of everything relating to your database. It
 implies **C**reate, **R**ead, **U**pdate and **D**elete, and these
 are the 4 axioms that all database manipulation evolves around.
-Notice, if you prefer to watch video tutorials, here’s a video
+If you prefer to watch video tutorials, here’s a video
 where I walk you through everything.
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
@@ -27,17 +27,18 @@ If you want to control the columns returned, simply add them up as columns into 
 
 ## Semantic SQL
 
-However, there exists an even better method, that we refer to as the _"semantic SQL generator"_.
+However, there exists an even better method to manipulate data in your database
+We refer to this as _"semantic SQL"_.
 This approach completely abstract away the underlaying database vendor,
-and allows you to semantically declare which columns are returned - In addition to your
-where condition, ordering, and paging. And it transparently
-generates the correct SQL towards any of your existing database adapters, allowing
+and allows you to semantically declare which columns are returned - In addition to
+where conditions, ordering, and paging. This method transparently
+generates the correct SQL towards your database adapter, allowing
 you to use the same structure for querying SQL Server as you would use to query MySQL.
 
 This approach arguably reduces your database type down to a _"configurable property"_
 in your end application, allowing you to use any database type, with the exact same code.
 Below is an example resulting in the same SQL as the above Hyperlambda, except
-this time we use the _"semantic structure"_, instead of providing _"raw"_ SQL.
+this time we use _"semantic SQL"_, instead of providing _"raw"_ SQL.
 
 ```
 mysql.connect:sakila
@@ -72,10 +73,15 @@ exists for CRUD operations towards your database.
 * __[mysql.update]__ - Updates records in your database
 * __[mysql.delete]__ - Deletes records from your database
 
+At this point you probably intuitively understand how the
+_"Crudifier"_ in Magic works. As Magic automatically creates CRUD HTTP REST
+endpoints for you, what happens is that code using the above
+slots is generated for you, according to meta data from your database.
+
 All of the above slots have **[mssql.]** versions for Microsoft SQL Server.
 If you want to follow this tutorial towards a Microsoft SQL Server database
 instead of a MySQL database, just replace _"mysql"_ with _"mssql"_, and
-everything should work the same, assuming you use some columns and
+everything should work the same, assuming you use columns and
 tables that actually exists in your SQL Server database.
 
 ## Creating CRUD HTTP endpoints
@@ -169,14 +175,6 @@ CRUD operations and endpoint verbs in the above code, is as follows.
 * `PUT` - Update one item
 * `DELETE` - Delete one item
 
-**Notice** - If you automatically CRUDify your database tables, the Hyperlambda
-generator creates its endpoint files more or less like we manually created
-them above, except of course it does it in 1 second automatically.
-We could of course easily change the above code, to for instance accepting
-multiple items in its _"update"_ endpoint, and/or _"delete"_ endpoint, etc -
-But first, let's have a look at the **[where]** condition above, which is
-common for all 3 slots above, minus the **[mysql.create]** slot.
-
 ## The [where] argument
 
 The above **[where]** condition can be injected into the following 3 slots.
@@ -185,14 +183,15 @@ The above **[where]** condition can be injected into the following 3 slots.
 * __[mysql.update]__
 * __[mysql.delete]__
 
-The create slot cannot be given a where condition, but all 3 other slots can,
+The create slot _cannot_ be given a where condition, but all 3 other slots can,
 and the syntax is of course the _exact same syntax_ for SQL Server, as it is
 for MySQL. The result of the **[where]** argument above, obviously results
 in an SQL _"where"_ condition, allowing you to restrict which items
-the SQL should end up reading/changing/deleting. The first thing you'll need
-to understand about the where condition, is that its boolean operator is its
-outer most argument. This implies that if I create something such as the
-following Hyperlambda.
+the SQL should end up reading/changing/deleting.
+
+The first thing you'll need to understand about the where condition, is that
+its boolean operator is its outer most argument. This implies that if I create
+something such as the following Hyperlambda.
 
 ```
 where
@@ -207,13 +206,22 @@ This would result in something equivalent to the following SQL being generated.
 where foo = 'some value' and bar >= 5
 ```
 
-**Notice** - All values will be added as SQL parameters, making it
+All values will be added as SQL parameters, making it
 impossible to inject malicious SQL into your database. Also try to
 understand the relationship between the **[foo.eq]** parts, the
 **[bar.mteq]** parts, and how this results in two different comparison operators
 being generated for the fields. **[x.mteq]** basically means _"x more than or equals"_,
 while **[x.eq]** implies _"x equals"_. If no comparison operator is specified,
-equality (.eq) is assumed.
+equality (.eq) is assumed. Below are all comparison operators that Magic supports.
+
+* `eq` - Equality comparison, equivalent to `=`
+* `neq` - Not equality comparison, equivalent to `!=`
+* `mt` - More than comparison, equivalent to `>`
+* `lt` - Less than comparison, equivalent to `<`
+* `lteq` - Less than or equal comparison, equivalent to `<=`
+* `mteq` - More than or equal comparison, equivalent to `>=`
+* `like` - Like comparison, equivalent to SQL's `like` comparison
+* `in` - Special comparison operator, since it requires a _list_ of values, generating an _"in"_ SQL condition
 
 You can create any amount of complexity in your where statements as you wish.
 This is done by recursively applying more and more **[and]** or **[or]** conditions,
@@ -234,7 +242,8 @@ sql.read
 The above would result in SQL resembling the following.
 
 ```
-select * from 'table1' where 'field1' = @0 or ('field2' = @1 and 'field3' = @2)
+select * from 'table1'
+   where 'field1' = @0 or ('field2' = @1 and 'field3' = @2)
 ```
 
 Notice the relationship between the inner most `and` statement, and the paranthesis
@@ -249,8 +258,8 @@ we can restrict which items are updated/deleted/selected, etc.
 The SQL generator has a lot of other features, such as joining multiple
 tables, changing the comparison operator, grouping by column(s), selecting
 aggregate results, etc. Check out [magic.data.common](/documentation/magic.data.common)'s
-reference documentation for more information about how to build
-semantic SQL.
+reference documentation for more information about how to semantically
+build SQL.
 
 ## Validators
 
@@ -274,7 +283,7 @@ no malicious data can be sent into your endpoints. [Read more about validators h
 
 ## Raw SQL
 
-If the above _"semantic slots"_ doesn't serve you, Magic and Hyperlambda
+If the above _"semantic SQL slots"_ doesn't serve you, Magic and Hyperlambda
 also allows you to supply _"raw SQL"_, allowing you to execute any arbitrary
 SQL, towards any of your database types. To use these lots you'd probably
 want to check out your database specific adapter, but a list of its MySQL

@@ -3,17 +3,16 @@
 The word _"Hyperlambda"_ originates from _"hyper"_ and _"lambda"_, implying _"web functions"_.
 In order to understand Hyperlambda's usefulness, it is therefor valuable to use Hyperlambda to create
 HTTP REST endpoints. In this article, I will take you from creating your first HTTP endpoint, to
-selecting and querying your database, and I will do it in 10 minutes. Notice, if you prefer to watch
+selecting and querying your database, securely, and I will do it in 10 minutes. Notice, if you prefer to watch
 video tutorials, here's a video where I walk you through everything.
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/5CRhCpxM8Ho" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-To create an endpoint, we will need
-to create a Hyperlambda file. Use for instance the _"Files"_ menu item in the Magic Dashboard,
-and open up the folder called _"modules"_. Create a new folder inside of this folder, and
-name your new folder _"tutorials"_.
+To create an endpoint, we will need to create a Hyperlambda file. Use for instance the _"Files"_ menu
+item in your Magic Dashboard, and open up the folder called _"modules"_. Create a new folder inside
+this folder, and name your new folder _"tutorials"_.
 
 **Notice** - By default Magic will protect files inside of the modules folder, so you'll
 have to explicitly click the _"Safe mode"_ slider to be allowed to create files and
@@ -60,7 +59,7 @@ your development machine on localhost, you can use
 [the following URL to invoke your endpoint](http://localhost:55247/magic/modules/tutorials/hello-world).
 
 The first parts of the file extension, the _"get"_ parts, declares that our file is an HTTP GET
-endpoint, which we can invoke using the GET verb. The last parts, the _".hl"_ extension,
+endpoint, that we can invoke using the GET verb. The last parts, the _".hl"_ extension,
 declares that this is a Hyperlambda file, making the Hyperlambda parser kick in and transform
 it to a lambda object. The lambda object is then evaluated, and whatever it returns, is
 transformed to JSON, which becomes the HTTP response.
@@ -75,6 +74,11 @@ You can use the following verbs for your Hyperlambda files as an extension befor
 This allows you to easily create an HTTP endpoint, wrapping your HTTP verb, controlling
 its URL in the process. Magic will treat your Hyperlambda files as if they were _"functions"_,
 and use your file extension to figure out what HTTP verb to use to resolve it.
+
+**Notice** - You can _only_ use a-z, A-Z, 0-9, `-` and `_` in your filenames when creating
+Hyperlambda endpoints. Otherwise the Hyperlambda/endpoint resolver will _not accept_ your
+URL for security reasons. You should also be careful when using CAPS in your filenames, since
+Linux tends to see _"FooBar.hl"_ as a _different_ file than _"foobar.hl"_.
 
 ## Creating an echo service
 
@@ -236,6 +240,11 @@ and QUERY parameters. From your Hyperlambda file, an argument is an argument - P
 But if you try to pass in an argument that the endpoint doesn't allow for, the
 file will never be executed for security reasons.
 
+**Notice** - The Hyperlambda **[eval]** slot, which is its _"execution engine"_,
+will not try to invoke anything starting with a `.` character as its node name.
+Which is why you will often see arguments, and data segments, starting out with a `.`
+character in this documentation.
+
 ## Selecting data from your database
 
 **Notice** - This Hyperlambda assumes you've somehow got the _"Sakila"_ database from
@@ -360,7 +369,7 @@ mysql.connect:sakila
    return:x:-/*
 ```
 
-**Notice** - You can of course use your favourite IDE or text editor
+You can of course use your favourite IDE or text editor
 to edit your Hyperlambda, but the Dashboard's Hyperlambda editor
 happens to have very good Hyperlambda support, such as auto
 completion, syntax highlightning, etc - So it's probably

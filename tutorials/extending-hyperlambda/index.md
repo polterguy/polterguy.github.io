@@ -82,6 +82,11 @@ method will be invoked, passing in the slot invocation node
 as its argument. This allows you to pass any arbitrary
 arguments from Hyperlambda into your C# methods.
 
+Hence, there is no real difference between Hyperlambda,
+the `Node` class, _"lambda"_ and C#. They all tie beautifully
+into each other, extending each other, where the other side
+of the equation have some sort of weakness.
+
 ### Async slots
 
 If you want to create async slots, you'll have to
@@ -132,9 +137,7 @@ get-value:x:@.arguments/*/foo
 will be `5` after evaluation. Hyperlambda expressions are basically just
 piped `IEnumerable` objects. This results in _"chained Linq statements"_,
 allowing you to query your Hyperlambda's node structure.
-You might benefit from reading about
-[magic.node](/documentation/magic.node) if you want to understand
-expressions better.
+However, we will dive deeper into expressions in our next article.
 
 ## Custom controllers, Razor pages, etc
 
@@ -145,7 +148,7 @@ its first URL segment. This allows you to combine traditional C#,
 MVC, or Web APIs with Magic, utilizing the best from both worlds.
 Feel free to add any amount of Razor pages, Views, Controllers,
 etc, to your Magic apps. However, this is beyond
-the scope of this documentation. You might have to fiddle with
-your `Startup` class if you choose this path.
+the scope of this documentation, and you might have to fiddle with
+your `Startup` class if you choose to do this.
 
 * [Expressions](/tutorials/expressions)

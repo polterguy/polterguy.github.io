@@ -34,7 +34,7 @@ settings will normally work if you're using your GMail account,
 you exchange your username/password combination with your GMail
 credentials, and you enable your GMail account for _"insecure apps"_.
 
-When you have done the above, you can create a new Hyperlamdba file
+When you have done the above, you can create a new Hyperlambda file
 inside your _"/modules/tutorials/"_ folder, and name
 your file _"send-email.post.hl"_. Put the following content
 into your file.

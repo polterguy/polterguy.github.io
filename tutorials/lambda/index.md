@@ -1,4 +1,4 @@
-# Real programming with Hyperlambda
+# Branching and Looping with Hyperlambda
 
 So far what we have done, have probably felt more like _"configuring"_ than
 real programming. In this article, we will take the step into the Turing complete
@@ -11,7 +11,7 @@ in the video below.
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/mx64KpLjFyc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Create a file in your _"/modules/tutorials/"_ folder, and give it the
+Create a new file in your _"/modules/tutorials/"_ folder, and give it the
 name _"branching.get.hl"_. Put the following code into it.
 
 ```
@@ -28,9 +28,10 @@ else
 ```
 
 Then go to your endpoints and invoke your newly created endpoint,
-passing in a query parameter named _"condition"_ and set its
-value to _"false"_. As you do, you'll end up with a result resembling
-the following.
+passing in a query parameter named _"condition"_, and set its
+value to _"false"_. Remember to refresh your endpoints if you
+have it open in another browser window. As you invoke your endpoint,
+you'll end up with a result resembling the following.
 
 ```json
 {
@@ -104,6 +105,12 @@ itself is evaluated using **[eval]**, which is why we can reference
 slots as conditions, and also why **[.lambda]** starts with a `.`,
 such that it won't be evaluated or attempted to be signaled as a
 slot invocation.
+
+The **[while]** slot works exactly similar
+to the **[if]** slot, except of course that it will execute
+over and over again, until the condition for some reasons
+yields _"false"_. Check out [magic lambda](/documentation/magic.lambda)
+documentation for details about **[while]**.
 
 ## Boolean "operators"
 
@@ -187,10 +194,48 @@ regards, there's nothing preventing you from creating just
 as complex conditions in Hyperlambda, as you could create in
 any other programming language.
 
-**Notice** - the **[while]** slot functions exactly the
-same is the **[if]** slot, except of course it will execute
-over and over again, until the condition for some reasons
-yields _"false"_.
+The **[not]** slot works in a similar way, and it negates
+the value of its single child node, and can be combined with
+**[or]** and **[and]** invocations, or standalone. If
+we were to completely **[not]** the above code, it would
+resemble something such as the following.
+
+```
+.arguments
+   condition1:bool
+   condition2:bool
+   condition3:bool
+   condition4:bool
+if
+   not
+      or
+         and
+            get-value:x:@.arguments/*/condition1
+            get-value:x:@.arguments/*/condition2
+         and
+            get-value:x:@.arguments/*/condition3
+            get-value:x:@.arguments/*/condition4
+   .lambda
+      return
+         result:Not product of condition 1+2 or 3+4 are true
+else
+   return
+      result:Not product of condition 1+2 nor 3+4 is not true
+```
+
+The above of course would be the equivalent of the following pseudo
+C# code.
+
+```csharp
+if (!((condition1 && condition2) || (condition3 && condition4))) {
+   /* ... Do stuff! ... */
+}
+```
+
+In addition there exists some special slots in Hyperlambda, such as the **[exists]**
+slot, which returns true if some expression would yield any result, etc.
+Check out the [magic lambda](/documentation/magic.lambda) documentation for
+details.
 
 ## Looping
 
