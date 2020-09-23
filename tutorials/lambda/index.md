@@ -1,4 +1,4 @@
-# Real programming with Hyperlambda
+# Branching and Looping with Hyperlambda
 
 So far what we have done, have probably felt more like _"configuring"_ than
 real programming. In this article, we will take the step into the Turing complete
@@ -11,7 +11,7 @@ in the video below.
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/mx64KpLjFyc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Create a file in your _"/modules/tutorials/"_ folder, and give it the
+Create a new file in your _"/modules/tutorials/"_ folder, and give it the
 name _"branching.get.hl"_. Put the following code into it.
 
 ```
@@ -28,9 +28,10 @@ else
 ```
 
 Then go to your endpoints and invoke your newly created endpoint,
-passing in a query parameter named _"condition"_ and set its
-value to _"false"_. As you do, you'll end up with a result resembling
-the following.
+passing in a query parameter named _"condition"_, and set its
+value to _"false"_. Remember to refresh your endpoints if you
+have it open in another browser window. As you invoke your endpoint,
+you'll end up with a result resembling the following.
 
 ```json
 {

@@ -47,10 +47,10 @@ The root nodes are **[.foo1]** and **[.foo2]**. The **[.foo2]** node has two chi
 being **[child1]** and **[child2]**. These nodes are recognized as children nodes of
 our **[.foo2]** node, because they're beneath it, and there are 3 spaces added
 in front of them, further indenting them from the vertical alignment of the **[.foo2]**
-node. You can create as children hierarchies as deep you want to, by adding 3 additional
+node. You can create children hierarchies as deep you want to, by adding 3 additional
 spaces (SP) characters in front of each node. Be careful here though, in case your
-favourite text editor doesn't substitute TAB for SPs. Hyperlambda _does node_
-substitute TAB with SPs.
+favourite text editor doesn't substitute TAB for SPs. Hyperlambda _does not_
+substitute TABs with SPs.
 
 The **[.foo1]** node and the **[child1]** node have _values_. This is what's found
 to the right of the colon `:` character. Each node can in addition have a type declaration
