@@ -43,6 +43,6 @@ email at [post@servergardens.com](mailto:post@servergardens.com). If you want to
 feature request or a bug report, you can do such through the project's
 [GitHub Issues](https://github.com/polterguy/magic/issues).
 Magic comes with professional support for Enterprise Licensed customers. Contact us for more
-information about how to obtain an Enterprise License
+information about how to obtain an Enterprise License.
 
 * [licensing@servergardens.com](mailto:licensing@servergardens.com)
