@@ -6,7 +6,7 @@ in order to effectively use Hyperlambda. The good news is that you only need to
 understand 5% of expressions to use Hyperlambda efficiently. In this tutorial,
 I'll lead you to an understanding of expressions in less than 10 minutes,
 at which point you'll know _everything_ you need to know about expressions.
-If you prefer to watch a video tutorial where I walk you through expressions,
+If you prefer to watch a video tutorial where I walk you through this chapter,
 you can watch the following video.
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
@@ -27,11 +27,44 @@ This is because the **[get-value]** invocation is given an expression, and the r
 of evaluating this expression, becomes the node with the value of _"thomas"_.
 
 **Notice** - Expressions are type declared as `:x:`, which you can see in the above
-code.
+code. Type declarations of a node's value, occurs between the node's name, and its value,
+separated by `:`.
+
+## Nodes and Hyperlambda structure
+
+At this point it becomes important to understand the Hyperlambda structure, and how
+it ties into the `Node` class. Consider the following Hyperlambda.
+
+```
+.foo1:bar1
+.foo2
+   child1:value1
+   child2
+```
+
+The above Hyperlambda contains 4 nodes, two root nodes, and two children nodes.
+The root nodes are **[.foo1]** and **[.foo2]**. The **[.foo2]** node has two children,
+being **[child1]** and **[child2]**. These nodes are recognized as children nodes of
+our **[.foo2]** node, because they're beneath it, and there are 3 spaces added
+in front of them, further indenting them from the vertical alignment of the **[.foo2]**
+node. You can create as children hierarchies as deep you want to, by adding 3 additional
+spaces (SP) characters in front of each node. Be careful here though, in case your
+favourite text editor doesn't substitute TAB for SPs. Hyperlambda _does node_
+substitute TAB with SPs.
+
+The **[.foo1]** node and the **[child1]** node have _values_. This is what's found
+to the right of the colon `:` character. Each node can in addition have a type declaration
+for its value, which if specified, can be found between the node's name, and its
+value. If no type declaration is explicitly specified, the type of `string` is
+assumed. In addition, Hyperlambda supports string literals, and lots of other
+additional goodies. Refer to [magic.node](/documentation/magic.node/) for
+more information.
 
 ## Iterators
 
 An expression is created by concatenating zero or more _"iterators"_ together.
+An iterator is basically a function, taking an `IEnumerable<Node>` as input,
+and producing an `IEnumerable<Node>` as output.
 Each iterator is separated by a `/` character, allowing us to chain iterators
 together. The above expression in our **[get-value]** node has 3 iterators.
 
@@ -40,7 +73,9 @@ together. The above expression in our **[get-value]** node has 3 iterators.
 3. `item2` - Filter away everything not having a name of _"item2"_
 
 When the above expressions is evaluated, we're left with one node, the **[item2]**
-node from inside our **[.data]** node.
+node from inside our **[.data]** node. This is because our expression has
+as a whole created a sub-tree of our original graph object, only containing
+one node, being the **[item2]** node.
 
 Iterators are simply chained `IEnumerable` functions.
 Or _"dynamically declared Linq statements"_, allowing you to combine iterators
