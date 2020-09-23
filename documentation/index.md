@@ -35,3 +35,9 @@
 * [magic.io](/documentation/magic.io) - IO operations in Magic
 * [magic.http](/documentation/magic.http) - HTTP REST invocations in Magic from C#
 * [magic.library](/documentation/magic.library) - A single NuGet package helper tying everything easily together
+
+# Support
+
+If you have a support request of private nature, you can send us an email at post@servergardens.com.
+If you want to submit a feature request or a bug report, you can do such through the
+project's [GitHub Issues](https://github.com/polterguy/magic/issues).
