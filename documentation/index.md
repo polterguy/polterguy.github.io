@@ -8,6 +8,17 @@
 5. [Expressions](/tutorials/expressions) - Using expressions to reference nodes in your Hyperlambda
 6. [Branching and looping](/tutorials/lambda) - Real programming in Hyperlambda
 
+# Support
+
+If you have a support request of private nature, or a license inquiry, you can send us
+email at [post@servergardens.com](mailto:post@servergardens.com). If you want to submit a
+feature request or a bug report, you can do such through the project's
+[GitHub Issues](https://github.com/polterguy/magic/issues).
+Magic comes with professional support for Enterprise Licensed customers. Contact us for more
+information about how to obtain an Enterprise License.
+
+* [licensing@servergardens.com](mailto:licensing@servergardens.com)
+
 # Documentation
 
 * [magic.node](/documentation/magic.node) - Explains nodes, Hyperlambda and Expressions
@@ -35,14 +46,3 @@
 * [magic.io](/documentation/magic.io) - IO operations in Magic
 * [magic.http](/documentation/magic.http) - HTTP REST invocations in Magic from C#
 * [magic.library](/documentation/magic.library) - A single NuGet package helper tying everything easily together
-
-# Support
-
-If you have a support request of private nature, or a license inquiry, you can send us
-email at [post@servergardens.com](mailto:post@servergardens.com). If you want to submit a
-feature request or a bug report, you can do such through the project's
-[GitHub Issues](https://github.com/polterguy/magic/issues).
-Magic comes with professional support for Enterprise Licensed customers. Contact us for more
-information about how to obtain an Enterprise License.
-
-* [licensing@servergardens.com](mailto:licensing@servergardens.com)
