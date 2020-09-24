@@ -97,7 +97,7 @@ with a period (.) as its name.
 
 ## PGP Cryptography
 
-This project also supports encrypting, and cryptographically signing MIME messages, in addition to decrypting and verifying signed
+This project also supports encrypting, and cryptographically signing MIME messages, in addition to verifying signed
 messages. To cryptographically sign a MIME message with your private PGP key, you can use something such as follows.
 
 ```
@@ -120,6 +120,11 @@ mime.create
 You can encrypt and sign the message in one go, by adding both a private **[sign]** key and its password, in addition to a public
 encryption key, using **[encrypt]**. If you wish to encrypt the same message for multiple recipients, you can add a collection
 of public PGP keys that will be used to encrypt the message, such as follows.
+
+**Notice** - Due to an API flaw in MimeKit, and how it looks up private PGP key during parsing end decrypting of MIME messages,
+the project does not support _decrypting_ of messages yet. Once MimeKit implements alternative PGP key storages, or at least
+hooks to supply your own custom storage, not tied to Gnu Privacy Guard, we might reconsider and support decrypting of MIME
+messages.
 
 ```
 mime.create
