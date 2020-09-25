@@ -375,12 +375,6 @@ Of course, if you try to execute the above Hyperlambda, without first having
 created your **[foo.bar]** slot, an exception will be thrown, due to
 trying to invoke a slot that doesn't exist.
 
-Dynamic slots can also contain async slot invocations, but if
-they do, you'll have to invoke them using the async invocation slot,
-that's called **[wait.signal]** - At which point you'd probably want
-to prefix your slot's name with **[wait.]** to communicate this
-to any users of your slot.
-
 Notice also the subtle difference in
 how we invoke a dynamically created slot, by explicitly invoking
 it through **[signal]**, instead of directly adding it as a node

@@ -221,8 +221,8 @@ What the above code basically translates into, is.
 
 ## Branching and conditional execution
 
-Magic Lambda contains the following slots. Most of these slots also have async (wait.) overrides, which
-will be executed asynchronously using async tasks from .Net.
+Magic Lambda contains the following slots. Most of these slots have async overrides that will be
+automatically chosen by Magic if possible.
 
 ### [if]
 

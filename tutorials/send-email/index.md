@@ -46,7 +46,7 @@ into your file.
    body:string
 validators.email:x:@.arguments/*/to
 unwrap:x:+/**
-wait.mail.smtp.send
+mail.smtp.send
    message
       to
          :x:@.arguments/*/to
@@ -55,17 +55,7 @@ wait.mail.smtp.send
          content:x:@.arguments/*/body
 ```
 
-**Notice** - This time we are using an _"async"_ slot. This is
-because our invocation to smtp.send starts with **[wait.]**.
-This implies that as Magic is waiting for data to be returned
-from the socket connection it is using to actually transmit
-the email to your SMTP server, the web server thread will be
-released back to the operating system. This results
-in 100x better scaling of your web app, since no thread is
-blocked as Magic is waiting for IO to finish. You should use
-async slots if you can. These always starts out with _"wait."_.
-
-We are also using the email validator above. This validator will throw an exception
+Above we are using the email validator. This validator will throw an exception
 unless the expression it's pointing to, is a valid email
 address. After you have saved your file, go to your _"Endpoints"_,
 and find your send-email endpoint, and fill it out as follows.

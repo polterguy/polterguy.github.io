@@ -90,14 +90,12 @@ of the equation have some sort of weakness.
 ### Async slots
 
 If you want to create async slots, you'll have to
-implement the `ISlotAsync` interface, and make sure you
-prefix your slot's name with _"wait."_ - You can
+implement the `ISlotAsync` interface. This will ensure
+that Magic will automatically use your async slot,
+if possible. You can
 of course implement _both_ interfaces on the same class,
 and also have multiple `Slot` attributes, with different
-names on the same class too. This allows you to create both
-synchronous versions, and async versions, of the same
-slot, on the same class. And in fact, this is the way
-most slots in Magic are implemented.
+names on the same class too.
 
 ## Expressions
 
