@@ -15,8 +15,6 @@ this project provides the following slots.
 or whether or not it has a static value, or a list of nodes
 * __[slots.vocabulary]__ - Returns the names of all dynamically created slots
 
-Most of the above slots have async **[wait.xxx]** overloads. Below is an example of how to create and invoke a slot.
-
 ```
 /*
  * First we create a dynamic slot.
@@ -44,7 +42,7 @@ server restarts for some reasons.
 
 ### [slots.create]
 
-Creates a dynamic slot that can be invoked using **[signal]** or **[wait.signal]** (async). Below is an example.
+Creates a dynamic slot that can be invoked using **[signal]**. Below is an example.
 
 ```
 slots.create:foo
@@ -57,7 +55,7 @@ make sure you are somehow creating it during server startup, which can normally 
 a Hyperlambda file into your module's _"magic.startup"_ folder, which makes sure the code is executed during startup
 of your web app.
 
-### [signal] and [wait.signal]
+### [signal]
 
 Invokes a previously created dynamic slot. Assuming you have executed the above code snippet, you can invoke the slot using
 the following Hyperlambda.
@@ -67,9 +65,6 @@ signal:foo
 ```
 
 After evaluating the above Hyperlambda, the **[signal]** node will end up having a value of _"57"_.
-
-**Notice** - If your dynamically created slot contains async slot invocations, you will have to invoke
-it async, using the **[wait.signal]** override.
 
 ### [slots.get]
 

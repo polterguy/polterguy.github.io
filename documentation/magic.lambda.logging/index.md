@@ -8,8 +8,6 @@ Logging wrapper slots for Magic. More specifically, this project provides the fo
 * __[log.error]__ - Error log entries, typically exceptions
 * __[log.fatal]__ - Fatal log entries, from which the application cannot recover from
 
-All of the above slots also have async implementation, starting out with `wait.`.
-
 By default, this project will log into your `magic.log_entries` database/table, using either MySQL or
 Microsoft SQL Server. This allows you to use SQL to generate statistics on top of your logs. An example of
 logging an info piece of information can be found below.

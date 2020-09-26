@@ -7,7 +7,7 @@
 1. **[mail.pop3.fetch]** - Fetches emails from some POP3 server
 2. **[mail.smtp.send]** - Sends email(s) over an SMTP server
 
-Both of the above slots have async (wait.) overrides for executing asynchronously.
+Both of the above slots have async overrides that will be automatically used by Magic if possible.
 
 ## Sending email(s)
 

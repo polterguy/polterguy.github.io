@@ -11,8 +11,6 @@ This project provides math functions to Magic. More specifically, it provides th
 * __[math.decrement]__ - Decrements a node's value, optionally by **[step]**, defaulting to 1
 * __[math.increment]__ - Increments a node's value, optionally by **[step]**, defaulting to 1
 
-All of the above slots also have async (wait.) overrides.
-
 All of the above can be given any number of arguments, including as its value, and will treat the first argument as the _"base"_,
 and performing the rest of the arguments self assigning the base as it proceeds. For instance, the following code will first divide
 100 by 4, then divide that result by 5 again, resulting in 5.

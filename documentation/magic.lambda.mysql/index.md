@@ -18,8 +18,6 @@ declare your own SQL statements, to be executed towards a MySQL database. Slots 
 * __[mysql.transaction.commit]__ - Explicitly commits an open transaction
 * __[mysql.transaction.rollback]__ - Explicitly rolls back an open transaction
 
-Most of the above slots also have async (wait.) overloads.
-
 **Notice** - If you use any of the CRUD slots from above, the whole idea is that you can polymorphistically use the
 same lambda object, towards any of the underlaying database types, and the correct specific syntax for your particular
 database vendor's SQL syntax will be automatically generated.

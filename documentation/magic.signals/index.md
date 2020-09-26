@@ -56,12 +56,6 @@ wants to evaluate your slot. This makes it behave as a good IoC citizen, allowin
 interfaces into your constructor, and have the .Net Core dependency injection automatically create objects
 of whatever interface your slot implementation requires.
 
-### Async
-
-Notice, Magic Signals also allows you to implement the `ISlotAsync` interface, in case you need to implement a
-specific slot async. Normally the convention for cretaing such slots is to prepend them with the word _"wait."_
-in front of their ususal name. Below is an example.
-
 ```csharp
 [Slot(Name = "foo.bar")]
 public class FooBar : ISlotAsync

@@ -221,8 +221,8 @@ What the above code basically translates into, is.
 
 ## Branching and conditional execution
 
-Magic Lambda contains the following slots. Most of these slots have async overrides that will be
-automatically chosen by Magic if possible.
+Magic Lambda contains the following slots. Most of these slots have async overloads, which will be
+automatically used by Magic if possible.
 
 ### [if]
 
@@ -800,9 +800,6 @@ to be passed in as its main value.
 // Sleeps the main thread for 1 second, or 1000 milliseconds.
 sleep:1000
 ```
-
-**Notice** - You should really use the _"wait."_ overload for this slot, if you choose to use
-it at all - Since the synchronous version will lead to thread starvation, if used too frequently.
 
 ## Miscellaneous slots
 

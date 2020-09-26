@@ -66,9 +66,6 @@ cache.try-get:cache-key
       return:Howdy world
 ```
 
-This slot contains an async overload, called **[wait.cache.try-get]**, allowing you to use async
-slots in your **[.lambda]** argument.
-
 ## Configuration settings
 
 You can provide default settings for both **[expiration]** and **[expiration-type]** in

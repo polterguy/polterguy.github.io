@@ -4,25 +4,22 @@
 This project provides the ability to create persisted, and/or scheduled Hyperlambda tasks,
 for [Magic](https://github.com/polterguy.magic). More specifically it provides the following slots.
 
-* __[wait.tasks.create]__ - Creates a new task.
-* __[wait.tasks.get]__ - Returns an existing task.
-* __[wait.tasks.list]__ - Lists all tasks.
-* __[wait.tasks.execute]__ - Executes an existing task.
-* __[wait.tasks.delete]__ - Deletes a task.
-* __[wait.scheduler.stop]__ - Stops the scheduler, implying no tasks will be executed at their scheduled time.
-* __[wait.scheduler.start]__ - Starts the scheduler, if there are any upcoming scheduled tasks.
-* __[wait.scheduler.next]__ - Returns the date and time of the next scheduled task, if any.
+* __[tasks.create]__ - Creates a new task.
+* __[tasks.get]__ - Returns an existing task.
+* __[tasks.list]__ - Lists all tasks.
+* __[tasks.execute]__ - Executes an existing task.
+* __[tasks.delete]__ - Deletes a task.
+* __[scheduler.stop]__ - Stops the scheduler, implying no tasks will be executed at their scheduled time.
+* __[scheduler.start]__ - Starts the scheduler, if there are any upcoming scheduled tasks.
+* __[scheduler.next]__ - Returns the date and time of the next scheduled task, if any.
 * __[scheduler.running]__ - Returns true if the scheduler is running.
-
-Notice, all of these slots that starts with **[wait.]** are `async` in nature, and can only be executed
-from an async context.
 
 ## Creating a task
 
 To create a task without an execution date and no repetition pattern, you can use something such as the following.
 
 ```
-wait.tasks.create:foo-bar-task-1
+tasks.create:foo-bar-task-1
    .lambda
 
       /*
@@ -37,7 +34,7 @@ overwritten. A task can also optionally have a **[description]** argument, which
 description, describing what your task does. Below is an example.
 
 ```
-wait.tasks.create:foo-bar-task-2
+tasks.create:foo-bar-task-2
    description:This task will do a little bit of foo and some bar afterwards.
    .lambda
       log.info:Executing foo-bar-task-2
@@ -48,12 +45,12 @@ a-z, 0-9 - In addition to the special characters `.`, `-` and `_`.
 
 ## Executing a task
 
-You can explicitly execute a persisted task at will by invoking **[wait.tasks.execute]**, and passing
+You can explicitly execute a persisted task at will by invoking **[tasks.execute]**, and passing
 in the ID of your task. Below is an example, that assumes you have created the above _"foo-bar-task-1"_ task
 first.
 
 ```
-wait.tasks.execute:foo-bar-task-1
+tasks.execute:foo-bar-task-1
 ```
 
 **Notice** - This slot does _not_ synchronize access to your tasks, such as when executing a scheduled task
@@ -81,7 +78,7 @@ If you want to create a _scheduled_ task, you can choose to have the task execut
 date and time, by applying a **[due]** argument.
 
 ```
-wait.tasks.create:foo-bar-task-3
+tasks.create:foo-bar-task-3
    due:date:"2020-12-24T17:00"
    .lambda
       log.info:Executing foo-bar-task-3
@@ -114,7 +111,7 @@ for these types. See examples of this further below in this documentation.
 Evaluating your task every second/minute/hour/etc can be done by using something such as the following.
 
 ```
-wait.tasks.create:task-id
+tasks.create:task-id
    repeats:50.seconds
    .lambda
       log.info:Executing repeating task
@@ -124,7 +121,7 @@ The above will evaluate your task every 50 second. The above _"seconds"_ can be 
 repeating _very rarely_, such as the following illustrates.
 
 ```
-wait.tasks.create:task-id
+tasks.create:task-id
    repeats:3650.days
    .lambda
       log.info:Executing seldomly repeating task once every 10 year
@@ -146,7 +143,7 @@ To create a task that is executed on the first day of _every_ month, at 5PM, you
 repetition pattern.
 
 ```
-wait.tasks.create:task-id
+tasks.create:task-id
    repeats:**.01.05.00.00
    .lambda
       log.info:It is the 1st of the month, any month, and the time is 5AM at night.
@@ -158,7 +155,7 @@ multiple days, and/or months, such as the following illustrates. The Hyperlambda
 in January and February, but only on the 5th and 15th of these months.
 
 ```
-wait.tasks.create:task-id
+tasks.create:task-id
    repeats:01|02.5|15.05.00.00
    .lambda
       log.info:It is the 5th or the 15th of January or February, and the time is 5AM at night.
@@ -168,7 +165,7 @@ By using the double asterix for month and day of month, you can create a task th
 some specific time of the day (UTC time). Below is an example.
 
 ```
-wait.tasks.create:task-id
+tasks.create:task-id
    repeats:**.**.22.00.00
    .lambda
       log.info:It is the 10PM now.
@@ -191,7 +188,7 @@ To evaluate a task every Saturday and Sunday for instance, you can use `saturday
 Below is an example. Notice, weekdays are case insensitive.
 
 ```
-wait.tasks.create:task-id
+tasks.create:task-id
    repeats:saturday|SUNDAY.22.00.00
    .lambda
       log.info:It is Saturday or Sunday, and the time is 22PM.
@@ -253,7 +250,7 @@ after the `ext:custom-type:` parts, when creating an instance of your pattern.
 To use the above pattern in your own code, you can use something such as the following.
 
 ```
-wait.tasks.create:custom-repetition-pattern
+tasks.create:custom-repetition-pattern
    repeats:"ext:custom-pattern:some-arguments-here"
    .lambda
       log.info:Executing custom-repetition-pattern
@@ -278,11 +275,11 @@ pattern declares how many units to count to before executing the task again, fro
 
 ## Deleting a task
 
-Use the **[wait.tasks.delete]** signal to delete a task. This will also delete all future schedules for your task.
+Use the **[tasks.delete]** signal to delete a task. This will also delete all future schedules for your task.
 An example can be found below.
 
 ```
-wait.tasks.delete:task-id
+tasks.delete:task-id
 ```
 
 Besides from the task ID, the delete task signal doesn't take any arguments.
@@ -292,7 +289,7 @@ Besides from the task ID, the delete task signal doesn't take any arguments.
 To inspect a task you can use the following.
 
 ```
-wait.tasks.get:task-id
+tasks.get:task-id
 ```
 
 Besides from the task ID, the get task slot doesn't take any arguments. Using this signal, will return the
@@ -300,32 +297,32 @@ task's due date(s) in addition to the task itself.
 
 ## Listing tasks
 
-To list tasks, you can use the **[wait.tasks.list]** signal. This slot optionally
+To list tasks, you can use the **[tasks.list]** signal. This slot optionally
 handles an **[offset]** and a **[limit]** argument, allowing you to page, which might be
 useful if you have a lot of tasks in your system. If no **[limit]** is specified, this signal
 will only return the first 10 tasks, including the task's Hyperlambda, but not its repetition
 pattern, or due date. Below is an example.
 
 ```
-wait.tasks.list
+tasks.list
    offset:20
    limit:10
 ```
 
 ## Miscelaneous slots
 
-The **[wait.scheduler.stop]** will stop the scheduler, meaning no repeating tasks or tasks with a due date in
+The **[scheduler.stop]** will stop the scheduler, meaning no repeating tasks or tasks with a due date in
 the future will execute. Notice, if you create a new task with a due date, and/or a repetition pattern,
 the scheduler will automatically start again, unless you create the task setting its **[auto-start]**
-argument explicitly to false. When you start the scheduler again, using for instance **[wait.scheduler.start]**,
+argument explicitly to false. When you start the scheduler again, using for instance **[scheduler.start]**,
 all tasks will automatically resume, and tasks that have due dates in the past, will immediately start executing.
 
 To determine if the task scheduler is running or not, you can invoke **[scheduler.running]**, which will
 return `true` if the scheduler is running. Notice, if you have no scheduled tasks, it will always
 return false. And regardless of whether or not the scheduler is running or not, you can always explicitly
-execute a task by using **[wait.tasks.execute]**.
+execute a task by using **[tasks.execute]**.
 
-To return the date and time for the next scheduled task, you can raise the **[wait.scheduler.next]** signal.
+To return the date and time for the next scheduled task, you can raise the **[scheduler.next]** signal.
 
 ## Persisting tasks
 
