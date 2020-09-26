@@ -3,7 +3,7 @@
 The word _"Hyperlambda"_ originates from _"hyper"_ and _"lambda"_, implying _"web functions"_.
 In order to understand Hyperlambda's usefulness, it is therefor valuable to use Hyperlambda to create
 HTTP REST endpoints. In this article, I will take you from creating your first HTTP endpoint, to
-selecting and querying your database, securely, and I will do it in 10 minutes. Notice, if you prefer to watch
+selecting and querying your database, securely - And I will do it in 10 minutes. Notice, if you prefer to watch
 video tutorials, here's a video where I walk you through everything.
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
@@ -58,6 +58,10 @@ Hyperlambda file inside your _"backend/files/"_ folder. If you're using Magic fr
 your development machine on localhost, you can use
 [the following URL to invoke your endpoint](http://localhost:55247/magic/modules/tutorials/hello-world).
 
+**Notice** - All Hyperlambda file IO operations will by default use the _"backend/files/"_
+folder as its _"root folder"_. This secures your other files, and your main web server
+operating system, from accidental changes. This _can_ be configured though.
+
 The first parts of the file extension, the _"get"_ parts, declares that our file is an HTTP GET
 endpoint, that we can invoke using the GET verb. The last parts, the _".hl"_ extension,
 declares that this is a Hyperlambda file, making the Hyperlambda parser kick in and transform
@@ -71,14 +75,18 @@ You can use the following verbs for your Hyperlambda files as an extension befor
 * put
 * delete
 
-This allows you to easily create an HTTP endpoint, wrapping your HTTP verb, controlling
-its URL in the process. Magic will treat your Hyperlambda files as if they were _"functions"_,
-and use your file extension to figure out what HTTP verb to use to resolve it.
+This allows you to easily create an HTTP endpoint, wrapping any of the above HTTP verbs,
+controlling its URL in the process. Magic will treat your Hyperlambda files as if they
+were _"functions"_, and use your filename to figure out what HTTP verb to use to
+resolve it.
 
 **Notice** - You can _only_ use a-z, A-Z, 0-9, `-` and `_` in your filenames when creating
 Hyperlambda endpoints. Otherwise the Hyperlambda/endpoint resolver will _not accept_ your
 URL for security reasons. You should also be careful when using CAPS in your filenames, since
-Linux tends to see _"FooBar.hl"_ as a _different_ file than _"foobar.hl"_.
+Linux/OSX tends to see _"FooBar.hl"_ as a _different_ file than _"foobar.hl"_, creating all sorts
+of problems for you as you move your code between different operating systems. As a general
+advice, I'd encourage you to _only_ use small characters in filenames when you create
+Hyperlambda files.
 
 ## Creating an echo service
 
@@ -189,7 +197,7 @@ return
 
 So obviously, the entire payload is transformed from JSON to lambda, and sent into your
 endpoint as an **[.arguments]** node. The `.` parts above, implies that `addresses` is an array,
-and each `.` is an entry in the array.
+where each `.` is an entry in the array.
 
 ### Restricting arguments
 
@@ -209,8 +217,8 @@ return
 If you save the above Hyperlambda into some file called e.g. _"explicit-arguments.get.hl"_,
 and you refresh your _"Endpoints"_, and select the new endpoint - You will see that the
 endpoint evaluator automatically determines that this endpoint can handle
-arguments, what the argument names are, and what their types are. See screenshot below
-for how this should look like.
+arguments, what the argument names are, and what their types are. Below is a screenshot
+illustrating how this reflects unto your endpoint's meta data.
 
 ![Passing in arguments to Hyperlambda endpoints](https://servergardens.files.wordpress.com/2020/09/explicit-arguments.png)
 
@@ -235,7 +243,7 @@ following illustrates, the endpoint will return an error.
 
 ![Invoking endpoint with unknown argument](https://servergardens.files.wordpress.com/2020/09/argument-exception.png)
 
-The Hyperlambda evaluator doesn't really discriminate between JSON payload arguments,
+The Hyperlambda evaluator doesn't really discriminate between JSON payload arguments
 and QUERY parameters. From your Hyperlambda file, an argument is an argument - Period.
 But if you try to pass in an argument that the endpoint doesn't allow for, the
 file will never be executed for security reasons.
@@ -249,11 +257,11 @@ character in this documentation.
 
 **Notice** - This Hyperlambda assumes you've somehow got the _"Sakila"_ database from
 MySQL installed. If you don't, you can exchange the _"sakila"_ parts below with
-an existing database you've got somewhere, and modify the SQL to become valid SQL,
+an existing database you've got somewhere, and modify the SQL to become valid SQL
 towards that database. Just make sure you restrict the number of records you
 select, in case you have thousands of records in your table, to avoid having
-to wait a long time for the result to show up.
-If you're not using MySQL, you'll also have to exchange the above **[mysql.]** parts
+to wait too long for the result to show up.
+If you're not using MySQL, you'll also have to exchange the **[mysql.]** parts
 with for instance **[mssql.]** to retrieve data from a Microsoft SQL Server installation.
 
 Create a new file in your _"Files"_ menu, inside your _"/modules/tutorials/"_ folder,
@@ -283,6 +291,7 @@ see something resembling the following.
     "last_name": "WAHLBERG",
     "last_update": "2006-02-15T02:34:33.000Z"
   }
+]
 ```
 
 ### Parametrizing your SQL
@@ -303,11 +312,14 @@ mysql.connect:sakila
 ```
 
 Then try invoking the endpoint, but this time with the following arguments.
+
 ![Paging your result](https://servergardens.files.wordpress.com/2020/09/sql-read-with-offset.png)
 
 ### Authorization
 
-Put the following line of code at the top of your file, just beneath its **[.arguments]** node.
+Magic contains built in JWT authorization, which you can leverage in your own endpoints.
+Put the following line of code at the top of your file, just beneath its **[.arguments]** node
+to secure your endpoint.
 
 ```
 auth.ticket.verify:root, admin
@@ -316,7 +328,7 @@ auth.ticket.verify:root, admin
 You have now secured access to this endpoint, such that _only_ users belonging
 to the _"root"_ or _"admin"_ roles can invoke it. The above value is a comma separated list
 of roles, allowing a user to access the endpoint, _only_ if he or she belongs
-to _any_ of the roles listed. All other users will be denied access. The
+to _any_ of the roles listed - All other users will be denied access. The
 complete code we ended up with can be found below.
 
 ```
@@ -336,10 +348,10 @@ readable. Hyperlambda accepts both multiline and
 single line comments, but you _cannot_ put a comment on any line where
 you have Hyperlambda code. The **[.description]**
 node below, adds meta data to your endpoint, which gives it
-a humanly readable descriptive text. The meta data generator
+a humanly readable descriptive text as meta data. The meta data generator
 will return this when meta data is requested. Below is our file
 from above, but this time with a meta description node, in
-addition to some comments.
+addition to some comments and spacing to make it more readable.
 
 ```
 /*

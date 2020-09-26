@@ -3,7 +3,12 @@
 CRUD is at the core of everything relating to your database. It
 implies **C**reate, **R**ead, **U**pdate and **D**elete, and these
 are the 4 axioms that all database manipulation evolves around.
-If you prefer to watch video tutorials, here’s a video
+In this tutorial we'll manually create CRUD Hyperlambda HTTP REST
+endpoints, doing more or less what your machine is doing as
+it is automatically _"crudifying"_ your database. The purpose
+of this article, is to understand the automatic process, and
+also lay the foundation for editing your automatically created
+code. If you prefer to watch video tutorials, here’s a video
 where I walk you through everything.
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
@@ -12,7 +17,7 @@ where I walk you through everything.
 
 Hyperlambda supports 2 database types: Microsoft SQL Server and MySQL. In
 our previous tutorial, we executed a select SQL statement, and returned
-the results back to the client as JSON. Below is Hyperlambda illustrating
+the results back to the client as JSON. Below is some Hyperlambda illustrating
 roughly how we did this.
 
 **Filename - "/modules/tutorials/read-data.get.hl"**
@@ -23,17 +28,16 @@ mysql.connect:sakila
    return:x:-/*
 ```
 
-If you want to control the columns returned, simply add them up as columns into your SQL.
-
 ## Semantic SQL
 
 However, there exists an even better method to manipulate data in your database
-We refer to this as _"semantic SQL"_.
+We refer to this method as _"semantic SQL"_.
 This approach completely abstract away the underlaying database vendor,
 and allows you to semantically declare which columns are returned - In addition to
 where conditions, ordering, and paging. This method transparently
 generates the correct SQL towards your database adapter, allowing
-you to use the same structure for querying SQL Server as you would use to query MySQL.
+you to use the same structure for querying SQL Server as you would use
+to query MySQL.
 
 This approach arguably reduces your database type down to a _"configurable property"_
 in your end application, allowing you to use any database type, with the exact same code.
@@ -77,8 +81,13 @@ At this point you probably intuitively understand how the
 _"Crudifier"_ in Magic works. As Magic automatically creates CRUD HTTP REST
 endpoints for you, what happens is that code using the above
 slots is generated for you, according to meta data from your database.
+Later when your frontend is scaffolded, this Hyperlambda code is
+semantically parsed, resulting in meta data that creates your
+frontend. Without this intermediary step, there could be no
+dynamic creation of HTTP REST endpoints, and there could
+neither be any intelligently assembled frontend.
 
-All of the above slots have **[mssql.]** versions for Microsoft SQL Server.
+**Notice** - All of the above slots have **[mssql.]** versions for Microsoft SQL Server.
 If you want to follow this tutorial towards a Microsoft SQL Server database
 instead of a MySQL database, just replace _"mysql"_ with _"mssql"_, and
 everything should work the same, assuming you use columns and
@@ -163,12 +172,11 @@ mysql.connect:sakila
 
 Exactly 50 lines of code, and we have all 4 CRUD operations towards one of our
 database tables, with the read endpoint being able to page and limit its
-result set.
-Now go to your _"Endpoints"_ menu item in your Magic Dashboard, and play around
-with your endpoints as you see fit. If you can't find your endpoints, you can
-add _"data-crud"_ as a filter. Try to create some few items, edit some
-items, delete a couple of items, and read items. The association between
-CRUD operations and endpoint verbs in the above code, is as follows.
+result set. Now go to your _"Endpoints"_ menu item in your Magic Dashboard,
+and play around with your endpoints if you wish. If you can't find your
+endpoints, you can add _"data-crud"_ as a filter. Try to create some few items,
+edit some items, delete a couple of items, and read items. The association
+between CRUD operations and endpoint verbs in the above code, is as follows.
 
 * `POST` - Create one item
 * `GET` - Read items
@@ -183,13 +191,13 @@ The above **[where]** condition can be injected into the following 3 slots.
 * __[mysql.update]__
 * __[mysql.delete]__
 
-The create slot _cannot_ be given a where condition, but all 3 other slots can,
+The create slot _cannot_ be given a where condition, but all other slots can,
 and the syntax is of course the _exact same syntax_ for SQL Server, as it is
 for MySQL. The result of the **[where]** argument above, obviously results
 in an SQL _"where"_ condition, allowing you to restrict which items
-the SQL should end up reading/changing/deleting.
+your SQL should end up reading/changing/deleting.
 
-The first thing you'll need to understand about the where condition, is that
+One thing you'll need to understand about the where condition, is that
 its boolean operator is its outer most argument. This implies that if I create
 something such as the following Hyperlambda.
 
@@ -209,7 +217,7 @@ where foo = 'some value' and bar >= 5
 All values will be added as SQL parameters, making it
 impossible to inject malicious SQL into your database. Also try to
 understand the relationship between the **[foo.eq]** parts, the
-**[bar.mteq]** parts, and how this results in two different comparison operators
+**[bar.mteq]** parts, and how this results in _two different comparison operators_
 being generated for the fields. **[x.mteq]** basically means _"x more than or equals"_,
 while **[x.eq]** implies _"x equals"_. If no comparison operator is specified,
 equality (.eq) is assumed. Below are all comparison operators that Magic supports.
@@ -246,7 +254,7 @@ select * from 'table1'
    where 'field1' = @0 or ('field2' = @1 and 'field3' = @2)
 ```
 
-Notice the relationship between the inner most `and` statement, and the paranthesis
+Notice the relationship between the inner most `and` statement above, and the paranthesis
 generated in your SQL above. Each boolean operator added to your **[where]** beyond
 its first, will create a new _"scope"_, adding paranthesis to your resulting SQL.
 Also notice how by setting **[limit]** to _"-1"_, we can completely avoid
@@ -255,9 +263,10 @@ having the default limit of 25 applied to our end result.
 By intelligently combining our **[where]** node with input arguments
 to our endpoint, and by applying input arguments to our SQL slot invocation,
 we can restrict which items are updated/deleted/selected, etc.
+
 The SQL generator has a lot of other features, such as joining multiple
 tables, changing the comparison operator, grouping by column(s), selecting
-aggregate results, etc. Check out [magic.data.common](/documentation/magic.data.common)'s
+aggregate results, etc. Check out [magic.data.common](/documentation/magic.data.common/)'s
 reference documentation for more information about how to semantically
 build SQL.
 
@@ -279,7 +288,7 @@ endpoints, and for instance updating or deleting _every single item_
 in our database. Combining
 validators with explicit **[.arguments]** declarations, and making
 sure your arguments are declared with the correct type, ensures that
-no malicious data can be sent into your endpoints. [Read more about validators here](/documentation/magic.lambda.validators)
+no malicious data can be sent into your endpoints. [Read more about validators here](/documentation/magic.lambda.validators/)
 
 ## Raw SQL
 
@@ -297,14 +306,18 @@ For the record, if you can, you _should_ use the CRUD operations instead
 of the above _raw_ SQL slots, since this allows you to transparently
 support _any_ database type that Magic supports. This prevents _"lockin"_
 of your application, allowing you to change database vendor as you see
-fit. Even if this is not something _you_ care about, your _customers_
+fit. Even if lockin is not something _you_ care about, your _customers_
 might care about it, since a lot of companies have
 _"corporate database vendors"_, and don't even allow for purchasing
 products that somehow doesn't support their particular database type.
+In addition, the semantic SQL generator also makes your Hyperlambda more
+easily parsed, to generate meta data, and similar constructs, making
+your end result more capable of sommunicating semantically exactly
+what it does.
 
 In addition some database adapters in Magic also gives you transaction
 support, creating, committing, and rolling back database transactions,
 and lots of additional features. Please refer to your specific database
 adapter for more information about these slots.
 
-* [Continue to sending emails](/tutorials/send-email)
+* [Continue to sending emails](/tutorials/send-email/)
