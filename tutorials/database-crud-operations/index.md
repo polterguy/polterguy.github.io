@@ -232,7 +232,7 @@ equality (.eq) is assumed. Below are all comparison operators that Magic support
 * `in` - Special comparison operator, since it requires a _list_ of values, generating an _"in"_ SQL condition
 
 You can create any amount of complexity in your where statements as you wish.
-This is done by recursively applying more and more **[and]** or **[or]** conditions,
+This is done by recursively applying more and more nested **[and]** or **[or]** conditions,
 such as the following illustrates.
 
 ```
@@ -288,19 +288,26 @@ endpoints, and for instance updating or deleting _every single item_
 in our database. Combining
 validators with explicit **[.arguments]** declarations, and making
 sure your arguments are declared with the correct type, ensures that
-no malicious data can be sent into your endpoints. [Read more about validators here](/documentation/magic.lambda.validators/)
+no malicious data can be sent into your endpoints. [Read more about validators here](/documentation/magic.lambda.validators/).
 
 ## Raw SQL
 
 If the above _"semantic SQL slots"_ doesn't serve you, Magic and Hyperlambda
 also allows you to supply _"raw SQL"_, allowing you to execute any arbitrary
 SQL, towards any of your database types. To use these lots you'd probably
-want to check out your database specific adapter, but a list of its MySQL
-versions can be found below.
+want to check out your database specific adapter, and your vendor's SQL dialect,
+but a list of its MySQL versions can be found below.
 
 * __[mysql.execute]__ - Wraps the `DbCommand.ExecuteNonQuery` method
 * __[mysql.scalar]__ - Wraps the `DbCommand.ExecuteScalar` method
 * __[mysql.select]__ - Wraps the `DbCommand.ExecuteReader` method
+
+In addition some database adapters in Magic also gives you transaction
+support, creating, committing, and rolling back database transactions,
+and other features. Please refer to your specific database
+adapter for more information about these slots.
+
+### Avoiding lockin
 
 For the record, if you can, you _should_ use the CRUD operations instead
 of the above _raw_ SQL slots, since this allows you to transparently
@@ -310,14 +317,15 @@ fit. Even if lockin is not something _you_ care about, your _customers_
 might care about it, since a lot of companies have
 _"corporate database vendors"_, and don't even allow for purchasing
 products that somehow doesn't support their particular database type.
+
 In addition, the semantic SQL generator also makes your Hyperlambda more
 easily parsed, to generate meta data, and similar constructs, making
-your end result more capable of sommunicating semantically exactly
-what it does.
-
-In addition some database adapters in Magic also gives you transaction
-support, creating, committing, and rolling back database transactions,
-and lots of additional features. Please refer to your specific database
-adapter for more information about these slots.
+your end result more capable of clearly communicating semantically 
+_exactly what it does_. In fact, these semantic SQL slots are at the _core_ of
+the crudification process, since without these constructs, creating
+meta data that's rich enough to create your frontends, would be
+literally impossible. Think about this as the OpenAPI specification
+version 1 gazillion, giving you the capacity to retrieve an insane
+amount of meta data associated with your endpoints, in a secure manner.
 
 * [Continue to sending emails](/tutorials/send-email/)
