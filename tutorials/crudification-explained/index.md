@@ -256,7 +256,7 @@ select filename from Hyperlambda.files where @some_condition
 
 It doesn't stop there though. Combining the above query capabilities with patching
 capabilities, allows us to modify all Hyperlambda files meeting some criteria
-of some sort. Below us another endpoint. Save the following Hyperlambda in a
+of some sort. Below is another endpoint. Save the following Hyperlambda in a
 file called _"update.post.hl"_ in the same folder.
 
 ```
