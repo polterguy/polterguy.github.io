@@ -322,6 +322,8 @@ for-each:x:@signal/*
                io.file.save:x:@.dp/#
                   lambda2hyper:x:@.code/*
                math.increment:x:@.no
+
+// Returns the number of affected files.
 unwrap:x:+/*
 return
    files-updated:x:@.no
