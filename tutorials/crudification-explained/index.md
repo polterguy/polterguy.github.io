@@ -34,7 +34,7 @@ to ask questions such as.
 2. What is its HTTP verb?
 3. Does this endpoint read from a database?
 4. _What_ database is it reading from?
-5. What columns is the endpoint returning?
+5. What columns are the endpoint returning?
 6. If it reads from a database, is it a MySQL or an SQL Server database?
 7. Etc, etc, etc ...
 
@@ -92,20 +92,19 @@ easily capable of answering the above question for us. Doing the equivalent in f
 instance C# would require monumental amounts of work, and it would probably be specific to
 one particular construct. While the above Hyperlambda endpoint could easily be modified to take
 an expression as an argument, resulting in that it could answer _any_ question we might have
-relating to what our files does.
+relating to what our files do.
 
 This effectively results in that we end up with
 _"Hyperlambda 'query language' capabilities"_, allowing us to treat code, the same way
 we treat data, reflect upon the code, and query the code - Giving us a high level
-view of what our codebase as a whole does, in addition to exactly explaining what individual
-files actually do. This allows us to build _tools_ on top of
-our Hyperlambda code, that automates the maintenance of our code.
+view of what our codebase as a whole does, in addition to exactly understanding what individual
+files does. This allows us to build _tools_ on top of
+our Hyperlambda code, that automates the maintenance of our code. And in fact,
+the crudifier itself is mereley _one_ such tool. We could build hundreds of
+similar tools, doing _other_ tasks for us automatically.
 
-Of course, expanding
-this into querying hundreds, and even thousands of servers simultaneously, would also
-be fairly simply - Aggregating the end result into some high level report or something
-equivalent. Let's illustrate this by creating a generic _"code query endpoint"_, where
-we can supply some Hyperlambda as _input_, and have it executed towards _every single file_
+Let's illustrate this by creating a generic _"code query endpoint"_, where
+we can supply an expression as _input_, and have it evaluated towards _every single file_
 in our _"/modules/"_ folder. Add the following file into your _"/modules/tutorials/"_
 folder.
 
@@ -125,7 +124,7 @@ strings.concat
    .:@.code/
    get-value:x:@.arguments/*/query
    
-// Changes the value of the [exists] node below to become the above expression
+// Changes the value of the [exists] node below to become our query expression
 set-x:x:./**/.lambda/*/if/*/exists
    convert:x:@strings.concat
       type:x
@@ -182,7 +181,8 @@ payload.
 }
 ```
 
-And the results should resemble the following.
+Assuming you've crudified your Sakila database, the results
+should resemble the following.
 
 ```json
 [
@@ -194,10 +194,9 @@ And the results should resemble the following.
 ]
 ```
 
-Assuming you've crudified the Sakila database. What the endpoint told us, was basically
-as follows.
+What the endpoint told us, was basically as follows.
 
-> Give us the filenames of all files that are reading/updating/deleting/creating records
+> Give me the filenames of all files that are reading/updating/deleting/creating records
 in a table named address.
 
 To have the endpoint return all files that are opening a MySQL database connection,
@@ -232,11 +231,108 @@ Which should return something resembling the following.
 ]
 ```
 
-These types of constructs gives us unimaginable _"meta data capabilities"_, allowing us to ask questions
-about our own code, incomprehensible for most developers working in non-Hyperlambda languages.
-We could of course also create _"patch code"_ endpoints, and expand upon the above constructs,
-until we had created services so rich in regards to meta data capabilities, we'd effectively
-be able to almost 100% accurately communicate exactly what our server does to a trusted
-agent. But I think this is enough braintwisting for one day ;)
+To list all files that are invoking **[mysql.create]**, you can pass in the following
+payload.
+
+```json
+{
+  "query": "**/mysql.create"
+}
+```
+
+Etc, etc, etc. Hence, we can now _query our code_, and ask it arguably any question
+we can phrase, and our Magic backend will instantly answer our question, and return
+the answer to our question, relating to what our code actually code, and which files
+are doing it. So with some Hyperlambda creativity, we have _"read"_ for our code,
+almost like the following pseudo SQL would yield.
+
+```sql
+select filename from Hyperlambda.files where @some_condition
+```
+
+### Automatically updating your code
+
+It doesn't stop there though. Combining the above query capabilities with patching
+capabilities, allows us to modify all Hyperlambda files meeting some criteria
+of some sort. Below us another endpoint. Save the following Hyperlambda in a
+file called _"update.post.hl"_ in the same folder.
+
+```
+.arguments
+   query:string
+auth.ticket.verify:root
+
+// Lists files recursively inside of /modules/ folder
+signal:magic.io.file.list-recursively
+   .:/modules/
+
+// Prepends specified expression with @.code
+strings.concat
+   .:@.code/
+   get-value:x:@.arguments/*/query
+   
+// Changes the value of the [exists] node below to become our query expression
+set-x:x:./**/.lambda/*/if/*/exists
+   convert:x:@strings.concat
+      type:x
+
+// Looping through each file inside of our /modules/ folder.
+for-each:x:@signal/*
+
+   // Checking that the currentlty iterated file is a Hyperlambda file.
+   if
+      strings.ends-with:x:@.dp/#
+         .:.hl
+      .lambda
+
+         /*
+          * Hyperlambda file, loading file and adding its content
+          * into the [.code] segment below as lambda.
+          */
+         .code
+         io.file.load:x:@.dp/#
+         add:x:@.code
+            hyper2lambda:x:@io.file.load
+            
+         /*
+          * Evaluating the specified expression. [exists] here
+          * is parametrized from the input argument.
+          */
+         if
+            exists
+            .lambda
+            
+               // Expression returned true, hence returning filename to caller.
+               unwrap:x:+/*/*
+               add:x:../*/return
+                  .
+                     .:x:@.dp/#
+```
+
+Then try to invoke it with the following payload.
+
+```json
+{
+  "query": "**/mysql.create",
+  "hyperlambda": "log.info:Item was created"
+}
+```
+
+The above little payload just updated _every single Hyperlambda file_
+that creates MySQL database records, making sure each of these file creates a log item,
+as the endpoint is invoked. The execution of this patching took us maybe some 30-50
+milliseconds, and the process automatically loaded every single file in our Magic
+server for us, checked if it was a _"create"_ invocation - And if it was, it
+made sure it creates a log item every single time the endpoint is invoked.
+Arguably, we just created the following little pseudo SQL you might argue.
+
+```sql
+update Hyperlambda.files add(invoke-log) where file.creates-crud-item
+```
+
+Some roughly 100 files were inspected semantically in 01 seconds, and
+all files creating database records for us, are now logging this fact.
+Modifying some 10-20 files in 0.1 second. Not too bad for 0.1 seconds of
+work if you ask me ... ;)
 
 * [Documentation](/documentation/)
