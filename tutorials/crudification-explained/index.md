@@ -1,12 +1,13 @@
-# How the CRUD process works
+# Super duper Meta data
 
-If you have gone through all of the articles here, you know everything
+If you have gone through all of the articles here, you now know everything
 necessary to understand how the _"crudification"_ process works. Hence, in this article I
-will walk you through the exact semantics of this process, to literally reveal the Magic
-of Magic, in addition to teaching you some _"meta data Magic"_ in the process. Notice, if you
-prefer to watch video tutorials, you can watch the following video where I
-explain parts of what goes on under the hood of Magic, and also shows you how you can configure
-the crudification process.
+will walk you through the semantics of this process, to literally reveal the Magic
+of Magic, in addition to teaching you some _"super duper meta data Magic"_ in the process.
+Notice, if you prefer to watch video tutorials, you can watch the following video
+where I explain parts of what goes on under the hood of Magic, and also shows you
+how you can configure the crudification process, and some of its powerful meta data
+capabilities.
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/PgqiaChEd6s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -24,7 +25,7 @@ and inspect _exactly what they do_. This creates the foundation for the frontend
 process, which again results in your frontend being automatically generated. At this point,
 Hyperlambda becomes _instrumental_ for Magic's ability to perform its job. To illustrate the
 importance of Hyperlambda at this point, imagine Hyperlambda as reflection from .Net, only
-1.000 times more powerful. Hence, no Hyperlambda, no frontend.
+1.000 times more powerful.
 
 After having crudified your database, the meta data retrieval process of Magic allows you
 to ask questions such as.
@@ -42,12 +43,14 @@ that _"Hyperlambda understands Hyperlambda"_, which probably doesn't make any se
 software developers that are used to traditional programming languages - But which still
 is at the _core_ of the automation process that Magic does.
 
-> When the computer understands its own code, it can create code and modify code, and the human software development factor becomes arguably obsolete
+> When the computer understands its own code, it can create code and modify code, and the human software developer arguably becomes obsolete
+
+### Your first Meta Data endpoint
 
 To illustrate Hyperlambda's meta data capabilities, let's create an HTTP endpoint, that takes
 a file path as an input argument, and answers the question _"does this file read from the Sakila/actor table?"_
-Create a file in your _"modules/tutorials/"_ folder, and give it the name _"meta.post.hl"_. Put the following
-content into your file.
+Create a file in your _"modules/tutorials/"_ folder, and give it the name _"meta.post.hl"_.
+Put the following content into your file.
 
 ```
 .arguments
@@ -89,16 +92,21 @@ easily capable of answering the above question for us. Doing the equivalent in f
 instance C# would require monumental amounts of work, and it would probably be specific to
 one particular construct. While the above Hyperlambda endpoint could easily be modified to take
 an expression as an argument, resulting in that it could answer _any_ question we might have
-relating to what our files does. This effectively results in that we end up with
+relating to what our files does.
+
+This effectively results in that we end up with
 _"Hyperlambda 'query language' capabilities"_, allowing us to treat code, the same way
 we treat data, reflect upon the code, and query the code - Giving us a high level
-view of what our codebase as a whole does. This allows us to build tools on top of
-our Hyperlambda code, that automates the maintenance of our code. Of course, expanding
+view of what our codebase as a whole does, in addition to exactly explaining what individual
+files actually do. This allows us to build _tools_ on top of
+our Hyperlambda code, that automates the maintenance of our code.
+
+Of course, expanding
 this into querying hundreds, and even thousands of servers simultaneously, would also
 be fairly simply - Aggregating the end result into some high level report or something
 equivalent. Let's illustrate this by creating a generic _"code query endpoint"_, where
 we can supply some Hyperlambda as _input_, and have it executed towards _every single file_
-in your _"/modules/"_ folder. Add the following file into your _"/modules/tutorials/"_
+in our _"/modules/"_ folder. Add the following file into your _"/modules/tutorials/"_
 folder.
 
 **query.post.hl**
@@ -117,25 +125,27 @@ strings.concat
    .:@.code/
    get-value:x:@.arguments/*/query
    
-// Changes the value of the [exists] node below to become an expression
+// Changes the value of the [exists] node below to become the above expression
 set-x:x:./**/.lambda/*/if/*/exists
    convert:x:@strings.concat
       type:x
 
 // Looping through each file inside of our /modules/ folder.
 for-each:x:@signal/*
+
+   // Checking that the currentlty iterated file is a Hyperlambda file.
    if
       strings.ends-with:x:@.dp/#
          .:.hl
       .lambda
 
-         // Hyperlambda file, loading and adding into [.code] segment below.
+         // Hyperlambda file, loading file and adding its content into [.code] segment below.
          .code
          io.file.load:x:@.dp/#
          add:x:@.code
             hyper2lambda:x:@io.file.load
             
-         // Evaluating specified expression
+         // Evaluating specified expression. [exists] here is parametrized from the input argument.
          if
             exists
             .lambda
@@ -145,7 +155,6 @@ for-each:x:@signal/*
                add:x:../*/return
                   .
                      .:x:@.dp/#
-         eval:x:@.eval
          
 // Dynamically built above according to result of [exists] invocation
 return
@@ -182,7 +191,7 @@ And the results should resemble the following.
 Assuming you've crudified the Sakila database. What the endpoint told us, was basically
 as follows.
 
-> Give me the filenames of all files that are reading/updating/deleting/creating records
+> Give us the filenames of all files that are reading/updating/deleting/creating records
 in a table named address.
 
 To have the endpoint return all files that are opening a MySQL databasse connection,
@@ -203,7 +212,7 @@ following payload
 }
 ```
 
-Which should return the following.
+Which should return the something resembling the following.
 
 ```json
 [
@@ -217,7 +226,7 @@ Which should return the following.
 ]
 ```
 
-This gives us simply incredible _"meta data"_ capabilities, allowing us to ask questions
+These types of constructs gives us unimaginable _"meta data capabilities"_, allowing us to ask questions
 about our own code, incomprehensible for most developers working in non-Hyperlambda languages.
 We could of course also create _"patch code"_ endpoints, and expand upon the above constructs,
 until we had created services so rich in regards to meta data capabilities, we'd effectively

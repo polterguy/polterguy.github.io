@@ -465,4 +465,4 @@ slot, in many parts of your logic - By assembling together
 your slot invocations using Hyperlambda, almost the same way
 you'd assemble something with LEGO in the real world.
 
-* [Explaining the crudification process](/tutorials/crudification-explained/)
+* [Super duper Meta Data](/tutorials/crudification-explained/)
