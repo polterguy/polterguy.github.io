@@ -1,13 +1,14 @@
 
 # Tutorials
 
-1. [Getting Started](/tutorials/getting-started) - Setup Magic
-2. [Hyperlambda Hello World](/tutorials/hyperlambda-hello-world) - From Hyperlambda Hello World to database HTTP endpoints
-3. [Database CRUD operations](/tutorials/database-crud-operations) - Basics of CRUD
-4. [Sending an email](/tutorials/send-email) - Sending emails using Hyperlambda
-5. [Extending Hyperlambda with C#](/tutorials/extending-hyperlambda) - Extending Hyperlambda with C#
-6. [Expressions](/tutorials/expressions) - Using expressions to reference nodes in your Hyperlambda
-7. [Branching and looping](/tutorials/lambda) - Real programming in Hyperlambda
+1. [Getting Started](/tutorials/getting-started/) - Setup Magic
+2. [Hyperlambda Hello World](/tutorials/hyperlambda-hello-world/) - From Hyperlambda Hello World to database HTTP endpoints
+3. [Database CRUD operations](/tutorials/database-crud-operations/) - Basics of CRUD
+4. [Sending an email](/tutorials/send-email/) - Sending emails using Hyperlambda
+5. [Extending Hyperlambda with C#](/tutorials/extending-hyperlambda/) - Extending Hyperlambda with C#
+6. [Expressions](/tutorials/expressions/) - Using expressions to reference nodes in your Hyperlambda
+7. [Branching and looping](/tutorials/lambda/) - Real programming in Hyperlambda
+8. [Revisitting the CRUD process](/tutorials/crudification-explained) - And how the automatic CRUD process works
 
 # Support
 
