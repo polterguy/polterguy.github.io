@@ -339,15 +339,15 @@ Then try to invoke it with the following payload.
 ```
 
 The above little payload just updated _every single Hyperlambda file_
-that creates MySQL database records, making sure each of these file creates a log item,
+that creates Sakila database records, making sure each of these file creates a log item,
 as the endpoint is invoked. The execution of this patching took us maybe some 30-50
 milliseconds, and the process automatically loaded every single file in our Magic
-server for us, checked if it was a _"create"_ invocation - And if it was, it
+server for us, checked if it was a _"create"_ invocation towards Sakila - And if it was, it
 made sure it creates a log item every single time the endpoint is invoked.
 Arguably, we just created the following little pseudo SQL you might argue.
 
 ```sql
-update Hyperlambda.files add(invoke-log) where file.creates-crud-item
+update Hyperlambda.files add_code(invoke.log) where file.creates-crud-item
 ```
 
 Some roughly 100 files were inspected semantically in 01 seconds, and
