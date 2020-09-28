@@ -262,11 +262,16 @@ file called _"update.post.hl"_ in the same folder.
 ```
 .arguments
    query:string
+   hyperlambda:string
 auth.ticket.verify:root
+.no:int:0
 
 // Lists files recursively inside of /modules/ folder
 signal:magic.io.file.list-recursively
    .:/modules/
+   
+// Converting Hyperlambda to lambda
+hyper2lambda:x:@.arguments/*/hyperlambda
 
 // Prepends specified expression with @.code
 strings.concat
@@ -304,11 +309,20 @@ for-each:x:@signal/*
             exists
             .lambda
             
-               // Expression returned true, hence returning filename to caller.
-               unwrap:x:+/*/*
-               add:x:../*/return
-                  .
-                     .:x:@.dp/#
+               // Expression returned true, hence patching Hyperlambda file.
+               insert-after:x:@.code/*/.arguments
+                  get-nodes:x:../*/hyper2lambda/*
+
+               /*
+                * Saving file, now patched with whatever
+                * Hyperlambda caller supplied
+                */
+               io.file.save:x:@.dp/#
+                  lambda2hyper:x:@.code/*
+               math.increment:x:@.no
+unwrap:x:+/*
+return
+   files-updated:x:@.no
 ```
 
 Then try to invoke it with the following payload.
