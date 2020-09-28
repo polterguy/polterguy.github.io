@@ -41,7 +41,7 @@ to ask questions such as.
 In fact, as I try to explain the value proposition of Hyperlambda, I often end up saying
 that _"Hyperlambda understands Hyperlambda"_, which probably doesn't make any sense at all for
 software developers that are used to traditional programming languages - But which still
-is at the _core_ of the automation process that Magic does.
+is at the _core_ of the automation process in Magic.
 
 > When the computer understands its own code, it can create code and modify code, and the human software developer arguably becomes obsolete
 
