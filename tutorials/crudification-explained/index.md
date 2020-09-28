@@ -1,4 +1,4 @@
-# Super duper Meta data
+# Super Duper Meta data
 
 If you have gone through all of the articles here, you now know everything
 necessary to understand how the _"crudification"_ process works. Hence, in this article I
