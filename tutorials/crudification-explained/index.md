@@ -139,13 +139,19 @@ for-each:x:@signal/*
          .:.hl
       .lambda
 
-         // Hyperlambda file, loading file and adding its content into [.code] segment below.
+         /*
+          * Hyperlambda file, loading file and adding its content
+          * into the [.code] segment below as lambda.
+          */
          .code
          io.file.load:x:@.dp/#
          add:x:@.code
             hyper2lambda:x:@io.file.load
             
-         // Evaluating specified expression. [exists] here is parametrized from the input argument.
+         /*
+          * Evaluating the specified expression. [exists] here
+          * is parametrized from the input argument.
+          */
          if
             exists
             .lambda
