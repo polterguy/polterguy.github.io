@@ -350,7 +350,7 @@ Arguably, we just created the following little pseudo SQL you might argue.
 update Hyperlambda.files add_code(invoke.log) where file.creates-crud-item
 ```
 
-Some roughly 100 files were inspected semantically in 01 seconds, and
+Some roughly 100 files were inspected semantically in 0.1 seconds, and
 all files creating database records for us, are now logging this fact.
 Modifying some 10-20 files in 0.1 second. Not too bad for 0.1 seconds of
 work if you ask me ... ;)
