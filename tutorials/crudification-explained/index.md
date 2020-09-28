@@ -244,7 +244,7 @@ payload.
 
 Etc, etc, etc. Hence, we can now _query our code_, and ask it arguably any question
 we can phrase, and our Magic backend will instantly answer our question, and return
-the answer to our question, relating to what our code actually code, and which files
+the answer to our question, relating to what our code actually does, and what files
 are doing it. So with some Hyperlambda creativity, we have _"read"_ for our code,
 almost like the following pseudo SQL would yield.
 
