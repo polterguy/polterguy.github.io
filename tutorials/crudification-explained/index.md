@@ -264,6 +264,8 @@ file called _"update.post.hl"_ in the same folder.
    query:string
    hyperlambda:string
 auth.ticket.verify:root
+
+// Tracks the number of modified files.
 .no:int:0
 
 // Lists files recursively inside of /modules/ folder
