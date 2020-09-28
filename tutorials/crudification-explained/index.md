@@ -5,7 +5,7 @@ necessary to understand how the _"crudification"_ process works. Hence, in this 
 will walk you through the semantics of this process, to literally reveal the Magic
 of Magic - In addition to teaching you some _"super duper meta data Magic"_ in the process.
 Notice, if you prefer to watch video tutorials, you can watch the following video
-where I explain parts of what goes on under the hood of Magic, and also shows you
+where I explain parts of what goes on under the hood of Magic, and also show you
 how you can configure the crudification process, and some of its powerful meta data
 capabilities.
 
@@ -174,7 +174,7 @@ expression yields one or more results, it adds the filename of the currently ite
 into the **[return]** invocation at the bottom. Hence, the endpoint will return the filenames
 of every single Hyperlambda file in your _"/modules/"_ folder, that somehow matches the
 specified expression. To understand its purpose, let's try to invoke it with the following
-expression.
+payload.
 
 ```json
 {
@@ -200,7 +200,7 @@ as follows.
 > Give us the filenames of all files that are reading/updating/deleting/creating records
 in a table named address.
 
-To have the endpoint return all files that are opening a MySQL databasse connection,
+To have the endpoint return all files that are opening a MySQL database connection,
 you can invoke it with the following payload.
 
 ```json
@@ -218,7 +218,7 @@ following payload
 }
 ```
 
-Which should return the something resembling the following.
+Which should return something resembling the following.
 
 ```json
 [
