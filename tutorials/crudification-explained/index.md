@@ -3,7 +3,7 @@
 If you have gone through all of the articles here, you now know everything
 necessary to understand how the _"crudification"_ process works. Hence, in this article I
 will walk you through the semantics of this process, to literally reveal the Magic
-of Magic, in addition to teaching you some _"super duper meta data Magic"_ in the process.
+of Magic - In addition to teaching you some _"super duper meta data Magic"_ in the process.
 Notice, if you prefer to watch video tutorials, you can watch the following video
 where I explain parts of what goes on under the hood of Magic, and also shows you
 how you can configure the crudification process, and some of its powerful meta data
