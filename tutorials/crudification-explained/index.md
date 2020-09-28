@@ -313,7 +313,7 @@ Then try to invoke it with the following payload.
 
 ```json
 {
-  "query": "**/mysql.create",
+  "query": "**/mysql.connect/=sakila/*/mysql.create",
   "hyperlambda": "log.info:Item was created"
 }
 ```
