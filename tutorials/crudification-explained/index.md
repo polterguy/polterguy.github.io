@@ -103,6 +103,8 @@ our Hyperlambda code, that automates the maintenance of our code. And in fact,
 the crudifier itself is mereley _one_ such tool. We could build hundreds of
 similar tools, doing _other_ tasks for us automatically.
 
+### Querying your code
+
 Let's illustrate this by creating a generic _"code query endpoint"_, where
 we can supply an expression as _input_, and have it evaluated towards _every single file_
 in our _"/modules/"_ folder. Add the following file into your _"/modules/tutorials/"_
