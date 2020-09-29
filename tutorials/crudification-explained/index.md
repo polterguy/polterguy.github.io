@@ -469,4 +469,24 @@ delete @code from Hyperlambda.files where @condition
 Hence, you now have more or less CRUD capacity on your Hyperlambda
 code.
 
+## Wrapping up
+
+What we did in this article, was to create query, update, and delete
+capability on our codebase, by using Hyperlambda's ability to inspect
+and reflect upon its own code - And in that process we ended up adding
+more or less _"CRUD capabilities"_ on our code. This of course easily
+lends itself to automation, and is at the _heart_ of what Magic does
+in fact, as it's creating your backend code. This allows you to not
+only generate, but also modify your code base as a whole, using
+automation processes - Capable of updating at least in theory thousands
+of Hyperlambda files, in the blink of an eye. Effectively replacing
+manual software development with intelligently created automation
+processes, 1 million times faster than a _"mere human being"_ when
+it comes to creating and modifying code - Being 1 million times more
+accurate too as it does its job. This effectively reduces the number
+of bugs to ZERO, and makes you a million times more productive,
+and capable of maintaining (in theory) millions of such codebases,
+by automatically patching your code, using automation techniques
+like we described in this article.
+
 * [Documentation](/documentation/)
