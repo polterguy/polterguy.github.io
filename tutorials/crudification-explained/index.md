@@ -62,7 +62,7 @@ if
    exists:x:@hyper2lambda/*/mysql.connect/=sakila/*/mysql.read/*/table/=actor
    .lambda
       return
-         result:Yup, this files reads from your actor table
+         result:Yup, this file reads from your actor table
 else
    return
       result:Nope! This file doesn't read from your actor table
@@ -347,7 +347,7 @@ made sure it creates a log item every single time the endpoint is invoked.
 Arguably, we just created the following little pseudo SQL you might argue.
 
 ```sql
-update Hyperlambda.files add_code(@new_code) where @condition
+update codebase add(@new_code) where @condition
 ```
 
 Some roughly 100 files were inspected semantically in 0.1 seconds, and
