@@ -459,7 +459,7 @@ And you now deleted the **[log.info]** invocation in every single file that
 creates items in your Sakila database - Effectively _"undoing"_ what we
 did in the above update code invocation - And you did it _semantically_,
 by inspecting the code, filtering out parts of your files, and removing
-_only_ the requested parts of your Hyperlambda file. Effectively resulting
+_only_ the requested parts of your Hyperlambda files. Effectively resulting
 in something resembling the following
 
 ```
