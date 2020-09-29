@@ -487,6 +487,9 @@ accurate too as it does its job. This effectively reduces the number
 of bugs to ZERO, and makes you a million times more productive,
 and capable of maintaining (in theory) millions of such codebases,
 by automatically patching your code, using automation techniques
-like we described in this article.
+like we described in this article. Or to say it with a little bit
+of humour ...
+
+> Take me to your leader ;)
 
 * [Documentation](/documentation/)
