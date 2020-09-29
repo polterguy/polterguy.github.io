@@ -179,7 +179,7 @@ payload.
 
 ```json
 {
-  "query": "**/table/=address"
+  "query": "**/mysql.connect/*/*/table/=address"
 }
 ```
 
@@ -198,8 +198,8 @@ should resemble the following.
 
 What the endpoint told us, was basically as follows.
 
-> Give me the filenames of all files that are reading/updating/deleting/creating records
-in a table named address.
+> Give me the filenames of all files that are reading/updating/deleting/creating
+MySQL records in a table named address.
 
 To have the endpoint return all files that are opening a MySQL database connection,
 you can invoke it with the following payload.
@@ -242,7 +242,7 @@ payload.
 }
 ```
 
-Etc, etc, etc. Hence, we can now _query our code_, and ask it arguably any question
+Etc, etc, etc. Hence, we can now _query_ our code, and ask it arguably any question
 we can phrase, and our Magic backend will instantly answer our question, and return
 the answer to our question, relating to what our code actually does, and what files
 are doing it. So with some Hyperlambda creativity, we have _"read"_ for our code,
@@ -334,7 +334,7 @@ Then try to invoke it with the following payload.
 ```json
 {
   "query": "**/mysql.connect/=sakila/*/mysql.create",
-  "hyperlambda": "log.info:Item was created"
+  "hyperlambda": "log.info:Creating database item"
 }
 ```
 
@@ -347,12 +347,120 @@ made sure it creates a log item every single time the endpoint is invoked.
 Arguably, we just created the following little pseudo SQL you might argue.
 
 ```sql
-update Hyperlambda.files add_code(invoke.log) where file.creates-crud-item
+update Hyperlambda.files add_code(@new_code) where @condition
 ```
 
 Some roughly 100 files were inspected semantically in 0.1 seconds, and
 all files creating database records for us, are now logging this fact.
-Modifying some 10-20 files in 0.1 second. Not too bad for 0.1 seconds of
-work if you ask me ... ;)
+We modified some roughly 10 files in 0.1 second.
+
+### Code delete
+
+We can also easily create a _"delete code part"_ endpoint. Create a
+new file in your _"/modules/tutorials/"_ folder and name your
+file _"delete-code.post.hl"_, and put the following content into it.
+
+```
+.arguments
+   query:string
+   delete:string
+auth.ticket.verify:root
+
+// Tracks the number of modified files.
+.no:int:0
+
+// Lists files recursively inside of /modules/ folder
+signal:magic.io.file.list-recursively
+   .:/modules/
+
+// Prepends specified expression with @.code
+strings.concat
+   .:@.code/
+   get-value:x:@.arguments/*/query
+   
+// Changes the value of the [exists] node below to become our query expression
+set-x:x:./**/.lambda/*/if/*/exists
+   convert:x:@strings.concat
+      type:x
+
+// Prepends specified delete expression with @.code
+strings.concat
+   .:@.code/
+   get-value:x:@.arguments/*/delete
+   
+// Changes the value of the [remove-nodes] node below to become our query expression
+set-x:x:./**/.lambda/*/if/*/.lambda/*/remove-nodes
+   convert:x:@strings.concat
+      type:x
+
+// Looping through each file inside of our /modules/ folder.
+for-each:x:@signal/*
+
+   // Checking that the currentlty iterated file is a Hyperlambda file.
+   if
+      strings.ends-with:x:@.dp/#
+         .:.hl
+      .lambda
+
+         /*
+          * Hyperlambda file, loading file and adding its content
+          * into the [.code] segment below as lambda.
+          */
+         .code
+         io.file.load:x:@.dp/#
+         add:x:@.code
+            hyper2lambda:x:@io.file.load
+            
+         /*
+          * Evaluating the specified expression. [exists] here
+          * is parametrized from the input argument.
+          */
+         if
+            exists
+            .lambda
+            
+               /*
+                * Expression returned true, hence patching
+                * Hyperlambda file, and removing nodes caller
+                * told us to remove.
+                */
+               remove-nodes
+
+               /*
+                * Saving file, now patched with whatever
+                * Hyperlambda caller supplied
+                */
+               io.file.save:x:@.dp/#
+                  lambda2hyper:x:@.code/*
+               math.increment:x:@.no
+
+// Returns the number of affected files.
+unwrap:x:+/*
+return
+   files-updated:x:@.no
+```
+
+Then invoke your newly created endpoint with the following payload.
+
+```json
+{
+  "query": "**/mysql.connect/=sakila/*/mysql.create",
+  "delete": "**/log.info"
+}
+```
+
+And you now deleted the **[log.info]** invocation in every single file that
+creates items in your Sakila database - Effectively _"undoing"_ what we
+did in the above update code invocation - And you did it _semantically_,
+by inspecting the code, filtering out parts of your files, and removing
+_only_ the requested parts of your Hyperlambda file. Effectively resulting
+in something resembling the following
+
+```
+delete @code from Hyperlambda.files where @condition
+```
+
+Hence, you now have more or less CRUD capacity on your Hyperlambda
+code.
 
 * [Documentation](/documentation/)
