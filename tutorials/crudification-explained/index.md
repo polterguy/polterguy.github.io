@@ -378,7 +378,10 @@ strings.concat
    .:@.code/
    get-value:x:@.arguments/*/query
    
-// Changes the value of the [exists] node below to become our query expression
+/*
+ * Changes the value of the [exists] node below
+ * to have our [query] expression
+ */
 set-x:x:./**/.lambda/*/if/*/exists
    convert:x:@strings.concat
       type:x
@@ -388,7 +391,10 @@ strings.concat
    .:@.code/
    get-value:x:@.arguments/*/delete
    
-// Changes the value of the [remove-nodes] node below to become our query expression
+/* 
+ * Changes the value of the [remove-nodes] node below
+ * to have our [delete] expression.
+ */
 set-x:x:./**/.lambda/*/if/*/.lambda/*/remove-nodes
    convert:x:@strings.concat
       type:x
