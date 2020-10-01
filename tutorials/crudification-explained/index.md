@@ -43,7 +43,7 @@ that _"Hyperlambda understands Hyperlambda"_, which probably doesn't make any se
 software developers that are used to traditional programming languages - But which still
 is at the _core_ of the automation process in Magic.
 
-> When the computer understands its own code, it can create code and modify code, and the human software developer arguably becomes obsolete
+> When the computer understands its own code, it can create and modify its code, and the human software developer arguably becomes obsolete
 
 ### Your first Meta Data endpoint
 
