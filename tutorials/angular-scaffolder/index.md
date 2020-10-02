@@ -744,10 +744,10 @@ template you choose as you scaffold your frontend. These includes.
 * home component which is your app's landing page, or home route
 * app component, which is the wire frame component, containing your navigation/menu, etc
 
-To drastically modify Magic's wire frame for instance, to apply your own type of menu/navbar,
+To modify Magic's wire frame for instance, to apply your own type of menu/navbar,
 you only really need to modify _one single component_ - Being the _"app"_ component,
 which is the component responsible for loading the currently active router link, and
-displaying the menu, etc. This allows you to easily and drastically modify the _"looks and feels"_
+displaying the menu, etc. This allows you to easily modify the _"looks and feels"_
 of the end result, applying your own custom style to it, and your own structure.
 We will also look at how to create your completely custom template yourself - But that
 is for a later day.
