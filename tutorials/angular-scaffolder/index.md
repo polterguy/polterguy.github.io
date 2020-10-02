@@ -752,4 +752,4 @@ of the end result, applying your own custom style to it, and your own structure.
 We will also look at how to create your completely custom template yourself - But that
 is for a later day.
 
-* [Documentation](/documentation/)
+* [Scheduled tasks and persisted function invocations](/tutorials/task-scheduler/)
