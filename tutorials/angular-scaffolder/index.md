@@ -749,7 +749,6 @@ you only really need to modify _one single component_ - Being the _"app"_ compon
 which is the component responsible for loading the currently active router link, and
 displaying the menu, etc. This allows you to easily and drastically modify the _"looks and feels"_
 of the end result, applying your own custom style to it, and your own structure.
-
 We will also look at how to create your completely custom template yourself - But that
 is for a later day.
 
