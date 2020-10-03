@@ -11,9 +11,9 @@ to some kind of repetition pattern. In the video below I am demonstrating how th
 
 ## Business workflows
 
-If you've been around for a while in the .Net Ecosystem you've probably heard of Microsoft Workflow
-Foundation. Maybe even used it for a couple of projects. Although MWF was incredibly powerful, it
-suffered by a whole range of problems, such as extremely poor scaling features, impossible to
+If you've been around for a while in the .Net ecosystem you've probably heard of Microsoft Workflow
+Foundation, maybe even used it for a couple of projects. Although MWF was incredibly powerful, it
+suffered from a whole range of problems, such as extremely poor scaling, impossible to
 understand XML syntax, dependencies upon Visual Studio, etc, etc, etc. From a business perspective
 it was brilliant. From a developer's perspective it was (errh) _a piece of crap_. More importantly,
 Microsoft completely abandoned the project as they moved into .Net Core land - Which makes sense,
