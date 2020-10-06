@@ -6,6 +6,10 @@ to create a fairly well structured Angular project for you - Which most
 seasoned Angular developers would probably instantly feel acquainted with, and be able to
 easily modify according to their needs. In the video below, I am showing you how
 the structure of the output roughly looks like, if you prefer to follow video tutorials.
+Notice, in both the video and this article, I am going through the _"angular-default"_
+template. Magic contains several templates, some of which doesn't create grids, but
+only HTTP service layers for you - But the different templates should produce content
+that are similar to the structure we explain here.
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/c4E-5fgpl5Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
