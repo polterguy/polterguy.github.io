@@ -42,7 +42,7 @@ it produces its end result. Others are highly complex in nature, such as the
 _"angular-dark"_ and the _"angular-default"_ templates, because they need to
 dynamically create router links, Angular components, modify your Angular module,
 etc, etc, etc. And of course, how the end product ends up looking like after
-the template engine has done its Magic - Is also highly dependent upon your
+the template engine has done its Magic, is also highly dependent upon your
 database structure, how you scaffolded your tables, and what endpoints you
 included as you generated your frontend.
 
