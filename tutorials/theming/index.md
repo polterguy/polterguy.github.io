@@ -354,8 +354,6 @@ I could be interested in setting up an integrated payment/marketplace for Magic,
 allowing others to buy your template from directly within the app for some
 10-20% commission or something. If enough people requests this, this is one
 of the ideas I have had in regards to bringing the project forward. Anyways,
-let me know your thoughts below.
-
-* [thomas@servergardens.com](mailto:thomas@servergardens.com)
+let me know by [sending me an email](mailto:thomas@servergardens.com).
 
 * [Documentation](/documentation/)
