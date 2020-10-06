@@ -338,9 +338,6 @@ the scaffolding, resulting in something resembling the following.
     this.last_update = this.createFormControl('last_update.eq');
 ```
 
-Notice, the above `createFormControl` method is a base class method, responsible
-for creating the `FormControl` instance, and returning it to the caller.
-
 All other processes the template engine(s) executes, are similar in nature,
 producing an end result, being a perfectly valid project - That you can immediately
 compile, run, and start modifying as you see fit. Its most basic idea though,
