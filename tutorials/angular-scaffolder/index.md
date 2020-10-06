@@ -82,8 +82,8 @@ import { MatDialog } from '@angular/material';
 import { FormControl } from '@angular/forms';
 
 import { EditActorComponent } from './modals/edit.actor.component';
-import { MessageService } from 'src/app/services/message-service';
 import { HttpService } from 'src/app/services/http-service';
+import { AuthService } from 'src/app/services/auth-service';
 
 /**
  * "Datagrid" component for displaying instance of Actor
@@ -100,7 +100,12 @@ export class ActorComponent extends GridComponent implements OnInit {
    * Which columns we should display. Reorder to prioritize columns differently.
    * Notice! 'delete-instance' should always come last.
    */
-  public displayedColumns: string[] = ['actor_id', 'first_name', 'last_name', 'last_update', 'delete-instance'];
+  public displayedColumns: string[] = [
+    'first_name',
+    'last_name',
+    'last_update',
+    'delete-instance'
+  ];
 
   // Need to view paginator as a child to update page index of it.
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -113,11 +118,11 @@ export class ActorComponent extends GridComponent implements OnInit {
 
   // Constructor taking a bunch of services/helpers through dependency injection.
   constructor(
+    protected authService: AuthService,
     protected snackBar: MatSnackBar,
-    protected messages: MessageService,
     private httpService: HttpService,
-    public dialog: MatDialog) {
-      super(messages, snackBar);
+    private dialog: MatDialog) {
+      super(authService, snackBar);
   }
 
   /**
@@ -158,6 +163,7 @@ export class ActorComponent extends GridComponent implements OnInit {
    */
   protected resetPaginator() {
     this.paginator.pageIndex = 0;
+    this.filter.offset = 0;
   }
 
   /**
@@ -165,9 +171,6 @@ export class ActorComponent extends GridComponent implements OnInit {
    * and instantiates our FormControls.
    */
   public ngOnInit() {
-
-    // Calls base initialization method.
-    this.initCommon();
 
     // Retrieves data from our backend, unfiltered, and binds our mat-table accordingly.
     this.getData();
@@ -184,6 +187,7 @@ export class ActorComponent extends GridComponent implements OnInit {
 
   /**
    * Invoked when user wants to edit an entity
+   * 
    * This will show a modal dialog, allowing the user to edit his record.
    */
   public editEntity(entity: any) {
@@ -191,13 +195,18 @@ export class ActorComponent extends GridComponent implements OnInit {
     const dialogRef = this.dialog.open(EditActorComponent, {
       data: this.getEditData(entity)
     });
-    dialogRef.afterClosed().subscribe(editResult => {
-      this.setEditData(editResult, entity);
+    dialogRef.afterClosed().subscribe(res => {
+      if (res) {
+        this.setEditData(res, entity);
+      }
     });
   }
 
   /**
-   * Creates a new data record, by showing the modal edit/create dialog.
+   * Invoked when user wants to create a new entity
+   * 
+   * This will show a modal dialog, allowing the user to supply
+   * the initial data for the entity.
    */
   public createEntity() {
 
@@ -206,27 +215,11 @@ export class ActorComponent extends GridComponent implements OnInit {
         isEdit: false,
         entity: {},
       }});
-    dialogRef.afterClosed().subscribe((createResult: any) => {
-      this.itemCreated(createResult);
+    dialogRef.afterClosed().subscribe((res: any) => {
+      if (res) {
+        this.itemCreated(res);
+      }
     });
-  }
-
-  /**
-   * Implementation of abstract method from base class.
-   * 
-   * Invoked as user tries to filter his result set. Will either
-   * create or remove an existing filter, depending upon the value
-   * the user typed into the filter textbox.
-   */
-  protected processFilter(name: string, value: string) {
-    this.paginator.pageIndex = 0;
-    this.filter.offset = 0;
-    if (value === '') {
-      delete this.filter[name];
-    } else {
-      this.filter[name] = value;
-    }
-    this.getData();
   }
 }
 ```
@@ -242,6 +235,7 @@ The HTML files again, is using Material tables to implement paging, sorting, etc
 equivalent HTML file below, wrapping the actor table from Sakila.
 
 ```html
+
 <div class="component-wrapper">
 
   <div class="mat-elevation-z4 relativized grid-wrapper">
@@ -250,9 +244,11 @@ equivalent HTML file below, wrapping the actor table from Sakila.
 
     <button
       mat-button
-      *ngIf="canInvoke('magic/modules/sakila/actor', 'post')"
-      class="top-right"
-      (click)="createNewRecord()">New ...</button>
+      *ngIf="authService.me.canInvoke('magic/modules/sakila/actor', 'post')"
+      class="new-button"
+      (click)="createEntity()">
+      <mat-icon>add_circle</mat-icon>
+    </button>
 
     <table
       mat-table
@@ -347,15 +343,15 @@ equivalent HTML file below, wrapping the actor table from Sakila.
         <th
           mat-header-cell
           *matHeaderCellDef
-          [ngClass]="canInvoke('magic/modules/sakila/actor', 'delete') ? 'delete-column' : 'hidden'"></th>
+          [ngClass]="authService.me.canInvoke('magic/modules/sakila/actor', 'delete') ? 'delete-column' : 'hidden'"></th>
 
         <td
           mat-cell
           *matCellDef="let el"
-          [ngClass]="canInvoke('magic/modules/sakila/actor', 'delete') ? 'delete-column' : 'hidden'">
+          [ngClass]="authService.me.canInvoke('magic/modules/sakila/actor', 'delete') ? 'delete-column' : 'hidden'">
           <button
             mat-button
-            (click)="delete(el, {actor_id: el.actor_id})"
+            (click)="deleteEntity(el, {actor_id: el.actor_id})"
             placeholder="Deletes this record">
             <mat-icon matSuffix>delete</mat-icon>
           </button>
@@ -366,15 +362,15 @@ equivalent HTML file below, wrapping the actor table from Sakila.
         <td
           mat-cell
           *matCellDef="let el"
-          colspan="5">
+          colspan="4">
           <div
             class="details-sheet"
             *ngIf="shouldDisplayDetails(el)">
             <button
-              *ngIf="canInvoke('magic/modules/sakila/actor', 'put')"
+              *ngIf="authService.me.canInvoke('magic/modules/sakila/actor', 'put')"
               mat-button
               class="edit-details"
-              (click)="editDetails(el)">
+              (click)="editEntity(el)">
               <mat-icon matSuffix>edit</mat-icon>
             </button>
             <p class="details"><label>actor_id</label><span>{{el.actor_id}}</span></p>
@@ -387,7 +383,6 @@ equivalent HTML file below, wrapping the actor table from Sakila.
 
       <tr
         mat-header-row
-        [class]="getHeaderRowClass()"
         *matHeaderRowDef="displayedColumns"></tr>
 
       <tr
@@ -402,9 +397,8 @@ equivalent HTML file below, wrapping the actor table from Sakila.
 
     </table>
     <mat-paginator
-      [class]="showPager() ? '' : 'invisible'"
       #paginator
-      [(length)]="count"
+      [(length)]="itemsCount"
       [(pageSize)]="filter.limit"
       (page)="paged($event)"
       [pageSizeOptions]="[5,10,25,50]">
