@@ -11,6 +11,7 @@
 8. [Super Duper Meta data](/tutorials/crudification-explained/) - And how the automatic CRUD process works
 9. [The Angular scaffolding process](/tutorials/angular-scaffolder/) - The output of Magic
 10. [Workflows and Task Scheduling](/tutorials/task-scheduler/) - How to create workflows and schedule tasks in Magic
+11. [Creating your own template](/tutorials/theming/) - Explains how you can create your own template engine
 
 # Support
 
