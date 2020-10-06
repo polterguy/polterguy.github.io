@@ -239,6 +239,7 @@ The HTML files again, is using Material tables to implement paging, sorting, etc
 equivalent HTML file below, wrapping the actor table from Sakila.
 
 ```html
+
 <div class="component-wrapper">
 
   <div class="mat-elevation-z4 relativized grid-wrapper">
@@ -257,6 +258,7 @@ equivalent HTML file below, wrapping the actor table from Sakila.
       mat-table
       multiTemplateDataRows
       [dataSource]="data">
+
       <ng-container matColumnDef="actor_id">
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field appearance="outline" class="fill-width filter-textbox">
@@ -278,6 +280,7 @@ equivalent HTML file below, wrapping the actor table from Sakila.
         </th>
         <td mat-cell (click)="toggleDetails(el)" *matCellDef="let el">{{el.actor_id}}</td>
       </ng-container>
+
       <ng-container matColumnDef="first_name">
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field appearance="outline" class="fill-width filter-textbox">
@@ -299,6 +302,7 @@ equivalent HTML file below, wrapping the actor table from Sakila.
         </th>
         <td mat-cell (click)="toggleDetails(el)" *matCellDef="let el">{{el.first_name}}</td>
       </ng-container>
+
       <ng-container matColumnDef="last_name">
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field appearance="outline" class="fill-width filter-textbox">
@@ -320,6 +324,7 @@ equivalent HTML file below, wrapping the actor table from Sakila.
         </th>
         <td mat-cell (click)="toggleDetails(el)" *matCellDef="let el">{{el.last_name}}</td>
       </ng-container>
+
       <ng-container matColumnDef="last_update">
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field appearance="outline" class="fill-width filter-textbox">
