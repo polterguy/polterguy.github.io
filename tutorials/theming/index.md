@@ -4,11 +4,19 @@ Out of the box Magic contains several _"themes"_. These are internally referred
 to as _"templates"_, since they are scaffolders building different types of results.
 Some of these templates generates pure Angular HTTP CRUD services for you, others
 produce a fully fledged GUI for you. However, you can also create your own template
-if you wish. Below is a screenshot of the _"angular-dark"_ template.
+if you wish, including templates creating React projects. Below is a screenshot of
+the _"angular-dark"_ template.
 
 ![The Angular Dark template](https://servergardens.files.wordpress.com/2020/10/magic-dark-theme.png)
 
-If you understand the templating engine, you can easily create your own templates.
+If you prefer to watch a video of me demonstrating the process, and explaining the
+template engine, you can watch the following video.
+
+<div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
+<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/SjjK5deSD38" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+Once you understand the templating engine, you can easily create your own templates.
 This might be something you want to do because you want to make sure all scaffolded
 results comes out of the box with a similar UI, or because you want to create some
 sort of dev factory, where your users can select from a pre-defined list of looks,
