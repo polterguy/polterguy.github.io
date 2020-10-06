@@ -44,4 +44,4 @@ other schedulers. Watch the video above for details about how this works. Or
 check out [the documentation](/documentation/magic.lambda.scheduler/) for the scheduler
 project for more information.
 
-* [Documentation](/documentation/)
+* [Theming Magic](/tutorials/theming/)
