@@ -49,7 +49,7 @@ included as you generated your frontend.
 ## Creating an Angular UI template
 
 You can have the scaffolder produce _any_ type of result you wish, including
-React templates, ObjectiveC code, Java/Android code - But here I will focus on
+React templates, ObjectiveC code, Java/Android code, etc - But here I will focus on
 the main Angular templates called _"angular-dark"_ and _"angular-default"_.
 The reason is because if you understand these two templates, which are highly
 similar in nature, you can easily apply your knowledge into _any_ template
@@ -59,7 +59,7 @@ engine you wish. Hence, the process is as follows.
 2. Create HTTP service methods
 3. Load all files in the _"templates/main/"_ folder recursively
 4. Load all files in the _"templates/components/"_ folder recursively
-5. Preprocessing folder names, making sure all files ends up at the root level of the resulting ZIP file
+5. Preprocessing folder names, making sure all files ends up at the root of the resulting ZIP file
 6. Performing dynamic substitution
 7. Returning a ZIP file to the caller
 
