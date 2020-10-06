@@ -343,9 +343,9 @@ producing an end result, being a perfectly valid project - That you can immediat
 compile, run, and start modifying as you see fit. Its most basic idea though,
 is that it will substitute something such as the following `[[xxx]]` with
 some dynamically determined variable, being the result of the template engine's
-ability to read meta information from your HTTP REST backend. Hence, going
-through the files you can find in your _"angular-dark/templates/"_ folder,
-should get you started on the road to creating your _own_ templates if you wish.
+ability to read meta information from your HTTP REST backend. Going
+through the files you can find in for instance your _"angular-dark/templates/"_ folder,
+should get you started creating your _own_ templates if you wish.
 
 When you have created your own template, you can run the same template over
 any amount of databases and Magic backends you wish, producing the _exact same result_
