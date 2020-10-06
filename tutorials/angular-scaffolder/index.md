@@ -235,7 +235,6 @@ The HTML files again, is using Material tables to implement paging, sorting, etc
 equivalent HTML file below, wrapping the actor table from Sakila.
 
 ```html
-
 <div class="component-wrapper">
 
   <div class="mat-elevation-z4 relativized grid-wrapper">
