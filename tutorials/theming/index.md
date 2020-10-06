@@ -31,7 +31,7 @@ To start out with creating your own template, the easiest is probably to
 simply copy one of the existing template folders, such as the _"angular-dark"_
 folder, give your template a name, and apply your changes incrementally,
 testing out your changes as you modify your template.
-By default, simply copying an existing template, give it a new name (new folder name),
+By default, simply copying an existing template, giving it a new name (new folder name),
 should immediately have your template working out of the box, since all paths
 are assumed to be relative.
 
@@ -41,7 +41,10 @@ because it doesn't need to create GUI Angular components, router links, a navbar
 it produces its end result. Others are highly complex in nature, such as the
 _"angular-dark"_ and the _"angular-default"_ templates, because they need to
 dynamically create router links, Angular components, modify your Angular module,
-etc, etc, etc.
+etc, etc, etc. And of course, how the end product ends up looking like after
+the template engine has done its Magic - Is also highly dependent upon your
+database structure, how you scaffolded your tables, and what endpoints you
+included as you generated your frontend.
 
 ## Creating an Angular UI template
 
