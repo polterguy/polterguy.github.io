@@ -341,7 +341,7 @@ through the files you can find in your _"angular-dark/templates/"_ folder,
 should get you started on the road to creating your _own_ templates if you wish.
 
 When you have created your own template, you can run the same template over
-any amount of databases, and backends you wish, producing the _exact same result_
+any amount of databases and Magic backends you wish, producing the _exact same result_
 over and over again - Arguably allowing you to create your own look and feel
 for every Magic app you create in the future.
 
