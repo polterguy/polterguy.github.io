@@ -60,7 +60,7 @@ engine you wish. Hence, the process is as follows.
 3. Load all files in the _"templates/main/"_ folder recursively
 4. Load all files in the _"templates/components/"_ folder recursively
 5. Preprocessing folder names, making sure all files ends up at the root of the resulting ZIP file
-6. Performing dynamic substitution
+6. Performing dynamic substitutions, and creating one component for each CRUD method group
 7. Returning a ZIP file to the caller
 
 The basic idea is that each CRUD endpoint method group, resulting from the
