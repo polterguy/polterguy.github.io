@@ -178,7 +178,7 @@ with template arguments inside of your actual TypeScript, HTML and CSS files.
 You can find these substitutions by looking at for instance
 the _"templates/component/component.ts"_ file. It should resemble the
 following. Notice the **[[xxx]]** parts, which are dynamically substituted
-during the scaffolding process, according to the values/variable names created
+during the scaffolding process, according to the values/variable names found
 during the above structuring process.
 
 ```typescript
