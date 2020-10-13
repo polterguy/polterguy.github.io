@@ -53,4 +53,11 @@ faster in fact. And the code actually executing internally in Magic, is executed
 it also scales very well. Hence, it's probably a nice feature to create things such as reports,
 charts, etc.
 
+Another interesting fact, is that it's also _"raw SQL"_, allowing some DB admin or SQL expert
+to write the SQL, and then simply copy and paste his or her code into an endpoint. If you have
+ever tried to _"translate"_ some SQL a guy wrote for a report into its Entity Framework
+`IQueryable` equivalent, you will understand why this is a positive thing. With Hyperlambda,
+you can simply copy and paste the SQL expert's code, into an endpoint, and you're already up
+running.
+
 * [Documentation](/documentation/)
