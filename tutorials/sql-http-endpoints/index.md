@@ -12,7 +12,7 @@ wish.
 </div>
 
 If you watch the above video, you will see me walk you through the process.
-The only thing you really need to understand afterwards, is the asociation between the arguments
+The only thing you really need to understand afterwards, is the association between the arguments
 and SQL parameters, implying that for instance `foo:string` as an argument, can be referenced
 as `@foo` in your SQL statement, and that it's expected to be of type string. Hence, just add your
 arguments as a CR/LF list of names, and reference these in your SQL. Currently, there is no
