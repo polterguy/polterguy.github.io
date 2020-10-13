@@ -12,6 +12,7 @@
 9. [The Angular scaffolding process](/tutorials/angular-scaffolder/) - The output of Magic
 10. [Workflows and Task Scheduling](/tutorials/task-scheduler/) - How to create workflows and scheduled tasks in Magic
 11. [Creating your own template](/tutorials/theming/) - Explains how you can create your own template engine
+11. [Custom SQL HTTP endpoints](/tutorials/sql-http-endpoints/) - Explains how you can create your own template engine
 
 # Support
 

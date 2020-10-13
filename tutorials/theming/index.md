@@ -363,4 +363,4 @@ allowing others to buy your template from directly within the app for some
 of the ideas I have had in regards to bringing the project forward. Anyways,
 let me know by [sending me an email](mailto:thomas@servergardens.com).
 
-* [Documentation](/documentation/)
+* [Documentation](/tutorials/sql-http-endpoints/)
