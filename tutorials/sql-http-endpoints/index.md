@@ -45,8 +45,8 @@ mysql.connect:sakila
 Although this is arguably a _"naive feature"_ for seasoned developers, it's easily underestimated,
 since it adds authentication and authorisation in the process to your endpoint - Securing it such
 that no un-authorised agent can invoke it. In addition to that it also is 1.000 times faster than
-writing out the C# coiler plate code yourself - Implying the model, C# connection code, etc for
-your endpoint - Instead allowing you to simply paste in an existing SQL, and save your endpoint.
+writing out the C# boiler plate code yourself - Implying the model, C# connection code, etc for
+your endpoint, is already _done_ - Allowing you to simply paste in an existing SQL, and save your endpoint.
 The performance of your endpoint, will also be much faster than if you used Entity Framework
 and for instance AutoMapper to create something similar - Probably somewhere around 5-10 times
 faster in fact. And the code actually executing internally in Magic, is executed `async`, implying
