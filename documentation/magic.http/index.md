@@ -8,13 +8,15 @@ that are automatically serialized to JSON, and return types from your endpoints,
 Below you can see an example of usage.
 
 ```csharp
-var result = await client.GetAsync<Blog[]>("https://my-json-server.typicode.com/typicode/demo/posts");
+var result = await client.GetAsync<Post[]>("https://foo-bar.com/posts");
 ```
 
 The idea is that you provide your request type (if any), and your response type as generic arguments to its
 `IHttpClient` interface methods, and the library will perform automatic conversion on your behalf, reducing your
-HTTP REST invocations to a single line of code, resembling _"normal method invocations"_. This provides an
-extremely simply to use API, and also allows you to have large amount of cohesion in your own code.
+HTTP REST invocations to a single line of code, resembling _"function invocations"_. This provides an
+extremely simply to use API, and also allows you to have large amount of cohesion in your own code. After all,
+HTTP is a request/response type of model, arguably much more suited for _"functional style"_ of programming,
+than Object Oriented programming.
 
 The library supports the 4 most commonly HTTP verbs, below is a list.
 
@@ -46,7 +48,7 @@ into memory.
 
 Apart from the above features, the library does not really give you much options, and is to be considered an _"opinionated"_
 HTTP REST library, and its purpose is not to support every possible configuration you can imagine, since its purpose
-is first and foremost to be dead simple to use, and force creation of better HTTP REST endpoint consumption and creation.
+is first and foremost to be dead simple to use, and force creation of better HTTP REST invocations.
 However, if you have that _"one feature request you simply must have"_, feel free to supply a request in the
 [issues](https://github.com/polterguy/magic.http/issues). If it makes the API more complex, I might not want to support
 it though.
@@ -71,21 +73,24 @@ for then to retrieve instances to its implementation using dependency injection 
  * Somewhere where you wire up your IoC provider.
  */
 services.AddTransient<IHttpClient, HttpClient>();
+services.AddHttpClient();
 ```
 
-Most methods in its `HttpClient` implementation class is also virtual, allowing you to extend the base `HttpClient`
-implementation, by inheriting from its base class, and override whatever method you simply must change for some reasons.
+The last part is important to make sure you register the `IHttpClientFactory` required to create
+instances of `HttpClient` to use internally in the library. Magic will use _"magic"_ as a named
+instance as it creates its HttpClient, allowing you to fiddle with configuring it as you see fit,
+for advanced usage. Just remember that _all_ HttpClients in magic will be created using this name.
+And _yes_, the Magic HttpClient _should_ be registered as a _"transient"_ service.
 
 However, the library is first and foremost created to support JSON and/or large files as payloads and response values,
 and the _"philosophy"_ of the library is to allow you to create HTTP REST requests with a _single line of code_, to
-such facilitate for simplified code, and great cohesion in your own code. The library will not support every single
+such facilitate for simplified code, and better cohesion in your own code. The library will not support every single
 permutation of HTTP requests possible to create, due to that this would complicate its code, and results in that it
-degradates over time.
+degrades over time. The library is created to eliminate an entire axiom of bugs related to wrong usage of HttpClient.
+You can read some of its rational below.
 
-The `HttpClient` implementation class, also provides multiple CTORs, allowing you to pass in `ILogger`, and
-a _"factory function"_ for creating .Net `HttpClient` instances, which allows you to use among other things
-the `IHttpClientFactory` in .Net Core projects, without bringing in dependencies upon it, which would break
-.Net Framework compatibility.
+1. [HttpClient is fundamentally broken](https://dzone.com/articles/nets-httpclient-is-a-hot-smoking-pile-of-garbage)
+2. [Salvaging HttpClient](https://dzone.com/articles/salvaging-nets-httpclient)
 
 ## Quality gates
 

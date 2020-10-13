@@ -42,6 +42,53 @@ In addition, these slots can be semantically traversed, allowing you to for inst
 that somehow retrieves data from some specific table, by introspecting your Hyperlambda files, etc.
 These slots are _extremely_ powerful in nature, once you've gotten used to their nature.
 
+**Notice** - If you want to test a _"complex SQL read invocation"_, that joins multiple tables, and you have installed the
+_"BikeStores"_ database from [SQL Server Tutorial](https://www.sqlservertutorial.net/sql-server-sample-database/),
+you can use the following invocation to see a **[join]** example, creating a fairly complex **[mssql.read]** invocation.
+
+```
+mssql.connect:bikestores
+   mssql.read
+      table:production.products
+         join:production.categories
+            type:left
+            on
+               and
+                  production.products.category_id:production.categories.category_id
+      columns
+         production.products.product_id
+            as:id
+         production.products.product_name
+            as:name
+         production.categories.category_name
+            as:category
+      order:category, id
+      limit:250
+```
+
+The above invocation should result in something resembling the following.
+
+```
+mssql.connect
+   mssql.read
+      .
+         id:int:21
+         name:Electra Cruiser 1 (24-Inch) - 2016
+         category:Children Bicycles
+      .
+         id:int:22
+         name:Electra Girl's Hawaii 1 (16-inch) - 2015/2016
+         category:Children Bicycles
+      .
+         id:int:23
+         name:Electra Girl's Hawaii 1 (20-inch) - 2015/2016
+         category:Children Bicycles
+      .
+         id:int:83
+         name:Trek Boy's Kickster - 2015/2017
+         category:Children Bicycles
+```
+
 ## [mssql.connect]
 
 This slot will open a database connection for you. You can pass in a complete connection string (not recommended),
