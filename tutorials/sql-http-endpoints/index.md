@@ -11,7 +11,8 @@ wish.
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/Ci6a_ZVueXg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-The only thing you really need to learn at this point, is the asociation between the arguments
+If you watch the above video, you will see me walk you through the process.
+The only thing you really need to understand afterwards, is the asociation between the arguments
 and SQL parameters, implying that for instance `foo:string` as an argument, can be referenced
 as `@foo` in your SQL statement, and that it's expected to be of type string. Hence, just add your
 arguments as a CR/LF list of names, and reference these in your SQL. Currently, there is no
