@@ -153,7 +153,7 @@ languages you don't know - Assuming Google knows them ofc ... ;)
 Of course, as you deploy it into production, you'll [need a license key](https://servergardens.com/buy/), in addition
 to that you'll need to exchange the root domain to something else but localhost. Then the idea is that you retrieve *only*
 the language entities according to what language the user selects in your little app, adding the `locale.eq` parts
-in the above HTTP request dynamically, matching the locale he or she selects as the primary language.
+in the above HTTP request dynamically, matching the locale he or she selects as their primary language.
 
 At which point you can dynamic substitute the entities in your frontend, according to a lookup into the result
 returned from the _"translations"_ endpoint above.
