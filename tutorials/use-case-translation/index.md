@@ -165,7 +165,7 @@ the contents of both your tables, where you apply some HTTP Cache-Control, in ad
 caching. If you [buy a license](https://servergardens.com/buy/), and [ask me nicely](mailto:thomas@servergardens.com),
 maybe I'll send you some code illustrating how to do this. This of course, makes your HTTP GET endpoints a gazillion
 times faster, by applying *both* server side caching, in addition to a `Cache-Control` HTTP header as your endpoint
-is invoked, making everything blisteringly much faster. Hint, *don't cache too long*. 5 minutes should be more than
-enough.
+is invoked, making everything blistering fast, using literally *zero* server side resources. Hint, *don't cache too long*.
+5 minutes should be more than enough.
 
 * [Documentation](/documentation/)
