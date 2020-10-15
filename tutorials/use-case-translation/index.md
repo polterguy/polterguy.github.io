@@ -147,8 +147,8 @@ And you're done! You now have an _"automagic translation app"_, exposing two HTT
 allowing you to easily translate all your apps into any language you wish - Including all 250
 languages you don't know - Assuming Google knows them ofc ... ;)
 
-* [Retrieve supported languages from localhost](http://localhost:55247/magic/modules/babelfish/languages?limit=-1)
-* [Retrieve translated entities from localhost](http://localhost:55247/magic/modules/babelfish/translations?limit=-1&locale.eq=en)
+* [Retrieve languages from localhost](http://localhost:55247/magic/modules/babelfish/languages?limit=-1)
+* [Retrieve translations from localhost](http://localhost:55247/magic/modules/babelfish/translations?limit=-1&locale.eq=en)
 
 Of course, as you deploy it into production, you'll [need a license key](https://servergardens.com/buy/), in addition
 to that you'll need to exchange the root domain to something else but localhost. Then the idea is that you retrieve *only*
