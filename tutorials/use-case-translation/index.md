@@ -10,7 +10,7 @@ process, by having Google Translate do the _"heavy lifting"_. First watch the fo
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/2hrUi1o5rDg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-If you watch the above video, you will see me illustrating how Google Translate automatically
+If you watch the above video, you will see how Google Translate automatically
 translates my entities every time I insert an English item into my database.
 90% of the time, this default translation is more than good enough. But even for the
 cases where it's not, you can easily modify the item afterwards, by editing it using the
