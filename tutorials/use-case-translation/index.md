@@ -12,9 +12,9 @@ process, by having Google Translate do the _"heavy lifting"_. First watch the fo
 
 If you watch the above video, you will see me illustrating how Google Translate automatically
 translates my entities every time I insert an English item into my database.
-90% of the time, this default translation is more than good enough, but even for the
+90% of the time, this default translation is more than good enough. But even for the
 cases where it's not, you can easily modify the item afterwards, by editing it using the
-CRUD capability of the generated frontend adminbistrative dashboard Magic creates for you.
+CRUD features of the generated frontend administrative dashboard Magic creates for you.
 See a screenshot below for an example of the latter.
 
 ![Editing your translation entities](https://servergardens.files.wordpress.com/2020/10/editing-translation-entities.png)
