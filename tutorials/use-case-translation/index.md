@@ -2,7 +2,7 @@
 
 Translating our apps is probably one of the most common problems we as software developers are asked
 to do. This is a well known pattern, basically consisting of two simple database tables, allowing
-our back office workers to do basic CRUD unto - To translate our apps into all supported languages.
+our back office workers to do basic CRUD unto.
 However, in this little use case, I will show you how you can almost *completely automate* this
 process, by having Google Translate do the _"heavy lifting"_. First watch the following video.
 
