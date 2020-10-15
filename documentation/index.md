@@ -14,6 +14,10 @@
 11. [Creating your own template](/tutorials/theming/) - Explains how you can create your own template engine
 11. [Custom SQL HTTP endpoints](/tutorials/sql-http-endpoints/) - Explains how you can create your own template engine
 
+# Use cases
+
+1. [BabelFish](/tutorials/use-case-translation/) - Let Google Translate simplify your translation requirements
+
 # Support
 
 If you have a support request of private nature, or a license inquiry, you can send us
