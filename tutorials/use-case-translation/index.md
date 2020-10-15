@@ -19,16 +19,6 @@ See a screenshot below for an example of the latter.
 
 ![Editing your translation entities](https://servergardens.files.wordpress.com/2020/10/editing-translation-entities.png)
 
-# Wrapping up
-
-If you want to be a little bit advanced, you might want to create *one addition* HTTP endpoint for retrieving
-the contents of both your tables, where you apply some HTTP Cache-Control, in addition to some server side
-caching. If you [buy a license](https://servergardens.com/buy/), and [asks me nicely](mailto:thomas@servergardens.com),
-maybe I'll send you some code illustrating how to do this. This of course, makes your HTTP GET endpoints a gazillion
-times faster, by applying *both* server side caching, in addition to a `Cache-Control` HTTP header as your endpoint
-is invoked, making everything blisteringly much faster. Hint, *don't cache too long*. 5 minutes should be more than
-enough.
-
 ## Getting started
 
 1. Make sure you have the latest version of Magic, at least version 8.4.1
@@ -149,5 +139,15 @@ The above code exchanges your (default) textbox with a dropdown select list, res
 And you're done! You now have an _"automagic translation app"_, exposing two HTTP REST endpoints,
 allowing you to easily translate all your apps into any language you wish - Including all 250
 languages you don't know - Assuming Google knows them ofc ... ;)
+
+# Wrapping up
+
+If you want to be a little bit advanced, you might want to create *one addition* HTTP endpoint for retrieving
+the contents of both your tables, where you apply some HTTP Cache-Control, in addition to some server side
+caching. If you [buy a license](https://servergardens.com/buy/), and [asks me nicely](mailto:thomas@servergardens.com),
+maybe I'll send you some code illustrating how to do this. This of course, makes your HTTP GET endpoints a gazillion
+times faster, by applying *both* server side caching, in addition to a `Cache-Control` HTTP header as your endpoint
+is invoked, making everything blisteringly much faster. Hint, *don't cache too long*. 5 minutes should be more than
+enough.
 
 * [Documentation](/documentation/)
