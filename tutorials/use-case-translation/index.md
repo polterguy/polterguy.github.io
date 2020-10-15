@@ -19,6 +19,13 @@ See a screenshot below for an example of the latter.
 
 ![Editing your translation entities](https://servergardens.files.wordpress.com/2020/10/editing-translation-entities.png)
 
+Of course, the idea is that you give your translation back office workers direct access to the above dashboard,
+such that they can themselves edit the entities that Google can't handle correctly for some reasons. This is
+done easily by creating new users using the built in auth mechanisms of Magic. For the record, you do *not* want
+to give these people root access. Probably smarter to create some new role, and associate your users with this role
+instead. For then to make sure you give Create, Update and Delete rights to these roles during the crudifiction
+process.
+
 ## Getting started
 
 1. Make sure you have the latest version of Magic, at least version 8.4.1
