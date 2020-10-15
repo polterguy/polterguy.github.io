@@ -160,7 +160,7 @@ returned from the _"translations"_ endpoint above.
 
 # Wrapping up
 
-If you want to be a little bit advanced, you might want to create *one addition* HTTP endpoint for retrieving
+If you want to be a little bit advanced, you might want to create *one additional* HTTP endpoint for retrieving
 the contents of both your tables, where you apply some HTTP Cache-Control, in addition to some server side
 caching. If you [buy a license](https://servergardens.com/buy/), and [asks me nicely](mailto:thomas@servergardens.com),
 maybe I'll send you some code illustrating how to do this. This of course, makes your HTTP GET endpoints a gazillion
