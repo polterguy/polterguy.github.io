@@ -762,6 +762,34 @@ expression found in its value.
 eval:x:@.lambda
 ```
 
+### [whitelist]
+
+This slot temporarily within the given scope changes the available slots, allowing you to declare a block
+of lambda, where only a sub set of your vocabulary is available for some piece of code to signal. This allows
+you to relatively securely allow some partially untrusted source to pass in a piece of Hyperlambda, for then
+to allow it to evaluate its own Hyperlambda. The slot takes two arguments.
+
+* __[vocabulary]__ - Whitelisted slots
+* __[.lambda]__ - Lambda object to evaluate for the given scope
+
+```
+.result
+whitelist
+   vocabulary
+      set-value
+   .lambda
+
+      // Inside of this [.lambda] object, we can only invoke [set-value], and no other slots!
+      set-value:x:@.result
+         .:foo
+
+      // Notice, the next line will throw an exception,
+      // because [add] is not whitelisted in our above [vocabulary] declaration!
+      add:x:@.result
+         .
+            foo:bar
+```
+
 ## Threading
 
 ### [fork]
