@@ -60,4 +60,4 @@ ever tried to _"translate"_ some SQL a guy wrote for a report into its Entity Fr
 you can simply copy and paste the SQL expert's code, into an endpoint, and you're already up
 running.
 
-* [Use case BabelFish](/tutorials/use-case-translation/)
+* [Hyperlambda Cryptography](/tutorials/cryptography/)
