@@ -14,6 +14,9 @@ Provides cryptographic services to Magic. More specifically, this project provid
 * __[crypto.rsa.decrypt]__ - Decrypts the specified message (provided as value) using the specified private **[private-key]**, and returns the decrypted message as its original value.
 * __[crypto.aes.encrypt]__ - Encrypts a piece of data using the AES encryption algorithm
 * __[crypto.aes.decrypt]__ - Decrypts a piece of data previously encrypted using AES encryption
+* __[crypto.encrypt]__ - Convenience slot combining AES and RSA encryption to encrypt some message
+* __[crypto.decrypt]__ - The opposite of the above
+* __[crypto.get-key]__ - Returns the public key that was used to encrypt a message using the above slot. Result is returned in _"fingerprint format"_.
 
 ## Supported hashing algorithms
 
@@ -43,6 +46,24 @@ it easily traversed using any string library. However, you can provide a **[raw]
 value to boolean true, at which point the slot will return the raw bytes as a `byte[]`. This has a much
 larger amount of entropy than simply using alphanumeric characters, for the same bit size - Which is
 important as you start creating keys for AES encryption, etc.
+
+## [crypto.hash]
+
+The **[crypto.hash]** slot can be used to generate hash values. When you invoke it, you can choose
+between having the hash returned as raw a `byte[]`, as a _"fingerprint"_ or as its bit encoded hex
+version. Below is an example of all three of these formats.
+
+```
+.data:Some data to hash
+crypto.hash:x:@.data
+   format:fingerprint
+crypto.hash:x:@.data
+   format:text
+
+// Commented out since Magic can't display byte[] as Hyperlambda
+.crypto.hash:x:@.data
+   format:raw
+```
 
 ## Cryptography
 
@@ -110,6 +131,9 @@ true, at which point the returned key(s) will only be DER encoded, and returned 
 useful, if you for instance need to persist the key to disc, as a binary file, etc. All the RSA slots can return
 their results as `byte[]` values, if you provide a **[raw]** argument to them, and set its value to true.
 If you don't provide a raw argument, the returned value will be the base64 encoded DER format of your key pair.
+
+This slot will also return the fingerprint of your public key, which is useful to keep around somewhere,
+since it's used in other cryptographic operations to identify keys used in operation, etc.
 
 ### Cryptographically signing and verifying the signature of a message
 
@@ -240,6 +264,140 @@ crypto.random
    max:32
    raw:true
 ```
+
+## Combining RSA and AES cryptography
+
+AES and RSA are only really useful when combined. Hence, this project contains the following convenience slots.
+
+* __[crypto.encrypt]__ - Encrypts some message using AES + RSA
+* __[crypto.decrypt]__ - Decrypts some message using AES + RSA
+* __[crypto.get-key]__ - Returns the fingerprint of the RSA key that was used to encrypt some message using **[crypto.encrypt]**
+
+The **[crypto.encrypt]** slot requires some message/content, a signing key, an encryption key, and your signing
+key's fingerprint. This slot will first cryptographically sign your message using the private key. Then it
+will use the public key supplied to encrypt the message. Below is an example.
+
+```
+// Recipient's key.
+crypto.rsa.create-key
+   strength:512
+
+// Sender's key.
+crypto.rsa.create-key
+   strength:512
+
+// Encrypting some message.
+crypto.encrypt:Some super secret message
+   encryption-key:x:././*/crypto.rsa.create-key/[0,1]/*/public
+   signing-key:x:././*/crypto.rsa.create-key/[1,2]/*/private
+   signing-key-fingerprint:x:././*/crypto.rsa.create-key/[1,2]/*/fingerprint
+
+// Decrypting the above encrypted message.
+crypto.decrypt:x:-
+   decryption-key:x:././*/crypto.rsa.create-key/[0,1]/*/private
+```
+
+**Notice** - We're using only 512 bit strength in the above example. Make sure you (at least) use
+2048, preferably 4096 in real world usage.
+
+To understand what occurs in the above Hyperlambda example, let's walk through it step by step, starting from
+the **[crypto.encrypt]** invocation.
+
+1. The message __"Some super secret message"_ is first cryptographically signed using the **[signing-key]**.
+2. The signed message resulting from the above is then encrypted using the **[encryption-key]**.
+3. The signing key's fingerprint is stored inside of the encrypted content, such that when the message is decrypted, the other party can verify that the signature originated from some trusted party
+4. The encryption key's fingerprint is stored as bytes, prepended before the encrypted message, which allows the other party to retrieve the correct decryption key, according to what fingerprint the caller encrypted the message with
+
+Hence, the *only* thing that is in plain sight in the above encrypted message, is the fingerprint of the public
+key that was used to encrypt the message. Only after the message is decrypted, the signature for the message
+can be retrieved, together with the fingerprint of the key that was used to sign the message. Hence, what would
+normally be a more complete process, is that after the receiver decrypts the message, he should also verify that
+the signature originates from some trusted party - Such as illustrated below.
+
+```
+// Recipient's key.
+crypto.rsa.create-key
+   strength:512
+
+// Sender's key.
+crypto.rsa.create-key
+   strength:512
+
+// Encrypting some message.
+crypto.encrypt:Some super secret message
+   encryption-key:x:././*/crypto.rsa.create-key/[0,1]/*/public
+   signing-key:x:././*/crypto.rsa.create-key/[1,2]/*/private
+   signing-key-fingerprint:x:././*/crypto.rsa.create-key/[1,2]/*/fingerprint
+
+// Decrypting the above encrypted message.
+crypto.decrypt:x:-
+   decryption-key:x:././*/crypto.rsa.create-key/[0,1]/*/private
+
+// Verifying signature of encrypted message.
+crypto.rsa.verify:x:-
+   signature:x:@crypto.decrypt/*/signature
+   public-key:x:././*/crypto.rsa.create-key/[1,2]/*/public
+```
+
+**Notice** - We're using only 512 bit strength in the above example. Make sure you (at least) use
+2048, preferably 4096 in real world usage.
+
+If the above invocation to **[crypto.rsa.verify]** does not throw an exception, we know for a fact that
+the message was cryptographically signed with the private key that matches its **[public-key]** argument.
+Normally the fingerprint of the sender's key is asssociated with some sort of _"authorisation object"_
+to elevate the rights of the user, only *after* having verified the message originated from a trusted
+party.
+
+Hence, from the caller's perspective it's *one* invocation to encrypt and sign a message. From the receiver's
+perspective it's *two* steps to both decrypt and verify the integrity of a message. The reasons for this,
+is because we do *not know* who signed the message, before the message has been decrypted using the receiver's
+private key. This prevents any part of the message, except its bare minimum to be provided over your insecure
+channel - Giving spoofers and malicious hackers literally nothing to work with, except the fingerprint
+of the public key the message was encrypted with.
+
+Hence, malicious adversaries in the middle of the communication, will not know who the message originated from,
+only to whom it was addressed - In addition to of course also not being able to read the content of the message.
+
+### The encryption format
+
+The encrypted package has the following format. Notice, the encryption and signing is a two step process.
+Hence, the steps for the first process is as follows.
+
+1. Signing key's fingerprint in SHA256 `byte[]` format, 32 bytes long
+2. The length of the signature as `int`, 4 bytes long
+3. The actual signature of the message, where the signature is generated from the plain text content of the message
+4. The content of the message in `byte[]` format, possibly converted from a string as UTF8 content
+
+Logically it becomes as follows; SHA256(signing_key) + signature_length + signature + plain_text_content.
+Then the result from the above steps is encrypted using AES, with a random generated session key 
+32 bytes long. And another package is created which is the final package, that is structured as follows.
+
+1. Encryption key's fingerprint in SHA256 `byte[]` format, 32 bytes long
+2. The length of the encrypted session key as `int`, 4 bytes long
+3. The encrypted session key, encrypted using the recipient's public RSA key
+4. The AES encrypted content from the above signing step
+
+Logically it becomes as follows; SHA256(RSA_encryption_key) + length_of_encrypted_AES_key +
+encrypted_AES_key + AES_encrypted(plain_text_content).
+
+Hence, the other party can retrieve the encryption key used for encrypting the package, using for instance
+the **[crypto.get-key]** slot on the package, since the RSA encryption key's fingerprint and length of the encrypted
+AES key is the *only* thing that is passed in plain sight. Then the receiver can use his private RSA key to decrypt
+the AES key, and use the decrypted AES key to decrypt the rest of the package - Which will result in getting the
+package's plain text content, plus the signature, in addition to the fingerprint of the key used to sign the package. However, all of these steps are done automatically if you use the **[crypto.decrypt]** slot.
+
+The AES key is generated using Bouncy Castle's `SecureRandom` implementation, resulting in a 256 bit
+cryptography key. This key again is encrypted using whatever bit strength you selected as you created
+your RSA key pair. Hence, the message as a whole, is not stronger than whatever key strength you use
+as you supply a **[strength]** argument to the **[crypto.rsa.create-key]**.
+
+The above format results in that the only _"meta information"_ an adversary can possibly pick up, is
+the fingerprint of the public RSA key used to encrypt the AES key, in addition to also the bit strength
+of this RSA key, since the bit strength of an RSA key will result in differences in the length of the
+encrypted AES key. An adversary will not have access to who encrypted/transmitted the package, he will
+not know who, if any signed the package - Or any other parts of the message - Assuming he is not able
+to somehow crack the AES encryption, and/or somehow retrieve the private RSA key the AES package's
+encryption key was encrypted with.
 
 ## Cryptography concerns
 
