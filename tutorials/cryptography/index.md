@@ -1,6 +1,8 @@
 # Hyperlambda Cryptography
 
-Hyperlambda gives you both asymmetric and symmetric cryptography functionality. In the video below,
+Hyperlambda gives you both asymmetric and symmetric cryptography functionality. This allows you to
+encrypt, decrypt, and cryptographically sign messages - In addition to transmitting secrets securely
+over an inheritingly insecure channel, such as the web for instance. In the video below,
 I walk you through how to generate and use an RSA key pair using nothing but Magic's built in slots.
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
@@ -55,19 +57,31 @@ your message, is also used to *decrypt* it. Hence, there is *symmetry* in encryp
 In practice though, symmetric cryptography and asymmetric cryptography is often used in
 combination. Usually your private key is often symmetrically encrypted, such that adversaries
 getting access to your private key, still cannot retrieve it, since they'll need some sort of
-password to return its real value.
+password to return its real value. In addition, in real world examples, a random AES session key
+is often asymmetrically encrypted for some recipient's private key, using his public key - For
+then to symmetrically encrypt the bulk of the message using AES.
 
-In addition, a random password is often generated using a cryptographically secure random number
-generator (CSRNG), for then to asymmetrically encrypt this password at the top of your
-message, for then to use the random password to symmetrically encrypt the body of your message.
 This reduces the size of your encrypted message, and also increase performance during encryption
 and decryption, since symmetric cryptography tends to be faster than asymmetric cryptography.
-
-Later we will have a look at some use cases, where we apply both of these ideas - But for now,
-you might want to watch the following video illustrating symmetric cryptography.
+Before we look at combination examples, you might want to have a look at the following video
+where I illustrate AES cryptography using Magic.
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/uRJdMLHHmhg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+## AES + RSA == really cool
+
+In isolation though, both RSA and AES are nifty things, but not really that useful. Only
+when combining RSA and AES, we end up with some real world use cases for cryptography. In the
+video below I illustrate how to combine both asymmetric and symmetric cryptography, with
+cryptographic _"signatures"_, that verifies that some message originated from a trusted party,
+and was not tampered with. And the use case is to transmit Hyperlambda from one client to
+some server, and have the server *securely* execute the specified Hyperlambda and return the
+result of the invocation.
+
+<div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
+<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/d3wpmp7uSy8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 * [Use case BabelFish](/tutorials/use-case-translation/)
