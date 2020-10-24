@@ -85,6 +85,6 @@ result of the invocation.
 </div>
 
 The above is a fairly *extreme* use case, but you can find many more examples of combining AES with RSA
-in [the documentation](/documentation/magic.lambda.crypto/) for the magic.lambda.crypto library
+in [the documentation](/documentation/magic.lambda.crypto/) for the magic.lambda.crypto library.
 
 * [Use case BabelFish](/tutorials/use-case-translation/)
