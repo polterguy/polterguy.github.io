@@ -84,7 +84,7 @@ result of the invocation.
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/d3wpmp7uSy8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-the above is a fairly *extreme* use case, but you can find many more examples of combining AES with RSA
+The above is a fairly *extreme* use case, but you can find many more examples of combining AES with RSA
 in [the documentation](/documentation/magic.lambda.crypto/) for the magic.lambda.crypto library
 
 * [Use case BabelFish](/tutorials/use-case-translation/)
