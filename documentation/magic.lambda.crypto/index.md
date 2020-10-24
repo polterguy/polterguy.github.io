@@ -55,13 +55,14 @@ version. Below is an example of all three of these formats.
 
 ```
 .data:Some data to hash
+
 crypto.hash:x:@.data
    format:fingerprint
+
 crypto.hash:x:@.data
    format:text
 
-// Commented out since Magic can't display byte[] as Hyperlambda
-.crypto.hash:x:@.data
+crypto.hash:x:@.data
    format:raw
 ```
 
@@ -149,7 +150,7 @@ crypto.rsa.create-key
 
 // Notice, using PRIVATE key
 crypto.rsa.sign:x:@.data
-   key:x:@crypto.rsa.create-key/*/private
+   private-key:x:@crypto.rsa.create-key/*/private
 
 // Uncommenting these lines, will make the verify process throw an exception
 // set-value:x:@.data
@@ -158,7 +159,7 @@ crypto.rsa.sign:x:@.data
 // Notice, using PUBLIC key
 crypto.rsa.verify:x:@.data
    signature:x:@crypto.rsa.sign
-   key:x:@crypto.rsa.create-key/*/public
+   public-key:x:@crypto.rsa.create-key/*/public
 ```
 
 If somebody tampers with the content between the signing process and the verify process, an exception will
@@ -183,10 +184,10 @@ To encrypt a message, you can use something as follows.
 crypto.rsa.create-key
 
 crypto.rsa.encrypt:x:@.data
-   key:x:@crypto.rsa.create-key/*/public
+   public-key:x:@crypto.rsa.create-key/*/public
 
 crypto.rsa.decrypt:x:@crypto.rsa.encrypt
-   key:x:@crypto.rsa.create-key/*/private
+   private-key:x:@crypto.rsa.create-key/*/private
 ```
 
 Notice how the encryption above is using the *public key*, and the decryption is using the *private key*. The encrypt slot
@@ -303,10 +304,11 @@ crypto.decrypt:x:-
 To understand what occurs in the above Hyperlambda example, let's walk through it step by step, starting from
 the **[crypto.encrypt]** invocation.
 
-1. The message __"Some super secret message"_ is first cryptographically signed using the **[signing-key]**.
-2. The signed message resulting from the above is then encrypted using the **[encryption-key]**.
-3. The signing key's fingerprint is stored inside of the encrypted content, such that when the message is decrypted, the other party can verify that the signature originated from some trusted party
-4. The encryption key's fingerprint is stored as bytes, prepended before the encrypted message, which allows the other party to retrieve the correct decryption key, according to what fingerprint the caller encrypted the message with
+1. The message _"Some super secret message"_ is first cryptographically signed using the **[signing-key]**
+2. The signed message is then encrypted using a CSRNG generated AES key
+3. The AES key from the above is then encrypted using the **[encryption-key]**, that's assumed to be the recipient's public key
+4. The signing key's fingerprint is stored inside of the encrypted content, such that when the message is decrypted, the other party can verify that the signature originated from some trusted party
+5. The encryption key's fingerprint is stored as bytes, prepended before the encrypted message, which allows the other party to retrieve the correct decryption key, according to what encryption key the caller encrypted the message with
 
 Hence, the *only* thing that is in plain sight in the above encrypted message, is the fingerprint of the public
 key that was used to encrypt the message. Only after the message is decrypted, the signature for the message
@@ -356,7 +358,7 @@ channel - Giving spoofers and malicious hackers literally nothing to work with, 
 of the public key the message was encrypted with.
 
 Hence, malicious adversaries in the middle of the communication, will not know who the message originated from,
-only to whom it was addressed - In addition to of course also not being able to read the content of the message.
+only to what decryption key it was addressed. In addition no adversary will be able to read the encrypted content.
 
 ### The encryption format
 
@@ -365,12 +367,16 @@ Hence, the steps for the first process is as follows.
 
 1. Signing key's fingerprint in SHA256 `byte[]` format, 32 bytes long
 2. The length of the signature as `int`, 4 bytes long
-3. The actual signature of the message, where the signature is generated from the plain text content of the message
-4. The content of the message in `byte[]` format, possibly converted from a string as UTF8 content
+3. The actual signature of the message
+4. The content of the message in `byte[]` format
+
+**Notice** - At this point *nothing has been encrypted* yet.
 
 Logically it becomes as follows; SHA256(signing_key) + signature_length + signature + plain_text_content.
-Then the result from the above steps is encrypted using AES, with a random generated session key 
-32 bytes long. And another package is created which is the final package, that is structured as follows.
+
+Afterwards the result from the above steps is encrypted using AES, with a random generated session key 
+that is 32 bytes long. And another package is created, which is the final package, intended for being sent
+to the recipient. The final encryption package has a structure as follows.
 
 1. Encryption key's fingerprint in SHA256 `byte[]` format, 32 bytes long
 2. The length of the encrypted session key as `int`, 4 bytes long
@@ -378,13 +384,16 @@ Then the result from the above steps is encrypted using AES, with a random gener
 4. The AES encrypted content from the above signing step
 
 Logically it becomes as follows; SHA256(RSA_encryption_key) + length_of_encrypted_AES_key +
-encrypted_AES_key + AES_encrypted(plain_text_content).
+encrypted_AES_key + AES_encrypted_content. Everything as raw `byte[]`.
 
 Hence, the other party can retrieve the encryption key used for encrypting the package, using for instance
-the **[crypto.get-key]** slot on the package, since the RSA encryption key's fingerprint and length of the encrypted
-AES key is the *only* thing that is passed in plain sight. Then the receiver can use his private RSA key to decrypt
+the **[crypto.get-key]** slot on the package. Then the receiver can use his private RSA key to decrypt
 the AES key, and use the decrypted AES key to decrypt the rest of the package - Which will result in getting the
-package's plain text content, plus the signature, in addition to the fingerprint of the key used to sign the package. However, all of these steps are done automatically if you use the **[crypto.decrypt]** slot.
+package's plain text content, plus the signature, in addition to the fingerprint of the RSA key used to sign
+the package. However, all of these steps are done automatically if you use the **[crypto.decrypt]** slot.
+Except signature verification. The reasons why the signature verification is a second step, is because
+we'll need to supply a public key to verify the signature, and we don't know which RSA key was used to
+sign the message, before we have *decrypted* the message.
 
 The AES key is generated using Bouncy Castle's `SecureRandom` implementation, resulting in a 256 bit
 cryptography key. This key again is encrypted using whatever bit strength you selected as you created
@@ -403,12 +412,12 @@ encryption key was encrypted with.
 
 Even assuming you can 100% perfectly communicate in privacy today, your privacy is only as good as a malicious
 agent's ability to brute force prime numbers in the case of RSA, and similar techniques with Elliptic Curve.
-This means that even though you create an extremely strong keypair according to today's standard - Due to
+This means that even though you create an extremely strong key pair according to today's standard - Due to
 Moore's law, some 5-10 years down the road, the NSA and the CIA will probably be able to reproduce your private
 key, using nothing but your public key as input. And some 10-20 years later, some kid with a pocket calculator,
-will also probably be able to do the same. Since these agencies also happens to vacum clean the internet, for
-everything transmitted through your ISP, this implies that 5-10 years from now, they'll be able to read your
-communication, and figure out what you were talking about some 5-10 years ago.
+will also probably be able to do the same. Since agencies such as the FSB, NSA and the MI6 also happens to
+vacum clean the internet, for everything transmitted through your ISP, this implies that 5-10 years from now,
+they'll be able to read your communication, and figure out what you were talking about some 5-10 years ago.
 
 Also, as quantum computing becomes practical to implement, today's cryptography based upon _"hard problems"_,
 will effectively prove useless towards a serious quantum computer's ability to perform multiple math
@@ -440,6 +449,9 @@ Hence, there is no true privacy, only shades of privacy. This is true regardless
 you are using. Hence ...
 
 > The only true privacy that exists, is never telling anybody anything!
+
+With the above disclaimer set aside, I guarantee you that I have done *everything* I can to make
+sure the cryptography slots in Magic and this library is as strong and secure as I am able to.
 
 ## Quality gates
 
