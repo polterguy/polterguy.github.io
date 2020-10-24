@@ -24,10 +24,10 @@ crypto.rsa.create-key
    strength:2048
 
 crypto.rsa.encrypt:x:@.data
-   key:x:@crypto.rsa.create-key/*/public
+   public-key:x:@crypto.rsa.create-key/*/public
 
 crypto.rsa.decrypt:x:@crypto.rsa.encrypt
-   key:x:@crypto.rsa.create-key/*/private
+   private-key:x:@crypto.rsa.create-key/*/private
 ```
 
 This allows you to generate a key pair, for then to distribute your *public* key, to anyone
