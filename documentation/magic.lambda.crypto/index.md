@@ -8,7 +8,7 @@ Provides cryptographic services to Magic. More specifically, this project provid
 * __[crypto.password.verify]__ - Verifies that a **[hash]** argument matches towards the password specified in its value. The **[hash]** is expected to be in the format created by BCrypt, implying the hash was created with e.g. **[crypto.password.hash]**.
 * __[crypto.random]__ - Creates a cryptographically secured random string for you, with the characters [a-zA-Z0-9].
 * __[crypto.rsa.create-key]__ - Creates an RSA keypair for you, allowing you to pass in **[strength]**, and/or **[seed]** to override the default strength being 2048, and apply a custom seed to the random number generator. The private/public keypair will be returned to caller as **[public]** and **[private]** after invocation, which is the DER encoded keys, encoded by default as base64.
-* __[crypto.rsa.sign]__ - Cryptographically signs a message (provided as value) with the given private **[private-key]**, optionally using the specified hashing **[algorithm]**, defaulting to SHA256, and returns the signature for your content as value. The signature content will be returned as the base64 encoded raw bytes being your signature.
+* __[crypto.rsa.sign]__ - Cryptographically signs a message (provided as value) with the given private **[private-key]**, and returns the signature for your content as value. The signature content will be returned as the base64 encoded raw bytes being your signature.
 * __[crypto.rsa.verify]__ - Verifies a previously created RSA signature towards its message (provided as value), with the specified public **[public-key]**, optionally allowing the caller to provide a hashing **[algorithm]**, defaulting to SHA256. The slot will throw an exception if the signature is not matching the message passed in for security reasons.
 * __[crypto.rsa.encrypt]__ - Encrypts the specified message (provided as value) using the specified public **[public-key]**, and returns the encrypted message as a base64 encoded encrypted message by default.
 * __[crypto.rsa.decrypt]__ - Decrypts the specified message (provided as value) using the specified private **[private-key]**, and returns the decrypted message as its original value.
@@ -301,8 +301,9 @@ crypto.decrypt:x:-
 **Notice** - We're using only 512 bit strength in the above example. Make sure you (at least) use
 2048, preferably 4096 in real world usage.
 
-To understand what occurs in the above Hyperlambda example, let's walk through it step by step, starting from
-the **[crypto.encrypt]** invocation.
+This slot can also optionally handle a **[seed]** argument, which will seed the CS RNG that's used to generate
+a symmetric AES encryption key. To understand what occurs in the above Hyperlambda example, let's walk through
+it step by step, starting from the **[crypto.encrypt]** invocation.
 
 1. The message _"Some super secret message"_ is first cryptographically signed using the **[signing-key]**
 2. The signed message is then encrypted using a CSRNG generated AES key
@@ -336,26 +337,33 @@ crypto.decrypt:x:-
    decryption-key:x:././*/crypto.rsa.create-key/[0,1]/*/private
 
 // Verifying signature of encrypted message.
-crypto.rsa.verify:x:-
-   signature:x:@crypto.decrypt/*/signature
+crypto.verify:x:-
    public-key:x:././*/crypto.rsa.create-key/[1,2]/*/public
 ```
+
+Only after the message is verified, the actual content of the message is possible to read, as the
+value of the **[crypto.verify]** slot - Unless you pass in a **[verify-key]** during the invocation
+to **[crypto.decrypt]**, at which point that key will be used to verify the signature of the message,
+after package has been encrypted. Of course, normally you wouldn't know the the idenity of the signer,
+or what public key to use to verify the signature, before *after* you have decrypted the message.
+At which point you can use **[crypto.get-key]** to retrieve the signing key, after having decrypted
+the message.
 
 **Notice** - We're using only 512 bit strength in the above example. Make sure you (at least) use
 2048, preferably 4096 in real world usage.
 
-If the above invocation to **[crypto.rsa.verify]** does not throw an exception, we know for a fact that
+If the above invocation to **[crypto.verify]** does not throw an exception, we know for a fact that
 the message was cryptographically signed with the private key that matches its **[public-key]** argument.
 Normally the fingerprint of the sender's key is asssociated with some sort of _"authorisation object"_
 to elevate the rights of the user, only *after* having verified the message originated from a trusted
 party.
 
 Hence, from the caller's perspective it's *one* invocation to encrypt and sign a message. From the receiver's
-perspective it's *two* steps to both decrypt and verify the integrity of a message. The reasons for this,
-is because we do *not know* who signed the message, before the message has been decrypted using the receiver's
-private key. This prevents any part of the message, except its bare minimum to be provided over your insecure
-channel - Giving spoofers and malicious hackers literally nothing to work with, except the fingerprint
-of the public key the message was encrypted with.
+perspective it's *two* steps to both decrypt and verify the integrity of a message, unless you know who
+the message originated from. The reasons for this, is because we do *not normally know* who signed the message,
+before the message has been decrypted using the receiver's private key. This prevents any part of the message,
+except its bare minimum to be provided over your insecure channel - Giving spoofers and malicious hackers
+literally nothing to work with, except the fingerprint of the public key the message was encrypted with.
 
 Hence, malicious adversaries in the middle of the communication, will not know who the message originated from,
 only to what decryption key it was addressed. In addition no adversary will be able to read the encrypted content.
