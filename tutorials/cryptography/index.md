@@ -101,8 +101,7 @@ crypto.decrypt:x:-
    decryption-key:x:././*/crypto.rsa.create-key/[0,1]/*/private
    
 // Uncomment this line to retrieve signing key's fingerprint
-// That you can use to lookup the public key needed to verify
-// the signature
+// that you can use to lookup the public key needed to verify the signature
 // crypto.get-key:x:-
 
 // Verifying signature of encrypted message.
