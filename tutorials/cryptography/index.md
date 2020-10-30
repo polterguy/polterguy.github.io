@@ -79,7 +79,7 @@ and cryptographically signed messages down to a single signal invocation. Below 
 that combines AES and RSA to encrypt a message intended to be sent over an insecure connection to
 some recipient whom you have access to the public key for. For simplicity reasons, we create a key pair
 as an integral part of the snippet, but these would normally be things you already have access to, in for
-instance some database table or file, etc.
+instance some database table, or file, etc.
 
 ```
 // Recipient's key.
@@ -110,7 +110,7 @@ crypto.verify:x:@crypto.decrypt
    public-key:x:././*/crypto.rsa.create-key/[1,2]/*/public
 ```
 
-Normally, just before the last invocation to **[]crypto.verify**, you
+Normally, just before the last invocation to **[crypto.verify]**, you
 would invoke **[crypto.get-key]** on the result of the decryption, and use
 the fingerprint returned from this invocation to lookup a public key needed
 to verify the signature of the message.
