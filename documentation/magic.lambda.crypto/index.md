@@ -1,39 +1,19 @@
 
 # Magic Lambda Crypto
 
-Provides cryptographic services to Magic. More specifically, this project provides the following slots.
-
-* __[crypto.hash]__ - Creates a hash of the specified string value/expression's value, using the specified **[algorithm]**, that defaults to SHA256
-* __[crypto.password.hash]__ - Creates a cryptographically secure hash from the specified password, expected to be found in its value node. Uses blowfish, or more specifically BCrypt internally, to create the hash with individual salts.
-* __[crypto.password.verify]__ - Verifies that a **[hash]** argument matches towards the password specified in its value. The **[hash]** is expected to be in the format created by BCrypt, implying the hash was created with e.g. **[crypto.password.hash]**.
-* __[crypto.random]__ - Creates a cryptographically secured random string for you, with the characters [a-zA-Z0-9].
-* __[crypto.rsa.create-key]__ - Creates an RSA keypair for you, allowing you to pass in **[strength]**, and/or **[seed]** to override the default strength being 2048, and apply a custom seed to the random number generator. The private/public keypair will be returned to caller as **[public]** and **[private]** after invocation, which is the DER encoded keys, encoded by default as base64.
-* __[crypto.rsa.sign]__ - Cryptographically signs a message (provided as value) with the given private **[private-key]**, and returns the signature for your content as value. The signature content will be returned as the base64 encoded raw bytes being your signature.
-* __[crypto.rsa.verify]__ - Verifies a previously created RSA signature towards its message (provided as value), with the specified public **[public-key]**, optionally allowing the caller to provide a hashing **[algorithm]**, defaulting to SHA256. The slot will throw an exception if the signature is not matching the message passed in for security reasons.
-* __[crypto.rsa.encrypt]__ - Encrypts the specified message (provided as value) using the specified public **[public-key]**, and returns the encrypted message as a base64 encoded encrypted message by default.
-* __[crypto.rsa.decrypt]__ - Decrypts the specified message (provided as value) using the specified private **[private-key]**, and returns the decrypted message as its original value.
-* __[crypto.aes.encrypt]__ - Encrypts a piece of data using the AES encryption algorithm
-* __[crypto.aes.decrypt]__ - Decrypts a piece of data previously encrypted using AES encryption
-* __[crypto.encrypt]__ - Convenience slot combining AES and RSA encryption to encrypt some message
-* __[crypto.decrypt]__ - The opposite of the above
-* __[crypto.get-key]__ - Returns the public key that was used to encrypt a message using the above slot. Result is returned in _"fingerprint format"_.
-
-## Supported hashing algorithms
-
-All slots above requiring an **[algorithm]** argument, can use these hashing algorithms by default. Notice, some unsafe hashing
-algorithms have been explicitly removed, due to the high risks of creating collisions with them. These includes SHA1 and MD5.
-
-* SHA256
-* SHA384
-* SHA512
+This project provides cryptography helper slots for Magic, allowing you to use both symmetric and asymmetric cryptography
+operations in your Hyperlambda applications. The symmetric parts of the project is using AES internally, and the
+asymmetric parts is using RSA. In addition to a bunch of _"low level slots"_, the project also contains combination
+slots, combining RSA and AES, allowing you to both encrypt and sign a message, using a single signal invocation.
 
 ## [crypto.random]
 
-The **[crypto.random]** can optionally take a **[min]** and **[max]** argument, which defines the min/max length of the
-string returned. If not supplied, the default values for these arguments are respectively 10 and 20. This slot is useful
-for creating random secrets, and similar types of random strings, where you need cryptographically secured random strings.
-An example of generating a cryptographically secure random string of text, between 50 and 100 characters in lenght,
-can be found below.
+This slot create a bunch of random characters, or bytes for you.
+The slot can optionally take a **[min]** and **[max]** argument, which defines the min/max length of the
+random bytes/characters returned. If not supplied, the default values for these arguments are respectively 10 and 20.
+This slot is useful for creating random secrets, and similar types of random strings, where you need cryptographically
+secured random strings. An example of generating a cryptographically secure random string of text, between 50 and
+100 characters in lenght, can be found below.
 
 ```
 crypto.random
@@ -44,7 +24,7 @@ crypto.random
 Notice, the **[crypto.random]** slot will _only_ return characters from a-z, A-Z and 0-9. Which makes
 it easily traversed using any string library. However, you can provide a **[raw]** argument, and set its
 value to boolean true, at which point the slot will return the raw bytes as a `byte[]`. This has a much
-larger amount of entropy than simply using alphanumeric characters, for the same bit size - Which is
+larger amount of entropy than simply using alphanumeric characters for the same size - Which is
 important as you start creating keys for AES encryption, etc.
 
 ## [crypto.hash]
@@ -66,6 +46,14 @@ crypto.hash:x:@.data
    format:raw
 ```
 
+You can choose between the following hashing algorithms as you consume the above slot.
+
+* SHA256
+* SHA384
+* SHA512
+
+Neither SHA1 nor MD5 are supported, since they're both considered _"insecure"_ hashing algorithms.
+
 ## Cryptography
 
 This library also supports several cryptographic services, but first a bit of cryptography theory.
@@ -73,8 +61,8 @@ Public key cryptography, or what's often referred to as _"asymmetric cryptograph
 a *key pair*. One of your keys are intended for being publicly shared, and is often referred to
 as _"your public key"_. This key can do two important things.
 
-1. It can encrypt data such that *only* its private counterpart key can decrypt the data
-2. It can verify that a message originated from a party that has access to its private counterpart
+1. Your public key can encrypt data such that *only* its private counterpart key can decrypt the data
+2. Your public key can verify that a message originated from a party that has access to its private counterpart
 
 Hence, keeping your *private* key as just that, implying **private**, is of outmost importance, otherwise 3rd
 parties might read messages others send to you, and also impersonate you in front of others. In addition, securely
@@ -106,6 +94,8 @@ into their code. Bouncy Castle is also Open Source, allowing others to scrutinis
 backdoors. However, with cryptography, there *are no guarantees*, only a _"general feeling and concent"_
 amongst developers that it's secure.
 
+The asymmetric parts of this project is built upon RSA for its public and private key pairs.
+
 ### Creating an RSA keypair
 
 To create an RSA keypair that you can use for other cryptographic services later, you can use something as follows.
@@ -117,7 +107,7 @@ crypto.rsa.create-key
 ```
 
 Both the **[strength]** and **[seed]** is optional above. Strength will default to 2048, which might be too little
-for serious cryptography, but increasing your strength too much, might result in the function spending several
+for serious cryptography, but increasing your strength too much, might result in that the above function spends several
 seconds, possibly minutes to return if you set it too high - In addition to that your key pair becomes very large.
 The **[seed]** is optional, and even if you don't provide a seed argument, the default seed should still be strong
 enough to avoid predictions.
@@ -134,7 +124,8 @@ their results as `byte[]` values, if you provide a **[raw]** argument to them, a
 If you don't provide a raw argument, the returned value will be the base64 encoded DER format of your key pair.
 
 This slot will also return the fingerprint of your public key, which is useful to keep around somewhere,
-since it's used in other cryptographic operations to identify keys used in operation, etc.
+since it's used in other cryptographic operations to identify keys used in operation, etc. The public key's
+fingerprint is usually used to identify a specific key somehow.
 
 ### Cryptographically signing and verifying the signature of a message
 
@@ -144,20 +135,21 @@ by the owner of the private key. To sign some arbitrary content using your priva
 was correctly signed with a specific key, you can use something as follows.
 
 ```
-.data:some piece of text you wish to sign
+// The message can also by byte arrays.
+.message:Some message you wish to sign
 
 crypto.rsa.create-key
 
 // Notice, using PRIVATE key
-crypto.rsa.sign:x:@.data
+crypto.rsa.sign:x:@.message
    private-key:x:@crypto.rsa.create-key/*/private
 
 // Uncommenting these lines, will make the verify process throw an exception
-// set-value:x:@.data
-//    .:Some piece of text you wish to sign - XXXX
+// set-value:x:@.message
+//    .:Some message you wish to sign - XXXX
 
 // Notice, using PUBLIC key
-crypto.rsa.verify:x:@.data
+crypto.rsa.verify:x:@.message
    signature:x:@crypto.rsa.sign
    public-key:x:@crypto.rsa.create-key/*/public
 ```
@@ -179,11 +171,11 @@ If you don't provide a raw argument, the returned value will be a base64 encoded
 To encrypt a message, you can use something as follows.
 
 ```
-.data:some piece of text you wish to encrypt
+.message:Some message you want to encrypt
 
 crypto.rsa.create-key
 
-crypto.rsa.encrypt:x:@.data
+crypto.rsa.encrypt:x:@.message
    public-key:x:@crypto.rsa.create-key/*/public
 
 crypto.rsa.decrypt:x:@crypto.rsa.encrypt
@@ -196,14 +188,7 @@ since encryption will result in a byte array, which is often inconvenient to han
 You can override this by passing in a **[raw]** argument, and set its value to true, at which point a `byte[]` will be
 returned.
 
-Also notice how the encrypted message is larger than its original string. This is because of something called _"padding"_
-in encryption, only being relevant for messages that are smaller in size than your original text. Padding
-implies that no encrypted text resulting of en encryption operation can be significantly smaller in size than the
-size of the (public) key used to encrypt the message. This is only relevant for small pieces of data, and have
-few implications for larger pieces of text being encrypted. However, if you want to transmit *very large* messages,
-you might want to *combine* asymmetric cryptography with symmetric cryptography, which we will illustrate later.
-
-Notice, if you want the message back as raw bytes, you can supply a **[raw]** argument, and set its value to boolean
+If you want the message back as raw bytes, you can supply a **[raw]** argument, and set its value to boolean
 true as you invoke **[crypto.rsa.encrypt]**, at which point the returned encrypted message will be returned as a
 raw `byte[]`. This might be useful, if you for instance need to persist the message to disc, as a binary file, etc.
 You can also supply **[raw]** as you invoke **[crypto.rsa.decrypt]** if you know the content in the message is
@@ -214,7 +199,7 @@ array, instead of its base64 encoded version.
 ### Symmetric cryptography
 
 RSA is asymmetric cryptography, implying a different key is used for *decrypting* the data, than that which
-was used to *encrypt* the data. This project also supports symmetric cryptography, more specifically the AES
+was used to *encrypt* the data. This project also supports *symmetric* cryptography, more specifically the AES
 encryption algorithm. This algorithm requires the *same key* to decrypt some content that was used to encrypt
 the data, and the key must either be 128, 192 or 256 bits long. Below is an example.
 
@@ -270,9 +255,11 @@ crypto.random
 
 AES and RSA are only really useful when combined. Hence, this project contains the following convenience slots.
 
-* __[crypto.encrypt]__ - Encrypts some message using AES + RSA
-* __[crypto.decrypt]__ - Decrypts some message using AES + RSA
-* __[crypto.get-key]__ - Returns the fingerprint of the RSA key that was used to encrypt some message using **[crypto.encrypt]**
+* __[crypto.encrypt]__ - Encrypts some message using AES + RSA, and signs the message in the process
+* __[crypto.decrypt]__ - Decrypts some message using AES + RSA, optionally verifying a signature in the process
+* __[crypto.sign]__ - Cryptographically signs a message using RSA and creates a package containing both signature, signing key's fingerprint, and the content that was signed
+* __[crypto.verify]__ - The opposite of the above, that verifies the integrity of a package created with **[crypto.sign]**
+* __[crypto.get-key]__ - Returns the fingerprint of the RSA key that was used to encrypt some message using **[crypto.encrypt]** or sign some message using **[crypto.sign]**
 
 The **[crypto.encrypt]** slot requires some message/content, a signing key, an encryption key, and your signing
 key's fingerprint. This slot will first cryptographically sign your message using the private key. Then it
@@ -296,26 +283,31 @@ crypto.encrypt:Some super secret message
 // Decrypting the above encrypted message.
 crypto.decrypt:x:-
    decryption-key:x:././*/crypto.rsa.create-key/[0,1]/*/private
+   verify-key:x:././*/crypto.rsa.create-key/[1,2]/*/public
 ```
 
 **Notice** - We're using only 512 bit strength in the above example. Make sure you (at least) use
-2048, preferably 4096 in real world usage.
+2048, preferably 4096 in real world usage. The **[crypto.encrypt]** slot can also optionally handle
+a **[seed]** argument, which will seed the CS RNG that's used to generate a symmetric AES encryption
+key.
 
-This slot can also optionally handle a **[seed]** argument, which will seed the CS RNG that's used to generate
-a symmetric AES encryption key. To understand what occurs in the above Hyperlambda example, let's walk through
-it step by step, starting from the **[crypto.encrypt]** invocation.
+To understand what occurs in the above Hyperlambda example, let's walk through it step by step,
+starting from the **[crypto.encrypt]** invocation.
 
 1. The message _"Some super secret message"_ is first cryptographically signed using the **[signing-key]**
 2. The signed message is then encrypted using a CSRNG generated AES key
 3. The AES key from the above is then encrypted using the **[encryption-key]**, that's assumed to be the recipient's public key
 4. The signing key's fingerprint is stored inside of the encrypted content, such that when the message is decrypted, the other party can verify that the signature originated from some trusted party
-5. The encryption key's fingerprint is stored as bytes, prepended before the encrypted message, which allows the other party to retrieve the correct decryption key, according to what encryption key the caller encrypted the message with
+5. The encryption key's fingerprint is stored as bytes, prepended before the encrypted message, which allows the other party to retrieve the correct decryption key, according to what encryption key the caller encrypted the message with. To retrieve a cryptography operation key fingerprint, you can use **[crypto.get-key]**
 
 Hence, the *only* thing that is in plain sight in the above encrypted message, is the fingerprint of the public
 key that was used to encrypt the message. Only after the message is decrypted, the signature for the message
 can be retrieved, together with the fingerprint of the key that was used to sign the message. Hence, what would
 normally be a more complete process, is that after the receiver decrypts the message, he should also verify that
-the signature originates from some trusted party - Such as illustrated below.
+the signature originates from some trusted party. This can be done by simply *omitting* the **[verify-key]** argument
+as you invoke **[crypto.decrypt]**, and then invoke **[crypto.get-key]** on the result of the decryption process,
+for then to use the result of **[crypto.get-key]** to lookup the public key used to *verify* the signature of the
+package.
 
 ```
 // Recipient's key.
@@ -335,22 +327,21 @@ crypto.encrypt:Some super secret message
 // Decrypting the above encrypted message.
 crypto.decrypt:x:-
    decryption-key:x:././*/crypto.rsa.create-key/[0,1]/*/private
+   
+// Uncomment this line to retrieve signing key's fingerprint
+// That you can use to lookup the public key needed to verify
+// the signature
+// crypto.get-key:x:-
 
 // Verifying signature of encrypted message.
-crypto.verify:x:-
+crypto.verify:x:@crypto.decrypt
    public-key:x:././*/crypto.rsa.create-key/[1,2]/*/public
 ```
 
 Only after the message is verified, the actual content of the message is possible to read, as the
 value of the **[crypto.verify]** slot - Unless you pass in a **[verify-key]** during the invocation
 to **[crypto.decrypt]**, at which point that key will be used to verify the signature of the message,
-after package has been encrypted. Of course, normally you wouldn't know the the idenity of the signer,
-or what public key to use to verify the signature, before *after* you have decrypted the message.
-At which point you can use **[crypto.get-key]** to retrieve the signing key, after having decrypted
-the message.
-
-**Notice** - We're using only 512 bit strength in the above example. Make sure you (at least) use
-2048, preferably 4096 in real world usage.
+after the package has been decrypted.
 
 If the above invocation to **[crypto.verify]** does not throw an exception, we know for a fact that
 the message was cryptographically signed with the private key that matches its **[public-key]** argument.
@@ -359,28 +350,20 @@ to elevate the rights of the user, only *after* having verified the message orig
 party.
 
 Hence, from the caller's perspective it's *one* invocation to encrypt and sign a message. From the receiver's
-perspective it's *two* steps to both decrypt and verify the integrity of a message, unless you know who
-the message originated from. The reasons for this, is because we do *not normally know* who signed the message,
-before the message has been decrypted using the receiver's private key. This prevents any part of the message,
-except its bare minimum to be provided over your insecure channel - Giving spoofers and malicious hackers
-literally nothing to work with, except the fingerprint of the public key the message was encrypted with.
+perspective it's normally *two* steps to both decrypt and verify the integrity of a message, unless you know who
+the message originated from.
 
-Hence, malicious adversaries in the middle of the communication, will not know who the message originated from,
-only to what decryption key it was addressed. In addition no adversary will be able to read the encrypted content.
+**Notice** - We're using only 512 bit strength in the above example. Make sure you (at least) use
+2048, preferably 4096 in real world usage.
 
 ### The encryption format
 
-The encrypted package has the following format. Notice, the encryption and signing is a two step process.
-Hence, the steps for the first process is as follows.
+The encrypted package has the following format.
 
 1. Signing key's fingerprint in SHA256 `byte[]` format, 32 bytes long
 2. The length of the signature as `int`, 4 bytes long
 3. The actual signature of the message
 4. The content of the message in `byte[]` format
-
-**Notice** - At this point *nothing has been encrypted* yet.
-
-Logically it becomes as follows; SHA256(signing_key) + signature_length + signature + plain_text_content.
 
 Afterwards the result from the above steps is encrypted using AES, with a random generated session key 
 that is 32 bytes long. And another package is created, which is the final package, intended for being sent
@@ -391,17 +374,16 @@ to the recipient. The final encryption package has a structure as follows.
 3. The encrypted session key, encrypted using the recipient's public RSA key
 4. The AES encrypted content from the above signing step
 
-Logically it becomes as follows; SHA256(RSA_encryption_key) + length_of_encrypted_AES_key +
-encrypted_AES_key + AES_encrypted_content. Everything as raw `byte[]`.
+Hence, only when *both* of the above lists are done, you have a final encryption package to send
+to some recipient.
 
-Hence, the other party can retrieve the encryption key used for encrypting the package, using for instance
+The other party can retrieve the encryption key used for encrypting the package, using for instance
 the **[crypto.get-key]** slot on the package. Then the receiver can use his private RSA key to decrypt
 the AES key, and use the decrypted AES key to decrypt the rest of the package - Which will result in getting the
-package's plain text content, plus the signature, in addition to the fingerprint of the RSA key used to sign
-the package. However, all of these steps are done automatically if you use the **[crypto.decrypt]** slot.
-Except signature verification. The reasons why the signature verification is a second step, is because
-we'll need to supply a public key to verify the signature, and we don't know which RSA key was used to
-sign the message, before we have *decrypted* the message.
+fingerprint of the RSA key used to sign the package, then the signature, and only *then* the content of
+the message. However, all of these steps are done automatically if you use the **[crypto.decrypt]** slot,
+except the signature verification process, unless you provide a **[verify-key]** argument to the decryption
+process.
 
 The AES key is generated using Bouncy Castle's `SecureRandom` implementation, resulting in a 256 bit
 cryptography key. This key again is encrypted using whatever bit strength you selected as you created
@@ -416,50 +398,26 @@ not know who, if any signed the package - Or any other parts of the message - As
 to somehow crack the AES encryption, and/or somehow retrieve the private RSA key the AES package's
 encryption key was encrypted with.
 
-## Cryptography concerns
+## Reference documentation
 
-Even assuming you can 100% perfectly communicate in privacy today, your privacy is only as good as a malicious
-agent's ability to brute force prime numbers in the case of RSA, and similar techniques with Elliptic Curve.
-This means that even though you create an extremely strong key pair according to today's standard - Due to
-Moore's law, some 5-10 years down the road, the NSA and the CIA will probably be able to reproduce your private
-key, using nothing but your public key as input. And some 10-20 years later, some kid with a pocket calculator,
-will also probably be able to do the same. Since agencies such as the FSB, NSA and the MI6 also happens to
-vacum clean the internet, for everything transmitted through your ISP, this implies that 5-10 years from now,
-they'll be able to read your communication, and figure out what you were talking about some 5-10 years ago.
+This project provides the following slots.
 
-Also, as quantum computing becomes practical to implement, today's cryptography based upon _"hard problems"_,
-will effectively prove useless towards a serious quantum computer's ability to perform multiple math
-operations simultaneously, allowing a malicious agent to reproduce your private key in milliseconds, almost
-regardless of its strength. So far, we don't know about such quantum computers, but it is assumed they will
-become available in the not too distant future for organisations with very deep pockets.
-
-This implies that privacy is like fruit and vegetables; It rots over time. If you can live with this,
-you can eliminate most of its concerns, by making sure you periodically create stronger and stronger keypairs,
-with higher and higher bit strength. However, in the case quantum computing should somehow be practical,
-even such strategies are futile for traditional cryptography, such as EC and RSA. If these are no concerns
-for you, you can still use cryptography to have a _"practical form of privacy"_ in your communication,
-but have this in mind as you start using cryptography, since there are no certainties when it comes
-to this subject. And of course, even if you had access to 100% perfect privacy in your communication with
-others, you still need to trust the ones you're communicating with to not tell others about what you
-are communicating to them ...
-
-### Torture based decryption
-
-In addition to the above concerns, any shmuck with a baseball bat could probably _"decrypt"_ your
-private communication, by simply coercing and torturing the other party to spill the beans. Inevitably,
-at some point, everybody breaks. Although there exist ways to counter this too, by for instance start
-lying immediately once the torture begins, and/or pretend to be insane - At which point as the torture
-victim breaks, he's lied so much, and acted so crazy, that it becomes impossible for the torturer to
-believe anything that his victim says - This is probably the simplest way of _"decryption"_ that exists,
-and is easily within the means of any gorilla having enough IQ to open a door.
-
-Hence, there is no true privacy, only shades of privacy. This is true regardless of how strong encryption
-you are using. Hence ...
-
-> The only true privacy that exists, is never telling anybody anything!
-
-With the above disclaimer set aside, I guarantee you that I have done *everything* I can to make
-sure the cryptography slots in Magic and this library is as strong and secure as I am able to.
+* __[crypto.hash]__ - Creates a hash of the specified string value/expression's value, using the specified **[algorithm]**, that defaults to SHA256
+* __[crypto.password.hash]__ - Creates a cryptographically secure hash from the specified password, expected to be found in its value node. Uses blowfish, or more specifically BCrypt internally, to create the hash with individual salts.
+* __[crypto.password.verify]__ - Verifies that a **[hash]** argument matches towards the password specified in its value. The **[hash]** is expected to be in the format created by BCrypt, implying the hash was created with e.g. **[crypto.password.hash]**.
+* __[crypto.random]__ - Creates a cryptographically secured random string for you, with the characters [a-zA-Z0-9].
+* __[crypto.rsa.create-key]__ - Creates an RSA keypair for you, allowing you to pass in **[strength]**, and/or **[seed]** to override the default strength being 2048, and apply a custom seed to the random number generator. The private/public keypair will be returned to caller as **[public]** and **[private]** after invocation, which is the DER encoded keys, encoded by default as base64.
+* __[crypto.rsa.sign]__ - Cryptographically signs a message (provided as value) with the given private **[private-key]**, and returns the signature for your content as value. The signature content will be returned as the base64 encoded raw bytes being your signature.
+* __[crypto.rsa.verify]__ - Verifies a previously created RSA signature towards its message (provided as value), with the specified public **[public-key]**, optionally allowing the caller to provide a hashing **[algorithm]**, defaulting to SHA256. The slot will throw an exception if the signature is not matching the message passed in for security reasons.
+* __[crypto.rsa.encrypt]__ - Encrypts the specified message (provided as value) using the specified public **[public-key]**, and returns the encrypted message as a base64 encoded encrypted message by default.
+* __[crypto.rsa.decrypt]__ - Decrypts the specified message (provided as value) using the specified private **[private-key]**, and returns the decrypted message as its original value.
+* __[crypto.aes.encrypt]__ - Encrypts a piece of data using the AES encryption algorithm
+* __[crypto.aes.decrypt]__ - Decrypts a piece of data previously encrypted using AES encryption
+* __[crypto.encrypt]__ - Convenience slot combining AES and RSA encryption to encrypt some message
+* __[crypto.decrypt]__ - The opposite of the above
+* __[crypto.sign]__ - Signs a package, and returns the combination of the signature and package to caller
+* __[crypto.verify]__ - Verifies a signature created using the **[crypto.sign]** slot
+* __[crypto.get-key]__ - Returns the public key that was used to encrypt a message using the above slot. Result is returned in _"fingerprint format"_.
 
 ## Quality gates
 
