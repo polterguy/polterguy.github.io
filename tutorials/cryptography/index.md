@@ -73,17 +73,50 @@ where I illustrate AES cryptography using Magic.
 ## AES + RSA == really cool
 
 In isolation though, both RSA and AES are nifty things, but not really that useful. Only
-when combining RSA and AES, we end up with some real world use cases for cryptography. In the
-video below I illustrate how to combine both asymmetric and symmetric cryptography, with
-cryptographic _"signatures"_, that verifies that some message originated from a trusted party,
-and was not tampered with. These are probably the slots you *should* use in real world examples,
-since they combine AES with RSA.
+when combining RSA and AES, we end up with some real world practical use cases for cryptography. Magic of course
+contains several _"combination helper slots"_ that helps you out here, reducing the creation of encrypted
+and cryptographically signed messages down to a single signal invocation. Below is a piece of Hyperlambda
+that combines AES and RSA to encrypt a message intended to be sent over an insecure connection to
+some recipient whom you have access to the public key for. For simplicity reasons, we create a key pair
+as an integral part of the snippet, but these would normally be things you already have access to, in for
+instance some database table or file, etc.
 
-<div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
-<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/d3wpmp7uSy8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+```
+// Recipient's key.
+crypto.rsa.create-key
+   strength:512
 
-The above is a fairly *extreme* use case, but you can find many more examples of combining AES with RSA
-in [the documentation](/documentation/magic.lambda.crypto/) for the magic.lambda.crypto library.
+// Sender's key.
+crypto.rsa.create-key
+   strength:512
+
+// Encrypting some message.
+crypto.encrypt:Some super secret message
+   encryption-key:x:././*/crypto.rsa.create-key/[0,1]/*/public
+   signing-key:x:././*/crypto.rsa.create-key/[1,2]/*/private
+   signing-key-fingerprint:x:././*/crypto.rsa.create-key/[1,2]/*/fingerprint
+
+// Decrypting the above encrypted message.
+crypto.decrypt:x:-
+   decryption-key:x:././*/crypto.rsa.create-key/[0,1]/*/private
+   
+// Uncomment this line to retrieve signing key's fingerprint
+// That you can use to lookup the public key needed to verify
+// the signature
+// crypto.get-key:x:-
+
+// Verifying signature of encrypted message.
+crypto.verify:x:@crypto.decrypt
+   public-key:x:././*/crypto.rsa.create-key/[1,2]/*/public
+```
+
+Normally, just before the last invocation to **[]crypto.verify**, you
+would invoke **[crypto.get-key]** on the result of the decryption, and use
+the fingerprint returned from this invocation to lookup a public key needed
+to verify the signature of the message.
+
+You can find many more examples of combining AES with RSA
+in [the documentation](/documentation/magic.lambda.crypto/) for the magic.lambda.crypto library, in addition
+to information about how the above helper slots is implemented, and their cryptography format, etc.
 
 * [Use case BabelFish](/tutorials/use-case-translation/)
