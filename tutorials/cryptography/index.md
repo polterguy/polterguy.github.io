@@ -76,9 +76,8 @@ In isolation though, both RSA and AES are nifty things, but not really that usef
 when combining RSA and AES, we end up with some real world use cases for cryptography. In the
 video below I illustrate how to combine both asymmetric and symmetric cryptography, with
 cryptographic _"signatures"_, that verifies that some message originated from a trusted party,
-and was not tampered with. And the use case is to transmit Hyperlambda from one client to
-some server, and have the server *securely* execute the specified Hyperlambda and return the
-result of the invocation.
+and was not tampered with. These are probably the slots you *should* use in real world examples,
+since they combine AES with RSA.
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/d3wpmp7uSy8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
