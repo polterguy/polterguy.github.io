@@ -362,7 +362,7 @@ The encrypted package has the following format.
 1. Signing key's fingerprint in SHA256 `byte[]` format, 32 bytes long
 2. The length of the signature as `int`, 4 bytes long
 3. The actual signature of the message
-4. The content of the message in `byte[]` format
+4. The content of the message in UTF encoded `byte[]` format
 
 Afterwards the result from the above steps is encrypted using AES, with a random generated session key 
 that is 32 bytes long. And another package is created, which is the final package, intended for being sent
