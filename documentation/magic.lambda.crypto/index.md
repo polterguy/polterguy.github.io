@@ -108,7 +108,7 @@ crypto.rsa.create-key
    seed:some random jibberish text
 ```
 
-Both the **[strength]** and **[seed]** is optional above. Strength will default to 2048, which might be too little
+Both the **[strength]** and **[seed]** is optional above. Strength will default to 2048, which might be too weak
 for serious cryptography, but increasing your strength too much, might result in that the above function spends several
 seconds, possibly minutes to return if you set it too high - In addition to that your key pair becomes very large.
 The **[seed]** is optional, and even if you don't provide a seed argument, the default seed should still be strong
@@ -123,7 +123,7 @@ Notice, if you want the key back as raw bytes, you can supply a **[raw]** argume
 true, at which point the returned key(s) will only be DER encoded, and returned as a raw `byte[]`. This might be
 useful, if you for instance need to persist the key to disc, as a binary file, etc. All the RSA slots can return
 their results as `byte[]` values, if you provide a **[raw]** argument to them, and set its value to true.
-If you don't provide a raw argument, the returned value will be the base64 encoded DER format of your key pair.
+If you don't provide a raw argument, the returned value will be base64 encoded.
 
 This slot will also return the fingerprint of your public key, which is useful to keep around somewhere,
 since it's used in other cryptographic operations to identify keys used in operation, etc. The public key's
