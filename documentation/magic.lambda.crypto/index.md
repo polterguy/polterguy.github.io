@@ -66,7 +66,7 @@ as _"your public key"_. This key can do two important things.
 1. Your public key can encrypt data such that *only* its private counterpart key can decrypt the data
 2. Your public key can verify that a message originated from a party that has access to its private counterpart
 
-Hence, keeping your *private* key as just that, implying **private**, is of outmost importance, otherwise 3rd
+Hence, keeping your *private* key as **private**, is of outmost importance, otherwise 3rd
 parties might read messages others send to you, and also impersonate you in front of others. In addition, securely
 delivering your public key to the other party, is of equal importance, to make sure they're using the *correct*
 public key in their communication with you. If you can keep your private key private,
