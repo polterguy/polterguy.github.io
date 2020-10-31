@@ -132,7 +132,7 @@ The above basically becomes the equivalent of the foundation
 for _"code based block chain technology"_, where instead of only having financial
 transactions on the block chain, you could store code snippets successfully
 executed in a block chain, among other things. The lambda invocations can be found
-at roughly 6-7 minutes out in the video.
+at roughly 4-5 minutes out in the video.
 
 You can find many more examples of combining AES with RSA
 in [the documentation](/documentation/magic.lambda.crypto/) for the magic.lambda.crypto library, in addition
