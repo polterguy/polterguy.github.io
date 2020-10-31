@@ -46,7 +46,9 @@ crypto.hash:x:@.data
    format:raw
 ```
 
-You can choose between the following hashing algorithms as you consume the above slot.
+To override the hashing algorithm used when creating hash values, apply an **[algorithm]** argument, and
+set its value to the hashing algorithm you want to use. You can choose between the following hashing
+algorithms as you consume the above slot.
 
 * SHA256
 * SHA384
