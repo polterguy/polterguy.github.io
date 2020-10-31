@@ -114,6 +114,26 @@ would invoke **[crypto.get-key]** on the result of the decryption, and use
 the fingerprint returned from this invocation to lookup a public key needed
 to verify the signature of the message.
 
+## Cryptographically signed HTTP Lambda invocations
+
+For a really cool use case of what you can use this for, you can watch the
+following video, where I illustrate cryptographically signed HTTP lambda
+invocations, allowing me to transmit code from a client, to a server, for
+then to have the code cryptographically signed. Resulting in that the
+signature _"authenticates"_ and _"authorises"_ the client, and associates
+the client with keywords and functions (slots) that the client is legally
+allowed to execute on the server.
+
+<div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
+<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/aqR_CIyDUqM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+The above basically becomes the equivalent of the foundation
+for _"code based block chain technology"_, where instead of only having financial
+transactions on the block chain, you could store code snippets successfully
+executed in a block chain, among other things. The lambda invocations can be found
+at roughly 6-7 minutes out in the video.
+
 You can find many more examples of combining AES with RSA
 in [the documentation](/documentation/magic.lambda.crypto/) for the magic.lambda.crypto library, in addition
 to information about how the above helper slots is implemented, and their cryptography format, etc.
