@@ -190,13 +190,10 @@ since encryption will result in a byte array, which is often inconvenient to han
 You can override this by passing in a **[raw]** argument, and set its value to true, at which point a `byte[]` will be
 returned.
 
-If you want the message back as raw bytes, you can supply a **[raw]** argument, and set its value to boolean
-true as you invoke **[crypto.rsa.encrypt]**, at which point the returned encrypted message will be returned as a
-raw `byte[]`. This might be useful, if you for instance need to persist the message to disc, as a binary file, etc.
 You can also supply **[raw]** as you invoke **[crypto.rsa.decrypt]** if you know the content in the message is
 not a string, but rather an array of `byte[]`. Base64 encoding a byte array normally makes it larger in size,
-and also require CPU resources in both ends of the communication, making it sometimes important to have the raw byte
-array, instead of its base64 encoded version.
+and also require CPU resources in both ends of the communication, implying it is sometimes important to have the
+raw byte array, instead of its base64 encoded equivalent.
 
 ### Symmetric cryptography
 
