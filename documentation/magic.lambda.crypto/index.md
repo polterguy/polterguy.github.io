@@ -397,7 +397,7 @@ not know who, if any signed the package - Or any other parts of the message - As
 to somehow crack the AES encryption, and/or somehow retrieve the private RSA key the AES package's
 encryption key was encrypted with.
 
-## Reference documentation
+## Exhaustive list of slots
 
 This project provides the following slots.
 
