@@ -80,7 +80,7 @@ content you send to others, before the other party receives it. Hence, cryptogra
 Depending upon your paranoia level, you might just send your public key in an email, which is considered insecure -
 Or you might need to physically meet the person whom you want to communicate with,
 and give him a USB stick with your public key, which is considered full paranoia level. The latter might be important
-if you fear what's often referred to as a _"man in the middle attack"_, where some malicious agent, takes your public key,
+if you fear what's often referred to as a _"man in the middle attack"_, where some malicious adversary, takes your public key,
 and gives a bogus and fake public key to the other party. This results in that the man in the middle
 can intercept your communication, decrypt it, and re-encrypt it with your public key, before he or she
 sends it to you - In addition to that he can use a similar mechanism to impersonate your signatures,
@@ -91,7 +91,7 @@ There are several different ways to create a key pair, just have the above in mi
 cryptography in your Hyperlambda applications. Most of the cryptography functions in this library is
 using Bouncy Castle, which is a thoroughly tested library for doing cryptography. Bouncy Castle is
 owned by a charitable organisation in Australia, so they don't need to obey by American laws, reducing
-American intelligence services ability to lawfully force them to build backdoors and similar constructs
+American intelligence services ability to coerce them to build backdoors and similar constructs
 into their code. Bouncy Castle is also Open Source, allowing others to scrutinise their code for such
 backdoors. However, with cryptography, there *are no guarantees*, only a _"general feeling and concent"_
 amongst developers that it's secure.
