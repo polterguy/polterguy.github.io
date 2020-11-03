@@ -14,10 +14,10 @@
 
 ## 1. Start Magic
 
-1. Open the _"magic.sln"_ file in Visual Studio and click F5. If you're using Mac or Linux, open a terminal window in the backend folder and type `dotnet run`
-2. Open a command prompt/terminal in the frontend folder and execute `npm link`
+1. Open the _"magic.sln"_ file in Visual Studio and click F5. If you're VS Code, open a terminal window, go to the backend folder and type `dotnet run`
+2. Open a terminal window in the frontend folder and execute `npm link`
 3. After npm link is done execute `ng serve`
-4. Go to [localhost:4200](https://localhost:4200) with your browser
+4. Go to [localhost:4200](http://localhost:4200) with your browser
 5. Login with root/root
 
 ## 2. Setup Magic
