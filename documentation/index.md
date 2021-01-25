@@ -50,6 +50,7 @@ information about how to obtain an Enterprise License.
 * [magic.lambda.hyperlambda](/documentation/magic.lambda.hyperlambda/) - Parse Hyperlambda from text, and vice versa
 * [magic.lambda.http](/documentation/magic.lambda.http/) - Invoking HTTP REST endpoints from Hyperlambda
 * [magic.lambda.crypto](/documentation/magic.lambda.crypto/) - Cryptography helpers for Hyperlambda
+* [magic.lambda.crypto](/documentation/magic.lambda.guid/) - Creating a guid from Hyperlambda
 * [magic.lambda.config](/documentation/magic.lambda.config/) - Accessing configuration values from Hyperlambda
 * [magic.lambda.scheduler](/documentation/magic.lambda.scheduler/) - Create scheduled tasks and workflows from Hyperlambda
 * [magic.lambda.json](/documentation/magic.lambda.json/) - Manipulating JSON from Hyperlambda
