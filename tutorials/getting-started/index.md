@@ -8,15 +8,11 @@
 4. [MySQL](https://dev.mysql.com/downloads/mysql/) or [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 5. Download Magic from the link above
 
-<div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
-<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/9ZXs4Nb4QVo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
 ## 1. Start Magic
 
-1. Open the _"magic.sln"_ file in Visual Studio and click F5. If you're VS Code, open a terminal window, go to the backend folder and type `dotnet run`
-2. Open a terminal window in the frontend folder and execute `npm link`
-3. After npm link is done execute `ng serve`
+1. Open the _"magic.sln"_ file in Visual Studio and click F5. If you're using VS Code, open a terminal window, go to the `backend` folder, and type `dotnet run`
+2. Open a terminal window in the `frontend` folder and run `npm link`
+3. After npm link is done run `ng serve`
 4. Go to [localhost:4200](http://localhost:4200) with your browser
 5. Login with root/root
 
@@ -25,7 +21,8 @@
 To setup Magic, you'll have to create an authentication
 and authorization database. Magic will do this automatically for you,
 but you will have to give it a valid connection string, in addition
-to choosing a _"root"_ password.
+to choosing a _"root"_ password. At this point you'll need either MySQL
+or SQL Server installed somewhere.
 
 **Notice** - It's important that you keep the `{database}` parts of your
 connection string as is. This is because Magic will substitute this
@@ -34,42 +31,20 @@ database connection later. You also need to choose the correct
 _database type_ - Implying MySQL or Microsoft SQL Server, depending
 upon what database type you want to use Magic with.
 
-![Setup Magic](https://servergardens.files.wordpress.com/2020/09/setup-magic.png)
-
 Click _"Save"_, and Magic will spend some few seconds configuring.
 
-## 3. Crudify your auth database
+## 4. Crudify your database
 
-Click the _"Crudify"_ menu item, and choose the _"magic"_ database.
-Select all tables, and click the _"Crudify all"_ button. After a
-couple of seconds, Magic have created CRUD HTTP endpoints necessary
-to administrate your users and roles.
-
-![Crudify your Magic database](https://servergardens.files.wordpress.com/2020/09/crudify-magic-database.png)
-
-## 4. Crudify your own database
-
-Select your own database, and then choose _"All tables"_.
+Select your database, then choose _"All tables"_.
 Click _"Crudify all"_. After a couple of seconds, you'll
 have CRUD HTTP endpoints wrapping every single table in
 your database.
 
-### 4.5 - No existing database?
-
-Download one of these free database scripts for SQL Server or MySQL.
-
-* [Bike Store example SQL Server database](https://cdn.sqlservertutorial.net/wp-content/uploads/SQL-Server-Sample-Database.zip)
-* [MySQL Sakila database](https://downloads.mysql.com/docs/sakila-db.zip)
-
-Run one of the above database scripts through
-_"SQL Server Management Studio"_ (SSMS) or
-_"MySQL Workbench"_.
-
 ## 5. Generate your frontend
 
-Go to _"Endpoints"_, give your application a name, and
-choose a template. Click the _"Generate"_
-button, and after a couple of seconds, you'll get a zip file.
+Choose the _"Frontend"_ tab, select a template, give your app
+a name, select modules to crudify, and click _"Generate"_.
+After a couple of seconds, you'll get a zip file.
 Unzip the file Magic gave you, open a terminal/command
 prompt, go to the folder where the zip file was unzipped,
 and type `npm link`. When npm link is done, type the
