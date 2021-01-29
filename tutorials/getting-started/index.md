@@ -32,9 +32,14 @@ _database type_ - Implying MySQL or Microsoft SQL Server, depending
 upon what database type you want to use Magic with.
 Click _"Save"_, and Magic will spend some few seconds configuring.
 
+Afterwards you'll be asked to crudify your magic database, and generate
+a cryptography key pair for your server. Supply your name and email address
+as you generate your server key pair, after having crudified your magic database,
+and you're done.
+
 ## 4. Crudify your database
 
-Select your database, then click _"Crudify all tables"_.
+Open the _"Generator"_ menu item, select your database, click _"Crudify all tables"_.
 After a couple of seconds, you'll have CRUD HTTP endpoints
 wrapping every single table in your database.
 
