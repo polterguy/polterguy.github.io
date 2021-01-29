@@ -6,7 +6,7 @@
 2. [NodeJS](https://nodejs.org/en/download/)
 3. [Angular](https://angular.io/cli)
 4. [MySQL](https://dev.mysql.com/downloads/mysql/) or [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
-5. Download Magic from the link above
+5. Download Magic from the link above, and unzip the zip file
 
 ## 1. Start Magic
 
