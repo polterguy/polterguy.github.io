@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-1. [Visual Studio](https://visualstudio.microsoft.com/downloads/) or [VS Code](https://code.visualstudio.com/download) + [DotNet CLI](https://dotnet.microsoft.com/download)
+1. [Visual Studio](https://visualstudio.microsoft.com/downloads/) or [VS Code](https://code.visualstudio.com/download) + [DotNet CLI and SDK](https://dotnet.microsoft.com/download)
 2. [NodeJS](https://nodejs.org/en/download/)
 3. [Angular](https://angular.io/cli)
 4. [MySQL](https://dev.mysql.com/downloads/mysql/) or [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
