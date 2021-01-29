@@ -33,7 +33,8 @@ Click _"Save"_, and Magic will spend some few seconds configuring.
 Afterwards you'll be asked to crudify your magic database, and generate
 a cryptography key pair for your server. Supply your name and email address
 as you generate your server key pair, after having crudified your magic database,
-and you're done.
+and you're done. If you want to, you can run the assumptions in the system,
+to sanity check the system's state, to verify it's asetup correctly.
 
 ## 4. Crudify your database
 
