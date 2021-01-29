@@ -313,9 +313,9 @@ tasks.list
 
 The **[scheduler.stop]** will stop the scheduler, meaning no repeating tasks or tasks with a due date in
 the future will execute. Notice, if you create a new task with a due date, and/or a repetition pattern,
-the scheduler will automatically start again, unless you create the task setting its **[auto-start]**
-argument explicitly to false. When you start the scheduler again, using for instance **[scheduler.start]**,
-all tasks will automatically resume, and tasks that have due dates in the past, will immediately start executing.
+the scheduler will automatically start again. When you start the scheduler again, using for
+instance **[scheduler.start]**, all tasks will automatically resume, and tasks that have due dates in
+the past, will immediately start executing.
 
 To determine if the task scheduler is running or not, you can invoke **[scheduler.running]**, which will
 return `true` if the scheduler is running. Notice, if you have no scheduled tasks, it will always

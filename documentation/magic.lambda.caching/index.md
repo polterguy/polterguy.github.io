@@ -6,6 +6,8 @@ Cache helper slots for Magic, more specifically the following slots.
 * __[cache.set]__ - Adds the specified item to the cache.
 * __[cache.get]__ - Returns a previously cached item, if existing.
 * __[cache.try-get]__ - Attempts to retrieve an item from cache, and if not existing, invokes __[.lambda]__ to retrieve item, and saves it to cache, before returning it to the caller.
+* __[cache.clear]__ - Completely empties cache.
+* __[cache.list]__ - Lists all items in cache.
 
 All of the above slots requires a key as its value.
 
@@ -15,7 +17,6 @@ Invoke this slot to save an item to the cache. The slot takes 3 properties, whic
 
 * __[value]__ - The item to actually save to the cache. If you pass in null, any existing cache items will be removed.
 * __[expiration]__ - Number of seconds to keep the item in the cache.
-* __[expiration-type]__ - Type of expiration, can be _"sliding"_ or _"absolute"_.
 
 Absolute expiration implies that the item will be kept in the cache, for x number of seconds, before
 evicted from the cache. Sliding expiration implies that if the cached item is accessed more frequently
@@ -31,7 +32,6 @@ every 5 seconds.
 ```
 cache.set:cache-item-key
    expiration:5
-   expiration-type:sliding
    value:Howdy world
 ```
 
@@ -61,24 +61,38 @@ given the same key.
 ```
 cache.try-get:cache-key
    expiration:5
-   expiration-type:absolute
    .lambda
       return:Howdy world
 ```
 
-## Configuration settings
+## [cache.clear]
 
-You can provide default settings for both **[expiration]** and **[expiration-type]** in
-your _"appsettings.json"_ file, allowing you to provide default values, used if no explicit arguments
-are supplied as you invoke **[cache.set]** and **[cache.try-get]**. This can be done as follows.
+This is a shorthand slot to completely clear cache, removing all items.
 
-```json
-  "magic": {
-    "caching": {
-      "expiration": 5,
-      "expiration-type": "sliding"
-    }
 ```
+cache.set:cache-item-key
+   expiration:5
+   value:Howdy world
+cache.clear
+cache.get:cache-item-key
+```
+
+Notice, the above Hyperlambda should not return any item at its last invocation to **[cache.get]**
+since the cache was cleared before invoking it.
+
+## [cache.list]
+
+Lists all items in cache, and returns to caller.
+
+```
+cache.set:cache-item-key
+   expiration:5
+   value:Howdy world
+cache.list
+```
+
+Notice, you might want to be careful with invoking this method if you have a lot of items in your cache,
+since it does not support any type of paging.
 
 ## Quality gates
 
