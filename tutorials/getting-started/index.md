@@ -1,5 +1,3 @@
-# Getting started with Magic
-
 ## Prerequisites
 
 1. [Visual Studio](https://visualstudio.microsoft.com/downloads/) or [VS Code](https://code.visualstudio.com/download) + [DotNet CLI and SDK](https://dotnet.microsoft.com/download)
