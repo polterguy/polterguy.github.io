@@ -1,41 +1,4 @@
 
-# Tutorials
-
-1. [Getting Started](/tutorials/getting-started/) - Setup Magic
-2. [Hyperlambda Hello World](/tutorials/hyperlambda-hello-world/) - From Hyperlambda Hello World to database HTTP endpoints
-3. [Database CRUD operations](/tutorials/database-crud-operations/) - Basics of CRUD
-4. [Sending an email](/tutorials/send-email/) - Sending emails using Hyperlambda
-5. [Extending Hyperlambda with C#](/tutorials/extending-hyperlambda/) - Extending Hyperlambda with C#
-6. [Expressions](/tutorials/expressions/) - Using expressions to reference nodes in your Hyperlambda
-7. [Branching and looping](/tutorials/lambda/) - Real programming in Hyperlambda
-8. [Super Duper Meta data](/tutorials/crudification-explained/) - And how the automatic CRUD process works
-9. [The Angular scaffolding process](/tutorials/angular-scaffolder/) - The output of Magic
-10. [Workflows and Task Scheduling](/tutorials/task-scheduler/) - How to create workflows and scheduled tasks in Magic
-11. [Creating your own template](/tutorials/theming/) - Explains how you can create your own template engine
-12. [Custom SQL HTTP endpoints](/tutorials/sql-http-endpoints/) - Explains how you can create your own template engine
-13. [Cryptography with Magic](/tutorials/cryptography/) - Symmetric and asymmetric cryptography with Magic
-
-# Use cases
-
-1. [BabelFish](/tutorials/use-case-translation/) - Let Google Translate simplify your translation requirements
-
-# Support
-
-If you have a support request of private nature, or a license inquiry, you can send us
-email at [post@servergardens.com](mailto:post@servergardens.com). If you want to submit a
-feature request or a bug report, you can do such through the project's
-[GitHub Issues](https://github.com/polterguy/magic/issues).
-Magic comes with professional support for Enterprise Licensed customers. Contact us for more
-information about how to obtain an Enterprise License.
-
-* [licensing@servergardens.com](mailto:licensing@servergardens.com)
-
-# The End of Coding - The Magic Architecture
-
-<div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
-<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/XljCYvaT5H0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
 # Documentation
 
 * [magic.node](/documentation/magic.node/) - Explains nodes, Hyperlambda and Expressions
@@ -65,3 +28,14 @@ information about how to obtain an Enterprise License.
 * [magic.io](/documentation/magic.io/) - IO operations in Magic
 * [magic.http](/documentation/magic.http/) - HTTP REST invocations in Magic from C#
 * [magic.library](/documentation/magic.library/) - A single NuGet package helper tying everything easily together
+
+# Support
+
+If you have a support request of private nature, or a license inquiry, you can send us
+email at [post@servergardens.com](mailto:post@servergardens.com). If you want to submit a
+feature request or a bug report, you can do such through the project's
+[GitHub Issues](https://github.com/polterguy/magic/issues).
+Magic comes with professional support for Enterprise Licensed customers. Contact us for more
+information about how to obtain an Enterprise License.
+
+* [licensing@servergardens.com](mailto:licensing@servergardens.com)

@@ -72,5 +72,3 @@ right corner of your dashboard.
 **Notice** - Unless you have obtained a valid license for Magic,
 it will stop working after 2 days. You can
 [obtain a license here](https://servergardens.com/buy/).
-
-* [Continue to Hyperlambda Hello World](/tutorials/hyperlambda-hello-world)
