@@ -26,8 +26,8 @@
 * [magic.lambda.caching](/documentation/magic.lambda.caching/) - Caching from Hyperlambda
 * [magic.lambda.strings](/documentation/magic.lambda.strings/) - Manipulate strings in Hyperlambda
 * [magic.lambda.scheduler](/documentation/magic.lambda.scheduler/) - Create scheduled tasks and workflows from Hyperlambda
-* [magic.lambda.hyperlambda](/documentation/magic.lambda.hyperlambda/) - Parse Hyperlambda from text, and vice versa
 * [magic.lambda.validators](/documentation/magic.lambda.validators/) - Validate input in Hyperlambda
+* [magic.lambda.hyperlambda](/documentation/magic.lambda.hyperlambda/) - Parse Hyperlambda from text, and vice versa
 
 # Support
 
