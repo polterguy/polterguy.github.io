@@ -12,6 +12,10 @@ docker-compose up
 Then when the Docker containers have been started, open your browser and go to [http://localhost:5555](http://localhost:5555). Then just use the default configuration settings during setup, type your name and email
 address, and Magic should work out of the box without having to mess with anything.
 
+<div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
+<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/2gos7BvNFkI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 ## Manual setup
 
 If you don't want to use Docker, you can also configure your development environment locally on your
