@@ -20,7 +20,7 @@ without having to mess with anything.
 ## Manual setup
 
 If you don't want to use Docker, you can also configure your development environment locally on your
-development machine. If so you will first of all need the following components.
+development machine using the code directly. If so you will first of all need the following components.
 
 1. [Visual Studio](https://visualstudio.microsoft.com/downloads/) or [VS Code](https://code.visualstudio.com/download) + [DotNet CLI and SDK](https://dotnet.microsoft.com/download)
 2. [NodeJS](https://nodejs.org/en/download/)
