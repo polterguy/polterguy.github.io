@@ -9,8 +9,9 @@ to install Magic in your server or cloud of choice.
 docker-compose up
 ```
 
-Then when the Docker containers have been started, open your browser and go to [http://localhost:5555](http://localhost:5555). Then just use the default configuration settings during setup, type your name and email
-address, and Magic should work out of the box without having to mess with anything.
+Then when the Docker containers have started, open your browser and go to [http://localhost:5555](http://localhost:5555). Then just use the default configuration settings during setup for MySQL, type
+your name and email address when you generate a key pair, and Magic should work out of the box
+without having to mess with anything.
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/2gos7BvNFkI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -26,7 +27,7 @@ development machine. If so you will first of all need the following components.
 3. [Angular](https://angular.io/cli)
 4. [MySQL](https://dev.mysql.com/downloads/mysql/) or [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 
-In the video below I go through the manu setup process.
+In the video below I go through the manual setup process.
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/CULMDMDPwws" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
