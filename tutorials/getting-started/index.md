@@ -9,7 +9,7 @@ to install Magic in your server or cloud of choice.
 docker-compose up
 ```
 
-Then when the Docker containers have started, open your browser and go to [http://localhost:5555](http://localhost:5555). Then just use the default configuration settings during setup for MySQL, type
+Then when the Docker containers have started, open your browser and go to [http://localhost:5555](http://localhost:5555), and use the default configuration settings for MySQL. Type
 your name and email address when you generate a key pair, and Magic should work out of the box
 without having to mess with anything.
 
