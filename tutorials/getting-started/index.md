@@ -240,7 +240,7 @@ to test my server you can go [magic.servergardens.com](https://magic.servergarde
 
 The first time you visit your server, it will take some time, since the nGinx proxy container
 will generate an SSL certificate from LetsEncrypt, to ensure you have an encrypted HTTPS channel
-for both your backend and your frontend. This nGinx proxy server will also automatically take
+for both your backend and your frontend. The nGinx proxy server will also automatically take
 care of renewals of your certificate, and provide sane defaults for you, when installing
 the certificate.
 
@@ -295,10 +295,7 @@ and rerun it, at which point it succeeded.
 
 And you are done :)
 
-**Notice** - The cryptographically invocation towards your own server *will fail*. This is because
-it's invoking `localhost:55247` instead of `api.xxx.com`. If you want to, you can edit this assumption,
-and modify the domain, and rerun it again to verify the sanity of your server - But this shouldn't
-really be necessary.
+You can now move onwards to for instance crudifying your Babelfish or Sakila database if you wish.
 
 # Support
 
