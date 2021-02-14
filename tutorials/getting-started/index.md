@@ -297,6 +297,19 @@ And you are done :)
 
 You can now move onwards to for instance crudifying your Babelfish or Sakila database if you wish.
 
+### Licensing Magic
+
+2 days after you install Magic on your cloud, _Magic will stop working_ unless you have
+a valid license for Magic. To obtain a valid license click the navbar button in Magic
+in the top/left corner, and select the _"Configuration"_ menu item. Choose the _"License"_
+tab, and paste in your license key in the textarea at the middle of the screen. Click _"Apply"_
+and you're fully licensed.
+
+If you don't have a valid license key for Magic, you can click the _"obtain a valid license"_
+hyperlink, that will allow you to purchase one.
+
+![Getting licensed](https://servergardens.files.wordpress.com/2021/02/magic-license.png)
+
 # Support
 
 If you have a support request of private nature, or a license inquiry, you can send us
