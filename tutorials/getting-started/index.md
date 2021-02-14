@@ -108,7 +108,7 @@ screenshot below.
 ![Modifying docker file](https://servergardens.files.wordpress.com/2021/02/adding-domains.png)
 
 **Notice** - There are four places in total you have to edit this file. Change the domains in
-both the `ALLOWED_DOMAINS` part, in addition to the `SITES` part. It is _crucial that you keep all other parts of this file as it is_!
+both the `ALLOWED_DOMAINS` part, in addition to the `SITES` part. It is _crucial that you keep all other parts of this file exactly as it is._
 
 For reference purposes, this is how my file ended up looking like.
 
