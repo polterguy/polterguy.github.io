@@ -51,7 +51,7 @@ Ubuntu version 20.04, but the process should be similar with other versions of U
 
 ![Create Droplet](https://servergardens.files.wordpress.com/2021/02/create-droplet.png)
 
-Choose a region for your droplet, preferably close to where you intend to access it from,
+Choose a region for your droplet, preferably geographically close to where you intend to access it from,
 and then make sure you choose a root password for your droplet. This password should be very
 hard to guess, for security reasons, since it provides full access to your server.
 
