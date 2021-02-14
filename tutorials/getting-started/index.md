@@ -94,7 +94,7 @@ Your screen should now look like the following.
 Click enter once the installation process is done, and type the following into your terminal
 
 ```
-curl -L "https://gist.githubusercontent.com/polterguy/f16f74fdffae67f762715ba5d60f9177/raw/8d8fb79a4c80ad2bfb04a46d1c07cdad29ea2661/gistfile1.txt" -o "docker-compose.yml"
+curl -L "https://gist.githubusercontent.com/polterguy/f16f74fdffae67f762715ba5d60f9177/raw/86fd16e05bac1ed04565c02e352a0bb41c6b7116/gistfile1.txt" -o "docker-compose.yml"
 ```
 
 This will download a default _"docker-compose.yml"_ file for you, which you'll have to
