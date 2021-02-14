@@ -259,6 +259,9 @@ only includes MySQL, so even though Magic supports both MySQL and SQL Server out
 you'll have to choose MySQL as your database type at this point. Leave the MySQL connection
 string _exactly as is_, choose a root password, repeat it, and click the next button.
 
+**Notice** - It is _crucial_ that you choose a _very_ strong root password for Magic, since
+the root password grants anyone _full access_ to your Magic server.
+
 ![Configuring database](https://servergardens.files.wordpress.com/2021/02/configuring-magic.png)
 
 Then you will have to crudify your Magic database, which basically creates your backend, wrapping
