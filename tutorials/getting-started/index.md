@@ -88,7 +88,7 @@ Your screen should now look like the following.
 Click enter once the installation process is done, and type the following into your terminal
 
 ```
-curl -L "https://gist.githubusercontent.com/polterguy/f16f74fdffae67f762715ba5d60f9177/raw/59494323437019675ac3e98cdde5e851040294ba/gistfile1.txt" -o "docker-compose.yml"
+curl -L "https://gist.githubusercontent.com/polterguy/f16f74fdffae67f762715ba5d60f9177/raw/8d8fb79a4c80ad2bfb04a46d1c07cdad29ea2661/gistfile1.txt" -o "docker-compose.yml"
 ```
 
 This will download a default _"docker-compose.yml"_ file for you, which you'll have to
@@ -99,7 +99,7 @@ sudo nano docker-compose.yml
 ```
 
 Use your arrow keys to move your cursor down to the section where it says `ALLOWED_DOMAINS`
-and modify the `{ {domain} }` and `{ {api-domain} }` values here to the frontend and backend
+and modify the `domain` and `api-domain` values here to the frontend and backend
 DNS A record you intend to use for your Magic server. For instance, if you own the domain
 _"example.com"_ you might want to use _"magic.example.com"_ for the Magic frontend, and
 _"api.example.com"_ for your Magic backend. You can see how I edited the file myself in the
