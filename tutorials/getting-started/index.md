@@ -310,6 +310,11 @@ hyperlink, that will allow you to purchase one.
 
 ![Getting licensed](https://servergardens.files.wordpress.com/2021/02/magic-license.png)
 
+**Notice** - If Magic have already stopped working, you have to manually paste in your
+license using your cloud vendor's SSH interface into your appsettings.json file on your
+server. Please contact us at [license@servergardens.com](mailto:license@servergardens.com)
+for information about how to fix Magic at this point, and to obtain a valid license.
+
 # Support
 
 If you have a support request of private nature, or a license inquiry, you can send us
