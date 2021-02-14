@@ -139,8 +139,7 @@ services:
     ports:
       - 4444:80
     volumes:
-      - files:/files
-      - settings:/appsettings.json
+      - files:/magic/files
 
   frontend:
     image: servergardens/magic-frontend:latest
@@ -163,7 +162,6 @@ services:
 volumes:
   database:
   files:
-  settings: 
   ssl_data: 
 ```
 
