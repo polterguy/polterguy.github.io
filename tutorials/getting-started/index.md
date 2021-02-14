@@ -99,7 +99,7 @@ sudo nano docker-compose.yml
 ```
 
 Use your arrow keys to move your cursor down to the section where it says `ALLOWED_DOMAINS`
-and modify the `{{domain}}` and `{{api-domain}}` values here to the frontend and backend
+and modify the `\{{domain\}}` and `\{{api-domain\}}` values here to the frontend and backend
 DNS A record you intend to use for your Magic server. For instance, if you own the domain
 _"example.com"_ you might want to use _"magic.example.com"_ for the Magic frontend, and
 _"api.example.com"_ for your Magic backend. You can see how I edited the file myself in the
