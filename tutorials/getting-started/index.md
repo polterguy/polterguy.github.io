@@ -174,7 +174,7 @@ After a couple of minutes your screen should look like the following.
 
 ![docker-compose up](https://servergardens.files.wordpress.com/2021/02/docker-compose-up.png)
 
-And Magic has now been successfully started on your droplet server. What this actually does,
+Magic has now been successfully started on your droplet server. What this actually does,
 is to create 4 Docker containers on your droplet.
 
 * MySQL database
@@ -182,7 +182,7 @@ is to create 4 Docker containers on your droplet.
 * Magic backend
 * nGinx proxy server
 
-The nGinx proxy server is there to router requests according to the hostname specified
+The nGinx proxy server is there to route requests according to the hostname specified
 in HTTP invocations, to either your Magic frontend or your Magic backend. All requests
 coming in to your droplet's IP address with the hostname of _"magic.servergardens.com"_
 will be routed to the frontend Angular parts of Magic. All requests with _"api.servergardens.com"_
@@ -202,6 +202,8 @@ used as is, assuming you chose a _strong root password when you created your dro
 This step is different depending upon where you host your domain, but the process is similar,
 and implies creating _two_ DNS A records, one for your frontend domain, and another for
 your backend domain. For me using WordPress to host my domain, this looks like the following.
+
+![WordPress DNS A records](https://servergardens.files.wordpress.com/2021/02/api-frontend-dns-a-records.png)
 
 At this point you need to copy your droplet's *public* IP address. If you go back to your
 main DigitalOcean page for your droplet, you will typically see your server's public IP
