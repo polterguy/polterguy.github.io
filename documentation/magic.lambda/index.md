@@ -688,6 +688,19 @@ convert:x:-
 **Notice** - You can also base64 encode and decode `byte[]` with this slot, by passing in _"base64"_ or
 _"from-base64"_ as your **[type]** argument.
 
+### [format]
+
+This slot converts the format some expression or value according to some specified `String.Format` expression.
+The following code will string format the number 57 making sure it's prefixed with leading zeros always ending
+up having at least 5 digits. See .Net String.Format for which patterns you can use. The culture used will always
+be the invariant one.
+
+```
+.foo:int:57
+format:x:-
+   pattern:"{0:00000}"
+```
+
 ### [get-context]
 
 This slot returns a context stack object, which is an object added to the stack using **[context]**.

@@ -7,6 +7,7 @@ JWT tokens, to secure your magic installation. The project contains 3 slots.
 * __[auth.ticket.create]__ - Creates a new JWT token, that you can return to your client, any ways you see fit
 * __[auth.ticket.refresh]__ - Refreshes a JWT token. Useful for refreshing a token before it expires, which would require the user to login again
 * __[auth.ticket.verify]__ - Verifies a JWT token, and that the user is logged in, in addition to (optionally) that he belongs to one roles supplied as a comma separated list of roles
+* __[auth.ticket.in-role]__ - The same as **[auth.ticket.verify]**, but returns true or false, depending upon whether or not user is in any of the roles provided or not.
 
 Notice, you will have to modify your `auth:secret` configuration setting, to provide a unique salt for your installation.
 If you don't do this, some adversary can easily reproduce your tokens, and impersonate your users. Example of

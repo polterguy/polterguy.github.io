@@ -15,6 +15,7 @@ This project provides file/folder slots for Magic. More specifically, it provide
 * __[io.file.execute]__ - Executes a Hyperlambda file on your server.
 * __[io.file.list]__ - List files in the specified folder on your server.
 * __[io.file.move]__ - Moves a file on your server.
+* __[io.file.unzip]__ - Unzips a file on your server.
 * __[io.content.zip-stream]__ - Creates a ZipStream for you, without touching the file system.
 * __[.io.folder.root]__ - Returns the root folder of your system. (private C# slot)
 
@@ -149,6 +150,16 @@ Similar to **[io.file.copy]** but deletes the source file after evaluating.
 ```
 io.file.move:/misc/README.md
    .:/misc/backup/README-backup.md
+```
+
+### io.file.unzip
+
+Unzips a ZIP file. Notice, the **[folder]** argument is optional, and the current folder
+of the file will be used if not given.
+
+```
+io.file.unzip:/misc/foo.zip
+   folder:/misc/backup/
 ```
 
 ### io.content.zip-stream

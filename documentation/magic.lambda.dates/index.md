@@ -4,6 +4,7 @@
 Date manipulation library for Magic. More specifically, it gives you the following slots.
 
 * __[date.now]__ - Returns the now date, equivalent of `DateTime.Now`.
+* __[date.min]__ - Returns the minimum date value, equivalent of `DateTime.MinValue`.
 * __[date.format]__ - Returns a string representation of some date, formatted according to the specified **[format]** argument.
 * __[time]__ - Creates a time span, useful for adding and subtracting offsets to date objects. Pass in **[days]**, **[hours]**, **[minutes]**, **[seconds]** and **[milliseconds]** to declare how large your offset is. All arguments are optional, but (of course) on argument should be passed in.
 
