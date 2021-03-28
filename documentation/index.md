@@ -10,6 +10,7 @@
 * [magic.data.common](/documentation/magic.data.common/) - Commonalities for data adapters in Magic
 * [magic.lambda.math](/documentation/magic.lambda.math/) - Math operations from Hyperlambda
 * [magic.lambda.http](/documentation/magic.lambda.http/) - Invoking HTTP REST endpoints from Hyperlambda
+* [magic.lambda.csv](/documentation/magic.lambda.csv/) - Manipulating CSV from Hyperlambda
 * [magic.lambda.json](/documentation/magic.lambda.json/) - Manipulating JSON from Hyperlambda
 * [magic.lambda.html](/documentation/magic.lambda.html/) - Manipulating HTML from Hyperlambda
 * [magic.lambda.mail](/documentation/magic.lambda.mail/) - Sending and retrieving emails from Hyperlambda
