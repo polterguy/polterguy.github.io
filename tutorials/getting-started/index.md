@@ -42,16 +42,19 @@ two DNS A records for _"api"_ and _"magic"_ pointing to your server's IP address
 Docker images have been started you can find the frontend at `magic.your-domain.com`.
 
 ```bash
-# Docker file to couple frontend, backend, MySQL database, nGinx reverse proxy, and LetsEncrypt instances into one.
+# Docker file to couple frontend, backend, MySQL database,
+# nGinx reverse proxy, and LetsEncrypt instances into one.
+
 # Replace the xxxxx.com parts with your own domain
-# Then create two DNS A records pointing to the IP address of your server
-# Content of DNS records should be 'api' and 'magic'.
+# Then create two DNS A records pointing to the IP address of
+# your server. Content of DNS records should be 'api' and 'magic'.
 
 version: "2"
 
 services:
 
-  # This is the internet facing reverse proxy that routes requests to either the frontend or the backend
+  # This is the internet facing reverse proxy that routes
+  # requests to either the frontend or the backend
   nginx-proxy:
     image: jwilder/nginx-proxy
     container_name: nginx-proxy
@@ -67,7 +70,8 @@ services:
       - /usr/share/nginx/html
     restart: always
 
-  # This is the container that is responsible for retrieving and renewing SSL certificates from LetsEncrypt
+  # This is the container that is responsible for retrieving
+  # and renewing SSL certificates from LetsEncrypt
   letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
     container_name: nginx-proxy-le
