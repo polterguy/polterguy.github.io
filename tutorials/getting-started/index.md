@@ -36,8 +36,8 @@ In the video below I go through the manual setup process.
 ## Deploy Magic to a VPS
 
 The simples way to deploy Magic into production, is to use the following docker-compose file.
-Copy the content below into a file named `docker-compose.yml`, replace `xxxxx.com` with your own
-domain, replace xxx@yyy.com with your own email address, make sure your server has Docker installed,
+Copy the content below into a file named `docker-compose.yml`, replace `servergardens.com` with your own
+domain, replace thomas@servergardens.com with your own email address, make sure your server has Docker installed,
 and execute `docker-compose up -d`. Then create two DNS A records for _"api"_ and _"magic"_ pointing
 to your server's IP address, and after your Docker images have been started you can find the frontend
 at `https://magic.your-domain.com`.
@@ -70,6 +70,8 @@ services:
       - certs:/etc/nginx/certs:ro
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - /usr/share/nginx/html
+    networks:
+      - proxy
     restart: always
 
   # This is the container that is responsible for retrieving
@@ -82,6 +84,8 @@ services:
     volumes:
       - certs:/etc/nginx/certs:rw
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - proxy
     restart: always
 
   # This is our MySQL database
@@ -92,6 +96,8 @@ services:
       MYSQL_ROOT_PASSWORD: ThisIsNotAGoodPassword
     volumes:
       - database:/var/lib/mysql
+    networks:
+      - proxy
 
   # Our Magic backend
   backend:
@@ -107,9 +113,11 @@ services:
     environment:
 
       # REPLACE THESE NEXT 3 PARTS WITH YOUR OWN DOMAIN/EMAIL
-      - VIRTUAL_HOST=api.xxxxx.com
-      - LETSENCRYPT_HOST=api.xxxxx.com
-      - LETSENCRYPT_EMAIL=xxx@yyy.com
+      - VIRTUAL_HOST=api.servergardens.com
+      - LETSENCRYPT_HOST=api.servergardens.com
+      - LETSENCRYPT_EMAIL=thomas@servergardens.com
+    networks:
+      - proxy
 
   # Our Magic frontend (dashboard)
   frontend:
@@ -120,9 +128,9 @@ services:
     environment:
 
       # REPLACE THESE NEXT 3 PARTS WITH YOUR OWN DOMAIN/EMAIL
-      - VIRTUAL_HOST=magic.xxxxx.com
-      - LETSENCRYPT_HOST=magic.xxxxx.com
-      - LETSENCRYPT_EMAIL=xxx@yyy.com
+      - VIRTUAL_HOST=magic.servergardens.com
+      - LETSENCRYPT_HOST=magic.servergardens.com
+      - LETSENCRYPT_EMAIL=thomas@servergardens.com
 
 volumes:
   conf:
@@ -132,7 +140,15 @@ volumes:
   database:
   magic_files:
   crypto_keys:
+
+networks:
+  proxy:
+    external:
+      name: nginx-proxy
 ```
+
+**Notice** - After having configured Magic, you might want to take a backup of your `appsettings.json`
+file.
 
 ### Licensing Magic
 
