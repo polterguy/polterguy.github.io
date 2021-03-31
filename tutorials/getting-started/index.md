@@ -33,7 +33,7 @@ In the video below I go through the manual setup process.
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/CULMDMDPwws" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## Deploy Magic to your Cloud
+## Deploy Magic to a VPS
 
 The simples way to deploy Magic into production, is to use the following docker-compose file.
 Copy the content below into a file named `docker-compose.yml`, replace `xxxxx.com` with your own
