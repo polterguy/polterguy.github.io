@@ -39,7 +39,7 @@ The simples way to deploy Magic into production, is to use the following docker-
 Copy the content below into a file named `docker-compose.yml`, replace `xxxxx.com` with your own
 domain, make sure your server has Docker installed, and execute `docker-compose up -d`. Then create
 two DNS A records for _"api"_ and _"magic"_ pointing to your server's IP address, and after your
-Docker images have been started you can find the frontend at `magic.your-domain.com`.
+Docker images have been started you can find the frontend at `https://magic.your-domain.com`.
 
 ```bash
 # Docker file to couple frontend, backend, MySQL database,
