@@ -37,9 +37,10 @@ In the video below I go through the manual setup process.
 
 The simples way to deploy Magic into production, is to use the following docker-compose file.
 Copy the content below into a file named `docker-compose.yml`, replace `xxxxx.com` with your own
-domain, make sure your server has Docker installed, and execute `docker-compose up -d`. Then create
-two DNS A records for _"api"_ and _"magic"_ pointing to your server's IP address, and after your
-Docker images have been started you can find the frontend at `https://magic.your-domain.com`.
+domain, replace xxx@yyy.com with your own email address, make sure your server has Docker installed,
+and execute `docker-compose up -d`. Then create two DNS A records for _"api"_ and _"magic"_ pointing
+to your server's IP address, and after your Docker images have been started you can find the frontend
+at `https://magic.your-domain.com`.
 
 ```bash
 # Docker file to couple frontend, backend, MySQL database,
@@ -54,7 +55,8 @@ version: "2"
 services:
 
   # This is the internet facing reverse proxy that routes
-  # requests to either the frontend or the backend
+  # requests to either the frontend or the backend.
+  # This is the only thing that's actually exposed to the internet.
   nginx-proxy:
     image: jwilder/nginx-proxy
     container_name: nginx-proxy
@@ -100,11 +102,14 @@ services:
       - letsencrypt
       - nginx-proxy
     volumes:
-      - files:/magic/files
+      - magic_files:/magic/files/modules/magic
+      - crypto_keys:/magic/files/modules/system/crypto/keys
     environment:
+
+      # REPLACE THESE NEXT 3 PARTS WITH YOUR OWN DOMAIN/EMAIL
       - VIRTUAL_HOST=api.xxxxx.com
       - LETSENCRYPT_HOST=api.xxxxx.com
-      - LETSENCRYPT_EMAIL=thomas@servergardens.com
+      - LETSENCRYPT_EMAIL=xxx@yyy.com
 
   # Our Magic frontend (dashboard)
   frontend:
@@ -113,9 +118,11 @@ services:
     depends_on:
       - backend
     environment:
+
+      # REPLACE THESE NEXT 3 PARTS WITH YOUR OWN DOMAIN/EMAIL
       - VIRTUAL_HOST=magic.xxxxx.com
       - LETSENCRYPT_HOST=magic.xxxxx.com
-      - LETSENCRYPT_EMAIL=thomas@servergardens.com
+      - LETSENCRYPT_EMAIL=xxx@yyy.com
 
 volumes:
   conf:
@@ -123,7 +130,8 @@ volumes:
   dhparam:
   certs:
   database:
-  files:
+  magic_files:
+  crypto_keys:
 ```
 
 ### Licensing Magic
