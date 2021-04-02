@@ -1,8 +1,6 @@
 
 # Magic Lambda HTML
 
-[![Build status](https://travis-ci.com/polterguy/magic.lambda.html.svg?master)](https://travis-ci.com/polterguy/magic.lambda.html)
-
 This project provides HTML helper slots for Magic. More specifically, it provides the following slots.
 
 * __[html2lambda]__ - Creates a lambda object out of an HTML input string.
@@ -18,7 +16,6 @@ Attributes starts out with the `@` character, children nodes does not.
 
 ## Quality gates
 
-- [![Build status](https://travis-ci.com/polterguy/magic.lambda.html.svg?master)](https://travis-ci.com/polterguy/magic.lambda.html)
 - [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.html&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.html)
 - [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.html&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.html)
 - [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.html&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.html)

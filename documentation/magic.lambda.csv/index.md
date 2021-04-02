@@ -1,8 +1,6 @@
 
 # Magic Lambda CSV
 
-[![Build status](https://travis-ci.com/polterguy/magic.lambda.csv.svg?master)](https://travis-ci.com/polterguy/magic.lambda.csv)
-
 This project provides CSV helper slots for Magic. More specifically, it provides the following slots.
 
 * __[lambda2csv]__ - Creates CSV string from a lambda object.
@@ -30,7 +28,6 @@ string to its lambda objects. The **[lambda2csv]** slot will also create headers
 
 ## Quality gates
 
-- [![Build status](https://travis-ci.com/polterguy/magic.lambda.csv.svg?master)](https://travis-ci.com/polterguy/magic.lambda.csv)
 - [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.csv&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.csv)
 - [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.csv&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.csv)
 - [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.csv&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.csv)
