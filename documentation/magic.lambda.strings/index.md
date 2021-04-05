@@ -246,3 +246,8 @@ strings.trim:09thomas12
 - [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.strings&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.strings)
 - [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.strings&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.strings)
 - [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.strings&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.strings)
+
+## License
+
+This project is the copyright(c) 2020-2021 of Thomas Hansen thomas@servergardens.com, and is licensed under the terms
+of the LGPL version 3, as published by the Free Software Foundation. See the enclosed LICENSE file for details.

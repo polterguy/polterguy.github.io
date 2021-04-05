@@ -16,6 +16,10 @@ This project provides file/folder slots for Magic. More specifically, it provide
 * __[io.file.list]__ - List files in the specified folder on your server.
 * __[io.file.move]__ - Moves a file on your server.
 * __[io.file.unzip]__ - Unzips a file on your server.
+* __[io.stream.open-file]__ - Opens the specified filename and returns it as a stream
+* __[io.stream.save-file]__ - Saves a stream to the specified destination path
+* __[io.stream.read]__ - Reads all content from the specified stream as a byte array
+* __[io.stream.close]__ - Closes a previously opened stream
 * __[io.content.zip-stream]__ - Creates a ZipStream for you, without touching the file system.
 * __[.io.folder.root]__ - Returns the root folder of your system. (private C# slot)
 
@@ -31,7 +35,7 @@ folder where your application is running from within. There is nothing preventin
 absolute path, but if you do, you must make sure your web server process have full rights to modify
 files within this folder.
 
-### io.folder.create
+### [io.folder.create]
 
 Creates a new folder on disc. The example below will create a folder named _"foo"_ inside of the _"misc"_ folder.
 Notice, will throw an exception if the folder already exists.
@@ -40,7 +44,7 @@ Notice, will throw an exception if the folder already exists.
 io.folder.create:/misc/foo/
 ```
 
-### io.folder.exists
+### [io.folder.exists]
 
 Returns true if specified folder exists on disc.
 
@@ -48,7 +52,7 @@ Returns true if specified folder exists on disc.
 io.folder.exists:/misc/foo/
 ```
 
-### io.folder.delete
+### [io.folder.delete]
 
 Deletes the specified folder on disc. Notice, will throw an exception if the folder doesn't exists.
 
@@ -56,7 +60,7 @@ Deletes the specified folder on disc. Notice, will throw an exception if the fol
 io.folder.delete:/misc/foo/
 ```
 
-### io.folder.list
+### [io.folder.list]
 
 Lists all folders inside of the specified folder. By default hidden folders will not be shown, unless
 you pass in **[display-hidden]** and set its value to boolean _"true"_.
@@ -65,7 +69,7 @@ you pass in **[display-hidden]** and set its value to boolean _"true"_.
 io.folder.list:/misc/
 ```
 
-### io.file.load
+### [io.file.load]
 
 Loads the specified text file from disc. This slot can _only load text files_. Or to be specific,
 there are no ways you can change binary files, hence loading a binary file is for the most parts
@@ -75,7 +79,7 @@ not something you should do. Although there _might_ exist exceptions to this.
 io.file.load:/misc/README.md
 ```
 
-### io.file.save
+### [io.file.save]
 
 Saves the specified content to the specified file on disc, overwriting any previous content if the
 file exists from before, creating a new file if no such file already exists. The value of the first
@@ -89,7 +93,7 @@ io.file.save:/misc/README2.md
    .:This is new content for file
 ```
 
-### io.file.exists
+### [io.file.exists]
 
 Returns true if specified file exists from before.
 
@@ -97,7 +101,7 @@ Returns true if specified file exists from before.
 io.file.exists:/misc/README.md
 ```
 
-### io.file.delete
+### [io.file.delete]
 
 Deletes the specified file. Will throw an exception if the file doesn't exist.
 
@@ -105,7 +109,7 @@ Deletes the specified file. Will throw an exception if the file doesn't exist.
 io.file.load:/misc/DOES-NOT-EXIST.md
 ```
 
-### io.file.copy
+### [io.file.copy]
 
 Copies the specified file to the specified destination folder and file.
 Notice, requires the destination folder to exist from before, and the source
@@ -122,7 +126,7 @@ io.file.copy:/misc/README.md
 Notice, the folder parts of thye destination folder is _optional_, and if you don't supply a folder
 as a part of the path, the source folder will be used by default.
 
-### io.file.execute
+### [io.file.execute]
 
 Executes the specified Hyperlambda file. Just like when evaluating a dynamic slot, you can
 pass in an **[.arguments]** node to the file, which will be considered arguments to your file.
@@ -134,7 +138,7 @@ project.
 io.file.execute:/misc/some-hyperlambda-file.hl
 ```
 
-### io.file.list
+### [io.file.list]
 
 Lists all files inside of the specified folder. By default hidden files will not be shown, unless
 you pass in **[display-hidden]** and set its value to boolean _"true"_.
@@ -143,7 +147,7 @@ you pass in **[display-hidden]** and set its value to boolean _"true"_.
 io.file.list:/misc/
 ```
 
-### io.file.move
+### [io.file.move]
 
 Similar to **[io.file.copy]** but deletes the source file after evaluating.
 
@@ -152,24 +156,25 @@ io.file.move:/misc/README.md
    .:/misc/backup/README-backup.md
 ```
 
-### io.file.unzip
+### [io.file.unzip]
 
 Unzips a ZIP file. Notice, the **[folder]** argument is optional, and the current folder
-of the file will be used if not given.
+of the ZIP file you're unzipping will be used if no **[folder]** argument is given.
 
 ```
 io.file.unzip:/misc/foo.zip
    folder:/misc/backup/
 ```
 
-### io.content.zip-stream
+### [io.content.zip-stream]
 
-Creates a memory based ZIP stream you can return over the response socket connection. Notice,
+Creates a memory based ZIP stream you can return over the HTTP response object. Notice,
 this doesn't create a zip file, but rather a zip stream, which you can manipulate using other
 slots. This slot is useful if you need to return zipped content as your HTTP response for instance.
 
 Notice, both the root arguments (lambda children) of this slot will be evaluated, in addition to
-its content nodes, evaluated once for each file declaration node.
+its content nodes, evaluated once for each file declaration node. Notice also that the stream is
+a memory bases stream, and hence closing it, even in case of an exception, is not necessary.
 
 ```
 io.content.zip-stream
@@ -177,7 +182,77 @@ io.content.zip-stream
       .:content of file
 ```
 
-### .io.folder.root
+### [io.stream.open-file]
+
+Works similarly to **[io.file.load]** but instead of returning the file's content,
+it returns the raw stream back to caller.
+
+```
+io.stream.open-file:/foo/bar.txt
+```
+
+After invoking the above, assuming the file exists, a raw `Stream` object can be
+found as the value of the **[io.stream.open-file]** node.
+
+### [io.stream.save-file]
+
+Works similarly to **[io.file.save]** but instead of taking source content of some kind,
+it assumes the source is an open `Stream` of some sort.
+
+```
+/*
+ * [.stream] here is an open stream, from for instance the HTTP
+ * request object, or something similar that somehow is able to open
+ * a stream and pass around in Hyperlambda.
+ */
+.stream
+io.stream.save-file:/foo/bar.txt
+   get-value:x:@.stream
+```
+
+After invoking the above, assuming the **[.stream]** node contains a valid `Stream`
+object, the file above will contain the content from the stream.
+
+### [io.stream.read]
+
+Works similarly to **[io.file.load]** but instead of taking a source filename of some kind,
+it assumes the source is an open `Stream` of some sort.
+
+```
+/*
+ * [.stream] here is an open stream, from for instance the HTTP
+ * request object, or something similar.
+ */
+.stream
+io.stream.read:x:@.stream
+```
+
+### [io.stream.close]
+
+Closes a previously opened stream.
+
+**Notice** - You would rarely directly use streams from Hyperlambda, and not manipulate them
+in any ways, but rather use for instance **[io.file.load]** and similar _"high level"_ slots -
+And only use streams when you need to directly access the HTTP request stream, to persist a file
+uploaded by a user, or return a file over the HTTP response object. Hence, directly opening
+a stream for any other purpose but to return it over the HTTP response object is something you'd
+probably never want to do. And if you return the stream over the HTTP response object, .Net takes
+ownership over the stream, and ensures it is closed and disposed. However, for completeness we've
+still provided the ability to explicitly close a stream using the **[io.stream.close]** - Even though
+you would probably never really need to use it. Besides, opening streams for any other purpose but
+to return them over the HTTP response object, might also create leaks, since there is no means to
+guarantee that the stream is close in case of exceptions, etc - Unless you explicitly take care
+of such things manually.
+
+```
+io.stream.open-file:/foo/bar.txt
+io.stream.close:x:-
+```
+
+After invoking the above, assuming **[.stream]** is a valid stream, the stream's raw
+`byte[]` content can be found in **[io.stream.read]**.
+
+### [.io.folder.root]
 
 Returns the root folder of the system. Cannot be invoked from Hyperlambda, but only from C#. Intended as
 a support function for other C# slots.
@@ -192,18 +267,19 @@ var rootFolder = node.Get<string>();
 
 ## C# extensions
 
-If you want to, you can easily completely exchange the underlaying file system, with your own _"virtual file system"_,
-since all interaction with the physical file system is done through the `IFileService` and `IFolderService` interfaces.
-This allows you to circumvent the default dependency injected service, and binding towards some other implementation,
-at least in theory allowing you to (for instance) use a database based file system, etc. If you want to do this, you'll
-need to supply your own bindings to the following two interfaces, using your IoC container.
+If you want to, you can easily completely exchange the underlaying file system, with your own _"virtual file system"_, since all interaction with the physical file system is done through the `IFileService` and 
+`IFolderService` interfaces. This allows you to circumvent the default dependency injected service, and
+binding towards some other implementation, at least in theory allowing you to (for instance) use a database
+based file system, etc. If you want to do this, you'll need to supply your own bindings to the following
+three interfaces, using your IoC container.
 
 * `magic.lambda.io.contracts.IFileService`
 * `magic.lambda.io.contracts.IFolderService`
+* `magic.lambda.io.contracts.IStreamService`
 
-If you want to do this, you would probably want to manually declare your own implementation for these classes, by tapping
-into _"magic.library"_ somehow, or not invoking its default method that binds towards the default implementation classes
-somehow.
+If you want to do this, you would probably want to manually declare your own implementation for these classes,
+by tapping into _"magic.library"_ somehow, or not invoking its default method that binds towards the default
+implementation classes somehow.
 
 ## Quality gates
 
@@ -218,3 +294,8 @@ somehow.
 - [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.io&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.io)
 - [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.io&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.io)
 - [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.io&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.io)
+
+## License
+
+This project is the copyright(c) 2020-2021 of Thomas Hansen thomas@servergardens.com, and is licensed under the terms
+of the LGPL version 3, as published by the Free Software Foundation. See the enclosed LICENSE file for details.

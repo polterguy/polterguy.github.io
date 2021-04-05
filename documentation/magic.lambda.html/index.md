@@ -8,7 +8,7 @@ This project provides HTML helper slots for Magic. More specifically, it provide
 ## Usage
 
 ```
-.html:@"<html>... some HTML here ... </html>"
+.html:@"<html>... some HTML goes here ... </html>"
 html2lambda:x:-
 ```
 
@@ -27,3 +27,8 @@ Attributes starts out with the `@` character, children nodes does not.
 - [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.html&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.html)
 - [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.html&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.html)
 - [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.html&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.html)
+
+## License
+
+This project is the copyright(c) 2020-2021 of Thomas Hansen thomas@servergardens.com, and is licensed under the terms
+of the LGPL version 3, as published by the Free Software Foundation. See the enclosed LICENSE file for details.

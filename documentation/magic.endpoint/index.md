@@ -3,25 +3,28 @@
 
 Magic Endpoint is a dynamic endpoint URL controller, allowing you to declare endpoints that are dynamically
 resolved using your `IExecutorAsync` service implementation. The default implementation of this interface, is the
-class called `ExecutorAsync`, and the rest of this file, will be focusing on documenting this implementation,
+class called `ExecutorAsync`, and the rest of this file will be focused on documenting this implementation,
 since it's the default service implementation for Magic Endpoint - Although, technically, you could exchange
-this with your own implementation if you wish, completely changing the behaviour of the library.
+this with your own implementation if you wish, completely changing the behaviour of the library, if you wish
+to for instance resolve endpoints to Python, Ruby, or any other dynamic programming language implementation,
+and you have some means to execute such code from within a .Net 5 environment.
 
-The controller itself will be invoked for all URLs starting with _"magic/"_, for the following verbs.
+The resolver will be invoked for all relative URLs starting with _"magic/"_, for the following verbs.
 
 * `GET`
 * `POST`
 * `PUT`
 * `DELETE`
+* `PATCH`
 
-The default service implementation, will resolve everything after the _"magic/"_ parts in the
-given URL, to a Hyperlambda file that can be found relatively beneath your _"files/"_ folder.
+The default service implementation will resolve everything after the _"magic/"_ parts in the
+given URL, to a Hyperlambda file that can be found relatively beneath your _"/files/"_ folder.
 Although, technically, exactly where you physically put your files on disc, can be configured
 through your _"appsettings.json"_ file. The HTTP VERB is assumed to be the last parts of your
-filename, before its extension, implying an HTTP GET request such as the following.
+filename, before its extension, implying an HTTP request such as the following.
 
 ```
-magic/modules/foo/bar
+GET magic/modules/foo/bar
 ```
 
 Will resolve to the following physical file on disc.
@@ -30,13 +33,20 @@ Will resolve to the following physical file on disc.
 files/modules/foo/bar.get.hl
 ```
 
-Notice, only the _"magic"_ part in the URL is rewritten, before the verb is appended to the URL, and
+Notice, only the _"magic"_ part of your URL is rewritten, before the verb is appended to the URL, and
 finally the extension _".hl"_ appended. Then the file is loaded and parsed as Hyperlambda, and whatever
-arguments you pass in, either as query parameters, or as JSON payload, is appended into your resulting
-lambda node's **[.arguments]** node, as arguments to your invocation.
+arguments you pass in, either as query parameters, or as your JSON payload URL encoded form arguments, etc,
+is appended into your resulting lambda node's **[.arguments]** node, as arguments to your Hyperlambda file
+invocation. The resolver will never return files directly, but is only able to execute Hyperlambda files,
+so by default there is no way to simply get files.
 
-**Notice** - Only `PUT` and `POST` can handle JSON payloads. All 4 verbs can handle query parameters
-though. Below is probably the simplest HTTP endpoint you could create. Save the following Hyperlambda in a
+The default resolver will never allow the client to resolve files outside of your main _"/files/modules/"_
+folder. This allows you to safely keep files that other parts of your system relies upon inside your dynamic _"/files/"_
+folder, without accidentally creating endpoints, clients can resolve, resulting in breaches in your security.
+Only characters a-z, 0-9 and '-', '\_' and '/' are legal characters for the resolvers, and only lowercase
+characters, to avoid file system incompatibilities between Linux and Windows.
+
+Below is probably the simplest HTTP endpoint you could create. Save the following Hyperlambda in a
 file at the path of `modules/magic/foo1.get.hl` using for instance your Magic Dashboard's
 _"Files"_ menu item.
 
@@ -81,11 +91,12 @@ the HTTP GET verb.
 http://localhost:55247/magic/modules/magic/foo2?arg1=howdy&arg2=5
 ```
 
-Assuming you're backend is running on localhost, at port 55247 of course.
+Assuming your backend is running on localhost, at port 55247 of course.
 
-JSON payloads are automatically converted to lambda/nodes - And query parameters are treated
-indiscriminately the same way as JSON payloads - Except of course, query parameters cannot
-pass in complex graph objects, but only simply key/value arguments.
+JSON payloads and form URL encoded payloads are automatically converted to lambda/nodes -
+And query parameters are treated indiscriminately the same way as JSON payloads -
+Except of course, query parameters cannot pass in complex graph objects, but only
+simply key/value arguments. Only POST, PUT and PATCH endpoints can handle payloads.
 
 **Notice** - To allow for _any_ arguments to your files, simply _ommit_ the **[.arguments]** node
 in your Hyperlambda althogether. Alternatively, you can also partially ignore arguments sanity checking
@@ -101,17 +112,40 @@ of individual nodes, by setting their values to `*`, such as the following illus
 In the above arguments declaration, **[arg1]** and **[arg2]** will be sanity checked, and input converted
 to `string` or `date` (DateTime) - But the **[arg3]** parts will be completely ignored, allowing the caller
 to invoke it with _anything_ as `arg3` during invocation - Including complete graph JSON objects, assuming
-the above declaration is for a `PUT` or `POST` Hyperlambda file.
+the above declaration is for a `PUT` or `POST` Hyperlambda file. The '\*' value for an argument also turn
+off all conversion, implying everything will be given your lambda object with the JSON type the argument
+was passed in as.
+
+All arguments declared are considered optional, and the file will still resolve if the argument is not given,
+except of course the argument won't exist in the **[.arguments]** node.
 
 To declare what type your arguments can be, set the value of the argument declaration node to
-the Hyperlambda type value inside of your arguments declaration, such as we illustrate above.
-Arguments will be converted, if possible, to the type declaration in your arguments declaration.
+the Hyperlambda type value inside of your arguments declaration, such as illustrated above.
+Arguments will be converted if possible, to the type declaration in your arguments declaration.
 If no conversion is possible, an exception will be thrown.
 
 Although the sanity check will check graph objects, passed in as JSON payloads, it has its restrictions,
-such as not being able to sanity checking complex objects passed in as arrays, etc. If you need stronger
-sanity checking of your arguments, you will probably have to manually check your more complex graph objects
+such as not being able to sanity check complex objects passed in as arrays, etc. If you need stronger
+sanity checking of your arguments, you will have to manually check your more complex graph objects
 yourself.
+
+## Accepted Content-Type values
+
+The POST, PUT and PATCH endpoints can intelligently handle any of the following Content-Types.
+
+* `application/json`
+* `application/x-www-form-urlencoded`
+* `application/x-hyperlambda`
+
+JSON types of payloads are fairly well described above, and URL encoded form payloads are handled
+the exact same way, except of course the **[.arguments]** node is built from form values instead
+of JSON - However, internally this is transparent for you, and JSON, query parameters, and URL encoded
+forms can be interchanged 100% transparently from your code's perspective. Hyperlambda content
+will be passed in as a **[body]** argument to your file as text.
+
+All other types of payloads will be passed in as the raw stream, not trying to read from it in any
+ways, allowing you to intercept reading with things such as authentication, authorisation, logic of
+where to persist content, etc.
 
 ## Meta information
 
@@ -174,8 +208,9 @@ slots.
 
 Unless you explicitly change the `Content-Type` of your response object, by using
 the **[response.headers.add]** slot, a Content-Type of `application/json` will be assumed,
-and this header will be added to the resulting HTTP response object. To return plain
-text for instance, you could create an endpoint containing the following.
+and this header will be added to the resulting HTTP response object. If you wish to override
+this behavious and return plain text for instance, you could create an endpoint containing
+the following.
 
 ```
 response.headers.add
@@ -187,6 +222,22 @@ You can also return stream objects using for instance the **[return]** slot, at 
 ASP.NET Core will automatically stream your content back over the response object, and `Dispose`
 your stream automatically for you afterwards. This allows you to return large files back to
 the client, without loading them into memory first, etc.
+
+### Cookies
+
+Since cookies have more parameters than just a simple key/value declaration, the **[response.cookies.set]**
+slot takes the following arguments.
+
+* __[value]__ - The string content of your cookie
+* __[expires]__ - Absolute expiration date of your cookie, as a Hyperlambda `date` value
+* __[http-only]__ - Boolean value declaring whether or not the cookie should only be accessible on the server
+* __[secure]__ - Boolean value declaring whether or not cookie should only be transmitted from the client to the server over a secure (https) connection
+* __[domain]__ - Domain value of your cookie
+* __[path]__ - Path value of your cookie
+* __[same-site]__ - Same-site value of your cookie
+
+Only the **[value]** from above is mandatory. To delete a cookie on the client, set the expiration date to a value
+in the past.
 
 ## Quality gates
 
@@ -201,3 +252,8 @@ the client, without loading them into memory first, etc.
 - [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.endpoint&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.endpoint)
 - [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.http&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic.endpoint)
 - [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.endpoint&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic.endpoint)
+
+## License
+
+This project is the copyright(c) 2020-2021 of Thomas Hansen thomas@servergardens.com, and is licensed under the terms
+of the LGPL version 3, as published by the Free Software Foundation. See the enclosed LICENSE file for details.

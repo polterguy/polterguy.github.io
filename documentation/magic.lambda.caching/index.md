@@ -107,3 +107,8 @@ since it does not support any type of paging.
 - [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.caching&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.caching)
 - [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.caching&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.caching)
 - [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.caching&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.caching)
+
+## License
+
+This project is the copyright(c) 2020-2021 of Thomas Hansen thomas@servergardens.com, and is licensed under the terms
+of the LGPL version 3, as published by the Free Software Foundation. See the enclosed LICENSE file for details.
