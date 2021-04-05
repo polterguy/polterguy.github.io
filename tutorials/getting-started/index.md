@@ -140,6 +140,8 @@ services:
       - VIRTUAL_HOST=magic.servergardens.com
       - LETSENCRYPT_HOST=magic.servergardens.com
       - LETSENCRYPT_EMAIL=thomas@servergardens.com
+    networks:
+      - proxy
 
 volumes:
   conf:
