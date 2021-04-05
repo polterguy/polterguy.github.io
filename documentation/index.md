@@ -43,6 +43,6 @@ feature request or a bug report, you can do such through the project's
 
 # License
 
-Magic is 100% Open Source. The main backend is licensed as MIT, the dashboard is GPL, and the plugins are LGPL.
-This allows you to use Magic to create closed source applications, while also ensuring improvements to the
-project itself *stays* Open Source.
+Magic is as of version 9.0.0 *fully Open Source*. The main backend is licensed as MIT, the dashboard is GPL,
+and the plugins are LGPL. This allows you to use Magic to create closed source applications, while also
+ensuring improvements to the project itself *stays* Open Source.
