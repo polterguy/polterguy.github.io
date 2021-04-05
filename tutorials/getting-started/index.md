@@ -1,23 +1,32 @@
 
-## Using the Docker image on your development machine
+## Getting started with Magic
 
-The simplest way to get started is to [download the docker-compose.yml file](https://github.com/polterguy/magic/releases/download/v8.9.3/docker-compose.yml), assuming you have [Docker](https://www.docker.com/products/docker-desktop) installed, and then execute the following in a terminal window where you saved the file.
+There are multiple ways to use Magic, depending upon whether or not you just want to try it out locally
+on your development machine, use the Docker images to more rapidly getting up to speed, or deploy it
+to your production server. In this section we'll walk you through all of your options, starting with
+the easiest method, to start out with Magic on your development machine.
+
+### Using the Docker image on your development machine
+
+The easiest way to get started is to [download the docker-compose.yml file](https://github.com/polterguy/magic/releases/download/v8.9.3/docker-compose.yml), assuming you have [Docker](https://www.docker.com/products/docker-desktop) installed, and then execute the following in a terminal window where you saved the file.
 This is the exact same process for both Windows, Mac and Linux - And can also be extended
-to install Magic in your server or cloud of choice.
+to install Magic in your server or cloud of choice. Notice, you'll need to have
+[Docker installed](https://www.docker.com/products/docker-desktop) on your development machine if you want to
+follow this approach.
 
 ```
 docker-compose up
 ```
 
-Then when the Docker containers have started, open your browser and go to [http://localhost:5555](http://localhost:5555), and use the default configuration settings for MySQL. Type
-your name and email address when you generate a key pair, and Magic should work out of the box
-without having to mess with anything.
+Then when the Docker containers have started, open your browser and go to [http://localhost:5555](http://localhost:5555),
+and use the default configuration settings for MySQL, choose a root password, type your name and email address when
+you generate a key pair, and Magic should work out of the box without having to mess with anything.
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/2gos7BvNFkI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## Manual code setup
+### Manual code setup
 
 If you don't want to use Docker, you can also configure your development environment locally on your
 development machine using the code directly. If so you will first of all need the following components.
@@ -35,7 +44,7 @@ In the video below I go through the manual setup process.
 
 ## Deploy Magic to a VPS
 
-The simples way to deploy Magic into production, is to use the following docker-compose file.
+The easiest way to deploy Magic into production, is to use the following docker-compose file.
 Copy the content below into a file named `docker-compose.yml`, replace `servergardens.com` with your own
 domain, replace thomas@servergardens.com with your own email address, make sure your server has Docker installed,
 and execute `docker-compose up -d`. Then create two DNS A records for _"api"_ and _"magic"_ pointing
@@ -147,40 +156,21 @@ networks:
       name: nginx-proxy
 ```
 
-**Notice** - After having configured Magic, you might want to take a backup of your `appsettings.json`
-file.
+### Support
 
-### Licensing Magic
-
-2 days after you install Magic on your cloud, _Magic will stop working_ unless you have
-a valid license for Magic. To obtain a valid license click the navbar button in Magic
-in the top/left corner, and select the _"Configuration"_ menu item. Choose the _"License"_
-tab, and paste in your license key in the textarea at the middle of the screen. Click _"Apply"_
-and you're fully licensed.
-
-If you don't have a valid license key for Magic, you can click the _"obtain a valid license"_
-hyperlink, that will allow you to purchase one.
-
-![Getting licensed](https://servergardens.files.wordpress.com/2021/02/magic-license.png)
-
-**Notice** - If Magic have already stopped working, you have to manually paste in your
-license using your cloud vendor's SSH interface into your appsettings.json file on your
-server. Please contact us at [license@servergardens.com](mailto:license@servergardens.com)
-for information about how to fix Magic at this point, and to obtain a valid license. Once
-the license have been successfully applied, your screen should resemble the following.
-
-![license applied](https://servergardens.files.wordpress.com/2021/02/license-applied.png)
-
-If you have troubles, or need professional support, please contact us
-as [info@servergardens.com](mailto:info@servergardens.com).
-
-# Support
-
-If you have a support request of private nature, or a license inquiry, you can send us
-email at [post@servergardens.com](mailto:post@servergardens.com). If you want to submit a
+If you have a support request of private nature, you can send me an
+email at [thomas@servergardens.com](mailto:thomas@servergardens.com). If you want to submit a
 feature request or a bug report, you can do such through the project's
 [GitHub Issues](https://github.com/polterguy/magic/issues).
-Magic comes with professional support for Enterprise Licensed customers. Contact us for more
-information about how to obtain an Enterprise License.
 
-* [post@servergardens.com](mailto:post@servergardens.com)
+### License
+
+Magic is as of the upcoming 9.0.0 version 100% Open Source and free to use, also in
+proprietary and closed source applications. The only exception is if you improve the
+frontend dashboard, or improve one of its plugins, at which point you must make your
+improvements publicly available for others to use.
+
+### Donate
+
+If you want to buy me a cup of coffee, saying thx for the great work, I would appreciate
+a [donation](https://servergardens.com/buy/).

@@ -6,6 +6,7 @@
 * [magic.node](/documentation/magic.node/) - Explains nodes, Hyperlambda and Expressions
 * [magic.lambda](/documentation/magic.lambda/) - Explains Hyperlambda as a DSL, and its keywords
 * [magic.library](/documentation/magic.library/) - A single NuGet package helper tying everything easily together
+* [magic.signals](/documentation/magic.signals/) - Magic's Super Signals implementation
 * [magic.endpoint](/documentation/magic.endpoint/) - Endpoint resolving in Magic
 * [magic.data.common](/documentation/magic.data.common/) - Commonalities for data adapters in Magic
 * [magic.lambda.math](/documentation/magic.lambda.math/) - Math operations from Hyperlambda
