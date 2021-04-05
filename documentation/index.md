@@ -34,11 +34,15 @@
 
 # Support
 
-If you have a support request of private nature, or a license inquiry, you can send us
-email at [post@servergardens.com](mailto:post@servergardens.com). If you want to submit a
+If you have a support request of private nature, or another type of request, you can send me
+email at [thomas@servergardens.com](mailto:thomas@servergardens.com). If you want to submit a
 feature request or a bug report, you can do such through the project's
 [GitHub Issues](https://github.com/polterguy/magic/issues).
-Magic comes with professional support for Enterprise Licensed customers. Contact us for more
-information about how to obtain an Enterprise License.
 
-* [post@servergardens.com](mailto:post@servergardens.com)
+* [thomas@servergardens.com](mailto:thomas@servergardens.com)
+
+# License
+
+Magic is 100% Open Source. The main backend is licensed as MIT, the dashboard is GPL, and the plugins are LGPL.
+This allows you to use Magic to create closed source applications, while also ensuring improvements to the
+project itself *stays* Open Source.
