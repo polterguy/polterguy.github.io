@@ -42,7 +42,10 @@ In the video below I go through the manual setup process.
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/CULMDMDPwws" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## Deploy Magic to a VPS
+## Deploy Magic to a VPS - BETA
+
+**Notice** - This part is not entirely done quite yet, and you might have to fiddle with the `docker-compose.yml`
+file a bit to make it work adequately. However, the basics of this file should be more or less done ...
 
 The easiest way to deploy Magic into production, is to use the following docker-compose file.
 Copy the content below into a file named `docker-compose.yml`, replace `servergardens.com` with your own
