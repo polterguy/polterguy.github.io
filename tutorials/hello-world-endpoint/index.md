@@ -104,4 +104,30 @@ can only be given arguments as query parameters - While POST, PUT and PATCH endp
 You can also create alternative endpoint types, returning for instance files and similar constructs instead of
 pure JSON - But that's an exercise for later.
 
+## Documenting your code
+
+Hyperlambda accepts comments the same way C# or C++ do. To provide an example, let's finish our
+little tutorial by adding some comments to our above endpoint.
+
+```
+// Declaring arguments for your endpoint.
+.arguments
+   name:string
+
+/*
+ * Concatenating specified [name] with a greeting
+ */
+strings.concat
+   .:"Hello "
+   get-value:x:@.arguments/*/name
+
+/*
+ * Forward evaluating the [result] node below,
+ * and returning the results to caller.
+ */
+unwrap:x:+/*
+return-nodes
+   result:x:@strings.concat
+```
+
 * [Documentation](/documentation/)
