@@ -1,5 +1,5 @@
 
-# Hello World - Hyperlambda version
+# Hyperlambda Hello World
 
 Creating a Hyperlambda endpoint is extremely easy. Use your Magic dashboard and go to the _"Files"_
 menu item. Open up your _"modules"_ folder, and create a folder named _"tutorials"_. Open this folder
