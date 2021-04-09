@@ -115,7 +115,7 @@ little tutorial by adding some comments to our above endpoint.
    name:string
 
 /*
- * Concatenating specified [name] with a greeting
+ * Concatenating specified [name] with a greeting.
  */
 strings.concat
    .:"Hello "
@@ -123,7 +123,7 @@ strings.concat
 
 /*
  * Forward evaluating the [result] node below,
- * and returning the results to caller.
+ * and returning it to caller as JSON.
  */
 unwrap:x:+/*
 return-nodes
