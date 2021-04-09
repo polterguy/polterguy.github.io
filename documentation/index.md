@@ -1,14 +1,12 @@
 
 # Documentation
 
-* [magic.io](/documentation/magic.io/) - IO operations in Magic
-* [magic.http](/documentation/magic.http/) - HTTP REST invocations in Magic from C#
 * [magic.node](/documentation/magic.node/) - Explains nodes, Hyperlambda and Expressions
 * [magic.lambda](/documentation/magic.lambda/) - Explains Hyperlambda as a DSL, and its keywords
-* [magic.library](/documentation/magic.library/) - A single NuGet package helper tying everything easily together
-* [magic.signals](/documentation/magic.signals/) - Magic's Super Signals implementation
 * [magic.endpoint](/documentation/magic.endpoint/) - Endpoint resolving in Magic
 * [magic.data.common](/documentation/magic.data.common/) - Commonalities for data adapters in Magic
+* [magic.http](/documentation/magic.http/) - HTTP REST invocations in Magic from C#
+* [magic.signals](/documentation/magic.signals/) - Magic's Super Signals implementation
 * [magic.lambda.math](/documentation/magic.lambda.math/) - Math operations from Hyperlambda
 * [magic.lambda.http](/documentation/magic.lambda.http/) - Invoking HTTP REST endpoints from Hyperlambda
 * [magic.lambda.csv](/documentation/magic.lambda.csv/) - Manipulating CSV from Hyperlambda
@@ -31,6 +29,8 @@
 * [magic.lambda.scheduler](/documentation/magic.lambda.scheduler/) - Create scheduled tasks and workflows from Hyperlambda
 * [magic.lambda.validators](/documentation/magic.lambda.validators/) - Validate input in Hyperlambda
 * [magic.lambda.hyperlambda](/documentation/magic.lambda.hyperlambda/) - Parse Hyperlambda from text, and vice versa
+* [magic.io](/documentation/magic.io/) - IO operations in Magic
+* [magic.library](/documentation/magic.library/) - A single NuGet package helper tying everything easily together
 
 # Support
 
