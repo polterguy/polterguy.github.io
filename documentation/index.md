@@ -2,7 +2,7 @@
 # Tutorials
 
 * [Getting started](/tutorials/getting-started/)
-* [Hello World](/tutorials/hello-world-endpoint/)
+* [Hyperlambda Hello World](/tutorials/hello-world-endpoint/)
 
 # Documentation
 
