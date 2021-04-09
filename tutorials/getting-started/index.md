@@ -178,3 +178,5 @@ at which point you must make your improvements publicly available for others to 
 
 If you want to buy me a cup of coffee, saying thx for the great work, I would appreciate
 a [donation](https://servergardens.com/buy/).
+
+* [Documentation](/documentation/)
