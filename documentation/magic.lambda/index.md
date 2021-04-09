@@ -903,7 +903,11 @@ result, allowing you to perform dynamic substitutions on lambda hierarchies such
 
 ```
 .lambda
-   foo:{howdy}
+   foo
+      arg1:{howdy}
+      arg2:{howdy}
+      some-static
+         howdy:world
 apply:x:-
    howdy:world
 ```
@@ -912,9 +916,17 @@ After execution of the above Hyperlambda you will have a result resembling the f
 
 ```
 .lambda
-   foo:{howdy}
+   foo
+      arg1:{howdy}
+      arg2:{howdy}
+      some-static
+         howdy:world
 apply
-   foo:world
+   foo
+      arg1:world
+      arg2:world
+      some-static
+         howdy:world
 ```
 
 Only node values starting out with `{` and ending with `}` will be substituted, and you are expected to provide
