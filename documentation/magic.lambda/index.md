@@ -935,6 +935,11 @@ allows you to create _"template lambda objects"_ which you dynamically transform
 really caring about its original structure, only its set of arguments. This slot also leaves all other nodes
 as is.
 
+Basically, the way it works, is that it takes your expression, and recursively iterate each node below the
+result of your expression, checks to see if the node's value is an argument such as e.g. `{howdy}` above is -
+And if so, it substitutes the `{howdy}` parts with the value of the argument you are expected to supply to your
+invocation having the name of `howdy`. All other nodes are kept as is.
+
 ## Project website
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda](https://github.com/polterguy/magic.lambda), and you can provide feedback, provide bug reports, etc at the same place.
