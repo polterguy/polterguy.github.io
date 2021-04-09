@@ -1,12 +1,12 @@
 
-## Getting started with Magic
+# Getting started with Magic
 
 There are multiple ways to use Magic, depending upon whether or not you just want to try it out locally
 on your development machine, use the Docker images to more rapidly getting up to speed, or deploy it
 to your production server. In this section we'll walk you through all of your options, starting with
 the easiest method, to start out with Magic on your development machine.
 
-### Using the Docker image on your development machine
+## Using the Docker image on your development machine
 
 The easiest way to get started is to [download the docker-compose.yml file](https://github.com/polterguy/magic/releases/download/v9.0.0/docker-compose.yml), assuming you have [Docker](https://www.docker.com/products/docker-desktop) installed, and then execute the following in a terminal window where you saved the file.
 This is the exact same process for both Windows, Mac and Linux - And can also be extended
@@ -26,7 +26,7 @@ you generate a key pair, and Magic should work out of the box without having to 
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/2gos7BvNFkI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-### Manual code setup
+## Manual code setup
 
 If you don't want to use Docker, you can also configure your development environment locally on your
 development machine using the code directly. If so you will first of all need the following components.
@@ -161,20 +161,20 @@ networks:
       name: nginx-proxy
 ```
 
-### Support
+## Support
 
 If you have a support request of private nature, you can send me an
 email at [thomas@servergardens.com](mailto:thomas@servergardens.com). If you want to submit a
 feature request or a bug report, you can do such through the project's
 [GitHub Issues](https://github.com/polterguy/magic/issues).
 
-### License
+## License
 
 Magic is 100% Open Source and free to use, also in proprietary and closed source applications.
 The only exception is if you improve the frontend dashboard, or improve one of its plugins,
 at which point you must make your improvements publicly available for others to use.
 
-### Donate
+## Donate
 
 If you want to buy me a cup of coffee, saying thx for the great work, I would appreciate
 a [donation](https://servergardens.com/buy/).

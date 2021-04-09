@@ -2,6 +2,7 @@
 # Tutorials
 
 * [Getting started](/tutorials/getting-started/)
+* [Hello World](/tutorials/hello-world-endpoint/)
 
 # Documentation
 
