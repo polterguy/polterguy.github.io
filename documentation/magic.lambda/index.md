@@ -898,7 +898,29 @@ vocabulary:io.file
 
 ### [apply]
 
-TODO: Document - Experimental slot! **DO NOT USE THIS SLOT!**
+This slot takes an expression in addition to a list of arguments, and _"applies"_ the arguments unto the expression's
+result, allowing you to perform dynamic substitutions on lambda hierarchies such as the following illustrates.
+
+```
+.lambda
+   foo:{howdy}
+apply:x:-
+   howdy:world
+```
+
+After execution of the above Hyperlambda you will have s result resembling the following.
+
+```
+.lambda
+   foo:{howdy}
+apply
+   foo:world
+```
+
+Only node values starting out with `{` and ending with `}` will be substituted, and you are expected to provide
+all arguments found in the template lambda object, or the invocation will fail, resulting in an exception. This
+allows you to create _"template lambda objects"_ which you dynamically transform into something else, without
+really caring about its original structure, only its set of arguments.
 
 ## Project website
 
