@@ -96,7 +96,7 @@ post endpoint, and paste the following into its payload parts.
 
 Invoke the endpoint, and notice how we get a similar type of result back as our GET endpoint above. If you want
 to see the internals of what is happening, you can use Chrome Developer tools to _"inspect"_ your HTTP requests
-as you click the _"Invoke?_ button. At which point you can see how an HTTP POST invocation is created instead of
+as you click the _"Invoke"_ button. At which point you can see how an HTTP POST invocation is created instead of
 an HTTP GET invocation.
 
 You can repeat the same exercise for PUT, DELETE and PATCH if you wish - However, both GET and DELETE endpoints
