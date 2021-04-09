@@ -19,6 +19,8 @@ This project contains string manipulation slots for Magic. More specifically, it
 * __[strings.trim]__ - Trims a string, optionally for all characters found in its argument
 * __[strings.trim-start]__ - Trims a string only to its left, optionally for all characters found in its argument
 * __[strings.trim-end]__ - Trims a string only to its right, optionally for all characters found in its argument
+* __[strings.url-encode]__ - URL encodes the specified string
+* __[strings.substring]__ - Returns the sub-string of the specified string
 
 ## Usage
 
@@ -70,7 +72,11 @@ strings.replace-not-of:foo bar1howdy
    .:-
 ```
 
-The above will result in the following result `strings.replace-not-of:foo-bar-howdy`
+The above will result in the following result 
+
+```
+strings.replace-not-of:foo-bar-howdy
+```
 
 ### [strings.capitalize]
 
@@ -91,10 +97,13 @@ separating character.
 
 ```
 .bar:Bar
-strings.concatenate
+strings.concat
    .:Thomas
+   .:" "
    .:Hansen
+   .:" "
    .:Foo
+   .:" "
    get-value:x:@.bar
 
 /*
@@ -177,7 +186,7 @@ strings.regex-replace:foo bar hansen
    .:FOO
 ```
 
-The first argument is what regular expression to match, the second argument is what to replaces
+The first argument is what regular expression to match, the second argument is what to replace
 all matches with.
 
 ### [strings.split]
@@ -232,6 +241,44 @@ strings.trim:09thomas12
 
 // Results in "thomas"
 ```
+
+### [strings.url-encode]
+
+URL encodes a string. Example can be found below.
+
+```
+strings.url-encode:thomas@servergardens.com
+```
+
+Resulting in the following after execution.
+
+```
+strings.url-encode:thomas%40servergardens.com
+```
+
+### [strings.substring]
+
+Returns a substring of the specified string.
+
+```
+.input:Foo Bar Howdy World
+strings.substring:x:-
+   .:5
+   .:7
+```
+
+The above will result in the following.
+
+```
+strings.substring:ar Howd
+```
+
+Notice, the second argument is the _number of characters to return_ and not the offset into the string
+of where to stop returning. In such a regard, it works the same way as the C# `Substring` method.
+
+## Project website
+
+The source code for this repository can be found at [github.com/polterguy/magic.lambda.strings](https://github.com/polterguy/magic.lambda.strings), and you can provide feedback, provide bug reports, etc at the same place.
 
 ## Quality gates
 

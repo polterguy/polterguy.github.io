@@ -1,11 +1,10 @@
 
 # Magic Lambda Mail
 
- SMTP and POP3 helpers for Magic. More specifically, this project contains the following POP3 and SMTP slots
- helpers for Magic.
+ SMTP and POP3 helpers for Magic. More specifically, this project contains the following slots.
 
-1. **[mail.pop3.fetch]** - Fetches emails from some POP3 server
-2. **[mail.smtp.send]** - Sends email(s) over an SMTP server
+* __[mail.smtp.send]__ - Sends email(s) over an SMTP server
+* __[mail.pop3.fetch]__ - Retrieves emails from a POP3 server
 
 Both of the above slots have async overrides that will be automatically used by Magic if possible.
 
@@ -30,14 +29,14 @@ mail.smtp.send
 ```
 
 You can send multiple **[message]** objects at the same time, using the same SMTP connection and credentials.
+This allows you to connect _once_ to the SMTP server, and use the same connection to send multipl emails.
 
-The entirety of the **[server]** node above is optional, and if not given, will be fetched from your
-configuration settings, using the `IConfiguration` object, which is given through dependency injection.
-You can also override only one or two parts in your **[server]** segment above, and have the system
-read the rest of the settings from your application's configuration. In addition, the **[from]** node is also
-optional, assuming you have a default `from` configured in your configuration settings. Below are the keys used
-to fetch configuration settings for SMTP connections, and from object, if not explicitly given as part of
-invocation.
+The entirety of the **[server]** node above is optional, and if it's not given, it will be fetched from your
+configuration settings. You can also override only one or two parts in your **[server]** segment above, and
+have the system read the rest of the settings from your application's configuration. In addition, the **[from]**
+node is also optional, assuming you have a default `from` configured in your configuration settings. Below are
+the keys used to fetch configuration settings for SMTP connections, and from object, if not explicitly given as
+part of the invocation.
 
 * magic.smtp.host
 * magic.smtp.port
@@ -72,9 +71,8 @@ instead of having to supply server configuration every time you invoke the slot,
 the above will actually allow you to send emails using your GMail account.
 
 Assuming you have the above somewhere in your configuration, you can construct and send an email using something
-like the following. Which probably makes things more convenient, allowing you to avoid bothering about connection
-settings, from addresses, etc - And leave this as a part of your Azure transformation pipeline(s), or something
-similar.
+like the following. Which probably makes things more convenient, allowing you to avoid thinking about connection
+settings, from addresses, etc - And leave this as a part of your deployment transformation pipeline(s), etc.
 
 ```
 mail.smtp.send
@@ -101,12 +99,15 @@ mail.smtp.send
         entity:text/plain
            content:Body content
         entity:text/plain
-           filename:foo.txt
+           filename:/files/foo.txt
 ```
 
 To construct your email's **[message]** part, see the documentation for the Magic Lambda MIME project.
 
 ## Retrieving emails
+
+**Notice** - This slot is in currently beta implementation, and its API might change in a future version
+of Magic.
 
 ```
 mail.pop3.fetch
@@ -125,9 +126,9 @@ mail.pop3.fetch
        */
 ```
 
-Just like its SMTP counterpart, parts of, or the entirety of the above **[server]** node is optional.
-Below are the keys used to fetch configuration settings for SMTP connections, if not explicitly given
-as part of invocation.
+Just like its SMTP counterpart, the entirety of the above **[server]** node is optional, and fetched
+from your configuration if ommitted. Below are the keys used to fetch configuration settings for your
+POP3 connection, if not explicitly given as part of invocation.
 
 * magic.pop3.host
 * magic.pop3.port
@@ -144,6 +145,10 @@ see the Magic Lambda MIME documentation for details to understand this
 structure. If you choose to retrieve messages in **[raw]** format, the message node's value will contain
 the raw MIME message as text. If you choose this path, and you later want to actually parse the message,
 to make it become a structured lambda object - You can use the **[mime.parse]** slot from Magic Lambda MIME.
+
+## Project website
+
+The source code for this repository can be found at [github.com/polterguy/magic.lambda.mail](https://github.com/polterguy/magic.lambda.mail), and you can provide feedback, provide bug reports, etc at the same place.
 
 ## Quality gates
 

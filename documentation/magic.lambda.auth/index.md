@@ -1,9 +1,10 @@
 
 # Magic Lambda Auth
 
-Authentication and authorization helpers for Magic. This project allows you to create and consume
-JWT tokens, to secure your magic installation. The project contains 3 slots.
+Authentication and authorization helper slots for Magic. This project allows you to create and consume
+JWT tokens, to secure your magic installation. The project contains the following slots.
 
+* __[auth.ticket.get]__ - Returns the JWT token's payload as a lambda structure, and also verifies the token in the process
 * __[auth.ticket.create]__ - Creates a new JWT token, that you can return to your client, any ways you see fit
 * __[auth.ticket.refresh]__ - Refreshes a JWT token. Useful for refreshing a token before it expires, which would require the user to login again
 * __[auth.ticket.verify]__ - Verifies a JWT token, and that the user is logged in, in addition to (optionally) that he belongs to one roles supplied as a comma separated list of roles
@@ -14,7 +15,8 @@ If you don't do this, some adversary can easily reproduce your tokens, and imper
 an _"appsettings.json"_ secret you could apply can be found below (don't use the exact same salt, the idea is to provide
 a _random_ salt, unique for _your_ installation)
 
-However, during installation, Magic will automatically create a random secret for you.
+However, during installation, Magic will automatically create a random secret for you. Below is an example of how this
+might look like.
 
 ```json
 {
@@ -36,6 +38,98 @@ auth.ticket.create
       .:howdy
       .:world
 ```
+
+The above will return something resembling the following, minus the carriage returns, which are added for clarity.
+
+```
+auth.ticket.create:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+eyJ1bmlxdWVfbmFtZSI6ImZvbyIsInJvbGUiOlsiaG93ZHkiLCJ3b3Js
+ZCJdLCJuYmYiOjE2MTc5NDQyMzYsImV4cCI6MTYxNzk1MTQzNiwiaWF0
+IjoxNjE3OTQ0MjM2fQ.
+9eYROea_r-TJGT5k4H0DaGDW6LziHhEsK4on-uc-ECc
+```
+
+Typically Magic takes care of authentication for you, by exposing an `authenticate` endpoint for
+you, where you can submit a username and a password, for then to have your JWT token returned accordingly.
+
+## JWT tokens internals
+
+A JWT token is actually just 3 JSON objects, that have been base64 encoded, and afterwards each entity is separated
+by a period (.). In fact, you can inspect a JWT token at for instance [JWT.io](https://jwt.io) to inspect its internals.
+A JWT token has 3 parts.
+
+* The header providing meta information
+* The payload being the actual data of the token
+* The signature which is basically just a HASH based upon your token's payload, salted with your auth secret
+
+Unless an adversary knows your auth secret, it becomes impossible to create a valid JWT token. However, your token
+is still vulnerable for being stolen, so make sure you only return it over a secure HTTP connection, or something similar.
+
+## Using your JWT token
+
+Magic expects the token to be specified as a `Bearer` token in your HTTP invocation's `Authorization` HTTP header.
+To use the token therefor implies adding an HTTP `Authorization` header, and setting its value to something resembling
+the following.
+
+```
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.xyz.qwerty
+```
+
+You can see how Magic does this internally by inspecting what the Magic dashboard transmits to the backend
+after having authenticated using e.g. Chrome Developer Tools.
+
+## Refreshing your token
+
+JWT tokens have an expiration date. This is typically configured in your _"appsettings.json"_ file in your Magic
+backend as `magic:auth:valid-minutes`, and once this time has passed, the token will no longer be considered
+valid, and using the token after this period, will result in an _"Access Denied"_ being returned from the server.
+
+However, since JWT token are just JSON, and the expiration time is just a Unix timestamp, you can parse the
+JWT token in your frontend, calculate the expiration date, and make sure you refresh your token _before_ the
+expiration date is reached, and replace your existing token with the new token returned by Magic. Magic
+contains a `refresh` token endpoint to achieve this. Internally this endpoint will use the **[auth.ticket.refresh]**
+slot to create a new token, where the only difference is that it has a new expiration date.
+
+## Securing your endpoints
+
+To secure an endpoint, and for instance require the user to belong to a specific role in order to be allowed
+to invoke an endpoint, you might add something such as the following to the top of your Hyperlambda files.
+
+```
+auth.ticket.verify:root, admin, user
+```
+
+The above will throw an exception unless the endpoint is given a valid JWT token, and the user belongs to
+one of the roles that you pass in as a comma separated list of role in its invocation. In fact, you can try
+this out, by pasting the following into your Hyperlambda evaluator in your dashboard and execute it.
+
+```
+auth.ticket.verify:non-existing-role
+```
+
+## Inspecting your token's payload
+
+The following slots allows you to inspect the token's payload.
+
+* __[auth.ticket.get]__ - Returns the username and the roles the user belongs to
+* __[auth.ticket.in-role]__ - Convenience slot returning true if user belongs to the specified role(s)
+
+Below is an example of how these are used.
+
+```
+auth.ticket.in-role:foo, root
+auth.ticket.get
+```
+
+The first slot return _true_ because your root user belongs to _any_ (one) of the roles you supplied as
+a comma separated list of roles. The second slot above returns the username, and all the roles the user
+belongs to as a structured lambda object. As a general rule of thumb though, you'd not want to secure your
+endpoints using the above slots, but rather the _verify_ slot above, to avoid having errors in your code
+resulting in that an unauthorized user gains access to invoke an endpoint he should not be allowed to invoke.
+
+## Project website
+
+The source code for this repository can be found at [github.com/polterguy/magic.lambda.auth](https://github.com/polterguy/magic.lambda.auth), and you can provide feedback, provide bug reports, etc at the same place.
 
 ## Quality gates
 

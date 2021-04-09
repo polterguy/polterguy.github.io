@@ -59,14 +59,16 @@ However, you can also take more control over how things are actually wired up, b
 _"do all methods"_ called `AddMagic` and `UseMagic`, invoke some of the specialized initialization methods,
 you can find below.
 
+* `IServiceCollection.AddCaching`
 * `IServiceCollection.AddMagicHttp`
-* `IServiceCollection.AddMagicLog4netServices`
+* `IServiceCollection.AddMagicLogging`
 * `IServiceCollection.AddMagicSignals`
 * `IServiceCollection.AddMagicEndpoints`
 * `IServiceCollection.AddMagicFileServices`
 * `IServiceCollection.AddMagicAuthorization`
 * `IServiceCollection.AddMagicScheduler`
 * `IServiceCollection.AddMagicMail`
+* `IServiceCollection.AddLambda`
 
 The above methods is basically what the `AddMagic` method actually does, and they're extension methods of
 `IServiceCollection`, that can be found in the `magic.library` namespace. Similar alternatives to `UseMagic` can
@@ -74,16 +76,21 @@ be found below.
 
 * `IApplicationBuilder.UseMagicExceptions`
 * `IApplicationBuilder.UseMagicStartupFiles`
+* `IApplicationBuilder.UseScheduler`
 
 If you use these methods instead of the _"do all methods"_, probably a large portion of your motivation would
 be to _replace_ one of these methods with your own implementation, to exchange the default wiring up, by (for instance)
 using a _"virtual database based file system"_ by creating your own service implementation of for instance `IFileService`
-from _"magic.lambda.io"_, or use a different logging provider than the default, which is log4net, etc. If you wish
+from _"magic.lambda.io"_, or use a different logging provider than the default, etc. If you wish
 to do this, you'd probably benefit from looking at what the default implementation of your method does, to understand the
 requirements from your method.
 
 Doing this is very powerful, and allows you to change the way the system behaves by default - But is also definitely
 considered an _"advanced exercise"_.
+
+## Project website
+
+The source code for this repository can be found at [github.com/polterguy/magic.library](https://github.com/polterguy/magic.library), and you can provide feedback, provide bug reports, etc at the same place.
 
 ## Quality gates
 

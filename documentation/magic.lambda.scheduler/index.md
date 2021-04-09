@@ -1,6 +1,8 @@
 
 # Magic Lambda Scheduler
 
+TODO: Needs updating, but also needs better implementation, making it easier to create unit tests, etc.
+
 This project provides the ability to create persisted, and/or scheduled Hyperlambda tasks,
 for [Magic](https://github.com/polterguy.magic). More specifically it provides the following slots.
 
@@ -333,6 +335,10 @@ all tasks in the past are immediately executed, which is important for you to un
 
 Tasks are by default persisted into your `magic.tasks` table, and schedules are persisted into your
 `magic.task_due` table.
+
+## Project website
+
+The source code for this repository can be found at [github.com/polterguy/magic.lambda.scheduler](https://github.com/polterguy/magic.lambda.scheduler), and you can provide feedback, provide bug reports, etc at the same place.
 
 ## Quality gates
 

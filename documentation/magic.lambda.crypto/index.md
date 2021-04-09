@@ -5,6 +5,25 @@ This project provides cryptography helper slots for Magic, allowing you to use b
 operations in your Hyperlambda applications. The symmetric parts of the project is using AES internally, and the
 asymmetric parts is using RSA. In addition to a bunch of _"low level slots"_, the project also contains combination
 slots, combining RSA and AES, allowing you to both encrypt and sign a message, using a single signal invocation.
+More specifically this project contains the following slots.
+
+* __[crypto.rsa.create-key]__ - Creates a new RSA keypair
+* __[crypto.rsa.encrypt]__ - RSA encrypts a message
+* __[crypto.rsa.decrypt]__ - RSA decrypts a message
+* __[crypto.rsa.sign]__ - Cryptographically signs a message
+* __[crypto.rsa.verify]__ - Verifies a cryptographic signature of some message
+* __[crypto.aes.encrypt]__ - AES encrypts a message
+* __[crypto.aes.decrypt]__ - AES decrypts a message
+* __[crypto.fingerprint]__ - Creates a fingerprint of something
+* __[crypto.get-key]__ - Returns the fingerprint of the public key associated with message
+* __[crypto.random]__ - CSRNG creating random seeds for you
+* __[crypto.hash]__ - Hashes some message or payload
+* __[crypto.password.hash]__ - Creates a Blowfish per salted hash
+* __[crypto.password.verify]__ - Verifies a Blowfish salted hash
+* __[crypto.encrypt]__ - High level slot combining RSA and AES to encrypt some message
+* __[crypto.decrypt]__ - High level slot combining RSA and AES to decrypt some message
+* __[crypto.sign]__ - High level slot to sign some message
+* __[crypto.verify]__ - High level slot to verify a signature of some message
 
 ## [crypto.random]
 
@@ -108,11 +127,21 @@ crypto.rsa.create-key
    seed:some random jibberish text
 ```
 
+The above will return 4 nodes to you as you invoke it.
+
+* __[private]__ - Base64 encoded private key in DER format
+* __[public]__ - Base 64 encoded public key in DER format
+* __[fingerprint]__ - Fingerprint encoded SHA256 hash of your _public_ key
+* __[fingerprint-raw]__ - Raw SHA256 hash of your public key
+
 Both the **[strength]** and **[seed]** is optional above. Strength will default to 2048, which might be too weak
 for serious cryptography, but increasing your strength too much, might result in that the above function spends several
 seconds, possibly minutes to return if you set it too high - In addition to that your key pair becomes very large.
 The **[seed]** is optional, and even if you don't provide a seed argument, the default seed should still be strong
-enough to avoid predictions.
+enough to avoid predictions. Depending upon your paranoia level, you might want to manually seed the above
+slot by having users type in random text as they generate keys. A major security concern in cryptography is CSRNG,
+or what's referred to as _"Cryptographically Secure Random Number Generators"_, which aren't always as cryptographically
+secure as we might think, since if its seeds are predictable, the random bytes it generates can easily be _"replayed"_.
 
 A good strength for an RSA key, is considered to be 4096, which developers around the world feels are secure enough
 to avoid brute force _"guessing"_ of your private key. According to what we know about cryptography, all other concerns
@@ -123,7 +152,7 @@ Notice, if you want the key back as raw bytes, you can supply a **[raw]** argume
 true, at which point the returned key(s) will only be DER encoded, and returned as a raw `byte[]`. This might be
 useful, if you for instance need to persist the key to disc, as a binary file, etc. All the RSA slots can return
 their results as `byte[]` values, if you provide a **[raw]** argument to them, and set its value to true.
-If you don't provide a raw argument, the returned value will be base64 encoded.
+If you don't provide a raw argument, the returned value will be base64 encoded DER format.
 
 This slot will also return the fingerprint of your public key, which is useful to keep around somewhere,
 since it's used in other cryptographic operations to identify keys used in operation, etc. The public key's
@@ -252,7 +281,8 @@ crypto.random
 
 ## Combining RSA and AES cryptography
 
-AES and RSA are only really useful when combined. Hence, this project contains the following convenience slots.
+AES and RSA are more useful when combined together. Hence, this project contains the following convenience slots, that combines
+these two cryptography functions together.
 
 * __[crypto.encrypt]__ - Encrypts some message using AES + RSA, and signs the message in the process
 * __[crypto.decrypt]__ - Decrypts some message using AES + RSA, optionally verifying a signature in the process
@@ -262,7 +292,8 @@ AES and RSA are only really useful when combined. Hence, this project contains t
 
 The **[crypto.encrypt]** slot requires some message/content, a signing key, an encryption key, and your signing
 key's fingerprint. This slot will first cryptographically sign your message using the private key. Then it
-will use the public key supplied to encrypt the message. Below is an example.
+will use the public key supplied to encrypt the message, while injecting the fingerprint for the signing key
+and the cryptography key into the package. Below is an example.
 
 ```
 // Recipient's key.
@@ -287,14 +318,14 @@ crypto.decrypt:x:-
 
 **Notice** - We're using only 512 bit strength in the above example. Make sure you (at least) use
 2048, preferably 4096 in real world usage. The **[crypto.encrypt]** slot can also optionally handle
-a **[seed]** argument, which will seed the CS RNG that's used to generate a symmetric AES encryption
+a **[seed]** argument, which will seed the CSRNG that's used to generate a symmetric AES encryption
 key.
 
 To understand what occurs in the above Hyperlambda example, let's walk through it step by step,
 starting from the **[crypto.encrypt]** invocation.
 
-1. The message _"Some super secret message"_ is first cryptographically signed using the **[signing-key]**
-2. The signed message is then encrypted using a CSRNG generated AES key
+1. The message _"Some super secret message"_ is first cryptographically signed using the private **[signing-key]**
+2. The signed message is then AES encrypted using a CSRNG generated random key
 3. The AES key from the above is then encrypted using the **[encryption-key]**, that's assumed to be the recipient's public key
 4. The signing key's fingerprint is stored inside of the encrypted content, such that when the message is decrypted, the other party can verify that the signature originated from some trusted party
 5. The encryption key's fingerprint is stored as bytes, prepended before the encrypted message, which allows the other party to retrieve the correct decryption key, according to what encryption key the caller encrypted the message with. To retrieve a cryptography operation key fingerprint, you can use **[crypto.get-key]**
@@ -397,26 +428,34 @@ not know who, if any signed the package - Or any other parts of the message - As
 to somehow crack the AES encryption, and/or somehow retrieve the private RSA key the AES package's
 encryption key was encrypted with.
 
-## Exhaustive list of slots
+## Blowfish password hashing
 
-This project provides the following slots.
+As a general security rule of thumb, passwords should never be stored in clear text, but persisted into for
+instance a database as _"slowly hashed values with per record based salts"_. This prevents a whole range of
+security issues, such as having adversaries creating Rainbod Dictionary attacks on your passwords. This
+project contains two slots to implement this, and these are as follows.
 
-* __[crypto.hash]__ - Creates a hash of the specified string value/expression's value, using the specified **[algorithm]**, that defaults to SHA256
-* __[crypto.password.hash]__ - Creates a cryptographically secure hash from the specified password, expected to be found in its value node. Uses blowfish, or more specifically BCrypt internally, to create the hash with individual salts.
-* __[crypto.password.verify]__ - Verifies that a **[hash]** argument matches towards the password specified in its value. The **[hash]** is expected to be in the format created by BCrypt, implying the hash was created with e.g. **[crypto.password.hash]**.
-* __[crypto.random]__ - Creates a cryptographically secured random string for you, with the characters [a-zA-Z0-9].
-* __[crypto.rsa.create-key]__ - Creates an RSA keypair for you, allowing you to pass in **[strength]**, and/or **[seed]** to override the default strength being 2048, and apply a custom seed to the random number generator. The private/public keypair will be returned to caller as **[public]** and **[private]** after invocation, which is the DER encoded keys, encoded by default as base64.
-* __[crypto.rsa.sign]__ - Cryptographically signs a message (provided as value) with the given private **[private-key]**, and returns the signature for your content as value. The signature content will be returned as the base64 encoded raw bytes being your signature.
-* __[crypto.rsa.verify]__ - Verifies a previously created RSA signature towards its message (provided as value), with the specified public **[public-key]**, optionally allowing the caller to provide a hashing **[algorithm]**, defaulting to SHA256. The slot will throw an exception if the signature is not matching the message passed in for security reasons.
-* __[crypto.rsa.encrypt]__ - Encrypts the specified message (provided as value) using the specified public **[public-key]**, and returns the encrypted message as a base64 encoded encrypted message by default.
-* __[crypto.rsa.decrypt]__ - Decrypts the specified message (provided as value) using the specified private **[private-key]**, and returns the decrypted message as its original value.
-* __[crypto.aes.encrypt]__ - Encrypts a piece of data using the AES encryption algorithm
-* __[crypto.aes.decrypt]__ - Decrypts a piece of data previously encrypted using AES encryption
-* __[crypto.encrypt]__ - Convenience slot combining AES and RSA encryption to encrypt some message
-* __[crypto.decrypt]__ - The opposite of the above
-* __[crypto.sign]__ - Signs a package, and returns the combination of the signature and package to caller
-* __[crypto.verify]__ - Verifies a signature created using the **[crypto.sign]** slot
-* __[crypto.get-key]__ - Returns the public key that was used to encrypt a message using the above slot. Result is returned in _"fingerprint format"_.
+* __[crypto.password.hash]__ - Creates a password hash
+* __[crypto.password.verify]__ - Verifies a hashed password
+
+Example usage can be found below.
+
+```
+crypto.password.hash:SomePasswordHere
+crypto.password.verify:SomePasswordHere
+   hash:x:@crypto.password.hash
+```
+
+The first slot invocation creates a Blowfish hash, while the second slot invocation verifies a previously
+created Blowfish hash, given the password as its main argument. If you exchange the second password given
+to **[crypto.password.verify]** by for instance adding one random character to it, the result will be
+`false` from the second invocation.
+
+Internally these are the slots Magic uses when it creates its JWT authentication database, and its endpoints.
+
+## Project website
+
+The source code for this repository can be found at [github.com/polterguy/magic.lambda.crypto](https://github.com/polterguy/magic.lambda.crypto), and you can provide feedback, provide bug reports, etc at the same place.
 
 ## Quality gates
 

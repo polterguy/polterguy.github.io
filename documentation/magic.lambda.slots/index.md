@@ -31,8 +31,7 @@ signal:foo
 After evaluation of the above Hyperlambda, the value of the __[signal]__ node will be 57. Notice, if you
 invoke __[slots.create]__ for a slot that has already been created, the old slot will be overwritten with the
 new lambda object you pass into it. Also notice that if you try to invoke a slot that doesn't exist, or you try
-to get its content, an exception will be thrown. The __[slots.return-xxx]__ slots, will also throw an exception if you
-attempt to invoke them outside a dynamically created slot somehow.
+to get its content, an exception will be thrown.
 
 Also realize that when you create a slot, it is not persisted in any ways - Implying if the web server process
 is restarted, your slot will disappear. To avoid this, put the creation of your slot inside a file
@@ -72,6 +71,10 @@ invocation to whitelist, allowing you to restrict some piece of potentially unsa
 a pre-defined list of dynamically created slots. Below is an example.
 
 ```
+slots.create:foo1
+   return-value:Safe
+slots.create:foo2
+   return-value:Unsafe
 whitelist
    vocabulary
       signal
@@ -82,12 +85,11 @@ whitelist
       signal:foo1
 
       // This will throw, since [foo2] is not whitelisted
-      // This is true, even if you create [foo2]
       signal:foo2
 ```
 
 Basically, _only_ the slots declared in the above **[vocabulary]** will be allowed to be invoked inside
-of the above **[.lambda]** object. You must have your dynamic slots declared as **[signal]**:slot-name,
+of the above **[.lambda]** object. You must have your dynamic slots declared as **signal:slot-name**,
 such as the above illustrates. And in order to signal dynamic slots *at all*, you'll need to (obviously)
 whitelist **[signal]** itself, as illustrated in the above code. Read more about **[whitelist]** in 
 the magic.lambda project.
@@ -158,6 +160,10 @@ found below.
 ```
 slots.vocabulary
 ```
+
+## Project website
+
+The source code for this repository can be found at [github.com/polterguy/magic.lambda.slots](https://github.com/polterguy/magic.lambda.slots), and you can provide feedback, provide bug reports, etc at the same place.
 
 ## Quality gates
 

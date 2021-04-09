@@ -8,11 +8,42 @@ This project provides HTML helper slots for Magic. More specifically, it provide
 ## Usage
 
 ```
-.html:@"<html>... some HTML goes here ... </html>"
+.html:@"<html>
+  <head>
+    <title>Howdy</title>
+  </head>
+  <body>
+    <p class=""foo""></p>
+  </body>
+</html>"
 html2lambda:x:-
 ```
 
-Attributes starts out with the `@` character, children nodes does not.
+The above results in something resembling the following.
+
+```
+html2lambda
+   html
+      head
+         title
+            #text:Howdy
+      body
+         p
+            @class:foo
+```
+
+Attributes starts out with the `@` character, children nodes does not - While text content inside of elements will
+start out with `#`. This implies you'll need to use escaped expression iterators when traversing the resulting node
+lambda object. For instance, to retrieve the above `p` element's inner text, you could use something such as the
+following.
+
+```
+get-value:x:-/**/\#text
+```
+
+## Project website
+
+The source code for this repository can be found at [github.com/polterguy/magic.lambda.html](https://github.com/polterguy/magic.lambda.html), and you can provide feedback, provide bug reports, etc at the same place.
 
 ## Quality gates
 

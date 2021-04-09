@@ -11,9 +11,10 @@ This project provides math functions to Magic. More specifically, it provides th
 * __[math.decrement]__ - Decrements a node's value, optionally by **[step]**, defaulting to 1
 * __[math.increment]__ - Increments a node's value, optionally by **[step]**, defaulting to 1
 
-All of the above can be given any number of arguments, including as its value, and will treat the first argument as the _"base"_,
-and performing the rest of the arguments self assigning the base as it proceeds. For instance, the following code will first divide
-100 by 4, then divide that result by 5 again, resulting in 5.
+All of the above besides the two last slots can be given any number of arguments, including as its value,
+and will treat the first argument as the _"base"_, and performing the rest of the arguments self assigning
+the base as it proceeds. For instance, the following code will first divide 100 by 4, then divide that result
+by 5 again, resulting in 5.
 
 ```
 math.divide:int:100
@@ -25,6 +26,19 @@ The value of the above __[math.divide]__ node after evaluating the above Hyperla
 
 All of the above slots will also evaluate the children collection as a lambda, before starting the actual math function,
 allowing you to recursively raise signals to retrieve values that are supposed to be mathematically handled somehow.
+This allows you to recursively nest math operations, such as for instance.
+
+```
+.one:int:5
+.two:int:2
+math.multiple
+   .:int:3
+   math.add
+      get-value:x:@.one
+      get-value:x:@.two
+```
+
+The above of course will first add 5 and 2, then multiple the result of that with 3, resulting in 21.
 
 ## Incrementing and decrementing values
 
@@ -38,6 +52,24 @@ the original node's value by. Below is an example that decrements the value foun
 math.decrement:x:-
    step:int:2
 ```
+
+After executing the above, the result of **[.value]** will be 3.
+
+## Modulo
+
+The modulo slot divides its argument(s) by its base, and returns the remainder.
+
+```
+.int:17
+math.modulo:x:-
+   .:int:10
+```
+
+The above results in 7.
+
+## Project website
+
+The source code for this repository can be found at [github.com/polterguy/magic.lambda.math](https://github.com/polterguy/magic.lambda.math), and you can provide feedback, provide bug reports, etc at the same place.
 
 ## Quality gates
 

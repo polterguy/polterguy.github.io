@@ -3,16 +3,16 @@
 
 This project contains input validators for Magic. More specifically it contains the following slots.
 
-* __[validators.date]__ - Verifies that some date input is between __[min]__ and __[max]__ value
+* __[validators.date]__ - Verifies that some date input is a date, and optionally between __[min]__ and __[max]__ value
 * __[validators.email]__ - Verifies that some input is a legal email address
 * __[validators.enum]__ - Verifies that some input is one of a set of predefined legal values, found as values of children
-* __[validators.integer]__ - Verifies that som einteger input (long, int, etc) is between some specified __[min]__ and __[max]__ range
+* __[validators.integer]__ - Verifies that some integer input (long, int, etc) is between some specified __[min]__ and __[max]__ range
 * __[validators.mandatory]__ - Verifies that some input valus is given (_at all_)
 * __[validators.regex]__ - Verifies that some input is matching some given __[regex]__ pattern
-* __[validators.string]__ - Verifies that some string input is between __[min]__ and __[max]__ length
+* __[validators.string]__ - Verifies that some string input is between __[min]__ and __[max]__ in length
 * __[validators.url]__ - Verifies that some string input is a legal URL, either HTTP or HTTPS type of scheme
 
-All of the above slots takes an expression, or valus, as its main input, and will throw exceptions if their input expression's
+All of the above slots takes an expression, or values, as its main input, and will throw exceptions if their input expression's
 value(s), or its value, does not follow the rules specified by the validator. This makes them perfect fits for _"intercepting"_ the
 input specified to an HTTP REST endpoint, to verify the input data conforms to some sort of predefined validator.
 
@@ -56,6 +56,10 @@ validater will throw an exception, providing the invalid value, and the name of 
 to the caller. This allows you to use *one single validator* to validate multiple arguments, such as the above illustrates.
 This might be useful if you for instance have an endpoint accepting multiple address fields, and zip code is a mandatory
 argument, and it needs to be an integer.
+
+## Project website
+
+The source code for this repository can be found at [github.com/polterguy/magic.lambda.validators](https://github.com/polterguy/magic.lambda.validators), and you can provide feedback, provide bug reports, etc at the same place.
 
 ## Quality gates
 

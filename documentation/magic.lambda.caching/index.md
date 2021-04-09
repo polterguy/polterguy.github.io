@@ -8,6 +8,7 @@ Cache helper slots for Magic, more specifically the following slots.
 * __[cache.try-get]__ - Attempts to retrieve an item from cache, and if not existing, invokes __[.lambda]__ to retrieve item, and saves it to cache, before returning it to the caller.
 * __[cache.clear]__ - Completely empties cache.
 * __[cache.list]__ - Lists all items in cache.
+* __[cache.count]__ - Returns the number of cache items in total.
 
 All of the above slots requires a key as its value.
 
@@ -15,19 +16,12 @@ All of the above slots requires a key as its value.
 
 Invoke this slot to save an item to the cache. The slot takes 3 properties, which are as follows.
 
-* __[value]__ - The item to actually save to the cache. If you pass in null, any existing cache items will be removed.
+* Value of node, being the _key_ for your cache item.
+* __[value]__ - The item to actually save to the cache. If you pass in null, any existing cache items matching your key will be removed.
 * __[expiration]__ - Number of seconds to keep the item in the cache.
 
-Absolute expiration implies that the item will be kept in the cache, for x number of seconds, before
-evicted from the cache. Sliding expiration implies that if the cached item is accessed more frequently
-than the sliding expiration interval, the item will never expire, until it's no longer accessed for
-its **[expiration]** number of seconds. To remove a cached item, invoke this slot with a null **[value]**,
-or no **[value]** node at all.
-
 Below is an example of a piece of Hyperlambda that simply saves the value of _"Howdy world"_ to your
-cache, using _"cache-item-key"_ as the key for the cache item. Notice, this example uses sliding expiration,
-implying the item will _never_ be evicted from your cache, as long as it's accessed more frequently than
-every 5 seconds.
+cache, using _"cache-item-key"_ as the key for the cache item.
 
 ```
 cache.set:cache-item-key
@@ -65,6 +59,12 @@ cache.try-get:cache-key
       return:Howdy world
 ```
 
+The slot is implemented in such a way that only the first invocation towards the specified key
+will actually execute your **[.lambda]** object, allowing you to have very expensive executions
+to create your items, that you want to store into the cache, without experiencing race conditions,
+or having more than one thread actually create the item and store into the cache. This should in
+general be your _"goto slot"_ whenever you want to use the cache slots in this project.
+
 ## [cache.clear]
 
 This is a shorthand slot to completely clear cache, removing all items.
@@ -77,8 +77,25 @@ cache.clear
 cache.get:cache-item-key
 ```
 
-Notice, the above Hyperlambda should not return any item at its last invocation to **[cache.get]**
-since the cache was cleared before invoking it.
+Notice, the above Hyperlambda should not return any item in its last invocation to **[cache.get]**
+since the cache was cleared before invoking it. The slot also optionally takes a **[filter]** argument,
+which if provided, will _only_ delete items starting out with the specified filter. Usage example
+can be found below.
+
+```
+cache.clear:foo.bar
+```
+
+The above will _only_ remove cache items having a key that starts out with _"foo.bar"_ implying
+that for instance the following items will be cleared.
+
+* foo.bar
+* foo.bar.xyz1
+* foo.bar.xyz2
+
+While an item with a key of _"x.foo.bar"_ will _not_ be removed. This allows you to _"namespace"_
+your cache items, and clearing out for instance all cache items matching the specified namespace,
+in one go.
 
 ## [cache.list]
 
@@ -91,8 +108,33 @@ cache.set:cache-item-key
 cache.list
 ```
 
-Notice, you might want to be careful with invoking this method if you have a lot of items in your cache,
-since it does not support any type of paging.
+This slot also supports the following optional arguments.
+
+* __[limit]__ - Maximum number of items to return.
+* __[offset]__ - Offset of where to start returning items.
+* __[filter]__ - Filter condition declaring which items to return. See the __[cache.clear]__ slot to understand how it works, since this argument functions in the exact same way, assuming your filter is a _"namespace"_.
+
+## Internals
+
+Internally the cache this project is using is _not_ the `MemoryCache` from .Net, since this class
+suffers from a whole range of problems in regards to its API, such as not being able to count or
+iterate items, etc. Hence, the actual implementation is _completely custom_, and is based upon
+the `IMagicMemoryCache` interface, which by default is wired up towards its `MagicMemoryCache`
+implementation. This is a conscious choice, since first of all the `IMemoryCache` that .Net
+provides out of the box is _really_ slow, in addition to that it is missing a _lot_ of crucial
+parts expected from a mature memory based cache implementation.
+
+If you want to access the actual cache from C# or something, make sure you use it through the dependency
+injected `IMagicMemoryCache` interface, providing you with the implementation class needed to consume
+it from C#. This interface has a lot of nice methods you can use to have a robust and fast memory
+based cache implementation in your C# code - In addition to that it synchronises access such that
+no race conditions can be experienced. However, _it is a memory based cache_. If you need better
+caching features, going beyond what a basic memory based cache implementation can achieve, you might
+want to implement Redis or something similar as your own custom C# extension.
+
+## Project website
+
+The source code for this repository can be found at [github.com/polterguy/magic.lambda.caching](https://github.com/polterguy/magic.lambda.caching), and you can provide feedback, provide bug reports, etc at the same place.
 
 ## Quality gates
 

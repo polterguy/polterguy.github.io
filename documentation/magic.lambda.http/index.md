@@ -7,6 +7,7 @@ Provides HTTP REST capabilities for Magic. More specifically this project provid
 * __[http.delete]__ - Deletes some resource using the HTTP DELETE verb
 * __[http.post]__ - Posts some resources to some URL using the HTTP POST verb
 * __[http.put]__ - Puts some resources to some URL using the HTTP PUT verb
+* __[http.patch]__ - Patches some resources to some URL using the HTTP PATCH verb
 
 The __[http.put]__ and the __[http.post]__ slots requires you to provide a __[payload]__, which will be pass to the
 endpoint as a string. All 4 endpoints can (optionally) take a __[token]__ arguments, which will be transferred as
@@ -22,9 +23,9 @@ collection.
 http.get:"https://google.com"
 ```
 
-## Posting and putting data
+## Posting, putting and patching data
 
-Both the POST and PUT slots, requires a **[payload]** argument, which becomes the body to the endpoint.
+The POST, PUT and PATCH slots, requires a **[payload]** argument, which becomes the body of the request.
 Below is an example illustrating how to create a POST request, with a Bearer token to access the end resource.
 
 ```
@@ -43,6 +44,10 @@ http.delete:"https://foo-url.com"
       Accept:application/zip
       X-Foo:Bar-Header-Value
 ```
+
+## Project website
+
+The source code for this repository can be found at [github.com/polterguy/magic.lambda.http](https://github.com/polterguy/magic.lambda.http), and you can provide feedback, provide bug reports, etc at the same place.
 
 ## Quality gates
 

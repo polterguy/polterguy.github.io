@@ -281,6 +281,10 @@ If you want to do this, you would probably want to manually declare your own imp
 by tapping into _"magic.library"_ somehow, or not invoking its default method that binds towards the default
 implementation classes somehow.
 
+## Project website
+
+The source code for this repository can be found at [github.com/polterguy/magic.lambda.io](https://github.com/polterguy/magic.lambda.io), and you can provide feedback, provide bug reports, etc at the same place.
+
 ## Quality gates
 
 - [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.io&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.io)

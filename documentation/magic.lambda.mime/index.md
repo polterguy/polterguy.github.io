@@ -1,14 +1,18 @@
 
 # Magic Lambda MIME
 
-Magic Lambda MIME give you the ability to parse and create MIME messages from Hyperlambda. It contains 6 basic slots.
+Magic Lambda MIME give you the ability to parse and create MIME messages from Hyperlambda.
+It contains the following slots.
 
-1. **[mime.parse]** - Parses a MIME message, and returns as lambda
-1. **[.mime.parse]** - Parses a native MimeEntity for you, and returns as lambda
-2. **[mime.create]** - Creates a MIME message for you, and returns the entire message as text
-3. **[.mime.create]** - Creates a MIME message for you, and returns it as a native MimeEntity object (not for usage directly from Hyperlambda code)
-4. **[pgp.keys.private.import]** - Imports an ASCII armored private PGP key bundle, in addition to any public keys found in the bundle
-4. **[pgp.keys.public.import]** - Imports an ASCII armored public PGP key bundle
+* __[mime.parse]__ - Parses a MIME message, and returns it as a lambda object
+* __[.mime.parse]__ - Parses a native MimeEntity for you, and returns it as a lambda object (not for usage directly from Hyperlambda code)
+* __[mime.create]__ - Creates a MIME message for you, and returns the entire message as text, being the MIME entity
+* __[.mime.create]__ - Creates a MIME message for you, and returns it as a native MimeEntity object (not for usage directly from Hyperlambda code)
+* __[pgp.keys.private.import]__ - Imports an ASCII armored private PGP key bundle, in addition to any public keys found in the bundle
+* __[pgp.keys.public.import]__ - Imports an ASCII armored public PGP key bundle
+
+**Notice** - The PGP related slots above are currently in BETA implementation, and their API might change
+in a future version of Magic.
 
 ## Parsing MIME messages
 
@@ -54,7 +58,7 @@ MIME headers for you, adding these into a **[headers]** collection, on a per mes
 your message actually contains headers or not.
 
 The **[.mime.parse]** semantically works identically, except it requires as its input a raw `MimeEntity` object from MimeKit.
-The **[.mime.parse]** slot can of course only be invoked from C#, since it starts with a _"."_.
+The **[.mime.parse]** slot can _only be invoked from C#_, since it starts with a _"."_.
 
 ## Creating a mime message
 
@@ -90,12 +94,15 @@ this is another body text
 --XXXXboundary text--"
 ```
 
-The **[.mime.create]** slot, will semantically do the exact same thing, but instead of returning a piece of text, being the MIME message,
-it will produce a raw `MimeEntity` that it returns to caller. This slot is used internally when the _"magic.lambda.mail"_ projects
-constructs emails to send over an SMTP connection for instance. This slot can also only be invoked from C# since it starts
-with a period (.) as its name.
+The **[.mime.create]** slot, will semantically do the exact same thing, but instead of returning a piece of text,
+being the MIME message, it will produce a raw `MimeEntity` that it returns to caller. This slot is used internally
+when the _"magic.lambda.mail"_ project constructs emails to send over an SMTP connection for instance. This slot
+can also only be invoked from C# since it starts with a period (.) as its name.
 
 ## PGP Cryptography
+
+**Notice** - These parts of the project is currently in BETA implementation, and the API might change in
+a future version of Magic.
 
 This project also supports encrypting, and cryptographically signing MIME messages, in addition to verifying signed
 messages. To cryptographically sign a MIME message with your private PGP key, you can use something such as follows.
@@ -117,9 +124,10 @@ mime.create
       content:Foo bar
 ```
 
-You can encrypt and sign the message in one go, by adding both a private **[sign]** key and its password, in addition to a public
-encryption key, using **[encrypt]**. If you wish to encrypt the same message for multiple recipients, you can add a collection
-of public PGP keys that will be used to encrypt the message, such as follows.
+You can encrypt and sign the message in one go, by adding both a private **[sign]** key and its password,
+in addition to a public encryption key, using **[encrypt]**. If you wish to encrypt the same message for
+multiple recipients, you can add a collection of public PGP keys that will be used to encrypt the message,
+such as the following illustrates.
 
 ```
 mime.create
@@ -130,16 +138,16 @@ mime.create
       content:Foo bar
 ```
 
-**Notice** - Due to an API flaw in MimeKit, and how it looks up private PGP key during parsing end decrypting of MIME messages,
-the project does not support _decrypting_ of messages yet. Once MimeKit implements alternative PGP key storages, or at least
-hooks to supply your own custom storage, not tied to Gnu Privacy Guard, we might reconsider and support decrypting of MIME
-messages.
+**Notice** - Due to an API flaw in MimeKit, and how it looks up private PGP keys during parsing end decrypting
+of MIME messages, the project does not support _decrypting_ of messages yet. Once MimeKit implements alternative
+PGP key storages, or at least hooks to supply your own custom storage, not tied to Gnu Privacy Guard, we might
+reconsider and support decrypting of MIME messages.
 
-## Importing PGP keys
+## Importing public and private PGP keys
 
-Notice, these slots expects a PGP key bundle, either private or public, and will unwrap each public and private key found in the bundle,
-and invoke your **[.lambda]** callback once for each key found in the bundle. This callback will be given the fingerprint, ID, ids, etc
-for each key in your bundle. Usage is something as follows.
+Notice, these slots expects a PGP key bundle, either private or public, and will unwrap each public and private
+key found in the bundle, and invoke your **[.lambda]** callback once for each key found in the bundle. This
+callback will be given the fingerprint, ID, ids, etc for each key in your bundle. Usage is something as follows.
 
 ```
 pgp.keys.public.import:@"-----BEGIN PGP PUBLIC KEY BLOCK----- ..... etc"
@@ -147,6 +155,12 @@ pgp.keys.public.import:@"-----BEGIN PGP PUBLIC KEY BLOCK----- ..... etc"
       lambda2hyper:x:.
       log.info:x:-
 ```
+
+The API for importing private keys is the exact same as for importing public keys.
+
+## Project website
+
+The source code for this repository can be found at [github.com/polterguy/magic.lambda.mime](https://github.com/polterguy/magic.lambda.mime), and you can provide feedback, provide bug reports, etc at the same place.
 
 ## Quality gates
 
