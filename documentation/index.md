@@ -1,4 +1,8 @@
 
+# Tutorials
+
+* [Getting started](/tutorials/getting-started/)
+
 # Documentation
 
 * [magic.node](/documentation/magic.node/) - Explains nodes, Hyperlambda and Expressions

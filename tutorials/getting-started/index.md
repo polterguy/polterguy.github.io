@@ -170,10 +170,9 @@ feature request or a bug report, you can do such through the project's
 
 ### License
 
-Magic is as of the upcoming 9.0.0 version 100% Open Source and free to use, also in
-proprietary and closed source applications. The only exception is if you improve the
-frontend dashboard, or improve one of its plugins, at which point you must make your
-improvements publicly available for others to use.
+Magic is 100% Open Source and free to use, also in proprietary and closed source applications.
+The only exception is if you improve the frontend dashboard, or improve one of its plugins,
+at which point you must make your improvements publicly available for others to use.
 
 ### Donate
 
