@@ -908,7 +908,7 @@ apply:x:-
    howdy:world
 ```
 
-After execution of the above Hyperlambda you will have s result resembling the following.
+After execution of the above Hyperlambda you will have a result resembling the following.
 
 ```
 .lambda
