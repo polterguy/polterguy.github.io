@@ -940,6 +940,10 @@ result of your expression, checks to see if the node's value is an argument such
 And if so, it substitutes the `{howdy}` parts with the value of the argument you are expected to supply to your
 invocation having the name of `howdy`. All other nodes are kept as is.
 
+**Notice** - This slot is a bit experimental at the moment, and I do have plans to extend upon it, to allow
+for changing names of nodes, and/or having arguments being list of nodes, etc - So have in mind that the API
+might change in a future version of Magic. This slot is to be considered in BETA implementation at the moment.
+
 ## Project website
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda](https://github.com/polterguy/magic.lambda), and you can provide feedback, provide bug reports, etc at the same place.
