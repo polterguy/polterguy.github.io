@@ -276,7 +276,7 @@ similar in structure. You still typically want to have separate files for these 
 this allows you to easily modify for instance authorization requirements, arguments passing, add
 additional business logic to your files, etc. So even though the code is not very _DRY_
 in its original state, separate endpoint files for separate operations are still typically
-useful, and a feature you will learn to appreciate further down the road, as you really start
+useful, and a feature you will learn to appreciate further down the road, as you start
 modifying your endpoint Hyperlambda files.
 
 If you want to see the power of these CRUD slots you can check out the documentation for the
