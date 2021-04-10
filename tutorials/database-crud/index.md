@@ -247,6 +247,11 @@ your endpoint, as long as he or she has a valid JWT token. This completely ignor
 the user belongs to, as long as the user is authenticated with a valid JWT token. Below is
 an example.
 
+**Notice** - The name of a node and its value is separated by a `:`. And a node's children
+are indented below the node with 3 spaces, similar to how Python creates _"scopes"_. Hyperlambda
+is literally just a graph object, or a tree structure, with names, values and a list of children.
+See the documentation for magic.node for more details.
+
 ```
 auth.ticket.verify
 ```
