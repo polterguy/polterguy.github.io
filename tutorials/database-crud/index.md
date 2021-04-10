@@ -1,11 +1,11 @@
 
 # Database CRUD operations
 
-This is going to be a _"different"_ tutorials, since instead of creating code ourselves, we will use
+This is going to be a _"different"_ tutorial, since instead of creating code ourselves, we will use
 Magic to generate our code, and instead analyze what Magic did afterwards. If you haven't done this
 already, then generate a backend wrapping your _"babelfish"_ database. If you are using SQL Server
 you can still follow the tutorial by generating the _"northwind-simplified"_ database instead,
-and look the the code generated for any of the tables from this database.
+and look at the code generated for one of the tables from this database instead.
 
 ## Creating your database
 
