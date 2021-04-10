@@ -143,7 +143,7 @@ the following.
 sure that whatever file you're looking at ends with _".get.hl"_ such that we're looking at roughly the
 same thing in the rest of this tutorial. Also notice that you can hold down the ALT key while pressing
 M to maximize your Hyperlambda editor. This makes it easier to read the code as we go through the rest
-of this tutorial. On OS X the equivalent keyboard shortcut is `OPTION+M`.
+of this tutorial. In OS X the equivalent keyboard shortcut is `OPTION+M`.
 
 What you are looking at now is the Hyperlambda Magic automatically generated for you. The most important
 part of this code is the following section.
@@ -235,7 +235,7 @@ This is the core authentication and authorization parts of Magic, and allows you
 your web APIs easily. If you want users belonging to different roles to be able to invoke
 your endpoint, you can simply edit the above code, by for instance adding _another_ role
 to it, save your file - And voila; Your authorization requirements have automagically changed.
-Below is an example of how to add the _"translator"_ role to be able to invoke your endpoint.
+Below is an example of how to add the _"translator"_ role as a role allowed to invoke the endpoint.
 
 ```
 auth.ticket.verify:root, admin, translator
