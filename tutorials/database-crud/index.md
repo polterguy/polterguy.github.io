@@ -264,7 +264,7 @@ of a later tutorial.
 
 An invocation to for instance **[data.read]** is referred to by Magic as a _"slot"_. If you
 view your other CRUD files, you will see that they are using slightly different slots, to wrap
-other CRUD functions. The basic CRUD operations in Magic are exposed with the following slots.
+other CRUD functions. The basic CRUD operations in Magic are implemented with the following slots.
 
 * __[data.read]__ - Reads records from your database
 * __[data.delete]__ - Deletes records in your database
