@@ -111,11 +111,11 @@ illustrates.
 ]
 ```
 
-You can also create and update items if you choose your `post` or `put` endpoints in a similar
-fashion. However, these endpoints require you to provide a JSON payload instead of parametrising
-your endpoint using query parameters. Feel free to try to create and update some items using these
+You can also create and update items if you choose your `post` or `put` endpoints. However,
+these endpoints require you to provide a JSON payload instead of parametrising
+your endpoint using query parameters. Try to create and update some items using these
 two endpoints. Just remember that regardless of what table you choose, the primnary key parts
-to the update endpoint is the criteria of _which item to update_. Magic only create endpoints
+to the update endpoint is the criteria of _which item to update_. Magic only creates endpoints
 that supports updating _one item at the time by default_.
 
 ### Meta data
