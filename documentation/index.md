@@ -3,8 +3,9 @@
 
 * [Getting started](/tutorials/getting-started/)
 * [Hyperlambda Hello World](/tutorials/hello-world-endpoint/)
+* [Database CRUD operations](/tutorials/database-crud/)
 
-# Documentation
+# Reference documentation
 
 * [magic.node](/documentation/magic.node/) - Explains nodes, Hyperlambda and Expressions
 * [magic.lambda](/documentation/magic.lambda/) - Explains Hyperlambda as a DSL, and its keywords
