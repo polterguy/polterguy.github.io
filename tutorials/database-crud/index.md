@@ -164,9 +164,7 @@ the following.
 
 **Notice** - If you didn't generate CRUD endpoints for your babelfish database, then at least make
 sure that whatever file you're looking at ends with _".get.hl"_ such that we're looking at roughly the
-same thing in the rest of this tutorial. Also notice that you can hold down the ALT key while pressing
-M to maximize your Hyperlambda editor. This makes it easier to read the code as we go through the rest
-of this tutorial. In OS X the equivalent keyboard shortcut is `OPTION+M`.
+same thing in the rest of this tutorial.
 
 What you are looking at now is the Hyperlambda Magic automatically generated for you. The most important
 part of this code is the following section.
@@ -242,9 +240,9 @@ want to do if you want to modify your endpoint. In the above arguments node for 
 **[locale.mt]** argument probably doesn't make much sense, and can be deleted to simplify
 your endpoint.
 
-### Authorization and authentication
+### Authorisation and authentication
 
-Your endpoint will by default require authentication and authorization, preventing anonymous
+Your endpoint will by default require authentication and authorisation, preventing anonymous
 users from accessing it. This is done with the **[auth.ticket.verify]** slot with something
 resembling the following.
 
