@@ -1,11 +1,19 @@
 
-# Database CRUD operations
+# Generating a Hyperlambda Database CRUD backend
 
 This is going to be a _"different"_ tutorial, since instead of creating code ourselves, we will use
-Magic to generate our code, and instead analyze what Magic did afterwards. If you haven't done this
-already, then generate a backend wrapping your _"babelfish"_ database. If you are using SQL Server
-you can still follow the tutorial by generating the _"northwind-simplified"_ database instead,
-and look at the code generated for one of the tables from this database instead.
+Magic to generate our code, and analyse what Magic did afterwards. If you prefer to
+watch a video where I demonstrate this process, you can watch the following video.
+
+<div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
+<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/mv9MNnoP9-s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+As you can see in the above video, what Magic does for us, is to provide us with a starting
+point, from where we can modify the code, to have it do whatever we want it to do for us.
+However, in order to modify the code, we'll need to understand it. So let us walk through it step
+by step, starting out with creating our database, ending up with an understanding of the code,
+allowing us to modify it as we see fit. So let us create our database first.
 
 ## Creating your database
 
@@ -15,6 +23,8 @@ Load the database script, and click the _"Execute"_ button.
 
 ![Creating your Babelfish database](https://servergardens.files.wordpress.com/2021/04/sql-editor.png)
 
+This creates a database for you, which will be the foundation for generating our HTTP CRUD backend.
+
 ## Generating your backend
 
 After you've done the above, open the _"Generator"_ menu item, choose your newly created database,
@@ -22,12 +32,18 @@ and click _"Crudify all tables"_. Below you can see how this process should look
 
 ![Generating your backend](https://servergardens.files.wordpress.com/2021/04/generator.png)
 
+As you generate your backend you will notice that Magic says something like _"xxx LOC generated"_.
+This number is the lines of code that Magic automatically generated for you, and depends upon
+your database and its number of tables. A small database such as babelfish will typically only
+generate some 3-400 hundred lines of code - While a larger database might generate tens of
+thousands of lines of code for you.
+
 ## Playing with our CRUD endpoints
 
-After doing the above, Magic will have created a bunch of Hyperlambda files for you in
+After having done the above, Magic will have created a bunch of Hyperlambda files for you in
 your _"/modules/xxx"_ folder, where _"xxx"_ is your database name. Open the _"Files"_ menu
 item in your dashboard, and take a look at this folder. These files will wrap
-all the 4 main CRUD operations towards your tables, in addition to a count endpoint. This
+all the 4 main CRUD operations towards your tables, in addition to a count endpoint. The
 structure should resemble the following.
 
 * Create - _"xxx.post.hl"_ - Allows you to create new records
@@ -75,7 +91,7 @@ the following, depending upon which table you chose.
 ]
 ```
 
-The endpoint supports all of the following features.
+The read endpoint supports all of the following features.
 
 * Paging through **[limit]** and **[offset]**
 * Ordering items through **[order]** and **[direction]**
@@ -111,16 +127,17 @@ illustrates.
 ]
 ```
 
-You can combine as many conditions as you with the same way we added the above `eq` filter.
-Conditions are by defaul `and`ed together, implying all conditions must match an item - But
+You can combine as many conditions as you wish the same way we added the above `eq` filter.
+Conditions are by default `and`ed together, implying _all conditions must match_ - But
 this can be changed to `or` by changing the value of the **[operator]** argument.
 
-You can also create and update items if you choose your `post` or `put` endpoints. However,
+You can also create and update items if you select your `post` or `put` endpoints. However,
 these endpoints require you to provide a JSON payload instead of parametrising
 your endpoint using query parameters. Try to create and update some items using these
-two endpoints. Just remember that regardless of what table you choose, the primnary key parts
+two endpoints. Just remember that regardless of what table you choose, the primary key parts
 to the update endpoint is the criteria of _which item to update_. Magic only creates endpoints
-that supports updating _one item at the time by default_.
+that supports updating _one item at the time by default_. And the generator does not produce
+code allowing you to change the primary key.
 
 ### Meta data
 
@@ -132,12 +149,14 @@ single line of code. Magic also creates meta information like this for your manu
 created endpoints.
 
 This meta data becomes crucial as we later start looking at how Magic creates your frontend code
-using similar techniques as it used to create your backend.
+using similar techniques as it used to create your backend. You can see this meta information as
+properties of your endpoint if you go to the _"Endpoints"_ menu item, and click any of your
+endpoints.
 
 ## Analysing the code
 
 Once you're done playing around with your endpoints, open up the _"Files"_ menu item. Click the _"modules"_
-folder, and then click the folder with the same name as the name of the database you generated above.
+folder, then click the folder with the same name as the name of the database you generated above.
 Click for instance the _"languages.get.hl"_ file, at which point you should see something resembling
 the following.
 
@@ -167,15 +186,15 @@ The above invocation to the **[data.read]** slot is _"transpiled"_ by Magic into
 retrieving your records from your database, according to your filter conditions. The result of this
 SQL is then returned back to the client as JSON in the **[return-nodes]** line below. The above slot
 will expect an existing open database connection, which is achieved with the **[data.connect]** slot
-invocation.
+invocation. The below code shows you how to connect to a database.
 
 ```
 data.connect:[generic|babelfish]
    database-type:mysql
 ```
 
-Notice how the generated Hyperlambda for your **[data.read]** invocation can be found _inside_ of
-your **[data.connect]** invocation. This imples that your read invocation will use this database
+Notice how the generated Hyperlambda for your **[data.read]** invocation can be found _inside_
+your **[data.connect]** invocation. This implies that your read invocation will use this database
 connection implicitly, since the read invocation is _"a lambda object inside of your database connection"_.
 Hence all database operations inside of a **[data.connect]** invocation will by default use that
 database connection to connect to your database and execute its SQL. Think of these slots as
@@ -188,7 +207,13 @@ invocation.
 > In Hyperlambda code is always an argument, and all arguments are code
 
 This is why it's called Hyperlambda, because _everything_ is a lambda object. Hyperlambda is
-said to be _"a functional programming language"_.
+said to be _"a functional programming language"_. We will go through the exact syntax of Hyperlambda
+in a later tutorial, but for now realise that in Hyperlambda _spaces counts_ - Kind of like the
+same way they do in YAML or Python, and that 3 spaces declares a _"scope"_, while a colon `:`
+declares the beginning of a node's value. Nodes again is a tree structure in the form of value, name,
+and children - And is the foundation of Hyperlambda. Hyperlambda is simply the textual representation
+of a tree structure, the same way YAML, JSON, or XML is. Nodes is Hyperlambda's object implementation
+again. See the documentation for magic.node for more details.
 
 ### Arguments passing
 
@@ -235,10 +260,10 @@ invoking the endpoint belongs to one of the following roles.
 
 If the user has an invalid token, and/or the user doesn't belong to any of the above roles,
 this slot will throw an exception, preventing the rest of the Hyperlambda code from executing.
-This is the core authentication and authorization parts of Magic, and allows you to secure
+This is the core authentication and authorisation parts of Magic, and allows you to secure
 your web APIs easily. If you want users belonging to different roles to be able to invoke
 your endpoint, you can simply edit the above code, by for instance adding _another_ role
-to it, save your file - And voila; Your authorization requirements have automagically changed.
+to it, save your file - And voila; Your authorisation requirements have automagically changed.
 Below is an example of how to add the _"translator"_ role as a role allowed to invoke the endpoint.
 
 ```
@@ -251,17 +276,12 @@ your endpoint, as long as he or she has a valid JWT token. This completely ignor
 the user belongs to, as long as the user is authenticated with a valid JWT token. Below is
 an example.
 
-**Notice** - The name of a node and its value is separated by a `:`. And a node's children
-are indented below the node with 3 spaces, similar to how Python creates _"scopes"_. Hyperlambda
-is literally just a graph object, or a tree structure, with names, values, and a list of children.
-See the documentation for magic.node for more details.
-
 ```
 auth.ticket.verify
 ```
 
 The rest of the file basically just provides meta information to the endpoint resolver, and
-correctly parametrises your invocation to **[data.read]**. - However, this will be a subject
+correctly parametrises your invocation to **[data.read]** - However, this will be a subject
 of a later tutorial. If you're curious about how this work, you can check out for instance
 the **[add]** slot in the documentation for magic.lambda.
 
@@ -278,7 +298,7 @@ other CRUD functions. The basic CRUD operations in Magic are implemented with th
 
 Besides from using different slots, all of your generated Hyperlambda files are actually quite
 similar in structure. You still typically want to have separate files for these operations, since
-this allows you to easily modify for instance authorization requirements, arguments passing, add
+this allows you to easily modify for instance authorisation requirements, arguments passing, add
 additional business logic to your files, etc. So even though the code is not very _DRY_
 in its original state, separate endpoint files for separate operations are still typically
 useful, and a feature you will learn to appreciate further down the road, as you start
@@ -286,5 +306,14 @@ modifying your endpoint Hyperlambda files.
 
 If you want to see the power of these CRUD slots you can check out the documentation for the
 magic.data.common module, which you can find in the reference documentation for Magic.
+
+## Wrapping up
+
+In this tutorial we generated an HTTP REST backend wrapping our database with all CRUD operations.
+Afterwards we played around with our endpoints, invoking them with arguments, before finishing up
+analysing the code Magic generated for us. In later tutorials we will dive deeper into the syntax
+of Hyperlambda, and also the implementation details of the crudification process - But for now,
+realising that Magic creates a foundation for you to edit, is sufficient for you to start playing
+with Magic, to generate backends according to your needs.
 
 * [Documentation](/documentation/)
