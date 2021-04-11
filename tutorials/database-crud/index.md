@@ -27,8 +27,8 @@ and click _"Crudify all tables"_. Below you can see how this process should look
 After doing the above, Magic will have created a bunch of Hyperlambda files for you in
 your _"/modules/xxx"_ folder, where _"xxx"_ is your database name. Open the _"Files"_ menu
 item in your dashboard, and take a look at this folder. These files will wrap
-all the 4 main CRUD operations towards your tables, in addition to a count endpoint, and they
-should resemble the following structure.
+all the 4 main CRUD operations towards your tables, in addition to a count endpoint. This
+structure should resemble the following.
 
 * Create - _"xxx.post.hl"_ - Allows you to create new records
 * Read - _"xxx.get.hl"_ - Allows you to read records
@@ -77,23 +77,23 @@ the following, depending upon which table you chose.
 
 The endpoint supports all of the following features.
 
-* Paging through limit and offset
-* Ordering items
+* Paging through **[limit]** and **[offset]**
+* Ordering items through **[order]** and **[direction]**
 * Filtering
-* Specifying a boolean operator for filtering
+* Specifying a boolean operator for filtering through **[operator]**
 
 The above is what you'd typically need most of the times as you read items from your database.
 If you'd like to find items only matching a specific criteria, you can add a filter for your criteria,
 to have your backend only return items matching your filter. You will see a whole range of possible
 filters for every column in your table, such as I illustrate for the `locale` column below.
 
+* __locale.eq__ - Locale being exact match of the specified string
+* __locale.neq__ - Locale _not_ equal to the specified string
 * __locale.like__ - Locale contains the specified string supporting wildcards as `%`
 * __locale.mt__ - Locale more than the specified string
 * __locale.lt__ - Locale less than the specified string
 * __locale.mteq__ - Locale more than or equal to the specified string
 * __locale.lteq__ - Locale less than or equal to the specified string
-* __locale.neq__ - Locale _not_ equal to the specified string
-* __locale.eq__ - Locale being exact match of the specified string
 
 Each column will have a range of filter options matching the above comparison operators. If some
 of your filter conditions doesn't make sense for a particular column, you can delete these later
@@ -111,6 +111,10 @@ illustrates.
 ]
 ```
 
+You can combine as many conditions as you with the same way we added the above `eq` filter.
+Conditions are by defaul `and`ed together, implying all conditions must match an item - But
+this can be changed to `or` by changing the value of the **[operator]** argument.
+
 You can also create and update items if you choose your `post` or `put` endpoints. However,
 these endpoints require you to provide a JSON payload instead of parametrising
 your endpoint using query parameters. Try to create and update some items using these
@@ -121,10 +125,10 @@ that supports updating _one item at the time by default_.
 ### Meta data
 
 If you go through your endpoints, you will see a _lot_ of meta information. This was generated
-automatically based upon your database schema, and is also publicly exposed to client, almost
+automatically based upon your database schema, and is also publicly exposed to the client, almost
 the same way the Open Web API or Swagger is able to enumerate and document your HTTP endpoints.
 Hence, we've already documented our HTTP endpoints, even though we haven't even manually created a
-single line of code. For the record, Magic also creates meta information like this for your manually
+single line of code. Magic also creates meta information like this for your manually
 created endpoints.
 
 This meta data becomes crucial as we later start looking at how Magic creates your frontend code
@@ -162,8 +166,8 @@ part of this code is the following section.
 The above invocation to the **[data.read]** slot is _"transpiled"_ by Magic into an SQL statement,
 retrieving your records from your database, according to your filter conditions. The result of this
 SQL is then returned back to the client as JSON in the **[return-nodes]** line below. The above slot
-will expect an existing open database connection, which is created using the code found above it
-resembling the following.
+will expect an existing open database connection, which is achieved with the **[data.connect]** slot
+invocation.
 
 ```
 data.connect:[generic|babelfish]
@@ -171,8 +175,8 @@ data.connect:[generic|babelfish]
 ```
 
 Notice how the generated Hyperlambda for your **[data.read]** invocation can be found _inside_ of
-your **[data.connect]** invocation. This imples that your read invocation will use the open database
-connection, since the read invocation is _"a lambda object inside of your database connection"_.
+your **[data.connect]** invocation. This imples that your read invocation will use this database
+connection implicitly, since the read invocation is _"a lambda object inside of your database connection"_.
 Hence all database operations inside of a **[data.connect]** invocation will by default use that
 database connection to connect to your database and execute its SQL. Think of these slots as
 an `SqlConnection` instance and an `SqlDataReader` instance, where the reader uses the connection
@@ -210,10 +214,10 @@ changes. The **[.arguments]** node is said to _"declare which arguments your end
 
 Editing the arguments your endpoint accepts is typically among one of the first things you
 want to do if you want to modify your endpoint. In the above arguments node for instance, the
-**[locale.mt]** argument probably doesn't make much sense, and can hence simply be deleted to
-simplify your endpoint.
+**[locale.mt]** argument probably doesn't make much sense, and can be deleted to simplify
+your endpoint.
 
-### Authorization
+### Authorization and authentication
 
 Your endpoint will by default require authentication and authorization, preventing anonymous
 users from accessing it. This is done with the **[auth.ticket.verify]** slot with something
@@ -249,7 +253,7 @@ an example.
 
 **Notice** - The name of a node and its value is separated by a `:`. And a node's children
 are indented below the node with 3 spaces, similar to how Python creates _"scopes"_. Hyperlambda
-is literally just a graph object, or a tree structure, with names, values and a list of children.
+is literally just a graph object, or a tree structure, with names, values, and a list of children.
 See the documentation for magic.node for more details.
 
 ```
@@ -257,8 +261,9 @@ auth.ticket.verify
 ```
 
 The rest of the file basically just provides meta information to the endpoint resolver, and
-correctly parametrises your invocation to **[data.read]** - However, this will be a subject
-of a later tutorial.
+correctly parametrises your invocation to **[data.read]**. - However, this will be a subject
+of a later tutorial. If you're curious about how this work, you can check out for instance
+the **[add]** slot in the documentation for magic.lambda.
 
 ### CRUD slots
 
