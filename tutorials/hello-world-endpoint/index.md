@@ -64,8 +64,9 @@ ends with _".get.hl"_. Its `get` parts indicate the HTTP verb, and its `hl` part
 You can also create POST, PUT, PATCH and DELETE endpoints, by simply replacing the _".get."_ parts of
 your filename with _".xxx."_ where xxx is your verb of choice. If you do this, you can no longer
 use your browser to test the endpoint, but need to open up the _"Endpoints"_ file menu to test your
-endpoint(s), and provide payloads and arguments to them. For details about how endpoints are resolved,
-check out the documentation for the magic.endpoint project.
+endpoint(s), and provide payloads and arguments to them. You can also use e.g. Postman to invoke such
+endpoints. For details about how endpoints are resolved, check out the documentation for the magic.endpoint
+project.
 
 ## Creating a POST endpoint
 
