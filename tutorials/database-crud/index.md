@@ -211,7 +211,7 @@ same way they do in YAML or Python, and that 3 spaces declares a _"scope"_, whil
 declares the beginning of a node's value. Nodes again is a tree structure in the form of value, name,
 and children - And is the foundation of Hyperlambda. Hyperlambda is simply the textual representation
 of a tree structure, the same way YAML, JSON, or XML is. Nodes is Hyperlambda's object implementation
-again. See the documentation for magic.node for more details.
+again. See the documentation for [magic.node](/documentation/magic.node/) for more details.
 
 ### Arguments passing
 
@@ -281,7 +281,7 @@ auth.ticket.verify
 The rest of the file basically just provides meta information to the endpoint resolver, and
 correctly parametrises your invocation to **[data.read]** - However, this will be a subject
 of a later tutorial. If you're curious about how this work, you can check out for instance
-the **[add]** slot in the documentation for magic.lambda.
+the **[add]** slot in the documentation for [magic.lambda](/documentation/magic.lambda/).
 
 ### CRUD slots
 
@@ -300,10 +300,11 @@ this allows you to easily modify for instance authorisation requirements, argume
 additional business logic to your files, etc. So even though the code is not very _DRY_
 in its original state, separate endpoint files for separate operations are still typically
 useful, and a feature you will learn to appreciate further down the road, as you start
-modifying your endpoint Hyperlambda files.
+modifying your Hyperlambda files.
 
 If you want to see the power of these CRUD slots you can check out the documentation for the
-magic.data.common module, which you can find in the reference documentation for Magic.
+[magic.data.common](/documentation/magic.data.common/) module, which you can find in the
+reference documentation for Magic.
 
 ## Wrapping up
 
