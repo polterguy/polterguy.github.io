@@ -27,7 +27,7 @@
 * [magic.lambda.mssql](/documentation/magic.lambda.mssql/) - Accessing your MS SQL Server from Hyperlambda
 * [magic.lambda.image](/documentation/magic.lambda.image/) - Image library, allowing you to generate QR code
 * [magic.lambda.crypto](/documentation/magic.lambda.crypto/) - Cryptography helpers for Hyperlambda
-* [magic.lambda.crypto](/documentation/magic.lambda.guid/) - Creating a guid from Hyperlambda
+* [magic.lambda.guid](/documentation/magic.lambda.guid/) - Creating a guid from Hyperlambda
 * [magic.lambda.config](/documentation/magic.lambda.config/) - Accessing configuration values from Hyperlambda
 * [magic.lambda.logging](/documentation/magic.lambda.logging/) - Logging from Hyperlambda
 * [magic.lambda.caching](/documentation/magic.lambda.caching/) - Caching from Hyperlambda
