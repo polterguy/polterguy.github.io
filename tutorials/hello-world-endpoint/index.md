@@ -10,7 +10,7 @@ return-nodes
    result:Hello World
 ```
 
-Save the file, and open up [http://localhost:55247/magic/modules/tutorials/hello](http://localhost:55247/magic/modules/tutorials/hello)
+Save the file, and open up [http://localhost:4444/magic/modules/tutorials/hello](http://localhost:4444/magic/modules/tutorials/hello)
 using your browser. Make sure you get the port correctly. 4444 is if you're using the Docker images,
 and might need to be changed to e.g. 55247 if you're using the source code version directly.
 
