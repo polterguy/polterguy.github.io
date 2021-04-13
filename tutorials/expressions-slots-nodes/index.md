@@ -279,6 +279,8 @@ easy. In this tutorial we covered the following subjects.
 * Variables
 * Expressions
 
+### Golly gosh this is weird!
+
 Hyperlambda is _"weird"_, but it needs to be weird, in order to facilitate for that which it does.
 Every time you think about how weird it is, and this bothers you, please realise that without
 this _"weirdness"_, things such as the automatic generating of your HTTP backends, etc, would simply
