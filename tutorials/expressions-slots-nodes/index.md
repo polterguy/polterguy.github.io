@@ -290,6 +290,8 @@ because it _needed_ to be weird.
 However, you can also just simply completely ignore its weirdness, and let the computer do all
 your work. Simply put because ...
 
-> Hyperlambda's purpose is to have your computer understand Hyperlambda, not necessarily you
+> Hyperlambda's purpose is to have your computer understand Hyperlambda ...
+
+... whether or not you actually understand it is actually my second priority ...
 
 * [Documentation](/documentation/)
