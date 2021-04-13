@@ -167,6 +167,8 @@ traversed _semantically_, to see which operators it is using, and Hyperlambda fi
 easily _"generated"_, by combining programming language fundamentals together, to create a
 result of some sort - Which of course is the foundation for the _"Generator"_ in Magic.
 
+> Hyperlambda is weird for a purpose
+
 ## Variables
 
 Hyperlambda literally _does not have variables_ - Or to be specific, _everything_ is a variable
