@@ -285,13 +285,11 @@ Hyperlambda is _"weird"_, but it needs to be weird, in order to facilitate for t
 Every time you think about how weird it is, and this bothers you, please realise that without
 this _"weirdness"_, things such as the automatic generating of your HTTP backends, etc, would simply
 not be possible. I didn't create it weird because I wanted it to be weird, I created it weird
-because it _needed_ to be weird.
-
-However, you can also just simply completely ignore its weirdness, and let the computer do all
-your work. Simply put because ...
+because it _needed_ to be weird. However, you can also just simply completely ignore its weirdness,
+and let the computer do all the work. Simply put because ...
 
 > Hyperlambda's purpose is to have your computer understand Hyperlambda ...
 
-... whether or not you actually understand it is actually my second priority ...
+... whether or not you actually understand it is second priority.
 
 * [Documentation](/documentation/)
