@@ -187,7 +187,11 @@ set-name:x:@.item2
 
 The above Hyperlambda changes the value of one node, and the name of another node. This makes Hyperlambda
 _extremely dynamic in nature_ - Much more dynamic than other dynamic programming languages, since the
-code might change itself, during the execution of itself. The code is _"self evolving during its execution process"_.
+code might change itself, during the execution of itself. The code is said to be
+_"self evolving during its execution process"_. In fact, in Hyperlambda there is no differences between
+creating code, modifying code, and executing code. These constructs are basically just aspects of the
+same process in Hyperlambda, and of course the reason why it is so easy to create code that generates
+code with Hyperlambda.
 
 However, you can still provide _"data segments"_ in your code, which of course is crucial to hold
 temporary variables as your code is executing. This is achieved by making sure you start your node's name
