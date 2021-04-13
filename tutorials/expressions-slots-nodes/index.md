@@ -285,4 +285,9 @@ this _"weirdness"_, things such as the automatic generating of your HTTP backend
 not be possible. I didn't create it weird because I wanted it to be weird, I created it weird
 because it _needed_ to be weird.
 
+However, you can also just simply completely ignore its weirdness, and let the computer do all
+your work. Simply put because ...
+
+> Hyperlambda's purpose is to have your computer understand Hyperlambda, not necessarily you
+
 * [Documentation](/documentation/)
