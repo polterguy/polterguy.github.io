@@ -4,7 +4,7 @@
 * [Getting started](/tutorials/getting-started/)
 * [Hyperlambda Hello World](/tutorials/hello-world-endpoint/)
 * [Database CRUD operations](/tutorials/database-crud/)
-* [Expressions and nodes](/tutorials/expressions-slots-nodes/)
+* [Expressions, slots, and nodes](/tutorials/expressions-slots-nodes/)
 
 # Reference documentation
 
