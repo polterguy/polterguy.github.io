@@ -160,6 +160,13 @@ Hence, Hyperlambda _doesn't have keywords_, only slots, and all slots are recurs
 and lambda objects by themselves. Something you can verify by seeing how even the **[if]** slot
 recursively invokes **[eval]** to evaluate its children.
 
+This is true to such an extent that even what you'd imagine as _"operators"_ in traditional
+programming languages are also slots. This has huge advantages, in that it among other things
+allows you to declare your own _"operators"_, in addition to that Hyperlambda can easily be
+traversed _semantically_, to see which operators it is using, and Hyperlambda files can also be
+easily _"generated"_, by combining programming language fundamentals together, to create a
+result of some sort - Which of course is the foundation for the _"Generator"_ in Magic.
+
 ## Variables
 
 Hyperlambda literally _does not have variables_ - Or to be specific, _everything_ is a variable
