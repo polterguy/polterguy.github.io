@@ -56,7 +56,7 @@ Below is a Hyperlambda snippet that declares an `integer`, a `decimal`, and a `D
 ```
 
 Type declarations are basically injected in between the node's name and its value, and are simply
-references to CLR types such as `System.DateTime`, `System.Decimal`, etc. The default type of no
+references to CLR types such as `System.DateTime`, `System.Decimal`, etc. The default type if no
 type is explicitly supplied is string.
 
 The typing system of Hyperlambda is crucial for what follows, and also makes it almost impossible
