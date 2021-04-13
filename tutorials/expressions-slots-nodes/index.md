@@ -172,7 +172,7 @@ result of some sort - Which of course is the foundation for the _"Generator"_ in
 ## Variables
 
 Hyperlambda literally _does not have variables_ - Or to be specific, _everything_ is a variable
-in Hyperlambda. This is because of thet Hyperlambda has the ability to change any node's value,
+in Hyperlambda. This is because of that Hyperlambda has the ability to change any node's value,
 name, and/or children collection. Run the following code through for instance the _"Evaluator"_
 in Magic's dashboard to see this process.
 
