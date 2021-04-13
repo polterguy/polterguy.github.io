@@ -259,10 +259,12 @@ get-value:x:../*/.data
 An expression is composed of iterators, which are basically `IEnumerable<Node>` function objects,
 where the result of the first iterator is applied as the input of the next iterator in a chain,
 resulting in that the expression as a whole yields a list of nodes. The above expression being
-the value of the **[get-value]** slot for instance has 3 iterators.
+the value of the **[get-value]** slot for instance has 3 iterators. Magic contains many different
+iterators, allowing you to query your node structure any ways you see fit. Below you can find
+the links to the reference documentation for these parts of Magic.
 
 * [Read more about expressions, nodes and Hyperlambda](/documentation/magic.node/)
-* [Read more about eval and the language constructs](/documentation/magic.lambda/)
+* [Read more about eval and its programming language constructs](/documentation/magic.lambda/)
 
 ## Wrapping up
 
