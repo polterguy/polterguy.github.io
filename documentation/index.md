@@ -3,7 +3,7 @@
 
 * [Getting started](/tutorials/getting-started/)
 * [Hyperlambda Hello World](/tutorials/hello-world-endpoint/)
-* [Database CRUD operations](/tutorials/database-crud/)
+* [Database CRUD operations](/tutorials/database-crud/) - Automate the process of creating code
 * [Expressions, slots, and nodes](/tutorials/expressions-slots-nodes/) - As in; Hyperlambda is *really* weird!
 
 # Reference documentation
