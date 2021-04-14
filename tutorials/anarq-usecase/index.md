@@ -246,7 +246,8 @@ you can find it below.
 * [Download AnarQ](https://github.com/polterguy/anarq)
 
 Notice, as I wrote this article, I used AnarQ version 0.8, and I might expand on the project
-in the future, implying some of the specific parts we walked through here are changed. Have
-that in mind if you're dissecting a different version than what I used in this article.
+in the future - Implying some of the specific parts we walked through here might change in
+a future version of AnarQ. Have that in mind if you're dissecting a newer version than what
+I showed you in this article.
 
 * [Documentation](/documentation/)
