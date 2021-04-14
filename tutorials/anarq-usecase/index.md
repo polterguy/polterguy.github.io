@@ -121,6 +121,7 @@ actually send emails though, you'll need to configure an SMTP server, which is t
 something such as the following to your _"appsettings.json"_ file.
 
 ```json
+{
 "magic": {
     "smtp": {
       "host": "smtp.sendgrid.net",
@@ -132,7 +133,10 @@ something such as the following to your _"appsettings.json"_ file.
         "name": "Thomas Hansen",
         "address": "thomas@servergardens.com"
       }
-    }, etc ...
+    },
+    "rest-of-your-configuratioh": "goes-here"
+  }
+}
 ```
 
 The above configuration is how it would typically look like if you're using SendGrid, but Magic supports
