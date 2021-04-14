@@ -114,7 +114,7 @@ containing dynamically substituted portions, such as the email below illustrates
 </p>
 ```
 
-The actual value of the `{{confirm-url}}` again, is passed in as **[substitutes]**/**[confirm-url]**. The
+The actual value of the `\{\{confirm-url\}\}` again, is passed in as **[substitutes]**/**[confirm-url]**. The
 **[magic.emails.send]** dynamic slot again, will then create a personalised email, by substituting whatever
 you pass in as substitutes with its template placeholder such as illustrated above. Of course, in order to
 actually send emails though, you'll need to configure an SMTP server, which is typically done by adding
