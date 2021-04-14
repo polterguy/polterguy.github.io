@@ -91,16 +91,18 @@ What the above basically does, is to send a _"template email"_. A template email
 where you have template fields, that has variables that are dynamically substituted with some
 sort of arguments. Such template emails in magic are simple files, typically HTML files,
 containing dynamically substituted portions, such as the email below illustrates with its
-`{{confirm-url}}` part.
+`\{\{confirm-url\}\}` part.
 
 ```html
 <p>
-    Welcome as a registered user in AnarQ. However, before you can start posting, you will have to confirm your email address.
+    Welcome as a registered user in AnarQ. However, before you
+    can start posting, you will have to confirm your email address.
     You can confirm your email address by visiting the URL below.
 </p>
 <a href="{{confirm-url}}">Confirm your email address by clicking this link</a>
 <p>
-    If you didn't request this email, just ignore it - AnarQ will not send you anymore emails.
+    If you didn't request this email, just ignore it - AnarQ will
+    not send you anymore emails.
 </p>
 <p>
     Kind Regards,
