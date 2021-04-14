@@ -5,6 +5,7 @@
 * [Hyperlambda Hello World](/tutorials/hello-world-endpoint/) - Your first Hyperlambda endpoint
 * [Database CRUD operations](/tutorials/database-crud/) - Automate the process of creating code
 * [Expressions, slots, and nodes](/tutorials/expressions-slots-nodes/) - Hyperlambda is *really* weird!
+* [AnarQ a Social Media use case](/tutorials/anarq-usecase/) - Creating a Social Media backend with Magic
 
 # Reference documentation
 
