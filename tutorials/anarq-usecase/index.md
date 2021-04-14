@@ -144,7 +144,7 @@ any SMTP server you wish.
 
 ### Returning files
 
-Another interesting thing AnarQ does is to return contens of files. For instance the terms and
+Another interesting thing AnarQ does is to return contents of files. For instance the terms and
 conditions to use AnarQ is actually just a Markdown file, wrapped inside an endpoint, such that the terms
 can easily be modified according to your needs, allowing the endpoint that returns the terms immediately
 return whatever terms you want your users to agree to before signing up. Below is the endpoint in its
@@ -229,7 +229,7 @@ slots.create:anarq.emails.comment-received
 // Etc ...
 ```
 
-What this file does is to create a dynamicl slot that simply make sure as somebody is
+What this file does is to create a dynamic slot that simply make sure as somebody is
 commenting on a post, the original poster is notified through emails, unless he's
 _turned off_ email notifications.
 
