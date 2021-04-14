@@ -225,8 +225,9 @@ slots.create:anarq.emails.comment-received
 // Etc ...
 ```
 
-What this file does is to simply make sure as somebody is commenting on a post, the original
-poster is notified through emails, unless he's turned _off_ email notifications.
+What this file does is to create a dynamicl slot that simply make sure as somebody is
+commenting on a post, the original poster is notified through emails, unless he's
+_turned off_ email notifications.
 
 ### Dynamically creating its database
 
