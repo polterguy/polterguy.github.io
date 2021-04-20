@@ -2,9 +2,9 @@
 # Tutorials
 
 * [Getting started](/tutorials/getting-started/) - Getting Magic up running
-* [Hyperlambda Hello World](/tutorials/hello-world-endpoint/) - Your first Hyperlambda endpoint
 * [Database CRUD operations](/tutorials/database-crud/) - Automate the process of creating code
 * [SQL Web API](/tutorials/sql-web-api/) - Create HTTP endpoints in SQL
+* [Hyperlambda Hello World](/tutorials/hello-world-endpoint/) - Your first Hyperlambda endpoint
 * [Expressions, slots, and nodes](/tutorials/expressions-slots-nodes/) - Hyperlambda is *really* weird!
 * [AnarQ a Social Media use case](/tutorials/anarq-usecase/) - Creating a Social Media backend with Magic
 
