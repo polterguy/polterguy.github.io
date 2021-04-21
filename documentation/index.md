@@ -5,6 +5,7 @@
 * [Database CRUD operations](/tutorials/database-crud/) - Automate the process of creating code
 * [SQL Web API](/tutorials/sql-web-api/) - Create HTTP endpoints in SQL
 * [Magic beyond CRUD](/tutorials/cloud-ide/) - A guided tour through Magic's Dashboard
+* [Scheduling tasks](/tutorials/task-scheduler/) - How to use Magic to create and schedule tasks
 * [Hyperlambda Hello World](/tutorials/hello-world-endpoint/) - Your first Hyperlambda endpoint
 * [Expressions, slots, and nodes](/tutorials/expressions-slots-nodes/) - Hyperlambda is *really* weird!
 * [AnarQ a Social Media use case](/tutorials/anarq-usecase/) - Creating a Social Media backend with Magic

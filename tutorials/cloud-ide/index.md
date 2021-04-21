@@ -17,9 +17,28 @@ and your 3rd party cloud vendor's features, with your own locally hosted version
 contains a micro service runtime environment, allowing you to create cryptographically signed HTTP REST invocations,
 containing Hyperlambda code, securely executing this code over an inheritingly insecure connection such as the World
 Wide Web. The closest you can find resembling this is AWS' cryptographically signed HTTP invocations, but they're quite
-frankly a pale comparison to Magic's abilities.
-
+frankly a pale comparison to Magic's cryptographically signed invocations abilities.
 So before you dismiss Magic as a simple CRUD generator, realise this is only _one_ of its 13 aspects, serving all
 possible needs your own custom applications might have.
+
+## Aspects
+
+* A complete JWT based authentication and authorisation module
+* An integrated SQL management studio
+* Application generator allowing you to create both backends and frontends automatically
+* Endpoints module allowing you to play around with endpoints, similarly to how Postman works
+* File management system allowing you to dynamically manage your server's files
+* Evaluator allowing you to execute arbitrary Hyperlambda code
+* Task scheduler and persister, allowing you to schedule tasks and persist tasks into your database
+* Cryptographically secured lambda HTTP invocations, using public key cryptography to sign payloads, being Hyperlambda by themselves
+* Registration module, allowing you to have users sign up as registered users in your database
+* Diagnostics module providing diagnostics about the system's health
+* Log module, giving you easy access to read your server's logs
+* Configuration module, allowing you to edit your app's configuration through the browser
+
+If you have suggestions for additional modules, you can provide these as feature requests at
+the [GitHub project website](https://github.com/polterguy/magic). However, the purpose of the
+system is to solve repetetive tasks developers are facing as they start out new projects,
+by providing automation modules implementing these as automagically as possible.
 
 * [Documentation](/documentation/)
