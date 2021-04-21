@@ -48,4 +48,6 @@ only _one_ task will execute at the same time. In addition, only when a task is 
 schedule time will be calculated. This is to avoid exhausting the server due to misconfigured tasks, and/or
 flooding the server with tasks.
 
+You can see the entire documentation for the task scheduler [here](/documentation/magic.lambda.scheduler/).
+
 * [Documentation](/documentation/)
