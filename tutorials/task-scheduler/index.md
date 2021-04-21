@@ -39,4 +39,13 @@ you schedule your tasks with a `5.seconds` repetition pattern, you can see one n
 
 ![Task Scheduler Screenshot](https://servergardens.files.wordpress.com/2021/04/task-scheduler.png)
 
+## Internals
+
+Tasks will be persisted into the magic database in the `tasks` and `task_due` tables. This implies that
+if you take backup of your database, tasks will still exists in your backup, including their Hyperlambda
+and next schedule date. Only _one_ timer will be created regardless of how many tasks you create, and
+only _one_ task will execute at the same time. In addition, only when a task is done executing, its next
+schedule time will be calculated. This is to avoid exhausting the server due to misconfigured tasks, and/or
+flooding the server with tasks.
+
 * [Documentation](/documentation/)
