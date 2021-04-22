@@ -40,6 +40,29 @@ you schedule your tasks with a `5.seconds` repetition pattern, you can see one n
 
 ![Task Scheduler Screenshot](https://servergardens.files.wordpress.com/2021/04/task-scheduler.png)
 
+## Automating your tasks
+
+Magic also allows you to manually administrate your tasks, and automate the administration of tasks,
+by exposing an API that allows you to create, read, update, and delete tasks. For instance to create
+a task you could use something such as the following.
+
+```
+tasks.create:foo-bar-task-1
+   .lambda
+
+      /*
+       * Your task's lambda object goes here
+       */
+      log.info:Executing foo-bar-task-1
+```
+
+The above creates a task with the ID of _"foo-bar-task-1"_. If you later want to execute your
+task, you can do that by invoking **[tasks.execute]** and pass in the ID you gave your task
+as you created it. This actually allows you to create and decorate _"function invocations"_, which
+are persisted into your database, and later executed according to its ID. Which arguably replaces
+the major parts of Microsoft Workflow Foundation with something that's at least 400 times faster,
+carries much less overhead, yet still to a large extent accomplishes the same.
+
 ## Internals
 
 Tasks will be persisted into the magic database in the `tasks` and `task_due` tables. This implies that
