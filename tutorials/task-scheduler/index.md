@@ -59,8 +59,8 @@ tasks.create:foo-bar-task-1
 The above creates a task with the ID of _"foo-bar-task-1"_. If you later want to execute your
 task, you can do that by invoking **[tasks.execute]** and pass in the ID you gave your task
 as you created it. This actually allows you to create and decorate _"function invocations"_, which
-are persisted into your database, and later executed according to its ID. Which arguably replaces
-the major parts of Microsoft Workflow Foundation with something that's at least 400 times faster,
+are persisted into your database, and later executed according to its ID. This arguably replaces
+the bulk of Microsoft Workflow Foundation with something that's at least 400 times faster,
 carries much less overhead, yet still to a large extent accomplishes the same.
 
 ## Internals
