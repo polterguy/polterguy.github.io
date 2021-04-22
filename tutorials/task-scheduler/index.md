@@ -15,12 +15,13 @@ periodically executed if you wish. Watch the following video where I illustrate 
 In addition to the high level UI parts you can see in the above video, Magic also allows you to automate
 the process of both creating tasks, deleting tasks, executing tasks, and administrating tasks and schedules
 in general. Combined with the fact that Hyperlambda happens to be a Turing Complete high level programming
-language, this also lends itself to business process workflows, and similar ideas, where some function object
-is dynamically created, for then to be executed later due to some trigger happening in another part of your
-system. In such a way the task scheduler in Magic also replaces Microsoft Workflow Foundation, with something
-that's somewhere between 400 and 800 times faster than MWF. In addition to that it consumes about 1/100 of
-the amount of memory that MWF consumes. Below you can see some example Hyperlambda you could paste into
-your tasks to create a dummy task that simply creates a log entry for you.
+language, this also lends itself to business process workflows, and similar ideas, where some function invocation
+is dynamically created, persisted into your database, for then to be executed later due to some trigger happening
+in another part of your system. In such a way the task scheduler in Magic also replaces Microsoft Workflow
+Foundation, with something that's somewhere between 400 and 800 times faster than MWF. In addition to that it
+consumes about 1/100 of the amount of memory that MWF consumes. And of course the thing is `async` to the bone.
+Below you can see some example Hyperlambda you could paste into your tasks to create a dummy task that simply
+creates a log entry for you.
 
 ## Creating a scheduled task
 
