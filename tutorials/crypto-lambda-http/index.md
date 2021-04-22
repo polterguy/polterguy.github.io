@@ -95,7 +95,7 @@ instance, the payloads needs to be cryptographically signed by the client. The s
 the signature and parse the Hyperlambda, building a lambda object from it. Execution rights needs to
 be retrieved from the database, and a receipt for the execution of the lambda object needs to be persisted
 into the database. Hence, you should _not_ use these guys for things where execution speed is crucial,
-but rather for smaller payloads, occassionally transmitted between clients and servers, and not for things
+but rather smaller payloads, occassionally transmitted between clients and servers, and not for things
 needing to handle thousands of requests per second.
 
 However, when you need them, you _really_ need them - And if used correctly, and _sparsely_ may I add,
