@@ -8,7 +8,7 @@ the easiest method, to start out with Magic on your development machine.
 
 ## Using the Docker image on your development machine
 
-The easiest way to get started is to [download the docker-compose.yml file](https://github.com/polterguy/magic/releases/download/v9.1.4/docker-compose.yml), assuming you have [Docker](https://www.docker.com/products/docker-desktop) installed, and then execute the following in a terminal window where you saved the file.
+The easiest way to get started is to [download the docker-compose.yml file](https://github.com/polterguy/magic/releases/download/v9.1.5/docker-compose.yml), assuming you have [Docker](https://www.docker.com/products/docker-desktop) installed, and then execute the following in a terminal window where you saved the file.
 This is the exact same process for both Windows, Mac and Linux - And can also be extended
 to install Magic in your server or cloud of choice. Notice, you'll need to have
 [Docker installed](https://www.docker.com/products/docker-desktop) on your development machine if you want to
