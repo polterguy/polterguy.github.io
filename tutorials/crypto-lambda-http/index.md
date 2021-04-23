@@ -21,24 +21,28 @@ If we start out imagining a client creating an invocation the process becomes as
 1. The client's payload is cryptographically signed with his private key
 2. The payload is transmitted to the server
 3. The server verifies that the cryptography signature is valid
+4. The server verifies a payload with the same **[.request-id]** has not been successfully executed previously
 4. The server looks up the execution rights associated with the public key
 5. The Hyperlambda in the payload is executed, _only_ allowing for the slots that are _"whitelisted"_ to be executed
-6. A receipt containing the entire payload is persisted on the server
-7. Whatever result the client requested is returned to the client
+6. A receipt containing the cryptographically signed payload is persisted on the server
+7. The server cryptographcally signs the response and returns it to the client
+8. The client verifies the cryptography signature in the response returned by the server
 
-If any of the above steps are failing for some reasons, the execution is aborted. Fail conditions might be
-for instance.
+If any of the above steps are failing for some reasons, the execution is not considered to be successful.
+Fail conditions might include for instance.
 
 * The payload has been tampered with after having been cryptographically signed
 * The public key the payload was signed with does not exist on the server
+* The public key the payload was signed with is _disabled_ on the server
 * The payload tries to invoke a slot it is not allowed to invoke according to its _"whitelist"_
-* The public key is disabled on the server
-* The payload has been successfully executed previously
+* A payload with the same **[.request-id]** has been successfully executed previously on the server
+* The server's response is not signed with the key the client has associated with the domain it sent the request to
 
-This allows you to import a public key in your Magic server, associate an authorisation object
-with the key, for then to have the owner of that key pair create Hyperlambda code that _your server securely executes_.
-Arguably _"reversing the responsibility of code"_, where the server is no longer responsible for declaring its code,
-but rather the client provides a lambda object your server executes.
+This allows you to exchange public keys between another Magic server and your own Magic installation, associate
+an authorisation object with the other party's public key, for then to have the owner of that key create
+Hyperlambda code that your server _securely executes_ - Arguably _"reversing the responsibility of code"_, where
+the server is no longer responsible for declaring its code, but rather the client provides a lambda object
+that your server executes.
 
 ## Code example
 
@@ -48,7 +52,7 @@ Use the _"Evaluator"_ menu item from your Magic Dashboard and execute the follow
 guid.new
 unwrap:x:+/**/.request-id
 signal:magic.crypto.http.eval
-   url:"http://localhost:55247/magic/modules/system/crypto/eval-id"
+   url:"http://localhost:4444/magic/modules/system/crypto/eval-id"
    .lambda
       .request-id:x:@guid.new
       vocabulary
@@ -71,7 +75,16 @@ a _"transaction identifier"_. Since the ID is also a part of the payload itself,
 message the cryptographic signature was generated from, this prevents _"replay attacks"_, where an adversary
 can pick up your payload, and replay the same payload again. This is accomplished by checking if the
 **[.request-id]** parts of the payload has been previously executed, and if so, aborting the execution,
-returning an error to the client.
+returning an error to the client. To see this in action try to execute the following Hyperlambda _twice_,
+and notice how the first invocation typically succeeds, while the second invocation fails.
+
+```
+signal:magic.crypto.http.eval
+   url:"http://localhost:4444/magic/modules/system/crypto/eval-id"
+   .lambda
+      .request-id:not-a-unique-request-id
+      return:Will fail the second time
+```
 
 ## Micro services and super scalable distributed systems
 
