@@ -1,7 +1,7 @@
 
 # Authentication and authorisation
 
-Magic was created to solve all the repetetive problems I experience in my day job. One of these problems
+Magic was created to solve all the repetitive problems I experience in my day job. One of these problems
 happens to be authentication and authorisation, which is a problem you have to solve every time
 you create a new application. At this point some might argue that OAuth2 solves these problems, and while
 technically that _is_ true, OAuth2 is also ridiculously complex and over engineered, and very easy to
@@ -20,7 +20,7 @@ As you can see in the above video, Magic contains a million parts helping you ou
 authorisation requirements, such as the ability to lock users, implement double optin registrations, having users
 confirm their email address before being accepted into your site, resetting passwords, etc. In addition
 of course, the coolest parts is that the Magic Dashboard also contains high level UI components, allowing you
-to easily adiministrate your user database, such as illustrated below.
+to easily administrate your user database, such as illustrated below.
 
 ![Auth Dashboard Module](https://servergardens.files.wordpress.com/2021/04/auth-dashboard.png)
 
@@ -53,6 +53,8 @@ JWT is easily explained to a child. OAuth2 on the other hand, is ridiculously co
 to the point where even the guy in charge of the standardisation committee went on a 2 year long tour throwing
 sessions who's names were as follows; _"OAuth2 sucks!"_ OAuth2 might be cool if you're Google or Facebook, but
 if you're anything else, it's a _hot smoking pile of garbage_!
+
+> Seriously, OAuth2 SUX!
 
 JWT on the other hand is ridiculously simple to understand. It's based upon a secret, which you can find
 in Magic as a configuration setting. Below are all configuration settings related to auth in Magic.
@@ -119,7 +121,7 @@ item and you select all records from your users table using something such as th
 select * from users
 ```
 
-You can see how the passwords are stored using _slow BlowFish hashing_ With _individual record based salts_.
+You can see how the passwords are stored using _slow BlowFish hashing_ with _individual record based salts_.
 
 ![Users table from Magic database](https://servergardens.files.wordpress.com/2021/04/users-table.png)
 
@@ -131,13 +133,13 @@ gains access to your user's password in _one_ app, he effectively gains access t
 in _all_ apps the user is using, and can easily impersonate the user across the entirety of the web.
 
 This results in that you might get sued over your _"free pony website"_ since one of your users reused
-his or her password on _your_ site also for his internet banking website. I cannot emphasize this strongly
+his or her password on _your_ site also for his internet banking website. I cannot emphasise this strongly
 enough; Unless you know with 100% certainty what you are doing ...
 
 > Do NOT implement your own auth system!
 
 If I had my will, we would legislate the World Wide Web having sites not implementing slow hashing
-and individual per record based salts with the following disclaimer.
+and individual per record based salts showing the following disclaimer.
 
 > Warning, by registering at this site, North Korean mafia might steal your credit cards!
 
@@ -158,7 +160,7 @@ the commonly accepted dogma of providing something such as follows.
 > Rf5$!fgh
 
 The above password for instance is 8 characters long. On average it takes a normal laptop approximately 20
-minutes to brute force the above password. While the first passsword above, containing 33 characters,
+minutes to brute force the above password. While the first password above, containing 33 characters,
 would require more energy than that which is required to boil all water on earth to brute force. Hence, these
 ridiculous restrictions for instance Apple has as you creates passwords for their AppStore, is quite
 counterintuitively much simpler to guess than simple phrases and sentences such as Magic allows you to use.
@@ -170,7 +172,7 @@ Combining this with the fact of that users have different
 native languages, might be using slang etc - Results in that the entropy becomes the same, only
 exponentially growing for each additional character the user adds to his password. The point of course
 being that for me as a Norwegian, the following password is ridiculously simple to remember, since it's a
-Norwegian sentence, that makes perfectly sense for me, which I could easily memorize.
+Norwegian sentence, that makes perfectly sense for me, which I could easily memorise.
 
 > Heisann, teisann, mitt navn er Thomas Hansen og jeg er KUL!
 
@@ -179,7 +181,7 @@ disposal today, would require more energy than the amount of energy required to 
 exists in our galaxy. Implying it's not even possible in theory to brute force the above password. So the
 above password is actually _stronger_ than the 8 letter _"special character password"_ above it - In addition
 to that it's a trillion times easier to remember, and allows your users to create _unique_ passwords for
-all their online services, reducing the likelyhood of having your password compromised at _one_ site
+all their online services, reducing the likelihood of having your password compromised at _one_ site
 resulting in that your _entire online life_ is compromised.
 
 However, since Magic also is using individual per record based salts, combined with BlowFish hashing,
