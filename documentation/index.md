@@ -5,6 +5,7 @@
 * [Database CRUD operations](/tutorials/database-crud/) - Automate the process of creating code
 * [SQL Web API](/tutorials/sql-web-api/) - Create HTTP endpoints in SQL
 * [Magic beyond CRUD](/tutorials/cloud-ide/) - A guided tour through Magic's Dashboard
+* [Authentication and authorisation](/tutorials/auth/) - How Magic solves authentication and authorisation
 * [Scheduling tasks](/tutorials/task-scheduler/) - How to use Magic to create and schedule tasks
 * [Cryptographically secured HTTP Lambda Invocations](/tutorials/crypto-lambda-http/) - Inversion of Code
 * [Hyperlambda Hello World](/tutorials/hello-world-endpoint/) - Your first Hyperlambda endpoint
