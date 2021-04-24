@@ -74,14 +74,15 @@ in Magic as a configuration setting. Below are all configuration settings relate
 ```
 
 Assuming you can keep the above `secret` a secret, your auth system is secure enough to be consumed by FSB,
-MI6 and CIA. the idea is that once a JWT token is generated, its payload is concatenated with the above secret,
+MI6 and CIA. The idea is that once a JWT token is generated, its payload is concatenated with the above secret,
 and a SHA256/HMAC is constructed, which unless can be correctly reproduced in the .Net middleware upon consecutive
 requests, results in that the token is considered invalid, and the user will not be authorised to do anything
-requiring authorisation.
+requiring authorisation. By default Magic will use the BouncyCastle CSRNG classes to generate your auth secret.
+But if you're super paranoid, you can also manually edit it as you see fit.
 
 In fact, using Magic as your JWT auth server, to integrate it into your own custom C# apps, is as simple as
 configuring the correct middleware by implementing a handful of lines of custom C# code. You can get an idea
-for how to get started by looking at the C# code for [magic.lambda.auth](https://github.com/polterguy/magic.lambda.auth/blob/master/magic.lambda.auth/helpers/TicketFactory.cs). This allows you to share the secret Magic has with your own custom
+of how to get started by looking at the C# code for [magic.lambda.auth](https://github.com/polterguy/magic.lambda.auth/blob/master/magic.lambda.auth/helpers/TicketFactory.cs). This allows you to share the secret Magic has with your own custom
 application, and use Magic as an _"auth server"_ having single sign on in your enterprise. As long as you
 can keep your auth secret a secret, this is a perfectly legitimate method to implement SSO.
 
@@ -97,7 +98,7 @@ These are as follows.
 * __[auth.ticket.verify]__ - Verifies that the user is authenticated, and optionally belongs to one or more roles
 
 You can find the complete documentation for these parts in the [magic.lambda.auth](/documentation/magic.lambda.auth/)
-parts of the documentation. Most of these are _"APO'ish in nature"_, allowing you to simply inject them into
+parts of the documentation. Most of these are _"AOP'ish in nature"_, allowing you to simply inject them into
 your own Hyperlambda code, resulting in some sort of expected result meeting your requirements related to auth.
 
 ## Internals
@@ -130,10 +131,17 @@ gains access to your user's password in _one_ app, he effectively gains access t
 in _all_ apps the user is using, and can easily impersonate the user across the entirety of the web.
 
 This results in that you might get sued over your _"free pony website"_ since one of your users reused
-his or her password on _your_ site also for his internet bank website. I cannot emphasize this strongly
+his or her password on _your_ site also for his internet banking website. I cannot emphasize this strongly
 enough; Unless you know with 100% certainty what you are doing ...
 
 > Do NOT implement your own auth system!
+
+If I had my will, we would legislate the World Wide Web having sites not implementing slow hashing
+and individual per record based salts with the following disclaimer.
+
+> Warning, by registering at this site, North Korean mafia might steal your credit cards!
+
+The we could show the above warning next to the _"cookie disclaimer"_ ... ;)
 
 ### Password entropy
 
@@ -156,8 +164,10 @@ ridiculous restrictions for instance Apple has as you creates passwords for thei
 counterintuitively much simpler to guess than simple phrases and sentences such as Magic allows you to use.
 Simply since allowing a user to use a simple sentence, increases password length easily by one order of
 magnitude, making the brute force approach require trillions of times the number of iterations to guess
-your users' passwords using a brute force approach. Combining this with the fact of that users have different
-mother tongues, might be using slang language, etc - Results in that the entropy becomes the same, only
+your users' passwords using a brute force approach.
+
+Combining this with the fact of that users have different
+native languages, might be using slang etc - Results in that the entropy becomes the same, only
 exponentially growing for each additional character the user adds to his password. The point of course
 being that for me as a Norwegian, the following password is ridiculously simple to remember, since it's a
 Norwegian sentence, that makes perfectly sense for me, which I could easily memorize.
@@ -167,15 +177,16 @@ Norwegian sentence, that makes perfectly sense for me, which I could easily memo
 The above password contains 71 characters, and brute forcing it with any known technology we have at our
 disposal today, would require more energy than the amount of energy required to boil all the water that
 exists in our galaxy. Implying it's not even possible in theory to brute force the above password. So the
-above password is actualyl _stronger_ than the 8 letter _"special character password"_ above it - In addition
+above password is actually _stronger_ than the 8 letter _"special character password"_ above it - In addition
 to that it's a trillion times easier to remember, and allows your users to create _unique_ passwords for
 all their online services, reducing the likelyhood of having your password compromised at _one_ site
-results in that your _entire online life_ is compromised.
+resulting in that your _entire online life_ is compromised.
 
 However, since Magic also is using individual per record based salts, combined with BlowFish hashing,
-even if your user _has a single character password_, the CPU time required to brute force a single
-password would still be practically impossible, even if an adversary had access to your entire password
-database. This is due to the nature of BlowFish hashing, combined with per record based salts.
+even if your user has a single character password,
+_the CPU time required to brute force a single character password would still be practically impossible_,
+even if an adversary had access to your entire password database. This is due to the nature of BlowFish
+hashing, combined with per record based salts.
 
 ## Don't do this at home kids!
 
@@ -183,8 +194,8 @@ Seriously, _do not implement your own authentication system_. As you can see, th
 million things that can go wrong. For instance, one of the most popular OAuth2 implementations for .Net
 literally _contains thousands of security issues_ (no, I will not tell you which project I am talking about) -
 I should know, because I ran it through SonarQube to check it out in one of my previous jobs. It contained
-so many security holes that SonarQube almost crashed and refused to continue. Then compare this to Magic's
-auth system ...
+so many security holes that SonarQube almost crashed and refused to continue. Compare this to Magic's
+auth system that scores 100% perfect ...
 
 ![SonarQube and Magic Auth](https://servergardens.files.wordpress.com/2021/04/sonar-qube.png)
 
@@ -196,7 +207,8 @@ passwords in clear text on the dark web for all to see ...
 > DO NOT IMPLEMENT YOUR OWN AUTH!
 
 Even if you've got the skills to do it correctly, you highly unlikely will be given the _time_ from your
-manager to do it correctly.
+manager to do it correctly. And unless you do it _correctly_, there are a million things that can go wrong!
+Auth is the _heart_ of your software, and if _one_ part of it is incorrectly implemented, you basically _have no auth_!
 
 ## Wrapping up
 
