@@ -6,7 +6,7 @@ happens to be authentication and authorisation, which is a problem you have to s
 you create a new application. At this point some might argue that OAuth2 solves these problems, and while
 technically that _is_ true, OAuth2 is also ridiculously complex and over engineered, and very easy to
 get wrong. And of course if you get your app's auth parts wrong, you might as well not have auth at all,
-since it exposes your apps for adversaries doing whatever they want with your app. Authorisation is
+since it exposes your apps for adversaries doing whatever they want to do with your app. Authorisation is
 one of those things together with cryptography you really _should not solve yourself_, unless you _really_
 know what you're doing. Watch the following video for a walkthrough of how the auth parts in Magic works.
 
@@ -25,9 +25,9 @@ to easily adiministrate your user database, such as illustrated below.
 ![Auth Dashboard Module](https://servergardens.files.wordpress.com/2021/04/auth-dashboard.png)
 
 Imagining your manager giving you the required time to implement the above is probably at best delusional,
-regardless of what company you work for. With Magic, it's simply there. Combining this with the auditing
-and diagnostic features, allowing you to see high level KPI charts related to security issues, such as
-illustrated below - Simply results in that Magic's features from a conceptual point of view related to this,
+regardless of what company you work for. With Magic, it's _simply there_. Combining this with the auditing
+and diagnostic features of Magic, allowing you to see high level KPI charts related to security issues, such as
+illustrated below - Results in that Magic's features from a conceptual point of view related to this,
 is something you're probably never going to be able to reproduce using any other means.
 
 ![Auth diagnostics and KPI](https://servergardens.files.wordpress.com/2021/04/auth-diagnostics.png)
@@ -41,11 +41,49 @@ Magic exposes a couple of crucial endpoints related to authentication that simpl
 * GET magic/modules/system/auth/refresh-ticket - Refresh a user's JWT token granting a new token with a new expiration value
 * POST magic/modules/system/auth/register - Allows others to register as users in your system
 * POST magic/modules/system/auth/send-reset-password-link - Sends a reset password link to the user's email address
-* POST magic/modules/system/auth/verify-email - Double optin endpoint to allow for user to verify their emails
+* POST magic/modules/system/auth/verify-email - Double optin endpoint allowing users to verify their emails
 * GET magic/modules/system/auth/verify-ticket - Returns success status code if JWT token is valid
 
 Combining the above endpoints gives you more or less everything you need related to authentication and authorisation,
 allowing you to build UI components in any framework of choice, wrapping the above backend endpoints.
+
+## JWT internals
+
+JWT is easily explained to a child. OAuth2 on the other hand, is ridiculously complicated and over engineered,
+to the point where even the guy in charge of the standardisation committee went on a 2 year long tour throwing
+sessions who's names were as follows; _"OAuth2 sucks!"_ OAuth2 might be cool if you're Google or Facebook, but
+if you're anything else, it's a _hot smoking pile of garbage_!
+
+JWT on the other hand is ridiculously simple to understand. It's based upon a secret, which you can find
+in Magic as a configuration setting. Below are all configuration settings related to auth in Magic.
+
+```json
+{
+  "magic": {
+    "auth": {
+      "secret": "TD98Y37V78hBp91C2HWo2QEYJSN4LGzalimoYhPj7PU6gp87Zd6yOda7DyCQ4d5HQijYrj926AaGixgRdaadbn5YUz5TSscg",
+      "https-only": false,
+      "valid-minutes": 120,
+      "registration": {
+        "allow": true,
+        "confirm-email": null
+      }
+    }
+  }
+}
+```
+
+Assuming you can keep the above `secret` a secret, your auth system is secure enough to be consumed by FSB,
+MI6 and CIA. the idea is that once a JWT token is generated, its payload is concatenated with the above secret,
+and a SHA256/HMAC is constructed, which unless can be correctly reproduced in the .Net middleware upon consecutive
+requests, results in that the token is considered invalid, and the user will not be authorised to do anything
+requiring authorisation.
+
+In fact, using Magic as your JWT auth server, to integrate it into your own custom C# apps, is as simple as
+configuring the correct middleware by implementing a handful of lines of custom C# code. You can get an idea
+for how to get started by looking at the C# code for [magic.lambda.auth](https://github.com/polterguy/magic.lambda.auth/blob/master/magic.lambda.auth/helpers/TicketFactory.cs). This allows you to share the secret Magic has with your own custom
+application, and use Magic as an _"auth server"_ having single sign on in your enterprise. As long as you
+can keep your auth secret a secret, this is a perfectly legitimate method to implement SSO.
 
 ## Slots
 
