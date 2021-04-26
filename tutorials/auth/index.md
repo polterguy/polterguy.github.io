@@ -143,7 +143,7 @@ and individual per record based salts showing the following disclaimer.
 
 > Warning, by registering at this site, North Korean mafia might steal your credit cards!
 
-The we could show the above warning next to the _"cookie disclaimer"_ ... ;)
+We could show the above warning next to the _"cookie disclaimer"_ ... ;)
 
 ### Password entropy
 
