@@ -84,7 +84,7 @@ paste the following into its connection string settings.
 Server=db;Database={database};User=sa;Password=Your_password123;
 ```
 
-**Notice**** - When just playing around on your local development machine, the password is not really that
+**Notice** - When just playing around on your local development machine, the password is not really that
 important, since Docker will _not_ expose your SQL Server instance outside of the virtualized Docker network.
 So the above password, although obviously not good enough for a real world production environment,
 would be more than enough to secure your development machine.
