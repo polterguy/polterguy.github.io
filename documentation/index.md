@@ -2,6 +2,7 @@
 # Tutorials
 
 * [Getting started](/tutorials/getting-started/) - Getting Magic up running
+* [Using Magic with SQL Server](/tutorials/sql-server/) - Using Magic with Microsoft SQL Server
 * [Database CRUD operations](/tutorials/database-crud/) - Automate the process of creating code
 * [SQL Web API](/tutorials/sql-web-api/) - Create HTTP endpoints in SQL
 * [Magic beyond CRUD](/tutorials/cloud-ide/) - A guided tour through Magic's Dashboard
