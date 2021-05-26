@@ -5,7 +5,7 @@
 ## How it works
 
 Magic will read meta data from your database, and use this meta data to generate Hyperlambda
-backend HTTP REST endpoints for you, 100% automatically. Then it will use meta data from
+backend HTTP REST endpoints for you, 100% automagically. Then it will use meta data from
 your backend to generate a complete Angular frontend. The end result, is that you're
 done with your web app, before you had to create a single line of code yourself. Magic
 is 100% Open Source and free of charge to use.
