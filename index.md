@@ -12,4 +12,5 @@ is 100% Open Source and free of charge to use.
 
 Contact me at [thomas@servergardens.com](mailto:thomas@servergardens.com)
 
+* [Getting Started](/tutorials/getting-started/)
 * [Documentation](/documentation/)
