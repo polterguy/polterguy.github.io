@@ -48,7 +48,7 @@ to the roles of either `admin` or `root` will be notified. Both the **[roles]** 
 To subscribe to the above invocation, you could use something such as the following in TypeScript.
 
 ```typescript
-this.connection.on('foo.bar', (args) => {
+this.connection.on('foo.bar', (args: string) => {
   console.log(JSON.parse(args));
 });
 ```
