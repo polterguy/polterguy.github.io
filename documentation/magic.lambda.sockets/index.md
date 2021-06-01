@@ -64,6 +64,8 @@ sockets.signal:foo.bar
       howdy:world
 ```
 
+## Arguments to [sockets.signal]
+
 * __[roles]__ - Comma separated list of roles to send message to
 * __[users]__ - Comma separated list of users to send message to
 * __[args]__ - Arguments to transmit to subscribers
