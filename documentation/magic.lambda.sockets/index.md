@@ -68,7 +68,7 @@ sockets.signal:foo.bar
 
 * __[roles]__ - Comma separated list of roles to send message to
 * __[users]__ - Comma separated list of users to send message to
-* __[args]__ - Arguments to transmit to subscribers
+* __[args]__ - Arguments to transmit to subscribers as JSON (string)
 
 Only one of **[users]** or **[roles]** can be supplied.
 
