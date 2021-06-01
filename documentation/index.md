@@ -43,6 +43,8 @@
 * [magic.lambda.scheduler](/documentation/magic.lambda.scheduler/) - Create scheduled tasks and workflows from Hyperlambda
 * [magic.lambda.validators](/documentation/magic.lambda.validators/) - Validate input in Hyperlambda
 * [magic.lambda.hyperlambda](/documentation/magic.lambda.hyperlambda/) - Parse Hyperlambda from text, and vice versa
+* [magic.lambda.sockets](/documentation/magic.lambda.sockets/) - Web socket support for Magic using SignalR
+* [magic.lambda.system](/documentation/magic.lambda.system/) - System support for Magic to spawn of terminals etc.
 * [magic.io](/documentation/magic.io/) - IO operations in Magic
 * [magic.library](/documentation/magic.library/) - A single NuGet package helper tying everything easily together
 
