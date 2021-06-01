@@ -1,7 +1,7 @@
 
 # Magic Lambda Sockets
 
-This project provides web sockets hooks for for [Magic](https://github.com/polterguy.magic).
+This project provides web sockets hooks for for Magic.
 The main idea of the project, is that it allows you to resolve Hyperlambda files, execute these,
 passing in a URL and JSON arguments over a web socket connection - In addition to subscribing to messages
 published by the server over a web socket connection. The project builds upon SignalR, but the internals are
