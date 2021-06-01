@@ -10,7 +10,7 @@ library with similar capabilities. The project contains one socket SignalR hub m
 the following signature.
 
 ```
-execute(string file, string json)
+execute(string file, string json);
 ```
 
 To connect to the hub use the relative URL `/sockets`, optionally passing in a JWT token, and then
@@ -18,10 +18,17 @@ transmit messages to the hub using something such as for instance the following 
 
 ```typescript
 let builder = new HubConnectionBuilder();
+
 this.connection = builder.withUrl('https://api.your-domain.com/sockets', {
     accessTokenFactory: () => 'returns-your-JWT-token-here'
   }).build();
-this.connection.invoke('execute', '/foo/some-hyperlambda-file', JSON.stringify({foo:'bar'}))
+
+this.connection.invoke(
+  'execute',
+  '/foo/some-hyperlambda-file',
+  JSON.stringify({
+    foo:'bar'
+  }));
 ```
 
 The above will resolve to a Hyperlambda file expected to exist at `/modules/foo/some-hyperlambda-file.socket.hl`,
