@@ -53,7 +53,16 @@ this.connection.on('foo.bar', (args) => {
 });
 ```
 
-The **[sockets.signal]** slot can handle the following optional arguments.
+The **[sockets.signal]** slot can handle the following optional arguments but _only one_ of these can be supplied.
+If you instead of signaling all belonging to a specific role only want to signal a list of users, you can use
+something such as the following.
+
+```
+sockets.signal:foo.bar
+   users:user1, user2, user3
+   args
+      howdy:world
+```
 
 * __[roles]__ - Comma separated list of roles to send message to
 * __[users]__ - Comma separated list of users to send message to
