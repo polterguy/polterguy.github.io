@@ -140,7 +140,7 @@ import { AppComponent } from './app.component';
 export class AppModule { }
 ```
 
-And we are done with our frontend.
+And we are done with our frontend. Save all your files, and let's move onwards to our backend.
 
 ## Hyperlambda SignalR backend
 
