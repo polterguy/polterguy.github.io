@@ -6,7 +6,13 @@ a web sockets is a bidirectional communication channel through which the server 
 without having the client needing to poll the server for changes. A typical use case for this is chat clients, but
 obviously this is useful in a lot of other scenarios. In this tutorial, we will create a chat
 client in Angular and Hyperlambda, using the server side SignalR plugins of Magic, to let multiple users chat
-with each other, having the messages transmitted in real time.
+with each other, having the messages transmitted in real time. If you prefer to see me walk you through
+this article, you can watch the following video.
+
+<div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
+<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/8NXO1V1i-JY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 
 ## Our Angular frontend
 
@@ -69,8 +75,17 @@ compiler errors. This is because we are using fields on our `AppComponent` class
 exist. Modify your _"app.component.ts"_ file to resemble the following.
 
 ```typescript
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { HttpTransportType, HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
+import {
+  Component,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
+
+import {
+  HttpTransportType,
+  HubConnection,
+  HubConnectionBuilder
+} from '@aspnet/signalr';
 
 @Component({
   selector: 'app-root',
@@ -79,7 +94,6 @@ import { HttpTransportType, HubConnection, HubConnectionBuilder } from '@aspnet/
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  title = 'chat';
   content = '';
   message = '';
   hubConnection: HubConnection;
@@ -101,9 +115,12 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   send() {
-    this.hubConnection.invoke('execute', '/tutorials/add-chat', JSON.stringify({
-      message: this.message,
-    }));
+    this.hubConnection.invoke(
+      'execute',
+      '/tutorials/add-chat',
+      JSON.stringify({
+        message: this.message,
+      }));
     this.message = '';
   }
 }
