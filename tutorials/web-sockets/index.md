@@ -215,12 +215,12 @@ this.hubConnection.invoke('execute', '/tutorials/add-chat', JSON.stringify({
 
 Notice how the second argument resembles the relative path of the file. What the endpoint
 resolver will do, is roughly to add _".sockets.hl"_ to the relative URL specified, load
-this file dynamically, and execute its Hyperlambda. This gives us a way to dynamically
-execute Hyperlambda files to respond to incoming SignalR messages. In addition it gives
-us the same method to declare arguments, and pass in arguments to our SignalR invocations
-as we would use for normal HTTP REST invocations. This again of course, allows you to
-largely use the same Hyperlambda files for SignalR endpoints as you would normally use
-for HTTP REST endpoints.
+this file dynamically, add the specified arguments, and execute its Hyperlambda. This gives
+us a way to dynamically execute Hyperlambda files to respond to incoming SignalR messages.
+In addition it gives us the same method to declare arguments, and pass in arguments to our
+SignalR invocations as we would use for normal HTTP REST invocations. This again of course,
+allows you to largely use the same Hyperlambda files for SignalR endpoints as you would
+normally use for HTTP REST endpoints.
 
 ## Wrapping up
 
