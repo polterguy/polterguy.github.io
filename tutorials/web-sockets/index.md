@@ -57,9 +57,9 @@ for the _"Build for Production"_ element. Below those two DIVs add the following
   <div>
     <h1>Chat client</h1>
     <textarea id="" cols="30" rows="10" [(ngModel)]="message">{{message}}</textarea>
-    <br>
+    <br />
     <button (click)="send()">Submit</button>
-    <br>
+    <br />
     <textarea id="" cols="30" rows="10">{{content}}</textarea>
   </div>
 ```
