@@ -48,20 +48,18 @@ ng serve --port 4201
 
 The reason why we need to override the port, is because the Magic Dashboard is probably already running
 on the default port which is 4200. You can now visit [localhost:4201](http://localhost:4201/) to see
-your app. Notice, Angular by default creates some default wire framing for you. If you wish, you can
-just remove this as you see fit. However, we'll just add a chat window to our example to keep the
-tutorial short. Open the _"app.component.html"_ file in the folder _"/src/app/"_ and search through it
-for the _"Build for Production"_ element. Below those two DIVs add the following code.
+your app. Open the _"app.component.html"_ file in the folder _"/src/app/"_ and replace its existing code
+with the following HTML.
 
 ```html
-  <div>
-    <h1>Chat client</h1>
-    <textarea id="" cols="30" rows="10" [(ngModel)]="message">{{message}}</textarea>
-    <br />
-    <button (click)="send()">Submit</button>
-    <br />
-    <textarea id="" cols="30" rows="10" [(ngModel)]="content"></textarea>
-  </div>
+<div>
+  <h1>Chat client</h1>
+  <textarea id="" cols="30" rows="10" [(ngModel)]="message">{{message}}</textarea>
+  <br />
+  <button (click)="send()">Submit</button>
+  <br />
+  <textarea id="" cols="30" rows="10" [(ngModel)]="content"></textarea>
+</div>
 ```
 
 Notice, the UI isn't all that marvelous, but to keep the tutorial relevant to only SignalR and
@@ -229,3 +227,4 @@ In addition we published our messages over a SignalR / Web Sockets connection, t
 multiple clients chat with each other in real time.
 
 * [Documentation](/documentation/)
+
