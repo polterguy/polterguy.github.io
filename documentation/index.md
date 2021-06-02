@@ -11,6 +11,7 @@
 * [Cryptographically secured HTTP Lambda Invocations](/tutorials/crypto-lambda-http/) - Inversion of Code
 * [Hyperlambda Hello World](/tutorials/hello-world-endpoint/) - Your first Hyperlambda endpoint
 * [Expressions, slots, and nodes](/tutorials/expressions-slots-nodes/) - Hyperlambda is *really* weird!
+* [Web Sockets and SignalR in Magic](/tutorials/web-sockets/) - How to use Web Sockets with Magic
 * [AnarQ a Social Media use case](/tutorials/anarq-usecase/) - Creating a Social Media backend with Magic
 
 # Reference documentation
