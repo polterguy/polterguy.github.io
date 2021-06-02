@@ -68,7 +68,7 @@ with the following HTML.
 </div>
 ```
 
-Notice, the UI isn't all that marvelous, but to keep the tutorial relevant to only SignalR and
+Notice, the UI isn't all that marvellous, but to keep the tutorial relevant to only SignalR and
 web sockets, we'll ignore this. If you wish to create a better UI you might benefit from reading up
 about Angular Material. However, if you saved your above HTML file, you've now got a couple of
 compiler errors. This is because we are using fields on our `AppComponent` class that still doesn't
@@ -159,7 +159,7 @@ export class AppModule { }
 
 And we are done with our frontend. Save all your files, and let's move onwards to our backend.
 
-## Hyperlambda SignalR backend
+## Your Hyperlambda SignalR backend
 
 If you click the _"Submit"_ button, you will see that your console window gives you an error. This
 is because we have still not yet created our backend file responsible for executing as
@@ -168,7 +168,7 @@ URL in a different browser window, log in with your root account, and open the _
 Then do _exactly as follows_.
 
 1. Click the _"modules"_ folder
-2. Click the _"New_" button
+2. Click the _"New"_ button
 3. Type _"tutorials"_ into the textbox
 4. Check the _"Folder"_ checkbox to make sure we create a _folder_ and not a file
 5. Click _"Create"_
@@ -202,7 +202,7 @@ the textarea and click _"Submit"_. Your app should resemble the following screen
 As I started out with, web sockets are a _bidirectional_ transport channel, implying we can both
 send and receive data over a socket. In the above `send()` method we are pushing data _to_ the server.
 The above **[sockets.signal]** Hyperlambda slot transmits this message to all subscribers again.
-In our above Angular code we are subscribing to these messages with the following TypScript.
+In our above Angular code we are subscribing to these messages with the following TypeScript.
 
 ```typescript
 this.hubConnection.on('chat.new-message', (args) => {
@@ -232,9 +232,9 @@ this.hubConnection.invoke('execute', '/tutorials/add-chat', JSON.stringify({
 
 Notice how the second argument resembles the relative path of the file. What the endpoint
 resolver will do, is roughly to add _".sockets.hl"_ to the relative URL specified, load
-this file dynamically, add the specified arguments, and execute its Hyperlambda. This gives
+this file dynamically, add the input arguments, and execute its Hyperlambda. This gives
 us a way to dynamically execute Hyperlambda files to respond to incoming SignalR messages.
-In addition it gives us the same method to declare arguments, and pass in arguments to our
+In addition it gives us the same method to declare arguments and pass in arguments to our
 SignalR invocations as we would use for normal HTTP REST invocations - Which of course makes
 it much simpler to consume and learn as you start out with web sockets in Magic.
 
