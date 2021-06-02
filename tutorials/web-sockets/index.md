@@ -144,14 +144,15 @@ And we are done with our frontend. Save all your files, and let's move onwards t
 
 ## Hyperlambda SignalR backend
 
-If you click the _"Submit"_ button, you will see that your console window give you an error. This
+If you click the _"Submit"_ button, you will see that your console window gives you an error. This
 is because we have still not yet created our backend file responsible for executing as
 we submit chat messages to the server. Open up your Magic Dashboard with the [localhost:4200](http://localhost:4200/)
-URL in a different browser window, and open the _"IDE"_ menu item. Then do exactly as follows.
+URL in a different browser window, log in with your root account, and open the _"IDE"_ menu item.
+Then do _exactly as follows_.
 
 1. Click the _"modules"_ folder
 2. Click the _"New_" button
-3. Type in _"tutorials"_ into the textbox
+3. Type _"tutorials"_ into the textbox
 4. Check the _"Folder"_ checkbox to make sure we create a _folder_ and not a file
 5. Click _"Create"_
 
@@ -175,7 +176,9 @@ sockets.signal:chat.new-message
 ```
 
 Then save your file, and switch back to your chat client browser window, and try writing something into
-the textarea and click _"Submit"_.
+the textarea and click _"Submit"_. Your app should resemble the following screenshot now.
+
+![Chat client](https://servergardens.files.wordpress.com/2021/06/chat-client.png)
 
 ## Internals
 
