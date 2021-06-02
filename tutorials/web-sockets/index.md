@@ -218,9 +218,8 @@ resolver will do, is roughly to add _".sockets.hl"_ to the relative URL specifie
 this file dynamically, add the specified arguments, and execute its Hyperlambda. This gives
 us a way to dynamically execute Hyperlambda files to respond to incoming SignalR messages.
 In addition it gives us the same method to declare arguments, and pass in arguments to our
-SignalR invocations as we would use for normal HTTP REST invocations. This again of course,
-allows you to largely use the same Hyperlambda files for SignalR endpoints as you would
-normally use for HTTP REST endpoints.
+SignalR invocations as we would use for normal HTTP REST invocations - Which of course makes
+it much simpler to consume and learn as you start out with web sockets in Magic.
 
 ## Wrapping up
 
