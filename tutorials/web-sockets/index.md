@@ -4,9 +4,9 @@
 In addition to plain CRUD Magic also supports web sockets. In case you're new to sockets,
 a web sockets is a bidirectional communication channel through which the server can _"push"_ data to the client,
 without having the client needing to poll the server for changes. A typical use case for this is chat clients, but
-obviously this is useful in a lot of other scenarios. In this tutorial, we will create a web socket enabled chat
+obviously this is useful in a lot of other scenarios. In this tutorial, we will create a chat
 client in Angular and Hyperlambda, using the server side SignalR plugins of Magic, to let multiple users chat
-with each other, having the messages transmitted to each client in real time.
+with each other, having the messages transmitted in real time.
 
 ## Our Angular frontend
 
@@ -24,7 +24,9 @@ You can choose whatever setting you wish, but I chose the following as I went th
 
 Change into this folder in your terminal using `cd chat`, and use for instance Visual Studio Code to open the
 folder. If you have the Visual Studio Code command line binding, you can do this by typing `code ./` into
-your terminal. Then we'll need a terminal window in VS Code. You can open a new terminal window through
+your terminal.
+
+Then we'll need a terminal window in VS Code. You can open a new terminal window through
 the _"Terminal"_ menu item. Type the following command into your VS Code terminal window.
 
 ```
@@ -45,9 +47,9 @@ ng serve --port 4201
 ```
 
 The reason why we need to override the port, is because the Magic Dashboard is probably already running
-on the default port which is 4200. You can now vist [localhost:4201](http://localhost:4201/) to see
+on the default port which is 4200. You can now visit [localhost:4201](http://localhost:4201/) to see
 your app. Notice, Angular by default creates some default wire framing for you. If you wish, you can
-just remove this as you see fit. However, we'll just add a chat window to our example, to keep the
+just remove this as you see fit. However, we'll just add a chat window to our example to keep the
 tutorial short. Open the _"app.component.html"_ file in the folder _"/src/app/"_ and search through it
 for the _"Build for Production"_ element. Below those two DIVs add the following code.
 
