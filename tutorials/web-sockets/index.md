@@ -60,7 +60,7 @@ for the _"Build for Production"_ element. Below those two DIVs add the following
     <br />
     <button (click)="send()">Submit</button>
     <br />
-    <textarea id="" cols="30" rows="10">{{content}}</textarea>
+    <textarea id="" cols="30" rows="10" [(ngModel)]="content"></textarea>
   </div>
 ```
 
