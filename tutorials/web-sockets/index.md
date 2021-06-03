@@ -140,8 +140,8 @@ chat messages over our SignalR connection as the user clicks the _"Submit"_ butt
 in the above Angular TypeScript, and they do the following.
 
 1. `ngOnInit` - Initialising our SignalR socket and connects to our backend
-2. `ngOnDestroy` - Stops our socket connection and cleans up things
-3. `send` - Transmits the chat input textbox' content to the server to the _"/modules/tutorials/add-chat.socket.hl"_ file
+2. `ngOnDestroy` - Stops our socket connection
+3. `send` - Transmits the chat input textbox' content to the backend file _"/modules/tutorials/add-chat.socket.hl"_ file
 
 Then we'll need to import the `FormsModule` which you can do by modifying your _"app.module.ts"_
 file to contain the following code.
