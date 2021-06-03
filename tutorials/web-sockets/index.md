@@ -136,7 +136,12 @@ installed Magic using the Docker images.
 
 The above code ensure we are initialising SignalR as the component is initialised, and that we
 are disconnecting SignalR as the component is destroyed - In addition to that we are transmitting new
-chat messages over our SignalR connection as the user clicks the _"Submit"_ button.
+chat messages over our SignalR connection as the user clicks the _"Submit"_ button. There are 3 methods
+in the above Angular TypeScript, and they do the following.
+
+1. `ngOnInit` - Initialising our SignalR socket connection with the server backend
+2. `ngOnDestroy` - Stops our socket connection and cleans up things
+3. `send` - Transmits the chat input textbox' content to the server to the _"/modules/tutorials/add-chat.socket.hl"_ file
 
 Then we'll need to import the `FormsModule` which you can do by modifying your _"app.module.ts"_
 file to contain the following code.
