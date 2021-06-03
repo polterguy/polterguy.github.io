@@ -139,7 +139,7 @@ are disconnecting SignalR as the component is destroyed - In addition to that we
 chat messages over our SignalR connection as the user clicks the _"Submit"_ button. There are 3 methods
 in the above Angular TypeScript, and they do the following.
 
-1. `ngOnInit` - Initialising our SignalR socket connection with the server backend
+1. `ngOnInit` - Initialising our SignalR socket and connects to our backend
 2. `ngOnDestroy` - Stops our socket connection and cleans up things
 3. `send` - Transmits the chat input textbox' content to the server to the _"/modules/tutorials/add-chat.socket.hl"_ file
 
