@@ -98,15 +98,18 @@ export class AppComponent implements OnInit, OnDestroy {
   hubConnection: HubConnection;
 
   ngOnInit() {
+
     let builder = new HubConnectionBuilder();
     this.hubConnection = builder.withUrl('http://localhost:55247/sockets', {
       skipNegotiation: true,
       transport: HttpTransportType.WebSockets,
     }).build();
+
     this.hubConnection.start();
     this.hubConnection.on('chat.new-message', (args) => {
       this.content += JSON.parse(args).message + '\r\n\r\n';
     });
+
   }
   
   ngOnDestroy() {
@@ -114,13 +117,16 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   send() {
+
     this.hubConnection.invoke(
       'execute',
       '/tutorials/add-chat',
       JSON.stringify({
         message: this.message,
       }));
+
     this.message = '';
+
   }
 }
 ```
