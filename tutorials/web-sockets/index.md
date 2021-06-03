@@ -2,7 +2,7 @@
 # Web Sockets and SignalR with Magic
 
 In addition to [plain CRUD](/tutorials/database-crud/) Magic also supports web sockets. In case you're new to sockets,
-a web sockets is a bidirectional communication channel through which the server can _"push"_ data to the client,
+a web sockets is a bidirectional communication channel through which the server can _"push"_ data to clients,
 without having the client needing to poll the server for changes. A typical use case for this is chat clients, but
 obviously this is useful in a lot of other scenarios. In this tutorial, we will create a chat
 client in Angular and Hyperlambda, using the server side SignalR plugins of Magic, to let multiple users chat
