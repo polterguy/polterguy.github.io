@@ -248,13 +248,17 @@ In addition it gives us the same method to declare arguments and pass in argumen
 SignalR invocations as we would use for normal HTTP REST invocations - Which of course makes
 it much simpler to consume and learn as you start out with web sockets in Magic.
 
-The endpoint resolver in such a regard works almost exactly the same way any HTTP REST Hyperlambda
-file is being resolved, except instead of ending with the HTTP verb, it ends with _".socket.hl"_.
+The endpoint resolver works almost exactly the same way any HTTP REST Hyperlambda
+file resolver, except instead of ending with the HTTP verb, it ends with _".socket.hl"_.
 Besides from that, it loads arguments and converts these the same way, it dynamically resolves
-the files the same way, etc. Of course, you don't have access to an HTTP context, such as response,
+the files the same way, etc. You don't have access to the HTTP context, such as response,
 status code, etc - But besides from that, the socket parts of Magic is similar enough to the HTTP
-REST endpoints that you can most of the part interchange these by simply changing the extension
-of your filenames.
+REST Hyperlambda endpoints that you can most of the part interchange these by simply changing
+the extension of your filenames.
+
+And of course, you can mix and match socket Hyperlambda files and HTTP REST Hyperlambda files
+as you see fit, such as for instance publish a message using **[socket.signal]** from any
+HTTP REST backend Hyperlambda file, etc.
 
 ## Wrapping up
 
@@ -264,4 +268,3 @@ In addition we published our messages over a SignalR / Web Sockets connection, t
 multiple clients chat with each other in real time.
 
 * [Documentation](/documentation/)
-
