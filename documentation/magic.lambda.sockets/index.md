@@ -54,8 +54,7 @@ this.connection.on('foo.bar', (args: string) => {
 ```
 
 The **[sockets.signal]** slot can handle the following optional arguments but _only one_ of these can be supplied.
-If you instead of signaling all belonging to a specific role only want to signal a list of users, you can use
-something such as the following.
+You can also signal a list of specified users, such as the following illustrates.
 
 ```
 sockets.signal:foo.bar
