@@ -19,8 +19,8 @@ transmit messages to the hub using something such as for instance the following 
 ```typescript
 let builder = new HubConnectionBuilder();
 
-this.connection = builder.withUrl('https://api.your-domain.com/sockets', {
-    accessTokenFactory: () => 'returns-your-JWT-token-here'
+this.connection = builder.withUrl('http://localhost:55247/sockets', {
+    accessTokenFactory: () => 'return-your-JWT-token-here'
   }).build();
 
 this.connection.invoke(
@@ -32,9 +32,14 @@ this.connection.invoke(
 ```
 
 The above will resolve to a Hyperlambda file expected to exist at `/modules/foo/some-hyperlambda-file.socket.hl`,
-passing in the `foo` argument as lambda nodes. In addition you can invoke SignalR methods by signaling
-the **[sockets.signal]** slot, which will automatically transform the specified children nodes to JSON
-and invoke the specified method for all subscribers. Below is an example.
+passing in the `foo` argument as lambda nodes.
+
+## [sockets.signal]
+
+In addition to the above, you can explicitly publish SignalR events by signaling the **[sockets.signal]** slot,
+which will automatically transform the specified children **[args]** nodes to JSON, and invoke the specified
+method for all connections somehow subscribing to the specified method - Allowing you to filter according
+to groups, users and roles if you wish. Below is an example.
 
 ```
 sockets.signal:foo.bar
@@ -53,7 +58,6 @@ this.connection.on('foo.bar', (args: string) => {
 });
 ```
 
-The **[sockets.signal]** slot can handle the following optional arguments but _only one_ of these can be supplied.
 You can also signal a list of specified users, such as the following illustrates.
 
 ```
@@ -63,13 +67,118 @@ sockets.signal:foo.bar
       howdy:world
 ```
 
+In addition to that you can signal a list of specified groups, such as the following illustrates.
+
+```
+sockets.signal:foo.bar
+   groups:group1, group2, group3
+   args
+      howdy:world
+```
+
+**Notice** - If you signal a group or a list of groups, you'll have to add your users to the group before
+you do.
+
 ## Arguments to [sockets.signal]
 
 * __[roles]__ - Comma separated list of roles to send message to
 * __[users]__ - Comma separated list of users to send message to
+* __[groups]__ - Comma separated list of groups to send message to
 * __[args]__ - Arguments to transmit to subscribers as JSON (string)
 
-Only one of **[users]** or **[roles]** can be supplied.
+Only one of **[users]**, **[roles]** or **[groups]** can be supplied, and all the above arguments are optional.
+
+## Groups and users
+
+You can associate a user with one or more groups. This is done with the following slots.
+
+* __[sockets.user.add-to-group]__ - Adds the specified user to the specified group
+* __[sockets.user.remove-from-group]__ - Removes the specified user from the specified group
+
+Below you can find an example of how to add a user to a group, for then to later de-associate
+the user with the group.
+
+```
+// Associating a user with a group.
+sockets.user.add-to-group:some-username-here
+   group:some-group-name-here
+
+// Publishing message, now to group, such that 'some-username-here' gets it
+sockets.signal:foo.bar
+   group:some-group-name-here
+   args
+      howdy:world
+
+// De-associating the user with the group again.
+sockets.user.remove-from-group:some-username-here
+   group:some-group-name-here
+```
+
+**Notice** - SignalR users might have multiple connections. This implies that once you add a user to
+a group, _all_ connections are associated with that group. The message will only be
+published to connections explicitly having registered an interest in the `foo.bar` message for our
+above example, irrelevant of whether the user belongs to the group or not.
+
+## Meta data
+
+This project also allows you to retrieve meta data about currently connected users, through for instance
+the **[sockets.users]** slot and the **[sockets.users.count]** slot, that will return the username of
+all currently connected users, and the count matching your specified filter condition. An example
+of using it can be found below.
+
+```
+sockets.users
+   filter:some-filter-condition
+   offset:3
+   limit:20
+sockets.users.count
+   filter:some-filter-condition
+```
+
+**Notice** - If a client connected anonymously somehow over a socket, the client will (obviously)
+not have a username, and the default userId will be returned instead. Also please notice, that each
+user might have multiple connections, and this will return each connection for each username matching
+the specified filter condition.
+
+The filter conditions and paging arguments are optional, and will be `null` and `0-10` if not specified.
+
+## Connection context
+
+From within your Hyperlambda files executed by invoking the `execute` method, you have access to
+your SignalR connectionId as a context object named _"sockets.connection"_. Below is an example of
+how to retrieve the current SignalR connectionId. Notice, this only works from _within_ a socket executed
+Hyperlambda file, implying only if you're executing the file using the `execute` method, through your
+SignalR socket connection.
+
+```
+get-context:sockets.connection
+```
+
+This might sometimes be useful, especially if you want to dynamically add only _one_ connection to a group
+for instance. To add the currently active connection explicitly to a group for instance, you can use the 
+following slots.
+
+* __[sockets.connection.enter-group]__ - Associates the current connection _only_ with the specified group
+* __[sockets.connection.leave-group]__ - De-associates the current connection with the specified group
+
+If the user has additional connections, none of the other connections will be modified in any ways. Also
+realise that both of these slots can _only_ be used from within a Hyperlambda file executed through a
+SignalR socket connection somehow. Below is an example.
+
+```
+// Retrieving connectionId
+get-context:sockets.connection
+
+// Entering group
+sockets.connection.enter-group:x:@get-context
+   group:foo-bar-group
+
+// Do stuff here that requires the user to belong to group ...
+
+// Leaving group
+sockets.connection.leave-group:x:@get-context
+   group:foo-bar-group
+```
 
 ## Project website
 
