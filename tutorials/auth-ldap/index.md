@@ -2,10 +2,11 @@
 # Authentication over LDAP
 
 You can find an optional additional NuGet package for Magic
-called [magic.lambda.ad-auth](https://www.nuget.org/packages/magic.lambda.ad-auth). The main ide of
+called [magic.lambda.ad-auth](https://www.nuget.org/packages/magic.lambda.ad-auth). The main idea of
 this package is that instead of checking your database for a matching password, it will pass in your
 username and password combination to your Active Directory, and only authenticate you if you provide
-it with the correct Active Directory username/password combination.
+it with the correct Active Directory username/password combination. To see its code you can checkout
+its [project website](https://github.com/polterguy/magic.lambda.ad-auth).
 
 **Notice** - This package still requires that the username exists in your `magic/users` database, and
 it is still using the default `magic/roles` table for _authorisation_, as in deciding which roles your
