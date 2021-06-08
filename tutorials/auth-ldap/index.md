@@ -10,8 +10,8 @@ its [project website](https://github.com/polterguy/magic.lambda.ad-auth).
 
 **Notice** - This package still requires that the username exists in your `magic/users` database, and
 it is still using the default `magic/roles` table for _authorisation_, as in deciding which roles your
-users belongs to. But at least it provides your with SSO or Single Sign On capabilities in your Magic
-installation. the main idea of the package is to exchange the password verification in Magic with an
+users belongs to - But at least it provides your with SSO or Single Sign On capabilities in your Magic
+installation. The main idea of the package is to exchange the password verification in Magic with an
 invocation to instead **[crypto.password.verify]**. However, first pull in the _"magic.lambda.ad-auth"_
 package into your _"backend.csproj"_ file somehow. Then make sure you edit your _"appsettings.json"_
 file, since this package needs to know your LDAP domain. Below is an example of only the parts you
