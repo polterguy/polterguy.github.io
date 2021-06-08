@@ -76,6 +76,17 @@ sockets.signal:foo.bar
       howdy:world
 ```
 
+Finally, you can signal a list of specified client connections, such as the following illustrates.
+
+```
+sockets.signal:foo.bar
+   clients:e6U2Zz6kqHDCEVyEX6v35w, 5uWWytAM8kJ2gfIL0fEw2A
+   args
+      howdy:world
+```
+
+The above will only signal the two specified client connections.
+
 **Notice** - If you signal a group or a list of groups, you'll have to add your users to the group before
 you do.
 
@@ -83,6 +94,7 @@ you do.
 
 * __[roles]__ - Comma separated list of roles to send message to
 * __[users]__ - Comma separated list of users to send message to
+* __[clients]__ - Comma separated list of client connections to send message to
 * __[groups]__ - Comma separated list of groups to send message to
 * __[args]__ - Arguments to transmit to subscribers as JSON (string)
 
