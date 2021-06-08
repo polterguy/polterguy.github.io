@@ -5,17 +5,17 @@ You can find an optional additional NuGet package for Magic
 called [magic.lambda.ad-auth](https://www.nuget.org/packages/magic.lambda.ad-auth). The main idea of
 this package is that instead of checking your database for a matching password, it will pass in your
 username and password combination to your Active Directory, and only authenticate you if you provide
-it with the correct Active Directory username/password combination. To see its code you can checkout
-its [project website](https://github.com/polterguy/magic.lambda.ad-auth).
+it with the correct Active Directory username/password combination. You can find its main
+documentation [here](/documentation/magic.lambda.ad-auth/).
 
 **Notice** - This package still requires that the username exists in your `magic/users` database, and
 it is still using the default `magic/roles` table for _authorisation_, as in deciding which roles your
 users belongs to - But at least it provides your with SSO or Single Sign On capabilities in your Magic
-installation. The main idea of the package is to exchange the password verification in Magic with an
-invocation to instead **[crypto.password.verify]**. However, first pull in the _"magic.lambda.ad-auth"_
-package into your _"backend.csproj"_ file somehow. Then make sure you edit your _"appsettings.json"_
-file, since this package needs to know your LDAP domain. Below is an example of only the parts you
-need to add to your file.
+installation.
+
+First pull in the _"magic.lambda.ad-auth"_ package into your _"backend.csproj"_ file somehow. Then
+make sure you edit your _"appsettings.json"_ file, since this package needs to know your LDAP domain.
+Below is an example of only the parts you need to add to your file.
 
 ```json
 {
