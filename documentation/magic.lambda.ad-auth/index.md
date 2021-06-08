@@ -48,8 +48,13 @@ you'll have to associate this user with the root role somehow.
 The last parts is crucial since this package _only_ changes authentication, and _not_ authorisation. This implies
 that you'll still need to use the default role assignment from the default Magic logic, which does a lookup
 into the _"magic/roles"_ database table - And in order to associate a user with roles, you'll need an actual
-username. However, the passwords of your users as you create these are irrelevant, since the default password
-logic of Magic is never applied once you've configured your Magic app to function according to the above recipe.
+username to associate with the role(s) of the user. However, the passwords of your users as you create these
+are irrelevant, since the default password logic of Magic is never applied once you've configured your Magic
+app to function according to the above recipe. This allows you to still apply (most) of the default auth parts
+to your users, such as locking them out, imprison them, impersonate them, etc - See the video documentation
+for the _"Auth"_ menu item to understand what this is. The one thing that will _not_ work though is the ability
+send a user a _"forgot password link"_, etc for obvious reasons - Since Magic no longer is responsible for
+maintaining your users' passwords, but rather your Windows Active Directory Controller.
 
 ## Project website
 
