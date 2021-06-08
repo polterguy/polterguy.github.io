@@ -39,7 +39,7 @@ The important parts above is the `authentication`, that declares which slot to i
 password, and will exchange the default invocation to **[crypto.password.verify]**, without requiring code changes
 of any sort - In addition to that you'll have to provide your LDAP path with the above `ldap` key.
 
-**Notice** - You'll have to somehow bring the NuGet package int your project, which you can do checking
+**Notice** - You'll have to somehow bring the NuGet package into your project, which you can do checking
 out the [package's NuGet project](https://www.nuget.org/packages/magic.lambda.ad-auth/) page.
 
 ## Project website
