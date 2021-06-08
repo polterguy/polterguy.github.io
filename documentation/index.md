@@ -31,7 +31,7 @@
 * [magic.lambda.mail](/documentation/magic.lambda.mail/) - Sending and retrieving emails from Hyperlambda
 * [magic.lambda.mime](/documentation/magic.lambda.mime/) - Parsing email messages in Hyperlambda
 * [magic.lambda.auth](/documentation/magic.lambda.auth/) - Authentication and authorisation from Hyperlambda
-* [magic.lambda.ad-auth](/documentation/magic.lambda.ad-auth/) - Authentication and authorisation through Active Directory or Windows Authentication
+* [magic.lambda.ad-auth](/documentation/magic.lambda.ad-auth/) - Authentication through Active Directory or Windows Authentication
 * [magic.lambda.dates](/documentation/magic.lambda.dates/) - Allows you to manipulate DateTime objects from Hyperlambda
 * [magic.lambda.slots](/documentation/magic.lambda.slots/) - Dynamically create your own slots/functions
 * [magic.lambda.mysql](/documentation/magic.lambda.mysql/) - Accessing your MySQL server from Hyperlambda
