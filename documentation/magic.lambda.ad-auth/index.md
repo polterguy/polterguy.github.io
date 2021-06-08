@@ -52,7 +52,7 @@ username to associate with the role(s) of the user. However, the passwords of yo
 are irrelevant, since the default password logic of Magic is never applied once you've configured your Magic
 app to function according to the above recipe. This allows you to still apply (most) of the default auth parts
 to your users, such as locking them out, imprison them, impersonate them, etc - See the video documentation
-for the _"Auth"_ menu item to understand what this is. The one thing that will _not_ work though is the ability
+for the _"Auth"_ menu item to understand what this implies. The one thing that will _not_ work though is the ability
 send a user a _"forgot password link"_, etc for obvious reasons - Since Magic no longer is responsible for
 maintaining your users' passwords, but rather your Windows Active Directory Controller.
 
