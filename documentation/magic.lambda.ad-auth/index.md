@@ -35,7 +35,7 @@ the following configuration.
       "ldap": "LDAP://foo.acme.somewhere"
 ```
 
-The important parts above is the `authentication`, that declares which slot to invoke to verify the user's
+The important parts above is the `authentication` key, that declares which slot to invoke to verify the user's
 password, and will exchange the default invocation to **[crypto.password.verify]**, without requiring code changes
 of any sort - In addition to that you'll have to provide your LDAP path with the above `ldap` key.
 
