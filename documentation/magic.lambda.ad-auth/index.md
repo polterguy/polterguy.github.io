@@ -40,7 +40,10 @@ password, and will exchange the default invocation to **[crypto.password.verify]
 of any sort - In addition to that you'll have to provide your LDAP path with the above `ldap` key.
 
 **Notice** - You'll have to somehow bring the NuGet package into your project, which you can do by checking
-out the [package's NuGet project](https://www.nuget.org/packages/magic.lambda.ad-auth/) page.
+out the [package's NuGet project](https://www.nuget.org/packages/magic.lambda.ad-auth/) page. Also notice that
+_before_ you apply the above changes, you'll have to create a user in your Magic database with the same username
+you're using to sign on to your domain. This is typically your company email address. After you've created this user,
+you'll have to associate this user with the root role somehow.
 
 ## Project website
 
