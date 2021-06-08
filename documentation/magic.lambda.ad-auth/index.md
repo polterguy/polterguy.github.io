@@ -45,6 +45,12 @@ _before_ you apply the above changes, you'll have to create a user in your Magic
 you're using to sign on to your domain. This is typically your company email address. After you've created this user,
 you'll have to associate this user with the root role somehow.
 
+The last parts is crucial since this package _only_ changes authentication, and _not_ authorisation. This implies
+that you'll still need to use the default role assignment from the default Magic logic, which does a lookup
+into the _"magic/roles"_ database table. And in order to associate a user with roles again, you'll need an actual
+username. However, the passwords of your users as you create these are irrelevant, since the default password
+logic of Magic is never applied once you've configured your Magic app to function according to the above recipe.
+
 ## Project website
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.ad-auth](https://github.com/polterguy/magic.lambda.ad-auth), and you can provide feedback, provide bug reports, etc at the same place.
