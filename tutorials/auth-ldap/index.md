@@ -35,4 +35,6 @@ need to add to your file.
 
 And that's it! You've now got Single Sign On in your Magic app!
 
+**Notice** - Your AD username is typically your company email address.
+
 * [Documentation](/documentation/)
