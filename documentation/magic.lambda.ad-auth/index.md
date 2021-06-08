@@ -47,7 +47,7 @@ you'll have to associate this user with the root role somehow.
 
 The last parts is crucial since this package _only_ changes authentication, and _not_ authorisation. This implies
 that you'll still need to use the default role assignment from the default Magic logic, which does a lookup
-into the _"magic/roles"_ database table. And in order to associate a user with roles again, you'll need an actual
+into the _"magic/roles"_ database table - And in order to associate a user with roles, you'll need an actual
 username. However, the passwords of your users as you create these are irrelevant, since the default password
 logic of Magic is never applied once you've configured your Magic app to function according to the above recipe.
 
