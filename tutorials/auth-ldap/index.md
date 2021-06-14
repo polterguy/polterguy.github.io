@@ -145,8 +145,8 @@ this should result in you having a JWT token returned to your client.
 **Notice** - Like the first AD authenticate solution from above, you will still need to create the user
 in your Magic database first, since only authentication is given through Windows, and _not_ authorisation.
 
-**Notice** - At this point you should probably delete the original `auth/authenticate.get.hl` file to
-avoid users from being able to login using an explicit username. Alternatively, you can provide _both_
+**Notice** - At this point you should probably delete the original `/magic/modules/system/auth/authenticate.get.hl`
+file to avoid users from being able to login using an explicit username. Alternatively, you can provide _both_
 solutions, to allow for logging in over the internet using a username/password approach, with your Windows
 user's username and password, and automatically logging in users on the LAN/intranet using the latter
 solution. At which point you could try automatically loggin on the user, and if this doesn't work,
