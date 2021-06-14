@@ -67,17 +67,22 @@ public void ConfigureServices(IServiceCollection services)
     services.AddControllers().AddNewtonsoftJson();
 
     /*
-        * Initializing Magic.
-        *
-        * Notice, must be done AFTER you invoke "AddControllers".
-        */
+     * This line of code must be added to make
+     * Windows authentication work.
+     */
     services.AddAuthentication(IISDefaults.AuthenticationScheme);
+
+    /*
+     * Initializing Magic.
+     *
+     * Notice, must be done AFTER you invoke "AddControllers".
+     */
     services.AddMagic(Configuration);
 
     /*
-        * Checking if SignalR is enabled, and if so, making sure we
-        * add support for it.
-        */
+     * Checking if SignalR is enabled, and if so, making sure we
+     * add support for it.
+     */
     if (Configuration["magic:sockets:url"] != null)
         services.AddSignalR();
 }
@@ -99,13 +104,14 @@ This file should resemble the following.
 /*
  * Automatically authenticates a user using Windows Authentication.
  */
-.description:Authenticates a user with Windows authentication, returning a JWT token if successful.
+.description:Authenticates a user with Windows authentication
 
 
 /*
  * Retrieves Windows username.
  *
- * This will only succeed if the user is already authenticated with his Windows user.
+ * This will only succeed if the user is already
+ * authenticated with his Windows user on the AD.
  */
 ad-auth.authenticate-auto
 
