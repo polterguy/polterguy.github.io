@@ -149,7 +149,7 @@ in your Magic database first, since only authentication is given through Windows
 file to avoid users from being able to login using an explicit username. Alternatively, you can provide _both_
 solutions, to allow for logging in over the internet using a username/password approach, with your Windows
 user's username and password, and automatically logging in users on the LAN/intranet using the latter
-solution. At which point you could try automatically logging in the user, and if this doesn't work,
+solution. At which point you could first try automatically logging in the user, and if this doesn't work,
 you can allow the user to explicitly login using his Windows username/password. This allows you to have
 a zero username/password solution from within your LAN, while yet allowing users to login externally
 providing their Windows username/password.
