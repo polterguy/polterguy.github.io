@@ -14,14 +14,14 @@ users belongs to - But at least it provides your with SSO or Single Sign On capa
 installation. Hence, _before_ you start configuring your Magic installation to use SSO through AD,
 please make sure you create a user in Magic using the _"Auth"_ dashboard menu item with a username
 that matches your Windows user. The password for this user will not be important, since once you've
-applied the rest of the changes to use Windows SSO, Magic is no longer responsible for checking your
-password as you login.
+applied the rest of these changes to use Windows authentication, Magic is no longer responsible for
+checking your password as you login, instead your Windows credentials will be used.
 
 First pull in the _"magic.lambda.ad-auth"_ package into your _"backend.csproj"_ file somehow, this can
 be done by checking out its [NuGet repository](https://www.nuget.org/packages/magic.lambda.ad-auth).
 Then make sure you edit your _"appsettings.json"_ file, since this package needs to know your LDAP
-domain and also which slot to use to verify users' passwords. Below is an example of only the parts you
-need to add to your file.
+URL, and also which slot to use to verify users' usernames and passwords. Below is an example of
+the parts you'll need to modify.
 
 ```json
 {
