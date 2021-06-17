@@ -3,7 +3,8 @@
 
 This project gives your Magic installation the capability of authenticating users through your Windows Domain.
 The project contains _two_ methods for authentication; One method where you supply your Windows username and
-password, and Magic checks these towards the `DirectoryEntry` object for your LDAP Domain.
+password, and Magic checks these towards the `DirectoryEntry` object for your LDAP Domain. The other method
+is _"automatic authentication"_ assuming you're already logged on to the domain with your client machine.
 
 ## Common configuration
 
@@ -38,7 +39,7 @@ If the authentication is successful, the above slot will return boolean true to 
 are incorrect the slot will return false to caller.
 
 **Notice** - The web server needs to be within your Windows domain for this to work.
-However, the client machine doe _not_ need to be a part of your Windows domain, which makes
+However, the client machine does _not_ need to be a part of your Windows domain, which makes
 this solution suitable for applications exposed to the web, where you still want to use
 Windows SSO (Single Sign On) to allow for users to authenticate towards your Magic application.
 
@@ -55,37 +56,24 @@ auth.ad.get-username
 ```
 
 The above slot will return the Windows username of the user if successful. If not successful
-it will return null. Notice, this method assumes you've configured your Magic installation to
-use Windows authentication in your _"launchSettings.json"_ file, such as the following
-illustrates.
+it will return null. [Read more about Windows authentication](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/windowsauth?view=aspnetcore-5.0&tabs=visual-studio) to understand the internals of how this works.
 
-```json
-{
-  "iisSettings": {
-    "windowsAuthentication": true,
-    "anonymousAuthentication": false,
-```
-
-... _keep_ the rest of the file as is. [Read more about Windows authentication](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/windowsauth?view=aspnetcore-5.0&tabs=visual-studio)
-to understand the internals of how this works.
-
-In addition to the above changes to your _"launchSettings.json"_ file, you'll also have to
-change the `magic.auth.auto-auth` setting in your _"appsettings.json"_ file, and set its value
-to _"auth.ad.get-username"_. Below is an example for how to turn on _both_ of these mechanisms
-assuming you change the _"LDAP://foo.acme.somewhere"_ value to the URL of your _actual_ LDAP server.
+To use this method, you'll have to change the `magic.auth.auto-auth` setting in your _"appsettings.json"_
+file, and set its value to _"auth.ad.get-username"_. Below is an example of how to accomplish this, assuming
+you change the _"LDAP://foo.acme.somewhere"_ value to the URL of your actual LDAP server.
 
 ```json
 {
   "magic": {
     "auth": {
-      "authentication": "auth.ad.authenticate",
       "ldap": "LDAP://foo.acme.somewhere",
       "auto-auth": "auth.ad.get-username",
 ```
 
-... _keep_ the rest of the file as is.
+... _keep_ the rest of the file as is, unless you want to combine this with manual Windows authentication,
+which you can read about below.
 
-## Combination authentication schemes
+## Combining authentication mechanisms
 
 Both of the above authentication mechanisms can actually be _combined_, such that the authenticate
 endpoint in Magic no longer requires the **[username]**/**[password]** arguments as mandatory,
@@ -107,16 +95,18 @@ Before you can turn any of these features on, you'll have to somehow bring in th
 your project encapsulating this, which you can do by checking out the
 [package's NuGet project](https://www.nuget.org/packages/magic.lambda.ad-auth/) page. Also notice that
 _before_ you apply the above changes, you'll have to create a user in your Magic database with the same username
-you're using to sign on to your domain. This is typically your company email address. After you've created this user,
+you're using to sign on to your Windows domain. After you've created this user,
 you'll have to associate this user with the root role somehow, since after you've applied the above
-configurations you can no longer login using your default root account.
+configurations you can no longer login using your default root account. Your Windows username is
+typically something resembling the following _"acme\username"_, where acme is your Domain name.
 
-The last parts is crucial since this package _only_ changes authentication, and _not_ authorisation. This implies
-that you'll still need to use the default role assignment from Magic, which does a lookup
-into the _"magic/roles"_ database table - And in order to associate a user with roles, you'll need an actual
-username to associate the user with these role(s). However, the passwords of your users as you create these
-are irrelevant, since the default password logic of Magic is never applied once you've configured your Magic
-application to function according to the above recipe.
+Creating a user before you switch your configuration is crucial since this package _only_
+changes authentication, and _not_ authorisation. This implies that you'll still need to use the default
+role assignment from Magic, which does a lookup into the _"magic/roles"_ database table - And in order
+to associate a user with roles, you'll need an actual username to associate the user with these role(s).
+However, the passwords of your users as you create these are irrelevant, since the default password logic
+of Magic is never applied once you've configured your Magic application to function according to the above
+recipe.
 
 This allows you to still apply (most) of the default auth parts to your users, such as locking them out,
 imprison them, impersonate them, etc - See the video documentation for the _"Auth"_ menu item to understand
