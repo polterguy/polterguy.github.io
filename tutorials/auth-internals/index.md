@@ -142,8 +142,8 @@ make sure you _turn on_ automatic authentication in Magic by changing the `auto-
 key and set its value to `auth.ad.get-username`. In addition this feature also requires that you turn
 _on_ CORS for your frontend domains, wanting to use this feature. Hence, if you intend to use this
 from e.g. two domains that are as follows _"dashboard.acme.com"_ and _"babelfish.acme.com"_, you'll
-have to instruct Magic to allow for sending credentials backe and forth between your Magic backend
-and these two domains. The latter can be done by changing the _"frontend/urls"_ and applying all
+have to instruct Magic to allow for sending credentials back and forth between your Magic backend
+and these two domains. The latter can be done by changing the _"magic.frontend.urls"_ and applying all
 domains you want to allow for as a comma separated list.
 
 Below is an example of the relevant configuration changes you need to apply.
@@ -177,7 +177,8 @@ value. Below is an example of the latter.
 // Assumes httpClient is an instance of Angular HttpClient
 this.httpClient
   .get<any>('/magic/modules/system/auth/authenticate', {
-    withCredentials: true}).subscribe((result: any) => {
+    withCredentials: true
+  }).subscribe((result: any) => {
 
       // Success!
       console.log('SUCCESS!')
@@ -213,7 +214,7 @@ turn _off_ these features.
 This was probably the most complex authentication mechanism in Magic so far, ignoring
 [cryptographically secured lambda invocations](/tutorials/crypto-lambda-http/) and
 [cryptographic challenges](https://dzone.com/articles/zero-username-and-password-authentication).
-Hencem to sum it up.
+Hence, to sum it all up we'll repeat the required steps below.
 
 1. Include the NuGet package called _"magic.lambda.ad-auth"_.
 2. Make sure your Windows username exists in the `users` database table by creating it through the _"Auth"_ menu item.
@@ -226,8 +227,8 @@ Hencem to sum it up.
 5. If you're using Angular, make sure you invoke the _"authenticate"_ endpoint with `withCredentials` turned _on_.
 
 **Notice** - There is a helper endpoint you can invoke at _"magic/modules/system/auth/auto-auth"_ that
-will return _"on"_ if automatic authentication has been enabled in your backend. It can still only be
-used from within the LAN, etc - But at least it allows you to query your backend to check if automatic
-Windows authentication has been turned on.
+will return _"on"_ if automatic authentication has been enabled in your backend. Authentication can still
+only be used from within the LAN - But at least it allows you to query your backend to check if
+automatic Windows authentication has been turned on.
 
 * [Documentation](/documentation/)
