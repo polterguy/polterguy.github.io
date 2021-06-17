@@ -1,10 +1,16 @@
 
-# Tutorials
+# Documentation for Magic
+
+This is the official documentation for Magic, and it contains both reference documentation,
+and tutorial style type of documentation. If you've just recently started to use Magic, I
+suggest you start out with the tutorials, starting out from the top, and move downwards.
+
+## Tutorials
 
 * [Getting started](/tutorials/getting-started/) - Getting Magic up running
-* [Using Magic with SQL Server](/tutorials/sql-server/) - Using Magic with Microsoft SQL Server
 * [Database CRUD operations](/tutorials/database-crud/) - Automate the process of creating code
 * [SQL Web API](/tutorials/sql-web-api/) - Create HTTP endpoints in SQL
+* [Using Magic with SQL Server](/tutorials/sql-server/) - Using Magic with Microsoft SQL Server
 * [Magic beyond CRUD](/tutorials/cloud-ide/) - A guided tour through Magic's Dashboard
 * [Web Sockets and SignalR in Magic](/tutorials/web-sockets/) - How to use Web Sockets with Magic
 * [Authentication and authorisation](/tutorials/auth/) - How Magic solves authentication and authorisation
@@ -12,10 +18,15 @@
 * [Cryptographically secured HTTP Lambda Invocations](/tutorials/crypto-lambda-http/) - Inversion of Code
 * [Hyperlambda Hello World](/tutorials/hello-world-endpoint/) - Your first Hyperlambda endpoint
 * [Expressions, slots, and nodes](/tutorials/expressions-slots-nodes/) - Hyperlambda is *really* weird!
-* [Authentication over Active Directory, LDAP or Windows](/tutorials/auth-ldap/) - How to exchange the default authentication with LDAP authentication
+* [Authentication internals](/tutorials/auth-internals/) - How to exchange the default authentication with for instance Windows authentication
+
+## Use cases
+
+These are Open Source example apps built with Magic, illustrating usage of Magic in some specific scenario.
+
 * [AnarQ a Social Media use case](/tutorials/anarq-usecase/) - Creating a Social Media backend with Magic
 
-# Reference documentation
+## Reference documentation
 
 * [magic.node](/documentation/magic.node/) - Explains nodes, Hyperlambda and Expressions
 * [magic.lambda](/documentation/magic.lambda/) - Explains Hyperlambda as a DSL, and its keywords
