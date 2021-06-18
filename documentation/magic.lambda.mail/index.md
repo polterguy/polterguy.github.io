@@ -60,7 +60,7 @@ instead of having to supply server configuration every time you invoke the slot,
         "password":"gmail-password",
         "from": {
            "name":"John Doe",
-           "address":"john@doe.com",
+           "address":"john@doe.com"
         }
       }
    }
