@@ -11,8 +11,9 @@
 
 In addition to the application generator, Magic Cloud is also a complete virtual cloud system,
 allowing you to install it on top of your existing servers, providing you with more or less
-everything a traditional cloud vendor provides you with, such as AWS or Azure.
-Below you can see some of its fatures.
+everything a traditional cloud vendor provides you with, such as AWS or Azure, with one crucial
+difference being that Magic is 100% Open Source and free to use as you see fit. Below you can
+see some of its main features.
 
 1. An SQL component allowing you to execute arbitrary SQL and select records through a browser based interface.
 2. CRUD generator creating HTTP REST CRUD endpoints automatically wrapping your database of choice.
