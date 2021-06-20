@@ -3,24 +3,23 @@
 
 There are multiple ways to use Magic, depending upon whether or not you just want to try it out locally
 on your development machine, use the Docker images to more rapidly getting up to speed, or deploy it
-to your production server. In this section we'll walk you through all of your options, starting with
-the easiest method, to start out with Magic on your development machine.
+to your production server. In this section we'll walk you through these different methods of getting
+started.
 
 ## Using the Docker image on your development machine
 
-The easiest way to get started is to [download the docker-compose.yml file](https://github.com/polterguy/magic/releases/download/v9.1.6/docker-compose.yml), assuming you have [Docker](https://www.docker.com/products/docker-desktop) installed, and then execute the following in a terminal window where you saved the file.
-This is the exact same process for both Windows, Mac and Linux - And can also be extended
-to install Magic in your server or cloud of choice. Notice, you'll need to have
-[Docker installed](https://www.docker.com/products/docker-desktop) on your development machine if you want to
-follow this approach.
+The easiest way to get started is to [download the docker-compose.yml file](https://github.com/polterguy/magic/releases/download/v9.1.6/docker-compose.yml), assuming you have [Docker](https://www.docker.com/products/docker-desktop)
+installed, and then execute the following in a terminal window where you saved the file. This is the
+exact same process for both Windows, Mac and Linux.
 
 ```
 docker-compose up
 ```
 
-Then when the Docker containers have started, open your browser and go to [http://localhost:5555](http://localhost:5555),
-and use the default configuration settings for MySQL, choose a root password, type your name and email address when
-you generate a key pair, and Magic should work out of the box without having to mess with anything.
+When your Docker containers have started, open your browser and go to [http://localhost:5555](http://localhost:5555),
+and use the default configuration settings for MySQL, choose a root password, crudify your Magic database,
+type your name and email address when you generate a key pair, and Magic should work out of the box without
+any hassle. In the video below I am illustrating this process.
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/2gos7BvNFkI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
