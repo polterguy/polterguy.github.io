@@ -24,6 +24,7 @@ More specifically this project contains the following slots.
 * __[crypto.decrypt]__ - High level slot combining RSA and AES to decrypt some message
 * __[crypto.sign]__ - High level slot to sign some message
 * __[crypto.verify]__ - High level slot to verify a signature of some message
+* __[crypto.seed]__ - Allows you to explicitly seed the CSRNG instance using for instance a manually provided seed
 
 ## [crypto.random]
 
@@ -74,6 +75,24 @@ algorithms as you consume the above slot.
 * SHA512
 
 Neither SHA1 nor MD5 are supported, since they're both considered _"insecure"_ hashing algorithms.
+
+## [crypto.seed]
+
+No cryptography operation is more secure than the CSRNG instance used to generate random numbers and characters.
+This project accommodates for that, by explicitly allowing you to add to its CSRNG seed with something resembling
+the following.
+
+```
+crypto.seed:Foo Bar Whatever Some Random Seed
+```
+
+Internally this is used in Magic by invoking the above slot with the value of its auth secret during
+startup and setup. Since this value can be manually edited by the end user, this provides you with
+a _"super paranoid"_ solution to ensure extremely large amounts of entropy in its internal CSRNG
+instance. If you wish to further seed the CSRNG, you can invoke at any point in time, with some random
+humanly provided gibberish, further adding to its entropy, which later will be used when ever
+some cryptographically secured random strings or bytes are required, such as when generating key pairs,
+using combination cryptography, etc.
 
 ## Cryptography
 

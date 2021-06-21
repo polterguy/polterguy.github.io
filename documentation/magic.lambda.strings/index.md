@@ -21,6 +21,7 @@ This project contains string manipulation slots for Magic. More specifically, it
 * __[strings.trim-end]__ - Trims a string only to its right, optionally for all characters found in its argument
 * __[strings.url-encode]__ - URL encodes the specified string
 * __[strings.substring]__ - Returns the sub-string of the specified string
+* __[strings.matches]__ - Returns the regular expression matches found from specified source
 
 ## Usage
 
@@ -275,6 +276,28 @@ strings.substring:ar Howd
 
 Notice, the second argument is the _number of characters to return_ and not the offset into the string
 of where to stop returning. In such a regard, it works the same way as the C# `Substring` method.
+
+### [strings.matches]
+
+Returns all regular expression matches from specified source string.
+
+```
+.input:Foo Bar Howdy World {match1} and {match2} and that was it
+strings.matches:x:-
+   .:"\\{.+?\\}"
+```
+
+The above will result in the following.
+
+```
+strings.matches
+   .:{match1}
+   .:{match2}
+```
+
+Notice, the second argument is the _number of characters to return_ and not the offset into the string
+of where to stop returning. In such a regard, it works the same way as the C# `Substring` method.
+
 
 ## Project website
 
