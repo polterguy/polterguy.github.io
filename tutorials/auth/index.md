@@ -7,8 +7,8 @@ you create a new application. At this point some might argue that OAuth2 solves 
 technically that _is_ true, OAuth2 is also ridiculously complex and over engineered, and very easy to
 get wrong. And of course if you get your app's auth parts wrong, you might as well not have auth at all,
 since it exposes your apps for adversaries doing whatever they want to do with your app. Authorisation is
-one of those things together with cryptography you really _should not solve yourself_, unless you _really_
-know what you're doing. Watch the following video for a walkthrough of how the auth parts in Magic works.
+one of those things together with cryptography you really _should not solve yourself_, unless you really
+_know_ what you're doing. Watch the following video for a walkthrough of how the auth parts in Magic works.
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/tR2kyM6HKxw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
