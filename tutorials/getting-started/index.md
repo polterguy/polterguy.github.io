@@ -6,7 +6,7 @@ on your development machine, use the Docker images to more rapidly getting up to
 to your production server. In this section we'll walk you through these different methods of getting
 started.
 
-## Using the Docker image on your development machine
+## Using Docker
 
 The easiest way to get started is to [download the docker-compose.yml file](https://github.com/polterguy/magic/releases/download/v9.1.6/docker-compose.yml), assuming you have [Docker](https://www.docker.com/products/docker-desktop)
 installed, and then execute the following in a terminal window where you saved the file. This is the
@@ -25,7 +25,7 @@ any hassle. In the video below I am illustrating this process.
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/2gos7BvNFkI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## Manual code setup
+## Download the code
 
 If you don't want to use Docker, you can also configure your development environment locally on your
 development machine using the code directly. If so you will first of all need the following components.

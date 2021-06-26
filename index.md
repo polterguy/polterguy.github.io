@@ -11,7 +11,7 @@
 
 In addition to the application generator, Magic Cloud is also a virtual cloud system,
 allowing you to install it on top of your existing servers, providing you with more or less
-everything a traditional cloud vendor provides you with, such as AWS or Azure, with one crucial
+everything a traditional cloud vendor provides you with, such as AWS or Azure - With one crucial
 difference being that Magic is 100% Open Source and free to use as you see fit. You can also
 install Magic on any VPS in 5 minutes. Below you can see some of Magic's main features.
 
