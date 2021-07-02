@@ -4,6 +4,7 @@
 Provides HTTP REST capabilities for Magic. More specifically this project provides the following 4 slots.
 
 * __[http.get]__ - Returns some resource using the HTTP GET verb towards the specified URL
+* __[http.get.binary]__ - Returns some _binary_ resource using the HTTP GET verb towards the specified URL
 * __[http.delete]__ - Deletes some resource using the HTTP DELETE verb
 * __[http.post]__ - Posts some resources to some URL using the HTTP POST verb
 * __[http.put]__ - Puts some resources to some URL using the HTTP PUT verb
@@ -22,6 +23,8 @@ collection.
 ```
 http.get:"https://google.com"
 ```
+
+**Notice** - If you want to retrieve _binary_ content, you should use the **[http.get.binary]** override.
 
 ## Posting, putting and patching data
 
