@@ -20,6 +20,12 @@ suggest you start out with the tutorials, starting out from the top, and move do
 * [Expressions, slots, and nodes](/tutorials/expressions-slots-nodes/) - Hyperlambda is *really* weird!
 * [Authentication internals](/tutorials/auth-internals/) - How to exchange the default authentication with for instance Windows authentication
 
+## Deploying
+
+This guide helps you to deploy Magic to for instance a VPS using Docker.
+
+* [magic.deploy](/documentation/magic.deploy/) - How to deploy Magic to your VPS using Docker.
+
 ## Use cases
 
 These are Open Source example apps built with Magic, illustrating usage of Magic in some specific scenario.
@@ -61,12 +67,6 @@ These are Open Source example apps built with Magic, illustrating usage of Magic
 * [magic.lambda.system](/documentation/magic.lambda.system/) - System support for Magic to spawn of terminals etc.
 * [magic.io](/documentation/magic.io/) - IO operations in Magic
 * [magic.library](/documentation/magic.library/) - A single NuGet package helper tying everything easily together
-
-## Deploying to a VPS
-
-This guide helps you to deploy Magic using Docker.
-
-* [magic.deploy](/documentation/magic.deploy/) - How to deploy Magic to your VPS using Docker.
 
 ## Support
 
