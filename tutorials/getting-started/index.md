@@ -59,10 +59,3 @@ feature request or a bug report, you can do such through the project's
 Magic is 100% Open Source and free to use, also in proprietary and closed source applications.
 The only exception is if you improve the frontend dashboard, or improve one of its plugins,
 at which point you must make your improvements publicly available for others to use.
-
-## Donate
-
-If you want to buy me a cup of coffee, saying thx for the great work, I would appreciate
-a [donation](https://servergardens.com/buy/).
-
-* [Documentation](/documentation/)
