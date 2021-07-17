@@ -62,7 +62,13 @@ These are Open Source example apps built with Magic, illustrating usage of Magic
 * [magic.io](/documentation/magic.io/) - IO operations in Magic
 * [magic.library](/documentation/magic.library/) - A single NuGet package helper tying everything easily together
 
-# Support
+## Deploying to a VPS
+
+This guide helps you to deploy Magic using Docker.
+
+* [magic.deploy](/documentation/magic.deploy/) - How to deploy Magic to your VPS using Docker.
+
+## Support
 
 If you have a support request of private nature, or another type of request, you can send me
 email at [thomas@servergardens.com](mailto:thomas@servergardens.com). If you want to submit a
