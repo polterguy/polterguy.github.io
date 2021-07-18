@@ -36,3 +36,8 @@ install Magic on any VPS in 5 minutes. Below you can see some of Magic's main fe
 
 Magic is copyright(c) Thomas Hansen, [thomas@servergardens.com](mailto:thomas@servergardens.com), but 100% Open Source.
 See its [GitHub repository for details](https://github.com/polterguy/magic).
+
+## Need hosting?
+
+[Server Gardens](https://servergardens.com) also provides hosting, custom development, and many different services associated
+with Magic.
