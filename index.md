@@ -39,5 +39,5 @@ See its [GitHub repository for details](https://github.com/polterguy/magic).
 
 ## Need hosting?
 
-[Server Gardens](https://servergardens.com) also provides hosting, custom development, and many different services associated
+[ServerGardens](https://servergardens.com) also provides hosting, custom development, and many different services associated
 with Magic.
