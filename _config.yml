@@ -1,11 +1,12 @@
-theme: adam-blog-2
+theme: jekyll-theme-midnight
 title: Magic Cloud
-description: Create your Web Apps in seconds!
+description: Create your Web Apps in SECONDS!
 show_downloads: true
+google_analytics: UA-147554379-1
 github:
   is_project_page: true
-  zip_url: https://github.com/polterguy/magic/archive/v9.5.3.zip
-  tar_url: https://github.com/polterguy/magic/archive/v9.5.3.tar.gz
+  zip_url: https://github.com/polterguy/magic/archive/v9.5.4.zip
+  tar_url: https://github.com/polterguy/magic/archive/v9.5.4.tar.gz
   repository_url: https://github.com/polterguy/magic
   owner_name: ServerGardens
   repository_name: Magic
