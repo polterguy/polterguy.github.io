@@ -1,8 +1,13 @@
 
 # Magic Deploy
 
-This is a helper guide and repository to deploy Magic to a VPS of your chosing. This project helps you to deploy Magic,
-using Docker. First clone the entire project into your VPS server using the following command.
+This guide helps you deploy Magic unto a VPS or a private server. The guide depends upon Docker,
+hence you'll need to have [Docker installed](https://docs.docker.com/engine/install/). Make sure you've
+got Docker before you proceed.
+
+## Start
+
+First clone the entire project into your VPS server using the following command.
 
 ```
 git clone https://github.com/polterguy/magic.deploy.git
