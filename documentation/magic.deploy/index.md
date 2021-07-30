@@ -79,7 +79,7 @@ can start your docker containers using the following command.
 sudo docker-compose up -d
 ```
 
-If the above gives you an error, you might need to install docker-compose using `apt install docker-compose`.
+If the above gives you an error, you might need to install docker-compose using `sudo apt install docker-compose`.
 
 The above will start 5 docker containers.
 
