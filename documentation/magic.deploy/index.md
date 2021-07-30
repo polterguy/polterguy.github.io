@@ -62,7 +62,7 @@ In total there are _6 entries_ you need to change, and the email address needs t
 address you own. The domain needs to be a sub-domain you own where you want to run your Magic
 installation. When you are done editing the docker-compose.yml file, hold down the CTRL key and
 click X, then choose Y when Nano asks you if you want to save the file after you have edited the
-file. When you are done with editing the _"docker-compose.yml"_ file, you can execute the following
+file. When you are done editing the _"docker-compose.yml"_ file, you can execute the following
 command in your terminal.
 
 ```
