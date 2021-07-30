@@ -92,7 +92,8 @@ The above will start 5 docker containers.
 You can now visit your frontend domain, and setup Magic, assuming you've pointed your DNS A records to
 the IP address of your virtual server. Notice, to configure Magic login with _"root/root"_ and do _not_
 change the database connection string, but choose _mysql_ as your database type, and provide Magic with
-a root password, and just follow the wizard to the end.
+a root password, and just follow the wizard to the end. This process is similar to the process you followed
+as you configured Magic locally on your development machine.
 
 **Notice** - The _"appsettings.json"_ file will be mounted as an external file reference by Docker, and
 this file will contain your Magic settings. _Do not delete this file_ since it's crucial for Magic to
