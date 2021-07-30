@@ -6,6 +6,12 @@ hence you'll need to have [Docker installed](https://docs.docker.com/engine/inst
 got Docker before you proceed. The guide has ben tested with Ubuntu 20.04 (LTS) x64, but might work with
 other Debian based distributions.
 
+You will also need to point _two_ DNS A records to your server's IP address. Typically these would
+resemble the following.
+
+* __api.yourdomain.com__ - The Magic backend 
+* __magic.yourdomain.com__ - The Magic frontend/dashboard
+
 ## Start
 
 First clone the entire project into your VPS server using the following command.
