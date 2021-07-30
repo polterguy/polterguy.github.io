@@ -93,7 +93,7 @@ work. However, be careful with the file, since it contains your database connect
 and other _highly sensitive information_. _Do not send this file on email or share it with anybody_ unless
 you absolutely trust the other party.
 
-## Installing generated Angular frontend
+## Installing a generated Angular frontend
 
 Once you have generated an Angular frontend, you can just as easily install this on the same VPS. This
 is possible since the generated frontend also contains a _"docker-compose.yml"_ file. The simplest way
