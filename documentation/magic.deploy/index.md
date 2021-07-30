@@ -3,7 +3,7 @@
 
 This guide helps you deploy Magic unto a VPS or a private server. The guide depends upon Docker,
 hence you'll need to have [Docker installed](https://docs.docker.com/engine/install/). Make sure you've
-got Docker before you proceed. The guide has ben tested with Ubuntu 20.04 (LTS) x64, but might work with
+got Docker before you proceed. The guide has been tested with Ubuntu 20.04 (LTS) x64, but might work with
 other Debian based distributions.
 
 You will also need to point _two_ DNS A records to your server's IP address. Typically these would
