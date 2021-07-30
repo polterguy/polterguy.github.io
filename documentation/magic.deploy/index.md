@@ -39,7 +39,7 @@ email address, frontend domain, and backend domain before you execute the docker
 You can do this with the following command.
 
 ```
-sudo nano docker-compose.yml
+nano docker-compose.yml
 ```
 
 And then look through the file for the following YAML nodes.
@@ -59,7 +59,7 @@ In addition to these YAML nodes.
 ```
 
 In total there are _6 entries_ you need to change, and the email address needs to be a valid email
-address you own, and the domain needs to be a sub-domain you own where you want to run your Magic
+address you own. The domain needs to be a sub-domain you own where you want to run your Magic
 installation. When you are done editing the docker-compose.yml file, hold down the CTRL key and
 click X, then choose Y when Nano asks you if you want to save the file after you have edited the
 file. When you are done with editing the _"docker-compose.yml"_ file, you can execute the following
