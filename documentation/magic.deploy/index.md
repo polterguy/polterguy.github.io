@@ -132,7 +132,8 @@ section.
 
 You might want to edit the container's name too, which you can find at the top of this file.
 The above values needs to be exchange with your own domain, and your own email address. Once you've edited
-this file using for instance `nano`, you can start your docker container using the following command.
+this file using for instance `nano docker-compose.yml`, you can start your docker container using the
+following command.
 
 ```
 docker-compose up -d
