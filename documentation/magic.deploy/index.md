@@ -164,4 +164,4 @@ distributing your particular Linux installation.
 
 We can [do this for you](https://servergardens.com), including hosting your app, making sure it is
 correctly secured. Of course, this is a service we charge for, but at least that way you get to sleep
-better at night, realising you've got the mastros in regards to this taking care of your server farm.
+better at night, realising you've got the mastros in regards to this taking care of your server.
