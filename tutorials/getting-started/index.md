@@ -47,6 +47,21 @@ The easiest method to deploy Magic into production, is to follow [this recipe](/
 guides you through setting up your VPS server to host Magic. Notice, if this is too complex for you,
 [we do provide this as a service](https://servergardens.com) for a fee.
 
+## Update Magic
+
+If you're using the docker images, this is incredibly easy, and simply requires you to stop your app
+for some few seconds, update the core, and restart your docker containers again. Below is the entire
+recipe. Make sure you execute the following in _the same folder_ as your main Magic _"docker-compose.yml"_ file.
+
+```
+docker-compose down
+docker pull servergardens/magic-frontend
+docker pull servergardens/magic-backend
+docker-compose up -d
+```
+
+Once the above has finished executing, you should have the latest release either locally or on your VPS.
+
 ## Support
 
 If you have a support request of private nature, you can send us an
