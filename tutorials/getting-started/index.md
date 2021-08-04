@@ -49,9 +49,10 @@ guides you through setting up your VPS server to host Magic. Notice, if this is 
 
 ## Update Magic
 
-If you're using the docker images, this is incredibly easy, and simply requires you to stop your app
+If you're using the docker images, this is incredibly easy, and simply requires you to stop Magic
 for some few seconds, update the core, and restart your docker containers again. Below is the entire
-recipe. Make sure you execute the following in _the same folder_ as your main Magic _"docker-compose.yml"_ file.
+recipe. Execute the following terminal commands one at the time. Make sure you execute the following
+in _the same folder_ as where your main Magic _"docker-compose.yml"_ file is.
 
 ```
 docker-compose down
