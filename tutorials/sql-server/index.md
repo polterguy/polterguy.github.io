@@ -45,7 +45,7 @@ above content, for then to run the following command in that _same directory_, t
 Server instance on your machine. Notice, this should work transparently on both Windows, Linux, and OS X.
 
 ```
-docker-compose up -d
+docker-compose up
 ```
 
 **Notice** - If you already have the default _"docker-compose.yml"_ file's containers running, you'll have
