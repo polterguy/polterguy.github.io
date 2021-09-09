@@ -2,9 +2,7 @@
 # Using Magic with SQL Server
 
 This tutorial walks you through how to use Magic with SQL Server instead of MySQL.
-If you don't care about SQL Server, there are no reasons for you to read this article.
-If you want to see a video where I am showing you the process, you can watch the following
-where I walk you through most of the things required to get Magic up running.
+In the following video I am walking you through the whole process.
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/iRc5Y8xw6VM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
