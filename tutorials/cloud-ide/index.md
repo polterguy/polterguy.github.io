@@ -1,7 +1,7 @@
 
-# Magic, a Cloud Based IDE +++
+# Magic Cloud, beyond CRUD and Low-Code
 
-Magic is actually a lot more than just CRUD. In fact, the application generator is only _one_ aspect
+Magic is actually a lot more than just Low-Code and CRUD. In fact, the application generator is only _one_ aspect
 of the system. Magic has 12 additional aspects, such as the ability to query your database using the integrated
 SQL manager. Magic also contains an audit logging modules that automatically logs unhandled exceptions for you, and
 everything else that might be of interest to you as you create your own apps. It contains a task scheduler, 
