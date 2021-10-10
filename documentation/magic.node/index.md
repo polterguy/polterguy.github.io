@@ -25,7 +25,8 @@ parent. A colon `:` separates the name and the value of the node - The name is t
 the value to the right.
 
 You can optionally supply a type between a node's name and its value, which you can see above where we add
-the `:int:` parts between one of our **[foo]** nodes' name and value.
+the `:int:` parts between one of our **[foo]** nodes' name and value. If you don't explicitly declare a type
+`string` will be assumed. Strings in Hyperlambda does not need quotes or double quotes for this reason.
 
 To traverse the nodes later in for instance C#, you could do something such as the following.
 
