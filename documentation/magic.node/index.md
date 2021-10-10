@@ -335,7 +335,13 @@ Hyperlambda as children nodes. This is necessary in order to avoid having a sing
 the way XML does.
 
 Once you have a `Node` graph object, you can easily reverse the process by using the `Generator`
-class, and its `GetHyper` method.
+class, and its `GetHyper` method such as the following illustrates.
+
+```csharp
+var hl1 = GetHyperlambdaAsString();
+var result = new Parser(hl1).Lambda();
+var hl2 = Generator.GetHyper(result.Children);
+```
 
 ## Usage
 
