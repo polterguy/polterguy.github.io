@@ -26,8 +26,7 @@ the value to the right.
 
 You can optionally supply a type between a node's name and its value, which you can see above where we add
 the `:int:` parts between one of our **[foo]** nodes' name and value. If you don't explicitly declare a type
-then `string` will be assumed. Strings in Hyperlambda does not need quotes or double quotes for this reason,
-and unless you want to you do not need to add quotes or double quotes to denote a string.
+then `string` will be assumed.
 
 To traverse the nodes later in for instance C#, you could do something such as the following.
 
