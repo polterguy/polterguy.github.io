@@ -67,8 +67,8 @@ Hyperlambda only supports serialising the following types by default.
 * `node` = magic.node.Node
 
 The type declaration should be declared in your Hyperlambda in between the name and its value, separated by colon (:).
-The default type if ommitted is `string`. An example of declaring a couple of types associated with a node's value
-can be found below.
+The default type if ommitted is `string` and strings do not need quotes or double quotes for this reason. An example
+of declaring a couple of types associated with a node's value can be found below.
 
 ```
 .foo1:int:5
