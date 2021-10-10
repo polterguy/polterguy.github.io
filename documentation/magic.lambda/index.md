@@ -30,15 +30,15 @@ eq
    .:arg2
 ```
 
-As you study Hyperlambda, it might be beneficial to use the _"Evaluator"_ component that you can find in its
+As you study Hyperlambda it might be beneficial to use the _"Evaluator"_ component that you can find in its
 frontend Angular dashboard website. This component allows you to play with Hyperlambda in _"immediate mode"_,
-allowing you to experiment with it, execute it immediately from your browser, using a very rich code editor,
+allowing you to experiment with it, execute it immediately from your browser, using a rich code editor,
 providing syntax highlighting, autocomplete on slots, and allows you to save your snippets for later on your
 server. If you do this, then click the _"information button"_ in the component to learn the basic shortcuts,
 and access help in general. Below is a screenshot of the _"Evaluator"_ component to give you an idea of what
 you might expect.
 
-<img alt="Hyperlambda Evaluator" title="Hyperlambda Evaluator" src="https://servergardens.files.wordpress.com/2020/05/evaluator.png" />
+![Hyperlambda Evaluator](https://servergardens.files.wordpress.com/2020/05/evaluator.png)
 
 Logically the Hyperlambda evaluator will signal each nodes in your Hyperlambda code sequentially, assuming
 all of your nodes are referencing an `ISlot` class, unless the node's name starts with a _"."_ or has an empty name.
