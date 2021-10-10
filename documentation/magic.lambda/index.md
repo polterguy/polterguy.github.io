@@ -66,7 +66,7 @@ express idioms such as _"if"_, _"while"_, _"for-each"_, etc.
 Since each slot will be invoked with the node referencing the slot itself as the _"input"_ `Node`,
 this makes the Hyperlambda evaluator recursive in nature, allowing a slot to evaluate all of its children,
 after executing its custom logic, etc. And yes, before you ask, Hyperlambda has been heavily influenced by
-LISP. In many ways, Hyperlambda _is_ LISP for C#.
+LISP. In some ways Hyperlambda _is_ Lisp for C#.
 
 ## Extending Hyperlambda
 
@@ -108,7 +108,7 @@ Which of course will result in the following after having been executed.
 acme.foo:int:12
 ```
 
-Notice the relationship between the `[Slot(Name = "acme.foo")]` C# code, and the way we invoke the `acme.foo`
+Notice the relationship between the `[Slot(Name = "acme.foo")]` C# code and the way we invoke the **[acme.foo]**
 slot from Hyperlambda afterwards. It might help to imagine Hyperlambda as a simple string/type Dictionary,
 which resolves an object from your IoC container, using the name of the node as the key.
 
@@ -122,18 +122,16 @@ To create your own slots, follow the recipe below.
 
 ## The gory details
 
-At the heart of Hyperlambda is the **[eval]** slot, this slot is responsible for executing your lambda object,
-and it follows a couple of simple rules.
-
-All nodes starting with a _"."_ will be ignored, and **[eval]** will not try to raise these nodes as signals.
-This has two benefits.
+At the heart of Hyperlambda is the **[eval]** slot. This slot is responsible for executing your lambda object
+and follows a couple of simple rules. All nodes starting with a _"."_ will be ignored, and **[eval]** will not
+try to raise these nodes as signals. This has two benefits.
 
 1. You can create _"hidden"_ slots, that are only accessible from C#.
 2. You can use nodes starting with _"."_ as data nodes, separating function invocations from data.
 
 **[eval]** makes Hyperlambda _"super functional"_ in nature. Below is an example of a Hyperlambda
 piece of code, that illustrates this, by adding a _"callback"_ lambda object to its POP3 fetch emails
-slot, which will be invoked once for each available email on your POP3 server.
+slot that will be invoked once for each available email on your POP3 server.
 
 ```
 /*
@@ -157,7 +155,7 @@ it finds on the POP3 server it connects to. It will use the **[eval]** slot to d
 
 ## Tokens
 
-The separating of a node's name and its value, is done by using a ":" character. To the left is the node's
+The separating of a node's name and its value is done by using a ":" character. To the left is the node's
 name, and to the right is its value. The value of a node can also be a C# type of string, using double
 quotes, and even single quotes or prefix your opening double quote with an "@" character, allowing you
 to use carriage returns in your strings the same way you would do in for instance C#. Below is an example
@@ -195,15 +193,15 @@ _"lambda expressions"_. These are kind of like XPath expressions. However, inste
 nodes, lambda expressions are referencing lambda nodes. This allows you to retrieve node names, values,
 and their children collection - For either to manipulate these, or read their values and react accordingly.
 
-Notice, Hyperlambda does not separate between a _"variable"_ and a _"function invocation"_ - Hence, a node
+**Notice** - Hyperlambda does not separate between a _"variable"_ and a _"function invocation"_. Hence, a node
 might serve as both at the same time. This allows you to dynamically modify your lambda structure, as you
-traverse it, and execute it - But this creates another problem for you, which is that you will need
+traverse it and execute it. But this creates another problem for you, which is that you will need
 a mechanism to store data. This is accomplished by prefixing a node's name with a "." character, at which point
 the Hyperlambda evaluator will ignore it, as it is traversing your tree, and _not_ attempt to signal
 that particular node as a slot. Think of all nodes starting with a `.` character as _"data segments"_
 or variables for that matter.
 
-Combining _"data nodes"_ with expressions, allows you to use, modify and reference these as _"variables"_.
+Combining _"data nodes"_ with expressions, allows you to use, modify, and reference these as _"variables"_.
 Below is an example.
 
 ```
