@@ -146,13 +146,13 @@ foo:@"Notice how the new line doesn't end the string
     here!"
 ```
 
-Escape characters are supported for both single quote strings, and double quote strings, the same way they
+Escape characters are supported for both single quote and double quote strings the same way they
 are supported in C#, allowing you to use e.g. `\r\n` etc.
 
 ## Lambda expressions
 
-Lambda expressions are kind of like XPath expressions, except (of course), they will references nodes
-in your Node graph object, instead of XML nodes. Below is an example to give you an idea.
+Lambda expressions are kind of like XPath expressions, except they will references nodes
+in your Node graph object instead of XML nodes. Below is an example to give you an idea.
 
 ```
 .foo:hello world
@@ -197,8 +197,8 @@ English equivalent hence becomes as follows.
 
 Of course, the result of the above becomes _"thomas"_.
 
-Below is a list of all iterators that exists in magic. Substitute _"xxx"_ with any string,
-and _"n"_ with any number.
+Below is a list of all iterators that exists in magic. Substitute _"xxx"_ with a string,
+_"n"_ with a number, and _"x"_ with an expression.
 
 * `*` Retrieves all children of its previous result.
 * `#` Retrieves the value of its previous result as a node by reference.
@@ -243,7 +243,7 @@ for reference purposes, let's break it down into its individual parts.
 5. Find all nodes who's value is _"wo/rld"_.
 
 98% of your expressions will have 1-3 iterators, no complex escaping, and no parameters.
-And in fact, there's thousands of lines of Hyperlambda code in Magic, and 98% of these
+And in fact, there are thousands of lines of Hyperlambda code in Magic, and 98% of these
 expressions are as simple as follows.
 
 ```
@@ -255,6 +255,22 @@ get-value:x:@.arguments/*/foo1
 Which translates into the following English.
 
 > Give me the value of any **[foo1]** nodes, inside of the **[.arguments]** node.
+
+Expressions can also be extrapolated, which allows you to parametrise your expressions, by nesting
+expressions, substituting parts of your expression dynamically as your code is executed. Imagine
+the following example.
+
+```
+.arg1:foo2
+.data
+   foo1:john
+   foo2:thomas
+   foo3:peter
+get-value:x:@.data/*/{@.arg1}
+```
+
+The above expression will first evaluate the `{@.arg1}` parts, which results in _"foo2"_, then evaluate the
+outer expression, which now will look like this `@.data/*/foo2`.
 
 ### Extending lambda expressions/iterators
 
