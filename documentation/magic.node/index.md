@@ -274,9 +274,9 @@ outer expression, which now will look like this `@.data/*/foo2`.
 
 ### Extending lambda expressions/iterators
 
-You can easily extend the expressions in this project, either with a _"static"_ iterator, implying
+You can easily extend expressions in Magic, either with a _"static"_ iterator, implying
 a direct match - Or with a dynamic parametrized iterator, allowing you to create iterators that
-requires parameters, etc. To extend the supported iterators, use any of the following two static
+requires _"parameters"_. To extend the supported iterators, use any of the following two static
 methods.
 
 * `Iterator.AddStaticIterator` - Creates a _"static"_ iterator, implying a direct match.
@@ -314,6 +314,24 @@ I wouldn't recommend it, since it would create confusion for others using your m
 
 **Notice** - To create an extension iterator is an exercise you will rarely if _ever_ need to do,
 but is included here for reference purposes.
+
+### Parsing Hyperlambda from C#
+
+Magic allows you to easily parse Hyperlambda from C# if you need it, which can be done as follows.
+
+```csharp
+var hl = GetHyperlambdaAsString();
+var result = new Parser(hl).Lambda();
+```
+
+The `GetHyperlambdaAsString` above could for instance load Hyperlambda from a file, retrieve it
+from your network, or some other way retrieve a snippet of Hyperlambda text. The `Parser` parts
+above, constructs a parses for Hyperlambda, and its `Lambda` method will return your Hyperlambda
+as its `Node` equivalent. The `Parser` class also have an overloaded constructor for taking a `Stream`
+instead of a `string`.
+
+Once you have a `Node` graph object, you can easily reverse the process by using the `Generator`
+class, and its `GetHyper` method.
 
 ## Usage
 
