@@ -34,9 +34,7 @@ As you study Hyperlambda it might be beneficial to use the _"Evaluator"_ compone
 frontend Angular dashboard website. This component allows you to play with Hyperlambda in _"immediate mode"_,
 allowing you to experiment with it, execute it immediately from your browser, using a rich code editor,
 providing syntax highlighting, autocomplete on slots, and allows you to save your snippets for later on your
-server. If you do this, then click the _"information button"_ in the component to learn the basic shortcuts,
-and access help in general. Below is a screenshot of the _"Evaluator"_ component to give you an idea of what
-you might expect.
+server. Below is a screenshot of the _"Evaluator"_ component to give you an idea of what you might expect.
 
 ![Hyperlambda Evaluator](https://servergardens.files.wordpress.com/2020/05/evaluator.png)
 
