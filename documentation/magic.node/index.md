@@ -320,8 +320,12 @@ but is included here for reference purposes.
 Magic allows you to easily parse Hyperlambda from C# if you need it, which can be done as follows.
 
 ```csharp
+using magic.node.extensions.hyperlambda;
+
+...
 var hl = GetHyperlambdaAsString();
 var result = new Parser(hl).Lambda();
+...
 ```
 
 The `GetHyperlambdaAsString` above could for instance load Hyperlambda from a file, retrieve it
@@ -338,9 +342,13 @@ Once you have a `Node` graph object, you can easily reverse the process by using
 class, and its `GetHyper` method such as the following illustrates.
 
 ```csharp
+using magic.node.extensions.hyperlambda;
+
+...
 var hl1 = GetHyperlambdaAsString();
 var result = new Parser(hl1).Lambda();
 var hl2 = Generator.GetHyper(result.Children);
+...
 ```
 
 ## Usage
