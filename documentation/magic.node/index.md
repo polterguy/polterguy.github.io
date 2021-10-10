@@ -330,6 +330,10 @@ above, constructs a parses for Hyperlambda, and its `Lambda` method will return 
 as its `Node` equivalent. The `Parser` class also have an overloaded constructor for taking a `Stream`
 instead of a `string`.
 
+**Notice** - The `Node` returned above will be a root node, wrapping all nodes found in your
+Hyperlambda as children nodes. This is necessary in order to avoid having a single _"document node"_
+the way XML does.
+
 Once you have a `Node` graph object, you can easily reverse the process by using the `Generator`
 class, and its `GetHyper` method.
 
