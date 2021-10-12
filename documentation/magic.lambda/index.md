@@ -736,7 +736,9 @@ by adding a **[public]** parameter, and set its value to boolean _"true"_. At wh
 the exception will be returned to the client, even in release builds. Otherwise, the exception
 will only be visible in debug builds, and never returned to the client. You can also modify
 the **[status]** HTTP return value that's returned to the client, to become e.g. 404,
-indicating _"not found"_, etc.
+indicating _"not found"_, etc. In addition you can pass in a **[field]** which will be serialised
+back to the client if specified to help the client to semantically figure out which field
+name that triggered the exception.
 
 ## Loops
 

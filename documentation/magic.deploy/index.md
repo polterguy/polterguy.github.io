@@ -69,7 +69,12 @@ command in your terminal.
 sudo docker network create nginx-proxy
 ```
 
-If the above gives you an error, you might need to install docker using `sudo apt install docker`.
+If the above gives you an error, you might need to install docker using the following terminal commands.
+
+```
+sudo apt install docker
+sudo apt install docker-compose
+```
 
 This command will create the your Docker proxy network, which Magic will need to be able to connect
 all the docker images within your docker-compose file. When you have created the above network, you
