@@ -211,13 +211,13 @@ distributing your particular Linux installation.
 
 ## DevOps
 
-If you'd rather install Magic in Azure's DevOps pipelines, our CEO wrote an article about this at
-DZone some few months ago, that illustrates one approach
+If you'd rather install Magic in Azure's DevOps pipelines, you can read an article about this at
+DZone that illustrates one approach
 to [getting Magic up running in an Azure DevOps environment](https://dzone.com/articles/gitless-cloud-systems).
 
 ## Too complicated?
 
 We can [do this for you](https://servergardens.com), including hosting your app, making sure it is
 correctly secured. Of course, this is a service we charge for, but at least that way you get to sleep
-better at night, realising you've got the mastros in regards to this taking care of your server.
+better at night, realising we are helping you out automagically.
 
