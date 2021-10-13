@@ -29,8 +29,8 @@ ssh root@123.123.123.123
 The IP address above needs to be the IP address of your VPS. After you've executed the above, you'll be
 asked for your root password on your VPS instance. Notice, if you are using Windows you can use Putty, and/or
 if you're using DigitalOcean you can use their web based terminal interface as an alternative. When you have
-successfully logged into your VPS instance you can clone the entire project into your VPS server using the
-following command.
+successfully logged into your VPS instance you can clone the entire magic deploy project into your VPS server
+using the following command.
 
 ```
 git clone https://github.com/polterguy/magic.deploy.git
