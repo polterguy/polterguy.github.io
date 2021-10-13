@@ -9,11 +9,11 @@ following.
 * __api.yourdomain.com__ - The Magic backend 
 * __magic.yourdomain.com__ - The Magic frontend/dashboard
 
-Only after you have created two DNS A records using your domain provider continue with this guide.
+Only _after_ you have created two DNS A records using your domain provider continue with this guide.
 
 ## Start
 
-First use SSH to login to your VPS server. This is typically achieved using something such as the following
+First use SSH to login to your VPS instance. This is typically achieved using something such as the following
 on *Nix based systems.
 
 ```
@@ -22,9 +22,8 @@ ssh root@123.123.123.123
 
 The IP address above needs to be the IP address of your VPS. After you've executed the above, you'll be
 asked for your root password on your VPS instance. Notice, if you are using Windows you can use Putty, and/or
-if you're using DigitalOcean use their web based terminal interface as an alternative.
-
-Then clone the entire project into your VPS server using the following command.
+if you're using DigitalOcean use their web based terminal interface as an alternative. Then clone the entire
+project into your VPS server using the following command.
 
 ```
 git clone https://github.com/polterguy/magic.deploy.git
@@ -34,7 +33,7 @@ git clone https://github.com/polterguy/magic.deploy.git
 command and then run the above command again afterwards.
 
 ```
-sudo apt install git
+apt install git
 ```
 
 When you have successfully cloned this repository, change into the `magic.deploy` folder
@@ -73,19 +72,18 @@ address you own. The domain needs to be a sub-domain you own where you want to r
 installation. When you are done editing the docker-compose.yml file, hold down the CTRL key and
 click X, then type _"Y"_ when Nano asks you if you want to save the file after you have edited the
 file, and save it with its existing filename. When you are done editing the _"docker-compose.yml"_ file,
-you must execute the following command in your terminal. This installs Docker for you, in addition
+you must execute the following commands in your terminal. This installs Docker for you, in addition
 to Docker Compose.
 
 ```
-sudo apt install docker
-sudo apt install docker-compose
+apt install docker docker-compose
 ```
 
-After you have installed Docker and Docker Compose, you will have to create a Docker network. This
-is necessary to make sure your containers have a virtual network to communicate with each other.
+After you have installed Docker and Docker Compose, you will have to create a virtual Docker network.
+This is necessary to make sure your containers have a virtual network to communicate with each other.
 
 ```
-sudo docker network create nginx-proxy
+docker network create nginx-proxy
 ```
 
 This command will create the your Docker proxy network Magic will need to be able to connect
@@ -106,10 +104,11 @@ certificate for both your web apps. If you domain is _"my-domain.com"_ and you c
 A records illustrated in the beginning of this article, you can initiate this process by
 opening the following URLs in your browser.
 
-* https://api.my-domain.com/magic/modules/system/ping - Should return result when SSL is installed.
-* https://magic.my-domain.com - Should return your Magic Dashboard when SSL is installed.
+* https://api.my-domain.com/magic/modules/system/ping
+* https://magic.my-domain.com
 
-The above `docker-compose up` command will start 5 docker containers.
+Only when both of the above URLs returns success, and/or your Magic dashboard frontend, proceed
+with the rest of this guide. The above `docker-compose up` command will start 5 docker containers.
 
 * `nginx-proxy` - The nGinx proxy that internally routes requests to either your backend or your frontend
 * `letsencrypt` - The container responsible for retrieving and renewing LetsEncrypt SSL certificates for you
@@ -122,6 +121,13 @@ the IP address of your virtual server. Notice, to configure Magic login with _"r
 change the database connection string, but choose _mysql_ as your database type, and provide Magic with
 a root password, and just follow the wizard to the end. This process is similar to the process you followed
 as you configured Magic locally on your development machine.
+
+**Notice** - As you click the login button, you have to provide Magic with your backend API url.
+This is achieved by simply pasting in your backend API url into the top textbox and click the tab key
+on your keyboard, at which point Magic will allow you to provide your username and password to login
+to your Magic dashboard. Your initial username and password combination before you have configured
+Magic is _"root"_/_"root"_. You will have to _change_ this password after you have logged in to start
+the configuration process of Magic.
 
 **Notice** - The _"appsettings.json"_ file will be mounted as an external file reference by Docker, and
 this file will contain your Magic settings. _Do not delete this file_ since it's crucial for Magic to
