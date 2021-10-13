@@ -183,7 +183,7 @@ apt install unzip
 ```
 
 When you have unzipped your Angular frontend you can start your Docker container using the following
-in your VPS.
+command in your VPS from within your unzipped Angular frontend folder.
 
 ```
 docker-compose up -d
