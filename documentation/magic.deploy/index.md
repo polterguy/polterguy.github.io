@@ -129,8 +129,8 @@ change the database connection string, but choose _mysql_ as your database type,
 a root password, and just follow the wizard to the end. This process is similar to the process you followed
 as you configured Magic locally on your development machine.
 
-**Notice** - As you click the login button, you have to provide Magic with your backend API url.
-This is achieved by simply pasting in your backend API url into the top textbox and click the tab key
+**Notice** - As you click the login button, you have to provide Magic with your backend API URL.
+This is achieved by simply pasting in your backend API URL into the top textbox and click the tab key
 on your keyboard, at which point Magic will allow you to provide your username and password to login
 to your Magic dashboard. Your initial username and password combination before you have configured
 Magic is _"root/root"_. You will have to _change_ this password after you have logged in to start
