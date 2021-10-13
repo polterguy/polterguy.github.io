@@ -212,6 +212,9 @@ At this point you should have your frontend up running on the sub-domain you cho
 your frontend. Now simply visit this URL in your browser, and after some 5 minutes of negotiating a
 new SSL certificate from LetsEncrypt your Angular app should work.
 
+**Notice** - To login to your generated Angular frontend, use the same username and password
+combination that you used when configuring Magic itself.
+
 ## Securing your VPS
 
 You might want to install a firewall on your Linux server to further secure your installation. This can be done
