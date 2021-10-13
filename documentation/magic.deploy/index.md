@@ -119,7 +119,7 @@ with the rest of this guide. The above `docker-compose up -d` command will start
 
 * `nginx-proxy` - The nGinx proxy that internally routes requests to either your backend or your frontend
 * `letsencrypt` - The container responsible for retrieving and renewing LetsEncrypt SSL certificates for you
-* `db` - Your MySQL database, used to create the _"magic"_ database, which Magic internally depends upon
+* `db` - Your MySQL database, used to create the _"magic"_ database that Magic internally depends upon
 * `backend` - The main Magic backend container
 * `frontend` - The main Magic dashboard frontend container
 
@@ -133,7 +133,7 @@ as you configured Magic locally on your development machine.
 This is achieved by simply pasting in your backend API url into the top textbox and click the tab key
 on your keyboard, at which point Magic will allow you to provide your username and password to login
 to your Magic dashboard. Your initial username and password combination before you have configured
-Magic is _"root"_/_"root"_. You will have to _change_ this password after you have logged in to start
+Magic is _"root/root"_. You will have to _change_ this password after you have logged in to start
 the configuration process of Magic.
 
 **Notice** - The _"appsettings.json"_ file will be mounted as an external file reference by Docker, and
