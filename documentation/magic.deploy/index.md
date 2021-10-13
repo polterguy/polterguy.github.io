@@ -196,7 +196,8 @@ is important since by default a generated Angular frontend will use the same API
 you are using to generate your frontend.
 
 At this point you should have your frontend up running on the sub-domain you chose as you generated
-your frontend.
+your frontend. Now simply visit this URL in your browser, and after some 5 minutes of negotiating a
+new SSL certificate from LetsEncrypt your Angular app should work.
 
 ## Securing your VPS
 
