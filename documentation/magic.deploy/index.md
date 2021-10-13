@@ -12,7 +12,7 @@ these would resemble the following.
 
 **Notice** - We suggest you don't buy the cheapest VPS droplet from DigitalOcean, but rather choose
 the basic droplet that costs you $24 per month. This is because the cheapest droplet is simply
-not powerful enough to run two web apps, MySQL and docker. You might be able to manage with a $12
+not powerful enough to run two web apps, MySQL, and docker. You might be able to manage with a $12
 droplet, but definitely not the cheapest droplet.
 
 Only _after_ you have created two DNS A records using your domain provider continue with this guide.
