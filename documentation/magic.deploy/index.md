@@ -14,7 +14,18 @@ resemble the following.
 
 ## Start
 
-First clone the entire project into your VPS server using the following command.
+First use SSH to login to your VPS server. This is typically achieved using something such as the following
+on *Nix based systems.
+
+```
+ssh root@123.123.123.123
+```
+
+The IP address above needs to be the IP address of your VPS. After you've executed the above, you'll be
+asked for your root password on your VPS instance. Notice, if you are using Windows you can use Putty, and/or
+if you're using DigitalOcean use their web based terminal interface as an alternative.
+
+Then clone the entire project into your VPS server using the following command.
 
 ```
 git clone https://github.com/polterguy/magic.deploy.git
@@ -61,32 +72,45 @@ In addition to these YAML nodes.
 In total there are _6 entries_ you need to change, and the email address needs to be a valid email
 address you own. The domain needs to be a sub-domain you own where you want to run your Magic
 installation. When you are done editing the docker-compose.yml file, hold down the CTRL key and
-click X, then choose Y when Nano asks you if you want to save the file after you have edited the
-file. When you are done editing the _"docker-compose.yml"_ file, you can execute the following
-command in your terminal.
-
-```
-sudo docker network create nginx-proxy
-```
-
-If the above gives you an error, you might need to install docker using the following terminal commands.
+click X, then type _"Y"_ when Nano asks you if you want to save the file after you have edited the
+file, and save it with its existing filename. When you are done editing the _"docker-compose.yml"_ file,
+you must execute the following command in your terminal. This installs Docker for you, in addition
+to Docker Compose.
 
 ```
 sudo apt install docker
 sudo apt install docker-compose
 ```
 
-This command will create the your Docker proxy network, which Magic will need to be able to connect
-all the docker images within your docker-compose file. When you have created the above network, you
-can start your docker containers using the following command.
+After you have installed Docker and Docker Compose, you will have to create a Docker network. This
+is necessary to make sure your containers have a virtual network to communicate with each other.
 
 ```
-sudo docker-compose up -d
+sudo docker network create nginx-proxy
 ```
 
-If the above gives you an error, you might need to install docker-compose using `sudo apt install docker-compose`.
+This command will create the your Docker proxy network Magic will need to be able to connect
+all the docker images within your docker-compose file with each other. When you have created the
+above network, you can start your docker containers using the following command.
 
-The above will start 5 docker containers.
+```
+docker-compose up -d
+```
+
+**Notice** - The LetsEncrypt container in your _"docker-compose.yml"_ file might need some 5
+minutes to configure your SSL certificate due to the internals of how LetsEncrypt works. If you
+access your frontend, and/or your backend, and you get an error, and/or an SSL error - Just wait
+some few minutes and try to refresh your page. Only when you no longer get an error, you can
+proceed to configure Magic from its dashboard. To start this process however, you will need
+to access both your frontend and your backend to initiate the process of retrieving an SSL
+certificate for both your web apps. If you domain is _"my-domain.com"_ and you chose the DNS
+A records illustrated in the beginning of this article, you can initiate this process by
+opening the following URLs in your browser.
+
+* https://api.my-domain.com/magic/modules/system/ping - Should return result when SSL is installed.
+* https://magic.my-domain.com - Should return your Magic Dashboard when SSL is installed.
+
+The above `docker-compose up` command will start 5 docker containers.
 
 * `nginx-proxy` - The nGinx proxy that internally routes requests to either your backend or your frontend
 * `letsencrypt` - The container responsible for retrieving and renewing LetsEncrypt SSL certificates for you
@@ -94,7 +118,7 @@ The above will start 5 docker containers.
 * `backend` - The main Magic backend container
 * `frontend` - The main Magic dashboard frontend container
 
-You can now visit your frontend domain, and setup Magic, assuming you've pointed your DNS A records to
+You can now visit your frontend domain and setup Magic, assuming you've pointed your DNS A records to
 the IP address of your virtual server. Notice, to configure Magic login with _"root/root"_ and do _not_
 change the database connection string, but choose _mysql_ as your database type, and provide Magic with
 a root password, and just follow the wizard to the end. This process is similar to the process you followed
@@ -106,46 +130,52 @@ work. However, be careful with the file, since it contains your database connect
 and other _highly sensitive information_. _Do not send this file on email or share it with anybody_ unless
 you absolutely trust the other party.
 
+**Notice** - Due to the way Docker mounts files your _"appsettings.json"_ file in your current working
+folder might not be changed as you save your configuration, resulting in an error during the configuration
+process, and/or as you save your configuration settings later. If you experience such errors, where your
+configuration doesn't seem to update when saving it, you have to manually restart your Docker images from
+your VPS using the following to reload the new configuration settings.
+
+```
+docker-compose down
+docker-compose up -d
+```
+
+This is unfortunately a problem with the way Docker mounts files, and there is really nothing we can
+do to prevent this.
+
 ## Installing a generated Angular frontend
 
 Once you have generated an Angular frontend, you can just as easily install this on the same VPS. This
 is possible since the generated frontend also contains a _"docker-compose.yml"_ file. The simplest way
-to do this is to import your Angular frontend into for instance [GitHub](https://github.com) as for
-instance a private repository, and then clone your repository locally on your VSP server. To retrieve
-the generated frontend on your VPS, assuming your username on GitHub is _"foo"_ and the project name is
-_"bar"_, you could run the following command.
+to do this is to upload your generated ZIP file to your VPS container using for instance from your local
+development machine.
 
 ```
-git clone https://github.com/foo/bar.git
+scp foo.zip root@123.123.123
 ```
 
-Then you need to change into your _"bar"_ directory with the following command.
+The login to your VPS through your terminal, unzip the file, change into the unzipped folder with
+something such as the following.
 
 ```
-cd bar
+cs foo
 ```
 
-Notice, at this point you will have to _manually edit the "docker-compose.yml" file_ the same
-way you did for the main Magic docker-compose file. In this file you will find the following
-section.
-
-```
-- VIRTUAL_HOST=sakila.servergardens.com
-- LETSENCRYPT_HOST=sakila.servergardens.com
-- LETSENCRYPT_EMAIL=thomas@servergardens.com
-```
-
-You might want to edit the container's name too, which you can find at the top of this file.
-The above values needs to be exchange with your own domain, and your own email address. Once you've edited
-this file using for instance `nano docker-compose.yml`, you can start your docker container using the
-following command.
+For then to execute the following command in your VPS.
 
 ```
 docker-compose up -d
 ```
 
-At this point you should have your frontend up running on the sub-domain you chose as you edited the file,
-assuming you have added a DNS A record pointing to the IP address of your server.
+**Notice** - This assumes you have configured a DNS A record pointing to your virtual machine with
+the URL of where you want your frontend to be found, and that you used this URL as you generated
+your frontend - In addition to that you generated your app on your Magic VPS instance. The last part
+is important since by default a generated Angular frontend will use the same API URL as the URL
+you are using to generate your frontend.
+
+At this point you should have your frontend up running on the sub-domain you chose as you generated
+your frontend.
 
 ## Securing your VPS
 
