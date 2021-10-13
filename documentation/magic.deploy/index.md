@@ -147,7 +147,7 @@ docker-compose up -d
 ```
 
 This is unfortunately a problem with the way Docker mounts files, and there is really nothing we can
-do to prevent this.
+do to prevent this at the time being.
 
 ## Installing a generated Angular frontend
 
