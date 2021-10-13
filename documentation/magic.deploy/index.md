@@ -93,7 +93,7 @@ This is necessary to make sure your containers have a virtual network to communi
 docker network create nginx-proxy
 ```
 
-This command will create the your Docker proxy network Magic will need to be able to connect
+This command will create your Docker proxy network Magic will need to be able to connect
 all the docker images within your docker-compose file with each other. When you have created the
 above network, you can start your docker containers using the following command.
 
