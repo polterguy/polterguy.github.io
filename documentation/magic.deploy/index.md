@@ -160,14 +160,23 @@ development machine.
 scp foo.zip root@123.123.123
 ```
 
-The login to your VPS through your terminal, unzip the file, change into the unzipped folder with
+Then login to your VPS through your terminal, unzip the file and change into the unzipped folder with
 something such as the following.
 
 ```
+unzip foo.zip
 cs foo
 ```
 
-For then to execute the following command in your VPS.
+If you get an error when executing the above unzip command, you can install unzip on your VPS using the
+following command and rerun the above commands afterwards.
+
+```
+apt install unzip
+```
+
+When you have unzipped your Angular frontend you can start your Docker container using the following
+in your VPS.
 
 ```
 docker-compose up -d
@@ -175,7 +184,7 @@ docker-compose up -d
 
 **Notice** - This assumes you have configured a DNS A record pointing to your virtual machine with
 the URL of where you want your frontend to be found, and that you used this URL as you generated
-your frontend - In addition to that you generated your app on your Magic VPS instance. The last part
+your frontend - In addition to that you _generated your app on your Magic VPS instance_. The last part
 is important since by default a generated Angular frontend will use the same API URL as the URL
 you are using to generate your frontend.
 
