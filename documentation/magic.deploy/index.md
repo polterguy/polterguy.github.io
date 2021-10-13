@@ -107,12 +107,12 @@ access your frontend, and/or your backend, and you get an error, and/or an SSL e
 some few minutes and try to refresh your page. Only when you no longer get an error, you can
 proceed to configure Magic from its dashboard. To start this process however, you will need
 to access both your frontend and your backend to initiate the process of retrieving an SSL
-certificate for both your web apps. If you domain is _"my-domain.com"_ and you chose the DNS
+certificate for both your web apps. If you domain is _"yourdomain.com"_ and you chose the DNS
 A records illustrated in the beginning of this article, you can initiate this process by
 opening the following URLs in your browser.
 
-* https://api.my-domain.com/magic/modules/system/ping
-* https://magic.my-domain.com
+* https://api.yourdomain.com/magic/modules/system/ping
+* https://magic.yourdomain.com
 
 Only when both of the above URLs returns success, and/or your Magic dashboard frontend, proceed
 with the rest of this guide. The above `docker-compose up` command will start 5 docker containers.
