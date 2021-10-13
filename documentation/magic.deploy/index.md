@@ -17,7 +17,7 @@ droplet, but definitely not the cheapest droplet.
 
 Only _after_ you have created two DNS A records using your domain provider continue with this guide.
 
-## Start
+## Installing Magic
 
 First use SSH to login to your VPS instance. This is typically achieved using something such as the following
 on *Nix based systems.
