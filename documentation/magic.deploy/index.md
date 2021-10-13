@@ -185,7 +185,7 @@ something such as the following.
 
 ```
 unzip foo.zip
-cs foo
+cd foo
 ```
 
 If you get an error when executing the above unzip command, you can install unzip on your VPS using the
