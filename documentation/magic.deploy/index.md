@@ -177,7 +177,7 @@ to do this is to upload your generated ZIP file to your VPS container using for 
 development machine. Yet again, use your VPS' IP address here.
 
 ```
-scp foo.zip root@123.123.123
+scp foo.zip root@123.123.123:~
 ```
 
 Then login to your VPS through your terminal, unzip the file and change into the unzipped folder with
