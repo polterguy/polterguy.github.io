@@ -115,7 +115,7 @@ opening the following URLs in your browser.
 * https://magic.yourdomain.com
 
 Only when both of the above URLs returns success, and/or your Magic dashboard frontend, proceed
-with the rest of this guide. The above `docker-compose up` command will start 5 docker containers.
+with the rest of this guide. The above `docker-compose up -d` command will start 5 docker containers.
 
 * `nginx-proxy` - The nGinx proxy that internally routes requests to either your backend or your frontend
 * `letsencrypt` - The container responsible for retrieving and renewing LetsEncrypt SSL certificates for you
