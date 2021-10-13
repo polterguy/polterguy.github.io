@@ -158,6 +158,19 @@ do to prevent this at the time being.
 
 ## Installing a generated Angular frontend
 
+Once you have installed Magic you probably want to check out its capabilities in regards to Low-Code
+and No-Code, which is easily achieved by going to the SQL menu item in your dashboard, click the Load
+button, choose _"Sakila"_, and then click execute. This creates a database for you called Sakila.
+For the record, you can of course also choose any existing and alternative create database MySQL
+script you've got instead.
+
+After you've done the above you can go back to your dashboard in Magic and choose the _"CRUD"_
+menu item. Then click the little spiral arrow to refresh your server side cache, and once the page
+reloads choose the database you just created and click _"Crudify all tables"_. Then choose the _"Frontend"_
+tab at the top of your page, give your app a name, choose the _"angular"_ template, and click _"Generate"_.
+After a couple of seconds you should be given a ZIP file as a download. Make sure you disable popup blockers
+for your domain if you don't get the ZIP file and click _"Generate"_ once more.
+
 Once you have generated an Angular frontend, you can just as easily install this on the same VPS. This
 is possible since the generated frontend also contains a _"docker-compose.yml"_ file. The simplest way
 to do this is to upload your generated ZIP file to your VPS container using for instance from your local
