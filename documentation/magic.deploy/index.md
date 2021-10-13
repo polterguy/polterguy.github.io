@@ -197,11 +197,11 @@ You might want to install a firewall on your Linux server to further secure your
 by executing the following commands in order of appearance.
 
 ```
-sudo apt install ufw
-sudo ufw allow 80
-sudo ufw allow 443
-sudo ufw allow 22
-sudo ufw enable
+apt install ufw
+ufw allow 80
+ufw allow 443
+ufw allow 22
+ufw enable
 ```
 
 The above will install _"Uncomplicated FireWall"_ on your server, for then to shut off all ports except
