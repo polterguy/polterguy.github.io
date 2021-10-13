@@ -2,12 +2,18 @@
 # Magic Deploy
 
 This guide helps you deploy Magic unto a VPS or a private server. The guide has been tested with
-Ubuntu 20.04 (LTS) x64, but might work with other Debian based distributions. You will also need
-to point _two_ DNS A records to your server's IP address. Typically these would resemble the
-following.
+Ubuntu 20.04 (LTS) x64, but _might_ work with other Debian based distributions. You will need a
+VPS instance somewhere, which you can buy at for instance [DigitalOcean](https://www.digitalocean.com/).
+You will also need to point _two_ DNS A records to your server's IP address. Typically these would
+resemble the following.
 
 * __api.yourdomain.com__ - The Magic backend 
 * __magic.yourdomain.com__ - The Magic frontend/dashboard
+
+**Notice** - We suggest you don't buy the cheapest VPS droplet from DigitalOcean, but rather choose
+the basic droplet that costs you $24 per month. This is because the cheapest droplet is simply
+not powerful enough to run two web apps, MySQL and docker. You might be able to manage with a $12
+droplet, but definitely not the cheapest droplet.
 
 Only _after_ you have created two DNS A records using your domain provider continue with this guide.
 
