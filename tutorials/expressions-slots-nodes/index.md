@@ -284,7 +284,8 @@ set-value:x:@.result
 What the above does is basically to substitute the `{@.arg1}` parts of your expression with the
 value of the node referenced by the `@.arg1` expression, before the outermost expression is
 evaluated, resulting in that the outermost expression becomes `@.data/*/foo2` before it is being
-evaluated.
+evaluated. This technique allows you to nest expressions as deep as you wish, and use as many
+_"dynamic"_ segments as you wish in your outer expressions.
 
 * [Read more about expressions, nodes and Hyperlambda](/documentation/magic.node/)
 * [Read more about eval and its programming language constructs](/documentation/magic.lambda/)
