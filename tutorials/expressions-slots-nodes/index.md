@@ -263,6 +263,29 @@ the value of the **[get-value]** slot for instance has 3 iterators. Magic contai
 iterators, allowing you to query your node structure any ways you see fit. Below you can find
 the links to the reference documentation for these parts of Magic.
 
+### Extrapolated expressions
+
+As of from version 9.7.1 you can nest expressions, or create extrapolated expressions. This is
+quite useful since it allows you to parametrise expressions, such that parts of your expressions
+are dynamically changing according to the value of a nested expression. To understand the idea
+imagine the following.
+
+```
+.result
+.arg1:foo2
+.data
+   foo1:John
+   foo2:Thomas
+   foo3:Peter
+set-value:x:@.result
+   get-value:x:@.data/*/{@.arg1}
+```
+
+What the above does is basically to substitute the `{@.arg1}` parts of your expression with the
+value of the node referenced by the `@.arg1` expression, before the outermost expression is
+evaluated, resulting in that the outermost expression becomes `@.data/*/foo2` before it is being
+evaluated.
+
 * [Read more about expressions, nodes and Hyperlambda](/documentation/magic.node/)
 * [Read more about eval and its programming language constructs](/documentation/magic.lambda/)
 
