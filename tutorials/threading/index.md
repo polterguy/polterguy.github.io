@@ -100,11 +100,11 @@ is _async by default_, and there is no _"special syntax"_ required to understand
 ## Synchronizing lambda objects
 
 Sometimes you need synchronized access to some shared resource. This can for instance be a file or some
-other resource, that is shared amongst multiple threads. For these times you've got the **[sempahore]**
-slot. The sempahore slot takes on argument, in addition to a lambda object, ensuring that only _one_
+other resource, that is shared amongst multiple threads. For these times you've got the **[semaphore]**
+slot. The semaphore slot takes on argument, in addition to a lambda object, ensuring that only _one_
 thread given the same name is able to execute its lambda object at the same time. To understand this
 concept, realise this is often referred to as _"toilet threading mode"_, since typically only _one_
-person is allowed into the same toilet at the same time. A sempahore is kind of like the _"lock"_
+person is allowed into the same toilet at the same time. A semaphore is kind of like the _"lock"_
 on the toilet door, ensuring only one person is getting access. Consider the following Hyperlambda.
 
 ```
@@ -162,7 +162,7 @@ join
 io.file.load:/foo.md
 ```
 
-Without the above **[sempahore]** invocations, we'd run the risk of multiple threads writing to the
+Without the above **[semaphore]** invocations, we'd run the risk of multiple threads writing to the
 file simultaneously, resulting in what is commonly referred to as a _"race condition"_.
 
 Now compare the above code with the equivalent C# or Java example, and you'll rapidly understand
