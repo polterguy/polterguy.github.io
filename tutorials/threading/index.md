@@ -71,9 +71,10 @@ but can execute all of these in parallel, on different threads, our app becomes 
 the **[join]**/**[fork]** version would probably on average be almost 3 times as fast as the last version.
 
 This is typically quite useful when we're waiting for IO data, such as waiting for HTTP invocations, reading
-or writing to the file system, or executing SQL towards our database. Multi threading does _not_ make CPU
-intensive tasks faster for the record, quite the contrary, since it requires context switching at the CPU
-level.
+or writing to the file system, or executing SQL towards our database. Multi threading does typically _not_
+make CPU intensive tasks faster for the record, quite the contrary, since it requires context switching at
+the CPU level, and often multiple synchronization objects further reducing your execution speed. _Do not_ abuse
+multithreading.
 
 ## Hyperlambda is async by default
 
