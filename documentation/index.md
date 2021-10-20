@@ -15,6 +15,7 @@ suggest you start out with the tutorials, starting out from the top, and move do
 * [Web Sockets and SignalR in Magic](/tutorials/web-sockets/) - How to use Web Sockets with Magic
 * [Authentication and authorisation](/tutorials/auth/) - How Magic solves authentication and authorisation
 * [Super DRY code](/tutorials/super-dry/) - Exception handlers and interceptors
+* [Threading, async and scaling](/tutorials/threading/) - How Hyperlambda simplifies threading and async
 * [Scheduling tasks](/tutorials/task-scheduler/) - How to use Magic to create and schedule tasks
 * [Cryptographically secured HTTP Lambda Invocations](/tutorials/crypto-lambda-http/) - Inversion of Code
 * [Hyperlambda Hello World](/tutorials/hello-world-endpoint/) - Your first Hyperlambda endpoint
