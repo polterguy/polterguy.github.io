@@ -852,6 +852,19 @@ fork
    info.log:I was invoked from another thread
 ```
 
+### [join]
+
+Joins all child **[fork]** invocations, implying slot will wait until all forks directly below it
+has finished executing, and automatically copy the result of the **[fork]** into the original node.
+
+```
+join
+   fork
+      http.get:"https://servergardens.com"
+   fork
+      http.get:"https://gaiasoul.com"
+```
+
 ### [semaphore]
 
 Creates a named semaphore, where only one thread will be allowed to evaluate the same semaphore at
