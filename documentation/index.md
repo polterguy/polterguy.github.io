@@ -67,7 +67,6 @@ These are Open Source example apps built with Magic, illustrating usage of Magic
 * [magic.lambda.hyperlambda](/documentation/magic.lambda.hyperlambda/) - Parse Hyperlambda from text, and vice versa
 * [magic.lambda.sockets](/documentation/magic.lambda.sockets/) - Web socket support for Magic using SignalR
 * [magic.lambda.system](/documentation/magic.lambda.system/) - System support for Magic to spawn of terminals etc.
-* [magic.io](/documentation/magic.io/) - IO operations in Magic
 * [magic.library](/documentation/magic.library/) - A single NuGet package helper tying everything easily together
 
 ## Support
