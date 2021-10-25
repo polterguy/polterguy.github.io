@@ -22,12 +22,6 @@ suggest you start out with the tutorials, starting out from the top, and move do
 * [Expressions, slots, and nodes](/tutorials/expressions-slots-nodes/) - Hyperlambda is *really* weird!
 * [Authentication internals](/tutorials/auth-internals/) - How to exchange the default authentication with for instance Windows authentication
 
-## Deploying
-
-This guide helps you to deploy Magic to for instance a VPS using Docker.
-
-* [magic.deploy](/documentation/magic.deploy/) - How to deploy Magic to your VPS using Docker.
-
 ## Reference documentation core projects
 
 * [magic.node](/documentation/magic.node/) - Explains nodes, Hyperlambda and Expressions
@@ -68,6 +62,12 @@ This guide helps you to deploy Magic to for instance a VPS using Docker.
 
 * [magic.data.common](/documentation/magic.data.common/) - Commonalities for data adapters in Magic
 * [magic.library](/documentation/magic.library/) - A single NuGet package helper tying everything easily together
+
+## Deploying
+
+This guide helps you to deploy Magic to for instance a VPS using Docker.
+
+* [magic.deploy](/documentation/magic.deploy/) - How to deploy Magic to your VPS using Docker.
 
 ## Support
 
