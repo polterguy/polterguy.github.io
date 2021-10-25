@@ -61,13 +61,7 @@ suggest you start out with the tutorials, starting out from the top, and move do
 
 * [magic.data.common](/documentation/magic.data.common/) - Commonalities for data adapters in Magic
 * [magic.library](/documentation/magic.library/) - A single NuGet package helper tying everything easily together
-
-## Deploying
-
 * [magic.deploy](/documentation/magic.deploy/) - How to deploy Magic to your VPS using Docker.
-
-## Cloning Magic
-
 * [magic.clone](/documentation/magic.clone/) - How to clone Magic and its entire codebase.
 
 ## Support
