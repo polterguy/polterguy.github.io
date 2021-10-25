@@ -34,7 +34,6 @@ This guide helps you to deploy Magic to for instance a VPS using Docker.
 * [magic.lambda](/documentation/magic.lambda/) - Explains Hyperlambda as a DSL, and its keywords
 * [magic.endpoint](/documentation/magic.endpoint/) - Endpoint resolving in Magic
 * [magic.data.common](/documentation/magic.data.common/) - Commonalities for data adapters in Magic
-* [magic.http](/documentation/magic.http/) - HTTP REST invocations in Magic from C#
 * [magic.signals](/documentation/magic.signals/) - Magic's Super Signals implementation
 * [magic.lambda.math](/documentation/magic.lambda.math/) - Math operations from Hyperlambda
 * [magic.lambda.http](/documentation/magic.lambda.http/) - Invoking HTTP REST endpoints from Hyperlambda
