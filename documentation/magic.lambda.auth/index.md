@@ -52,6 +52,28 @@ IjoxNjE3OTQ0MjM2fQ.
 Typically Magic takes care of authentication for you, by exposing an `authenticate` endpoint for
 you, where you can submit a username and a password, for then to have your JWT token returned accordingly.
 
+**Notice** - You can also associate any claims you wish with your JWT token, by adding a key/value **[claims]**
+argument to your invocation as you create your JWT token. Below is an example.
+
+```
+auth.ticket.create
+   username:foo
+   roles
+      .:howdy
+      .:world
+   claims
+      id:578
+      ssid:xyzqwerty67
+```
+
+All additional (non-roles) claims will have their values converted to string though, which is more of a restriction
+in .Net and thw JWT standard than a restriction in Magic.
+
+**Notice** - Also notice that if you create a JWT token with a user belonging to _only one role_, the roles claims
+will _not_ be an array, but simply a string. Yet again, this is simply how .Net works, and there is little I can do
+about this. Hence, remember to check in your frontend as you retrieve your roles if the roles claims is a string
+or an array of strings before associating your user with a role in your client logic.
+
 ## JWT tokens internals
 
 A JWT token is actually just 3 JSON objects, that have been base64 encoded, and afterwards each entity is separated
@@ -126,6 +148,9 @@ a comma separated list of roles. The second slot above returns the username, and
 belongs to as a structured lambda object. As a general rule of thumb though, you'd not want to secure your
 endpoints using the above slots, but rather the _verify_ slot above, to avoid having errors in your code
 resulting in that an unauthorized user gains access to invoke an endpoint he should not be allowed to invoke.
+
+The **[auth.ticket.get]** slot will also return any custom claims you have associated with your JWT token
+as it was created.
 
 ## Project website
 
