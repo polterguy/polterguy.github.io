@@ -29,7 +29,7 @@ suggest you start out with the tutorials, starting out from the top, and move do
 * [magic.endpoint](/documentation/magic.endpoint/) - Endpoint resolving in Magic
 * [magic.lambda](/documentation/magic.lambda/) - Explains Hyperlambda as a DSL, and its keywords
 
-## Reference plugins
+## Reference documentation plugins
 
 * [magic.data.common](/documentation/magic.data.common/) - Commonalities for data adapters in Magic
 * [magic.lambda.math](/documentation/magic.lambda.math/) - Math operations from Hyperlambda
