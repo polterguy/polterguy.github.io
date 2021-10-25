@@ -31,7 +31,6 @@ suggest you start out with the tutorials, starting out from the top, and move do
 
 ## Reference documentation plugins
 
-* [magic.data.common](/documentation/magic.data.common/) - Commonalities for data adapters in Magic
 * [magic.lambda.math](/documentation/magic.lambda.math/) - Math operations from Hyperlambda
 * [magic.lambda.http](/documentation/magic.lambda.http/) - Invoking HTTP REST endpoints from Hyperlambda
 * [magic.lambda.csv](/documentation/magic.lambda.csv/) - Manipulating CSV from Hyperlambda
