@@ -64,13 +64,9 @@ suggest you start out with the tutorials, starting out from the top, and move do
 
 ## Deploying
 
-This guide helps you to deploy Magic to for instance a VPS using Docker.
-
 * [magic.deploy](/documentation/magic.deploy/) - How to deploy Magic to your VPS using Docker.
 
 ## Cloning Magic
-
-This guide helps you to clone Magic and all of its plugins, to view or edit its code.
 
 * [magic.clone](/documentation/magic.clone/) - How to clone Magic and its entire codebase.
 
