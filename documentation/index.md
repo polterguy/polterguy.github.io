@@ -28,13 +28,16 @@ This guide helps you to deploy Magic to for instance a VPS using Docker.
 
 * [magic.deploy](/documentation/magic.deploy/) - How to deploy Magic to your VPS using Docker.
 
-## Reference documentation
+## Reference documentation core projects
 
 * [magic.node](/documentation/magic.node/) - Explains nodes, Hyperlambda and Expressions
-* [magic.lambda](/documentation/magic.lambda/) - Explains Hyperlambda as a DSL, and its keywords
-* [magic.endpoint](/documentation/magic.endpoint/) - Endpoint resolving in Magic
-* [magic.data.common](/documentation/magic.data.common/) - Commonalities for data adapters in Magic
 * [magic.signals](/documentation/magic.signals/) - Magic's Super Signals implementation
+* [magic.endpoint](/documentation/magic.endpoint/) - Endpoint resolving in Magic
+* [magic.lambda](/documentation/magic.lambda/) - Explains Hyperlambda as a DSL, and its keywords
+
+## Reference plugins
+
+* [magic.data.common](/documentation/magic.data.common/) - Commonalities for data adapters in Magic
 * [magic.lambda.math](/documentation/magic.lambda.math/) - Math operations from Hyperlambda
 * [magic.lambda.http](/documentation/magic.lambda.http/) - Invoking HTTP REST endpoints from Hyperlambda
 * [magic.lambda.csv](/documentation/magic.lambda.csv/) - Manipulating CSV from Hyperlambda
@@ -60,6 +63,10 @@ This guide helps you to deploy Magic to for instance a VPS using Docker.
 * [magic.lambda.hyperlambda](/documentation/magic.lambda.hyperlambda/) - Parse Hyperlambda from text, and vice versa
 * [magic.lambda.sockets](/documentation/magic.lambda.sockets/) - Web socket support for Magic using SignalR
 * [magic.lambda.system](/documentation/magic.lambda.system/) - System support for Magic to spawn of terminals etc.
+
+## Utility projects
+
+* [magic.data.common](/documentation/magic.data.common/) - Commonalities for data adapters in Magic
 * [magic.library](/documentation/magic.library/) - A single NuGet package helper tying everything easily together
 
 ## Support
