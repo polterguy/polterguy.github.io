@@ -28,12 +28,6 @@ This guide helps you to deploy Magic to for instance a VPS using Docker.
 
 * [magic.deploy](/documentation/magic.deploy/) - How to deploy Magic to your VPS using Docker.
 
-## Use cases
-
-These are Open Source example apps built with Magic, illustrating usage of Magic in some specific scenario.
-
-* [AnarQ a Social Media use case](/tutorials/anarq-usecase/) - Creating a Social Media backend with Magic
-
 ## Reference documentation
 
 * [magic.node](/documentation/magic.node/) - Explains nodes, Hyperlambda and Expressions
