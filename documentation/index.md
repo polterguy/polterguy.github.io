@@ -1,16 +1,20 @@
 
 # Documentation for Magic
 
-This is the official documentation for Magic, and it contains both reference documentation,
+This is the official documentation for Magic, and it contains both reference documentation
 and tutorial style type of documentation. If you've just recently started to use Magic, I
-suggest you start out with the tutorials, starting out from the top, and move downwards.
+suggest you start out with the architectural overview video, move on to tutorials starting
+out at the top, and move downwards - For then to read the reference documentation as you need
+detailed information about specific parts of Magic.
 
 ## Architectural overview
+
+In this video I walk you through the architecture of Magic from a bird's perspective, in addition
+to that I illustrate how to create a simple Hello World Hyperlambda app.
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/FK0rcAEWtV8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-
 
 ## Tutorials
 
