@@ -37,7 +37,12 @@ eval:x:-/*
 ```
 
 3 lines of code, allowing you to dynamically load and execute Hyperlambda, tied to your C# code dynamically,
-using `ISlot` implementations, and Super Signals. Not too bad for 3 lines of code ...
+using `ISlot` implementations, and Super Signals. Not too bad for 3 lines of code.
+
+**Notice** - Both of these slots can optionally be given a **[comments]** arguments with a value of `true`,
+at which point both **[lambda2hyper]** and **[hyper2lambda]** will preserve comments, and persist these as
+**[..]** nodes into your lambda, and reverse the process the other direction. This allows you to keep the
+comments of your Hyperlambda parts as semantic nodes, as you handle your Hyperlambda and node hierarchy.
 
 ## Project website
 
