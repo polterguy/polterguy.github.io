@@ -100,7 +100,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     let builder = new HubConnectionBuilder();
-    this.hubConnection = builder.withUrl('http://localhost:55247/sockets', {
+    this.hubConnection = builder.withUrl('http://localhost:5000/sockets', {
       skipNegotiation: true,
       transport: HttpTransportType.WebSockets,
     }).build();

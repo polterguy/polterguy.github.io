@@ -12,7 +12,7 @@ return-nodes
 
 Save the file, and open up [http://localhost:4444/magic/modules/tutorials/hello](http://localhost:4444/magic/modules/tutorials/hello)
 using your browser. Make sure you get the port correctly. 4444 is if you're using the Docker images,
-and might need to be changed to e.g. 55247 if you're using the source code version directly.
+and might need to be changed to e.g. 5000 if you're using the source code version directly.
 
 Congratulations, you have now created your first Hyperlambda HTTP endpoint. Notice how Magic automatically
 transforms your lambda object to JSON, and returns it as follows.
