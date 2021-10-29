@@ -36,13 +36,13 @@ is something you're probably never going to be able to reproduce using any other
 
 Magic exposes a couple of crucial endpoints related to authentication that simplifies your life. These are as follows.
 
-* GET magic/modules/system/auth/authenticate - Authenticates a user with a username/password combination
-* PUT magic/modules/system/auth/change-password - Allows a user to change his or her password
-* GET magic/modules/system/auth/refresh-ticket - Refresh a user's JWT token granting a new token with a new expiration value
-* POST magic/modules/system/auth/register - Allows others to register as users in your system
-* POST magic/modules/system/auth/send-reset-password-link - Sends a reset password link to the user's email address
-* POST magic/modules/system/auth/verify-email - Double optin endpoint allowing users to verify their emails
-* GET magic/modules/system/auth/verify-ticket - Returns success status code if JWT token is valid
+* GET magic/system/auth/authenticate - Authenticates a user with a username/password combination
+* PUT magic/system/auth/change-password - Allows a user to change his or her password
+* GET magic/system/auth/refresh-ticket - Refresh a user's JWT token granting a new token with a new expiration value
+* POST magic/system/auth/register - Allows others to register as users in your system
+* POST magic/system/auth/send-reset-password-link - Sends a reset password link to the user's email address
+* POST magic/system/auth/verify-email - Double optin endpoint allowing users to verify their emails
+* GET magic/system/auth/verify-ticket - Returns success status code if JWT token is valid
 
 Combining the above endpoints gives you more or less everything you need related to authentication and authorisation,
 allowing you to build UI components in any framework of choice, wrapping the above backend endpoints.

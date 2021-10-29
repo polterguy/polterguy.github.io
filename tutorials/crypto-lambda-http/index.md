@@ -52,7 +52,7 @@ Use the _"Evaluator"_ menu item from your Magic Dashboard and execute the follow
 guid.new
 unwrap:x:+/**/.request-id
 signal:magic.crypto.http.eval
-   url:"http://localhost:4444/magic/modules/system/crypto/eval-id"
+   url:"http://localhost:4444/magic/system/crypto/eval-id"
    .lambda
       .request-id:x:@guid.new
       vocabulary
@@ -80,7 +80,7 @@ and notice how the first invocation typically succeeds, while the second invocat
 
 ```
 signal:magic.crypto.http.eval
-   url:"http://localhost:4444/magic/modules/system/crypto/eval-id"
+   url:"http://localhost:4444/magic/system/crypto/eval-id"
    .lambda
       .request-id:not-a-unique-request-id
       return:Will fail the second time

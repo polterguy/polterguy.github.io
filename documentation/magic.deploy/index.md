@@ -111,7 +111,7 @@ certificate for both your web apps. If you domain is _"yourdomain.com"_ and you 
 A records illustrated in the beginning of this article, you can initiate this process by
 opening the following URLs in your browser.
 
-* https://api.yourdomain.com/magic/modules/system/ping
+* https://api.yourdomain.com/magic/system/ping
 * https://magic.yourdomain.com
 
 Only when both of the above URLs returns success, and/or your Magic dashboard frontend, proceed

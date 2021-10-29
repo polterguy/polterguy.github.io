@@ -176,7 +176,7 @@ value. Below is an example of the latter.
 ```typescript
 // Assumes httpClient is an instance of Angular HttpClient
 this.httpClient
-  .get<any>('/magic/modules/system/auth/authenticate', {
+  .get<any>('/magic/system/auth/authenticate', {
     withCredentials: true
   }).subscribe((result: any) => {
 
@@ -226,7 +226,7 @@ Hence, to sum it all up we'll repeat the required steps below.
 4. Use your LAN URL for invocations towards your backend.
 5. If you're using Angular, make sure you invoke the _"authenticate"_ endpoint with `withCredentials` turned _on_.
 
-**Notice** - There is a helper endpoint you can invoke at _"magic/modules/system/auth/auto-auth"_ that
+**Notice** - There is a helper endpoint you can invoke at _"magic/system/auth/auto-auth"_ that
 will return _"on"_ if automatic authentication has been enabled in your backend. Authentication can still
 only be used from within the LAN - But at least it allows you to query your backend to check if
 automatic Windows authentication has been turned on.
