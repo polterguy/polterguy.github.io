@@ -25,6 +25,20 @@ any hassle. In the video below I am illustrating this process.
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/ldy-idQO_jA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
+### Updating your docker images
+
+As of version 9.9.1 updating the Docker images should be fairly straight forward, assuming you're using
+the latest _"docker-compose.yml"_ file (link above). This is because the newest docker-compose file is
+now using a `volume` to store your custom modules. Hence, if you need to update your docker images to
+use the latest version of Magic, you can use something such as follows.
+
+```
+docker pull servergardens/magic-backend:latest
+docker pull servergardens/magic-frontend:latest
+```
+
+This will keep your existing custom modules, while still update everything that is _"system related"_.
+
 ## Download the code
 
 If you don't want to use Docker, you can also configure your development environment locally on your
