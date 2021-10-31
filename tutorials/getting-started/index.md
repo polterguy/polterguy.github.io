@@ -50,9 +50,9 @@ The easiest method to deploy Magic into production, is to follow [this recipe](/
 guides you through setting up your VPS server to host Magic. Notice, if this is too complex for you,
 [we do provide this as a service](https://servergardens.com) for a fee.
 
-## Update Magic
+## Updating Magic
 
-If you're using the docker images, this is fairly easy, and only requires you to stop Magic
+If you're using the docker images, updating Magic is fairly easy, and only requires you to stop Magic
 for some few seconds, update the core, and restart your docker containers again. Below is the entire
 recipe. Execute the following terminal commands one at the time. Make sure you execute the following
 in _the same folder_ as where your main Magic _"docker-compose.yml"_ file is.
@@ -66,10 +66,10 @@ docker-compose up
 
 **Notice** - As of version 9.9.1 the development version of the docker images will store your
 custom modules as you tear down your docker containers, but it will _not_ store your _"appsettings.json"_
-file. The deployment version above however will keep both your _"appsettings.json"_ file, in addition
-to your custom modules, implying updating Magic both in your local development environment and
-in production should be fairly straight forward - Except in your local development environment,
-you'll need to re-configure Magic after tearing down and updating your containers.
+file. The deployment version above however will also keep your _"appsettings.json"_ file, in addition
+to your custom modules - Implying updating Magic both in your local development environment, and
+in your production environment should be fairly straight forward - Except in your local development
+environment, you'll need to re-configure Magic after tearing down and updating your containers.
 
 ## Cloning Magic
 
