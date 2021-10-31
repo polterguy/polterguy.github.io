@@ -25,20 +25,6 @@ any hassle. In the video below I am illustrating this process.
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/ldy-idQO_jA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-### Updating your docker images
-
-As of version 9.9.1 updating the Docker images should be fairly straight forward, assuming you're using
-the latest _"docker-compose.yml"_ file (link above). This is because the newest docker-compose file is
-now using a `volume` to store your custom modules. Hence, if you need to update your docker images to
-use the latest version of Magic, you can use something such as follows.
-
-```
-docker pull servergardens/magic-backend:latest
-docker pull servergardens/magic-frontend:latest
-```
-
-This will keep your existing custom modules, while still update everything that is _"system related"_.
-
 ## Download the code
 
 If you don't want to use Docker, you can also configure your development environment locally on your
@@ -63,7 +49,7 @@ guides you through setting up your VPS server to host Magic. Notice, if this is 
 
 ## Update Magic
 
-If you're using the docker images, this is incredibly easy, and simply requires you to stop Magic
+If you're using the docker images, this is fairly easy, and only requires you to stop Magic
 for some few seconds, update the core, and restart your docker containers again. Below is the entire
 recipe. Execute the following terminal commands one at the time. Make sure you execute the following
 in _the same folder_ as where your main Magic _"docker-compose.yml"_ file is.
@@ -75,7 +61,12 @@ docker pull servergardens/magic-backend
 docker-compose up -d
 ```
 
-Once the above has finished executing, you should have the latest release either locally or on your VPS.
+**Notice** - As of version 9.9.1 the development version of the docker images will store your
+custom modules as you tear down your docker containers, but it will _not_ store your _"appSettings.json"_
+file. The deployment version above however will keep both your _"appSettings.json"_ file, in addition
+to your custom modules, implying updating Magic both in your local development environment and
+in production should be fairly straight forward - Except in your local development environment,
+you'll need to re-configure Magic after tearing down and updating your containers.
 
 ## Support
 
