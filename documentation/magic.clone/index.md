@@ -18,7 +18,7 @@ cd src
 code ./
 ```
 
-The open _two_ terminal windows and type the following into the first.
+Then open _two_ terminal windows and type the following into the first.
 
 ```bash
 cd magic
