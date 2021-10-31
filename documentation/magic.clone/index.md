@@ -1,8 +1,13 @@
 
 # Magic Clone - Develop Magic locally
 
-Clone this repository locally using `git clone https://github.com/polterguy/magic.clone.git`,
-then run the _"clone.sh"_ file, and wait until it's done - At which point you will find everything
+Clone this repository locally using the following.
+
+```
+git clone https://github.com/polterguy/magic.clone.git
+```
+
+Then run the _"clone.sh"_ file, and wait until it's done - At which point you will find everything
 needed to run and debug Magic locally within your _"src/"_ folder. Whenever you need to pull the
 repositories again simply execute _"pull.sh"_. To debug, and/or run Magic, type the following in a terminal.
 
