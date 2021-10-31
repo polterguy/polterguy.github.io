@@ -58,7 +58,7 @@ in _the same folder_ as where your main Magic _"docker-compose.yml"_ file is.
 docker-compose down
 docker pull servergardens/magic-frontend
 docker pull servergardens/magic-backend
-docker-compose up -d
+docker-compose up
 ```
 
 **Notice** - As of version 9.9.1 the development version of the docker images will store your
