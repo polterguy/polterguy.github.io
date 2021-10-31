@@ -30,6 +30,8 @@ services:
     restart: always
     ports:
       - "4444:4444"
+    volumes:
+      - modules:/magic/files/modules
 
   frontend:
     image: servergardens/magic-frontend:latest
@@ -38,6 +40,9 @@ services:
     restart: always
     ports:
       - "5555:80"
+
+volumes:
+  modules:
 ```
 
 If you create a file named _"docker-compose.yml"_ and save it to any directory on your machine with the
