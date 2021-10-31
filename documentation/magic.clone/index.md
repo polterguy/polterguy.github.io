@@ -2,7 +2,9 @@
 # Magic Clone - Develop Magic locally
 
 This recipe assumes you've got VS Code, MySQL or SQL Server accessible somewhere, NodeJS, Angular,
-and the .Net SDK version 5 or higher. Clone this repository locally using the following.
+and the .Net SDK version 5 or higher. You can also use Visual Studio instead of VS Code if you're
+on Windows, at which point you only need to open the _"magic.sln"_ file. When you've made sure
+you've got all of these parts, clone this repository locally using the following.
 
 ```
 git clone https://github.com/polterguy/magic.clone.git
