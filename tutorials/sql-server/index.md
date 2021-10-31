@@ -56,7 +56,13 @@ docker-compose up
 **Notice** - If you already have the default _"docker-compose.yml"_ file's containers running, you'll have
 to _stop_ these containers, since the above file uses the same ports on your host operating system as the MySQL
 file file does. To do this, go to the folder where you have your MySQL _"docker-compose.yml"_ file using a
-terminal window and type `docker-compose down`.
+terminal window and type `docker-compose down`. You might also have to delete your _"/files/modules/magic/"_
+folder, logout and login again if you have previously been running the MySQL Docker images on your machine.
+This is because of that when you CRUDify your Magic database, it will associate your endpoints with the
+database type of your chosing, and since you've already CRUDified your Magic database using MySQL, Magic
+will erronously believe your Magic folder is wrapping a MySQL database. To fix this, just delete the _"/magic"_
+folder entirely, and log out for then to login again - At which point you'll be asked to CRUDify your Magic
+database again.
 
 When your Docker images are up running, you can visit [localhost:5555](http://localhost:5555) and you should
 come to the Magic Dashboard. Login with _"root"/"root"_ and configure Magic as described below. The most important
