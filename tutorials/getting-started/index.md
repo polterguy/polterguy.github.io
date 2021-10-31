@@ -68,6 +68,13 @@ to your custom modules, implying updating Magic both in your local development e
 in production should be fairly straight forward - Except in your local development environment,
 you'll need to re-configure Magic after tearing down and updating your containers.
 
+## Cloning Magic
+
+Magic is not one project, it's actually more than 30 projects, implying if you clone only Magic,
+you'll only get some few hundreds lines of code, while most of its actual code exists in any
+of the 30+ satellite projects. Hence, to clone Magic, to for instance maintain it, look at its
+code, etc you'll have to follow [this recipe](/documentation/magic.clone/).
+
 ## Support
 
 If you have a support request of private nature, you can send us an
