@@ -172,9 +172,9 @@ After a couple of seconds you should be given a ZIP file as a download. Make sur
 for your domain if you don't get the ZIP file and click _"Generate"_ once more.
 
 Once you have generated an Angular frontend, you can just as easily install this on the same VPS. This
-is possible since the generated frontend also contains a _"docker-compose.yml"_ file. The simplest way
-to do this is to upload your generated ZIP file to your VPS container using for instance from your local
-development machine. Yet again, use your VPS' IP address here.
+is possible since the generated frontend also contains a _"docker-compose.yml"_ file. The easiest way
+to do this is to upload your generated ZIP file to your VPS container using for instance the following
+from your local development machine. Yet again, use your VPS' IP address here.
 
 ```
 scp foo.zip root@123.123.123:~
