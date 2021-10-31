@@ -45,3 +45,5 @@ To debug, click F5 in VS Code, and choose _".Net Core"_, then click _"Configure"
 called _"backend.exe"_ (something) at the top of your choices. You can now set breakpoints, and/or debug
 Magic locally on your development machine.
 
+* [Magic Documentation](https://polterguy.github.io/)
+

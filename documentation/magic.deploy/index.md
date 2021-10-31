@@ -256,3 +256,5 @@ to [getting Magic up running in an Azure DevOps environment](https://dzone.com/a
 We can [do this for you](https://servergardens.com), including hosting your app, making sure it is
 correctly secured. Of course, this is a service we charge for, but at least that way you get to sleep
 better at night, realising we are helping you out automagically.
+
+* [Magic Documentation](https://polterguy.github.io/)

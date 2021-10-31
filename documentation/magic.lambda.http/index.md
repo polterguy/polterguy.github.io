@@ -80,3 +80,5 @@ and you can provide feedback, provide bug reports, etc at the same place.
 
 This project is the copyright(c) 2020-2021 of Thomas Hansen thomas@servergardens.com, and is licensed under the terms
 of the LGPL version 3, as published by the Free Software Foundation. See the enclosed LICENSE file for details.
+
+* [Magic Documentation](https://polterguy.github.io/)
