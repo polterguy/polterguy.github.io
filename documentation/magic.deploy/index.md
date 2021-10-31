@@ -233,6 +233,18 @@ port 80, 443 and 22. 22 is needed to allow for SSH into your server. In addition
 from making sure your operating system is updated with the latest patches as released by whomever is
 distributing your particular Linux installation.
 
+## Updating Magic
+
+As of version 9.9.1 this is fairly straight forward and only requires you to tear down your containers,
+pull the images, and restart your containers using the following.
+
+```
+docker-compose down
+docker pull servergardens/magic-frontend
+docker pull servergardens/magic-backend
+docker-compose up -d
+```
+
 ## DevOps
 
 If you'd rather install Magic in Azure's DevOps pipelines, you can read an article about this at
