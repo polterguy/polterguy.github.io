@@ -3,7 +3,7 @@
 
 There are multiple ways to use Magic, depending upon whether or not you just want to try it out locally
 on your development machine, use the Docker images to more rapidly getting up to speed, deploy it
-to your production server, or clone its source code locally to view its source, and/or debug it.
+to your production server, or clone its source code locally to view and debugs its source code.
 In this section we'll walk you through these different methods of getting started.
 
 ## Using Docker
