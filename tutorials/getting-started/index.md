@@ -62,8 +62,8 @@ docker-compose up -d
 ```
 
 **Notice** - As of version 9.9.1 the development version of the docker images will store your
-custom modules as you tear down your docker containers, but it will _not_ store your _"appSettings.json"_
-file. The deployment version above however will keep both your _"appSettings.json"_ file, in addition
+custom modules as you tear down your docker containers, but it will _not_ store your _"appsettings.json"_
+file. The deployment version above however will keep both your _"appsettings.json"_ file, in addition
 to your custom modules, implying updating Magic both in your local development environment and
 in production should be fairly straight forward - Except in your local development environment,
 you'll need to re-configure Magic after tearing down and updating your containers.
