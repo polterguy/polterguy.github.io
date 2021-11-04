@@ -62,10 +62,10 @@ wants to evaluate your slot. This makes it behave as a good IoC citizen, allowin
 interfaces into your constructor, and have the .Net dependency injection automatically create objects
 of whatever interface your slot implementation requires.
 
-There is also an `async` interface, which allows you to declare async slots, transparently letting the runtime
-choose which implementation to use, depending upon whether or not it is currently in an `async` execution context
-or not. Below you can see how to accomplish the same as above, except this time the slot will be invoked within
-an `async` context.
+There is also an `async` version of the interface, which allows you to declare async slots, transparently
+letting the runtime choose which implementation to use, depending upon whether or not it is currently in
+an `async` execution context or not. Below you can see how to accomplish the same as above, except this
+time the slot will be invoked within an `async` context.
 
 ```csharp
 [Slot(Name = "foo.bar")]
@@ -122,6 +122,17 @@ a more C# friendly graph object, kind of resembling JSON, allowing you to intern
 in a Node object as your parameters from the point of your signal, to the slot where you handle the signal.
 The `Node` POCO class again, is a bi-directional POD instance, allowing you to both pass arguments _into_ the
 slot, in addition to having the slot _return_ values back to the caller.
+
+If you invoke `Signal` or `SignalAsync` from C#, you can optionally pass in a function object that will
+be executed after the signal has been executed. This is useful for cases where you're creating an async signal
+invocation, but not invoking it immediately, and rather returning it as a `Task` to some other parts of your
+system, to ensure something occurs _after_ the signal has been executed. Below is an example.
+
+```
+var args = new Node();
+return signaler.SignalAsync("foo.bar", args, () => { /* ... This will happen AFTER execution of signal ... */ });
+
+```
 
 ## Magic Signals a DSL
 
