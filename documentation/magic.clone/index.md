@@ -26,7 +26,7 @@ Then open _two_ terminal windows and type the following into the first.
 ```bash
 cd magic
 cd backend
-dotnet run --pproject dev_backend.csproj
+dotnet run --project dev_backend.csproj
 ```
 
 Type the following into the second terminal window.
