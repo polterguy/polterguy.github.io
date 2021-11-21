@@ -7,6 +7,7 @@ contains the following slots.
 * __[system.terminal.create]__ - Creates a new terminal process on the server
 * __[system.terminal.write-line]__ - Writes a line/command to a previously opened terminal process on the server
 * __[system.terminal.destroy]__ - Destroys/kills a previously created terminal process on the server
+* __[system.execute]__ - Execute the specified command returning the result to caller
 
 By combining the above slots with for instance the magic.lambda.sockets project, you can spawn off terminal/bash
 processes on your server, creating _"virtual web based terminal sessions"_ on your server. To create a new
@@ -72,6 +73,57 @@ you pass into them will differ depending upon your operating system.
 automatically killed and disposed, and any future attempts to reference it, will resolve in an error.
 This is to avoid having hanging processes on the server, in case a terminal process is started, and
 then something happens, which disconnects the client, resulting in _"hanging sessions"_.
+
+## [system.execute]
+
+If you only want to execute a specific program in your system you can use **[system.execute]**, and pass in
+the name of the command as a value, and any arguments as children, optionally applying a **[structured]** argument
+to signifiy if you want each line of input to be returned as a single node or not. Below is an example.
+
+```
+system.execute:ls
+   structured:true
+   .:-l
+```
+
+The above will result in something such as follows.
+
+```
+system.execute
+   .:total 64
+   .:"-rw-r--r--  1 thomashansen  staff   495  9 Nov 10:37 Dockerfile"
+   .:"-rw-r--r--  1 thomashansen  staff  1084 29 Oct 14:51 LICENSE"
+   .:"-rw-r--r--  1 thomashansen  staff   604 29 Oct 14:51 Program.cs"
+   .:"drwxr-xr-x  3 thomashansen  staff    96 29 Oct 16:53 Properties"
+   .:"-rw-r--r--  1 thomashansen  staff  3154 29 Oct 14:51 Startup.cs"
+   .:"-rw-r--r--  1 thomashansen  staff  1458 11 Nov 10:57 appsettings.json"
+   .:"-rw-r--r--  1 thomashansen  staff   650  9 Nov 08:26 backend.csproj"
+   .:"drwxr-xr-x  3 thomashansen  staff    96  9 Nov 10:23 bin"
+   .:"-rw-r--r--  1 thomashansen  staff   700  9 Nov 07:29 dev_backend.csproj"
+   .:"drwxr-xr-x  9 thomashansen  staff   288 12 Nov 10:31 files"
+   .:"drwxr-xr-x  9 thomashansen  staff   288  9 Nov 19:05 obj"
+   .:"drwxr-xr-x  6 thomashansen  staff   192 29 Oct 14:51 slots"
+   .:"-rw-r--r--  1 thomashansen  staff  1905 29 Oct 14:51 web.config"
+```
+
+**Notice** - If you ommit the **[structured]** argument, or set its value to _"false"_, the result of the
+above invocation will return a single string.
+
+## Querying operating system version
+
+In addition to the above slots this project also contains the following slots.
+
+* __[system.os]__ - Returns description of your operating system
+* __[system.is-os]__ - Returns true if your underlaying operating system is of the specified type
+
+The last slot above takes an argument such as _"Windows"_, _"OSX_, _"Linux"_, etc, and will return true
+of the operating system you are currently running on belongs to the specified family of operating systems.
+Below is example usage of both.
+
+```
+system.is-os:OSX
+system.os
+```
 
 ## Project website
 
