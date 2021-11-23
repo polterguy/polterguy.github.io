@@ -7,7 +7,7 @@ is the class called `HttpExecutorAsync`, and the rest of this file will be focus
 implementation, since it is the default service implementation for Magic Endpoint - Although, technically, you
 could exchange this with your own implementation if you wish, completely changing the behaviour of the library
 if you wish to for instance resolve endpoints to Python, Ruby, or any other dynamic programming language
-implementation, and you have some means to execute such code from within a .Net 5 environment.
+implementation, and you have some means to execute such code from within a .Net 6 environment.
 
 The resolver will be invoked for all relative URLs starting with _"magic/"_, for the following verbs.
 
@@ -39,7 +39,7 @@ arguments you pass in, either as query parameters, or as your JSON payload, URL 
 is appended into your resulting lambda node's **[.arguments]** node as arguments to your Hyperlambda file
 invocation. The resolver will never return files directly, but is only able to execute Hyperlambda files,
 so by default there is no way to get static files, unless you create a Hyperlambda endpoint that returns
-a file somehow.
+a static file somehow.
 
 **Notice** - The default resolver will only allow the client to resolve files inside your _"/files/modules/"_
 folder and _"/files/system/"_ folder. This allows you to safely keep files that other parts of your system
@@ -107,8 +107,9 @@ supply a payload to a GET or DELETE endpoint, an exception will be thrown, and a
 returned to the caller.
 
 **Notice** - To allow for _any_ arguments to your files, simply _ommit_ the **[.arguments]** node
-in your Hyperlambda althogether. Alternatively, you can also partially ignore arguments sanity checking
-of individual nodes, by setting their values to `*`, such as the following illustrates.
+in your Hyperlambda althogether, or supply an **[.arguments]** node and set its value to `*`.
+Alternatively, you can also _partially_ ignore arguments sanity checking of individual nodes,
+by setting their values to `*`, such as the following illustrates.
 
 ```
 .arguments
@@ -127,7 +128,7 @@ was passed in as.
 All arguments declared are considered optional, and the file will still resolve if the argument is not given,
 except of course the argument won't exist in the **[.arguments]** node. However, no argument _not_ found
 in your **[.arguments]** declaration can be provided during invocations, assuming you choose to declare
-an **[.arguments]** collection in your Hyperlambda endpoint file.
+an **[.arguments]** collection in your Hyperlambda endpoint file, and you don't set its value to `*`.
 
 To declare what type your arguments can be, set the value of the argument declaration node to
 the Hyperlambda type value inside of your arguments declaration, such as illustrated above.
