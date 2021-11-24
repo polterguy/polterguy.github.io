@@ -120,7 +120,7 @@ way you'd change data in your database. This is only possible because of Hyperla
 capabilities, implying it is super structured in its format, allowing you to semantically traverse it the
 same way you would semantically traverse an XML document, and/or a JSON object.
 
-One favourite of mine is to combine these features with the cryptographic lambda invocations, to patch
+One favourite of mine is to combine these features with cryptographic lambda invocations, to patch
 and administrate a multitude of servers dynamically, giving you orchestration capabilities on your servers,
 from a single point of administration, to administer a heterogenous environment consisting of a multitude
 of servers. However ...
