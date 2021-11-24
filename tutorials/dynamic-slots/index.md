@@ -55,7 +55,7 @@ signal
    .:unconfirmed
 ```
 
-## Slots related to dynamic slots
+## Molding your Hyperlambda
 
 The following slots exists in Hyperlambda allowing you to create, signal/invoke, and administrate your
 dynamic slots.
@@ -66,6 +66,44 @@ dynamic slots.
 * __[slots.exists]__ - Returns true if the specified dynamic slot already exists
 * __[slots.get]__ - Returns the lambda object associated with a slot
 * __[slots.vocabulary]__ - Returns all dynamic slots to caller, similar to **[vocabulary]**, except will _only_ return dynamic slots.
+
+All in all, the above slots allows you to administrate your existing slots any ways you see fit. As an interesting
+exercise try to invoke the following Hyperlambda, assuming you executed the first Hyperlambda in this tutorial.
+
+```
+slots.get:foo.bar
+```
+
+The above of course will return the following.
+
+```
+slots.get:foo.bar
+   config.get:"magic:databases:default"
+   return:x:-
+```
+
+This is an extremely useful feature of Hyperlambda, since the returned lambda object is semantically returned
+to the caller, allowing you to modify existing slots semantically, to inject, remove, or modify any parts
+of the lambda object they are executing once invoked. To understand the idea, imagine the following code.
+
+```
+slots.create:foo.bar
+   config.get:"magic:databases:default"
+   return:x:-
+slots.get:foo.bar
+insert-before:x:-/0
+   .
+      log.info:[foo.bar] was invoked
+add:x:+
+   get-nodes:x:@slots.get/*
+slots.create:foo.bar
+slots.get:foo.bar
+```
+
+As you can see, we _semantically_ retrieved a dynamic slot, for then to inject new code into it, and saving
+our updated slot again. This allows you to look at code as a dynamic living thing, possible to modify over
+time, according to your needs, whatever they may be. Arguably allowing you to from within your live production
+environment literally _semantically 'patch'_ your existing code. Only your fantasy sets the limits here ...
 
 ## Persisting dynamic slots
 
