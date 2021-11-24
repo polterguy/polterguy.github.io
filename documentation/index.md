@@ -21,7 +21,6 @@ to that I illustrate how to create a simple Hello World Hyperlambda app.
 * [Getting started](/tutorials/getting-started/) - Getting Magic up running
 * [Database CRUD operations](/tutorials/database-crud/) - Automate the process of creating code
 * [SQL Web API](/tutorials/sql-web-api/) - Create HTTP endpoints in SQL
-* [Using Magic with SQL Server](/tutorials/sql-server/) - Using Magic with Microsoft SQL Server
 * [Magic beyond CRUD](/tutorials/cloud-ide/) - A guided tour through Magic's Dashboard
 * [Web Sockets and SignalR in Magic](/tutorials/web-sockets/) - How to use Web Sockets with Magic
 * [Authentication and authorisation](/tutorials/auth/) - How Magic solves authentication and authorisation
@@ -32,6 +31,7 @@ to that I illustrate how to create a simple Hello World Hyperlambda app.
 * [Cryptographically secured HTTP Lambda Invocations](/tutorials/crypto-lambda-http/) - Inversion of Code
 * [Expressions, slots, and nodes](/tutorials/expressions-slots-nodes/) - Hyperlambda is *really* weird!
 * [Authentication internals](/tutorials/auth-internals/) - How to exchange the default authentication with for instance Windows authentication
+* [Using Magic with SQL Server](/tutorials/sql-server/) - Using Magic with Microsoft SQL Server
 
 ## Reference documentation core projects
 
