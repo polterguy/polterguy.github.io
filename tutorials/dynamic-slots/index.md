@@ -114,7 +114,9 @@ and saving our updated slot afterwards. This allows you to look at code as a dyn
 modify over time, according to your needs, whatever they may be. Arguably allowing you to from within your
 live production environment literally _semantically 'patch'_ your existing code. Hence your code is no longer
 a _"static"_ thing once deployed, but a living and changeable thing, you can _"mold"_ and change as you see
-fit.
+fit. In a way this allows you to treat your Hyperlambda code the same way you treat your relational database
+system, by providing CRUD capabilities on your codebase, allowing you to change it over time, almost the same
+way you'd change data in your database.
 
 Only your fantasy sets the limits here ...
 
