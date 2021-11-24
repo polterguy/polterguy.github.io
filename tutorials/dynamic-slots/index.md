@@ -113,14 +113,19 @@ As you can see, we _semantically_ retrieved a dynamic slot, for then to inject n
 and saving our updated slot afterwards. This allows you to look at code as a dynamic living thing, possible to
 modify over time, according to your needs, whatever they may be. Arguably allowing you to from within your
 live production environment literally _semantically 'patch'_ your existing code. Hence your code is no longer
-a _"static"_ thing once deployed, but a living and changeable thing, you can _"mold"_ and change as you see
+a _"static"_ thing once deployed, but a living and changeable thing you can _"mold"_ and change as you see
 fit. In a way this allows you to treat your Hyperlambda code the same way you treat your relational database
 system, by providing CRUD capabilities on your codebase, allowing you to change it over time, almost the same
 way you'd change data in your database. This is only possible because of Hyperlambda's extreme meta data
 capabilities, implying it is super structured in its format, allowing you to semantically traverse it the
 same way you would semantically traverse an XML document, and/or a JSON object.
 
-Only your fantasy sets the limits here ...
+One favourite of mine is to combine these features with the cryptographic lambda invocations, to patch
+and administrate a multitude of servers dynamically, giving you orchestration capabilities on your servers,
+from a single point of administration, to administer a heterogenous environment consisting of a multitude
+of servers. However ...
+
+> Only your imagination sets the limits here ...
 
 ## Persisting dynamic slots
 
