@@ -116,6 +116,20 @@ http.get:"https://foo.com"
 
 You can add any HTTP header you wish, including your own custom headers using the above syntax.
 
+## HTTP slots
+
+There are 5 HTTP slots in Hyperlambda wrapping their associated HTTP verbs. These are as follows.
+
+* __[http.get]__ - Returns a resource, no payload
+* __[http.delete]__ - Deletes a resource, no payload
+* __[http.put]__ - Updates a resource, requires a payload
+* __[http.post]__ - Creates a new resource, requires a payload
+* __[http.patch]__ - Modifies an existing resource, requires a payload
+
+Of course the exact semantics of what your endpoints are actually doing, differs from API to API - But
+the above is the default (and correct) way to think of HTTP verbs. Only the 3 last slots in the list above
+can be given a **[payload]** or a **[filename]** argument - And you can only provide _one_ of these arguments.
+
 ## Wrapping up
 
 In this article we walked you through how to invoke HTTP endpoints using Hyperlambda. We talked about HTTP headers,
