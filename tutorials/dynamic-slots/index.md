@@ -116,7 +116,9 @@ live production environment literally _semantically 'patch'_ your existing code.
 a _"static"_ thing once deployed, but a living and changeable thing, you can _"mold"_ and change as you see
 fit. In a way this allows you to treat your Hyperlambda code the same way you treat your relational database
 system, by providing CRUD capabilities on your codebase, allowing you to change it over time, almost the same
-way you'd change data in your database.
+way you'd change data in your database. This is only possible because of Hyperlambda's extreme meta data
+capabilities, implying it is super structured in its format, allowing you to semantically traverse it the
+same way you would semantically traverse an XML document, and/or a JSON object.
 
 Only your fantasy sets the limits here ...
 
