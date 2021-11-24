@@ -100,10 +100,23 @@ slots.create:foo.bar
 slots.get:foo.bar
 ```
 
-As you can see, we _semantically_ retrieved a dynamic slot, for then to inject new code into it, and saving
-our updated slot again. This allows you to look at code as a dynamic living thing, possible to modify over
-time, according to your needs, whatever they may be. Arguably allowing you to from within your live production
-environment literally _semantically 'patch'_ your existing code. Only your fantasy sets the limits here ...
+The last invocation to __[slots.get]__ returns the following.
+
+```
+slots.get:foo.bar
+   log.info:[foo.bar] was invoked
+   config.get:"magic:databases:default"
+   return:x:-
+```
+
+As you can see, we _semantically_ retrieved a dynamic slot, for then to inject new slot invocations into it,
+and saving our updated slot afterwards. This allows you to look at code as a dynamic living thing, possible to
+modify over time, according to your needs, whatever they may be. Arguably allowing you to from within your
+live production environment literally _semantically 'patch'_ your existing code. Hence your code is no longer
+a _"static"_ thing once deployed, but a living and changeable thing, you can _"mold"_ and change as you see
+fit.
+
+Only your fantasy sets the limits here ...
 
 ## Persisting dynamic slots
 
