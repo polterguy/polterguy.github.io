@@ -55,6 +55,8 @@ signal
    .:unconfirmed
 ```
 
+## Slots related to dynamic slots
+
 The following slots exists in Hyperlambda allowing you to create, signal/invoke, and administrate your
 dynamic slots.
 
