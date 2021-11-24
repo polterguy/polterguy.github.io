@@ -25,11 +25,11 @@ to that I illustrate how to create a simple Hello World Hyperlambda app.
 * [Magic beyond CRUD](/tutorials/cloud-ide/) - A guided tour through Magic's Dashboard
 * [Web Sockets and SignalR in Magic](/tutorials/web-sockets/) - How to use Web Sockets with Magic
 * [Authentication and authorisation](/tutorials/auth/) - How Magic solves authentication and authorisation
+* [Hyperlambda Hello World](/tutorials/hello-world-endpoint/) - Your first Hyperlambda endpoint
 * [Super DRY code](/tutorials/super-dry/) - Exception handlers and interceptors
 * [Threading, async and scaling](/tutorials/threading/) - How Hyperlambda simplifies threading and async
 * [Scheduling tasks](/tutorials/task-scheduler/) - How to use Magic to create and schedule tasks
 * [Cryptographically secured HTTP Lambda Invocations](/tutorials/crypto-lambda-http/) - Inversion of Code
-* [Hyperlambda Hello World](/tutorials/hello-world-endpoint/) - Your first Hyperlambda endpoint
 * [Expressions, slots, and nodes](/tutorials/expressions-slots-nodes/) - Hyperlambda is *really* weird!
 * [Authentication internals](/tutorials/auth-internals/) - How to exchange the default authentication with for instance Windows authentication
 

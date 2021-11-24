@@ -81,10 +81,9 @@ multithreading.
 A problem that is fairly commonly experienced with multithreading is _"thread pool exhaustion"_. This occurs
 when your operating system is asked to create more threads than it has resources to create at the same time.
 What Hyperlambda will do though, is to actually _suspend and release your threads as it is waiting for IO data_.
-This _significantly_ increases your application in regards to scalability, and how many simultaneous users it
+This _significantly_ increases your application's scalability traits, and how many simultaneous users it
 can handle, before your web server, and/or operating system, literally crashes. This is referred to as _"async programming"_,
-and is a core feature in any modern framework, and/or programming language, allowing your code to scale a _lot_
-better.
+and is a core feature in any modern framework, and/or programming language, allowing your code to scale better.
 
 What this implies for Hyperlambda specifically, is that after all 3 threads above are created, and we're
 waiting for IO traffic from our URLs, there is actually _zero_ threads being consumed by our application,
