@@ -43,7 +43,7 @@ http.get:int:200
 
 The status code is the value of your **[http.get]** node after invoking your endpoint, and the headers collection
 is returned as the **[headers]** node. At this point you can easily traverse the array of items returned by the
-endpoint, using code resembling the following.
+endpoint using code resembling the following.
 
 ```
 http.get:"https://jsonplaceholder.typicode.com/posts"
@@ -54,9 +54,9 @@ for-each:x:@http.get/*/content/*
 
 Two lines of code, and you're returning the result of an HTTP invocation in a structured format, assuming the endpoint
 you are invoking is returning JSON. The crucial parts of course as usual is what is _not_ there; No `IHttpClientFactory`,
-no `IDisposable` objects you'll need to remember to dispose, no IoC configuration, no async/await statements, etc.
-By removing the complex parts from your resulting code, maintaining things obviously becomes much easier for both
-yourself in the future, in addition to obviously junior developers inheriting your project later down the road.
+no `IDisposable` objects you'll need to remember to dispose, no IoC container wiring, no async/await statements, etc.
+By removing the complex parts from your resulting code, maintaining things becomes much easier for both
+yourself in the future, in addition to obviously also any junior developers inheriting your project later down the road.
 
 > EVERYTHING is "syntax"
 
@@ -78,12 +78,13 @@ http.post:"https://jsonplaceholder.typicode.com/posts"
 You can also post files directly, _without_ loading your files into memory first, by replacing your above **[payload]**
 argument with a **[filename]** argument, having the value of a relative path within your _"/files/"_ folder, that
 is an actual existing file. This has the advantage of simply doing a stream copy, never exhausting your server's memory,
-regardless of how large your files are. You can also pass in streams as your **[content]** value in a similar fashion.
+regardless of how large your files are. You can also pass in streams as your **[content]** value in a similar fashion,
+and/or as expressions leading to streams, strings, or anything really - Including a byte array.
 
-However, most of the times you want to post something to another endpoint, it's typically JSON. Hyperlambda implements
-a lot of helper slots and features to help you out with this. The code below for instance, will automatically transform
-your lambda object to JSON, dynamically populate its `id` field with the value of **[.userId]**, before transmitting
-your JSON to the endpoint.
+However, most of the times you want to post something to another endpoint, it's typically JSON you want to post.
+Hyperlambda implements a lot of helper slots and features to help you out with this. The code below for instance,
+will automatically transform your lambda object to JSON, dynamically populate its `id` field with the value
+of **[.userId]**, before transmitting your JSON to the endpoint.
 
 ```
 .userId:int:1
@@ -93,17 +94,19 @@ http.post:"https://jsonplaceholder.typicode.com/posts"
       id:int:1
 ```
 
-You can do the same with **[http.patch]** and **[http.put]** for the record. This simplifies the process of dynamically
-creating your payloads to some HTTP endpoint, passing in lambda objects resulting from other parts of your code.
+You can do the same with **[http.patch]** and **[http.put]**. This simplifies the process of dynamically
+creating your payloads to some HTTP endpoint, passing in lambda objects dynamically built according to
+your own business logic.
 
 ## HTTP headers
 
 Passing in your own HTTP headers is also easy. Notice, by default Hyperlambda will associate some default
 headers with your invocation, specifically the `Accept` header and the `Content-Type` header, depending
-upon whether or not your invocation is using a verb requiring a payload or not. If you pass in your own **[headers]**
-collection, Hyperlambda will _not_ add these headers for you automatically, and you'll have to manually add them
-if you want them to be associated with your request. Below is an example of content negotiation, telling the other
-party that you're only interested in Hyperlambda being returned to you.
+upon whether or not your invocation is using a verb requiring a payload or not. The default values for these
+headers is `application/json`. If you pass in your own **[headers]** collection, Hyperlambda will _not_ add
+these headers for you automatically, and you'll have to manually add them if you want them to be associated
+with your request. Below is an example of content negotiation, telling the other party that you're only
+interested in Hyperlambda being returned to you.
 
 ```
 http.get:"https://foo.com"
