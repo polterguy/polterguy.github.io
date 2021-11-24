@@ -26,20 +26,7 @@ http.get:int:200
       Vary:Origin;Accept-Encoding
       Access-Control-Allow-Credentials:true
       Cache-Control:max-age=43200
-      Pragma:no-cache
-      X-Content-Type-Options:nosniff
-      ETag:"W/\"6b80-Ybsq/K6GwwqrYkAsFxqDXGC7DoM\""
-      Via:1.1 vegur
-      CF-Cache-Status:HIT
-      Age:16313
-      Expect-CT:"max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
-      Report-To:"{\"endpoints\":[{\"url\":\"https:\/\/a.nel.cloudflare.com\/report\/v3?s=i06nPhNECSpwAB0OSUuL0QY3sTxn%2BOgkZSpdamXktPyf4k4F0rWKWseXEPWFUIXPS3JsWKd52rROqvOVCtMbDDAeOC1JeuTSuuESG8iGEUExd%2BdyBgfmQv0uJop2QZ2PYfP6ny%2FYPdabY4hayr51\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
-      NEL:"{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
-      Server:cloudflare
-      CF-RAY:6b3064689a484345-FRA
-      Alt-Svc:"h3=\":443\";h3-29=\":443\";h3-28=\":443\";h3-27=\":443\""
-      Content-Type:application/json; charset=utf-8
-      Expires:-1
+      // etc ...
    content
       .
          userId:long:1
