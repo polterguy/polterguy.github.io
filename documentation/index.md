@@ -28,6 +28,7 @@ to that I illustrate how to create a simple Hello World Hyperlambda app.
 * [Super DRY code](/tutorials/super-dry/) - Exception handlers and interceptors
 * [Threading, async and scaling](/tutorials/threading/) - How Hyperlambda simplifies threading and async
 * [HTTP REST invocations](/tutorials/http-rest/) - How Hyperlambda simplifies HTTP REST invocations
+* [Dynamic slots](/tutorials/dynamic-slots/) - How to create dynamic Hyperlambda slots
 * [Scheduling tasks](/tutorials/task-scheduler/) - How to use Magic to create and schedule tasks
 * [Cryptographically secured HTTP Lambda Invocations](/tutorials/crypto-lambda-http/) - Inversion of Code
 * [Expressions, slots, and nodes](/tutorials/expressions-slots-nodes/) - Hyperlambda is *really* weird!
