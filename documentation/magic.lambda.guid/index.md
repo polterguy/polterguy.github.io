@@ -17,6 +17,7 @@ The source code for this repository can be found at [github.com/polterguy/magic.
 
 ## Quality gates
 
+- ![Build status](https://github.com/polterguy/magic.lambda.guid/actions/workflows/build.yaml/badge.svg)
 - [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.guid&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.guid)
 - [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.guid&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.guid)
 - [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.guid&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.guid)

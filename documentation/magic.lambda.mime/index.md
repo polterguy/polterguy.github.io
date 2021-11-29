@@ -1,18 +1,13 @@
 
 # Magic Lambda MIME
 
-Magic Lambda MIME give you the ability to parse and create MIME messages from Hyperlambda.
-It contains the following slots.
+Magic Lambda MIME gives you the ability to parse and create MIME messages from Hyperlambda.
+The project contains the following slots.
 
 * __[mime.parse]__ - Parses a MIME message, and returns it as a lambda object
 * __[.mime.parse]__ - Parses a native MimeEntity for you, and returns it as a lambda object (not for usage directly from Hyperlambda code)
 * __[mime.create]__ - Creates a MIME message for you, and returns the entire message as text, being the MIME entity
 * __[.mime.create]__ - Creates a MIME message for you, and returns it as a native MimeEntity object (not for usage directly from Hyperlambda code)
-* __[pgp.keys.private.import]__ - Imports an ASCII armored private PGP key bundle, in addition to any public keys found in the bundle
-* __[pgp.keys.public.import]__ - Imports an ASCII armored public PGP key bundle
-
-**Notice** - The PGP related slots above are currently in BETA implementation, and their API might change
-in a future version of Magic.
 
 ## Parsing MIME messages
 
@@ -20,21 +15,7 @@ Below is an example of how parsing a MIME message might look like.
 
 ```
 // Actual message
-.msg:@"MIME-Version: 1.0
-Content-Type: multipart/mixed;
-        boundary=""XXXXboundary text""
-
-This is a multipart message in MIME format.
-
---XXXXboundary text
-Content-Type: text/plain
-
-this is the body text
---XXXXboundary text
-Content-Type: text/plain;
-
-this is another body text
---XXXXboundary text--"
+.msg:"Content-Type: multipart/mixed; boundary=\"=-3O9TzEjuVDwt7d5uGDkV/Q==\"\n\n--=-3O9TzEjuVDwt7d5uGDkV/Q==\nContent-Type: text/plain\nContent-Disposition: attachment; filename=README.md\n\n# Your dynamic files folder\n\nSome README.md file\n\n--=-3O9TzEjuVDwt7d5uGDkV/Q==\nContent-Type: text/plain\n\nBar\n--=-3O9TzEjuVDwt7d5uGDkV/Q==--\n"
 
 // Parsing the above message
 mime.parse:x:@.msg
@@ -43,18 +24,17 @@ mime.parse:x:@.msg
 After evaluating the above, you'll end up with something resembling the following.
 
 ```
-mime.parse
-   entity:multipart/mixed
+mime.parse:multipart/mixed
+   entity:text/plain
       headers
-         MIME-Version:1.0
-      entity:text/plain
-         content:this is the body text
-      entity:text/plain
-         content:this is another body text
+         Content-Disposition:attachment; filename=README.md
+      content:"# Your dynamic files folder\n\nSome README.md file\n"
+   entity:text/plain
+      content:Bar
 ```
 
 Notice how the slot creates a tree structure, perfectly resembling your original MIME message. It will also take care of
-MIME headers for you, adding these into a **[headers]** collection, on a per message basis, depending upon whether or not
+MIME headers for you, adding these into a **[headers]** collection, on a per MIME entity basis, depending upon whether or not
 your message actually contains headers or not.
 
 The **[.mime.parse]** semantically works identically, except it requires as its input a raw `MimeEntity` object from MimeKit.
@@ -66,32 +46,17 @@ This slot is logically the exact opposite of the **[mime.parse]** slot, and can 
 its sibling produces as output. Below is an example.
 
 ```
-mime.create
-   entity:multipart/mixed
-      entity:text/plain
-         content:this is the body text
-      entity:text/plain
-         content:this is another body text
+mime.create:multipart/mixed
+   entity:text/plain
+      content:this is the body text
+   entity:text/plain
+      content:this is another body text
 ```
 
 Which of course wil result in something resembling the following after evaluation.
 
 ```
-mime.create:@"MIME-Version: 1.0
-Content-Type: multipart/mixed;
-        boundary=""XXXXboundary text""
-
-This is a multipart message in MIME format.
-
---XXXXboundary text
-Content-Type: text/plain
-
-this is the body text
---XXXXboundary text
-Content-Type: text/plain;
-
-this is another body text
---XXXXboundary text--"
+mime.create:"Content-Type: multipart/mixed; boundary=\"=-7+NI+p6PuOyQUzW5ihnXvw==\"\n\n--=-7+NI+p6PuOyQUzW5ihnXvw==\nContent-Type: text/plain\n\nthis is the body text\n--=-7+NI+p6PuOyQUzW5ihnXvw==\nContent-Type: text/plain\n\nthis is another body text\n--=-7+NI+p6PuOyQUzW5ihnXvw==--\n"
 ```
 
 The **[.mime.create]** slot, will semantically do the exact same thing, but instead of returning a piece of text,
@@ -99,64 +64,11 @@ being the MIME message, it will produce a raw `MimeEntity` that it returns to ca
 when the _"magic.lambda.mail"_ project constructs emails to send over an SMTP connection for instance. This slot
 can also only be invoked from C# since it starts with a period (.) as its name.
 
-## PGP Cryptography
+## Cryptography
 
-**Notice** - These parts of the project is currently in BETA implementation, and the API might change in
-a future version of Magic.
-
-This project also supports encrypting, and cryptographically signing MIME messages, in addition to verifying signed
-messages. To cryptographically sign a MIME message with your private PGP key, you can use something such as follows.
-
-```
-mime.create
-   entity:text/plain
-      sign:@"-----BEGIN PGP PRIVATE KEY BLOCK----- ...... etc"
-         password:your-pgp-key-password-here
-      content:Foo bar
-```
-
-To encrypt a message you could do something such as follows.
-
-```
-mime.create
-   entity:text/plain
-      encrypt:@"-----BEGIN PGP PUBLIC KEY BLOCK----- ..... etc"
-      content:Foo bar
-```
-
-You can encrypt and sign the message in one go, by adding both a private **[sign]** key and its password,
-in addition to a public encryption key, using **[encrypt]**. If you wish to encrypt the same message for
-multiple recipients, you can add a collection of public PGP keys that will be used to encrypt the message,
-such as the following illustrates.
-
-```
-mime.create
-   entity:text/plain
-      encrypt
-         .:@"-----BEGIN PGP PUBLIC KEY BLOCK----- ..... etc, key 1"
-         .:@"-----BEGIN PGP PUBLIC KEY BLOCK----- ..... etc, key 2"
-      content:Foo bar
-```
-
-**Notice** - Due to an API flaw in MimeKit, and how it looks up private PGP keys during parsing end decrypting
-of MIME messages, the project does not support _decrypting_ of messages yet. Once MimeKit implements alternative
-PGP key storages, or at least hooks to supply your own custom storage, not tied to Gnu Privacy Guard, we might
-reconsider and support decrypting of MIME messages.
-
-## Importing public and private PGP keys
-
-Notice, these slots expects a PGP key bundle, either private or public, and will unwrap each public and private
-key found in the bundle, and invoke your **[.lambda]** callback once for each key found in the bundle. This
-callback will be given the fingerprint, ID, ids, etc for each key in your bundle. Usage is something as follows.
-
-```
-pgp.keys.public.import:@"-----BEGIN PGP PUBLIC KEY BLOCK----- ..... etc"
-   .lambda
-      lambda2hyper:x:.
-      log.info:x:-
-```
-
-The API for importing private keys is the exact same as for importing public keys.
+**Notice** - The PGP parts was take out of the library starting from version 9.9.8, since it was a piece of cabbage, due to
+dependencies upon GnuPG, the local file system to resolve PGP key pairs, etc. At some point we might re-introduce these parts
+into the library, but if this is a problem for you, make sure you use a version _before_ version 9.9.8 of the library.
 
 ## Project website
 
@@ -164,6 +76,7 @@ The source code for this repository can be found at [github.com/polterguy/magic.
 
 ## Quality gates
 
+- ![Build status](https://github.com/polterguy/magic.lambda.mime/actions/workflows/build.yaml/badge.svg)
 - [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.mime&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.mime)
 - [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.mime&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.mime)
 - [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.mime&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.mime)

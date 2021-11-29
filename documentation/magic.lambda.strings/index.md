@@ -20,6 +20,7 @@ This project contains string manipulation slots for Magic. More specifically, it
 * __[strings.trim-start]__ - Trims a string only to its left, optionally for all characters found in its argument
 * __[strings.trim-end]__ - Trims a string only to its right, optionally for all characters found in its argument
 * __[strings.url-encode]__ - URL encodes the specified string
+* __[strings.url-decode]__ - URL decodes the specified string
 * __[strings.substring]__ - Returns the sub-string of the specified string
 * __[strings.matches]__ - Returns the regular expression matches found from specified source
 
@@ -257,6 +258,22 @@ Resulting in the following after execution.
 strings.url-encode:thomas%40servergardens.com
 ```
 
+### [strings.url-decode]
+
+URL decodes a string, the opposite of **[strings.url-encode]**. Example can be found below.
+
+```
+strings.url-encode:thomas@servergardens.com
+strings.url-decode:x:-
+```
+
+Resulting in the following after execution.
+
+```
+strings.url-encode:thomas%40servergardens.com
+strings.url-decode:thomas@servergardens.com
+```
+
 ### [strings.substring]
 
 Returns a substring of the specified string.
@@ -305,6 +322,7 @@ The source code for this repository can be found at [github.com/polterguy/magic.
 
 ## Quality gates
 
+- ![Build status](https://github.com/polterguy/magic.lambda.strings/actions/workflows/build.yaml/badge.svg)
 - [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.strings&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.strings)
 - [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.strings&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.strings)
 - [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.strings&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.strings)
