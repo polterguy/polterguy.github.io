@@ -47,6 +47,7 @@ its sibling produces as output. Below is an example.
 
 ```
 mime.create:multipart/mixed
+   structured:false
    entity:text/plain
       content:this is the body text
    entity:text/plain
@@ -59,16 +60,23 @@ Which of course wil result in something resembling the following after evaluatio
 mime.create:"Content-Type: multipart/mixed; boundary=\"=-7+NI+p6PuOyQUzW5ihnXvw==\"\n\n--=-7+NI+p6PuOyQUzW5ihnXvw==\nContent-Type: text/plain\n\nthis is the body text\n--=-7+NI+p6PuOyQUzW5ihnXvw==\nContent-Type: text/plain\n\nthis is another body text\n--=-7+NI+p6PuOyQUzW5ihnXvw==--\n"
 ```
 
+**Notice** - If you set its **[structured]** argument to boolean `true`, the slot will return the MIME envelope headers
+for the outermost MIME entity _"detached"_ from the rest of the message. This is useful when you for some reasons don't want
+the headers for the outermost entity to be a part of the actual message, such as for instance when creating `multipart/form-data`
+types of messages you need to transmit to some HTTP endpoint. If you do this, the return after executing the slot will
+resemble the following.
+
+```
+mime.create
+   Content-Type:"multipart/mixed; boundary=\"=-EbMBZ3eHrSrMqtB2KHSv+A==\""
+   content:"--=-EbMBZ3eHrSrMqtB2KHSv+A==\nContent-Type: text/plain\n\nthis is the body text\n--=-EbMBZ3eHrSrMqtB2KHSv+A==\nContent-Type: text/plain\n\nthis is another body text\n--=-EbMBZ3eHrSrMqtB2KHSv+A==--\n"
+```
+
 The **[.mime.create]** slot, will semantically do the exact same thing, but instead of returning a piece of text,
 being the MIME message, it will produce a raw `MimeEntity` that it returns to caller. This slot is used internally
-when the _"magic.lambda.mail"_ project constructs emails to send over an SMTP connection for instance. This slot
-can also only be invoked from C# since it starts with a period (.) as its name.
-
-## Cryptography
-
-**Notice** - The PGP parts was take out of the library starting from version 9.9.8, since it was a piece of cabbage, due to
-dependencies upon GnuPG, the local file system to resolve PGP key pairs, etc. At some point we might re-introduce these parts
-into the library, but if this is a problem for you, make sure you use a version _before_ version 9.9.8 of the library.
+when the _"magic.lambda.mail"_ project constructs emails to send over an SMTP connection for instance, and when
+the _"magic.lambda.http"_ project transmits `multipart/form-data` types of requests. This slot can _only_ be
+invoked from C# since it starts with a period (.) as its name.
 
 ## Project website
 

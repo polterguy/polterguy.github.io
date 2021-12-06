@@ -166,12 +166,6 @@ structure. If you choose to retrieve messages in **[raw]** format, the message n
 the raw MIME message as text. If you choose this path, and you later want to actually parse the message,
 to make it become a structured lambda object - You can use the **[mime.parse]** slot from Magic Lambda MIME.
 
-## Cryptography
-
-**Notice** - The PGP parts was take out of the library starting from version 9.9.8, since it was a piece of cabbage, due to
-dependencies upon GnuPG, the local file system to resolve PGP key pairs, etc. At some point we might re-introduce these parts
-into the library, but if this is a problem for you, make sure you use a version _before_ version 9.9.8 of the library.
-
 ## Project website
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.mail](https://github.com/polterguy/magic.lambda.mail), and you can provide feedback, provide bug reports, etc at the same place.
