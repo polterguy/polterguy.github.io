@@ -11,9 +11,10 @@ access, and also slots to help you open database connections, create transaction
 These slots never executes SQL towards your data adapter, but rather simply generates your SQL, and
 returns the results of the SQL generation process back to you. They're mostly intended for debugging
 purposes, and/or learning purposes, and can be interchanged with their **[data.xxx]** equivalent,
-and/or their **[mysql.xxx]**/**[mssql.xxx]** equivalent, etc. In this documentation we will mostly
-be using these slots, but you can substitute our usage of these slots with for instance **[data.xxx]**
-if you wish to actually execute some SQL towards your database adapter of choice.
+and/or their **[mysql.xxx]**/**[mssql.xxx]**/**[pgsql.xxx]** equivalent, etc. In this documentation we
+will mostly be using these slots, but you can substitute our usage of these slots with for
+instance **[data.xxx]** if you wish to actually execute some SQL towards your database adapter of
+§choice.
 
 ## [data.*] slots
 
@@ -357,17 +358,18 @@ sql.read
    limit:-1
    columns
       count(*)
+        as:count
 ```
 
 The above will result in the following SQL.
 
 ```
-select count(*) from 'table1'
+select count(*) as count from 'table1'
 ```
 
 **Notice**, by setting **[limit]** to _"-1"_, like we do above, we avoid adding the limit parts to our SQL. Unless
 you explicitly specify a limit, the default value will always be 25, to avoid accidentally exhausting your database,
-and/or web server, by selecting all records from a table with millions of records.
+and/or web server by selecting all records from a table with millions of records.
 
 ### Paging
 
@@ -458,6 +460,7 @@ the same join. An example of the latter can be found below.
 
 ```
 sql.read
+   generate:true
    limit:-1
    table:table1
       join:table2
@@ -475,10 +478,12 @@ select * from 'table1'
       'table1'.'fk2' = 'table2'.'pk2'
 ```
 
-**Notice** - Joining tables works exactly the same way as using a **[where]** argument, allowing you
+**Notice** - Joining tables works _almost_ the exact same way as using a **[where]** argument, allowing you
 to supply an operator for your join, such as we illustrate below, where we're using the `!=` operator,
 instead of the (default) equality comparison. See the **[where]** criteria for details about comparison
 operators.
+
+You can also explicitly choose a **[type]** of join, such as we illustrate below.
 
 ```
 sql.read
@@ -500,12 +505,24 @@ select * from 'table1' inner join 'table2' on 'table1'.'fk1' != 'table2'.'pk1'
 The **[type]** argument to your **[join]** arguments, can be _"inner"_, _"full"_, _"left"_ or _"right"_,
 resulting in the equivalent type of join for your SQL.
 
-### Explicit arguments declarations for joins
+### Differences between [join] and [where]
+
+There is one crucial semantic difference between a **[join]** condition and a **[where]** condition, which is
+that the library assumes a join is _always_ between two columns, while a where always assume you're _always_
+comparing against a static value. This implies that you _cannot_ add static values into your SQL as a part of
+your **[join]** condition, while the opposite is true for a **[while]**.
+
+Although this technically doesn't allow you to create any SQL you want to create, it is still more
+in _"the spirit"_ of SQL as a standard - And you can always add your static conditions into your **[where]**
+parts, while adding your table comparisons into your **[join]** conditions. This allows you to create
+any _result_ you want to achieve, although technically not any _SQL_ you want to have.
+
+#### Explicit arguments declarations for joins
 
 Normally you don't need to worry about this, but sometimes you need to explicitly add an argument to
 your CRUD slot invocations if it has a `join` part, and you want one of your
-conditions for your join to be a static value of some sort, and not a comparison to your RHS table column.
-This can be accomplished with something such as the following.
+conditions for your join to be a static value of some sort, and not a comparison to your right hand side
+table column. This can be accomplished with something such as the following.
 
 ```
 sql.read
@@ -528,11 +545,14 @@ data.read:select * from `foo` inner join `bar` on `foo`.`field1` = `bar`.`field2
 ```
 
 As you can see in the above result, the `@static-value` becomes a *statically* declared condition to your join,
-and not assumed to be a reference to a field in your RHS join table. This is one of those edge cases you normally
-rarely need, but might be useful on rare occasions. The reasons why this works is because the RHS side of your
-join condition starts with an `@` character, which assumes you are referencing an argument and not a field in
-your joined table. This only has effects on your **[join]** parts, implying **[xxx.read]** slot invocations,
+and not assumed to be a reference to a field in your right hand side joined table. This is one of those edge cases
+you normally rarely need, but might be useful on rare occasions. The reasons why this works is because the RHS side
+of your join condition starts with an `@` character, which assumes you are referencing an argument and not a field
+in your joined table. This only has effects on your **[join]** parts, implying **[xxx.read]** slot invocations,
 since these are the only slots supporting joins.
+
+The above is the only exception that allows you to join on static values and not column names. However, as a general
+rule of thumb, we encourage users to **[join]** on table columns and add static values into your **[where]** conditions.
 
 ### 'Namespacing' columns
 

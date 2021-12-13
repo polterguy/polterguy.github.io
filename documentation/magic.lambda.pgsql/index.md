@@ -1,23 +1,23 @@
 
-# Magic Lambda for MySQL
+# Magic Lambda for PostgreSQL
 
-This is the MySQL data adapter for Magic. This project allows you to provide a semantic lambda structure
-to its slots, which in turn will dynamically create a MySQL dialect SQL statement for you, for all basic
-types of CRUD SQL statements. In addition, it provides slots to open a MySQL database connection, and
-such allows you to declare your own SQL statements to be executed towards a MySQL database. Slots
+This is the PostreSQL data adapter for Magic. This project allows you to provide a semantic lambda structure
+to its slots, which in turn will dynamically create a PgSQL dialect SQL statement for you, for all basic
+types of CRUD SQL statements. In addition, it provides slots to open a PgSQL database connection, and
+such allows you to declare your own SQL statements to be executed towards a PostgreSQL database. Slots
 this project contains are as follows.
 
-* __[mysql.connect]__ - Connects to a database
-* __[mysql.create]__ - Creates a single record in the specified table
-* __[mysql.read]__ - Reads multiple records from the specified table
-* __[mysql.update]__ - Updates a single record in the specified table
-* __[mysql.delete]__ - Deletes a single record in the specified table
-* __[mysql.select]__ - Executes an arbitrary SQL statement, and returns results of reader as lambda object to caller
-* __[mysql.scalar]__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
-* __[mysql.execute]__ - Executes an aribitrary SQL statement
-* __[mysql.transaction.create]__ - Creates a new transaction
-* __[mysql.transaction.commit]__ - Explicitly commits an open transaction
-* __[mysql.transaction.rollback]__ - Explicitly rolls back an open transaction
+* __[pgsql.connect]__ - Connects to a database
+* __[pgsql.create]__ - Creates a single record in the specified table
+* __[pgsql.read]__ - Reads multiple records from the specified table
+* __[pgsql.update]__ - Updates a single record in the specified table
+* __[pgsql.delete]__ - Deletes a single record in the specified table
+* __[pgsql.select]__ - Executes an arbitrary SQL statement, and returns results of reader as lambda object to caller
+* __[pgsql.scalar]__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
+* __[pgsql.execute]__ - Executes an aribitrary SQL statement
+* __[pgsql.transaction.create]__ - Creates a new transaction
+* __[pgsql.transaction.commit]__ - Explicitly commits an open transaction
+* __[pgsql.transaction.rollback]__ - Explicitly rolls back an open transaction
 
 **Notice** - If you use any of the CRUD slots from above, the whole idea is that you can polymorphistically
 use the same lambda object, towards any of the underlaying database types, and the correct specific syntax
@@ -26,7 +26,7 @@ transparently use the same lambda object, towards any of the database types Magi
 change it in any ways.
 
 All of the slots in this project are documented in the documentation for the _"magic.data.common"_ project.
-If you replace the **[data.xxx]** or **[sql.xxx]** slots with **[mysql.xxx]**, you will use the MySQL specific
+If you replace the **[data.xxx]** or **[sql.xxx]** slots with **[pgsql.xxx]**, you will use the PgSQL specific
 slots, instead of the generic, and/or polymorphistic slots.
 
 Hence, please refer to the documentation for _"magic.data.common"_ to read the documentation for this
