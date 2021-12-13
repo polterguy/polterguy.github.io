@@ -56,6 +56,7 @@ to that I illustrate how to create a simple Hello World Hyperlambda app.
 * [magic.lambda.dates](/documentation/magic.lambda.dates/) - Allows you to manipulate DateTime objects from Hyperlambda
 * [magic.lambda.slots](/documentation/magic.lambda.slots/) - Dynamically create your own slots/functions
 * [magic.lambda.mysql](/documentation/magic.lambda.mysql/) - Accessing your MySQL server from Hyperlambda
+* [magic.lambda.pgsql](/documentation/magic.lambda.pgsql/) - Accessing your PostgreSQL server from Hyperlambda
 * [magic.lambda.mssql](/documentation/magic.lambda.mssql/) - Accessing your MS SQL Server from Hyperlambda
 * [magic.lambda.image](/documentation/magic.lambda.image/) - Image library, allowing you to generate QR code
 * [magic.lambda.crypto](/documentation/magic.lambda.crypto/) - Cryptography helpers for Hyperlambda
