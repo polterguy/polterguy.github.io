@@ -34,7 +34,7 @@ project.
 
 ## Project website
 
-The source code for this repository can be found at [github.com/polterguy/magic.lambda.mysql](https://github.com/polterguy/magic.lambda.mysql), and you can provide feedback, provide bug reports, etc at the same place.
+The source code for this repository can be found at [github.com/polterguy/magic.lambda.pgsql](https://github.com/polterguy/magic.lambda.pgsql), and you can provide feedback, provide bug reports, etc at the same place.
 
 ## Quality gates
 
