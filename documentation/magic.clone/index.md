@@ -41,9 +41,8 @@ ng serve
 When `ng serve` and `dotnet run` is done, you can visit [localhost:4200](https://localhost:4200) in your
 browser, and you should be set.
 
-To debug, click F5 in VS Code, and choose _".Net Core"_, then click _"Configure"_ and choose _"Attach to existing .Net Core command line program"_. Save your _"launch.js"_ file, and click F5 once again, and choose the process
-called _"backend.exe"_ (something) at the top of your choices. You can now set breakpoints, and/or debug
-Magic locally on your development machine.
+To debug, click F5 in VS Code. You can now set breakpoints, and/or debug Magic locally on your development
+machine.
 
 ## Build status of all projects
 
