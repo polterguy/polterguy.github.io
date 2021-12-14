@@ -2,8 +2,8 @@
 # Magic Lambda for PostgreSQL
 
 This is the PostgreSQL data adapter for Magic. This project allows you to provide a semantic lambda structure
-to its slots, which in turn will dynamically create a PgSQL dialect SQL statement for you, for all basic
-types of CRUD SQL statements. In addition, it provides slots to open a PgSQL database connection, and
+to its slots, which in turn will dynamically create a PostgreSQL dialect SQL statement for you, for all basic
+types of CRUD SQL statements. In addition, it provides slots to open a PostgreSQL database connection, and
 such allows you to declare your own SQL statements to be executed towards a PostgreSQL database. Slots
 this project contains are as follows.
 
