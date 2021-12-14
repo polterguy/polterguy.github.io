@@ -116,6 +116,7 @@ GitHub project pages of all projects.
 * ![Build status](https://github.com/polterguy/magic.lambda.mime/actions/workflows/build.yaml/badge.svg) - [magic.lambda.mime](https://github.com/polterguy/magic.lambda.mime)
 * ![Build status](https://github.com/polterguy/magic.lambda.mssql/actions/workflows/build.yaml/badge.svg) - [magic.lambda.mssql](https://github.com/polterguy/magic.lambda.mssql)
 * ![Build status](https://github.com/polterguy/magic.lambda.mysql/actions/workflows/build.yaml/badge.svg) - [magic.lambda.mysql](https://github.com/polterguy/magic.lambda.mysql)
+* ![Build status](https://github.com/polterguy/magic.lambda.pgsql/actions/workflows/build.yaml/badge.svg) - [magic.lambda.pgsql](https://github.com/polterguy/magic.lambda.pgsql)
 * ![Build status](https://github.com/polterguy/magic.lambda.scheduler/actions/workflows/build.yaml/badge.svg) - [magic.lambda.scheduler](https://github.com/polterguy/magic.lambda.scheduler)
 * ![Build status](https://github.com/polterguy/magic.lambda.slots/actions/workflows/build.yaml/badge.svg) - [magic.lambda.slots](https://github.com/polterguy/magic.lambda.slots)
 * ![Build status](https://github.com/polterguy/magic.lambda.sockets/actions/workflows/build.yaml/badge.svg) - [magic.lambda.sockets](https://github.com/polterguy/magic.lambda.sockets)
