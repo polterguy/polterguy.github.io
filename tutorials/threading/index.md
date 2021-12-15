@@ -4,9 +4,8 @@
 Although Hyperlambda is a super high level programming language, it's got very good support for threading,
 and due to that it's _implicitly async in nature_, it's also extremely scalable. In this micro tutorial,
 we will walk you through some of the concepts related to threading, and explain how threading is simplified
-in Hyperlambda, eliminating an entire axiom of problems typically related to creating and handling multithreaded
-programming. If you prefer to watch YouTube videos of me demonstrating things, feel free to watch the following
-video.
+in Hyperlambda, eliminating an entire axiom of problems related to multithreaded programming. If you prefer
+to watch YouTube videos of me demonstrating things, feel free to watch the following video.
 
 <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/36SYdJN_HIc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
