@@ -71,15 +71,23 @@ a **[payload]** node to your invocations, such as the folloing illustrates.
 
 ```
 http.post:"https://jsonplaceholder.typicode.com/posts"
-   convert:true
    payload:@"{""userId"": 1, ""id"": 1}"
 ```
+
+**Notice** - Due to not passing in a **[convert]** argument in the above snippet, any response returned by
+the above endpoint will _not_ be automatically parsed into its equivalent lambda object.
 
 You can also post files directly, _without_ loading your files into memory first, by replacing your above **[payload]**
 argument with a **[filename]** argument, having the value of a relative path within your _"/files/"_ folder, that
 is an actual existing file. This has the advantage of simply doing a stream copy, never exhausting your server's memory,
 regardless of how large your files are. You can also pass in streams as your **[content]** value in a similar fashion,
-and/or as expressions leading to streams, strings, or anything really - Including a byte array.
+and/or as expressions leading to streams, strings, or anything really - Including a byte array. Below is
+an example passing in a file to some POST endpoint.
+
+```
+http.post:"https://foo-bar.com"
+   filename:/README.md
+```
 
 Most of the times you want to post something to another endpoint, it's typically JSON you want to post.
 Hyperlambda implements a lot of helper slots and features to help you out with this. The code below for instance,
@@ -112,7 +120,7 @@ following content types for you.
 * __multipart/form-data__ - Automatically transforms your lambda object to a multipart MIME payload
 
 To use any of the above automatic conversions, make sure you _do not_ provide a value for your **[payload]**,
-but rather provide a semantic lambda structure, such as the following illustrates.
+but rather provide a semantic lambda structure such as the following illustrates.
 
 ```
 http.post:"https://foo.com/hyperlambda-endpoint"
@@ -148,16 +156,17 @@ having the Content-Type automatically set to _"multipart/form-data"_. This allow
 submission, arguably automating the behaviour of a browser.
 
 **Notice** - If your endpoint _returns_ any of the following content types, you can add a **[convert]** argument
-to your invocation to automatically reverse the process, and have Hyperlambda convert the response _to_ Hyperlambda.
+to your invocation to automatically reverse the process, and have Hyperlambda convert the response _to_ a lambda
+object.
 
-* __application/json__ - Transforms _from_ JSON to a lambda object
+* __application/json__ - Transforms the response _from_ JSON to a lambda object
 * __application/x-json__ - Same as above
-* __application/hyperlambda__ - Transforms _from_ Hyperlambda to a lambda object
+* __application/hyperlambda__ - Transforms the response _from_ Hyperlambda to a lambda object
 * __application/x-hyperlambda__ - Same as above
-* __application/www-form-urlencoded__ - Transforms _from_ URL encoded values to a lambda object
+* __application/www-form-urlencoded__ - Transforms the response _from_ URL encoded values to a lambda object
 * __application/x-www-form-urlencoded__ - Same as above
 
-Currently there is no automatic conversion _from_ `multipart/form-data` to lambda.
+Currently there is no automatic conversion _from_ `multipart/form-data` responses to lambda.
 
 ## HTTP headers
 
