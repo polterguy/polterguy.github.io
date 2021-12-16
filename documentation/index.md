@@ -58,6 +58,7 @@ to that I illustrate how to create a simple Hello World Hyperlambda app.
 * [magic.lambda.mysql](/documentation/magic.lambda.mysql/) - Accessing your MySQL server from Hyperlambda
 * [magic.lambda.pgsql](/documentation/magic.lambda.pgsql/) - Accessing your PostgreSQL server from Hyperlambda
 * [magic.lambda.mssql](/documentation/magic.lambda.mssql/) - Accessing your MS SQL Server from Hyperlambda
+* [magic.lambda.odbc](/documentation/magic.lambda.odbc/) - Accessing an ODBC connection from Hyperlambda
 * [magic.lambda.image](/documentation/magic.lambda.image/) - Image library, allowing you to generate QR code
 * [magic.lambda.crypto](/documentation/magic.lambda.crypto/) - Cryptography helpers for Hyperlambda
 * [magic.lambda.guid](/documentation/magic.lambda.guid/) - Creating a guid from Hyperlambda
@@ -116,6 +117,7 @@ GitHub project pages of all projects.
 * ![Build status](https://github.com/polterguy/magic.lambda.mime/actions/workflows/build.yaml/badge.svg) - [magic.lambda.mime](https://github.com/polterguy/magic.lambda.mime)
 * ![Build status](https://github.com/polterguy/magic.lambda.mssql/actions/workflows/build.yaml/badge.svg) - [magic.lambda.mssql](https://github.com/polterguy/magic.lambda.mssql)
 * ![Build status](https://github.com/polterguy/magic.lambda.mysql/actions/workflows/build.yaml/badge.svg) - [magic.lambda.mysql](https://github.com/polterguy/magic.lambda.mysql)
+* ![Build status](https://github.com/polterguy/magic.lambda.odbc/actions/workflows/build.yaml/badge.svg) - [magic.lambda.odbc](https://github.com/polterguy/magic.lambda.odbc)
 * ![Build status](https://github.com/polterguy/magic.lambda.pgsql/actions/workflows/build.yaml/badge.svg) - [magic.lambda.pgsql](https://github.com/polterguy/magic.lambda.pgsql)
 * ![Build status](https://github.com/polterguy/magic.lambda.scheduler/actions/workflows/build.yaml/badge.svg) - [magic.lambda.scheduler](https://github.com/polterguy/magic.lambda.scheduler)
 * ![Build status](https://github.com/polterguy/magic.lambda.slots/actions/workflows/build.yaml/badge.svg) - [magic.lambda.slots](https://github.com/polterguy/magic.lambda.slots)
