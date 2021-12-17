@@ -8,7 +8,7 @@ In this section we'll walk you through all of these different methods to get sta
 
 ## Using Docker
 
-The easiest way to get started is to [download the docker-compose.yml file](https://github.com/polterguy/magic/releases/download/v9.9.0/docker-compose.yml), assuming you have [Docker](https://www.docker.com/products/docker-desktop)
+The easiest way to get started is to [download the docker-compose.yml file](https://github.com/polterguy/magic/releases/download/v10.0.4/docker-compose.yml), assuming you have [Docker](https://www.docker.com/products/docker-desktop)
 installed, and then execute the following in a terminal window where you saved the file. This is the
 exact same process for both Windows, Mac, and Linux.
 
