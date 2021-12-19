@@ -670,31 +670,6 @@ it returns the actual node by reference.
 result - Implying it allows you to deeply traverse nodes passed in as references. This is sometimes
 useful in combination with referenced nodes, passed in as values of other nodes.
 
-### [convert]
-
-This slot converts the value of an expression from its original type, to whatever **[type]** declaration you
-supply as its argument.
-
-```
-.foo:57
-convert:x:-
-   type:int
-```
-
-**Notice** - You can also base64 encode and decode `byte[]` with this slot, by passing in _"base64"_ or
-_"from-base64"_ as your **[type]** argument.
-
-### [type]
-
-This slot return the Hyperlambda type name of some value.
-
-```
-.foo:int:57
-type:x:-
-```
-
-After invoking the above, the value of **[type]** will be `int`.
-
 ### [format]
 
 This slot converts the format some expression or value according to some specified `String.Format` expression.
@@ -793,52 +768,6 @@ expression found in its value.
 eval:x:@.lambda
 ```
 
-### [whitelist]
-
-This slot temporarily within the given scope changes the available slots, allowing you to declare a block
-of lambda, where only a sub set of your vocabulary is available for some piece of code to signal. This allows
-you to relatively securely allow some partially untrusted source to pass in a piece of Hyperlambda, for then
-to allow it to evaluate its own Hyperlambda. The slot takes two arguments.
-
-* __[vocabulary]__ - Whitelisted slots
-* __[.lambda]__ - Lambda object to evaluate for the given scope
-
-```
-.result
-whitelist
-   vocabulary
-      set-value
-   .lambda
-
-      // Inside of this [.lambda] object, we can only invoke [set-value], and no other slots!
-      set-value:x:@.result
-         .:foo
-
-      // Notice, the next line will throw an exception,
-      // because [add] is not whitelisted in our above [vocabulary] declaration!
-      add:x:@.result
-         .
-            foo:bar
-```
-
-### [context]
-
-This slot allows you to add an object unto the stack, such that it can later be retrieved with
-the **[get-context]** slot. Below is an example.
-
-```
-.result
-context:foo
-   value:bar
-   .lambda
-      set-value:x:@.result
-         get-context:foo
-```
-
-The slot requires a name as the value of its slot invocation node, a **[value]** as the value
-you want to put onto the stack, and a **[.lambda]** object being the lambda where the stack object
-exists, and can be retrieved using **[get-context]**.
-
 ## Threading
 
 ### [fork]
@@ -893,6 +822,39 @@ sleep:1000
 
 ## Miscellaneous slots
 
+### [types]
+
+This slot returns all Hyperlambda types your current installation supports.
+
+```
+types
+```
+
+### [type]
+
+This slot return the Hyperlambda type name of some value.
+
+```
+.foo:int:57
+type:x:-
+```
+
+After invoking the above, the value of **[type]** will be `int`.
+
+### [convert]
+
+This slot converts the value of an expression from its original type, to whatever **[type]** declaration you
+supply as its argument.
+
+```
+.foo:57
+convert:x:-
+   type:int
+```
+
+**Notice** - You can also base64 encode and decode `byte[]` with this slot, by passing in _"base64"_ or
+_"from-base64"_ as your **[type]** argument.
+
 ### [vocabulary]
 
 Returns the name of every static slot in your system, optional passing in a string, or an expression leading to
@@ -906,6 +868,52 @@ vocabulary
 // Returns only slots starting with [io.file]
 vocabulary:io.file
 ```
+
+### [whitelist]
+
+This slot temporarily within the given scope changes the available slots, allowing you to declare a block
+of lambda, where only a sub set of your vocabulary is available for some piece of code to signal. This allows
+you to relatively securely allow some partially untrusted source to pass in a piece of Hyperlambda, for then
+to allow it to evaluate its own Hyperlambda. The slot takes two arguments.
+
+* __[vocabulary]__ - Whitelisted slots
+* __[.lambda]__ - Lambda object to evaluate for the given scope
+
+```
+.result
+whitelist
+   vocabulary
+      set-value
+   .lambda
+
+      // Inside of this [.lambda] object, we can only invoke [set-value], and no other slots!
+      set-value:x:@.result
+         .:foo
+
+      // Notice, the next line will throw an exception,
+      // because [add] is not whitelisted in our above [vocabulary] declaration!
+      add:x:@.result
+         .
+            foo:bar
+```
+
+### [context]
+
+This slot allows you to add an object unto the stack, such that it can later be retrieved with
+the **[get-context]** slot. Below is an example.
+
+```
+.result
+context:foo
+   value:bar
+   .lambda
+      set-value:x:@.result
+         get-context:foo
+```
+
+The slot requires a name as the value of its slot invocation node, a **[value]** as the value
+you want to put onto the stack, and a **[.lambda]** object being the lambda where the stack object
+exists, and can be retrieved using **[get-context]**.
 
 ### [apply]
 

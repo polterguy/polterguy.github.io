@@ -292,22 +292,6 @@ signaler.Signal(".io.folder.root", node);
 var rootFolder = node.Get<string>();
 ```
 
-## C# extensions
-
-If you want to, you can easily completely exchange the underlaying file system, with your own _"virtual file system"_, since all interaction with the physical file system is done through the `IFileService` and 
-`IFolderService` interfaces. This allows you to circumvent the default dependency injected service, and
-binding towards some other implementation, at least in theory allowing you to (for instance) use a database
-based file system, etc. If you want to do this, you'll need to supply your own bindings to the following
-three interfaces, using your IoC container.
-
-* `magic.lambda.io.contracts.IFileService`
-* `magic.lambda.io.contracts.IFolderService`
-* `magic.lambda.io.contracts.IStreamService`
-
-If you want to do this, you would probably want to manually declare your own implementation for these classes,
-by tapping into _"magic.library"_ somehow, or not invoking its default method that binds towards the default
-implementation classes somehow.
-
 ## Project website
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.io](https://github.com/polterguy/magic.lambda.io), and you can provide feedback, provide bug reports, etc at the same place.
