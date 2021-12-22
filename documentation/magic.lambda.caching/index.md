@@ -10,7 +10,7 @@ Cache helper slots for Magic, more specifically the following slots.
 * __[cache.list]__ - Lists all items in cache.
 * __[cache.count]__ - Returns the number of cache items in total.
 
-All of the above slots requires a key as its value.
+All of the above slots requires a key as its value, and/or a **[filter]** argument.
 
 ## [cache.set]
 
@@ -83,7 +83,8 @@ which if provided, will _only_ delete items starting out with the specified filt
 can be found below.
 
 ```
-cache.clear:foo.bar
+cache.clear
+   filter:foo.bar
 ```
 
 The above will _only_ remove cache items having a key that starts out with _"foo.bar"_ implying
@@ -95,7 +96,12 @@ that for instance the following items will be cleared.
 
 While an item with a key of _"x.foo.bar"_ will _not_ be removed. This allows you to _"namespace"_
 your cache items, and clearing out for instance all cache items matching the specified namespace,
-in one go.
+in one go. You can optionally supply the clearing filter as the value of the node, such as the following
+illustrates.
+
+```
+cache.clear:foo.bar
+```
 
 ## [cache.list]
 
@@ -114,23 +120,38 @@ This slot also supports the following optional arguments.
 * __[offset]__ - Offset of where to start returning items.
 * __[filter]__ - Filter condition declaring which items to return. See the __[cache.clear]__ slot to understand how it works, since this argument functions in the exact same way, assuming your filter is a _"namespace"_.
 
+The **[filter]** argument can optionally be supplied as the value of the node such as the following illustrates.
+
+```
+cache.set:cache-item-key
+   expiration:5
+   value:Howdy world
+cache.list:cache
+```
+
 ## Internals
 
 Internally the cache this project is using is _not_ the `MemoryCache` from .Net, since this class
 suffers from a whole range of problems in regards to its API, such as not being able to count or
 iterate items, etc. Hence, the actual implementation is _completely custom_, and is based upon
-the `IMagicMemoryCache` interface, which by default is wired up towards its `MagicMemoryCache`
+the `IMagicCache` interface, which by default is wired up towards its `MagicMemoryCache`
 implementation. This is a conscious choice, since first of all the `IMemoryCache` that .Net
 provides out of the box is _really_ slow, in addition to that it is missing a _lot_ of crucial
 parts expected from a mature memory based cache implementation.
 
 If you want to access the actual cache from C# or something, make sure you use it through the dependency
-injected `IMagicMemoryCache` interface, providing you with the implementation class needed to consume
+injected `IMagicCache` interface, providing you with the implementation class needed to consume
 it from C#. This interface has a lot of nice methods you can use to have a robust and fast memory
 based cache implementation in your C# code - In addition to that it synchronises access such that
 no race conditions can be experienced. However, _it is a memory based cache_. If you need better
-caching features, going beyond what a basic memory based cache implementation can achieve, you might
+caching features going beyond what a basic memory based cache implementation can achieve, you might
 want to implement Redis or something similar as your own custom C# extension.
+
+Notice, if you consume the `IMagicCache` interface from your own C# code, you can create _"hidden"_
+cache items that are only possible to retrieve from C# code and not from Hyperlambda. This allows
+you to create a C# only type of cache, where items added as hidden cannot in any ways what so ever
+be retrieved from Hyperlambda. This is useful for C# only type of cache items, you don't want to expose
+to Hyperlambda code.
 
 ## Project website
 
