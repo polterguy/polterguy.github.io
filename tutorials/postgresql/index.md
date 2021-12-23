@@ -90,9 +90,6 @@ If you want to update these in the future as I create new releases, all you need
 `docker pull servergardens/magic-frontend:latest` and `docker pull servergardens/magic-backend:latest`
 in _any_ terminal window. This works since Docker uses a local _"repository of images"_ on your host machine.
 
-To stop the containers you need to go to the same folder you saved your _"docker-compose.yml"_
-file in, and type `docker-compose down`.
-
 ## Wrapping up
 
 In this micro-tutorial we used Docker to configure Magic to use PostgreSQL instead of MySQL.
