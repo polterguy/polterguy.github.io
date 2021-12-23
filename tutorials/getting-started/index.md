@@ -26,7 +26,10 @@ can execute in the _"SQL"_ menu item to create an example database. In the video
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/ldy-idQO_jA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-**Notice** - If you want to use SQL Server instead of MySQL you can follow [this recipe](/tutorials/sql-server/).
+**Notice** - If you want to use Magic with something else but MySQL you can find recipes below.
+
+* [Using Magic with SQL Server](/tutorials/sql-server/).
+* [Using Magic with PostgreSQL](/tutorials/postgresql/).
 
 ## Download the code
 

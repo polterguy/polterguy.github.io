@@ -34,6 +34,7 @@ to that I illustrate how to create a simple Hello World Hyperlambda app.
 * [Expressions, slots, and nodes](/tutorials/expressions-slots-nodes/) - Hyperlambda is *really* weird!
 * [Authentication internals](/tutorials/auth-internals/) - How to exchange the default authentication with for instance Windows authentication
 * [Using Magic with SQL Server](/tutorials/sql-server/) - Using Magic with Microsoft SQL Server
+* [Using Magic with PostgreSQL](/tutorials/postgresql/) - Using Magic with PostgreSQL
 
 ## Reference documentation core projects
 
