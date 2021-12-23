@@ -56,37 +56,7 @@ docker-compose up
 **Notice** - If you already have the default _"docker-compose.yml"_ file's containers running, you'll have
 to _stop_ these containers, since the above file uses the same ports on your host operating system as the MySQL
 file does. To do this, go to the folder where you have your MySQL _"docker-compose.yml"_ file using a
-terminal window and type `docker-compose down`. You might also have to delete your _"/files/modules/magic/"_
-folder, logout and login again if you have previously been running the MySQL Docker images on your machine.
-This is because of that when you CRUDify your Magic database, it will associate your endpoints with the
-database type of your chosing, and since you've already CRUDified your Magic database using MySQL, Magic
-will erronously believe your Magic folder is wrapping a MySQL database. To fix this, just delete the _"/magic"_
-folder entirely, and log out for then to login again - At which point you'll be asked to CRUDify your Magic
-database again.
-
-When your Docker images are up running, you can visit [localhost:5555](http://localhost:5555) and you should
-come to the Magic Dashboard. Login with _"root"/"root"_ and configure Magic as described below. The most important
-difference of course being that you need to use the _"mssql"_ database type and the following connection string.
-
-```
-Server=db;Database={database};User=sa;Password=Your_password123;
-```
-
-## Magic Docker internals
-
-The above _"docker-compose.yml"_ file creates 3 containers.
-
-* The Magic Dashboard
-* The Magic Backend
-* A Microsoft SQL Server instance
-
-The Magic dashboard and backend are images I maintain and update every time I create a release of Magic.
-If you want to update these in the future as I create new releases, all you need to do is to write
-`docker pull servergardens/magic-frontend:latest` and `docker pull servergardens/magic-backend:latest`
-in _any_ terminal window. This works since Docker uses a local _"repository of images"_ on your host machine.
-
-To stop the containers you need to go to the same folder you saved your _"docker-compose.yml"_
-file in, and type `docker-compose down`.
+terminal window and type `docker-compose down`.
 
 ## Configuring Magic
 
@@ -108,6 +78,22 @@ identity and email textboxes as Magic asks you for this.
 
 **Notice** - You also obviously need to have [Docker](https://www.docker.com/products/docker-desktop)
 installed on your development machine.
+
+## Magic Docker internals
+
+The above _"docker-compose.yml"_ file creates 3 containers.
+
+* The Magic Dashboard
+* The Magic Backend
+* A Microsoft SQL Server instance
+
+The Magic dashboard and backend are images I maintain and update every time I create a release of Magic.
+If you want to update these in the future as I create new releases, all you need to do is to write
+`docker pull servergardens/magic-frontend:latest` and `docker pull servergardens/magic-backend:latest`
+in _any_ terminal window. This works since Docker uses a local _"repository of images"_ on your host machine.
+
+To stop the containers you need to go to the same folder you saved your _"docker-compose.yml"_
+file in, and type `docker-compose down`.
 
 ## Wrapping up
 

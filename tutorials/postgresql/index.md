@@ -15,8 +15,6 @@ services:
   db:
     image: postgres:9.3
     restart: always
-    ports:
-      - "54321:5432"
     environment:
       - POSTGRES_PASSWORD=ThisIsNotAGoodPassword
 
@@ -59,13 +57,25 @@ to _stop_ these containers, since the above file uses the same ports on your hos
 file does. To do this, go to the folder where you have your MySQL _"docker-compose.yml"_ file using a
 terminal window and type `docker-compose down`. 
 
-When your Docker images are up running, you can visit [localhost:5555](http://localhost:5555) and you should
-come to the Magic Dashboard. Login with _"root"/"root"_ and configure Magic as described below. The most important
-difference of course being that you need to use the _"pgsql"_ database type and the following connection string.
+## Configuring Magic
+
+When you configure Magic, you'll need to choose the _"pgsql"_ database type. Afterwards you'll need to
+paste the following into its connection string settings.
 
 ```
 User ID=postgres;Password=ThisIsNotAGoodPassword;Host=db;Port=5432;Database={database}
 ```
+
+**Notice** - When just playing around on your local development machine, the password is not really that
+important, since Docker will _not_ expose your Postgres instance outside of the virtualised Docker network.
+So the above password, although obviously not good enough for a real world production environment,
+would be more than enough to secure your development machine.
+
+The rest of the process is similar to the MySQL equivalent, and implies crudifying your backend, creating
+a key pair, and running the assumptions.
+
+**Notice** - You also obviously need to have [Docker](https://www.docker.com/products/docker-desktop)
+installed on your development machine.
 
 ## Magic Docker internals
 
@@ -82,27 +92,6 @@ in _any_ terminal window. This works since Docker uses a local _"repository of i
 
 To stop the containers you need to go to the same folder you saved your _"docker-compose.yml"_
 file in, and type `docker-compose down`.
-
-## Configuring Magic
-
-When you configure Magic, you'll need to choose the _"gpsql"_ database type. Afterwards you'll need to
-paste the following into its connection string settings.
-
-```
-User ID=postgres;Password=ThisIsNotAGoodPassword;Host=db;Port=5432;Database={database}
-```
-
-**Notice** - When just playing around on your local development machine, the password is not really that
-important, since Docker will _not_ expose your Postgres instance outside of the virtualised Docker network.
-So the above password, although obviously not good enough for a real world production environment,
-would be more than enough to secure your development machine.
-
-The rest of the process is similar to the MySQL equivalent, and implies crudifying your backend, creating
-a key pair, and running the assumptions. Just remember to type your name and email address into the
-identity and email textboxes as Magic asks you for this.
-
-**Notice** - You also obviously need to have [Docker](https://www.docker.com/products/docker-desktop)
-installed on your development machine.
 
 ## Wrapping up
 
