@@ -101,8 +101,8 @@ create new releases of Magic.
 <table>
    <tr>
       <th>Project</th>
-      <th>Source code</th>
-      <th>Build status</th>
+      <th>Source</th>
+      <th>Build</th>
    </tr>
    <tr>
       <td>magic</td>
