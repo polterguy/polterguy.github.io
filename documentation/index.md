@@ -172,7 +172,7 @@ create new releases of Magic.
    <tr>
       <td>magic.lambda.http</td>
       <td><a href="https://github.com/polterguy/magic.lambda.http">link</a></td>
-      <td><img alt="Build badge" src=https://github.com/polterguy/magic.lambda.http/actions/workflows/build.yaml/badge.svg"></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.http/actions/workflows/build.yaml/badge.svg"></td>
    </tr>
    <tr>
       <td>magic.lambda.hyperlambda</td>
