@@ -92,7 +92,17 @@ feature request or a bug report, you can do such through the project's
 ## Build status
 
 Below you can find the build status of all projects in their respective master branches, and the links to the
-GitHub project pages of all projects.
+GitHub project pages of all projects. The build status is only relevant if you want to clone Magic Cloud, and
+all of its satellite projects, using for instance [magic.clone](https://github.com/polterguy/magic.clone). The
+build status is not relevant if you just want to download the latest code version, and/or use the Docker images,
+since we quality assure all projects by making sure all unit tests, builds, and quality gates succeeds before we
+create new releases of Magic.
+
+<table>
+   <tr>
+      <td>some column</td>
+   </tr>
+</table>
 
 * ![Build status](https://github.com/polterguy/magic/actions/workflows/codeql-analysis.yml/badge.svg) - [Magic](https://github.com/polterguy/magic)
 * ![Build status](https://github.com/polterguy/magic.data.common/actions/workflows/build.yaml/badge.svg) - [magic.data.common](https://github.com/polterguy/magic.data.common)
