@@ -91,8 +91,8 @@ feature request or a bug report, you can do such through the project's
 
 ## Build status
 
-Below you can find the build status of all projects in their respective master branches, and the links to the
-GitHub project pages of all projects. The build status is only relevant if you want to clone Magic Cloud, and
+Below you can find the build status of all satellite rojects in their respective master branches, and the links
+to the GitHub project pages. The build status is only relevant if you want to clone Magic Cloud, and
 all of its satellite projects, using for instance [magic.clone](https://github.com/polterguy/magic.clone). The
 build status is not relevant if you just want to download the latest code version, and/or use the Docker images,
 since we quality assure all projects by making sure all unit tests, builds, and quality gates succeeds before we
@@ -104,12 +104,6 @@ create new releases of Magic.
       <th>Source</th>
       <th>Build</th>
       <th>Quality</th>
-   </tr>
-   <tr>
-      <td>magic</td>
-      <td><a href="https://github.com/polterguy/magic">link</a></td>
-      <td><img alt="Build badge" src="https://github.com/polterguy/magic/actions/workflows/codeql-analysis.yml/badge.svg"></td>
-      <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic&metric=alert_status"></td>
    </tr>
    <tr>
       <td>magic.data.common</td>
