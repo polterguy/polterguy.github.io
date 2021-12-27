@@ -98,7 +98,19 @@ build status is not relevant if you just want to download the latest code versio
 since we quality assure all projects by making sure all unit tests, builds, and quality gates succeeds before we
 create new releases of Magic.
 
-* ![Build status](https://github.com/polterguy/magic/actions/workflows/codeql-analysis.yml/badge.svg) - [Magic](https://github.com/polterguy/magic)
+<table>
+   <tr>
+      <th>Project</th>
+      <th>GitHub</th>
+      <th>Build status</th>
+   </tr>
+   <tr>
+      <td>Magic core</td>
+      <td>[magic](https://github.com/polterguy/magic)</td>
+      <td>![Build status](https://github.com/polterguy/magic/actions/workflows/codeql-analysis.yml/badge.svg)</td>
+   </tr>
+</table>
+
 * ![Build status](https://github.com/polterguy/magic.data.common/actions/workflows/build.yaml/badge.svg) - [magic.data.common](https://github.com/polterguy/magic.data.common)
 * ![Build status](https://github.com/polterguy/magic.endpoint/actions/workflows/build.yaml/badge.svg) - [magic.endpoint](https://github.com/polterguy/magic.endpoint)
 * ![Build status](https://github.com/polterguy/magic.lambda/actions/workflows/build.yaml/badge.svg) - [magic.lambda](https://github.com/polterguy/magic.lambda)
