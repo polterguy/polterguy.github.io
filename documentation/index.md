@@ -100,213 +100,178 @@ create new releases of Magic.
 
 <table>
    <tr>
-      <th>Project</th>
       <th>Source</th>
       <th>Build</th>
       <th>Quality</th>
    </tr>
    <tr>
-      <td>magic.data.common</td>
-      <td><a href="https://github.com/polterguy/magic.data.common">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.data.common">magic.data.common</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.data.common/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.data.common&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.endpoint</td>
-      <td><a href="https://github.com/polterguy/magic.endpoint">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.endpoint">magic.endpoint</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.endpoint/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.endpoint&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda</td>
-      <td><a href="https://github.com/polterguy/magic.lambda">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda">magic.lambda</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.ad-auth</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.ad-auth">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.ad-auth">magic.lambda.ad-auth</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.ad-auth/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.ad-auth&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.auth</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.auth">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.auth">magic.lambda.auth</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.auth/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.auth&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.caching</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.caching">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.caching">magic.lambda.caching</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.caching/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.caching&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.config</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.config">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.config">magic.lambda.config</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.config/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.config&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.crypto</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.crypto">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.crypto">magic.lambda.crypto</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.crypto/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.crypto&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.csv</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.csv">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.csv">magic.lambda.csv</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.csv/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.csv&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.dates</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.dates">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.dates">magic.lambda.dates</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.dates/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.dates&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.guid</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.guid">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.guid">magic.lambda.guid</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.guid/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.guid&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.html</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.html">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.html">magic.lambda.html</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.html/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.html&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.http</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.http">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.http">magic.lambda.http</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.http/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.http&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.hyperlambda</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.hyperlambda">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.hyperlambda">magic.lambda.hyperlambda</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.hyperlambda/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.hyperlambda&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.image</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.image">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.image">magic.lambda.image</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.image/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.image&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.io</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.io">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.io">magic.lambda.io</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.io/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.io&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.json</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.json">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.json">magic.lambda.json</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.json/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.json&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.logging</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.logging">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.logging">magic.lambda.logging</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.logging/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.logging&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.mail</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.mail">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.mail">magic.lambda.mail</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.mail/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.mail&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.math</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.math">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.math">magic.lambda.math</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.math/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.mail&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.mime</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.mime">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.mime">magic.lambda.mime</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.mime/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.mime&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.mssql</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.mssql">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.mssql">magic.lambda.mssql</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.mssql/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.mssql&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.mysql</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.mysql">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.mysql">magic.lambda.mysql</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.mysql/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.mysql&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.odbc</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.odbc">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.odbc">magic.lambda.odbc</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.odbc/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.odbc&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.pgsql</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.pgsql">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.pgsql">magic.lambda.pgsql</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.pgsql/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pgsql&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.scheduler</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.scheduler">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.scheduler">magic.lambda.scheduler</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.scheduler/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.scheduler&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.slots</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.slots">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.slots">magic.lambda.slots</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.slots/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.slots&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.sockets</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.sockets">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.sockets">magic.lambda.sockets</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.sockets/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.sockets&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.strings</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.strings">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.strings">magic.lambda.strings</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.strings/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.strings&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.lambda.system</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.system">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.system">magic.lambda.system</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.system/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.system&metric=alert_status"></td>
    </tr>
    
    <tr>
-      <td>magic.lambda.validators</td>
-      <td><a href="https://github.com/polterguy/magic.lambda.validators">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.lambda.validators">magic.lambda.validators</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.validators/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.validators&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.library</td>
-      <td><a href="https://github.com/polterguy/magic.library">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.library">magic.library</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.library/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.library&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.signals</td>
-      <td><a href="https://github.com/polterguy/magic.signals">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.signals">magic.signals</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.signals/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.signals&metric=alert_status"></td>
    </tr>
    <tr>
-      <td>magic.node</td>
-      <td><a href="https://github.com/polterguy/magic.node">link</a></td>
+      <td><a href="https://github.com/polterguy/magic.node">magic.node</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.node/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.node&metric=alert_status"></td>
    </tr>
