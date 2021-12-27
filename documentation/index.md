@@ -309,6 +309,12 @@ create new releases of Magic.
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.signals/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.signals&metric=alert_status"></td>
    </tr>
+   <tr>
+      <td>magic.node</td>
+      <td><a href="https://github.com/polterguy/magic.node">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.node/actions/workflows/build.yaml/badge.svg"></td>
+      <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.node&metric=alert_status"></td>
+   </tr>
 </table>
 
 # License
