@@ -106,8 +106,8 @@ create new releases of Magic.
    </tr>
    <tr>
       <td>Magic core</td>
-      <td>[magic](https://github.com/polterguy/magic)</td>
-      <td>![Build status](https://github.com/polterguy/magic/actions/workflows/codeql-analysis.yml/badge.svg)</td>
+      <td><a href="https://github.com/polterguy/magic">magic</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic/actions/workflows/codeql-analysis.yml/badge.svg"></td>
    </tr>
 </table>
 
