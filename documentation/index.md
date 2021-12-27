@@ -98,12 +98,6 @@ build status is not relevant if you just want to download the latest code versio
 since we quality assure all projects by making sure all unit tests, builds, and quality gates succeeds before we
 create new releases of Magic.
 
-<table>
-   <tr>
-      <td>some column</td>
-   </tr>
-</table>
-
 * ![Build status](https://github.com/polterguy/magic/actions/workflows/codeql-analysis.yml/badge.svg) - [Magic](https://github.com/polterguy/magic)
 * ![Build status](https://github.com/polterguy/magic.data.common/actions/workflows/build.yaml/badge.svg) - [magic.data.common](https://github.com/polterguy/magic.data.common)
 * ![Build status](https://github.com/polterguy/magic.endpoint/actions/workflows/build.yaml/badge.svg) - [magic.endpoint](https://github.com/polterguy/magic.endpoint)
