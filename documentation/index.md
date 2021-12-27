@@ -101,49 +101,180 @@ create new releases of Magic.
 <table>
    <tr>
       <th>Project</th>
-      <th>GitHub</th>
+      <th>Source code</th>
       <th>Build status</th>
    </tr>
    <tr>
-      <td>Magic core</td>
-      <td><a href="https://github.com/polterguy/magic">magic</a></td>
+      <td>magic</td>
+      <td><a href="https://github.com/polterguy/magic">link</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic/actions/workflows/codeql-analysis.yml/badge.svg"></td>
    </tr>
+   <tr>
+      <td>magic.data.common</td>
+      <td><a href="https://github.com/polterguy/magic.data.common">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.data.common/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.endpoint</td>
+      <td><a href="https://github.com/polterguy/magic.endpoint">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.endpoint/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda</td>
+      <td><a href="https://github.com/polterguy/magic.lambda">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.ad-auth</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.ad-auth">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.ad-auth/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.auth</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.auth">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.auth/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.caching</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.caching">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.caching/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.config</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.config">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.config/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.crypto</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.crypto">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.crypto/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.csv</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.csv">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.csv/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.dates</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.dates">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.dates/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.guid</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.guid">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.guid/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.html</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.html">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.html/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.http</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.http">link</a></td>
+      <td><img alt="Build badge" src=https://github.com/polterguy/magic.lambda.http/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.hyperlambda</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.hyperlambda">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.hyperlambda/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.image</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.image">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.image/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.io</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.io">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.io/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.json</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.json">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.json/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.logging</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.logging">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.logging/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.mail</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.mail">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.mail/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.math</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.math">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.math/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.mime</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.mime">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.mime/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.mssql</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.mssql">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.mssql/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.mysql</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.mysql">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.mysql/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.odbc</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.odbc">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.odbc/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.pgsql</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.pgsql">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.pgsql/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.scheduler</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.scheduler">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.scheduler/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.slots</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.slots">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.slots/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.sockets</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.sockets">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.sockets/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.strings</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.strings">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.strings/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.system</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.system">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.system/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.lambda.validators</td>
+      <td><a href="https://github.com/polterguy/magic.lambda.validators">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.validators/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.library</td>
+      <td><a href="https://github.com/polterguy/magic.library">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.library/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
+   <tr>
+      <td>magic.signals</td>
+      <td><a href="https://github.com/polterguy/magic.signals">link</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.signals/actions/workflows/build.yaml/badge.svg"></td>
+   </tr>
 </table>
-
-* ![Build status](https://github.com/polterguy/magic.data.common/actions/workflows/build.yaml/badge.svg) - [magic.data.common](https://github.com/polterguy/magic.data.common)
-* ![Build status](https://github.com/polterguy/magic.endpoint/actions/workflows/build.yaml/badge.svg) - [magic.endpoint](https://github.com/polterguy/magic.endpoint)
-* ![Build status](https://github.com/polterguy/magic.lambda/actions/workflows/build.yaml/badge.svg) - [magic.lambda](https://github.com/polterguy/magic.lambda)
-* ![Build status](https://github.com/polterguy/magic.lambda.ad-auth/actions/workflows/build.yaml/badge.svg) - [magic.lambda.ad-auth](https://github.com/polterguy/magic.lambda.ad-auth)
-* ![Build status](https://github.com/polterguy/magic.lambda.auth/actions/workflows/build.yaml/badge.svg) - [magic.lambda.auth](https://github.com/polterguy/magic.lambda.auth)
-* ![Build status](https://github.com/polterguy/magic.lambda.caching/actions/workflows/build.yaml/badge.svg) - [magic.lambda.caching](https://github.com/polterguy/magic.lambda.caching)
-* ![Build status](https://github.com/polterguy/magic.lambda.config/actions/workflows/build.yaml/badge.svg) - [magic.lambda.config](https://github.com/polterguy/magic.lambda.config)
-* ![Build status](https://github.com/polterguy/magic.lambda.crypto/actions/workflows/build.yaml/badge.svg) - [magic.lambda.crypto](https://github.com/polterguy/magic.lambda.crypto)
-* ![Build status](https://github.com/polterguy/magic.lambda.csv/actions/workflows/build.yaml/badge.svg) - [magic.lambda.csv](https://github.com/polterguy/magic.lambda.csv)
-* ![Build status](https://github.com/polterguy/magic.lambda.dates/actions/workflows/build.yaml/badge.svg) - [magic.lambda.dates](https://github.com/polterguy/magic.lambda.dates)
-* ![Build status](https://github.com/polterguy/magic.lambda.guid/actions/workflows/build.yaml/badge.svg) - [magic.lambda.guid](https://github.com/polterguy/magic.lambda.guid)
-* ![Build status](https://github.com/polterguy/magic.lambda.html/actions/workflows/build.yaml/badge.svg) - [magic.lambda.html](https://github.com/polterguy/magic.lambda.html)
-* ![Build status](https://github.com/polterguy/magic.lambda.http/actions/workflows/build.yaml/badge.svg) - [magic.lambda.http](https://github.com/polterguy/magic.lambda.http)
-* ![Build status](https://github.com/polterguy/magic.lambda.hyperlambda/actions/workflows/build.yaml/badge.svg) - [magic.lambda.hyperlambda](https://github.com/polterguy/magic.lambda.hyperlambda)
-* ![Build status](https://github.com/polterguy/magic.lambda.image/actions/workflows/build.yaml/badge.svg) - [magic.lambda.image](https://github.com/polterguy/magic.lambda.image)
-* ![Build status](https://github.com/polterguy/magic.lambda.io/actions/workflows/build.yaml/badge.svg) - [magic.lambda.io](https://github.com/polterguy/magic.lambda.io)
-* ![Build status](https://github.com/polterguy/magic.lambda.json/actions/workflows/build.yaml/badge.svg) - [magic.lambda.json](https://github.com/polterguy/magic.lambda.json)
-* ![Build status](https://github.com/polterguy/magic.lambda.logging/actions/workflows/build.yaml/badge.svg) - [magic.lambda.logging](https://github.com/polterguy/magic.lambda.logging)
-* ![Build status](https://github.com/polterguy/magic.lambda.mail/actions/workflows/build.yaml/badge.svg) - [magic.lambda.mail](https://github.com/polterguy/magic.lambda.mail)
-* ![Build status](https://github.com/polterguy/magic.lambda.math/actions/workflows/build.yaml/badge.svg) - [magic.lambda.math](https://github.com/polterguy/magic.lambda.math)
-* ![Build status](https://github.com/polterguy/magic.lambda.mime/actions/workflows/build.yaml/badge.svg) - [magic.lambda.mime](https://github.com/polterguy/magic.lambda.mime)
-* ![Build status](https://github.com/polterguy/magic.lambda.mssql/actions/workflows/build.yaml/badge.svg) - [magic.lambda.mssql](https://github.com/polterguy/magic.lambda.mssql)
-* ![Build status](https://github.com/polterguy/magic.lambda.mysql/actions/workflows/build.yaml/badge.svg) - [magic.lambda.mysql](https://github.com/polterguy/magic.lambda.mysql)
-* ![Build status](https://github.com/polterguy/magic.lambda.odbc/actions/workflows/build.yaml/badge.svg) - [magic.lambda.odbc](https://github.com/polterguy/magic.lambda.odbc)
-* ![Build status](https://github.com/polterguy/magic.lambda.pgsql/actions/workflows/build.yaml/badge.svg) - [magic.lambda.pgsql](https://github.com/polterguy/magic.lambda.pgsql)
-* ![Build status](https://github.com/polterguy/magic.lambda.scheduler/actions/workflows/build.yaml/badge.svg) - [magic.lambda.scheduler](https://github.com/polterguy/magic.lambda.scheduler)
-* ![Build status](https://github.com/polterguy/magic.lambda.slots/actions/workflows/build.yaml/badge.svg) - [magic.lambda.slots](https://github.com/polterguy/magic.lambda.slots)
-* ![Build status](https://github.com/polterguy/magic.lambda.sockets/actions/workflows/build.yaml/badge.svg) - [magic.lambda.sockets](https://github.com/polterguy/magic.lambda.sockets)
-* ![Build status](https://github.com/polterguy/magic.lambda.strings/actions/workflows/build.yaml/badge.svg) - [magic.lambda.strings](https://github.com/polterguy/magic.lambda.strings)
-* ![Build status](https://github.com/polterguy/magic.lambda.system/actions/workflows/build.yaml/badge.svg) - [magic.lambda.system](https://github.com/polterguy/magic.lambda.system)
-* ![Build status](https://github.com/polterguy/magic.lambda.validators/actions/workflows/build.yaml/badge.svg) - [magic.lambda.validators](https://github.com/polterguy/magic.lambda.validators)
-* ![Build status](https://github.com/polterguy/magic.library/actions/workflows/build.yaml/badge.svg) - [magic.library](https://github.com/polterguy/magic.library)
-* ![Build status](https://github.com/polterguy/magic.signals/actions/workflows/build.yaml/badge.svg) - [magic.signals](https://github.com/polterguy/magic.signals)
 
 # License
 
