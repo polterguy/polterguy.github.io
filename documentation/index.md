@@ -247,7 +247,7 @@ create new releases of Magic.
       <td><a href="https://github.com/polterguy/magic.lambda.odbc">magic.lambda.odbc</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.odbc/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.odbc&metric=alert_status"></td>
-      <td><img alt="Lines of code" src=""></td>
+      <td><img alt="Lines of code" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.odbc&metric=ncloc"></td>
    </tr>
    <tr>
       <td><a href="https://github.com/polterguy/magic.lambda.pgsql">magic.lambda.pgsql</a></td>
