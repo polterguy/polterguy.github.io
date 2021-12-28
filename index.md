@@ -9,9 +9,9 @@
 
 ## Copyright
 
-Magic is 100% Open Source and the sole Copyright(c) of Thomas Hansen, [thomas@servergardens.com](mailto:thomas@servergardens.com).
-Magic is maintained by [ServerGardens](https://servergardens.com), and we offer professional services around Magic.
+Magic is 100% Open Source and the sole Copyright(c) of Thomas Hansen, [th@aista.com](mailto:th@aista.com).
+Magic is maintained by [Aista, Ltd](https://servergardens.com), and we offer professional services around Magic.
 Check out our website for details.
 
-* [ServerGardens.Com](https://servergardens.com)
+* [Aista, Ltd](https://servergardens.com)
 
