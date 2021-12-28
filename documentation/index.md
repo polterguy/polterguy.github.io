@@ -124,16 +124,16 @@ create new releases of Magic.
       <td><img alt="Lines of code" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.endpoint&metric=ncloc"></td>
    </tr>
    <tr>
-      <td><a href="https://github.com/polterguy/magic.library">magic.library</a></td>
-      <td><img alt="Build badge" src="https://github.com/polterguy/magic.library/actions/workflows/build.yaml/badge.svg"></td>
-      <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.library&metric=alert_status"></td>
-      <td><img alt="Lines of code" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.library&metric=ncloc"></td>
-   </tr>
-   <tr>
       <td><a href="https://github.com/polterguy/magic.lambda">magic.lambda</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda&metric=alert_status"></td>
       <td><img alt="Lines of code" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda&metric=ncloc"></td>
+   </tr>
+   <tr>
+      <td><a href="https://github.com/polterguy/magic.library">magic.library</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.library/actions/workflows/build.yaml/badge.svg"></td>
+      <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.library&metric=alert_status"></td>
+      <td><img alt="Lines of code" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.library&metric=ncloc"></td>
    </tr>
    <tr>
       <td><a href="https://github.com/polterguy/magic.data.common">magic.data.common</a></td>
