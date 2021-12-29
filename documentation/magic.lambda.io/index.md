@@ -10,6 +10,7 @@ This project provides file/folder slots for Magic. More specifically, it provide
 * __[io.folder.move]__ - Moves a folder to its specified destination.
 * __[io.folder.copy]__ - Copies a folder to its specified destination.
 * __[io.file.load]__ - Loads a file from disc on your server.
+* __[io.file.load.binary]__ - Loads a file from disc on your server as a byte array.
 * __[io.file.save]__ - Saves a file on disc on your server.
 * __[io.file.save.binary]__ - Saves a file on disc on your server but contrary to the above assumes content to save is binary.
 * __[io.file.exists]__ - Returns true if file exists, otherwise false.
@@ -99,6 +100,8 @@ not something you should do. Although there _might_ exist exceptions to this.
 ```
 io.file.load:/misc/README.md
 ```
+
+**Notice** - If you want to load binary content you should use the **[io.file.load.binary]** override.
 
 ### [io.file.save]
 

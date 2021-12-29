@@ -28,6 +28,8 @@ You can optionally supply a type between a node's name and its value, which you 
 the `:int:` parts between one of our **[foo]** nodes' name and value. If you don't explicitly declare a type
 then `string` will be assumed.
 
+## Parsing Hyperlambda from C#
+
 To traverse the nodes later in for instance C#, you could do something such as the following.
 
 ```csharp
@@ -358,6 +360,40 @@ var result = HyperlambdaParser.Parse(hl1);
 var hl2 = HyperlambdaGenerator.GetHyperlambda(result.Children);
 ...
 ```
+
+## Formal specification of Hyperlambda
+
+Hyperlambda contains 8 possible tokens in total, however since single line comments and multi line comments are
+interchangeable, we simplify the specification by combining these into one logical token type - And the `null` token
+isn't really an actual token, but rather a placeholder implying _"absence of token"_. Possible logical tokens
+found in Hyperlambda hence becomes as follows.
+
+1. **IND** - Indent token consisting of _exactly_ 3 SP characters.
+2. **COM** - Comment token. Either C style (`/**/`) or C++ (`//`) style comments.
+3. **NAM** - Name token declaring the name of some node.
+4. **SEP** - Separator token separating the name of a node from its type, and/or value.
+5. **TYP** - Type token declaring the type of value preceeding it. See possible types further up on page.
+6. **VAL** - Value token, being the value of the node.
+7. **CRLF** - CRLF character sequence, implying a CR, LF or CRLF. Except for inside string literals, Hyperlambda does not discriminate between and of these 3 possible combinations, and they all become interchangeable CRLF token types after parsing.
+8. **NUL** - Null token, implying empty or non-existing token.
+
+Notice, a **VAL** and a **NAM** token can be wrapped inside of quotes (') or double quotes ("), like a C# string type.
+In addition to wrapping it inside a multiline C# type of string (@""). This allows you to declare **VAL** and **NAM** tokens
+with CR/LF sequences as a part of their actual value.
+
+The formal specification of Hyperlambda is derived from combining the above 7 tokens into the following. Notice, in the
+following formal specification `->` means _"must be followed by if existing"_, `[0..n]` implies _"zero to any number of repetitions"_,
+`[0..1]` implies _"zero to 1 repetition"_, `[1..n]` implies _"at least one must exist"_,
+and `|` implies _"logical or"_. The paranthesis `()` implies a logical grouping of some token type(s), and the `x=` parts is
+an assignable variable starting at 0, optionally incremented by one for each iteration through the loop. `[0..x]`
+implies  _"zero to x repetitions"_ where `x` is the value of x, and `[x..x+1]` implies _"x to x+1 number of repetitions"_.
+The `=` character assigns the numbers of repetitions in its RHS value to the variable `x`. The default number of repetitions
+if none are explicitly given is 1.
+
+0. **x=0, CRLF\[0..n\]**
+1. **(COM->CRLF\[1..n\])\[0..n\]**
+2. **(NAM->(NUL | (SEP->VAL\[0..1\]) | (SEP->TYP->SEP->VAL\[0..1\])))\[0..1\]->CRLF\[0..n\]->(x=IND\[x..x+1\])**
+3. **GOTO 1 while not EOF**
 
 ## Usage
 

@@ -82,8 +82,10 @@ algorithms as you consume the above slot.
 * SHA512
 
 **Notice** - SHA1 and MD5 is supported _only_ for legacy reasons, and _should not be used_ unless you have
-a legacy system depending upon it. Sha1 and MD5 are considered weak today. This slot also contains convenience
-overloads with the hashing algorithm being a part of the name of the invocation, such as illustrated below.
+a legacy system depending upon it. Sha1 and MD5 are considered weak today.
+
+This slot also contains convenience overloads with the hashing algorithm being a part of the name of the
+invocation, such as illustrated below.
 
 * __[crypto.hash.sha1]__
 * __[crypto.hash.md5]__

@@ -45,3 +45,4 @@ This project is the copyright(c) 2020-2021 of Aista, Ltd thomas@servergardens.co
 of the LGPL version 3, as published by the Free Software Foundation. See the enclosed LICENSE file for details.
 
 * [Magic Documentation](https://polterguy.github.io/)
+
