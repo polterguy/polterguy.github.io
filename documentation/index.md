@@ -327,6 +327,9 @@ create new releases of Magic.
    </tr>
 </table>
 
+If you want to dive into the QA details of each project, you can find Magic's SonarCloud project site
+[here](https://sonarcloud.io/organizations/polterguy/projects?sort=-coverage).
+
 ## License
 
 Magic is 100% Open Source and free of charge to use. The main backend is licensed as MIT, the dashboard is GPL,
