@@ -105,9 +105,9 @@ feature request or a bug report, you can do such through the project's
 
 * [thomas@servergardens.com](mailto:thomas@servergardens.com)
 
-## Build status
+## Quality gates
 
-Below you can find the build status of all satellite rojects in their respective master branches, and the links
+Below you can find the build status of all satellite projects in their respective master branches, and the links
 to the GitHub project pages. The build status is only relevant if you want to clone Magic Cloud, and
 all of its satellite projects, using for instance [magic.clone](https://github.com/polterguy/magic.clone). The
 build status is not relevant if you just want to download the latest code version, and/or use the Docker images,
