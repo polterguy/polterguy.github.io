@@ -9,7 +9,7 @@
 
 ## Copyright
 
-Magic is 100% Open Source and the sole Copyright(c) of Thomas Hansen, [th@aista.com](mailto:th@aista.com).
+Magic is 100% Open Source and the sole Copyright(c) of Aista, Ltd - [th@aista.com](mailto:th@aista.com).
 Magic is maintained by [Aista, Ltd](https://servergardens.com), and we offer professional services around Magic.
 Check out our website for details.
 
