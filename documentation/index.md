@@ -18,6 +18,10 @@ to that I illustrate how to create a simple Hello World Hyperlambda app.
 
 ## Tutorials
 
+This is our tutorials section. If you've just started using Magic, this is probably where you want to start.
+These tutorials guides you through Magic and Hyperlambda, one concept at the time. These tutorials are intended to
+be followed as hands on exercises, from top to bottom.
+
 * [Getting started](/tutorials/getting-started/) - Getting Magic up running
 * [Database CRUD operations](/tutorials/database-crud/) - Automate the process of creating code
 * [SQL Web API](/tutorials/sql-web-api/) - Create HTTP endpoints in SQL
@@ -38,13 +42,23 @@ to that I illustrate how to create a simple Hello World Hyperlambda app.
 
 ## Reference documentation core projects
 
+This is the documentation for the core projects in Magic. These parts is what wires up your application,
+takes care of routing, loads Hyperlambda files, executing HTTP endpoints, etc. These projects are
+_"what makes Magic magical"_.
+
 * [magic.node](/documentation/magic.node/) - Explains nodes, Hyperlambda and Expressions
 * [magic.signals](/documentation/magic.signals/) - Magic's Super Signals implementation
 * [magic.endpoint](/documentation/magic.endpoint/) - Endpoint resolving in Magic
-* [magic.lambda](/documentation/magic.lambda/) - Explains Hyperlambda as a DSL, and its keywords
+* [magic.library](/documentation/magic.library/) - A single NuGet package helper tying everything easily together
 
 ## Reference documentation plugins
 
+These are the plugins for Magic, typically implementing one or more slots each, whom in its
+combined results becomes the programming language called Hyperlambda. These are the parts
+that allows you to interact with your database, apply authentication and authorization
+requirements for your endpoints, etc.
+
+* [magic.lambda](/documentation/magic.lambda/) - Explains Hyperlambda as a DSL, and its keywords
 * [magic.lambda.math](/documentation/magic.lambda.math/) - Math operations from Hyperlambda
 * [magic.lambda.http](/documentation/magic.lambda.http/) - Invoking HTTP REST endpoints from Hyperlambda
 * [magic.lambda.csv](/documentation/magic.lambda.csv/) - Manipulating CSV from Hyperlambda
@@ -75,8 +89,10 @@ to that I illustrate how to create a simple Hello World Hyperlambda app.
 
 ## Utility projects
 
+These are utility and helper projects, either referenced by other projects, and or solving some specific
+problem related to Magic, such as how to clone all plugins, deploy Magic into a live environment, etc.
+
 * [magic.data.common](/documentation/magic.data.common/) - Commonalities for data adapters in Magic
-* [magic.library](/documentation/magic.library/) - A single NuGet package helper tying everything easily together
 * [magic.deploy](/documentation/magic.deploy/) - How to deploy Magic to your VPS using Docker.
 * [magic.clone](/documentation/magic.clone/) - How to clone Magic and its entire codebase.
 
