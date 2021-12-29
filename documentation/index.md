@@ -327,8 +327,13 @@ create new releases of Magic.
    </tr>
 </table>
 
-# License
+## License
 
 Magic is 100% Open Source and free of charge to use. The main backend is licensed as MIT, the dashboard is GPL,
 and the plugins are LGPL. This allows you to use Magic to create closed source applications, while also
 ensuring improvements to the project itself *stays* Open Source.
+
+## Copyright
+
+Magic Cloud and all of its associated plugins and satellite projects is the copyright(c) of Aista, Ltd, 2020 - 2021.
+If you have questions related to its license terms you can send an email to [mailto:th@aista.com](th@aista.com).
