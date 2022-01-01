@@ -1,39 +1,36 @@
 
 # Magic Lambda Scheduler
 
-TODO: Needs updating, but also needs better implementation, making it easier to create unit tests, etc.
-
-This project provides the ability to create persisted, and/or scheduled Hyperlambda tasks,
+This project gives you the ability to create persisted and optionally scheduled Hyperlambda tasks
 for [Magic](https://github.com/polterguy.magic). More specifically it provides the following slots.
 
 * __[tasks.create]__ - Creates a new task.
 * __[tasks.get]__ - Returns an existing task.
 * __[tasks.list]__ - Lists all tasks.
+* __[tasks.update]__ - Updates an existing task.
+* __[tasks.count]__ - Counts tasks in system.
 * __[tasks.execute]__ - Executes an existing task.
 * __[tasks.delete]__ - Deletes a task.
-* __[scheduler.stop]__ - Stops the scheduler, implying no tasks will be executed at their scheduled time.
-* __[scheduler.start]__ - Starts the scheduler, if there are any upcoming scheduled tasks.
-* __[scheduler.next]__ - Returns the date and time of the next scheduled task, if any.
-* __[scheduler.running]__ - Returns true if the scheduler is running.
+* __[tasks.schedule]__ - Schedules an existing task.
+* __[tasks.schedule.delete]__ - Deletes an existing schedule.
+* __[tasks.scheduler.start]__ - Starts the task scheduler.
 
 ## Creating a task
 
-To create a task without an execution date and no repetition pattern, you can use something such as the following.
+To create and persist a task you can use something such as the following.
 
 ```
 tasks.create:foo-bar-task-1
    .lambda
 
-      /*
-       * Your task's lambda object goes here
-       */
+      // Your task's lambda object goes here
       log.info:Executing foo-bar-task-1
 ```
 
 The name or ID of your task in the above example becomes _"foo-bar-task-1"_, and the task can be referenced later
-using this name. The name must be unique, otherwise any previously created tasks with the same name will be silently
-overwritten. A task can also optionally have a **[description]** argument, which is a humanly friendly written
-description, describing what your task does. Below is an example.
+using this name. The name must be unique, otherwise an exception will be thrown. A task can also optionally have
+a **[description]** argument, which is a humanly readable description, describing what your task does. Below is
+an example.
 
 ```
 tasks.create:foo-bar-task-2
@@ -43,65 +40,148 @@ tasks.create:foo-bar-task-2
 ```
 
 **Notice** - Your task's **[id]** argument, can only contain alpha numeric characters, 
-a-z, 0-9 - In addition to the special characters `.`, `-` and `_`.
+a-z, 0-9 - In addition to the following special characters; `.`, `-` and `_`.
 
-## Executing a task
+### Convenience methods
 
-You can explicitly execute a persisted task at will by invoking **[tasks.execute]**, and passing
-in the ID of your task. Below is an example, that assumes you have created the above _"foo-bar-task-1"_ task
-first.
-
-```
-tasks.execute:foo-bar-task-1
-```
-
-**Notice** - This slot does _not_ synchronize access to your tasks, such as when executing a scheduled task
-at its scheduled date does. This allows you to have multiple tasks executed simultaneously, contrary to a
-scheduled task that will never be executed simultaneously as another scheduled task is executing.
-
-## Workflows and Magic Tasks
-
-The above allows you to persist a _"function invocation"_ for later to execute it, once some specified condition
-occurs - Effectively giving you the most important features from Microsoft Workflow Foundation, without the
-ridiculous XML and WYSIWYG parts from MWF - In addition to that this also is a .Net Core library, contrary
-to MWF.
-
-This allows you to create and persist a function _invocation_, for then to later execute it, as some condition occurs,
-arguably giving you _"workflow capabilities"_ in your projects.
-
-**Notice** - By creating your own `ISlot` implementation, you can easily create your own C# classes that are Magic
-Signals, allowing you to persist an invocation to your method/class - For then to later execute this method as some
-condition occurs. Refer to the [documentation for Magic Lambda](https://github.com/polterguy/magic.lambda) to see how this
-is done, and more specifically the _"Extending Hyperlambda"_ section.
-
-## Scheduled tasks
-
-If you want to create a _scheduled_ task, you can choose to have the task execute once in the future, at a specified
-date and time, by applying a **[due]** argument.
+When you create a task, you can also optionally schedule it simultaneously, by providing any amount of **[due]**
+dates, and/or **[repeats]** patterns, which will create and schedule the task at the same time. Below is an example.
 
 ```
 tasks.create:foo-bar-task-3
-   due:date:"2020-12-24T17:00"
+   due:date:"2025-01-01T23:59:27"
+   repeats:5.seconds
+   repeats:3.hours
+   due:date:"2030-01-01T23:59:27"
+   .lambda
+      log.info:Executing foo-bar-task-2
+```
+
+The above schedules your task for being executed once in the year of 2025, another time in the year of 2030,
+in addition to once every 3 hours and once every 5 seconds. This document will describe in details how schedules
+works further down.
+
+You can also _update_ an existing task by using the **[tasks.update]** slot. This slot allows you to update
+a task's description and its Hyperlambda, but you _cannot_ associate schedules with your task using this
+slot. If you've already created your task and you need to (re) schedule it, you'll need to combine the
+slots **[tasks.schedule]** and **[tasks.schedule.delete]** together. Below is an example of first creating
+a task for then to update it.
+
+```
+tasks.create:foo-bar-task-4
+   .lambda
+      log.info:Executing foo-bar-task-1
+tasks.update:foo-bar-task-4
+   description:This is the foo bar task
+   .lambda
+      log.info:Another log entry now!
+```
+
+## Executing a task
+
+You can explicitly execute a persisted task by invoking **[tasks.execute]** and pass
+in the ID of your task. Below is an example, that assumes you have created the above _"foo-bar-task-4"_ task
+first.
+
+```
+tasks.execute:foo-bar-task-4
+```
+
+Notice, if you try to execute a non-existing task, an exception will be thrown.
+
+## Deleting a task
+
+Use the **[tasks.delete]** signal to delete a task. This will also delete all future schedules for your task and
+automatically dispose any timers associated with the task. An example can be found below.
+
+```
+tasks.delete:task-id
+```
+
+Besides from the task ID, the delete task signal doesn't take any arguments.
+
+## Inspecting a task
+
+To inspect a task you can use the following.
+
+```
+tasks.get:task-id
+```
+
+The above will return the Hyperlambda for your task, in addition to your task's description. If you add
+a **[schedules]** argument and set its value to boolean `true`, this slot will also return all schedules
+associated with the task.
+
+```
+tasks.get:task-id
+   schedules:true
+```
+
+## Listing tasks
+
+To list tasks, you can use the **[tasks.list]** signal. This slot optionally
+handles an **[offset]** and a **[limit]** argument, allowing you to page, which might be
+useful if you have a lot of tasks in your system. If no **[limit]** is specified, this signal
+will only return the first 10 tasks, including the task's Hyperlambda, but not its repetition
+pattern, or due date. Below is an example.
+
+```
+tasks.list
+   offset:20
+   limit:10
+```
+
+## Persisting tasks
+
+All tasks are persisted into your `magic` database, either in MySQL, PostgreSQL, or Microsoft SQL Server.
+Which implies that even if the server is stopped, all scheduled tasks and persisted tasks will automatically
+load up again, and be available and re-scheduled as the server is restarted. This _might_ imply that
+all tasks in the past are immediately executed, which is important for you to understand, since any tasks
+with a due date in the past, are executed immediately as the server restarts again.
+
+Tasks are by default persisted into your `tasks` table, and schedules are persisted into your
+`task_due` table.
+
+## Workflows and Magic Tasks
+
+The above allows you to persist a _"function invocation"_ for later to execute it, once some specific condition
+occurs - Effectively giving you the most important features from Microsoft Workflow Foundation, without the
+ridiculous XML and WYSIWYG - In addition to that this also is a .Net Core library, contrary
+to MWF that only works for the full .Net Framework.
+
+## Scheduling tasks
+
+If you want to create a _scheduled_ task, you can choose to have the task executed once in the future, at a specified
+date and time, by invoking **[tasks.schedule]**, and reference your task after it's been created, passing in
+a **[due]** argument being a date and time in the future for when you want to execute your task.
+
+```
+tasks.create:foo-bar-task-3
    .lambda
       log.info:Executing foo-bar-task-3
+tasks.schedule:foo-bar-task-3
+   due:date:"2025-12-24T17:00"
 ```
 
 The above **[due]** argument is a UTC date and time in the future for when you want your task to be scheduled
 for execution. After the task has been executed, it will never execute again, unless you manually execute it,
-or assign a **[repeats]** pattern to it by invoking the slot that schedules existing tasks.
+or invoke **[tasks.schedule]** again.
 
 **Notice** - You _cannot_ create a task with a due date being in the past, and all dates are assumed to be in
-the UTC timezone.
+the UTC timezone. The unique ID of the schedule created is returned when you explicitly schedule a task using
+the **[tasks.schedule]** slot. If you add schedules during invocations to **[tasks.create]** though, no schedule
+IDs are returned, but you can still retrieve all schedules by invoking **[tasks.get]** and passing in **[schedules]**
+to have the slot return all schedules for a specific task.
 
 ### Repeating tasks
 
 There are 3 basic **[repeats]** patterns for the Magic Lambda Scheduler, in addition to that you can extend
-it with your own parametrized repeating `IPattern` implementation. The built in repetition patterns,
+it with your own parametrized repeating `IRepetitionPattern` implementation. The built in repetition patterns,
 are as follows.
 
 * `x.units` - Units can be one of _"seconds"_, _"minutes"_, _"hours"_, _"days"_, _"weeks"_ or _"months"_ - And
 `x` can be any integer value.
-* `MM.dd.HH.mm.ss` - Where the entities are in sequence months, days in months, hour, minute and second.
+* `MM.dd.HH.mm.ss` - Where the entities are in sequence months, days in months, hours, minutes and seconds.
 * `ww.HH.mm.ss` - Where the entities are weekdays, hour, minute and second.
 
 Notice, MM, dd, and ww can have double asterix (\*\*) as their values, implying _"whatever value"_.
@@ -114,9 +194,10 @@ Evaluating your task every second/minute/hour/etc can be done by using something
 
 ```
 tasks.create:task-id
-   repeats:50.seconds
    .lambda
       log.info:Executing repeating task
+tasks.schedule.create:task-id
+   repeats:50.seconds
 ```
 
 The above will evaluate your task every 50 second. The above _"seconds"_ can be exchanged with _"minutes"_, _"hours"_, _"days"_, _"weeks"_ or _"months"_. Notice, this allows you to have very large values, to have tasks that are
@@ -124,9 +205,10 @@ repeating _very rarely_, such as the following illustrates.
 
 ```
 tasks.create:task-id
-   repeats:3650.days
    .lambda
       log.info:Executing seldomly repeating task once every 10 year
+tasks.schedule:task-id
+   repeats:3650.days
 ```
 
 The above task will only be evaluated every 3650 days, which becomes once every 10 years. Below is a list of
@@ -146,21 +228,23 @@ repetition pattern.
 
 ```
 tasks.create:task-id
-   repeats:**.01.05.00.00
    .lambda
       log.info:It is the 1st of the month, any month, and the time is 5AM at night.
+tasks.schedule:task-id
+   repeats:**.01.05.00.00
 ```
 
 Hours must be supplied as _"military hours"_, implying from 00:00 to 23:59, where for instance 22 equals 10PM UTC time.
-Also notice how we provided a double asterix (\*\*) for the month parts, implying _"any month"_. We could also have provided
+Also notice how we provided a double asterix (\*\*) for the month parts, implying _"all months"_. We could also have provided
 multiple days, and/or months, such as the following illustrates. The Hyperlambda below will create a task that is executed
 in January and February, but only on the 5th and 15th of these months.
 
 ```
 tasks.create:task-id
-   repeats:01|02.5|15.05.00.00
    .lambda
       log.info:It is the 5th or the 15th of January or February, and the time is 5AM at night.
+tasks.schedule:task-id
+   repeats:01|02.5|15.05.00.00
 ```
 
 By using the double asterix for month and day of month, you can create a task that is executed _every_ day, at
@@ -168,9 +252,10 @@ some specific time of the day (UTC time). Below is an example.
 
 ```
 tasks.create:task-id
-   repeats:**.**.22.00.00
    .lambda
       log.info:It is the 10PM now.
+tasks.schedule:task-id
+   repeats:**.**.22.00.00
 ```
 
 ### Weekdays pattern
@@ -191,26 +276,27 @@ Below is an example. Notice, weekdays are case insensitive.
 
 ```
 tasks.create:task-id
-   repeats:saturday|SUNDAY.22.00.00
    .lambda
       log.info:It is Saturday or Sunday, and the time is 22PM.
+tasks.schedule:task-id
+   repeats:saturday|SUNDAY.22.00.00
 ```
 
 You can also provide a double asterix (\*\*) for the weekdays pattern, implying _"all days of the week"_.
 
-### Creating your own repetition patter
+### Creating your own repetition pattern
 
 In addition to the above 3 types of repetition patterns, you can also create your own repetition pattern type,
-by implementing the `IPattern` interface on one of your own types, and registering your type create function
+by implementing the `IRepetitionPattern` interface on one of your own types, and registering your type create function
 by using the `PatternFactory.AddExtensionPattern` method. If you do, you'll have to reference your repetition
-pattern type using _"ext:"_, combined with its resolver key. Implying if you register your `IPattern` type such
+pattern type using _"ext:"_, combined with its resolver key. Implying if you register your `IRepetitionPattern` type such
 that it resolves using for instance _"my-pattern"_ as its key, you'll have to use _"ext:my-pattern:args"
 to reference it later, as you wish to create an instance of your custom pattern type. The _"args"_ part
 are any arguments supplied to your pattern during creation. Below is an example that creates a custom
 repetition pattern.
 
 ```csharp
-private class ExtPattern : IPattern
+private class ExtPattern : IRepetitionPattern
 {
     readonly string _args;
     public string Value => "ext:custom-pattern:" + _args;
@@ -227,11 +313,11 @@ private class ExtPattern : IPattern
 }
 ```
 
-Of course, the above `IPattern` will statically resolve to the 11th of November 2030, at 23:11:57. But
+Of course, the above `IRepetitionPattern` will statically resolve to the 11th of November 2030, at 23:11:57. But
 the idea is that the `args` supplied during creation, can be used to parametrize your pattern, and
 calculate the next due date for your schedule.
 
-After you have declared your custom `IPattern` type, you'll need to inform the `PatternFactory` class
+After you have declared your custom `IRepetitionPattern` type, you'll need to inform the `PatternFactory` class
 that you want to use the above class, and resolve it using some specific key from your schedules.
 This is accomplished using something resembling the following code.
 
@@ -246,95 +332,53 @@ PatternFactory.AddExtensionPattern(
 
 The above code will ensure that every time you use _"custom-type"_ as a repetition pattern type,
 the create function above will be invoked, allowing you to create and decorate an instance of your
-custom `IPattern` type. The `str` argument to your above create function, will be everything
+custom `IRepetitionPattern` type. The `str` argument to your above create function, will be everything
 after the `ext:custom-type:` parts, when creating an instance of your pattern.
 
 To use the above pattern in your own code, you can use something such as the following.
 
 ```
 tasks.create:custom-repetition-pattern
-   repeats:"ext:custom-pattern:some-arguments-here"
    .lambda
       log.info:Executing custom-repetition-pattern
+tasks.schedule:custom-repetition-pattern
+   repeats:"ext:custom-pattern:some-arguments-here"
 ```
 
 In the above **[repeat]** argument, the `ext` parts informs the scheduler that you want to use a
-custom repetition pattern, the `custom-pattern` parts resolves to your `IPattern` create function,
-and the _"some-arguments-here"_ parts will be passed into your above `ExtPattern` constructor.
+custom repetition pattern, the `custom-pattern` parts resolves to your `IRepetitionPattern` create function,
+and the _"some-arguments-here"_ parts will be passed into your above `ExtPattern` constructor, and allows
+you to parametrize your pattern any ways you see fit.
+
+### [tasks.scheduler.start]
+
+Notice, this slot is not intended for being directly invoked by your code, but internally used by Magic
+after the system has been setup. But if you intend to significantly change the internals of Magic, the way it
+works is that it requires an integer number between 1 and 100, that sets the maximum number of concurrently
+executed tasks on the scheduler parts, and also schedules all tasks persisted into your database.
+
+Typically you would _never directly invoke this slot yourself_, but rather rely upon Magic's middleware
+to automatically take care of starting the scheduler for you. The scheduler is automatically started
+as Magic starts. If you want to change the number of concurrent threads in your particular Magic installation,
+this can be achieved by changing the `magic:scheduler:max-threads` configuration setting and restarting
+your Magic backend. The default number of concurrently executed tasks are 8, unless explicitly changed
+through your configuration settings. This implies that only 8 tasks will be scheduled to execute in
+parallel at the same time, resulting in any tasks beyond that will be queued up and have to wait for
+another task to finish before it's allowed to execute. This prevents the task scheduler from exhausting
+your backend server due to too many threads executing at the same time.
 
 ### Internals
 
-A background thread will be used for executing scheduled tasks, and only _one_ background thread - Which implies
-that no tasks will ever be executing in parallel, to avoid thread starvation, due to logical errors in your schedules.
-All tasks are executed asynchronously, implying the execution thread will be released back to the operating system,
-as the thread is waiting for IO data, from socket connections, etc - Assuming you use the async slots where relevant.
+One `System.Threading.Timer` object will be created for each due date/repetition pattern you have, and kept
+in memory of your Magic server, which doesn't lend itself to thousands of schedules for obvious reasons - But
+due to the mechanics of how these are implemented at the system level is still fairly scalable for most
+solutions.
 
 When a repeating task has finished executed, the next due date for the task's execution will be calculated using
 its interval pattern - Implying that if you use a 5 second pattern, the schedule for its next execution, will be
-calculated 5 seconds from when the task _finished_ executing, which might not necessarily imply that your tasks
+calculated 5 seconds from the time the task _finished_ executing, which might not necessarily imply that your tasks
 are executed exactly every 5 seconds, depending upon how much time your task requires to execute. The interval
 pattern declares how many units to count to before executing the task again, from when the task _finished_ executing.
-
-## Deleting a task
-
-Use the **[tasks.delete]** signal to delete a task. This will also delete all future schedules for your task.
-An example can be found below.
-
-```
-tasks.delete:task-id
-```
-
-Besides from the task ID, the delete task signal doesn't take any arguments.
-
-## Inspecting a task
-
-To inspect a task you can use the following.
-
-```
-tasks.get:task-id
-```
-
-Besides from the task ID, the get task slot doesn't take any arguments. Using this signal, will return the
-task's due date(s) in addition to the task itself.
-
-## Listing tasks
-
-To list tasks, you can use the **[tasks.list]** signal. This slot optionally
-handles an **[offset]** and a **[limit]** argument, allowing you to page, which might be
-useful if you have a lot of tasks in your system. If no **[limit]** is specified, this signal
-will only return the first 10 tasks, including the task's Hyperlambda, but not its repetition
-pattern, or due date. Below is an example.
-
-```
-tasks.list
-   offset:20
-   limit:10
-```
-
-## Miscelaneous slots
-
-The **[scheduler.stop]** will stop the scheduler, meaning no repeating tasks or tasks with a due date in
-the future will execute. Notice, if you create a new task with a due date, and/or a repetition pattern,
-the scheduler will automatically start again. When you start the scheduler again, using for
-instance **[scheduler.start]**, all tasks will automatically resume, and tasks that have due dates in
-the past, will immediately start executing.
-
-To determine if the task scheduler is running or not, you can invoke **[scheduler.running]**, which will
-return `true` if the scheduler is running. Notice, if you have no scheduled tasks, it will always
-return false. And regardless of whether or not the scheduler is running or not, you can always explicitly
-execute a task by using **[tasks.execute]**.
-
-To return the date and time for the next scheduled task, you can raise the **[scheduler.next]** signal.
-
-## Persisting tasks
-
-All tasks are persisted into your selected database type of choice, either MySQL or Microsoft SQL Server.
-Which implies that even if the server is stopped, all scheduled tasks and normal tasks will automatically
-load up again, and be available to the scheduler as the server is restarted. This _might_ imply that
-all tasks in the past are immediately executed, which is important for you to understand.
-
-Tasks are by default persisted into your `magic.tasks` table, and schedules are persisted into your
-`magic.task_due` table.
 
 ## Project website
 
