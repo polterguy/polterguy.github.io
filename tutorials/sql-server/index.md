@@ -26,7 +26,9 @@ services:
     ports:
       - "4444:4444"
     volumes:
-      - modules:/magic/files/modules
+      - etc_magic_folder_ms:/magic/files/etc
+      - modules_magic_folder_ms:/magic/files/modules
+      - config_magic_folder_ms:/magic/config
 
   frontend:
     image: servergardens/magic-frontend:latest
@@ -37,7 +39,9 @@ services:
       - "5555:80"
 
 volumes:
-  modules:
+  etc_magic_folder_ms:
+  modules_magic_folder_ms:
+  config_magic_folder_ms:
 ```
 
 If you create a file named _"docker-compose.yml"_ and save it to any directory on your machine with the
