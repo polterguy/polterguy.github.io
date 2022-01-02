@@ -39,6 +39,7 @@ be followed as hands on exercises, from top to bottom.
 * [Authentication internals](/tutorials/auth-internals/) - How to use for instance Windows authentication
 * [Using Magic with SQL Server](/tutorials/sql-server/) - Using Magic with Microsoft SQL Server
 * [Using Magic with PostgreSQL](/tutorials/postgresql/) - Using Magic with PostgreSQL
+* [Using Magic with MySQL](/tutorials/mysql/) - Using Magic with MySQL
 
 ## Reference documentation core projects
 
