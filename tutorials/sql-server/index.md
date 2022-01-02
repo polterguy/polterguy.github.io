@@ -15,8 +15,6 @@ services:
     environment:
         SA_PASSWORD: Your_password123
         ACCEPT_EULA: Y
-    ports:
-    - "1433:1433"
 
   backend:
     image: servergardens/magic-backend:latest
@@ -58,7 +56,7 @@ When you configure Magic, you'll need to choose the _"mssql"_ database type. Aft
 paste the following into its connection string settings.
 
 ```
-Server=localhost;Initial Catalog={database};User=sa;Password=Your_password123;
+Server=db;Initial Catalog={database};User=sa;Password=Your_password123;
 ```
 
 The rest of the process is similar to the MySQL equivalent, and implies crudifying your backend, creating

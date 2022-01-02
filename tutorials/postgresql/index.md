@@ -15,8 +15,6 @@ services:
     restart: always
     environment:
       - POSTGRES_PASSWORD=ThisIsNotAGoodPassword
-    ports:
-    - "54321:5432"
 
   backend:
     image: servergardens/magic-backend:latest
@@ -58,7 +56,7 @@ When you configure Magic, you'll need to choose the _"pgsql"_ database type. Aft
 paste the following into its connection string settings.
 
 ```
-User ID=postgres;Password=ThisIsNotAGoodPassword;Host=localhost;Database={database};Port=54321;
+User ID=postgres;Password=ThisIsNotAGoodPassword;Host=db;Database={database};
 ```
 
 The rest of the process is similar to the MySQL equivalent, and implies crudifying your backend, creating
