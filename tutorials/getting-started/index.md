@@ -30,6 +30,7 @@ can execute in the _"SQL"_ menu item to create an example database. In the video
 
 * [Using Magic with SQL Server](/tutorials/sql-server/).
 * [Using Magic with PostgreSQL](/tutorials/postgresql/).
+* [Using Magic with MySQL](/tutorials/mysql/) - For completeness purposes.
 
 ## Download the code
 
