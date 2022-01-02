@@ -1,13 +1,6 @@
 
 # Getting started with Magic
 
-There are multiple ways to use Magic, depending upon whether or not you just want to try it out locally
-on your development machine, use the Docker images to more rapidly getting up to speed, deploy it
-to your production server, or clone its source code locally to view and debugs its source code.
-In this section we'll walk you through all of these different methods to get started with Magic.
-
-## Using Docker
-
 The easiest way to get started is to [download the docker-compose.yml file](https://github.com/polterguy/magic/releases/download/v10.0.4/docker-compose.yml), assuming you have [Docker](https://www.docker.com/products/docker-desktop)
 installed, and then execute the following in a terminal window where you saved the file. This is the
 exact same process for both Windows, Mac, and Linux.
