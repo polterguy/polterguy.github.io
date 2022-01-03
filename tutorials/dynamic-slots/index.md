@@ -2,8 +2,8 @@
 # Dynamic Hyperlambda slots
 
 A dynamic Hyperlambda slot is the equivalent of what you would refer to as a _"function"_ in other programming
-languages, since it allows you to declare a dynamic lambda object, you can pass arguments to, return arguments
-from, and treat the same way you'd treat a function in a more traditional programming language. Consider the
+languages, since it allows you to declare a dynamic lambda object that you can pass in arguments to, return arguments
+from, and treat the same way you would typically treat a function in a more traditional programming language. Consider the
 following code.
 
 ```
@@ -39,8 +39,13 @@ slots.create:foo.bar.get-roles
       return:x:@data.read/*/*
 ```
 
-Invoking the above slot with `signal:foo.bar.get-roles` would result in something
-resembling the following.
+If you invoke the above slot using the following Hyperlambda ...
+
+```
+signal:foo.bar.get-roles
+```
+
+... you will have something resembling the following returned to you.
 
 ```
 signal
@@ -109,7 +114,7 @@ slots.get:foo.bar
    return:x:-
 ```
 
-As you can see, we _semantically_ retrieved a dynamic slot, for then to inject new slot invocations into it,
+In the above snippet we _semantically_ retrieved a dynamic slot, for then to inject new slot invocations into it,
 and saving our updated slot afterwards. This allows you to look at code as a dynamic living thing, possible to
 modify over time, according to your needs, whatever they may be. Arguably allowing you to from within your
 live production environment literally _semantically 'patch'_ your existing code. Hence your code is no longer
@@ -123,9 +128,7 @@ same way you would semantically traverse an XML document, and/or a JSON object.
 One favourite of mine is to combine these features with cryptographic lambda invocations, to patch
 and administrate a multitude of servers dynamically, giving you orchestration capabilities on your servers,
 from a single point of administration, to administer a heterogenous environment consisting of a multitude
-of servers. However ...
-
-> Only your imagination sets the limits here ...
+of servers.
 
 ## Persisting dynamic slots
 
@@ -134,7 +137,6 @@ slot will cease to exist. To create a dynamic slot that is always re-created as 
 module is installed, you'll have to put your __[slots.create]__ invocation into a file inside your
 module's _"magic.startup"_ folder. For instance, if your module is called _"foo"_, and your slot is
 named __[foo.bar]__, typically the full name of this file would be _"/modules/foo/magic.startup/foo.bar.hl"_.
-
 All Hyperlambda files existing within your module's _"magic.startup"_ folder will be automatically executed
 as the system restarts, and/or is installed.
 
@@ -151,14 +153,8 @@ slots.create:acme-company.foo-module.meaning-of-life
    return:int:42
 ```
 
-This prevents one module from interferring with objects in another module, by resulting in a unique namespace,
-internally within your server, and/or also globally to some extent, and also makes your code more maintainable
-in the long run.
-
-## Wrapping up
-
-In this article we walked you through how to invoke HTTP endpoints using Hyperlambda. We talked about HTTP headers,
-automatic conversion back and forth between lambda objects and JSON, in addition to some additional features of
-the HTTP slots in Hyperlambda.
+This prevents one module from accidentally interferring with objects in another module, by creating a unique namespace,
+internally within your server, and/or also globally to some extent. This makes your code more maintainable
+and interoperable in the long run.
 
 * [Documentation](/documentation/)
