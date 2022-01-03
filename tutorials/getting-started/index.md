@@ -1,16 +1,15 @@
 
-# Getting started with Magic
+# Getting started
 
-The easiest way to get started is to [download the docker-compose.yml file](https://github.com/polterguy/magic/releases/download/v10.0.4/docker-compose.yml), assuming you have [Docker](https://www.docker.com/products/docker-desktop)
-installed, and then execute the following in a terminal window where you saved the file. This is the
-exact same process for both Windows, Mac, and Linux.
+The easiest way to get started is to [download the docker-compose file](https://github.com/polterguy/magic/releases/download/v10.0.4/docker-compose.yml), assuming you have [Docker](https://www.docker.com/products/docker-desktop)
+installed, and then execute the following in a terminal window where you saved the file.
 
 ```
 docker-compose up
 ```
 
-When your Docker containers have started, open your browser and go to [http://localhost:5555](http://localhost:5555),
-and use the default configuration settings for MySQL, choose a root password, crudify your Magic database,
+When your docker containers have started, open your browser and go to [http://localhost:5555](http://localhost:5555),
+and use the default connection string for MySQL, choose a root password, crudify your Magic database,
 type your name and email address when you generate a key pair, and Magic should work out of the box without
 any hassle. If you want to test Magic's CRUD automation capabilities, there's a _"sakila"_ SQL script that you
 can execute in the _"SQL"_ menu item to create an example database. In the video below I am illustrating this process.
@@ -19,11 +18,11 @@ can execute in the _"SQL"_ menu item to create an example database. In the video
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/ldy-idQO_jA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-**Notice** - If you want to use Magic with something else but MySQL you can find recipes below.
+If you want to use Magic with SQL Server or PostgreSQL you can find recipes for this below.
 
-* [Using Magic with SQL Server](/tutorials/sql-server/).
-* [Using Magic with PostgreSQL](/tutorials/postgresql/).
-* [Using Magic with MySQL](/tutorials/mysql/) - For completeness purposes.
+* [Using Magic with SQL Server](/tutorials/sql-server/)
+* [Using Magic with PostgreSQL](/tutorials/postgresql/)
+* [Using Magic with MySQL](/tutorials/mysql/)
 
 ## Download the code
 
@@ -43,9 +42,8 @@ In the video below I go through the manual setup process.
 
 ## Deploy Magic
 
-The easiest method to deploy Magic into production, is to follow [this recipe](/documentation/magic.deploy/), which
-guides you through setting up your VPS server to host Magic. Notice, if this is too complex for you,
-[we do provide this as a service](https://servergardens.com) for a fee.
+To deploy Magic into production you can follow [this recipe](/documentation/magic.deploy/), which
+guides you through setting up your VPS server to host Magic.
 
 ## Updating Magic
 
@@ -61,19 +59,12 @@ docker pull servergardens/magic-backend
 docker-compose up
 ```
 
-**Notice** - As of version 9.9.1 the development version of the docker images will store your
-custom modules as you tear down your docker containers, but it will _not_ store your _"appsettings.json"_
-file. The deployment version above however will also keep your _"appsettings.json"_ file, in addition
-to your custom modules - Implying updating Magic both in your local development environment, and
-in your production environment should be fairly straight forward - Except in your local development
-environment, you'll need to re-configure Magic after tearing down and updating your containers.
-
 ## Cloning Magic
 
-Magic is not one project, it's actually more than 30 projects, implying if you clone only Magic,
-you'll only get some few hundreds lines of code, while most of its actual code exists in any
-of the 30+ satellite projects. Hence, to clone Magic, to for instance maintain it, look at its
-code, etc you'll have to follow [this recipe](/documentation/magic.clone/).
+Magic is not one project, it's actually 35+ projects, implying if you clone only Magic,
+you'll only get some few hundreds lines of code, while most of its actual code exists in one
+of the 35+ satellite projects. Hence, to clone Magic, to for instance maintain it, look at its
+code etc, you'll have to follow [this recipe](/documentation/magic.clone/).
 
 ## Support
 
@@ -87,10 +78,5 @@ feature request or a bug report, you can do such through the project's
 Magic is 100% Open Source and free to use, also in proprietary and closed source applications.
 The only exception is if you improve the frontend dashboard, or improve one of its plugins,
 at which point you must make your improvements publicly available for others to use.
-
-## Go Pro
-
-[ServerGardens.Com](https://servergardens.com) provides a whole range of professional services
-based upon Magic. Check out our website for details.
 
 * [Documentation](/documentation/)
