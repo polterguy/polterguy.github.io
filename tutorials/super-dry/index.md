@@ -2,7 +2,7 @@
 # Super DRY code
 
 In this tutorial we will have a look at two features that allows you to write _"super DRY code"_, and with
-DRY here we of course refer to _"Don't Repeat Yourself"_, which is an important design principle as you
+DRY here we refer to _"Don't Repeat Yourself"_, which is an important design principle as you
 create software. If you prefer to watch video tutorials having me demonstrating how things are tied together,
 you can watch the following video where I walk you through these parts.
 
@@ -15,7 +15,7 @@ ensure your code becomes DRY. Below is an example of how you could tie these par
 Make sure you create a new folder within your _"modules"_ folder, name your folder _"foo"_, and put the
 following three files into that folder.
 
-**exceptions.hl**
+## exceptions.hl
 
 ```
 log.error:x:@.arguments/*/message
@@ -24,7 +24,7 @@ return
    status:int:555
 ```
 
-**interceptor.hl**
+## interceptor.hl
 
 ```
 log.info:Interceptor
@@ -32,12 +32,14 @@ data.connect:[generic|magic]
    .interceptor
 ```
 
-**bar.get.hl**
+## bar.get.hl
 
 ```
 log.info:Endpoint file
+
 // Unccomment the next line to test exception handlers
 // throw:An exception occurred
+
 data.read
    table:users
    columns
@@ -62,15 +64,8 @@ data.connect:[generic|magic]
 
 This of course makes it easy for you to _"outsource"_ commonalities in your folders to a single
 file, having everything occurring in one single file, to avoid repeating yourself.
-
-**Notice** - Interceptors are _recursively_ applied, implying if you have multiple _"interceptor.hl"_
+Interceptors are _recursively_ applied, implying if you have multiple _"interceptor.hl"_
 files upwards in your hierarchy, then _all_ your interceptors will be applied, creating a combined result,
 before your lambda object is executed.
-
-## Wrapping up
-
-In this micro-tutorial we illustrated how interceptors and exception filters works, allowing you
-to create more DRY code, and also create global exception handlers, on a per module basis, to for
-instance translate exceptions etc.
 
 * [Documentation](/documentation/)
