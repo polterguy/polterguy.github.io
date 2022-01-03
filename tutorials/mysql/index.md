@@ -6,7 +6,7 @@ get started with Magic using MySQL - Even though MySQL is the database type in t
 guide. Below is a complete docker-compose file, that spawns up a MySQL image in addition to the Magic
 backend and frontend.
 
-```
+```yaml
 version: "3.3"
 
 services:
