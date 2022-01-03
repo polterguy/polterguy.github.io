@@ -44,7 +44,7 @@ volumes:
 
 If you create a file named _"docker-compose.yml"_ and save it to any directory on your machine with the
 above content, for then to run the following command in that _same directory_, this will start an SQL
-Server instance on your machine. Notice, this should work transparently on both Windows, Linux, and OS X.
+Server instance on your machine.
 
 ```
 docker-compose up
@@ -53,17 +53,15 @@ docker-compose up
 ## Configuring Magic
 
 When you configure Magic, you'll need to choose the _"mssql"_ database type. Afterwards you'll need to
-paste the following into its connection string settings.
+paste the following into its connection string settings and choose a root password.
 
 ```
 Server=db;Initial Catalog={database};User=sa;Password=Your_password123;
 ```
 
 The rest of the process is similar to the MySQL equivalent, and implies crudifying your backend, creating
-a key pair, and running the assumptions.
-
-**Notice** - You also obviously need to have [Docker](https://www.docker.com/products/docker-desktop)
-installed on your development machine.
+a key pair, and running the assumptions. You also need to
+have [Docker](https://www.docker.com/products/docker-desktop) installed on your development machine.
 
 ## Wrapping up
 

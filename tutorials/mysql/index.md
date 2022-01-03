@@ -45,7 +45,7 @@ volumes:
 
 If you create a file named _"docker-compose.yml"_ and save it to any directory on your machine with the
 above content, for then to run the following command in that _same directory_, this will start a MySQL
-instance on your machine. Notice, this should work transparently on both Windows, Linux, and OS X.
+instance on your machine.
 
 ```
 docker-compose up
@@ -60,7 +60,7 @@ paste the following into its connection string settings.
 Server=db;Database={database};Uid=root;Pwd=ThisIsNotAGoodPassword;SslMode=Preferred;Old Guids=true;
 ```
 
-**Notice** - You also obviously need to have [Docker](https://www.docker.com/products/docker-desktop)
+You also need to have [Docker](https://www.docker.com/products/docker-desktop)
 installed on your development machine.
 
 ## Wrapping up
