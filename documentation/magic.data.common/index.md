@@ -122,7 +122,7 @@ You do this by providing a **[multiple-result-sets]** argument and set its value
 If you do this, the slot will return an array of arrays, one outer array for each result set
 your SQL generates. Below is an example.
 
-```
+```sql
 data.select:"select * from table1; select * from table2;"
    multiple-result-sets:bool:true
 ```
@@ -327,7 +327,7 @@ sql.read
 
 The above will result in the following SQL.
 
-```
+```sql
 select * from 'table1' order by 'table1'.'field1' asc,'table1'.'field2' asc limit 25
 ```
 
@@ -405,7 +405,7 @@ sql.read
 
 The above Hyperlambda will result in the following SQL.
 
-```
+```sql
 select 'table1'.'foo1' as 'howdy','table1'.'foo2' as 'world'
    from 'table1' limit 25
 ```
@@ -448,7 +448,7 @@ its resulting SQL, add the **[generate]** argument to the above root invocation,
 All specialised slots, dynamically building and executing some SQL towards your database, supports
 the **[generate]** argument, allowing you to easily _"debug"_ your SQL statements, and see what they actually do.
 
-```
+```sql
 select `film`.`title`, `film`.`description`, `actor`.`last_name`, `actor`.`first_name` from `film`
    inner join `film_actor` on `film`.`film_id` = `film_actor`.`film_id`
       inner join `actor` on `film_actor`.`actor_id` = `actor`.`actor_id`
@@ -472,7 +472,7 @@ sql.read
 
 The above lambda will result in the following SQL being generated.
 
-```
+```sql
 select * from 'table1'
    inner join 'table2' on 'table1'.'fk1' = 'table2'.'pk1' and
       'table1'.'fk2' = 'table2'.'pk2'
@@ -498,7 +498,7 @@ sql.read
 
 The above results in the following SQL.
 
-```
+```sql
 select * from 'table1' inner join 'table2' on 'table1'.'fk1' != 'table2'.'pk1'
 ```
 
@@ -589,7 +589,7 @@ data.connect:sakila
 
 The above will result in the following SQL, if you append the **[generate]** argument, and set its value to _"true"_.
 
-```
+```sql
 select
    `film`.`title`,
    `film`.`description`,
@@ -646,7 +646,7 @@ sql.read
 
 The above of course results in the following SQL.
 
-```
+```sql
 select count(*) from 'table1' group by 'table1'.'foo1','table1'.'foo2'
 ```
 
@@ -669,7 +669,7 @@ sql.update
 
 The above of course will result in the following.
 
-```
+```sql
 sql.update:update 'table1' set 'field1' = @v0
    @v0:howdy
 ```
@@ -824,7 +824,7 @@ sql.read
 
 Notice the **.neq** parts above, and realise how the above will produce the following SQL.
 
-```
+```sql
 select * from 'foo' where 'field1' != @0
 ```
 
@@ -870,7 +870,7 @@ sql.read
 
 Notice how the `\` character above results in the following SQL.
 
-```
+```sql
 select * from 'table1' where 'table1'.'neq' = @0 limit 25
 ```
 
@@ -891,7 +891,7 @@ sql.read
 Notice how the above lambda will interpret the `table1.foo` parts as a column name, and not as
 column _"foo"_ on _"table1"_. You can see the resulting SQL below.
 
-```
+```sql
 select * from 'table1' where 'table1.foo' = @0 limit 25
 ```
 
