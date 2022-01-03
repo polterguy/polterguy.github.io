@@ -328,3 +328,5 @@ ASALocalRun/
 
 # Excluding all Mac folder files
 **/.DS_Store
+
+_site/**
