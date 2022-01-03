@@ -6,10 +6,3 @@ copyright: © Aista 2020 - 2022, th@aista.com
 mwr: /tutorials/getting-started/
 mwr_text: Start
 og_image: https://raw.githubusercontent.com/polterguy/magic/master/artwork/og.jpeg
-github:
-  is_project_page: true
-  zip_url: https://github.com/polterguy/magic/archive/v10.0.16.zip
-  tar_url: https://github.com/polterguy/magic/archive/v10.0.16.tar.gz
-  repository_url: https://github.com/polterguy/magic
-  owner_name: ServerGardens
-  repository_name: Magic
