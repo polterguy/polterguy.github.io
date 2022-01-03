@@ -1,8 +1,8 @@
-theme: jekyll-theme-midnight
-title: Magic Cloud
+remote_theme: polterguy/aista-jekyll
+title: Aista Magic Cloud
 description: Where the machine creates your code
-show_downloads: true
 google_analytics: UA-147554379-1
+copyright: © Aista 2020 - 2022, th@aista.com
 github:
   is_project_page: true
   zip_url: https://github.com/polterguy/magic/archive/v10.0.16.zip
