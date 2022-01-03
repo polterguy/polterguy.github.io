@@ -1,5 +1,5 @@
 
-# Generating a Hyperlambda Database CRUD backend
+# Generating a Hyperlambda CRUD app
 
 This is going to be a _"different"_ tutorial, since instead of creating code ourselves, we will use
 Magic to generate our code, and analyse what Magic did afterwards. If you prefer to
@@ -9,11 +9,11 @@ watch a video where I demonstrate this process, you can watch the following vide
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/mv9MNnoP9-s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-As you can see in the above video, what Magic does for us, is to provide us with a starting
-point, from where we can modify the code, to have it do whatever we want it to do for us.
+What Magic just did for us in the above video was providing us with a starting
+point, from where we can modify the code afterwards.
 However, in order to modify the code, we'll need to understand it. So let us walk through it step
-by step, starting out with creating our database, ending up with an understanding of the code,
-allowing us to modify it as we see fit. So let us create our database first.
+by step, starting out with the creation of our database, ending up with an understanding of the
+Hyperlambda code that Magic produced for us.
 
 ## Creating your database
 
@@ -27,7 +27,9 @@ This creates a database for you, which will be the foundation for generating our
 
 ## Generating your backend
 
-After you've done the above, open the _"Generator"_ menu item, choose your newly created database,
+Before we can generate our backend we will have to purge our database cache. Click the little spiral
+icon in your SQL menu item below the SQL editor.
+Then open the _"CRUD"_ menu item, choose your newly created database,
 and click _"Crudify all tables"_. Below you can see how this process should look like.
 
 ![Generating your backend](https://servergardens.files.wordpress.com/2021/04/generator.png)
@@ -41,24 +43,24 @@ thousands of lines of code for you.
 ## Playing with our CRUD endpoints
 
 After having done the above, Magic will have created a bunch of Hyperlambda files for you in
-your _"/modules/xxx"_ folder, where _"xxx"_ is your database name. Open the _"Files"_ menu
+your _"/modules/xxx"_ folder, where _"xxx"_ is your database name. Open the _"Hyper IDE"_ menu
 item in your dashboard, and take a look at this folder. These files will wrap
 all the 4 main CRUD operations towards your tables, in addition to a count endpoint. The
 structure should resemble the following.
 
-* Create - _"xxx.post.hl"_ - Allows you to create new records
-* Read - _"xxx.get.hl"_ - Allows you to read records
-* Update - _"xxx.put.hl"_ - Allows you to update records
-* Delete - _"xxx.delete.hl"_ - Allows you to delete records
-* Count - _"xxx-count.get.hl"_ - Allows you to count records
+* Create - _"xxx.post.hl"_
+* Read - _"xxx.get.hl"_
+* Update - _"xxx.put.hl"_
+* Delete - _"xxx.delete.hl"_
+* Count - _"xxx-count.get.hl"_
 
 You will have 5 files resembling the above structure for each of your tables in your database.
-We will study the files generated around _one_ of these tables, but it doesn't matter which
+We will study the files generated around one of these tables, but it doesn't matter which
 database you generated, or which table you select - The structure will be similar enough
 regardless of which table you choose. However, before we start looking at the code, let's
 play around with the code, by going to the _"Endpoints"_ menu item, and filter on one of
 your tables. In the screenshot below, we've chosen _"babelfish/language"_. Click the
-_"Read"_ endpoint, at which point you should see something resembling the following.
+_"get"_ endpoint, at which point you should see something resembling the following.
 
 ![Your CRUD endpoints](https://servergardens.files.wordpress.com/2021/04/endpoints-tutorial.png)
 
@@ -96,12 +98,12 @@ The read endpoint supports all of the following features.
 * Paging through **[limit]** and **[offset]**
 * Ordering items through **[order]** and **[direction]**
 * Filtering
-* Specifying a boolean operator for filtering through **[operator]**
+* Specifying a boolean **[operator]** for filter criteria
 
 The above is what you'd typically need most of the times as you read items from your database.
 If you'd like to find items only matching a specific criteria, you can add a filter for your criteria,
 to have your backend only return items matching your filter. You will see a whole range of possible
-filters for every column in your table, such as I illustrate for the `locale` column below.
+filters for every column in your table, such as I illustrate for the **locale** column below.
 
 * __locale.eq__ - Locale being exact match of the specified string
 * __locale.neq__ - Locale _not_ equal to the specified string
@@ -111,11 +113,14 @@ filters for every column in your table, such as I illustrate for the `locale` co
 * __locale.mteq__ - Locale more than or equal to the specified string
 * __locale.lteq__ - Locale less than or equal to the specified string
 
+**Notice** - Depending upon whether or not you checked of the _"Verbose"_ checkbox as you crudified
+your backend, you will see more or less options for filtering on each column.
+
 Each column will have a range of filter options matching the above comparison operators. If some
 of your filter conditions doesn't make sense for a particular column, you can delete these later
-as we start editing the endpoint's code. However, try clicking the `locale.eq` filter button for
+as we start editing the endpoint's code. However, try clicking the **locale.eq** filter button for
 instance, and add the value _"en"_ into it, click _"Add"_, and invoke your endpoint again. This
-time of course only items matching your filter condition is returned, such as the following JSON
+time of course only items matching your filter condition are returned, such as the following JSON
 illustrates.
 
 ```json
@@ -127,11 +132,11 @@ illustrates.
 ]
 ```
 
-You can combine as many conditions as you wish the same way we added the above `eq` filter.
-Conditions are by default `and`ed together, implying _all conditions must match_ - But
-this can be changed to `or` by changing the value of the **[operator]** argument.
+You can combine as many conditions as you wish the same way we added the above **eq** filter.
+Conditions are by default **and**'ed together, implying _all conditions must match_ - But
+this can be changed to **or** by changing the value of the **[operator]** argument.
 
-You can also create and update items if you select your `post` or `put` endpoints. However,
+You can also create and update items if you select your **post** or **put** endpoints. However,
 these endpoints require you to provide a JSON payload instead of parametrising
 your endpoint using query parameters. Try to create and update some items using these
 two endpoints. Just remember that regardless of what table you choose, the primary key parts
@@ -183,7 +188,7 @@ part of this code is the following section.
 The above invocation to the **[data.read]** slot is _"transpiled"_ by Magic into an SQL statement,
 retrieving your records from your database, according to your filter conditions. The result of this
 SQL is then returned back to the client as JSON in the **[return-nodes]** line below. The above slot
-will expect an existing open database connection, which is achieved with the **[data.connect]** slot
+will expect an existing open database connection, which is accomplished with the **[data.connect]** slot
 invocation. The below code shows you how to connect to a database.
 
 ```
@@ -196,7 +201,7 @@ your **[data.connect]** invocation. This implies that your read invocation will 
 connection implicitly, since the read invocation is _"a lambda object inside of your database connection"_.
 Hence all database operations inside of a **[data.connect]** invocation will by default use that
 database connection to connect to your database and execute its SQL. Think of these slots as
-an `SqlConnection` instance and an `SqlDataReader` instance, where the reader uses the connection
+an **SqlConnection** instance and an **SqlDataReader** instance, where the reader uses the connection
 you previously opened. Then realise that the 3 carriage returns found in front of the **[data.read]**
 invocation becomes kind of like _"the scope"_ of the **[data.connect]** invocation, implying the
 code inside of **[data.connect]** is actually a lambda object, or an _"argument"_ to your connect
@@ -234,7 +239,6 @@ retrieve meta information about which arguments your endpoint can accept. If you
 save it, and go back to your endpoints file menu, you can see how it's automatically updated,
 and the arguments provided by the meta information parts of the endpoint resolver automatically
 changes. The **[.arguments]** node is said to _"declare which arguments your endpoint can accept"_.
-
 Editing the arguments your endpoint accepts is typically among one of the first things you
 want to do if you want to modify your endpoint. In the above arguments node for instance, the
 **[locale.mt]** argument probably doesn't make much sense, and can be deleted to simplify
@@ -289,30 +293,20 @@ An invocation to for instance **[data.read]** is referred to by Magic as a _"slo
 view your other CRUD files, you will see that they are using slightly different slots, to wrap
 other CRUD functions. The basic CRUD operations in Magic are implemented with the following slots.
 
-* __[data.read]__ - Reads records from your database
-* __[data.delete]__ - Deletes records in your database
-* __[data.create]__ - Creates new records in your database
-* __[data.update]__ - Updates existing records in your database
+* __[data.read]__
+* __[data.delete]__
+* __[data.create]__
+* __[data.update]__
 
 Besides from using different slots, all of your generated Hyperlambda files are actually quite
 similar in structure. You still typically want to have separate files for these operations, since
 this allows you to easily modify for instance authorisation requirements, arguments passing, add
 additional business logic to your files, etc. So even though the code is not very _DRY_
 in its original state, separate endpoint files for separate operations are still typically
-useful, and a feature you will learn to appreciate further down the road, as you start
+useful and a feature you will learn to appreciate further down the road, as you start
 modifying your Hyperlambda files.
-
 If you want to see the power of these CRUD slots you can check out the documentation for the
 [magic.data.common](/documentation/magic.data.common/) module, which you can find in the
 reference documentation for Magic.
-
-## Wrapping up
-
-In this tutorial we generated an HTTP REST backend wrapping our database with all CRUD operations.
-Afterwards we played around with our endpoints, invoking them with arguments, before finishing up
-analysing the code Magic generated for us. In later tutorials we will dive deeper into the syntax
-of Hyperlambda, and also the implementation details of the crudification process - But for now,
-realising that Magic creates a foundation for you to edit, is sufficient for you to start playing
-with Magic, to generate backends according to your needs.
 
 * [Documentation](/documentation/)
