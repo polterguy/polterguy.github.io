@@ -30,13 +30,12 @@ fork
    http.get:"https://dzone.com"
 ```
 
-What the above code does is to create 3 _"fire and forget"_ threads, which simply fetches the documents found
-at the specified URLs, and returns without waiting for the threads to finish. Notice though, that if you execute
+The above code creates 3 _"fire and forget"_ threads, that retrieves the documents found
+at their specified URLs, and returns without waiting for the threads to finish. Notice though that if you execute
 the above code in the Hyperlambda _"Eval"_ menu item, it returns instantly, and you will _not_ see the resulting
-HTML documents found at the specified URLs in your result output parts. This is because by simply invoking **[fork]**
-the way we do above, we are creating _"fire and forget"_ threads, were we don't care about the result of our threads,
+HTML documents found at the specified URLs in your output. This is because by simply invoking **[fork]**
+the way we do above, we are creating _"fire and forget"_ threads were we don't care about the result of our threads,
 before continuing execution to the next line of code.
-
 Sometimes you would rather want to create multiple pieces of code, executing in parallel, where you want the result
 of the invocation of _all_ of the threads, before continuing execution. This can be accomplished with the **[join]**
 slot, that will wait for _all_ direct children **[fork]** invocations before continuing execution. Consider the
@@ -64,25 +63,25 @@ http.get:"https://gaiasoul.com"
 http.get:"https://dzone.com"
 ```
 
-Hence, with the first example above, we can do multiple long lasting jobs in parallel, on 3 separate threads,
-speeding up our own application. Since our code doesn't need to execute 3 HTTP GET invocations consecutively,
-but can execute all of these in parallel, on different threads, our app becomes much faster. Hence,
+Hence, with the first example above, we can do multiple long lasting jobs in _parallel_, on 3 separate threads,
+speeding up our application. Since our code doesn't need to execute 3 HTTP GET invocations consecutively,
+but can execute all of these in parallel on different threads, our app becomes much faster. Hence,
 the **[join]**/**[fork]** version would probably on average be almost 3 times as fast as the last version.
-
 This is typically quite useful when we're waiting for IO data, such as waiting for HTTP invocations, reading
 or writing to the file system, or executing SQL towards our database. Multi threading does typically _not_
-make CPU intensive tasks faster for the record, quite the contrary, since it requires context switching at
+make CPU intensive tasks faster for the record, quite the contrary in fact, since it requires context switching at
 the CPU level, and often multiple synchronization objects further reducing your execution speed. _Do not_ abuse
 multithreading.
 
-## Hyperlambda is async by default
+## Hyperlambda and async
 
 A problem that is fairly commonly experienced with multithreading is _"thread pool exhaustion"_. This occurs
-when your operating system is asked to create more threads than it has resources to create at the same time.
+when your operating system is asked to create more threads then it has resources to create at the same time.
 What Hyperlambda will do though, is to actually _suspend and release your threads as it is waiting for IO data_.
-This _significantly_ increases your application's scalability traits, and how many simultaneous users it
-can handle, before your web server, and/or operating system, literally crashes. This is referred to as _"async programming"_,
-and is a core feature in any modern framework, and/or programming language, allowing your code to scale better.
+This _significantly_ increases your application's scalability and increases the amount of simultaneous users it
+can handle before your web server, and/or operating system, literally crashes because of _"thread pool starvation"_.
+This is referred to as _"async programming"_, and is a core feature in any modern framework, and/or programming
+language, allowing your code to scale better.
 
 What this implies for Hyperlambda specifically, is that after all 3 threads above are created, and we're
 waiting for IO traffic from our URLs, there is actually _zero_ threads being consumed by our application,
@@ -92,8 +91,10 @@ given a thread to continue execution, and continues its execution.
 
 From a scalability perspective, this results in that an async application is typically several orders of
 magnitudes better at scaling than a synchronous application. However, since async programming is extremely
-complex, a lot of things can go wrong as you try to implement it in your own code. Hyperlambda though
+complex, a lot of things can go wrong as you try to implement it in your own code. Hyperlambda
 is _async by default_, and there is no _"special syntax"_ required to understand these parts of it.
+This makes async programming much easier to implement with Hyperlambda compared to other more low level
+programming languages.
 
 ## Synchronizing lambda objects
 
@@ -124,9 +125,8 @@ basically ensures that only _one_ HTTP GET invocation is able to execute at the 
 first thread to execute the semaphore slot, becomes the first thread allowed to execute its HTTP GET invocation,
 while the other 2 threads needs to wait for the first thread to finish before they're allowed access to their
 lambda object.
-
-The above example is not a very good example though, since none of the above threads actually _need_ a
-semaphor, but simply given to allow you to measure the differences in execution speed for the lambda object as
+The above example is not a very good example of using semaphores, since none of the above threads actually _need_ a
+semaphor, but simply provided to allow you to measure the differences in execution speed for the lambda object as
 a whole. A better example can be found below.
 
 ```
@@ -162,13 +162,5 @@ io.file.load:/foo.md
 
 Without the above **[semaphore]** invocations, we'd run the risk of multiple threads writing to the
 file simultaneously, resulting in what is commonly referred to as a _"race condition"_.
-
-Now compare the above code with the equivalent C# or Java example, and you'll rapidly understand
-the beauty of the simplified syntax.
-
-## Wrapping up
-
-In this article we walked through some of the threading, async, and scalability features of Magic and Hyperlambda,
-to show how Magic simplifies multithreaded programming, and also scales very well due to its async nature.
 
 * [Documentation](/documentation/)
