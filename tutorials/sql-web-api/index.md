@@ -1,5 +1,5 @@
 
-# Create your Web APIs with SQL
+# Create a Web API with SQL
 
 This tutorial walks you through Magic's SQL generator. This part of Magic allows you to automatically wrap
 your SQL into an HTTP endpoint, without having to do anything except provide Magic with SQL.
@@ -15,8 +15,7 @@ and a list of arguments - Without having to create as much as a single line of
 code yourself. Then you provide Magic with an SQL statement, click the button, and Magic generates your
 HTTP endpoint 100% automatically. Of course the way it works, is similar to the CRUD generator parts,
 except this time the responsibility is reversed, allowing you to provide the SQL, and Magic to do the rest.
-
-And the endpoint can be easily secured, only providing access to whatever roles you want to have access
+The endpoint can be easily secured, only providing access to whatever roles you want to have access
 to it 100% automatically for you.
 
 ## DRY code
@@ -26,9 +25,7 @@ Magic simply brings this idea to the next level, which of course is why it can d
 above video. This is quite easy too, since 90% of such endpoints, have similar requirements, being
 a list of roles allowed to access the endpoint, a JSON payload of some sort, maybe some query
 arguments, for then to simply return whatever the SQL returns back to the client as JSON. Automating
-this process _should_ be a no-brainer.
-
-Below you can find the SQL I am using in the above video.
+this process _should_ be a no-brainer. Below you can find the SQL I am using in the above video.
 
 ```sql
 select l.locale, l.language, t.id, t.content
@@ -40,11 +37,5 @@ select l.locale, l.language, t.id, t.content
 Below is a screenshot of how this looks like in Magic's dashboard.
 
 ![SQL HTTP endpoints](https://servergardens.files.wordpress.com/2021/04/sql-http-endpoints.png)
-
-## Wrapping up
-
-In this micro-tutorial we created an HTTP REST endpoint without writing a single line of code,
-and only providing Magic with an SQL statement, for then to let Magic do the work for us, arguably
-automating the entirety of the process.
 
 * [Documentation](/documentation/)
