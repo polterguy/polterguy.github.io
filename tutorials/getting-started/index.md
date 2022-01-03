@@ -15,7 +15,7 @@ type your name and email address when you generate a key pair, and Magic should 
 any hassle. If you want to test Magic's CRUD automation capabilities, there's a _"sakila"_ SQL script that you
 can execute in the _"SQL"_ menu item to create an example database. In the video below I am illustrating this process.
 
-<div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
+<div class="video">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/ldy-idQO_jA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
@@ -37,7 +37,7 @@ development machine using the code directly. If so you will first of all need th
 
 In the video below I go through the manual setup process.
 
-<div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
+<div class="video">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/H7RH4lrISGw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 

@@ -5,7 +5,7 @@ This is going to be a _"different"_ tutorial, since instead of creating code our
 Magic to generate our code, and analyse what Magic did afterwards. If you prefer to
 watch a video where I demonstrate this process, you can watch the following video.
 
-<div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
+<div class="video">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/mv9MNnoP9-s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 

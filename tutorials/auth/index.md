@@ -10,7 +10,7 @@ since it exposes your apps for adversaries doing whatever they want to do with y
 one of those things together with cryptography you really _should not solve yourself_, unless you really
 _know_ what you're doing. Watch the following video for a walkthrough of how the auth parts in Magic works.
 
-<div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;margin-top:4rem;margin-bottom:4rem;">
+<div class="video">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/tR2kyM6HKxw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
