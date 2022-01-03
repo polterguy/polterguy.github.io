@@ -18,7 +18,7 @@ in general. Combined with the fact that Hyperlambda happens to be a Turing Compl
 language, this also lends itself to business process workflows, and similar ideas, where some function invocation
 is dynamically created, persisted into your database, for then to be executed later due to some trigger happening
 in another part of your system. In such a way the task scheduler in Magic also replaces Microsoft Workflow
-Foundation, with something that's somewhere between 400 and 800 times faster than MWF. In addition to that it
+Foundation, with something that's somewhere between 400 and 800 times faster and more scalable than MWF. In addition to that it
 consumes about 1/100 of the amount of memory that MWF consumes. And of course the thing is `async` to the bone.
 Below you can see some example Hyperlambda you could paste into your tasks to create a dummy task that simply
 creates a log entry for you.
@@ -59,19 +59,15 @@ tasks.create:foo-bar-task-1
 The above creates a task with the ID of _"foo-bar-task-1"_. If you later want to execute your
 task, you can do that by invoking **[tasks.execute]** and pass in the ID you gave your task
 as you created it. This actually allows you to create and decorate _"function invocations"_, which
-are persisted into your database, and later executed according to its ID. This arguably replaces
-the bulk of Microsoft Workflow Foundation with something that's at least 400 times faster,
-carries much less overhead, yet still to a large extent accomplishes the same.
+are persisted into your database, and later executed according to its ID.
 
 ## Internals
 
-Tasks will be persisted into the magic database in the `tasks` and `task_due` tables. This implies that
+Tasks will be persisted into your magic database in the `tasks` table and schedules will be persisted
+into your `task_due` table. This implies that
 if you take backup of your database, tasks will still exists in your backup, including their Hyperlambda
-and next schedule date. Only _one_ timer will be created regardless of how many tasks you create, and
-only _one_ task will execute at the same time. In addition, only when a task is done executing, its next
-schedule time will be calculated. This is to avoid exhausting the server due to misconfigured tasks, and/or
-flooding the server with tasks.
-
-You can see the entire documentation for the task scheduler [here](/documentation/magic.lambda.scheduler/).
+and next schedule date. When a task is done executing its scheduled execution, its next
+schedule time will be calculated. This avoids exhausting your web server due to misconfigured tasks, and/or
+flooding the server with tasks your server is not able to execute.
 
 * [Documentation](/documentation/)
