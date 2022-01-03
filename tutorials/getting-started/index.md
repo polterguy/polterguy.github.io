@@ -74,10 +74,4 @@ email at [th@aista.com](mailto:th@aista.com). If you want to submit a
 feature request or a bug report, you can do such through the project's
 [GitHub Issues](https://github.com/polterguy/magic/issues).
 
-## License
-
-Magic is 100% Open Source and free to use, also in proprietary and closed source applications.
-The only exception is if you improve the frontend dashboard, or improve one of its plugins,
-at which point you must make your improvements publicly available for others to use.
-
 * [Documentation](/documentation/)
