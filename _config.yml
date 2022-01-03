@@ -5,6 +5,7 @@ google_analytics: UA-147554379-1
 copyright: © Aista 2020 - 2022, th@aista.com
 mwr: /tutorials/getting-started/
 mwr_text: Start
+og_image: https://raw.githubusercontent.com/polterguy/magic/master/artwork/aista-logo.png
 github:
   is_project_page: true
   zip_url: https://github.com/polterguy/magic/archive/v10.0.16.zip
