@@ -11,9 +11,8 @@ return-nodes
 ```
 
 Save the file, and open up [http://localhost:4444/magic/modules/tutorials/hello](http://localhost:4444/magic/modules/tutorials/hello)
-using your browser. Make sure you get the port correctly. 4444 is if you're using the Docker images,
+using your browser. Make sure you get the port correctly. 4444 is if you're using the docker images,
 and might need to be changed to e.g. 5000 if you're using the source code version directly.
-
 Congratulations, you have now created your first Hyperlambda HTTP endpoint. Notice how Magic automatically
 transforms your lambda object to JSON, and returns it as follows.
 
@@ -37,8 +36,7 @@ return-nodes
    result:x:@strings.concat
 ```
 
-Save the file, an invoke the following relative URL using your browser - `/magic/modules/tutorials/hello?name=thomas`.
-
+Save the file, an invoke the following relative URL using your browser - _"/magic/modules/tutorials/hello?name=thomas"_.
 The result should resemble the following.
 
 ```json
@@ -54,8 +52,8 @@ back to your browser as JSON. There are two new slots being used in this code.
 * __[strings.concat]__ - Concatenates two or more strings
 * __[unwrap]__ - Forward evaluates expressions
 
-For details about how these two slots works, check out the documentation to magic.lambda.strings
-and magic.lambda respectively.
+For details about how these two slots works, check out the documentation to [magic.lambda.strings](/documentation/magic.lambda.strings)
+and [magic.lambda](/documentation/magic.lambda/) respectively.
 
 ## The endpoint resolver
 
@@ -65,7 +63,7 @@ You can also create POST, PUT, PATCH and DELETE endpoints, by simply replacing t
 your filename with _".xxx."_ where xxx is your verb of choice. If you do this, you can no longer
 use your browser to test the endpoint, but need to open up the _"Endpoints"_ file menu to test your
 endpoint(s), and provide payloads and arguments to them. You can also use e.g. Postman to invoke such
-endpoints. For details about how endpoints are resolved, check out the documentation for the magic.endpoint
+endpoints. For details about how endpoints are resolved, check out the documentation for the [magic.endpoint](/documentation/magic.endpoint/)
 project.
 
 ## Creating a POST endpoint
@@ -99,7 +97,6 @@ Invoke the endpoint, and notice how we get a similar type of result back as our 
 to see the internals of what is happening, you can use Chrome Developer tools to _"inspect"_ your HTTP requests
 as you click the _"Invoke"_ button - At which point you can see how an HTTP POST invocation is created instead of
 an HTTP GET invocation.
-
 You can repeat the same exercise for PUT, DELETE and PATCH if you wish - However, both GET and DELETE endpoints
 can only be given arguments as query parameters - While POST, PUT and PATCH endpoints requires JSON payloads.
 You can also create alternative endpoint types, returning for instance files and similar constructs instead of

@@ -1,7 +1,7 @@
 
 # Authentication and authorisation
 
-Magic was created to solve all the repetitive problems I experience in my day job. One of these problems
+Magic was created to solve all the repetitive problems I experienced in my day job. One of these problems
 happens to be authentication and authorisation, which is a problem you have to solve every time
 you create a new application. At this point some might argue that OAuth2 solves these problems, and while
 technically that _is_ true, OAuth2 is also ridiculously complex and over engineered, and very easy to
