@@ -7,8 +7,8 @@ VPS instance somewhere, which you can buy at for instance [DigitalOcean](https:/
 You will also need a domain and point _two_ DNS A records to your server's IP address. Typically
 these would resemble the following.
 
-* __api.yourdomain.com__ - The Magic backend 
-* __magic.yourdomain.com__ - The Magic frontend/dashboard
+* __api.yourdomain.com__
+* __magic.yourdomain.com__
 
 **Notice** - We suggest you don't buy the cheapest VPS droplet from DigitalOcean, but rather choose
 the basic droplet that costs you $24 per month. This is because the cheapest droplet is simply
