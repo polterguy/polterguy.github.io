@@ -42,7 +42,8 @@ This allows you to exchange public keys between another Magic server and your ow
 an authorisation object with the other party's public key, for then to have the owner of that key create
 Hyperlambda code that your server _securely executes_ - Arguably _"reversing the responsibility of code"_, where
 the server is no longer responsible for declaring its code, but rather the client provides a lambda object
-that your server executes.
+that your server executes. We refer to this is IoC on code declaration, because it becomes the equivalent
+of _"inversion of control"_ in regards to who gets to decide what code to execute.
 
 ## Code example
 
@@ -63,7 +64,7 @@ signal:magic.crypto.http.eval
       return
 ```
 
-If you open your _"Crypto"_ menu item, and expand the _"Receipts"_ tab, you will see
+If you open your _"Crypto"_ menu item afterwards, and you expand the _"Receipts"_ tab, you will see
 something resembling the following.
 
 ![Cryptographic receipt of HTTP Lambda Invocation](https://servergardens.files.wordpress.com/2021/04/crypto-receipt.png)
@@ -95,7 +96,7 @@ those clients explicitly given permissions on your server are legally allowed to
 
 Since the whole idea also is that _the client supplies the code_, this also allows your
 system to go through evolutionary iterations, changing its behaviour, _without_ having to patch or
-change your servers in any ways - Since the client is the party providing the actual code to be executed.
+change your servers in any ways, since the client is the party providing the actual code to be executed.
 Hence, upgrading your client, effectively changes the behaviour of your server. Needless to say, but in
 a Micro Service environment where you might have dozens, and sometimes thousands of heterogeneous server
 instances, this approach eliminates an entire axiom in regards to maintaining your system(s) - Simplifying
@@ -110,21 +111,9 @@ be retrieved from the database, and a receipt for the execution of the lambda ob
 into the database. Hence, you should _not_ use these guys for things where execution speed is crucial,
 but rather smaller payloads, occasionally transmitted between clients and servers, and not for things
 needing to handle thousands of requests per second.
-
 However, when you need them, you _really_ need them - And if used correctly, and _sparsely_ may I add,
 these guys are an incredible tool for you, to both scale out (**securely**) and more easily build
 heterogeneous server environments, without having to try to predict what the future might hold in
 regards to its requirements.
-
-> Once the client provides the code, the server never needs to be patched again ... ;)
-
-## Wrapping up
-
-In this article we looked at how you can securely transmit lambda object from the client
-to the server, for then to have the server execute the code, and store a cryptographic receipt
-of the execution of the code. We also looked at how this process reverses the responsibility between
-the client and the server, allowing the client to provide the code, and how this simplifies maintenance
-of your server farm. Then we walked through how this could be accomplished in a _secure_ environment,
-due to associating a bunch of execution rights with a public cryptography key.
 
 * [Documentation](/documentation/)
