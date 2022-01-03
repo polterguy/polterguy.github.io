@@ -1,16 +1,11 @@
 
-# Documentation for Magic
+# Documentation
 
 This is the official documentation for Magic, and it contains both reference documentation
 and tutorial style type of documentation. If you've just recently started to use Magic, I
 suggest you start out with the architectural overview video, move on to tutorials starting
 out at the top, and move downwards - For then to read the reference documentation as you need
 detailed information about specific parts of Magic.
-
-## Architectural overview
-
-In this video I walk you through the architecture of Magic from a bird's perspective, in addition
-to that I illustrate how to create a simple Hello World Hyperlambda app.
 
 <div class="video">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/FK0rcAEWtV8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -22,24 +17,24 @@ This is our tutorials section. If you've just started using Magic, this is proba
 These tutorials guides you through Magic and Hyperlambda, one concept at the time. These tutorials are intended to
 be followed as hands on exercises, from top to bottom.
 
-* [Getting started](/tutorials/getting-started/) - Getting Magic up running
-* [Database CRUD operations](/tutorials/database-crud/) - Automate the process of creating code
-* [SQL Web API](/tutorials/sql-web-api/) - Create HTTP endpoints in SQL
-* [Magic beyond CRUD](/tutorials/cloud-ide/) - A guided tour through Magic's Dashboard
-* [Web Sockets and SignalR in Magic](/tutorials/web-sockets/) - How to use Web Sockets with Magic
-* [Authentication and authorisation](/tutorials/auth/) - How Magic solves authentication and authorisation
-* [Hyperlambda Hello World](/tutorials/hello-world-endpoint/) - Your first Hyperlambda endpoint
-* [Super DRY code](/tutorials/super-dry/) - Exception handlers and interceptors
-* [Threading, async and scaling](/tutorials/threading/) - How Hyperlambda simplifies threading and async
-* [HTTP REST invocations](/tutorials/http-rest/) - How Hyperlambda simplifies HTTP REST invocations
-* [Dynamic slots](/tutorials/dynamic-slots/) - How to create dynamic Hyperlambda slots
-* [Scheduling tasks](/tutorials/task-scheduler/) - How to use Magic to create and schedule tasks
-* [Cryptographically secured HTTP Lambda Invocations](/tutorials/crypto-lambda-http/) - Inversion of Code
-* [Expressions, slots, and nodes](/tutorials/expressions-slots-nodes/) - Hyperlambda is *really* weird!
-* [Authentication internals](/tutorials/auth-internals/) - How to use for instance Windows authentication
-* [Using Magic with SQL Server](/tutorials/sql-server/) - Using Magic with Microsoft SQL Server
-* [Using Magic with PostgreSQL](/tutorials/postgresql/) - Using Magic with PostgreSQL
-* [Using Magic with MySQL](/tutorials/mysql/) - Using Magic with MySQL
+* [Getting started](/tutorials/getting-started/)
+* [Database CRUD operations](/tutorials/database-crud/)
+* [SQL Web API](/tutorials/sql-web-api/)
+* [Magic beyond CRUD](/tutorials/cloud-ide/)
+* [Web Sockets and SignalR in Magic](/tutorials/web-sockets/)
+* [Authentication and authorisation](/tutorials/auth/)
+* [Hyperlambda Hello World](/tutorials/hello-world-endpoint/)
+* [Exception handlers and interceptors](/tutorials/super-dry/)
+* [Threading, async and scaling](/tutorials/threading/)
+* [HTTP REST invocations](/tutorials/http-rest/)
+* [Dynamic slots](/tutorials/dynamic-slots/)
+* [Tasks and the task scheduler](/tutorials/task-scheduler/)
+* [Cryptographically secured HTTP Lambda Invocations](/tutorials/crypto-lambda-http/)
+* [Expressions, slots, and nodes](/tutorials/expressions-slots-nodes/)
+* [Authentication internals](/tutorials/auth-internals/)
+* [Using Magic with SQL Server](/tutorials/sql-server/)
+* [Using Magic with PostgreSQL](/tutorials/postgresql/)
+* [Using Magic with MySQL](/tutorials/mysql/)
 
 ## Reference documentation core projects
 
@@ -50,7 +45,8 @@ _"what makes Magic magical"_.
 * [magic.node](/documentation/magic.node/) - Explains nodes, Hyperlambda and Expressions
 * [magic.signals](/documentation/magic.signals/) - Magic's Super Signals implementation
 * [magic.endpoint](/documentation/magic.endpoint/) - Endpoint resolving in Magic
-* [magic.library](/documentation/magic.library/) - A single NuGet package helper tying everything easily together
+* [magic.data.common](/documentation/magic.data.common/) - Commonalities for data adapters in Magic
+* [magic.library](/documentation/magic.library/) - A single NuGet package helper wrapping everything together
 
 ## Reference documentation plugins
 
@@ -93,18 +89,17 @@ requirements for your endpoints, etc.
 These are utility and helper projects, either referenced by other projects, and or solving some specific
 problem related to Magic, such as how to clone all plugins, deploy Magic into a live environment, etc.
 
-* [magic.data.common](/documentation/magic.data.common/) - Commonalities for data adapters in Magic
 * [magic.deploy](/documentation/magic.deploy/) - How to deploy Magic to your VPS using Docker.
 * [magic.clone](/documentation/magic.clone/) - How to clone Magic and its entire codebase.
 
 ## Support
 
-If you have a support request of private nature, or another type of request, you can send me
-email at [thomas@servergardens.com](mailto:thomas@servergardens.com). If you want to submit a
-feature request or a bug report, you can do such through the project's
+If you have a support request of private nature, you can send us
+an email at [th@aista.com](mailto:th@aista.com). If you want to submit a
+feature request or a bug report, you can do this through the project's
 [GitHub Issues](https://github.com/polterguy/magic/issues).
 
-* [thomas@servergardens.com](mailto:thomas@servergardens.com)
+* [th@aista.com](mailto:th@aista.com)
 
 ## Quality gates
 
