@@ -5,7 +5,5 @@
 Aista Magic Cloud is an Open Source Low-Code application generator allowing you to create your web apps
 by clicking a button.
 
-## Documentation
-
 * [Getting Started](/tutorials/getting-started/)
 * [Documentation](/documentation/)
