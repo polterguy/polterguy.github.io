@@ -58,11 +58,11 @@ no `IDisposable` objects you'll need to remember to dispose, no IoC container wi
 By removing the complex parts from your resulting code, maintaining things becomes much easier for both
 yourself in the future, in addition to obviously also any junior developers inheriting your project later down the road.
 
-> EVERYTHING is "syntax"
+> Everything is "syntax"
 
 With the above we imply that the less syntax you've got, and the less lines of code you've got, the easier it becomes
-to maintain things in the future. Of course, if you compare the above **[http.get]** invocation to the average C#
-equivalent, you'll rapidly understand the benefits.
+to maintain things in the future. The primary axiom around which Hyperlambda evolves, is that code is technical debt,
+implying the less code you've got, the less technical debt you have. Technical debt again is a _bad_ thing!
 
 ## POSTing, PUTing and PATCHing data
 
@@ -90,7 +90,7 @@ http.post:"https://foo-bar.com"
 ```
 
 Most of the times you want to post something to another endpoint, it's typically JSON you want to post.
-Hyperlambda implements a lot of helper slots and features to help you out with this. The code below for instance,
+Hyperlambda implements a lot of helper slots and features to help you out with this. The code below for instance
 will automatically transform your lambda object to JSON, dynamically populate its `id` field with the value
 of **[.userId]**, before transmitting your JSON to the endpoint.
 
@@ -111,13 +111,13 @@ your own business logic.
 Hyperlambda also has strong support for alternative content types, and it automatically transforms the
 following content types for you.
 
-* __application/json__ - Automatically transforms some lambda object to its JSON equivalent
-* __application/x-json__ - Same as above
-* __application/hyperlambda__ - Automatically transforms your lambda to Hyperlambda
-* __application/x-hyperlambda__ - Same as above
-* __application/www-form-urlencoded__ - Automatically transforms a lambda object to its URL encoded equivalent
-* __application/x-www-form-urlencoded__ - Same as above
-* __multipart/form-data__ - Automatically transforms your lambda object to a multipart MIME payload
+* __application/json__
+* __application/x-json__
+* __application/hyperlambda__
+* __application/x-hyperlambda__
+* __application/www-form-urlencoded__
+* __application/x-www-form-urlencoded__
+* __multipart/form-data__
 
 To use any of the above automatic conversions, make sure you _do not_ provide a value for your **[payload]**,
 but rather provide a semantic lambda structure such as the following illustrates.
@@ -149,31 +149,30 @@ http.post:"https://foo.com/hyperlambda-endpoint"
       // ... etc ...
 ```
 
-You can also have Hyperlambda automatically create a `multipart/form-data` **[payload]** for you. To understand
-how, please refer to the _"magic.lambda.mime"_ project, explaining how to semantically create a MIME message
-using Hyperlambda. Then imagine the **[payload]** node being your **[mime.create]** node, without any Content-Type,
-having the Content-Type automatically set to _"multipart/form-data"_. This allows you to simulate a form data
-submission, arguably automating the behaviour of a browser.
-
-**Notice** - If your endpoint _returns_ any of the following content types, you can add a **[convert]** argument
+You can also have Hyperlambda automatically create a _"multipart/form-data"_ **[payload]** for you. To understand
+how, please refer to the [magic.lambda.mime](/documentation/magic.lambda.mime/) project, that explains how to
+semantically create a MIME message using Hyperlambda. Then imagine the **[payload]** node being your **[mime.create]**
+node, without any Content-Type, having the Content-Type automatically set to _"multipart/form-data"_. This allows you
+to simulate a form data submission arguably automating the behaviour of a browser.
+If your endpoint _returns_ any of the following content types, you can add a **[convert]** argument
 to your invocation to automatically reverse the process, and have Hyperlambda convert the response _to_ a lambda
 object.
 
-* __application/json__ - Transforms the response _from_ JSON to a lambda object
-* __application/x-json__ - Same as above
-* __application/hyperlambda__ - Transforms the response _from_ Hyperlambda to a lambda object
-* __application/x-hyperlambda__ - Same as above
-* __application/www-form-urlencoded__ - Transforms the response _from_ URL encoded values to a lambda object
-* __application/x-www-form-urlencoded__ - Same as above
+* __application/json__
+* __application/x-json__
+* __application/hyperlambda__
+* __application/x-hyperlambda__
+* __application/www-form-urlencoded__
+* __application/x-www-form-urlencoded__
 
-Currently there is no automatic conversion _from_ `multipart/form-data` responses to lambda.
+Currently there is no automatic conversion from _"multipart/form-data"_ responses to lambda.
 
 ## HTTP headers
 
 Passing in your own HTTP headers is also easy. Notice, by default Hyperlambda will associate some default
 headers with your invocation, specifically the `Accept` header and the `Content-Type` header, depending
 upon whether or not your invocation is using a verb requiring a payload or not. The default values for these
-headers is `application/json`. If you pass in your own **[headers]** collection, Hyperlambda will _not_ add
+headers is _"application/json"_. If you pass in your own **[headers]** collection, Hyperlambda will _not_ add
 these headers for you automatically, and you'll have to manually add them if you want them to be associated
 with your request. Below is an example of content negotiation, telling the other party that you're only
 interested in Hyperlambda being returned to you.
@@ -181,10 +180,11 @@ interested in Hyperlambda being returned to you.
 ```
 http.get:"https://foo.com"
    headers
-      Accept:application/x-hyperlambda
+      Accept:application/hyperlambda
 ```
 
-You can add any HTTP header you wish, including your own custom headers using the above syntax.
+You can add any HTTP header you wish, including your own custom headers. However, you cannot add content headers
+with a request that doesn't accept content.
 
 ## HTTP slots
 
@@ -199,11 +199,5 @@ There are 5 HTTP slots in Hyperlambda wrapping their associated HTTP verbs. Thes
 Of course the exact semantics of what your endpoints are actually doing, differs from API to API - But
 the above is the default (and correct) way to think of HTTP verbs. Only the 3 last slots in the list above
 can be given a **[payload]** or a **[filename]** argument - And you can only provide _one_ of these arguments.
-
-## Wrapping up
-
-In this article we walked you through how to invoke HTTP endpoints using Hyperlambda. We talked about HTTP headers,
-automatic conversion back and forth between lambda objects and JSON, in addition to some additional features of
-the HTTP slots in Hyperlambda.
 
 * [Documentation](/documentation/)
