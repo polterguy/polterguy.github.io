@@ -20,19 +20,20 @@ can execute in the _"SQL"_ menu item to create an example database. In the video
 
 If you want to use Magic with SQL Server or PostgreSQL you can find recipes for this below.
 
-* [Using Magic with SQL Server](/tutorials/sql-server/)
-* [Using Magic with PostgreSQL](/tutorials/postgresql/)
-* [Using Magic with MySQL](/tutorials/mysql/)
+* [SQL Server](/tutorials/sql-server/)
+* [PostgreSQL](/tutorials/postgresql/)
+* [MySQL](/tutorials/mysql/)
 
 ## Download the code
 
-If you don't want to use Docker, you can also configure your development environment locally on your
+If you can't use Docker, you can also configure your development environment locally on your
 development machine using the code directly. If so you will first of all need the following components.
 
 1. [Visual Studio](https://visualstudio.microsoft.com/downloads/) or [VS Code](https://code.visualstudio.com/download) + [DotNet CLI and SDK](https://dotnet.microsoft.com/download)
 2. [NodeJS](https://nodejs.org/en/download/)
 3. [Angular](https://angular.io/cli)
 4. [MySQL](https://dev.mysql.com/downloads/mysql/) or [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+5. [Magic Cloud](https://github.com/polterguy/magic/releases)
 
 In the video below I go through the manual setup process.
 
@@ -69,7 +70,7 @@ code etc, you'll have to follow [this recipe](/documentation/magic.clone/).
 ## Support
 
 If you have a support request of private nature, you can send us an
-email at [thomas@servergardens.com](mailto:thomas@servergardens.com). If you want to submit a
+email at [th@aista.com](mailto:th@aista.com). If you want to submit a
 feature request or a bug report, you can do such through the project's
 [GitHub Issues](https://github.com/polterguy/magic/issues).
 

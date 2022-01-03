@@ -7,3 +7,4 @@ by clicking a button.
 
 * [Getting Started](/tutorials/getting-started/)
 * [Documentation](/documentation/)
+* [GitHub](https://github.com/polterguy/magic)
