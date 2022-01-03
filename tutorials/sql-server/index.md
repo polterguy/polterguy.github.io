@@ -63,10 +63,4 @@ The rest of the process is similar to the MySQL equivalent, and implies crudifyi
 a key pair, and running the assumptions. You also need to
 have [Docker](https://www.docker.com/products/docker-desktop) installed on your development machine.
 
-## Wrapping up
-
-In this micro-tutorial we used Docker to configure Magic to use Microsoft SQL Server instead of MySQL.
-To create a more resilient production ready environment, you'd probably benefit from reading more about
-Docker by finding tutorials related to this online.
-
 * [Documentation](/documentation/)

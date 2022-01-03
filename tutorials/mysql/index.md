@@ -63,10 +63,4 @@ Server=db;Database={database};Uid=root;Pwd=ThisIsNotAGoodPassword;SslMode=Prefer
 You also need to have [Docker](https://www.docker.com/products/docker-desktop)
 installed on your development machine.
 
-## Wrapping up
-
-In this micro-tutorial we used Docker to configure Magic to use MySQL. To create a more resilient
-production ready environment, you'd probably benefit from reading more about Docker by finding
-tutorials related to this online.
-
 * [Documentation](/documentation/)
