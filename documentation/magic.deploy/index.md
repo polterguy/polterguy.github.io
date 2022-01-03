@@ -15,8 +15,6 @@ the basic droplet that costs you $24 per month. This is because the cheapest dro
 not powerful enough to run two web apps, MySQL, and docker. You might be able to manage with a $12
 droplet.
 
-Only _after_ you have created two DNS A records using your domain provider continue with this guide.
-
 ## Installing Magic
 
 First use SSH to login to your VPS instance. This is typically achieved using something such as the following
@@ -36,7 +34,7 @@ using the following command.
 git clone https://github.com/polterguy/magic.deploy.git
 ```
 
-**Notice** - If the above gives you an error, you might need to install git using the following
+If the above gives you an error, you might need to install git using the following
 command and then run the above command again afterwards.
 
 ```
@@ -50,7 +48,7 @@ using the following command.
 cd magic.deploy
 ```
 
-**Notice** - The `docker-compose.yml` file needs to be manually edited to provide it with your
+The `docker-compose.yml` file needs to be manually edited to provide it with your
 email address, frontend domain, and backend domain before you execute the docker-compose command.
 You can do this with the following command.
 
@@ -60,15 +58,13 @@ nano docker-compose.yml
 
 And then look through the file for the following YAML nodes.
 
-```
+```yaml
 - VIRTUAL_HOST=api.servergardens.com
 - LETSENCRYPT_HOST=api.servergardens.com
 - LETSENCRYPT_EMAIL=thomas@servergardens.com
-```
 
-In addition to these YAML nodes.
+...
 
-```
 - VIRTUAL_HOST=magic.servergardens.com
 - LETSENCRYPT_HOST=magic.servergardens.com
 - LETSENCRYPT_EMAIL=thomas@servergardens.com
@@ -78,8 +74,8 @@ In total there are _6 entries_ you need to change, and the email address needs t
 address you own. The domain needs to be a sub-domain you own where you want to run your Magic
 installation. When you are done editing the docker-compose.yml file, hold down the CTRL key and
 click X, then type _"Y"_ when Nano asks you if you want to save the file after you have edited the
-file, and save it with its existing filename. When you are done editing the _"docker-compose.yml"_ file,
-you must execute the following commands in your terminal. This installs Docker for you, in addition
+file, and save it with its existing filename. When you are done editing,
+then execute the following command in your terminal. This installs Docker for you, in addition
 to Docker Compose.
 
 ```
@@ -93,7 +89,7 @@ This is necessary to make sure your containers have a virtual network to communi
 docker network create nginx-proxy
 ```
 
-This command will create your Docker proxy network Magic will need to be able to connect
+This command will create your docker proxy network Magic will need to be able to connect
 all the docker images within your docker-compose file with each other. When you have created the
 above network, you can start your docker containers using the following command.
 
@@ -101,7 +97,7 @@ above network, you can start your docker containers using the following command.
 docker-compose up -d
 ```
 
-**Notice** - The LetsEncrypt container in your _"docker-compose.yml"_ file might need some 5
+The LetsEncrypt container in your _"docker-compose.yml"_ file might need some 5
 minutes to configure your SSL certificate due to the internals of how LetsEncrypt works. If you
 access your frontend, and/or your backend, and you get an error, and/or an SSL error - Just wait
 some few minutes and try to refresh your page. Only when you no longer get an error, you can
@@ -114,7 +110,7 @@ opening the following URLs in your browser.
 * https://api.yourdomain.com/magic/system/ping
 * https://magic.yourdomain.com
 
-Only when both of the above URLs returns success, and/or your Magic dashboard frontend, proceed
+Only when both of the above URLs returns success, and/or returns your Magic dashboard frontend, proceed
 with the rest of this guide. The above `docker-compose up -d` command will start 5 docker containers.
 
 * `nginx-proxy` - The nGinx proxy that internally routes requests to either your backend or your frontend
@@ -123,38 +119,23 @@ with the rest of this guide. The above `docker-compose up -d` command will start
 * `backend` - The main Magic backend container
 * `frontend` - The main Magic dashboard frontend container
 
-You can now visit your frontend domain and setup Magic, assuming you've pointed your DNS A records to
-the IP address of your virtual server. Notice, to configure Magic login with _"root/root"_ and do _not_
+You can now visit your frontend domain and setup Magic. To configure Magic login with _"root/root"_ and do _not_
 change the database connection string, but choose _mysql_ as your database type, and provide Magic with
-a root password, and just follow the wizard to the end. This process is similar to the process you followed
+a root password, and follow the wizard to the end. This process is similar to the process you followed
 as you configured Magic locally on your development machine.
 
-**Notice** - As you click the login button, you have to provide Magic with your backend API URL.
+As you click the login button, you have to provide Magic with your backend API URL.
 This is achieved by simply pasting in your backend API URL into the top textbox and click the tab key
 on your keyboard, at which point Magic will allow you to provide your username and password to login
 to your Magic dashboard. Your initial username and password combination before you have configured
 Magic is _"root/root"_. You will have to _change_ this password after you have logged in to start
 the configuration process of Magic.
 
-**Notice** - The _"appsettings.json"_ file will be mounted as an external file reference by Docker, and
+The _"appsettings.json"_ file will be mounted as an external file reference by docker, and
 this file will contain your Magic settings. _Do not delete this file_ since it's crucial for Magic to
 work. However, be careful with the file, since it contains your database connection strings, JWT secret,
 and other _highly sensitive information_. _Do not send this file on email or share it with anybody_ unless
 you absolutely trust the other party.
-
-**Notice** - Due to the way Docker mounts files your _"appsettings.json"_ file in your current working
-folder might not be changed as you save your configuration, resulting in an error during the configuration
-process, and/or as you save your configuration settings later. If you experience such errors, where your
-configuration doesn't seem to update when saving it, you have to manually restart your Docker images from
-your VPS using the following to reload the new configuration settings.
-
-```
-docker-compose down
-docker-compose up -d
-```
-
-This is unfortunately a problem with the way Docker mounts files, and there is really nothing we can
-do to prevent this at the time being.
 
 ## Installing a generated Angular frontend
 
@@ -202,17 +183,16 @@ command in your VPS from within your unzipped Angular frontend folder.
 docker-compose up -d
 ```
 
-**Notice** - This assumes you have configured a DNS A record pointing to your virtual machine with
+The above assumes you have configured a DNS A record pointing to your virtual machine with
 the URL of where you want your frontend to be found, and that you used this URL as you generated
 your frontend - In addition to that you _generated your app on your Magic VPS instance_. The last part
 is important since by default a generated Angular frontend will use the same API URL as the URL
-you are using to generate your frontend.
+you are using to generate your frontend. At this point you should have your frontend up running on
+the sub-domain you chose as you generated your frontend. Now simply visit this URL in your browser,
+and after some 5 minutes of negotiating a new SSL certificate from LetsEncrypt your Angular app
+should work.
 
-At this point you should have your frontend up running on the sub-domain you chose as you generated
-your frontend. Now simply visit this URL in your browser, and after some 5 minutes of negotiating a
-new SSL certificate from LetsEncrypt your Angular app should work.
-
-**Notice** - To login to your generated Angular frontend, use the same username and password
+To login to your generated Angular frontend, use the same username and password
 combination that you used when configuring Magic itself.
 
 ## Securing your VPS
@@ -235,8 +215,8 @@ distributing your particular Linux installation.
 
 ## Updating Magic
 
-As of version 9.9.1 this is fairly straight forward and only requires you to tear down your containers,
-pull the images, and restart your containers using the following.
+Updating Magic should be fairly straight forward and only requires that you tear down your containers,
+pull the Magic images from docker hub, and restart your containers using the following.
 
 ```
 docker-compose down
@@ -244,11 +224,5 @@ docker pull servergardens/magic-frontend
 docker pull servergardens/magic-backend
 docker-compose up -d
 ```
-
-## DevOps
-
-If you'd rather install Magic in Azure's DevOps pipelines, you can read an article about this at
-DZone that illustrates one approach
-to [getting Magic up running in an Azure DevOps environment](https://dzone.com/articles/gitless-cloud-systems).
 
 * [Magic Documentation](https://polterguy.github.io/)
