@@ -340,4 +340,4 @@ ensuring improvements to the project itself *stays* Open Source.
 ## Copyright
 
 Magic Cloud and all of its associated plugins and satellite projects is the copyright(c) of Aista, Ltd, 2020 - 2021.
-If you have questions related to its license terms you can send an email to [mailto:th@aista.com](th@aista.com).
+If you have questions related to its license terms you can send an email to [th@aista.com](mailto:th@aista.com).
