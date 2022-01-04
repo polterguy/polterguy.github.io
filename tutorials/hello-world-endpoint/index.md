@@ -127,5 +127,3 @@ unwrap:x:+/*
 return-nodes
    result:x:@strings.concat
 ```
-
-* [Documentation](/documentation/)

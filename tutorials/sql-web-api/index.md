@@ -37,5 +37,3 @@ select l.locale, l.language, t.id, t.content
 Below is a screenshot of how this looks like in Magic's dashboard.
 
 ![SQL HTTP endpoints](https://servergardens.files.wordpress.com/2021/04/sql-http-endpoints.png)
-
-* [Documentation](/documentation/)

@@ -308,5 +308,3 @@ modifying your Hyperlambda files.
 If you want to see the power of these CRUD slots you can check out the documentation for the
 [magic.data.common](/documentation/magic.data.common/) module, which you can find in the
 reference documentation for Magic.
-
-* [Documentation](/documentation/)

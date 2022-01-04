@@ -162,5 +162,3 @@ io.file.load:/foo.md
 
 Without the above **[semaphore]** invocations, we'd run the risk of multiple threads writing to the
 file simultaneously, resulting in what is commonly referred to as a _"race condition"_.
-
-* [Documentation](/documentation/)

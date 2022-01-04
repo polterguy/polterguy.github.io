@@ -317,5 +317,3 @@ and let the computer do all the work. Simply put because ...
 ... whether or not you actually understand it is second priority. Simply since this simple trait
 allows for one computer to create programs that runs on another computer, or itself for that matter.
 And that's its purpose; **To replace the need for manually creating code!**
-
-* [Documentation](/documentation/)

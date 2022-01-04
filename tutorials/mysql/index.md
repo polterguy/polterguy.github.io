@@ -62,5 +62,3 @@ Server=db;Database={database};Uid=root;Pwd=ThisIsNotAGoodPassword;SslMode=Prefer
 
 You also need to have [Docker](https://www.docker.com/products/docker-desktop)
 installed on your development machine.
-
-* [Documentation](/documentation/)
