@@ -9,3 +9,4 @@ by clicking a button.
 * [Tutorials](/tutorials/)
 * [Docs](/documentation/)
 * [GitHub](https://github.com/polterguy/magic)
+* [Blog](/blog.html)
