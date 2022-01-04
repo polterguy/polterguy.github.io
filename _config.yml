@@ -6,3 +6,116 @@ copyright: © Aista 2020 - 2022, th@aista.com
 mwr: /tutorials/getting-started/
 mwr_text: Start
 og_image: https://raw.githubusercontent.com/polterguy/magic/master/artwork/og.jpeg
+nav_sections:
+  - name: Tutorials
+    items:
+      - url: /tutorials/getting-started/
+        name: Start
+      - url: /tutorials/database-crud/
+        name: CRUD
+      - url: /tutorials/sql-web-api/
+        name: SQL Web API
+      - url: /tutorials/cloud-ide/
+        name: Beyond CRUD
+      - url: /tutorials/web-sockets/
+        name: Web Sockets
+      - url: /tutorials/auth/
+        name: Auth
+      - url: /tutorials/hello-world-endpoint/
+        name: Hello World
+      - url: /tutorials/super-dry/
+        name: DRY
+      - url: /tutorials/tutorials/threading/
+        name: Threading
+      - url: /tutorials/http-rest/
+        name: HTTP invocations
+      - url: /tutorials/dynamic-slots/
+        name: Dynamic slots
+      - url: /tutorials/task-scheduler/
+        name: Tasks
+      - url: /tutorials/crypto-lambda-http/
+        name: Crypto
+      - url: /tutorials/expressions-slots-nodes/
+        name: Expressions ++
+      - url: /tutorials/auth-internals/
+        name: Auth internals
+      - url: /tutorials/sql-server/
+        name: SQL Server
+      - url: /tutorials/postgresql/
+        name: PostgreSQL
+      - url: /tutorials/mysql/
+        name: MySQL
+  - name: Docs plugins
+    items:
+      - url: /documentation/magic.lambda/
+        name: magic.lambda
+      - url: /documentation/magic.lambda.math/
+        name: magic.lambda.math
+      - url: /documentation/magic.lambda.http/
+        name: magic.lambda.http
+      - url: /documentation/magic.lambda.csv/
+        name: magic.lambda.csv
+      - url: /documentation/magic.lambda.json/
+        name: magic.lambda.json
+      - url: /documentation/magic.lambda.html/
+        name: magic.lambda.html
+      - url: /documentation/magic.lambda.mail/
+        name: magic.lambda.mail
+      - url: /documentation/magic.lambda.mime/
+        name: magic.lambda.mime
+      - url: /documentation/magic.lambda.auth/
+        name: magic.lambda.auth
+      - url: /documentation/magic.lambda.ad-auth/
+        name: magic.lambda.ad-auth
+      - url: /documentation/magic.lambda.dates/
+        name: magic.lambda.dates
+      - url: /documentation/magic.lambda.slots/
+        name: magic.lambda.slots
+      - url: /documentation/magic.lambda.mysql/
+        name: magic.lambda.mysql
+      - url: /documentation/magic.lambda.pgsql/
+        name: magic.lambda.pgsql
+      - url: /documentation/magic.lambda.mssql/
+        name: magic.lambda.mssql
+      - url: /documentation/magic.lambda.odbc/
+        name: magic.lambda.odbc
+      - url: /documentation/magic.lambda.image/
+        name: magic.lambda.image
+      - url: /documentation/magic.lambda.crypto/
+        name: magic.lambda.crypto
+      - url: /documentation/magic.lambda.guid/
+        name: magic.lambda.guid
+      - url: /documentation/magic.lambda.config/
+        name: magic.lambda.config
+      - url: /documentation/magic.lambda.logging/
+        name: magic.lambda.logging
+      - url: /documentation/magic.lambda.caching/
+        name: magic.lambda.caching
+      - url: /documentation/magic.lambda.strings/
+        name: magic.lambda.strings
+      - url: /documentation/magic.lambda.scheduler/
+        name: magic.lambda.scheduler
+      - url: /documentation/magic.lambda.validators/
+        name: magic.lambda.validators
+      - url: /documentation/magic.lambda.hyperlambda/
+        name: magic.lambda.hyperlambda
+      - url: /documentation/magic.lambda.sockets/
+        name: magic.lambda.sockets
+      - url: /documentation/magic.lambda.system/
+        name: magic.lambda.system
+  - name: Docs core
+    items:
+      - url: /documentation/magic.node/
+        name: magic.node
+      - url: /documentation/magic.signals/
+        name: magic.signals
+      - url: /documentation/magic.data.common/
+        name: magic.data.common
+      - url: /documentation/magic.library/
+        name: magic.library
+  - name: Docs utility projects
+    items:
+      - url: /documentation/magic.deploy/
+        name: magic.deploy
+      - url: /documentation/magic.clone/
+        name: magic.clone

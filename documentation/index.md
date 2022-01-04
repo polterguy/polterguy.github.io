@@ -1,40 +1,9 @@
 
-# Documentation
-
-This is the official documentation for Magic, and it contains both reference documentation
-and tutorial style type of documentation. If you've just recently started to use Magic, I
-suggest you start out with the architectural overview video, move on to tutorials starting
-out at the top, and move downwards - For then to read the reference documentation as you need
-detailed information about specific parts of Magic.
+# Magic and Hyperlambda docs
 
 <div class="video">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/FK0rcAEWtV8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-
-## Tutorials
-
-This is our tutorials section. If you've just started using Magic, this is probably where you want to start.
-These tutorials guides you through Magic and Hyperlambda, one concept at the time. These tutorials are intended to
-be followed as hands on exercises, from top to bottom.
-
-* [Getting started](/tutorials/getting-started/)
-* [Database CRUD operations](/tutorials/database-crud/)
-* [SQL Web API](/tutorials/sql-web-api/)
-* [Magic beyond CRUD](/tutorials/cloud-ide/)
-* [Web Sockets and SignalR in Magic](/tutorials/web-sockets/)
-* [Authentication and authorisation](/tutorials/auth/)
-* [Hyperlambda Hello World](/tutorials/hello-world-endpoint/)
-* [Exception handlers and interceptors](/tutorials/super-dry/)
-* [Threading, async and scaling](/tutorials/threading/)
-* [HTTP REST invocations](/tutorials/http-rest/)
-* [Dynamic slots](/tutorials/dynamic-slots/)
-* [Tasks and the task scheduler](/tutorials/task-scheduler/)
-* [Cryptographically secured HTTP Lambda Invocations](/tutorials/crypto-lambda-http/)
-* [Expressions, slots, and nodes](/tutorials/expressions-slots-nodes/)
-* [Authentication internals](/tutorials/auth-internals/)
-* [Using Magic with SQL Server](/tutorials/sql-server/)
-* [Using Magic with PostgreSQL](/tutorials/postgresql/)
-* [Using Magic with MySQL](/tutorials/mysql/)
 
 ## Reference documentation core projects
 
