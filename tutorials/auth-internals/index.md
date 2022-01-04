@@ -30,7 +30,7 @@ configuration of Magic as follows.
 ... _keep_ the rest of the file as is.
 
 To use a dynamic Hyperlambda slot, simply set the above value to `signal:your-slot`.
-To use a static C# slot, simply change it to `your-slot`. For instance, imagine you have
+To use a static C# slot, set it to `your-slot`. For instance, imagine you have
 a third party URL which is actually responsible for authenticating your users, and that
 it will return `SUCCESS 200` if the user is providing the correct username/password
 combination as query parameters. This can be accomplished by creating a dynamic slot
@@ -64,7 +64,7 @@ slots.create:acme.authenticate
          return:bool:false
 ```
 
-The you configure your _"authentication"_ value in your _"appsettings.json"_ file
+Then you configure your _"authentication"_ value in your _"appsettings.json"_ file
 to use the above slot by providing a value for it as follows `signal:acme.authenticate`.
 Below is an example.
 
@@ -83,7 +83,6 @@ item, and just give these a gibberish password, and a username that matches thei
 in the external authentication service. The password is not important, since it'll never be
 checked, but instead your external authentication service will be responsible for verifying
 their passwords.
-
 The last point is true for all forms of alternative authentication, and hence applies for
 all authentication permutations described further down in this document.
 
@@ -92,7 +91,6 @@ all authentication permutations described further down in this document.
 Magic also supports Windows authentication. This part requires some configuration parts on
 your side, in addition to adding a NuGet package to Magic that allows you to access your LDAP
 directory from within your LAN.
-
 You can find an optional additional NuGet package for Magic
 called _"magic.lambda.ad-auth"_ [here](https://www.nuget.org/packages/magic.lambda.ad-auth). The idea of
 this package is that instead of checking your database for a matching password, it will pass in your
@@ -122,8 +120,7 @@ the parts you'll need to modify.
 
 And that's it. You've now got Single Sign On in your Magic app. Login to Magic using your Windows
 username and passsword from now on instead of the password stored in the users table.
-
-**Notice** - Your Windows username is typically something such as follows `ACME\username`, where
+Your Windows username is typically something such as follows `ACME\username`, where
 ACME is the domain name on your Windows network. This approack _might_ also work with your
 company email address as your username, depending upon how your network has been configured.
 The web server that runs Magic also needs to be a part of your Windows domain.
@@ -134,13 +131,12 @@ Magic also supports automatic Windows authentication, although this requires a b
 side, but most of it can be done by correctly configuring Magic. This allows you to automatically authenticate
 your users, but only from within your LAN, implying that a user that is already logged on to your Windows
 network, can _automatically_ authenticate towards Magic _without_ providing his username or password.
-
-**Notice** - All changes required to make Windows authentication from above working also applies
+All changes required to make Windows authentication from above working also applies
 for this mechanism, implying you'll have to pull in the _"magic.lambda.ad-auth"_ NuGet package, you'll
-have to setup the configuration parts from above, but in addition to these steps, you also have to
+have to setup the configuration parts from above - But in addition to these steps, you also have to
 make sure you _turn on_ automatic authentication in Magic by changing the `auto-auth` configuration
 key and set its value to `auth.ad.get-username`. In addition this feature also requires that you turn
-_on_ CORS for your frontend domains, wanting to use this feature. Hence, if you intend to use this
+_on_ CORS for your frontend domains needing to use this feature. Hence, if you intend to use this
 from e.g. two domains that are as follows _"dashboard.acme.com"_ and _"babelfish.acme.com"_, you'll
 have to instruct Magic to allow for sending credentials back and forth between your Magic backend
 and these two domains. The latter can be done by changing the _"magic.frontend.urls"_ and applying all
@@ -166,10 +162,9 @@ invoked to retrieve your Windows username, and the default password check will b
 You still need to invoke the _"magic/modules/auth/authenticate"_ endpoint and retrieve a JWT
 token that you associate with future requests, but you no longer need to supply any username or
 password to this endpoint.
-
-**Notice** - This method assumes that your web server is a part of your Windows domain, and
-that you are logged into your client machine with your domain/Windows credentials. Also notice
-that Angular needs to be specifically configured on a per request level to pass in the
+This method assumes that your web server is a part of your Windows domain, and
+that you are logged into your client machine with your domain/Windows credentials.
+Angular also needs to be specifically configured on a per request level to pass in the
 NTLM/Negotiate credentials by configuring the HTTP GET invocation with a `withCredentials: true`
 value. Below is an example of the latter.
 
@@ -193,7 +188,7 @@ this.httpClient
   });
 ```
 
-**Notice** - You can no longer access your backend through its web based DNS entry to make
+You can no longer access your backend through its web based DNS entry to make
 automatic logins work, but you _must_ use your LAN DNS entry, which might be something such
 as for instance _"acme-foo-web-server01"_. However, the frontend can be accessed using its
 web based DNS entry, and you can also configure your server to expose itself over a web
@@ -201,8 +196,7 @@ based DNS entry, and resort to _manual_ Windows logins if the application is acc
 the public web, and only using automatic Windows authentication if the app is accessed from
 within your LAN. How you solve these parts though, is a matter of taste, opinions, requirements
 related to convenience, and your organisation's security regime.
-
-**Notice** - This only works because of that the default _"web.config"_ file deployed with
+This only works because of that the default _"web.config"_ file deployed with
 the backend turns _on_ Windows authentication _and_ anonymous authentication - In addition to
 that the _"launchSettings.json"_ does the same. If you don't care about these settings, and
 you have no needs for these, you can change these as you see fit - However, deploying to
