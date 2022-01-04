@@ -17,4 +17,3 @@ or even better; [Fork our documentation project](https://github.com/polterguy/po
 new article (or 5), and create a pull request - At which point we _might_ pull it in, assuming it's high quality,
 and doesn't provide (too many) shameless plugs, aka self promotion points. One or two links to your own stuff is
 OK, but please keep things civil.
-
