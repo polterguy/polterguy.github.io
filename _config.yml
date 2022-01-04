@@ -2,7 +2,7 @@ remote_theme: polterguy/aista-jekyll
 title: Aista Magic Cloud
 description: Where the machine creates your code
 google_analytics: UA-147554379-1
-copyright: © Aista 2020 - 2022, th@aista.com
+copyright: © Aista, Ltd 2020 - 2022, th@aista.com
 mwr: /tutorials/getting-started/
 mwr_text: Start
 og_image: https://raw.githubusercontent.com/polterguy/magic/master/artwork/og.jpeg
