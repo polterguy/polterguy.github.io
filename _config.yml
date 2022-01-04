@@ -25,7 +25,7 @@ nav_sections:
         name: Hello World
       - url: /tutorials/super-dry/
         name: DRY
-      - url: /tutorials/tutorials/threading/
+      - url: /tutorials/threading/
         name: Threading
       - url: /tutorials/http-rest/
         name: HTTP invocations
