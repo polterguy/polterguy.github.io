@@ -224,5 +224,3 @@ docker pull servergardens/magic-frontend
 docker pull servergardens/magic-backend
 docker-compose up -d
 ```
-
-* [Magic Documentation](https://polterguy.github.io/)

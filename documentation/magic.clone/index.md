@@ -64,11 +64,3 @@ The connection strings for each database type can be found below.
 * __SQL Server__ - Server=localhost;Initial Catalog={database};User=sa;Password=Your_password123;
 * __MySQL__ - Server=localhost;Database={database};Uid=root;Pwd=ThisIsNotAGoodPassword;SslMode=Preferred;Old Guids=true;Port=54321;
 * __PostgreSQL__ - User ID=postgres;Password=ThisIsNotAGoodPassword;Host=localhost;Database={database}; Port=54321;
-
-## Summing up
-
-This project helps you clone Magic, and all of its satellite projects, making it easier for you to debug and develop
-Magic locally.
-
-* [Magic Documentation](https://polterguy.github.io/)
-
