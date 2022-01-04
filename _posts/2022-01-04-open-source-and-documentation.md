@@ -43,7 +43,7 @@ looking like - But more importantly, you're documenting your site on a high qual
 allowing your users to find your Open Source library's documentation, with high quality fonts, making
 your documentation easy to read and navigate. And you're _not paying as much as a nickle to host it_.
 This allows you to use nothing but your own energy and faith in your ability to study, improve, and work,
-for then to use these abilities to create something nice for that world, and document it such that others can
+for then to use these abilities to create something nice for the world, and document it such that others can
 access it. As an additional bonus, when hosting your site with GitHub, there are no banners, no advertisement,
 and nothing coming in between you, your readers, and your open source code and documentation.
 
