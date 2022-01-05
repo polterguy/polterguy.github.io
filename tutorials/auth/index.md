@@ -179,3 +179,5 @@ even if your user has a single character password,
 _the CPU time required to brute force a single character password would still be practically impossible_,
 even if an adversary had access to your entire password database. This is due to the nature of BlowFish
 hashing, combined with per record based salts.
+
+* [Continue with Hyperlambda Hello World](/tutorials/hello-world-endpoint/)

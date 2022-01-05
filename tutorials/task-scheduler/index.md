@@ -73,3 +73,5 @@ if you take backup of your database, tasks will still exists in your backup, inc
 and next schedule date. When a task is done executing its scheduled execution, its next
 schedule time will be calculated. This avoids exhausting your web server due to misconfigured tasks, and/or
 flooding the server with tasks your server is not able to execute.
+
+* [Continue with Cryptographically signed HTTP invocations](/tutorials/crypto-lambda-http/)

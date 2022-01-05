@@ -228,3 +228,5 @@ Hence, to sum it all up we'll repeat the required steps below.
 will return _"on"_ if automatic authentication has been enabled in your backend. Authentication can still
 only be used from within the LAN - But at least it allows you to query your backend to check if
 automatic Windows authentication has been turned on.
+
+* [Continue with using Magic with SQL Server](/tutorials/sql-server/)

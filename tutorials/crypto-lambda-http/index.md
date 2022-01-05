@@ -119,3 +119,5 @@ However, when you need them, you _really_ need them - And if used correctly, and
 these guys are an incredible tool for you, to both scale out (**securely**) and more easily build
 heterogeneous server environments, without having to try to predict what the future might hold in
 regards to its requirements.
+
+* [Continue with Expressions slots and Nodes](/tutorials/expressions-slots-nodes/)

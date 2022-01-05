@@ -160,3 +160,5 @@ slots.create:acme-company.foo-module.meaning-of-life
 This prevents one module from accidentally interferring with objects in another module, by creating a unique namespace,
 internally within your server, and/or also globally to some extent. This makes your code more maintainable
 and interoperable in the long run.
+
+* [Continue with tasks and scheduled tasks](/tutorials/task-scheduler/)

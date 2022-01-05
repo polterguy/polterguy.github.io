@@ -77,3 +77,5 @@ If you have a support request of private nature, you can send us an
 email at [th@aista.com](mailto:th@aista.com). If you want to submit a
 feature request or a bug report, you can do such through the project's
 [GitHub Issues](https://github.com/polterguy/magic/issues).
+
+* [Continue with CRUD](/tutorials/database-crud/)

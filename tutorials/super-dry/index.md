@@ -71,3 +71,5 @@ file, having everything occurring in one single file, to avoid repeating yoursel
 Interceptors are _recursively_ applied, implying if you have multiple _"interceptor.hl"_
 files upwards in your hierarchy, then _all_ your interceptors will be applied, creating a combined result,
 before your lambda object is executed.
+
+* [Continue with Threading, async and scaling](/tutorials/threading/)

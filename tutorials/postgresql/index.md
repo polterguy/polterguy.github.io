@@ -66,3 +66,5 @@ User ID=postgres;Password=ThisIsNotAGoodPassword;Host=db;Database={database};
 The rest of the process is similar to the MySQL equivalent, and implies crudifying your backend, creating
 a key pair, and running the assumptions. You also need to
 have [Docker](https://www.docker.com/products/docker-desktop) installed on your development machine.
+
+* [Continue with using Magic with MySQL](/tutorials/mysql/)

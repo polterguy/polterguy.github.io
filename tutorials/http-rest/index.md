@@ -203,3 +203,5 @@ There are 5 HTTP slots in Hyperlambda wrapping their associated HTTP verbs. Thes
 Of course the exact semantics of what your endpoints are actually doing, differs from API to API - But
 the above is the default (and correct) way to think of HTTP verbs. Only the 3 last slots in the list above
 can be given a **[payload]** or a **[filename]** argument - And you can only provide _one_ of these arguments.
+
+* [Continue with Dynamic slots](/tutorials/dynamic-slots/)

@@ -49,3 +49,5 @@ If you have suggestions for additional modules, you can provide these as feature
 the [GitHub project website](https://github.com/polterguy/magic). However, the purpose of the
 system is to solve repetetive tasks developers are facing as they start out new projects,
 by providing automation modules implementing these as automagically as possible.
+
+* [Continue with SignalR and Web Sockets](/tutorials/web-sockets/)
