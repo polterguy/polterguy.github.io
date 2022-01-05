@@ -8,9 +8,10 @@ permalink: /blog/:title
 # Title of your site
 title: Aista Magic Cloud
 
+# Slogan of your site
 slogan: Where the machine creates your code
 
-# Description of your site, or slogan
+# Description of your site
 description: An Open Source Low-Code Cloud system allowing you to generate your web applications by simply clicking a button
 
 # Google Analytics tracking code
@@ -29,6 +30,10 @@ body_bg: /assets/bg2.jpeg
 
 # Open Graph image for pages when shared on Facebook or Twitter, etc
 og_image: https://raw.githubusercontent.com/polterguy/magic/master/artwork/og.jpeg
+
+# Additional plugins to use
+plugins:
+  - jekyll-sitemap
 
 # Your navigation section. Declares the drop down menu items for your hamburger menu.
 nav_sections:
