@@ -35,4 +35,6 @@ Get it ...? ;)
 Therefor I ask the universe for the required wisdom, every day, to make me realise I am _never_ the smartest guy
 in the room, implying where ever I go, I can learn something from somebody, regardless of how young and
 inexperienced the other party happens to be. Thank you to [Kelvin Okuroemi](https://www.linkedin.com/in/kelvinokuroemi/)
-for reminding me today of that I should try as hard as I possibly can to _never_ be the smartest guy in the room ... ;)
+for reminding me today of that I should try as hard as I possibly can to _never_ be the smartest guy in the room. Or to say it with alternative words ...
+
+> Dear God, please make sure I'm never in the wrong room!
