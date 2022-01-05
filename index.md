@@ -1,5 +1,5 @@
 ---
-title: Aista Magic Cloud, Open Source Low-Code and Hyperlambda
+title: Aista Magic Cloud, Open Source, Low-Code, and Hyperlambda
 ---
 
 <div class="video">
