@@ -8,8 +8,10 @@ permalink: /blog/:title
 # Title of your site
 title: Aista Magic Cloud
 
+slogan: Where the machine creates your code
+
 # Description of your site, or slogan
-description: Where the machine creates your code
+description: An Open Source Low-Code cloud system allowing you to generate your web applications by simply clicking a button
 
 # Google Analytics tracking code
 google_analytics: UA-147554379-1
