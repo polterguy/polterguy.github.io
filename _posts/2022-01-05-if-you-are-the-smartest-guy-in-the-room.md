@@ -26,7 +26,6 @@ truly enjoy life with your family - Because you're constantly busy figuring out 
 from ceasing to exist as we know it. Being the smartest guy in the room implies being called upon 2AM in
 the morning on a Sunday, because a web server crashed, and you're the only guy in the company that can
 magically fix it, and unless you fix it 2,000 colleagues will no longer have a job to go to on Monday.
-
 Do you see the problem here? So let me finish the above sentence for you to make my point ...
 
 > If you're the smartest guy in the room, you're in the **WRONG ROOM!**
