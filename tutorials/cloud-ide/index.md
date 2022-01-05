@@ -1,3 +1,7 @@
+---
+title: Magic a complete Cloud IDE
+description: In this article we show you how Magic goes far beyond simple CRUD, and actually is a complete IDE, allowing you to create your web applications entirely using nothing but Magic.
+---
 
 # Magic Cloud, beyond CRUD and Low-Code
 

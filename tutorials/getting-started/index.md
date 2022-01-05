@@ -1,3 +1,7 @@
+---
+title: Getting Started with Magic and Hyperlambda
+description: This tutorial walks you through the process of getting started with Magic and Hyperlambda, helping you install it locally, using either Docker or the source code directly. It guides you through downloading, installation, and all the way until you've crudified your first database.
+---
 
 # Getting started with Magic and Hyperlambda
 

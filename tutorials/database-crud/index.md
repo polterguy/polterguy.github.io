@@ -1,3 +1,7 @@
+---
+title: Generating a Hyperlambda CRUD app
+description: In this article we generate a Hyperlambda CRUD web API using Magic, for then to analyse the generated code, providing you with the knowledge required to understand how Magic is doing its Magic.
+---
 
 # Generating a Hyperlambda CRUD app
 

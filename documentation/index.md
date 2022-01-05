@@ -1,3 +1,7 @@
+---
+title: Reference documentation for Magic and Hyperlambda
+description: This section contains the reference documentation for Magic and Hyperlambda, and documents all plugins, Hyperlambda the programming language, and every single component in Magic.
+---
 
 # Magic and Hyperlambda docs
 

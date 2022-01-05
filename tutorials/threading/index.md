@@ -1,3 +1,7 @@
+---
+title: Threading and async Hyperlambda programming
+description: This article shows you how Magic and Hyperlambda simplifies everything related to multi threading, making everything extremely scalable out of the box, while eliminating complexity from your own code.
+---
 
 # Threading and async Hyperlambda programming
 

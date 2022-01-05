@@ -1,5 +1,9 @@
+---
+title: Super DRY Code using Hyperlambda
+description: This article shows you how to create Super DRY code using Hyperlambda, by leveraging interceptors and exception filters, allowing you to create your functionality without having to repeat your code.
+---
 
-# Super DRY code
+# Super DRY code using Hyperlambda
 
 In this tutorial we will have a look at two features that allows you to write _"super DRY code"_, and with
 DRY here we refer to _"Don't Repeat Yourself"_, which is an important design principle as you

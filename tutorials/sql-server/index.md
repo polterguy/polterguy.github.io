@@ -1,3 +1,7 @@
+---
+title: Using Magic with Microsoft SQL Server
+description: In this article you will setup Magic using Docker and SQL Server. The article guides you through everything you need to know, starting out with a docker-compose.yml file for getting Magic up running, using SQL Server as your backend database.
+---
 
 # Using Magic with SQL Server
 

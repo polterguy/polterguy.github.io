@@ -1,3 +1,7 @@
+---
+title: Magic and Hyperlambda tutorials
+description: This section lists all our Hyperlambda and Magic tutorials, and walks you through everything, starting from a simple Hello World Hyperlambda application, through authentication, authorization and web sockets, to the point where you create multi threaded and super scalable web apps using Magic.
+---
 
 # Tutorials
 

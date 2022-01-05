@@ -1,5 +1,9 @@
+---
+title: HTTP invocations with Hyperlambda
+description: In this article we help you understand Hyperlambda's and Magic's HTTP capabilities, by playing around with the HTTP slots in Hyperlambda, allowing you to invoke external HTTP JSON endpoints, to retrieve data from 3rd parties, and/or integrate your code with other systems.
+---
 
-# HTTP REST invocations with Hyperlambda
+# HTTP invocations with Hyperlambda
 
 The purpose of Magic and Hyperlambda is to _simplify your life as a developer without compromising scalability, execution speed, or maintainability_.
 One example of this is how easy it is to integrate your Hyperlambda backend with other HTTP based services by utilising

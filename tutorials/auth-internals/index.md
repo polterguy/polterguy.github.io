@@ -1,3 +1,7 @@
+---
+title: Alternative Authentication mechanisms for Magic
+description: In this article we help you to understand the internals of authentication and authorization in Magic and Hyperlambda, allowing you to exchange the default authentication with for instance Windows LDAP or something else.
+---
 
 # Alternative authentication mechanisms
 

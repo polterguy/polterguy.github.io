@@ -1,5 +1,9 @@
+---
+title: The Hyperlambda task scheduler
+description: This article shows you how to create, persist and schedule Hyperlambda tasks, allowing you to create scheduled Hyperlambda jobs, periodically executing your Hyperlambda, and/or trigger execution of serialised Hyperlambda invocations due to some event.
+---
 
-# Task scheduler
+# The Hyperlambda task scheduler
 
 With Magic you can create and administrate tasks, in addition to schedule tasks for execution some point into
 the future. This works by persisting dynamically declared Hyperlambda snippets into your Magic database, which

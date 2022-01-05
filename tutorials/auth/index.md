@@ -1,3 +1,7 @@
+---
+title: Authentication and Authorisation in Magic
+description: This tutorial helps you understand how the authentication and authorization mechanisms in Magic and Hyperlambda works. It also shows you how to create and administrate your users, and touches upon JWT a little bit.
+---
 
 # Authentication and authorisation
 

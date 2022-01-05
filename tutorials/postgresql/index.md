@@ -1,3 +1,7 @@
+---
+title: Using Magic with PostgreSQL
+description: In this article you will setup Magic using Docker and PostgreSQL. The article guides you through everything you need to know, starting out with a docker-compose.yml file for getting Magic up running, using Postgres as your backend database.
+---
 
 # Using Magic with PostgreSQL
 
