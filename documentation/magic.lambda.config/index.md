@@ -1,5 +1,5 @@
 
-# Magic Lambda Config
+# Reading configuration settings with Hyperlambda
 
 This project provides configuration settings slots for Magic. The project provides one
 single slot, allowing you to retrieve configuration settings from your configuration file as follows.

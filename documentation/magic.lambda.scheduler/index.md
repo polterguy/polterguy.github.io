@@ -1,5 +1,5 @@
 
-# Magic Lambda Scheduler
+# Scheduling and persisting tasks from Hyperlambda
 
 This project gives you the ability to create persisted and optionally scheduled Hyperlambda tasks
 for [Magic](https://github.com/polterguy.magic). More specifically it provides the following slots.

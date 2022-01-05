@@ -1,5 +1,5 @@
 
-# Magic Lambda for Microsoft SQL Server
+# Using Microsoft SQL Server with Hyperlambda
 
 This is the Microsoft SQL Server data adapter for Magic. This project allows you to provide a semantic
 lambda structure to its slots, which in turn will dynamically create a SQL Server dialect SQL statement

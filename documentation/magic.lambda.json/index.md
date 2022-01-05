@@ -1,5 +1,5 @@
 
-# Magic Lambda Json
+# Parsing and creating JSON from Hyperlambda
 
 This project provides JSON helper slots for Magic. More specifically, it provides the following slots.
 

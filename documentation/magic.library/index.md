@@ -1,5 +1,5 @@
 
-# Magic Library
+# Wiring all parts of Magic together automagically
 
 Helper project for Magic, to wire up everything and initialize Magic.
 

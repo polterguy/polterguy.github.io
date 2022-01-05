@@ -1,5 +1,5 @@
 
-# Magic Lambda Mail
+# Sending and retrieving emails from Hyperlambda
 
  SMTP and POP3 helpers for Magic. More specifically, this project contains the following slots.
 

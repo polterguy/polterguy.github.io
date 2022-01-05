@@ -1,5 +1,5 @@
 
-# Magic Lambda Logging
+# Audit logging from Hyperlambda
 
 Logging wrapper slots for Magic. More specifically, this project provides the following slots.
 

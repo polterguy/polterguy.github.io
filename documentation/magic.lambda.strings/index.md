@@ -1,5 +1,5 @@
 
-# Magic Lambda Strings
+# Manipulating strings from Hyperlambda
 
 This project contains string manipulation slots for Magic. More specifically, it gives you the following slots.
 

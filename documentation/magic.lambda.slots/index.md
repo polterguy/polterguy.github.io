@@ -1,5 +1,5 @@
 
-# Magic Lambda Slots
+# Creating dynamic slots from Hyperlambda
 
 This project provides the ability to create, modify, inspect, and delete dynamic slots for Magic. More specifically,
 this project provides the following slots.

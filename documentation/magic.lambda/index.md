@@ -1,5 +1,5 @@
 
-# Magic Lambda
+# The main programming language parts for Magic
 
 Magic lambda is where you will find the _"keywords"_ of Hyperlambda.
 It is what makes Hyperlambda Turing complete, and contains slots such as **[for-each]**

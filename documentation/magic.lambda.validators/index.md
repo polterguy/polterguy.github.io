@@ -1,5 +1,5 @@
 
-# Magic Lambda Validators
+# Validating input arguments from Hyperlambda
 
 This project contains input validators for Magic. More specifically it contains the following slots.
 

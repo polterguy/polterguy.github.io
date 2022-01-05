@@ -1,5 +1,5 @@
 
-# Magic Lambda Hyperlambda
+# Parsing Hyperlambda using Magic
 
 This is the Hyperlambda parser and generator in Magic. More specifically, this project provides you
 with the following two slots.

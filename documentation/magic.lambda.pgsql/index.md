@@ -1,5 +1,5 @@
 
-# Magic Lambda for PostgreSQL
+# Using PostgreSQL from Hyperlambda
 
 This is the PostgreSQL data adapter for Magic. This project allows you to provide a semantic lambda structure
 to its slots, which in turn will dynamically create a PostgreSQL dialect SQL statement for you, for all basic

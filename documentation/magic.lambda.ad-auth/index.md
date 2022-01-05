@@ -1,5 +1,5 @@
 
-# Magic Lambda Windows Authentication
+# Windows and LDAP authentication with Hyperlambda and Magic
 
 This project gives your Magic installation the capability of authenticating users through your Windows Domain.
 The project contains _two_ methods for authentication; One method where you supply your Windows username and

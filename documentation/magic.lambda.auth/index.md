@@ -1,5 +1,5 @@
 
-# Magic Lambda Auth
+# Authentication and Authorization with Magic and Hyperlambda
 
 Authentication and authorization helper slots for Magic. This project allows you to create and consume
 JWT tokens, to secure your magic installation. The project contains the following slots.

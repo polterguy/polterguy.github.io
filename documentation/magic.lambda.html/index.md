@@ -1,5 +1,5 @@
 
-# Magic Lambda HTML
+# Parsing HTML from Hyperlambda
 
 This project provides HTML helper slots for Magic. More specifically, it provides the following slots.
 

@@ -1,5 +1,5 @@
 
-# Magic Lambda for MySQL
+# Using MySQL from Hyperlambda
 
 This is the MySQL data adapter for Magic. This project allows you to provide a semantic lambda structure
 to its slots, which in turn will dynamically create a MySQL dialect SQL statement for you, for all basic

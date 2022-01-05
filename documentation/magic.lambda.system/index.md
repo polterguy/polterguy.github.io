@@ -1,5 +1,5 @@
 
-# Magic Lambda System
+# System related slots for Hyperlambda
 
 This project contains _"system slots"_ to be able to invoke system commands. More specifically the project
 contains the following slots.

@@ -1,5 +1,5 @@
 
-# Magic Clone
+# Cloning Magic locally
 
 This recipe helps you clone Magic locally, and assumes you've got VS Code, NodeJS, Angular, and the .Net SDK
 version 6 or higher. You can also use Visual Studio instead of VS Code if you're on Windows, at which point

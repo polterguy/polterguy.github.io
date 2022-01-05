@@ -1,4 +1,5 @@
-# Magic Signals
+
+# A Super Signal implementation for Hyperlambda
 
 Magic Signals is a _"Super Signals"_ implementation for .Net 5 built on top of [Magic Node](https://github.com/polterguy/magic.node),
 allowing you to invoke functions from one assembly in another assembly without having any direct references between the projects.

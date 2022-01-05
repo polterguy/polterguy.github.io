@@ -1,5 +1,5 @@
 
-# Magic Data Common
+# The common data adapter parts of Magic
 
 This is the generic data adapter, that transform dynamically from a lambda node structure into SQL, and
 polymorphistically invokes your specialised data adapter, resulting in SQL statements executed towards

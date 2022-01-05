@@ -1,5 +1,5 @@
 
-# Magic Lambda Guid
+# Handling Guids from Hyperlambda
 
 This project allows you to generate a new (random) Guid
 

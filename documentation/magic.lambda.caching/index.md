@@ -1,5 +1,5 @@
 
-# Magic Lambda Caching
+# Caching with Magic and Hyperlambda
 
 Cache helper slots for Magic, more specifically the following slots.
 

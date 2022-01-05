@@ -1,5 +1,5 @@
 
-# Magic Lambda IO
+# File IO with Magic and Hyperlambda
 
 This project provides file/folder slots for Magic. More specifically, it provides the following slots.
 

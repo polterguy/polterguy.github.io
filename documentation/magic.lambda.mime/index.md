@@ -1,5 +1,5 @@
 
-# Magic Lambda MIME
+# Parsing and creating MIME messages with Hyperlambda
 
 Magic Lambda MIME gives you the ability to parse and create MIME messages from Hyperlambda.
 The project contains the following slots.

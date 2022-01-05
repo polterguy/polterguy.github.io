@@ -1,5 +1,5 @@
 
-# Magic Lambda Image
+# Creating images and QR code using Hyperlambda
 
 Image manipulation library for Magic, allowing you to do basic manipulation of images, in addition to generating
 QR codes. More specifically this project contains the following slot.

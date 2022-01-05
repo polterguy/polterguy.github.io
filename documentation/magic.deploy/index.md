@@ -1,5 +1,5 @@
 
-# Deploy Magic
+# How to deploy Magic to your VPS
 
 This guide helps you deploy Magic unto a VPS or a private server. The guide has been tested with
 Ubuntu 20.04 (LTS) x64, but _might_ work with other Debian based distributions. You will need a
