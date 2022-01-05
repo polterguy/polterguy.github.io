@@ -2,7 +2,6 @@
 permalink: /about
 ---
 
-
 # About Magic and Hyperlambda
 
 Magic and Hyperlambda is developed and maintained by Aista Ltd, a privately held company in Cyprus focusing
