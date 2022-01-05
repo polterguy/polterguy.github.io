@@ -110,13 +110,25 @@ nav_sections:
         name: magic.node
       - url: /documentation/magic.signals/
         name: magic.signals
+      - url: /documentation/magic.endpoint/
+        name: magic.endpoint
       - url: /documentation/magic.data.common/
         name: magic.data.common
       - url: /documentation/magic.library/
         name: magic.library
-  - name: Docs utility projects
-    items:
       - url: /documentation/magic.deploy/
         name: magic.deploy
       - url: /documentation/magic.clone/
         name: magic.clone
+  - name: Misc
+    items:
+      - url: /misc/about/
+        name: About
+      - url: /blog
+        name: Blog
+      - url: https://youtube.com/ThomasHansen-Magic
+        name: YouTube
+      - url: https://www.linkedin.com/company/77018722
+        name: LinkedIn
+      - url: https://github.com/polterguy/magic
+        name: GitHub

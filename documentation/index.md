@@ -7,15 +7,17 @@
 
 ## Reference documentation core projects
 
-This is the documentation for the core projects in Magic. These parts is what wires up your application,
-takes care of routing, loads Hyperlambda files, executing HTTP endpoints, etc. These projects are
-_"what makes Magic magical"_.
+This is the documentation for the core projects in Magic. This is what wires up your application,
+takes care of routing, loads Hyperlambda files, executes HTTP endpoints, etc - In addition to projects
+helping you deploy Magic into production, or clone it to work locally with it.
 
 * [magic.node](/documentation/magic.node/) - Explains nodes, Hyperlambda and Expressions
 * [magic.signals](/documentation/magic.signals/) - Magic's Super Signals implementation
 * [magic.endpoint](/documentation/magic.endpoint/) - Endpoint resolving in Magic
 * [magic.data.common](/documentation/magic.data.common/) - Commonalities for data adapters in Magic
 * [magic.library](/documentation/magic.library/) - A single NuGet package helper wrapping everything together
+* [magic.deploy](/documentation/magic.deploy/) - How to deploy Magic to your VPS using Docker.
+* [magic.clone](/documentation/magic.clone/) - How to clone Magic and its entire codebase.
 
 ## Reference documentation plugins
 
@@ -52,14 +54,6 @@ requirements for your endpoints, etc.
 * [magic.lambda.hyperlambda](/documentation/magic.lambda.hyperlambda/) - Parse Hyperlambda from text, and vice versa
 * [magic.lambda.sockets](/documentation/magic.lambda.sockets/) - Web socket support for Magic using SignalR
 * [magic.lambda.system](/documentation/magic.lambda.system/) - System support for Magic to spawn of terminals etc.
-
-## Utility projects
-
-These are utility and helper projects, either referenced by other projects, and or solving some specific
-problem related to Magic, such as how to clone all plugins, deploy Magic into a live environment, etc.
-
-* [magic.deploy](/documentation/magic.deploy/) - How to deploy Magic to your VPS using Docker.
-* [magic.clone](/documentation/magic.clone/) - How to clone Magic and its entire codebase.
 
 ## Support
 

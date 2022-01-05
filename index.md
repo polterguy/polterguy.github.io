@@ -8,5 +8,3 @@ by clicking a button.
 * [Get Started](/tutorials/getting-started/)
 * [Tutorials](/tutorials/)
 * [Docs](/documentation/)
-* [GitHub](https://github.com/polterguy/magic)
-* [Blog](/blog)
