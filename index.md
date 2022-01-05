@@ -20,4 +20,3 @@ of the problems from traditional programming languages.
 * [Get Started](/tutorials/getting-started/)
 * [Tutorials](/tutorials/)
 * [Docs](/documentation/)
-
