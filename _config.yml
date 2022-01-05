@@ -122,7 +122,7 @@ nav_sections:
         name: magic.clone
   - name: Misc
     items:
-      - url: /misc/about/
+      - url: /about
         name: About
       - url: /blog
         name: Blog

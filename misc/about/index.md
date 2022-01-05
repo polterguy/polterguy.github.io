@@ -1,3 +1,7 @@
+---
+permalink: /about
+---
+
 
 # About Magic and Hyperlambda
 
