@@ -6,7 +6,7 @@ author: thomas
 Once every year I force myself to learn something completely new. Over the years this has resulted in
 that I've got dozens of hobbies, such as playing 5 music instruments, dabbling with acrylics, being
 quite capable of creating art with cheramics, etc. This year I started early, and I focused on
-[Jekyll](https://jekyllrb.com/), and I am seriously impressed of it so far. To explain why, let me
+[Jekyll](https://jekyllrb.com/), and I am seriously impressed so far. To explain why, let me
 give you some facts about this website.
 
 1. It's hosted 100% free by GitHub as a [GitHub Page](https://pages.github.com/).
