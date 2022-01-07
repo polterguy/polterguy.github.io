@@ -6,13 +6,19 @@ version 6 or higher. You can also use Visual Studio instead of VS Code if you're
 you only need to open the _"magic.sln"_ file. When you've made sure you've got all of these parts, clone
 this repository locally using the following.
 
-```
+```bash
 git clone https://github.com/polterguy/magic.clone.git
 ```
 
-Then run the _"clone.sh"_ file, and wait until it's done - At which point you will find everything
-needed to run and debug Magic locally within your _"src/"_ folder. Whenever you need to pull the
-repositories again simply execute _"pull.sh"_. To debug, and/or run Magic, type the following in a terminal.
+Then run the _"clone.sh"_ file, and wait until it's done.
+
+```bash
+./clone.sh
+```
+
+You now have everything needed to run and debug Magic locally within your _"src/"_ folder. Whenever you need to
+pull the repositories again simply execute _"pull.sh"_ again. To debug, and/or run Magic, type the following
+in a terminal.
 
 ```bash
 cd src
