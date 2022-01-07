@@ -1,7 +1,7 @@
 
 # Cloning Magic locally
 
-This recipe helps you clone Magic locally, and assumes you've got VS Code, NodeJS, Angular, and the .Net SDK
+This recipe helps you clone Magic locally, and assumes you've got VS Code, NodeJS, Angular CLI, and the .Net SDK
 version 6 or higher. You can also use Visual Studio instead of VS Code if you're on Windows, at which point
 you only need to open the _"magic.sln"_ file. When you've made sure you've got all of these parts, clone
 this repository locally using the following.
@@ -17,7 +17,7 @@ repositories again simply execute _"pull.sh"_. To debug, and/or run Magic, type 
 ```bash
 cd src
 
-// This requires having VS Code locally installed and in your path
+# This requires having VS Code locally installed and in your path
 code ./
 ```
 
