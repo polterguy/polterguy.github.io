@@ -153,11 +153,16 @@ script you've got instead.
 After you've done the above you can go back to your dashboard in Magic and choose the _"CRUD"_
 menu item. Then click the little spiral arrow to refresh your server side cache, and once the page
 reloads choose the database you just created and click _"Crudify all tables"_. Then choose the _"Frontend"_
-tab at the top of your page, give your app a name, choose the _"angular"_ template, and click _"Generate"_.
-After a couple of seconds you should be given a ZIP file as a download. Make sure you disable popup blockers
-for your domain if you don't get the ZIP file and click _"Generate"_ once more.
+tab at the top of your page, give your app a name, choose the _"angular"_ template, choose a _"Deployment domain"_
+being the URL where you want to deploy your frontend, and click _"Generate"_.
+After a couple of seconds you should be given a ZIP file as a download. If you don't get a ZIP file,
+make sure you disable popup blockers in your browser and click _"Generate"_ once more.
 
-Once you have generated an Angular frontend, you can just as easily install this on the same VPS. This
+If you want to crudify your own database here, you can easily do so by adding a connection string
+to an existing database through the _"Config"_ menu item, and then choose your own connection string's
+name as you crudify your backend.
+
+Once you have generated an Angular frontend, you can easily install this on the same VPS. This
 is possible since the generated frontend also contains a _"docker-compose.yml"_ file. The easiest way
 to do this is to upload your generated ZIP file to your VPS container using for instance the following
 from your local development machine. Yet again, use your VPS' IP address here.
@@ -181,7 +186,7 @@ following command and rerun the above commands afterwards.
 apt install unzip
 ```
 
-When you have unzipped your Angular frontend you can start your Docker container using the following
+When you have unzipped your Angular frontend you can start your docker container using the following
 command in your VPS from within your unzipped Angular frontend folder.
 
 ```
