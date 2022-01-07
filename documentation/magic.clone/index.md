@@ -59,7 +59,7 @@ to locally start a database instance using Docker. These files can be found with
 that contains one folder for each database type, allowing you to test Magic with any of these databases
 locally. To start for instance SQL Server, execute the following from a terminal.
 
-```
+```bash
 cd db
 cd mssql
 docker-compose up
