@@ -160,7 +160,8 @@ make sure you disable popup blockers in your browser and click _"Generate"_ once
 
 If you want to crudify your own database here, you can easily do so by adding a connection string
 to an existing database through the _"Config"_ menu item, and then choose your own connection string's
-name as you crudify your backend.
+name as you crudify your backend. If you do this you can choose any Microsoft SQL Server, MySQL, or
+PostgreSQL database connection string.
 
 Once you have generated an Angular frontend, you can easily install this on the same VPS. This
 is possible since the generated frontend also contains a _"docker-compose.yml"_ file. The easiest way
@@ -194,10 +195,12 @@ docker-compose up -d
 ```
 
 The above assumes you have configured a DNS A record pointing to your virtual machine with
-the URL of where you want your frontend to be found, and that you used this URL as you generated
+the URL of where you want to deploy your frontend, and that you used this URL as you generated
 your frontend - In addition to that you _generated your app on your Magic VPS instance_. The last part
 is important since by default a generated Angular frontend will use the same API URL as the URL
-you are using to generate your frontend. At this point you should have your frontend up running on
+you are using to generate your frontend.
+
+At this point you should have your frontend up running on
 the sub-domain you chose as you generated your frontend. Now simply visit this URL in your browser,
 and after some 5 minutes of negotiating a new SSL certificate from LetsEncrypt your Angular app
 should work.
