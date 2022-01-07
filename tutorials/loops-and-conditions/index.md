@@ -66,7 +66,8 @@ The above will iterate 10 times because this is a part of the condition to the *
 to the **\[lt\]** node only executing the **\[.lambda\]** object as long as the **\[.no\]** node is less than 10,
 and the **\[math.increment\]** invocation increases the value of the **\[.no\]** node inside of the while loop by 1.
 **\[lt\]** implies _"less than"_ and there are many similar types of conditions in Hyperlambda, which you can
-read up about [here](/documentation/magic.lambda/).
+read up about [here](/documentation/magic.lambda/). If you want to read more about math slots in Hyperlambda, such
+the the above **[math.increment]** slot, you can find it [here](/documentation/magic.lambda.math/).
 
 ## Branching in Hyperlambda
 
