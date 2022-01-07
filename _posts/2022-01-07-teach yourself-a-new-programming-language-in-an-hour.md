@@ -27,3 +27,11 @@ your list. As of today, this should be really easily achieved, since our tutoria
 had a complete cleanup, and partial rewrite, making it that much easier for you.
 
 * [Start here](/tutorials/)
+
+Of course, a large part of the reasons why Hyperlambda is 10 times less complicated and easier to learn,
+in addition to being 10 times more productive than other programming languages, is because with Hyperlambda your
+computer does most of the work for you, 100% automatically - Something you can see due to the fact of that
+within 30 seconds after having started on your [first tutorial](https://docs.aista.com/tutorials/database-crud/),
+you've already got possibly tens of thousands of lines of code - Something that in a more
+traditional programming language typically would require half a dozen of developers working for a handful of months
+to achieve.
