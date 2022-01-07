@@ -17,6 +17,7 @@ first _"getting started"_ tutorial will help you install Magic locally on your d
 * [Hyperlambda Hello World](/tutorials/hello-world-endpoint/)
 * [HTTP invocations with Hyperlambda](/tutorials/http-rest/)
 * [Expressions, slots, and nodes](/tutorials/expressions-slots-nodes/)
+* [Looping and branching in Hyperlambda](/tutorials/loops-and-conditions/)
 * [Authentication and Authorisation](/tutorials/auth/)
 * [Hyperlambda and Web Sockets](/tutorials/web-sockets/)
 * [Threading and async Hyperlambda programming](/tutorials/threading/)
