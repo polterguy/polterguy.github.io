@@ -10,10 +10,9 @@ these would resemble the following.
 * __api.yourdomain.com__
 * __magic.yourdomain.com__
 
-We suggest you don't buy the cheapest VPS droplet from DigitalOcean, but rather choose
-the basic droplet that costs you $24 per month. This is because the cheapest droplet is simply
-not powerful enough to run two web apps, MySQL, and docker. You might be able to manage with a $12
-droplet.
+We suggest you don't buy the cheapest VPS droplet from DigitalOcean, but chose at least the one
+that will cost you $12 per month. Their cheapest droplet simply doesn't have enough memory to
+run Magic optimally.
 
 ## Installing Magic
 
