@@ -22,7 +22,7 @@ Hyperlambda code that Magic created for us.
 ## Creating your database
 
 Open the _"SQL"_ menu item in your dashboard, and click the _"Load"_ button. If you're using MySQL
-as your main database then choose _"babelfish"_ - If you're using SQL Server, choose _"northwind-simplified"_.
+as your main database then choose _"babelfish"_. If you're using SQL Server, choose _"northwind-simplified"_.
 Load the database script, and click the _"Execute"_ button.
 
 ![Creating your Babelfish database](https://servergardens.files.wordpress.com/2021/04/sql-editor.png)
