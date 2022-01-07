@@ -71,4 +71,4 @@ Server=db;Database={database};Uid=root;Pwd=ThisIsNotAGoodPassword;SslMode=Prefer
 You also need to have [Docker](https://www.docker.com/products/docker-desktop)
 installed on your development machine.
 
-* [Continue with reference documentation](/documentation/)
+* Continue with [Reference documentation for Magic and Hyperlambda](/documentation/)

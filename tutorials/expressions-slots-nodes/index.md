@@ -329,4 +329,4 @@ Whether or not you actually understand it is second priority. This trait of Hype
 allows for the computer to create programs that runs on other computers, or itself for that matter.
 And that's its purpose; **To replace the need to manually create code!**
 
-* [Continue with Loops and conditional execution of Hyperlambda](/tutorials/loops-and-conditions/)
+* Continue with [Loops and conditional execution of Hyperlambda](/tutorials/loops-and-conditions/)

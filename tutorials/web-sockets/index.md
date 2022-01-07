@@ -268,4 +268,4 @@ You can also mix and match socket Hyperlambda files and HTTP Hyperlambda files
 as you see fit, such as for instance publish a message using **[socket.signal]** from any
 HTTP backend Hyperlambda file, etc.
 
-* [Continue with Threading and async Hyperlambda programming](/tutorials/threading/)
+* Continue with [Threading and async Hyperlambda programming](/tutorials/threading/)

@@ -224,4 +224,4 @@ if
          .:OK
 ```
 
-* [Continue with Authentication and Authorisation](/tutorials/auth/)
+* Continue with [Authentication and Authorisation](/tutorials/auth/)

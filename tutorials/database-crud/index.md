@@ -342,4 +342,4 @@ If you want to see the power of these CRUD slots you can check out the documenta
 [magic.data.common](/documentation/magic.data.common/) module that you can find in the
 reference documentation for Magic.
 
-* [Create a Web API with SQL](/tutorials/sql-web-api/)
+* Continue with [Create a Web API with SQL](/tutorials/sql-web-api/)

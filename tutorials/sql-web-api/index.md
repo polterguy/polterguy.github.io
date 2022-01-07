@@ -78,4 +78,4 @@ If you want to return a scalar value instead of a list of items, you can change 
 value to false. This will return a single value to the client instead of a list of items, which sometimes might
 be useful.
 
-* [Continue with Hyperlambda Hello World](/tutorials/hello-world-endpoint/)
+* Continue with [Hyperlambda Hello World](/tutorials/hello-world-endpoint/)

@@ -81,4 +81,4 @@ schedule time will be calculated. This avoids exhausting your web server due to 
 flooding the server with tasks your server is not able to execute. To see the complete documentation
 for the task scheduler in Magic you can check out the [magic.lambda.scheduler](/documentation/magic.lambda.scheduler/).
 
-* [Continue with Cryptographically signed HTTP invocations](/tutorials/crypto-lambda-http/)
+* Continue with [Cryptographically signed HTTP invocations](/tutorials/crypto-lambda-http/)

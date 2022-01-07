@@ -187,4 +187,4 @@ This prevents one module from accidentally interferring with objects in another 
 internally within your server, and/or also globally to some extent. This makes your code more maintainable
 and interoperable in the long run.
 
-* [Continue with Hyperlambda tasks and scheduled tasks](/tutorials/task-scheduler/)
+* Continue with [Hyperlambda tasks and scheduled tasks](/tutorials/task-scheduler/)

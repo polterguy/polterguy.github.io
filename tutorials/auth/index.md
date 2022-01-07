@@ -178,4 +178,4 @@ _the CPU time required to brute force a single character password would still be
 even if an adversary had access to your entire password database. This is due to the nature of BlowFish
 hashing, combined with per record based salts.
 
-* [Continue with Hyperlambda and Web Sockets](/tutorials/web-sockets/)
+* Continue with [Hyperlambda and Web Sockets](/tutorials/web-sockets/)

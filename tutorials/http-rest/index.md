@@ -220,4 +220,4 @@ can be given a **[payload]** or a **[filename]** argument - And you can only pro
 To further dive into the semantics of invoking HTTP endpoints with Hyperlambda you can check out the
 documentation for [magic.lambda.http](/documentation/magic.lambda.http).
 
-* [Continue with Expressions, slots and nodes](/tutorials/expressions-slots-nodes/)
+* Continue with [Expressions, slots and nodes](/tutorials/expressions-slots-nodes/)

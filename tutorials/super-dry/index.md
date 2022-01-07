@@ -77,4 +77,4 @@ Interceptors are _recursively_ applied, implying if you have multiple _"intercep
 files upwards in your hierarchy, then _all_ your interceptors will be applied, creating a combined result,
 before your lambda object is executed.
 
-* [Continue with Dynamic Hyperlambda slots](/tutorials/dynamic-slots/)
+* Continue with [Dynamic Hyperlambda slots](/tutorials/dynamic-slots/)

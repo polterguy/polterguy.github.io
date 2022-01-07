@@ -177,4 +177,4 @@ that only one thread is allowed to read and write to the file at the same time. 
 above **[semaphore]** invocations, we'd run the risk of multiple threads writing to the
 file simultaneously, resulting in what is commonly referred to as a _"race condition"_.
 
-* [Continue with Interceptors and Exception handlers](/tutorials/super-dry/)
+* Continue with [Interceptors and Exception handlers](/tutorials/super-dry/)

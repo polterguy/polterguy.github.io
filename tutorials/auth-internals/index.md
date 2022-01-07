@@ -234,4 +234,4 @@ will return _"on"_ if automatic authentication has been enabled in your backend.
 only be used from within the LAN - But at least it allows you to query your backend to check if
 automatic Windows authentication has been turned on.
 
-* [Continue with using Magic with Microsoft SQL Server](/tutorials/sql-server/)
+* Continue with [Using Magic with Microsoft SQL Server](/tutorials/sql-server/)

@@ -153,4 +153,4 @@ return-nodes
    result:x:@strings.concat
 ```
 
-* [Continue with Invoking HTTP endpoints from Hyperlambda](/tutorials/http-rest/)
+* Continue with [Invoking HTTP endpoints from Hyperlambda](/tutorials/http-rest/)
