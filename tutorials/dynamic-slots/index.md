@@ -122,13 +122,16 @@ of the lambda object they are executing once invoked. To understand the idea, im
 slots.create:foo.bar
    config.get:"magic:databases:default"
    return:x:-
+
 slots.get:foo.bar
 insert-before:x:-/0
    .
       log.info:[foo.bar] was invoked
+
 add:x:+
    get-nodes:x:@slots.get/*
 slots.create:foo.bar
+
 slots.get:foo.bar
 ```
 

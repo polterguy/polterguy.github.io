@@ -64,7 +64,7 @@ while
 
 The above will iterate 10 times because this is a part of the condition to the **\[while\]** invocation, due
 to the **\[lt\]** node only executing the **\[.lambda\]** object as long as the **\[.no\]** node is less than 10,
-and the **\[math.increment\]** invocation increases the value of the **\[.no\]** node inside of the while loop.
+and the **\[math.increment\]** invocation increases the value of the **\[.no\]** node inside of the while loop by 1.
 **\[lt\]** implies _"less than"_ and there are many similar types of conditions in Hyperlambda, which you can
 read up about [here](/documentation/magic.lambda/).
 
@@ -145,5 +145,82 @@ if (foo == "foo") {
 
 Hyperlambda also have slots for **[switch]**, **[or]** and **[and]**, in addition to other mechanisms for branching.
 Refer to the [magic.lambda](/documentation/magic.lambda/) project for an exhaustive list.
+
+## Branching commonalities
+
+The **[while]**, **[if]**, **[else-if]** and **[else]** slots are what is commonly referred to as _"conditional branching"_.
+Branching implies your code takes a different execution path as it executes, and conditional branching implies there
+are conditions associated with these alternative execution paths. All of the branching slots in Hyperlambda have similar
+semantics, implying taking a condition as an argument. All branching slots except the **[else]** slot, requires
+_exactly one child node_, or argument - Which is the condition associated with their lambda object. In addition each
+of these slots also requires exactly one **[.lambda]** argument, being the code to execute if their condition is _true_.
+Logically this becomes the equivalent of the following in plain English.
+
+> If some-condition, then do this
+
+Where _"some-condition"_ is your condition, and _"this"_ is your lambda object. If the condition is _not_ true, their
+associated lambda object will _not_ execute. The **[else]** node on the other hand only executes its lambda object if
+all **[if]** and **[else-if]** invocations before it returned _false_. You can add any slot invocation to such branching
+slots as your conditions. Below is an example of using a custom slot returning true instead of the comparison slots.
+
+```
+slots.create:foo-bar
+   return:bool:true
+
+.result
+
+if
+   signal:foo-bar
+   .lambda
+
+      set-value:x:@.result
+         .:Yup!
+
+else
+
+   set-value:x:@.result
+      .:Nope!
+```
+
+The [magic.lambda](/documentation/magic.lambda/) project also contains logical slots, such as **[or]** and **[and]**
+that only yields true if _either_ of their list of conditions returns true, or _all_ of their conditions returns
+true, respectively. This gives you the same capabilities as the following pseudo code in for instance C# would
+give you.
+
+```csharp
+if (x && y) {
+   do_something();
+}
+```
+
+However, the syntax in Hyperlambda might be a bit different compared to what you are used to, since the above
+would look like the following in Hyperlambda.
+
+```
+if
+   and
+      x
+      y
+   .lambda
+      do_something
+```
+
+Notice how the **[and]** part is the outermost invocation, and not separating your conditions as it would in
+a more traditional programming language. The same is true for **[or]**. This has the advantage of allowing you
+to create your own logical operators, which might be useful sometimes, to create your own domain specific _"keywords"_
+in C# related to your particular problem at hand. Below is a  working Hyperlambda example illustrating this concept.
+
+```
+.s1:bool:true
+.s2:bool:true
+.res
+if
+   and
+      get-value:x:@.s1
+      get-value:x:@.s2
+   .lambda
+      set-value:x:@.res
+         .:OK
+```
 
 * [Continue with Authentication and Authorisation](/tutorials/auth/)
