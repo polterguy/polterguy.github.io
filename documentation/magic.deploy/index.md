@@ -128,28 +128,19 @@ are stopped for some reasons, and/or you update Magic later, you will keep your 
 
 ## Configuring Magic
 
-You can now visit your frontend domain and setup Magic. To configure Magic login with _"root/root"_ and do _not_
-change the database connection string, but choose _mysql_ as your database type, and provide Magic with
-a root password, and follow the wizard to the end. This process is similar to the process you follow
-as you configured Magic locally on your development machine. If your domain was _"yourdomain.com"_, and
+You can now visit your frontend domain and setup Magic. As you click the login button, you have to
+provide Magic with your backend API URL. This is achieved by simply pasting in your backend API URL
+into the top textbox and click the tab key on your keyboard. If your domain was _"yourdomain.com"_, and
 you created your DNS records as illustrated above, your API backend URL would be the following.
 
 ```
 https://api.yourdomain.com
 ```
 
-As you click the login button, you have to provide Magic with your backend API URL.
-This is achieved by simply pasting in your backend API URL into the top textbox and click the tab key
-on your keyboard, at which point Magic will allow you to provide your username and password to login
-to your Magic dashboard. Your initial username and password combination before you have configured
-Magic is _"root/root"_. You will have to _change_ this password after you have logged in to start
-the configuration process of Magic.
-
-The _"appsettings.json"_ file will be mounted as an external file reference by docker, and
-this file will contain your Magic settings. _Do not delete this file_ since it's crucial for Magic to
-work. However, be careful with the file, since it contains your database connection strings, JWT secret,
-and other _highly sensitive information_. _Do not send this file on email or share it with anybody_ unless
-you absolutely trust the other party.
+To configure Magic login with _"root/root"_ and do _not_ change the database connection string, but
+choose _mysql_ as your database type, and provide Magic with a root password, and follow the wizard
+to the end. This process is similar to the process you follow as you configure Magic locally on your
+development machine.
 
 ## Installing a generated Angular frontend
 
