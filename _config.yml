@@ -40,41 +40,39 @@ nav_sections:
   - name: Tutorials
     items:
       - url: /tutorials/getting-started/
-        name: Start
+        name: Getting started with Magic and Hyperlambda
       - url: /tutorials/database-crud/
-        name: CRUD
+        name: Automatically generate a CRUD Web API
       - url: /tutorials/sql-web-api/
-        name: SQL Web API
-      - url: /tutorials/cloud-ide/
-        name: Beyond CRUD
-      - url: /tutorials/web-sockets/
-        name: Web Sockets
-      - url: /tutorials/auth/
-        name: Auth
+        name: Use SQL to create a Web API
       - url: /tutorials/hello-world-endpoint/
-        name: Hello World
-      - url: /tutorials/super-dry/
-        name: DRY
-      - url: /tutorials/threading/
-        name: Threading
+        name: Hyperlambda Hello World
       - url: /tutorials/http-rest/
-        name: HTTP invocations
-      - url: /tutorials/dynamic-slots/
-        name: Dynamic slots
-      - url: /tutorials/task-scheduler/
-        name: Tasks
-      - url: /tutorials/crypto-lambda-http/
-        name: Crypto
+        name: HTTP invocations with Hyperlambda
       - url: /tutorials/expressions-slots-nodes/
-        name: Expressions ++
+        name: Expressions, slots, and nodes
+      - url: /tutorials/auth/
+        name: Authentication and Authorisation
+      - url: /tutorials/web-sockets/
+        name: Hyperlambda and Web Sockets
+      - url: /tutorials/threading/
+        name: Threading and async Hyperlambda programming
+      - url: /tutorials/super-dry/
+        name: Interceptors and exception handlers
+      - url: /tutorials/dynamic-slots/
+        name: Dynamic Hyperlambda slots
+      - url: /tutorials/task-scheduler/
+        name: Hyperlambda tasks and scheduled tasks
+      - url: /tutorials/crypto-lambda-http/
+        name: Cryptographically signed HTTP invocations
       - url: /tutorials/auth-internals/
         name: Auth internals
       - url: /tutorials/sql-server/
-        name: SQL Server
+        name: Using Magic with Microsoft SQL Server
       - url: /tutorials/postgresql/
-        name: PostgreSQL
+        name: Using Magic with PostgreSQL
       - url: /tutorials/mysql/
-        name: MySQL
+        name: Using Magic with MySQL
   - name: Docs plugins
     items:
       - url: /documentation/magic.lambda/

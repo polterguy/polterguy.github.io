@@ -17,6 +17,6 @@ to YAML in structure, allowing you to _"declare"_ your logic using syntax resemb
 a perfect _"first programming"_ language, due to that it's an extremely high level abstraction, eliminating most
 of the problems from traditional programming languages.
 
-* [Get Started](/tutorials/getting-started/)
+* [Getting Started](/tutorials/getting-started/)
 * [Tutorials](/tutorials/)
 * [Docs](/documentation/)

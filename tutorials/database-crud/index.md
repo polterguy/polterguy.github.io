@@ -1,9 +1,19 @@
 ---
-title: Generating a Hyperlambda CRUD app
+title: Automatically generate a CRUD Web API using Hyperlambda
 description: In this article we generate a Hyperlambda CRUD web API using Magic, for then to analyse the generated code, providing you with the knowledge required to understand how Magic is doing its Magic.
 ---
 
-# Generating a Hyperlambda CRUD app
+# Automatically generate a CRUD Web API using Hyperlambda
+
+**Notice** - This is a _"hands on tutorial"_, and assumes you've already [installed Magic](/tutorials/getting-started/)
+locally or at some server somehow. In this tutorial we will cover the following parts of Magic and Hyperlambda.
+
+* How to automatically generate a Hyperlambda CRUD Web API wrapping your database
+* The SQL, CRUD, Endpoints and Hyper IDE menu items
+* CRUD database slots
+* Passing arguments to Hyperlambda endpoints
+* Validating arguments
+* Authorisation and authentication
 
 This is going to be a _"different"_ tutorial, since instead of creating code ourselves, we will use
 Magic to generate our code, and analyse what Magic did afterwards. If you prefer to
@@ -245,6 +255,26 @@ want to do if you want to modify your endpoint. In the above arguments node for 
 **[locale.mt]** argument probably doesn't make much sense, and can be deleted to simplify
 your endpoint.
 
+#### Validating arguments
+
+If you look at one of your _"xxx.delete.hl"_ endpoint files in Hyper IDE, you will see something
+resembling the following just below your **[.arguments]** collection.
+
+```
+validators.mandatory:x:@.arguments/*/xxx
+```
+
+This is mandatory validator, and makes sure the endpoint cannot be invoked without passing in
+an **[xxx]** argument. Hyperlambda contains many similar validators for validating numbers,
+emails, date and time objects, etc. If you want to see what validators you can use
+in Hyperlambda, you can checkout the documentation for [magic.lambda.validators](/documentation/magic.lambda.validators).
+You can also use the autocomplete features of the Hyperlambda editor, by finding an empty
+line and click FN+CONTROL+SPACE on a Mac or CTRL+SPACE on Windows. This will show you
+the autocompleter for Hyperlambda slots, allowing you to filter on for instance validator
+slots, such as the following illustrates.
+
+![Autocomplete on validators](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/autocomplete.jpg)
+
 ### Authorisation and authentication
 
 Your endpoint will by default require authentication and authorisation, preventing anonymous
@@ -312,4 +342,4 @@ If you want to see the power of these CRUD slots you can check out the documenta
 [magic.data.common](/documentation/magic.data.common/) module that you can find in the
 reference documentation for Magic.
 
-* [Continue with SQL Web APIs](/tutorials/sql-web-api/)
+* [Create a Web API with SQL](/tutorials/sql-web-api/)

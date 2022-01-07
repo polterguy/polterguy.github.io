@@ -5,9 +5,17 @@ description: In this article you will learn the three most fundamental building 
 
 # Expressions, slots, and nodes
 
-Fundamentally Hyperlambda is just a text representation of a tree structure, the same way XML, YAML and JSON is.
-Hyperlambda's syntax though is both simpler, more humanly readable, and more easily parsed than any of the
-alternatives - Including YAML. To illustrate this let us look at some example Hyperlambda.
+In this tutorial we will cover the following parts of Magic and Hyperlambda.
+
+* Hyperlambda's syntax
+* How Hyperlambda relates to C# and the Node class
+* How expressions allows you to reference nodes and create _"variables"_ in Hyperlambda
+* Creating slots from C#
+
+Fundamentally Hyperlambda is just a Turing complete text representation of a tree structure, the same
+way XML, YAML, and JSON is. Hyperlambda's syntax though is much simpler, easier to read, and more easily
+parsed than any of the alternatives, including YAML. To illustrate this let us look at some example
+Hyperlambda.
 
 ```
 .data
@@ -22,7 +30,7 @@ strings.concat
 
 In the above Hyperlambda the **[.data]** parts is a `Node`. This node has a name of _".data"_ and a null value.
 In addition it has a list of children nodes being **[item1]**, **[item2]** and **[item3]**. These children nodes
-have values though, which can be found to the right hand side of the `:` parts. To understand this, realise that
+have values, that can be found to the right hand side of the `:` parts. To understand this, realise that
 the `Node` class again looks roughly like the following.
 
 ```csharp
@@ -37,7 +45,7 @@ class Node
 The above example is _"pseudo code"_ intended to simplify understanding, but this is basically the main parts
 of the `Node` class. If you compare the `Node` class to for instance JSON, you will see it has _one additional axiom_,
 being an explicit children collection. JSON in such a regard is simpler, because it _only_ has a name and a value, in
-addition to that in JSON the same name _cannot be repeated_ because JSON maps to fields on classes - So substituting
+addition to that in JSON the same name _cannot be repeated_ because JSON maps to fields on objects. Hence, substituting
 Hyperlambda with JSON, would make things much more verbose, even though technically it _is_ possible. The same is
 true for XML and YAML.
 
@@ -59,8 +67,8 @@ Below is a Hyperlambda snippet that declares an `integer`, a `decimal`, and a `D
    val3:date:"2021-01-01T23:59:00"
 ```
 
-Type declarations are basically injected in between the node's name and its value, and are simply
-references to CLR types such as `System.DateTime`, `System.Decimal`, etc. The default type if no
+Type declarations are basically injected in between the node's name and its value, and are
+referencing CLR types such as `System.DateTime`, `System.Decimal`, etc. The default type if no
 type is explicitly supplied is string.
 
 The typing system of Hyperlambda is crucial for what follows, and also makes it almost impossible
@@ -169,16 +177,16 @@ programming languages are also slots. This has huge advantages, in that it among
 allows you to declare your own _"operators"_, in addition to that Hyperlambda can easily be
 traversed _semantically_, to see which operators it is using, and Hyperlambda files can also be
 easily _"generated"_, by combining programming language fundamentals together, to create a
-result of some sort - Which of course is the foundation for the _"Generator"_ in Magic.
+result of some sort - Which of course is the foundation for the _"CRUD"_ menu item in Magic.
 
-> Hyperlambda is weird for a purpose
+> Hyperlambda is weird because it needs to be weird
 
 ## Variables
 
-Hyperlambda literally _does not have variables_ - Or to be specific, _everything_ is a variable
+Hyperlambda _does not have variables_ - Or to be specific, _everything_ is a variable
 in Hyperlambda. This is because of that Hyperlambda has the ability to change any node's value,
-name, and/or children collection. Run the following code through for instance the _"Evaluator"_
-in Magic's dashboard to see this process.
+name, and/or children collection. Run the following code through for instance the _"Eval"_
+menu item in Magic's dashboard to see this process.
 
 ```
 .item1:foo
@@ -191,9 +199,9 @@ set-name:x:@.item2
 
 The above Hyperlambda changes the value of one node, and the name of another node. This makes Hyperlambda
 _extremely dynamic in nature_ - Much more dynamic than other dynamic programming languages, since the
-code might change itself, during the execution of itself. The code is said to be
+code might change itself, as it is executing itself. The code is said to be
 _"self evolving during its execution process"_. In fact, in Hyperlambda there is no differences between
-creating code, modifying code, and executing code. These constructs are basically just aspects of the
+creating code, modifying code, storing data, and executing code. These constructs are basically just aspects of the
 same process in Hyperlambda, and of course the reason why it is so easy to create code that generates
 code with Hyperlambda.
 
@@ -234,13 +242,13 @@ is an example.
 ```
 
 Since the above **[.data]**  segment is ignored by **[eval]** as a whole, none of its children will be
-raised as signals, and inside of our data segment, we no longer need to prepend nodes' names with a `.`.
+signaled, and inside of our data segment, we no longer need to prepend nodes' names with a `.`.
 
 ## Expressions
 
 This is probably the most complex part of Hyperlambda, but if you have ever used XPath expressions,
 it shouldn't be too problematic, since they're more or less similar in nature. An expression is basically
-a _"pointer"_ into a sub-set hierarchy of your node structure. For instance, the following
+a _"pointer"_ into a sub-set of your node structure. For instance, the following
 expression ...
 
 ```
@@ -269,7 +277,7 @@ the links to the reference documentation for these parts of Magic.
 
 ### Extrapolated expressions
 
-As of from version 9.7.1 you can nest expressions, or create extrapolated expressions. This is
+Hyperlambda also allows you to nest expressions, or create extrapolated expressions. This is
 quite useful since it allows you to parametrise expressions, such that parts of your expressions
 are dynamically changing according to the value of a nested expression. To understand the idea
 imagine the following.
@@ -309,17 +317,16 @@ easy. In this tutorial we covered the following subjects.
 
 ### Golly gosh this is weird!
 
-Hyperlambda is _"weird"_, but it needs to be weird, in order to facilitate for that which it does.
+Hyperlambda is _"weird"_, but it needs to be weird, in order to facilitate for what it does.
 Every time you think about how weird it is, and this bothers you, please realise that without
-this _"weirdness"_, things such as the automatic generating of your HTTP backends, etc, would simply
-not be possible. I didn't create it weird because I wanted it to be weird, I created it weird
-because it _needed_ to be weird. However, you can also just simply completely ignore its weirdness,
-and let the computer do all the work. Simply put because ...
+this _"weirdness"_, things such as the automatic generating of your CRUD backends, etc, would simply
+not be possible. We didn't create it weird because we wanted it to be weird. We created it weird
+because it _needed_ to be weird. To understand why it needs to be weird, please realise the following.
 
-> Hyperlambda's purpose is to have your computer understand Hyperlambda ...
+> Hyperlambda's purpose is to have your computer understand Hyperlambda
 
-... whether or not you actually understand it is second priority. Simply since this simple trait
-allows for one computer to create programs that runs on another computer, or itself for that matter.
-And that's its purpose; **To replace the need for manually creating code!**
+Whether or not you actually understand it is second priority. This trait of Hyperlambda
+allows for the computer to create programs that runs on other computers, or itself for that matter.
+And that's its purpose; **To replace the need to manually create code!**
 
-* [Continue with Authentication internals](/tutorials/auth-internals/)
+* [Continue with Authentication and Authorisation](/tutorials/auth/)

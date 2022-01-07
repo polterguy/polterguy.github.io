@@ -5,6 +5,15 @@ description: This tutorial walks you through the process of getting started with
 
 # Getting started with Magic and Hyperlambda
 
+In this tutorial we will cover the following parts of Magic and Hyperlambda.
+
+* How to setup Magic locally in your own development environment using Docker
+* How to setup Magic locally in your own development environment using its code
+* How to deploy Magic to your own VPS
+* How to update Magic
+* How to clone Magic's code
+* How to get support for Magic
+
 The easiest way to get started is to [download the docker-compose file](https://github.com/polterguy/magic/releases/download/v10.0.4/docker-compose.yml), assuming you have [Docker](https://www.docker.com/products/docker-desktop)
 installed, and then execute the following in a terminal window where you saved the file.
 
@@ -24,9 +33,9 @@ can execute in the _"SQL"_ menu item to create an example database. In the video
 
 If you want to use Magic with SQL Server or PostgreSQL you can find recipes for this below.
 
-* [SQL Server](/tutorials/sql-server/)
-* [PostgreSQL](/tutorials/postgresql/)
-* [MySQL](/tutorials/mysql/)
+* [Using Magic with Microsoft SQL Server](/tutorials/sql-server/)
+* [Using Magic with PostgreSQL](/tutorials/postgresql/)
+* [Using Magic with MySQL](/tutorials/mysql/)
 
 ## Download the code
 
@@ -78,4 +87,4 @@ email at [th@aista.com](mailto:th@aista.com). If you want to submit a
 feature request or a bug report, you can do such through the project's
 [GitHub Issues](https://github.com/polterguy/magic/issues).
 
-* [Continue with CRUD](/tutorials/database-crud/)
+* [Continue with Automatically generate a CRUD Web API](/tutorials/database-crud/)

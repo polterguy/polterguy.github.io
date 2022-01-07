@@ -5,6 +5,13 @@ description: In this article we show you how to cryptographically sign your Hype
 
 # Cryptographically secured HTTP lambda invocations
 
+In this tutorial we will cover the following parts of Magic and Hyperlambda.
+
+* How to create cryptographically signed HTTP invocations
+* How lambda invocations are stored giving the server a receipt of invocation
+* How Magic avoids replay attacks on lambda invocations
+* Tips and tricks for how to apply these constructs in your own Micro Service architecture
+
 This is one of those oddball things you have probably never seen before, arguably turning your Magic
 server into a crypto wallet and a financial transaction server, by allowing you to securely
 execute Hyperlambda code created by a 3rd party client - And have receipts giving you a guarantee
@@ -12,7 +19,7 @@ of that the executed code was in fact created by _one specific client_. In many 
 argued that this creates a _"blockchain"_ type of technology for generic HTTP lambda invocations,
 providing code to your server, that you can securely execute, while getting a cryptographic
 receipt of that the code that was executed was indeed created by _a specific client_. Watch
-the video below for a walkthrough of how this actually works.
+the following video for a walkthrough of how this works.
 
 <div class="video">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/U5SwKS-S2RI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -29,7 +36,7 @@ If we start out imagining a client creating an invocation the process becomes as
 4. The server looks up the execution rights associated with the public key
 5. The Hyperlambda in the payload is executed, _only_ allowing for the slots that are _"whitelisted"_ to be executed
 6. A receipt containing the cryptographically signed payload is persisted on the server
-7. The server cryptographcally signs the response and returns it to the client
+7. The server cryptographically signs the response and returns it to the client
 8. The client verifies the cryptography signature in the response returned by the server
 
 If any of the above steps are failing for some reasons, the execution is not considered to be successful.
@@ -51,14 +58,16 @@ of _"inversion of control"_ in regards to who gets to decide what code to execut
 
 ## Code example
 
-Use the _"Evaluator"_ menu item from your Magic Dashboard and execute the following code.
+Use the _"Eval"_ menu item from your Magic Dashboard and execute the following code.
 
 ```
 guid.new
+
 unwrap:x:+/**/.request-id
 signal:magic.crypto.http.eval
    url:"http://localhost:4444/magic/system/crypto/eval-id"
    .lambda
+
       .request-id:x:@guid.new
       vocabulary
       slots.vocabulary
@@ -71,7 +80,7 @@ signal:magic.crypto.http.eval
 If you open your _"Crypto"_ menu item afterwards, and you expand the _"Receipts"_ tab, you will see
 something resembling the following.
 
-![Cryptographic receipt of HTTP Lambda Invocation](https://servergardens.files.wordpress.com/2021/04/crypto-receipt.png)
+![Cryptography receipt](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/crypto-receipt.jpg)
 
 The *ID* above is the value returned from **[guid.new]**, and simply a randomly generated ID associated
 with your request, created by the client - Allowing the client to persist the invocation any ways he wants
@@ -87,6 +96,7 @@ and notice how the first invocation typically succeeds, while the second invocat
 signal:magic.crypto.http.eval
    url:"http://localhost:4444/magic/system/crypto/eval-id"
    .lambda
+
       .request-id:not-a-unique-request-id
       return:Will fail the second time
 ```
@@ -96,7 +106,8 @@ signal:magic.crypto.http.eval
 In addition to the obvious use cases, such as financial transactions, document signing, legal things, etc -
 This also allows you to create a micro service environment, publicly exposing endpoints over an
 insecure connection, such as the World Wide Web - While still providing guarantees of that nobody except
-those clients explicitly given permissions on your server are legally allowed to invoke your endpoints.
+those clients explicitly given permissions on your server are legally allowed to invoke your Hyperlambda
+endpoints.
 
 Since the whole idea also is that _the client supplies the code_, this also allows your
 system to go through evolutionary iterations, changing its behaviour, _without_ having to patch or
@@ -120,4 +131,4 @@ these guys are an incredible tool for you, to both scale out (**securely**) and 
 heterogeneous server environments, without having to try to predict what the future might hold in
 regards to its requirements.
 
-* [Continue with Expressions slots and Nodes](/tutorials/expressions-slots-nodes/)
+* [Continue with Auth internals](/tutorials/auth-internals/)

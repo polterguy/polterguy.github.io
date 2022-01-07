@@ -5,14 +5,20 @@ description: This tutorial helps you understand how the authentication and autho
 
 # Authentication and authorisation
 
-Magic was created to solve all the repetitive problems I experienced in my day job. One of these problems
+In this tutorial we will cover the following parts of Magic and Hyperlambda.
+
+* How authentication works in Magic
+* How authorisation works in Magic
+* Some JWT internals
+* How to administrate users and roles using your Magic dashboard
+
+Magic was created to solve all the repetitive problems we experienced in our day jobs. One of these problems
 happens to be authentication and authorisation, which is a problem you have to solve every time
 you create a new application. At this point some might argue that OAuth2 solves these problems, and while
-technically that _is_ true, OAuth2 is also ridiculously complex and over engineered, and very easy to
-get wrong. And of course if you get your app's auth parts wrong, you might as well not have auth at all,
-since it exposes your apps for adversaries doing whatever they want to do with your app. Authorisation is
-one of those things together with cryptography you really _should not solve yourself_, unless you really
-_know_ what you're doing. Watch the following video for a walkthrough of how the auth parts in Magic works.
+technically that is true, OAuth2 is also extremely complex and over engineered, and very easy to
+get wrong. With Magic authentication and authorisation simply works out of the box, without you having
+to configure anything at all, making things almost impossible to get wrong. Watch the following video for
+a walkthrough of how the auth parts in Magic works.
 
 <div class="video">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/tR2kyM6HKxw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -26,7 +32,7 @@ confirm their email address before being accepted into your site, resetting pass
 of course that the Magic Dashboard contains high level UI components, allowing you
 to easily administrate your user database such as illustrated below.
 
-![Auth Dashboard Module](https://servergardens.files.wordpress.com/2021/04/auth-dashboard.png)
+![Authentication and Authorisation in Magic](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/auth.jpg)
 
 Imagining your manager giving you the required time to implement the above is probably at best delusional,
 regardless of what company you work for. With Magic, it's _simply there_. Combining this with the auditing
@@ -34,11 +40,11 @@ and diagnostic features of Magic, allowing you to see high level KPI charts rela
 illustrated below - Results in that Magic's features from a conceptual point of view related to this,
 is something you're probably never going to be able to reproduce using other means.
 
-![Auth diagnostics and KPI](https://servergardens.files.wordpress.com/2021/04/auth-diagnostics.png)
+![Security audit logging in Hyperlambda](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/health-security.jpg)
 
 ## Endpoints
 
-Magic exposes a couple of crucial endpoints related to authentication that simplifies your life. These are as follows.
+Magic exposes several endpoints related to authentication that simplifies your life. These are as follows.
 
 * GET magic/system/auth/authenticate - Authenticates a user with a username/password combination
 * PUT magic/system/auth/change-password - Allows a user to change his or her password
@@ -53,12 +59,8 @@ allowing you to build UI components in any framework of choice wrapping the abov
 
 ## JWT internals
 
-JWT is easily explained to a child. OAuth2 on the other hand, is ridiculously complicated and over engineered,
-to the point where even the guy in charge of the standardisation committee went on a 2 year long tour throwing
-sessions who's names were as follows; _"OAuth2 sucks!"_ OAuth2 might be cool if you're Google or Facebook, but
-if you're anything else, it's a _hot smoking pile of garbage_!
-JWT on the other hand is ridiculously simple to understand. It's based upon a secret, which you can find
-in Magic as a configuration setting. Below are all configuration settings related to auth in Magic.
+JWT is very easy to understand. It is based upon a secret that you can find in Magic as a configuration setting.
+Below are all configuration settings related to auth in Magic.
 
 ```json
 {
@@ -76,12 +78,12 @@ in Magic as a configuration setting. Below are all configuration settings relate
 }
 ```
 
-Assuming you can keep the above secret a _secret_, your auth system is secure enough to be consumed by FSB,
-MI6 and the CIA. The idea is that once a JWT token is generated, its payload is concatenated with the above secret,
-and a SHA256/HMAC is constructed, which unless can be correctly reproduced in the .Net middleware upon consecutive
-requests, results in that the token is considered invalid, and the user will not be authorised to do anything
-requiring authorisation. By default Magic will use the BouncyCastle CSRNG classes to generate your auth secret.
-But if you're super paranoid, you can also manually edit it as you see fit.
+Assuming you can keep the above secret a _secret_, your auth system is highly secure. The idea is that once a JWT
+token is generated, its payload is concatenated with the above secret, and a SHA256/HMAC is constructed, which
+unless can be correctly reproduced in the .Net middleware upon consecutive requests, results in that the token
+is considered invalid, and the user will not be authorised to do anything requiring authorisation. By default
+Magic will use the BouncyCastle CSRNG classes to generate your auth secret. But if you're super paranoid, you
+can also manually edit it as you see fit.
 
 In fact, using Magic as your JWT auth server, to integrate it into your own custom C# apps, is as simple as
 configuring the correct middleware by implementing a handful of lines of custom C# code. You can get an idea
@@ -114,17 +116,18 @@ setup process. The tables related to auth in this database are as follows.
 * __roles__
 * __users_roles__
 
-This structure is of course easily expanded upon, if you need additional information, such as extra information
+This structure is of course easily expanded upon if you need additional information, such as extra information
 associated with users, containing for instance user's full names, etc. If you use for instance the _"SQL"_ menu
-item and you select all records from your users table using something such as the following.
+item and you select all records from your users table using something such as the following ...
 
 ```sql
 select * from users
 ```
 
-You can see how the passwords are stored using _slow BlowFish hashing_ with _individual record based salts_.
+... you can see how the passwords are stored using _slow BlowFish hashing with individual record based salts_.
+The latter of course is crucial for anybody taking passwords seriously on behalf of their users.
 
-![Users table from Magic database](https://servergardens.files.wordpress.com/2021/04/users-table.png)
+![Blowfish hashed passwords](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blowfish.jpg)
 
 This is one of those million things that might go wrong as you implement your own authentication,
 which if done wrong, opens up your password database for Rainbow Dictionary attacks, allowing at least
@@ -132,11 +135,6 @@ in theory adversaries to brute force your users' passwords. Which of course is a
 since users tends to reuse the same passwords on multiple sites/applications - Implying if an adversary
 gains access to your user's password in _one_ app, he effectively gains access to your user's passwords
 in _all_ apps the user is using, and can easily impersonate the user across the entirety of the web.
-This results in that you might get sued over your _"free pony website"_ since one of your users reused
-his or her password on _your_ site also for his internet banking website. I cannot emphasise this strongly
-enough; Unless you know with 100% certainty what you are doing ...
-
-> Do NOT implement your own auth system!
 
 ### Password entropy
 
@@ -154,13 +152,13 @@ the commonly accepted dogma of providing something such as follows.
 
 The above password for instance is 8 characters long. On average it takes a normal laptop approximately 20
 minutes to brute force the above password. While the first password above, containing 33 characters,
-would require more energy than that which is required to boil all water on earth to brute force. Hence, these
-ridiculous restrictions for instance Apple has as you creates passwords for their AppStore, is quite
-counterintuitively much simpler to guess than simple phrases and sentences such as Magic allows you to use.
+would require more energy than what is required to boil all water on earth to brute force. Hence, these
+ridiculous restrictions for instance Apple puts on your passwords for their AppStore, is quite
+counterintuitively much simpler to brute force than simple phrases and sentences such as Magic allows you to use.
 Simply since allowing a user to use a simple sentence, increases password length easily by one order of
 magnitude, making the brute force approach require trillions of times the number of iterations to guess
 your users' passwords using a brute force approach. Combining this with the fact of that users have different
-native languages, might be using slang etc - Results in that the entropy becomes the same, only
+native languages, might be using slang, etc - Results in that the entropy becomes the same, only
 exponentially growing for each additional character the user adds to his password. The point of course
 being that for me as a Norwegian, the following password is quite easy to remember, since it's a
 Norwegian sentence, that makes perfectly sense for me, which I could easily memorise.
@@ -171,13 +169,13 @@ The above password contains 71 characters, and brute forcing it with any known t
 disposal today, would require more energy than the amount of energy required to boil all the water that
 exists in our galaxy. Implying it's not even possible in theory to brute force the above password. So the
 above password is actually _stronger_ than the 8 letter _"special character password"_ above it - In addition
-to that it's much easier to remember, and allows your users to create _unique_ passwords for
+to that it's much easier to remember for the human brain, and allows your users to create _unique_ passwords for
 all their online services, reducing the likelihood of having your password compromised at _one_ site
-resulting in that your _entire online life_ is compromised.
+resulting in that your entire online life is compromised.
 However, since Magic also is using individual per record based salts, combined with BlowFish hashing,
 even if your user has a single character password,
 _the CPU time required to brute force a single character password would still be practically impossible_,
 even if an adversary had access to your entire password database. This is due to the nature of BlowFish
 hashing, combined with per record based salts.
 
-* [Continue with Hyperlambda Hello World](/tutorials/hello-world-endpoint/)
+* [Continue with Hyperlambda and Web Sockets](/tutorials/web-sockets/)

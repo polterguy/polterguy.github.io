@@ -5,6 +5,12 @@ description: In this article we help you understand Hyperlambda's and Magic's HT
 
 # HTTP invocations with Hyperlambda
 
+In this tutorial we will cover the following parts of Magic and Hyperlambda.
+
+* Invoking HTTP endpoints from Hyperlambda
+* How the POST, PATCH, PUT, GET and DELETE HTTP slots differs in logic
+* How to automatically transform back and forth between lambda objects and JSON, and/or other request/response types
+
 The purpose of Magic and Hyperlambda is to _simplify your life as a developer without compromising scalability, execution speed, or maintainability_.
 One example of this is how easy it is to integrate your Hyperlambda backend with other HTTP based services by utilising
 the HTTP slots from Hyperlambda. Let's illustrate with some code.
@@ -58,20 +64,20 @@ for-each:x:@http.get/*/content/*
 
 Two lines of code, and you're returning the result of an HTTP invocation in a structured format, assuming the endpoint
 you are invoking is returning JSON. The crucial parts of course as usual is what is _not_ there; No `IHttpClientFactory`,
-no `IDisposable` objects you'll need to remember to dispose, no IoC container wiring, no async/await statements, etc.
+no `IDisposable` objects you'll need to dispose, no IoC container wiring, no async/await statements, etc.
 By removing the complex parts from your resulting code, maintaining things becomes much easier for both
-yourself in the future, in addition to obviously also any junior developers inheriting your project later down the road.
+yourself in the future, in addition to making things easier for developers inheriting your project later down the road.
 
 > Everything is "syntax"
 
 With the above we imply that the less syntax you've got, and the less lines of code you've got, the easier it becomes
-to maintain things in the future. The primary axiom around which Hyperlambda evolves, is that code is technical debt,
+to maintain things in the future. The primary axiom around which Hyperlambda evolves, is that _code is technical debt_,
 implying the less code you've got, the less technical debt you have. Technical debt again is a _bad_ thing!
 
 ## POSTing, PUTing and PATCHing data
 
-These three HTTP verbs requires a payload of some sort. You can easily pass in any arbitrary payload by simply adding
-a **[payload]** node to your invocations, such as the folloing illustrates.
+These three HTTP verbs requires a payload of some sort. You can easily pass in any payload by adding
+a **[payload]** node to your invocations, such as the following illustrates.
 
 ```
 http.post:"https://jsonplaceholder.typicode.com/posts"
@@ -79,14 +85,22 @@ http.post:"https://jsonplaceholder.typicode.com/posts"
 ```
 
 **Notice** - Due to not passing in a **[convert]** argument in the above snippet, any response returned by
-the above endpoint will _not_ be automatically parsed into its equivalent lambda object.
+the above endpoint will _not_ be automatically parsed into its equivalent lambda object. If you want to have
+the returned payload automatically converted to a lambda object you can add a **[convert]** argument and
+set its value to boolean true. Below is an example.
+
+```
+http.post:"https://jsonplaceholder.typicode.com/posts"
+   payload:@"{""userId"": 1, ""id"": 1}"
+   convert:true
+```
 
 You can also post files directly, _without_ loading your files into memory first, by replacing your above **[payload]**
 argument with a **[filename]** argument, having the value of a relative path within your _"/files/"_ folder, that
-is an actual existing file. This has the advantage of simply doing a stream copy, never exhausting your server's memory,
-regardless of how large your files are. You can also pass in streams as your **[content]** value in a similar fashion,
-and/or as expressions leading to streams, strings, or anything really - Including a byte array. Below is
-an example passing in a file to some POST endpoint.
+is an existing file on your server somewhere. This has the advantage of resulting in a stream copy operation, never
+exhausting your server's memory, regardless of how large your files are. You can also pass in streams as your
+**[content]** value in a similar fashion, and/or as expressions leading to streams, strings, or anything really -
+Including a byte array. Below is an example of passing in a file to some POST endpoint.
 
 ```
 http.post:"https://foo-bar.com"
@@ -169,11 +183,11 @@ object.
 * __application/www-form-urlencoded__
 * __application/x-www-form-urlencoded__
 
-Currently there is no automatic conversion from _"multipart/form-data"_ responses to lambda.
+**Notice** - Currently there is no automatic conversion from _"multipart/form-data"_ responses to lambda objects.
 
 ## HTTP headers
 
-Passing in your own HTTP headers is also easy. Notice, by default Hyperlambda will associate some default
+Passing in your own HTTP headers is also easy. By default Hyperlambda will associate some default
 headers with your invocation, specifically the `Accept` header and the `Content-Type` header, depending
 upon whether or not your invocation is using a verb requiring a payload or not. The default values for these
 headers is _"application/json"_. If you pass in your own **[headers]** collection, Hyperlambda will _not_ add
@@ -203,5 +217,7 @@ There are 5 HTTP slots in Hyperlambda wrapping their associated HTTP verbs. Thes
 Of course the exact semantics of what your endpoints are actually doing, differs from API to API - But
 the above is the default (and correct) way to think of HTTP verbs. Only the 3 last slots in the list above
 can be given a **[payload]** or a **[filename]** argument - And you can only provide _one_ of these arguments.
+To further dive into the semantics of invoking HTTP endpoints with Hyperlambda you can check out the
+documentation for [magic.lambda.http](/documentation/magic.lambda.http).
 
-* [Continue with Dynamic slots](/tutorials/dynamic-slots/)
+* [Continue with Expressions, slots and nodes](/tutorials/expressions-slots-nodes/)

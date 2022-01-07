@@ -1,16 +1,21 @@
 ---
-title: Web sockets and SignalR with Magic
+title: Hyperlambda and Web Sockets
 description: This article shows you how to use SignalR and web sockets with Magic and Hyperlambda, by walking you through creating a simple chat client, allowing multiple users to chat in real time, using Angular and Hyperlambda.
 ---
 
-# Web Sockets and SignalR with Magic
+# Hyperlambda and Web Sockets
 
-In addition to [plain CRUD](/tutorials/database-crud/) Magic also supports web sockets. In case you're new to sockets,
-a web sockets is a bidirectional communication channel through which your web server can _"push"_ data to clients.
-A typical use case for this is chat applications, but obviously this is useful in a lot of other scenarios too. In
-this tutorial, we will create a chat client in Angular and Hyperlambda, using the server side SignalR plugins
-of Magic, to let multiple users chat with each other, having the messages transmitted in real time to all clients.
-If you prefer to see me walk you through this article, you can watch the following video.
+In this tutorial we will cover the following parts of Magic and Hyperlambda.
+
+* How to use Web Sockets in Hyperlambda and Magic
+* How to create a minimalistic chat client using Hyperlambda and Angular
+
+In addition to [plain CRUD](/tutorials/database-crud/) Magic also supports web sockets. In case you're new to web sockets,
+a web socket is a bidirectional communication channel through which your web server can _"push"_ data to clients.
+A typical use case for this is a chat application, but obviously this is useful in a lot of other scenarios too. In
+this tutorial, we will create a chat client in Angular and Hyperlambda, using the server side SignalR plugin
+in Magic, to let multiple users chat with each other, having the messages transmitted in real time to all clients.
+If you prefer to see me walk you through this in a video, you can watch the following YouTube video.
 
 <div class="video">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/8NXO1V1i-JY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -55,7 +60,7 @@ ng serve --port 4201
 
 The reason why we need to override the port, is because the Magic Dashboard is probably already running
 on the default port which is 4200. You can now visit [localhost:4201](http://localhost:4201/) to see
-your app. Open the _"app.component.html"_ file in the folder _"/src/app/"_ and replace its existing code
+your app. Use VS Code and open the _"app.component.html"_ file in the folder _"/src/app/"_ and replace its existing code
 with the following HTML.
 
 ```html
@@ -69,9 +74,9 @@ with the following HTML.
 </div>
 ```
 
-Notice, the UI isn't all that marvellous, but to keep the tutorial relevant to only SignalR and
-web sockets, we'll ignore this. If you wish to create a better UI you might benefit from reading up
-about Angular Material. However, if you saved your above HTML file, you've now got a couple of
+The UI isn't going to win a design contest, but to keep the tutorial relevant to web sockets,
+we'll ignore the UI for now. If you wish to create a better UI you might benefit from reading up
+on [Angular Material](https://material.angular.io). If you saved your above HTML file, you've now got a couple of
 compiler errors. This is because we are using fields on our `AppComponent` class that still doesn't
 exist. Modify your _"app.component.ts"_ file to resemble the following.
 
@@ -184,7 +189,9 @@ Then do _exactly as follows_.
 4. Check the _"Folder"_ checkbox to make sure we create a _folder_ and not a file
 5. Click _"Create"_
 
-This creates a new folder called _"tutorials"_ inside your _"modules"_ folder. Then do exactly as follows.
+Notice, if you've followed some of the previous hands on tutorials, you might already have this folder,
+at which point you can ignore the above, and move onwards to the next task.
+The above creates a new folder called _"tutorials"_ inside your _"modules"_ folder. Then do exactly as follows.
 
 1. Click the _"tutorials"_ folder
 2. Click the _"New"_ button
@@ -197,6 +204,7 @@ is invoked over our SignalR web socket connection. Paste in the following into y
 ```
 .arguments
    message:string
+
 unwrap:x:+/*/*
 sockets.signal:chat.new-message
    args
@@ -212,8 +220,9 @@ the textarea and click _"Submit"_. Your app should resemble the following screen
 
 As I started out with, web sockets are a _bidirectional_ transport channel, implying we can both
 send and receive data over a socket. In the above `send()` method we are pushing data _to_ the server.
-The above **[sockets.signal]** Hyperlambda slot transmits this message to all subscribers again.
-In our above Angular code we are subscribing to these messages with the following TypeScript.
+The above **[sockets.signal]** Hyperlambda slot transmits this message to all subscribers of our
+_"chat.new-message"_ message. In our above Angular code we are subscribing to these messages with
+the following TypeScript.
 
 ```typescript
 this.hubConnection.on('chat.new-message', (args) => {
@@ -225,7 +234,7 @@ This ensures that all clients having connected to our web socket backend registe
 the above messages, will be notified every time the message is published by our Hyperlambda.
 If you wish, you can open up multiple browser windows simultaneously and point them
 to [localhost:4201](http://localhost:4201/), and write something into any chat, and see how the
-message instantly is received in all browser windows.
+message is instantly received in all browser windows.
 
 ### Endpoint resolving
 
@@ -259,4 +268,4 @@ You can also mix and match socket Hyperlambda files and HTTP Hyperlambda files
 as you see fit, such as for instance publish a message using **[socket.signal]** from any
 HTTP backend Hyperlambda file, etc.
 
-* [Continue with Authentication and Authorization](/tutorials/auth/)
+* [Continue with Threading and async Hyperlambda programming](/tutorials/threading/)

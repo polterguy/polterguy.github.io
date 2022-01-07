@@ -5,6 +5,12 @@ description: This article shows you how to create, persist and schedule Hyperlam
 
 # The Hyperlambda task scheduler
 
+In this tutorial we will cover the following parts of Magic and Hyperlambda.
+
+* How to create and persist tasks
+* How to schedule persisted tasks
+* How to automate creation of tasks and persist these for future execution
+
 With Magic you can create and administrate tasks, in addition to schedule tasks for execution some point into
 the future. This works by persisting dynamically declared Hyperlambda snippets into your Magic database, which
 again is just a thin wrapper around your C# slots, allowing you to dynamically orchestrate C# code to be
@@ -22,7 +28,7 @@ in general. Combined with the fact that Hyperlambda happens to be a Turing Compl
 language, this also lends itself to business process workflows, and similar ideas, where some function invocation
 is dynamically created, persisted into your database, for then to be executed later due to some trigger happening
 in another part of your system. In such a way the task scheduler in Magic also replaces Microsoft Workflow
-Foundation, with something that's somewhere between 400 and 800 times faster and more scalable than MWF. In addition to that it
+Foundation, with something that's somewhere between 200 to 400 times faster and more scalable than MWF. In addition to that it
 consumes about 1/100 of the amount of memory that MWF consumes. And of course the thing is `async` to the bone.
 Below you can see some example Hyperlambda you could paste into your tasks to create a dummy task that simply
 creates a log entry for you.
@@ -42,7 +48,7 @@ If you create a task with the above Hyperlambda such as illustrated in the follo
 you schedule your tasks with a `5.seconds` repetition pattern, you can see one new log entry created every
 5 seconds.
 
-![Task Scheduler Screenshot](https://servergardens.files.wordpress.com/2021/04/task-scheduler.png)
+![Task Scheduler screenshot](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/task-scheduler.jpg)
 
 ## Automating your tasks
 
@@ -72,6 +78,7 @@ into your `task_due` table. This implies that
 if you take backup of your database, tasks will still exists in your backup, including their Hyperlambda
 and next schedule date. When a task is done executing its scheduled execution, its next
 schedule time will be calculated. This avoids exhausting your web server due to misconfigured tasks, and/or
-flooding the server with tasks your server is not able to execute.
+flooding the server with tasks your server is not able to execute. To see the complete documentation
+for the task scheduler in Magic you can check out the [magic.lambda.scheduler](/documentation/magic.lambda.scheduler/).
 
 * [Continue with Cryptographically signed HTTP invocations](/tutorials/crypto-lambda-http/)

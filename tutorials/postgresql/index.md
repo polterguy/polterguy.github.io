@@ -5,6 +5,10 @@ description: In this article you will setup Magic using Docker and PostgreSQL. T
 
 # Using Magic with PostgreSQL
 
+In this tutorial we will cover the following parts of Magic and Hyperlambda.
+
+* How to use Magic with PostgreSQL
+
 The default _"docker-compose.yml"_ file for Magic will create a MySQL Docker container. If you instead
 want to use Postgres, you'll need a slightly modified _"docker-compose.yml"_ file. Below is a complete
 docker-compose file, except it spawns up a PostgreSQL database image and not a MySQL image.

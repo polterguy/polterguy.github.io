@@ -5,6 +5,13 @@ description: In this article you will learn how to create dynamic Hyperlambda sl
 
 # Dynamic Hyperlambda slots
 
+In this tutorial we will cover the following parts of Magic and Hyperlambda.
+
+* How to create reusable Hyperlambda slots or _"functions"_
+* How to pass arguments to dynamically created Hyperlambda slots
+* How to make sure your slots are created during startup of your server
+* How to modify your dynamically created Hyperlambda slots
+
 A dynamic Hyperlambda slot is the equivalent of what you would refer to as a _"function"_ in other programming
 languages, since it allows you to declare a dynamic lambda object that you can pass in arguments to, return arguments
 from, and treat the same way you would typically treat a function in a more traditional programming language. Consider the
@@ -62,6 +69,22 @@ signal
    .:root
    .:translator
    .:unconfirmed
+```
+
+You can pass in arguments to your slots by adding these up as children nodes to your invocations,
+which will result in these arguments being available for you to reference inside of your slots. Below
+is an example.
+
+```
+slots.create:hello-world
+
+   strings.concat
+      .:"Hello "
+      get-value:x:@.arguments/*/name
+   return:x:-
+
+signal:hello-world
+   name:Thomas Hansen
 ```
 
 ## Molding your Hyperlambda
@@ -124,13 +147,13 @@ modify over time, according to your needs, whatever they may be. Arguably allowi
 live production environment literally _semantically 'patch'_ your existing code. Hence your code is no longer
 a _"static"_ thing once deployed, but a living and changeable thing you can _"mold"_ and change as you see
 fit. In a way this allows you to treat your Hyperlambda code the same way you treat your relational database
-system, by providing CRUD capabilities on your codebase, allowing you to change it over time, almost the same
+system, by providing you with CRUD capabilities on your codebase, allowing you to change it over time, almost the same
 way you'd change data in your database. This is only possible because of Hyperlambda's extreme meta data
-capabilities, implying it is super structured in its format, allowing you to semantically traverse it the
+capabilities, implying it is super-structured in its format, allowing you to semantically traverse it the
 same way you would semantically traverse an XML document, and/or a JSON object.
 
-One favourite of mine is to combine these features with cryptographic lambda invocations, to patch
-and administrate a multitude of servers dynamically, giving you orchestration capabilities on your servers,
+A favourite is to combine these features with [cryptographic lambda invocations](/tutorials/crypto-lambda-http/),
+to patch and administrate a multitude of servers dynamically, giving you orchestration capabilities on your servers,
 from a single point of administration, to administer a heterogenous environment consisting of a multitude
 of servers.
 
@@ -161,4 +184,4 @@ This prevents one module from accidentally interferring with objects in another 
 internally within your server, and/or also globally to some extent. This makes your code more maintainable
 and interoperable in the long run.
 
-* [Continue with tasks and scheduled tasks](/tutorials/task-scheduler/)
+* [Continue with Hyperlambda tasks and scheduled tasks](/tutorials/task-scheduler/)

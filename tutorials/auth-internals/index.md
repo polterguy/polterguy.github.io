@@ -5,6 +5,11 @@ description: In this article we help you to understand the internals of authenti
 
 # Alternative authentication mechanisms
 
+In this tutorial we will cover the following parts of Magic and Hyperlambda.
+
+* How to exchange the default authentication mechanism in Magic with your own
+* How to use LDAP and Windows _"automatic logins"_
+
 Magic allows you to configure its internal authentication mechanism almost exactly as
 you see fit, to accommodate for whatever needs you might have in your app. The easiest
 way to modify it is to exchange the default **[crypto.password.verify]**
@@ -229,4 +234,4 @@ will return _"on"_ if automatic authentication has been enabled in your backend.
 only be used from within the LAN - But at least it allows you to query your backend to check if
 automatic Windows authentication has been turned on.
 
-* [Continue with using Magic with SQL Server](/tutorials/sql-server/)
+* [Continue with using Magic with Microsoft SQL Server](/tutorials/sql-server/)

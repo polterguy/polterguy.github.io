@@ -5,20 +5,34 @@ description: This article helps you to manually create a Hello World type of Hyp
 
 # Hyperlambda Hello World
 
-Creating a Hyperlambda endpoint is extremely easy. Use your Magic dashboard and go to the _"Files"_
-menu item. Open up your _"modules"_ folder, and create a folder named _"tutorials"_. Open this folder
-and create a file named _"hello.get.hl"_. Put the following content into your file.
+In this tutorial we will cover the following parts of Magic and Hyperlambda.
+
+* Creating an HTTP GET and an HTTP POST Hyperlambda endpoint
+* How to use Hyper IDE to create Hyperlambda files
+* How the endpoint resolver in Magic matches your URL to Hyperlambda files
+
+Creating a Hyperlambda endpoint in Magic is easy. Use your Magic dashboard and open _"Hyper IDE"_. Select
+your _"modules"_ folder and create a new folder inside of it. Name your new folder _"tutorials"_. Select your
+newly created folder and create a file named _"hello.get.hl"_.  To create a file or folder in Magic use the
+_"Add"_ button in the top/right corner of Hyper IDE, and click the checkbox if you want to create a folder,
+otherwise if you want to create a file keep it unchecked. Then provide Magic with the name of your file or
+folder in the _"Name"_ textbox. Below is a screenshot illustrating how to create our _"hello.get.hl"_ file.
+
+![Creating a Hyperlambda file in Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide-create-endpoint.jpg)
+
+When you have clicked the _"Create"_ button, put the following content into your file and click the _"Save"_
+button.
 
 ```
 return-nodes
    result:Hello World
 ```
 
-Save the file, and open up [http://localhost:4444/magic/modules/tutorials/hello](http://localhost:4444/magic/modules/tutorials/hello)
-using your browser. Make sure you get the port correctly. 4444 is if you're using the docker images,
-and might need to be changed to e.g. 5000 if you're using the source code version directly.
-Congratulations, you have now created your first Hyperlambda HTTP endpoint. Notice how Magic automatically
-transforms your lambda object to JSON, and returns it as follows.
+You have now created your first Hyperlambda endpoint, and you can already invoke it using the [following
+URL](http://localhost:4444/magic/modules/tutorials/hello). Make sure you get the port correctly. 4444 is
+the correct port if you're using the docker images, and might need to be changed to e.g. 5000 if you're
+using the source code version of Magic. Notice how Magic automatically transforms your lambda object to
+JSON, and returns it as follows.
 
 ```json
 {"result":"Hello World"}
@@ -32,16 +46,18 @@ and replace its existing content with the following Hyperlambda.
 ```
 .arguments
    name:string
+
 strings.concat
    .:"Hello "
    get-value:x:@.arguments/*/name
+
 unwrap:x:+/*
 return-nodes
    result:x:@strings.concat
 ```
 
-Save the file, an invoke the following relative URL using your browser - _"/magic/modules/tutorials/hello?name=thomas"_.
-The result should resemble the following.
+Save the file, an invoke the [following relative URL](http://localhost:4444/magic/modules/tutorials/hello?name=thomas)
+using your browser - _"/magic/modules/tutorials/hello?name=thomas"_. The result should resemble the following.
 
 ```json
 {"result":"Hello thomas"}
@@ -50,7 +66,7 @@ The result should resemble the following.
 ### Internals
 
 Magic will map your `name` query parameter automatically to the **[.arguments]**/**[name]** node's value,
-and from within your Hyperlambda code, this value will be concatenated with the text _"Hello"_, and returned
+and from within your Hyperlambda code this value will be concatenated with the text _"Hello"_, and returned
 back to your browser as JSON. There are two new slots being used in this code.
 
 * __[strings.concat]__ - Concatenates two or more strings
@@ -67,8 +83,11 @@ You can also create POST, PUT, PATCH and DELETE endpoints, by simply replacing t
 your filename with _".xxx."_ where xxx is your verb of choice. If you do this, you can no longer
 use your browser to test the endpoint, but need to open up the _"Endpoints"_ file menu to test your
 endpoint(s), and provide payloads and arguments to them. You can also use e.g. Postman to invoke such
-endpoints. For details about how endpoints are resolved, check out the documentation for the [magic.endpoint](/documentation/magic.endpoint/)
-project.
+endpoints. For details about how endpoints are resolved, check out the documentation for the [magic.endpoint](/documentation/magic.endpoint/) project.
+
+**Notice** - You can _only_ create endpoints inside of your _"modules"_ folder. This allows you to
+create helper Hyperlambda files _outside_ of this folder that can never be resolved by clients trying
+to create malicious URLs to execute hidden code on your server.
 
 ## Creating a POST endpoint
 
@@ -78,9 +97,11 @@ into your post file as you have in your get.
 ```
 .arguments
    name:string
+
 strings.concat
    .:"Hello "
    get-value:x:@.arguments/*/name
+
 unwrap:x:+/*
 return-nodes
    result:x:@strings.concat
@@ -104,7 +125,7 @@ an HTTP GET invocation.
 You can repeat the same exercise for PUT, DELETE and PATCH if you wish - However, both GET and DELETE endpoints
 can only be given arguments as query parameters - While POST, PUT and PATCH endpoints requires JSON payloads.
 You can also create alternative endpoint types, returning for instance files and similar constructs instead of
-pure JSON - But that's an exercise for later.
+pure JSON, but that's an exercise for later.
 
 ## Documenting your code
 
@@ -132,4 +153,4 @@ return-nodes
    result:x:@strings.concat
 ```
 
-* [Continue with Exception handlers and Interceptors](/tutorials/super-dry/)
+* [Continue with Invoking HTTP endpoints from Hyperlambda](/tutorials/http-rest/)

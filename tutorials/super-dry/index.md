@@ -1,12 +1,17 @@
 ---
-title: Super DRY Code using Hyperlambda
+title: Interceptors and exception handlers
 description: This article shows you how to create Super DRY code using Hyperlambda, by leveraging interceptors and exception filters, allowing you to create your functionality without having to repeat your code.
 ---
 
-# Super DRY code using Hyperlambda
+# Interceptors and exception handlers
 
-In this tutorial we will have a look at two features that allows you to write _"super DRY code"_, and with
-DRY here we refer to _"Don't Repeat Yourself"_, which is an important design principle as you
+In this tutorial we will cover the following parts of Magic and Hyperlambda.
+
+* Interceptors, and how they reduce repetition in your code
+* Exception handlers, and how they allow you to keep your exception code in _one_ place
+
+In this tutorial we will have a look at two features that allows you to write _"super DRY code"_. DRY here
+refers to _"Don't Repeat Yourself"_, which is an important design principle as you
 create software. If you prefer to watch video tutorials having me demonstrating how things are tied together,
 you can watch the following video where I walk you through these parts.
 
@@ -17,7 +22,7 @@ you can watch the following video where I walk you through these parts.
 As illustrated above, any _"exceptions.hl"_ file, and/or _"interceptor.hl"_ file will allow you to
 ensure your code becomes DRY. Below is an example of how you could tie these parts together if you wish.
 Make sure you create a new folder within your _"modules"_ folder, name your folder _"foo"_, and put the
-following three files into that folder.
+following 3 files into that folder.
 
 ## exceptions.hl
 
@@ -72,4 +77,4 @@ Interceptors are _recursively_ applied, implying if you have multiple _"intercep
 files upwards in your hierarchy, then _all_ your interceptors will be applied, creating a combined result,
 before your lambda object is executed.
 
-* [Continue with Threading, async and scaling](/tutorials/threading/)
+* [Continue with Dynamic Hyperlambda slots](/tutorials/dynamic-slots/)
