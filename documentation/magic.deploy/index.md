@@ -25,10 +25,10 @@ ssh root@123.123.123.123
 ```
 
 The IP address above needs to be the IP address of your VPS. After you've executed the above, you'll be
-asked for your root password on your VPS instance. Notice, if you are using Windows you can use Putty, and/or
+asked for your root password on your VPS instance. Notice, if you are using Windows you can use
+[Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/), and/or
 if you're using DigitalOcean you can use their web based terminal interface as an alternative. When you have
-successfully logged into your VPS instance you can clone the entire magic deploy project into your VPS server
-using the following command.
+logged into your VPS you can clone magic.deploy into your VPS server using the following command.
 
 ```
 git clone https://github.com/polterguy/magic.deploy.git
@@ -48,8 +48,8 @@ using the following command.
 cd magic.deploy
 ```
 
-The `docker-compose.yml` file needs to be manually edited to provide it with your
-email address, frontend domain, and backend domain before you execute the docker-compose command.
+The `docker-compose.yml` file needs to be manually edited to provide your
+email address, frontend domain, and backend domain, before you execute the docker-compose command.
 You can do this with the following command.
 
 ```
@@ -74,9 +74,8 @@ In total there are _6 entries_ you need to change, and the email address needs t
 address you own. The domain needs to be a sub-domain you own where you want to run your Magic
 installation. When you are done editing the docker-compose.yml file, hold down the CTRL key and
 click X, then type _"Y"_ when Nano asks you if you want to save the file after you have edited the
-file, and save it with its existing filename. When you are done editing,
-then execute the following command in your terminal. This installs Docker for you, in addition
-to Docker Compose.
+file, and save it with its existing filename. When you are done execute the following command in
+your terminal. This installs Docker for you, in addition to Docker Compose.
 
 ```
 apt install docker docker-compose
@@ -89,7 +88,7 @@ This is necessary to make sure your containers have a virtual network to communi
 docker network create nginx-proxy
 ```
 
-This command will create your docker proxy network Magic will need to be able to connect
+This command will create a docker proxy network Magic needs to be able to connect
 all the docker images within your docker-compose file with each other. When you have created the
 above network, you can start your docker containers using the following command.
 
@@ -103,7 +102,7 @@ access your frontend, and/or your backend, and you get an error, and/or an SSL e
 some few minutes and try to refresh your page. Only when you no longer get an error, you can
 proceed to configure Magic from its dashboard. To start this process however, you will need
 to access both your frontend and your backend to initiate the process of retrieving an SSL
-certificate for both your web apps. If you domain is _"yourdomain.com"_ and you chose the DNS
+certificate for both your web apps. If your domain is _"yourdomain.com"_ and you chose the DNS
 A records illustrated in the beginning of this article, you can initiate this process by
 opening the following URLs in your browser.
 
@@ -111,7 +110,11 @@ opening the following URLs in your browser.
 * https://magic.yourdomain.com
 
 Only when both of the above URLs returns success, and/or returns your Magic dashboard frontend, proceed
-with the rest of this guide. The above `docker-compose up -d` command will start 5 docker containers.
+with the rest of this guide.
+
+## Internals
+
+The above `docker-compose up -d` command will start 5 docker containers.
 
 * `nginx-proxy` - The nGinx proxy that internally routes requests to either your backend or your frontend
 * `letsencrypt` - The container responsible for retrieving and renewing LetsEncrypt SSL certificates for you
