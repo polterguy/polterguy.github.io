@@ -25,7 +25,7 @@ Open the _"SQL"_ menu item in your dashboard, and click the _"Load"_ button. If 
 as your main database then choose _"babelfish"_. If you're using SQL Server, choose _"northwind-simplified"_.
 Load the database script, and click the _"Execute"_ button.
 
-![Creating your Babelfish database](https://servergardens.files.wordpress.com/2021/04/sql-editor.png)
+![Creating your Babelfish database](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-editor.jpg)
 
 This creates a database for you, which will be the foundation for generating our HTTP CRUD backend.
 
@@ -36,7 +36,7 @@ icon in your SQL menu item below the SQL editor.
 Then open the _"CRUD"_ menu item, choose your newly created database,
 and click _"Crudify all tables"_. Below you can see how this process should look like.
 
-![Generating your backend](https://servergardens.files.wordpress.com/2021/04/generator.png)
+![Generating your backend](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg)
 
 As you generate your backend you will notice that Magic says something like _"xxx LOC generated"_.
 This number is the lines of code that Magic automatically generated for you, and depends upon
