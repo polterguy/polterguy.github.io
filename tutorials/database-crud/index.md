@@ -17,7 +17,7 @@ What Magic just did for us in the above video was providing us with a starting
 point, from where we can modify the code afterwards.
 However, in order to modify the code, we'll need to understand it. So let us walk through it step
 by step, starting out with the creation of our database, ending up with an understanding of the
-Hyperlambda code that Magic produced for us.
+Hyperlambda code that Magic created for us.
 
 ## Creating your database
 
