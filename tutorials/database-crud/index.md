@@ -61,12 +61,12 @@ structure should resemble the following.
 You will have 5 files resembling the above structure for each of your tables in your database.
 We will study the files generated around one of these tables, but it doesn't matter which
 database you generated, or which table you select - The structure will be similar enough
-regardless of which table you choose. However, before we start looking at the code, let's
+regardless of what table you choose. However, before we start looking at the code, let's
 play around with the code, by going to the _"Endpoints"_ menu item, and filter on one of
 your tables. In the screenshot below, we've chosen _"babelfish/language"_. Click the
 _"get"_ endpoint, at which point you should see something resembling the following.
 
-![Your CRUD endpoints](https://servergardens.files.wordpress.com/2021/04/endpoints-tutorial.png)
+![Generating your backend](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/endpoints.jpg)
 
 You can already execute your endpoint by clicking the _"Invoke"_ button for your endpoint.
 If you do this, you should see a bunch of JSON objects returned from your server resembling
@@ -118,7 +118,8 @@ filters for every column in your table, such as I illustrate for the **locale** 
 * __locale.lteq__ - Locale less than or equal to the specified string
 
 **Notice** - Depending upon whether or not you checked of the _"Verbose"_ checkbox as you crudified
-your backend, you will see more or less options for filtering on each column.
+your backend, you will see more or less options for filtering on each column. The _"Verbose"_ checkbox
+allows you to create _more_ filtering options for your generated endpoints.
 
 Each column will have a range of filter options matching the above comparison operators. If some
 of your filter conditions doesn't make sense for a particular column, you can delete these later
@@ -153,30 +154,26 @@ code allowing you to change the primary key.
 If you go through your endpoints, you will see a _lot_ of meta information. This was generated
 automatically based upon your database schema, and is also publicly exposed to the client, almost
 the same way the Open Web API or Swagger is able to enumerate and document your HTTP endpoints.
-Hence, we've already documented our HTTP endpoints, even though we haven't even manually created a
+Hence, we've already documented our HTTP endpoints, even though we haven't manually created a
 single line of code. Magic also creates meta information like this for your manually
-created endpoints.
-
-This meta data becomes crucial as we later start looking at how Magic creates your frontend code
-using similar techniques as it used to create your backend. You can see this meta information as
-properties of your endpoint if you go to the _"Endpoints"_ menu item, and click any of your
-endpoints.
+created endpoints. This meta data becomes crucial as we later start looking at how Magic creates
+your frontend code using similar techniques as it used to create your backend. You can see this
+meta information as properties of your endpoint if you go to the _"Endpoints"_ menu item, and
+click any of your endpoints.
 
 ## Analysing the code
 
-Once you're done playing around with your endpoints, open up the _"Files"_ menu item. Click the _"modules"_
-folder, then click the folder with the same name as the name of the database you generated above.
+Once you're done playing around with your endpoints, open up the _"Hyper IDE"_ menu item. Click
+the _"modules"_ folder, then click the folder with the same name as the name of the database you generated above.
 Click for instance the _"languages.get.hl"_ file, at which point you should see something resembling
 the following.
 
-![Editing your Hyperlambda CRUD files](https://servergardens.files.wordpress.com/2021/04/files-crud-editor.png)
+![Generating your backend](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide.jpg)
 
 **Notice** - If you didn't generate CRUD endpoints for your babelfish database, then at least make
 sure that whatever file you're looking at ends with _".get.hl"_ such that we're looking at roughly the
-same thing in the rest of this tutorial.
-
-What you are looking at now is the Hyperlambda Magic automatically generated for you. The most important
-part of this code is the following section.
+same thing in the rest of this tutorial. What you are looking at now is the Hyperlambda Magic automatically
+generated for you. The most important part of this code is the following section.
 
 ```
    data.read
@@ -191,9 +188,9 @@ part of this code is the following section.
 
 The above invocation to the **[data.read]** slot is _"transpiled"_ by Magic into an SQL statement,
 retrieving your records from your database, according to your filter conditions. The result of this
-SQL is then returned back to the client as JSON in the **[return-nodes]** line below. The above slot
-will expect an existing open database connection, which is accomplished with the **[data.connect]** slot
-invocation. The below code shows you how to connect to a database.
+SQL is then returned back to the client as JSON in the **[return-nodes]** line at the bottom of your
+code. The above slot will expect an existing open database connection, which is accomplished with
+the **[data.connect]** slot invocation. The below code shows you how to connect to a database.
 
 ```
 data.connect:[generic|babelfish]
@@ -219,7 +216,7 @@ in a later tutorial, but for now realise that in Hyperlambda _spaces counts_ - K
 same way they do in YAML or Python, and that 3 spaces declares a _"scope"_, while a colon `:`
 declares the beginning of a node's value. Nodes again is a tree structure in the form of value, name,
 and children - And is the foundation of Hyperlambda. Hyperlambda is simply the textual representation
-of a tree structure, the same way YAML, JSON, or XML is. Nodes is Hyperlambda's object implementation
+of a tree structure, the same way YAML, JSON, or XML is. Nodes are Hyperlambda's object implementation
 again. See the documentation for [magic.node](/documentation/magic.node/) for more details.
 
 ### Arguments passing
@@ -258,7 +255,7 @@ resembling the following.
 auth.ticket.verify:root, admin
 ```
 
-The above line of code basically verifies that your JWT token is valid, and that the user
+The above line of code verifies that your JWT token is valid, and that the user
 invoking the endpoint belongs to one of the following roles.
 
 * root
@@ -293,9 +290,11 @@ the **[add]** slot in the documentation for [magic.lambda](/documentation/magic.
 
 ### CRUD slots
 
-An invocation to for instance **[data.read]** is referred to by Magic as a _"slot"_. If you
-view your other CRUD files, you will see that they are using slightly different slots, to wrap
-other CRUD functions. The basic CRUD operations in Magic are implemented with the following slots.
+An invocation to for instance **[data.read]** is referred to by Magic as a _"slot invocation"_
+or a _"signal"_. A _"slot"_ is kind of like a function, and a _"signal"_ is kind of like a function
+invocation. If you view your other CRUD files, you will see that they are using slightly
+different slots, to wrap other CRUD functions. The basic CRUD operations in Magic are implemented
+with the following slots.
 
 * __[data.read]__
 * __[data.delete]__
@@ -310,7 +309,7 @@ in its original state, separate endpoint files for separate operations are still
 useful and a feature you will learn to appreciate further down the road, as you start
 modifying your Hyperlambda files.
 If you want to see the power of these CRUD slots you can check out the documentation for the
-[magic.data.common](/documentation/magic.data.common/) module, which you can find in the
+[magic.data.common](/documentation/magic.data.common/) module that you can find in the
 reference documentation for Magic.
 
 * [Continue with SQL Web APIs](/tutorials/sql-web-api/)
