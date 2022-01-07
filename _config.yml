@@ -51,12 +51,14 @@ nav_sections:
         name: HTTP invocations with Hyperlambda
       - url: /tutorials/expressions-slots-nodes/
         name: Expressions, slots, and nodes
+      - url: /tutorials/loops-and-conditions/
+        name: Loops and branching in Hyperlambda
       - url: /tutorials/auth/
         name: Authentication and Authorisation
       - url: /tutorials/web-sockets/
         name: Hyperlambda and Web Sockets
       - url: /tutorials/threading/
-        name: Threading and async Hyperlambda programming
+        name: Threading and async Hyperlambda
       - url: /tutorials/super-dry/
         name: Interceptors and exception handlers
       - url: /tutorials/dynamic-slots/
