@@ -12,7 +12,8 @@ these would resemble the following.
 
 We suggest you don't buy the cheapest VPS droplet from DigitalOcean, but chose at least the one
 that will cost you $12 per month. Their cheapest droplet simply doesn't have enough memory to
-run Magic optimally.
+run Magic optimally. 2MB of memory should be enought to host both Magic, MySQL, and the frontend
+dashboard.
 
 ## Installing Magic
 
