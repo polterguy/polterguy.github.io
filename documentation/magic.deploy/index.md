@@ -122,6 +122,10 @@ The above `docker-compose up -d` command will start 5 docker containers.
 * `backend` - The main Magic backend container
 * `frontend` - The main Magic dashboard frontend container
 
+In addition to the above containers, docker will also create several volumes for you. These volumes
+are necessary to persist changes to the file system for your containers, such that if your containers
+are stopped for some reasons, and/or you update Magic later, you will keep your changes.
+
 ## Configuring Magic
 
 You can now visit your frontend domain and setup Magic. To configure Magic login with _"root/root"_ and do _not_
