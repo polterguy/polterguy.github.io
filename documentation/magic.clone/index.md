@@ -55,7 +55,7 @@ the `.vscode/launch.json` and `.vscode/tasks.json` files.
 ## Docker database images
 
 This project also contains _"docker-compose.yml"_ files for SQL Server, PostreSQL and MySQL, allowing you
-to locally start a database instance using Docker. These files can be found within the _"db/"_ folder,
+to locally start a database instance using Docker. These files can be found within the _"db"_ folder,
 that contains one folder for each database type, allowing you to test Magic with any of these databases
 locally. To start for instance SQL Server, execute the following from a terminal.
 
