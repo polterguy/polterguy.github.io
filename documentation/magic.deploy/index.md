@@ -122,6 +122,8 @@ The above `docker-compose up -d` command will start 5 docker containers.
 * `backend` - The main Magic backend container
 * `frontend` - The main Magic dashboard frontend container
 
+## Configuring Magic
+
 You can now visit your frontend domain and setup Magic. To configure Magic login with _"root/root"_ and do _not_
 change the database connection string, but choose _mysql_ as your database type, and provide Magic with
 a root password, and follow the wizard to the end. This process is similar to the process you followed
