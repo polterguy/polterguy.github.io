@@ -24,7 +24,9 @@ The **[for-each]** slot loops once for each result returned by its expression. B
    foo1:bar1
    foo2:bar2
    foo3:bar3
+
 for-each:x:@.data/*
+
    set-value:x:@.dp/#
       .:Loop was here
 ```
@@ -46,11 +48,13 @@ you have a node set to iterate over, but sometimes you need another mechanism, s
 ```
 .no:int:0
 .data
+
 while
    lt
       get-value:x:@.no
       .:int:10
    .lambda
+
       add:x:@.data
          .
             foo:bar
@@ -71,11 +75,13 @@ lambda objects _once_. Below is an example.
 ```
 .foo:bar
 .result
+
 if
    eq
       get-value:x:@.foo
       .:bar
    .lambda
+
       set-value:x:@.result
          .:Yup!
 ```
@@ -86,24 +92,34 @@ equal to each other. Hyperlambda also provides **\[else-if\]** and **\[else\]** 
 ```
 .foo:bar
 .result
+
 if
    eq
       get-value:x:@.foo
       .:foo
    .lambda
+
       set-value:x:@.result
          .:Foo was here
+
 else-if
    eq
       get-value:x:@.foo
       .:bar
    .lambda
+
       set-value:x:@.result
          .:Bar was here
+
 else
+
    set-value:x:@.result
       .:Nobody was here
 ```
+
+Notice the difference between the semantics of the **\[else\]** and its related slots, not needing an explicit
+**[.lambda]** node. This is because the **[else]** slot cannot be given any arguments, except of course its
+lambda object, so there are no reasons to explicitly add a **[.lambda]** node to it to declare its lambda object.
 
 Try playing with the above **[.foo]** node's value, and see how the **[.result]** node changes depending upon what value
 you provide. The below C# example is the equivalent of the above code in a more traditional programming language.
@@ -111,12 +127,19 @@ you provide. The below C# example is the equivalent of the above code in a more 
 ```csharp
 var foo = "foo";
 var result = null;
+
 if (foo == "foo") {
+
    result = "Foo was here";
+
 } else if (foo == "bar") {
+
    result = "Bar was here";
+
 } else {
+
    result = "Nobody was here";
+
 }
 ```
 
