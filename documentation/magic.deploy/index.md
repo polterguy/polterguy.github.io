@@ -130,8 +130,13 @@ are stopped for some reasons, and/or you update Magic later, you will keep your 
 
 You can now visit your frontend domain and setup Magic. To configure Magic login with _"root/root"_ and do _not_
 change the database connection string, but choose _mysql_ as your database type, and provide Magic with
-a root password, and follow the wizard to the end. This process is similar to the process you followed
-as you configured Magic locally on your development machine.
+a root password, and follow the wizard to the end. This process is similar to the process you follow
+as you configured Magic locally on your development machine. If your domain was _"yourdomain.com"_, and
+you created your DNS records as illustrated above, your API backend URL would be the following.
+
+```
+https://api.yourdomain.com
+```
 
 As you click the login button, you have to provide Magic with your backend API URL.
 This is achieved by simply pasting in your backend API URL into the top textbox and click the tab key
