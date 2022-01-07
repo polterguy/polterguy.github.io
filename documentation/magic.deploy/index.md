@@ -5,7 +5,7 @@ This guide helps you deploy Magic unto a VPS or a private server. The guide has 
 Ubuntu 20.04 (LTS) x64, but _might_ work with other Debian based distributions. You will need a
 VPS instance somewhere, which you can buy at for instance [DigitalOcean](https://www.digitalocean.com/).
 You will also need a domain and point _two_ DNS A records to your server's IP address. Typically
-these would look like the following.
+these would resemble the following.
 
 * __api.yourdomain.com__
 * __magic.yourdomain.com__
