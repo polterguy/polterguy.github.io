@@ -38,6 +38,7 @@ If you execute the above in Magic's _"Eval"_ component you will see how the abov
    foo1:Loop was here
    foo2:Loop was here
    foo3:Loop was here
+...
 ```
 
 This is because the lambda object of the **[for-each]** slot is executed once for each node resulting from its
@@ -120,7 +121,6 @@ else
 Notice the difference between the semantics of the **\[else\]** and its related slots, not needing an explicit
 **[.lambda]** node. This is because the **[else]** slot cannot be given any arguments, except of course its
 lambda object, so there are no reasons to explicitly add a **[.lambda]** node to it to declare its lambda object.
-
 Try playing with the above **[.foo]** node's value, and see how the **[.result]** node changes depending upon what value
 you provide. The below C# example is the equivalent of the above code in a more traditional programming language.
 
