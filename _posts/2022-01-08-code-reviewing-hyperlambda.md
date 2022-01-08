@@ -5,8 +5,8 @@ author: thomas
 
 One of our partners has just finished the initial implementation of a medium complex FinTech project using
 Magic and Hyperlambda, and they wanted me to code review the product before putting the finishing touches on it.
-The system has 15 tables, and is of medium complexity. There are two interesting points to this story, which is
-as follows.
+The system has 15 tables, it's got 169 files, 165 of which are Hyperlambda, and is of medium complexity. There
+are two interesting points to this story, which is as follows.
 
 1. It took me 15 minutes to do a complete code review on the entire thing
 2. I could only find a handful of issues, in fact 7 to be exact
