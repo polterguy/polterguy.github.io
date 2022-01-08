@@ -19,12 +19,12 @@ only find 7 issues with it. Every time I code review C# code of the same complex
 dozens and sometimes hundreds of issues.
 
 Anyways, this illustrates a couple of crucial unique selling points with Hyperlambda, being of course that
-the thing is pathetically easily understood, read, and maintained. Imagining reading through a C# project,
-or a Java project, that is created on top of a database with 15 different tables, doing multiple integrations
-with 3rd party systems, with the same degree of complexity as the this system has in 15 minutes, and understanding
-the system in its entirety in 15 minutes, is of course simply madness. With Hyperlambda, I spent no more than 15
-minutes, and after those 15 minutes, I had created a deep and thorough understanding of 90% of the codebase,
-what it does, and how it does what it does.
+the thing is pathetically easily understood, ridiculously easy to read, and preposterously simple to maintain.
+Imagining reading through a C# project, or a Java project, that is created on top of a database with 15
+different tables, doing multiple integrations with 3rd party systems, with the same degree of complexity as
+the this system has in 15 minutes, and understanding the system in its entirety in 15 minutes, is of course
+simply madness. With Hyperlambda, I spent no more than 15 minutes, and after those 15 minutes, I had created
+a deep and thorough understanding of 90% of the codebase, what it does, and how it does what it does.
 
 BTW, if you're interested in code reviewing your Hyperlambda code, and or tutoring in any ways, this
 is a services we are providing for our partners - And you can send me me an email at [th@aista.com](mailto:th@aista.com)
