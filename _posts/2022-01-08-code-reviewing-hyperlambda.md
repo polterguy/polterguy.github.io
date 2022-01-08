@@ -3,7 +3,7 @@ layout: post
 author: thomas
 ---
 
-One of our partners has just finished the initial implementation of a mediumly complex FinTech project using
+One of our partners has just finished the initial implementation of a medium complex FinTech project using
 Magic and Hyperlambda, and they wanted me to code review the product before putting the finishing touches on it.
 The system has 15 tables, and is of medium complexity. There are two interesting points to this story, which is
 as follows.
