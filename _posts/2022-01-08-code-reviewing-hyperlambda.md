@@ -14,7 +14,6 @@ as follows.
 The reasons why this is spectacular is because first of all, if I was to code review C# code or PHP code
 for a system of the same complexity, I would probably need at least a whole working day, maybe even half a week.
 Due to the degree of simplicity in Hyperlambda, I could read through its entire codebase in 15 minutes.
-
 The system was implemented by a developer whom had never created any Hyperlambda code before, still I could
 only find 7 issues with it. Every time I code review C# code of the same complexity, I can easily pinpoint
 dozens and sometimes hundreds of issues.
