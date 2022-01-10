@@ -38,6 +38,9 @@ server. Below is a screenshot of the _"Eval"_ component to give you an idea of w
 
 ![Hyperlambda evaluator](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/eval-component.jpg)
 
+If you put your cursor on an empty line and click CTRL+SPACE or FN+CONTROL+SPACE on a Mac, you will be given
+autocomplete, allowing you to easily see which slots are available for you.
+
 Logically the Hyperlambda evaluator will signal each nodes in your Hyperlambda code sequentially, assuming
 all of your nodes are referencing an `ISlot` class, unless the node's name starts with a _"."_ or has an empty name.
 
