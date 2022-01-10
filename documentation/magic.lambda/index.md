@@ -233,6 +233,27 @@ with an error such as follows _"No slot exists for [src]"_ since this slot doesn
 vocabulary - Unless you for some reasons have an installation where this slot has been explicitly added to
 your vocabulary.
 
+## [eval]
+
+This is the by far most important slot in Hyperlambda, since it's arguably _"the heart"_ of Hyperlambda,
+allowing Hyperlambda to execute Hyperlambda. This slot executes the specified lambda object(s) assumed
+to exist eitehr as a single lambda object in its children collection, or as an expression leading to
+one or more nodes where each of these nodes will be executed.
+
+```
+.res
+
+.lambda
+   set-value:x:@.res
+      .:OK
+
+eval:x:@.lambda
+```
+
+Notice, the **[eval]** slot is _not_ immutable, as in it has access to the outer graph object such as
+illustrated above, where we set the value of a node existing _outside_ of the **[.lambda]** itself.
+Implying **[eval]** cannot return values or nodes the same way for instance **[signal]** can.
+
 ## Branching and conditional execution
 
 Branching implies to change the execution path of your code, and examples includes function invocations, and
@@ -968,9 +989,9 @@ provides two basic slots for looping; **[for-each]** and **[while]**.
 
 ### [for-each]
 
-Iterates through each node as a result of an expression, and evaluates its lambda object,
-passing in the currently iterated node as a **[.dp]** argument, containing the actual node
-iterated by reference.
+**[for-each]** iterates through each node being the result of an expression, and evaluates its lambda object,
+passing in the currently iterated node as a **[.dp]** argument, containing the node currently
+iterated by _reference_.
 
 ```
 .data
@@ -1006,26 +1027,8 @@ while
       math.increment:x:@.no
 ```
 
-## Evaluating slots
-
-### [eval]
-
-Evaluates each lambda object found by either inspecting its children collection, or evaluating the
-expression found in its value.
-
-```
-.res
-
-.lambda
-   set-value:x:@.res
-      .:OK
-
-eval:x:@.lambda
-```
-
-Notice, the **[eval]** slot is _not_ immutable, as in it has access to the outer graph object such as
-illustrated above, where we set the value of a node existing _outside_ of the **[.lambda]** itself.
-Implying **[eval]** cannot return values or nodes the same way for instance **[signal]** can.
+The above Hyperlambda snippet basically implies the following if we are to translate it into plain English;
+_"Set .no to 0, then loop while .no is less than 5, where the loop adds a node into .res, before it increments .no by 1"_.
 
 ## Threading
 
