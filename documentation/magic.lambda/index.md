@@ -398,12 +398,17 @@ must at the very least have minimum one **[case]** node. The **[default]** node 
 
 ## Comparisons
 
+All comparison _"operators"_ works the same way, in that they have an LHS and a RHS, implying respectively _"Left Hand Side"_
+and _"Right Hand Side"_. However, since the _"comparison operators"_ in Hyperlambda are slots themselves, this implies
+there is no _"left"_ or _"right"_ side in your comparison, implying the _"left"_ parts of your comparison is the
+first argument and the _"right"_ side is the second argument. Notice, all comparison slots will consider types,
+which implies that boolean true will _not_ be considered equal to the string value of _"true"_, and the integer
+value of 5 is _not_ the same as the decimal value of 5.0, etc.
+
 ### [eq]
 
 **[eq]** is the equality _"operator"_ in Magic, and it requires two arguments, both of which will be evaluated as potential
 signals - And the result of evaluating **[eq]** will only be true if the values of these two arguments are _exactly the same_.
-Notice, the comparison operator will consider types, which implies that boolean true will _not_ be considered equal to the string
-value of _"true"_, etc.
 
 ```
 .src:int:5
@@ -416,8 +421,6 @@ eq
 
 **[neq]** is the _not_ equal _"operator"_ in Magic, and it requires two arguments, both of which will be evaluated as potential
 signals - And the result of evaluating **[neq]** will only be true if the values of these two arguments are _not the same_.
-Notice, the comparison operator will consider types, which implies that boolean true will _not_ be considered equal to the string
-value of _"true"_, etc.
 
 ```
 .src:int:5
