@@ -40,7 +40,6 @@ server. Below is a screenshot of the _"Eval"_ component to give you an idea of w
 
 If you put your cursor on an empty line and click CTRL+SPACE or FN+CONTROL+SPACE on a Mac, you will be given
 autocomplete, allowing you to easily see which slots are available for you.
-
 Logically the Hyperlambda evaluator will signal each nodes in your Hyperlambda code sequentially, assuming
 all of your nodes are referencing an `ISlot` class, unless the node's name starts with a _"."_ or has an empty name.
 
@@ -64,7 +63,8 @@ spaces the node above has, add 3 additional spaces, and you can declare children
 If you think of these nodes as a sequence of function invocations, from the top to bottom, where all of the
 nodes are assumed to be referencing slots - You can imagine how the tree structure resulting from parsing
 Hyperlambda into a graph object can easily be evaluated, due to its recursive nature, making it easy to
-express idioms such as _"if"_, _"while"_, _"for-each"_, etc.
+express idioms such as _"if"_, _"while"_, _"for-each"_, etc. In fact logically this is similar to the
+way XSLT works, except there's no XML, only Hyperlambda, Lambda objects, and Node objects.
 
 Since each slot will be invoked with the node referencing the slot itself as the _"input"_ `Node`,
 this makes the Hyperlambda evaluator recursive in nature, allowing a slot to evaluate all of its children,
@@ -113,7 +113,9 @@ acme.foo:int:12
 
 Notice the relationship between the `[Slot(Name = "acme.foo")]` C# code and the way we invoke the **[acme.foo]**
 slot from Hyperlambda afterwards. It might help to imagine Hyperlambda as a simple string/type Dictionary,
-which resolves an object from your IoC container, using the name of the node as the key.
+which resolves an object from your IoC container, using the name of the node as the key. And in fact, this
+is _exactly_ how Hyperlambda is implemented - As a string/type dictionary, creating instance of your slots
+using your IoC container.
 
 To create your own slots, follow the recipe below.
 
