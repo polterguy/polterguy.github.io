@@ -236,12 +236,12 @@ Branching implies to change the execution path of your code, and examples includ
 other similar mechanisms that changes the position of your computer's _"execution pointer"_. Conditional
 branching implies to changing the position of the execution pointer, according to some condition. Typically
 this implies constructs such as `if`, `else`, `goto` etc in traditional programming languages.
-Magic Lambda contains the following branching slots.
+Hyperlambda contains the following branching slots by default.
 
 ### [if]
 
 This is the Hyperlambda equivalent of `if` from other programming languages. It allows you to test for some condition,
-and evaluate a lambda object, only if the condition evaluates to true. **[if]** must be given exactly two arguments.
+and evaluate a lambda object, only if the condition evaluates to true. **[if]** must be given two arguments.
 The first argument can be anything, including a slot invocation - But its second argument must be its **[.lambda]**
 argument. The **[.lambda]** node will be evaluated as a lambda object, only if the first argument to **[if]** evaluates
 to boolean true. Below is an example.
@@ -271,7 +271,7 @@ if
          .:yup!
 ```
 
-Notice, both the **[if]** slot and the **[else-if]** slot can optionally be directly pointed to an expression,
+Notice, both the **[if]** slot and the **[else-if]** slot can optionally be directly pointing to an expression,
 that is assumed to evaluate to either boolean `true` or boolean `false`, such as the following illustrates.
 
 ```
@@ -286,14 +286,14 @@ if:x:@.arguments/*/foo
 
 If you use this shorthand version for the slot(s), its lambda object is assumed to be the entirety of the content
 of the **[if]** or **[else-if]** slot itself, and there are no needs to explicitly declare your lambda objects as
-a **[.lambda]** argument.
+a **[.lambda]** argument. This only works if the expression leads to a boolean value.
 
 ### [else-if]
 
 **[else-if]** is the younger sibling of **[if]**, and must be preceeded by its older sibling, or other **[else-if]** nodes,
 and will only be evaluated if all of its previous conditional slots evaluates to false - At which point **[else-if]** is
 allowed to test its condition - And only if its condition evaluates to true, it evaluate its lambda object. Semantically **[else-if]**
-is similar to **[if]**, in that it requires exactly two arguments with the same structure as **[if]**.
+is similar to **[if]**, in that it requires two arguments with the same structure as **[if]**.
 
 ```
 .dest
@@ -310,7 +310,7 @@ else-if
 ```
 
 **[else-if]** can also be given an expression directly the same way **[if]** can. See the example for **[if]**
-to understand the semantics of this.
+to understand how this works.
 
 ### [else]
 
