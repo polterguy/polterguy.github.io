@@ -486,7 +486,7 @@ mte
 
 All comparison slots can optionally be given an expression that will be assumed is their LHS or _"Left Hand Side"_ argument
 which replaces the first child argument if specified. Below is an example for the **[mte]** slot, but all comparison slots
-works the same way.
+works similarly.
 
 ```
 .src1:int:7
@@ -495,7 +495,8 @@ mte:x:@.src1
 ```
 
 In the above example the expression `:x:@.src1` becomes the left hand side, while the child argument becomes the right hand
-side of the comparison, implying as follows using pseudo code.
+side of the comparison. To translate the above into how it might look like in a traditional programming language to
+give you an idea of its structure please consider the following.
 
 ```csharp
 src1 >= 5
