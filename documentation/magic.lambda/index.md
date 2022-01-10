@@ -946,7 +946,7 @@ will only be visible in debug builds, and never returned to the client. You can 
 the **[status]** HTTP return value that's returned to the client, to become e.g. 404,
 indicating _"not found"_, etc. In addition you can pass in a **[field]** which will be serialised
 back to the client if specified to help the client to semantically figure out which field
-name that triggered the exception. Below is an example of all of the above.
+that triggered the exception. Below is an example of all of the above.
 
 ```
 throw:Whatever error message here
@@ -962,6 +962,9 @@ end up looking from the client's point of view.
 ![Unhandled publicly visible exception](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/throw.jpg)
 
 ## Loops
+
+Loops in programming languages implies doing something x number of times, where x is any number. Hyperlambda
+provides two basic slots for looping; **[for-each]** and **[while]**.
 
 ### [for-each]
 
