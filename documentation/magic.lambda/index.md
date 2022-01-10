@@ -398,12 +398,12 @@ must at the very least have minimum one **[case]** node. The **[default]** node 
 
 ## Comparisons
 
-All comparison _"operators"_ works the same way, in that they have an LHS and a RHS, implying respectively _"Left Hand Side"_
-and _"Right Hand Side"_. However, since the _"comparison operators"_ in Hyperlambda are slots themselves, this implies
-there is no _"left"_ or _"right"_ side in your comparison, implying the _"left"_ parts of your comparison is the
-first argument and the _"right"_ side is the second argument. Notice, all comparison slots will consider types,
-which implies that boolean true will _not_ be considered equal to the string value of _"true"_, and the integer
-value of 5 is _not_ the same as the decimal value of 5.0, etc.
+All comparison _"operators"_ works the same way in Hyperlambda, in that they have an LHS and a RHS, implying
+respectively _"Left Hand Side"_ and _"Right Hand Side"_. However, since the _"comparison operators"_ in Hyperlambda
+are slots themselves, this implies there is no _"left"_ or _"right"_ side in your comparison, implying the _"left"_
+parts of your comparison is the first argument and the _"right"_ side is the second argument. Notice, all comparison
+slots will consider types, which implies that boolean true will _not_ be considered equal to the string value
+of _"true"_, and the integer value of 5 is _not_ the same as the decimal value of 5.0, etc.
 
 ### [eq]
 
