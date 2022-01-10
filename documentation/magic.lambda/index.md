@@ -113,9 +113,9 @@ acme.foo:int:12
 
 Notice the relationship between the `[Slot(Name = "acme.foo")]` C# code and the way we invoke the **[acme.foo]**
 slot from Hyperlambda afterwards. It might help to imagine Hyperlambda as a simple string/type Dictionary,
-which resolves an object from your IoC container, using the name of the node as the key. And in fact, this
-is _exactly_ how Hyperlambda is implemented - As a string/type dictionary, creating instance of your slots
-using your IoC container.
+which resolves an object from your IoC container using the name of the node as the key. And in fact, this
+is exactly how Hyperlambda _is_ implemented - As a string/type dictionary, creating instances of your slot
+classes using your IoC container, for then to invoke `Signal` passing in the identity node to your slot.
 
 To create your own slots, follow the recipe below.
 
