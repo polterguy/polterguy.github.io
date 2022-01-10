@@ -504,19 +504,6 @@ src1 >= 5
 
 ## Boolean logical conditions
 
-### [exists]
-
-**[exists]** will evaluate to true if its specified expression yields one or more results. If not, it will
-return false.
-
-```
-.src1
-   foo
-.src2
-exists:x:@.src1/*
-exists:x:@.src2/*
-```
-
 ### [and]
 
 **[and]** requires two or more arguments, and will only evaluate to true, if all of its arguments evaluates to true. Consider
@@ -741,6 +728,19 @@ Returns the nodes its expression is referencing.
    foo1
    foo2
 get-nodes:x:-/*
+```
+
+### [exists]
+
+**[exists]** will evaluate to true if its specified expression yields one or more results. If not, it will
+return false.
+
+```
+.src1
+   foo
+.src2
+exists:x:@.src1/*
+exists:x:@.src2/*
 ```
 
 ### [reference]
