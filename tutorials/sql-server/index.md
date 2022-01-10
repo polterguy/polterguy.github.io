@@ -3,7 +3,7 @@ title: Using Magic with Microsoft SQL Server
 description: In this article you will setup Magic using Docker and SQL Server. The article guides you through everything you need to know, starting out with a docker-compose.yml file for getting Magic up running, using SQL Server as your backend database.
 ---
 
-# Using Magic with SQL Server
+# Using Magic with Microsoft SQL Server
 
 In this tutorial we will cover the following parts of Magic and Hyperlambda.
 
@@ -11,7 +11,7 @@ In this tutorial we will cover the following parts of Magic and Hyperlambda.
 
 The default _"docker-compose.yml"_ file for Magic will create a MySQL Docker container. If you instead
 want to use SQL Server, you'll need a slightly modified _"docker-compose.yml"_ file. Below is a complete
-docker-compose file, except it spawns up a SQL Server database instance image, and not a MySQL image.
+docker-compose file, except it creates a Microsoft SQL Server database image, and not a MySQL image.
 
 ```yaml
 version: "3.3"

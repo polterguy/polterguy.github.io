@@ -3,12 +3,12 @@ title: Alternative Authentication mechanisms for Magic
 description: In this article we help you to understand the internals of authentication and authorization in Magic and Hyperlambda, allowing you to exchange the default authentication with for instance Windows LDAP or something else.
 ---
 
-# Alternative authentication mechanisms
+# Customising you authentication system
 
 In this tutorial we will cover the following parts of Magic and Hyperlambda.
 
 * How to exchange the default authentication mechanism in Magic with your own
-* How to use LDAP and Windows _"automatic logins"_
+* How to use LDAP and Windows, including _"automatic logins"_
 
 Magic allows you to configure its internal authentication mechanism almost exactly as
 you see fit, to accommodate for whatever needs you might have in your app. The easiest
@@ -91,7 +91,7 @@ _roles_ in the `magic`/`users_roles` table. Hence, create your users with the _"
 item, and just give these a gibberish password, and a username that matches their usernames
 in the external authentication service. The password is not important, since it'll never be
 checked, but instead your external authentication service will be responsible for verifying
-their passwords.
+the password.
 The last point is true for all forms of alternative authentication, and hence applies for
 all authentication permutations described further down in this document.
 
@@ -136,12 +136,12 @@ The web server that runs Magic also needs to be a part of your Windows domain.
 
 ## Windows automatic authentication
 
-Magic also supports automatic Windows authentication, although this requires a bit more manual work from your
-side, but most of it can be done by correctly configuring Magic. This allows you to automatically authenticate
+Magic also supports automatic Windows authentication, although this requires a bit more work from your
+part - But most of it can be done by correctly configuring Magic. This allows you to automatically authenticate
 your users, but only from within your LAN, implying that a user that is already logged on to your Windows
 network, can _automatically_ authenticate towards Magic _without_ providing his username or password.
 All changes required to make Windows authentication from above working also applies
-for this mechanism, implying you'll have to pull in the _"magic.lambda.ad-auth"_ NuGet package, you'll
+for this mechanism, implying you'll have to pull in the _"magic.lambda.ad-auth"_ NuGet package, and you'll
 have to setup the configuration parts from above - But in addition to these steps, you also have to
 make sure you _turn on_ automatic authentication in Magic by changing the `auto-auth` configuration
 key and set its value to `auth.ad.get-username`. In addition this feature also requires that you turn
@@ -178,7 +178,7 @@ NTLM/Negotiate credentials by configuring the HTTP GET invocation with a `withCr
 value. Below is an example of the latter.
 
 ```typescript
-// Assumes httpClient is an instance of Angular HttpClient
+// Assumes httpClient is an instance of the Angular HttpClient
 this.httpClient
   .get<any>('/magic/system/auth/authenticate', {
     withCredentials: true
@@ -212,7 +212,8 @@ you have no needs for these, you can change these as you see fit - However, depl
 nGinx or anything _not_ being IIS will typically just ignore these settings, and hence
 we chose to release Magic out of the box as this, to make it as easily configured as
 possible. If you are super paranoid, and don't care about this at all, you might want to
-turn _off_ these features.
+turn _off_ these features by for instance deleting the web.config file distributed with
+Magic.
 
 This was probably the most complex authentication mechanism in Magic so far, ignoring
 [cryptographically secured lambda invocations](/tutorials/crypto-lambda-http/) and

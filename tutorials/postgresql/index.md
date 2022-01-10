@@ -11,7 +11,7 @@ In this tutorial we will cover the following parts of Magic and Hyperlambda.
 
 The default _"docker-compose.yml"_ file for Magic will create a MySQL Docker container. If you instead
 want to use Postgres, you'll need a slightly modified _"docker-compose.yml"_ file. Below is a complete
-docker-compose file, except it spawns up a PostgreSQL database image and not a MySQL image.
+docker-compose file, except it creates a PostgreSQL database image and not a MySQL image.
 
 ```yaml
 version: "3.3"

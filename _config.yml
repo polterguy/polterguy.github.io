@@ -68,7 +68,7 @@ nav_sections:
       - url: /tutorials/crypto-lambda-http/
         name: Cryptographically signed HTTP invocations
       - url: /tutorials/auth-internals/
-        name: Auth internals
+        name: Customised authentication
       - url: /tutorials/sql-server/
         name: Using Magic with Microsoft SQL Server
       - url: /tutorials/postgresql/

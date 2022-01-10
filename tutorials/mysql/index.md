@@ -11,7 +11,7 @@ In this tutorial we will cover the following parts of Magic and Hyperlambda.
 
 For reference purposes, and to be complete in our documentation, we've provided this guide of how to
 get started with Magic using MySQL - Even though MySQL is the database type in the default starter
-guide. Below is a complete docker-compose file, that spawns up a MySQL image in addition to the Magic
+guide. Below is a complete docker-compose file, that creates a MySQL image in addition to the Magic
 backend and frontend.
 
 ```yaml

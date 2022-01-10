@@ -49,7 +49,7 @@ Fail conditions might include for instance.
 * A payload with the same **[.request-id]** has been successfully executed previously on the server
 * The server's response is not signed with the key the client has associated with the domain it sent the request to
 
-This allows you to exchange public keys between another Magic server and your own Magic installation, associate
+This allows you to exchange public keys with another Magic server and your own Magic installation, associate
 an authorisation object with the other party's public key, for then to have the owner of that key create
 Hyperlambda code that your server _securely executes_ - Arguably _"reversing the responsibility of code"_, where
 the server is no longer responsible for declaring its code, but rather the client provides a lambda object
@@ -62,9 +62,10 @@ Use the _"Eval"_ menu item from your Magic Dashboard and execute the following c
 
 ```
 guid.new
-
 unwrap:x:+/**/.request-id
+
 signal:magic.crypto.http.eval
+
    url:"http://localhost:4444/magic/system/crypto/eval-id"
    .lambda
 
@@ -77,15 +78,17 @@ signal:magic.crypto.http.eval
       return
 ```
 
+**Notice** - You might have to change the port number in the above snippet depending upon whether or not you're
+running Magic through its Docker images or not.
 If you open your _"Crypto"_ menu item afterwards, and you expand the _"Receipts"_ tab, you will see
 something resembling the following.
 
 ![Cryptography receipt](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/crypto-receipt.jpg)
 
-The *ID* above is the value returned from **[guid.new]**, and simply a randomly generated ID associated
+The ID above is the value returned from **[guid.new]**, and simply a randomly generated id associated
 with your request, created by the client - Allowing the client to persist the invocation any ways he wants
 to on his side - But of course more importantly from the server's perspective becoming the equivalent of
-a _"transaction identifier"_. Since the ID is also a part of the payload itself, and hence a part of the
+a _"transaction identifier"_. Since the id is also a part of the payload itself, and hence a part of the
 message the cryptographic signature was generated from, this prevents _"replay attacks"_, where an adversary
 can pick up your payload, and replay the same payload again. This is accomplished by checking if the
 **[.request-id]** parts of the payload has been previously executed, and if so, aborting the execution,
@@ -101,13 +104,16 @@ signal:magic.crypto.http.eval
       return:Will fail the second time
 ```
 
+**Notice** - You might have to change the port number in the above snippet depending upon whether or not you're
+running Magic through its Docker images or not.
+
 ## Micro services and super scalable distributed systems
 
 In addition to the obvious use cases, such as financial transactions, document signing, legal things, etc -
 This also allows you to create a micro service environment, publicly exposing endpoints over an
 insecure connection, such as the World Wide Web - While still providing guarantees of that nobody except
-those clients explicitly given permissions on your server are legally allowed to invoke your Hyperlambda
-endpoints.
+those clients explicitly given permissions on your server are legally allowed to provide Hyperlambda
+code to your server and have your server execute their code.
 
 Since the whole idea also is that _the client supplies the code_, this also allows your
 system to go through evolutionary iterations, changing its behaviour, _without_ having to patch or
@@ -119,7 +125,7 @@ things significantly, since you no longer need to patch your servers, but only y
 
 ## Warning! Don't go berserk
 
-Yes, I know, once you _get it_, these guys are incredible - But they also carry some overhead. For
+Yes, I know, once you _get it_, these guys are incredibly interesting - But they also carry some overhead. For
 instance, the payloads needs to be cryptographically signed by the client. The server needs to verify
 the signature and parse the Hyperlambda, building a lambda object from it. Execution rights needs to
 be retrieved from the database, and a receipt for the execution of the lambda object needs to be persisted
@@ -127,8 +133,8 @@ into the database. Hence, you should _not_ use these guys for things where execu
 but rather smaller payloads, occasionally transmitted between clients and servers, and not for things
 needing to handle thousands of requests per second.
 However, when you need them, you _really_ need them - And if used correctly, and _sparsely_ may I add,
-these guys are an incredible tool for you, to both scale out (**securely**) and more easily build
+these guys are an incredibly useful tool, to both scale out (**securely**) and more easily build
 heterogeneous server environments, without having to try to predict what the future might hold in
 regards to its requirements.
 
-* Continue with [Auth internals](/tutorials/auth-internals/)
+* Continue with [Customised authentication](/tutorials/auth-internals/)
