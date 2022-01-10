@@ -1123,11 +1123,11 @@ semaphore:foo-bar
     */
 ```
 
-In the above semaphore _"foo-bar_" becomes the name of your semaphore. If you in any other parts
-of your Hyperlambda code invokes **[semaphore]** with _"foo-bar"_ as the value, only _one_ of your
+In the above semaphore _"foo-bar_" becomes the name of your semaphore. If you invoke **[semaphore]** in
+any other parts of your Hyperlambda code, with _"foo-bar"_ as the value, only _one_ of your
 lambda objects will be allowed to execute at the same time. This allows you to _"synchronize access"_
 to shared resources, where only _one_ thread should be allowed to access the shared resource at the same
-time. Such shared resources might be files for instance, or other things shared between multiuple threads,
+time. Such shared resources might be for instance files, or other things shared between multiuple threads,
 where it's crucial that only one thread is allowed to access the shared resource at the same time.
 
 ### [sleep]
@@ -1139,6 +1139,10 @@ to be passed in as its main value.
 // Sleeps the main thread for 1 second, or 1000 milliseconds.
 sleep:1000
 ```
+
+**Notice** - This slot is typically releasing the thread back to the operating system, implying as
+the current thread is _"sleeping"_, it will not be a blocking call, and require ZERO physical operating
+system threads while it is sleeping. This is true because of Hyperlambda's 100% perfectly `async` nature.
 
 ## Miscellaneous slots
 
