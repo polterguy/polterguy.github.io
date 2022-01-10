@@ -284,6 +284,9 @@ else-if
          .:yup2.0!
 ```
 
+**[else-if]** can also be given an expression directly the same way **[if]** can. See the example for **[if]**
+to understand the semantics of this.
+
 ### [else]
 
 **[else]** is the last of the _"conditional siblings"_ that will only be evaluated as a last resort, only if none of its
@@ -299,16 +302,21 @@ if
       get-value:x:@.src
       .:int:1
    .lambda
+
       set-value:x:@.dest
          .:yup!
+
 else-if
    eq
       get-value:x:@.src
       .:int:2
    .lambda
+
       set-value:x:@.dest
          .:yup2.0!
+
 else
+
    set-value:x:@.dest
       .:nope
 ```
@@ -323,9 +331,11 @@ first **[case]** node with a value matching the evaluated value of the **[switch
 .val:foo
 .result
 switch:x:@.val
+
    case:bar
       set-value:x:@.result
          .:Oops
+
    case:foo
       set-value:x:@.result
          .:Success!
@@ -339,12 +349,15 @@ Try evaluating the following in your _"Eval"_ to understand what I mean.
 .val:fooXX
 .result
 switch:x:@.val
+
    case:bar
       set-value:x:@.result
          .:Oops
+
    case:foo
       set-value:x:@.result
          .:Oops2.0
+
    default
       set-value:x:@.result
          .:Success!
@@ -354,7 +367,7 @@ In the above, the expression evaluated in the switch, which is `@.val` will beco
 None of its children **[case]** nodes contains this as an option, hence the **[default]** node will be evaluated,
 and this results in setting the **[.result]** node's value to _"Success!"_.
 
-**[default]** _cannot_ have a value, and all your **[case]** nodes must have a _constant_ value, meaning not
+**[default]** _cannot_ have a value, and all your **[case]** nodes must have a value, either a constant or
 an expression. However, any types can be used as values for your **[case]** nodes. And your **[switch]** node
 must at the very least have minimum one **[case]** node. The **[default]** node is optional though.
 
@@ -370,6 +383,20 @@ value of _"true"_, etc.
 ```
 .src:int:5
 eq
+   get-value:x:@.src
+   .:int:5
+```
+
+### [neq]
+
+**[neq]** is the _not_ equal _"operator"_ in Magic, and it requires two arguments, both of which will be evaluated as potential
+signals - And the result of evaluating **[neq]** will only be true if the values of these two arguments are _not the same_.
+Notice, the comparison operator will consider types, which implies that boolean true will _not_ be considered equal to the string
+value of _"true"_, etc.
+
+```
+.src:int:5
+neq
    get-value:x:@.src
    .:int:5
 ```
@@ -422,6 +449,25 @@ mte
    .:int:5
 ```
 
+### Commonalities for all comparison slots
+
+All comparison slots can optionally be given an expression that will be assumed is their LHS or _"Left Hand Side"_ argument
+which replaces the first child argument if specified. Below is an example for the **[mte]** slot, but all comparison slots
+works the same way.
+
+```
+.src1:int:7
+mte:x:@.src1
+   .:int:5
+```
+
+In the above example the expression `:x:@.src1` becomes the left hand side, while the child argument becomes the right hand
+side of the comparison, implying as follows using pseudo code.
+
+```csharp
+src1 >= 5
+```
+
 ## Boolean logical conditions
 
 ### [exists]
@@ -451,8 +497,10 @@ and
    .:bool:true
 ```
 
-And will (of course) evaluate its arguments before checking if they evaluate to true, allowing you to use it as a part
-of richer comparison trees, such as the following illustrates.
+Notice, **[and]** will short circuit itself if it reaches a condition that does _not_ evaluate to true, implying
+none of its conditions afterwards will be considered, since the **[and]** as a while evaluates to false.
+**[and]** will also (of course) evaluate its arguments before checking if they evaluate to true, allowing you
+to use it as a part of richer comparison trees, such as the following illustrates.
 
 ```
 .s1:bool:true
@@ -481,6 +529,9 @@ or
    .:bool:false
    .:bool:true
 ```
+
+Also **[or]** will short circuit itself if it reaches a condition that evaluates to true, implying
+none of its conditions afterwards will be considered, since the **[or]** as a while evaluates to true.
 
 ### [not]
 
@@ -678,7 +729,12 @@ it returns the actual node by reference.
 
 **Notice** - The `#` iterator above, will enter into the node referenced as a value of its current
 result - Implying it allows you to deeply traverse nodes passed in as references. This is sometimes
-useful in combination with referenced nodes, passed in as values of other nodes.
+useful in combination with referenced nodes, passed in as values of other nodes. You should as a general
+rule of thumb be careful with the **[reference]** slot since it results in side effects for the caller if
+it passes nodes by reference into some slot. Such side effects are in genral terms considered a bad thing,
+since they result in unpredictable code. In theory passing in a node by reference to some slot, might change
+the logic of the calling function, resulting in changing the code that is being executed, which obviously
+makes the code literally impossible to understand.
 
 ### [format]
 
@@ -702,7 +758,7 @@ This slot returns a context stack object, which is an object added to the stack 
 ### [try]
 
 This slot allows you to create a try/catch/finally block of lambda, from where exceptions are caught,
-and optionally hadled in a **[.catch]** lambda, and/or a **[.finally]** lambda.
+and optionally handled in a **[.catch]** lambda, and/or a **[.finally]** lambda.
 
 ```
 try
@@ -712,6 +768,12 @@ try
 .finally
    log.info:Yup, we are finally there!
 ```
+
+Semantically this works the exact same way as try/catch/finally in other programming languages, such as
+C# for instance, in that an exception thrown inside of a try/catch block will always end up inside of
+its **[.catch]** block - And regardless of whether or not an exception is thrown, the **[.finally]**
+block will _always_ execute, allowing you to some extend create deterministic execution of Hyperlambda
+code, which has a guarantee of executing, regardless of whether or not an exception is thrown or not.
 
 ### [throw]
 
@@ -737,7 +799,9 @@ iterated by reference.
 .data
    foo1
    foo2
+
 for-each:x:-/*
+
    set-value:x:@.dp/#
       .:hello
 ```
@@ -752,11 +816,13 @@ as long as the condition evaluates to true. Requires _exactly_ two arguments, th
 ```
 .no:int:0
 .res
+
 while
    lt
       get-value:x:@.no
       .:int:5
    .lambda
+
       add:x:@.res
          .
             foo
@@ -772,11 +838,17 @@ expression found in its value.
 
 ```
 .res
+
 .lambda
    set-value:x:@.res
       .:OK
+
 eval:x:@.lambda
 ```
+
+Notice, the **[eval]** slot is _not_ immutable, as in it has access to the outer graph object such as
+illustrated above, where we set the value of a node existing _outside_ of the **[.lambda]** itself.
+Implying **[eval]** cannot return values or nodes the same way for instance **[signal]** can.
 
 ## Threading
 
@@ -882,7 +954,7 @@ vocabulary:io.file
 ### [whitelist]
 
 This slot temporarily within the given scope changes the available slots, allowing you to declare a block
-of lambda, where only a sub set of your vocabulary is available for some piece of code to signal. This allows
+of lambda, where only a sub-set of your vocabulary is available for some piece of code to signal. This allows
 you to relatively securely allow some partially untrusted source to pass in a piece of Hyperlambda, for then
 to allow it to evaluate its own Hyperlambda. The slot takes two arguments.
 
@@ -894,18 +966,32 @@ to allow it to evaluate its own Hyperlambda. The slot takes two arguments.
 whitelist
    vocabulary
       set-value
+      return
    .lambda
 
       // Inside of this [.lambda] object, we can only invoke [set-value], and no other slots!
       set-value:x:@.result
          .:foo
 
-      // Notice, the next line will throw an exception,
+      // Notice, the next line will throw an exception if you remove its "." character,
       // because [add] is not whitelisted in our above [vocabulary] declaration!
-      add:x:@.result
+      .add:x:@.result
          .
             foo:bar
+      return
+         result:success
 ```
+
+For security reasons the **[whitelist]** invocation's **[.lambda]** object is immutable, and the
+caller _cannot_ access nodes outside of the **[.lambda]** object itself, which prohibits the caller
+to modify, and/or read nodes from outside of its **[whitelist]** invocation. In addition a **[whitelist]**
+invocation creates its own result stack object, allowing the **[whitelist]** invocation to return values
+and nodes to the caller using for instance the **[return]** slot. If you execute the above Hyperlambda
+you can see how this semantically works by realizing how the above **[.result]** node never has its
+value actually changed, because our invocation to **[set-value]** inside our whitelist invocation yields
+a _"null node-set result"_. Hence semantically the **[whitelist]** slot works the same way signaling
+a dynamic slot works in Hyperlambda, in that the invocation treats its **[.lambda]** object as if
+it was a dynamic slot, isolating it from the rest of our code.
 
 ### [context]
 
@@ -923,7 +1009,26 @@ context:foo
 
 The slot requires a name as the value of its slot invocation node, a **[value]** as the value
 you want to put onto the stack, and a **[.lambda]** object being the lambda where the stack object
-exists, and can be retrieved using **[get-context]**.
+exists, and can be retrieved using **[get-context]**. This is quite useful if you have some piece
+of data that needs to be accessible through the entirety of the execution of some Hyperlambda snippet,
+implying also for slots you invoke, where you don't want to pass in the data as an argument to the
+slot itself. Imagine the following to understand how this works.
+
+```
+slots.create:bar
+   get-context:foo
+   return:x:-
+
+context:foo
+   value:Context value
+   .lambda
+      signal:bar
+```
+
+If you execute the above Hyperlambda you will notice how the slot called **[bar]** actually has access to
+the context value called _"foo"_, and can retrieve this. This feature allows you to declare and create
+_"long lasting arguments"_ that are accessible from within the entirety of a piece of Hyperlambda, including
+each slot it invokes, and/or Hyperlambda files it executes.
 
 ### [apply]
 
@@ -935,6 +1040,7 @@ result node set, allowing you to perform dynamic substitutions on lambda hierarc
    foo
       arg1:{some_arg}
       some-static-node:static-value
+
 apply:x:-
    some_arg:value of argument
 ```
@@ -951,7 +1057,7 @@ apply
 Notice how the nodes from your template lambda object have been copied as children into your **[apply]**
 node, while during this _"copying process"_, the arguments you supplied to **[apply]** have been used
 to perform substitutions on all nodes in your template lambda having a value of `{xxx}`, where xxx is
-your argument name. In the above example for instance the `{arg1:some_arg}` template node had its value
+your argument name. In the above example for instance the `arg1:{some_arg}` template node had its value
 replaced by the value of the **[some_arg]** node passed in as a parameter to **[apply]**. If the name of
 the argument to **[apply]**, matches the value of your template node wrapped inside curly braces - Then
 the value of your argument to apply becomes the _new value_ of your template node after substitution has
@@ -977,6 +1083,7 @@ are lambda objects instead of simple values. Below is an example of both of thes
       foo1:{arg1}
       foo2:{arg1}
       foo3:{arg2}
+
 apply:x:-
    arg1:int:5
    arg2
@@ -1010,6 +1117,7 @@ illustrates.
 .lambda
    foo
       {arg1}:value-is-preserved
+
 apply:x:-
    arg1:foo1
 ```
