@@ -519,8 +519,8 @@ and
 ```
 
 Notice, **[and]** will short circuit itself if it reaches a condition that does _not_ evaluate to true, implying
-none of its conditions afterwards will be considered, since the **[and]** as a while evaluates to false.
-**[and]** will also (of course) evaluate its arguments before checking if they evaluate to true, allowing you
+none of its conditions afterwards will be considered, since the **[and]** as a whole evaluates to false.
+**[and]** will also evaluate its arguments before checking if they evaluate to true, allowing you
 to use it as a part of richer comparison trees, such as the following illustrates.
 
 ```
@@ -552,7 +552,7 @@ or
 ```
 
 Also **[or]** will short circuit itself if it reaches a condition that evaluates to true, implying
-none of its conditions afterwards will be considered, since the **[or]** as a while evaluates to true.
+none of its conditions afterwards will be considered, since the **[or]** as a whole evaluates to true.
 
 ### [not]
 
