@@ -5,6 +5,7 @@ This project provides cryptography helper slots for Magic, allowing you to use b
 operations in your Hyperlambda applications. The symmetric parts of the project is using AES internally, and the
 asymmetric parts is using RSA. In addition to a bunch of _"low level slots"_, the project also contains combination
 slots, combining RSA and AES, allowing you to both encrypt and sign a message, using a single signal invocation.
+This project also allows you to create RSA key pairs, in addition to cryptographically hashing files and payloads, etc.
 More specifically this project contains the following slots.
 
 * __[crypto.rsa.create-key]__ - Creates a new RSA keypair
@@ -17,14 +18,14 @@ More specifically this project contains the following slots.
 * __[crypto.fingerprint]__ - Creates a fingerprint of something
 * __[crypto.get-key]__ - Returns the fingerprint of the public key associated with message
 * __[crypto.random]__ - CSRNG creating random seeds for you
-* __[crypto.hash]__ - Hashes some message or payload using the specified **[algo]** or **[algorithm]**
-* __[crypto.hash.md5]__ - MD5 hashes some message or payload
-* __[crypto.hash.sha1]__ - SHA1 hashes some message or payload
-* __[crypto.hash.sha256]__ - SHA256 hashes some message or payload
-* __[crypto.hash.sha384]__ - SHA384 hashes some message or payload
-* __[crypto.hash.sha512]__ - SHA512 hashes some message or payload
-* __[crypto.password.hash]__ - Creates a Blowfish per salted hash
-* __[crypto.password.verify]__ - Verifies a Blowfish salted hash
+* __[crypto.hash]__ - Hash some message or payload using the specified **[algo]** or **[algorithm]**
+* __[crypto.hash.md5]__ - MD5 hash some message or payload
+* __[crypto.hash.sha1]__ - SHA1 hash some message or payload
+* __[crypto.hash.sha256]__ - SHA256 hash some message or payload
+* __[crypto.hash.sha384]__ - SHA384 hash some message or payload
+* __[crypto.hash.sha512]__ - SHA512 hash some message or payload
+* __[crypto.password.hash]__ - Creates a Blowfish uniquely salted hash
+* __[crypto.password.verify]__ - Verifies a Blowfish uniquely salted hash
 * __[crypto.encrypt]__ - High level slot combining RSA and AES to encrypt some message
 * __[crypto.decrypt]__ - High level slot combining RSA and AES to decrypt some message
 * __[crypto.sign]__ - High level slot to sign some message
@@ -37,8 +38,8 @@ This slot create a bunch of random characters, or bytes for you.
 The slot can optionally take a **[min]** and **[max]** argument, which defines the min/max length of the
 random bytes/characters returned. If not supplied, the default values for these arguments are respectively 10 and 20.
 This slot is useful for creating random secrets, and similar types of random strings, where you need cryptographically
-secured random strings. An example of generating a cryptographically secure random string of text, between 50 and
-100 characters in lenght, can be found below.
+secured random strings or byte arrays. An example of generating a cryptographically secure random string of text
+between 50 and 100 characters in lenght can be found below.
 
 ```
 crypto.random
@@ -50,7 +51,7 @@ Notice, the **[crypto.random]** slot will _only_ return characters from a-z, A-Z
 it easily traversed using any string library. However, you can provide a **[raw]** argument, and set its
 value to boolean true, at which point the slot will return the raw bytes as a `byte[]`. This has a much
 larger amount of entropy than simply using alphanumeric characters for the same size - Which is
-important as you start creating keys for AES encryption, etc.
+important as you start creating keys for AES cryptography operations etc.
 
 ## [crypto.hash] and [crypto.hash.xxx]
 
@@ -75,16 +76,16 @@ To override the hashing algorithm used when creating hash values, apply an **[al
 set its value to the hashing algorithm you want to use. You can choose between the following hashing
 algorithms as you consume the above slot.
 
-* SHA1
-* MD5
-* SHA256
-* SHA384
-* SHA512
+* sha1
+* md5
+* sha256
+* sha384
+* sha512
 
-**Notice** - SHA1 and MD5 is supported _only_ for legacy reasons, and _should not be used_ unless you have
-a legacy system depending upon it. Sha1 and MD5 are considered weak today.
-
-This slot also contains convenience overloads with the hashing algorithm being a part of the name of the
+**Notice** - sha1 and md5 is supported _only_ for legacy reasons, and _should not be used_ unless you have
+a legacy system depending upon it. Sha1 and md5 are considered weak today due to the statistical probability
+of that they can result in what's commonly referred to as _"hash collision"_.
+This project also contains convenience overloads with the hashing algorithm being a part of the name of the
 invocation, such as illustrated below.
 
 * __[crypto.hash.sha1]__
@@ -93,13 +94,19 @@ invocation, such as illustrated below.
 * __[crypto.hash.sha384]__
 * __[crypto.hash.sha512]__
 
-In addition you canhash a file directly, without having to load it first, by providing a **[filename]** argument
+In addition you can hash a file directly, without having to load it first, by providing a **[filename]** argument
 to it, such as illustrated below.
 
 ```
 crypto.hash.sha256
    filename:/README.md
 ```
+
+### About fingerprints
+
+The fingerprint format resulting from a hash invocation is useful due to being much more easily read by
+humans, and in such a regard better suited for being stored as a key reference into for instance a database,
+and/or transmitted as a key reference over the network to other machines.
 
 ## [crypto.seed]
 
@@ -117,7 +124,9 @@ a _"super paranoid"_ solution to ensure extremely large amounts of entropy in it
 instance. If you wish to further seed the CSRNG, you can invoke at any point in time, with some random
 humanly provided gibberish, further adding to its entropy, which later will be used when ever
 some cryptographically secured random strings or bytes are required, such as when generating key pairs,
-using combination cryptography, etc.
+using combination cryptography, etc. Such seed invocations are _"cummulative"_ and _adds_ to the existing
+entropy, implying for each invocation to **[crypto.seed]**, the CSRNG engine of Magic becomes more
+unpredictable.
 
 ## Cryptography
 
@@ -185,7 +194,7 @@ The **[seed]** is optional, and even if you don't provide a seed argument, the d
 enough to avoid predictions. Depending upon your paranoia level, you might want to manually seed the above
 slot by having users type in random text as they generate keys. A major security concern in cryptography is CSRNG,
 or what's referred to as _"Cryptographically Secure Random Number Generators"_, which aren't always as cryptographically
-secure as we might think, since if its seeds are predictable, the random bytes it generates can easily be _"replayed"_.
+secure as we might think, since if its seed is predictable, the random bytes it generates can easily be _"replayed"_.
 
 A good strength for an RSA key, is considered to be 4096, which developers around the world feels are secure enough
 to avoid brute force _"guessing"_ of your private key. According to what we know about cryptography, all other concerns
@@ -262,7 +271,6 @@ will internally base64 encode the encrypted data for simplicity reasons, allowin
 since encryption will result in a byte array, which is often inconvenient to handle.
 You can override this by passing in a **[raw]** argument, and set its value to true, at which point a `byte[]` will be
 returned.
-
 You can also supply **[raw]** as you invoke **[crypto.rsa.decrypt]** if you know the content in the message is
 not a string, but rather an array of `byte[]`. Base64 encoding a byte array normally makes it larger in size,
 and also require CPU resources in both ends of the communication, implying it is sometimes important to have the
@@ -278,6 +286,7 @@ the data, and the key must either be 128, 192 or 256 bits long. Below is an exam
 ```
 crypto.aes.encrypt:Howdy, this is cool
    password:Howdy World this is a passphrase that guarantees 256 bits strength
+
 crypto.aes.decrypt:x:-
    password:Howdy World this is a passphrase that guarantees 256 bits strength
 ```
@@ -290,7 +299,7 @@ while avoiding reducing entropy, making it harder to crack the encrypted message
 
 Even though AES has low bit strength, it's still considered one of the strongest forms of cryptography
 that exists, assuming you use it *correctly*. For the record, this library does *not* use the built in
-AES library from .Net, which has several security issues, due to the way it handles padding, among other
+AES library from .Net, which has several security issues, due to the way it handles padding among other
 things - Neither does this library simply convert strings to `byte[]` arrays using `Encoding.UTF.GetBytes`,
 which *significantly* reduces entropy, and makes your message easily cracked by a malicious agent with
 some resources. Instead Magic uses Bouncy Castle, which does not have these security holes, in addition
@@ -321,6 +330,12 @@ crypto.random
    min:32
    max:32
    raw:true
+
+crypto.aes.encrypt:Some very, very, very secret text
+   password:x:@crypto.random
+
+crypto.aes.decrypt:x:-
+   password:x:@crypto.random
 ```
 
 ## Combining RSA and AES cryptography
@@ -363,9 +378,7 @@ crypto.decrypt:x:-
 **Notice** - We're using only 512 bit strength in the above example. Make sure you (at least) use
 2048, preferably 4096 in real world usage. The **[crypto.encrypt]** slot can also optionally handle
 a **[seed]** argument, which will seed the CSRNG that's used to generate a symmetric AES encryption
-key.
-
-To understand what occurs in the above Hyperlambda example, let's walk through it step by step,
+key. To understand what occurs in the above Hyperlambda example, let's walk through it step by step,
 starting from the **[crypto.encrypt]** invocation.
 
 1. The message _"Some super secret message"_ is first cryptographically signed using the private **[signing-key]**
@@ -416,16 +429,16 @@ Only after the message is verified, the actual content of the message is possibl
 value of the **[crypto.verify]** slot - Unless you pass in a **[verify-key]** during the invocation
 to **[crypto.decrypt]**, at which point that key will be used to verify the signature of the message,
 after the package has been decrypted.
-
 If the above invocation to **[crypto.verify]** does not throw an exception, we know for a fact that
 the message was cryptographically signed with the private key that matches its **[public-key]** argument.
-Normally the fingerprint of the sender's key is asssociated with some sort of _"authorisation object"_
+Normally the fingerprint of the sender's key is asssociated with some sort of _"authorization object"_
 to elevate the rights of the user, only *after* having verified the message originated from a trusted
 party.
 
 Hence, from the caller's perspective it's *one* invocation to encrypt and sign a message. From the receiver's
 perspective it's normally *two* steps to both decrypt and verify the integrity of a message, unless you know who
-the message originated from.
+the message originated from, and you've already loaded the correct public key to verify the signature of
+the message.
 
 **Notice** - We're using only 512 bit strength in the above example. Make sure you (at least) use
 2048, preferably 4096 in real world usage.
@@ -476,7 +489,7 @@ encryption key was encrypted with.
 
 As a general security rule of thumb, passwords should never be stored in clear text, but persisted into for
 instance a database as _"slowly hashed values with per record based salts"_. This prevents a whole range of
-security issues, such as having adversaries creating Rainbod Dictionary attacks on your passwords. This
+security issues, such as having adversaries creating Rainbow Dictionary attacks on your passwords. This
 project contains two slots to implement this, and these are as follows.
 
 * __[crypto.password.hash]__ - Creates a password hash
@@ -486,6 +499,7 @@ Example usage can be found below.
 
 ```
 crypto.password.hash:SomePasswordHere
+
 crypto.password.verify:SomePasswordHere
    hash:x:@crypto.password.hash
 ```
@@ -494,8 +508,8 @@ The first slot invocation creates a Blowfish hash, while the second slot invocat
 created Blowfish hash, given the password as its main argument. If you exchange the second password given
 to **[crypto.password.verify]** by for instance adding one random character to it, the result will be
 `false` from the second invocation.
-
-Internally these are the slots Magic uses when it creates its JWT authentication database, and its endpoints.
+Internally these are the slots Magic uses when it creates its JWT authentication database, and stores
+passswords into your Magic database.
 
 ## Project website
 

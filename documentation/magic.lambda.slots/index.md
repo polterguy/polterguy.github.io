@@ -100,7 +100,7 @@ the magic.lambda project. Inside your slots though any **[whitelist]** invocatio
 allowing you to whitelist a single dynamic slot, for then to ignore what the slot itself is doing internally.
 This _might_ create security issues for you if you have dynamically created slots that for some reasons
 execute lambda object supplied to them. Hence as a general rule of thumb, you should _avoid_ whitelisting
-such slots.
+slots that executes lambda objects supplied to them.
 
 ### [slots.get]
 
@@ -109,6 +109,7 @@ Returns the entire lambda code for a previously created dynamic slot. Example ca
 ```
 slots.create:foo
    return-value:int:57
+
 slots.get:foo
 ```
 
@@ -119,6 +120,7 @@ Deletes a previously created dynamic slot. The following example _will throw an 
 ```
 slots.create:foo
    return-value:int:57
+
 slots.delete:foo
 
 // Throws exception, since [foo] no longer exists.
@@ -128,25 +130,29 @@ slots.get:foo
 ### [return-nodes]
 
 Returns a bunch of nodes (lambda) from your slot. Can only be invoked from the inside of
-a dynamically created slot. Example below.
+a dynamically created slot, and other slots explicitly creating a return context. An example can be
+found below.
 
 ```
 slots.create:foo
    return-nodes
       integer-value:int:57
       string-value:Foo bar
-slots.invoke:foo
+
+signal:foo
 ```
 
 ### [return-value]
 
 Returns a single value from your slot. Can only be invoked from the inside of
-a dynamically created slot. Example below.
+a dynamically created slot, and other slots explicitly creating a return context. An example can be
+found below.
 
 ```
 slots.create:foo
    return-value:This becomes the returned value from your slot
-slots.invoke:foo
+
+signal:foo
 ```
 
 ### [slots.exists]

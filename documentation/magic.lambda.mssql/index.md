@@ -1,5 +1,5 @@
 
-# Using Microsoft SQL Server with Hyperlambda
+# Using Microsoft SQL Server from Hyperlambda
 
 This is the Microsoft SQL Server data adapter for Magic. This project allows you to provide a semantic
 lambda structure to its slots, which in turn will dynamically create a SQL Server dialect SQL statement
@@ -12,7 +12,7 @@ SQL Server database. Slots this project contains are as follows.
 * __[mssql.read]__ - Reads multiple records from the specified table
 * __[mssql.update]__ - Updates a single record in the specified table
 * __[mssql.delete]__ - Deletes a single record in the specified table
-* __[mssql.select]__ - Executes an arbitrary SQL statement, and returns results of reader as lambda object to caller
+* __[mssql.select]__ - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
 * __[mssql.scalar]__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
 * __[mssql.execute]__ - Executes an aribitrary SQL statement
 * __[mssql.transaction.create]__ - Creates a new transaction
@@ -28,8 +28,7 @@ change it in any ways.
 All of the slots in this project are documented in the documentation for the _"magic.data.common"_ project.
 If you replace the **[data.xxx]** or **[sql.xxx]** slots with **[mssql.xxx]**, you will use the SQL Server
 specific slots, instead of the generic, and/or polymorphistic slots.
-
-Hence, please refer to the documentation for _"magic.data.common"_ to read the documentation for this
+Hence, please refer to the documentation for _"magic.data.common"_ to see the complete documentation for this
 project.
 
 ## Project website

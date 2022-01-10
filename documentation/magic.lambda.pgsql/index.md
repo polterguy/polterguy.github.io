@@ -12,7 +12,7 @@ this project contains are as follows.
 * __[pgsql.read]__ - Reads multiple records from the specified table
 * __[pgsql.update]__ - Updates a single record in the specified table
 * __[pgsql.delete]__ - Deletes a single record in the specified table
-* __[pgsql.select]__ - Executes an arbitrary SQL statement, and returns results of reader as lambda object to caller
+* __[pgsql.select]__ - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
 * __[pgsql.scalar]__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
 * __[pgsql.execute]__ - Executes an aribitrary SQL statement
 * __[pgsql.transaction.create]__ - Creates a new transaction
@@ -28,8 +28,7 @@ change it in any ways.
 All of the slots in this project are documented in the documentation for the _"magic.data.common"_ project.
 If you replace the **[data.xxx]** or **[sql.xxx]** slots with **[pgsql.xxx]**, you will use the PgSQL specific
 slots, instead of the generic, and/or polymorphistic slots.
-
-Hence, please refer to the documentation for _"magic.data.common"_ to read the documentation for this
+Hence, please refer to the documentation for _"magic.data.common"_ to see the complete documentation for this
 project.
 
 ## Project website

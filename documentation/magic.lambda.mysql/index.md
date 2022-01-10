@@ -12,7 +12,7 @@ this project contains are as follows.
 * __[mysql.read]__ - Reads multiple records from the specified table
 * __[mysql.update]__ - Updates a single record in the specified table
 * __[mysql.delete]__ - Deletes a single record in the specified table
-* __[mysql.select]__ - Executes an arbitrary SQL statement, and returns results of reader as lambda object to caller
+* __[mysql.select]__ - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
 * __[mysql.scalar]__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
 * __[mysql.execute]__ - Executes an aribitrary SQL statement
 * __[mysql.transaction.create]__ - Creates a new transaction
@@ -28,8 +28,7 @@ change it in any ways.
 All of the slots in this project are documented in the documentation for the _"magic.data.common"_ project.
 If you replace the **[data.xxx]** or **[sql.xxx]** slots with **[mysql.xxx]**, you will use the MySQL specific
 slots, instead of the generic, and/or polymorphistic slots.
-
-Hence, please refer to the documentation for _"magic.data.common"_ to read the documentation for this
+Hence, please refer to the documentation for _"magic.data.common"_ to see the complete documentation for this
 project.
 
 ## Project website

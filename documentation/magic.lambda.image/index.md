@@ -1,5 +1,5 @@
 
-# Creating images and QR code using Hyperlambda
+# Creating images and QR codes with Hyperlambda
 
 Image manipulation library for Magic, allowing you to do basic manipulation of images, in addition to generating
 QR codes. More specifically this project contains the following slot.
@@ -12,13 +12,13 @@ You can use the **[qr.generate]** slot to create a QR code. This slot returns th
 allows you to return its output directly over the HTTP response object, which again will persist the QR code
 back as the response to the caller if you're in a web project of some sort using Magic. The slot takes two arguments.
 
-* Value of node - Mandatory string to become the content of the generated QR code
+* Value of node - Mandatory string, or an expression leading to a string, which is to become the content of the generated QR code
 * __[size]__ - Optional argument declaring the size of your QR code
 
 Below is an example of usage
 
 ```
-qr.generate:"https://anarq.org"
+qr.generate:"https://docs.aista.com"
    size:8
 ```
 
