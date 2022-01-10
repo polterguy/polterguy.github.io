@@ -19,15 +19,15 @@ arguments, allowing you to think about it as a _function_. To compare this to th
 have implemented this, imagine the equal operator as a function, such as the following pseudo code illustrates.
 
 ```
-equals(arg1, arg1)
+equals(lhs, rhs)
 ```
 
 The actual Hyperlambda code that would be the equivalent of the above pseudo code, can be found below.
 
 ```
 eq
-   .:arg1
-   .:arg2
+   .:lhs
+   .:rhs
 ```
 
 As you study Hyperlambda it might be beneficial to use the _"Eval"_ component that you can find in its
