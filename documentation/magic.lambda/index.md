@@ -197,12 +197,12 @@ an example.
 
 for-each:x:@.data/*
 
-// Comment's indenatation is IMPORTANT
+// THIS IS WRONG!
    set-value:x:@.dp/#
       .:Loop was here ...
 ```
 
-Since Hyperlambda is using spaces (SP characters) to denote scope, indentation is _important_,
+Since Hyperlambda is using spaces (SP characters) to denote scope, indentation _is important_,
 also for comments. If you de-indent the above comment, you might get unpredictable results, in particular
 if you're serializing and de-serializing your Hyperlambda preserving comments.
 
