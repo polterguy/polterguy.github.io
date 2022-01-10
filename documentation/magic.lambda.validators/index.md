@@ -14,7 +14,7 @@ This project contains input validators for Magic. More specifically it contains 
 
 All of the above slots takes an expression, or values, as its main input, and will throw exceptions if their input expression's
 value(s), or its value, does not follow the rules specified by the validator. This makes them perfect fits for _"intercepting"_ the
-input specified to an HTTP REST endpoint, to verify the input data conforms to some sort of predefined validator.
+input specified to an HTTP REST endpoint, to verify the input data conforms to some sort of predefined validation scheme.
 
 ## Usage
 
@@ -47,8 +47,9 @@ You can use one invocation to any of the validators to validate multiple nodes, 
    .
       no:10
    .
-      // Throws
+      // Throws if you remove the "."
       .no:11
+
 validators.integer:x:@.arguments/*/*/no
    min:5
    max:10
@@ -59,7 +60,7 @@ not validated according to the validtor's arguments - Which for the above exampl
 validater will throw an exception, providing the invalid value, and the name of the last iterator (effectively being the argument name)
 to the caller. This allows you to use *one single validator* to validate multiple arguments, such as the above illustrates.
 This might be useful if you for instance have an endpoint accepting multiple address fields, and zip code is a mandatory
-argument, and it needs to be an integer.
+argument, and it needs to be an integer with a **[max]** and **[min]** value.
 
 ## Project website
 

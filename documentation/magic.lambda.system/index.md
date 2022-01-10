@@ -5,7 +5,7 @@ This project contains _"system slots"_ to be able to invoke system commands. Mor
 contains the following slots.
 
 * __[system.terminal.create]__ - Creates a new terminal process on the server
-* __[system.terminal.write-line]__ - Writes a line/command to a previously opened terminal process on the server
+* __[system.terminal.write-line]__ - Writes a line/command to a previously created terminal process on the server
 * __[system.terminal.destroy]__ - Destroys/kills a previously created terminal process on the server
 * __[system.execute]__ - Execute the specified command returning the result to caller
 
@@ -65,7 +65,6 @@ system.terminal.destroy:my-terminal
 All terminal slots _requires a name_ to be able to uniquely identify _which_ instance you wish to create,
 write to, or destroy. This allows you to create as many terminals as you wish on your server, only restricted
 by memory on your system, and/or your operating system of choice.
-
 The terminal slots works transparently for both Windows, Linux and Mac OS X, except of course the commands
 you pass into them will differ depending upon your operating system.
 

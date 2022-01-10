@@ -4,10 +4,10 @@
 This project provides web sockets hooks for for Magic.
 The main idea of the project, is that it allows you to resolve Hyperlambda files, execute these,
 passing in a URL and JSON arguments over a web socket connection - In addition to subscribing to messages
-published by the server over a web socket connection. The project builds upon SignalR, but the internals are
-completely abstracted away, and you could probably easily exchange SignalR with any other web socket
-library with similar capabilities. The project contains one socket SignalR hub method with
-the following signature.
+published by the server over a web socket connection from some client of your choosing. The project builds
+upon SignalR, but the internals are completely abstracted away, and you could probably easily exchange
+SignalR with any other web socket library with similar capabilities. The project contains one socket
+SignalR hub method with the following signature.
 
 ```
 execute(string file, string json);
@@ -98,7 +98,8 @@ you do.
 * __[groups]__ - Comma separated list of groups to send message to
 * __[args]__ - Arguments to transmit to subscribers as JSON (string)
 
-Only one of **[users]**, **[roles]** or **[groups]** can be supplied, and all the above arguments are optional.
+Only one of **[users]**, **[roles]**, **[clients]**, or **[groups]** can be supplied, and all
+the above arguments are optional.
 
 ## Groups and users
 
@@ -143,6 +144,7 @@ sockets.users
    filter:some-filter-condition
    offset:3
    limit:20
+
 sockets.users.count
    filter:some-filter-condition
 ```
@@ -151,7 +153,6 @@ sockets.users.count
 not have a username, and the default userId will be returned instead. Also please notice, that each
 user might have multiple connections, and this will return each connection for each username matching
 the specified filter condition.
-
 The filter conditions and paging arguments are optional, and will be `null` and `0-10` if not specified.
 
 ## Connection context

@@ -133,7 +133,7 @@ nav_sections:
         name: magic.lambda.sockets
       - url: /documentation/magic.lambda.system/
         name: magic.lambda.system
-  - name: Docs core
+  - name: Docs utilities
     items:
       - url: /documentation/magic.node/
         name: magic.node
