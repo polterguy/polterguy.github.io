@@ -237,8 +237,9 @@ your vocabulary.
 
 This is the by far most important slot in Hyperlambda, since it's arguably _"the heart"_ of Hyperlambda,
 allowing Hyperlambda to execute Hyperlambda. This slot executes the specified lambda object(s) assumed
-to exist eitehr as a single lambda object in its children collection, or as an expression leading to
-one or more nodes where each of these nodes will be executed.
+to exist either as a lambda in its children collection, or as an expression leading to one or more nodes
+where each of these nodes will be executed. The example below illustrates how to use **[eval]** with
+an expression.
 
 ```
 .res
@@ -248,6 +249,38 @@ one or more nodes where each of these nodes will be executed.
       .:OK
 
 eval:x:@.lambda
+```
+
+Notice, you could have multiple **[.lambda]** nodes in the above Hyperlambda, at which point _all_
+of these would be executed consecutively. Below is an example.
+
+```
+.res:
+
+.lambda
+   set-value:x:@.res
+      strings.concat
+         get-value:x:@.res
+         .:" OK 1 "
+
+.lambda
+   set-value:x:@.res
+      strings.concat
+         get-value:x:@.res
+         .:" OK 2 "
+
+eval:x:../*/.lambda
+```
+
+You can also provide the lambda object as children of the **[eval]** node itself, such as the following
+illustrates.
+
+```
+.res
+
+eval
+   set-value:x:@.res
+      .:Yup!
 ```
 
 Notice, the **[eval]** slot is _not_ immutable, as in it has access to the outer graph object such as
