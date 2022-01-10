@@ -1083,7 +1083,10 @@ fork
 
 To understand how **[fork]** works, you can imagine your computer's CPU as a single river,
 running down hill, and at some point the river divides into two equally large rivers. This is
-referred to as _"a fork"_.
+referred to as _"a fork"_. The analogy of the river becomes important for another reason, which
+is the understanding of that the total amount of water is still the same, it's only parted
+into two smaller rivers - Implying you cannot _"do more"_ with multi tasking, you can only
+equally share the same amount of resources as you had from before to do one task.
 
 ### [join]
 
