@@ -3,15 +3,15 @@
 
 magic.lambda is where you will find the _"keywords"_ of Hyperlambda.
 It is what makes Hyperlambda Turing complete, and contains slots such as **[for-each]**,
-**[if]** and **[while]**.
+**[if]**, and **[while]**.
 
 ## Structure
 
-Since _everything_ is a slot in Hyperlambda, this allows you to evaluate its conditional operators and logical operators,
+_Everything_ is a slot in Hyperlambda. This allows you to evaluate its conditional operators and logical operators
 the same way you would evaluate a function in a traditional programming language. This might at first seem a bit unintuitive
 if you come from a traditional programming language, but has a lot of advantages, such as allowing the computer to look
-at the entirety of your function objects as hierarchical tree structures, parsing them as such, and imagining these as
-_"execution trees"_.
+at the entirety of your function objects as a hierarchical tree structure, parsing it as such, and imagining your lambda
+objects as _"execution trees"_.
 
 For instance, in a normal programming language, the equal operator must have a left hand side (lhs), and a right hand
 side (rhs). In Hyperlambda this is not true, since the equal slot is the main invocation of a function, requiring two
