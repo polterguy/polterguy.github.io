@@ -1087,7 +1087,7 @@ referred to as _"a fork"_. The analogy of the river becomes important for anothe
 is the understanding of that the total amount of water is still the same, it's only parted
 into two smaller rivers - Implying you cannot _"do more"_ with multi tasking, you can only
 equally share the same amount of resources as you had before between two different tasks.
-Multithreading does not make your CPU faster, it only schedules your CPU's time on multiple
+Multi threading does not make your CPU faster, it only schedules your CPU's time on multiple
 things, doing these things concurrently.
 
 ### [join]
