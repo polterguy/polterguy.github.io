@@ -1,8 +1,9 @@
 
 # A Super Signal implementation for Hyperlambda
 
-Magic Signals is a _"Super Signals"_ implementation for .Net 5 built on top of [Magic Node](https://github.com/polterguy/magic.node),
-allowing you to invoke functions from one assembly in another assembly without having any direct references between the projects.
+magic.signals is a _"Super Signals"_ implementation for .Net 6 built on top of magic.node,
+allowing you to invoke functions from one assembly in another assembly without having any direct references between
+your projects.
 
 ## Rationale
 
@@ -11,9 +12,9 @@ Below you can find a couple of articles written about the idea by yours truly.
 * [Super Signals - DZone](https://dzone.com/articles/super-signals-in-aspnet-core)
 * [Super Scalable Software Systems](https://dzone.com/articles/the-http-protocol-and-super-scalable-software-syst)
 
-The above is made possible by always having a YALOA, allowing us to invoke methods in classes to the caller, through a _"magic string"_,
-which references a type, in a dictionary, where the string is its key, and the types are dynamically loaded during startup
-of your AppDomain. Imagine the following code.
+The above is made possible by always having a YALOA, allowing us to invoke methods in classes through
+a _"magic string"_, which references a type in a dictionary, where the string is its key, and the types
+are dynamically loaded during startup of your AppDomain. Imagine the following code.
 
 ```csharp
 [Slot(Name = "foo.bar")]
@@ -58,7 +59,7 @@ keeping the strongly typing around for cases where you need strongly typing - Al
 want to use, based upon individual use cases, and not having the language and platform dictate your choices in these
 regards.
 
-The Magic Signals implementation uses `IServiceProvider` to instantiate your above `FooBar` class when it
+The magic.signals implementation uses `IServiceProvider` to instantiate your above `FooBar` class when it
 wants to evaluate your slot. This makes it behave as a good IoC citizen, allowing you to pass in for instance
 interfaces into your constructor, and have the .Net dependency injection automatically create objects
 of whatever interface your slot implementation requires.
@@ -137,8 +138,8 @@ return signaler.SignalAsync("foo.bar", args, () => { /* ... This will happen AFT
 
 ## Magic Signals a DSL
 
-A lot of the idea behind Magic Signals is that combined with [Magic Node](https://github.com/polterguy/magic.node),
-and especially its ability to parse _"Hyperlambda"_, it becomes a very good foundation for a DSL, or a Domain Specific
+A lot of the idea behind Magic Signals is that combined with magic.node,
+and especially its ability to parse Hyperlambda, it becomes a very good foundation for a DSL, or a Domain Specific
 programming Language implementation, allowing you to easily create your own programming languages, and keywords,
 based upon Hyperlambda syntax trees. Hyperlambda in this context being the textual representation of your `Node`
 hierarchy.
