@@ -1,19 +1,19 @@
 
 # Scheduling and persisting tasks from Hyperlambda
 
-This project gives you the ability to create persisted and optionally scheduled Hyperlambda tasks
-for [Magic](https://github.com/polterguy.magic). More specifically it provides the following slots.
+This project gives you the ability to create persisted and scheduled Hyperlambda tasks
+for Magic. More specifically it provides the following slots.
 
-* __[tasks.create]__ - Creates a new task.
-* __[tasks.get]__ - Returns an existing task.
-* __[tasks.list]__ - Lists all tasks.
-* __[tasks.update]__ - Updates an existing task.
-* __[tasks.count]__ - Counts tasks in system.
-* __[tasks.execute]__ - Executes an existing task.
-* __[tasks.delete]__ - Deletes a task.
-* __[tasks.schedule]__ - Schedules an existing task.
-* __[tasks.schedule.delete]__ - Deletes an existing schedule.
-* __[tasks.scheduler.start]__ - Starts the task scheduler.
+* __[tasks.create]__ - Creates a new task
+* __[tasks.get]__ - Returns an existing task
+* __[tasks.list]__ - Lists all tasks
+* __[tasks.update]__ - Updates an existing task
+* __[tasks.count]__ - Counts tasks in system
+* __[tasks.execute]__ - Executes an existing task
+* __[tasks.delete]__ - Deletes a task
+* __[tasks.schedule]__ - Schedules an existing task
+* __[tasks.schedule.delete]__ - Deletes an existing schedule
+* __[tasks.scheduler.start]__ - Starts the task scheduler
 
 ## Creating a task
 
@@ -36,6 +36,7 @@ an example.
 tasks.create:foo-bar-task-2
    description:This task will do a little bit of foo and some bar afterwards.
    .lambda
+
       log.info:Executing foo-bar-task-2
 ```
 
@@ -54,6 +55,7 @@ tasks.create:foo-bar-task-3
    repeats:3.hours
    due:date:"2030-01-01T23:59:27"
    .lambda
+
       log.info:Executing foo-bar-task-2
 ```
 
@@ -65,15 +67,19 @@ You can also _update_ an existing task by using the **[tasks.update]** slot. Thi
 a task's description and its Hyperlambda, but you _cannot_ associate schedules with your task using this
 slot. If you've already created your task and you need to (re) schedule it, you'll need to combine the
 slots **[tasks.schedule]** and **[tasks.schedule.delete]** together. Below is an example of first creating
-a task for then to update it.
+a task for then to update it. Any existing schedules you've already associated with your task as you update
+it will not be changed.
 
 ```
 tasks.create:foo-bar-task-4
    .lambda
+
       log.info:Executing foo-bar-task-1
+
 tasks.update:foo-bar-task-4
    description:This is the foo bar task
    .lambda
+
       log.info:Another log entry now!
 ```
 
@@ -123,7 +129,7 @@ To list tasks, you can use the **[tasks.list]** signal. This slot optionally
 handles an **[offset]** and a **[limit]** argument, allowing you to page, which might be
 useful if you have a lot of tasks in your system. If no **[limit]** is specified, this signal
 will only return the first 10 tasks, including the task's Hyperlambda, but not its repetition
-pattern, or due date. Below is an example.
+pattern(s), or due date(s). Below is an example.
 
 ```
 tasks.list
@@ -138,7 +144,6 @@ Which implies that even if the server is stopped, all scheduled tasks and persis
 load up again, and be available and re-scheduled as the server is restarted. This _might_ imply that
 all tasks in the past are immediately executed, which is important for you to understand, since any tasks
 with a due date in the past, are executed immediately as the server restarts again.
-
 Tasks are by default persisted into your `tasks` table, and schedules are persisted into your
 `task_due` table.
 
@@ -146,8 +151,9 @@ Tasks are by default persisted into your `tasks` table, and schedules are persis
 
 The above allows you to persist a _"function invocation"_ for later to execute it, once some specific condition
 occurs - Effectively giving you the most important features from Microsoft Workflow Foundation, without the
-ridiculous XML and WYSIWYG - In addition to that this also is a .Net Core library, contrary
-to MWF that only works for the full .Net Framework.
+ridiculous XML and WYSIWYG features - In addition to that this also is a .Net Core library, contrary
+to MWF that only works for the full .Net Framework. The Hyperlambda task scheduler is also probably at
+least somewhere between 200 and 400 times faster than MWF, due to not needing any reflection.
 
 ## Scheduling tasks
 
@@ -159,6 +165,7 @@ a **[due]** argument being a date and time in the future for when you want to ex
 tasks.create:foo-bar-task-3
    .lambda
       log.info:Executing foo-bar-task-3
+
 tasks.schedule:foo-bar-task-3
    due:date:"2025-12-24T17:00"
 ```
@@ -193,10 +200,12 @@ for these types. See examples of this further below in this documentation.
 Evaluating your task every second/minute/hour/etc can be done by using something such as the following.
 
 ```
-tasks.create:task-id
+tasks.create:task-id-qwqw
    .lambda
+
       log.info:Executing repeating task
-tasks.schedule.create:task-id
+
+tasks.schedule:task-id-qwqw
    repeats:50.seconds
 ```
 
@@ -204,10 +213,12 @@ The above will evaluate your task every 50 second. The above _"seconds"_ can be 
 repeating _very rarely_, such as the following illustrates.
 
 ```
-tasks.create:task-id
+tasks.create:task-id-qwerty123
    .lambda
+
       log.info:Executing seldomly repeating task once every 10 year
-tasks.schedule:task-id
+
+tasks.schedule:task-id-qwerty123
    repeats:3650.days
 ```
 
@@ -227,10 +238,12 @@ To create a task that is executed on the first day of _every_ month, at 5PM, you
 repetition pattern.
 
 ```
-tasks.create:task-id
+tasks.create:task-id-xyx
    .lambda
+
       log.info:It is the 1st of the month, any month, and the time is 5AM at night.
-tasks.schedule:task-id
+
+tasks.schedule:task-id-xyx
    repeats:**.01.05.00.00
 ```
 
@@ -242,7 +255,9 @@ in January and February, but only on the 5th and 15th of these months.
 ```
 tasks.create:task-id
    .lambda
+
       log.info:It is the 5th or the 15th of January or February, and the time is 5AM at night.
+
 tasks.schedule:task-id
    repeats:01|02.5|15.05.00.00
 ```
@@ -251,10 +266,12 @@ By using the double asterix for month and day of month, you can create a task th
 some specific time of the day (UTC time). Below is an example.
 
 ```
-tasks.create:task-id
+tasks.create:task-id-555
    .lambda
+
       log.info:It is the 10PM now.
-tasks.schedule:task-id
+
+tasks.schedule:task-id-555
    repeats:**.**.22.00.00
 ```
 
@@ -275,14 +292,17 @@ To evaluate a task every Saturday and Sunday for instance, you can use `saturday
 Below is an example. Notice, weekdays are case insensitive.
 
 ```
-tasks.create:task-id
+tasks.create:task-id-567
    .lambda
+
       log.info:It is Saturday or Sunday, and the time is 22PM.
-tasks.schedule:task-id
+
+tasks.schedule:task-id-567
    repeats:saturday|SUNDAY.22.00.00
 ```
 
 You can also provide a double asterix (\*\*) for the weekdays pattern, implying _"all days of the week"_.
+Notice how weekdays are case-insensitive as illustrated above.
 
 ### Creating your own repetition pattern
 
@@ -313,10 +333,9 @@ private class ExtPattern : IRepetitionPattern
 }
 ```
 
-Of course, the above `IRepetitionPattern` will statically resolve to the 11th of November 2030, at 23:11:57. But
+The above `IRepetitionPattern` will statically resolve to the 11th of November 2030, at 23:11:57. But
 the idea is that the `args` supplied during creation, can be used to parametrize your pattern, and
 calculate the next due date for your schedule.
-
 After you have declared your custom `IRepetitionPattern` type, you'll need to inform the `PatternFactory` class
 that you want to use the above class, and resolve it using some specific key from your schedules.
 This is accomplished using something resembling the following code.
@@ -334,20 +353,21 @@ The above code will ensure that every time you use _"custom-type"_ as a repetiti
 the create function above will be invoked, allowing you to create and decorate an instance of your
 custom `IRepetitionPattern` type. The `str` argument to your above create function, will be everything
 after the `ext:custom-type:` parts, when creating an instance of your pattern.
-
 To use the above pattern in your own code, you can use something such as the following.
 
 ```
 tasks.create:custom-repetition-pattern
    .lambda
+
       log.info:Executing custom-repetition-pattern
+
 tasks.schedule:custom-repetition-pattern
    repeats:"ext:custom-pattern:some-arguments-here"
 ```
 
 In the above **[repeat]** argument, the `ext` parts informs the scheduler that you want to use a
 custom repetition pattern, the `custom-pattern` parts resolves to your `IRepetitionPattern` create function,
-and the _"some-arguments-here"_ parts will be passed into your above `ExtPattern` constructor, and allows
+and the _"some-arguments-here"_ parts will be passed into your above `ExtPattern` constructor allowing
 you to parametrize your pattern any ways you see fit.
 
 ### [tasks.scheduler.start]
@@ -367,11 +387,16 @@ parallel at the same time, resulting in any tasks beyond that will be queued up 
 another task to finish before it's allowed to execute. This prevents the task scheduler from exhausting
 your backend server due to too many threads executing at the same time.
 
+If you have a lot of tasks that are scheduled to repeat often, and all your tasks are doing a lot
+of IO, you might want to increase the number of concurrently executed tasks to a higher value, since
+as your tasks are waiting for IO, the thread they're executing on will be released back to
+the operating system, implying the task will not block a thread as it waits for IO.
+
 ### Internals
 
 One `System.Threading.Timer` object will be created for each due date/repetition pattern you have, and kept
 in memory of your Magic server, which doesn't lend itself to thousands of schedules for obvious reasons - But
-due to the mechanics of how these are implemented at the system level is still fairly scalable for most
+due to the mechanics of how these are implemented at the system level, this is still highly scalable for most
 solutions.
 
 When a repeating task has finished executed, the next due date for the task's execution will be calculated using
