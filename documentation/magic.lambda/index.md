@@ -607,10 +607,10 @@ if:bool:true
          .:Yup!
 ```
 
-In the above code we can see that the first **[or]** node evaluated to `false`, but since the second **[or]**
-evaluated to true, the or as a whole evaluated to `true`. If you change its **[.foo2]** data node to boolean `true`,
-you will see that your second **[or]** invocation never even is considered, since the logical or is said to
-have _"short circuited"_.
+In the above code we can see that the first child of our above **[or]** node evaluates to `false`, but since the
+second child of our **[or]** node evaluates to true, the **[or]** as a whole evaluates to `true`. If you change
+its **[.foo2]** data node to boolean `true`, you will see that your second child of **[or]** never even is
+considered, since your **[or]** invocation is _"short circuiting"_.
 
 ## Modifying your graph
 
