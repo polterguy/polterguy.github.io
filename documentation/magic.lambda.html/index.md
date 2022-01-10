@@ -16,6 +16,7 @@ This project provides HTML helper slots for Magic. More specifically, it provide
     <p class=""foo""></p>
   </body>
 </html>"
+
 html2lambda:x:-
 ```
 
