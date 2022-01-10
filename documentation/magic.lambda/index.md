@@ -204,16 +204,12 @@ for-each:x:@.data/*
 
 Since Hyperlambda is using spaces (SP characters) to denote scope, indentation _is important_,
 also for comments. If you de-indent the above comment, you might get unpredictable results, in particular
-if you're serializing and de-serializing your Hyperlambda preserving comments.
+if you're serializing and de-serializing your Hyperlambda preserving comments. Comments should as a general
+rule of thumb be applied with the same amount of indentation as the node below them.
 
-## Lambda expressions
+## Data segments
 
-To understand Hyperlambda, and how to efficiently create your own Hyperlambda, you'll have to understand
-_"lambda expressions"_. These are kind of like XPath expressions. However, instead of referencing XML
-nodes, lambda expressions are referencing lambda nodes. This allows you to retrieve node names, values,
-and their children collection - For either to manipulate these, or read their values and react accordingly.
-
-**Notice** - Hyperlambda does not separate between a _"variable"_ and a _"function invocation"_. Hence, a node
+Hyperlambda does not separate between a _"variable"_ and a _"function invocation"_. Hence, a node
 might serve as both at the same time. This allows you to dynamically modify your lambda structure, as you
 traverse it and execute it. But this creates another problem for you, which is that you will need
 a mechanism to store data. This is accomplished by prefixing a node's name with a "." character, at which point
