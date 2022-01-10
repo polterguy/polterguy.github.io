@@ -203,7 +203,8 @@ for-each:x:@.data/*
 ```
 
 Since Hyperlambda is using spaces (SP characters) to denote scope, indentation is _important_,
-also for comments. If you de-indent the above comment, you might get unpredictable results.
+also for comments. If you de-indent the above comment, you might get unpredictable results, in particular
+if you're serializing and de-serializing your Hyperlambda preserving comments.
 
 ## Lambda expressions
 
