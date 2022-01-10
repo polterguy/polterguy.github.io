@@ -8,7 +8,7 @@ Logging wrapper slots for Magic. More specifically, this project provides the fo
 * __[log.error]__ - Error log entries, typically exceptions
 * __[log.fatal]__ - Fatal log entries, from which the application cannot recover from
 
-By default, this project will log into your `magic.log_entries` database/table, using either MySQL or
+By default, this project will log into your `magic.log_entries` database/table, using either MySQL, PostgreSQL, or
 Microsoft SQL Server. This allows you to use SQL to generate statistics on top of your logs. An example of
 logging an info piece of information can be found below.
 
@@ -18,14 +18,13 @@ log.info:Howdy world from magic.lambda.logging!
 
 **Notice** - You can supply content to your log item two different ways. Either as a piece of string, or if you choose
 to set its value to nothing, it will concatenate all children node's values, after having evaluated it as a lambda
-collection. This allows you to create rich log entries, based upon evaluating the children of the log invocation.
-This provides a convenient shortcut for you to create log entries that have as their content, strings concatenated
-together, without having to manually concatenate them yourself.
-
-An example of the latter can be found below.
+object. This allows you to create rich log entries, based upon evaluating the children of the log invocation.
+This gives you a convenience shortcut to create log entries that have strings concatenated as their content,
+without having to manually concatenate them yourself. An example of the latter can be found below.
 
 ```
 .a:foo bar
+
 log.info
    .:'A value is '
    get-value:x:@.a

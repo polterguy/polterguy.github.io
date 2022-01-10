@@ -1,24 +1,25 @@
 
 # Caching with Magic and Hyperlambda
 
-Cache helper slots for Magic, more specifically the following slots.
+Cache helper slots for Magic. More specifically this project provides the following slots.
 
-* __[cache.set]__ - Adds the specified item to the cache.
-* __[cache.get]__ - Returns a previously cached item, if existing.
-* __[cache.try-get]__ - Attempts to retrieve an item from cache, and if not existing, invokes __[.lambda]__ to retrieve item, and saves it to cache, before returning it to the caller.
-* __[cache.clear]__ - Completely empties cache.
-* __[cache.list]__ - Lists all items in cache.
-* __[cache.count]__ - Returns the number of cache items in total.
+* __[cache.set]__ - Adds the specified item to the cache
+* __[cache.get]__ - Returns a previously cached item, if existing
+* __[cache.try-get]__ - Attempts to retrieve an item from cache, and if not existing, invokes __[.lambda]__ to retrieve item, saves the resulting object to the cache, before returning the result to caller
+* __[cache.clear]__ - Completely empties cache, optionally taking a filter condition
+* __[cache.list]__ - Lists all items in cache, optionally taking a filter condition
+* __[cache.count]__ - Returns the number of cache items in total, optionally taking a filter condition
 
-All of the above slots requires a key as its value, and/or a **[filter]** argument.
+All of the above slots requires a key as its value, and/or a filter argument as the value of the identity node
+for the invocation of the slot.
 
 ## [cache.set]
 
 Invoke this slot to save an item to the cache. The slot takes 3 properties, which are as follows.
 
 * Value of node, being the _key_ for your cache item.
-* __[value]__ - The item to actually save to the cache. If you pass in null, any existing cache items matching your key will be removed.
-* __[expiration]__ - Number of seconds to keep the item in the cache.
+* __[value]__ - The item to actually save to the cache. If you pass in null, any existing cache items matching your key will be removed
+* __[expiration]__ - Number of seconds to keep the item in the cache. Defaults to 5
 
 Below is an example of a piece of Hyperlambda that simply saves the value of _"Howdy world"_ to your
 cache, using _"cache-item-key"_ as the key for the cache item.
@@ -49,7 +50,7 @@ cache.get:cache-item-key
 This slot checks your cache to look for an item matching your specified key, and if not found, it will
 invoke its **[.lambda]** argument, and save its returned value to the cache with the specified key,
 before returning the value to caller. This is a particularly useful slot, since it will synchronise
-access to the cache key, preventing more than one lambda object from being invoked simultaneously,
+access to the cache key, preventing more than one **[.lambda]** object from being invoked simultaneously,
 given the same key.
 
 ```
@@ -73,18 +74,18 @@ This is a shorthand slot to completely clear cache, removing all items.
 cache.set:cache-item-key
    expiration:5
    value:Howdy world
+
 cache.clear
 cache.get:cache-item-key
 ```
 
 Notice, the above Hyperlambda should not return any item in its last invocation to **[cache.get]**
-since the cache was cleared before invoking it. The slot also optionally takes a **[filter]** argument,
-which if provided, will _only_ delete items starting out with the specified filter. Usage example
-can be found below.
+since the cache was cleared before invoking it. The slot also optionally takes a filter argument
+as its value, which if provided, will _only_ delete items starting out with the specified filter.
+Usage example can be found below.
 
 ```
-cache.clear
-   filter:foo.bar
+cache.clear:foo.bar
 ```
 
 The above will _only_ remove cache items having a key that starts out with _"foo.bar"_ implying
@@ -95,13 +96,8 @@ that for instance the following items will be cleared.
 * foo.bar.xyz2
 
 While an item with a key of _"x.foo.bar"_ will _not_ be removed. This allows you to _"namespace"_
-your cache items, and clearing out for instance all cache items matching the specified namespace,
-in one go. You can optionally supply the clearing filter as the value of the node, such as the following
-illustrates.
-
-```
-cache.clear:foo.bar
-```
+your cache items, and clearing out for instance all cache items matching the specified namespace
+in one invocation.
 
 ## [cache.list]
 
@@ -118,16 +114,7 @@ This slot also supports the following optional arguments.
 
 * __[limit]__ - Maximum number of items to return.
 * __[offset]__ - Offset of where to start returning items.
-* __[filter]__ - Filter condition declaring which items to return. See the __[cache.clear]__ slot to understand how it works, since this argument functions in the exact same way, assuming your filter is a _"namespace"_.
-
-The **[filter]** argument can optionally be supplied as the value of the node such as the following illustrates.
-
-```
-cache.set:cache-item-key
-   expiration:5
-   value:Howdy world
-cache.list:cache
-```
+* Filter as value of node being the filter condition declaring which items to return. See the __[cache.clear]__ slot to understand how it works, since this argument works in the exact same way, assuming your filter is a _"namespace"_.
 
 ## Internals
 
@@ -138,20 +125,19 @@ the `IMagicCache` interface, which by default is wired up towards its `MagicMemo
 implementation. This is a conscious choice, since first of all the `IMemoryCache` that .Net
 provides out of the box is _really_ slow, in addition to that it is missing a _lot_ of crucial
 parts expected from a mature memory based cache implementation.
-
 If you want to access the actual cache from C# or something, make sure you use it through the dependency
 injected `IMagicCache` interface, providing you with the implementation class needed to consume
-it from C#. This interface has a lot of nice methods you can use to have a robust and fast memory
-based cache implementation in your C# code - In addition to that it synchronises access such that
+it from C#. This interface has a lot of nifty methods you can use to have a robust and fast memory
+based cache implementation in your C# code - In addition to that it synchronizes access such that
 no race conditions can be experienced. However, _it is a memory based cache_. If you need better
 caching features going beyond what a basic memory based cache implementation can achieve, you might
 want to implement Redis or something similar as your own custom C# extension.
 
-Notice, if you consume the `IMagicCache` interface from your own C# code, you can create _"hidden"_
+If you consume the `IMagicCache` interface from your own C# code, you can create _"hidden"_
 cache items that are only possible to retrieve from C# code and not from Hyperlambda. This allows
 you to create a C# only type of cache, where items added as hidden cannot in any ways what so ever
-be retrieved from Hyperlambda. This is useful for C# only type of cache items, you don't want to expose
-to Hyperlambda code.
+be retrieved from Hyperlambda. This is useful for C# only type of cache items that you don't want to
+expose to Hyperlambda code.
 
 ## Project website
 

@@ -10,7 +10,7 @@ This project contains string manipulation slots for Magic. More specifically, it
 * __[strings.contains]__ - Returns true if specified string contains the given argument
 * __[strings.ends-with]__ - Returns true if the specified string ends with the specified argument
 * __[strings.starts-with]__ - Returns true if the specified string starts with its argument
-* __[strings.join]__ - Joins multiple strings together, with a separating character between each
+* __[strings.join]__ - Joins multiple strings together, with a separating string between each string joined
 * __[strings.length]__ - Returns the length in characters of the given string
 * __[strings.regex-replace]__ - Replaces occurrencies matching the given regular expression with its argument
 * __[strings.split]__ - Splits a string into multiple strings on every match of its given argument
@@ -28,7 +28,15 @@ This project contains string manipulation slots for Magic. More specifically, it
 
 All the above slots that requires two arguments, will use the first argument as its _"what"_ argument, and the second
 as its _"with"_ argument. Avoiding naming these though, allows you to reference other slots, and use these as sources
-to parametrize your invocations to the above slots.
+to parametrize your invocations to the above slots. Below is an example of how this would look like.
+
+```
+.data:Hyperlambda is cool
+
+strings.replace:x:-
+   .:cool
+   .:super cool
+```
 
 ### [strings.replace]
 
@@ -37,6 +45,7 @@ follows.
 
 ```
 .foo:thomas hansen
+
 strings.replace:x:-
    .:hansen
    .:tjobing hansen
@@ -49,15 +58,17 @@ throw an exception, since there are probably no slots called _"some-slot-returni
 ```
 .what:hansen
 .foo:thomas hansen
+
 strings.replace:x:-
+
    get-value:x:@.what
+
    signal:some-slot-returning-string
       arg1-to-slot:foo
       arg2-to-slot:foo
 ```
 
 Above the first argument is _"what to look for"_, and the second argument is _"what to substitute it with"_.
-
 The above is a general pattern for most of these slots, where the node arguments supplied to the slot will be
 evaluated as a lambda object, before the arguments are consumed, allowing you to use arguments that are the
 result of invoking other slots as arguments to your original outer most slot.

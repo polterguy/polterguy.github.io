@@ -162,6 +162,7 @@ Returns true if the specified slot exists. Example can be found below.
 ```
 slots.create:foo
    return-value:Blah, blah, blah ...
+
 slots.exists:foo
 slots.exists:DOES-NOT-EXISTS
 ```

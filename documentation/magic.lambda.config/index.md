@@ -1,14 +1,18 @@
 
-# Reading configuration settings with Hyperlambda
+# Reading configuration settings from Hyperlambda
 
-This project provides configuration settings slots for Magic. The project provides one
-single slot, allowing you to retrieve configuration settings from your configuration file as follows.
+This project provides configuration settings slots for Magic. The project provides the following
+slots, allowing you to retrieve configuration settings from your _"appsettings.json"_ configuration file,
+in addition to saving and loading your configuration file.
 
 * __[config.get]__ - Returns a configuration value from your configuration file with the specified key
 * __[config.section]__ - Returns the specified configuration section from your configuration file with the specified key
+* __[config.load]__ - Loads your _"appsettings.json"_ file and returns as a string
+* __[config.save]__ - Saves your _"appsettings.json"_ file, sanity checking it's valid JSON before persisting your file
 
-You can supply a _"path"_ such as _"foo:bar"_, which will traverse into your _"foo"_ config setting, find its _"bar"_ key,
-and return the value of your _"bar"_ key. Below is an example of usage.
+To retrieve settings you can supply a _"path"_ such as _"foo:bar"_ to for instance an invocation to **[config.get]**.
+This will traverse into your _"foo"_ config setting, find its _"bar"_ key, and return the value of your _"bar"_ key.
+Below is an example of usage.
 
 ```
 config.get:"foo:bar"
@@ -30,10 +34,9 @@ Assuming your configuration file looks like the following.
 config.get:42
 ```
 
-**Notice** - As of this writing, I am still trying to figure out how to return values as the correct types, and
-also how to have the **[config.section]** return a hierarchy of the _entire_ section. In a future version, I might
-figure this out, at which point the APIs for these methods will slightly change. They are currently both to be
-considered as BETA versions.
+**Notice** - Due to implementation details of .Net and its `IConfiguration` specifically, values
+returned will _always_ be strings, and you'll have to manually convert these to other types, using for
+instance the **[convert]** slot from magic.lambda.
 
 ## Project website
 
