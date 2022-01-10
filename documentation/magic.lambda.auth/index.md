@@ -1,14 +1,14 @@
 
 # Authentication and Authorization with Magic and Hyperlambda
 
-Authentication and authorization helper slots for Magic. This project allows you to create and consume
+This project contains authentication and authorization helper slots for Magic. The project allows you to create and consume
 JWT tokens, to secure your magic installation. The project contains the following slots.
 
 * __[auth.ticket.get]__ - Returns the JWT token's payload as a lambda structure, and also verifies the token in the process
 * __[auth.ticket.create]__ - Creates a new JWT token, that you can return to your client, any ways you see fit
 * __[auth.ticket.refresh]__ - Refreshes a JWT token. Useful for refreshing a token before it expires, which would require the user to login again
 * __[auth.ticket.verify]__ - Verifies a JWT token, and that the user is logged in, in addition to (optionally) that he belongs to one roles supplied as a comma separated list of roles
-* __[auth.ticket.in-role]__ - The same as **[auth.ticket.verify]**, but returns true or false, depending upon whether or not user is in any of the roles provided or not.
+* __[auth.ticket.in-role]__ - The same as **[auth.ticket.verify]**, but returns true or false, depending upon whether or not user is in any of the roles provided or not
 
 Notice, you will have to modify your `auth:secret` configuration setting, to provide a unique salt for your installation.
 If you don't do this, some adversary can easily reproduce your tokens, and impersonate your users. Example of
@@ -29,7 +29,7 @@ might look like.
 The idea is that your `SymmetricSecretKey` is based upon the above configuration setting, implying you should keep it
 safe the same way you'd keep the pin code to your ATM card safe.
 
-Below is an example of create a new JWT ticket.
+Below is an example of how to create a new JWT ticket.
 
 ```
 auth.ticket.create
@@ -42,17 +42,14 @@ auth.ticket.create
 The above will return something resembling the following, minus the carriage returns, which are added for clarity.
 
 ```
-auth.ticket.create:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
-eyJ1bmlxdWVfbmFtZSI6ImZvbyIsInJvbGUiOlsiaG93ZHkiLCJ3b3Js
-ZCJdLCJuYmYiOjE2MTc5NDQyMzYsImV4cCI6MTYxNzk1MTQzNiwiaWF0
-IjoxNjE3OTQ0MjM2fQ.
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImZvbyIsInJvbGUiOlsiaG93ZHkiLCJ3b3Js
+ZCJdLCJuYmYiOjE2MTc5NDQyMzYsImV4cCI6MTYxNzk1MTQzNiwiaWF0IjoxNjE3OTQ0MjM2fQ.
 9eYROea_r-TJGT5k4H0DaGDW6LziHhEsK4on-uc-ECc
 ```
 
 Typically Magic takes care of authentication for you, by exposing an `authenticate` endpoint for
 you, where you can submit a username and a password, for then to have your JWT token returned accordingly.
-
-**Notice** - You can also associate any claims you wish with your JWT token, by adding a key/value **[claims]**
+You can also associate any claims you wish with your JWT token, by adding a key/value **[claims]**
 argument to your invocation as you create your JWT token. Below is an example.
 
 ```
@@ -67,10 +64,10 @@ auth.ticket.create
 ```
 
 All additional (non-roles) claims will have their values converted to string though, which is more of a restriction
-in .Net and thw JWT standard than a restriction in Magic.
+from .Net and the JWT standard then a restriction of Magic.
 
 **Notice** - Also notice that if you create a JWT token with a user belonging to _only one role_, the roles claims
-will _not_ be an array, but simply a string. Yet again, this is simply how .Net works, and there is little I can do
+will _not_ be an array, but simply a string. Yet again, this is simply how .Net works, and there is little we can do
 about this. Hence, remember to check in your frontend as you retrieve your roles if the roles claims is a string
 or an array of strings before associating your user with a role in your client logic.
 
@@ -85,7 +82,7 @@ A JWT token has 3 parts.
 * The signature which is basically just a HASH based upon your token's payload, salted with your auth secret
 
 Unless an adversary knows your auth secret, it becomes impossible to create a valid JWT token. However, your token
-is still vulnerable for being stolen, so make sure you only return it over a secure HTTP connection, or something similar.
+is still vulnerable for being stolen, so make sure you only return it over a secure HTTP connection.
 
 ## Using your JWT token
 
@@ -105,12 +102,12 @@ after having authenticated using e.g. Chrome Developer Tools.
 JWT tokens have an expiration date. This is typically configured in your _"appsettings.json"_ file in your Magic
 backend as `magic:auth:valid-minutes`, and once this time has passed, the token will no longer be considered
 valid, and using the token after this period, will result in an _"Access Denied"_ being returned from the server.
-
 However, since JWT token are just JSON, and the expiration time is just a Unix timestamp, you can parse the
 JWT token in your frontend, calculate the expiration date, and make sure you refresh your token _before_ the
 expiration date is reached, and replace your existing token with the new token returned by Magic. Magic
 contains a `refresh` token endpoint to achieve this. Internally this endpoint will use the **[auth.ticket.refresh]**
-slot to create a new token, where the only difference is that it has a new expiration date.
+slot to create a new token, where the only difference between your old and your new token is that it has a new
+expiration date.
 
 ## Securing your endpoints
 
@@ -143,12 +140,11 @@ auth.ticket.in-role:foo, root
 auth.ticket.get
 ```
 
-The first slot return _true_ because your root user belongs to _any_ (one) of the roles you supplied as
+The first slot return _true_ because your root user belongs to _one_ of the roles you supplied as
 a comma separated list of roles. The second slot above returns the username, and all the roles the user
 belongs to as a structured lambda object. As a general rule of thumb though, you'd not want to secure your
 endpoints using the above slots, but rather the _verify_ slot above, to avoid having errors in your code
 resulting in that an unauthorized user gains access to invoke an endpoint he should not be allowed to invoke.
-
 The **[auth.ticket.get]** slot will also return any custom claims you have associated with your JWT token
 as it was created.
 
