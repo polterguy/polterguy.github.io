@@ -123,7 +123,7 @@ To create your own C# or F# slots, follow the recipe below.
 2. Create your class, and implement the `ISlot` interface.
 3. Mark your class with the `Slot` attribute, giving it an adequate `Name` property value.
 
-**Notice** - You can also implement `ISlotAsync` if you want to create an `async` slot.
+**Notice** - You can also implement `ISlotAsync` if you want to support `async` invocations.
 
 ## The gory details
 
@@ -140,6 +140,7 @@ as a **[.lambda]** node, that will be invoked once for every iteration of your w
 
 ```
 .no:int:0
+
 while
    lt
       get-value:x:@.no
@@ -167,7 +168,9 @@ to use carriage returns in your strings the same way you would do in for instanc
       string"
 ```
 
-Strings in Hyperlambda can be escaped with the exact same semantics as you would escape your C# strings.
+Strings in Hyperlambda can be escaped with the exact same semantics as you would escape your C# strings,
+including referencing UNICODE characters in your strings. Hyperlambda is _always_ serialized using UTF8,
+so you can add any UNICODE characters in your Hyperlambda you wish.
 
 ## Comments
 
