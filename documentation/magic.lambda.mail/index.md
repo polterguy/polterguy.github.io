@@ -6,30 +6,32 @@
 * __[mail.smtp.send]__ - Sends email(s) through an SMTP server
 * __[mail.pop3.fetch]__ - Retrieves emails from a POP3 server
 
-Both of the above slots have async overrides that will be automatically used by Magic if possible.
-
 ## Sending email(s)
 
 ```
 mail.smtp.send
+
    server
       host:foo.com
       port:123
       secure:true
       username:xxx
       password:yyy
+
    message
+
       to
          John Doe:john@doe.com
       from
          Jane Doe:jane@doe.com
       subject:Subject line
+
       entity:text/plain
          content:Body content
 ```
 
 You can send multiple **[message]** objects at the same time, using the same SMTP connection and credentials.
-This allows you to connect _once_ to the SMTP server, and use the same connection to send multipl emails.
+This allows you to connect _once_ to the SMTP server, and use the same connection to send multiple emails.
 
 The entirety of the **[server]** node above is optional, and if it's not given, it will be fetched from your
 configuration settings. You can also override only one or two parts in your **[server]** segment above, and
@@ -76,10 +78,12 @@ settings, from addresses, etc - And leave this as a part of your deployment tran
 
 ```
 mail.smtp.send
+
    message
       to
          Jane Doe:jane@doe.com
       subject:Subject line
+
       entity:text/plain
          content:Body content
 ```
@@ -91,18 +95,22 @@ of an email with a single attachment.
 
 ```
 mail.smtp.send
+
    message
       to
          Jane Doe:jane@doe.com
       subject:Subject line
+
       entity:multipart/mixed
+
         entity:text/plain
            content:Body content
+
         entity:text/plain
            filename:/files/foo.txt
 ```
 
-To construct your email's **[message]** part, see the documentation for the Magic Lambda MIME project.
+To construct your email's **[message]** part, see the documentation for the magic.lambda.mime project.
 
 ## Retrieving emails
 
@@ -110,15 +118,19 @@ To retrieve emails from a POP3 server is equally easy. Below is an example.
 
 ```
 mail.pop3.fetch
+
    server
       host:foo.com
       port:123
       secure:true
       username:xxx
       password:yyy
+
    max:int:50
    raw:bool:false
+
    .lambda
+
       /*
        * Some lambda object invoked once for every email fetched.
        * Given message as [.message] node structured as lambda.
@@ -136,8 +148,8 @@ POP3 connection, if not explicitly given as part of invocation.
 * magic.pop3.password
 
 
-An example of how your configuration might look like, if you choose to use configuration settings,
-instead of having to supply server configuration every time you invoke the slot, can be found below.
+You can find an example of how your configuration might look like below if you choose to use configuration
+settings instead of having to supply server configuration every time you invoke the slot.
 
 ```json
 {
@@ -158,13 +170,12 @@ the above will allow you to send emails using your GMail account.
 
 Notice, if **[raw]** is true, the message will _not_ be parsed and turned into a structural lambda object,
 but passed into your **[.lambda]** as its raw MIME message instead. The default value for **[raw]** is false.
-
 Your **[.lambda]** callback will be invoked for each message with a **[.message]** node, containing the
 structured/raw version of the MIME message wrapping the actual email message. Refer to
-the Magic Lambda MIME project documentation for details to understand this
+the magic.lambda.mime project's documentation for details to understand this
 structure. If you choose to retrieve messages in **[raw]** format, the message node's value will contain
 the raw MIME message as text. If you choose this path, and you later want to actually parse the message,
-to make it become a structured lambda object - You can use the **[mime.parse]** slot from Magic Lambda MIME.
+to make it become a structured lambda object - You can use the **[mime.parse]** slot from magic.lambda.mime.
 
 ## Project website
 
