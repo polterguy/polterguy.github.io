@@ -13,15 +13,15 @@ project contains the following 5 slots.
 The __[http.put]__, __[http.post]__ and __[http.patch]__ slots requires you to provide a __[payload]__
 or __[filename]__ argument that will be transferred to the endpoint as is. All 5 endpoints can (optionally)
 take a __[token]__ arguments, which will be transferred as a `Bearer Authorization` token to the endpoint
-in the HTTP Authorization header of your request. If you provide a __[filename]__ argument, this is assumed
-to be a file relatively existing within your _"/files/"_ folder somewhere. Below is an example of
+in the `Authorization` header of your request. If you provide a __[filename]__ argument, this is assumed
+to be a file relatively found within your _"/files/"_ folder somewhere. Below is an example of
 retrieving the document found at the specified URL by creating an HTTP GET request.
 
 ```
 http.get:"https://google.com"
 ```
 
-The above will return in something resembling the following.
+The above will result in something resembling the following.
 
 ```
 http.get:int:200
@@ -108,7 +108,8 @@ http.get:int:200
       // ... etc ...
 ```
 
-The project contains automatic conversions for the following types.
+The project contains automatic conversions for the following types out of the box, but you can easily register
+your own C# based conversion types for specific _"Content-Type"_ values.
 
 * `application/json`
 * `application/x-json`
@@ -130,7 +131,7 @@ http.post:"https://jsonplaceholder.typicode.com/posts"
 
 The above will transform your payload to a JSON object automatically for you, and also unwrap any expressions
 found in your lambda object before JSON transformation is applied. Automatic transformation will only be applied
-if you've got a registered transformation function registered. If you want to extend the list of supported
+if you've got a transformation function registered. If you want to extend the list of supported
 content types to automatically transform back and forth to, you can use either `Magic.Http.AddRequestHandler` or
 `MagicHttp.AddResponseHandler` to add support for your own automatic transformation for both the request
 payload and/or the response content.
@@ -141,7 +142,7 @@ transferred as is, and you can provide `byte[]` arrays, streams or strings as th
 node.
 
 **Notice** - Both the URL encoded request transformer and the JSON request transformer will automatically
-evaluate expressions in your semantic **[payload]** object but this is _not_ true for the Hyperlambda request
+evaluate expressions in your semantic **[payload]** object, but this is _not_ true for the Hyperlambda request
 transformer, since in Hyperlambda it might make sense to actually pass in expressions to the endpoint. Below
 is an example of how to semantically pass in a Hyperlambda object to some URL.
 
