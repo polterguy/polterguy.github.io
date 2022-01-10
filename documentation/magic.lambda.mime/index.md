@@ -1,12 +1,12 @@
 
 # Parsing and creating MIME messages with Hyperlambda
 
-Magic Lambda MIME gives you the ability to parse and create MIME messages from Hyperlambda.
+magic.lambda.mime gives you the ability to parse and create MIME messages from Hyperlambda.
 The project contains the following slots.
 
 * __[mime.parse]__ - Parses a MIME message, and returns it as a lambda object
-* __[.mime.parse]__ - Parses a native MimeEntity for you, and returns it as a lambda object (not for usage directly from Hyperlambda code)
 * __[mime.create]__ - Creates a MIME message for you, and returns the entire message as text, being the MIME entity
+* __[.mime.parse]__ - Parses a native MimeEntity for you, and returns it as a lambda object (not for usage directly from Hyperlambda code)
 * __[.mime.create]__ - Creates a MIME message for you, and returns it as a native MimeEntity object (not for usage directly from Hyperlambda code)
 
 ## Parsing MIME messages
@@ -36,20 +36,21 @@ mime.parse:multipart/mixed
 Notice how the slot creates a tree structure, perfectly resembling your original MIME message. It will also take care of
 MIME headers for you, adding these into a **[headers]** collection, on a per MIME entity basis, depending upon whether or not
 your message actually contains headers or not.
-
 The **[.mime.parse]** semantically works identically, except it requires as its input a raw `MimeEntity` object from MimeKit.
 The **[.mime.parse]** slot can _only be invoked from C#_, since it starts with a _"."_.
 
 ## Creating a mime message
 
-This slot is logically the exact opposite of the **[mime.parse]** slot, and can take (almost) the exact same input as
-its sibling produces as output. Below is an example.
+The **[mime.create]** slot is logically the exact opposite of the **[mime.parse]** slot, and can take (almost) the exact
+same input as its sibling produces as output. Below is an example.
 
 ```
 mime.create:multipart/mixed
    structured:false
+
    entity:text/plain
       content:this is the body text
+      
    entity:text/plain
       content:this is another body text
 ```
