@@ -543,9 +543,12 @@ if (arg1 == "foo")
 the following.
 
 ```
+// Evaluates to false.
 and
    .:bool:true
    .:bool:false
+
+// Evaluates to true.
 and
    .:bool:true
    .:bool:true
@@ -560,11 +563,13 @@ to use it as a part of richer comparison trees, such as the following illustrate
 .s1:bool:true
 .s2:bool:true
 .res
+
 if
    and
       get-value:x:@.s1
       get-value:x:@.s2
    .lambda
+
       set-value:x:@.res
          .:OK
 ```
@@ -576,16 +581,20 @@ as the following illustrates. **[or]** will also evaluate its arguments, allowin
 trees, the same way **[and]** allows you to. Below is a simple example.
 
 ```
+// Evaluates to false.
 or
    .:bool:false
    .:bool:false
+
+// Evaluates to true.
 or
    .:bool:false
    .:bool:true
 ```
 
-Also **[or]** will short circuit itself if it reaches a condition that evaluates to true, implying
-none of its conditions afterwards will be considered, since the **[or]** as a whole evaluates to true.
+**[or]** will also short circuit itself if it reaches a condition that evaluates to true, implying
+none of its conditions afterwards will be considered, since the **[or]** as a whole evaluates to true
+if _any_ of its arguments evaluates to true.
 
 ### [not]
 
@@ -594,6 +603,7 @@ none of its conditions afterwards will be considered, since the **[or]** as a wh
 ```
 not
    .:bool:true
+
 not
    .:bool:false
 ```
@@ -616,6 +626,7 @@ if
          get-value:x:@.foo2
          get-value:x:@.foo3
    .lambda
+
       set-value:x:@.result
          .:Yup!
 ```
@@ -643,9 +654,15 @@ if:bool:true
 In the above code we can see that the first child of our above **[or]** node evaluates to `false`, but since the
 second child of our **[or]** node evaluates to true, the **[or]** as a whole evaluates to `true`. If you change
 its **[.foo2]** data node to boolean `true`, you will see that your second child of **[or]** never even is
-considered, since your **[or]** invocation is _"short circuiting"_.
+considered, since your **[or]** invocation is _"short circuiting"_. You can nest as many **[or]** and **[and]**
+invocations as you wish, creating any amount of complexity in your Hyperlambda.
 
 ## Modifying your graph
+
+Since there are no explicit variables in Hyperlambda, yet all nodes potentially might change, this requires
+the ability to change your nodes as you execute your Hyperlambda. Magic provides many slots to achieve this,
+both to change the names, values, and types of your nodes - In addition to adding a range of nodes into some
+other node, and/or remove nodes from the children collection of your nodes.
 
 ### [add]
 
