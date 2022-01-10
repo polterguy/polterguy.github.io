@@ -7,11 +7,11 @@ It is what makes Hyperlambda Turing complete, and contains slots such as **[for-
 
 ## Structure
 
-_Everything_ is a slot in Hyperlambda. This allows you to evaluate its conditional operators and logical operators
-the same way you would evaluate a function in a traditional programming language. This might at first seem a bit unintuitive
+_Everything_ is a slot in Hyperlambda. This allows you to evaluate and extend its conditional operators and logical operators
+the same way you would evaluate or create a function in a traditional programming language. This might at first seem a bit unintuitive
 if you come from a traditional programming language, but has a lot of advantages, such as allowing the computer to look
 at the entirety of your function object as a hierarchical tree structure, parsing it as such, and executing your lambda
-object as an _"execution trees"_.
+object as an _"execution tree"_.
 
 For instance, in a normal programming language, the equal operator must have a left hand side (lhs), and a right hand
 side (rhs). In Hyperlambda this is not true, since the equal slot is the main invocation of a function, requiring two
@@ -19,10 +19,11 @@ arguments, allowing you to think about it as a _function_. To compare this to th
 have implemented this, imagine the equal operator as a function, such as the following pseudo code illustrates.
 
 ```
-equals(lhs, rhs)
+equals(object lhs, object rhs)
 ```
 
-The actual Hyperlambda code that would be the equivalent of the above pseudo code, can be found below.
+The actual Hyperlambda code that would be the equivalent of the above pseudo code, can be found below, and this code
+actually executes successfully if you execute it as Hyperlambda.
 
 ```
 eq
@@ -32,9 +33,10 @@ eq
 
 As you study Hyperlambda it might be beneficial to use the _"Eval"_ component that you can find in its
 frontend dashboard. This component allows you to play with Hyperlambda in _"immediate mode"_,
-allowing you to experiment with it, execute it immediately from your browser, using a rich code editor,
-providing syntax highlighting, autocomplete on slots, and allows you to save your snippets for later on your
-server. Below is a screenshot of the _"Eval"_ component to give you an idea of what you might expect.
+experiment with Hyperlambda, execute it immediately from your browser, in a rich code editor,
+providing syntax highlighting for you, autocomplete on slots, etc. The _"Eval"_ component also allows
+you to save your snippets for later on your server. Below is a screenshot of the _"Eval"_ component to
+give you an idea of what you might expect.
 
 ![Hyperlambda evaluator](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/eval-component.jpg)
 
