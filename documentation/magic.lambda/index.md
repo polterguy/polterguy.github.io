@@ -509,7 +509,7 @@ src1 >= 5
 Due to that the **[if]** slot, the **[else-if]** slot, and the **[while]** slot can optionally be given slot
 invocations themselves as their conditions, and all comparison slots are slots - You can inject comparison slot
 invocations inside of for instance your **[if]** invocations, serving as the slot invocation declaring the condition
-for your if. Consider the following to understand this.
+for your **[if]**. Consider the following to understand this.
 
 ```
 .result
@@ -521,6 +521,18 @@ if
    .lambda
       set-value:x:@.result
          .:Yup!
+```
+
+The above is the equivalent of the following in a more traditional programming language.
+
+```csharp
+string result;
+var arg1 = "foo";
+
+if (arg1 == "foo")
+{
+   result = "Yup!";
+}
 ```
 
 ## Boolean logical conditions
