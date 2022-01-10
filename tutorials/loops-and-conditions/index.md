@@ -17,6 +17,8 @@ There are two primary slots in Hyperlambda that allows you to loop. These are as
 * __[for-each]__
 * __[while]__
 
+### The [for-each] loop
+
 The **[for-each]** slot loops once for each result returned by its expression. Below is an example.
 
 ```
@@ -42,9 +44,27 @@ If you execute the above in Magic's _"Eval"_ component you will see how the abov
 ```
 
 This is because the lambda object of the **[for-each]** slot is executed once for each node resulting from its
-expression, passing in the currently iterated node as its **[.dp]** node by _reference_, which is why we have to use the
-funny syntax of `/#` to de-reference the actual node we're iterating over. The **\[for-each\]** loop is useful when
-you have a node set to iterate over, but sometimes you need another mechanism, such as illustrated below.
+expression, passing in the currently iterated node as a **[.dp]** node _by reference_, which is why we have to use the funny syntax of `/#` to de-reference the actual node we're iterating over. The **[for-each]** slot in Hyperlambda
+is similar to the `foreach` keyword in for instance C#. If you have difficulties understanding the `/#` reference
+iterator in Hyperlambda, it might be beneficial for you to execute the following once, for then to look at your
+server's log afterwards.
+
+```
+.data
+   foo1:bar1
+   foo2:bar2
+   foo3:bar3
+
+for-each:x:@.data/*
+
+   log.info:x:@.dp/#
+```
+
+### The [while] loop
+
+The **\[for-each\]** loop is useful when you have a node set to iterate over, but sometimes you need
+another mechanism due to not knowing how many iterations you'll need before entering the loop, or not
+needing to iterate over a node set. Below is an example.
 
 ```
 .no:int:0
@@ -72,7 +92,7 @@ the the above **[math.increment]** slot, you can find it [here](/documentation/m
 ## Branching in Hyperlambda
 
 The **\[if\]** slot works almost exactly the same way the **\[while\]** slot works, except it only executes its
-lambda objects _once_. Below is an example.
+lambda objects _once_ if its condition evaluates to true. Below is an example.
 
 ```
 .foo:bar
@@ -153,8 +173,8 @@ The **[while]**, **[if]**, **[else-if]** and **[else]** slots are what is common
 Branching implies your code takes a different execution path as it executes, and conditional branching implies there
 are conditions associated with these alternative execution paths. All of the branching slots in Hyperlambda have similar
 semantics, implying taking a condition as an argument. All branching slots except the **[else]** slot, requires
-_exactly one child node_, or argument - Which is the condition associated with their lambda object. In addition each
-of these slots also requires exactly one **[.lambda]** argument, being the code to execute if their condition is _true_.
+one child node or an argument - Which is the condition associated with their lambda object. In addition each
+of these slots also requires a lambda argument, being the code to execute if their condition is true.
 Logically this becomes the equivalent of the following in plain English.
 
 > If some-condition, then do this
@@ -215,11 +235,13 @@ in C# related to your particular problem at hand. Below is a  working Hyperlambd
 .s1:bool:true
 .s2:bool:true
 .res
+
 if
    and
       get-value:x:@.s1
       get-value:x:@.s2
    .lambda
+
       set-value:x:@.res
          .:OK
 ```

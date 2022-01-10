@@ -7,8 +7,8 @@ description: This article shows you how to create Super DRY code using Hyperlamb
 
 In this tutorial we will cover the following parts of Magic and Hyperlambda.
 
-* Interceptors, and how they reduce repetition in your code
-* Exception handlers, and how they allow you to keep your exception code in _one_ place
+* Interceptors, and how they allow you to create DRY code
+* Exception handlers, and how to keep your error handling in one place
 
 In this tutorial we will have a look at two features that allows you to write _"super DRY code"_. DRY here
 refers to _"Don't Repeat Yourself"_, which is an important design principle as you
@@ -56,13 +56,16 @@ data.read
 return-nodes:x:@data.read/*
 ```
 
-If you invoke your endpoint now, you will see everything working. The reasons is because the endpoint
-URL resolver will actually combine your _"interceptor.hl"_ file with your _"bar.get.hl"_ file, resulting
-in the following combined lambda object.
+If you invoke your endpoint now, you will see everything working, even though you're not explicitly opening up a database
+connection in your above _"bar.get.hl"_ file. The reasons is because the endpoint URL resolver will actually _combine_
+your _"interceptor.hl"_ file with your _"bar.get.hl"_ file, resulting in the following combined lambda object.
 
 ```
+// Fetched from "interceptor.hl"
 log.info:Interceptor
 data.connect:[generic|magic]
+
+   // Fetched from "bar.get.hl"
    log.info:Endpoint file
    data.read
       table:users
@@ -73,8 +76,10 @@ data.connect:[generic|magic]
 
 This of course makes it easy for you to _"outsource"_ commonalities in your folders to a single
 file, having everything occurring in one single file, to avoid repeating yourself.
-Interceptors are _recursively_ applied, implying if you have multiple _"interceptor.hl"_
-files upwards in your hierarchy, then _all_ your interceptors will be applied, creating a combined result,
-before your lambda object is executed.
+Notice, interceptors are _recursively_ applied, implying if you have multiple _"interceptor.hl"_
+files upwards in your hierarchy, then _all_ interceptors will be applied, creating a combined result,
+before your lambda object is executed. Exception handlers though are _not_ recursively applied, and
+only the _first_ exception handler upwards in your folder structure will be applied. Interceptors
+are hence said to be _extendable_ , while exception handlers are said to be _overriding_.
 
 * Continue with [Dynamic Hyperlambda slots](/tutorials/dynamic-slots/)

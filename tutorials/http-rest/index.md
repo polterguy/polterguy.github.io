@@ -11,9 +11,9 @@ In this tutorial we will cover the following parts of Magic and Hyperlambda.
 * How the POST, PATCH, PUT, GET and DELETE HTTP slots differs in logic
 * How to automatically transform back and forth between lambda objects and JSON, and/or other request/response types
 
-The purpose of Magic and Hyperlambda is to _simplify your life as a developer without compromising scalability, execution speed, or maintainability_.
+The purpose of Magic and Hyperlambda is to simplify your life as a developer without compromising scalability, execution speed, or maintainability.
 One example of this is how easy it is to integrate your Hyperlambda backend with other HTTP based services by utilising
-the HTTP slots from Hyperlambda. Let's illustrate with some code.
+its HTTP slots. Let's illustrate with some code.
 
 ```
 http.get:"https://jsonplaceholder.typicode.com/posts"
@@ -58,6 +58,7 @@ endpoint using code resembling the following.
 ```
 http.get:"https://jsonplaceholder.typicode.com/posts"
    convert:true
+
 for-each:x:@http.get/*/content/*
    // Do stuff with '@.dp/#' here ...
 ```

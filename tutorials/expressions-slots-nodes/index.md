@@ -47,9 +47,7 @@ of the `Node` class. If you compare the `Node` class to for instance JSON, you w
 being an explicit children collection. JSON in such a regard is simpler, because it _only_ has a name and a value, in
 addition to that in JSON the same name _cannot be repeated_ because JSON maps to fields on objects. Hence, substituting
 Hyperlambda with JSON, would make things much more verbose, even though technically it _is_ possible. The same is
-true for XML and YAML.
-
-Fundamentally Hyperlambda has only 3 tokens.
+true for XML and YAML. Fundamentally Hyperlambda has only 3 tokens.
 
 * A colon `:` separates a node's name from its value
 * A carriage return ends the declaration of a node
@@ -70,13 +68,11 @@ Below is a Hyperlambda snippet that declares an `integer`, a `decimal`, and a `D
 Type declarations are basically injected in between the node's name and its value, and are
 referencing CLR types such as `System.DateTime`, `System.Decimal`, etc. The default type if no
 type is explicitly supplied is string.
-
 The typing system of Hyperlambda is crucial for what follows, and also makes it almost impossible
-to substitute Hyperlamdba with JSON or YAML - In addition, substituting Hyperlambda with XML, would
+to substitute Hyperlamdba with JSON or YAML - In addition, substituting Hyperlambda with XML would
 literally explode its verbosity, resulting in that the number of bytes required to represent the same
-object in XML as you represent in Hyperlambda, would probably increase the size of your files by one
-order of magnitude, possibly more. So Hyperlambda cannot easily be replaced, and it serves
-a _very specific purpose_, which you can read about in what follows.
+object in XML as you represent in Hyperlambda would probably increase the size of your files by one
+order of magnitude. So Hyperlambda cannot easily be replaced, and it serves a very specific purpose.
 
 ## Executing Hyperlambda
 
@@ -113,11 +109,12 @@ else
 ```
 
 The above is more or less the exact replica of the first C# code, except of course it is Hyperlambda.
-As you execute the above code, what you're basically doing, is to provide the root `Node` as an argument
-to Hyperlambda's **[eval]** slot, which again sequentially reads each child node of your execution node,
-and unless the node starts with a period `.`, it is assumed to be a reference to a _"slot"_. This slot
-is then _"signaled"_, implying some sort of CLR method on some class will be invoked. This makes Hyperlambda
-super extendible, allowing you to extend it with your own C# methods as you see fit. Below is an example.
+As you execute the above code, what you're basically doing, is to provide the root `Node` as an executable
+argument to Hyperlambda's **[eval]** slot, which again sequentially reads each child node of your execution node,
+and unless the currently iterated child node starts with a period `.`, it is assumed to be a reference to
+a _"slot"_. This slot is then _"signaled"_, implying some sort of CLR method on some class will be invoked.
+This makes Hyperlambda super extendible, allowing you to extend it with your own C# methods as you see fit.
+Below is an example.
 
 ```csharp
 using magic.node;
@@ -167,11 +164,9 @@ Hence, the slots you create yourself is in no ways discriminated between that wh
 perceive as _"keywords"_ in Hyperlambda - And you could replace the **[if]** slot quite easily with
 your own custom implementation if you wanted. Or for that matter simply remove the **[if]** slot,
 if you for some reasons don't want to have if statements in your own programming language.
-
-Hence, Hyperlambda _doesn't have keywords_, only slots, and all slots are recursive in nature,
+Hence, Hyperlambda literally doesn't have keywords, only slots, and all slots are recursive in nature,
 and lambda objects by themselves. Something you can verify by seeing how even the **[if]** slot
 recursively invokes **[eval]** to evaluate its children.
-
 This is true to such an extent that even what you'd imagine as _"operators"_ in traditional
 programming languages are also slots. This has huge advantages, in that it among other things
 allows you to declare your own _"operators"_, in addition to that Hyperlambda can easily be
@@ -247,7 +242,7 @@ signaled, and inside of our data segment, we no longer need to prepend nodes' na
 ## Expressions
 
 This is probably the most complex part of Hyperlambda, but if you have ever used XPath expressions,
-it shouldn't be too problematic, since they're more or less similar in nature. An expression is basically
+it shouldn't be too problematic, since they are more or less similar in nature. An expression is basically
 a _"pointer"_ into a sub-set of your node structure. For instance, the following
 expression ...
 
@@ -260,7 +255,7 @@ node. This is because of that its first part `..` implies _"give me the root nod
 implies give me all its children. The third part `/.data` implies filter out all nodes not named _".data"_.
 The last part `/*` implies give me all its children nodes again. This gives you _query capabilities_
 into your node structure, allowing one node to reference other nodes. Combined with for instance
-the **[get-value]** or the **[get-name]** slots, this allows you to retrieve any parts of ay other nodes
+the **[get-value]** or the **[get-name]** slots, this allows you to retrieve any parts of any other nodes
 in your tree. Below is an example.
 
 ```

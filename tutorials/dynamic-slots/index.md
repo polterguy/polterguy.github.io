@@ -12,8 +12,8 @@ In this tutorial we will cover the following parts of Magic and Hyperlambda.
 * How to make sure your slots are created during startup of your server
 * How to modify your dynamically created Hyperlambda slots
 
-A dynamic Hyperlambda slot is the equivalent of what you would refer to as a _"function"_ in other programming
-languages, since it allows you to declare a dynamic lambda object that you can pass in arguments to, return arguments
+A dynamic Hyperlambda slot is the equivalent of what you would refer to as a _"function"_ in another programming
+language, since it allows you to declare a dynamic lambda object that you can pass in arguments to, return arguments
 from, and treat the same way you would typically treat a function in a more traditional programming language. Consider the
 following code.
 

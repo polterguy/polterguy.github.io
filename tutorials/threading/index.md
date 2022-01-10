@@ -29,6 +29,7 @@ The following slots are the most common slots that are related to threading in H
 * __[fork]__ - Creates a new thread, which by default will be a _"fire and forget"_ thread.
 * __[join]__ - Joins multiple threads, effectively waiting for all _"children"_ threads to finish before continuing execution.
 * __[semaphore]__ - Synchronizes access to some piece of lambda such that only one thread can enter at the same time.
+* __[sleep]__ - Suspends the active thread for x number of milliseconds.
 
 The most important slot of course is the one that creates a new thread and executes it. Consider the following Hyperlambda.
 
@@ -47,8 +48,8 @@ the above code in the Hyperlambda _"Eval"_ menu item, it returns instantly, and 
 HTML documents found at the specified URLs in your output. This is because by simply invoking **[fork]**
 the way we do above, we are creating _"fire and forget"_ threads where we don't care about the result of our threads,
 before continuing execution to the next line of code.
-Sometimes you would rather want to create multiple pieces of code, executing in parallel, where you want the result
-of the invocation of _all_ of the threads, before continuing execution. This can be accomplished with the **[join]**
+Sometimes you would rather want to create multiple threads executing in parallel, where you want the result
+of the invocation of _all_ of the threads before continuing execution. This can be accomplished with the **[join]**
 slot, that will wait for _all_ direct children **[fork]** invocations before continuing execution. Consider the
 following Hyperlambda.
 
@@ -88,11 +89,11 @@ multithreading.
 
 A problem that is fairly commonly experienced with multithreading is _"thread pool exhaustion"_. This occurs
 when your operating system is asked to create more threads then it has resources to create at the same time.
-What Hyperlambda will do though, is to actually _suspend and release your threads as it is waiting for IO data_.
+What Hyperlambda will do though, is to release your threads as it is waiting for IO data.
 This _significantly_ increases your application's scalability and increases the amount of simultaneous users it
 can handle before your web server, and/or operating system, literally crashes because of _"thread pool starvation"_.
 This is referred to as _"async programming"_, and is a core feature in any modern framework, and/or programming
-language, allowing your code to scale better.
+language, allowing your code to scale much better and handle many more requests simultaneously.
 
 What this implies for Hyperlambda specifically, is that after all 3 threads above are created, and we're
 waiting for IO traffic from our URLs, there are actually _zero_ threads being consumed by our application,
@@ -110,9 +111,9 @@ programming languages.
 ## Synchronizing access to lambda objects
 
 Sometimes you need synchronized access to some shared resource. This can for instance be a file or some
-other resource, that is shared amongst multiple threads. For these times you've got the **[semaphore]**
+other resource, that is shared amongst multiple threads. For such scenarios you've got the **[semaphore]**
 slot. The semaphore slot takes one argument, in addition to a lambda object, ensuring that only _one_
-thread given the same name is able to execute its lambda object at the same time. To understand this
+thread given the same semaphore name is able to execute its lambda object at the same time. To understand this
 concept, realise this is often referred to as _"toilet threading mode"_, since typically only _one_
 person is allowed into the same toilet at the same time. A semaphore is kind of like the _"lock"_
 on the toilet door, ensuring only one person is getting access. Consider the following Hyperlambda.
@@ -176,5 +177,6 @@ simultaneously, being our _"foo.md"_ file of course. By using a **[semaphore]** 
 that only one thread is allowed to read and write to the file at the same time. Without the
 above **[semaphore]** invocations, we'd run the risk of multiple threads writing to the
 file simultaneously, resulting in what is commonly referred to as a _"race condition"_.
+Read more about Hyperlambda's threading capabilities [here](/documentation/magic.lambda/).
 
 * Continue with [Interceptors and Exception handlers](/tutorials/super-dry/)

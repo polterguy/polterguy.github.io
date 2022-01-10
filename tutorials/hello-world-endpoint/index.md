@@ -127,7 +127,7 @@ can only be given arguments as query parameters - While POST, PUT and PATCH endp
 You can also create alternative endpoint types, returning for instance files and similar constructs instead of
 pure JSON, but that's an exercise for later.
 
-## Documenting your code
+## Commenting your code
 
 Hyperlambda accepts comments the same way C# or C++ do. To provide an example, let's finish our
 little tutorial by adding some comments to our above endpoint.

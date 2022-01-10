@@ -155,7 +155,7 @@ minutes to brute force the above password. While the first password above, conta
 would require more energy than what is required to boil all water on earth to brute force. Hence, these
 ridiculous restrictions for instance Apple puts on your passwords for their AppStore, is quite
 counterintuitively much simpler to brute force than simple phrases and sentences such as Magic allows you to use.
-Simply since allowing a user to use a simple sentence, increases password length easily by one order of
+Simply since allowing a user to use a normal sentence, increases password length easily by one order of
 magnitude, making the brute force approach require trillions of times the number of iterations to guess
 your users' passwords using a brute force approach. Combining this with the fact of that users have different
 native languages, might be using slang, etc - Results in that the entropy becomes the same, only
