@@ -588,7 +588,7 @@ if
 ```
 
 Notice you can actually follow the path the Hyperlambda executor took during execution of your code if you use the
-_"Eval"_ menu item, since the result it produces would resemble the following.
+_"Eval"_ menu item, since the result it produces for the above code will resemble the following.
 
 ```
 .foo1:bar
@@ -608,7 +608,9 @@ if:bool:true
 ```
 
 In the above code we can see that the first **[or]** node evaluated to `false`, but since the second **[or]**
-evaluated to true, the or as a whole evaluated to `true` - Etc ...
+evaluated to true, the or as a whole evaluated to `true`. If you change its **[.foo2]** data node to boolean `true`,
+you will see that your second **[or]** invocation never even is considered, since the logical or is said to
+have _"short circuited"_.
 
 ## Modifying your graph
 
