@@ -1281,12 +1281,14 @@ slot itself. Imagine the following to understand how this works.
 
 ```
 slots.create:bar
+
    get-context:foo
    return:x:-
 
 context:foo
    value:Context value
    .lambda
+
       signal:bar
 ```
 

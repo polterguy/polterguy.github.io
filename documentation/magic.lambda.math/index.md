@@ -30,7 +30,8 @@ This allows you to recursively nest math operations, such as for instance.
 ```
 .one:int:5
 .two:int:2
-math.multiple
+
+math.multiply
    .:int:3
    math.add
       get-value:x:@.one
@@ -43,16 +44,28 @@ The above of course will first add 5 and 2, then multiple the result of that wit
 
 The above **[math.increment]** and **[math.decrement]** slots, will instead of yielding a result, inline modify the
 value of the node(s) it is pointing to, assuming its value is an expression. In addition these two slots can take an
-_optional_ **[step]** argument, allowing you to declare how much the incrementation/decrementation process should add/reduce
+_optional_ _"step"_ argument, allowing you to declare how much the incrementation/decrementation process should add/reduce
 the original node's value by. Below is an example that decrements the value found in its expression by 2.
 
 ```
 .value:int:5
+
 math.decrement:x:-
-   step:int:2
+   .:int:2
 ```
 
-After executing the above, the result of **[.value]** will be 3.
+After executing the above, the result of **[.value]** will be 3. The default _"step"_ value if ommitted will be 1.
+Below is an example.
+
+```
+.value:int:5
+
+math.increment:x:-
+```
+
+**Notice** - You can use any slot invocation to retrieve the step value for the increment/decrement slots, including
+for instance an invocation to **[get-value]**, or your custom slots. This is dues to that the first argument supplied
+to these slots will be assumed to be the _"step"_ value you want.
 
 ## Modulo
 
@@ -60,6 +73,7 @@ The modulo slot divides its argument(s) by its base, and returns the remainder.
 
 ```
 .int:17
+
 math.modulo:x:-
    .:int:10
 ```
