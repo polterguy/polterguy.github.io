@@ -408,6 +408,7 @@ of _"true"_, and the integer value of 5 is _not_ the same as the decimal value o
 You can provide the two arguments to these slots either as children nodes, where the first child node becomes
 the LHS part, and the second its RHS part - Or you can alternatively supply the LHS part as an expression
 leading to a value, at which point the only child argument assumed for your comparison becomes the RHS argument.
+Magic contains the following comparison slots out of the box.
 
 ### [eq]
 
