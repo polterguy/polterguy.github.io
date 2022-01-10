@@ -566,7 +566,49 @@ not
 ```
 
 **[not]** will also evaluate its argument, allowing you to use it in richer comparison trees, the same you could do
-with both **[or]** and **[and]**.
+with both **[or]** and **[and]**. Below is an example combining these slots together to create more complex types
+of logical comparisons.
+
+```
+.foo1:bar
+.foo2:bool:false
+.foo3:bool:true
+.result
+
+if
+   and
+      eq:x:@.foo1
+         .:bar
+      or
+         get-value:x:@.foo2
+         get-value:x:@.foo3
+   .lambda
+      set-value:x:@.result
+         .:Yup!
+```
+
+Notice you can actually follow the path the Hyperlambda executor took during execution of your code if you use the
+_"Eval"_ menu item, since the result it produces would resemble the following.
+
+```
+.foo1:bar
+.foo2:bool:false
+.foo3:bool:true
+.result:Yup!
+if:bool:true
+   and:bool:true
+      eq:bool:true
+         .:bar
+      or:bool:true
+         get-value:bool:false
+         get-value:bool:true
+   .lambda
+      set-value:x:@.result
+         .:Yup!
+```
+
+In the above code we can see that the first **[or]** node evaluated to `false`, but since the second **[or]**
+evaluated to true, the or as a whole evaluated to `true` - Etc ...
 
 ## Modifying your graph
 
