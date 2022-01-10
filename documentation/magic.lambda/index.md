@@ -31,7 +31,7 @@ eq
 ```
 
 As you study Hyperlambda it might be beneficial to use the _"Eval"_ component that you can find in its
-frontend Angular dashboard website. This component allows you to play with Hyperlambda in _"immediate mode"_,
+frontend dashboard. This component allows you to play with Hyperlambda in _"immediate mode"_,
 allowing you to experiment with it, execute it immediately from your browser, using a rich code editor,
 providing syntax highlighting, autocomplete on slots, and allows you to save your snippets for later on your
 server. Below is a screenshot of the _"Eval"_ component to give you an idea of what you might expect.
