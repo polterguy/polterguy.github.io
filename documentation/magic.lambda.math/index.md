@@ -23,7 +23,6 @@ math.divide:int:100
 ```
 
 The value of the above __[math.divide]__ node after evaluating the above Hyperlambda will be 5.
-
 All of the above slots will also evaluate the children collection as a lambda, before starting the actual math function,
 allowing you to recursively raise signals to retrieve values that are supposed to be mathematically handled somehow.
 This allows you to recursively nest math operations, such as for instance.

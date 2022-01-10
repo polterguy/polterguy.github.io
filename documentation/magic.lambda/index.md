@@ -1146,6 +1146,9 @@ system threads while it is sleeping. This is true because of Hyperlambda's 100% 
 
 ## Miscellaneous slots
 
+These are slots that doesn't belong to one specific group of slots, but are still useful enough in general
+to have implementations in Hyperlambda.
+
 ### [types]
 
 This slot returns all Hyperlambda types your current installation supports.
@@ -1177,7 +1180,9 @@ convert:x:-
 ```
 
 **Notice** - You can also base64 encode and decode `byte[]` with this slot, by passing in _"base64"_ or
-_"from-base64"_ as your **[type]** argument.
+_"from-base64"_ as your **[type]** argument. The value of the object you want to convert must obviously support
+conversion to the specified type, and will throw an exception if no conversion is possible, such as if you
+for instance try to convert the string of _"foo-bar"_ to an integer.
 
 ### [format]
 
@@ -1194,8 +1199,8 @@ format:x:-
 
 ### [vocabulary]
 
-Returns the name of every static slot in your system, optional passing in a string, or an expression leading to
-a string, which is a filtering condition where the slot must _start_ with the filter in its name, to be considered
+Returns the name of every static slot in your system, optionally passing in a string, or an expression leading to
+a string, which is a filtering condition, where the slot must _start_ with the filter specified to be considered
 a part of the end result.
 
 ```
@@ -1209,7 +1214,7 @@ vocabulary:io.file
 ### [whitelist]
 
 This slot temporarily within the given scope changes the available slots, allowing you to declare a block
-of lambda, where only a sub-set of your vocabulary is available for some piece of code to signal. This allows
+of lambda, where only a sub-set of your vocabulary is available for some piece of code to invoke. This allows
 you to relatively securely allow some partially untrusted source to pass in a piece of Hyperlambda, for then
 to allow it to evaluate its own Hyperlambda. The slot takes two arguments.
 
@@ -1219,9 +1224,11 @@ to allow it to evaluate its own Hyperlambda. The slot takes two arguments.
 ```
 .result
 whitelist
+
    vocabulary
       set-value
       return
+
    .lambda
 
       // Inside of this [.lambda] object, we can only invoke [set-value], and no other slots!
@@ -1244,9 +1251,10 @@ invocation creates its own result stack object, allowing the **[whitelist]** inv
 and nodes to the caller using for instance the **[return]** slot. If you execute the above Hyperlambda
 you can see how this semantically works by realizing how the above **[.result]** node never has its
 value actually changed, because our invocation to **[set-value]** inside our whitelist invocation yields
-a _"null node-set result"_. Hence semantically the **[whitelist]** slot works the same way signaling
+a _"null node-set result"_. Hence, semantically the **[whitelist]** slot works the same way signaling
 a dynamic slot works in Hyperlambda, in that the invocation treats its **[.lambda]** object as if
-it was a dynamic slot, isolating it from the rest of our code.
+it was a dynamic slot, isolating it from the rest of our code, allowing the lambda object to return
+values and nodes to the caller.
 
 ### [context]
 
@@ -1255,9 +1263,11 @@ the **[get-context]** slot. Below is an example.
 
 ```
 .result
+
 context:foo
    value:bar
    .lambda
+
       set-value:x:@.result
          get-context:foo
 ```
