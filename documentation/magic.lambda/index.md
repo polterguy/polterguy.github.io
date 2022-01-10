@@ -215,10 +215,8 @@ traverse it and execute it. But this creates another problem for you, which is t
 a mechanism to store data. This is accomplished by prefixing a node's name with a "." character, at which point
 the Hyperlambda evaluator will ignore it, as it is traversing your tree, and _not_ attempt to signal
 that particular node as a slot. Think of all nodes starting with a `.` character as _"data segments"_
-or variables for that matter.
-
-Combining _"data nodes"_ with expressions, allows you to use, modify, and reference these as _"variables"_.
-Below is an example.
+or variables for that matter. Below is an example where **[eval]** will simply ignore the **[.src]** node,
+and the **[.dest]** node, not attempting to invoke these as slots, but treat these as _"data nodes"_.
 
 ```
 .src:foo
@@ -227,9 +225,10 @@ set-value:x:@.dest
    get-value:x:@.src
 ```
 
-What the above code basically translates into, is.
-
-> Set the value of the [.dest] node to the value of [.src]
+If you change name of the above **[.src]** node to simply **[src]**, your code will raise an exception,
+with something such as follows _"No slot exists for [src]"_ since this slot doesn't exist in your Hyperlambda
+vocabulary by default - Unless you for some reasons of course have an installation where this _"keyword"_ have
+been added to your installation.
 
 ## Branching and conditional execution
 
