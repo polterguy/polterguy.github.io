@@ -237,7 +237,7 @@ your vocabulary.
 
 This is the by far most important slot in Hyperlambda, since it's arguably _"the heart"_ of Hyperlambda,
 allowing Hyperlambda to execute Hyperlambda. This slot executes the specified lambda object(s) assumed
-to exist either as a lambda in its children collection, or as an expression leading to one or more nodes
+to exist either as a lambda in its children collection, or as an expression leading to one or more nodes,
 where each of these nodes will be executed. The example below illustrates how to use **[eval]** with
 an expression.
 
@@ -1065,6 +1065,11 @@ _"Set .no to 0, then loop while .no is less than 5, where the loop adds a node i
 
 ## Threading
 
+Threading in software development implies doing multiple things concurrently, scheduling CPU time for each
+of your threads, according to how the operating system schedules your threads. This concept is often referred
+to as _"multi tasking"_ and is crucial for any modern operating system, and/or programming language. Hyperlambda
+contains several multi tasking related slots.
+
 ### [fork]
 
 Forks the given lambda into a new thread of execution, using a thread from the thread pool. This
@@ -1075,6 +1080,10 @@ for the result of the execution before continuing executing the current scope.
 fork
    info.log:I was invoked from another thread
 ```
+
+To understand how **[fork]** works, you can imagine your computer's CPU as a single river,
+running down hill, and at some point the river divides into two equally large rivers. This is
+referred to as _"a fork"_.
 
 ### [join]
 
