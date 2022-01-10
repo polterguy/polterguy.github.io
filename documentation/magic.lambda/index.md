@@ -170,7 +170,8 @@ to use carriage returns in your strings the same way you would do in for instanc
 
 Strings in Hyperlambda can be escaped with the exact same semantics as you would escape your C# strings,
 including referencing UNICODE characters in your strings. Hyperlambda is _always_ serialized using UTF8,
-so you can add any UNICODE characters in your Hyperlambda you wish.
+so you can add any UNICODE characters in your Hyperlambda you wish. Just make sure you save your files
+as UTF8 if you are using an external code editor to edit your Hyperlambda files.
 
 ## Comments
 
@@ -185,8 +186,24 @@ or single line comments, like the following example illustrates.
 // Single line comment.
 ```
 
-You _cannot_ put comments on lines containing nodes however, and comments must be indented the same
-amount of indentations as the nodes they are commenting, implying the nodes below them.
+You _cannot_ put comments on lines containing nodes, and comments must be indented the same
+amount of indentations as the nodes they are commenting, implying the nodes below them. Below is
+an example.
+
+```
+.data
+   foo1:bar1
+   foo2:bar2
+
+for-each:x:@.data/*
+
+// Comment's indenatation is IMPORTANT
+   set-value:x:@.dp/#
+      .:Loop was here ...
+```
+
+Since Hyperlambda is using spaces (SP characters) to denote scope, indentation is _important_,
+also for comments. If you de-indent the above comment, you might get unpredictable results.
 
 ## Lambda expressions
 
