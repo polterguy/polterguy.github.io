@@ -10,7 +10,9 @@ This project provides JSON helper slots for Magic. More specifically, it provide
 
 ```
 .json:@"{""property"": ""value""}"
+
 json2lambda:x:-
+
 lambda2json:x:-/*
 ```
 
