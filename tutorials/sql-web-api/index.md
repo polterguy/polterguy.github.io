@@ -62,7 +62,10 @@ data.connect:babelfish
    add:x:./*/data.select
       get-nodes:x:@.arguments/*
 
-   data.select:"select l.locale, l.language, t.id, t.content\n  from languages l\n    inner join translations t on l.locale = t.locale\n  where t.content like @filter"
+   data.select:@"select l.locale, l.language, t.id, t.content
+  from languages l
+    inner join translations t on l.locale = t.locale
+  where t.content like @filter"
       database-type:mysql
 
    if

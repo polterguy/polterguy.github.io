@@ -12,7 +12,7 @@ by clicking a button. It works by automatically wrapping your existing database 
 for then to generate an Angular frontend for you based upon your Web API.
 
 Magic Cloud is 100% open source, and you can freely use it in your proprietary (closed source) projects. Magic
-supports MySQL, SQL Server and PostgreSQL out of the box. Magic contains its own DSL called Hyperlambda, similar
+supports MySQL, Microsoft SQL Server, and PostgreSQL. Magic contains its own DSL called Hyperlambda, similar
 to YAML in structure, allowing you to _"declare"_ your logic using syntax resembling that of YAML. This makes it
 a perfect _"first programming"_ language, due to that it's an extremely high level abstraction, eliminating most
 of the problems from traditional programming languages.

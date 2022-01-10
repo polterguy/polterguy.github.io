@@ -7,8 +7,7 @@ description: This tutorial walks you through the process of getting started with
 
 In this tutorial we will cover the following parts of Magic and Hyperlambda.
 
-* How to setup Magic locally in your own development environment using Docker
-* How to setup Magic locally in your own development environment using its code
+* How to setup Magic locally in your own development environment using Docker or the code
 * How to deploy Magic to your own VPS
 * How to update Magic
 * How to clone Magic's code
@@ -31,7 +30,7 @@ can execute in the _"SQL"_ menu item to create an example database. In the video
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/ldy-idQO_jA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-If you want to use Magic with SQL Server or PostgreSQL you can find recipes for this below.
+If you want to use Magic with Microsoft SQL Server or PostgreSQL you can find recipes for this below.
 
 * [Using Magic with Microsoft SQL Server](/tutorials/sql-server/)
 * [Using Magic with PostgreSQL](/tutorials/postgresql/)

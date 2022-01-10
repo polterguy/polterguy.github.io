@@ -2,8 +2,8 @@
 # The main programming language parts for Magic
 
 Magic lambda is where you will find the _"keywords"_ of Hyperlambda.
-It is what makes Hyperlambda Turing complete, and contains slots such as **[for-each]**
-and **[if]**.
+It is what makes Hyperlambda Turing complete, and contains slots such as **[for-each]**,
+**[if]** and **[while]**.
 
 ## Structure
 
@@ -19,7 +19,7 @@ arguments, allowing you to think about it as a _function_. To compare this to th
 have implemented this, imagine the equal operator as a function, such as the following pseudo code illustrates.
 
 ```
-=(arg1, arg1)
+equals(arg1, arg1)
 ```
 
 The actual Hyperlambda code that would be the equivalent of the above pseudo code, can be found below.
@@ -30,13 +30,13 @@ eq
    .:arg2
 ```
 
-As you study Hyperlambda it might be beneficial to use the _"Evaluator"_ component that you can find in its
+As you study Hyperlambda it might be beneficial to use the _"Eval"_ component that you can find in its
 frontend Angular dashboard website. This component allows you to play with Hyperlambda in _"immediate mode"_,
 allowing you to experiment with it, execute it immediately from your browser, using a rich code editor,
 providing syntax highlighting, autocomplete on slots, and allows you to save your snippets for later on your
-server. Below is a screenshot of the _"Evaluator"_ component to give you an idea of what you might expect.
+server. Below is a screenshot of the _"Eval"_ component to give you an idea of what you might expect.
 
-![Hyperlambda Evaluator](https://servergardens.files.wordpress.com/2020/05/evaluator.png)
+![Hyperlambda evaluator](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/eval-component.jpg)
 
 Logically the Hyperlambda evaluator will signal each nodes in your Hyperlambda code sequentially, assuming
 all of your nodes are referencing an `ISlot` class, unless the node's name starts with a _"."_ or has an empty name.
@@ -130,28 +130,21 @@ try to raise these nodes as signals. This has two benefits.
 2. You can use nodes starting with _"."_ as data nodes, separating function invocations from data.
 
 **[eval]** makes Hyperlambda _"super functional"_ in nature. Below is an example of a Hyperlambda
-piece of code, that illustrates this, by adding a _"callback"_ lambda object to its POP3 fetch emails
-slot that will be invoked once for each available email on your POP3 server.
+piece of code, that illustrates this, by adding a _"callback"_ lambda object to its **[while]** invocation
+as a **[.lambda]** node, that will be invoked once for every iteration of your while loop.
 
 ```
-/*
- * Example of how to retrieve emails form a POP3 server.
- */
-mail.pop3.fetch
-   max:int:50
-   raw:bool:false
+.no:int:0
+while
+   lt
+      get-value:x:@.no
+      .:int:20
    .lambda
 
-      /*
-       * Some lambda object invoked once for every email fetched.
-       * Given message as [.message] node structured as lambda.
-       */
-      lambda2hyper:x:..
-      log.info:x:-
+      // Your lambda goes here.
+      log.info:Howdy from while
+      math.increment:x:@.no
 ```
-
-The `ISlot` called **[mail.pop3.fetch]** will invoke the above **[.lambda]** object once for each email
-it finds on the POP3 server it connects to. It will use the **[eval]** slot to do this.
 
 ## Tokens
 
@@ -184,7 +177,8 @@ or single line comments, like the following example illustrates.
 // Single line comment.
 ```
 
-You _cannot_ put comments on lines containing nodes however.
+You _cannot_ put comments on lines containing nodes however, and comments must be indented the same
+amount of indentations as the nodes they are commenting, implying the nodes below them.
 
 ## Lambda expressions
 
@@ -217,8 +211,7 @@ What the above code basically translates into, is.
 
 ## Branching and conditional execution
 
-Magic Lambda contains the following slots. Most of these slots have async overloads, which will be
-automatically used by Magic if possible.
+Magic Lambda contains the following branching slots.
 
 ### [if]
 
@@ -253,11 +246,28 @@ if
          .:yup!
 ```
 
+Notice, both the **[if]** slot and the **[else-if]** slot can optionally be directly pointed to an expression,
+that is assumed to evaluate to either boolean `true` or boolean `false`, such as the following illustrates.
+
+```
+.arguments
+   foo:bool:true
+.dest
+
+if:x:@.arguments/*/foo
+   set-value:x:@.dest
+      .:yup!
+```
+
+If you use this shorthand version for the slot(s), its lambda object is assumed to be the entirety of the content
+of the **[if]** or **[else-if]** slot itself, and there are no needs to explicitly declare your lambda objects as
+a **[.lambda]** argument.
+
 ### [else-if]
 
 **[else-if]** is the younger sibling of **[if]**, and must be preceeded by its older sibling, or other **[else-if]** nodes,
 and will only be evaluated if all of its previous conditional slots evaluates to false - At which point **[else-if]** is
-allowed to test its condition - And only if it evaluates to true, evaluate its lambda object. Semantically **[else-if]**
+allowed to test its condition - And only if its condition evaluates to true, it evaluate its lambda object. Semantically **[else-if]**
 is similar to **[if]**, in that it requires exactly two arguments with the same structure as **[if]**.
 
 ```
@@ -323,7 +333,7 @@ switch:x:@.val
 
 The **[switch]** slot can only contain two children nodes, **[case]** and **[default]**. The **[default]** node
 will be evaluated if _none_ of the **[case]** node's values are matching the evaluated value of your **[switch]**.
-Try evaluating the following in your _"Evaluator"_ to understand what I mean.
+Try evaluating the following in your _"Eval"_ to understand what I mean.
 
 ```
 .val:fooXX
