@@ -226,12 +226,16 @@ set-value:x:@.dest
 ```
 
 If you change name of the above **[.src]** node to simply **[src]**, your code will raise an exception,
-with something such as follows _"No slot exists for [src]"_ since this slot doesn't exist in your Hyperlambda
-vocabulary by default - Unless you for some reasons of course have an installation where this _"keyword"_ have
+with an error such as follows _"No slot exists for [src]"_ since this slot doesn't exist in your Hyperlambda
+vocabulary - Unless you for some reasons of course have an installation where this _"keyword"_ have
 been added to your installation.
 
 ## Branching and conditional execution
 
+Branching implies to change the execution path of your code, and examples includes function invocations, and
+other similar mechanisms that changes the position of your computer's _"execution pointer"_. Conditional
+branching implies to changing the position of the execution pointer, according to some condition. Typically
+this implies constructs such as `if`, `else`, `goto` etc in traditional programming languages.
 Magic Lambda contains the following branching slots.
 
 ### [if]
