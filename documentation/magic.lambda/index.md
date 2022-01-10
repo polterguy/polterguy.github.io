@@ -55,23 +55,24 @@ name:value
    child1
 ```
 
-In the above Hyperlambda, there is one root node. Its name is _"name"_, its value is _"value"_, and this node
+In the above Hyperlambda there is one root node. Its name is _"name"_, its value is _"value"_, and this node
 has one child node, with the name of _"child1"_. Its child node does _not_ however have a value, which results
 in its value being _"null"_. The reason why the Hyperlambda parser understands _"child1"_ as the child of 
-the _"name"_ node, is because it is prefixed by 3 spaces (SP) relatively to the _"name"_ node. This allows you
+the _"name"_ node, is because it is prefixed by 3 spaces (SP) relative to the _"name"_ node. This allows you
 to create graph objects (tree structures) with any depth you wish, by simply starting out with the number of
-spaces the node above has, add 3 additional spaces, and you can declare children nodes of the above node.
+spaces the node above has, add 3 additional spaces, and you have declares children nodes of the node above.
 
 If you think of these nodes as a sequence of function invocations, from the top to bottom, where all of the
-nodes are assumed to be referencing slots - You can imagine how the tree structure resulting from parsing
-Hyperlambda into a graph object can easily be evaluated, due to its recursive nature, making it easy to
-express idioms such as _"if"_, _"while"_, _"for-each"_, etc. In fact logically this is similar to the
-way XSLT works, except there's no XML, only Hyperlambda, Lambda objects, and Node objects.
+nodes are assumed to be referencing slots, and all children nodes arguments to your slots - You can imagine
+how the tree structure resulting from parsing Hyperlambda into a graph object can easily be evaluated, due
+to its recursive nature, making it easy to express idioms such as _"if"_, _"while"_, _"for-each"_, etc. In
+fact logically this is similar to the way XSLT works, except there's no XML, only Hyperlambda, lambda objects,
+and nodes.
 
 Since each slot will be invoked with the node referencing the slot itself as the _"input"_ `Node`,
 this makes the Hyperlambda evaluator recursive in nature, allowing a slot to evaluate all of its children,
 after executing its custom logic, etc. And yes, before you ask, Hyperlambda has been heavily influenced by
-LISP. In some ways Hyperlambda _is_ Lisp for C#.
+LISP. In some ways Hyperlambda _is_ Lisp for C#, only with a completely different syntax, and without S-Expressions.
 
 ## Extending Hyperlambda
 
@@ -115,11 +116,11 @@ acme.foo:int:12
 
 Notice the relationship between the `[Slot(Name = "acme.foo")]` C# code and the way we invoke the **[acme.foo]**
 slot from Hyperlambda afterwards. It might help to imagine Hyperlambda as a simple string/type Dictionary,
-which resolves an object from your IoC container using the name of the node as the key. And in fact, this
+resolving an object from your IoC container using the name of the node as the key. And in fact, this
 is exactly how Hyperlambda _is_ implemented - As a string/type dictionary, creating instances of your slot
-classes using your IoC container, for then to invoke `Signal` passing in the identity node to your slot,
+classes using your IoC container, for then to invoke its `Signal` method, passing in the identity node to your slot,
 where the identity node is the node invoking your signal from Hyperlambda.
-To create your own C# or F# slots, follow the recipe below.
+To create your own C# or F# slots, you can follow the following recipe.
 
 1. Reference the NuGet package `magic.signals.contracts` in your project.
 2. Create your class, and implement the `ISlot` interface.
@@ -156,10 +157,10 @@ while
 
 ## Tokens
 
-The separating of a node's name and its value is done by using a ":" character. To the left is the node's
+The separating of a node's name and its value is done by using a `:` character. To the left is the node's
 name, and to the right is its value. The value of a node can also be a C# type of string, using double
-quotes, and even single quotes or prefix your opening double quote with an "@" character, allowing you
-to use carriage returns in your strings the same way you would do in for instance C#. Below is an example
+quotes, and even single quotes, or prefix your opening double quote with an "@" character, allowing you
+to use carriage returns in your strings the same way you can in for instance C#. Below are some examples.
 
 ```
 .str1:"   This is a \r\n  string"
@@ -177,7 +178,7 @@ as UTF8 if you are using an external code editor to edit your Hyperlambda files.
 
 ## Comments
 
-Hyperlambda accepts comments the exacts same way C# does, and you can use either multiline comments,
+Hyperlambda accepts comments the exacts same way C# does, and you can use either multiline comments
 or single line comments, like the following example illustrates.
 
 ```
@@ -199,7 +200,7 @@ an example.
 
 for-each:x:@.data/*
 
-// THIS IS WRONG!
+   // This is correct indentation.
    set-value:x:@.dp/#
       .:Loop was here ...
 ```
@@ -214,10 +215,10 @@ rule of thumb be applied with the same amount of indentation as the node below t
 Hyperlambda does not separate between a _"variable"_ and a _"function invocation"_. Hence, a node
 might serve as both at the same time. This allows you to dynamically modify your lambda structure, as you
 traverse it and execute it. But this creates another problem for you, which is that you will need
-a mechanism to store data. This is accomplished by prefixing a node's name with a "." character, at which point
+a mechanism to store data. This is accomplished by prefixing a node's name with a `.` character, at which point
 the Hyperlambda evaluator will ignore it, as it is traversing your tree, and _not_ attempt to signal
-that particular node as a slot. Think of all nodes starting with a `.` character as _"data segments"_
-or variables for that matter. Below is an example where **[eval]** will simply ignore the **[.src]** node,
+that particular node as a slot. Think of all nodes starting with a `.` character as _"data segments"_,
+or variables for that matter. Below is an example where **[eval]** will simply ignore the **[.src]** node
 and the **[.dest]** node, not attempting to invoke these as slots, but treat these as _"data nodes"_.
 
 ```
@@ -229,8 +230,8 @@ set-value:x:@.dest
 
 If you change name of the above **[.src]** node to simply **[src]**, your code will raise an exception,
 with an error such as follows _"No slot exists for [src]"_ since this slot doesn't exist in your Hyperlambda
-vocabulary - Unless you for some reasons of course have an installation where this _"keyword"_ have
-been added to your installation.
+vocabulary - Unless you for some reasons have an installation where this slot has been explicitly added to
+your vocabulary.
 
 ## Branching and conditional execution
 
@@ -350,7 +351,7 @@ else
 
 ### [switch]
 
-**[switch]** works similarly as a switch/case block in a traditional programming language, and will find the
+**[switch]** works similarly to a switch/case block in a traditional programming language, and will find the
 first **[case]** node with a value matching the evaluated value of the **[switch]** node, and execute that
 **[case]** node as a lambda object.
 
@@ -370,7 +371,7 @@ switch:x:@.val
 
 **[switch]** can only contain two types of children nodes; **[case]** and **[default]**. The **[default]** node
 will be evaluated if _none_ of the **[case]** node's values are matching the evaluated value of your **[switch]**.
-Try evaluating the following in your _"Eval"_ to understand what I mean.
+Try evaluating the following in your _"Eval"_ component to understand this.
 
 ```
 .val:fooXX
@@ -396,14 +397,15 @@ and this results in setting the **[.result]** node's value to _"Success!"_.
 
 **[default]** _cannot_ have a value, and all your **[case]** nodes must have a value, either a constant or
 an expression. However, any types can be used as values for your **[case]** nodes. And your **[switch]** node
-must at the very least have minimum one **[case]** node. The **[default]** node is optional though.
+must at the very least have minimum one **[case]** node. The **[default]** node is optional though. You can mix
+and match different types as you see fit in your **[case]** nodes.
 
 ## Comparisons
 
 All comparison _"operators"_ works the same way in Hyperlambda, in that they have an LHS and a RHS, implying
 respectively _"Left Hand Side"_ and _"Right Hand Side"_. However, since the _"comparison operators"_ in Hyperlambda
 are slots themselves, this implies there is no _"left"_ or _"right"_ side in your comparison, implying the _"left"_
-parts of your comparison is the first argument and the _"right"_ side is the second argument. Notice, all comparison
+parts of your comparison is the first argument, and the _"right"_ side is the second argument. All comparison
 slots will consider types, which implies that boolean true will _not_ be considered equal to the string value
 of _"true"_, and the integer value of 5 is _not_ the same as the decimal value of 5.0, etc.
 
@@ -486,9 +488,9 @@ mte
 
 ### Commonalities for all comparison slots
 
-All comparison slots can optionally be given an expression that will be assumed is their LHS or _"Left Hand Side"_ argument
-which replaces the first child argument if specified. Below is an example for the **[mte]** slot, but all comparison slots
-works similarly.
+All comparison slots can optionally be given an expression that will be assumed to be their LHS argument,
+or _"Left Hand Side"_ argument, that if given will replace the first child argument. Below is an example for
+the **[mte]** slot, but all comparison slots works similarly.
 
 ```
 .src1:int:7
@@ -502,6 +504,23 @@ give you an idea of its structure please consider the following.
 
 ```csharp
 src1 >= 5
+```
+
+Due to that the **[if]** slot, the **[else-if]** slot, and the **[while]** slot can optionally be given slot
+invocations themselves as their conditions, and all comparison slots are slots - You can inject comparison slot
+invocations inside of for instance your **[if]** invocations, serving as the slot invocation declaring the condition
+for your if. Consider the following to understand this.
+
+```
+.result
+.arg1:foo
+
+if
+   eq:x:@.arg1
+      .:foo
+   .lambda
+      set-value:x:@.result
+         .:Yup!
 ```
 
 ## Boolean logical conditions
