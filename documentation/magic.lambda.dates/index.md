@@ -13,7 +13,6 @@ timezone, you'll have to convert it explicitly in your client/frontend. All date
 also those stored into any database, are treated as UTC timezone. All dates transmitted _to_ the backend, is also
 assumed to be UTC. This is to make things simple in regards to interacting with database systems, that may or may not
 add support for timezone offsets.
-
 Below is an example of taking the current date and time, and adding two days and one second to it, for then to
 format the result as a string.
 

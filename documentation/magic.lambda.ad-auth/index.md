@@ -6,6 +6,10 @@ The project contains _two_ methods for authentication; One method where you supp
 password, and Magic checks these towards the `DirectoryEntry` object for your LDAP Domain. The other method
 is _"automatic authentication"_ assuming you're already logged on to the domain with your client machine.
 
+**Notice** - This project is _not_ installed in your Magic server by default, but must be explicitly
+added by for instance referencing the [magic.lambda.ad-auth](https://www.nuget.org/packages/magic.lambda.ad-auth/)
+package manually for then to build the _"backend.csproj"_ file manually using e.g. the DotNet CLI.
+
 ## Common configuration
 
 Both of these methods implies that you configure Magic such that it knows your LDAP URL.
@@ -80,7 +84,7 @@ endpoint in Magic no longer requires the **[username]**/**[password]** arguments
 and if not given, it will try to automatically authenticate the user using the **[auth.ad.get-username]**
 slot.
 
-If a **[username]**/**[password]** argument _is_ provided though, it will try to authenticate the
+If a **[username]**/**[password]** argument is provided though, it will try to authenticate the
 user using the **[auth.ad.authenticate]** slot. This allows the end user to explicitly login to
 Magic providing a username/password combination, which is useful for instance over a machine where
 the user is not logged into his Windows account, allowing the user to access Magic over the web - While

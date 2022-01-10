@@ -1,8 +1,8 @@
 
 # Creating dynamic slots from Hyperlambda
 
-This project provides the ability to create, modify, inspect, and delete dynamic slots for Magic. More specifically,
-this project provides the following slots.
+This project provides the ability to create, invoke (signal), modify, inspect, and delete dynamic slots for Magic.
+More specifically, this project provides the following slots.
 
 * __[signal]__ - Invokes a dynamically create slot that has been created with the __[slots.create]__ slot
 * __[slots.create]__ - Creates a dynamic slot, that can be invoked with the __[signal]__ slot
@@ -48,8 +48,8 @@ slots.create:foo
    return-value:int:57
 ```
 
-Notice, slots aren't serialised in any ways, implying if your web server restarts its process, your previously created
-dynamic slot is remove. If you want to make sure your slots becomes a permanent part of your application, you need to
+Notice, the above slot aren't persisted in any ways, implying if your web server restarts its process, your
+slot is removed. If you want to make sure your slots becomes a permanent part of your application, you need to
 make sure you are somehow creating it during server startup, which can normally be done on a per module basis, by putting
 a Hyperlambda file into your module's _"magic.startup"_ folder, which makes sure the code is executed during startup
 of your web app.
@@ -73,12 +73,16 @@ a pre-defined list of dynamically created slots. Below is an example.
 ```
 slots.create:foo1
    return-value:Safe
+
 slots.create:foo2
    return-value:Unsafe
+
 whitelist
+
    vocabulary
       signal
       signal:foo1
+
    .lambda
 
       // Assuming you have a [foo1] slot created, this will work
@@ -92,7 +96,11 @@ Basically, _only_ the slots declared in the above **[vocabulary]** will be allow
 of the above **[.lambda]** object. You must have your dynamic slots declared as **signal:slot-name**,
 such as the above illustrates. And in order to signal dynamic slots *at all*, you'll need to (obviously)
 whitelist **[signal]** itself, as illustrated in the above code. Read more about **[whitelist]** in 
-the magic.lambda project.
+the magic.lambda project. Inside your slots though any **[whitelist]** invocations will simply be ignored,
+allowing you to whitelist a single dynamic slot, for then to ignore what the slot itself is doing internally.
+This _might_ create security issues for you if you have dynamically created slots that for some reasons
+execute lambda object supplied to them. Hence as a general rule of thumb, you should _avoid_ whitelisting
+such slots.
 
 ### [slots.get]
 
