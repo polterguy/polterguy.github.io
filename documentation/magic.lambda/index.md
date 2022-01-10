@@ -684,7 +684,7 @@ add:x:@.dest
 ```
 
 Notice how all the 4 nodes above (foo1, foo2, bar1, bar2) are appended into the **[.dest]** node's children
-collection. This allows you to evaluate slots and add the result of your slot invocation into the destination,
+collection. This construct allows you to evaluate slots and add the result of your slot invocations into the destination,
 such as the following illustrates.
 
 ```
@@ -697,12 +697,29 @@ add:x:@.dest
 ```
 
 **[add]** can also take an expression leading to multiple destinations as its main argument, allowing you to
-add a copy of your source nodes into multiple node collections at the same time, with one invocation.
+add a copy of your source nodes into multiple destination node collections simultaneously with one invocation. **[add]**
+can also be given multiple _"source"_ node invocations. In the following example we illustrate both of these
+constructs at the same time.
+
+```
+.dest
+.dest
+.src1
+   foo1:bar1
+.src2
+   foo2:bar2
+add:x:../*/.dest
+   get-nodes:x:@.src1/*
+   get-nodes:x:@.src2/*
+```
+
+Notice how _both_ of our **[.dest]** nodes above ends up having _both_ the **[foo1]** and the **[foo2]** nodes in
+its children collection after executing the above Hyperlambda.
 
 ### [insert-before]
 
-This slot functions exactly the same as the **[add]** node, except it will insert the nodes _before_ the
-node(s) referenced in its main argument.
+This slot works the exact same way as the **[add]** node, except it will insert the nodes _before_ the
+node(s) referenced in its main/destination argument.
 
 ```
 .foo
@@ -715,8 +732,8 @@ insert-before:x:@.foo/*/foo1
 
 ### [insert-after]
 
-This slot functions exactly the same as the **[add]** node, except it will insert the nodes _after_ the
-node(s) referenced in its main argument.
+This slot works the exact same way as the **[add]** and **[insert-before]** slots, except it will insert the
+nodes _after_ the node(s) referenced in its main/destination argument.
 
 ```
 .foo
@@ -741,21 +758,22 @@ remove-nodes:x:@.data/*/foo2
 
 ### [set-value]
 
-Changes the value of a node referenced as its main expression to whatever its single source happens to be.
+Changes the value of all nodes referenced as its main expression to whatever its single source happens to be.
 Notice, when you invoke a slot that tries to change the value, name, or the node itself of some expression,
 and you supply a source expression to your invocation - Then the result of the source expression
 _cannot_ return more than one result. The destination expression however can modify multiple nodes
-at the same time.
+simultaneously.
 
 ```
 .foo
-set-value:x:@.foo
+.foo
+set-value:x:../*/.foo
    .:SUCCESS
 ```
 
 ### [set-name]
 
-Changes the name of a node referenced as its main expression to whatever its single source happens to be.
+Changes the name of all nodes referenced as its main expression to whatever its single source happens to be.
 
 ```
 .foo
@@ -763,6 +781,8 @@ Changes the name of a node referenced as its main expression to whatever its sin
 set-name:x:@.foo/*
    .:new-name
 ```
+
+The **[set-name]** invocation can also be given multiple destinations, but only _one_ source.
 
 ### [unwrap]
 
@@ -777,12 +797,15 @@ unwrap:x:+
 
 In the above example, before the **[.dest]** node is reached by the Hyperlambda instruction pointer, the value
 of the **[.dest]** node will have been _"unwrapped"_ (evaluated), and its value will be _"Hello World"_.
-When you invoke lambda objects that are cloned for some reasons, this slot becomes very handy, since
-it allows you to _"forward evaluate"_ expressions inside your lambda object. It's also useful when
-you have expressions inside for instance a **[return]** slot, and you want to return the _value_
-the expression evaluates to, and not the expression itself.
+This slot becomes very handy when you invoke lambda objects with expressions, since
+it allows you to _"forward evaluate"_ said expressions inside your lambda object, _before_ the lambda object
+is actually executed. It's also useful when you have expressions inside for instance a **[return]** slot,
+and you want to return the _value_ the expression evaluates to, and not the expression itself.
 
 ## Source slots
+
+In addition to the above slots allowing you to _change_ your graph objects as they are executed, Hyperlambda also
+contains a whole range of slots that allows you to _retrieve_ parts of your lambda objects during execution.
 
 ### [get-value]
 
@@ -855,14 +878,14 @@ You can think of this slot as the singular version of **[get-nodes]**, except in
 nodes, it assumes its expression only points to a single node, and instead of returning a copy of the node,
 it returns the actual node by reference.
 
-**Notice** - The `#` iterator above, will enter into the node referenced as a value of its current
+**Notice** - The `/#` iterator above, will enter into the node referenced as a value of its current
 result - Implying it allows you to deeply traverse nodes passed in as references. This is sometimes
 useful in combination with referenced nodes, passed in as values of other nodes. You should as a general
-rule of thumb be careful with the **[reference]** slot since it results in side effects for the caller if
-it passes nodes by reference into some slot. Such side effects are in genral terms considered a bad thing,
-since they result in unpredictable code. In theory passing in a node by reference to some slot, might change
+rule of thumb be careful with the **[reference]** slot, since it results in side effects for the caller if
+it passes nodes by reference into some slot. Such side effects are as a general rule of thumb considered a _bad thing_,
+since they result in unpredictable results. In theory passing in a node by reference to some slot, might change
 the logic of the calling function, resulting in changing the code that is being executed, which obviously
-makes the code literally impossible to understand.
+makes the code literally impossible to understand. Hence, be careful with the **[reference]** slot!
 
 ### [format]
 
