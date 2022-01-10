@@ -405,6 +405,10 @@ parts of your comparison is the first argument and the _"right"_ side is the sec
 slots will consider types, which implies that boolean true will _not_ be considered equal to the string value
 of _"true"_, and the integer value of 5 is _not_ the same as the decimal value of 5.0, etc.
 
+You can provide the two arguments to these slots either as children nodes, where the first child node becomes
+the LHS part, and the second its RHS part - Or you can alternatively supply the LHS part as an expression
+leading to a value, at which point the only child argument assumed for your comparison becomes the RHS argument.
+
 ### [eq]
 
 **[eq]** is the equality _"operator"_ in Magic, and it requires two arguments, both of which will be evaluated as potential
