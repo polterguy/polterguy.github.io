@@ -366,7 +366,7 @@ switch:x:@.val
          .:Success!
 ```
 
-The **[switch]** slot can only contain two children nodes, **[case]** and **[default]**. The **[default]** node
+**[switch]** can only contain two types of children nodes; **[case]** and **[default]**. The **[default]** node
 will be evaluated if _none_ of the **[case]** node's values are matching the evaluated value of your **[switch]**.
 Try evaluating the following in your _"Eval"_ to understand what I mean.
 
