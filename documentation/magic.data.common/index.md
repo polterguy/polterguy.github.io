@@ -182,7 +182,7 @@ can use the following 3 slots to create, rollback, and/or commit transactions to
 
 * __[data.transaction.create]__ - Creates a new database transaction
 * __[data.transaction.commit]__ - Commits an existing open transaction
-* __[data.transaction.rollback]__ - Rolls back an existing open transaction
+* __[data.transaction.rollback]__ - Roll back an existing open transaction
 
 **Notice** - The default logic for a database transaction, is that unless it's _explicitly committed_
 before leaving scope, it will roll back by default. Below is an example of a transaction that will
@@ -210,7 +210,7 @@ data.connect:sakila
    data.scalar:select count(*) from film_actor
 ```
 
-**Notice** - A transaction will follow your connection, implying to count items
+A transaction typically follows your connection, implying to count items
 after the transaction has been rolled back, we'll need a _new_ connection, as the
 above example illustrates.
 
@@ -221,13 +221,11 @@ which might or might not work for your database adapter of choice. This allows y
 SQL statements _without_ executing anything towards your database. This allows you to play
 around with the syntax, to understand how it works, and see how some semantic graph object
 results in an SQL statement before using it.
-
 All of these slots have **[data.\*]** equivalent slots, which again polymorphistically
 invokes your specialised data adapter's equivalent, and/or can be parametrised with a
 database type - Which again resolves to the **[mysql.\*]** equivalent if you supply
 _"mysql"_ as your **[database-type]**, and/or MySQL is your default database type
 as configured in your _"appsettings.json"_ file.
-
 Hence, the documentation for these slots is also the documentation for your **[data.\*]**
 slots.
 
@@ -257,7 +255,9 @@ sql.create:insert into 'table1' ('field1', 'field2') values (@0, @1)
 The basic idea is that everything that might be dynamically injected into your data access layer,
 should be consumed as `SqlParameters`, or something equivalent, to prevent SQL injection attacks
 towards your database. This is true for all arguments passed in as data for all slots in the project.
-The slot will in its specialized implementations return the ID of the inserted record if possible.
+The slot will in its specialized implementations return the ID of the inserted record if possible,
+unless you explicitly parametrize it with a **[return-id]** argument and set its value to boolean
+`false`.
 
 ### [sql.read]
 
