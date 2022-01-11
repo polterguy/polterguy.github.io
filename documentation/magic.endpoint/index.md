@@ -1,14 +1,13 @@
 
 # How Magic resolves URLs and endpoints
 
-Magic Endpoint is a dynamic endpoint URL controller, allowing you to declare endpoints that are dynamically
+magic.endpoint is a dynamic endpoint URL controller, allowing you to declare endpoints that are dynamically
 resolved using your `IHttpExecutorAsync` service implementation. The default implementation of this interface,
 is the class called `HttpExecutorAsync`, and the rest of this file will be focused on documenting this
-implementation, since it is the default service implementation for Magic Endpoint - Although, technically, you
+implementation, since it is the default service implementation for magic.endpoint - Although, technically, you
 could exchange this with your own implementation if you wish, completely changing the behaviour of the library
 if you wish to for instance resolve endpoints to Python, Ruby, or any other dynamic programming language
 implementation, and you have some means to execute such code from within a .Net 6 environment.
-
 The resolver will be invoked for all relative URLs starting with _"magic/"_, for the following verbs.
 
 * `GET`
@@ -18,8 +17,8 @@ The resolver will be invoked for all relative URLs starting with _"magic/"_, for
 * `PATCH`
 
 The default service implementation will resolve everything after the _"magic/"_ parts in the
-given URL, to a Hyperlambda file that can be found relatively beneath your _"/files/"_ folder.
-Although, technically, exactly where you physically put your files on disc, can be configured
+given URL, to a Hyperlambda file assumed to be found relatively beneath your _"/files/"_ folder -
+Although, exactly where you physically put your files on disc, can be configured
 through your _"appsettings.json"_ file. The HTTP verb is assumed to be the last parts of your
 filename, before its extension, implying an HTTP request such as the following.
 
@@ -33,26 +32,25 @@ Will resolve to the following physical file on disc.
 files/modules/foo/bar.get.hl
 ```
 
-**Notice** - Only the _"magic"_ part of your URL is rewritten before the verb is appended to the URL, and
+Only the _"magic"_ part of your URL is rewritten before the verb is appended to the URL, and
 finally the extension _".hl"_ appended. Then the file is loaded and parsed as Hyperlambda, and whatever
-arguments you pass in, either as query parameters, or as your JSON payload, URL encoded form arguments, etc,
-is appended into your resulting lambda node's **[.arguments]** node as arguments to your Hyperlambda file
-invocation. The resolver will never return files directly, but is only able to execute Hyperlambda files,
+arguments you pass in, either as query parameters or as your JSON payload is appended into your
+resulting lambda node's **[.arguments]** node as arguments to your Hyperlambda file invocation.
+The resolver will never return files directly, but is only able to execute Hyperlambda files,
 so by default there is no way to get static files, unless you create a Hyperlambda endpoint that returns
 a static file somehow.
 
-**Notice** - The default resolver will only allow the client to resolve files inside your _"/files/modules/"_
-folder and _"/files/system/"_ folder. This allows you to safely keep files that other parts of your system
-relies upon inside your dynamic _"/files/"_ folder, without accidentally creating endpoints, clients can
+The default resolver will only allow the client to resolve files inside your _"/files/modules/"_
+folder and _"/files/system/"_ folder. This allows you to safely keep files that parts of your system
+relies upon inside your dynamic _"/files/"_ folder, without accidentally creating endpoints clients can
 resolve, resulting in breaches in your security. Only characters a-z, 0-9 and '-', '\_' and '/' are legal
 characters for the resolvers, and only lowercase characters to avoid file system incompatibilities between
 Linux and Windows. There is _one exception_ to this rule though, which is that the resolver will resolve
 files and folder starting out with a period (.) character, since this is necessary to allow for having
 _"hidden files"_ being resolved as endpoints - Which is a requirement to make things such as
 Apple's _".well-known"_ endpoints being resolved.
-
 Below is probably the simplest HTTP endpoint you could create. Save the following Hyperlambda in a
-file at the path of `modules/magic/foo1.get.hl` using for instance your Magic Dashboard's
+file at the path of `modules/tutorials/foo/bar.get.hl` using for instance your Magic Dashboard's
 _"Files"_ menu item.
 
 ```
@@ -60,10 +58,10 @@ return
    result:Hello from Magic Backend
 ```
 
-Then invoke the endpoint using the following URL.
+Then invoke the endpoint using the GET verb with the following URL.
 
 ```
-http://localhost:5000/magic/modules/magic/foo1
+http://localhost:5000/magic/modules/tutorials/foo/bar
 ```
 
 ## Arguments
