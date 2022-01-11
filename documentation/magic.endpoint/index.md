@@ -71,31 +71,29 @@ legally accept, and if an argument is given during invocation that the file does
 exception will be thrown and the file will never be executed. This allows you to declare what
 arguments your Hyperlambda file can accept, and avoid having anything _but_ arguments explicitly
 declared in your Hyperlambda file from being sent into your endpoint during invocation of your
-HTTP endpoint.
-
-An example Hyperlambda file taking two arguments can be found below.
+HTTP endpoint. An example Hyperlambda file taking two arguments can be found below.
 
 ```
 .arguments
    arg1:string
    arg2:int
+
 strings.concat
    get-value:x:@.arguments/*/arg1
    .:" - "
    get-value:x:@.arguments/*/arg2
+
 unwrap:x:+/*
 return
    result:x:@strings.concat
 ```
 
-If you save this file on disc as `/files/modules/magic/foo2.get.hl`, you can invoke it as follows, using
-the HTTP GET verb.
+If you save this file on disc as `/files/modules/tutorials/foo2.get.hl`, you can invoke it as follows
+using the HTTP GET verb - Assuming your backend is running on localhost at port 5000.
 
 ```
-http://localhost:5000/magic/modules/magic/foo2?arg1=howdy&arg2=5
+http://localhost:5000/magic/modules/tutorials/foo2?arg1=howdy&arg2=5
 ```
-
-Assuming your backend is running on localhost at port 5000.
 
 JSON payloads and form URL encoded payloads are automatically converted to lambda/nodes -
 And query parameters are treated indiscriminately the same way as JSON payloads -
@@ -104,7 +102,7 @@ simply key/value arguments. Only POST, PUT and PATCH endpoints can handle payloa
 supply a payload to a GET or DELETE endpoint, an exception will be thrown, and an error
 returned to the caller.
 
-**Notice** - To allow for _any_ arguments to your files, simply _ommit_ the **[.arguments]** node
+To allow for _any_ arguments to your files, simply _ommit_ the **[.arguments]** node
 in your Hyperlambda althogether, or supply an **[.arguments]** node and set its value to `*`.
 Alternatively, you can also _partially_ ignore arguments sanity checking of individual nodes,
 by setting their values to `*`, such as the following illustrates.
@@ -122,7 +120,6 @@ to invoke it with _anything_ as `arg3` during invocation - Including complete gr
 the above declaration is for a `PUT`, `POST` or `PATCH` Hyperlambda file. The '\*' value for an argument also turn
 off all conversion, implying everything will be given to your lambda object with the JSON type the argument
 was passed in as.
-
 All arguments declared are considered optional, and the file will still resolve if the argument is not given,
 except of course the argument won't exist in the **[.arguments]** node. However, no argument _not_ found
 in your **[.arguments]** declaration can be provided during invocations, assuming you choose to declare
@@ -130,9 +127,8 @@ an **[.arguments]** collection in your Hyperlambda endpoint file, and you don't 
 
 To declare what type your arguments can be, set the value of the argument declaration node to
 the Hyperlambda type value inside of your arguments declaration, such as illustrated above.
-Arguments will be converted if possible, to the type declaration in your arguments declaration.
+Arguments will be converted if possible, to the type declaration in your argument's declaration.
 If no conversion is possible, an exception will be thrown.
-
 Although the sanity check will check graph objects, passed in as JSON payloads, it has its restrictions,
 such as not being able to sanity check complex objects passed in as arrays, etc. If you need stronger
 sanity checking of your arguments, you will have to manually check your more complex graph objects
@@ -155,7 +151,7 @@ The POST, PUT and PATCH endpoints can intelligently handle any of the following 
 
 JSON types of payloads are fairly well described above, and URL encoded form payloads are handled
 the exact same way, except of course the **[.arguments]** node is built from URL encoded values instead
-of JSON - However, internally this is transparent for you, and JSON, query parameters, and URL encoded
+of JSON - However, internally this is transparent for you, and JSON, query parameters, URL encoded
 forms, and _"multipart/form-data"_ can be interchanged 100% transparently from your code's perspective -
 Except _"multipart/form-data"_ might have **[file]** arguments wrapping streams that you need to
 handle separately as such. File attachments will be passed into your endpoint as follows.
@@ -196,12 +192,11 @@ your Content-Type handler and the **[.arguments]** declaration in your Hyperlamb
 needs to agree upon the arguments, and if a non-valid argument is specified to a Hyperlambda file,
 an exception will be thrown. Also notice that registering a custom Content-Type is _not_ thread
 safe, and should be done as you start your application, and not during its life time.
-
 You can also provide your own HTTP response resolver that will be invoked given some specified
 Content-Type from your Hyperlambda file. This is done in a similar manner using something resembling
 the following.
 
-```
+```csharp
 EndpointController.RegisterContentType("application/x-foo", (response) =>
 {
    /* ... Return some sort of IActionResult here ... */
@@ -209,9 +204,9 @@ EndpointController.RegisterContentType("application/x-foo", (response) =>
 });
 ```
 
-**Notice** - The above method should also exclusively be used during startup, and not later,
-since it is _not_ thread safe, and assuming you register your Content-Type handlers as your
-application is starting.
+The above method should also exclusively be used during startup, and not later,
+since it is _not_ thread safe. The above method assumes you register your Content-Type handlers
+as your application is starting.
 
 ## Meta information
 
@@ -235,16 +230,15 @@ your endpoints.
 * Etc ...
 
 This slot/endpoint is what allows you to see meta information about all your HTTP REST endpoints
-in the _"Endpoints"_ menu item in the Magic Dashboard for instance. The return value from this
+in the _"Endpoints"_ menu item in the Magic dashboard for instance. The return value from this
 slot/endpoint again, is what's used as some sort of frontend is being generated using the Magic
-Dashboard.
+dashboard.
 
 ### Extending the meta data retrieval process
 
-If you wish, you can extend the meta data retrieval process, by
+You can extend the meta data retrieval process by
 invoking `ListEndpoints.AddMetaDataResolver`, and pass in your own function. This class can be
 found in the `magic.endpoint.services.slots` namespace.
-
 The `AddMetaDataResolver` method takes one function object, which will be invoked for every file
 the meta generator is trying to create meta data for, with the complete `lambda`, `verb` and `args`
 of your endpoint. This allows you to semantically traverse the lambda/args nodes, and append
@@ -252,22 +246,22 @@ any amount of (additional) meta information you wish - Allowing you to extend th
 of meta data, if you have some sort of general custom Hyperlambda module, creating custom
 HTTP endpoints of some sort.
 
-**Notice** - The function will be invoked for _every_ single Hyperlambda file in your system,
+This function will be invoked for _every_ single Hyperlambda file in your system,
 every time meta data is retrieved, so you might want to ensure it executes in a fairly short
 amount of time, not clogging the server or HTTP endpoint meta generating process in any ways.
 
-## Additional slots
+## Slots related to plugin
 
 In addition to the meta retrieval endpoint described above, the module contains the following
 slots.
 
-* __[response.status.set]__ - Sets the status code (e.g. 404) on the response object.
-* __[request.cookies.list]__ - Lists all HTTP request headers.
-* __[request.cookies.get]__ - Returns the value of a previously set cookie.
-* __[response.cookies.set]__ - Creates a cookie that will be returned to the client.
-* __[request.headers.list]__ - Lists all HTTP request headers.
-* __[request.headers.get]__ - Returns a single HTTP header associated with the request.
-* __[response.headers.set]__ - Adds an HTTP header to the response object.
+* __[response.status.set]__ - Sets the status code (e.g. 404) on the response object
+* __[request.cookies.list]__ - Lists all HTTP request cookies
+* __[request.cookies.get]__ - Returns the value of a cookie sent by the request
+* __[response.cookies.set]__ - Creates a cookie that will be returned to the client over the response
+* __[request.headers.list]__ - Lists all HTTP request headers sent by the request
+* __[request.headers.get]__ - Returns a single HTTP header associated with the request
+* __[response.headers.set]__ - Adds an HTTP header to the response object
 
 ## Misc
 
@@ -278,15 +272,14 @@ this behavious and return plain text for instance, you could create an endpoint 
 the following.
 
 ```
-response.headers.add
+response.headers.set
    Content-Type:text/plain
 return:Hello from Magic Backend
 ```
 
-**Notice** - If you intend to return anything but JSON, you _must_ set the `Content-Type` header, because
+If you intend to return anything but JSON, you _must_ set the `Content-Type` header, because
 the resolver will by default try to serialize your content as JSON, and obviously fail unless it is
 valid JSON.
-
 You can also return stream objects using for instance the **[return-value]** slot, at which point
 ASP.NET Core will automatically stream your content back over the response object, and `Dispose`
 your stream automatically for you afterwards. This allows you to for instance return large files back
