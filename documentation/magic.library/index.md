@@ -1,19 +1,16 @@
 
 # Wiring all parts of Magic together automagically
 
-Helper project for Magic, to wire up everything and initialize Magic.
-
-This project will help you to wire up everything related to Magic. Normally you'd use it simply like the following from
-your startup class in your .Net Core Web API project.
+This project helps you to wire up everything related to Magic. Normally you'd use it simply like the following from
+your startup class in your .Net 6 Web API project.
 
 ```csharp
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using magic.library;
 
-namespace your.app
+namespace magic.backend
 {
     public class Startup
     {
@@ -26,33 +23,17 @@ namespace your.app
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton(Configuration);
-            services.AddMvc().AddNewtonsoftJson();
-
-            /*
-             * Initializing Magic.
-             * Notice, must be done AFTER you invoke "AddMvc".
-             */
-            services.AddMagic(Configuration, Configuration["magic:license"]);
+            // Initializing Magic.
+            services.AddMagic(Configuration);
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            /*
-             * Initializing Magic.
-             * Notice, must be done BEFORE you invoke "UseEndpoints".
-             */
+            // Initializing Magic.
             app.UseMagic(Configuration);
-
-            app.UseHttpsRedirection();
-            app.UseCors(x => x.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
-            app.UseAuthentication();
-            app.UseRouting();
-            app.UseEndpoints(conf => conf.MapControllers());
         }
     }
 }
-
 ```
 
 However, you can also take more control over how things are actually wired up, by instead of using the
