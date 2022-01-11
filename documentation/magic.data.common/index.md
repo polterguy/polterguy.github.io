@@ -269,36 +269,38 @@ sql.read
    table:foo
 ```
 
-The above will result in the following SQL returned to you. **Notice**, if you're using the special implementations,
-such as e.g. **[data.read]**, and/or **[mssql.read]** - The returned SQL might vary, according to your dialect. But the
-results of executing the SQL will be the same.
+The above will result in the following SQL returned to you. If you're using the special implementations,
+such as e.g. **[data.read]**, and/or **[mssql.read]** - The returned SQL might vary according to your dialect.
+But the results of executing the SQL will be the same.
 
 ```
 select * from 'foo' limit 25
 ```
 
-You can optionally supply the following arguments to this slot.
+To avoid accidentally exhausting your database, this slot will by default limit your result set
+to 25 records unless explicitly overridden by your code with a **[limit]** argument. You can optionally
+supply the following arguments to this slot.
 
 * __[columns]__ - Columns to select
-* __[order]__ - Which column(s) to order the results by. You can supply multiple of these arguments.
+* __[order]__ - Which column(s) to order the results by. You can supply multiple **[order]** arguments
 * __[direction]__ - Which direction to order your columns
-* __[limit]__ - How many records to return, default is 25. Set this value to -1 to avoid having the parser inject it
+* __[limit]__ - How many records to return, default is 25. Set this value to -1 to avoid having the parser inject its default value
 * __[offset]__ - Offset of where to start returning records
 * __[where]__ - Where condition
 * __[join]__ - Join condition
 * __[group]__ - Group by declaration
 
 For instance, to select only the _"field1"_ column and the _"field2"_ column from _"table1"_,
-and ordering descending by _"field3"_ - You can use something resembling the following.
+and ordering descendingly by _"field3"_ - You can use something resembling the following.
 
 ```
 sql.read
    table:table1
-   order:field3
-   direction:desc
    columns
       field1
       field2
+   order:field3
+   direction:desc
 ```
 
 This will result in the following SQL returned.
@@ -307,8 +309,7 @@ This will result in the following SQL returned.
 select 'field1','field2' from 'table1' order by 'field3' desc limit 25
 ```
 
-**Notice** - The **[direction]** argument can _only_ be either _"asc"_ or _"desc"_, implying ascending or descending.
-
+The **[direction]** argument can _only_ be either _"asc"_ or _"desc"_, implying ascending or descending.
 You can also supply multiple ordering columns, by separating them by _","_. See an example below, which also specifies
 what table to use while ordering your results.
 
@@ -330,8 +331,10 @@ following illustrates.
 ```
 sql.read
    table:table1
+
    order:field1
       direction:asc
+
    order:field2
       direction:desc
 ```
@@ -360,14 +363,14 @@ The above will result in the following SQL.
 select count(*) as count from 'table1'
 ```
 
-**Notice**, by setting **[limit]** to _"-1"_, like we do above, we avoid adding the limit parts to our SQL. Unless
-you explicitly specify a limit, the default value will always be 25, to avoid accidentally exhausting your database,
-and/or web server by selecting all records from a table with millions of records.
+By setting **[limit]** to _"-1"_, like we do above, we avoid adding the limit parts to our SQL. Unless
+you explicitly specify a limit, the default value will always be 25 to avoid accidentally exhausting your database,
+and/or web server, by selecting all records from a table with millions of records.
 
 ### Paging
 
 To page your **[sql.read]** results, use **[limit]** and **[offset]**, such as the following illustrates.
-Notice, even though we use _"limit"_ and _"offset"_ - The correct syntax will be applied for your database type,
+Even though we use _"limit"_ and _"offset"_, the correct syntax will be applied for your database type,
 depending upon which database type you're using - Implying for Microsoft SQL Server, it will inject MS SQL dialect,
 and not MySQL dialect. But the syntax for your lambda object still remains the same, making it simpler to create
 SQL dialect valid for your specific database type 100% transparently.
@@ -390,8 +393,10 @@ You can also extract columns with an alias, _"renaming"_ the column in its resul
 sql.read
    table:table1
    columns
+
       table1.foo1
          as:howdy
+
       table1.foo2
          as:world
 ```
@@ -410,24 +415,28 @@ any type of _"projections"_ you wish.
 ### Joins
 
 The project supports joins by parametrizing your **[sql.read]** invocation with **[join]** arguments, beneath your
-**[table]** argument. You can _only_ add **[join]** beneath **[table]** for **[sql.read]** invocations though.
+**[table]** argument(s). You can _only_ add **[join]** beneath **[table]** for **[sql.read]** invocations though.
 If you have created the Sakila example database from Oracle, and you're using MySQL as your default database type,
 you can execute the following MySQL join SQL statement to see a fairly complex recursive join.
 
 ```
 data.connect:sakila
    data.read
+
       columns
          title
          description
          last_name
          first_name
+
       table:film
+
          join:film_actor
             type:inner
             on
                and
                   film.film_id:film_actor.film_id
+
             join:actor
                type:inner
                on
@@ -435,11 +444,12 @@ data.connect:sakila
                      film_actor.actor_id:actor.actor_id
 ```
 
-**Notice** - The above lambda assumes you've got Oracle's Sakila database in your MySQL instance. If you only wish to see
-its resulting SQL, add the **[generate]** argument to the above root invocation, and set its value to _"true"_.
-
+The above lambda assumes you've got Oracle's Sakila database in your MySQL instance. If you only wish to see
+its resulting SQL, add a **[generate]** argument to the above root invocation, and set its value to _"true"_.
 All specialised slots, dynamically building and executing some SQL towards your database, supports
 the **[generate]** argument, allowing you to easily _"debug"_ your SQL statements, and see what they actually do.
+Below is an example of the SQL created by the above invocation if you add a **[generate]** argument to it
+and set its value to boolean `true`.
 
 ```sql
 select `film`.`title`, `film`.`description`, `actor`.`last_name`, `actor`.`first_name` from `film`
@@ -456,6 +466,7 @@ sql.read
    generate:true
    limit:-1
    table:table1
+
       join:table2
          on
             and
@@ -471,11 +482,12 @@ select * from 'table1'
       'table1'.'fk2' = 'table2'.'pk2'
 ```
 
-**Notice** - Joining tables works _almost_ the exact same way as using a **[where]** argument, allowing you
+Joining tables works _almost_ the exact same way as using a **[where]** argument, allowing you
 to supply an operator for your join, such as we illustrate below, where we're using the `!=` operator,
-instead of the (default) equality comparison. See the **[where]** criteria for details about comparison
-operators.
-
+instead of the (default) equality comparison. However, when you create your **[join]** segments
+you can _only_ have columns from tables reference columns from tables, and not add static arguments
+to your join. If you need static arguments you have to add these into your **[where]** parts.
+See the **[where]** criteria for details about comparison operators.
 You can also explicitly choose a **[type]** of join, such as we illustrate below.
 
 ```
