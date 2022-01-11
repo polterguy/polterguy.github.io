@@ -51,7 +51,7 @@ _"hidden files"_ being resolved as endpoints - Which is a requirement to make th
 Apple's _".well-known"_ endpoints being resolved.
 Below is probably the simplest HTTP endpoint you could create. Save the following Hyperlambda in a
 file at the path of `modules/tutorials/foo/bar.get.hl` using for instance your Magic Dashboard's
-_"Files"_ menu item.
+_"Hyper IDE"_ menu item.
 
 ```
 return
