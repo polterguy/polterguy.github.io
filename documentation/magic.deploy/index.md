@@ -12,7 +12,7 @@ these would resemble the following.
 
 We suggest you don't buy the cheapest VPS droplet from DigitalOcean, but chose at least the one
 that will cost you $12 per month. Their cheapest droplet simply doesn't have enough memory to
-run Magic optimally. 2MB of memory should be enought to host both Magic, MySQL, and the frontend
+run Magic optimally. 2GB of memory should be enought to host Magic, MySQL, and the frontend
 dashboard.
 
 ## Installing Magic
@@ -75,13 +75,13 @@ address you own. The domain needs to be a sub-domain you own where you want to r
 installation. When you are done editing the docker-compose.yml file, hold down the CTRL key and
 click X, then type _"Y"_ when Nano asks you if you want to save the file after you have edited the
 file, and save it with its existing filename. When you are done execute the following command in
-your terminal. This installs Docker for you, in addition to Docker Compose.
+your terminal. This installs docker for you, in addition to docker compose.
 
 ```
 apt install docker docker-compose
 ```
 
-After you have installed Docker and Docker Compose, you will have to create a virtual Docker network.
+After you have installed docker and docker compose, you have to create a virtual docker network.
 This is necessary to make sure your containers have a virtual network to communicate with each other.
 
 ```
@@ -109,8 +109,8 @@ opening the following URLs in your browser.
 * https://api.yourdomain.com/magic/system/ping
 * https://magic.yourdomain.com
 
-Only when both of the above URLs returns success, and/or returns your Magic dashboard frontend, proceed
-with the rest of this guide.
+When the above URLs returns success, and/or returns your Magic dashboard frontend's HTML, you
+can proceed with the rest of this guide.
 
 ## Internals
 
@@ -147,8 +147,8 @@ development machine.
 Once you have installed Magic you probably want to check out its capabilities in regards to Low-Code
 and No-Code, which is easily achieved by going to the SQL menu item in your dashboard, click the Load
 button, choose _"Sakila"_, and then click execute. This creates a database for you called Sakila.
-For the record, you can of course also choose any existing and alternative create database MySQL
-script you've got instead.
+For the record, you can of course choose any existing database you have, or an alternative create
+database MySQL script you've got.
 
 After you've done the above you can go back to your dashboard in Magic and choose the _"CRUD"_
 menu item. Then click the little spiral arrow to refresh your server side cache, and once the page
@@ -162,7 +162,6 @@ If you want to crudify your own database here, you can easily do so by adding a 
 to an existing database through the _"Config"_ menu item, and then choose your own connection string's
 name as you crudify your backend. If you do this you can choose any Microsoft SQL Server, MySQL, or
 PostgreSQL database connection string.
-
 Once you have generated an Angular frontend, you can easily install this on the same VPS. This
 is possible since the generated frontend also contains a _"docker-compose.yml"_ file. The easiest way
 to do this is to upload your generated ZIP file to your VPS container using for instance the following

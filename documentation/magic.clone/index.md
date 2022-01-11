@@ -27,7 +27,7 @@ cd src
 code ./
 ```
 
-Then open _two_ terminal windows and type the following into the first.
+Then open _two_ terminal windows in VS Code and type the following into the first.
 
 ```bash
 cd magic
@@ -47,14 +47,14 @@ ng serve
 When `ng serve` and `dotnet run` is done, you can visit [localhost:4200](https://localhost:4200) in your
 browser, and you should be set. Notice, you will need a database to configure Magic. Below are recipies
 for how to accomplish this if you don't have a database accessible already somewhere.
-
 To debug, make sure you've got the OmniSharp C# debugger plugin installed in VSCode, click F5 while in VS Code, 
-and you can set breakpoints, and/or debug Magic locally on your development machine. This is configured through
-the `.vscode/launch.json` and `.vscode/tasks.json` files.
+and set breakpoints where you wish to debug Magic locally on your development machine. This is configured through
+the `.vscode/launch.json` and `.vscode/tasks.json` files. If you started Magic first with `dotnet run` you have to
+stop that process before you start debugging Magic.
 
 ## Docker database images
 
-This project also contains _"docker-compose.yml"_ files for SQL Server, PostreSQL and MySQL, allowing you
+This project also contains _"docker-compose.yml"_ files for SQL Server, PostreSQL, and MySQL, allowing you
 to locally start a database instance using Docker. These files can be found within the _"db"_ folder,
 that contains one folder for each database type, allowing you to test Magic with any of these databases
 locally. To start for instance SQL Server, execute the following from a terminal.

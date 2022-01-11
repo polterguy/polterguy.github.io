@@ -152,12 +152,12 @@ nav_sections:
   - name: Misc
     items:
       - url: /about
-        name: About
+        name: about
       - url: /blog/
-        name: Blog
+        name: blog
       - url: https://youtube.com/ThomasHansen-Magic
-        name: YouTube
+        name: youtube
       - url: https://www.linkedin.com/company/77018722
-        name: LinkedIn
+        name: linkedin
       - url: https://github.com/polterguy/magic
-        name: GitHub
+        name: github
