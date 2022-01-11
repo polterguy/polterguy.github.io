@@ -50,7 +50,7 @@ files and folder starting out with a period (.) character, since this is necessa
 _"hidden files"_ being resolved as endpoints - Which is a requirement to make things such as
 Apple's _".well-known"_ endpoints being resolved.
 Below is probably the simplest HTTP endpoint you could create. Save the following Hyperlambda in a
-file at the path of `modules/tutorials/foo/bar.get.hl` using for instance your Magic Dashboard's
+file at the path of `/modules/tutorials/foo.get.hl` using for instance your Magic 
 _"Hyper IDE"_ menu item.
 
 ```
@@ -61,7 +61,7 @@ return
 Then invoke the endpoint using the GET verb with the following URL.
 
 ```
-http://localhost:5000/magic/modules/tutorials/foo/bar
+http://localhost:5000/magic/modules/tutorials/foo
 ```
 
 ## Arguments
