@@ -494,6 +494,7 @@ You can also explicitly choose a **[type]** of join, such as we illustrate below
 sql.read
    limit:-1
    table:table1
+
       join:table2
          type:inner
          on
@@ -516,7 +517,6 @@ There is one crucial semantic difference between a **[join]** condition and a **
 that the library assumes a join is _always_ between two columns, while a where always assume you're _always_
 comparing against a static value. This implies that you _cannot_ add static values into your SQL as a part of
 your **[join]** condition, while the opposite is true for a **[while]**.
-
 Although this technically doesn't allow you to create any SQL you want to create, it is still more
 in _"the spirit"_ of SQL as a standard - And you can always add your static conditions into your **[where]**
 parts, while adding your table comparisons into your **[join]** conditions. This allows you to create
@@ -555,7 +555,6 @@ you normally rarely need, but might be useful on rare occasions. The reasons why
 of your join condition starts with an `@` character, which assumes you are referencing an argument and not a field
 in your joined table. This only has effects on your **[join]** parts, implying **[xxx.read]** slot invocations,
 since these are the only slots supporting joins.
-
 The above is the only exception that allows you to join on static values and not column names. However, as a general
 rule of thumb, we encourage users to **[join]** on table columns and add static values into your **[where]** conditions.
 
@@ -580,11 +579,13 @@ data.connect:sakila
          actor.first_name
 
       table:film
+
          join:film_actor
             type:inner
             on
                and
                   film.film_id:film_actor.film_id
+
             join:actor
                type:inner
                on
@@ -606,9 +607,8 @@ select
    limit 25
 ```
 
-**Notice** - Spacing is not applied to the actual generated SQL result, but have been applied to some of the SQL
-examples in this documentation, to make the SQL more readable.
-
+Spacing is not applied to the actual generated SQL result, but have been applied to some of the SQL
+examples in this documentation to make the SQL more readable.
 If you supply **[as]** arguments to your tables, you can also use your alias to reference tables inside of
 your invocation.
 
@@ -663,7 +663,7 @@ allowing you to create complex aggregate results, statistics, joining multiple t
 This slot allows you to update one or more records, in a specified **[table]**. Just like create, it requires
 one mandatory argument, being **[values]**, implying columns/values you wish to update. This slot also takes
 an optional **[where]** argument, which is described further down in this document. Its simplest version can be
-imagined such as follows.
+imagined as follows.
 
 ```
 sql.update
@@ -708,7 +708,7 @@ sql.delete:delete from 'table1' where 'field1' = @0 and 'field2' = @1
 
 ### The [where] argument
 
-This argument is common for both **[sql.update]**, **[sql.delete]** and **[sql.read]**, in addition
+This argument is common for **[sql.update]**, **[sql.delete]**, and **[sql.read]**, in addition
 to that a **[join]** will also be logically parsed much the same way as a **[where]** argument. The where
 argument follows a recursive structure, allowing you to supply multiple layers of `where` criteria,
 being applied recursively, using some sort of comparison operator, applied to all conditions in the
@@ -719,6 +719,7 @@ sql.read
    table:table1
    limit:-1
    where
+
       and
          field1:howdy
 ```
@@ -737,12 +738,13 @@ sql.read
    table:table1
    limit:-1
    where
+
       and
          field1:howdy
          field2:world
 ```
 
-The above resulting in the following.
+The above results in the following.
 
 ```
 sql.read:select * from 'table1' where 'field1' = @0 and 'field2' = @1
@@ -758,6 +760,7 @@ sql.read
    table:table1
    limit:-1
    where
+
       or
          field1:howdy
          field2:world
@@ -771,7 +774,7 @@ sql.read:select * from 'table1' where 'field1' = @0 or 'field2' = @1
     @1:world
 ```
 
-You can also nest operators, producing paranthesis, creating complex conditions, such as the following
+You can also nest operators, producing paranthesis, and create complex conditions, such as the following
 illustrates.
 
 ```
@@ -779,14 +782,16 @@ sql.read
    table:table1
    limit:-1
    where
+
       or
          field1:howdy
+
          and
             field2:world
             field3:dudes
 ```
 
-Which of course results in the following result.
+Which results in the following.
 
 ```
 sql.read:select * from 'table1' where 'field1' = @0 or ('field2' = @1 and 'field3' = @2)
@@ -795,12 +800,13 @@ sql.read:select * from 'table1' where 'field1' = @0 or ('field2' = @1 and 'field
    @2:dudes
 ```
 
-**Notice**, the parent of a list of criteria is deciding which logical operator to separate your conditions
+The parent of a list of criteria is deciding which logical operator to separate your conditions
 with, contrary to traditional languages, where you separate your conditions with the logical operator, and
 explicitly add paranthesis to group your levels. This might seem a little bit weird in the beginning,
 but this is a general rule with everything in Hyperlambda, and after a while will feel more natural than
 the alternative. The reasons for this is to allow for semantically traversing your lambda objects, allowing
-the computer to logically understand what it does more easily - Among other things.
+the computer to logically understand what it does more easily - Among other things. Think of the boolean
+logical parts of your SQL slots as _"grouping your comparisons"_ or a _"logical function invocation"_ if it helps.
 
 ### Comparison operators
 
@@ -823,6 +829,7 @@ illustrates.
 sql.read
    table:foo
    where
+
       and
          field1.neq:xxx
 ```
@@ -847,6 +854,7 @@ be found below.
 sql.read
    table:table1
    where
+
       and
          table1.field1.in
             :long:5
@@ -856,7 +864,7 @@ sql.read
 
 The above will generate the following SQL, in addition to returning 3 parameters to the caller.
 
-```
+```sql
 select * from 'table1' where 'table1'.'field1' in (@0,@1,@2) limit 25
 ```
 
@@ -869,6 +877,7 @@ you can escape your column name, by prepending a `\` to it. See an example below
 sql.read
    table:table1
    where
+
       and
          table1.\neq:foo
 ```
@@ -879,7 +888,7 @@ Notice how the `\` character above results in the following SQL.
 select * from 'table1' where 'table1'.'neq' = @0 limit 25
 ```
 
-As you can see, the `\neq` is interpreted as a column name, and not a `neq` operator. And since the equality operator
+As you can see, the `\neq` is interpreted as a column name, and not a `neq` operator, and since the equality operator
 is the default selected if no operator is supplied, the comparison operator becomes `=`.
 
 You can also escape columns entirely, if you for instance have a column that contains a `.` in its name,
@@ -889,15 +898,16 @@ such as we illustrate below.
 sql.read
    table:table1
    where
+
       and
-         \table1.foo:bar
+         \foo.bar:bar
 ```
 
-Notice how the above lambda will interpret the `table1.foo` parts as a column name, and not as
-column _"foo"_ on _"table1"_. You can see the resulting SQL below.
+Notice how the above lambda will interpret the `foo.bar` parts as a column name, and not as
+column _"bar"_ on _"foo"_. You can see the resulting SQL below.
 
 ```sql
-select * from 'table1' where 'table1.foo' = @0 limit 25
+select * from 'table1' where 'foo.bar' = @0 limit 25
 ```
 
 ### Extension comparison operators
@@ -917,21 +927,20 @@ The above will give you access to use `ltmt` as a comparison operator, resolving
 
 ### Meta data
 
-One of the really nice things about this semantic approach to generating SQL, is that it
+One of the really nice things about this semantic approach to generating SQL is that it
 allows you to retrieve meta data from your Hyperlambda snippets, asking questions such as for instance
 _"find all files that somehow selects columns from the 'xxx' table"_ - And for that matter, even
 dynamically change the table name, using semantic refactoring and replacement concepts. Once you've
-crossed the initial step into _meta data traversal_ in Hyperlambda, things like this, which is
-almost impossible to achieve in traditional programming languages, becomes quite simple in fact.
+crossed the initial step into _meta data traversal_ in Hyperlambda, things like this becomes
+second hand nature with Hyperlambda.
 
 ## SQL injection attacks
 
-The project protects you automatically against SQL injection attacks, and protect values, and criteria, etc.
+This project protects you automatically against SQL injection attacks, and protect values, and criteria, etc -
 But you should _not_ allow any potentially insecure clients to dynamically declare which columns
 to select, and/or field _names_ for your `where` clauses. It will only protect your _values_,
 and _not_ table names or column names against SQL injection attacks.
-
-The project does *not* verify that your SQL is possible to execute towards your database, such as verifying
+The project does also _not_ verify that your SQL is possible to execute towards your database, such as verifying
 that specified tables or columns actually exists. It does its best however, to verify that your Hyperlambda
 is structured correctly, and that it will create somewhat valid SQL - But you should *not assume* the SQL
 the project generates is valid, before you have tested it.
@@ -941,15 +950,15 @@ the project generates is valid, before you have tested it.
 If you wish to extend Magic to support a custom database type, you can do so using C# for instance.
 This project contains 4 base classes, which you can inherit from to extend and implement your custom logic.
 
-* `SqlCreateBuilder` - Helper class to generate insert SQL statements.
-* `SqlDeleteBuilder` - Helper class to generate delete SQL statements.
-* `SqlReadBuilder` - Helper class to generate select SQL statements.
-* `SqlUpdateBuilder` - Helper class to generate update SQL statements.
+* `SqlCreateBuilder` - Helper class to generate insert SQL statements
+* `SqlDeleteBuilder` - Helper class to generate delete SQL statements
+* `SqlReadBuilder` - Helper class to generate select SQL statements
+* `SqlUpdateBuilder` - Helper class to generate update SQL statements
 
 If you create your own database implementation, you'll need to inherit from the above classes, and override
 whatever parts of these classes that doesn't by default work as your database type needs it to work.
 If you wish to do this, you would probably benefit from looking at one of the existing specialised
-implementations, such as the MySQL or SQL Server specific implementation.
+implementations, such as the MySQL, SQL Server or PostgreSQL specific implementations.
 
 ## Project website
 
