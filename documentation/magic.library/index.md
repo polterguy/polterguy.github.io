@@ -65,18 +65,16 @@ be found below.
 * `IApplicationBuilder.UseMagicCors`
 
 If you use these methods instead of the _"do all methods"_, your motivation would probably
-be to _replace_ one of these methods with your own implementation, to exchange the default wiring up, by (for instance)
+be to _replace_ one of these methods with your own implementation, to exchange the default wiring, by (for instance)
 using a _"virtual database based file system"_ by creating your own service implementation of for instance `IFileService`
 from _"magic.lambda.io"_, or use a different logging provider than the default, etc. If you wish
 to do this, you'd probably benefit from looking at what the default implementation of your method does, to understand the
-requirements from your method.
-
-Doing this is very powerful, and allows you to change the way the system behaves by default - But is also definitely
-considered an _"advanced exercise"_.
+requirements from your method. Doing this is very powerful, and allows you to change the way the system behaves by default -
+But is also definitely considered an _"advanced exercise"_.
 
 ## Exceptions handlers
 
-As of version 9.7.1 Magic support providing custom exceptions handler on a per folder level, that overrides the
+Magic allows you to provide a custom exceptions handler on a per folder level, that overrides the
 default exception logic with a custom exception handler expected to be named _"exceptions.hl"_ and found within
 the folder hierarchy where an HTTP invocation is resolved. For instance, if you wish to create your own exception
 handler for a specific module called _"foo"_, you can create an exception handler file
