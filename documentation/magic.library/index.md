@@ -40,16 +40,20 @@ However, you can also take more control over how things are actually wired up, b
 _"do all methods"_ called `AddMagic` and `UseMagic`, invoke some of the specialized initialization methods,
 you can find below.
 
-* `IServiceCollection.AddCaching`
+* `IServiceCollection.AddMagicCaching`
 * `IServiceCollection.AddMagicHttp`
 * `IServiceCollection.AddMagicLogging`
 * `IServiceCollection.AddMagicSignals`
+* `IServiceCollection.AddMagicExceptions`
 * `IServiceCollection.AddMagicEndpoints`
-* `IServiceCollection.AddMagicFileServices`
 * `IServiceCollection.AddMagicAuthorization`
+* `IServiceCollection.AddMagicFileServices`
+* `IServiceCollection.AddMagicFileServices`
+* `IServiceCollection.AddMagicConfiguration`
 * `IServiceCollection.AddMagicScheduler`
 * `IServiceCollection.AddMagicMail`
-* `IServiceCollection.AddLambda`
+* `IServiceCollection.AddMagicLambda`
+* `IServiceCollection.AddMagicSockets`
 
 The above methods is basically what the `AddMagic` method actually does, and they're extension methods of
 `IServiceCollection`, that can be found in the `magic.library` namespace. Similar alternatives to `UseMagic` can
@@ -57,7 +61,8 @@ be found below.
 
 * `IApplicationBuilder.UseMagicExceptions`
 * `IApplicationBuilder.UseMagicStartupFiles`
-* `IApplicationBuilder.UseScheduler`
+* `IApplicationBuilder.UseMagicScheduler`
+* `IApplicationBuilder.UseMagicCors`
 
 If you use these methods instead of the _"do all methods"_, probably a large portion of your motivation would
 be to _replace_ one of these methods with your own implementation, to exchange the default wiring up, by (for instance)
