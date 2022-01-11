@@ -14,7 +14,7 @@ purposes, and/or learning purposes, and can be interchanged with their **[data.x
 and/or their **[mysql.xxx]**/**[mssql.xxx]**/**[pgsql.xxx]** equivalent, etc. In this documentation we
 will mostly be using these slots, but you can substitute our usage of these slots with for
 instance **[data.xxx]** if you wish to actually execute some SQL towards your database adapter of
-§choice.
+choice.
 
 ## [data.*] slots
 
@@ -37,7 +37,6 @@ This slot will open a database connection for you. You can pass in a complete co
 or only the database name if you wish. If you pass in only the database name, the generic connection string for your
 database type of choice from your _"appsettings.json"_ file will be used, substituting its `{database}` parts
 with the database of your choice.
-
 Inside of this slot, which actually is a lambda **[eval]** invocation, you can use any of the other slots, requiring
 an existing and open database connection to function. You can see an example below.
 
@@ -47,36 +46,31 @@ data.connect:sakila
       table:actor
 ```
 
-**Notice**, since the **[data.connect]** slot actually takes a lambda object, you can also add any amount
-of other lambda invocations inside of the lambda object supplied to the slot - Allowing you to for instance
-create loops, conditional executions, etc - *Inside* of your invocation to **[data.connect]**. This is also
+Since the **[data.connect]** slot actually takes a lambda object, you can also add any amount
+of other lambda invocations inside of the lambda object supplied to the slot, allowing you to for instance
+create loops, conditional executions, etc, _inside_ of your invocation to **[data.connect]**. This is also
 true for all other slots taking a lambda object, such as for instance **[data.transaction.create]**, etc.
-
 Inside your lambda object, an invocation towards your database such as e.g. **[data.read]**, will be
 using this database connection, as long as the type of database is matching. The database connection will
 be kept open, and implicitly used, for the entirety of the lambda object. If you need another database
 connection inside of your lambda object, you'll need to nest **[data.connect]** invocations.
-
 You can also explicitly choose which connection string to use as you open a connection, by separating the
-connection string and the database catalogue name by a `|` symbol, and wrapping your entire value inside
+connection string and the database name by a `|` symbol, and wrapping your entire value inside
 of brackets. If you have a connection string in your _"appsettings.json"_ file named for instance _"foo"_,
-and this connection string points to a server instance having a database named _"bar"_, this would resemble
-the following.
+and this connection string points to a server instance having a database named _"bar"_, you could open
+a connection to this database using something resembling the following.
 
 ```
-// Opening up "bar" database from "foo" connection string from appsettings.json
 data.connect:[foo|bar]
 ```
 
 This is why your connection strings should contain the `{database}` as a generic argument, since the slot
-substitutes the `{database}` parts dynamically as you create new connections. Below is an example.
+substitutes the `{database}` parts dynamically as you create new connections. Below is an example of such
+a connection string configuration setting.
 
 ```
 "generic": "Server=localhost\\SQLEXPRESS;Database={database};Trusted_Connection=True;"
 ```
-
-Notice the `{database}` parts in the above connection string. This is substituted with your database name
-as you create database connections.
 
 ### [data.select]
 
@@ -89,7 +83,7 @@ data.connect:sakila
 ```
 
 Assuming you have the _"sakila"_ database from Oracle installed in your database, and your default
-database type is MySQL - The result of the above will end up looking like the following.
+database type is MySQL, the result of the above will end up looking like the following.
 
 ```
 data.connect
@@ -111,11 +105,10 @@ data.connect
          last_name:LOLLOBRIGIDA
 ```
 
-Notice, this slot requires SQL resembling your specialised database type of dialect, and will
-not in any ways transpile the SQL towards your specific underlaying database type of SQL dialect.
+This slot requires SQL resembling your specialised database type of dialect, and will
+not in any ways transpile the SQL towards your specific underlaying database type's SQL dialect.
 If you can, you should rather use **[data.read]**, to avoid lockin towards a specific database
 vendor's SQL dialect.
-
 You can also select multiple result sets if you have batch type of SQL statements, containing
 multiple SQL statements, and you want to return the result of all SQL statements you're executing.
 You do this by providing a **[multiple-result-sets]** argument and set its value to boolean true.
@@ -149,8 +142,8 @@ Which would result in something resembling the following.
 
 ### [data.scalar]
 
-This slot is similar to the **[data.select]** slot, but will only return one value, as the
-value of its node after execution, and is typically used for aggregate results. You can see
+This slot is similar to the **[data.select]** slot, but will only return one value as the
+value of its node after execution. This slot is typically used for aggregate results. You can see
 an example below.
 
 ```
@@ -177,7 +170,7 @@ find an example below.
 data.connect:sakila
 
    // Notice, will throw! (hopefully!)
-   data.scalar:delete from non_existing_table
+   data.execute:delete from non_existing_table
 ```
 
 Yet again, prefer **[data.delete]** if you can.
