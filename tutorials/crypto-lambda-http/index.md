@@ -18,12 +18,7 @@ execute Hyperlambda code created by a 3rd party client - And have receipts givin
 of that the executed code was in fact created by _one specific client_. In many ways, it could be
 argued that this creates a _"blockchain"_ type of technology for generic HTTP lambda invocations,
 providing code to your server, that you can securely execute, while getting a cryptographic
-receipt of that the code that was executed was indeed created by _a specific client_. Watch
-the following video for a walkthrough of how this works.
-
-<div class="video">
-<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/U5SwKS-S2RI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+receipt of that the code that was executed was indeed created by a _specific client_.
 
 ## The internals of the process
 
@@ -53,7 +48,7 @@ This allows you to exchange public keys with another Magic server and your own M
 an authorisation object with the other party's public key, for then to have the owner of that key create
 Hyperlambda code that your server _securely executes_ - Arguably _"reversing the responsibility of code"_, where
 the server is no longer responsible for declaring its code, but rather the client provides a lambda object
-that your server executes. We refer to this is IoC on code declaration, because it becomes the equivalent
+that your server executes. We refer to this as IoC on code declaration, because it becomes the equivalent
 of _"inversion of control"_ in regards to who gets to decide what code to execute.
 
 ## Code example
@@ -125,15 +120,15 @@ things significantly, since you no longer need to patch your servers, but only y
 
 ## Warning! Don't go berserk
 
-Yes, I know, once you _get it_, these guys are incredibly interesting - But they also carry some overhead. For
+This feature is incredibly powerful - But it also carries some overhead. For
 instance, the payloads needs to be cryptographically signed by the client. The server needs to verify
 the signature and parse the Hyperlambda, building a lambda object from it. Execution rights needs to
 be retrieved from the database, and a receipt for the execution of the lambda object needs to be persisted
-into the database. Hence, you should _not_ use these guys for things where execution speed is crucial,
+into the database. Hence, you should not use this feature for things where execution speed is crucial,
 but rather smaller payloads, occasionally transmitted between clients and servers, and not for things
 needing to handle thousands of requests per second.
-However, when you need them, you _really_ need them - And if used correctly, and _sparsely_ may I add,
-these guys are an incredibly useful tool, to both scale out (**securely**) and more easily build
+However, when you need such features, you _really_ need it - And if used correctly, and _sparsely_,
+this feature is an incredibly useful tool, to both scale out (**securely**) and more easily build
 heterogeneous server environments, without having to try to predict what the future might hold in
 regards to its requirements.
 

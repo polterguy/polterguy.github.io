@@ -5,9 +5,8 @@ description: This section contains the reference documentation for Magic and Hyp
 
 # Magic and Hyperlambda docs
 
-<div class="video">
-<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/FK0rcAEWtV8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+This is the reference documentation for Magic. If you just started out with Magic and Hyperlambda, you would probably
+benefit from startout out with the [tutorials](/tutorials/) section, and refer to these parts afterwards.
 
 ## Reference documentation core projects
 
@@ -65,8 +64,6 @@ If you have a support request of private nature, you can send us
 an email at [th@aista.com](mailto:th@aista.com). If you want to submit a
 feature request or a bug report, you can do this through the project's
 [GitHub Issues](https://github.com/polterguy/magic/issues).
-
-* [th@aista.com](mailto:th@aista.com)
 
 ## Quality gates
 
