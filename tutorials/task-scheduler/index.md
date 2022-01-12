@@ -15,22 +15,18 @@ In this tutorial we will cover the following parts of Magic and Hyperlambda.
 With Hyperlambda you can create and administrate tasks, in addition to scheduling tasks for execution at some point in
 the future. This works by persisting dynamically declared Hyperlambda snippets into your Magic database, which
 again is just a thin wrapper around your C# slots, allowing you to dynamically orchestrate C# code to be
-periodically executed if you wish. Watch the following video where I illustrate this idea.
-
-<div class="video">
-<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/tX7WJgPwJxE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+periodically executed if you wish.
 
 ## Administrating tasks
 
-In addition to the high level UI parts you can see in the above video, Magic also allows you to automate
-the process of both creating tasks, deleting tasks, executing tasks, and administrating tasks and schedules.
-Combined with the fact that Hyperlambda happens to be a Turing Complete high level programming
+Magic allows you to automate the process of both creating tasks, deleting tasks, executing tasks, and administrating
+tasks and schedules.
+Combined with the fact that Hyperlambda happens to be a Turing complete high level programming
 language, this also lends itself to business process workflows, and similar ideas, where some function invocation
 is dynamically created, persisted into your database, for then to be executed later due to some trigger happening
 in another part of your system. In such a way the task scheduler in Magic also replaces Microsoft Workflow
 Foundation, with something that's somewhere between 200 to 400 times faster and more scalable than MWF - In addition to that it
-consumes about 1/100th of the amount of memory that MWF consumes. And of course the thing is `async` to the bone.
+consumes about 1/10th of the memory MWF consumes. Hyperlambda tasks are also `async` to the bone.
 Below you can see some example Hyperlambda you can paste into your tasks to create a dummy task that simply
 creates a log entry for you.
 
@@ -80,8 +76,8 @@ to some trigger occurring in a completely different part of your system.
 
 ### Workflows
 
-This feature of Hyperlambda's task scheduler allows you to create, decorate, and persist a _"function invocation"_,
-contrary to persisting a function itself, which of course is useful for long lasting transactions,
+The task scheduler's ability to automate task administration allows you to create, decorate, and persist
+a _"function invocation"_, contrary to persisting a function itself, which of course is useful for long lasting transactions,
 and having triggers occurring in your system as a response to something else occurring. For instance, imagine a registration
 form, where once the user has confirmed his or her email address, some piece of logic should be executed.
 An example could be as follows.
@@ -122,7 +118,7 @@ tasks.create:user.confirm-email.workflow.1147
       tasks.delete:user.confirm-email.workflow.1147
 ```
 
-Then when the user verifies his or her email address, you could have code resembling the following being executed.
+When the user verifies his or her email address, you could have code resembling the following being executed.
 
 ```
 tasks.execute:user.confirm-email.workflow.1147

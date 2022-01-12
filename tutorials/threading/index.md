@@ -15,12 +15,7 @@ In this tutorial we will cover the following parts of Magic and Hyperlambda.
 Although Hyperlambda is a super high level programming language, it's got very good support for threading,
 and due to that it's _implicitly async in nature_, it's also extremely scalable. In this micro tutorial,
 we will walk you through some of the concepts related to threading, and explain how threading is simplified
-in Hyperlambda, eliminating an entire axiom of problems related to multithreaded programming. If you prefer
-to watch YouTube videos of me demonstrating things, feel free to watch the following video.
-
-<div class="video">
-<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/36SYdJN_HIc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+in Hyperlambda, eliminating an entire axiom of problems related to multithreaded programming.
 
 ## Slots related to threading
 

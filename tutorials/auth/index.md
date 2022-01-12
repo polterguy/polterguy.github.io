@@ -17,11 +17,11 @@ happens to be authentication and authorisation, which is a problem you have to s
 you create a new application. At this point some might argue that OAuth2 solves these problems, and while
 technically that is true, OAuth2 is also extremely complex and over engineered, and very easy to
 get wrong. With Magic authentication and authorisation simply works out of the box, without you having
-to configure anything at all, making things almost impossible to get wrong. Watch the following video for
-a walkthrough of how the auth parts in Magic works.
+to configure anything at all, making it almost impossible to have something going wrong. Watch the following
+video for a walkthrough of how the auth parts in Magic works.
 
 <div class="video">
-<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/tR2kyM6HKxw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/xD9NEWbgfYY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 ## User administration
@@ -34,11 +34,10 @@ to easily administrate your user database such as illustrated below.
 
 ![Authentication and Authorisation in Magic](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/auth.jpg)
 
-Imagining your manager giving you the required time to implement the above is probably at best delusional,
-regardless of what company you work for. With Magic, it's _simply there_. Combining this with the auditing
+As you are working on your own internal systems it is highly unlikely you will find the time to 
+implement something resembling the above. With Magic, it's simply there. Combining this with the auditing
 and diagnostic features of Magic, allowing you to see high level KPI charts related to security issues, such as
-illustrated below - Results in that Magic's features from a conceptual point of view related to this,
-is something you're probably never going to be able to reproduce using other means.
+illustrated below - Probably gives you everything you will ever need related to authentication and authorisation.
 
 ![Security audit logging in Hyperlambda](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/health-security.jpg)
 
@@ -54,8 +53,9 @@ Magic exposes several endpoints related to authentication that simplifies your l
 * POST magic/system/auth/verify-email - Double optin endpoint allowing users to verify their emails
 * GET magic/system/auth/verify-ticket - Returns success status code if JWT token is valid
 
-Combining the above endpoints gives you more or less everything you need related to authentication and authorisation,
-allowing you to build UI components in any framework of choice wrapping the above backend endpoints.
+Combining the above endpoints gives you more or less everything you need related to authentication and authorisation
+for your own applications, allowing you to focus on the unique parts of your domain problem, instead of commodity
+problems experienced by everyone every time they're to implement a new system.
 
 ## JWT internals
 
@@ -150,10 +150,10 @@ the commonly accepted dogma of providing something such as follows.
 
 > Rf5$!fgh
 
-The above password for instance is 8 characters long. On average it takes a normal laptop approximately 20
+The above password is 8 characters long. On average it takes a normal laptop approximately 20
 minutes to brute force the above password. While the first password above, containing 33 characters,
-would require more energy than what is required to boil all water on earth to brute force. Hence, these
-ridiculous restrictions for instance Apple puts on your passwords for their AppStore, is quite
+would require more energy than what is required to boil all water on earth to brute force. Hence, 
+restrictions such as for instance Apple puts on your passwords for their AppStore, is quite
 counterintuitively much simpler to brute force than simple phrases and sentences such as Magic allows you to use.
 Simply since allowing a user to use a normal sentence, increases password length easily by one order of
 magnitude, making the brute force approach require trillions of times the number of iterations to guess
@@ -161,7 +161,7 @@ your users' passwords using a brute force approach. Combining this with the fact
 native languages, might be using slang, etc - Results in that the entropy becomes the same, only
 exponentially growing for each additional character the user adds to his password. The point of course
 being that for me as a Norwegian, the following password is quite easy to remember, since it's a
-Norwegian sentence, that makes perfectly sense for me, which I could easily memorise.
+Norwegian sentence, that makes perfectly sense for me, that I could easily memorise.
 
 > Heisann, teisann, mitt navn er Thomas Hansen og jeg er KUL!
 

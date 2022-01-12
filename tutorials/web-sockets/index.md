@@ -10,16 +10,11 @@ In this tutorial we will cover the following parts of Magic and Hyperlambda.
 * How to use Web Sockets in Hyperlambda and Magic
 * How to create a minimalistic chat client using Hyperlambda and Angular
 
-In addition to [plain CRUD](/tutorials/database-crud/) Magic also supports web sockets. In case you're new to web sockets,
+In addition to [plain CRUD](/tutorials/database-crud/) Magic also supports web sockets. If you are new to web sockets,
 a web socket is a bidirectional communication channel through which your web server can _"push"_ data to clients.
 A typical use case for this is a chat application, but obviously this is useful in a lot of other scenarios too. In
 this tutorial, we will create a chat client in Angular and Hyperlambda, using the server side SignalR plugin
 in Magic, to let multiple users chat with each other, having the messages transmitted in real time to all clients.
-If you prefer to see me walk you through this in a video, you can watch the following YouTube video.
-
-<div class="video">
-<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/8NXO1V1i-JY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
 
 
 ## Our Angular frontend
@@ -231,7 +226,7 @@ this.hubConnection.on('chat.new-message', (args) => {
 ```
 
 This ensures that all clients having connected to our web socket backend registering interest in
-the above messages, will be notified every time the message is published by our Hyperlambda.
+the above messages will be notified every time the message is published by backend.
 If you wish, you can open up multiple browser windows simultaneously and point them
 to [localhost:4201](http://localhost:4201/), and write something into any chat, and see how the
 message is instantly received in all browser windows.

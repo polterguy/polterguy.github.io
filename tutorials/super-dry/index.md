@@ -11,16 +11,9 @@ In this tutorial we will cover the following parts of Magic and Hyperlambda.
 * Exception handlers, and how to keep your error handling in one place
 
 In this tutorial we will have a look at two features that allows you to write _"super DRY code"_. DRY here
-refers to _"Don't Repeat Yourself"_, which is an important design principle as you
-create software. If you prefer to watch video tutorials having me demonstrating how things are tied together,
-you can watch the following video where I walk you through these parts.
-
-<div class="video">
-<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/QKQjUhRBwu0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
-As illustrated above, any _"exceptions.hl"_ file, and/or _"interceptor.hl"_ file will allow you to
-ensure your code becomes DRY. Below is an example of how you could tie these parts together if you wish.
+refers to _"Don't Repeat Yourself"_, and is an important design principle as you
+create software. The two features we will look at are referred to as _"interceptors"_ and "_exception handlers"_
+in Magic and Hyperlambda. Below is an example of how you could tie these parts together if you wish.
 Make sure you create a new folder within your _"modules"_ folder, name your folder _"foo"_, and put the
 following 3 files into that folder.
 
@@ -81,5 +74,19 @@ files upwards in your hierarchy, then _all_ interceptors will be applied, creati
 before your lambda object is executed. Exception handlers though are _not_ recursively applied, and
 only the _first_ exception handler upwards in your folder structure will be applied. Interceptors
 are hence said to be _extendable_ , while exception handlers are said to be _overriding_.
+
+To understand the exception handler parts of our code, try to add the following Hyperlambda into
+your above _"bar.get.hl"_ file somewhere.
+
+```
+throw:Throwing an exception ...
+```
+
+Notice how the status code and error message is _"transformed"_ by our exception handler. This is
+because our exception handler is invoked with our original exception, and whatever it returns
+is what is returned to the client. By creating exception handlers such as above, you get to keep
+all your error logic in _one place_, and have common error logic for your modules, allowing
+you to for instance translate exception messsages, or create specific exception handlers for
+some of your folders, etc.
 
 * Continue with [Dynamic Hyperlambda slots](/tutorials/dynamic-slots/)
