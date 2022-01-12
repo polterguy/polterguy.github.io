@@ -32,7 +32,8 @@ Hyperlambda code that Magic created for us.
 ## Creating your database
 
 Open the _"SQL"_ menu item in your dashboard, and click the _"Load"_ button. If you're using MySQL
-as your main database then choose _"sakila"_. If you're using SQL Server, choose _"northwind-simplified"_.
+as your main database then choose _"sakila"_. If you're using SQL Server, choose _"northwind-simplified"_,
+and if you're using PostgreSQL then choose _"pagila"_.
 Load the database script, and click the _"Execute"_ button.
 
 ![Creating your Sakila database](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-editor.jpg)
@@ -78,7 +79,7 @@ _"get"_ endpoint, at which point you should see something resembling the followi
 
 ![Invoking your HTTP endpoints](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/endpoints.jpg)
 
-You can already execute your endpoint by clicking the _"Invoke"_ button for your endpoint.
+You can already invoke your endpoint by clicking the _"Invoke"_ button for your endpoint.
 If you do this, you should see a bunch of JSON objects returned from your server resembling
 the following, depending upon which table you chose.
 
@@ -188,7 +189,7 @@ the following.
 
 **Notice** - If you didn't generate CRUD endpoints for your sakila database then at least make
 sure that whatever file you're looking at ends with _".get.hl"_ such that we're looking at roughly the
-same thing in the rest of this tutorial. What you are looking at now is the Hyperlambda Magic automatically
+same thing. What you are looking at now is the Hyperlambda Magic automatically
 generated for you. The most important part of this code is the following section.
 
 ```
@@ -284,9 +285,9 @@ slots, such as the following illustrates.
 
 ![Autocomplete on validators](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/autocomplete.jpg)
 
-### Authorisation and authentication
+### Authorization and authentication
 
-Your endpoint will by default require authentication and authorisation, preventing anonymous
+Your endpoint will by default require authentication and authorization, preventing anonymous
 users from accessing it. This is done with the **[auth.ticket.verify]** slot with something
 resembling the following.
 
@@ -302,10 +303,10 @@ invoking the endpoint belongs to at least one of the following roles.
 
 If the user has an invalid token, and/or the user doesn't belong to any of the above roles,
 this slot will throw an exception, preventing the rest of the Hyperlambda code from executing.
-This is the core authentication and authorisation parts of Magic, and allows you to secure
+This is the core authentication and authorization parts of Magic, and allows you to secure
 your web APIs. If you want users belonging to different roles to be able to invoke
 your endpoint, you can simply edit the above code, by for instance adding _another_ role
-to it, save your file - And voila; Your authorisation requirements have automagically changed.
+to it, save your file - And voila; Your authorization requirements have automagically changed.
 Below is an example of how to add the _"director"_ role as a role allowed to invoke the endpoint.
 
 ```
@@ -342,7 +343,7 @@ with the following slots.
 
 Besides from using different slots, all of your generated Hyperlambda files are actually quite
 similar in structure. You still typically want to have separate files for these operations, since
-this allows you to easily modify for instance authorisation requirements, arguments passing, add
+this allows you to easily modify for instance authorization requirements, arguments passing, add
 additional business logic to your files, etc. So even though the code is not very _DRY_
 in its original state, separate endpoint files for separate operations are still typically
 useful, and a feature you will learn to appreciate further down the road, as you start
