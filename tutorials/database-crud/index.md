@@ -43,9 +43,12 @@ This creates a database for you, which will be the foundation for generating our
 ## Generating your backend
 
 Before we can generate our backend we will have to purge our database cache. Click the little spiral
-icon in your SQL menu item below the SQL editor.
-Then open the _"CRUD"_ menu item, choose your newly created database,
-and click _"Crudify all tables"_. Below you can see how this process should look like.
+icon in your SQL menu item beneath the SQL editor. Below is a screenshot showing you how.
+
+![Purging your server side database cache](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/purge-cache.jpg)
+
+Then open the _"CRUD"_ menu item, choose your newly created database, and click _"Crudify all tables"_.
+Below you can see a screenshot.
 
 ![Generating your backend](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg)
 
