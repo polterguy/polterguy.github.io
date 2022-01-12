@@ -21,7 +21,7 @@ docker-compose up
 ```
 
 When your docker containers have started, open your browser and go to [http://localhost:5555](http://localhost:5555),
-and use the default connection string for MySQL, choose a root password, crudify your Magic database,
+use the default connection string for MySQL, choose a root password, crudify your Magic database,
 type your name and email address when you generate a key pair, and Magic should work out of the box without
 any hassle. If you want to test Magic's CRUD automation capabilities, there's a _"sakila"_ SQL script that you
 can execute in the _"SQL"_ menu item to create an example database. In the video below I am illustrating this process.
