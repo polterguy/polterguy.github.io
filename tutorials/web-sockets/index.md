@@ -227,9 +227,9 @@ this.hubConnection.on('chat.new-message', (args) => {
 
 This ensures that all clients having connected to our web socket backend registering interest in
 the above messages will be notified every time the message is published by backend.
-If you wish, you can open up multiple browser windows simultaneously and point them
+You can open multiple browser windows simultaneously and point them
 to [localhost:4201](http://localhost:4201/), and write something into any chat, and see how the
-message is instantly received in all browser windows.
+messages are instantly received in all browser windows.
 
 ### Endpoint resolving
 
