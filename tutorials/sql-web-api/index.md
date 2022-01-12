@@ -7,16 +7,16 @@ description: This article shows you how you can create a complete HTTP Web API u
 
 In this tutorial we will cover the following parts of Magic and Hyperlambda.
 
-* Generating a Web API using SQL
-* The CRUD menu item
+* Generating an HTTP endpoint using SQL
 * Magic's integrated SQL editor
+* Mandatory validators
 
 The CRUD/SQL parts of Magic allows you to automatically wrap
 your SQL into an HTTP endpoint, without having to do anything except provide Magic with SQL.
 To understand the idea, you can watch the following video where I demonstrate this feature.
 
 <div class="video">
-<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/GSGYzXxlgG0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/FFLVqSuWjnI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 As illustrated above, this feature allows you to dynamically wrap your SQL into
@@ -38,47 +38,73 @@ arguments, for then to simply return whatever the SQL returns back to the client
 this process is a no-brainer. Below you can find the SQL I am using in the above video.
 
 ```sql
-select l.locale, l.language, t.id, t.content
-  from languages l
-    inner join translations t on l.locale = t.locale
-  where t.content like @filter
+select a.first_name, f.title, f.description
+   from actor a
+      inner join film_actor fa on a.actor_id = fa.actor_id
+         inner join film f on f.film_id = fa.film_id
+   where a.first_name like @filter
+      or f.title like @filter
+      or f.description like @filter
 ```
 
 Below is a screenshot of how this looks like in Magic's dashboard.
 
 ![Creating a Web API using SQL](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-web-api.jpg)
 
-The Hyperlambda code Magic automatically creates for you for the above resembles the following.
+The Hyperlambda code Magic automatically creates for you will resembles the following.
 
 ```
+
+/*
+ * Template for custom SQL HTTP request.
+ * This file was automatically generated using Magic's CRUDifier.
+ */
 .arguments
    filter:string
 .type:sql
 auth.ticket.verify:root, admin
 
-data.connect:babelfish
+// Ensures that the [filter] argument is specified, or throws an exception.
+validators.mandatory:x:@.arguments/*/filter
+
+// Opening up a database connection
+data.connect:sakila
    database-type:mysql
 
+   // Parametrizing [data.select].
    add:x:./*/data.select
       get-nodes:x:@.arguments/*
 
-   data.select:@"select l.locale, l.language, t.id, t.content
-  from languages l
-    inner join translations t on l.locale = t.locale
-  where t.content like @filter"
+   // Evaluating [xxx.select] slot.
+   data.select:@"
+select a.first_name, f.title, f.description
+   from actor a
+   inner join film_actor fa on a.actor_id = fa.actor_id
+   inner join film f on f.film_id = fa.film_id
+where a.first_name like @filter
+   or f.title like @filter
+   or f.description like @filter"
       database-type:mysql
 
+   /*
+    * Checking if we should return a list of items, or only a
+    * single item.
+    */
    if
       .is-list:bool:true
       .lambda
 
+         // Returning a list of items to caller.
          return-nodes:x:@data.select/*
 
+   // Returning a single result to caller.
    return-nodes:x:@data.select/*/*
 ```
 
-If you want to return a scalar value instead of a list of items, you can change the above **[.is-list]**
-value to false. This will return a single value to the client instead of a list of items, which sometimes might
-be useful.
+The only parts of the above code we had to manually apply ourselves is the invocation to
+the **[validators.mandatory]** slot. If you want to return a scalar value instead of a list
+of items, you can change the above **[.is-list]** value to false and change from **[data.select]** to
+**[data.scalar]**. This will return a single value to the client instead of a list of items, which
+sometimes might be useful.
 
 * Continue with [Hyperlambda Hello World](/tutorials/hello-world-endpoint/)
