@@ -56,6 +56,7 @@ requirements for your endpoints, etc.
 * [magic.lambda.validators](/documentation/magic.lambda.validators/) - Validate input in Hyperlambda
 * [magic.lambda.hyperlambda](/documentation/magic.lambda.hyperlambda/) - Parse Hyperlambda from text, and vice versa
 * [magic.lambda.sockets](/documentation/magic.lambda.sockets/) - Web socket support for Magic using SignalR
+* [magic.lambda.threading](/documentation/magic.lambda.threading/) - Thread support for Magic and Hyperlambda
 * [magic.lambda.system](/documentation/magic.lambda.system/) - System support for Magic to spawn of terminals etc.
 
 ## Support
@@ -272,6 +273,12 @@ create new releases of Magic.
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.scheduler/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.scheduler&metric=alert_status"></td>
       <td><img alt="Lines of code" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.scheduler&metric=ncloc"></td>
+   </tr>
+   <tr>
+      <td><a href="https://github.com/polterguy/magic.lambda.threading">magic.lambda.threading</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.threading/actions/workflows/build.yaml/badge.svg"></td>
+      <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.threading&metric=alert_status"></td>
+      <td><img alt="Lines of code" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.threading&metric=ncloc"></td>
    </tr>
    <tr>
       <td><a href="https://github.com/polterguy/magic.lambda.system">magic.lambda.system</a></td>

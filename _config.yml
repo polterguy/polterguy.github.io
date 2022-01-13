@@ -131,6 +131,8 @@ nav_sections:
         name: magic.lambda.hyperlambda
       - url: /documentation/magic.lambda.sockets/
         name: magic.lambda.sockets
+      - url: /documentation/magic.lambda.threading/
+        name: magic.lambda.threading
       - url: /documentation/magic.lambda.system/
         name: magic.lambda.system
   - name: Docs utilities
