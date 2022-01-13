@@ -1,20 +1,20 @@
 ---
 title: Hyperlambda and Web Sockets
-description: This article shows you how to use SignalR and web sockets with Magic and Hyperlambda, by walking you through creating a simple chat client, allowing multiple users to chat in real time, using Angular and Hyperlambda.
+description: This article shows you how to use SignalR and web sockets with Magic and Hyperlambda, by creating a small chat client, allowing multiple users to chat in real time, using Angular, Hyperlambda, and SignalR.
 ---
 
 # Hyperlambda and Web Sockets
 
-In this tutorial we will cover the following parts of Magic and Hyperlambda.
+This tutorial covers the following parts of Magic and Hyperlambda.
 
 * How to use Web Sockets in Hyperlambda and Magic
 * How to create a minimalistic chat client using Hyperlambda and Angular
 
 In addition to [plain CRUD](/tutorials/database-crud/) Magic also supports web sockets. If you are new to web sockets,
-a web socket is a bidirectional communication channel through which your web server can _"push"_ data to clients.
-A typical use case for this is a chat application, but obviously this is useful in a lot of other scenarios too. In
-this tutorial, we will create a chat client in Angular and Hyperlambda, using the server side SignalR plugin
-in Magic, to let multiple users chat with each other, having the messages transmitted in real time to all clients.
+then realize that a web socket is a bidirectional communication channel through which your web server can _"push"_ data to clients.
+A typical use case for this is chat applications, but obviously this is useful in a lot of other scenarios too. In
+this tutorial, we will create a chat client in Angular and Hyperlambda, using the server side SignalR plugin,
+to let multiple users chat with each other, having the messages transmitted in real time to all clients.
 
 
 ## Our Angular frontend
@@ -26,13 +26,13 @@ Open a terminal on your development machine and execute the following command in
 ng new chat
 ```
 
-You can choose whatever setting you wish, but I chose the following as I went through the questions.
+You can choose whatever settings you wish as you generate your application, but the following are probably fine.
 
 1. No routing
 2. SCSS
 
-Change into this folder in your terminal using `cd chat`, and use for instance Visual Studio Code to open the
-folder. If you have the Visual Studio Code command line binding, you can do this by typing `code ./` into
+Change into this folder in your terminal using `cd chat`, and use for instance VS Code to open the
+folder. If you have the VS Code command line binding, you can do this by typing `code ./` into
 your terminal. Then we'll need a terminal window in VS Code. You can open a new terminal window in
 the _"Terminal"_ menu item of VS Code. Type the following command into your VS Code terminal window.
 
@@ -53,7 +53,7 @@ Now we can serve our project with the following command.
 ng serve --port 4201
 ```
 
-The reason why we need to override the port, is because the Magic Dashboard is probably already running
+We'll need to override the port because the Magic dashboard is probably already running
 on the default port which is 4200. You can now visit [localhost:4201](http://localhost:4201/) to see
 your app. Use VS Code and open the _"app.component.html"_ file in the folder _"/src/app/"_ and replace its existing code
 with the following HTML.
@@ -133,7 +133,7 @@ export class AppComponent implements OnInit, OnDestroy {
 }
 ```
 
-You might have to change the URL above to _"http://localhost:5555/sockets"_ if you
+You might have to change the URL above to _"http://localhost:4444/sockets"_ if you
 installed Magic using the docker images.
 The above code ensure we are initialising SignalR as the component is initialised, and that we
 are disconnecting SignalR as the component is destroyed - In addition to that we are transmitting new
@@ -194,7 +194,7 @@ The above creates a new folder called _"tutorials"_ inside your _"modules"_ fold
 4. Click _"Create"_
 
 This creates a new Hyperlambda file for you. This file will be resolved as the above `send()` Angular method
-is invoked over our SignalR web socket connection. Paste in the following into your file.
+is invoked over our SignalR web socket connection. Paste in the following Hyperlambda into your file.
 
 ```
 .arguments
@@ -226,17 +226,16 @@ this.hubConnection.on('chat.new-message', (args) => {
 ```
 
 This ensures that all clients having connected to our web socket backend registering interest in
-the above messages will be notified every time the message is published by backend.
+messages of the above type will be notified automatically every time this message is published by our backend.
 You can open multiple browser windows simultaneously and point them
 to [localhost:4201](http://localhost:4201/), and write something into any chat, and see how the
 messages are instantly received in all browser windows.
 
 ### Endpoint resolving
 
-One crucial point which separates the Hyperlambda web sockets implementation from other
-SignalR implementations, is the dynamic endpoint resolving. What this implies is that the file
-called _"add-chat.socket.hl"_ is dynamically executed due to our invocation in the following
-Angular code.
+One crucial point that separates the Hyperlambda web sockets implementation from other
+SignalR implementations, is the dynamic endpoint resolver. What this implies is that the file
+called _"add-chat.socket.hl"_ is dynamically executed when our following Angular code is executed.
 
 ```typescript
 this.hubConnection.invoke('execute', '/tutorials/add-chat', JSON.stringify({
@@ -249,8 +248,7 @@ resolver will do, is roughly to add _".sockets.hl"_ to the relative URL specifie
 this file dynamically, add the input arguments, and execute its Hyperlambda. This gives
 us a way to dynamically execute Hyperlambda files to respond to incoming SignalR messages.
 In addition it gives us the same method to declare arguments and pass in arguments to our
-SignalR invocations as we would use for normal HTTP REST invocations - Which of course makes
-it much simpler to consume and learn as you start out with web sockets in Magic.
+SignalR invocations as we would use for normal HTTP invocations.
 
 The endpoint resolver works almost exactly the same way any HTTP Hyperlambda
 file resolves, except instead of ending with the HTTP verb, it ends with _".socket.hl"_.
@@ -258,9 +256,9 @@ Besides from that, it loads arguments and converts these the same way, it dynami
 the files the same way, etc. You don't have access to the HTTP context, such as response,
 status code, etc - But besides from that, the socket parts of Magic is similar enough to the HTTP
 Hyperlambda endpoint resolver that you can most of the time interchange these by simply changing
-the extension of your Hyperlambda filenames.
+the extension of your Hyperlambda files.
 You can also mix and match socket Hyperlambda files and HTTP Hyperlambda files
-as you see fit, such as for instance publish a message using **[socket.signal]** from any
+as you see fit, such as for instance publish a message using **[socket.signal]** from an
 HTTP backend Hyperlambda file, etc.
 
 * Continue with [Threading and async Hyperlambda programming](/tutorials/threading/)

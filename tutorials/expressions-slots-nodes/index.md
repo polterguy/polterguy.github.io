@@ -1,19 +1,20 @@
 ---
-title: Expressions, Hyperlambda slots, and Nodes
+title: Expressions, slots, and nodes in Hyperlambda
 description: In this article you will learn the three most fundamental building blocks of Hyperlambda, being expressions, Hyperlambda's syntax, and how these relate to Hyperlambda's C# code, more specifically Magic's Node class.
 ---
 
-# Expressions, slots, and nodes
+# Expressions, slots, and nodes in Hyperlambda
 
-In this tutorial we will cover the following parts of Magic and Hyperlambda.
+This tutorial covers the following parts of Magic and Hyperlambda.
 
 * Hyperlambda's syntax
 * How Hyperlambda relates to C# and the Node class
-* How expressions allows you to reference nodes and create _"variables"_ in Hyperlambda
+* How expressions allows you to reference nodes
+* How to modify your lambda objects during execution
 * Creating slots from C#
 
-Fundamentally Hyperlambda is just a Turing complete text representation of a tree structure, the same
-way XML, YAML, and JSON is. Hyperlambda's syntax though is much simpler, easier to read, and more easily
+Fundamentally Hyperlambda is just a text representation of a tree structure, the same
+way XML, YAML, and JSON is. Hyperlambda's syntax is much simpler though, easier to read, and more easily
 parsed than any of the alternatives, including YAML. To illustrate this let us look at some example
 Hyperlambda.
 
@@ -22,16 +23,17 @@ Hyperlambda.
    item1:1
    item2:2
    item3:3
+
 strings.concat
    get-value:x:@.data/*/item1
    get-value:x:@.data/*/item2
    get-value:x:@.data/*/item3
 ```
 
-In the above Hyperlambda the **[.data]** parts is a `Node`. This node has a name of _".data"_ and a null value.
-In addition it has a list of children nodes being **[item1]**, **[item2]** and **[item3]**. These children nodes
-have values, that can be found to the right hand side of the `:` parts. To understand this, realise that
-the `Node` class again looks roughly like the following.
+In the above Hyperlambda **[.data]** is a `Node`. This node has a name of _".data"_ and a null value.
+In addition it has a list of children nodes being **[item1]**, **[item2]**, and **[item3]**. These children nodes
+have values, that can be found to the right hand side of the `:`. A node resembles the following class in C#
+or Java.
 
 ```csharp
 class Node
@@ -53,9 +55,9 @@ true for XML and YAML. Fundamentally Hyperlambda has only 3 tokens.
 * A carriage return ends the declaration of a node
 * 3 additional spaces below a node declares its children collection
 
-In addition Hyperlambda allows for declaring node's values using the same semantics as a C# string, which
-allows you to declare values with carriage returns, and other special characters. As a final touch,
-Hyperlambda also allows you to declare _types_, allowing you to declare what type its value parts is.
+In addition Hyperlambda allows for declaring a node's value using the same semantics as a C# string. This
+allows you to declare values with carriage returns, and any special character. As a final touch,
+Hyperlambda also provides you with type support, allowing you to declare what type its value is.
 Below is a Hyperlambda snippet that declares an `integer`, a `decimal`, and a `DateTime` value.
 
 ```
@@ -66,8 +68,8 @@ Below is a Hyperlambda snippet that declares an `integer`, a `decimal`, and a `D
 ```
 
 Type declarations are basically injected in between the node's name and its value, and are
-referencing CLR types such as `System.DateTime`, `System.Decimal`, etc. The default type if no
-type is explicitly supplied is string.
+referencing CLR types such as `System.DateTime`, `System.Decimal`, etc. The default type in Hyperlambda
+if no type is explicitly declared is assumed to be string.
 The typing system of Hyperlambda is crucial for what follows, and also makes it almost impossible
 to substitute Hyperlamdba with JSON or YAML - In addition, substituting Hyperlambda with XML would
 literally explode its verbosity, resulting in that the number of bytes required to represent the same
@@ -153,8 +155,8 @@ argument after evaluating it, and if it's true, it will execute the **[.lambda]*
 If **[foo]** is _not_ true, it will execute the **[else]** node. This process allows you to easily
 extend Hyperlambda with your own custom slots, and in fact _everything_ in Hyperlambda is a slot -
 Including the **[if]** and **[else]** parts from the above code. You can check out the code
-for both of these two slots below to confirm that even the _"keywords"_ in Hyperlambda are just simple
-slots.
+for both of these two slots below to confirm that even the _"keywords"_ in Hyperlambda are in fact
+implemented as _"slots"_.
 
 * [The if slot](https://github.com/polterguy/magic.lambda/blob/master/magic.lambda/branching/If.cs)
 * [The else slot](https://github.com/polterguy/magic.lambda/blob/master/magic.lambda/branching/Else.cs)
@@ -162,17 +164,18 @@ slots.
 This makes Hyperlambda a DSL engine, or _"An engine to create your own Domain Specific Language"_.
 Hence, the slots you create yourself is in no ways discriminated between that which you probably
 perceive as _"keywords"_ in Hyperlambda - And you could replace the **[if]** slot quite easily with
-your own custom implementation if you wanted. Or for that matter simply remove the **[if]** slot,
+your own custom implementation if you wanted. Or for that matter remove the **[if]** slot,
 if you for some reasons don't want to have if statements in your own programming language.
 Hence, Hyperlambda literally doesn't have keywords, only slots, and all slots are recursive in nature,
 and lambda objects by themselves. Something you can verify by seeing how even the **[if]** slot
 recursively invokes **[eval]** to evaluate its children.
 This is true to such an extent that even what you'd imagine as _"operators"_ in traditional
-programming languages are also slots. This has huge advantages, in that it among other things
+programming languages are also slots. This has huge advantages, because it
 allows you to declare your own _"operators"_, in addition to that Hyperlambda can easily be
-traversed _semantically_, to see which operators it is using, and Hyperlambda files can also be
-easily _"generated"_, by combining programming language fundamentals together, to create a
+traversed _semantically_, to see which operators it's using, and Hyperlambda files can also
+easily be _"generated"_, by combining programming language fundamentals together, to create a
 result of some sort - Which of course is the foundation for the _"CRUD"_ menu item in Magic.
+If you find this structure to be weird, please realize the following.
 
 > Hyperlambda is weird because it needs to be weird
 
@@ -180,31 +183,48 @@ result of some sort - Which of course is the foundation for the _"CRUD"_ menu it
 
 Hyperlambda _does not have variables_ - Or to be specific, _everything_ is a variable
 in Hyperlambda. This is because of that Hyperlambda has the ability to change any node's value,
-name, and/or children collection. Run the following code through for instance the _"Eval"_
+name, and/or children collection as it executes. Run the following code through for instance the _"Eval"_
 menu item in Magic's dashboard to see this process.
 
 ```
 .item1:foo
 .item2:foo
+.item3
+
 set-value:x:@.item1
    .:bar
+
 set-name:x:@.item2
    .:bar
+
+add:x:@.item3
+   .
+      child1:value1
 ```
 
-The above Hyperlambda changes the value of one node, and the name of another node. This makes Hyperlambda
+The above Hyperlambda changes the value of its first node, then it changes the name of its second node, for then
+to finally add children nodes to its third node. This makes Hyperlambda
 _extremely dynamic in nature_ - Much more dynamic than other dynamic programming languages, since the
 code might change itself, as it is executing itself. The code is said to be
 _"self evolving during its execution process"_. In fact, in Hyperlambda there is no differences between
 creating code, modifying code, storing data, and executing code. These constructs are basically just aspects of the
 same process in Hyperlambda, and of course the reason why it is so easy to create code that generates
-code with Hyperlambda.
+code with Hyperlambda. Below is the result of executing the above Hyperlambda.
 
-However, you can still provide _"data segments"_ in your code, which of course is crucial to hold
+```
+.item1:bar
+bar:foo
+.item3
+   child1:value1
+```
+
+You can still provide _"data segments"_ in your code, which of course is crucial to hold
 temporary variables as your code is executing. This is achieved by making sure you start your node's name
-with a period `.` - Which only works because the **[eval]** keyword will simply ignore all nodes
-starting with a period in their names. Below is an example of a **[while]** snippet that increments
-some integer value, and iterates 500 times before ending its iteration.
+with a period (.). This works because the **[eval]** slot will ignore all nodes
+having a name starting with a period, while all nodes not starting with a period will be
+assumed to be slot invocations, and **[eval]** will try to signal these nodes as such.
+Below is an example of a **[while]** snippet that increments some integer value, and iterates
+500 times before ending its execution.
 
 ```
 .no:int:500
@@ -219,12 +239,9 @@ while
 The **[mt]** slot above is an acronym for _"more than"_, and simply returns true as long as its value
 is more than its second argument - And the **[math.decrement]** slot simply decrements the value of its
 expression by one. This results in that the above **[.lambda]** object, which is an argument to the **[while]**
-slot executes 500 times - Once for every value between 500 and 0. As the **[mt]** returns false, the
-while loop is stopped. The **[.no]** node above is said to be a _data segment_.
-
-> Every node starting with a period (.) is ignored by the Hyperlambda execution engine, and assumed to be a data node
-
-Since the Hyperlambda **[eval]** slot is recursive in nature, this allows you to declare entire segments
+slot executes 500 times - Once for every value between 500 and 0. As **[mt]** returns false, the
+while loop is stopped. The **[.no]** node above is a _data segment_.
+Since Hyperlambda's **[eval]** slot is recursive in nature, this allows you to declare entire segments
 of data using the same technique, without having to prefix children of data segments with a period. Below
 is an example.
 
@@ -236,8 +253,8 @@ is an example.
 // Do stuff with above data segment
 ```
 
-Since the above **[.data]**  segment is ignored by **[eval]** as a whole, none of its children will be
-signaled, and inside of our data segment, we no longer need to prepend nodes' names with a `.`.
+The above **[.data]**  segment is ignored by **[eval]** and none of its children will be
+signaled. Hence, inside of our data segment, we no longer need to prepend nodes' names with a period.
 
 ## Expressions
 
@@ -263,11 +280,11 @@ in your tree. Below is an example.
 get-value:x:../*/.data
 ```
 
-An expression is composed of iterators, which are basically `IEnumerable<Node>` function objects,
-where the result of the first iterator is applied as the input of the next iterator in a chain,
+An expression is composed of iterators. An iterator is basically an `IEnumerable<Node>` function object,
+where the result of the first iterator in the chain is applied as the input to the next iterator,
 resulting in that the expression as a whole yields a list of nodes. The above expression being
-the value of the **[get-value]** slot for instance has 3 iterators. Magic contains many different
-iterators, allowing you to query your node structure any ways you see fit. Below you can find
+the value of the **[get-value]** slot for instance has 3 iterators. Magic contains many
+iterators, allowing you to query your node structure any ways you see fit. Further down you can find
 the links to the reference documentation for these parts of Magic.
 
 ### Extrapolated expressions
@@ -280,26 +297,44 @@ imagine the following.
 ```
 .result
 .arg1:foo2
+
 .data
    foo1:John
    foo2:Thomas
    foo3:Peter
+
 set-value:x:@.result
    get-value:x:@.data/*/{@.arg1}
 ```
 
-What the above does is basically to substitute the `{@.arg1}` parts of your expression with the
-value of the node referenced by the `@.arg1` expression, before the outermost expression is
-evaluated, resulting in that the outermost expression becomes `@.data/*/foo2` before it is being
+The above basically substitutes the `{@.arg1}` parts of your expression with the
+value of the node referenced by your `@.arg1` expression, before the outermost expression is
+evaluated - Resulting in that the outermost expression becomes `@.data/*/foo2` before it is being
 evaluated. This technique allows you to nest expressions as deep as you wish, and use as many
-_"dynamic"_ segments as you wish in your outer expressions.
+_"dynamic"_ segments as you wish in your expressions.
 
 * [Read more about expressions, nodes and Hyperlambda](/documentation/magic.node/)
 * [Read more about eval and its programming language constructs](/documentation/magic.lambda/)
 
+## Modifying your tree
+
+Hyperlambda contains a whole range of slots that allows you to dynamically modify your lambda
+objects as they are executing. Below are the most important slots related to this.
+
+* __[set-value]__ - Changes the value of a node
+* __[set-name]__ - Changes the name of a node
+* __[add]__ - Appends children to a node's children collection
+* __[insert-before]__ - Injects a node _before_ some node
+* __[insert-after]__ - Injects a node _after_ some node
+
+All of the above slots requires a destination expression as their primary value, and
+one or more arguments beings its _"source"_. Notice though that these destination expressions
+can reference _multiple_ nodes, implying one invocation might in theory change multiple nodes.
+Refer to [magic.lambda](/documentation/magic.lambda/) for details about how these slots works.
+
 ## Wrapping up
 
-This was probably the hardest tutorial we've gone through so far - But once you understand
+This was probably the hardest tutorial we've gone through so far, but once you understand
 expressions, nodes, Hyperlambda, and its relationship to slots and signals - Everything becomes
 easy. In this tutorial we covered the following subjects.
 
@@ -309,19 +344,20 @@ easy. In this tutorial we covered the following subjects.
 * Creating slots from C#
 * Variables
 * Expressions
+* Modifying your lambda object
 
 ### Golly gosh this is weird!
 
-Hyperlambda is _"weird"_, but it needs to be weird, in order to facilitate for what it does.
-Every time you think about how weird it is, and this bothers you, please realise that without
-this _"weirdness"_, things such as the automatic generating of your CRUD backends, etc, would simply
+Hyperlambda is _"weird"_, but it needs to be weird in order to facilitate for what it does.
+Every time you think about how weird it is, and this bothers you, please realize that without
+this _"weirdness"_, things such as the automatic creation of your CRUD backends, etc, would simply
 not be possible. We didn't create it weird because we wanted it to be weird. We created it weird
 because it _needed_ to be weird. To understand why it needs to be weird, please realise the following.
 
 > Hyperlambda's purpose is to have your computer understand Hyperlambda
 
 Whether or not you actually understand it is second priority. This trait of Hyperlambda
-allows for the computer to create programs that runs on other computers, or itself for that matter.
-And that's its purpose; **To replace the need to manually create code!**
+allows for the computer to create programs that runs on other computers, or itself for that matter -
+And that is its purpose; **To replace the need for manually creating code**.
 
-* Continue with [Loops and conditional execution of Hyperlambda](/tutorials/loops-and-conditions/)
+* Continue with [Loops and branching in Hyperlambda](/tutorials/loops-and-conditions/)

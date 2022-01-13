@@ -1,9 +1,9 @@
 ---
-title: Create a Web API with SQL
+title: Create a Web API with SQL and Hyperlambda
 description: This article shows you how you can create a complete HTTP Web API using nothing but SQL. This is possible since Magic and Hyperlambda completely abstracts away everything related to the wiring of your endpoint code, leaving only the SQL parts for you.
 ---
 
-# Create a Web API with SQL
+# Create a Web API with SQL and Hyperlambda
 
 In this tutorial we will cover the following parts of Magic and Hyperlambda.
 
@@ -20,21 +20,18 @@ To understand the idea, you can watch the following video where I demonstrate th
 </div>
 
 As illustrated above, this feature allows you to dynamically wrap your SQL into
-a secured HTTP endpoint, where you simply provide a URL, an HTTP verb, authorization requirements,
-and a list of arguments - Without having to create as much as a single line of
-code yourself. Then you provide Magic with an SQL statement, click the button, and Magic generates your
-HTTP endpoint 100% automatically. Of course the way it works, is similar to the CRUD generator parts,
+a secured HTTP endpoint, where you provide a URL, an HTTP verb, authorisation requirements,
+a list of arguments, and some SQL - For then to have Magic automatically generate your endpoint.
+The way this works is similar to the CRUD generator parts,
 except this time the responsibility is reversed, allowing you to provide the SQL, and have Magic do the rest.
-The endpoint can be easily secured, only providing access to whatever roles you want to have access
-100% automatically.
 
 ## DRY code
 
-One of the most important architectural principles in the world today is **DRY**, as in _"Don't Repeat Yourself"_.
-Magic simply brings this idea to the next level, which of course is why it can do what we demonstrate in the
-above video. This is quite easy too, since 90% of such endpoints, have similar requirements, being
-a list of roles allowed to access the endpoint, a JSON payload of some sort, maybe some query
-arguments, for then to simply return whatever the SQL returns back to the client as JSON. Automating
+One of the most important architectural design principles in software development is **DRY**, as in _"Don't Repeat Yourself"_.
+Magic simply brings this to the next level, which is why it can do what we did in the
+above video. This is quite easy too, since 90% of such endpoints have similar requirements, being
+a list of roles allowed to access the endpoint, a JSON payload or some query
+parameters, for then to simply return whatever the SQL returns back to the client as JSON. Automating
 this process is a no-brainer. Below you can find the SQL I am using in the above video.
 
 ```sql
@@ -102,9 +99,8 @@ where a.first_name like @filter
 ```
 
 The only parts of the above code we had to manually apply ourselves is the invocation to
-the **[validators.mandatory]** slot. If you want to return a scalar value instead of a list
-of items, you can change the above **[.is-list]** value to false and change from **[data.select]** to
-**[data.scalar]**. This will return a single value to the client instead of a list of items, which
-sometimes might be useful.
+**[validators.mandatory]**. If you want to return a scalar value instead of a list
+of items, you can change the above **[.is-list]** value to false. This will return a single
+value to the client instead of a list of items, which might be useful sometimes.
 
 * Continue with [Hyperlambda Hello World](/tutorials/hello-world-endpoint/)

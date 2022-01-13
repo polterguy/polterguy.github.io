@@ -1,15 +1,14 @@
 ---
-title: Authentication and Authorisation in Magic
-description: This tutorial helps you understand how the authentication and authorization mechanisms in Magic and Hyperlambda works. It also shows you how to create and administrate your users, and touches upon JWT a little bit.
+title: Authentication and authorisation in Magic and Hyperlambda
+description: This tutorial helps you understand how the authentication and authorisation mechanisms in Magic and Hyperlambda works. It also shows you how to create and administrate your users, and touches upon JWT a little bit.
 ---
 
-# Authentication and authorisation
+# Authentication and authorisation in Magic and Hyperlambda
 
-In this tutorial we will cover the following parts of Magic and Hyperlambda.
+This tutorial covers the following parts of Magic and Hyperlambda.
 
-* How authentication works in Magic
-* How authorisation works in Magic
 * Some JWT internals
+* How authentication and authorisation works in Magic
 * How to administrate users and roles using your Magic dashboard
 
 Magic was created to solve all the repetitive problems we experienced in our day jobs. One of these problems
@@ -18,7 +17,7 @@ you create a new application. At this point some might argue that OAuth2 solves 
 technically that is true, OAuth2 is also extremely complex and over engineered, and very easy to
 get wrong. With Magic authentication and authorisation simply works out of the box, without you having
 to configure anything at all, making it almost impossible to have something going wrong. Watch the following
-video for a walkthrough of how the auth parts in Magic works.
+video for a walkthrough of how these parts works in Magic.
 
 <div class="video">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/xD9NEWbgfYY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -29,7 +28,7 @@ video for a walkthrough of how the auth parts in Magic works.
 As you can see in the above video, Magic contains a million parts helping you out with your authentication and
 authorisation requirements, such as the ability to lock users, implement double optin registrations, having users
 confirm their email address before being accepted into your site, resetting passwords, etc. In addition to
-of course that the Magic Dashboard contains high level UI components, allowing you
+of course that the Magic dashboard contains high level UI components, allowing you
 to easily administrate your user database such as illustrated below.
 
 ![Authentication and Authorisation in Magic](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/auth.jpg)
@@ -37,13 +36,14 @@ to easily administrate your user database such as illustrated below.
 As you are working on your own internal systems it is highly unlikely you will find the time to 
 implement something resembling the above. With Magic, it's simply there. Combining this with the auditing
 and diagnostic features of Magic, allowing you to see high level KPI charts related to security issues, such as
-illustrated below - Probably gives you everything you will ever need related to authentication and authorisation.
+illustrated below - Probably gives you everything you'll need in regards to authentication and authorisation.
 
 ![Security audit logging in Hyperlambda](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/health-security.jpg)
 
 ## Endpoints
 
-Magic exposes several endpoints related to authentication that simplifies your life. These are as follows.
+Magic exposes several endpoints related to authentication that simplifies your life. Some of the most important
+endpoints are as follows.
 
 * GET magic/system/auth/authenticate - Authenticates a user with a username/password combination
 * PUT magic/system/auth/change-password - Allows a user to change his or her password
@@ -87,8 +87,8 @@ can also manually edit it as you see fit.
 
 In fact, using Magic as your JWT auth server, to integrate it into your own custom C# apps, is as simple as
 configuring the correct middleware by implementing a handful of lines of custom C# code. You can get an idea
-of how to get started by looking at the C# code for [magic.lambda.auth](https://github.com/polterguy/magic.lambda.auth/blob/master/magic.lambda.auth/helpers/TicketFactory.cs). This allows you to share the secret Magic has with your own custom
-application, and use Magic as an _"auth server"_ having single sign on in your company. As long as you
+of how to get started by looking at the C# code for [magic.lambda.auth](https://github.com/polterguy/magic.lambda.auth/blob/master/magic.lambda.auth/helpers/TicketFactory.cs). This allows you to share the secret Magic has with your own
+applications, and use Magic as an _"auth server"_ with single sign on in your company. As long as you
 can keep your auth secret a secret, this is a perfectly legitimate method to implement SSO.
 
 ## Slots
@@ -125,13 +125,13 @@ select * from users
 ```
 
 ... you can see how the passwords are stored using _slow BlowFish hashing with individual record based salts_.
-The latter of course is crucial for anybody taking passwords seriously on behalf of their users.
+The latter of course is crucial for anybody taking security seriously.
 
 ![Blowfish hashed passwords](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blowfish.jpg)
 
 This is one of those million things that might go wrong as you implement your own authentication,
 which if done wrong, opens up your password database for Rainbow Dictionary attacks, allowing at least
-in theory adversaries to brute force your users' passwords. Which of course is a _major_ security threat,
+in theory adversaries to brute force your users' passwords - Which of course is a _major_ security threat,
 since users tends to reuse the same passwords on multiple sites/applications - Implying if an adversary
 gains access to your user's password in _one_ app, he effectively gains access to your user's passwords
 in _all_ apps the user is using, and can easily impersonate the user across the entirety of the web.
@@ -153,7 +153,7 @@ the commonly accepted dogma of providing something such as follows.
 The above password is 8 characters long. On average it takes a normal laptop approximately 20
 minutes to brute force the above password. While the first password above, containing 33 characters,
 would require more energy than what is required to boil all water on earth to brute force. Hence, 
-restrictions such as for instance Apple puts on your passwords for their AppStore, is quite
+restrictions such as those Apple for instance puts on your passwords for their AppStore, is quite
 counterintuitively much simpler to brute force than simple phrases and sentences such as Magic allows you to use.
 Simply since allowing a user to use a normal sentence, increases password length easily by one order of
 magnitude, making the brute force approach require trillions of times the number of iterations to guess
@@ -171,7 +171,7 @@ exists in our galaxy. Implying it's not even possible in theory to brute force t
 above password is actually _stronger_ than the 8 letter _"special character password"_ above it - In addition
 to that it's much easier to remember for the human brain, and allows your users to create _unique_ passwords for
 all their online services, reducing the likelihood of having your password compromised at _one_ site
-resulting in that your entire online life is compromised.
+results in that your entire online life compromised.
 However, since Magic also is using individual per record based salts, combined with BlowFish hashing,
 even if your user has a single character password,
 _the CPU time required to brute force a single character password would still be practically impossible_,

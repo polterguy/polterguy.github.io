@@ -5,11 +5,11 @@ description: In this article you will learn how to create dynamic Hyperlambda sl
 
 # Dynamic Hyperlambda slots
 
-In this tutorial we will cover the following parts of Magic and Hyperlambda.
+This tutorial covers the following parts of Magic and Hyperlambda.
 
 * How to create reusable Hyperlambda slots or _"functions"_
 * How to pass arguments to dynamically created Hyperlambda slots
-* How to make sure your slots are created during startup of your server
+* How to make sure your slots are re-created when your server restarts
 * How to modify your dynamically created Hyperlambda slots
 
 A dynamic Hyperlambda slot is the equivalent of what you would refer to as a _"function"_ in another programming
@@ -37,7 +37,7 @@ signal:mysql
 
 A dynamic slot can contain any amount of Hyperlambda you wish, allowing you to encapsulate your logic
 into a single point, from where you can reuse it later as you see fit. Below is an example of a slightly
-more useful slot, returning all roles that exists in your particular installation.
+more useful slot, returning all roles that exists in your installation.
 
 ```
 slots.create:foo.bar.get-roles
@@ -146,8 +146,8 @@ slots.get:foo.bar
 
 In the above snippet we _semantically_ retrieved a dynamic slot, for then to inject new slot invocations into it,
 and saving our updated slot afterwards. This allows you to look at code as a dynamic living thing, possible to
-modify over time, according to your needs, whatever they may be. Arguably allowing you to from within your
-live production environment literally _semantically 'patch'_ your existing code. Hence your code is no longer
+modify over time according to your needs. Arguably allowing you to from within your
+production environment literally _semantically 'patch'_ your existing code. Hence your code is no longer
 a _"static"_ thing once deployed, but a living and changeable thing you can _"mold"_ and change as you see
 fit. In a way this allows you to treat your Hyperlambda code the same way you treat your relational database
 system, by providing you with CRUD capabilities on your codebase, allowing you to change it over time, almost the same
@@ -155,20 +155,22 @@ way you'd change data in your database. This is only possible because of Hyperla
 capabilities, implying it is super-structured in its format, allowing you to semantically traverse it the
 same way you would semantically traverse an XML document, and/or a JSON object.
 
-A favourite is to combine these features with [cryptographic lambda invocations](/tutorials/crypto-lambda-http/),
-to patch and administrate a multitude of servers dynamically, giving you orchestration capabilities on your servers,
-from a single point of administration, to administer a heterogenous environment consisting of a multitude
+One example of this feature is to combine this with [cryptographic lambda invocations](/tutorials/crypto-lambda-http/),
+to patch and administrate a multitude of servers dynamically, giving you orchestration capabilities on your servers
+from a single point, to administer a heterogenous environment consisting of a multitude
 of servers.
 
 ## Persisting dynamic slots
 
 When you create a dynamic slot, it only exists in memory. If for some reasons your web server falls down, your
-slot will cease to exist. To create a dynamic slot that is always re-created as your web server start, and/or your
-module is installed, you'll have to put your __[slots.create]__ invocation into a file inside your
+slot will cease to exist. To create a dynamic slot that is always re-created as your web server starts, and/or your
+module is installed, you'll have to put your __[slots.create]__ invocations into a file inside your
 module's _"magic.startup"_ folder. For instance, if your module is called _"foo"_, and your slot is
-named __[foo.bar]__, typically the full name of this file would be _"/modules/foo/magic.startup/foo.bar.hl"_.
+called __[foo.bar]__, the full name of this file would typically be _"/modules/foo/magic.startup/foo.bar.hl"_.
 All Hyperlambda files existing within your module's _"magic.startup"_ folder will be automatically executed
-as the system restarts, and/or is installed.
+as the system restarts, and/or is installed. Files within a _"magic.startup"_ folder inside of your module's
+main folder _cannot_ be executed as endpoints, but will only be executed as the module is installed,
+and/or the server restarts.
 
 ## Namespacing your slots
 
@@ -183,7 +185,7 @@ slots.create:acme-company.foo-module.meaning-of-life
    return:int:42
 ```
 
-This prevents one module from accidentally interferring with objects in another module, by creating a unique namespace,
+This prevents one module from accidentally interferring with objects in another module, by creating a unique namespace
 internally within your server, and/or also globally to some extent. This makes your code more maintainable
 and interoperable in the long run.
 

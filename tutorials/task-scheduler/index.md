@@ -1,15 +1,15 @@
 ---
 title: The Hyperlambda task scheduler
-description: This article shows you how to create, persist and schedule Hyperlambda tasks, allowing you to create scheduled Hyperlambda jobs, periodically executing your Hyperlambda, and/or trigger execution of serialised Hyperlambda invocations due to some event.
+description: This article shows you how to create, persist, and schedule Hyperlambda tasks, allowing you to create scheduled Hyperlambda jobs, periodically executing, and/or trigger execution of serialised Hyperlambda invocations due to some event.
 ---
 
 # The Hyperlambda task scheduler
 
-In this tutorial we will cover the following parts of Magic and Hyperlambda.
+This tutorial covers the following parts of Magic and Hyperlambda.
 
-* How to create and persist tasks
+* How to create, persist, and execute tasks
 * How to schedule persisted tasks
-* How to automate creation of tasks and persist these for future execution
+* How to automate creation of tasks, and persist these for future execution
 * How these features allows us to easily create long lasting transactions by allowing us to persist function _invocations_
 
 With Hyperlambda you can create and administrate tasks, in addition to scheduling tasks for execution at some point in
@@ -24,11 +24,12 @@ tasks and schedules.
 Combined with the fact that Hyperlambda happens to be a Turing complete high level programming
 language, this also lends itself to business process workflows, and similar ideas, where some function invocation
 is dynamically created, persisted into your database, for then to be executed later due to some trigger happening
-in another part of your system. In such a way the task scheduler in Magic also replaces Microsoft Workflow
+in another part of your system. In such a way the task scheduler in Magic replaces Microsoft Workflow
 Foundation, with something that's somewhere between 200 to 400 times faster and more scalable than MWF - In addition to that it
 consumes about 1/10th of the memory MWF consumes. Hyperlambda tasks are also `async` to the bone.
 Below you can see some example Hyperlambda you can paste into your tasks to create a dummy task that simply
-creates a log entry for you.
+creates a log entry for you. Open your _"Tasks"_ menu item, click the plus button, give your task a name, click your task
+to select it for editing, and paste the following into its Hyperlambda editor.
 
 ```
 /*
@@ -50,7 +51,8 @@ pattern such as follows. Make sure you check the _"Repeating"_ checkbox before y
 
 If you click the _"Create"_ button and wait 5 seconds for then to have a look at your server's log, you will see
 how your task executed after 5 seconds. And if you wait another 5 seconds and refresh your browser, you will see another
-log entry created.
+log entry created. You can also provide a humanly readable description to your task, making it easier for others
+to understand what it does.
 
 ## Automating your tasks
 
@@ -93,8 +95,8 @@ and becomes incredibly useful as your application's complexity increases. For in
 you to almost completely ignore different versions of your system, eliminating backwards compatibility problems,
 simply due to the fact that your tasks are entirely created as Turing Complete Hyperlambda snippets, and
 persisted into your database. Implying as you upgrade your system and change its _"API"_, previously
-persisted tasks will execute the _"old"_ code as if nothing changed, while anybody creating a task from
-that point an onwards in the future will have the _"new"_ code persisted into the tasks database. Below
+persisted tasks will execute the _"old"_ code as if nothing changed, while anyone creating a task from
+that point an onwards, will have the _"new"_ code persisted into the database. Below
 is how the above _"business process workflow"_ could be turned into a Hyperlambda task and persisted into
 your Hyperlambda tasks database.
 
@@ -144,14 +146,14 @@ The following task related slots exists in Magic.
 * __[tasks.schedule.delete]__ - Deletes an existing schedule
 * __[tasks.scheduler.start]__ - Starts the task scheduler. Notice, only for internal usage
 
-Refer to the [magic.lambda.scheduler](/documentation/magic.lambda.scheduler/) for details about the above slots.
+Refer to the [magic.lambda.scheduler](/documentation/magic.lambda.scheduler/) for information about the above slots.
 
 ## Internals
 
 Tasks will be persisted into your magic database in the `tasks` table and schedules will be persisted
 into your `task_due` table. This implies that
 if you take backup of your database, tasks will still exists in your backup, including their Hyperlambda
-and next schedule date. When a task is done executing its scheduled execution, its next
+and upcoming execution date, if any. When a repeating task is done executing, its next
 schedule time will be calculated. This avoids exhausting your web server due to misconfigured tasks, and/or
 flooding the server with tasks your server is not able to execute. To see the complete documentation
 for the task scheduler in Magic you can check out the [magic.lambda.scheduler](/documentation/magic.lambda.scheduler/).

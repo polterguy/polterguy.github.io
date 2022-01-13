@@ -1,18 +1,18 @@
 ---
-title: Cryptographically Secured HTTP Lambda invocations
-description: In this article we show you how to cryptographically sign your Hyperlambda for then to transmit it to another server, having that server securely execute your Hyperlambda, without compromising itself in the process.
+title: Cryptographically secured HTTP lambda invocations
+description: In this article we show you how to cryptographically sign your Hyperlambda for then to transmit it to another server, having that server securely execute your Hyperlambda, without compromising security in the process.
 ---
 
 # Cryptographically secured HTTP lambda invocations
 
-In this tutorial we will cover the following parts of Magic and Hyperlambda.
+This tutorial covers the following parts of Magic and Hyperlambda.
 
 * How to create cryptographically signed HTTP invocations
 * How lambda invocations are stored giving the server a receipt of invocation
 * How Magic avoids replay attacks on lambda invocations
 * Tips and tricks for how to apply these constructs in your own Micro Service architecture
 
-This is one of those oddball things you have probably never seen before, arguably turning your Magic
+This is one of those oddball things you've probably never seen before, arguably turning your Magic
 server into a crypto wallet and a financial transaction server, by allowing you to securely
 execute Hyperlambda code created by a 3rd party client - And have receipts giving you a guarantee
 of that the executed code was in fact created by _one specific client_. In many ways, it could be
@@ -24,17 +24,17 @@ receipt of that the code that was executed was indeed created by a _specific cli
 
 If we start out imagining a client creating an invocation the process becomes as follows.
 
-1. The client's payload is cryptographically signed with his private key
+1. The client's Hyperlambda payload is cryptographically signed with his private key
 2. The payload is transmitted to the server
-3. The server verifies that the cryptography signature is valid
-4. The server verifies a payload with the same **[.request-id]** has not been successfully executed previously
+3. The server verifies that the cryptographic signature is valid
+4. The server verifies no payloads with the same **[.request-id]** has not been successfully executed before
 4. The server looks up the execution rights associated with the public key
 5. The Hyperlambda in the payload is executed, _only_ allowing for the slots that are _"whitelisted"_ to be executed
 6. A receipt containing the cryptographically signed payload is persisted on the server
 7. The server cryptographically signs the response and returns it to the client
-8. The client verifies the cryptography signature in the response returned by the server
+8. The client verifies the cryptographic signature in the response returned by the server
 
-If any of the above steps are failing for some reasons, the execution is not considered to be successful.
+If any of the above steps are failing for any reasons, the execution is not considered to be successful.
 Fail conditions might include for instance.
 
 * The payload has been tampered with after having been cryptographically signed
@@ -44,7 +44,7 @@ Fail conditions might include for instance.
 * A payload with the same **[.request-id]** has been successfully executed previously on the server
 * The server's response is not signed with the key the client has associated with the domain it sent the request to
 
-This allows you to exchange public keys with another Magic server and your own Magic installation, associate
+This allows you to exchange public keys with another Magic server, and/or your own Magic installations, associate
 an authorisation object with the other party's public key, for then to have the owner of that key create
 Hyperlambda code that your server _securely executes_ - Arguably _"reversing the responsibility of code"_, where
 the server is no longer responsible for declaring its code, but rather the client provides a lambda object
@@ -81,12 +81,12 @@ something resembling the following.
 ![Cryptography receipt](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/crypto-receipt.jpg)
 
 The ID above is the value returned from **[guid.new]**, and simply a randomly generated id associated
-with your request, created by the client - Allowing the client to persist the invocation any ways he wants
-to on his side - But of course more importantly from the server's perspective becoming the equivalent of
+with your request, created by the client - Allowing the client to persist the invocation.
+More importantly though, from the server's perspective, this becomes the equivalent of
 a _"transaction identifier"_. Since the id is also a part of the payload itself, and hence a part of the
 message the cryptographic signature was generated from, this prevents _"replay attacks"_, where an adversary
 can pick up your payload, and replay the same payload again. This is accomplished by checking if the
-**[.request-id]** parts of the payload has been previously executed, and if so, aborting the execution,
+**[.request-id]** part of the payload has been previously executed, and if so aborting the execution,
 returning an error to the client. To see this in action try to execute the following Hyperlambda _twice_,
 and notice how the first invocation typically succeeds, while the second invocation fails.
 
@@ -99,7 +99,7 @@ signal:magic.crypto.http.eval
       return:Will fail the second time
 ```
 
-**Notice** - You might have to change the port number in the above snippet depending upon whether or not you're
+You might have to change the port number in the above snippet depending upon whether or not you're
 running Magic through its Docker images or not.
 
 ## Micro services and super scalable distributed systems
@@ -120,7 +120,7 @@ things significantly, since you no longer need to patch your servers, but only y
 
 ## Warning! Don't go berserk
 
-This feature is incredibly powerful - But it also carries some overhead. For
+This feature is incredibly powerful, but it also carries some overhead. For
 instance, the payloads needs to be cryptographically signed by the client. The server needs to verify
 the signature and parse the Hyperlambda, building a lambda object from it. Execution rights needs to
 be retrieved from the database, and a receipt for the execution of the lambda object needs to be persisted
@@ -128,7 +128,7 @@ into the database. Hence, you should not use this feature for things where execu
 but rather smaller payloads, occasionally transmitted between clients and servers, and not for things
 needing to handle thousands of requests per second.
 However, when you need such features, you _really_ need it - And if used correctly, and _sparsely_,
-this feature is an incredibly useful tool, to both scale out (**securely**) and more easily build
+this feature is an incredibly useful tool, to both scale out (**securely**), and more easily build
 heterogeneous server environments, without having to try to predict what the future might hold in
 regards to its requirements.
 

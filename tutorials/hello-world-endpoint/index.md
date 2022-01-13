@@ -13,10 +13,9 @@ In this tutorial we will cover the following parts of Magic and Hyperlambda.
 
 Creating a Hyperlambda endpoint in Magic is easy. Use your Magic dashboard and open _"Hyper IDE"_. Select
 your _"modules"_ folder and create a new folder inside of it. Name your new folder _"tutorials"_. Select your
-newly created folder and create a file named _"hello.get.hl"_.  To create a file or folder in Magic use the
-_"Add"_ button in the top/right corner of Hyper IDE, and click the checkbox if you want to create a folder,
-otherwise if you want to create a file keep it unchecked. Then provide Magic with the name of your file or
-folder in the _"Name"_ textbox. Below is a screenshot illustrating how to create our _"hello.get.hl"_ file.
+newly created folder and create a file named _"hello.get.hl"_ inside of it.  Use the
+_"Add"_ button in the top/right corner of Hyper IDE to create a new files and folders.
+Below is a screenshot illustrating how to create our _"hello.get.hl"_ file.
 
 ![Creating a Hyperlambda file in Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide-create-endpoint.jpg)
 
@@ -29,10 +28,10 @@ return-nodes
 ```
 
 You have now created your first Hyperlambda endpoint, and you can already invoke it using the [following
-URL](http://localhost:4444/magic/modules/tutorials/hello). Make sure you get the port correctly. 4444 is
-the correct port if you're using the docker images, and might need to be changed to e.g. 5000 if you're
+URL](http://localhost:4444/magic/modules/tutorials/hello). Make sure you use the correct port. 4444 is
+the correct port if you're using the docker images, and you'll need to change it to 5000 if you're
 using the source code version of Magic. Notice how Magic automatically transforms your lambda object to
-JSON, and returns it as follows.
+JSON and returns it as follows. JSON is Magic's default response type unless explicitly changed by you.
 
 ```json
 {"result":"Hello World"}
@@ -56,8 +55,8 @@ return-nodes
    result:x:@strings.concat
 ```
 
-Save the file, an invoke the [following relative URL](http://localhost:4444/magic/modules/tutorials/hello?name=thomas)
-using your browser - _"/magic/modules/tutorials/hello?name=thomas"_. The result should resemble the following.
+Save the file and invoke the [following URL](http://localhost:4444/magic/modules/tutorials/hello?name=thomas)
+using your browser. The result should resemble the following.
 
 ```json
 {"result":"Hello thomas"}
@@ -66,8 +65,8 @@ using your browser - _"/magic/modules/tutorials/hello?name=thomas"_. The result 
 ### Internals
 
 Magic will map your `name` query parameter automatically to the **[.arguments]**/**[name]** node's value,
-and from within your Hyperlambda code this value will be concatenated with the text _"Hello"_, and returned
-back to your browser as JSON. There are two new slots being used in this code.
+and from within your Hyperlambda code Magic will concatenate _"Hello "_ with your name and return
+the result back to your browser as JSON. There are two new slots being used in this code.
 
 * __[strings.concat]__ - Concatenates two or more strings
 * __[unwrap]__ - Forward evaluates expressions
@@ -77,17 +76,19 @@ and [magic.lambda](/documentation/magic.lambda/) respectively.
 
 ## The endpoint resolver
 
-Magic will automatically resolve your file to the HTTP GET verb. The reason for this, is because your file
-ends with _".get.hl"_. Its `get` parts indicate the HTTP verb, and its `hl` parts indicates Hyperlambda.
-You can also create POST, PUT, PATCH and DELETE endpoints, by simply replacing the _".get."_ parts of
-your filename with _".xxx."_ where xxx is your verb of choice. If you do this, you can no longer
-use your browser to test the endpoint, but need to open up the _"Endpoints"_ file menu to test your
-endpoint(s), and provide payloads and arguments to them. You can also use e.g. Postman to invoke such
-endpoints. For details about how endpoints are resolved, check out the documentation for the [magic.endpoint](/documentation/magic.endpoint/) project.
+Magic will automatically associate your above file to the HTTP GET verb. This is because your file
+ends with _".get.hl"_. Its `get` part indicates the HTTP GET verb, and its `hl` part implies Hyperlambda.
+You can also create `post`, `put`, `patch` and `delete` endpoints by replacing the _".get."_ part of
+your filename with _".xxx."_ where xxx is your verb of choice. If you do this you can no longer
+use your browser to test your endpoints, but you'll need to use the _"Endpoints"_ file menu instead,
+and provide payloads and arguments to your invocations. You can also use Postman to invoke such
+endpoints. Check out the documentation for [magic.endpoint](/documentation/magic.endpoint/) for details
+about how Hyperlambda files are resolved as URLs in Magic.
 
 **Notice** - You can _only_ create endpoints inside of your _"modules"_ folder. This allows you to
 create helper Hyperlambda files _outside_ of this folder that can never be resolved by clients trying
-to create malicious URLs to execute hidden code on your server.
+to create malicious URLs to execute hidden code on your server. The _"system"_ folder is intended for
+Magic's internal system endpoints, and you should as a general rule of thumb never change these files.
 
 ## Creating a POST endpoint
 
@@ -107,14 +108,14 @@ return-nodes
    result:x:@strings.concat
 ```
 
-This time though, we cannot invoke the file as a simple GET URL HTTP invocation, but must rely upon the endpoints
+This time we cannot invoke the file as a simple HTTP GET invocation, but must rely upon the endpoints
 menu item in Magic to invoke our file. Open up your _"Endpoints"_ menu item, and filter for _"hello"_. Notice how
 you have _two_ endpoints, one resolved using the `GET` verb and another resolved using the `POST` verb. Expand the
 post endpoint, and paste the following into its payload parts.
 
 ```json
 {
-  "name": "John Doe"
+  "name": "Thomas"
 }
 ```
 
@@ -123,7 +124,7 @@ to see the internals of what is happening, you can use Chrome Developer tools to
 as you click the _"Invoke"_ button - At which point you can see how an HTTP POST invocation is created instead of
 an HTTP GET invocation.
 You can repeat the same exercise for PUT, DELETE and PATCH if you wish - However, both GET and DELETE endpoints
-can only be given arguments as query parameters - While POST, PUT and PATCH endpoints requires JSON payloads.
+can only be given arguments as query parameters - While POST, PUT, and PATCH endpoints expects JSON payloads.
 You can also create alternative endpoint types, returning for instance files and similar constructs instead of
 pure JSON, but that's an exercise for later.
 

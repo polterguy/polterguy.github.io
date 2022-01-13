@@ -1,9 +1,9 @@
 ---
-title: HTTP invocations with Hyperlambda
+title: HTTP invocations from Hyperlambda
 description: In this article we help you understand Hyperlambda's and Magic's HTTP capabilities, by playing around with the HTTP slots in Hyperlambda, allowing you to invoke external HTTP JSON endpoints, to retrieve data from 3rd parties, and/or integrate your code with other systems.
 ---
 
-# HTTP invocations with Hyperlambda
+# HTTP invocations from Hyperlambda
 
 In this tutorial we will cover the following parts of Magic and Hyperlambda.
 
@@ -52,7 +52,7 @@ http.get:int:200
 ```
 
 The status code is the value of your **[http.get]** node after invoking your endpoint, and the headers collection
-is returned as the **[headers]** node. At this point you can easily traverse the array of items returned by the
+is returned as **[headers]**. At this point you can easily traverse the array of items returned by the
 endpoint using code resembling the following.
 
 ```
@@ -64,7 +64,7 @@ for-each:x:@http.get/*/content/*
 ```
 
 Two lines of code, and you're returning the result of an HTTP invocation in a structured format, assuming the endpoint
-you are invoking is returning JSON. The crucial parts of course as usual is what is _not_ there; No `IHttpClientFactory`,
+you are invoking is returning JSON. The crucial parts as usual is what is _not_ there; No `IHttpClientFactory`,
 no `IDisposable` objects you'll need to dispose, no IoC container wiring, no async/await statements, etc.
 By removing the complex parts from your resulting code, maintaining things becomes much easier for both
 yourself in the future, in addition to making things easier for developers inheriting your project later down the road.
@@ -87,14 +87,8 @@ http.post:"https://jsonplaceholder.typicode.com/posts"
 
 **Notice** - Due to not passing in a **[convert]** argument in the above snippet, any response returned by
 the above endpoint will _not_ be automatically parsed into its equivalent lambda object. If you want to have
-the returned payload automatically converted to a lambda object you can add a **[convert]** argument and
-set its value to boolean true. Below is an example.
-
-```
-http.post:"https://jsonplaceholder.typicode.com/posts"
-   payload:@"{""userId"": 1, ""id"": 1}"
-   convert:true
-```
+the response automatically converted to a lambda object you can add a **[convert]** argument and
+set its value to boolean true the way we did in our first example above.
 
 You can also post files directly, _without_ loading your files into memory first, by replacing your above **[payload]**
 argument with a **[filename]** argument, having the value of a relative path within your _"/files/"_ folder, that
@@ -108,7 +102,7 @@ http.post:"https://foo-bar.com"
    filename:/README.md
 ```
 
-Most of the times you want to post something to another endpoint, it's typically JSON you want to post.
+Most of the times you provide a request payload to some endpoint your payload is typically JSON.
 Hyperlambda implements a lot of helper slots and features to help you out with this. The code below for instance
 will automatically transform your lambda object to JSON, dynamically populate its `id` field with the value
 of **[.userId]**, before transmitting your JSON to the endpoint.
@@ -122,10 +116,9 @@ http.post:"https://jsonplaceholder.typicode.com/posts"
 ```
 
 You can do the same with **[http.patch]** and **[http.put]**. This simplifies the process of dynamically
-creating your payloads to some HTTP endpoint, passing in lambda objects dynamically built according to
-your own business logic.
+creating your payloads to some HTTP endpoint.
 
-### Alternating your Content-Type
+### Changing your Content-Type
 
 Hyperlambda also has strong support for alternative content types, and it automatically transforms the
 following content types for you.
@@ -169,10 +162,10 @@ http.post:"https://foo.com/hyperlambda-endpoint"
 ```
 
 You can also have Hyperlambda automatically create a _"multipart/form-data"_ **[payload]** for you. To understand
-how, please refer to the [magic.lambda.mime](/documentation/magic.lambda.mime/) project, that explains how to
+how, please refer to the [magic.lambda.mime](/documentation/magic.lambda.mime/) project that explains how to
 semantically create a MIME message using Hyperlambda. Then imagine the **[payload]** node being your **[mime.create]**
 node, without any Content-Type, having the Content-Type automatically set to _"multipart/form-data"_. This allows you
-to simulate a form data submission arguably automating the behaviour of a browser.
+to simulate a form data submission, arguably automating the behaviour of a browser.
 If your endpoint _returns_ any of the following content types, you can add a **[convert]** argument
 to your invocation to automatically reverse the process, and have Hyperlambda convert the response _to_ a lambda
 object.
@@ -215,7 +208,7 @@ There are 5 HTTP slots in Hyperlambda wrapping their associated HTTP verbs. Thes
 * __[http.post]__ - Creates a new resource, requires a payload
 * __[http.patch]__ - Modifies an existing resource, requires a payload
 
-Of course the exact semantics of what your endpoints are actually doing, differs from API to API - But
+The exact semantics of what your endpoints are actually doing, differs from API to API - But
 the above is the default (and correct) way to think of HTTP verbs. Only the 3 last slots in the list above
 can be given a **[payload]** or a **[filename]** argument - And you can only provide _one_ of these arguments.
 To further dive into the semantics of invoking HTTP endpoints with Hyperlambda you can check out the

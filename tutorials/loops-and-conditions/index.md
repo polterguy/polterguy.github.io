@@ -1,18 +1,18 @@
 ---
 title: Loops and branching in Hyperlambda
-description: In this article you will learn how to loop and apply conditional branching in Hyperlambda.
+description: In this article you will learn how to loop and apply conditional branching in Hyperlambda, in addition to how equality comparison slots works, and how to leverage these in your own Hyperlambda code.
 ---
 
 # Loops and branching in Hyperlambda
 
-In this tutorial we will cover the following parts of Magic and Hyperlambda.
+This tutorial covers the following parts of Magic and Hyperlambda.
 
 * Looping using __\[for-each\]__ and __\[while\]__
-* How conditional branching works in Hyperlambda, such as __\[if\]__, __\[else-if\]__ and __\[else\]__
+* How conditional branching works in Hyperlambda, such as __\[if\]__, __\[else-if\]__, and __\[else\]__
 
 ## Looping in Hyperlambda
 
-There are two primary slots in Hyperlambda that allows you to loop. These are as follows.
+There are two primary slots in Hyperlambda that allows you to loop, these are as follows.
 
 * __[for-each]__
 * __[while]__
@@ -45,20 +45,9 @@ If you execute the above in Magic's _"Eval"_ component you will see how the abov
 
 This is because the lambda object of the **[for-each]** slot is executed once for each node resulting from its
 expression, passing in the currently iterated node as a **[.dp]** node _by reference_, which is why we have to use the funny syntax of `/#` to de-reference the actual node we're iterating over. The **[for-each]** slot in Hyperlambda
-is similar to the `foreach` keyword in for instance C#. If you have difficulties understanding the `/#` reference
-iterator in Hyperlambda, it might be beneficial for you to execute the following once, for then to look at your
-server's log afterwards.
-
-```
-.data
-   foo1:bar1
-   foo2:bar2
-   foo3:bar3
-
-for-each:x:@.data/*
-
-   log.info:x:@.dp/#
-```
+is similar to the `foreach` keyword in for instance C#. The _"by reference"_ parts implies that the node we're
+currently iterating over becomes the _value_ of the **[.dp]** node by reference. This allows us to change
+this node, and/or its parent node, and/or its children collection, any ways we see fit.
 
 ### The [while] loop
 
@@ -79,20 +68,27 @@ while
       add:x:@.data
          .
             foo:bar
+
       math.increment:x:@.no
 ```
 
-The above will iterate 10 times because this is a part of the condition to the **\[while\]** invocation, due
-to the **\[lt\]** node only executing the **\[.lambda\]** object as long as the **\[.no\]** node is less than 10,
+The above will iterate 10 times because this is a part of its condition, due
+to the **\[lt\]** node only executing the **\[.lambda\]** object as long as the **\[.no\]** node's value is less than 10,
 and the **\[math.increment\]** invocation increases the value of the **\[.no\]** node inside of the while loop by 1.
-**\[lt\]** implies _"less than"_ and there are many similar types of conditions in Hyperlambda, which you can
-read up about [here](/documentation/magic.lambda/). If you want to read more about math slots in Hyperlambda, such
-the the above **[math.increment]** slot, you can find it [here](/documentation/magic.lambda.math/).
+**\[lt\]** implies _"less than"_, and there are lots of similar conditions in Hyperlambda. You can
+read about these slots [here](/documentation/magic.lambda/). If you want to read more about math slots in Hyperlambda, such
+as the above **[math.increment]** slot, you can find it [here](/documentation/magic.lambda.math/).
+
+**[while]** can be given any condition, similar to **[if]**, and will execute its **[.lambda]**
+object as long as its condition evaluates to true. In fact, **[while]** and **[if]** are almost identically
+implemented, except **[if]** will only execute its **[.lambda]** object _once_. Due to security reasons
+**[while]** cannot iterate more than 5,000 times by default. This is a Hyperlambda security feature that
+prevents you from accidentally creating never ending loops, resulting in _"jamming"_ your Magic backend.
 
 ## Branching in Hyperlambda
 
-The **\[if\]** slot works almost exactly the same way the **\[while\]** slot works, except it only executes its
-lambda objects _once_ if its condition evaluates to true. Below is an example.
+**\[if\]** works almost identical to **\[while\]**, except it only executes its
+lambda objects _once_, and only if its condition evaluates to true. Below is an example.
 
 ```
 .foo:bar
@@ -164,17 +160,14 @@ if (foo == "foo") {
 }
 ```
 
-Hyperlambda also have slots for **[switch]**, **[or]** and **[and]**, in addition to other mechanisms for branching.
-Refer to the [magic.lambda](/documentation/magic.lambda/) project for an exhaustive list.
-
 ## Branching commonalities
 
-The **[while]**, **[if]**, **[else-if]** and **[else]** slots are what is commonly referred to as _"conditional branching"_.
+The **[while]**, **[if]**, **[else-if]**, and **[else]** slots are what is commonly referred to as _"conditional branching"_.
 Branching implies your code takes a different execution path as it executes, and conditional branching implies there
 are conditions associated with these alternative execution paths. All of the branching slots in Hyperlambda have similar
 semantics, implying taking a condition as an argument. All branching slots except the **[else]** slot, requires
-one child node or an argument - Which is the condition associated with their lambda object. In addition each
-of these slots also requires a lambda argument, being the code to execute if their condition is true.
+one child node or an argument, that is the condition associated with their lambda object. In addition each
+of these slots also require a lambda argument, being the code to execute if their condition is true.
 Logically this becomes the equivalent of the following in plain English.
 
 > If some-condition, then do this
@@ -203,7 +196,7 @@ else
       .:Nope!
 ```
 
-The [magic.lambda](/documentation/magic.lambda/) project also contains logical slots, such as **[or]** and **[and]**
+The [magic.lambda](/documentation/magic.lambda/) project also contains logical slots, such as **[or]** and **[and]**,
 that only yields true if _either_ of their list of conditions returns true, or _all_ of their conditions returns
 true, respectively. This gives you the same capabilities as the following pseudo code in for instance C# would
 give you.
@@ -245,5 +238,26 @@ if
       set-value:x:@.res
          .:OK
 ```
+
+All branching slots in Hyperlambda, such as **[if]** and **[while]**, can optionally be given an expression leading
+directly to a boolean value. This eliminates an extra layer of **[eq]** for cases where you have a boolean condition.
+Below is an example.
+
+```
+.result
+.condition:bool:true
+
+if:x:@.condition
+   set-value:x:@.result
+      .:Yup!
+else
+   set-value:x:@.result
+      .:Nope!
+```
+
+Notice how the above allows us to eliminate the **[.lambda]** node for the **[if]** node. If you provide
+an expression to any branching slots in Hyperlambda, the lambda object is assumed to be the branching node itself.
+Hyperlambda also have slots for **[switch]**, **[or]**, and **[and]** - In addition to other mechanisms for branching.
+Refer to [magic.lambda](/documentation/magic.lambda/) for an exhaustive list.
 
 * Continue with [Authentication and Authorisation](/tutorials/auth/)

@@ -5,10 +5,10 @@ description: In this article we generate a Hyperlambda CRUD web API using Magic,
 
 # Automatically generate a CRUD Web API using Hyperlambda
 
-**Notice** - This is a _"hands on tutorial"_, and assumes you've already [installed Magic](/tutorials/getting-started/)
-locally or at some server somehow. In this tutorial we will cover the following parts of Magic and Hyperlambda.
+This is a _"hands on tutorial"_, and assumes you've already [installed Magic](/tutorials/getting-started/)
+locally or at some server. This tutorial covers the following parts of Magic and Hyperlambda.
 
-* How to automatically generate a Hyperlambda CRUD Web API wrapping your database
+* How to automatically generate a Hyperlambda HTTP CRUD API wrapping your database
 * The SQL, CRUD, Endpoints and Hyper IDE menu items
 * CRUD database slots
 * Passing arguments to Hyperlambda endpoints
@@ -31,10 +31,9 @@ Hyperlambda code that Magic created for us.
 
 ## Creating your database
 
-Open the _"SQL"_ menu item in your dashboard, and click the _"Load"_ button. If you're using MySQL
-as your main database then choose _"sakila"_. If you're using SQL Server, choose _"northwind-simplified"_,
-and if you're using PostgreSQL then choose _"pagila"_.
-Load the database script, and click the _"Execute"_ button.
+Open the _"SQL"_ menu item in your dashboard and click the _"Load"_ button. Choose _"sakila"_
+if you're using MySQL as your primary database. Choose _"northwind-simplified"_ if you're using SQL Server.
+Choose _"pagila"_ if you're using PostgreSQL. Load the database script, and click the _"Execute"_ button.
 
 ![Creating your Sakila database](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-editor.jpg)
 
@@ -47,7 +46,7 @@ icon in your SQL menu item beneath the SQL editor. Below is a screenshot showing
 
 ![Purging your server side database cache](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/purge-cache.jpg)
 
-Then open the _"CRUD"_ menu item, choose your newly created database, and click _"Crudify all tables"_.
+Open the _"CRUD"_ menu item, choose your newly created database, and click _"Crudify all tables"_.
 Below you can see a screenshot.
 
 ![Generating your backend](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg)
@@ -116,10 +115,10 @@ The read endpoint supports all of the following features.
 * Filtering
 * Specifying a boolean **[operator]** for filter criteria
 
-The above is what you'd typically need most of the times as you read items from your database.
+The above is what you would typically need most of the times as you read items from your database.
 If you'd like to find items only matching a specific criteria, you can add a filter for your criteria
 to have your backend only return items matching your filter. You will see a whole range of possible
-filters for each column in your table, such as I illustrate for the **first_name** column below.
+filters for each column in your table such as illustrated for the **first_name** column below.
 
 * __actor.first_name.eq__ - First name being exact match of the specified string
 * __actor.first_name.neq__ - First name _not_ equal to the specified string
@@ -137,7 +136,7 @@ Each column will have a range of filter options matching the above comparison op
 of your filter conditions doesn't make sense for a particular column, you can delete these later
 as we start editing the endpoint's code. However, try clicking the **actor.first_name.like** filter
 button for instance, and add the value _"A%"_ into it, click _"Add"_, and invoke your endpoint again.
-This time of course only items matching your filter condition are returned, such as the following JSON
+This time only items matching your filter condition are returned, such as the following JSON
 illustrates.
 
 ```json
@@ -167,7 +166,9 @@ your endpoint using query parameters. Try to create and update some items using 
 two endpoints. Just remember that regardless of what table you choose, the primary key parts
 to the update endpoint is the criteria of _which item to update_. Magic only creates endpoints
 that supports updating _one item at the time by default_ - And the generator does not produce
-code allowing you to change the primary key.
+code allowing you to change the primary key. For the _"put"_ and _"delete"_ endpoints,
+the primary key(s) for your tables are also _mandatory_ and you have to supply these, otherwise
+the backend will return an error to you.
 
 ### Meta data
 
@@ -177,9 +178,8 @@ the same way the Open Web API or Swagger is able to enumerate and document your 
 Hence, we've already documented our HTTP endpoints, even though we haven't manually created a
 single line of code. Magic also creates meta information like this for your manually
 created endpoints. This meta data becomes crucial as we later start looking at how Magic creates
-your frontend code using similar techniques as it used to create your backend. You can see this
-meta information as properties of your endpoint if you go to the _"Endpoints"_ menu item, and
-click any of your endpoints.
+your frontend. You can see this meta information as properties of your endpoint if you go to
+the _"Endpoints"_ menu item and click any of your endpoints.
 
 ## Analysing the code
 
@@ -190,7 +190,7 @@ the following.
 
 ![Editing your Hyperlambda using Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide.jpg)
 
-**Notice** - If you didn't generate CRUD endpoints for your sakila database then at least make
+If you didn't generate CRUD endpoints for your sakila database then at least make
 sure that whatever file you're looking at ends with _".get.hl"_ such that we're looking at roughly the
 same thing. What you are looking at now is the Hyperlambda Magic automatically
 generated for you. The most important part of this code is the following section.
@@ -211,13 +211,19 @@ generated for you. The most important part of this code is the following section
 The above invocation to the **[data.read]** slot is _"transpiled"_ by Magic into an SQL statement,
 retrieving your records from your database according to your filter conditions. The result of this
 SQL is then returned back to the client as JSON in the **[return-nodes]** line at the bottom of your
-code. The above slot will expect an existing open database connection, which is accomplished with
-the **[data.connect]** slot invocation. The following code shows you how to connect to a database.
+code. The above slot will expect an already open database connection. To open a database connection
+we use the **[data.connect]** slot. The following code shows you how to connect to a database.
 
 ```
 data.connect:[generic|sakila]
    database-type:mysql
 ```
+
+In the above **[data.connect]** invocation we are referencing a connection string who's name is
+_"generic"_ and we're choosing to open the _"sakila"_ database in this instance. Since we supply
+_"mysql"_ as our value to **[database-type]** this will ensure Magic uses the MySQL connection
+string named _"generic"_. You can add additional connection strings to Magic by opening the
+_"Config"_ menu item from your dashboard and edit your configuration settings.
 
 Notice how the generated Hyperlambda for your **[data.read]** invocation can be found _inside_
 your **[data.connect]** invocation. This implies that your read invocation will use this database
@@ -227,7 +233,7 @@ database connection to connect to your database and execute its SQL. Think of th
 an **SqlConnection** instance and an **SqlDataReader** instance, where the reader uses the connection
 you previously opened - Then realise that the 3 carriage returns found in front of the **[data.read]**
 invocation becomes kind of like _"the scope"_ of the **[data.connect]** invocation, implying the
-code inside of **[data.connect]** is actually a lambda object, or an _"argument"_ to your connect
+Hyperlambda inside **[data.connect]** is actually a lambda object, or a _"lambda argument"_ to your connect
 invocation.
 
 > In Hyperlambda code is always an argument, and all arguments are code
@@ -235,7 +241,7 @@ invocation.
 This is why it's called Hyperlambda, because _everything_ is a lambda object. Hyperlambda is
 said to be _"a functional programming language"_. We will go through the exact syntax of Hyperlambda
 in a later tutorial, but for now realise that in Hyperlambda _spaces counts_ - Kind of like the
-same way they do in YAML or Python, and that 3 spaces declares a _"scope"_, while a colon `:`
+same way they do in YAML or Python, and 3 spaces declares a _"scope"_, while a colon `:`
 declares the beginning of a node's value. Nodes again is a tree structure having a value, a name,
 and children. This is the foundation of Hyperlambda. Hyperlambda is actually just a text representation
 of a tree structure, the same way YAML, JSON, or XML is. Nodes are Hyperlambda's object implementation
@@ -265,19 +271,18 @@ retrieve meta information about which arguments your endpoint can accept. If you
 save it, and go back to your endpoints file menu, you can see how it's automatically updated,
 and the arguments provided by the meta information parts of the endpoint resolver automatically
 changes. The **[.arguments]** node is said to _"declare which arguments your endpoint can accept"_.
-Editing the arguments your endpoint accepts is typically among one of the first things you
-want to do if you want to modify your endpoint.
+You can add or remove arguments as you see fit.
 
 #### Validating arguments
 
-If you look at one of your _"xxx.delete.hl"_ endpoint files in Hyper IDE, you will see something
+If you open one of your _"xxx.delete.hl"_ endpoint files in Hyper IDE, you will see something
 resembling the following just below your **[.arguments]** collection.
 
 ```
 validators.mandatory:x:@.arguments/*/xxx
 ```
 
-This is mandatory validator, and makes sure the endpoint cannot be invoked without passing in
+This is a mandatory validator, and makes sure the endpoint cannot be invoked without passing in
 an **[xxx]** argument. Hyperlambda contains many similar validators for validating numbers,
 emails, date and time objects, etc. If you want to see what validators you can use
 in Hyperlambda, you can checkout the documentation for [magic.lambda.validators](/documentation/magic.lambda.validators).
@@ -288,9 +293,9 @@ slots, such as the following illustrates.
 
 ![Autocomplete on validators](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/autocomplete.jpg)
 
-### Authorization and authentication
+### Authorisation and authentication
 
-Your endpoint will by default require authentication and authorization, preventing anonymous
+Your endpoint will by default require authentication and authorisation, preventing anonymous
 users from accessing it. This is done with the **[auth.ticket.verify]** slot with something
 resembling the following.
 
@@ -305,7 +310,7 @@ invoking the endpoint belongs to at least one of the following roles.
 * admin
 
 If the user has an invalid token, and/or the user doesn't belong to any of the above roles,
-this slot will throw an exception, preventing the rest of the Hyperlambda code from executing.
+this slot will throw an exception, preventing the rest of your Hyperlambda code from executing.
 This is the core authentication and authorization parts of Magic, and allows you to secure
 your web APIs. If you want users belonging to different roles to be able to invoke
 your endpoint, you can simply edit the above code, by for instance adding _another_ role
@@ -335,7 +340,9 @@ the **[add]** slot in the documentation for [magic.lambda](/documentation/magic.
 
 An invocation to for instance **[data.read]** is referred to by Magic as a _"slot invocation"_
 or a _"signal"_. A _"slot"_ is kind of like a function, and a _"signal"_ is kind of like a function
-invocation. If you view your other CRUD files, you will see that they are using slightly
+invocation. However, fundamentally Magic doesn't have _"functions"_ the way a traditional
+programming language has, which is why we refer to these as signals and slots.
+If you view your other CRUD files, you will see that they are using slightly
 different slots to wrap other CRUD functions. The basic CRUD operations in Magic are implemented
 with the following slots.
 
@@ -349,8 +356,7 @@ similar in structure. You still typically want to have separate files for these 
 this allows you to easily modify for instance authorization requirements, arguments passing, add
 additional business logic to your files, etc. So even though the code is not very _DRY_
 in its original state, separate endpoint files for separate operations are still typically
-useful, and a feature you will learn to appreciate further down the road, as you start
-modifying your Hyperlambda files.
+useful, and a feature you will appreciate further down the road.
 If you want to see the power of these CRUD slots you can check out the documentation for the
 [magic.data.common](/documentation/magic.data.common/) module that you can find in the
 reference documentation for Magic.

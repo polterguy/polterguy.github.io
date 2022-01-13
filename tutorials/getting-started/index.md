@@ -1,11 +1,11 @@
 ---
 title: Getting Started with Magic and Hyperlambda
-description: This tutorial walks you through the process of getting started with Magic and Hyperlambda, helping you install it locally, using either Docker or the source code directly. It guides you through downloading, installation, and all the way until you've crudified your first database.
+description: This tutorial gets you started with Magic and Hyperlambda, helping you install it locally, using either Docker or the source code directly, for then to walk you through how to automatically generate your HTTP API backend wrapping your SQL database.
 ---
 
 # Getting started with Magic and Hyperlambda
 
-In this tutorial we will cover the following parts of Magic and Hyperlambda.
+This tutorial covers the following parts of Magic and Hyperlambda.
 
 * How to setup Magic locally in your own development environment using Docker or the code
 * How to deploy Magic to your own VPS
@@ -70,8 +70,8 @@ docker-compose up
 
 Magic is not one project, it's actually 35+ projects, implying if you clone only Magic,
 you'll only get some few hundreds lines of code, while most of its actual code exists in one
-of the 35+ satellite projects. Hence, to clone Magic, to for instance maintain it, look at its
-code etc, you'll have to follow [this recipe](/documentation/magic.clone/).
+of the 35+ satellite projects. Hence, to clone Magic to for instance maintain it, or look at its
+code, you'll have to follow [this recipe](/documentation/magic.clone/).
 
 ## Support
 
