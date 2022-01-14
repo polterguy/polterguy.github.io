@@ -1063,87 +1063,6 @@ while
 The above Hyperlambda snippet basically implies the following if we are to translate it into plain English;
 _"Set .no to 0, then loop while .no is less than 5, where the loop adds a node into .res, before it increments .no by 1"_.
 
-## Threading
-
-Threading in software development implies doing multiple things concurrently, scheduling CPU time for each
-of your threads, according to how the operating system schedules your threads. This concept is often referred
-to as _"multi tasking"_ and is crucial for any modern operating system, and/or programming language. Hyperlambda
-contains several multi tasking related slots.
-
-### [fork]
-
-Forks the given lambda into a new thread of execution, using a thread from the thread pool. This
-slot is useful for creating _"fire and forget"_ lambda objects, where you don't need to wait
-for the result of the execution before continuing executing the current scope.
-
-```
-fork
-   info.log:I was invoked from another thread
-```
-
-To understand how **[fork]** works, you can imagine your computer's CPU as a single river,
-running down hill, and at some point the river divides into two equally large rivers. This is
-referred to as _"a fork"_. The analogy of the river becomes important for another reason, which
-is the understanding of that the total amount of water is still the same, it's only parted
-into two smaller rivers - Implying you cannot _"do more"_ with multi tasking, you can only
-equally share the same amount of resources as you had before between two different tasks.
-Multi threading does not make your CPU faster, it only schedules your CPU's time on multiple
-things, doing these things concurrently.
-
-### [join]
-
-Joins all child **[fork]** invocations, implying the slot will wait until all forks directly below it
-has finished executing, and automatically copy the result of the **[fork]** into the original node.
-
-```
-join
-   fork
-      http.get:"https://servergardens.com"
-   fork
-      http.get:"https://gaiasoul.com"
-```
-
-As an analogy for what occurs above, imagine the two rivers from our above **[fork]** analogy,
-that forked from one larger river into two smaller rivers, for then again to join up and becoming one
-large river again.
-
-### [semaphore]
-
-Creates a named semaphore, where only one thread will be allowed to evaluate the same semaphore at
-the same time. Notice, the semaphore to use is defined through its value, implying you can use the same
-semaphore multiple places, by using the same value of your **[semaphore]** invocation.
-
-```
-semaphore:foo-bar
-   /*
-    * Only one thread will be allowed entrance into this piece of
-    * code at the same time, ensuring synchronized access, for cases
-    * where you cannot allow more than one thread to enter at the
-    * same time.
-    */
-```
-
-In the above semaphore _"foo-bar_" becomes the name of your semaphore. If you invoke **[semaphore]** in
-any other parts of your Hyperlambda code, with _"foo-bar"_ as the value, only _one_ of your
-lambda objects will be allowed to execute at the same time. This allows you to _"synchronize access"_
-to shared resources, where only _one_ thread should be allowed to access the shared resource at the same
-time. Such shared resources might be for instance files, or other things shared between multiuple threads,
-where it's crucial that only one thread is allowed to access the shared resource at the same time.
-
-### [sleep]
-
-This slot will sleep the current thread for x number of milliseconds, where x is an integer value, expected
-to be passed in as its main value.
-
-```
-// Sleeps the main thread for 1 second, or 1000 milliseconds.
-sleep:1000
-```
-
-**Notice** - This slot is typically releasing the thread back to the operating system, implying as
-the current thread is _"sleeping"_, it will not be a blocking call, and require ZERO physical operating
-system threads while it is sleeping. This is true because of Hyperlambda's 100% perfectly `async` nature.
-
 ## Miscellaneous slots
 
 These are slots that doesn't belong to one specific group of slots, but are still useful enough in general
@@ -1186,16 +1105,31 @@ for instance try to convert the string of _"foo-bar"_ to an integer.
 
 ### [format]
 
-This slot converts the format some expression or value according to some specified `String.Format` expression.
-The following code will string format the number 57 making sure it's prefixed with leading zeros always ending
-up having at least 5 digits. See .Net String.Format for which patterns you can use. The culture used will always
-be the invariant one.
+This slot converts some expression or value according to some specified `String.Format` pattern.
+The following code will string format the number 57 to make sure it's prefixed with leading zeros, always ending
+up having at least 5 digits. See .Net String.Format method for which patterns you can use. The culture used will
+be the invariant one, unless you explicitly override the culture with a **[culture]** argument.
 
 ```
 .foo:int:57
 format:x:-
    pattern:"{0:00000}"
 ```
+
+To override the **[culture]** argument used you can use something such as follows.
+
+```
+.foo:decimal:57
+format:x:-
+   pattern:"{0:0.00}"
+   culture:nb-NO
+```
+
+Since the above is using Norwegian Bokmal as its **[culture]** argument, it will return the result with a `,`
+as a decimal separator instead of the default which is `.`. You can use the same **[pattern]** values for
+this slot as you can use in C# and .Net. To see an extensive list of for instance the formatting patterns you
+can use for a date and time object, you can browse the [Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings)
+related to this. If you don't supply a **[culture]** argument the invariant culture will be used.
 
 ### [vocabulary]
 
