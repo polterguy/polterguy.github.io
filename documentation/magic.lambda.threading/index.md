@@ -24,7 +24,10 @@ is the understanding of that the total amount of water is still the same, it's o
 into two smaller rivers - Implying you cannot _"do more"_ with multi tasking, you can only
 equally share the same amount of resources as you had before between two different tasks.
 Multi threading does not make your CPU faster, it only schedules your CPU's time on multiple
-things, doing these things concurrently.
+things, doing these things concurrently. However, if you have multiple tasks where each
+individual task needs to wait for IO data, threading typically speeds up your application,
+since it can make multiple requests for IO simultaneously, and have other machines work
+in parallel returning the result to you.
 
 ## [join]
 
