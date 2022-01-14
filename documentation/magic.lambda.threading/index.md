@@ -42,9 +42,9 @@ join
       http.get:"https://gaiasoul.com"
 ```
 
-As an analogy for what occurs above, imagine the two rivers from our above **[fork]** analogy,
+As an analogy for what occurs above, imagine the two rivers from our above **[fork]** analogy
 that forked from one larger river into two smaller rivers, for then again to join up and becoming one
-large river again.
+large river again further down.
 
 ## [semaphore]
 
