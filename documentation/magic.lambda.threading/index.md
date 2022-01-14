@@ -1,5 +1,5 @@
 
-# Hyperlambda as a Turing complete programming language
+# Threading in Hyperlambda and Magic
 
 Threading in software development implies doing multiple things concurrently, scheduling CPU time for each
 of your threads, according to how the operating system schedules your threads. This concept is often referred
