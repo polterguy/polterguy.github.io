@@ -49,7 +49,7 @@ If you want to write articles about Aista Magic Cloud, and or belong to the pres
 
 We are currently looking for a team lead frontend developer, preferably an Angular developer.
 The role is expected to at least partially be on location here in Cyprus/Pissouri, but for the right
-candidate we are willing to discuss alternatives here. Your task will be to create an automatic
+candidate we are willing to discuss alternatives. Your task will be to create an automatic
 onboarding system for Magic Cloud, and the frontend parts of it is 100% greenfield, so it would be
 assumed you are able to initiate and start this project, having a solid understanding of architectural
 best practices in the frontend space, and the ability to implement a good and solid foundation we can
