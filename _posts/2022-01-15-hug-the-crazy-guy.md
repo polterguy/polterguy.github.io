@@ -88,9 +88,9 @@ loudly to myself, every single word in every single article and tutorial, _multi
 The reason for this is because all good text pieces have rhythm and musical qualities, and by
 speaking it out loudly to yourself, this rhythm and musical quality more easily shows.
 In addition every single video associated with the documentation has been re-created,
-with much higher quality, and way more consistence. I've also scrapped a lot of videos
+with much higher quality, and way more consistency. We've also scrapped a lot of videos
 in this process by simply hiding them because they weren't of the quality we want others
-to associate with our tools.
+to associate with our product.
 
 ## Momentum
 
@@ -105,9 +105,9 @@ If you compare its codebase back in June 2021 with its features today, you'll pr
 notice the thing is at least one order of magnitude better, higher quality, and more easily 
 consumed than it was 7 months ago. Something you can also deduct from the fact of that our
 NuGet repository currently has some roughly 15,000 daily downloads as I am writing this.
-Hence, people have obviously noticed the same thing I'm about to tell you below.
+Hence, people have obviously noticed the same thing I'm about to tell you now.
 
-> Magic is _"growing up"_
+> Magic is "growing up"
 
 ## Memory lane
 
@@ -124,7 +124,7 @@ the next month. FYI, the [next article I wrote](https://docs.microsoft.com/en-us
 made it into top 5 ... ;)
 
 Thank you for that chance Michael. Walking out on a limb is scary, but sometimes it's also
-very rewarding. I owe you one for this.
+very rewarding. I owe you one here.
 
 Anyways, I'm digressing - I guess it's the new year feeling still hanging around, since
 we're still in the beginning of the year. However, since June 2021 we've published no less
@@ -132,7 +132,7 @@ than _50 releases of Magic and Hyperlambda_, and this article summed up _some_ o
 of these releases most important features - And my point with writing this article is
 that if you tried out Magic and Hyperlambda 7 months ago, please realise it's almost
 a completely different thing today, because most of these releases had an equally
-impressive changelog as the current release. A former friend of mine used to say the
+impressive changelog as this release. A former friend of mine used to say the
 following about me.
 
 > Is Thomas crazy? Totally, but he's not crazy enough! We're working on it though!
@@ -147,7 +147,7 @@ been arguably bat shit crazy. Do me a favour though please, don't ignore the cra
 the crazy girl, they just might be brilliance in the making. Hug your crazy friend this year.
 _You_ might need him or her in the future ... ;)
 
-Love from _"the crazy guy"_ ...
+Peace out, _"the crazy guy"_ ...
 
 <div class="video">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/cWGE9Gi0bB0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
