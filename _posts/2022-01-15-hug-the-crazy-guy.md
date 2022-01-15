@@ -148,3 +148,8 @@ the crazy girl, they just might be brilliance in the making. Hug your crazy frie
 _You_ might need him or her in the future ... ;)
 
 Love from _"the crazy guy"_ ...
+
+<div class="video">
+<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/cWGE9Gi0bB0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
