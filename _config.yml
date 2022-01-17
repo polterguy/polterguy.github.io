@@ -31,6 +31,9 @@ body_bg: /assets/bg2.jpeg
 # Open Graph image for pages when shared on Facebook or Twitter, etc
 og_image: https://raw.githubusercontent.com/polterguy/magic/master/artwork/og.jpeg
 
+# Title for your blog page
+blog_title: Where the machine creates the code
+
 # Additional plugins to use
 plugins:
   - jekyll-sitemap
