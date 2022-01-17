@@ -1,6 +1,7 @@
 ---
 layout: post
 author: thomas
+title: What is the value of No-Code and Low-Code?
 ---
 
 According to Gartner the markep cap of Low-Code and No-Code is 48 billion US dollars annually, and it's
