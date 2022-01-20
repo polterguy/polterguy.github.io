@@ -18,6 +18,7 @@ helping you deploy Magic into production, or clone it to work locally with it.
 * [magic.signals](/documentation/magic.signals/) - Magic's Super Signals implementation
 * [magic.endpoint](/documentation/magic.endpoint/) - Endpoint resolving in Magic
 * [magic.data.common](/documentation/magic.data.common/) - Commonalities for data adapters in Magic
+* [magic.data.cql](/documentation/magic.data.cql/) - CQL or NoSQL support for Magic and Hyperlambda
 * [magic.library](/documentation/magic.library/) - A single NuGet package helper wrapping everything together
 * [magic.deploy](/documentation/magic.deploy/) - How to deploy Magic to your VPS using Docker.
 * [magic.clone](/documentation/magic.clone/) - How to clone Magic and its entire codebase.
