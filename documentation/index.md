@@ -120,6 +120,12 @@ create new releases of Magic.
       <td><img alt="Lines of code" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.data.common&metric=ncloc"></td>
    </tr>
    <tr>
+      <td><a href="https://github.com/polterguy/magic.data.cql">magic.data.cql</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.data.cql/actions/workflows/build.yaml/badge.svg"></td>
+      <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.data.cql&metric=alert_status"></td>
+      <td><img alt="Lines of code" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.data.cql&metric=ncloc"></td>
+   </tr>
+   <tr>
       <td><a href="https://github.com/polterguy/magic.lambda.mysql">magic.lambda.mysql</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.mysql/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.mysql&metric=alert_status"></td>
