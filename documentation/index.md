@@ -18,7 +18,7 @@ helping you deploy Magic into production, or clone it to work locally with it.
 * [magic.signals](/documentation/magic.signals/) - Magic's Super Signals implementation
 * [magic.endpoint](/documentation/magic.endpoint/) - Endpoint resolving in Magic
 * [magic.data.common](/documentation/magic.data.common/) - Commonalities for data adapters in Magic
-* [magic.data.cql](/documentation/magic.data.cql/) - CQL or NoSQL support for Magic and Hyperlambda
+* [magic.data.cql](/documentation/magic.data.cql/) - CQL IO and logging support for Magic and Hyperlambda
 * [magic.library](/documentation/magic.library/) - A single NuGet package helper wrapping everything together
 * [magic.deploy](/documentation/magic.deploy/) - How to deploy Magic to your VPS using Docker.
 * [magic.clone](/documentation/magic.clone/) - How to clone Magic and its entire codebase.
@@ -58,6 +58,7 @@ requirements for your endpoints, etc.
 * [magic.lambda.hyperlambda](/documentation/magic.lambda.hyperlambda/) - Parse Hyperlambda from text, and vice versa
 * [magic.lambda.sockets](/documentation/magic.lambda.sockets/) - Web socket support for Magic using SignalR
 * [magic.lambda.threading](/documentation/magic.lambda.threading/) - Thread support for Magic and Hyperlambda
+* [magic.lambda.cql](/documentation/magic.lambda.cql/) - CQL or NoSQL support for Magic and Hyperlambda
 * [magic.lambda.system](/documentation/magic.lambda.system/) - System support for Magic to spawn of terminals etc.
 
 ## Support

@@ -112,6 +112,8 @@ nav_sections:
         name: magic.lambda.mssql
       - url: /documentation/magic.lambda.odbc/
         name: magic.lambda.odbc
+      - url: /documentation/magic.lambda.cql/
+        name: magic.lambda.cql
       - url: /documentation/magic.lambda.image/
         name: magic.lambda.image
       - url: /documentation/magic.lambda.crypto/
