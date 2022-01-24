@@ -21,7 +21,18 @@ cql.connect:[generic|space]
 Where the `generic` parts above is a reference to a cluster you'll have to configure in your _"appsettings.json"_,
 while the `space` parts above is a keyspace within that cluster. In such a regard the slots resembles the generic
 RDBMS slots in usage, except of course it opens a connection towards a NoSQL database such as Cassandra or ScyllaDB,
-and returns the result of executing your SQL towards a keyspace within that cluster.
+and returns the result of executing your SQL towards a keyspace within that cluster. To use parameters in your CQL
+you can use something resembling the following.
+
+```
+cql.connect:[generic|space]
+   cql.select:"select * from table where column1 = :foo and column2 = :bar"
+      foo:bar
+      bar:x:@.arguments/*/some-arg
+```
+
+The way arguments are resolved is that in the above example `:foo` becomes a reference to the **[foo]**
+node's value.
 
 ## Configuration
 
