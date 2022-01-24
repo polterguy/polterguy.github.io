@@ -32,7 +32,7 @@ cql.connect:[generic|space]
 ```
 
 The way arguments are resolved is that in the above example `:foo` becomes a reference to the **[foo]**
-node's value.
+node's value, and/or expression's value.
 
 ## Configuration
 
