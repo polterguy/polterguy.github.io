@@ -60,10 +60,12 @@ If you don't have access to Scylla you can run a local instance on your developm
 following bash script.
 
 ```bash
-sudo docker run --name scylla -p \
-22:22/tcp -p 7000-7001:7000-7001/tcp -p 9042:9042/tcp -p 9160:9160/tcp -p 9180:9180/tcp -p 10000:10000/tcp \
+sudo docker run --name scylla \
+-p 7000-7001:7000-7001/tcp -p 9042:9042/tcp -p 9160:9160/tcp -p 9180:9180/tcp -p 10000:10000/tcp \
 --volume /var/lib/scylla:/var/lib/scylla -d scylladb/scylla --developer-mode=1 --overprovisioned 1 --smp 2
 ```
+
+You might get away with fewer open ports, depending upon your actual needs.
 
 ## Create your keyspaces
 
