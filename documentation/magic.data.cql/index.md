@@ -1,5 +1,5 @@
 
-# CQL IO and logging adapters for Hyperlambda
+# NoSQL IO and logging adapters for Hyperlambda
 
 This data adapter contains alternative NoSQL file system services, implementing `IFileService`, `IFolderService`, and
 `IStreamService`, allowing you to use as an interchangeable _"virtual file system"_ for cases where you want
@@ -57,13 +57,13 @@ If you want to use a CQL based log implementation, you'll have to configure Magi
 
 ## Schema
 
-To use the alternative CQL based file storage system you'll have to create your _"magic"_ keyspace and its 
+To use the alternative CQL based file storage system you'll have to create your _"magic\_files"_ keyspace and its 
 _"files"_ table as follows.
 
 ```cql
-create keyspace if not exists magic with replication = { 'class': 'NetworkTopologyStrategy', 'replication_factor': 5 };
+create keyspace if not exists magic_files with replication = { 'class': 'NetworkTopologyStrategy', 'replication_factor': 5 };
 
-use magic;
+use magic_files;
 
 create table if not exists files(
    tenant text,
@@ -74,45 +74,30 @@ create table if not exists files(
    primary key((tenant, cloudlet), folder, filename));
 ```
 
-To use the alternative CQL based log implementation you'll have to create your _"magic"_ keyspace and its
-_"log_entries"_ table as follows.
+To use the alternative CQL based log implementation you'll have to create your _"magic\_log"_ keyspace and its
+_"log"_ table as follows.
 
 ```cql
-create keyspace if not exists magic with replication = { 'class': 'NetworkTopologyStrategy', 'replication_factor': 5 };
+create keyspace if not exists magic_log with replication = { 'class': 'NetworkTopologyStrategy', 'replication_factor': 3 };
 
-use magic;
+use magic_log;
 
-create table if not exists log_entries(
+create table if not exists log(
    tenant text,
    cloudlet text,
    created timeuuid,
-   day date,
    type text,
    content text,
    exception text,
+   meta frozen<map<text, text>>,
    primary key((tenant, cloudlet), created)) with clustering order by (created desc);
 
-alter table log_entries with default_time_to_live = 604800;
-
-create materialized view log_entries_type_view as
-   select * from log_entries
-      where tenant is not null
-         and cloudlet is not null
-         and created is not null
-         and type is not null
-   primary key((tenant, cloudlet), type, created);
-
-create materialized view log_entries_day_view as
-   select * from log_entries
-      where tenant is not null
-         and cloudlet is not null
-         and created is not null
-         and day is not null
-   primary key((tenant, cloudlet), day, created);
+alter table log with default_time_to_live = 1209600;
 ```
 
-**Notice** - The above setting for TTL implies log items will be automatically deleted after 7 days,
-since 604,800 seconds implies 7 days. Depending upon your needs you might want to increase this setting.
+**Notice** - The above setting for TTL implies log items will be automatically deleted after 14 days,
+since 1,209,600 seconds implies 14 days. Depending upon your needs you might want to increase or decrease this
+setting.
 
 ## Adding existing files into keyspace
 
@@ -120,12 +105,16 @@ The following Hyperlambda will insert all your existing files and folders into y
 play around with an existing CQL file system implementation. Notice, you'll have to change the **[.tenant]** and
 **[.cloudlet]** values to resemble the absolute root folder for your Magic backend. The values in the file below is
 obviously just an example of how it might look like if you've got the files on a Mac within your _"Documents"_ folder.
+The _"tenant"_ and the _"cloudlet"_ parts are resolved by doing a string split operation on your `magic:io:root-files`
+root folder upon the last (/) found in your folder - Implying if you use the Docker images with the default configuration
+the _"tenant"_ part would become _"magic"_ and the _"cloudlet"_ part would become _"files"_, since the Docker images
+stores files within the _"/magic/files/"_ folder.
 
 ```
 /*
  * Inserts all dynamic files and folders into the magic CQL database.
  */
-cql.connect:[generic|magic]
+cql.connect:[generic|magic_files]
 
    /*
     * The root folder where your Magic backend is running.
@@ -206,7 +195,7 @@ remove-nodes:x:../**/io.file.list-recursively/*
 
 ## Project website
 
-The source code for this repository can be found at [github.com/polterguy/magic.data.cql](https://github.com/polterguy/magic.data.common), and you can provide feedback, provide bug reports, etc at the same place.
+The source code for this repository can be found at [github.com/polterguy/magic.data.cql](https://github.com/polterguy/magic.data.cql), and you can provide feedback, provide bug reports, etc at the same place.
 
 ## Quality gates
 
