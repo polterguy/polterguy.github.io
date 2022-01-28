@@ -1,18 +1,20 @@
 
-# NoSQL IO and logging adapters for Hyperlambda
+# NoSQL based IO, caching, and logging adapters for Hyperlambda
 
-This data adapter contains alternative NoSQL file system services, implementing `IFileService`, `IFolderService`, and
+This project contains alternative NoSQL file system services, implementing `IFileService`, `IFolderService`, and
 `IStreamService`, allowing you to use as an interchangeable _"virtual file system"_ for cases where you want
-to have 100% stateless magic instances, which is important if you're using Magic in a Kubernetes cluster or
+to have 100% stateless magic instances. This is important if you're using Magic in a Kubernetes cluster or
 something similar, load balancing invocations, virtually resolving files and folders towards a virtual file system.
 If you take this path you'll have to configure your _"appsettings.json"_ file such as illustrated further
 down in this document. The project also contains an `ILogger` implementation service you can use that will create
-log entries in a NoSQL based storage of your choice. See below for details about how to configure this.
+log entries in a NoSQL based storage of your choice, in addition to an `IMagicCache` implementation service
+allowing you to use a NoSQL based out of process cache implementation. See further down in this document for
+details about how to configure these parts.
 
 ## Configuration
 
 The primary configuration for the project to apply for your _"appsettings.json"_ file can be found below. Notice,
-the IO and log services requires you to use `generic` as your cluster name, and you cannot change this.
+the IO, caching, and logging services requires you to use `generic` as your cluster name, and you cannot change this.
 
 ```json
 {
@@ -55,7 +57,20 @@ If you want to use a CQL based log implementation, you'll have to configure Magi
 }
 ```
 
-## Schema
+If you want to use a CQL based caching implementation, you'll have to configure Magic to use the NoSQL
+`IMagicCache` service such as follows.
+
+```json
+{
+  "magic": {
+    "caching": {
+      "service": "magic.data.cql.caching.Caching"
+    }
+  }
+}
+```
+
+## Schemas
 
 To use the alternative CQL based file storage system you'll have to create your _"magic\_files"_ keyspace and its 
 _"files"_ table as follows.
@@ -74,7 +89,7 @@ create table if not exists files(
    primary key((tenant, cloudlet), folder, filename));
 ```
 
-To use the alternative CQL based log implementation you'll have to create your _"magic\_log"_ keyspace and its
+To use the alternative CQL based logging implementation you'll have to create your _"magic\_log"_ keyspace and its
 _"log"_ table as follows.
 
 ```sql
@@ -95,11 +110,27 @@ create table if not exists log(
 alter table log with default_time_to_live = 1209600;
 ```
 
-**Notice** - The above setting for TTL implies log items will be automatically deleted after 14 days,
+**Notice** - The above setting for TTL implies log items will be automatically evicted after 14 days,
 since 1,209,600 seconds implies 14 days. Depending upon your needs you might want to increase or decrease this
 setting.
 
-## Adding existing files into keyspace
+To use the alternative CQL based caching implementation you'll have to create your _"magic\_cache"_ keyspace and its
+_"cache"_ table as follows.
+
+```sql
+create keyspace if not exists magic_cache with replication = { 'class': 'NetworkTopologyStrategy', 'replication_factor': 3 };
+
+use magic_cache;
+
+create table if not exists cache(
+   tenant text,
+   cloudlet text,
+   key text,
+   value text,
+   primary key((tenant, cloudlet), key));
+```
+
+## Adding existing files into NoSQL database
 
 The following Hyperlambda will insert all your existing files and folders into your cluster keyspace, allowing you to
 play around with an existing CQL file system implementation. Notice, you'll have to change the **[.tenant]** and
@@ -192,6 +223,13 @@ cql.connect:[generic|magic_files]
 remove-nodes:x:../**/io.folder.list-recursively/*
 remove-nodes:x:../**/io.file.list-recursively/*
 ```
+
+## Internals
+
+This project is created to be a multi-tenant solution, implying multiple users, and/or cloudlets can use the same physical
+database for both files, log entries and cache entries. However, this implies you are able to correctly resolve the 
+_"tenant"_ parts and the _"cloudlet"_ parts for all the above tables. How to achieve this is currently beyond the scope
+of this document.
 
 ## Project website
 
