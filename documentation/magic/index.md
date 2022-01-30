@@ -1,8 +1,74 @@
 
 # Magic core documentation
 
-This is the documentation for Magic itself, implying which slots and endpoints that exists in Magic's core,
-and how you can use these in your own projects. More specifically this documents the following static C# slots.
+This is the documentation for Magic itself, implying the _"middle ware"_ found in Magic's core.
+Due to the extremely modularised architecture Magic is built upon, these parts are actually surprisingly
+small in the larger context, but still contains everything that wires up Magic, and the backend of modules
+such as Hyper IDE and the CRUDifier.
+
+## File structure
+
+There are 5 primary folders in Magic, these are as follows.
+
+* etc
+* misc
+* modules
+* system
+* temp
+
+The _"modules"_ folder and the _"system"_ folders are the only folders that allows for resolving Hyperlambda
+endpoints, while the other folders are for helper files, and/or uploaded files. If you use the docker images
+of Magic, Magic will automatically update the following folders as you pull the Docker images from Docker hub.
+
+* misc
+* system
+
+This implies that you _should not_ edit files in these folders, since if you do, your changes might vanish
+the next time you update Magic. You should also not store your own files in these folders, since your files
+might disappear the next time you update Magic. The only folder where it's safe to store your own files
+and folders within are as follows.
+
+* __etc__ - For dynamic files, uploads and downloads, etc
+* __modules__ - For your own custom Hyperlambda modules
+* __temp__ - For temporary files. Notice this folder might be emptied occassionally automatically
+
+The two remaining folders; _"misc"_ and _"system"_ should be kept for Magic's internals, and not tampered
+with in any ways. If in doubt, most folders in Magic has README files you can open to see the purpose
+of a specific folder, and/or its files - And in fact, becoming acquinted with Magic's file and folder 
+structure is probably a smart investment, since everything in Magic is based upon _"conventions"_, implying
+folders have semantic value of some sort.
+
+## Initialisation
+
+When you start Magic for the first time, the system might need to initialise itself, which implies doing 3
+things.
+
+* Create a magic database, and/or insert a root user into it
+* CRUDify the magic database
+* Create a cryptography key pair for your instance
+
+These 3 steps are what you're going through as you are first installing Magic, either locally, or on
+a VPS of your chosing. The first step requires you to have a database of some sort somewhere, where
+Magic can create its internal database, which it's using for authenticating users, logging, etc.
+The second step implies generating CRUD HTTP backend endpoints wrapping this database, to allow
+you to interact with it through a client of some sort. The 3rd step is required to create a server
+public and private key pair, which is used in among other things cryptographically secured lambda
+invocations, but also in other parts of the system.
+
+After you have followed the above process, you can see that inside your _"modules"_ folder there
+exists Hyperlambda endpoint files wrapping your entire magic database into CRUD HTTP endpoints.
+These files were created in the second step of the above process, and is required to have Magic
+functioning properly. Below you can see a screenshot of how the folder structure looks like in
+Magic through Hyper IDE.
+
+![Magic folder structure](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/folder-structure.jpg)
+
+The _"exceptions.hl"_ file at the root of your folder structure is the default exception handler
+that will be used if no module creates its own exception handler logic.
+
+## Static slots
+
+these slots are C# slots the core itself exposes.
 
 * __[version]__ - Returns the current version of the Magic backend
 * __[version.compare]__ - Compares two versions
