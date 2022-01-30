@@ -68,7 +68,7 @@ that will be used if no module creates its own exception handler logic.
 
 ## Static slots
 
-these slots are C# slots the core itself exposes.
+These slots are C# slots the core itself exposes.
 
 * __[version]__ - Returns the current version of the Magic backend
 * __[version.compare]__ - Compares two versions
