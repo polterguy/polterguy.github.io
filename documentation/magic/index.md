@@ -127,7 +127,10 @@ higher, and you can probably safely rely upon features released in that version 
 
 ## Dynamic slots
 
-Magic also creates the following dynamic slots during startup.
+Magic also creates the following dynamic slots during startup. Notice, most of these slots are there exclusively
+to make sure the middle ware of Magic works correctly, and are _not_ intended to be used directly by you
+in your own Hyperlambda code, unless explicitly stated otherwise, and/or you're extending Magic or replacing
+parts of its core with your own custom logic.
 
 * __[magic.auth.authenticate]__ - Authenticates a user and returns a JWT token
 * __[magic.auth.change-password]__ - Allows a user to reset his or her password with a _"reset-password"_ JWT token, _or_ an existing valid token wrapping the user
