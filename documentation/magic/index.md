@@ -686,3 +686,9 @@ the above Hyperlambda will result in something resembling the following.
 
 This makes it perfect for _"transforming"_ input payloads containing passwords before persisting these into
 your database.
+
+## Endpoints
+
+The project also contains a whole range of endpoints, or _"middle ware"_ parts, that the system itself
+relies upon to function. To see how these endpoints are tied together use the _"Endpoints"_ menu item,
+ensure you enable for system endpoints, and filter on _"magic/system"_.
