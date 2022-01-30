@@ -64,7 +64,7 @@ Magic through Hyper IDE.
 ![Magic folder structure](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/folder-structure.jpg)
 
 The _"exceptions.hl"_ file at the root of your folder structure is the default exception handler
-that will be used if no module creates its own exception handler logic.
+that will be used if no module creates its own exception handler logic to override the default handler.
 
 ## Static slots
 
