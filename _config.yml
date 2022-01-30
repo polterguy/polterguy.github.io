@@ -142,6 +142,8 @@ nav_sections:
         name: magic.lambda.system
   - name: Docs utilities
     items:
+      - url: /documentation/magic/
+        name: magic
       - url: /documentation/magic.node/
         name: magic.node
       - url: /documentation/magic.signals/
