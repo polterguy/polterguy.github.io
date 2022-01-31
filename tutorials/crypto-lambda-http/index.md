@@ -111,7 +111,10 @@ running Magic through its Docker images or not.
 ## Importing public keys
 
 Magic allows for anyone to import their public keys into your key database by simply visiting your dashboard
-and clicking the _"Crypto"_ menu items. This typically looks like the following.
+and clicking the _"Crypto"_ menu items. Importing a public key does not require a user to be authenticated,
+allowing any random bypasser to import his or her key, but the key will not be enabled before explicitly
+enabled by a root user on the server where the key was imported. Importing a public key typically looks like
+the following.
 
 ![Importing a public cryptography key](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/import-public-key.jpg)
 
