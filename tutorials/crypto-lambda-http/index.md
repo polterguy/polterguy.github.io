@@ -137,6 +137,39 @@ not even be the owner of that server's fault either, but rather because his serv
 malicious adversary, resulting in that the other party's server starts doing things the owner of that server
 wouldn't do in the first place himself.
 
+## Endpoint internals
+
+The endpoint `magic/system/crypto/eval-id` is encapsulated in the file called _"eval-id.patch.hl"_ that can
+be found within your _"/system/crypto/"_ folder. The most important tasks this endpoint has are as follows.
+
+* Verify that payload is cryptographically signed with a private key matching a public key that is enabled and imported into the backend
+* Ensure the Hyperlambda is executed within a **[whitelist]** invocation matching the slots whitelisted on the public key
+
+The last part above is what prohibits the Hyperlambda from executing slots it is not allowed to execute, since
+it temporarily changes the behaviour of the **[eval]** slot, such that only slots found inside of its **[vocabulary]**
+argument are legally allowed to be signaled. However, there is one part of this equation you need to be
+careful with, which is that when a dynamic slot is signaled, the **[whitelist]** is turned _off_. Without
+this feature every slot a dynamic slot is internally using would have to be whitelisted in order to be able
+to invoke the dynamic slot, which of course would defeat the purpose, and render the functionality useless.
+
+This implies that if a dynamic slot is executing a lambda object specified by the caller, the **[whitelist]**
+restrictions can be completely bypassed, resulting in a malicious adversary being able to execute slots he or she
+should _not_ have access to execute. Hence, as a general rule of thumb, you
+should _never whitelist dynamic slots that are executing lambda objects specified by the caller_. Let's repeat
+that once more to make sure it sticks.
+
+> NEVER, EVER, EVER whitelist dynamic slots that are executing lambda objects specified by the caller
+
+Internally the endpoints, and the associated slot, are using the cryptography slots
+from [magic.lambda.crypto](/documentation/magic.lambda.crypto/) - Feel free to study this project to gain further
+understanding about cryptography in Magic and Hyperlambda. Also notice that the Hyperlambda payload is _not_ encrypted.
+This is anyways typically redundant, since for cryptography in HTTP invocations you'd typically want to
+resort to and trust TLS or Transport Layer Security, and encrypting the payload only adds overhead
+for the client and server during communication. The point here is anyways not to encrypt data, but rather
+to ensure data originates from a specific client, similarly to how crypto currency transactions are
+cryptographically signed, ensuring nobody but some wallet owner is allowed to transfer money from his wallet
+to some other wallet of his chosing.
+
 ## Micro services and super scalable distributed systems
 
 In addition to the obvious use cases, such as financial transactions, document signing, legal things, etc -
