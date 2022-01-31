@@ -52,6 +52,8 @@ nav_sections:
         name: Hyperlambda Hello World
       - url: /tutorials/http-rest/
         name: HTTP invocations with Hyperlambda
+      - url: /tutorials/sending-emails/
+        name: Sending emails with Hyperlambda
       - url: /tutorials/expressions-slots-nodes/
         name: Expressions, slots, and nodes
       - url: /tutorials/loops-and-conditions/
