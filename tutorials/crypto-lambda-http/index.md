@@ -22,12 +22,13 @@ receipt of that the code that was executed was indeed created by a _specific cli
 
 ## The internals of the process
 
-If we start out imagining a client creating an invocation the process becomes as follows.
+If we start out imagining a client creating a Hyperlambda invocation to another server the process
+becomes as follows.
 
 1. The client's Hyperlambda payload is cryptographically signed with his private key
 2. The payload is transmitted to the server
 3. The server verifies that the cryptographic signature is valid
-4. The server verifies no payloads with the same **[.request-id]** has not been successfully executed before
+4. The server verifies no payloads with the same **[.request-id]** has been successfully executed before
 4. The server looks up the execution rights associated with the public key
 5. The Hyperlambda in the payload is executed, _only_ allowing for the slots that are _"whitelisted"_ to be executed
 6. A receipt containing the cryptographically signed payload is persisted on the server
@@ -49,7 +50,12 @@ an authorisation object with the other party's public key, for then to have the 
 Hyperlambda code that your server _securely executes_ - Arguably _"reversing the responsibility of code"_, where
 the server is no longer responsible for declaring its code, but rather the client provides a lambda object
 that your server executes. We refer to this as IoC on code declaration, because it becomes the equivalent
-of _"inversion of control"_ in regards to who gets to decide what code to execute.
+of _"inversion of control"_ in regards to who gets to decide what code to execute. The core of this feature
+is a dynamic slot called **[magic.crypto.http.eval]**. This slot requires two arguments; A **[url]** argument,
+and a **[.lambda]** argument, that will be serialised as Hyperlambda and transmitted to the specified URL, and
+executed on the server. In addition, there exists a PATCH HTTP endpoint with the relative URL
+of `magic/system/crypto/eval-id` that is responsible for executing the specified Hyperlambda on the server
+side.
 
 ## Code example
 
@@ -101,6 +107,35 @@ signal:magic.crypto.http.eval
 
 You might have to change the port number in the above snippet depending upon whether or not you're
 running Magic through its Docker images or not.
+
+## Importing public keys
+
+Magic allows for anyone to import their public keys into your key database by simply visiting your dashboard
+and clicking the _"Crypto"_ menu items. This typically looks like the following.
+
+![Importing a public cryptography key](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/import-public-key.jpg)
+
+However, after the key is imported it is by default _not_ enabled, implying the user still cannot use
+it to execute arbitrary Hyperlambda on your server. A root user still needs to explicitly _enable_ the key
+through the _"Crypto"_ menu item by clicking the _"Enabled"_ checkbox for the specified key as illustrated
+below.
+
+![Enabling a public cryptography key](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/enable-public-key.jpg)
+
+When the key is enabled, the owner of the private key associated with the public key can execute any slot
+listed in the above CodeMirror Hyperlambda editor, and the owner of the server can add as many or as few
+slots here as he or she wants to. Which slots a server administrator allows for will probably vary according
+to his or her trust level on an individual per key based level, but at the very least common courtesy dictates
+that the slots **[add]**, **[get-nodes]**, **[return-nodes]**, **[vocabulary]** and **[slots.vocabulary]** are
+enabled, since this allows the owner of the public key to invoke the server's cryptography endpoint and ask
+it what types of slots it is allowed to pass into the endpoint by constructing some Hyperlambda resembling
+the first Hyperlambda snippet at the beginning of this document.
+
+**Warning** - Be careful with what slots you allow others to execute on your server. If you for instance allow
+for deleting files on your server, some malicious key owner might delete all files on your system - And it might
+not even be the owner of that server's fault either, but rather because his server has been hacked by some other
+malicious adversary, resulting in that the other party's server starts doing things the owner of that server
+wouldn't do in the first place himself.
 
 ## Micro services and super scalable distributed systems
 
