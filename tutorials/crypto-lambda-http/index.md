@@ -170,6 +170,10 @@ to ensure data originates from a specific client, similarly to how crypto curren
 cryptographically signed, ensuring nobody but some wallet owner is allowed to transfer money from his wallet
 to some other wallet of his chosing.
 
+The **[.request-id]** argument supplied as you create an HTTP invocation can be any string. However, it has
+to be globally unique, implying using a Guid or a piece of text, plus some Guid, or your company name, etc,
+as the request id is probably smart to avoid having your IDs clash with other clients' IDs.
+
 ## Micro services and super scalable distributed systems
 
 In addition to the obvious use cases, such as financial transactions, document signing, legal things, etc -
