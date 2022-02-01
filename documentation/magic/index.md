@@ -5,7 +5,7 @@ This is the documentation for Magic itself, implying the _"middle ware"_ found i
 Due to the extremely modularised architecture Magic is built upon, these parts are actually surprisingly
 small in the larger context, but still contains everything that wires up Magic, and the backend of modules
 such as Hyper IDE and the CRUDifier. This part documents the middle ware, the file system's structure,
-the slots in the middle ware parts of Magic, and the endpoints you can find in the middle ware.
+the slots in the middle ware parts of Magic, and the endpoints you can find there.
 
 ## File structure
 
@@ -37,23 +37,28 @@ The two remaining folders; _"misc"_ and _"system"_ should be kept for Magic's in
 with in any ways. If in doubt, most folders in Magic has README files you can open to see the purpose
 of a specific folder, and/or its files - And in fact, becoming acquinted with Magic's file and folder 
 structure is probably a smart investment, since everything in Magic is based upon _"conventions"_, implying
-folders have semantic value of some sort.
+folders have semantic value of some sort. As a general rule of thumb the only folders you should modify
+and add files to are as follows.
+
+* __modules__ - All your Hyperlambda code should in general end up here
+* __etc__ - Everything else such as uploaded files etc should end up here
 
 ## Initialisation
 
 When you start Magic for the first time, the system might need to initialise itself, which implies doing 3
 things.
 
-* Create a magic database, and/or insert a root user into it
+* Create a magic database, insert a root user into it, and initialise the authentication secret
 * CRUDify the magic database
-* Create a cryptography key pair for your instance
+* Create a cryptography key pair for your server
 
-These 3 steps are what you're going through as you are first installing Magic, either locally, or on
+These 3 steps is what you're going through as you initially install Magic, either locally, or on
 a VPS of your chosing. The first step requires you to have a database of some sort somewhere, where
-Magic can create its internal database, which it's using for authenticating users, logging, etc.
+Magic can create its internal `magic` database. Magic will use this database for authenticating users,
+logging, persisting tasks, etc.
 The second step implies generating CRUD HTTP backend endpoints wrapping this database, to allow
-you to interact with it through a client of some sort. The 3rd step is required to create a server
-public and private key pair, which is used in among other things cryptographically secured lambda
+you to interact with it through a client of some sort. The 3rd step is required to create a
+public and private server key pair. This key is used for cryptographically secured lambda
 invocations, but also in other parts of the system.
 
 After you have followed the above process, you can see that inside your _"modules"_ folder there
@@ -71,23 +76,32 @@ that will be used if no module creates its own exception handler logic to overri
 
 The project also contains a whole range of endpoints, or _"middle ware"_ parts, that the system itself
 relies upon to function. You can play around with these endpoints by using the _"Endpoints"_
-menu item in your dashboard, ensure you enable for system endpoints, and filter on _"magic/system"_.
+menu item in your dashboard, ensure you show your system endpoints, while filtering on _"magic/system"_.
+Most of these endpoints are for internal use through the Magic dashboard, and should as a general
+rule of thumb _not_ be consumed directly by you - But some of these endpoints are useful for things such
+as implementing authentication and authorisation in your own frontends as you consume Magic.
 
 ### Authentication and authorisation endpoints
 
 These are the endpoints related to the authentication and authorisation parts of Magic. You can find
-their Hyperlambda files in the _"system/auth"_ folder.
+their Hyperlambda files in the _"system/auth"_ folder. These endpoints are typically useful for you
+as you implement your own authentication logic in your own frontends.
 
 #### GET magic/system/auth/authenticate
 
-This endpoints allows you to authenticate towards your Magic backend with a username and password
+This endpoint allows you to authenticate towards your Magic backend with a username and password
 combination. It's mostly a thin layer on top of your **[magic.auth.authenticate]** slot. It requires
 two query arguments being as follows.
 
 * __[username]__ - Username of user wanting to authenticate
 * __[password]__ - Password of user wanting to authenticate
 
-The endpoint can be invoked by anyone, and does not have any authorisation requirements.
+The endpoint can be invoked by anyone, and does not have any authorisation requirements. The endpoint
+will return a JWT token you can use for consecutive requests towards your backend, authorising you
+to invoke endpoints your user is authorised to invoking. Notice, Magic relies upon the JWT tokens
+being transmitted as _"Bearer"_ tokens in the _"Authorization"_ HTTP header, implying you'll have to
+ensure the resulting JWT token from invoking the above endpoint is attached to your HTTP requests as
+such in later requests. This endpoint can be invoked by anyone, including non-authenticated clients.
 
 #### GET magic/system/auth/auto-auth
 
@@ -95,12 +109,18 @@ This endpoint always returns _"off"_ unless you've configured Magic to use autom
 by following [this recipe](/tutorials/auth-internals/). The idea with the endpoint is to use the frontend
 to check if automatic authentication has been turned on, and if so, simply invoking the authenticate
 endpoint directly without any username or password combination. The endpoint does not require any arguments.
-The endpoint can be invoked by anyone, and does not have any authorisation requirements.
+The endpoint can be invoked by anyone, and does not have any authorisation requirements. The endpoint
+can be invoked by anyone.
+
+Notice, this endpoint is considered obsolete and might be removed in future versions of Magic.
 
 #### PUT magic/system/auth/change-password
 
 This endpoint allows an existing user to change his or her password. It can only change the password of
-the currently authenticated user, and takes the new password as the following payload.
+the currently authenticated user, and takes the new password as the following payload. This endpoint
+can be invoked by anyone as long as you have authenticated towards your backend previously. This endpoint
+can also be invoked with a change password type of JWT token, generated by the backend if the caller forgot
+his or her password, and requested to change his or her password somehow.
 
 ```json
 {
@@ -113,22 +133,30 @@ the currently authenticated user, and takes the new password as the following pa
 This endpoint returns the authorisation requirements for all endpoints in the system. It does not take
 arguments. It returns one item for each Hyperlambda endpoint in the system, with its associated verb,
 and a list of roles the user must belong to in order to invoke the endpoint. The endpoint can be invoked
-by anyone, and does not have any authorisation requirements.
+by anyone, and does not have any authorisation requirements. Notice, this endpoint caches its result for
+5 minutes, implying changes done to the authorisation requirements of your endpoints will not be accessible
+for clients for 5 minutes after your changes have been applied.
 
 #### GET magic/system/auth/generate-token
 
 This endpoint allows you to generate a token on behalf of another user, by providing a username, allowing
 you to impersonate another user in the system. The endpoint also allows you to generate a _"reset password"_
-JWT token, you can send on email to the registered user, to allow the user to change his or her password.
-The endpoint takes the following arguments.
+JWT token you can send on email to the registered user, to allow the user to change his or her password.
+The endpoint can only be invoked by a root user. The endpoint takes the following arguments.
 
 * __[username]__ - Username of user to impersonate
 * __[reset-password]__ - If true will generate a reset password token
 
+This endpoint might be changed in a future version of Magic, to make sure we separate the two distinctly
+different workflows related to creating a _"reset-password_" type of token, and creating an impersonate user
+type of token.
+
 #### PUT magic/system/auth/imprison
 
 This endpoint allows you to _"imprison"_ a user in your system. When a user is imprisoned, the user cannot
-login to the system for as long as the user is _"imprisoned"_. The endpoint takes the following JSON payload.
+login to the system for as long as the user is _"imprisoned"_. This endpoint can only be invoked by a root user,
+and the endpoint relies upon scheduled tasks to release users imprisoned, so the endpoint will not function
+correctly unless scheduled tasks are enabled in the system. The endpoint takes the following JSON payload.
 
 ```json
 {
@@ -137,14 +165,15 @@ login to the system for as long as the user is _"imprisoned"_. The endpoint take
 }
 ```
 
-The release date is the date when the user should be released from his _"imprisonment"_.
+The release date is the date when the user should be released from his _"imprisonment"_. This endpoint
+is considered obsolete and might be removed in a future version of Magic.
 
 #### GET magic/system/auth/refresh-ticket
 
 This endpoint allows an already authenticated user to retrieve a new JWT token with an expiration date
 further into the future. The idea of the endpoint is to allow for an authenticated user to non-stop
 constantly invoke this endpoint some few minutes before his existing JWT token expires, to retrieve
-a new JWT token, preventing the user from being thrown out from the backend as his existing token
+a new JWT token, preventing the user from being thrown out of the backend as his existing token
 expires. The endpoint does not take any arguments, but can only be invoked by an already authenticated
 user.
 
@@ -155,10 +184,17 @@ requires the username to be an email address. If you want users to confirm their
 register, you'll have to configure your SMTP settings which can be done by reading
 the [following parts](/documentation/magic.lambda.mail/), in addition to providing a `frontendUrl` and
 `backendUrl` to the endpoint, which will be used by the email template as a _"confirm email address email"_
-is sent to the user to dynamically create a link the user must click to confirm his or her password. The
+is sent to the user to dynamically create a link the user must click to confirm his or her email address. The
 endpoint requires the following payload to be transmitted by the client. Notice, the `frontendUrl` and
 the `backendUrl` are optional, and will only be used if the system has been configured with an SMTP server,
 resulting in that the endpoint invocation tries to send the registered user an email.
+
+When a user registers using this endpoint, a new user will be created, but the user will be added to
+the _"unconfirmed"_ role, resulting in that the user have no access rights to any parts of the system at
+all before his or her email address has been confirmed. When his or her email address is confirmed,
+the _"unconfirmed"_ user/role association is deleted, and the user is added to the _"guest"_ role. The guest
+role still doesn't have access to much of the system, so if the user is to gain access to parts of the
+system, this must be manually added after the user has confirmed his email address.
 
 ```json
 {
@@ -174,8 +210,10 @@ The endpoint does not require the caller to be authenticated.
 #### POST magic/system/auth/send-reset-password-link
 
 This endpoint sends a _"reset password email"_ to a registered user. Like the register endpoint, the
-endpoint requires a `frontendUrl` and a `backendUrl` field, in addition to of course a username, which
-needs to be an email address. Below is an example payload.
+endpoint requires a `frontendUrl` and a `backendUrl` field, in addition to of course a username. The
+username must be an email address. This endpoint requires that you have configured Magic's SMTP settings
+such that it can send an email to the user allowing him or her to reset the password. Below is an
+example payload.
 
 ```json
 {
@@ -200,30 +238,36 @@ The endpoint does not require authorisation, but takes the following payload.
 }
 ```
 
+Notice, the above `token` must be the same token generated by Magic as the user registered, and sent
+to the user on email.
+
 #### GET magic/system/auth/verify-ticket
 
 This endpoint allows a frontend to verify an existing JWT token, and it will return _"success"_ if
 the JWT token is valid and can be used in consecutive invocations requiring authorisation somehow.
+The endpoint can be invoked by any user as long as the user is authenticated.
 
 ### Bazar endpoints
 
 These are endpoints related to the Bazar somehow, allowing you to install new Bazar modules, and check
-which Bazar modules have already been installed.
+which Bazar modules have already been installed. The Bazar is a micro service _"AppStore"_ for your
+Magic server, allowing your Magic server to install backend modules on the fly, resulting
+in having some backend micro service installed into your backend.
 
 #### GET magic/system/bazar/app-manifests
 
-This endpoint returns a list of Bazar apps that have been installed in the system. Each item will
+This endpoint returns a list of Bazar apps that have been installed in your backend. Each item will
 contain a date of installation, the username of the user who installed the app, the name and version
 of the app, etc. Most importantly each Bazar manifest item will also contain a _"token"_, which is
-required as the app is to be updated. Below is an example of what the endpoint might typically
-return. The endpoint can only be invoked by a root user.
+typically required as the app is to be updated. Below is an example of what the endpoint might
+return if it only has one Bazar item installed. The endpoint can only be invoked by a root user.
 
 ```json
 [
   {
     "name": "Babel Fish",
     "version": "v1.0.0",
-    "token": "3b65f514-2e30-4ca2-bdcf-96a2d0527ac0",
+    "token": "3b65f514-2e30-4ca2-bdcf-96a2d2727bc1",
     "module_name": "babelfish",
     "installed_by": "root",
     "installed": "2022-01-31T06:03:01.669Z"
@@ -238,6 +282,8 @@ depending upon whether or not the current version of Magic is above or beneath t
 It is typically used to verify that a Bazar app can be installed, to verify the Magic version is high enough
 for the Bazar item to be successfully installed. The endpoint can only be invoked by a root user.
 
+This endpoint is considered obsolete and might be removed in a future version of Magic.
+
 #### POST magic/system/bazar/download-from-bazar
 
 This endpoint downloads a Bazar item as a ZIP file from the specified URL. The endpoint can only
@@ -251,13 +297,33 @@ be invoked by a root user and requires the following payload.
 ```
 
 The Bazar item will be downloaded from the specified URL and assumed to be a ZIP file. The ZIP file
-will be unzipped, and unzipped into your _"modules"_ folder as the specified _"name"_.
+will then be unzipped, and unzipped into your _"modules"_ folder as the specified _"name"_. Notice, any
+previously installed modules with the same name will be automatically deleted, and the endpoint will _not_
+install the module,but only unzip it and create its folder structure. To install the module after it has
+been unzipped make sure you invoke the `/system/file-system/install` endpoint.
+
+Notice, this endpoint is considered obsolete and will be changed in a future version of Magic.
 
 #### POST magic/system/bazar/download-from-url
 
-Contrary to the above endpoint, this endpoint does not unzip the specified file, but only downloads it.
-Besides from that it works identical to the above endpoint. The endpoint can only be invoked by a root
-user.
+This endpoint downloads a file from its specified __[url]__ and saves it to the specified __[folder]__
+in your backend. The endpoint can only be invoked by a root user, and takes the following payload.
+
+```json
+{
+  "folder": "foo",
+  "url": "foo"
+}
+```
+
+The above arguments implies the following.
+
+* __[folder]__ - The folder in your backend you want to save the file
+* __[url]__ - The URL to download the file from
+
+The __[url]__ field needs to be a valid URL returning a file, with the `Content-Disposition` HTTP
+header correctly applied, since the `Content-Disposition` header's _"filename"_ value becomes
+the name of the file on your server.
 
 ### Cache related endpoints
 
