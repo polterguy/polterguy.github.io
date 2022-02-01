@@ -327,8 +327,12 @@ the name of the file on your server.
 
 ### Cache related endpoints
 
-These are the endpoints related to your server side cache, and allows you to query your cache, flush
-your cache entirely, or delete a single cache item on the server side.
+These are the endpoints related to your server side cache, and allows you to query your cache, purge
+your cache entirely, or delete a single cache item on the server. Internally Magic is using
+server-side cache sparsingly for some expensive operations, such as retrieving meta data from your
+database. Sometimes you need to manually purge your cache, and/or delete individual cache items
+on your server, to re-retrieve data invalidating your cache in the process. This section provides
+information about such operations for such scenarios.
 
 #### DELETE magic/system/cache/delete-cache-item
 
@@ -348,7 +352,7 @@ with the _"filter"_ query parameter as their key. The endpoint can only be invok
 
 #### GET magic/system/cache/list-cache
 
-This endpoint retusn the number of cache items on your server, optionally allowing you to page
+This endpoint returns the number of cache items on your server, optionally allowing you to page
 with the following query parameters.
 
 * __[limit]__ - Maximum number of items to return
@@ -360,17 +364,19 @@ The endpoint can only be invoked by a root user.
 ### Configuration related endpoints
 
 These endpoints are related to configuration of your system, and allows you to read and modify
-configuration settings as you see fit.
+configuration settings as you see fit. These endpoints are typically not intended for being used
+directly by your code, but for the most parts only used during initialisation of your Magic server,
+and/or as you change configuration settings in Magic.
 
 #### GET magic/system/config/load-config
 
-This endpoint loads your configuration settings and returns these to the caller. The endpoint
+This endpoint loads your configuration settings and returns it to the caller. The endpoint
 can only be invoked by a root user.
 
 #### POST magic/system/config/save-config
 
 This endpoint allows you to save your configuration settings. The specified paylod will
-in its entirety overwrite the existing _"appsettings.json"_ file. The endpoint
+in its entirety overwrite your existing _"appsettings.json"_ file. The endpoint
 can only be invoked by a root user.
 
 #### GET magic/system/config/setup-status
@@ -389,8 +395,8 @@ initialised. The response object will resemble the following.
 The fields in the above payload implies the following.
 
 * __[magic_crudified]__ - If true your magic database has been CRUDified
-* __[server_keypair]__ - If true the server has a public and private key pair
-* __[config_done]__ - If true the configuration process of your server has been done, implying creating a magic database, and changing your _"appsettings.json"_ file applying a valid connection string, and a JWT/auth secret
+* __[server_keypair]__ - If true the server has a cryptography key pair
+* __[config_done]__ - If true the primary configuration process of your server has been done, implying Magic has created a magic database, and changed your _"appsettings.json"_ file, applying a valid connection string to an existing database, and an auth secret
 
 #### POST magic/system/config/setup
 
@@ -408,24 +414,50 @@ The above fields implies the following.
 
 * __[databaseType]__ - What type of database used for the magic database becoming the default database type
 * __[password]__ - The root user's password
-* __[settings]__ - The initial value for your _"appsettings.json"_ file
+* __[settings]__ - The initial value for your _"appsettings.json"_ file. This is the entire JSON content of your _"appsettings.json"_ file in string format, and will be sanity checked on the server to some extent
+
+The endpoint can only be invoked by a root user, and will setup Magic to use the specified connection string found
+in your __[settings]__ field, verify the database server exists and can be connected to, create the `magic` database
+if not existing from before, and create a root user account in the `users` table for you with the specified __[password]__.
+The endpoint can only be invoked _once_ and will throw an exception if the system has previously been setup - Which Magic
+determines by checking the `auth:secret` value of your existing _"appsettings.json"_ file, and if it's not the default
+value, Magic will assume it's been previously setup and throw an exception.
+
+If the `magic` database already exists in your database server, it will run its migration scripts, and replace
+the existing root user's password with whatever you provided as a payload to the endpoint invocation.
 
 #### GET magic/system/config/version-compare
 
 This endpoint requires two version numbers and return -1, 0 or 1 depending upon which of the two versions
-comes before the other one. It's useful for validating the backend is at least at some specific version number,
-or higher, before for instance installing modules and such requiring a specific version.
+comes before the other one. It's useful for validating the backend is at least at some specific version number
+or higher, before for instance installing modules and such requiring a specific version. The versions it expects
+to perform this comparison must be in the form of `vn.n.n`, e.g. _"v10.14.33"_. Refer to the **[version]** slot
+further down in this document to understand how a Magic version provides semantic meaning with its version entities.
+The query parameters the endpoint requires are as follows.
+
+* __[version_1]__ - Left hand side comparison argument
+* __[version_2]__ - Right hand side comparison argument
+
+If __[version_1]__ is lower than __[version_2]__ the endpoint will return -1. If the versions are the same
+the endpoint will return 0, if __[version_1]__ is higher it will return 1.
 
 ### CRUD related endpoints
 
 These endpoints allows you to among other things generate CRUD HTTP backend modules, and is at the heart of
-the _"CRUDififier"_ in Magic. In addition these endpoints allows you to generate SQL based HTTP endpoints,
-and/or frontends using a template of some sort.
+the _"CRUDifier"_ in Magic. In addition these endpoints allows you to generate SQL based HTTP endpoints,
+and/or frontends using a template of some sort. Most of these endpoints are not intended for being directly
+invoked by your code, but rather from the Magic dashboard as it is creating HTTP backend endpoints for you,
+and/or frontends based upon your backend.
+
+### Backend CRUD operations
+
+This section describes the parts that generates backend HTTP endpoints for you, typically wrapping a database
+table with CRUD operations.
 
 #### POST magic/system/crudifier/crudify
 
-This endpoint creates one CRUD HTTP backend endpoint for you, wrapping the specified database table,
-with the specified HTTP verb. The endpoint requires the following payload.
+This endpoint creates one CRUD HTTP backend endpoint for you, wrapping the specified database table
+with the specified HTTP verb/CRUD-operation. The endpoint requires the following payload.
 
 ```json
 {
@@ -457,25 +489,33 @@ The above fields implies the following.
 
 * __[verbose]__ - If true more query parameter types will be generated for your GET/read endpoint
 * __[join]__ - If true, joins will be automatically applied for the endpoint
-* __[databaseType]__ - Type of database, such as e.g. pgsql, mssql, or mysql
-* __[moduleName]__ - Name of module. Becomes the root URL of your endpoint
+* __[databaseType]__ - Type of database, such as for instance 'pgsql', 'mssql', or 'mysql'
+* __[moduleName]__ - The root URL of your endpoint
 * __[database]__ - Name of database, and connection string, e.g. `[generic|sakila]`
 * __[table]__ - Name of table to wrap
 * __[moduleUrl]__ - Secondary part of your CRUD endpoint's URL
 * __[returnId]__ - Only relevant for POST/create endpoints, but if true will return the ID of the newly created item
-* __[template]__ - Full relative path of the template to use, e.g. ''
+* __[template]__ - Full relative path of the template to use, e.g. '/system/crudifier/templates/crud.template.get.hl'
 * __[verb]__ - HTTP verb to wrap, either 'delete', 'get', 'post' or 'put'
 * __[auth]__ - Comma separated list of roles allowed to invoke endpoint
 * __[log]__ - Log entry to write upon invocation of endpoint
 * __[overwrite]__ - If true will overwrite existing file. If false the invocation will throw an exception if the endpoint file already exists
 * __[validators]__ - Hyperlambda code being validators for endpoint
-* __[cache]__ - Number of seconds the GET endpoint should be cache (HTTP cache). Only relevant for GET endpoints
+* __[cache]__ - Number of seconds the GET endpoint should be cached (HTTP cache). Only relevant for GET endpoints
 * __[publicCache]__ - Whether or not the cache will be public cache, implying possible to cache by proxies. Only relevant if above is non-zero
 * __[cqrs]__ - If true will publish SignalR/socket messages upon invocation of endpoint
 * __[cqrsAuthorisation]__ - Type of authorisation for SignalR messages published. Legal values are 'inherited', 'roles', 'groups', 'users' or 'none'
 * __[cqrsAuthorisationValues]__ - If the above is supplied, these are the comma separated values defining their values. For instance, if you're using _"roles"_ as the above value, this is a comma separated value declaring which roles will be notified when subscribing to the message
 * __[args]__ - These are arguments to the endpoint, implying a list of **[columns]** and a list of **[primary]** keys. Primary keys are only relevant for PUT and DELETE endpoints, but columns is a list of objects with _"name"_ and _"type"_ values.
 * __[conditions]__ - This is a list of optional query parameters and are only relevant to GET endpoints. If specified it completely overrides the existing query parameters generated automatically by Magic.
+
+The CRUD endpoints to HTTP verb mappings this endpoint generates are as follows.
+
+* __Create__ - HTTP POST verb
+* __Read__ - HTTP GET verb
+* __Read(count)__ - HTTP GET verb with `-count` postfix in URL
+* __Update__ - HTTP PUT verb
+* __Delete__ - HTTP DELETE verb
 
 This endpoint can only be invoked by a root user.
 
@@ -506,18 +546,43 @@ The arguments implies the following.
 * __[moduleName]__ - Primary URL of endpoint
 * __[database]__ - Name of database, and connection string, e.g. `[generic|sakila]`
 * __[arguments]__ - Hyperlambda declaratiun of arguments endpoint can handle. E.g. `filter:string`.
-* __[verb]__ - HTTP verb endpoint wraps
+* __[verb]__ - HTTP verb endpoint wraps. This can be any of 'get', 'post', 'put', 'delete', and 'patch'
 * __[endpointName]__ - Secondary URL for endpoint
 * __[sql]__ - Actual SQL executed as endpoint is executing
-* __[overwrite]__ - If true invocation will overwrite any existing file
-* __[isList]__ - If true, the endpoint will return a list of items - Otherwise it will return a scalar value.
+* __[overwrite]__ - If true invocation will overwrite any existing file, otherwise the invocation will throw an exception if the endpoint file already exists
+* __[isList]__ - If true, the endpoint will return an array of objects - Otherwise it will return the first object only.
 
 The endpoint can only be invoked by a root user.
 
+### Frontend generator
+
+This part describes the frontend generator allowing you to create some sort of frontend, wrapping
+your previously created backend endpoints.
+
+#### GET magic/system/crudifier/templates
+
+This endpoint returns all frontend templates the system can use for generating frontends. It requires no arguments,
+but can only be invoked by a root user. This is used to allow the user to select a frontend template as he or she
+wants to generate a frontend of some sort.
+
+#### GET magic/system/crudifier/template
+
+This endpoint returns Markdown describing the specified template with a humanly understandable description, implying
+it returns the README.md file associated with the template specifeid as the _"name"_ query parameter. As the user is
+selecting a template, typically displaying the result of invoking this endpoint makes sense, since it allows the user
+to understand what the template does for him or her. The endpoint can only be invoked by a root user.
+
+#### GET magic/system/crudifier/template-args
+
+This endpoint returns the additional custom arguments the specified frontend template can handle. It requires one
+query parameter being _"name"_ of template you wish to retrieve arguments for. The return value of invocations to this
+endpoint becomes the **[args]** collection for invocations to the above endpoint. The endpoint can only be invoked by a
+root user.
+
 #### POST magic/system/crudifier/generate-frontend
 
-This endpoint generates a frontend based upon a template, and either copies into a local folder on the server,
-or given to the client as a ZIP file download. The endpoint requires the following payload.
+This endpoint generates a frontend based upon a template, and either puts the result into a local folder on
+the server, or returns as a ZIP file download to the client. The endpoint requires the following payload.
 
 ```json
 {
@@ -540,37 +605,22 @@ The above arguments implies the following.
 * __[frontendUrl]__ - The URL you intend to deploy the frontend to, which will be used in the _"docker-compose.yml"_ file that is automatically generated
 * __[email]__ - Email address of person administrating the SSL certificate for the frontend. Typically your email address.
 * __[name]__ - Name of frontend. Typically the name of your app.
-* __[copyright]__ - Copyright notice pasted into each source file where such can be copied, implying TypeScript files, JavaScript files, CSS files, etc.
+* __[copyright]__ - Copyright notice put into each source file where such can be put, implying TypeScript files, JavaScript files, CSS files, etc - But not HTML files.
 * __[endpoints]__ - Endpoints declaration
 * __[deployLocally]__ - If true will deploy your frontend locally within _"/etc/frontends/"_, otherwise invocation will return a ZIP file to the client
-* __[args]__ - Optional argument collection for your template. These are different depending upon which template you use
+* __[args]__ - Optional argument collection for your template. These are different depending upon which template you use. You can use the _"template-args"_ endpoint to retrieve which arguments, and/or different values each template accepts
 
 The endpoint can only be invoked by a root user.
 
-#### GET magic/system/crudifier/template-args
-
-This endpoint returns the additional custom arguments the specified frontend template can handle. It requires one
-query parameter being _"name"_ of template you wish to retrieve arguments for. The return value of invocations to this
-endpoint becomes the **[args]** collection for invocations to the above endpoint. The endpoint can only be invoked by a
-root user.
-
-#### GET magic/system/crudifier/template
-
-This endpoint returns Markdown describing the specified template with a humanly understandable description, implying
-it returns the README.md file associated with the template specifeid as the _"name"_ query parameter. As the user is
-selecting a template, typically displaying the result of invoking this endpoint makes sense, since it allows the user
-to understand what the template does for him or her. The endpoint can only be invoked by a root user.
-
-#### GET magic/system/crudifier/templates
-
-This endpoint returns all frontend templates the system can use for generating frontends. It requires no arguments,
-but can only be invoked by a root user. This is used to allow the user to select a frontend template as he or she
-wants to generate a frontend of some sort.
-
 ### Cryptography related endpoints
 
-These are endpoints related the cryptography somehow, and typically the cryptographically secured HTTP invocations
-implementation.
+These are endpoints related to cryptography somehow, implying among other things the cryptographically secured
+HTTP lambda implementation. To understand this feature [read the following article](/tutorials/crypto-lambda-http/)
+that describes them from a high level perspective. However, the basic foundation for this feature is to allow
+for cryptographically signing a Hyperlambda payload, for then to transmit the payload to another Magic server,
+for then to have that Magic server _securely_ execute the specified Hyperlambda, without risking compromising
+the server in any ways. In addition this section also describes how to associate a user with a cryptography
+key pair, allowing users to sign in with zero username/password requirements, etc.
 
 #### PUT magic/system/crypto/associate-user
 
@@ -585,9 +635,10 @@ payload.
 ```
 
 The **[keyId]** is the ID of the public cryptography key, and the **[username]** is the username of the
-user you want to associate withthe public key. Invoking this endpoint allows the specified user to authenticate
-towards the backend using a _"cryptography challenge"_, implying zero username/password, but allowing the user
-to authenticate using his private cryptography key instead.
+user you want to associate with the public key. Invoking this endpoint allows the specified user to authenticate
+towards the backend using a _"cryptography challenge"_, implying zero username/password, allowing the user
+to authenticate using his private cryptography key instead, by giving the client a _"cryptography challenge"_
+the client is assumed to be able to cryptographically sign using his or her own private key.
 
 #### PUT magic/system/crypto/deassociate-user
 
@@ -600,8 +651,8 @@ key. Payload to endpoint is as follows.
 }
 ```
 
-Whatever users are associated with the above public key will be de-associated with their key, and no longer
-able to use cryptography challenges to authenticate towards the backend.
+Whatever users are associated with the above public key will be de-associated with their existing key association,
+and no longer be able to use cryptography challenges to authenticate towards the backend.
 
 #### GET magic/system/crypto/challenge
 
@@ -620,6 +671,10 @@ After having cryptographically signed the challenge returned from the above endp
 the signed challenge to this endpoint, resulting in a JWT token being returned, allowing the user to
 invoke endpoints afterwards within the context of the user associated with the public key.
 
+If the invocation to this endpoint is successful, a valid JWT token will be returned, allowing the
+client to use this JWT token to invoke other endpoints authorised as the user associated with the
+public cryptography key on the server.
+
 #### PATCH magic/system/crypto/eval-id
 
 Executes a cryptographically secured lambda invocation.
@@ -627,12 +682,32 @@ See [cryptographically secured lambda invocations](/tutorials/crypto-lambda-http
 implies. The payload is assumed to be binary in the form of `application/octet-stream`, assumed to be
 a cryptographically signed Hyperlambda snippet, and only after the signature has been confirmed to belong
 to a public key in the database being enabled and allowed to create such HTTP invocations, the Hyperlambda
-will be attempted executed within the **[whitelist]** declaration associated with the specific public key.
+will be executed within the **[whitelist]** declaration associated with the key the payload was
+signed with.
 
 #### POST magic/system/crypto/generate-keypair
 
 This endpoint generates a new server cryptography key pair, both its public key and its private key, and
-takes a backup of the old key, making the newly generated key the default server key.
+takes a backup of the old key, making the newly generated key the default server key. The endpoint requires
+the following payload.
+
+```json
+{
+  "strength": 4096,
+  "seed": "qwertyuiop",
+  "subject": "John Doe",
+  "email": "john@doe.com",
+  "domain": "https://johndoe.com"
+}
+```
+
+The above arguments implies the following.
+
+* __[strength]__ - Key bit strength, typically 1024, 2048, 4096 or 8192. Notice, anything below 2048 is _not_ considered secure, but to be safe you should only use at least 4096 in your production environment
+* __[seed]__ - Random text gibberish used to seed the CSRNG implementation
+* __[subject]__ - The subject owning the cryptography key pair, typically the full name of the individual whom the key is created for
+* __[email]__ - Email address where the above subject can be reached
+* __[domain]__ - Domain associated with the key pair. When creating a new server key pair, this is typically your backend's root URL
 
 #### GET magic/system/crypto/get-fingerprint
 
@@ -663,7 +738,7 @@ The above arguments implies the following.
 * __[domain]__ - Domain associated with the public key, e.g. `https://foo.com`
 * __[content]__ - Actual public key in BASE64 encoded DER format
 
-Notice, currently Magic only supports RSA keys.
+Notice, currently Magic only supports RSA keys base64 encoded in DER format.
 
 #### GET magic/system/crypto/public-key-raw
 
@@ -693,6 +768,8 @@ The above fields implies the following.
 * __[fingerprintFormat]__ - Format of the fingerprint returned
 * __[keyType]__ - Type of key. Magic only supports RSA keys currently
 
+This endpoint can be invoked by anyone and does not require authentication.
+
 #### GET magic/system/crypto/user-association
 
 This endpoint returns the username associated with the specified public cryptography key ID. The endpoint
@@ -702,7 +779,10 @@ public key as taken from the `crypto_keys` table from your magic database.
 ### Diagnostic endpoints
 
 These endpoints are diagnostic endpoints, allowing you to diagnose your backend, and/or run
-assumptions to sanity check your current installation.
+assumptions to sanity check your current installation. An assumption is a high level integration
+test specifically created to verify that some HTTP endpoint returns what is _"assumed"_ given
+a specific payload of some sort. Notice, assumptions can also be manually ceated as lambda objects,
+to execute arbitrary Hyperlambda code, throwing exceptions if assumptions are incorrect.
 
 #### GET magic/system/diagnostics/assumption-test-description
 
@@ -734,9 +814,9 @@ The above arguments implies the following.
 * __[url]__ - URL assumption will invoke
 * __[status]__ - Assumed status code for invoking above URL
 * __[description]__ - Description for your assumption
-* __[payload]__ - JSON payload to transmit to above endpoint
-* __[response]__ - Assumed response after invoking above URL
+* __[payload]__ - JSON payload to transmit to above endpoint. Only relevant for POST or PUT endpoints
 * __[produces]__ - Assumed Content-Type above URL produces when given the specified payload
+* __[response]__ - Assumed response after invoking above URL. Optional, and if not specified will not create assumptions about result besides the status code
 
 #### GET magic/system/diagnostics/execute-test
 
@@ -751,7 +831,10 @@ require any arguments. The endpoint can only be invoked by a root user.
 
 ### File system related endpoints
 
-These endpoints are related to the file system somehow.
+These endpoints are related to the file system somehow. These endpoints allows you to upload and download files,
+create and delete folders etc in your Magic backend. These endpoints are arguably the foundation for Hyper IDE,
+allowing you to edit your files on your server. Most of these endpoints can only be invoked by a root user, and
+you would typically not consume these endpoints yourself directly from your own frontends.
 
 #### GET magic/system/file-system/download-folder
 
@@ -771,10 +854,10 @@ a root user.
 
 #### PUT magic/system/file-system/file
 
-This endpoint updates the specified file on the server. The endpoint requires its payload
+This endpoint creates or updates an existing file on the server. The endpoint requires its payload
 as `multipart/form-data`, where **[folder]** becomes the folder of where to save the file,
 and the attached file becomes the file to save, assuming the file has a name specified
-as a part fo its MIME entity as its Content-Disposition header's `filename`. The endpoint
+as a part of its MIME entity as its Content-Disposition header's `filename`. The endpoint
 can only be invoked by a root user.
 
 #### DELETE magic/system/file-system/folder
@@ -892,7 +975,7 @@ following query parameters.
 #### POST magic/system/log/log-loc
 
 This endpoint allows you to log lines of code generated by either some sort of frontend scaffolding
-process, ur CRUD backend process. The endpoint can only be invoked by a root user, and requires
+process, or CRUD backend process. The endpoint can only be invoked by a root user, and requires
 the following payload.
 
 ```json
@@ -929,8 +1012,9 @@ The endpoint can only be invoked by a root user.
 
 ### SQL related endpoints
 
-These endpoints allows you to retrieve meta data about your databases, and/or connection string, in addition
-to execute SQL towards a specific database, etc.
+These endpoints allows you to retrieve meta data about your databases, and/or connection strings, in addition
+to execute SQL towards a specific database, etc. These endpoints are the foundation for the _"SQL"_ menu item
+in the Magic dashboard.
 
 #### GET magic/system/sql/connection-strings
 
@@ -941,7 +1025,7 @@ where the type can be one of 'mysql', 'mssql' or 'pgsql'. The endpoint can only 
 
 This endpoint returns meta data associated with the specified **[databaseType]** and **[connectionString]**
 combination, such as all databases, all tables within each database, all columns, and any foreign keys existing
-between columns.
+between columns. The endpoint can only be invoked by a root user.
 
 #### GET magic/system/sql/default-database-type
 
@@ -959,7 +1043,7 @@ supports. An example of invoking the endpoint can be found below.
 }
 ```
 
-The above implies that MySQL is the default database type, while the system still has support for both
+The above result implies that MySQL is the default database type, while the system still has support for both
 'mssql' and 'pgsql" in addition to 'mysql'. The endpoint can only be invoked by a root user.
 
 #### POST magic/system/sql/evaluate
@@ -995,7 +1079,7 @@ by a root user.
 
 #### PUT magic/system/sql/save-file
 
-This endpoint saves a template SQL file in your backend, and requires the following payload.
+This endpoint saves a template SQL snippet file in your backend, and requires the following payload.
 
 ```json
 {
@@ -1011,9 +1095,13 @@ The above arguments implies the following.
 * __[filename]__ - Filename of where to save the SQL file
 * __[content]__ - Actual SQL content of your file
 
+Your SQL snippet files are saved in your backend inside of your _"/etc/xxx/templates/"_ folder, where _"xxx"_
+is your database type such as for instance 'pgsql', 'mysql' or 'mssql'.
+
 ### Task related endpoints
 
-These are endpoints related to administrating tasks, and/or due dates for executing tasks.
+These are endpoints related to administrating tasks, and/or due dates for executing tasks. To understand the
+task scheduler and how it works please refer to the [following article](/tutorials/task-scheduler/).
 
 #### POST magic/system/tasks/add-due
 
@@ -1097,7 +1185,7 @@ This endpoint updates an existing task, and requires the following payload.
 }
 ```
 
-The above arguments are the same as when creating a new task, bu implies the following.
+The above arguments are the same as when creating a new task and implies the following.
 
 * __[id]__ - The ID or name of the task you want to update
 * __[description]__ - The new description of the task
@@ -1105,7 +1193,11 @@ The above arguments are the same as when creating a new task, bu implies the fol
 
 ### Terminal related endpoints
 
-These are terminal related endpoints, and or socket connection points.
+These are terminal related endpoints, and/or socket connection points. Magic has support for subscribing
+to web socket messages using SignalR, in addition to executing Hyperlambda files over the same socket
+connection. This part of the documentation describes the endpoints related to such socket operations
+in regards to the integrated _"Terminal"_ component. The terminal component again allows for executing
+terminal or bash commands in your backend, and see the result of the command in your frontend.
 
 #### SOCKET magic/system/terminal/command
 
@@ -1121,7 +1213,8 @@ payload.
 ```
 
 The **[cmd]** above is a terminal or bash command, such as `ls` or `mkdir` - While the **[channel]** above
-is the name of a previously created channel in your backend.
+is the name of a previously created channel in your backend. To create a unique channel you can use the `gibberish`
+endpoint.
 
 #### SOCKET magic/system/terminal/start
 
@@ -1152,19 +1245,10 @@ the following payload.
 
 The above **[channel]** is a channel previously created using the start socket endpoint.
 
-
-
-
-
-
-
-
-
-
 ### Misc endpoints
 
 These are endpoints not belonging to a particular category of endpoints, but still a part of the Magic
-middle ware.
+middleware, and used by the frontend dashboard somehow.
 
 #### GET magic/system/emails/email
 
