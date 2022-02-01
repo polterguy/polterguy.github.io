@@ -74,18 +74,23 @@ that will be used if no module creates its own exception handler logic to overri
 
 ## Endpoints
 
-The project also contains a whole range of endpoints, or _"middle ware"_ parts, that the system itself
+Magic contains a whole range of endpoints, or _"middle ware"_ parts, that the system itself
 relies upon to function. You can play around with these endpoints by using the _"Endpoints"_
 menu item in your dashboard, ensure you show your system endpoints, while filtering on _"magic/system"_.
 Most of these endpoints are for internal use through the Magic dashboard, and should as a general
 rule of thumb _not_ be consumed directly by you - But some of these endpoints are useful for things such
-as implementing authentication and authorisation in your own frontends as you consume Magic.
+as implementing authentication and authorisation in your own frontend as you consume Magic.
+
+Notice, all endpoints that requires authorization of some sort assumes a valid JWT token is transmitted
+in the `Authorization` HTTP header as a _"Bearer"_ type of token, and if not, the user will not be
+allowed to invoke the endpoint, and an HTTP status code of 401 will be returned. To retrieve a JWT token
+use the `magic/system/auth/authenticate` endpoint documented further down in this document.
 
 ### Authentication and authorisation endpoints
 
 These are the endpoints related to the authentication and authorisation parts of Magic. You can find
 their Hyperlambda files in the _"system/auth"_ folder. These endpoints are typically useful for you
-as you implement your own authentication logic in your own frontends.
+as you implement your own authentication logic in your own custom frontend.
 
 #### GET magic/system/auth/authenticate
 
@@ -110,7 +115,7 @@ by following [this recipe](/tutorials/auth-internals/). The idea with the endpoi
 to check if automatic authentication has been turned on, and if so, simply invoking the authenticate
 endpoint directly without any username or password combination. The endpoint does not require any arguments.
 The endpoint can be invoked by anyone, and does not have any authorisation requirements. The endpoint
-can be invoked by anyone.
+does not require any arguments.
 
 Notice, this endpoint is considered obsolete and might be removed in future versions of Magic.
 
@@ -135,7 +140,7 @@ arguments. It returns one item for each Hyperlambda endpoint in the system, with
 and a list of roles the user must belong to in order to invoke the endpoint. The endpoint can be invoked
 by anyone, and does not have any authorisation requirements. Notice, this endpoint caches its result for
 5 minutes, implying changes done to the authorisation requirements of your endpoints will not be accessible
-for clients for 5 minutes after your changes have been applied.
+for clients before 5 minutes after your changes have been applied.
 
 #### GET magic/system/auth/generate-token
 
@@ -175,7 +180,8 @@ further into the future. The idea of the endpoint is to allow for an authenticat
 constantly invoke this endpoint some few minutes before his existing JWT token expires, to retrieve
 a new JWT token, preventing the user from being thrown out of the backend as his existing token
 expires. The endpoint does not take any arguments, but can only be invoked by an already authenticated
-user.
+user, implying you'll need to pass in your JWT token to it in the Authorization HTTP header as a
+_"Bearer"_ token.
 
 #### POST magic/system/auth/register
 
@@ -205,7 +211,9 @@ system, this must be manually added after the user has confirmed his email addre
 }
 ```
 
-The endpoint does not require the caller to be authenticated.
+The endpoint does not require the caller to be authenticated. Notice, this endpoint is partially obsolete
+and mightbe changed in a future version of Magic, to simplify it, since among other things the backend URL
+can be automatically retrieved by the endpoint itself, and is not necessary to pass in by the caller.
 
 #### POST magic/system/auth/send-reset-password-link
 
@@ -223,7 +231,8 @@ example payload.
 }
 ```
 
-The endpoint does not require the caller to be authenticated.
+The endpoint does not require the caller to be authenticated. This endpoint is also partially obsolete
+due to the same reasons the above endpoint is obsolete.
 
 #### POST magic/system/auth/verify-email
 
@@ -245,7 +254,9 @@ to the user on email.
 
 This endpoint allows a frontend to verify an existing JWT token, and it will return _"success"_ if
 the JWT token is valid and can be used in consecutive invocations requiring authorisation somehow.
-The endpoint can be invoked by any user as long as the user is authenticated.
+The endpoint can be invoked by any user as long as the user is authenticated. The endpoint does not
+take any arguments, but can only be invoked by an already authenticated user, implying you'll need
+to pass in your JWT token to it in the Authorization HTTP header as a _"Bearer"_ token.
 
 ### Bazar endpoints
 
@@ -260,7 +271,8 @@ This endpoint returns a list of Bazar apps that have been installed in your back
 contain a date of installation, the username of the user who installed the app, the name and version
 of the app, etc. Most importantly each Bazar manifest item will also contain a _"token"_, which is
 typically required as the app is to be updated. Below is an example of what the endpoint might
-return if it only has one Bazar item installed. The endpoint can only be invoked by a root user.
+return if it only has one Bazar item installed. The endpoint can only be invoked by a root user and
+it requires no arguments.
 
 ```json
 [
@@ -280,14 +292,17 @@ return if it only has one Bazar item installed. The endpoint can only be invoked
 This endpoint requires a Magic version number, such as _"v10.0.15"_, and returns either _"SUCCESS"_ or _"ERROR"_,
 depending upon whether or not the current version of Magic is above or beneath the specified version number.
 It is typically used to verify that a Bazar app can be installed, to verify the Magic version is high enough
-for the Bazar item to be successfully installed. The endpoint can only be invoked by a root user.
+for the Bazar item to be successfully installed. The endpoint can only be invoked by a root user. The endpoint
+requires the following argument(s).
+
+* __[required_magic_version]__ - Minimum version of Magic requried
 
 This endpoint is considered obsolete and might be removed in a future version of Magic.
 
 #### POST magic/system/bazar/download-from-bazar
 
-This endpoint downloads a Bazar item as a ZIP file from the specified URL. The endpoint can only
-be invoked by a root user and requires the following payload.
+This endpoint downloads a Bazar item as a ZIP file from the specified URL, and unzips the file into the backend.
+The endpoint can only be invoked by a root user and requires the following payload.
 
 ```json
 {
@@ -299,7 +314,7 @@ be invoked by a root user and requires the following payload.
 The Bazar item will be downloaded from the specified URL and assumed to be a ZIP file. The ZIP file
 will then be unzipped, and unzipped into your _"modules"_ folder as the specified _"name"_. Notice, any
 previously installed modules with the same name will be automatically deleted, and the endpoint will _not_
-install the module,but only unzip it and create its folder structure. To install the module after it has
+install the module, but only unzip it and create its folder structure. To install the module after it has
 been unzipped make sure you invoke the `/system/file-system/install` endpoint.
 
 Notice, this endpoint is considered obsolete and will be changed in a future version of Magic.
@@ -307,7 +322,7 @@ Notice, this endpoint is considered obsolete and will be changed in a future ver
 #### POST magic/system/bazar/download-from-url
 
 This endpoint downloads a file from its specified __[url]__ and saves it to the specified __[folder]__
-in your backend. The endpoint can only be invoked by a root user, and takes the following payload.
+in your backend. The endpoint can only be invoked by a root user, and requires the following payload.
 
 ```json
 {
@@ -336,19 +351,29 @@ information about such operations for such scenarios.
 
 #### DELETE magic/system/cache/delete-cache-item
 
-This endpoint requires an `id` as a query parameter, and will delete the associated server side
-cache item. It can only be invoked by a root user.
+This endpoint requires an **[id]** as a query parameter, and will delete the associated server side
+cache item. It can only be invoked by a root user. The endpoint requires the following argument(s).
+
+* __[id]__ - Mandatory id of cache item to evict
 
 #### DELETE magic/system/cache/empty-cache
 
 This endpoint completely empties your server side cache, optionally taking a _"filter"_ query
 parameter, which if specified will ensure only cache items _starting_ with the specified filter
-key will be deleted. The endpoint can only be invoked by a root user.
+key will be deleted. The endpoint can only be invoked by a root user. The endpoint requires the
+following argument(s).
+
+* __[filter]__ - Optional filter declaring _"namespace"_ of cache items to evict
 
 #### GET magic/system/cache/list-cache-count
 
 This endpoint returns the number of cache items in total on your server, optionally starting out
 with the _"filter"_ query parameter as their key. The endpoint can only be invoked by a root user.
+The endpoint requires the following argument(s).
+
+* __[filter]__ - Optional filter declaring _"namespace"_ of cache items to count
+
+This endpoint is obsolete and will be changed in a future version of Magic.
 
 #### GET magic/system/cache/list-cache
 
@@ -359,7 +384,8 @@ with the following query parameters.
 * __[offset]__ - Offset of where to start returning items
 * __[filter]__ - Filter key cache items must start with in order to be considered a hit
 
-The endpoint can only be invoked by a root user.
+The endpoint can only be invoked by a root user. This endpoint is obsolete and will be changed in
+a future version of Magic.
 
 ### Configuration related endpoints
 
@@ -371,13 +397,15 @@ and/or as you change configuration settings in Magic.
 #### GET magic/system/config/load-config
 
 This endpoint loads your configuration settings and returns it to the caller. The endpoint
-can only be invoked by a root user.
+can only be invoked by a root user. This endpoint is to be considered obsolete and will probably
+change in a future version of Magic.
 
 #### POST magic/system/config/save-config
 
 This endpoint allows you to save your configuration settings. The specified paylod will
 in its entirety overwrite your existing _"appsettings.json"_ file. The endpoint
-can only be invoked by a root user.
+can only be invoked by a root user. This endpoint is to be considered obsolete and will probably
+change in a future version of Magic.
 
 #### GET magic/system/config/setup-status
 
@@ -397,6 +425,8 @@ The fields in the above payload implies the following.
 * __[magic_crudified]__ - If true your magic database has been CRUDified
 * __[server_keypair]__ - If true the server has a cryptography key pair
 * __[config_done]__ - If true the primary configuration process of your server has been done, implying Magic has created a magic database, and changed your _"appsettings.json"_ file, applying a valid connection string to an existing database, and an auth secret
+
+This endpoint is to be considered obsolete and will probably change in a future version of Magic.
 
 #### POST magic/system/config/setup
 
@@ -425,6 +455,7 @@ value, Magic will assume it's been previously setup and throw an exception.
 
 If the `magic` database already exists in your database server, it will run its migration scripts, and replace
 the existing root user's password with whatever you provided as a payload to the endpoint invocation.
+This endpoint is to be considered obsolete and will probably change in a future version of Magic.
 
 #### GET magic/system/config/version-compare
 
@@ -517,7 +548,8 @@ The CRUD endpoints to HTTP verb mappings this endpoint generates are as follows.
 * __Update__ - HTTP PUT verb
 * __Delete__ - HTTP DELETE verb
 
-This endpoint can only be invoked by a root user.
+This endpoint can only be invoked by a root user. This endpoint is to be considered obsolete and will probably
+change in a future version of Magic.
 
 #### POST magic/system/crudifier/custom-sql
 
@@ -568,16 +600,21 @@ wants to generate a frontend of some sort.
 #### GET magic/system/crudifier/template
 
 This endpoint returns Markdown describing the specified template with a humanly understandable description, implying
-it returns the README.md file associated with the template specifeid as the _"name"_ query parameter. As the user is
+it returns the README.md file associated with the template specified as the **[name]** query parameter. As the user is
 selecting a template, typically displaying the result of invoking this endpoint makes sense, since it allows the user
-to understand what the template does for him or her. The endpoint can only be invoked by a root user.
+to understand what the template does for him or her. The endpoint can only be invoked by a root user. The endpoint
+requires the following query argument(s).
+
+* __[name]__ - Name of template to return Markdown for
 
 #### GET magic/system/crudifier/template-args
 
 This endpoint returns the additional custom arguments the specified frontend template can handle. It requires one
-query parameter being _"name"_ of template you wish to retrieve arguments for. The return value of invocations to this
+query parameter being **[name]** of template you wish to retrieve arguments for. The return value of invocations to this
 endpoint becomes the **[args]** collection for invocations to the above endpoint. The endpoint can only be invoked by a
-root user.
+root user. The endpoint requires the following query argument(s).
+
+* __[name]__ - Name of template to return template arguments for
 
 #### POST magic/system/crudifier/generate-frontend
 
@@ -661,7 +698,8 @@ specified challenge, submit the cryptographically signed result to another endpo
 that authorises the client on behalf of the user associated with the public key. The challenge is is valid
 for 300 seconds, implying the client needs to be able to cryptographically sign the result, and submit the
 cryptographically signed result to the coupled endpoint within 5 minutes to be able to authenticate as the
-user associated with his cryptography key.
+user associated with his cryptography key. The endpoint can be invoked by anyone, and does not require
+any argument(s).
 
 #### POST magic/system/crypto/challenge
 
@@ -669,11 +707,22 @@ Coupled with the above endpoint, this endpoint allows the user to use his privat
 authenticate towards the backend without having to supply his or her username/password combination.
 After having cryptographically signed the challenge returned from the above endpoint, the user can submit
 the signed challenge to this endpoint, resulting in a JWT token being returned, allowing the user to
-invoke endpoints afterwards within the context of the user associated with the public key.
+invoke endpoints afterwards within the context of the user associated with the cryptography key pair.
 
 If the invocation to this endpoint is successful, a valid JWT token will be returned, allowing the
 client to use this JWT token to invoke other endpoints authorised as the user associated with the
-public cryptography key on the server.
+public cryptography key on the server using the JWT token. The endpoint requires the following
+payload.
+
+```json
+{
+  "challenge": "cryptographically-signed-challenge"
+}
+```
+
+The above argument implies the following.
+
+* __[challenge]__ - Cryptographically signed result from the GET counterpart endpoint in base64 encoded format
 
 #### PATCH magic/system/crypto/eval-id
 
@@ -707,13 +756,16 @@ The above arguments implies the following.
 * __[seed]__ - Random text gibberish used to seed the CSRNG implementation
 * __[subject]__ - The subject owning the cryptography key pair, typically the full name of the individual whom the key is created for
 * __[email]__ - Email address where the above subject can be reached
-* __[domain]__ - Domain associated with the key pair. When creating a new server key pair, this is typically your backend's root URL
+* __[domain]__ - Domain associated with the key pair. When creating a new server key pair, this is typically your backend's domain prefixed by `https://`
 
 #### GET magic/system/crypto/get-fingerprint
 
 This endpoint returns the fingerprint for the specified public key. The public key must be base64 encoded
 DER format. The endpoint requires one query parameter being its **[key]**, which is the key the invocation
-will return the fingerprint for.
+will return the fingerprint for. The endpoint can only be invoked by a root user and it requires the following
+argument(s).
+
+* __[key]__ - Public key to generate a fingerprint from
 
 #### POST magic/system/crypto/import
 
@@ -743,12 +795,12 @@ Notice, currently Magic only supports RSA keys base64 encoded in DER format.
 #### GET magic/system/crypto/public-key-raw
 
 Returns the server's public key as base64 encoded DER format. This endpoint can be invoked by anyone, allowing
-others to import your server's public key into their own database.
+others to import your server's public key into their own database. The endpoint requires no arguments.
 
 #### GET magic/system/crypto/public-key
 
 This endpoint is similar to the above endpoint, but instead of returning the public key of your server
-in base64 encoded raw format, it returns the following response.
+in raw base64 encoded DER format, it returns the following response.
 
 ```json
 {
@@ -768,13 +820,16 @@ The above fields implies the following.
 * __[fingerprintFormat]__ - Format of the fingerprint returned
 * __[keyType]__ - Type of key. Magic only supports RSA keys currently
 
-This endpoint can be invoked by anyone and does not require authentication.
+This endpoint can be invoked by anyone and does not require authentication. The endpoint requires no argument(s).
 
 #### GET magic/system/crypto/user-association
 
 This endpoint returns the username associated with the specified public cryptography key ID. The endpoint
 can only be invoked by a root account, and requires **[keyId]** as a query parameter, being the ID of the
-public key as taken from the `crypto_keys` table from your magic database.
+public key as taken from the `crypto_keys` table from your magic database. The endpoint requires the
+following query arguments(s).
+
+* __[keyId]__ - Id of public key as persisted into your _"crypto_keys"_ database table
 
 ### Diagnostic endpoints
 
@@ -787,7 +842,9 @@ to execute arbitrary Hyperlambda code, throwing exceptions if assumptions are in
 #### GET magic/system/diagnostics/assumption-test-description
 
 This endpoint returns the description associated with the specified **[test_file]** assumption.
-The endpoint can only be invoked by a root user.
+The endpoint can only be invoked by a root user. The endpoint requires the following query argument(s).
+
+* __[test_file]__ - The full relative path of the assumption file to return the description for
 
 #### POST magic/system/diagnostics/create-test
 
@@ -821,7 +878,11 @@ The above arguments implies the following.
 #### GET magic/system/diagnostics/execute-test
 
 This endpoint executes the specified assumption test, given through its **[root_url]** and **[test_file]**
-query parameters. The endpoint can only be invoked by a root user.
+query parameters. The endpoint can only be invoked by a root user. The endpoint requires the following
+query argument(s).
+
+* __[root_url]__ - The root URL of where to invoke the assumption towards. Typically the domain parts of your backend
+* __[test_file]__ - The full relative path of the test file to execute
 
 #### GET magic/system/diagnostics/system-information
 
@@ -831,8 +892,8 @@ require any arguments. The endpoint can only be invoked by a root user.
 
 ### File system related endpoints
 
-These endpoints are related to the file system somehow. These endpoints allows you to upload and download files,
-create and delete folders etc in your Magic backend. These endpoints are arguably the foundation for Hyper IDE,
+These endpoints are related to the file system somehow and allows you to upload and download files,
+create and delete folders, etc in your Magic backend. These endpoints are arguably the foundation of Hyper IDE,
 allowing you to edit your files on your server. Most of these endpoints can only be invoked by a root user, and
 you would typically not consume these endpoints yourself directly from your own frontends.
 
@@ -840,17 +901,23 @@ you would typically not consume these endpoints yourself directly from your own 
 
 This endpoint allows the caller to download the specified folder from the backend as a ZIP file. The
 endpoint can only be invoked by a root account, and requires the caller to specify **[folder]** being
-an existing folder in the Magic backend.
+an existing folder in the Magic backend. The endpoint requires the following query argument(s).
+
+* __[folder]__ - Full relative path of which folder to ZIP and download to the client
 
 #### DELETE magic/system/file-system/file
 
 This endpoints deletes the specified **[file]** in the backend. The endpoint can only be invoked by a
-root user.
+root user. The endpoint requires the following query argument(s).
+
+* __[file]__ - Full relative path of which file to delete
 
 #### GET magic/system/file-system/file
 
 This endpoint returns the specified **[file]** to the caller. The endpoint can only be invoked by
-a root user.
+a root user. The endpoint requires the following query argument(s).
+
+* __[file]__ - Full relative path of file to download
 
 #### PUT magic/system/file-system/file
 
@@ -863,7 +930,9 @@ can only be invoked by a root user.
 #### DELETE magic/system/file-system/folder
 
 This endpoint deletes the specified **[folder]** in your backend. The endpoint can only be
-invoked by a root user.
+invoked by a root user. The endpoint requires the following query argument(s).
+
+* __[folder]__ - Full relative path of folder to delete
 
 #### PUT magic/system/file-system/folder
 
@@ -905,22 +974,34 @@ The endpoint can only be invoked by a root user.
 #### GET magic/system/file-system/list-folders-recursively
 
 This endpoint lists all folders recursively starting from the specified **[folder]** argument.
-The endpoint can only be invoked by a root user.
+The endpoint can only be invoked by a root user. The endpoint requires the following query
+argument(s).
+
+* __[folder]__ - Root folder of where to start listing folders. Will return all folders existing within this folder to caller
 
 #### GET magic/system/file-system/list-files-recursively
 
 This endpoint returns all files recursively from within the specified **[folder]** folder.
-The endpoint can only be invoked by a root user.
+The endpoint can only be invoked by a root user. The endpoint requires the following query
+argument(s).
+
+* __[folder]__ - Root folder of where to start listing files. Will return all files existing within this folder to caller
 
 #### GET magic/system/file-system/list-files
 
 This endpoint lists all files within the specified **[folder]** folder, optionally containing
-the specified **[filter]** criteria. The endpoint can only be invoked by a root user.
+the specified **[filter]** criteria. The endpoint can only be invoked by a root user. The endpoint
+requires the following argument(s).
+
+* __[folder]__ - Folder to list files within
+* __[filter]__ - Optional filter criteria filenames must contain in order to be considered a match
 
 #### GET magic/system/file-system/list-folders
 
 This endpoint lists all folders within the specified **[folder]** folder. The endpoint
-can only be invoked by a root user.
+can only be invoked by a root user. The endpoint requires the following argument(s).
+
+* __[folder]__ - Folder to list folder within
 
 #### POST magic/system/file-system/rename
 
@@ -952,7 +1033,11 @@ The endpoint can only be invoked by a root user.
 
 ### Log related endpoints
 
-These are log related endpoints, allowing you to retrieve information related to your log.
+These are log related endpoints, allowing you to retrieve information related to your log. By default
+your log items are persisted in the magic database table called `log_entries`, but there exists
+alternative log service implementations allowing you to among other things persist log entries
+into a NoSQL/CQL based database of your choice, such as ScyllaDB or Cassandra. What features
+the log has varies from which service is used for persisting log items.
 
 #### GET magic/system/log/count-items
 
@@ -962,14 +1047,16 @@ a root user.
 #### GET magic/system/log/log-item
 
 This endpoint returns the specified **[id]** log item, including its meta data. The endpoint can
-only be invoked by a root user.
+only be invoked by a root user. The endpoint requires the following query argument(s).
+
+* __[id]__ - Id of log item to retrieve
 
 #### GET magic/system/log/log-items
 
 This endpoint returns log items from your backend, and can optionally allow you to page with the
 following query parameters.
 
-* __[from]__ - ID of an existing log item from where items will be returned _"from"_, not including
+* __[from]__ - Id of an existing log item from where items will be returned _"from"_, not including
 * __[max]__ - Maximum number of log items to return
 
 #### POST magic/system/log/log-loc
@@ -1008,7 +1095,8 @@ The above arguments implies the following.
 * __[type]__ - Type of log entry to create, one of 'debug', 'info', 'error' or 'fatal'
 * __[content]__ - Content description for your log item
 
-The endpoint can only be invoked by a root user.
+The endpoint can be invoked by _any_ user but requires the user to be authenticated towards the backend
+and transmit his JWT token in the `Authorization` HTTP header as a _"Bearer"_ token.
 
 ### SQL related endpoints
 
@@ -1025,7 +1113,15 @@ where the type can be one of 'mysql', 'mssql' or 'pgsql'. The endpoint can only 
 
 This endpoint returns meta data associated with the specified **[databaseType]** and **[connectionString]**
 combination, such as all databases, all tables within each database, all columns, and any foreign keys existing
-between columns. The endpoint can only be invoked by a root user.
+between columns. The endpoint can only be invoked by a root user. The endpoint requires the following query
+argument(s).
+
+* __[databaseType]__ - Type of database, one of 'mysql', 'mssql', or 'pgsql'
+* __[connectionString]__ - Name of connection string such as for instance _"generic"_
+
+Notice, the endpoint is fairly expensive to execute, and therefor its result is cached on the server with
+the key of _"magic.sql.databases.xxx.yyy"_ where _"xxx"_ is the database type and _"yyy"_ is the connection
+string name.
 
 #### GET magic/system/sql/default-database-type
 
@@ -1067,7 +1163,7 @@ The above arguments implies the following.
 * __[database]__ - Name of database to execute your SQL towards _and_ connection string to use. E.g. `[generic|mysql]`
 * __[sql]__ - Actual SQL to execute
 * __[safeMode]__ - If true only the first 200 records will be returned, to avoid exhausting your server for huge responses
-* __[batch]__ - If true, will execute the SQL as a _"batch"_ SQL statement. Only relevant for SQL Server when executing scripts containing `go` keywords
+* __[batch]__ - If true, will execute the SQL as a _"batch"_ SQL statement. Only relevant for SQL Server when executing scripts containing the _"go"_ keyword
 
 The endpoint can only be invoked by a root user.
 
@@ -1075,7 +1171,7 @@ The endpoint can only be invoked by a root user.
 
 This endpoint lists all SQL files associated with the specified **[databaseType]** query parameter. These are
 template files, stored by the user or distributed by the system by default. The endpoint can only be invoked
-by a root user.
+by a root user. The endpoint requires no argument(s).
 
 #### PUT magic/system/sql/save-file
 
@@ -1105,7 +1201,7 @@ task scheduler and how it works please refer to the [following article](/tutoria
 
 #### POST magic/system/tasks/add-due
 
-This endpoints adds a due date, or a repetition pattern to a previously persisted task. It requires
+This endpoints adds a due date, or a repetition pattern, to a previously persisted task. It requires
 the following payload.
 
 ```json
@@ -1128,7 +1224,11 @@ for [magic.lambda.scheduler](/documentation/magic.lambda.scheduler/). This endpo
 #### GET magic/system/tasks/count-tasks
 
 Returns the number of tasks in your system, optionally matching the specified **[query]** filtering argument.
-This endpoint can only be invoked by a root user.
+This endpoint can only be invoked by a root user. The endpoint requires the following argument(s).
+
+* __[query]__ - Optional filter criteria that must be found in the task's description or id for the task to be considered a match
+
+Notice, this endpoint should be considered obsolete and might change in a future version.
 
 #### POST magic/system/tasks/create-task
 
@@ -1148,20 +1248,30 @@ The above arguments implies the following.
 * __[description]__ - Humanly readable description of your task. Optional
 * __[hyperlambda]__ - Actual Hyperlambda to be associated with your task
 
+This endpoint can only be invoked by a root user.
+
 #### DELETE magic/system/tasks/delete-due
 
 This endpoint deletes the specified **[id]** due/repeats instance in your backend. This endpoint can
-only be invoked by a root user.
+only be invoked by a root user. The endpoint requires the following query argument(s).
+
+* __[id]__ - Id of due date object to delete
 
 #### DELETE magic/system/tasks/delete-task
 
 This endpoint deletes a previously persisted task with the specified **[id]**. This endpoint
-can only be invoked by a root user.
+can only be invoked by a root user. The endpoint requires the following query argument(s).
+
+* __[id]__ - Id of task to delete
 
 #### GET magic/system/tasks/get-task
 
 This endpoint returns the declaration for the specified **[name]** task, where name is the ID or name
-of your task.
+of your task. This endpoint can only be invoked by a root user, and it requires the following query argument(s).
+
+* __[name]__ - Name or id of task to return
+
+Notice, this endpoint should be considered obsolete and will change in a future version of Magic.
 
 #### GET magic/system/tasks/list-tasks
 
@@ -1172,6 +1282,7 @@ This endpoint returns a list of all your tasks, optionally matching the specifie
 * __[query]__ - Filter parameter the task must match
 
 All the above arguments are optional, and the endpoint can only be invoked by a root user.
+Notice, this endpoint should be considered obsolete and might change in a future version of Magic.
 
 #### POST magic/system/tasks/update-task
 
@@ -1187,7 +1298,7 @@ This endpoint updates an existing task, and requires the following payload.
 
 The above arguments are the same as when creating a new task and implies the following.
 
-* __[id]__ - The ID or name of the task you want to update
+* __[id]__ - The id or name of the task you want to update
 * __[description]__ - The new description of the task
 * __[hyperlambda]__ - The new Hyperlambda associated with your task
 
@@ -1214,7 +1325,7 @@ payload.
 
 The **[cmd]** above is a terminal or bash command, such as `ls` or `mkdir` - While the **[channel]** above
 is the name of a previously created channel in your backend. To create a unique channel you can use the `gibberish`
-endpoint.
+endpoint. This endpoint can only be invoked by a root user.
 
 #### SOCKET magic/system/terminal/start
 
@@ -1224,13 +1335,13 @@ bash command over. The socket endpoint requires the following payload.
 ```json
 {
   "channel": "foo",
-  "folder": "foo"
+  "folder": "/modules/"
 }
 ```
 
 The above **[channel]** becomes a unique reference for future commands transmitted to your server,
 while the **[folder]** becomes the initial default folder from where to run your terminal within on
-your server.
+your server. This endpoint can only be invoked by a root user.
 
 #### SOCKET magic/system/terminal/stop
 
@@ -1243,7 +1354,8 @@ the following payload.
 }
 ```
 
-The above **[channel]** is a channel previously created using the start socket endpoint.
+The above **[channel]** is a channel previously created using the start socket endpoint. This endpoint
+can only be invoked by a root user.
 
 ### Misc endpoints
 
@@ -1258,12 +1370,17 @@ by a root user.
 #### GET magic/system/endpoints/assumptions
 
 This endpoint returns all assumptions associated with the specified **[verb]** **[endpoint]**
-combination. The endpoint can only be invoked by a root user.
+combination. This endpoint can only be invoked by a root user. The endpoint requires the following
+query argument(s).
+
+* __[verb]__ - HTTP verb of endpoint
+* __[endpoint]__ - Relative URL of endpoint
 
 #### GET magic/system/endpoints/endpoints
 
 This endpoint returns all endpoints in the system, their meta data such as description, input arguments,
-and resulting response if possible. The endpoint can only be invoked by a root user.
+and resulting response if possible. The endpoint can only be invoked by a root user. The endpoints requires
+no argument(s).
 
 #### POST magic/system/evaluator/evaluate
 
@@ -1280,21 +1397,6 @@ The endpoint can only be invoked by a root user and takes the following payload.
 
 This endpoint returns the Hyperlambda vocabulary from the backend, implying which Hyperlambda slots
 exists on the server. The endpoint can only be invoked by a root user.
-
-#### POST magic/system/ide/execute-macro
-
-This endpoint executes the specified Hyper IDE macro, with the specified arguments. The endpoint
-requires the following payload.
-
-```json
-{
-  "macro": "/full-path-of-macro.hl",
-  "args": "*"
-}
-```
-
-The **[macro]** is the _full_ filename of the macro to execute, while the **[args]** depends upon
-the macro itself, and differs between different macros.
 
 #### GET magic/system/ide/macro
 
@@ -1319,6 +1421,22 @@ macro will return something resembling the following.
 
 The endpoint can only be invoked by a root user.
 
+#### POST magic/system/ide/execute-macro
+
+This endpoint executes the specified Hyper IDE macro with the specified arguments. The endpoint
+requires the following payload.
+
+```json
+{
+  "macro": "/full-path-of-macro.hl",
+  "args": "*"
+}
+```
+
+The **[macro]** is the _full_ filename of the macro to execute, while the **[args]** depends upon
+the macro itself, and differs according to what macro is being executed. See the above endpoint for
+how to retrieve arguments related to a specific macro. The endpoint can only be invoked by a root user.
+
 #### GET magic/system/images/generate-qr
 
 This endpoint generates a QR code, and returns to the caller as Content-Type of `image/png`.
@@ -1332,7 +1450,11 @@ endpoint requires the following query parameters.
 
 This endpoint returns cryptographically secured random characters to the caller, optionally
 taking **[min]** and **[max]** as query parameters, being the minimum length and maximum length
-of the returned _"gibberish"_.
+of the returned _"gibberish"_. With gibberish we imply CSRNG characters. This endpoint can
+be invoked by anyone and requries the following argument(s).
+
+* __[min]__ - Minimum length of gibberish returned
+* __[max]__ - Maximum length of gibberish returned
 
 #### POST magic/system/sockets/send-socket-message
 
@@ -1349,9 +1471,7 @@ payload.
 }
 ```
 
-The endpoint can only be invoked by a root user.
-
-The above arguments implies the following.
+The endpoint can only be invoked by a root user. The above arguments implies the following.
 
 * __[client]__ - A comma separated list of clients to whom the message will be transmitted to. Optional
 * __[roles]__ - A comma separated list of roles to whom the message will be transmitted to. Optional
@@ -1363,12 +1483,17 @@ The above arguments implies the following.
 
 Returns number of currently connected socket users, having subscribed to one or more messages from
 the backend. The endpoint optionally takes a **[filter]** query parameter, allowing you to filter
-users returned by it. The endpoint can only be invoked by a root user.
+users returned by it. The endpoint can only be invoked by a root user. The endpoint requires the following
+argument(s).
+
+* __[filter]__ - Optional filtering criteria the socket connection must contain to be considered a match
 
 #### GET magic/system/sockets/socket-users
 
 Returns the currently connected socket users form the backend, optionally matching the optional **[filter]**
-argument. The endpoint can only be invoked by a root user.
+argument. The endpoint can only be invoked by a root user. The endpoint requires the following argument(s).
+
+* __[filter]__ - Optional filtering criteria the socket connection must contain to be considered a match
 
 ## Static slots
 
