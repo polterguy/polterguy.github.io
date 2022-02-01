@@ -1,11 +1,11 @@
 
-# Magic core documentation
+# Magic middleware documentation
 
-This is the documentation for Magic itself, implying the _"middle ware"_ found in Magic's core.
+This is the documentation for Magic itself, implying the _"middleware"_ found in Magic's core.
 Due to the extremely modularised architecture Magic is built upon, these parts are actually surprisingly
 small in the larger context, but still contains everything that wires up Magic, and the backend of modules
-such as Hyper IDE and the CRUDifier. This part documents the middle ware, the file system's structure,
-the slots in the middle ware parts of Magic, and the endpoints you can find there.
+such as Hyper IDE and the CRUDifier. This part documents the middleware, the file system's structure,
+the slots in the middleware parts of Magic, and the endpoints you can find there.
 
 ## File structure
 
@@ -74,7 +74,7 @@ that will be used if no module creates its own exception handler logic to overri
 
 ## Endpoints
 
-Magic contains a whole range of endpoints, or _"middle ware"_ parts, that the system itself
+Magic contains a whole range of endpoints, or _"middleware"_ parts, that the system itself
 relies upon to function. You can play around with these endpoints by using the _"Endpoints"_
 menu item in your dashboard, ensure you show your system endpoints, while filtering on _"magic/system"_.
 Most of these endpoints are for internal use through the Magic dashboard, and should as a general
@@ -142,19 +142,24 @@ by anyone, and does not have any authorisation requirements. Notice, this endpoi
 5 minutes, implying changes done to the authorisation requirements of your endpoints will not be accessible
 for clients before 5 minutes after your changes have been applied.
 
-#### GET magic/system/auth/generate-token
+#### GET magic/system/auth/impersonate
 
-This endpoint allows you to generate a token on behalf of another user, by providing a username, allowing
-you to impersonate another user in the system. The endpoint also allows you to generate a _"reset password"_
-JWT token you can send on email to the registered user, to allow the user to change his or her password.
-The endpoint can only be invoked by a root user. The endpoint takes the following arguments.
+This endpoint allows you to generate a JWT token on behalf of another user, by providing a username allowing
+you to impersonate another user in the system. The endpoint requires the following argument(s).
 
 * __[username]__ - Username of user to impersonate
-* __[reset-password]__ - If true will generate a reset password token
 
-This endpoint might be changed in a future version of Magic, to make sure we separate the two distinctly
-different workflows related to creating a _"reset-password_" type of token, and creating an impersonate user
-type of token.
+This endpoint can only be invoked by a root user.
+
+#### GET magic/system/auth/reset-password
+
+This endpoint allows you to generate a reset password JWT token on behalf of another user, by providing a
+username, returning a _"reset password"_ JWT token that can _only_ be used to reset the user's password.
+The endpoint requires the following argument(s).
+
+* __[username]__ - Username of user to generate token for
+
+This endpoint can only be invoked by a root user.
 
 #### PUT magic/system/auth/imprison
 
@@ -1557,7 +1562,7 @@ higher, and you can probably safely rely upon features released in that version 
 ## Dynamic slots
 
 Magic also creates the following dynamic slots during startup. Notice, most of these slots are there exclusively
-to make sure the middle ware of Magic works correctly, and are _not_ intended to be used directly by you
+to make sure the middleware of Magic works correctly, and are _not_ intended to be used directly by you
 in your own Hyperlambda code, unless explicitly stated otherwise, and/or you're extending Magic or replacing
 parts of its core with your own custom logic.
 
