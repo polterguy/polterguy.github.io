@@ -163,7 +163,8 @@ The endpoint requires the following argument(s).
 
 * __[username]__ - Username of user to generate token for
 
-This endpoint can only be invoked by a root user.
+This endpoint can only be invoked by a root user. However there exists another endpoint you can see further
+down in this document allowing a user to have Magic send him a _"forgot password email"_.
 
 #### PUT magic/system/auth/imprison
 
@@ -196,51 +197,75 @@ _"Bearer"_ token or the endpoint will return _"Access denied"_.
 
 This endpoint allows a user to register in your backend, which implies creating a new user. The endpoint
 requires the username to be a valid email address. If you want users to confirm their email address as they
-register, you'll have to configure your SMTP settings which can be done by reading
-the [following parts](/documentation/magic.lambda.mail/), in addition to providing a `frontendUrl`
+register, you'll have to configure your SMTP settings. Configuring your SMTP settings can be done by reading
+the [following parts](/documentation/magic.lambda.mail/). In addition you need to provide a `frontendUrl`
 to the endpoint that will be used by the email template as a _"confirm email address link"_
 is sent to the user to dynamically create a link the user must click to confirm his or her email address. The
-endpoint requires the following payload to be transmitted by the client. Notice, the `frontendUrl` and
-the `backendUrl` are optional, and will only be used if the system has been configured with an SMTP server,
-resulting in that the endpoint invocation tries to send the registered user an email.
+endpoint requires the payload below to be transmitted by the client. Notice, the `frontendUrl`
+is only used if the system has been configured with an SMTP server, resulting in that the endpoint
+invocation tries to send the registered user an email to have the user confirm his or her email address.
+If you don't care about having users confirm their email address, and/or haven't configured SMTP
+settings, you don't have to supply the `frontendUrl` argument.
 
 When a user registers using this endpoint, a new user will be created, but the user will be added to
-the _"unconfirmed"_ role, resulting in that the user have no access rights to any parts of the system at
+the _"unconfirmed"_ role, resulting in that the user have no access to any parts of the system at
 all before his or her email address has been confirmed. When his or her email address is confirmed,
 the _"unconfirmed"_ user/role association is deleted, and the user is added to the _"guest"_ role. The guest
-role still doesn't have access to much of the system, so if the user is to gain access to parts of the
-system, this must be manually added by a root user after the user has confirmed his email address.
+role still doesn't have access to much of the system, so if the user is to gain access to more of the
+system, this must be manually added by a root user after the user has confirmed his or her email address.
 
 ```json
 {
   "username": "john@doe.com",
   "password": "some-password",
-  "frontendUrl": "https://frontend.somewhere.com"
+  "frontendUrl": "https://your-frontend-url.com",
+  "template": "some/path/to-some-email-template.html",
+  "subject": "Subject line of registration email"
 }
 ```
 
-The endpoint does not require the caller to be authenticated. Notice, this endpoint is partially obsolete
-and mightbe changed in a future version of Magic, to simplify it, since among other things the backend URL
-can be automatically retrieved by the endpoint itself, and is not necessary to pass in by the caller.
+The above arguments implies the following.
 
-#### POST magic/system/auth/send-reset-password-link
+* __[username]__ - Username for user, implying user's email address
+* __[password]__ - Password user wants to use on site
+* __[frontendUrl]__ - The URL to the frontend responsible for validating the user's email address. Optional, and if not given will not send user a _"confirm email address"_ email
+* __[template]__ - The full relative path to an email template used to send user a verify email address link. Optional, and if not given will default to _"/system/auth/email-templates/register.html"_
+* __[subject]__ - Subject line of welcome email. Optional, and if not supplied the default value of _"Thank you for registering with Aista Magic Cloud"_ will be used
 
-This endpoint sends a _"reset password email"_ to a registered user. Like the register endpoint, the
-endpoint requires a `frontendUrl` and a `backendUrl` field, in addition to of course a username. The
-username must be an email address. This endpoint requires that you have configured Magic's SMTP settings
-such that it can send an email to the user allowing him or her to reset the password. Below is an
-example payload.
+This endpoint does not require the caller to be authenticated and can be invoked by anyone. If you have
+configured the system to send _"confirm email address"_ emails, the URL transmitted to the user to confirm
+his or her email address will resemble the following, except the query parameters will be URL encoded of
+course.
 
-```json
-{
-  "username": "foo",
-  "frontendUrl": "foo",
-  "backendUrl": "foo"
-}
+```
+https://your-frontend-url.com?
+token=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&
+username=john@doe.com&
+url=https://your-backend-url.com
 ```
 
-The endpoint does not require the caller to be authenticated. This endpoint is also partially obsolete
-due to the same reasons the above endpoint is obsolete.
+The above arguments in the URL sent to the user's email address implies the following.
+
+* __[token]__ - A cryptographically secure token that must be supplied to the `verify-email` endpoint as the user confirms his or her email address. Notice, this is _not_ a JWT token but rather a cryptographic hash based upon the user's email address and the auth secret from your _"appsettings.json"_ file. Hence this token can only be used to verify the user's email address, and not to authorise the user in any ways
+* __[username]__ - The username of the user that also needs to be submitted to the `verify-email` endpoint as the user confirms his or her email address
+* __[url]__ - The root URL for your backend, implying the backend to use as you invoke the `verify-email` endpoint
+
+This endpoint allows you to create a frontend page somewhere where you accept the above `token` query parameter,
+the `username` query parameter, and the `url` query parameter, for then to invoke the `verify-email`
+endpoint found below to verify the user's email address, passing in the `token` value found in your query
+parameters above as the `token` argument to the `verify-email` endpoint. Notice, Magic's dashboard will
+correctly handle these URL arguments if you supply the root-URL/domain to your Magic dashboard as your
+`frontendUrl` when invoking the endpoint. The endpoints can return one of the following values if it
+successfully executes.
+
+* __confirm-email-address-email-sent__ - This implies the user was successfully sent a _"verify email address"_ email
+* __already-registered__ - This implies the user has already registered at the site
+* __success__ - This implies the user was successfully registered, but no verify email address email was sent
+
+You can override the email template used to send user a _"verify email address"_ email. The default email template
+used can be found at `/system/auth/email-templates/register.html`. However, if you create your own email
+template you'll have to make sure you _keep_ the dynamically substituted `url` parts in your own custom template.
+See how the `href` parameter for the default email template is constructed to understand how this works.
 
 #### POST magic/system/auth/verify-email
 
@@ -250,13 +275,39 @@ The endpoint does not require authorisation, but takes the following payload.
 
 ```json
 {
-  "username": "username",
-  "token": "some-token-generated-during-registration"
+  "username": "john@doe.com",
+  "token": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 }
 ```
 
 Notice, the above `token` must be the same token generated by Magic as the user registered, and sent
 to the user on email.
+
+#### POST magic/system/auth/send-reset-password-link
+
+This endpoint sends a _"reset password email"_ to a registered user. Like the register endpoint, the
+endpoint requires a `frontendUrl` field, in addition to of course a username. The
+username must be an email address. This endpoint requires that you have configured Magic's SMTP settings
+such that it can send an email to the user allowing him or her to reset the password. Below is an
+example payload.
+
+```json
+{
+  "username": "john@doe.com",
+  "frontendUrl": "https://your-frontend-url.com",
+  "template": "some/path/to-some-email-template.html",
+  "subject": "Subject line of change password email"
+}
+```
+
+The above arguments implies the following.
+
+* __[username]__ - Username/email address for user requesting a new password for
+* __[frontendUrl]__ - The URL of the frontend where you want to allow the user to change his or her password
+* __[template]__ - The email template used to send the user the _"forgot password"_ email. Optional, and if not specified will default to _"/system/auth/email-templates/reset-password.html"_
+* __[subject]__ - Subject line of email to send. Optional, and if not supplied will default to _"Change your password at Aista Magic Cloud"_
+
+The endpoint does not require the caller to be authenticated and can be invoked by anyone.
 
 #### GET magic/system/auth/verify-ticket
 
@@ -264,7 +315,8 @@ This endpoint allows a frontend to verify an existing JWT token, and it will ret
 the JWT token is valid and can be used in consecutive invocations requiring authorisation somehow.
 The endpoint can be invoked by any user as long as the user is authenticated. The endpoint does not
 take any arguments, but can only be invoked by an already authenticated user, implying you'll need
-to pass in your JWT token to it in the Authorization HTTP header as a _"Bearer"_ token.
+to pass in your JWT token to it in the Authorization HTTP header as a _"Bearer"_ token. If the JWT
+token is not valid the endpoint will return a 401 status code with _"Access denied"_ as its message.
 
 ### Bazar endpoints
 
