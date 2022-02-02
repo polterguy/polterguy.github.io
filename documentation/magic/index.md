@@ -323,7 +323,11 @@ token is not valid the endpoint will return a 401 status code with _"Access deni
 These are endpoints related to the Bazar somehow, allowing you to install new Bazar modules, and check
 which Bazar modules have already been installed. The Bazar is a micro service _"AppStore"_ for your
 Magic server, allowing your Magic server to install backend modules on the fly, resulting
-in having some backend micro service installed into your backend.
+in having some backend micro service installed into your backend, without interrupting normal
+usage.
+
+**Notice** - None of these endpoints are really intended to be consumed in your own code, but only
+for internal usage by Magic itself.
 
 #### GET magic/system/bazar/app-manifests
 
@@ -409,6 +413,9 @@ database. Sometimes you need to manually purge your cache, and/or delete individ
 on your server, to re-retrieve data invalidating your cache in the process. This section provides
 information about such operations for such scenarios.
 
+**Notice** - None of these endpoints are really intended to be consumed in your own code, but only
+for internal usage by Magic itself.
+
 #### DELETE magic/system/cache/delete-cache-item
 
 This endpoint requires an **[id]** as a query parameter, and will delete the associated server side
@@ -424,6 +431,8 @@ key will be deleted. The endpoint can only be invoked by a root user. The endpoi
 following argument(s).
 
 * __[filter]__ - Optional filter declaring _"namespace"_ of cache items to evict
+
+This endpoint is obsolete and will be changed in a future version of Magic.
 
 #### GET magic/system/cache/list-cache-count
 
@@ -454,39 +463,42 @@ configuration settings as you see fit. These endpoints are typically not intende
 directly by your code, but for the most parts only used during initialisation of your Magic server,
 and/or as you change configuration settings in Magic.
 
-#### GET magic/system/config/load-config
+**Notice** - None of these endpoints are really intended to be consumed in your own code, but only
+for internal usage by Magic itself.
+
+#### GET magic/system/config/load
 
 This endpoint loads your configuration settings and returns it to the caller. The endpoint
-can only be invoked by a root user. This endpoint is to be considered obsolete and will probably
-change in a future version of Magic.
+can only be invoked by a root user.
 
-#### POST magic/system/config/save-config
+#### POST magic/system/config/save
 
 This endpoint allows you to save your configuration settings. The specified paylod will
 in its entirety overwrite your existing _"appsettings.json"_ file. The endpoint
-can only be invoked by a root user. This endpoint is to be considered obsolete and will probably
-change in a future version of Magic.
+can only be invoked by a root user.
 
-#### GET magic/system/config/setup-status
+#### GET magic/system/config/status
 
 This endpoint returns the setup status of your system, implying if the system has been correctly
-initialised. The response object will resemble the following.
+initialised. The endpoint requires no argument. The response object will resemble the following.
 
 ```json
 {
+  "config_done": true,
   "magic_crudified": true,
-  "server_keypair": true,
-  "config_done": true
+  "server_keypair": true
 }
 ```
 
 The fields in the above payload implies the following.
 
+* __[config_done]__ - If true the primary configuration process of your server has been done, implying Magic has created a magic database, and changed your _"appsettings.json"_ file, applying a valid connection string to an existing database, and an auth secret
 * __[magic_crudified]__ - If true your magic database has been CRUDified
 * __[server_keypair]__ - If true the server has a cryptography key pair
-* __[config_done]__ - If true the primary configuration process of your server has been done, implying Magic has created a magic database, and changed your _"appsettings.json"_ file, applying a valid connection string to an existing database, and an auth secret
 
-This endpoint is to be considered obsolete and will probably change in a future version of Magic.
+If any of the above fields does _not_ return true, the frontend dashboard will guide you through the process
+of finishing the configuration process before allowing you to gain access to other parts of your Magic server.
+The endpoint can only be invoked by a root user.
 
 #### POST magic/system/config/setup
 
