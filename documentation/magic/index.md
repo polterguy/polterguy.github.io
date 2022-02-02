@@ -506,28 +506,28 @@ This endpoint sets up your system, and requires the following payload.
 
 ```json
 {
-  "databaseType": "xxx",
   "password": "yyy",
-  "settings": "config"
+  "settings": "*"
 }
 ```
 
 The above fields implies the following.
 
-* __[databaseType]__ - What type of database used for the magic database becoming the default database type
 * __[password]__ - The root user's password
-* __[settings]__ - The initial value for your _"appsettings.json"_ file. This is the entire JSON content of your _"appsettings.json"_ file in string format, and will be sanity checked on the server to some extent
+* __[settings]__ - The initial value for your _"appsettings.json"_ file. This is the entire JSON content of your _"appsettings.json"_ file, and will be sanity checked on the server to some extent before saved and applied
 
 The endpoint can only be invoked by a root user, and will setup Magic to use the specified connection string found
 in your __[settings]__ field, verify the database server exists and can be connected to, create the `magic` database
 if not existing from before, and create a root user account in the `users` table for you with the specified __[password]__.
 The endpoint can only be invoked _once_ and will throw an exception if the system has previously been setup - Which Magic
 determines by checking the `auth:secret` value of your existing _"appsettings.json"_ file, and if it's not the default
-value, Magic will assume it's been previously setup and throw an exception.
-
-If the `magic` database already exists in your database server, it will run its migration scripts, and replace
+value of _"THIS-IS-NOT-A-GOOD-SECRET-PLEASE-CHANGE-IT"_, Magic will assume it's been previously setup and throw an exception.
+If the `magic` database already exists in your database server, it will only run its migration scripts, and replace
 the existing root user's password with whatever you provided as a payload to the endpoint invocation.
-This endpoint is to be considered obsolete and will probably change in a future version of Magic.
+
+**Notice** - If you for some reasons needs to reconfigure Magic, you can manually change its `magic:auth:secret` value
+to _"THIS-IS-NOT-A-GOOD-SECRET-PLEASE-CHANGE-IT"_ to force it to guide you through the configuration process again as you
+log out and login again.
 
 #### GET magic/system/config/version-compare
 
