@@ -219,7 +219,7 @@ system, this must be manually added by a root user after the user has confirmed 
   "username": "john@doe.com",
   "password": "some-password",
   "frontendUrl": "https://your-frontend-url.com",
-  "template": "some/path/to-some-email-template.html",
+  "template": "/some/path/to-some-email-template.html",
   "subject": "Subject line of registration email"
 }
 ```
@@ -295,7 +295,7 @@ example payload.
 {
   "username": "john@doe.com",
   "frontendUrl": "https://your-frontend-url.com",
-  "template": "some/path/to-some-email-template.html",
+  "template": "/some/path/to-some-email-template.html",
   "subject": "Subject line of change password email"
 }
 ```
