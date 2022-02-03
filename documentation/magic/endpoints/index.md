@@ -1227,7 +1227,12 @@ This endpoint allows you to log some arbitrary log item, and takes the following
 ```json
 {
   "type": "foo",
-  "content": "foo"
+  "content": "foo",
+  "meta": {
+    "foo1": "bar1",
+    "foo2": "bar2",
+    "foo3": "bar3"
+  }
 }
 ```
 
@@ -1235,6 +1240,7 @@ The above arguments implies the following.
 
 * __[type]__ - Type of log entry to create, one of 'debug', 'info', 'error' or 'fatal'
 * __[content]__ - Content description for your log item
+* __[meta]__ - Key/value pair of additional _"meta information"_ associated with log item
 
 The endpoint can be invoked by _any_ user but requires the user to be authenticated towards the backend
 and transmit his JWT token in the `Authorization` HTTP header as a _"Bearer"_ token.
