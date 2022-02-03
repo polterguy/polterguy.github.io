@@ -62,7 +62,10 @@ logging, persisting tasks, etc.
 The second step implies generating CRUD HTTP backend endpoints wrapping this database, to allow
 you to interact with it through a client of some sort. The 3rd step is required to create a
 public and private server key pair. This key is used for cryptographically secured lambda
-invocations, but also in other parts of the system.
+invocations, but also in other parts of the system. Below is a screenshot of how this process
+looks like as you install Magic initially.
+
+![Configuring Magic initially](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/configuring-magic.jpg)
 
 After you have followed the above process, you can see that inside your _"modules"_ folder there
 exists Hyperlambda endpoint files wrapping your entire magic database into CRUD HTTP endpoints.
@@ -70,11 +73,12 @@ These files were created in the second step of the above process, and is require
 functioning properly. Below you can see a screenshot of how the folder structure looks like in
 Magic through Hyper IDE.
 
-![Magic folder structure](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/folder-structure.jpg)
+![Magic folder structure through Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/folder-structure.jpg)
 
 The _"exceptions.hl"_ file at the root of your folder structure is the default exception handler
 that will be used if no module creates its own exception handler logic to override the default handler.
-Most folders have _"README.md"_ files that somehow describes the purpose of the folder.
+Most folders have _"README.md"_ files that somehow describes the purpose of the folder. Hyper IDE
+is as a general rule of thumb your _"goto component"_ when you need to create something using Magic.
 
 * [Endpoints documentation](/documentation/magic/endpoints/)
 * [Slots documentation](/documentation/magic/slots/)
