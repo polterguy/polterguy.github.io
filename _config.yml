@@ -147,7 +147,7 @@ nav_sections:
   - name: Docs utilities
     items:
       - url: /documentation/magic/
-        name: Magic middleware
+        name: middleware
       - url: /documentation/magic.node/
         name: magic.node
       - url: /documentation/magic.signals/

@@ -2,20 +2,19 @@
 # Magic middleware documentation
 
 This is the documentation for Magic itself, implying the _"middleware"_ found in Magic's core.
-Due to the extremely modularised architecture Magic is built upon, these parts are actually surprisingly
-small in the larger context, but still contains everything that wires up Magic, and the backend of modules
-such as Hyper IDE and the CRUDifier. This part documents the middleware, the file system's structure,
-the slots in the middleware parts of Magic, and the endpoints you can find there.
+This part documents everything that wires up Magic, and the backend of modules
+such as Hyper IDE and the CRUDifier. This is where you will find information about the file system
+of Magic, system endpoints, system slots, and everything that makes Magic _"tick"_. This is hence
+the documentation of [Magic itself](https://github.com/polterguy/magic).
 
 ## File structure
 
-There are 5 primary folders in Magic, these are as follows.
+There are 4 primary folders in Magic, these are as follows.
 
-* etc
-* misc
-* modules
-* system
-* temp
+* __etc__ - Your private _"data files"_
+* __misc__ - Magic's _"data files"_
+* __modules__ - Your own custom modules goes here
+* __system__ - Magic's system modules goes here
 
 The _"modules"_ folder and the _"system"_ folders are the only folders that allows for resolving Hyperlambda
 endpoints, while the other folders are for helper files, and/or uploaded files. If you use the docker images
@@ -31,17 +30,21 @@ and folders within are as follows.
 
 * __etc__ - For dynamic files, uploads and downloads, etc
 * __modules__ - For your own custom Hyperlambda modules
-* __temp__ - For temporary files. Notice this folder might be emptied occassionally automatically
 
 The two remaining folders; _"misc"_ and _"system"_ should be kept for Magic's internals, and not tampered
 with in any ways. If in doubt, most folders in Magic has README files you can open to see the purpose
 of a specific folder, and/or its files - And in fact, becoming acquinted with Magic's file and folder 
 structure is probably a smart investment, since everything in Magic is based upon _"conventions"_, implying
-folders have semantic value of some sort. As a general rule of thumb the only folders you should modify
-and add files to are as follows.
+folders have semantic value of some sort. As a general rule of thumb you should keep all your Hyperlambda
+code inside _"modules"_ and everything else in _"etc"_.
 
-* __modules__ - All your Hyperlambda code should in general end up here
-* __etc__ - Everything else such as uploaded files etc should end up here
+### Creating startup logic
+
+Most modules requires some sort of _"initialisation"_ logic. This can be to for instance create dynamic slots
+the module depends upon to function, and/or ensure the module's database exists, etc. This can be accomplished
+by creating a folder _inside_ your module and name this module _"magic.startup"_. All files recursively found
+inside this folder will be executed as the system starts, and/or the module is installed. You can also create
+such startup folders inside of _sub_ folders within your module's main folder.
 
 ## Initialisation
 
@@ -71,6 +74,7 @@ Magic through Hyper IDE.
 
 The _"exceptions.hl"_ file at the root of your folder structure is the default exception handler
 that will be used if no module creates its own exception handler logic to override the default handler.
+Most folders have _"README.md"_ files that somehow describes the purpose of the folder.
 
 ## Endpoints
 
@@ -79,7 +83,7 @@ relies upon to function. You can play around with these endpoints by using the _
 menu item in your dashboard, ensure you show your system endpoints, while filtering on _"magic/system"_.
 Most of these endpoints are for internal use through the Magic dashboard, and should as a general
 rule of thumb _not_ be consumed directly by you - But some of these endpoints are useful for things such
-as implementing authentication and authorisation in your own frontend as you consume Magic.
+as implementing authentication and authorisation in your own code.
 
 Notice, all endpoints that requires authorization of some sort assumes a valid JWT token is transmitted
 in the `Authorization` HTTP header as a _"Bearer"_ type of token, and if not, the user will not be
@@ -91,7 +95,7 @@ use the `magic/system/auth/authenticate` endpoint documented further down in thi
 These are the endpoints related to the authentication and authorisation parts of Magic. You can find
 their Hyperlambda files in the _"/system/auth/"_ folder. These endpoints are typically useful for you
 as you implement your own authentication logic in your own code, and most of these endpoints
-are intended for you to consume in your own frontend clients.
+are intended for you to consume yourself as you see fit.
 
 #### GET magic/system/auth/authenticate
 
@@ -137,12 +141,13 @@ forgot his or her password, and requested to change his or her password somehow.
 
 #### GET magic/system/auth/endpoints
 
-This endpoint returns the authorisation requirements for all endpoints in the system. It does not take
-arguments. It returns one item for each Hyperlambda endpoint in the system, with its associated verb,
-and a list of roles the user must belong to in order to invoke the endpoint. The endpoint can be invoked
-by anyone, and does not have any authorisation requirements. Notice, this endpoint caches its result for
-5 minutes, implying changes done to the authorisation requirements of your endpoints will not be accessible
-for clients before 5 minutes after your changes have been applied.
+This endpoint returns the authorisation requirements for all endpoints in the system. It does not require
+any arguments. It returns one item for each Hyperlambda endpoint in the system, with its associated verb,
+and a list of roles the user must belong to in order to invoke the endpoint, if the endpoint requires
+authorisation. The endpoint can be invoked by anyone, and does not have any authorisation requirements
+itself. Notice, this endpoint caches its result for 5 minutes, implying changes done to the authorisation
+requirements of your endpoints will not be accessible for clients before 5 minutes after your changes have
+been applied, unless you explicitly delete the cache item for the endpoint.
 
 #### GET magic/system/auth/impersonate
 
@@ -248,15 +253,16 @@ The above arguments in the URL sent to the user's email address implies the foll
 
 * __[token]__ - A cryptographically secure token that must be supplied to the `verify-email` endpoint as the user confirms his or her email address. Notice, this is _not_ a JWT token but rather a cryptographic hash based upon the user's email address and the auth secret from your _"appsettings.json"_ file. Hence this token can only be used to verify the user's email address, and not to authorise the user in any ways
 * __[username]__ - The username of the user that also needs to be submitted to the `verify-email` endpoint as the user confirms his or her email address
-* __[url]__ - The root URL for your backend, implying the backend to use as you invoke the `verify-email` endpoint
+* __[url]__ - The root URL for your backend, implying the backend to use as you invoke the `verify-email` endpoint. This might seem a little bit weird until you realise that one backend can have a multitude of frontends, and one frontend can in theory use multiple backends, implying the same frontend client might in theory be able to use multiple different backends. If you only have one backend you can ignore this parameter
 
 This endpoint allows you to create a frontend page somewhere where you accept the above `token` query parameter,
 the `username` query parameter, and the `url` query parameter, for then to invoke the `verify-email`
 endpoint found below to verify the user's email address, passing in the `token` value found in your query
 parameters above as the `token` argument to the `verify-email` endpoint. Notice, Magic's dashboard will
 correctly handle these URL arguments if you supply the root-URL/domain to your Magic dashboard as your
-`frontendUrl` when invoking the endpoint. The endpoints can return one of the following values if it
-successfully executes.
+`frontendUrl` when invoking the endpoint, but this will of course result in the user being brought onwards
+to the Magic dashboard's frontend, which might not be what you wish for in your own apps. The _"register"_
+endpoint can return one of the following values if it successfully executes.
 
 * __confirm-email-address-email-sent__ - This implies the user was successfully sent a _"verify email address"_ email
 * __already-registered__ - This implies the user has already registered at the site
@@ -281,7 +287,7 @@ The endpoint does not require authorisation, but takes the following payload.
 ```
 
 Notice, the above `token` must be the same token generated by Magic as the user registered, and sent
-to the user on email.
+to the user on his or her email.
 
 #### POST magic/system/auth/send-reset-password-link
 
@@ -307,7 +313,8 @@ The above arguments implies the following.
 * __[template]__ - The email template used to send the user the _"forgot password"_ email. Optional, and if not specified will default to _"/system/auth/email-templates/reset-password.html"_
 * __[subject]__ - Subject line of email to send. Optional, and if not supplied will default to _"Change your password at Aista Magic Cloud"_
 
-The endpoint does not require the caller to be authenticated and can be invoked by anyone.
+The endpoint does not require the caller to be authenticated and can be invoked by anyone, but the endpoint can
+only be invoked for a user who's username is a valid email address.
 
 #### GET magic/system/auth/verify-ticket
 
@@ -326,7 +333,7 @@ Magic server, allowing your Magic server to install backend modules on the fly, 
 in having some backend micro service installed into your backend, without interrupting normal
 usage.
 
-**Notice** - None of these endpoints are really intended to be consumed in your own code, but only
+**Notice** - None of these endpoints are really intended to be consumed by your own code, but only
 for internal usage by Magic itself.
 
 #### GET magic/system/bazar/app-manifests
@@ -423,6 +430,8 @@ cache item. It can only be invoked by a root user. The endpoint requires the fol
 
 * __[id]__ - Mandatory id of cache item to evict
 
+**Notice** - This endpoint is to be considered obsolete and might change in a future version of Magic.
+
 #### DELETE magic/system/cache/empty-cache
 
 This endpoint completely empties your server side cache, optionally taking a _"filter"_ query
@@ -432,7 +441,7 @@ following argument(s).
 
 * __[filter]__ - Optional filter declaring _"namespace"_ of cache items to evict
 
-This endpoint is obsolete and will be changed in a future version of Magic.
+**Notice** - This endpoint is to be considered obsolete and might change in a future version of Magic.
 
 #### GET magic/system/cache/list-cache-count
 
@@ -442,7 +451,7 @@ The endpoint requires the following argument(s).
 
 * __[filter]__ - Optional filter declaring _"namespace"_ of cache items to count
 
-This endpoint is obsolete and will be changed in a future version of Magic.
+**Notice** - This endpoint is to be considered obsolete and might change in a future version of Magic.
 
 #### GET magic/system/cache/list-cache
 
@@ -469,13 +478,16 @@ for internal usage by Magic itself.
 #### GET magic/system/config/load
 
 This endpoint loads your configuration settings and returns it to the caller. The endpoint
-can only be invoked by a root user.
+can only be invoked by a root user and does not require any arguments.
 
 #### POST magic/system/config/save
 
 This endpoint allows you to save your configuration settings. The specified paylod will
 in its entirety overwrite your existing _"appsettings.json"_ file. The endpoint
-can only be invoked by a root user.
+can only be invoked by a root user. The endpoint can accept any type of JSON payload,
+however whatever you supply to the endpoint will in its entirety be persisted in
+your backend as your _"appsettings.json"_ file, implying if you supply bogus data,
+your backend will no longer function correctly.
 
 #### GET magic/system/config/status
 
@@ -519,15 +531,17 @@ The above fields implies the following.
 The endpoint can only be invoked by a root user, and will setup Magic to use the specified connection string found
 in your __[settings]__ field, verify the database server exists and can be connected to, create the `magic` database
 if not existing from before, and create a root user account in the `users` table for you with the specified __[password]__.
+
 The endpoint can only be invoked _once_ and will throw an exception if the system has previously been setup - Which Magic
 determines by checking the `auth:secret` value of your existing _"appsettings.json"_ file, and if it's not the default
 value of _"THIS-IS-NOT-A-GOOD-SECRET-PLEASE-CHANGE-IT"_, Magic will assume it's been previously setup and throw an exception.
-If the `magic` database already exists in your database server, it will only run its migration scripts, and replace
-the existing root user's password with whatever you provided as a payload to the endpoint invocation.
 
-**Notice** - If you for some reasons needs to reconfigure Magic, you can manually change its `magic:auth:secret` value
-to _"THIS-IS-NOT-A-GOOD-SECRET-PLEASE-CHANGE-IT"_ to force it to guide you through the configuration process again as you
-log out and login again.
+If the `magic` database already exists in your database server, it will only run its migration scripts, and replace
+the existing root user's password with whatever you provided as a payload to the endpoint invocation. This implies
+that if you forget your root user's password the easiest way to change it is in fact to manually change the `auth:secret`
+back to its original value which was _"THIS-IS-NOT-A-GOOD-SECRET-PLEASE-CHANGE-IT"_, for then to log out and login
+again, which will allow you to run through the configuration process again, overwriting your root user's existing
+password.
 
 #### GET magic/system/config/version-compare
 
