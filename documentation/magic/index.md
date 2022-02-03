@@ -995,7 +995,7 @@ a root user. The endpoint requires the following query argument(s).
 
 This endpoint creates or updates an existing file on the server. The endpoint requires its payload
 as `multipart/form-data`, where **[folder]** becomes the folder of where to save the file,
-and the attached file becomes the file to save, assuming the file has a name specified
+and the attached **[file]** becomes the file to save, assuming the file has a name specified
 as a part of its MIME entity as its Content-Disposition header's `filename`. The endpoint
 can only be invoked by a root user.
 
