@@ -380,31 +380,22 @@ information about such operations for such scenarios.
 **Notice** - None of these endpoints are really intended to be consumed in your own code, but only
 for internal usage by Magic itself.
 
-### DELETE magic/system/cache/delete-cache-item
+### GET magic/system/cache/list
 
-This endpoint requires an **[id]** as a query parameter, and will delete the associated server side
-cache item. It can only be invoked by a root user. The endpoint requires the following argument(s).
+This endpoint returns the number of cache items on your server, optionally allowing you to page
+with the following query parameters.
 
-* __[id]__ - Mandatory id of cache item to evict
+* __[limit]__ - Maximum number of items to return
+* __[offset]__ - Offset of where to start returning items
+* __[filter]__ - Filter key cache items must start with in order to be considered a hit
 
-**Notice** - This endpoint is to be considered obsolete and might change in a future version of Magic.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
-
-### DELETE magic/system/cache/empty-cache
-
-This endpoint completely empties your server side cache, optionally taking a _"filter"_ query
-parameter, which if specified will ensure only cache items _starting_ with the specified filter
-key will be deleted. The endpoint can only be invoked by a root user. The endpoint requires the
-following argument(s).
-
-* __[filter]__ - Optional filter declaring _"namespace"_ of cache items to evict
+The endpoint can only be invoked by a root user.
 
 **Notice** - This endpoint is to be considered obsolete and might change in a future version of Magic.
 
 **Notice** - This endpoint is not intended for you to consume in your own code.
 
-### GET magic/system/cache/list-cache-count
+### GET magic/system/cache/count
 
 This endpoint returns the number of cache items in total on your server, optionally starting out
 with the _"filter"_ query parameter as their key. The endpoint can only be invoked by a root user.
@@ -416,16 +407,25 @@ The endpoint requires the following argument(s).
 
 **Notice** - This endpoint is not intended for you to consume in your own code.
 
-### GET magic/system/cache/list-cache
+### DELETE magic/system/cache/delete
 
-This endpoint returns the number of cache items on your server, optionally allowing you to page
-with the following query parameters.
+This endpoint requires an **[id]** as a query parameter, and will delete the associated server side
+cache item. It can only be invoked by a root user. The endpoint requires the following argument(s).
 
-* __[limit]__ - Maximum number of items to return
-* __[offset]__ - Offset of where to start returning items
-* __[filter]__ - Filter key cache items must start with in order to be considered a hit
+* __[id]__ - Mandatory id of cache item to evict
 
-The endpoint can only be invoked by a root user.
+**Notice** - This endpoint is to be considered obsolete and might change in a future version of Magic.
+
+**Notice** - This endpoint is not intended for you to consume in your own code.
+
+### DELETE magic/system/cache/empty
+
+This endpoint completely empties your server side cache, optionally taking a _"filter"_ query
+parameter, which if specified will ensure only cache items _starting_ with the specified filter
+key will be deleted. The endpoint can only be invoked by a root user. The endpoint requires the
+following argument(s).
+
+* __[filter]__ - Optional filter declaring _"namespace"_ of cache items to evict
 
 **Notice** - This endpoint is to be considered obsolete and might change in a future version of Magic.
 
@@ -1358,6 +1358,92 @@ is your database type such as for instance 'pgsql', 'mysql' or 'mssql'.
 These are endpoints related to administrating tasks, and/or due dates for executing tasks. To understand the
 task scheduler and how it works please refer to the [following article](/tutorials/task-scheduler/).
 
+### GET magic/system/tasks/list
+
+This endpoint returns a list of all your tasks, optionally matching the specified query parameters.
+
+* __[offset]__ - Offset of where to start returning tasks
+* __[limit]__ - Maximum number of tasks to return
+* __[filter]__ - Filter parameter the task must match
+
+All the above arguments are optional, and the endpoint can only be invoked by a root user.
+Notice, this endpoint should be considered obsolete and might change in a future version of Magic.
+
+**Notice** - This endpoint is not intended for you to consume in your own code.
+
+### GET magic/system/tasks/get
+
+This endpoint returns the declaration for the specified **[name]** task, where name is the ID or name
+of your task. This endpoint can only be invoked by a root user, and it requires the following query argument(s).
+
+* __[name]__ - Name or id of task to return
+
+Notice, this endpoint should be considered obsolete and will change in a future version of Magic.
+
+**Notice** - This endpoint is not intended for you to consume in your own code.
+
+### GET magic/system/tasks/count
+
+Returns the number of tasks in your system, optionally matching the specified **[filter]** filtering argument.
+This endpoint can only be invoked by a root user. The endpoint requires the following argument(s).
+
+* __[filter]__ - Optional filter criteria that must be found in the task's description or id for the task to be considered a match
+
+Notice, this endpoint should be considered obsolete and might change in a future version.
+
+**Notice** - This endpoint is not intended for you to consume in your own code.
+
+### POST magic/system/tasks/create
+
+This endpoint creates a new task in your backend. The endpoints requires the following payload.
+
+```json
+{
+  "id": "foo",
+  "description": "foo",
+  "hyperlambda": "foo"
+}
+```
+
+The above arguments implies the following.
+
+* __[id]__ - ID or name of task. Must be unique and non-existing
+* __[description]__ - Humanly readable description of your task. Optional
+* __[hyperlambda]__ - Actual Hyperlambda to be associated with your task
+
+This endpoint can only be invoked by a root user.
+
+**Notice** - This endpoint is not intended for you to consume in your own code.
+
+### POST magic/system/tasks/update
+
+This endpoint updates an existing task, and requires the following payload.
+
+```json
+{
+  "id": "foo",
+  "description": "foo",
+  "hyperlambda": "foo"
+}
+```
+
+The above arguments are the same as when creating a new task and implies the following.
+
+* __[id]__ - The id or name of the task you want to update
+* __[description]__ - The new description of the task
+* __[hyperlambda]__ - The new Hyperlambda associated with your task
+
+**Notice** - This endpoint is not intended for you to consume in your own code.
+
+### DELETE magic/system/tasks/delete
+
+This endpoint deletes a previously persisted task with the specified **[id]**. This endpoint
+can only be invoked by a root user. The endpoint requires the following query argument(s).
+
+* __[id]__ - Id of task to delete
+
+**Notice** - This endpoint is not intended for you to consume in your own code.
+
 ### POST magic/system/tasks/add-due
 
 This endpoints adds a due date, or a repetition pattern, to a previously persisted task. It requires
@@ -1382,98 +1468,12 @@ for [magic.lambda.scheduler](/documentation/magic.lambda.scheduler/). This endpo
 
 **Notice** - This endpoint is not intended for you to consume in your own code.
 
-### GET magic/system/tasks/count-tasks
-
-Returns the number of tasks in your system, optionally matching the specified **[query]** filtering argument.
-This endpoint can only be invoked by a root user. The endpoint requires the following argument(s).
-
-* __[query]__ - Optional filter criteria that must be found in the task's description or id for the task to be considered a match
-
-Notice, this endpoint should be considered obsolete and might change in a future version.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
-
-### POST magic/system/tasks/create-task
-
-This endpoint creates a new task in your backend. The endpoints requires the following payload.
-
-```json
-{
-  "id": "foo",
-  "description": "foo",
-  "hyperlambda": "foo"
-}
-```
-
-The above arguments implies the following.
-
-* __[id]__ - ID or name of task. Must be unique and non-existing
-* __[description]__ - Humanly readable description of your task. Optional
-* __[hyperlambda]__ - Actual Hyperlambda to be associated with your task
-
-This endpoint can only be invoked by a root user.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
-
 ### DELETE magic/system/tasks/delete-due
 
 This endpoint deletes the specified **[id]** due/repeats instance in your backend. This endpoint can
 only be invoked by a root user. The endpoint requires the following query argument(s).
 
 * __[id]__ - Id of due date object to delete
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
-
-### DELETE magic/system/tasks/delete-task
-
-This endpoint deletes a previously persisted task with the specified **[id]**. This endpoint
-can only be invoked by a root user. The endpoint requires the following query argument(s).
-
-* __[id]__ - Id of task to delete
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
-
-### GET magic/system/tasks/get-task
-
-This endpoint returns the declaration for the specified **[name]** task, where name is the ID or name
-of your task. This endpoint can only be invoked by a root user, and it requires the following query argument(s).
-
-* __[name]__ - Name or id of task to return
-
-Notice, this endpoint should be considered obsolete and will change in a future version of Magic.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
-
-### GET magic/system/tasks/list-tasks
-
-This endpoint returns a list of all your tasks, optionally matching the specified query parameters.
-
-* __[offset]__ - Offset of where to start returning tasks
-* __[limit]__ - Maximum number of tasks to return
-* __[query]__ - Filter parameter the task must match
-
-All the above arguments are optional, and the endpoint can only be invoked by a root user.
-Notice, this endpoint should be considered obsolete and might change in a future version of Magic.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
-
-### POST magic/system/tasks/update-task
-
-This endpoint updates an existing task, and requires the following payload.
-
-```json
-{
-  "id": "foo",
-  "description": "foo",
-  "hyperlambda": "foo"
-}
-```
-
-The above arguments are the same as when creating a new task and implies the following.
-
-* __[id]__ - The id or name of the task you want to update
-* __[description]__ - The new description of the task
-* __[hyperlambda]__ - The new Hyperlambda associated with your task
 
 **Notice** - This endpoint is not intended for you to consume in your own code.
 
