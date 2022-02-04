@@ -938,15 +938,6 @@ test specifically created to verify that some HTTP endpoint returns what is _"as
 a specific payload of some sort. Notice, assumptions can also be manually ceated as lambda objects,
 to execute arbitrary Hyperlambda code, throwing exceptions if assumptions are incorrect.
 
-### GET magic/system/diagnostics/assumption-test-description
-
-This endpoint returns the description associated with the specified **[test_file]** assumption.
-The endpoint can only be invoked by a root user. The endpoint requires the following query argument(s).
-
-* __[test_file]__ - The full relative path of the assumption file to return the description for
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
-
 ### POST magic/system/diagnostics/create-test
 
 This endpoint creates a new assumption test. The endpoint can only be invoked by a root user
