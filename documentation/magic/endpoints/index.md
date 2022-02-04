@@ -1444,7 +1444,7 @@ can only be invoked by a root user. The endpoint requires the following query ar
 
 **Notice** - This endpoint is not intended for you to consume in your own code.
 
-### POST magic/system/tasks/add-due
+### POST magic/system/tasks/due/add
 
 This endpoints adds a due date, or a repetition pattern, to a previously persisted task. It requires
 the following payload.
@@ -1468,7 +1468,7 @@ for [magic.lambda.scheduler](/documentation/magic.lambda.scheduler/). This endpo
 
 **Notice** - This endpoint is not intended for you to consume in your own code.
 
-### DELETE magic/system/tasks/delete-due
+### DELETE magic/system/tasks/due/delete
 
 This endpoint deletes the specified **[id]** due/repeats instance in your backend. This endpoint can
 only be invoked by a root user. The endpoint requires the following query argument(s).
