@@ -80,8 +80,11 @@ that will be used if no module creates its own exception handler logic to overri
 Most folders have _"README.md"_ files that somehow describes the purpose of the folder. Hyper IDE
 is as a general rule of thumb your _"goto component"_ when you need to create something using Magic.
 
-* [Log component](/documentation/magic/log/)
-* [Assumptions component](/documentation/magic/assumptions/)
+* [Log component](/documentation/magic/components/log/)
+* [Assumptions component](/documentation/magic/components/assumptions/)
+* [Cache component](/documentation/magic/components/cache/)
+* [Endpoints component](/documentation/magic/components/endpoints/)
+* [Sockets component](/documentation/magic/components/sockets/)
 * [Endpoints documentation](/documentation/magic/endpoints/)
 * [Slots documentation](/documentation/magic/slots/)
 * [Back to main documentation](/documentation/)

@@ -15,6 +15,9 @@ process.
 
 ![Creating an assumption](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/new-assumption.jpg)
 
+From your _"Assumptions"_ menu item you can easily execute all assumptions associated with your endpoints,
+rapidly verifying as you change the state of your server that no change was applied that broke your
+existing assumptions.
 
 * [Back to middleware documentation](/documentation/magic/)
 * [Back to main documentation](/documentation/)
