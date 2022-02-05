@@ -330,3 +330,5 @@ ASALocalRun/
 **/.DS_Store
 
 _site/**
+
+!/documentation/magic/components/log
