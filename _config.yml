@@ -54,6 +54,8 @@ nav_sections:
         name: HTTP invocations with Hyperlambda
       - url: /tutorials/sending-emails/
         name: Sending emails with Hyperlambda
+      - url: /tutorials/registering/
+        name: Registration and Authentication
       - url: /tutorials/expressions-slots-nodes/
         name: Expressions, slots, and nodes
       - url: /tutorials/loops-and-conditions/
@@ -145,7 +147,7 @@ nav_sections:
   - name: Docs utilities
     items:
       - url: /documentation/magic/
-        name: magic
+        name: middleware
       - url: /documentation/magic.node/
         name: magic.node
       - url: /documentation/magic.signals/

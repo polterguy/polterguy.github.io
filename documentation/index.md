@@ -14,6 +14,7 @@ This is the documentation for the core projects in Magic. This is what wires up 
 takes care of routing, loads Hyperlambda files, executes HTTP endpoints, etc - In addition to projects
 helping you deploy Magic into production, or clone it to work locally with it.
 
+* [middleware](/documentation/magic/) - Explains the middleware in Magic
 * [magic.node](/documentation/magic.node/) - Explains nodes, Hyperlambda and Expressions
 * [magic.signals](/documentation/magic.signals/) - Magic's Super Signals implementation
 * [magic.endpoint](/documentation/magic.endpoint/) - Endpoint resolving in Magic

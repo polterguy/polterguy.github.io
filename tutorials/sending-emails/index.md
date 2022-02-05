@@ -137,4 +137,4 @@ transformed into attachments in the resulting email. If you want to further stud
 Magic and Hyperlambda you can check out the documentation for [magic.lambda.mail](/documentation/magic.lambda.mail/)
 and [magic.lambda.mime](/documentation/magic.lambda.mime/).
 
-* Continue with [Expressions, slots and nodes](/tutorials/expressions-slots-nodes/)
+* Continue with [Allow users to register in your backend](/tutorials/registering/)
