@@ -1,5 +1,5 @@
 
-# Backend crudifier component
+# SQL drudifier component
 
 This component allows you to automatically generate an HTTP CRUD web API wrapping your database.
 
