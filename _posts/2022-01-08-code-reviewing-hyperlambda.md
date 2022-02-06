@@ -27,6 +27,6 @@ simply madness. With Hyperlambda, I spent no more than 15 minutes, and after tho
 a deep and thorough understanding of 90% of the codebase, what it does, and how it does what it does.
 
 BTW, if you're interested in code reviewing your Hyperlambda code, and or tutoring in any ways, this
-is a services we are providing for our partners - And you can send us an email at [th@aista.com](mailto:th@aista.com)
+is a services we are providing for our partners - And you can send us an email at [info@aista.com](mailto:info@aista.com)
 if you want to start the discussion in these regards. Our philosophy is that the foundation of our success
 is our clients' success and happiness. When you sleep at night, we sleep at night ... ;)

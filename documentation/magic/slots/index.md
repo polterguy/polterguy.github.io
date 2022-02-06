@@ -207,7 +207,7 @@ signal
    id:int:3
    public_key:MIIBIjANBxyz
    domain:"http://localhost:5000"
-   email:th@aista.com
+   email:info@aista.com
    enabled:bool:true
 ```
 

@@ -75,7 +75,7 @@ architecture is a must, and we're looking for an autonomous developer, able to t
 cases and business requirements into working solid code. If you have the _"entrepreneural spirit"_,
 and working with Open Source gives you a rush, and products used indirectly by millions of people
 on a daily basis turns you on, we would love to talk with you. Contact our CEO
-[Thomas Hansen](mailto:th@aista.com) if this sounds interesting.
+[Thomas Hansen](mailto:info@aista.com) if this sounds interesting.
 
 ## About the website design
 
