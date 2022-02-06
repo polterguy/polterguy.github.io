@@ -1,10 +1,10 @@
 ---
-title: Magic's CRUD generator
-description: Magic allows you to automatically generate backend HTTP endpoints, both CRUD endpoints wrapping any database of your choosing, SQL based endpoints where you supply some arbitrary SQL, in addition to fully fledged frontends accessing your automatically generated backend.
+title: Create CRUD web apps by clicking a button
+description: With Magic you can create CRUD apps by simply clicking a button. Magic will automatically figure out how your database looks like, create the correct endpoints, adding arguments automatically, allowing you to filter, sort, and page while retrieving data from your database.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-backend-crud.jpg"
 ---
 
-# Magic's backend CRUD generator
+# Create CRUD web apps by clicking a button
 
 The crudifier component allows you to automatically generate code, either by wrapping your database
 with HTTP CRUD endpoints, and/or create HTTP endpoints based upon SQL statements, and/or create

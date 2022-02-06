@@ -1,10 +1,10 @@
 ---
-title: Backend CRUD HTTP API generator
-description: Magic's integrated HTTP API backend CRUD generator allows you to create web API endpoints wrapping any database you wish by simply clicking a button.
+title: Create an HTTP CRUD web API in 1 second
+description: The backend CRUD generator allows you to create a CRUD API wrapping your database in seconds. Magic will read meta data from your database, and automatically create all required code for you.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-backend-crud.jpg"
 ---
 
-# Backend crudifier component
+# Create an HTTP CRUD web API in 1 second
 
 This component allows you to automatically generate an HTTP CRUD web API wrapping your database. This
 component is the heart of the Low-Code and Automation parts of Magic, and allows you to generate

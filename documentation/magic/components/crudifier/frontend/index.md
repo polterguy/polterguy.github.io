@@ -1,10 +1,10 @@
 ---
-title: Backend frontend generator
-description: Magic allows you to create a frontend by wrapping your existing backend by simply clicking a button, priving optional settings for how your frontend should be generated, such as colour profile, etc.
+title: Create a web app frontend in 1 second
+description: After having automatically generated your backend Magic can also create your frontend in 1 second by reading meta information from your backend and automatically generate a frontend wrapping your backend.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-frontend-crud.jpg"
 ---
 
-# Frontend crudifier component
+# Create a web app frontend in 1 second
 
 This component allows you to automatically generate a frontend wrapping your previously generated backend.
 The idea of the process is that it provides you with a starting place for your own frontend code, allowing

@@ -1,10 +1,10 @@
 ---
-title: The Magic sockets component
-description: Magic contains integrated web sockets support, allowing you to easily manage and administrate your socket connections, in addition to debugging and developing modules taking advantage of web sockets.
+title: Web Sockets and SignalR
+description: Using web sockets is easily achieved with Magic by simply clicking a button. Hyperlambda contains native support for web sockets through SignalR, and allows you to use this as you see fit in your own apps literally in seconds.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-sockets.jpg"
 ---
 
-# The Magic sockets component
+# Web Sockets and SignalR
 
 The sockets component allows you to subscribe to and publish socket messages. This is useful when
 debugging and developing modules that somehow is using the integrated socket slots from Magic.
