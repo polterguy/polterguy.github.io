@@ -1,6 +1,7 @@
 ---
 title: Hyperlambda Hello World
 description: This article helps you to manually create a Hello World type of Hyperlambda app, and gives you an understanding of the basics of Hyperlambda, and how it allows for you to create more with less.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-hello.jpg"
 ---
 
 # Hyperlambda Hello World

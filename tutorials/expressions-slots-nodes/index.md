@@ -1,6 +1,7 @@
 ---
 title: Expressions, slots, and nodes in Hyperlambda
 description: In this article you will learn the three most fundamental building blocks of Hyperlambda, being expressions, Hyperlambda's syntax, and how these relate to Hyperlambda's C# code, more specifically Magic's Node class.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-expressions.jpg"
 ---
 
 # Expressions, slots, and nodes in Hyperlambda

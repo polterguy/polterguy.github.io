@@ -1,6 +1,7 @@
 ---
 title: Loops and branching in Hyperlambda
 description: In this article you will learn how to loop and apply conditional branching in Hyperlambda, in addition to how equality comparison slots works, and how to leverage these in your own Hyperlambda code.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-loops.jpg"
 ---
 
 # Loops and branching in Hyperlambda

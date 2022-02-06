@@ -1,6 +1,7 @@
 ---
 title: The Hyperlambda task scheduler
 description: This article shows you how to create, persist, and schedule Hyperlambda tasks, allowing you to create scheduled Hyperlambda jobs, periodically executing, and/or trigger execution of serialised Hyperlambda invocations due to some event.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-tasks.jpg"
 ---
 
 # The Hyperlambda task scheduler

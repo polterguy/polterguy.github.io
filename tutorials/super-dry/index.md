@@ -1,6 +1,7 @@
 ---
 title: Interceptors and exception handlers in Hyperlambda
 description: This article shows you how to create Super DRY code using Hyperlambda, by leveraging interceptors and exception handlers, allowing you to create your functionality without having to repeat your code.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-exceptions-interceptors.jpg"
 ---
 
 # Interceptors and exception handlers in Hyperlambda

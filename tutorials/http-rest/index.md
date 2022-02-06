@@ -1,6 +1,7 @@
 ---
 title: HTTP invocations from Hyperlambda
 description: In this article we help you understand Hyperlambda's and Magic's HTTP capabilities, by playing around with the HTTP slots in Hyperlambda, allowing you to invoke external HTTP JSON endpoints, to retrieve data from 3rd parties, and/or integrate your code with other systems.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-http.jpg"
 ---
 
 # HTTP invocations from Hyperlambda

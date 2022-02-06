@@ -1,6 +1,7 @@
 ---
 title: Create a Web API with SQL and Hyperlambda
 description: This article shows you how you can create a complete HTTP Web API using nothing but SQL. This is possible since Magic and Hyperlambda completely abstracts away everything related to the wiring of your endpoint code, leaving only the SQL parts for you.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-sql.jpg"
 ---
 
 # Create a Web API with SQL and Hyperlambda

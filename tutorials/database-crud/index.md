@@ -1,6 +1,7 @@
 ---
 title: Automatically generate a CRUD Web API using Hyperlambda
 description: In this article we generate a Hyperlambda CRUD web API using Magic, for then to analyse the generated code, providing you with the knowledge required to understand how Magic is doing its Magic.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-crud.jpg"
 ---
 
 # Automatically generate a CRUD Web API using Hyperlambda

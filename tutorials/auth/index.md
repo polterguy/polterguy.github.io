@@ -1,6 +1,7 @@
 ---
 title: Authentication and authorisation in Magic and Hyperlambda
 description: This tutorial helps you understand how the authentication and authorisation mechanisms in Magic and Hyperlambda works. It also shows you how to create and administrate your users, and touches upon JWT a little bit.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-auth.jpg"
 ---
 
 # Authentication and authorisation in Magic and Hyperlambda

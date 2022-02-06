@@ -1,6 +1,7 @@
 ---
 title: Registration and authentication in Magic
 description: This article walks you through how to use the integrated registration endpoints and helpers in Magic, to create your own frontend registration component, allowing you to verify user's email address, implement forgot password forms, etc
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-registering.jpg"
 ---
 
 # Registration and authentication in Magic

@@ -1,6 +1,7 @@
 ---
 title: Cryptographically secured HTTP lambda invocations
 description: In this article we show you how to cryptographically sign your Hyperlambda for then to transmit it to another server, having that server securely execute your Hyperlambda, without compromising security in the process.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-crypto.jpg"
 ---
 
 # Cryptographically secured HTTP lambda invocations

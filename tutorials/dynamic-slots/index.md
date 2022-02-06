@@ -1,6 +1,7 @@
 ---
 title: Dynamic Hyperlambda slots
 description: In this article you will learn how to create dynamic Hyperlambda slots, using nothing but Hyperlambda, for then to reuse your slots in other parts of your Hyperlambda, almost the same way a function works in a more traditional programming language.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-dynamic-slots.jpg"
 ---
 
 # Dynamic Hyperlambda slots

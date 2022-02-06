@@ -1,6 +1,7 @@
 ---
 title: Getting Started with Magic and Hyperlambda
 description: This tutorial gets you started with Magic and Hyperlambda, helping you install it locally, using either Docker or the source code directly, for then to walk you through how to automatically generate your HTTP API backend wrapping your SQL database.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-getting-started.jpg"
 ---
 
 # Getting started with Magic and Hyperlambda

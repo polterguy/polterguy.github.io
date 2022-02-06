@@ -1,6 +1,7 @@
 ---
 title: Sending emails with Hyperlambda and Magic
 description: In this article we show you how you can use Magic and Hyperlambda to send emails, and how you can configure Magic to use an SMTP server of your chosing.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-send-email.jpg"
 ---
 
 # Sending emails with Hyperlambda and Magic
