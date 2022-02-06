@@ -1,6 +1,6 @@
 ---
 title: Magic middleware documentation
-description: In this article we will look at the Magic middleware, which is the parts wiring up Magic, allowing you to have authentication and authorisation for your modules, and also allows you to automate and remote large parts of your own Magic backend.
+description: The Magic middleware is the parts wiring up Magic, allowing you to have authentication and authorisation for your modules, and also allows you to automate and remote large parts of your own Magic backend.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-getting-started.jpg"
 ---
 
