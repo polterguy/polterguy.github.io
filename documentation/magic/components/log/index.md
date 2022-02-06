@@ -1,10 +1,14 @@
 
 # Magic log component
 
-The log component allows you to see your server's log. When an important event occurs in your
-Magic server, a log entry will typically be created describing the event. Examples of such events
-are when users are logging in, or an error occurs in the system for some reasons. You can also
-create log entries in your own Hyperlambda by using code resembling the following.
+The log component allows you to see your server's log. When an important event occurs in
+Magic, a log entry will typically be created describing the event. Examples of such events
+are when users are logging in, or an error occurs in the system for some reasons. Below you can
+see a screenshot of how the log component looks like.
+
+![Magic log](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/log.jpg)
+
+You can also create your own log entries in your own Hyperlambda by using code resembling the following.
 
 ```
 log.info:Something important happened
