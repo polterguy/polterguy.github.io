@@ -1,3 +1,8 @@
+---
+title: Hyperlambda assumptions to sanity check your system
+description: An assumption is basically an automatically generated integration test, similar to a unit test, in that it allows you to sanity check your system automatically, by having your system diagnose itself.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-assumptions.jpg"
+---
 
 # Assumptions component
 
