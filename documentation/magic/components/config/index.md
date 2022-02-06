@@ -1,5 +1,10 @@
+---
+title: Configuring Magic
+description: Magic allows you to easily configure everything in your backend by giving you access to modify your appsettings.json file as you see fit.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-configuration.jpg"
+---
 
-# Configuration component
+# Configuring Magic
 
 This component allows you to view and edit your server's configuration settings. You server's configuration
 is basically your _"appsettings.json"_ file, which is being used in all parts of the system to

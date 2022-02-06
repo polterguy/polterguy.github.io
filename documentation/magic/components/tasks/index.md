@@ -1,5 +1,10 @@
+---
+title: Persisted and scheduled Hyperlambda tasks
+description: Magic allows you to persist Hyperlambda snippets into your database, for then to schedule these snippets to execute whenever you want them to execute.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-tasks.jpg"
+---
 
-# Hyperlambda tasks
+# Persisted and scheduled Hyperlambda tasks
 
 The tasks component allows you to create and administrate persisted Hyperlambda tasks, and/or schedule
 tasks for executing, either in a repeating pattern somehow, or at an exact date and time in the future.
