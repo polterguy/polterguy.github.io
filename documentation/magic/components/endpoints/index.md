@@ -1,5 +1,10 @@
+---
+title: The Hyperlambda endpoints component
+description: This component allows you to view and invoke your Hyperlambda endpoints, similarly to how Swagger or Swashbuckle works, except with much more meta data available.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-endpoints.jpg"
+---
 
-# Endpoints component
+# The Hyperlambda endpoints component
 
 The endpoints component allows you to see all your HTTP endpoints, and also invoke these, similarly
 to how Swagger works. From your endpoints menu item you can search for, parametrise, and invoke

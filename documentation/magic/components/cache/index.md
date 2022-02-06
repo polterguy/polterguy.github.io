@@ -1,5 +1,10 @@
+---
+title: Your Magic server side cache
+description: The cache component allows you to view and administrate your server side cache, to purge items, and delete individual items.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-cache.jpg"
+---
 
-# Cache component
+# Your Magic server side cache
 
 The cache component allows you to view and manage your server's cache. Magic's server
 cache is typically used to make sure that expensive operations are cached, preventing your
