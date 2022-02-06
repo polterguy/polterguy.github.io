@@ -1,3 +1,8 @@
+---
+title: Backend frontend generator
+description: Magic allows you to create a frontend by wrapping your existing backend by simply clicking a button, priving optional settings for how your frontend should be generated, such as colour profile, etc.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-frontend-crud.jpg"
+---
 
 # Frontend crudifier component
 
