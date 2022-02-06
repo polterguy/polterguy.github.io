@@ -6,7 +6,10 @@ og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/maste
 
 # Managing your profile and changing your password
 
-This component allows you to edit your profile, such as changing your user's pasword for instance.
+This component allows you to edit your profile, such as changing your user's pasword for instance. Below is a
+screenshot of how it looks like.
+
+![Changing password](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-profile.jpg)
 
 * [Back to middleware documentation](/documentation/magic/)
 * [Back to main documentation](/documentation/)
