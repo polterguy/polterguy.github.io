@@ -4,7 +4,6 @@ description: This article shows you how you can utilise Magic's log in your own 
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-getting-started.jpg"
 ---
 
-
 # Your Magic and Hyperlambda log component
 
 The log component allows you to see your server's log. When an important event occurs in
