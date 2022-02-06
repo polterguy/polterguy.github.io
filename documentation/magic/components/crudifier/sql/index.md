@@ -1,3 +1,8 @@
+---
+title: SQL endpoint generator
+description: With the SQL component you can create HTTP endpoints entirely in SQL, having Magic take care of everything else 100% automatically for you, such as authentication, authorisation, how to create your endpoint, URL of endpoint, etc.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-sql-crud.jpg"
+---
 
 # SQL crudifier component
 
