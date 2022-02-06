@@ -1,10 +1,10 @@
 ---
-title: Administrating roles in Magic
-description: Magic contains a role based authorisation system, allowing you to grant or deny access to its individual parts, by declaring which role is allowed to invoke some functionality.
+title: Administrating roles
+description: Magic's authorisation system is based upon role based access, where you grant access to some parts of your system based upon roles, for then to associate users with these roles somehow.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-auth.jpg"
 ---
 
-# Administrating roles in Magic
+# Administrating roles
 
 This component allows you to manage and administrate roles in your system, and/or
 create new roles, fine tuning access to your backend through a role based access system.

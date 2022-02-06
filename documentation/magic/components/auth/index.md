@@ -13,5 +13,7 @@ of how it looks like.
 
 ![Authentication and authorisation in Magic](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/auth.jpg)
 
+* [Administrating users](/documentation/magic/components/auth/users/)
+* [Administrating roles](/documentation/magic/components/auth/roles/)
 * [Back to middleware documentation](/documentation/magic/)
 * [Back to main documentation](/documentation/)

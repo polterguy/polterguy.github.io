@@ -1,10 +1,10 @@
 ---
-title: Managing your profile and changing your password
-description: This component allows you to change your password and manage your profile.
+title: Managing your profile
+description: The profile component allows you to change your user's password, and/or other parts related to your user account.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-profile.jpg"
 ---
 
-# Managing your profile and changing your password
+# Managing your profile
 
 This component allows you to edit your profile, such as changing your user's pasword for instance. Below is a
 screenshot of how it looks like.
