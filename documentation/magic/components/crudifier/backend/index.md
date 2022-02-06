@@ -1,3 +1,8 @@
+---
+title: Backend CRUD HTTP API generator
+description: Magic's integrated HTTP API backend CRUD generator allows you to create web API endpoints wrapping any database you wish by simply clicking a button.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-backend-crud.jpg"
+---
 
 # Backend crudifier component
 

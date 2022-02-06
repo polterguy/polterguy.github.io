@@ -1,3 +1,8 @@
+---
+title: Cryptography in Magic
+description: Using cryptography in Magic is as easy as clicking a button. The integrated cryptography component allows you to easily create as many cryptography key pairs as you wish, and/or import public keys belonging to others, resulting in that you can securely communicate with anyone you wish.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-crypto.jpg"
+---
 
 # Cryptography component
 

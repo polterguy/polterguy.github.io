@@ -1,5 +1,10 @@
+---
+title: The Bazaar, Magic's integrated AppStore
+description: With the Bazaar you can rapidly purchase and install backend micro services on the fly, without interrupting your production environment. Click a button, pay the purchase price, and voila! You've got a new micro service solving some problem related to your domain.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-bazaar.jpg"
+---
 
-# Bazaar component
+# The Bazaar, Magic's integrated AppStore
 
 The bazaar component is Magic's integrated _"AppStore"_, and allows you to install backend micro
 services on the fly, without interrupting normal usage. It resolves towards Aista's Bazaar, which
