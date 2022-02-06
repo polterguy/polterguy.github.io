@@ -1,5 +1,10 @@
+---
+title: The Magic sockets component
+description: Magic contains integrated web sockets support, allowing you to easily manage and administrate your socket connections, in addition to debugging and developing modules taking advantage of web sockets.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-sockets.jpg"
+---
 
-# Sockets component
+# The Magic sockets component
 
 The sockets component allows you to subscribe to and publish socket messages. This is useful when
 debugging and developing modules that somehow is using the integrated socket slots from Magic.

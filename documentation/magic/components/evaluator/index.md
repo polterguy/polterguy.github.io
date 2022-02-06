@@ -1,5 +1,10 @@
+---
+title: Magic's immediate mode Hyperlambda evaluator
+description: With Magic you can immediately execute any arbitrary Hyperlambda for then to see its result immediately. This feature allows you to create snippets of Hyperlambda code allowing you to administrate and manage your Magic server.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-send-email.jpg"
+---
 
-# Evaluator
+# Magic's immediate mode Hyperlambda evaluator
 
 The evaluator allows you to play with Hyperlambda code, and execute your code in _"immediate mode"_,
 for then to see the result of your execution immediately. The evaluator is also a nice starting

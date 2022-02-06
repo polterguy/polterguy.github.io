@@ -1,5 +1,10 @@
+---
+title: Magic's Hyper IDE
+description: Hyper IDE is a fully fledged integrated development environment, giving you most important features from other IDEs, except it of course does 95% of your job automatically due to the CRUD and Low-Code features Magic provides out of the box.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-getting-started.jpg"
+---
 
-# Hyper IDE
+# Magic's Hyper IDE
 
 This is your _"goto component"_ when you want to create your own modules using Magic. It's a fully
 fledged web based IDE or Integrated Development Environment, allowing you to edit your code,

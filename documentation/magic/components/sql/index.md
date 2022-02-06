@@ -1,5 +1,10 @@
+---
+title: Magic's integrated SQL workbench
+description: Magic contains an integrated SQL workbench component, allowing you to execute any arbitrary SQL, for then to immediately see its result.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-sql-component.jpg"
+---
 
-# SQL component
+# Magic's integrated SQL workbench
 
 The SQL component allows you to execute any SQL towards your database of choice. This component also
 allows you to export the result of some SQL to a CSV file, in addition to saving frequently used

@@ -1,5 +1,10 @@
+---
+title: Magic's CRUD generator
+description: Magic allows you to automatically generate backend HTTP endpoints, both CRUD endpoints wrapping any database of your choosing, SQL based endpoints where you supply some arbitrary SQL, in addition to fully fledged frontends accessing your automatically generated backend.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-backend-crud.jpg"
+---
 
-# Crudifier component
+# Magic's backend CRUD generator
 
 The crudifier component allows you to automatically generate code, either by wrapping your database
 with HTTP CRUD endpoints, and/or create HTTP endpoints based upon SQL statements, and/or create
