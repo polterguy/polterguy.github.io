@@ -1,10 +1,10 @@
 ---
-title: Hyperlambda assumptions to sanity check your system
-description: An assumption is basically an automatically generated integration test, similar to a unit test, in that it allows you to sanity check your system automatically, by having your system diagnose itself.
+title: Automatically generated integration/unit tests
+description: Magic allows you to automatically generate unit tests, or integration tests. The assumptions component allows you to automatically run all such tests to sanity check your system's health.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-assumptions.jpg"
 ---
 
-# Assumptions component
+# Automatically generated integration/unit tests
 
 The assumptions component allows you to easily sanity check your system, providing you with a
 diagnostic tool, ensuring that your system is functioning as it should. An assumption is basically

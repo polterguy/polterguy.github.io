@@ -1,19 +1,21 @@
 ---
-title: Your Magic and Hyperlambda log component
-description: This article shows you how you can utilise Magic's log in your own Hyperlambda code, easily allowing you to monitor how your Magic backend is doing and catching errors and security issues.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-getting-started.jpg"
+title: Your Magic log
+description: The log component allows you to browse your server side log items, verifying your system is optimally functioning and healthy, and/or drill down to see errors occurring in your system.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-log.jpg"
 ---
 
-# Your Magic and Hyperlambda log component
+# Your Magic log
 
 The log component allows you to see your server's log. When an important event occurs in
 Magic, a log entry will typically be created describing the event. Examples of such events
-are when users are logging in, or an error occurs in the system for some reasons. Below you can
+are when users are logging in, or errorors occuring in the system for some reasons. Below you can
 see a screenshot of how the log component looks like.
 
 ![Magic log](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/log.jpg)
 
-You can also create your own log entries in your own Hyperlambda by using code resembling the following.
+Notice, as you scroll to the bottom of your log, it will automatically retrieve more items from your backend,
+giving you the ability to rapidly scroll down to the time period you want to view. You can also create your
+own log entries in your own Hyperlambda by using code resembling the following.
 
 ```
 log.info:Something important happened

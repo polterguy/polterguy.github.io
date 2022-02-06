@@ -1,10 +1,10 @@
 ---
-title: The Hyperlambda endpoints component
-description: This component allows you to view and invoke your Hyperlambda endpoints, similarly to how Swagger or Swashbuckle works, except with much more meta data available.
+title: Browsing your HTTP endpoints
+description: Browsing your HTTP endpoints is easy in Magic with the integrated 'Swagger component' that comes with Magic out of the box. This component also allows you to invoke your endpoints directly, with any payload/arguments you wish, to see the result of your invocation immediately.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-endpoints.jpg"
 ---
 
-# The Hyperlambda endpoints component
+# Browsing your HTTP endpoints
 
 The endpoints component allows you to see all your HTTP endpoints, and also invoke these, similarly
 to how Swagger works. From your endpoints menu item you can search for, parametrise, and invoke
