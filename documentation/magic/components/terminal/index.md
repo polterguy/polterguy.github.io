@@ -1,5 +1,10 @@
+---
+title: Magic's integrated terminal/bash component
+description: The terminal component allows you to execute any BASH commands towards your backend server you wish.
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-terminal.jpg"
+---
 
-# Terminal component
+# Magic's integrated terminal/bash component
 
 The terminal component allows you to directly access your backend server through an interface
 wrapping your server's native bash/terminal/shell. This is useful if you for some
