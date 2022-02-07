@@ -1,7 +1,7 @@
 ---
 title: Create your cryptography key pair
 description: Magic needs a cryptography key pair for some of its operations, to encrypt data when communicating with others, and/or also cryptographically sign payloads to prove the origins of payloads.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-crypto.jpg"
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-setup-crypto.jpg"
 ---
 
 # Create your cryptography key pair
