@@ -18,5 +18,6 @@ result in that your server becomes erronously configured, resulting in that your
 In addition to that if you edit your server's configuration erronously, you might open up your server
 for malicious adversaries, gaining access to your system.
 
+* [Setup, create your Magic database](/documentation/magic/components/config/setup-database/)
 * [Back to middleware documentation](/documentation/magic/)
 * [Back to main documentation](/documentation/)
