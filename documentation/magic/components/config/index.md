@@ -20,5 +20,6 @@ for malicious adversaries, gaining access to your system.
 
 * [Setup; Create your Magic database](/documentation/magic/components/config/setup-database/)
 * [Setup; CRUDify your Magic database](/documentation/magic/components/config/crudify/)
+* [Setup; Create your cryptography key pair](/documentation/magic/components/config/crypto/)
 * [Back to middleware documentation](/documentation/magic/)
 * [Back to main documentation](/documentation/)
