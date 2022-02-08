@@ -84,7 +84,7 @@ hundreds of different frameworks, and/or programming languages, allowing you to 
 to socket messages in Angular, ReactJS, Swift and Java. Which library you'll need for your
 client depends upon which programming language, and/or framework you're using in your client code.
 [Here](/tutorials/web-sockets/) you can find a tutorial building a chat client using Magic's socket
-functionality and using Angular as the frontend framework.
+functionality in addition to Angular as the frontend framework.
 
 * [Back to middleware documentation](/documentation/magic/)
 * [Back to main documentation](/documentation/)
