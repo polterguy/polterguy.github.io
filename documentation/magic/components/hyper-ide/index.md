@@ -80,5 +80,12 @@ taking care of deleting old files, and/or creating its data folder for you, allo
 code to invoke this endpoint using `multipart/form-data` HTTP requests to automatically upload files to
 your server.
 
+## Use your IDE from your tablet, and/or phone
+
+Yup, Hyper IDE is 100% responsive, and although we don't recommend it, it *is* possible to use Hyper IDE
+from your phone, assuming your phone has a modern browser. Maybe your phone isn't the best device to create
+software from, but actually being able to use your IDE from a tablet, and/or your phone for emergencies is
+something we take great pride in delivering.
+
 * [Back to middleware documentation](/documentation/magic/)
 * [Back to main documentation](/documentation/)
