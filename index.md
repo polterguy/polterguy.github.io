@@ -12,10 +12,28 @@ by clicking a button. It works by automatically wrapping your existing database 
 for then to generate an Angular frontend for you based upon your Web API.
 
 Magic Cloud is 100% open source, and you can freely use it in your proprietary (closed source) projects. Magic
-supports MySQL, Microsoft SQL Server, and PostgreSQL. Magic contains its own DSL called Hyperlambda, similar
-to YAML in structure, allowing you to _"declare"_ your logic using syntax resembling that of YAML. This makes it
-a perfect _"first programming"_ language, due to that it's an extremely high level abstraction, eliminating most
-of the problems from traditional programming languages.
+supports MySQL, Microsoft SQL Server, and PostgreSQL, in addition to NoSQL. Magic contains its own DSL called
+Hyperlambda, similar to YAML in structure, allowing you to _"declare"_ your logic using syntax resembling that
+of YAML. This makes it a perfect _"first programming"_ language, due to that it's an extremely high level
+abstraction, eliminating most of the problems from traditional programming languages. Below is a screenshot of
+[Hyper IDE](/documentation/magic/components/hyper-ide/), a fully fledged web based IDE, allowing you to create
+your web apps by simply clicking a button.
+
+![Magic's Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/folder-structure.jpg)
+
+In addition to Hyper IDE, Magic contains a web based SQL _"workbench"_ allowing you to execute SQL towards
+your database of choice, integrated audit logging, the Bazar which is an integrated _"AppStore"_ for your
+server allowing you to install micro services on the fly, a web based terminal, and literally everything
+you need from a modern software development platform. This comes in _addition_ to the fact that Magic
+_automatically creates 83% of your backend code in seconds_, without you even having to lift a finger.
+On top of this, Magic also automatically creates _"assumptions"_ for you, that are high level integration tests.
+Think _"automatically generated unit tests"_ to understand the idea here. Below is a screenshot of the assumptions
+component in Magic.
+
+![Assumptions](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/assumptions.jpg)
+
+Magic Cloud is Open Source and the copyright of Aista Ltd, a Cypriot based company that actively maintains and supports
+Magic Cloud. You can contact Aista [here](mailto:info@aista.com).
 
 * [Getting Started](/tutorials/getting-started/)
 * [Tutorials](/tutorials/)
