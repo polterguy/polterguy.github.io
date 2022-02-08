@@ -1163,14 +1163,14 @@ alternative log service implementations allowing you to among other things persi
 into a NoSQL/CQL based database of your choice, such as ScyllaDB or Cassandra. What features
 the log has varies from which service is used for persisting log items.
 
-### GET magic/system/log/count-items
+### GET magic/system/log/count
 
 This endpoint counts the total number of log items in your backend. The endpoint can only be invoked by
 a root user.
 
 **Notice** - This endpoint is not intended for you to consume in your own code.
 
-### GET magic/system/log/log-item
+### GET magic/system/log/get
 
 This endpoint returns the specified **[id]** log item, including its meta data. The endpoint can
 only be invoked by a root user. The endpoint requires the following query argument(s).
@@ -1179,7 +1179,7 @@ only be invoked by a root user. The endpoint requires the following query argume
 
 **Notice** - This endpoint is not intended for you to consume in your own code.
 
-### GET magic/system/log/log-items
+### GET magic/system/log/list
 
 This endpoint returns log items from your backend, and can optionally allow you to page with the
 following query parameters.
@@ -1541,7 +1541,7 @@ by a root user.
 
 **Notice** - This endpoint is not intended for you to consume in your own code.
 
-### GET magic/system/endpoints/assumptions
+### GET magic/system/diagnostics/assumptions
 
 This endpoint returns all assumptions associated with the specified **[verb]** **[endpoint]**
 combination. This endpoint can only be invoked by a root user. The endpoint requires the following
@@ -1552,7 +1552,7 @@ query argument(s).
 
 **Notice** - This endpoint is not intended for you to consume in your own code.
 
-### GET magic/system/endpoints/endpoints
+### GET magic/system/endpoints/list
 
 This endpoint returns all endpoints in the system, their meta data such as description, input arguments,
 and resulting response if possible. The endpoint can only be invoked by a root user. The endpoints requires
