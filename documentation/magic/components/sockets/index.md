@@ -77,8 +77,12 @@ the _"name"_ parts of your message, and paste the following into its _"payload"_
 
 If you publish the above message once more, but this time only to the group _"group1"_, you will
 _not_ be notified. This is because your user is not a member of the _"group1"_ group. Roles and
-users authorisation works similarly, but you can only choose _one_ authorisation mechanism, and/or
-entirely leave authorisation out ensuring that everyone subscribing to your messages will be notified.
+users authorisation works similarly, but you can only choose _one_ authorisation mechanism, or
+entirely leave authorisation out, ensuring that everyone subscribing to your messages will be notified.
+Magic's socket library is built on top of SignalR, which contains client side libraries for literally
+hundreds of different frameworks, and/or programming languages, allowing you to easily subscribe
+to socket messages in Angular, ReactJS, Swift and Java. Which library you'll need for your
+client depends upon which programming language, and/or framework you're using in your client code.
 
 * [Back to middleware documentation](/documentation/magic/)
 * [Back to main documentation](/documentation/)
