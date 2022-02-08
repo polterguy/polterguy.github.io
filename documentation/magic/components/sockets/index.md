@@ -82,7 +82,7 @@ entirely leave authorisation out, ensuring that everyone subscribing to your mes
 Magic's socket library is built on top of SignalR, which contains client side libraries for literally
 hundreds of different frameworks, and/or programming languages, allowing you to easily subscribe
 to socket messages in Angular, ReactJS, Swift or Java. Which library you'll need for your
-client depends upon which programming language, and/or framework you're using in your client code.
+client depends upon which programming language, and/or framework you're using to build your client.
 [Here](/tutorials/web-sockets/) you can find a tutorial building a chat client using Magic's socket
 functionality in addition to Angular as the frontend framework.
 
