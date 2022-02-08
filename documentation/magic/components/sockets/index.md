@@ -36,7 +36,7 @@ with the payload from the parts of my Hyperlambda that published the message. If
 a _"howdy.world"_ message though, my code will _not_ be invoked, and I will _not_ be notified of
 the message. This creates a communication channel through which my backend code can _"push"_ messages
 to my frontend code, as long as the client and the backend agrees upon the name of the message(s)
-published.
+published, or agrees upon which _"channel"_ to publish messages over.
 
 ### Authorisation
 
