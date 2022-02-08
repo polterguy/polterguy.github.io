@@ -43,7 +43,44 @@ illustrating this.
 Above you can see how the _"Authorization"_ object for that particular endpoint has the value of _"root, admin"_
 implying only root users and admin users are allowed to invoke it. If a user not belonging to any
 of the previously mentioned roles invokes the endpoint, and exception will be thrown, and the rest
-of your Hyperlambda file will not execute.
+of your Hyperlambda file will not execute. You can also retrieve the access rights associations
+for all endpoints in the system from your own code by invoking the `magic/system/auth/endpoints`
+endpoint. This endpoint does not require authentication or authorisation, but returns all
+access rights associations for every single endpoint in your backend, allowing you to create
+frontend authorisation guards, dynamically building your frontend UI, according to which
+endpoints the user is legally allowed to invoke, which again of course is determined by
+what role(s) the user belongs to. The return value from this endpoint will resemble the following.
+
+```json
+[
+  {
+    "path": "magic/foo/bar1",
+    "verb": "get"
+  },
+  {
+    "path": "magic/foo/bar2",
+    "verb": "get",
+    "auth": [
+      "root",
+      "admin"
+    ]
+  },
+  {
+    "path": "magic/foo/bar3",
+    "verb": "post",
+    "auth": [
+      "*"
+    ]
+  }
+]
+```
+
+In the above example the first endpoint can be invoked by anyone, including a user who is not authenticated
+at all. While the second endpoint can only be invoked by _"admin"_ or _"root"_ users. The third endpoint
+can be invoked by any user, but the user must be authenticated to invoke the endpoint. Notice, the `auth/endpoints`
+endpoint caches its result on the server for 5 minutes, implying if you create new endpoints, and/or change
+the roles requirements for an endpoint, you'll either have to wait 5 minutes before the changes takes effect,
+or explicitly purge your server side cache.
 
 * [Back to middleware documentation](/documentation/magic/)
 * [Back to main documentation](/documentation/)
