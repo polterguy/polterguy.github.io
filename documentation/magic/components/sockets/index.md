@@ -42,7 +42,8 @@ published, or agrees upon which _"channel"_ to publish messages over.
 
 The above results in a problem, which is that it allows anybody with knowledge about the name of
 your _"channel"_ to subscribe to that channel and be notified every time messages are published
-in the channel. The way this is solved in Magic is by creating a whole range of alternatives for
+in the channel. Socket messages of course might contain sensitive information, not intended for
+all to see. The way this is solved in Magic is by creating a whole range of alternatives for
 autorisation related to publishing messages. What this implies is that the backend needs to choose
 which type of authorisation it wants to require from clients subscribing to messages, and only
 if the client fulfills the authorisation requirements the backend requires, the client will be
