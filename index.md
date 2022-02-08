@@ -32,7 +32,15 @@ component in Magic.
 
 ![Assumptions](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/assumptions.jpg)
 
-Magic Cloud is Open Source and the copyright of Aista Ltd, a Cypriot based company that actively maintains and supports
+In addition to the above, Magic Cloud also contains its own integrated _"Swagger"_ component, allowing you
+to instantly invoke your HTTP endpoints, immediately after having created your code. Below is a screenshot.
+
+![Endpoints](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/endpoints.jpg)
+
+All in all, Aista Magic Cloud is your one stop shop for _everything_ related to web application development,
+allowing you to generate 80% of your web application's code 100% automatically, by simply clicking a button.
+And more importantly, Magic is Open Source, Free Software, and free of charge to use in your own projects.
+Magic Cloud is the copyright of Aista Ltd, a Cypriot based company that actively maintains and supports
 Magic Cloud. You can contact Aista [here](mailto:info@aista.com).
 
 * [Getting Started](/tutorials/getting-started/)
