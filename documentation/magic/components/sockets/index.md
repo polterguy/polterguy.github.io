@@ -46,8 +46,9 @@ in the channel. Socket messages of course might contain sensitive information, n
 all to see. The way this is solved in Magic is by creating a whole range of alternatives for
 autorisation related to publishing messages. What this implies is that the backend needs to choose
 which type of authorisation it wants to require from clients subscribing to messages, and only
-if the client fulfills the authorisation requirements the backend requires, the client will be
-notified. There are 3 levels of authorisation you can apply when publishing a socket message.
+if the client fulfills the authorisation requirements the backend has associated with the message
+as it is publishing the message, the client will be notified of the new message, getting access
+to its payload. There are 3 levels of authorisation you can apply when publishing a socket message.
 
 * __[roles]__ - Only subscribers belonging to one of the comma separated roles will be notified
 * __[groups]__ - Only subscribers being members of one of the comma separated groups will be notified
