@@ -11,7 +11,7 @@ is basically your _"appsettings.json"_ file, which is being used in all parts of
 retrieve configuration settings, such as for instance when email slots are sending emails, etc.
 Below is a screenshot of the component.
 
-![Configuring Magic](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/configuring-smtp.jpg)
+![Configuring Magic](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/config-component.jpg)
 
 Notice, you should be careful as you edit your server's configuration settings, since this might
 result in that your server becomes erronously configured, resulting in that your system stops working -
