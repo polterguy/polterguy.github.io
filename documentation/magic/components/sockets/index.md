@@ -52,7 +52,7 @@ to its payload. There are 3 levels of authorisation you can apply when publishin
 
 * __[roles]__ - Only subscribers belonging to one of the comma separated roles will be notified
 * __[groups]__ - Only subscribers being members of one of the comma separated groups will be notified
-* __[users]__ - Only subscribers having a (valid) username from one of the comma separated list of usernames will be notified
+* __[users]__ - Only subscribers having authenticated and with a username from one of the comma separated list of usernames will be notified
 
 In practice what this implies, is that you have to choose _one_ (or zero) of the above authorisation
 schemes when publishing a socket message. Below is some Hyperlambda code illustrating publishing
