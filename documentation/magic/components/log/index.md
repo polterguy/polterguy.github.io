@@ -6,9 +6,9 @@ og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/maste
 
 # Your Magic log
 
-The log component allows you to see your server's log. When an important event occurs in
+The log component allows you to browse your server's log. When an important event occurs in
 Magic, a log entry will typically be created describing the event. Examples of such events
-are when users are logging in, or errorors occuring in the system for some reasons. Below you can
+are when users are logging in, or errors are occuring in the system for some reasons. Below you can
 see a screenshot of how the log component looks like.
 
 ![Magic log](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/log.jpg)
@@ -43,6 +43,13 @@ to avoid flooding your server with debug log entries. This implies that in your 
 all log entries, including your debug log entries - While in production Magic won't create log entries for
 debug log items.
 
+## Internals
+
+By default log items will be persisted into your magic _"log_entries"_ database table, but it is possible
+to persist log items into for instance a NoSQL based database.
+See [how to configure NoSQL logging here](/documentation/magic.data.cql/). If you use NoSQL logging however,
+you will not be able to view statistics in your dashboard due to how NoSQL database systems don't provide
+(good) mechanisms to aggregate and group data.
 
 * [Read more about logging from Hyperlambda](/documentation/magic.lambda.logging/)
 * [Back to middleware documentation](/documentation/magic/)

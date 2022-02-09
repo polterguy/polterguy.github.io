@@ -1646,7 +1646,7 @@ be invoked by anyone and requries the following argument(s).
 
 This endpoints is intended for you to consume from your own code.
 
-### POST magic/system/sockets/send-socket-message
+### POST magic/system/sockets/publish
 
 This endpoint allows you to publish a socket message. The endpoint requires the following
 payload.
@@ -1671,7 +1671,7 @@ The endpoint can only be invoked by a root user. The above arguments implies the
 
 **Notice** - This endpoint is not intended for you to consume in your own code.
 
-### GET magic/system/sockets/socket-users-count
+### GET magic/system/sockets/count-users
 
 Returns number of currently connected socket users, having subscribed to one or more messages from
 the backend. The endpoint optionally takes a **[filter]** query parameter, allowing you to filter
@@ -1682,7 +1682,7 @@ argument(s).
 
 **Notice** - This endpoint is not intended for you to consume in your own code.
 
-### GET magic/system/sockets/socket-users
+### GET magic/system/sockets/list-users
 
 Returns the currently connected socket users form the backend, optionally matching the optional **[filter]**
 argument. The endpoint can only be invoked by a root user. The endpoint requires the following argument(s).
