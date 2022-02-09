@@ -15,7 +15,7 @@ they work. Below is a screenshot of how the endpoints component typically looks 
 
 Notice, endpoints have a type declaration providing some sort of semantic type of information about
 your endpoint, and typically if this type declaration is _"internal"_, the endpoint is _not_
-intended for being consumed by your own code, but only for Magic to use internally itself.
+intended for being consumed by your own code, but only for internal usage by Magic.
 If you invoke one of your endpoints you can also create an _"assumption"_ about your invocation,
 which becomes the equivalent of an integration tests that's possible to _"replay"_ later,
 sanity checking some parts of your system, to verify your system is functioning properly.
@@ -23,6 +23,43 @@ Below is a screenshot of parametrising an endpoint invocation by adding argument
 you invoke it.
 
 ![Parametrising your endpoint invocation](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/endpoint-parameter.jpg)
+
+Magic will automatically determine what type your query parameter is, and show the correct form
+control for whatever type is required as input to your endpoint. This implies it will show checbox
+elements for boolean arguments, date time pickers for date and time arguments, etc. The component also
+support providing JSON payloads to POST and PUT endpoints, using syntax highlighting through CodeMirror.
+Below is a screenshot.
+
+![Parametrising your endpoint invocation](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/endpoint-post.jpg)
+
+## Assumptions
+
+When you have invoked an endpoint, Magic allows you to persist your invocation, its response, and automatically
+_"replay"_ your invocation later, resulting in an _"assumption"_.
+[Assumptions](/documentation/magic/components/assumptions/) are high level automated tests, that allows you to
+sanity check your system, providing similar mechanisms to what unit testing provides you with, only at
+a much higher abstraction level, since an assumption implies invoking an HTTP endpoint and verifying
+its response. Below is a screenshot of the process of creating an assumption after you have invoked your
+endpoint.
+
+![Creating an assumption](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/new-assumption.jpg)
+
+## Meta data
+
+As you are browing your endpoints, and expand individual items, you'll notice that each endpoint shows you a
+whole range of _"meta data"_. This gives you high level information about your endpoints, such as for instance.
+
+* Relative URL
+* HTTP verb
+* Type of endpoint
+* What endpoint consumes (JSON, Hyperlambda, form-data, etc)
+* What type of result the endpoint produces
+* Friendly description for your endpoint
+* Authorisation requiremenet for invoking endpoint, roles users must belong to in order to invoke the endpoint
+* Etc, etc, etc
+
+This information is retrieved directly from your Hyperlambda files, and is just one of those things
+you get _"for free"_ out of your Magic box.
 
 * [Back to middleware documentation](/documentation/magic/)
 * [Back to main documentation](/documentation/)
