@@ -2,7 +2,7 @@
 # NoSQL based IO, caching, and logging adapters for Hyperlambda
 
 This project contains alternative NoSQL file system services, implementing `IFileService`, `IFolderService`, and
-`IStreamService`, allowing you to use as an interchangeable _"virtual file system"_ for cases where you want
+`IStreamService`, allowing you to use it as an interchangeable _"virtual file system"_ for cases where you want
 to have 100% stateless magic instances. This is important if you're using Magic in a Kubernetes cluster or
 something similar, load balancing invocations, virtually resolving files and folders towards a virtual file system.
 If you take this path you'll have to configure your _"appsettings.json"_ file such as illustrated further
@@ -14,19 +14,29 @@ details about how to configure these parts.
 ## Configuration
 
 The primary configuration for the project to apply for your _"appsettings.json"_ file can be found below. Notice,
-the IO, caching, and logging services requires you to use `generic` as your cluster name, and you cannot change this.
+although you can create as many NoSQL cluster connection settings as you wish, and use these in your own code,
+the IO, caching, and logging services requires you to use `generic` as your cluster name, and you cannot change
+this.
 
 ```json
 {
   "magic": {
     "cql": {
       "generic": {
-        "host": "127.0.0.1"
+        "host": "127.0.0.1",
+        "credentials": {
+          "username": "xxx",
+          "password": "xxx"
+        }
       }
     }
   }
 }
 ```
+
+**Notice** - The _"credentials"_ parts above are optional, and can be ommitted if you don't require
+authentication to connect to your database. You can also provide multiple hosts as contact points,
+by separating multiple IP addresses or hosts by a comma (,).
 
 The above configures the adapter to use `127.0.0.1` as the host for your contact point or cluster. To configure
 the adapter to store files and folders inside of its CQL based database, you can alternatively add something such
@@ -112,7 +122,8 @@ alter table log with default_time_to_live = 1209600;
 
 **Notice** - The above setting for TTL implies log items will be automatically evicted after 14 days,
 since 1,209,600 seconds implies 14 days. Depending upon your needs you might want to increase or decrease this
-setting.
+setting. However, to avoid exhausting your hard drive space over time on your server, we suggest you do _not_
+entirely remove the TTL setting.
 
 To use the alternative CQL based caching implementation you'll have to create your _"magic\_cache"_ keyspace and its
 _"cache"_ table as follows.
@@ -226,10 +237,11 @@ remove-nodes:x:../**/io.file.list-recursively/*
 
 ## Internals
 
-This project is created to be a multi-tenant solution, implying multiple users, and/or cloudlets can use the same physical
-database for both files, log entries and cache entries. However, this implies you are able to correctly resolve the 
+This project is created to be a multi-tenant solution, implying multiple users, and/or cloudlets, can use the same physical
+database for both files, log entries, and cache entries. However, this implies you are able to correctly resolve the 
 _"tenant"_ parts and the _"cloudlet"_ parts for all the above tables. How to achieve this is currently beyond the scope
-of this document.
+of this document, but our suggestion is to create some sort of `IRootResolver` service implementation that is dynamically
+created according to the `Host` HTTP header of requests.
 
 ## Project website
 

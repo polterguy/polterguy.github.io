@@ -53,19 +53,19 @@ instead of having to supply server configuration every time you invoke the slot,
 
 ```json
 {
-   "magic":{
-      "smtp":{
-        "host":"smtp.gmail.com",
-        "port":465,
-        "secure":true,
-        "username":"username@gmail.com",
-        "password":"gmail-password",
-        "from": {
-           "name":"John Doe",
-           "address":"john@doe.com"
-        }
+  "magic":{
+    "smtp":{
+      "host":"smtp.gmail.com",
+      "port":465,
+      "secure":true,
+      "username":"username@gmail.com",
+      "password":"gmail-password",
+      "from": {
+        "name":"John Doe",
+        "address":"john@doe.com"
       }
-   }
+    }
+  }
 }
 ```
 

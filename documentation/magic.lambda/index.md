@@ -941,6 +941,23 @@ since they result in unpredictable results. In theory passing in a node by refer
 the logic of the calling function, resulting in changing the code that is being executed, which obviously
 makes the code literally impossible to understand. Hence, be careful with the **[reference]** slot!
 
+### [get-first-value]
+
+Returns the _first_ non-null value resulting from evaluating its expression, and/or its children nodes.
+
+```
+.data1
+   foo1:bar1
+   foo2:bar2
+.data2:bar3
+get-first-value:x:@.data1/*
+   get-value:x:@.data2
+```
+
+This node returns only the first non-null value resulting from evaluating its expression, and/or its children
+nodes. This is useful when you for instance have arguments to some lambda object, but want to apply default
+values if the argument is not specified - And or want to have guarantees of that only a single value is returned.
+
 ### [get-context]
 
 This slot returns a context stack object, which is an object added to the stack using **[context]**.

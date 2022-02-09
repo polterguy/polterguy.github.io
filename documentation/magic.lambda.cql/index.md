@@ -55,7 +55,7 @@ You can add as many cluster connection points as you want to, and reference thes
 
 ## Project website
 
-The source code for this repository can be found at [github.com/polterguy/magic.lambda.cql](https://github.com/polterguy/magic.lambda.common), and you can provide feedback, provide bug reports, etc at the same place.
+The source code for this repository can be found at [github.com/polterguy/magic.lambda.cql](https://github.com/polterguy/magic.lambda.cql), and you can provide feedback, provide bug reports, etc at the same place.
 
 ## Quality gates
 
