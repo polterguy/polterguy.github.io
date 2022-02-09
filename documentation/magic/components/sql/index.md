@@ -17,7 +17,9 @@ snippet would look like in your SQL component.
 
 The SQL component also provides you with syntax highlighting, in addition to autocomplete on
 tables and columns that can be shown by clicking CTRL+SPACE or FN+CONTROL+SPACE on a Mac. Below
-is a screenshot of how it would look like if you toggle autocomplete.
+is a screenshot of how it would look like if you toggle autocomplete. Notice, it only shows you tables
+and columns within your currently selected database. If you don't find the tables you're looking for,
+make sure you have selected the correct database.
 
 ![SQL autocomplete](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-autocomplete.jpg)
 
@@ -27,6 +29,11 @@ in this component, your server might become unresponsive, and/or you may end up 
 server's memory. You can save your frequently used SQL statements as _"snippets"_ here similarly to
 how you can save frequently used Hyperlambda in your _"Evaluator"_ component.
 
+**Notice** - If you have some SQL Server script that creates a database, and/or contains _"go"_ keywords,
+you'll need to turn on _"Batch mode"_ to have Magic understand your SQL. If you click the _"Load"_ button
+you will also find several example _"create database"_ types of scripts, for each database type Magic supports.
+This allows you to create some database in your database type of choice, and play around with for instance
+the _"Crudifier"_ to generate web APIs automatically.
 
 * [Back to middleware documentation](/documentation/magic/)
 * [Back to main documentation](/documentation/)

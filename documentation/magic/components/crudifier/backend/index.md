@@ -13,6 +13,14 @@ the component.
 
 ![Backend CRUD generator](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg)
 
+If you use the crudifier on for instance the _"Sakila"_ database that comes with Magic out of the box,
+Magic will create more than 3,000 lines of Hyperlambda code for you automatically, resulting in some
+roughly 100 HTTP endpoints for you, providing you with every single CRUD operation towards every
+single table in your database - However, Magic can also crudify your existing databases. If you
+want to crudify your existing databases, you'll have to provide Magic with a connection strings
+that allows it to connect to your database. The latter is done through
+the [config](/documentation/magic/components/config/) component.
+
 To use the component you must first select a database. Then you can optionally configure the
 CRUD process for individual tables, such as configuring what URL your CRUD API should use, whether or
 not to turn on caching of HTTP GET endpoints, what authorisation requirements each endpoint should have,
