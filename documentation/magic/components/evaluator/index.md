@@ -20,5 +20,17 @@ If you create a Hyperlambda snippet you for some reasons wants to save for later
 Hyperlambda into your _"snippets"_ collection by clicking the _"Save"_ button, and giving your
 snippet a name.
 
+## Internals
+
+The evaluator will transmit your Hyperlambda to the server, where Magic will _"transpile"_ your Hyperlambda
+into a graph object, referencing .Net 6 CLR _"slots"_ implemented in C#, resulting in being able to dynamically
+execute code, and returning the result of the invocation to caller. In such a regard Hyperlambda resembles
+XML, XSLT and XPath, although with a much less confusing syntax, where executing a snippet of Hyperlambda
+returns a _"transformed"_ lambda object, which again is serialised as Hyperlambda and returned back to the
+client. This is why after having executed your Hyperlambda you can see its _"result"_ below your input
+CodeMirror instance, such as illustrated below.
+
+![Hyperlambda result](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/eval-result.jpg)
+
 * [Back to middleware documentation](/documentation/magic/)
 * [Back to main documentation](/documentation/)
