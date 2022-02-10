@@ -54,7 +54,7 @@ screenshot of this process.
 
 Yup, you heard us correct. With Hyper IDE you can create HTTP web API endpoints entirely using nothing
 but SQL. The process implies providing some SQL statement to Hyper IDE's crudifier, choose authorisation
-requirements, URL, and other dynamic settings, and have MNagic automatically generate an HTTP endpoints
+requirements, URL, and other dynamic settings, and have Magic automatically generate an HTTP endpoints
 wrapping your SQL inside of an HTTP endpoints. Below is a screenshot of the process.
 
 ![Create HTTP endpoints using SQL](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/generate-sql.jpg)
