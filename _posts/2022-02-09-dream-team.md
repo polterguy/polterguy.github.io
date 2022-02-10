@@ -7,7 +7,7 @@ og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/maste
 
 I've got the best software development team on the planet. If I ask my backend head of development
 to split the atom, his answer will be; _"Do you need it before lunch?"_ - And if ask my frontend team lead
-to do something that's never been done before, nobody knows how to do, and everybody says it's impossible,
+to do something that's never been done before, nobody knows how to do, and everybody says is impossible,
 her answer will be; _"Challenges! PARTY!!"_ However, instead of me using words to explain the difference,
 I'll let her work speak for me.
 
