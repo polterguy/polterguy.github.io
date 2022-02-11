@@ -22,7 +22,7 @@ Angular implementation, ReactJS implementation, etc.
 
 ## The Hollywood Design Pattern
 
-Sockets are typically based upon the [pub/sub design pattern](https://hackernoon.com/publish-subscribe-design-pattern-introduction-to-scalable-messaging-781k3tae). This pattern is often referred to as _"The Hollywood Design Pattern"_, because in Hollywood it's common to be told _"don't call us, we'll call you"_. The pub/sub design pattern also reverses the reponsibility, such that instead of your code invoking another function, you provide a _"callback"_ to the other party that the other party can use when it needs to call you.
+Sockets are typically based upon the [pub/sub design pattern](https://hackernoon.com/publish-subscribe-design-pattern-introduction-to-scalable-messaging-781k3tae). This pattern is often referred to as _"The Hollywood Design Pattern"_, because in Hollywood it's common to be told _"don't call us, we'll call you"_. The pub/sub design pattern also reverses the responsibility, such that instead of your code invoking another function, you provide a _"callback"_ to the other party that the other party can use when it needs to call you.
 
 > Don't call us, we'll call you!
 
