@@ -41,6 +41,6 @@ My advice would be to find a highly motivated software developer in your organis
 
 ## Shameless plug
 
-I am the CEO of Aista, and our flagship product is [Magic Cloud](/tutorials/getting-started/), which is
+I am the CEO of Aista, and our flagship product is [Magic Cloud](/tutorials/getting-started/). Magic is
 an open source low-code framework focused on CRUD and database web APIs. If you're curious about low-code,
 you are of course free to try out our product in your organisation.
