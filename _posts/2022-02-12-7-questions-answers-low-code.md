@@ -1,7 +1,7 @@
 ---
 layout: post
 author: thomas
-title: 7 questions and answers about Low-Code
+title: 7 Questions and Answers about Low-Code
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blogs/low-code-survey.jpg"
 ---
 
