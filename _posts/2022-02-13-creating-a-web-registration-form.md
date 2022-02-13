@@ -162,6 +162,9 @@ If you didn't already read it, to finish up understanding everything related to 
 you should probably read the article linked to below. How you'd go about creating your frontend of course,
 varies from framework to framework, and while we might go through these parts in future articles, you
 can probably find dozens of examples in these regards if you search for user registration and appends
-your favourite framework to your search query, such as Angular, React, or Swift.
+your favourite framework to your search query, such as Angular, React, or Swift. However, as you can
+clearly understand now, Magic eliminates an entire axiom related to user registration, implying probably
+its most difficult to understand axiom, being the server side parts, user administration, security,
+and all other server side parts related to registering users into your app.
 
 * [User registration internals](/tutorials/registering/)
