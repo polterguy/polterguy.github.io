@@ -27,8 +27,9 @@ looks like.
 
 ![Registering as a new user in Magic](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-registering.jpg)
 
-Notice, to allow for registrations in Magic you should probably setup your SMTP configuration settings.
-To accomplish this you can read [this article](/tutorials/registering/).
+[This article](/tutorials/registering/) describes how you can take advantage of the integrated
+registration features in Magic. However, you can also use the Magic dashboard registration component
+shown above to have others sign up to become users in your Magic server.
 
 * [Back to middleware documentation](/documentation/magic/)
 * [Back to main documentation](/documentation/)
