@@ -119,7 +119,7 @@ Magic's authentication and authorisation module builds upon [JWT](https://jwt.io
 and allows you to automatically verify JWT tokens Magic creates in most other server side frameworks. If
 you use the same hashing algorithm for your auth secrets, and you share your auth secret between Magic and
 your other backend web APIs, you will also ensure your users are automatically authorised as the same user
-in any other backend web API you choose to use in combination with Magic, as long you somehow pass the tokens
+in any other backend web API you choose to use in combination with Magic, as long as you somehow pass the tokens
 that Magic creates into your other web APIs. This allows you to use Magic as a _"Single Sign On"_ web API
 backend for any other backend projects you might have, ranging from PHP projects and Python projects, to .Net
 projects and Java projects. This allows you to manage and administrate your users from Magic's dashboard,
