@@ -16,9 +16,11 @@ screenshot of the evaluator component
 
 ![Evaluator component](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/eval-component.jpg)
 
-If you create a Hyperlambda snippet you for some reasons wants to save for later, you can save your
+If you create a Hyperlambda snippet you for some reason want to save for later, you can save your
 Hyperlambda into your _"snippets"_ collection by clicking the _"Save"_ button, and giving your
-snippet a name.
+snippet a name. This allows you to create snippets you need to periodically execute,
+and store these as your _"admin snippets"_, to rapidly execute snippets that somehow does something
+towards your server.
 
 ## Internals
 

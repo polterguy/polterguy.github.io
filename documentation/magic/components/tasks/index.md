@@ -22,7 +22,6 @@ tasks to be executed at some specific date and time in the future, and/or in a r
 The task scheduler will persist your tasks into its Magic's database in the table called _"tasks"_,
 in addition to your _"task\_due"_ table for schedules. This implies that even if your server for some
 reasons _"drops"_, and/or is rebooted, the tasks will automatically be re-scheduled as your server restarts.
-Refer to [this article](/tutorials/task-scheduler/) for more details about how the task scheduler works.
 
 * [Back to middleware documentation](/documentation/magic/)
 * [Back to main documentation](/documentation/)
