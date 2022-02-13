@@ -29,7 +29,26 @@ etc. Below is a screenshot of how this would look like.
 ![Configuring CRUD endpoints](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/configuring-crud.jpg)
 
 The backend CRUD generator creates 5 HTTP endpoints by default for each table, if it can. To understand
-how it works, you can check out [this article](/tutorials/database-crud/).
+how Magic can automatically generate a CRUD web API, you can check out [this article](/tutorials/database-crud/).
+
+## CRUD settings
+
+Once you have selected a database and a table, you can override individual settings for how Magic should
+create CRUD endpoints wrapping your table. Below is a screenshot where we have chosen to publish SignalR socket
+messages upon write invocations to our table, implying create, update, and delete invocations. You can also turn
+on or off specific columns, preventing Magic from accepting values for these columns, for individual CRUD verbs.
+If you have a read only type of column for instance, that should only be set during _"create"_ invocations, you
+can easily remove that field from your _"update"_ endpoint by expanding the column, and making sure Magic does
+not accept new values to that column upon update invocations.
+
+![CRUD backend settings](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/crud-settings.jpg)
+
+You can also override which URL your endpoints should use, what authorisation requirements
+your endpoints should have, in addition to advanced settings. Advanced settings are toggled with the _"Advanced"_
+checkbox, and allows you to have Magic automatically create a log entry when items are created, updated, or deleted - In
+addition to that you can inject your own custom Hyperlambda into the resulting endpoint code for post and put endpoints.
+The latter is convenient if you've got custom validator logic you want to execute for specific columns before allowing
+the user to create new records, and/or update existing records.
 
 * [Back to middleware documentation](/documentation/magic/)
 * [Back to main documentation](/documentation/)
