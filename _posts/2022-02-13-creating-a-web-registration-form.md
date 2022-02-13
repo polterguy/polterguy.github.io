@@ -1,7 +1,7 @@
 ---
 layout: post
 author: thomas
-title: Creating a Web Registration form
+title: Creating a Web Registration Form
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blogs/online-registration.jpg"
 description: Magic allows you to easily create your own UI wrapping the existing HTTP backend endpoints to create your own custom registration form.
 ---
