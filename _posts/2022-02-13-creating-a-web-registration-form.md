@@ -168,3 +168,12 @@ its most difficult to understand axiom, being the server side parts, user admini
 and all other server side parts related to registering users into your app.
 
 * [User registration internals](/tutorials/registering/)
+
+**Notice** - It is _absolutely crucial that you keep your auth secret a secret_, implying the auth
+secret should never be publicly shared with _anyone_, and it should not be sent on emails, and
+it should not be a part of your Git repository, etc. Simply because if a malicious user
+gains access to your auth secret, he can create false JWT token, allowing him to access your
+system, impersonating any accounts he wants to impersonate, including the root account of your
+server. If you can somehow keep your auth secret a secret, by for instance having it in a secret
+repository with your cloud vendor or something, the Magic authentication parts and authorisation
+parts should be 100% perfectly secure.
