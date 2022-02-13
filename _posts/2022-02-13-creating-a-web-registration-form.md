@@ -159,6 +159,9 @@ etc. Because once we drop these (quite frankly) ridiculous requirements, creatin
 secure passwords becomes much easier for the end user.
 
 If you didn't already read it, to finish up understanding everything related to user registrations,
-you should probably read the article linked to below.
+you should probably read the article linked to below. How you'd go about creating your frontend of course,
+varies from framework to framework, and while we might go through these parts in future articles, you
+can probably find dozens of examples in these regards if you search for user registration and appends
+your favourite framework to your search query, such as Angular, React, or Swift.
 
 * [User registration internals](/tutorials/registering/)
