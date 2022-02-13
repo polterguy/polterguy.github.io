@@ -36,7 +36,7 @@ to select it for editing, and paste the following into its Hyperlambda editor.
 /*
  * Log something into the database.
  */
-log.info:Your tasks was executed
+log.info:Your task was executed
 ```
 
 If you create a task with the above Hyperlambda such as illustrated in the following screenshot, and
