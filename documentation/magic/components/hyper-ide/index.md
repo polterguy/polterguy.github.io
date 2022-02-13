@@ -16,7 +16,7 @@ Hyper IDE.
 Hyper IDE also provides integrated autocomplete if your editor has focus and you click CTRL+SPACE
 in Windows or FN+CONTROL+SPACE on your Mac. This allows you to very rapidly create Hyperlambda code,
 while having Hyper IDE ensure your code is using existing slots. Click the _"Shortkeys"_ button to see
-a list of all keyboard shortcuts Hyper IDE provide. Notice, these keyboard shortcuts are only available
+a list of all keyboard shortcuts Hyper IDE provides. Notice, these keyboard shortcuts are only available
 when your code editor has focus. You can also create files and folders, and upload files to your server
 through the action buttons drop down menu. Below is a screenshot of Hyper IDE in dark mode while toggling
 the action buttons drop down menu.
