@@ -50,5 +50,19 @@ addition to that you can inject your own custom Hyperlambda into the resulting e
 The latter is convenient if you've got custom validator logic you want to execute for specific columns before allowing
 the user to create new records, and/or update existing records.
 
+## Editing your CRUD API
+
+When you _"crudify"_ your database Magic creates Hyperlambda code for you. This code is easily edited by you, using for
+instance [Hyper IDE](/documentation/magic/components/hyper-ide/). This implies that whatever Magic creates
+automatically for you, can easily be extended with your own business logic as you see fit. This allows you to
+for instance send emails, invoke 3rd party HTTP endpoints, or read and write files from disc as your endpoint
+executes. Only your fantasy sets the boundaries here. Below is a screenshot of how this process might look
+like. Hyper IDE is a complete integrated development environment providing you with syntax highlighting and
+autocomplete on your Hyperlambda code, in addition to having _"Macro"_ support, that are automated snippets
+of code, modifying your existing code, allowing you to automatically generate things such as _"upload file endpoints"_,
+etc.
+
+![Editing a file in Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide-light.jpg)
+
 * [Back to middleware documentation](/documentation/magic/)
 * [Back to main documentation](/documentation/)
