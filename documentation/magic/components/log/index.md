@@ -14,8 +14,9 @@ see a screenshot of how the log component looks like.
 ![Magic log](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/log.jpg)
 
 Notice, as you scroll to the bottom of your log, it will automatically retrieve more items from your backend,
-giving you the ability to rapidly scroll down to the time period you want to view. You can also create your
-own log entries in your own Hyperlambda by using code resembling the following.
+giving you the ability to rapidly scroll down to the time period you want to view. Since log items are displayed
+such that the last item is displayed at the top, this allows you to _"browse backwards in time"_.
+You can also create your own log entries in your own Hyperlambda by using code resembling the following.
 
 ```
 log.info:Something important happened

@@ -44,5 +44,30 @@ As you create an assumption, what happens is that Magic _"records"_ your HTTP in
 persist its response, and allows you to automatically _"replay"_ your invocation assuming its HTTP response
 will be similar as you replay your assumption.
 
+## Manually create assumptions
+
+You can also manually create assumptions that contains any amount of Hyperlambda you need to verify your
+system is optimally functioning. This is done by creating a Hyperlambda file, store this file in your
+_"/etc/tests/"_ folder, and put content into it resembling the following.
+
+```
+description:Verifies that 2+2 equals 4.
+.lambda
+   .no1:int:2
+   .no2:int:2
+   if
+      not
+         eq
+            math.add:x:@.no1
+               get-value:x:@.no2
+            .:int:4
+      .lambda
+         throw:Math error!
+```
+
+The idea is to have your assumption throw an exception if something is wrong. This allows you
+to create _"unit tests"_ where you somehow verify that your system is functioning correct, by for instance
+invoking dynamically created slots, with assumptions about their return values, etc.
+
 * [Back to middleware documentation](/documentation/magic/)
 * [Back to main documentation](/documentation/)
