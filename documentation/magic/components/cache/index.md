@@ -54,7 +54,7 @@ and use keys for them such as for instance _"my-company.my-module.cache-key"_.
 
 The default cache service implementation stores items in memory. This implies that you should
 be conservative when you choose to cache things, and only cache parts that are absolutely crucial
-to cache, to avoid exhausting your server's memory. In addition this results in that your cache
+to cache to avoid exhausting your server's memory. In addition this results in that your cache
 is not shared among multiple server instances. If you want to use an out of process cache
 implementation that scales better, you can
 see [how to use a NoSQL caching service here](/documentation/magic.data.cql/).

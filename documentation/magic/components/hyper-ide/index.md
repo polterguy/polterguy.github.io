@@ -64,6 +64,18 @@ way the code editor in Hyper IDE itself does. To access autocomplete click CTRL+
 on your Mac. The process also allows you to dynamically parametrise your SQL with HTTP query parameters, and/or
 JSON payloads supplied by the client.
 
+## Invoking endpoints
+
+Hyper IDE allows you to invoke your HTTP endpoints without ever leaving your IDE. This makes it much easier for
+you to test your code as you are creating it. If you are editing an HTTP endpoint Hyperlambda file, simply click
+the _"Invoke"_ button, resulting in something resembling the following.
+
+![Invoking HTTP endpoints from Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide-blog.jpg)
+
+For more details about invoking your HTTP endpoints you can read the documentation
+for the [endpoints component](/documentation/magic/components/endpoints/). This component also allows you to
+automatically generate your unit tests, and/or assumptions, sanity checking your system as you're editing its code.
+
 ## Macros
 
 In addition to the above crudifier feature, Hyper IDE also supports _"macros"_. A macro is an automated
