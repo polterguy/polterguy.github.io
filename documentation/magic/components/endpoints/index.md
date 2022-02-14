@@ -46,7 +46,7 @@ endpoint.
 
 ## Meta data
 
-As you are browing your endpoints, and expand individual items, you'll notice that each endpoint shows you a
+As you are browsing your endpoints, and expand individual items, you'll notice that each endpoint shows you a
 whole range of _"meta data"_. This gives you high level information about your endpoints, such as for instance.
 
 * Relative URL
