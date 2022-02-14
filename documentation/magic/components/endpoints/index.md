@@ -54,7 +54,7 @@ whole range of _"meta data"_. This gives you high level information about your e
 * Type of endpoint
 * What type of data the endpoint consumes (JSON, Hyperlambda, form-data, etc)
 * What type of result the endpoint produces
-* Friendly description for your endpoint
+* Humanly readable description of your endpoint
 * Authorisation requirements for invoking the endpoint, implying roles users must belong to in order to invoke the endpoint
 * Etc, etc, etc
 
