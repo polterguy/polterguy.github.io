@@ -6,10 +6,11 @@ og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/maste
 
 # The Bazaar, an AppStore for your server
 
-The bazaar component is Magic's integrated _"AppStore"_, and allows you to install backend micro
-services on the fly, without interrupting normal usage. It resolves towards Aista's Bazaar, which
+The Bazaar component is Magic's integrated _"AppStore"_, and allows you to install backend micro
+services on the fly, without interrupting normal usage. It resolves towards Aista's Bazaar, that
 contains several pre-fabricated backend micro services, serving some generic requirement, such as
-translations, email sending, etc. Below is a screenshot of the component.
+translations, email sending, etc. Below is a screenshot of the component during installation of
+a module.
 
 ![The Bazaar](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/bazaar.jpg)
 
