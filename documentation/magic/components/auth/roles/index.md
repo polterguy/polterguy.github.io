@@ -10,7 +10,7 @@ This component allows you to manage and administrate roles in your system, and/o
 create new roles, fine tuning access to your backend through a role based access system.
 Below is a screenshot of the component.
 
-![Roles in Magic](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/auth.jpg)
+![Roles in Magic](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/auth-roles.jpg)
 
 Notice, all access in Magic is based upon roles, implying all users belonging to the same role(s)
 have access to the same parts of your backend. This makes it easier to provide access to specific parts

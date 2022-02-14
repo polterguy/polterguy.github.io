@@ -15,7 +15,9 @@ component.
 Notice, this component is especially interesting combined with the registration component, allowing others to
 registers in your backend, for then to have a root-user/system-administrator grant access to the newly registered
 user according to whatever role the new user should be associated with. To create a new user manually click the
-plus button in the top/right corner of the component.
+plus button in the top/right corner of the component. You can also impersonate users, create reset password links
+for users, lock out users from the system, in addition to a lot of other user related administration tasks from
+this component.
 
 ## Registering users
 
