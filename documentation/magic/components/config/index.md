@@ -52,7 +52,9 @@ as follows.
 You can use all of the above database types in your Magic server. However, to access your database
 you need to provide Magic with one or more connection strings. Each of these section contains
 a key/value pair where the key becomes the name of your connection string, and the value its actual
-connection string value.
+connection string value. This section also has a `default` setting, which is the default database
+type to use if not specified by caller. This needs to be one of _"mysql"_, _"pgsql"_, or _"mssql"_ -
+Implying MySQL, PostgreSQL or SQL Server.
 
 ### auth
 
@@ -93,7 +95,16 @@ using a memory based cache, but you can also use NoSQL cache services, and/or ro
 
 The `root-folder` setting in this section allows you to change where Magic will store your dynamic files.
 This allows you to for instance have some folder on disc where all your dynamic files are stored, as
-an alternative to the default value, which is inside your Magic server's _"files"_ folder.
+an alternative to the default value, which is inside your Magic server's _"files"_ folder. The other
+parts of this configuration settings implies the following.
+
+* `file-service` - What `IFileService` implementation to use
+* `folder-service` - What `IFolderService` implementation to use
+* `stream-service` - What `IStreamService` implementation to use
+
+To understand the 3 settings above, realise that Magic supports _"virtual file and folder systems"_, through
+for instance storing files and folders in Scylla or Cassandra, allowing you to virtually resolve files from
+alternative storages besides your physical file system.
 
 ### sockets
 
