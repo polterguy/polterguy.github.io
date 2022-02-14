@@ -9,7 +9,8 @@ og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/maste
 The sockets component allows you to subscribe to and publish socket messages. This is useful when
 debugging and developing modules that somehow is using the integrated socket slots from Magic.
 To understand Magic's socket features from a _"hands on"_ perspective refer
-to [this document](/documentation/magic.lambda.sockets/). The sockets component allows you to
+to [this tutorial](/tutorials/web-sockets/) where we go through sockets by creating a chat client, 
+or [its primary documentation](/documentation/magic.lambda.sockets/). The sockets component allows you to
 subscribe to any type of socket message, for then to see messages as they are published to
 your _"channel"_, allowing you to more easily debug and develop your modules that are using sockets.
 Below is a screenshot of how subscribing to a socket message should look like.

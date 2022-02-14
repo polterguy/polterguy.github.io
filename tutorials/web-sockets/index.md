@@ -1,10 +1,10 @@
 ---
-title: Hyperlambda and Web Sockets
+title: Creating a Chat Client using Web Sockets
 description: This article shows you how to use SignalR and web sockets with Magic and Hyperlambda, by creating a small chat client, allowing multiple users to chat in real time, using Angular, Hyperlambda, and SignalR.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-sockets.jpg"
 ---
 
-# Hyperlambda and Web Sockets
+# Creating a Chat Client using Web Sockets
 
 This tutorial covers the following parts of Magic and Hyperlambda.
 

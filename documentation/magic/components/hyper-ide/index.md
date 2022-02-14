@@ -39,7 +39,8 @@ HTTP CRUD endpoints wrapping every table in your database. Below is a screenshot
 
 This feature can at least in theory save you from months of manual development, and allows you to provide
 authorisation requirements, publish socket messages upon invocations, log invocations, apply caching for
-your endpoints, etc.
+your endpoints, etc. For more details about the backend crudifier you can refer
+to [its primary documentation](/documentation/magic/components/crudifier/backend/).
 
 ### Create your Angular code in seconds
 
@@ -49,6 +50,9 @@ and provide you with a ZIP file, and/or put your Angular code on your server som
 screenshot of this process.
 
 ![Automatically generate an Angular frontend with Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/generate-frontend.jpg)
+
+For more details about the frontend crudifier you can refer
+to [its primary documentation](/documentation/magic/components/crudifier/frontend/).
 
 ### Create HTTP endpoints with SQL
 
@@ -62,7 +66,8 @@ wrapping your SQL. Below is a screenshot of the process.
 The integrated SQL editor also provides you with autocomplete on your tables and columns the same
 way the code editor in Hyper IDE itself does. To access autocomplete click CTRL+SPACE or FN+CONTROL+SPACE
 on your Mac. The process also allows you to dynamically parametrise your SQL with HTTP query parameters, and/or
-JSON payloads supplied by the client.
+JSON payloads supplied by the client. For more details about the SQL crudifier you can refer
+to [its primary documentation](/documentation/magic/components/crudifier/sql/).
 
 ## Invoking endpoints
 
