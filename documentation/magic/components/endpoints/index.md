@@ -52,7 +52,7 @@ whole range of _"meta data"_. This gives you high level information about your e
 * Relative URL
 * HTTP verb
 * Type of endpoint
-* What data the endpoint consumes (JSON, Hyperlambda, form-data, etc)
+* What type of data the endpoint consumes (JSON, Hyperlambda, form-data, etc)
 * What type of result the endpoint produces
 * Friendly description for your endpoint
 * Authorisation requirements for invoking the endpoint, implying roles users must belong to in order to invoke the endpoint
