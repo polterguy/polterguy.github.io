@@ -130,4 +130,8 @@ Below is a screenshot showing one task, and its associated Hyperlambda.
 
 This implies among other things that if your server drops or is restarted for some reasons, both your
 tasks and schedules will automatically reload and come back up again as you start your server again.
+In the video below you can see me demonstrate the task scheduler.
 
+<div class="video">
+<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/60le6DVMmZw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
