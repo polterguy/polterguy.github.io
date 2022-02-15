@@ -33,10 +33,13 @@ og_image: https://raw.githubusercontent.com/polterguy/magic/master/artwork/og.jp
 
 # Title for your blog page
 blog_title: Where the machine creates the code
+paginate: 5
+paginate_path: "/blog/page:num/"
 
 # Additional plugins to use
 plugins:
   - jekyll-sitemap
+  - jekyll-paginate
 
 # Your navigation section. Declares the drop down menu items for your hamburger menu.
 nav_sections:
