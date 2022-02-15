@@ -109,7 +109,7 @@ alternative storages besides your physical file system.
 ### sockets
 
 The `url` setting here allows you to override which URL clients needs to use to negotiate a socket
-channel with your server. You can also completely turn OFF web sockets entirely here, changing the
+channel with your server. You can also completely turn OFF web sockets entirely here, by changing the
 value to `null` or remove the section entirely.
 
 ### bazars
