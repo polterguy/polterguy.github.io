@@ -62,6 +62,14 @@ requirements for your endpoints, etc.
 * [magic.lambda.cql](/documentation/magic.lambda.cql/) - CQL or NoSQL support for Magic and Hyperlambda
 * [magic.lambda.system](/documentation/magic.lambda.system/) - System support for Magic to spawn of terminals etc.
 
+## YouTube playlist
+
+In the following playlist we walk you through most parts of the system.
+
+<div class="video">
+<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/videoseries?list=PLgyI389Eb9HPkKFKUCb1LMf-w0PUd-2CC" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 ## Support
 
 If you have a support request of private nature, you can send us
