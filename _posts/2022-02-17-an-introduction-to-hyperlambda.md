@@ -8,9 +8,9 @@ description: Hyperlambda is a unique programming language, since it allows for y
 
 The purpose of Hyperlambda is to have a programming language that allows your computer to generate most of your code.
 However, sometimes you need to manually modify the generated code yourself, and/or create Hyperlambda code manually,
-at which point you'll need to understand Hyperlambda. This article is an introduction to Hyperlambda and gives you an
-overview of Hyperlambda from a bird's perspective. Hyperlambda is extremely easy to learn though, and in fact it's
-probably the easiest programming language in the world to learn, so buckle up and let's get started.
+at which point you'll need to understand Hyperlambda. Hyperlambda is extremely easy to learn though, and you can
+probably teach yourself most of its basics in less than 10 minutes. This article is an introduction to Hyperlambda
+and gives you an overview of Hyperlambda from a bird's perspective.
 
 ## Structure
 
