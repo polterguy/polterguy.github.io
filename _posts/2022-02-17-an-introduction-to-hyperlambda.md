@@ -64,8 +64,8 @@ set-name:x:../**/log.info
 ```
 
 This trait of Hyperlambda makes it very easy to create _"self evolving code"_, that somehow changes an existing snippet
-of code, to do something completely different. This trait of Hyperlambda is crucial for its ability to automatically generate
-code, and is the reason why it can with such ease create and generate code 100% automatically for you. When you think about
+of code to do something completely different. This trait of Hyperlambda is crucial for its ability to automatically generate
+code and is the reason why it can with such ease create and generate code 100% automatically for you. When you think about
 _"how weird"_ Hyperlambda is, please understand its _reasons_ for being weird. Hyperlambda's _"weirdness"_ allows us to easily
 create templated snippets of code that we use as the foundation for some process automatically generating custom code, by
 parametrising our code dynamically, such that we can modify it according to our specific needs.
