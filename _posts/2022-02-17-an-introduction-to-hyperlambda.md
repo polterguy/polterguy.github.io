@@ -34,8 +34,8 @@ To illustrate imagine the following Hyperlambda.
 
 The above Hyperlambda consists of 3 nodes. The first node is called **[.data]**. This node has two children called **[foo1]**
 and **[foo2]**. Both of these nodes have a value each being _"bar1"_ and _"bar2"_. The colon separates the node's name and
-its value. To play around with Hyperlambda you can use Magic's _"Evaluator"_ component. Below is a screenshot of a slightly
-more complex example.
+its value, and 3 spaces opens up the children collection. To play around with Hyperlambda you can use Magic's _"Evaluator"_
+component. Below is a screenshot of a slightly more complex example.
 
 ![The Hyperlambda evaluator](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/eval-component.jpg)
 
