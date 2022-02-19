@@ -19,7 +19,7 @@ However, my fourth
 reason is my by far most important, and it's because I want people to trust us with their data, and Google Analytics
 simply is incompatible with such trust. We're using Protonmail and Telegram to communicate. Not because we have something
 to hide, but because we want to make a statement to ourselves and others, and that statement is that other companies'
-data is secure with us! Hence, in case you wondered, we don't need a cookie disclaimer on our site, simply because we
+data is secure with us. Hence, in case you wondered, we don't need a cookie disclaimer on our site, simply because we
 are not tracking you here at all. Zero cookie tracking, zero surveillance, zero data spoofing. Hence, no more cookies ^_^
 
 ![No cookies here](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blogs/cookie-monster.jpeg)
