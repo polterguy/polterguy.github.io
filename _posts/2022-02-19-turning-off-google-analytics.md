@@ -15,17 +15,15 @@ Third of all it makes our site _much slower_. I've spent a _lot_ of time optimis
 loads as fast as possible, and Google Analytics pulls down tons of unnecessary data from Google's servers, resulting
 in that our site becomes slower, reducing quality for people simply looking for Magic out there.
 
-However, my fourth
-reason is my by far most important, and it's because I want people to trust us with their data, and Google Analytics
+However, my fourth reason is more important, and it's because I want people to trust us with their data, and Google Analytics
 simply is incompatible with such trust. We're using Protonmail and Telegram to communicate. Not because we have something
-to hide, but because we want to make a statement to ourselves and others, and that statement is that other companies'
-data is secure with us. Hence, in case you wondered, we don't need a cookie disclaimer on our site, simply because we
-are not tracking you here at all. Zero cookie tracking, zero surveillance, zero data spoofing. Hence, no more cookies ^_^
+to hide, but because we want to make a statement to ourselves and others, and that statement is that your company's
+data is secure with us. My fifth argument is my by far most important, which is that I want to create a company based
+upon delivering _value_ to our end customers, and there's no value in having Google Analytics on our website,
+quite the contrary in fact, it degreades the experience for our customers. Next week I'll go through our fonts
+and other resources and download locally to our servers to prevent _all_ 3rd party content from being loaded on our
+site.
+
+> Nothing personal Google, it's just business, I assume you can understand ...
 
 ![No cookies here](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blogs/cookie-monster.jpeg)
-
-Next week I'll go through our fonts and other resources and download locally to our servers to prevent any
-3rd party content from being loaded on our site. As a side note I would also encourage people to use DuckDuckGo
-and Brave Browser.
-
-> Nothing personal Google, it's just business ^_^
