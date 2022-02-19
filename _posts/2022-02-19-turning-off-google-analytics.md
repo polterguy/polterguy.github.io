@@ -22,7 +22,7 @@ data is secure with us. My fifth argument is my by far most important, which is 
 upon delivering _value_ to our end customers, and there's no value in having Google Analytics on our website,
 quite the contrary in fact, it degreades the experience for our customers. Next week I'll go through our fonts
 and other resources and download locally to our servers to prevent _all_ 3rd party content from being loaded on our
-site. We'll still keep the embedded YouTube videos on the site, because the _provide value_ to our users, but no
+site. We'll still keep the embedded YouTube videos on the site, because they _provide value_ to our users, but no
 Google Analytics.
 
 > Nothing personal Google, it's just business, I assume you can understand ...
