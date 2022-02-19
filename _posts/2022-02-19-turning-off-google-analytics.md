@@ -7,7 +7,7 @@ description: This website doesn't need a Cookie Disclaimer anymore, simply becau
 ---
 
 I've been thinking about this move for a long time, for several reasons in fact. First of all I have
-an _"unhealthy relationship"_ to Google Analytics. I keep on checking it way too often, almost like an average Facebook
+an _"unhealthy relationship"_ with Google Analytics. I keep on checking it way too often, almost like an average Facebook
 addict checking to see if he's got some new likes. Secondly because Google Analytics are growing increasingly unpopular
 these days, in particular amongst EU governments, since it sends information about users to the US, illegally too may I add
 according to new verdicts in some EU countries, and we're based in EU, and hence need to comply by EU regulations.
