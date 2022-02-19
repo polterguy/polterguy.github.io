@@ -26,3 +26,5 @@ are not tracking you here at all. Zero cookie tracking, zero surveillance, zero 
 
 Next week I'll go through our fonts and other resources and download locally to our servers to prevent any
 3rd party content from being loaded on our site.
+
+> Nothing personal Google, it's just business ^_^
