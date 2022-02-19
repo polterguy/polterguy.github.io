@@ -25,6 +25,7 @@ are not tracking you here at all. Zero cookie tracking, zero surveillance, zero 
 ![No cookies here](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blogs/cookie-monster.jpeg)
 
 Next week I'll go through our fonts and other resources and download locally to our servers to prevent any
-3rd party content from being loaded on our site.
+3rd party content from being loaded on our site. As a side note I would also encourage people to use DuckDuckGo
+and Brave Browser.
 
 > Nothing personal Google, it's just business ^_^
