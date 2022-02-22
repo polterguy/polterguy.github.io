@@ -54,6 +54,10 @@ as follows to your _"appsettings.json"_ file.
 }
 ```
 
+**Notice** - This project also includes a _"mixed"_ service implementation, storing system files and folders
+in the file system while storing dynamic files and folders in a NoSQL database of your choice. These
+can be found in the same namespace, but are named _"MixedXXX"_ instead of using the above names.
+
 If you want to use a CQL based log implementation, you'll have to configure Magic to use the NoSQL
 `ILogger` service such as follows.
 
