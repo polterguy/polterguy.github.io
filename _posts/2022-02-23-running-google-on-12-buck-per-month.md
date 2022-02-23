@@ -33,6 +33,13 @@ costs than the mantra of _"developers are expensive and hardware is cheap"_ that
 throwing €20,000 out the window every month. Facts are, the Ethereum network alone is using more electricity
 than the _country of Serbia_. You need to _"rethink your thinking"_ my friend.
 
+In case you missed the point, let me emphasise it for you; The difference between your existing legacy
+system and Magic is that your existing legacy system will crash down and burst into flames if you
+give it 100 simultaneous users. Magic will yawn from boredom if you give it 1 million users on the
+same hardware! Simply because of ...
+
+> Magic was NOT built under the assumption of that "hardware is cheap!"
+
 <div class="video">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/RxhTF6TzWJo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
