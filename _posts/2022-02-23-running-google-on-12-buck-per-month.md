@@ -11,7 +11,7 @@ At my last _"day job"_ we spent roughly €20,000 per month on servers. In the j
 the millions per month!
 There used to be a time when _"machines were cheap and developers were expensive"_. The rationale was
 of course that it wasn't cost effective for developers to write good code, since adding more hardware to
-the problem solved it. That time is a distant path today. To illustrate that point realise that at my
+the problem solved it. That time is distant history today. To illustrate that point realise that at my
 last employer we were 12 developers, and we spent €20,000 per month on servers. Those 20,000 EUROs
 would equal to roughly 5 full time senior software developers in Cyprus where I live. This implies that
 my former employer spent 30% of his total IT budget on _"cloud infrastructure"_.
