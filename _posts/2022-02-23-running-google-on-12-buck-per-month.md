@@ -16,6 +16,8 @@ last employer we were 12 developers, and we spent €20,000 per month on servers
 would equal to roughly 5 full time senior software developers in Cyprus where I live. This implies that
 my former employer spent 30% of his total IT budget on _"cloud infrastructure"_.
 
+> 30% of your IT budget on iron is NOT cheap!
+
 Ignoring whether or not the above is justifiable or not, these servers are using energy, and energy
 is a finite resource, and reducing our energy footprint is important as a specie for reasons that should
 be obvious to most having either read any science the last 50 years, and/or paid an electricity bill
