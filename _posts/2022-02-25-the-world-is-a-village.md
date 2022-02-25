@@ -33,7 +33,7 @@ their capacity, even though obviously things are hard, and they had to send thei
 If you want to help Ukraine today, and you've got no idea where to start, my suggestion to you is to
 start out by hiring a Ukrainian. Ukrainians in general are extremely skilled, with high work motivation,
 willing to do whatever it takes to get the job done - So as you're helping Ukraine by hiring software
-developers, and/or other companies and resources from Ukraine, you also paradoxically help yourself and
+developers, and/or companies and resources from Ukraine, you also paradoxically help yourself and
 your company. This is probably the most important thing you can do as of today. I also want to emphasise
 that I have dozens of Russian friends, and most of them are just as afraid and disgusted by what happened
 in Ukraine the last couple of days as me and you. Don't let them divide us please. We're all living in
