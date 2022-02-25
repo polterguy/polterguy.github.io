@@ -42,7 +42,7 @@ and others again are Russians. But most of these, regardless of where they come 
 just so happens to be that it's the Ukrainian part of our village that needs our help today, and the best
 way you can help Ukraine today is actually to hire a Ukrainian, and/or outsource your projects to Ukrainian
 companies. If you don't know where to start, I can [help you](mailto:th@aista.com) - We've got some
-extremely skilled partners in Ukraine working with software development helping compaines all over the
+extremely skilled partners in Ukraine working with software development helping companies all over the
 world with their software development efforts, and I don't make a single dime on referrals.
 
 > The world is a village, and today it's our Ukrainian neighbours that needs our help. Tomorrow it might be you!
