@@ -59,15 +59,15 @@ nano docker-compose.yml
 And then look through the file for the following YAML nodes.
 
 ```yaml
-- VIRTUAL_HOST=api.servergardens.com
-- LETSENCRYPT_HOST=api.servergardens.com
-- LETSENCRYPT_EMAIL=thomas@servergardens.com
+- VIRTUAL_HOST=magic-api.aista.com
+- LETSENCRYPT_HOST=magic-api.aista.com
+- LETSENCRYPT_EMAIL=th@aista.com
 
 ...
 
-- VIRTUAL_HOST=magic.servergardens.com
-- LETSENCRYPT_HOST=magic.servergardens.com
-- LETSENCRYPT_EMAIL=thomas@servergardens.com
+- VIRTUAL_HOST=magic.aista.com
+- LETSENCRYPT_HOST=magic.aista.com
+- LETSENCRYPT_EMAIL=th@aista.com
 ```
 
 In total there are _6 entries_ you need to change, and the email address needs to be a valid email
@@ -96,35 +96,36 @@ above network, you can start your docker containers using the following command.
 docker-compose up -d
 ```
 
-The LetsEncrypt container in your _"docker-compose.yml"_ file might need some 5
-minutes to configure your SSL certificate due to the internals of how LetsEncrypt works. If you
-access your frontend, and/or your backend, and you get an error, and/or an SSL error - Just wait
-some few minutes and try to refresh your page. Only when you no longer get an error, you can
-proceed to configure Magic from its dashboard. To start this process however, you will need
-to access both your frontend and your backend to initiate the process of retrieving an SSL
-certificate for both your web apps. If your domain is _"yourdomain.com"_ and you chose the DNS
-A records illustrated in the beginning of this article, you can initiate this process by
-opening the following URLs in your browser.
-
-* https://api.yourdomain.com/magic/system/ping
-* https://magic.yourdomain.com
-
-When the above URLs returns success, and/or returns your Magic dashboard frontend's HTML, you
-can proceed with the rest of this guide.
-
 ## Internals
 
 The above `docker-compose up -d` command will start 5 docker containers.
 
-* `nginx-proxy` - The nGinx proxy that internally routes requests to either your backend or your frontend
-* `letsencrypt` - The container responsible for retrieving and renewing LetsEncrypt SSL certificates for you
+* `proxy` - The nGinx proxy that internally routes requests to either your backend or your frontend
+* `acme` - The container responsible for retrieving and renewing LetsEncrypt SSL certificates for you
 * `db` - Your MySQL database, used to create the _"magic"_ database that Magic internally depends upon
 * `backend` - The main Magic backend container
 * `frontend` - The main Magic dashboard frontend container
 
 In addition to the above containers, docker will also create several volumes for you. These volumes
 are necessary to persist changes to the file system for your containers, such that if your containers
-are stopped for some reasons, and/or you update Magic later, you will keep your changes.
+are stopped for some reasons, and/or you update Magic later, you will keep your changes. The most
+important volumes that Magic itself relies upon are as follows.
+
+* __database__ - Where MySQL store its database files
+* __etc_magic_folder__ - Where Magic stores its _"etc"_ files
+* __modules_magic_folder__ - Where Magic stores its _"modules"_ files
+* __config_magic_folder__ - Where Magic stores its _"appsettings.json"_ file
+
+The rest of the volumes are documented in either of the following two container projects that Magic's
+internal deployment depends upon.
+
+* [nGinx Proxy](https://github.com/nginx-proxy/nginx-proxy)
+* [Acme companion](https://github.com/nginx-proxy/acme-companion)
+
+The first project above creates the nGinx proxy that _"routes"_ requests to the correct container
+according to the host name specified in your HTTP requests. The second is to install a LetsEncrypt
+SSL certificate key pair for both your backend and frontend, ensuring you've got encrypted HTTPS
+communication to both your backend and your frontend.
 
 ## Configuring Magic
 
@@ -134,19 +135,19 @@ into the top textbox and click the tab key on your keyboard. If your domain was 
 you created your DNS records as illustrated above, your API backend URL would be the following.
 
 ```
-https://api.yourdomain.com
+https://magic-api.yourdomain.com
 ```
 
-To configure Magic login with _"root/root"_ and do _not_ change the database connection string, but
-choose _mysql_ as your database type, and provide Magic with a root password, and follow the wizard
-to the end. This process is similar to the process you follow as you configure Magic locally on your
-development machine.
+To configure Magic login with _"root/root"_ and choose _mysql_ as your database type. Do _not_ change
+any parts of the connection string unless you know what you're doing. Then provide Magic with a root
+password, and follow the wizard to the end. This process is similar to the process you follow as you
+configure Magic locally on your development machine.
 
 ## Installing a generated Angular frontend
 
 Once you have installed Magic you probably want to check out its capabilities in regards to Low-Code
 and No-Code, which is easily achieved by going to the SQL menu item in your dashboard, click the Load
-button, choose _"Sakila"_, and then click execute. This creates a database for you called Sakila.
+button, choose _"sakila"_, and then click execute. This creates a database for you called sakila.
 For the record, you can of course choose any existing database you have, or an alternative create
 database MySQL script you've got.
 
