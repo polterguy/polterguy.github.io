@@ -1,6 +1,6 @@
 
 # The next line declares you want to use this theme
-remote_theme: polterguy/aista-jekyll
+remote_theme: polterguy/aista-dox
 
 # The next line declares the URL structure of your blog items
 permalink: /blog/:title
