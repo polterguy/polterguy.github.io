@@ -40,12 +40,12 @@ have allowing you to administrate your databases from your phone if required.
 
 ![Magic's web based SQL Workbench](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-autocomplete.jpg)
 
-You can also create your HTTP endpoints using nothing but SQL with Magic. Below is a video demonstrating some of
-Magic's features, and how it creates your web apps in seconds 100% automatically, without any coding required
-from you.
+You can also create your HTTP endpoints using nothing but SQL with Magic. Although it's obviously more convenient
+to use a desktop computers as your primary development machine, you _can_ use all components in Magic from your phone
+if required. Below is a video where we demonstrate how to use Hyper IDE from an iPhone.
 
 <div class="video">
-<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/yh0H7Rsrrq4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/nP_4m8c_fT8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 * [Getting Started](/tutorials/getting-started/)
