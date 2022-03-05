@@ -27,6 +27,8 @@ latter below.
 
 The Magic SQL component doesn't have every single feature that your MySQL workbench has, such as the ability to
 create backups, or advanced features - But you can write and execute any SQL you wish into it, and immediately
-see the result of your execution. We think that's pretty cool!
+see the result of your execution. We think that's pretty cool. The SQL component in Magic also allows you to
+save frequently used SQL snippets, allowing you to create a library of snippets you periodically for some 
+reasons need to execute, making it the perfect _"emergency SQL administrator tool"_ for database administrators.
 
 * [Get started with Magic](/tutorials/getting-started/)
