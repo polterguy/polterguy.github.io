@@ -42,7 +42,7 @@ have allowing you to administrate your databases from your phone if required.
 
 You can also create your HTTP endpoints using nothing but SQL with Magic. Although it's obviously more convenient
 to use a desktop computers as your primary development machine, you _can_ use all components in Magic from your phone
-if required. Below is a video where we demonstrate how to use Hyper IDE from an iPhone.
+if required. Below is a video where we demonstrate the Crudifier and Hyper IDE from an iPhone.
 
 <div class="video">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/nP_4m8c_fT8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
