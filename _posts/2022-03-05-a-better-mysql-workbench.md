@@ -30,5 +30,7 @@ create backups, or advanced features - But you can write and execute any SQL you
 see the result of your execution. We think that's pretty cool. The SQL component in Magic also allows you to
 save frequently used SQL snippets, allowing you to create a library of snippets you periodically for some 
 reasons need to execute, making it the perfect _"emergency SQL administrator tool"_ for database administrators.
+You can of course connect it to any database you wish, by providing it with your connection string(s), and it
+works perfectly with both MySQL, PostgreSQL, and SQL Server.
 
 * [Get started with Magic](/tutorials/getting-started/)
