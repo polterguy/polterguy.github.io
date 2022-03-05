@@ -175,6 +175,8 @@ nav_sections:
         name: blog
       - url: https://youtube.com/ThomasHansen-Magic
         name: youtube
+      - url: https://t.me/aistamagic
+        name: telegram
       - url: https://www.linkedin.com/company/77018722
         name: linkedin
       - url: https://github.com/polterguy/magic
