@@ -18,7 +18,7 @@ Magic supports MySQL, Microsoft SQL Server, and PostgreSQL, in addition to havin
 contains its own DSL called Hyperlambda, similar to YAML in structure, allowing you to _"declare"_ your logic with a
 syntax resembling YAML. This makes it a perfect _"first programming"_ language due to that it's an extremely
 high level abstraction eliminating most of the problems from traditional programming languages. You can easily
-teach yourself Hyperlambda in a couple of hours.
+[teach yourself Hyperlambda](https://docs.aista.com/blog/an-introduction-to-hyperlambda) in a couple of hours.
 
 ## Hyper IDE, a web based IDE
 
