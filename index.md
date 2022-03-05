@@ -6,7 +6,7 @@ og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master
 
 # Aista Magic Cloud, an open source low-code web application generator
 
-Aista Magic Cloud is an open source low-code web application generator allowing you to generate your web apps
+Aista Magic Cloud is a low-code web application generator allowing you to generate your web apps
 by clicking a button. It works by automatically wrapping your existing database into Hyperlambda HTTP CRUD web API
 endpoints, for then to generate an Angular frontend for you based upon your web API.
 [Magic Cloud is 100% open source](https://github.com/polterguy/magic) and you can freely use it in your
