@@ -37,13 +37,10 @@ Magic was originally created by Thomas Hansen our CEO as a _"hobby project"_, to
 the repetetive tasks he experienced himself as an enterprise software developer within the
 FinTech space, but at some point Magic became such a solid product that we decided to start a company
 around it and look for funding. Hyperlambda is currently documented at [Microsoft's website](https://docs.microsoft.com/en-us/archive/msdn-magazine/2017/june/csharp-make-csharp-more-dynamic-with-hyperlambda), it has 1.5 million page views
-at [DZone](https://dzone.com), it's got 2.5 million downloads of its NuGet packages, increasing with roughly
-50,000 to 100,000 on a weekly basis, and is probably the fastest growing Open Source framework
-in the world as of today.
-
+at [DZone](https://dzone.com/users/3044876/mrgaia.html), it's got 2.5 million downloads of its NuGet packages.
 If you want to write articles about Aista Magic Cloud, and or belong to the press, you can use the logo below.
 
-![Aista logo](https://raw.githubusercontent.com/polterguy/magic/master/artwork/og.jpeg)
+![Aista logo](https://raw.githubusercontent.com/polterguy/magic/master/artwork/logo-orginal.svg)
 
 ## About the website design
 
