@@ -14,15 +14,11 @@ if you want to clone Magic.
 
 ## What they say about Magic Cloud
 
-> “Grand Salute to thought process behind this" - D.M.
-
-> "This is so awesome" - Sacha Wharton
-
-> "Very nice work" - Ali Abdallah
-
-> "Genius" - Brook Story
-
-> "Awesome, great work" - Ramna Sidharta
+* “Grand Salute to thought process behind this" - D.M.
+* "This is so awesome" - Sacha Wharton
+* "Very nice work" - Ali Abdallah
+* "Genius" - Brook Story
+* "Awesome, great work" - Ramna Sidharta
 
 ## About Aista, Ltd
 
@@ -37,14 +33,11 @@ Magic was originally created by Thomas Hansen our CEO as a _"hobby project"_, to
 the repetetive tasks he experienced himself as an enterprise software developer within the
 FinTech space, but at some point Magic became such a solid product that we decided to start a company
 around it and look for funding. Hyperlambda is currently documented at [Microsoft's website](https://docs.microsoft.com/en-us/archive/msdn-magazine/2017/june/csharp-make-csharp-more-dynamic-with-hyperlambda), it has 1.5 million page views
-at [DZone](https://dzone.com/users/3044876/mrgaia.html), it's got 2.5 million downloads of its NuGet packages.
+at [DZone](https://dzone.com/users/3044876/mrgaia.html), and it's got 2.5 million downloads of its NuGet packages.
 If you want to write articles about Aista Magic Cloud, and or belong to the press, you can use the logo below.
 
 ![Aista logo](https://raw.githubusercontent.com/polterguy/magic/master/artwork/logo-orginal.svg)
 
-## About the website design
+## Contact us
 
-The theme we are using at our website is created by Aista as an Open Source Jekyll theme, allowing
-you to use it for your own website if you wish. The theme is highly customisable, supports blogging,
-and custom navigation links. You can find instructions for how to use it on your
-own website [here](https://github.com/polterguy/aista-jekyll).
+If you want to contact Aista, you can [send us an email here](mailto:info@aista.com).
