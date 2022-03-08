@@ -24,7 +24,7 @@ Back in the mid 20th century software development was perceived as a _"female pr
 
 ## Hiring female software developers
 
-As I started out with it's kind of sad that we need a special day to remember that women are equals to men. Obvious facts shouldn't be given _"special days"_. Imagine if we had a _"celebrating gravity day"_ to commemorate that gravity exists? But unfortunately things are that way. Aista is an equal opportunity employer though, and in fact exactly 50% of all software developers working for Aista currently are women. I would therefor like to use today as an opportunity to bring forth Shirin, our frontend team lead, having done an amazing job in completely rewriting our frontend code. Below is a screenshot of her work.
+As I started out with it's kind of sad that we need a special day to remember that women are equals to men. Obvious facts shouldn't be given _"special days"_. Imagine if we had a _"celebrating the value of my car day"_ to commemorate that cars have value as the means for transportation? But unfortunately things are that way. Aista is an equal opportunity employer though, and in fact exactly 50% of all software developers working for Aista currently are women. I would therefor like to use today as an opportunity to bring forth Shirin, our frontend team lead, having done an amazing job in completely rewriting our frontend code. Below is a screenshot of her work.
 
 ![Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-hyper-ide-2.jpg)
 
