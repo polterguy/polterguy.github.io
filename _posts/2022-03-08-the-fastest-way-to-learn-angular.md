@@ -14,4 +14,4 @@ The reasons for this particular edge when it comes to Angular is because if you 
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/DVBjKUKdLUs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Now you can start figuring out how to _use_ your backend in Angular ... ;)
+11 minutes and 6 seconds later and you can now start figuring out how to _use_ your backend in Angular ... ;)
