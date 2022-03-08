@@ -12,7 +12,7 @@ Today is the 8th of March, and we celebrate 100+ years of women liberation, equa
 
 ## The first software developer was a woman
 
-Did you know that the very first software developer on the planet was a woman? Her name was [Ada Lovelace](https://en.wikipedia.org/wiki/Ada_Lovelace) and she arguably single handedly **invented programming**. She worked with [Charles Babbage](https://en.wikipedia.org/wiki/Charles_Babbage) back in the 19th century, more than 120 years ago, and the programming language called _"Ada"_ was actually named after her.
+Did you know that the very first software developer on the planet was a woman? Her name was [Ada Lovelace](https://en.wikipedia.org/wiki/Ada_Lovelace) and she arguably single handedly **invented programming**. She worked with [Charles Babbage](https://en.wikipedia.org/wiki/Charles_Babbage) back in the 19th century, more than 120 years ago, and the programming language called _"Ada"_ was actually named after her. If it hadn't been for a female software developer, software development as a profession wouldn't even exist!
 
 ## Software development used to be a "female profession"
 
