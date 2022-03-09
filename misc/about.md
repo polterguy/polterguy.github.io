@@ -20,9 +20,9 @@ if you want to clone Magic.
 * "Genius" - Brook Story
 * "Awesome, great work" - Ramna Sidharta
 
-## About Aista, Ltd
+## About Aista
 
-Aista is a company based in Cyprus, in Pissouri, Limassol district. We're a small startup with a handful
+Aista, Ltd is a company based in Cyprus, in Pissouri, Limassol district. We're a small startup with a handful
 of employees, and we are exclusively delivering services based upon our internally created Open Source
 flagship product called _"Aista Magic Cloud"_. You can find more information about Aista Magic Cloud on
 this website.
