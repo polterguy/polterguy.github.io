@@ -18,7 +18,7 @@ After you're done generating your CRUD HTTP web API you can easily customise you
 
 ![Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide-actions.jpg)
 
-Although Hyper IDE is best suited for Hyperlambda, you can still use it to edit CSS, HTML, JavaScript, TypeScript, and most other popular programming languages. You can also invoke your endpoints directly from Hyper IDE, such as illustrated below. Hyper IDE has its own integrated _"Postman"_ component allowing you to immediately invoke your endpoints as you're editing your code. This allows you to immediately see the result of changes to your code providing you with _"instant feedback"_, reducing the amount of time it takes for you to discover bugs and such in your code.
+Although Hyper IDE is best suited for Hyperlambda, you can still use it to edit CSS, HTML, JavaScript, TypeScript, and most other popular programming languages. You can also invoke your endpoints directly from Hyper IDE, such as illustrated below. Hyper IDE has its own integrated _"Postman"_ component allowing you to immediately invoke your endpoints as you're editing your code. This allows you to immediately see the result of changes to your code providing you with _"instant feedback"_, reducing the amount of time it takes for you to discover bugs in your code.
 
 ![Invoking your endpoints](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide-blog.jpg)
 
