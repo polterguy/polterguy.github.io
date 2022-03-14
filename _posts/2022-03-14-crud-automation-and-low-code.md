@@ -30,7 +30,7 @@ Every now and then you need some sort of KPI, and/or statistical component in yo
 
 ## Automatically generate an Angular frontend
 
-When you're done with generating your backend, you can also just as easily create an Angular frontend by simply clicking another button. Below is a screenshot of how your end result might end up looking like. However, you can also test the [following automatically generated CRUD app](https://sakila.servergardens.com/) with the username/password combination of __admin__/__admin__. Please realise that we started out with nothing but an existing database, and we created a CRUD web API in 1 second, for then to create the following Angular app in another second. All in all we're talking about 2 seconds of _"coding"_ here, and some few minutes to build and deploy our result to a VPS.
+When you're done with generating your backend, you can also just as easily create an Angular frontend by simply clicking another button. Below is a screenshot of how your end result might end up looking like. However, you can also test the [following automatically generated CRUD app](https://sakila.servergardens.com/) with the username/password combination of __admin__/__admin__. Please realise that we started out with nothing but an existing database, and we created a CRUD web API in 1 second, for then to create the following Angular app in 1 second. All in all we're talking about 2 seconds of _"coding"_ here, and some few minutes to build and deploy our result to a VPS.
 
 ![CRUD Angular frontend](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sakila.jpg)
 
