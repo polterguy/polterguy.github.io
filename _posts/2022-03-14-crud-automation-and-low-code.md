@@ -36,6 +36,6 @@ When you're done with generating your backend, you can also just as easily creat
 
 ## Magic is Open Source
 
-As a final touch, everything we did above is 100% open source and free of charge to use, also in your own closed source projects. If you're interested in trying it out for yourself, you can download Magic below. Magic also contains many more components helping you out with your software development efforts, ranging from an integrated SQL editor replacing MySQL WorkBench, integrated audit logging components, a Micro Service _"AppStore"_, etc, etc, etc. What we showed you here was just 3/4 of the components you find in Magic. Magic has 16 components in total.
+As a final touch, everything we did above is 100% open source and free of charge to use, also in your own closed source projects. If you're interested in trying it out for yourself, you can download Magic below. Magic also contains many more components helping you out with your software development efforts, ranging from an integrated SQL editor replacing MySQL Workbench, integrated audit logging components, a Micro Service _"AppStore"_, etc, etc, etc. What we showed you here was only 3/4 of the components you find in Magic. Magic has 16 components in total. I would appreciate it if you gave our project a star on [Magic's GitHub project page](https://github.com/polterguy/magic). And of course if you try out Magic we would love to hear what you think about it.
 
 * [Download Aista Magic Cloud](https://docs.aista.com/)
