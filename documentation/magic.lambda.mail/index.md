@@ -88,10 +88,10 @@ mail.smtp.send
          content:Body content
 ```
 
-You can also add **[cc]** and **[bcc]** recipients for your emails, using the same structure you're using for **[to]**.
-In addition you can attach files to your messages, by instead of adding a **[content]** node to your invocation, adding
-a **[filename]** node, with a relative path pointing to the file you want to attach to your message. Below is an example
-of an email with a single attachment.
+You can also add **[cc]**, **[bcc]** and **[reply-to]** recipients for your emails, using the same structure you're using
+for **[to]**. In addition you can attach files to your messages, by instead of adding a **[content]** node to your
+invocation, adding a **[filename]** node, with a relative path pointing to the file you want to attach to your message.
+Below is an example of an email with a single attachment.
 
 ```
 mail.smtp.send
