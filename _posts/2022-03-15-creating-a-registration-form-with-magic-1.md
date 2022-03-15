@@ -1,7 +1,7 @@
 ---
 layout: post
 author: thomas
-title: Creating a registration form with Magic
+title: Creating a registration form with Magic 1 of 2
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blogs/register-endpoint.jpg"
 description: A micro tutorial about how to create a registration form using Magic
 ---
