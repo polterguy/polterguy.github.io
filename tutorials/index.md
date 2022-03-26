@@ -16,6 +16,8 @@ first _"getting started"_ tutorial will help you install Magic locally on your d
 * [Use SQL to create a Web API](/tutorials/sql-web-api/)
 * [Hyperlambda Hello World](/tutorials/hello-world-endpoint/)
 * [HTTP invocations with Hyperlambda](/tutorials/http-rest/)
+* [Sending emails with Hyperlambda](/tutorials/sending-emails/)
+* [Registration and authentication](/tutorials/registering/)
 * [Expressions, slots, and nodes](/tutorials/expressions-slots-nodes/)
 * [Looping and branching in Hyperlambda](/tutorials/loops-and-conditions/)
 * [Authentication and Authorisation](/tutorials/auth/)
