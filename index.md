@@ -1,6 +1,6 @@
 ---
 title: Aista Magic Cloud, Open Source, Low-Code, and Hyperlambda
-description: Aista Magic Cloud is an Open Source Low-Code web application generator allowing you to create your web apps by clicking a button. It works by automatically wrapping your existing database into HTTP Web API CRUD endpoints.
+description: Aista Magic Cloud is an Open Source Low-Code web application generator allowing you to create your web apps by clicking a button.
 og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide-actions.jpg
 ---
 
