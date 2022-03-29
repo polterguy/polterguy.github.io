@@ -25,4 +25,6 @@ However, if such numbers are _"fair"_ or not, and if I am exaggerating or not, i
 
 > Humans creates errors, software systems do not
 
-And when you're dealing with 3,250 HTTP endpoints, some of which returns 2 billion records, and some 15,000 files of Angular code, humans are simply not even remotely interesting as _"problem solvers"_ anymore due to that we get bored, overlooks errors, creates typos and bugs - And the computer does not. It's easy to imagine Magic as a _"cute tool for smaller systems"_, but in many ways this is wrong, and it's arguably a _better_ fit for _"monster systems"_, simply because it doesn't become bored ...
+And when you're dealing with 3,250 HTTP endpoints, some of which returns 2 billion records, and some 15,000 files of Angular code, humans are simply not even remotely interesting as _"problem solvers"_ anymore due to that we get bored, overlooks errors, creates typos and bugs - And the computer does not. It's easy to imagine Magic as a _"cute tool for smaller systems"_, but in many ways this is wrong, and it's arguably a _better_ fit for _"monster systems"_, simply because of one simple reason ...
+
+> Magic doesn't become bored!
