@@ -11,7 +11,7 @@ by clicking a button. It works by automatically wrapping your existing database 
 endpoints. [Magic Cloud is 100% open source](https://github.com/polterguy/magic) and you can freely use it in your
 closed source projects.
 
-![CRUD generator](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg)
+![CRUD API generator](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg)
 
 Magic supports MySQL, Microsoft SQL Server, and PostgreSQL, in addition to having basic NoSQL support. Magic
 contains its own DSL called Hyperlambda, similar to YAML in structure, allowing you to _"declare"_ your logic with a
