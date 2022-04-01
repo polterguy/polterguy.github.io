@@ -1,10 +1,10 @@
 ---
 title: Automatically generate a CRUD Web API using Hyperlambda
-description: In this article we generate a Hyperlambda CRUD web API using Magic, for then to analyse the generated code, providing you with the knowledge required to understand how Magic is doing its Magic.
+description: By using Magic you can automatically generate a CRUD API wrapping your existing SQL database in seconds.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-crud.jpg"
 ---
 
-# Automatically generate a CRUD Web API using Hyperlambda
+# Generate a CRUD API in seconds
 
 This is a _"hands on tutorial"_, and assumes you've already [installed Magic](/tutorials/getting-started/)
 locally or at some server. This tutorial covers the following parts of Magic and Hyperlambda.
