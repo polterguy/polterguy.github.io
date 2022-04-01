@@ -1,5 +1,5 @@
 ---
-title: Automatically generate a CRUD Web API using Hyperlambda
+title: Generate a CRUD API in seconds
 description: By using Magic you can automatically generate a CRUD API wrapping your existing SQL database in seconds.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-crud.jpg"
 ---
