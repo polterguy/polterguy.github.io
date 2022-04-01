@@ -80,7 +80,7 @@ play around with the code, by going to the _"Endpoints"_ menu item, and filter o
 your tables. In the screenshot below, we've chosen _"sakila/actor"_. Click the
 _"get"_ endpoint, at which point you should see something resembling the following.
 
-![Invoking your HTTP endpoints](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/endpoints.jpg)
+![Invoking your HTTP API](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/endpoints.jpg)
 
 You can already invoke your endpoint by clicking the _"Invoke"_ button for your endpoint.
 If you do this, you should see a bunch of JSON objects returned from your server resembling
@@ -189,7 +189,7 @@ the _"modules"_ folder, then click the folder with the same name as the name of 
 Click for instance the _"actor.get.hl"_ file, at which point you should see something resembling
 the following.
 
-![Editing your Hyperlambda using Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide.jpg)
+![Editing your API using Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide.jpg)
 
 If you didn't generate CRUD endpoints for your sakila database then at least make
 sure that whatever file you're looking at ends with _".get.hl"_ such that we're looking at roughly the
@@ -248,7 +248,7 @@ and children. This is the foundation of Hyperlambda. Hyperlambda is actually jus
 of a tree structure, the same way YAML, JSON, or XML is. Nodes are Hyperlambda's object implementation
 again. See the documentation for [magic.node](/documentation/magic.node/) for more details.
 
-### Arguments passing
+### Passing to your CRUD API
 
 If you look at the top of your file, you will see something resembling the following.
 
