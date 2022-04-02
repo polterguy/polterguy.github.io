@@ -14,8 +14,7 @@ This tutorial covers the following parts of Magic and Hyperlambda.
 * How to clone Magic's code
 * How to get support for Magic
 
-The easiest way to get started is to [download the docker-compose file](https://github.com/polterguy/magic/releases/download/v10.0.17/docker-compose.yml), assuming you have [Docker](https://www.docker.com/products/docker-desktop)
-installed, and then execute the following in a terminal window where you saved the file.
+The easiest way to get started is to [download the docker-compose file from the primary Aista website](https://aista.com), assuming you have [Docker](https://www.docker.com/products/docker-desktop) installed, and then execute the following in a terminal window where you saved the file.
 
 ```
 docker-compose up
