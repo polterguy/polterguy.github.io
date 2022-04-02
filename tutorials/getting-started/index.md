@@ -45,7 +45,7 @@ development machine using the code directly. If so you will first of all need th
 2. [NodeJS](https://nodejs.org/en/download/)
 3. [Angular](https://angular.io/cli)
 4. [MySQL](https://dev.mysql.com/downloads/mysql/) or [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
-5. [Magic Cloud](https://github.com/polterguy/magic/releases)
+5. Download [Magic Cloud](https://aista.com) from Aista's website
 
 ## Deploy Magic
 
