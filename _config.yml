@@ -117,6 +117,8 @@ nav_sections:
         name: magic.lambda.pgsql
       - url: /documentation/magic.lambda.mssql/
         name: magic.lambda.mssql
+      - url: /documentation/magic.lambda.sqlite/
+        name: magic.lambda.sqlite
       - url: /documentation/magic.lambda.odbc/
         name: magic.lambda.odbc
       - url: /documentation/magic.lambda.cql/
