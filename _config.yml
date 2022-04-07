@@ -81,6 +81,8 @@ nav_sections:
         name: Customised authentication
       - url: /tutorials/sql-server/
         name: Using Magic with Microsoft SQL Server
+      - url: /tutorials/sqlite/
+        name: Using Magic with SQLite
       - url: /tutorials/postgresql/
         name: Using Magic with PostgreSQL
       - url: /tutorials/mysql/
