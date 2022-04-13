@@ -9,7 +9,7 @@ permalink: /blog/:title
 title: Aista Magic Cloud
 
 # Slogan of your site
-slogan: Where the machine creates your code
+slogan: A Software Developer's Dream
 
 # Description of your site
 description: An Open Source Low-Code Cloud system allowing you to generate your web applications by simply clicking a button
@@ -32,7 +32,7 @@ body_bg: /assets/bg2.jpeg
 og_image: https://raw.githubusercontent.com/polterguy/magic/master/artwork/new-logo/logo-2.jpg
 
 # Title for your blog page
-blog_title: Where the machine creates the code
+blog_title: A Software Developer's Dream
 paginate: 5
 paginate_path: "/blog/page:num/"
 
