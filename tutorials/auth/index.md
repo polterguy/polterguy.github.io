@@ -72,7 +72,8 @@ Below are all configuration settings related to auth in Magic.
       "valid-minutes": 120,
       "registration": {
         "allow": true,
-        "confirm-email": null
+        "confirm-email": null,
+        "extra": "name,phone,whatever"
       }
     }
   }
@@ -111,15 +112,15 @@ your own Hyperlambda code, resulting in some sort of expected result meeting you
 
 Internally Magic will generate an authentication and authorisation database for you as you
 initially configure Magic. This is one of the reasons why it asks you for a valid database connection during its
-setup process. The tables related to auth in this database are as follows.
+setup process. The tables related to auth and users in this database are as follows.
 
 * __users__
 * __roles__
 * __users_roles__
+* __users_extra__
 
-This structure is of course easily expanded upon if you need additional information, such as extra information
-associated with users, containing for instance user's full names, etc. If you use for instance the _"SQL"_ menu
-item and you select all records from your users table using something such as the following ...
+If you use for instance _"SQL Studio"_ you select all records from your users table using something
+such as the following ...
 
 ```sql
 select * from users

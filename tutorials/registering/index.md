@@ -58,7 +58,10 @@ her email address before given access to the site. The _"register"_ endpoint req
   "password": "some-password",
   "frontendUrl": "https://your-frontend-url.com",
   "template": "/some/path/to-some-email-template.html",
-  "subject": "Subject line of registration email"
+  "subject": "Subject line of registration email",
+  "extra": {
+    "name": "John Doe"
+  }
 }
 ```
 
@@ -69,7 +72,9 @@ query parameters automatically created by the registration process and sent to t
 she must click to verify their email address. The **[template]** is a HTML file somewhere in your backend
 that the registration welcome email is automatically generated from, and the **[subject]** is the subject
 line of this welcome email. Both the **[template]** and the **[subject]** arguments are optional, and default
-values will be used if they are not supplied.
+values will be used if they are not supplied. The **[extra]** field is additional extra information associated
+with the user and Magic can be configured to allow for any additional extra information you need to be associated
+with registered users. By default only _"name"_ is allowed as extra information.
 
 As the user registers he or she is associated with the _"unconfirmed"_ role. This is the most restricted role
 in the system, and doesn't allow the user to do anything, except of course verifying his or her email address.
@@ -193,14 +198,19 @@ the backend to authorise the user. Below is an example of the response from the 
 
 ```json
 {
-   "ticket":"eyJhbGciOiJIUzxyz.eyJuYxyx.jWNVFWxyz"
+   "ticket":"eyJhbGciOiJIUzxyz.eyJuYxyx.jWNVFWxyz",
+   "extra": {
+     "name": "John Doe"
+   }
 }
 ```
 
-Notice, a real JWT token would typically be much longer, but we snippet it to keep it relevant. When you
+Notice, a real JWT token would typically be much longer. When you
 want to use the JWT token you have to attach it to your consecutive HTTP requests as a _"Bearer"_ token
 in the `Authorization` HTTP header. Notice, only the _value_ of the above `ticket` field is your actual
 token. For more details about the internals of what goes on beneath the hoods, you can
-read [this article](/tutorials/auth/).
+read [this article](/tutorials/auth/). The above _"extra"_ field is additional extra information associated
+with the user during registration, and depends upon what information the user provided as he registered,
+and/or how you've configured Magic to accept additional extra information.
 
 * Continue with [Expressions, slots and nodes](/tutorials/expressions-slots-nodes/)

@@ -166,7 +166,10 @@ system, this must be manually added by a root user after the user has confirmed 
   "password": "some-password",
   "frontendUrl": "https://your-frontend-url.com",
   "template": "/some/path/to-some-email-template.html",
-  "subject": "Subject line of registration email"
+  "subject": "Subject line of registration email",
+  "extra": {
+    "name": "John Doe"
+  }
 }
 ```
 
@@ -177,6 +180,30 @@ The above arguments implies the following.
 * __[frontendUrl]__ - The URL to the frontend responsible for validating the user's email address. Optional, and if not given will not send user a _"confirm email address"_ email
 * __[template]__ - The full relative path to an email template used to send user a verify email address link. Optional, and if not given will default to _"/system/auth/email-templates/register.html"_
 * __[subject]__ - Subject line of welcome email. Optional, and if not supplied the default value of _"Thank you for registering with Aista Magic Cloud"_ will be used
+* __[extra]__ - Additional key/value list of extra information associated with the user. See remarks below for details.
+
+The **[extra]** field is _optional_ and if not supplied will be ignored. This field declares additional extra
+information associated with the created user, and can be anything you wish, such as for instance _"phone"_,
+_"name"_, etc. Notice, what type of extra information the system accepts is configured as a comma separated
+list in your _"appsettings.json"_ file, and can be edited in the _"Config"_ menu item, by adding a key named
+_"extra"_ beneath your _"registration"_ configuration object. By default the only accepted extra information
+you can associate with users is _"name"_, but if you for instance want to allow users to provide their phone
+number as they are registering in addition to their names, you can modify this section as follows.
+
+```json
+{
+  "magic": {
+    "auth": {
+      "registration": {
+        "extra": "name,phone"
+      }
+    }
+  }
+}
+```
+
+Whatever extra information you pass in to this endpoint during registration, will be associated with the user
+and returned as the user authenticates.
 
 This endpoint does not require the caller to be authenticated and can be invoked by anyone. If you have
 configured the system to send _"confirm email address"_ emails, the URL transmitted to the user to confirm
