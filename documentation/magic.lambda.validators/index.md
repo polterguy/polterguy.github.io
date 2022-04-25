@@ -11,6 +11,7 @@ This project contains input validators for Magic. More specifically it contains 
 * __[validators.regex]__ - Verifies that some input is matching some given __[regex]__ pattern
 * __[validators.string]__ - Verifies that some string input is between __[min]__ and __[max]__ in length
 * __[validators.url]__ - Verifies that some string input is a legal URL, either HTTP or HTTPS type of scheme
+* __[validators.recaptcha]__ - reCAPTCHA validator, to avoid bots from invoking your APIs
 
 All of the above slots takes an expression, or values, as its main input, and will throw exceptions if their input expression's
 value(s), or its value, does not follow the rules specified by the validator. This makes them perfect fits for _"intercepting"_ the
