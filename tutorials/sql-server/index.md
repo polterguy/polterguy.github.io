@@ -71,4 +71,4 @@ The rest of the process is similar to the MySQL equivalent, and implies crudifyi
 a key pair, and running the assumptions. You also need to
 have [Docker](https://www.docker.com/products/docker-desktop) installed on your development machine.
 
-* Continue with [Using Magic with PostgreSQL](/tutorials/postgresql/)
+* Continue with [Using Magic with PostgreSQL](/tutorials/sqlite/)

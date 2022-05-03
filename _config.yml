@@ -9,13 +9,13 @@ permalink: /blog/:title
 title: Aista Magic Cloud
 
 # Slogan of your site
-slogan: Where the machine creates your code
+slogan: A Software Developer's Dream
 
 # Description of your site
 description: An Open Source Low-Code Cloud system allowing you to generate your web applications by simply clicking a button
 
 # Google Analytics tracking code
-google_analytics: G-894193X28M
+google_analytics: G-9TJ79M3VVN
 
 # Copyright displayed in the bottom right corner
 copyright: Copyright © Aista, Ltd 2020 - 2022, info@aista.com
@@ -32,7 +32,7 @@ body_bg: /assets/bg2.jpeg
 og_image: https://raw.githubusercontent.com/polterguy/magic/master/artwork/new-logo/logo-2.jpg
 
 # Title for your blog page
-blog_title: Where the machine creates the code
+blog_title: A Software Developer's Dream
 paginate: 5
 paginate_path: "/blog/page:num/"
 
@@ -81,6 +81,8 @@ nav_sections:
         name: Customised authentication
       - url: /tutorials/sql-server/
         name: Using Magic with Microsoft SQL Server
+      - url: /tutorials/sqlite/
+        name: Using Magic with SQLite
       - url: /tutorials/postgresql/
         name: Using Magic with PostgreSQL
       - url: /tutorials/mysql/
@@ -117,6 +119,8 @@ nav_sections:
         name: magic.lambda.pgsql
       - url: /documentation/magic.lambda.mssql/
         name: magic.lambda.mssql
+      - url: /documentation/magic.lambda.sqlite/
+        name: magic.lambda.sqlite
       - url: /documentation/magic.lambda.odbc/
         name: magic.lambda.odbc
       - url: /documentation/magic.lambda.cql/

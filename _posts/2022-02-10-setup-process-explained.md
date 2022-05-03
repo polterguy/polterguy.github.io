@@ -30,7 +30,7 @@ to `http://localhost:4444`.
 ![Default login](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/setup-explained.jpg)
 
 The way Magic determines whether or not to allow you to login with your default credentials or not, is by
-checking your `magic:auth:secret` configuration value. You can find this value your backend's _"config/appsettings.json"_
+checking your `magic:auth:secret` configuration value. You can find this value your backend's _"files/config/appsettings.json"_
 configuration file. Its default value looks like the following.
 
 ![Default configuration settings](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/default-auth.jpg)

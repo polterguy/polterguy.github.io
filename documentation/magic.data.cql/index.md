@@ -27,7 +27,8 @@ this.
         "credentials": {
           "username": "xxx",
           "password": "xxx"
-        }
+        },
+        "port": 12345
       }
     }
   }
@@ -36,7 +37,8 @@ this.
 
 **Notice** - The _"credentials"_ parts above are optional, and can be ommitted if you don't require
 authentication to connect to your database. You can also provide multiple hosts as contact points,
-by separating multiple IP addresses or hosts by a comma (,).
+by separating multiple IP addresses or hosts by a comma (,). The above _"port"_ parts is also
+optional.
 
 The above configures the adapter to use `127.0.0.1` as the host for your contact point or cluster. To configure
 the adapter to store files and folders inside of its CQL based database, you can alternatively add something such

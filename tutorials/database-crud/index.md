@@ -1,10 +1,10 @@
 ---
-title: Automatically generate a CRUD Web API using Hyperlambda
-description: In this article we generate a Hyperlambda CRUD web API using Magic, for then to analyse the generated code, providing you with the knowledge required to understand how Magic is doing its Magic.
+title: Generate a CRUD API in seconds
+description: By using Magic you can automatically generate a CRUD API wrapping your existing SQL database in seconds.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-crud.jpg"
 ---
 
-# Automatically generate a CRUD Web API using Hyperlambda
+# Generate a CRUD API in seconds
 
 This is a _"hands on tutorial"_, and assumes you've already [installed Magic](/tutorials/getting-started/)
 locally or at some server. This tutorial covers the following parts of Magic and Hyperlambda.
@@ -40,7 +40,7 @@ Choose _"pagila"_ if you're using PostgreSQL. Load the database script, and clic
 
 This creates a database for you, which will be the foundation for generating our HTTP CRUD backend.
 
-## Generating your backend
+## Generating your CRUD API
 
 Before we can generate our backend we will have to purge our database cache. Click the little spiral
 icon in your SQL menu item beneath the SQL editor. Below is a screenshot showing you how.
@@ -50,7 +50,7 @@ icon in your SQL menu item beneath the SQL editor. Below is a screenshot showing
 Open the _"CRUD"_ menu item, choose your newly created database, and click _"Crudify all tables"_.
 Below you can see a screenshot.
 
-![Generating your backend](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg)
+![Generating your CRUD backend](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg)
 
 As you generate your backend you will notice that Magic says something like _"xxx LOC generated"_.
 This number is the lines of code that Magic automatically generated for you, and depends upon
@@ -58,7 +58,7 @@ your database and its number of tables. A small database such as sakila will typ
 generate some 3,500 lines of code - While a larger database might generate tens of
 thousands of lines of code for you.
 
-## Playing with our CRUD endpoints
+## Testing your CRUD API
 
 After having done the above, Magic will have created a bunch of Hyperlambda files for you in
 your _"/modules/xxx"_ folder, where _"xxx"_ is your database name. Open the _"Hyper IDE"_ menu
@@ -80,7 +80,7 @@ play around with the code, by going to the _"Endpoints"_ menu item, and filter o
 your tables. In the screenshot below, we've chosen _"sakila/actor"_. Click the
 _"get"_ endpoint, at which point you should see something resembling the following.
 
-![Invoking your HTTP endpoints](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/endpoints.jpg)
+![Invoking your CRUD API](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/endpoints.jpg)
 
 You can already invoke your endpoint by clicking the _"Invoke"_ button for your endpoint.
 If you do this, you should see a bunch of JSON objects returned from your server resembling
@@ -189,7 +189,7 @@ the _"modules"_ folder, then click the folder with the same name as the name of 
 Click for instance the _"actor.get.hl"_ file, at which point you should see something resembling
 the following.
 
-![Editing your Hyperlambda using Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide.jpg)
+![Editing your API using Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide.jpg)
 
 If you didn't generate CRUD endpoints for your sakila database then at least make
 sure that whatever file you're looking at ends with _".get.hl"_ such that we're looking at roughly the
@@ -248,7 +248,7 @@ and children. This is the foundation of Hyperlambda. Hyperlambda is actually jus
 of a tree structure, the same way YAML, JSON, or XML is. Nodes are Hyperlambda's object implementation
 again. See the documentation for [magic.node](/documentation/magic.node/) for more details.
 
-### Arguments passing
+### Passing arguments to your CRUD API
 
 If you look at the top of your file, you will see something resembling the following.
 
@@ -313,7 +313,7 @@ invoking the endpoint belongs to at least one of the following roles.
 If the user has an invalid token, and/or the user doesn't belong to any of the above roles,
 this slot will throw an exception, preventing the rest of your Hyperlambda code from executing.
 This is the core authentication and authorization parts of Magic, and allows you to secure
-your web APIs. If you want users belonging to different roles to be able to invoke
+your CRUD API. If you want users belonging to different roles to be able to invoke
 your endpoint, you can simply edit the above code, by for instance adding _another_ role
 to it, save your file - And voila; Your authorization requirements have automagically changed.
 Below is an example of how to add the _"director"_ role as a role allowed to invoke the endpoint.

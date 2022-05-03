@@ -1,18 +1,17 @@
 ---
-title: Aista Magic Cloud, Open Source, Low-Code, and Hyperlambda
-description: Aista Magic Cloud is an Open Source Low-Code web application generator allowing you to create your web apps by clicking a button.
-og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide-actions.jpg
+title: Aista Magic Cloud, a low-code CRUD generator
+description: Aista Magic Cloud is an open source low-code CRUD generator allowing you to create your CRUD apps by clicking a button.
+og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg
 ---
 
-# Aista Magic Cloud, CRUD automation, Low-Code and Hyperlambda
+# A low-code CRUD generator
 
-Aista Magic Cloud is a low-code web application generator allowing you to generate your web apps
+Aista Magic Cloud is a low-code CRUD generator allowing you to generate your CRUD apps
 by clicking a button. It works by automatically wrapping your existing database into Hyperlambda HTTP CRUD web API
-endpoints, for then to generate an Angular frontend for you based upon your web API.
-[Magic Cloud is 100% open source](https://github.com/polterguy/magic) and you can freely use it in your
+endpoints. [Magic Cloud is 100% open source](https://github.com/polterguy/magic) and you can freely use it in your
 closed source projects.
 
-![Hyperlambda HTTP CRUD generator screenshot](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg)
+![CRUD API generator](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg)
 
 Magic supports MySQL, Microsoft SQL Server, and PostgreSQL, in addition to having basic NoSQL support. Magic
 contains its own DSL called Hyperlambda, similar to YAML in structure, allowing you to _"declare"_ your logic with a

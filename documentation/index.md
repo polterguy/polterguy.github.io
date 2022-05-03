@@ -46,6 +46,7 @@ requirements for your endpoints, etc.
 * [magic.lambda.mysql](/documentation/magic.lambda.mysql/) - Accessing your MySQL server from Hyperlambda
 * [magic.lambda.pgsql](/documentation/magic.lambda.pgsql/) - Accessing your PostgreSQL server from Hyperlambda
 * [magic.lambda.mssql](/documentation/magic.lambda.mssql/) - Accessing your MS SQL Server from Hyperlambda
+* [magic.lambda.sqlite](/documentation/magic.lambda.sqlite/) - Accessing your SQLite database from Hyperlambda
 * [magic.lambda.odbc](/documentation/magic.lambda.odbc/) - Accessing an ODBC connection from Hyperlambda
 * [magic.lambda.image](/documentation/magic.lambda.image/) - Image library, allowing you to generate QR code
 * [magic.lambda.crypto](/documentation/magic.lambda.crypto/) - Cryptography helpers for Hyperlambda
