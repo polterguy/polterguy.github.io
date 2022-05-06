@@ -228,7 +228,7 @@ pull the Magic images from docker hub, and restart your containers using the fol
 
 ```
 docker-compose down
-docker pull servergardens/magic-frontend
-docker pull servergardens/magic-backend
+docker pull aistamagic/magic-frontend
+docker pull aistamagic/magic-backend
 docker-compose up -d
 ```

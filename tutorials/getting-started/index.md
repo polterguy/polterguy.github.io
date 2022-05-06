@@ -61,8 +61,8 @@ in _the same folder_ as where your main Magic _"docker-compose.yml"_ file is.
 
 ```
 docker-compose down
-docker pull servergardens/magic-frontend
-docker pull servergardens/magic-backend
+docker pull aistamagic/magic-frontend
+docker pull aistamagic/magic-backend
 docker-compose up
 ```
 
