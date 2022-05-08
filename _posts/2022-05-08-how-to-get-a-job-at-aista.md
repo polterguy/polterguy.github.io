@@ -11,7 +11,7 @@ First of all, we're _not_ looking for more people at the moment. However, when w
 * Knowledge about Hyperlambda, how to use it, and _at least_ one open source backend module built in it
 * A passion for open source and open standards
 
-Notice, currently we're _not_ looking for more people. However, when we do, probably some 2-4 months down the road, the above would be the _"bare minimum"_ requirements we'd expect applicants to have in regards to knowledge and experience about our platform. If you want to start preparing yourself today, you can find the download to Magic below.
+Notice, currently we're _not_ looking for more people. However, when we do, probably some 2-4 months down the road, the above would be the _"bare minimum"_ requirements we'd expect applicants to have in regards to knowledge and experience with our platform. If you want to start preparing yourself today, you can find the download to Magic below.
 
 * [Download Magic](https://docs.aista.com/tutorials/getting-started/)
 * [Cloning Magic's source](https://docs.aista.com/documentation/magic.clone/)
