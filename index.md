@@ -19,7 +19,7 @@ support.
 First you need a database. You can connect to your existing database in the Management/Config menu item. Click
 the button that says _"Add connection string"_ and make sure you use `{database}` as your database selector such
 that Magic can dynamically connect to all databases in your database server. If you don't have a database yourself,
-and only want to play around with Magic, you can find demonstration databases in the Management/Plugins section.
+and only want to play around with Magic, you can find example databases in the Management/Plugins section.
 Choose any plugin that starts with _"SQLite"_ and ends with _"DB"_, and click _"Install"_.
 
 Then go to Tools/CRUD Generator. Choose your database and click _"Crudify all tables"_. You can also select
