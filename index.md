@@ -72,6 +72,7 @@ endpoints - And even automatically generate unit tests afterwards.
 
 ![Magic's Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide-actions.jpg)
 
-* [Getting Started](/tutorials/getting-started/)
+Below you can find more information about Magic, such as tutorials and its reference documentation.
+
 * [Tutorials](/tutorials/)
 * [Docs](/documentation/)
