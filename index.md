@@ -9,7 +9,7 @@ og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master
 Aista Magic Cloud is a low-code CRUD generator allowing you to generate your CRUD apps
 by clicking a button. It works by automatically wrapping your existing database into Hyperlambda HTTP CRUD web API
 endpoints. [Magic Cloud is 100% open source](https://github.com/polterguy/magic) and you can freely use it in your
-closed source projects. Magic supports MySQL, Microsoft SQL Server, and PostgreSQL, in addition to having basic NoSQL
+closed source projects. Magic supports MySQL, Microsoft SQL Server, SQLite, and PostgreSQL, in addition to having basic NoSQL
 support.
 
 ![CRUD API generator](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg)
