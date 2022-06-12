@@ -29,7 +29,11 @@ socket messages as endpoints are invoked, etc.
 
 When you are done generating your CRUD API, you can go to Analytics/Endpoints to play with your endpoints.
 This component is similar to Swagger, and allows you to see which arguments your endpoints can handle,
-to easily implement some kind of frontend.
+to easily implement some kind of frontend. Below is a video demonstrating the entire process.
+
+<div class="video">
+<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/h4s0bwEC_a4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 ## Hyper IDE, a web based IDE
 
