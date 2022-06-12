@@ -44,15 +44,6 @@ the _"Generate"_ button. Below is a screenshot of the process.
 
 ![Creating a Web API using SQL](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-web-api.jpg)
 
-## Hyper IDE, a web based IDE
-
-Magic also contains its own IDE or integrated development environment, a fully fledged web based IDE accessible
-from your phone if required. Hyper IDE provides syntax highlighting for most popular programming languages, in addition
-to autocomplete for Hyperlambda. With Hyper IDE you can edit your code, save it, and immediately execute your
-endpoints - And even automatically generate unit tests afterwards.
-
-![Magic's Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide-actions.jpg)
-
 ## Web based SQL "Workbench"
 
 In addition to the above, Magic contains a web based SQL _"workbench"_, allowing you to execute SQL towards
@@ -64,13 +55,22 @@ have allowing you to administrate your databases from your phone if required.
 
 ![Magic's web based SQL Workbench](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-autocomplete.jpg)
 
-You can also create your HTTP endpoints using nothing but SQL with Magic. Although it's obviously more convenient
-to use a desktop computers as your primary development machine, you _can_ use all components in Magic from your phone
-if required. Below is a video where we demonstrate the Crudifier and Hyper IDE from an iPhone.
+Notice, although it's obviously more convenient to use a desktop computers as your primary development machine, you _can_
+use all components in Magic from your phone if required. Below is a video where we demonstrate the Crudifier and Hyper IDE
+from an iPhone.
 
 <div class="video">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/nP_4m8c_fT8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
+
+## Hyper IDE, a web based IDE
+
+Magic also contains its own IDE or integrated development environment, a fully fledged web based IDE accessible
+from your phone if required. Hyper IDE provides syntax highlighting for most popular programming languages, in addition
+to autocomplete for Hyperlambda. With Hyper IDE you can edit your code, save it, and immediately execute your
+endpoints - And even automatically generate unit tests afterwards.
+
+![Magic's Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide-actions.jpg)
 
 * [Getting Started](/tutorials/getting-started/)
 * [Tutorials](/tutorials/)
