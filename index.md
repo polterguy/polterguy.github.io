@@ -35,6 +35,15 @@ to easily implement some kind of frontend. Below is a video demonstrating the en
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/h4s0bwEC_a4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
+## Creating HTTP endpoints using SQL
+
+Magic allows you to create HTTP endpoints with only SQL knowledge. This allows you to create some SQL statement,
+and rapidly wrap it inside an HTTP endpoint. You can find this component in the Tools/CRUD Generator/SQL section
+of your dashboard. Choose your database, provide some SQL, add arguments that you reference in your SQL, and click
+the _"Generate"_ button. Below is a screenshot of the process.
+
+![Creating a Web API using SQL](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-web-api.jpg)
+
 ## Hyper IDE, a web based IDE
 
 Magic also contains its own IDE or integrated development environment, a fully fledged web based IDE accessible
