@@ -56,7 +56,7 @@ endpoints - And even automatically generate unit tests afterwards.
 ## Web based SQL "Workbench"
 
 In addition to the above, Magic contains a web based SQL _"workbench"_, allowing you to execute SQL towards
-your database of choice. This component works transparently towards SQL Server, MySQL, and PostgreSQL, and allows
+your database of choice. This component works transparently towards SQL Server, MySQL, SQLite, and PostgreSQL, and allows
 you to save frequently used SQL snippets, and do basic administration of your databases.
 The SQL component in Magic supports syntax highlighting on your tables, autocomplete, and most other features
 you would expect from an SQL Workbench type of component. The SQL Workbench works perfectly on any device you might
