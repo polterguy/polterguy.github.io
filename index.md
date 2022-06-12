@@ -13,11 +13,24 @@ closed source projects.
 
 ![CRUD API generator](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg)
 
-Magic supports MySQL, Microsoft SQL Server, and PostgreSQL, in addition to having basic NoSQL support. Magic
-contains its own DSL called Hyperlambda, similar to YAML in structure, allowing you to _"declare"_ your logic with a
-syntax resembling YAML. This makes it a perfect _"first programming"_ language due to that it's an extremely
-high level abstraction eliminating most of the problems from traditional programming languages. You can easily
-[teach yourself Hyperlambda](https://docs.aista.com/blog/an-introduction-to-hyperlambda) in a couple of hours.
+Magic supports MySQL, Microsoft SQL Server, and PostgreSQL, in addition to having basic NoSQL support.
+
+## Getting started
+
+First you need a database. You can connect to your existing database in the Management/Config menu item. Click
+the button that says _"Add connection string"_ and make sure you use `{database}` as your database selector such
+that Magic can dynamically connect to all databases in your database server. If you don't have a database yourself,
+and only want to play around with Magic, you can find demonstration databases in the Management/Plugins section.
+Choose any plugin that starts with _"SQLite"_ and ends with _"DB"_, and click _"Install"_.
+
+Then go to Tools/CRUD Generator. Choose your database and click _"Crudify all tables"_. You can also select
+individual tables and configure these as you need. This allows you to for instance apply authorisation
+requirements for your individual endpoints, add reCAPTCHA requirements for invoking endpoints, publish web
+socket messages as endpoints are invoked, etc.
+
+When you are done generating your CRUD API, you can go to Analytics/Endpoints to play with your endpoints.
+This component is similar to Swagger, and allows you to see which arguments your endpoints can handle,
+to easily implement some kind of frontend.
 
 ## Hyper IDE, a web based IDE
 
