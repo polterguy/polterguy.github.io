@@ -6,7 +6,7 @@ og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master
 
 # Getting started with Aista Magic Cloud in 4 minutes
 
-Aista Magic Cloud is a low-code CRUD generator allowing you to generate your CRUD apps
+Aista Magic Cloud is a low-code CRUD generator allowing you to generate CRUD apps in one second
 by clicking a button. It works by wrapping your database into Hyperlambda HTTP API endpoints. Below is the CRUD
 generator that automatically creates your web API.
 
@@ -14,16 +14,16 @@ generator that automatically creates your web API.
 
 ## Generate CRUD endpoints for your database
 
-First you need a database. You can connect to your existing database in the Management/Config menu item. Click
+First you need a database. You can connect to an existing database in the Management/Config menu item. Click
 the button that says _"Add connection string"_ and make sure you use `{database}` as your database selector such
 that Magic can dynamically connect to all databases in your database server. If you don't have a database yourself,
 and only want to play around with Magic, you can find example databases in the Management/Plugins section.
 Choose any plugin that starts with _"SQLite"_ and ends with _"DB"_, and click _"Install"_.
 
 Then go to Tools/CRUD Generator. Choose your database and click _"Crudify all tables"_. You can also select
-individual tables and configure these as you need. This allows you to for instance apply authorisation
+individual tables and configure these as you wish. This allows you to for instance apply authorisation
 requirements for your individual endpoints, add reCAPTCHA requirements for invoking endpoints, publish web
-socket messages as endpoints are invoked, etc.
+socket messages as endpoints are invoked, log invocations to endpoints, etc.
 
 When you are done generating your CRUD API, you can go to Analytics/Endpoints to play with your endpoints.
 This component is similar to Swagger, and allows you to see which arguments your endpoints can handle,
@@ -35,7 +35,7 @@ to easily implement some kind of frontend. Below is a video demonstrating the en
 
 ## Generate SQL endpoints
 
-Magic allows you to create HTTP endpoints with only SQL knowledge. This allows you to compose some SQL statement,
+Magic allows you to create HTTP endpoints with SQL only. This allows you to compose some SQL statement,
 and rapidly wrap it inside an HTTP endpoint. You can find this component in the Tools/CRUD Generator/SQL section
 of your dashboard. Choose your database, provide some SQL, add arguments that you reference in your SQL, and click
 the _"Generate"_ button. Below is a screenshot of the process.
@@ -58,10 +58,12 @@ from the SQL endpoint CRUD Generator to wrap it inside an HTTP SQL endpoint.
 
 Magic also contains its own IDE or integrated development environment, a fully fledged web based IDE.
 Hyper IDE provides syntax highlighting for most popular programming languages, in addition
-to autocomplete for Hyperlambda. With Hyper IDE you can edit your code, save it, and immediately execute your
-endpoints - And even automatically generate unit tests afterwards.
+to autocomplete for Hyperlambda. With Hyper IDE you can edit your code, save it, and immediately see the result
+of your modifications by executing your endpoint using the menu dropdown button.
 
 ![Magic's Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide-actions.jpg)
+
+## Use Magic from anywhere!
 
 Notice, although it's obviously more convenient to use a desktop computer as your primary development machine, you _can_
 use all components in Magic from your phone if required. Below is a video where we demonstrate the Crudifier and Hyper IDE
