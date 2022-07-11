@@ -914,6 +914,49 @@ exists:x:@.src1/*
 exists:x:@.src2/*
 ```
 
+### [not-exists]
+
+**[not-exists]** will evaluate to true if its specified expression yields zero results. If not, it will
+return false. It's the logical opposite of **[exists]**.
+
+```
+.src1
+   foo
+.src2
+not-exists:x:@.src1/*
+not-exists:x:@.src2/*
+```
+
+### [null]
+
+**[null]** will evaluate to true if its specified expression yields null, or the expression returns no nodes.
+If not, it will return false.
+
+```
+.src1
+   foo:foo
+.src2
+   foo
+null:x:@.src1/*
+null:x:@.src2/*
+```
+
+### [not-null]
+
+**[not-null]** will evaluate to true if its specified expression returns nodes and at least one of those nodes has a value.
+If not, it will return false.
+
+```
+.src1
+   foo:foo
+.src2
+   foo
+.src3
+not-null:x:@.src1/*
+not-null:x:@.src2/*
+not-null:x:@.src3/*
+```
+
 ### [reference]
 
 This slot will evaluate its expression, and add the entire node the expression is pointing to, as a referenced node into
