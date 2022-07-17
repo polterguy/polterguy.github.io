@@ -18,6 +18,7 @@ this project contains are as follows.
 * __[sqlite.transaction.create]__ - Creates a new transaction
 * __[sqlite.transaction.commit]__ - Explicitly commits an open transaction
 * __[sqlite.transaction.rollback]__ - Explicitly rolls back an open transaction
+* __[sqlite.connections.flush]__ - Flushed cached schemas and connection pools
 
 **Notice** - If you use any of the CRUD slots from above, the whole idea is that you can polymorphistically
 use the same lambda object, towards any of the underlaying database types, and the correct specific syntax

@@ -4,6 +4,7 @@
 Date manipulation slots for Magic. More specifically, this project contains the following slots.
 
 * __[date.now]__ - Returns the now date, equivalent of `DateTime.Now`.
+* __[date.from-unix]__ - Converts the specified Unix timestamp to a `DateTime` object.
 * __[date.min]__ - Returns the minimum date value, equivalent of `DateTime.MinValue`.
 * __[date.format]__ - Returns a string representation of some date, formatted according to the specified **[format]** argument.
 * __[time]__ - Creates a time span, useful for adding and subtracting offsets to date objects. Pass in **[days]**, **[hours]**, **[minutes]**, **[seconds]** or **[milliseconds]** to declare how large your offset is. All arguments are optional, but (of course) at least one argument should be passed in.
