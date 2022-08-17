@@ -13,7 +13,4 @@ long as you _keep the backlink_ to our site. To navigate the documentation use t
 
 ## Guest bloggers wanted
 
-Got something to say about Magic Cloud, Aista, Automation or Low-Code? [Fork our documentation project](https://github.com/polterguy/polterguy.github.io),
-create a new article (or 2), create a pull request - At which point we _might_ pull it in, assuming it's high quality,
-and doesn't provide (too many) shameless plugs, aka self promotional parts. One or two links to your own stuff is
-OK, but please keep things civil.
+Got something to say about Magic Cloud, Aista, Automation or Low-Code? [Fork our documentation project](https://github.com/polterguy/polterguy.github.io), create a new article (or 2), create a pull request - At which point we _might_ pull it in, assuming it's high quality, and doesn't provide (too many) shameless plugs, aka self promotional parts. One or two links to your own stuff is OK, but please keep things civil.
