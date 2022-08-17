@@ -173,10 +173,6 @@ nav_sections:
         name: magic.clone
   - name: Misc
     items:
-      - url: /about
-        name: about
-      - url: /blog/
-        name: blog
       - url: https://youtube.com/ThomasHansen-Magic
         name: youtube
       - url: https://t.me/aistamagic
