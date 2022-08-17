@@ -1,6 +1,7 @@
 ---
 layout: post
 author: thomas
+canonical_url: https://aista.com/blog/new-documentation-website/
 ---
 
 Welcome to our new documentation website for Magic Cloud. Hopefully this new structure will make it

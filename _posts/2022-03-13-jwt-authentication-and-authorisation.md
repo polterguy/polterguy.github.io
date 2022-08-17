@@ -4,6 +4,7 @@ author: thomas
 title: JWT authentication and authorisation
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blogs/authorized.jpeg"
 description: JWT is an industry standard for authorisation and authentication. In this article I walk you through the basic ideas of the standard, and explains how it works.
+canonical_url: https://aista.com/blog/jwt-authentication-and-authorisation/
 ---
 
 JWT is one of those rare things that pops up once every now and then that solves a real problem in such a beautiful way it's almost impossible to ignore, resulting in that it becomes a force of its own and ends up becoming the industry standard. My first reaction to the thing when I discovered it was roughly as follows; _"Golly gosh this is cool!"_ However, it comes with compromises, and it forces you to think differently. In this article I will first explain how it works, then I'll explain its advantages, for then to finish up with how it changes your thinking. First of all a JWT token is simply 3 JSON objects, each of which are base64 encoded, for then to separate each base64 encoded JSON object with a _"."_. A typical JWT token therefor looks like this.

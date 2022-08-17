@@ -3,6 +3,7 @@ layout: post
 author: thomas
 title: Teach yourself Web Sockets in 5 minutes
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sockets.jpg"
+canonical_url: https://aista.com/blog/teach-yourself-web-sockets-in-5-minutes/
 ---
 
 In this article we will go through the following concepts.

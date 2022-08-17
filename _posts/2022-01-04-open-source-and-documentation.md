@@ -1,6 +1,7 @@
 ---
 layout: post
 author: thomas
+canonical_url: https://aista.com/blog/open-source-and-documentation/
 ---
 
 As an Open Source advocate, being the _by far_ most active contributor to GitHub in Cyprus, I am obviously

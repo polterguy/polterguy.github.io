@@ -4,6 +4,7 @@ author: thomas
 title: Running "Google" on $12 per month
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blogs/supercomputer.jpeg"
 description: I just now performed a simple throughput and scalability test of Magic and Hyperlambda, and in this article I go through some of the stuff for show.
+canonical_url: https://aista.com/blog/running-google-on-12-buck-per-month/
 ---
 
 At my last _"day job"_ we spent roughly €20,000 per month on servers. In the job I had before that, we spent

@@ -4,6 +4,7 @@ author: thomas
 title: Create an SQL web API from your phone
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blogs/phone-sql-api.jpeg"
 description: With a web based IDE that is responsive there exists no limits to what you can do, really
+canonical_url: https://aista.com/blog/sql-web-api-from-your-phone/
 ---
 
 The following screenshot was literally taken from my iPhone, and yes I am not only writing SQL on my phone, but I am also creating an HTTP API in the same process.

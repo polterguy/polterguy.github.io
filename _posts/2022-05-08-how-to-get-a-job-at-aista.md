@@ -3,6 +3,7 @@ layout: post
 author: thomas
 title: How to get a job at Aista
 description: Since it seems we're one of the most popular employers in Cyprus these days, I wanted to write up some words about how to get a job with us
+canonical_url: https://aista.com/blog/how-to-get-a-job-at-aista/
 ---
 
 First of all, we're _not_ looking for more people at the moment. However, when we do, we will be looking in our community for resources, implying if you want to land a job with the coolest software company in Cyprus, possibly the world, at the very least what we'd like to see from you is the following.

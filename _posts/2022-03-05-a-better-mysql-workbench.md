@@ -4,6 +4,7 @@ author: thomas
 title: An iPhone based MySQL Workbench
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blogs/sql-mobile.jpg"
 description: The Magic Dashboard contains an SQL component allowing you to transparently manage your MySQL, SQL Server and PostgreSQL databases.
+canonical_url: https://aista.com/blog/a-better-mysql-workbench/
 ---
 
 Dozens of times I've had colleagues calling me while on vacation with some emergency. Once I had to spell out

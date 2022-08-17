@@ -4,6 +4,7 @@ author: thomas
 title: Creating a Web Registration Form
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blogs/online-registration.jpg"
 description: Magic allows you to easily create your own UI wrapping the existing HTTP backend endpoints to create your own custom registration form.
+canonical_url: https://aista.com/blog/creating-a-web-registration-form/
 ---
 
 Magic contains everything you need to create a registration form. Below is a screenshot of Magic's

@@ -4,6 +4,7 @@ author: thomas
 title: Monster Database Systems
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blogs/mysql-monster.jpg"
 description: A micro tutorial about how to create a registration form using Magic
+canonical_url: https://aista.com/blog/monster-database-systems/
 ---
 
 For the record, I would not recommend anyone to stuff 2 billion records into a MySQL database, but it _is_ possible, and [Magic](https://aista.com) handles it just fine. Of course, simply counting 2 billion records takes minutes, and in order to be able to even use it in a Hyperlambda generated CRUD backend you'd have to apply some super aggressive server-side caching constructs, but it _is_ possible as you can clearly see from the following screenshot.

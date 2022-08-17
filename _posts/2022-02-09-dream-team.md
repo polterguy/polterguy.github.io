@@ -3,6 +3,7 @@ layout: post
 author: thomas
 title: Dream Team
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-dashboard.jpg"
+canonical_url: https://aista.com/blog/dream-team/
 ---
 
 I've got the best software development team on the planet. If I ask my backend head of development

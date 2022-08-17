@@ -4,6 +4,7 @@ author: thomas
 title: CRUD automation and Low-Code
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg"
 description: With Aista Magic Cloud you can create CRUD HTTP endpoints wrapping your database in seconds.
+canonical_url: https://aista.com/blog/crud-automation-and-low-code/
 ---
 
 CRUD is probably one of the most boring tasks you can possibly do as a software developer, especially if you have a large database with hundreds of tables, and you need to create CRUD endpoints wrapping your entire database. With Magic you can [automatically create CRUD API endpoints in seconds](https://docs.aista.com/) by simply clicking a button. Below is a screenshot. The process is extremely simply; Choose your database, configure your endpoints, click a button - And two seconds later Magic has produced thousands of lines of code for you 100% automatically, wrapping every single table inside CRUD HTTP endpoints for you without you having to write a single line of code yourself.

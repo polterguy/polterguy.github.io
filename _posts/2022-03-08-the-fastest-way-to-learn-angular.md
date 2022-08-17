@@ -4,6 +4,7 @@ author: thomas
 title: The Fastest way to learn Angular
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blogs/angular.jpg"
 description: In this article I will show you the fastest way to learn Angular, and the method might surprise you, since it barely touch upon Angular at all.
+canonical_url: https://aista.com/blog/the-fastest-way-to-learn-angular/
 ---
 
 For weird reasons the fastest way to learn something new is rarely if ever a straight line. The most famous version of this idea can be seen in the video Karate Kid, where a young boy is taught how to _"vax on vax off"_ for weeks, without even realising he was learning how to block. In the video below I am illustrating a similar path, but not the path to black belt in Karate, rather the path to black belt in Angular you might say.

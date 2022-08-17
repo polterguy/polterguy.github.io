@@ -2,6 +2,7 @@
 layout: post
 author: thomas
 title: NoSQL support in Hyperlambda
+canonical_url: https://aista.com/blog/nosql-hyperlambda-support/
 ---
 
 We just created [a new release of Magic](https://github.com/polterguy/magic/releases), and its main

@@ -2,6 +2,7 @@
 layout: post
 author: thomas
 title: NoSQL files and logging data adapters for Hyperlambda
+canonical_url: https://aista.com/blog/nosql-data-adapters/
 ---
 
 NoSQL has a couple of interesting traits. Its most important trait being of course that if applied correctly, it scales _linearly_.
