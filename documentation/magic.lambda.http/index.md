@@ -183,8 +183,8 @@ http.post:"http://localhost:5000/magic/modules/foo/foo"
          filename:/README.md
 ```
 
-If you create an HTTP endpoint in Hyperlambda resembling the following, you can see how the content
-is transferred.
+If you create an HTTP endpoint in Hyperlambda with the filename of _"/modules/foo/foo.post.hl"_,
+resembling the following, you can see how the content is transferred.
 
 ```
 .accept:multipart/form-data
@@ -195,8 +195,7 @@ log.info:x:-
 
 ## Project website
 
-The source code for this repository can be found at [github.com/polterguy/magic.lambda.http](https://github.com/polterguy/magic.lambda.http,
-and you can provide feedback, provide bug reports, etc at the same place.
+The source code for this repository can be found at [github.com/polterguy/magic.lambda.http](https://github.com/polterguy/magic.lambda.http), and you can provide feedback, provide bug reports, etc at the same place.
 
 ## Quality gates
 
