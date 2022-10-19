@@ -184,7 +184,7 @@ http.post:"http://localhost:5000/magic/modules/foo/foo"
 ```
 
 If you create an HTTP endpoint in Hyperlambda with the filename of _"/modules/foo/foo.post.hl"_,
-resembling the following, you can see how the content is transferred.
+resembling the following, you can see how the content is transferred in your log.
 
 ```
 .accept:multipart/form-data
