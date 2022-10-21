@@ -91,6 +91,8 @@ nav_sections:
     items:
       - url: /documentation/magic.lambda/
         name: magic.lambda
+      - url: /documentation/magic.lambda.io/
+        name: magic.lambda.io
       - url: /documentation/magic.lambda.math/
         name: magic.lambda.math
       - url: /documentation/magic.lambda.http/
