@@ -532,13 +532,13 @@ in your __[settings]__ field, verify the database server exists and can be conne
 if not existing from before, and create a root user account in the `users` table for you with the specified __[password]__.
 
 The endpoint can only be invoked _once_ and will throw an exception if the system has previously been setup - Which Magic
-determines by checking the `auth:secret` value of your existing _"appsettings.json"_ file, and if it's not the default
-value of _"THIS-IS-NOT-A-GOOD-SECRET-PLEASE-CHANGE-IT"_, Magic will assume it's been previously setup and throw an exception.
+determines by checking the `auth:secret` value of your existing _"appsettings.json"_ file, and if it's more than 50
+characters in length, Magic will assume it's been previously setup and throw an exception.
 
 If the `magic` database already exists in your database server, it will only run its migration scripts, and replace
 the existing root user's password with whatever you provided as a payload to the endpoint invocation. This implies
 that if you forget your root user's password the easiest way to change it is in fact to manually change the `auth:secret`
-back to its original value which was _"THIS-IS-NOT-A-GOOD-SECRET-PLEASE-CHANGE-IT"_, for then to log out and login
+back to some value with less than 50 characters in length, for then to log out and login
 again, which will allow you to run through the configuration process again, overwriting your root user's existing
 password.
 
