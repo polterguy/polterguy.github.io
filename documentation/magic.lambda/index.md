@@ -875,7 +875,7 @@ graph object, declaratively, according to the state of its destination nodes.
    foo1:bar1
    foo2:bar2include
    foo3:bar3
-merge:x:@.data/*
+include:x:@.data/*
    strings.concat
       get-value:x:@.dp/#
       .:" howdy"
