@@ -339,6 +339,9 @@ Notice, the **[eval]** slot is _not_ immutable, as in it has access to the outer
 illustrated above, where we set the value of a node existing _outside_ of the **[.lambda]** itself.
 Implying **[eval]** cannot return values or nodes the same way for instance **[signal]** can.
 
+You will see that it invokes your **[who]** lambda object, and substitutes the value of `{{foo}}`
+with the return value from the invocation.
+
 ## Branching and conditional execution
 
 Branching implies to change the execution path of your code, and examples includes function invocations, and
