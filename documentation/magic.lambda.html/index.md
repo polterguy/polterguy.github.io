@@ -1,11 +1,13 @@
 
-# Parsing HTML from Hyperlambda
+# HTML and Markdown support in Hyperlambda
 
 This project provides HTML helper slots for Magic. More specifically, it provides the following slots.
 
 * __[html2lambda]__ - Creates a lambda object out of an HTML input string.
+* __[lambda2html]__ - Creates an HTML string out of the specified lambda object.
+* __[markdown2html]__ - Creates HTML out of the specified Markdown input string.
 
-## Usage
+## [html2lambda]
 
 ```
 .html:@"<html>
@@ -13,7 +15,7 @@ This project provides HTML helper slots for Magic. More specifically, it provide
     <title>Howdy</title>
   </head>
   <body>
-    <p class=""foo""></p>
+    <p class=""foo"">Howdy <strong>world</strong> - This is cool!</p>
   </body>
 </html>"
 
@@ -31,16 +33,99 @@ html2lambda
       body
          p
             @class:foo
+            #text:"Howdy "
+            strong
+               #text:world
+            #text:" - This is cool!"
 ```
 
 Attributes starts out with the `@` character, children nodes does not - While text content inside of elements will
-start out with `#`. This implies you'll need to use escaped expression iterators when traversing the resulting node
-lambda object. For instance, to retrieve the above `p` element's inner text, you could use something such as the
+have the name of `#text`. This implies you'll need to use escaped expression iterators when traversing the resulting node
+lambda object. For instance, to retrieve the above `title` element's inner text, you could use something such as the
 following.
 
 ```
-get-value:x:-/**/\#text
+get-value:x:-/**/title/*\#text
 ```
+
+## [lambda2html]
+
+This is the reverse of **[html2lambda]** and returns HTML resulting from the specified lambda object. Below
+is example usage.
+
+```
+.html:@"<html>
+  <head>
+    <title>Howdy</title>
+  </head>
+  <body>
+    <p class=""foo"">Howdy <strong>world</strong> - This is cool!</p>
+  </body>
+</html>"
+html2lambda:x:-
+lambda2html:x:-/*
+```
+
+The above will result in the following HTML, formatted for brevity.
+
+```html
+<html>
+  <head>
+    <title>Howdy</title>
+  </head>
+  <body>
+    <p class="foo">Howdy <strong>world</strong> - This is cool!</p>
+  </body>
+</html>
+```
+
+## [markdown2html]
+
+This library can also handle Markdown, since Markdown is arguably just another representation of HTML.
+The **[markdown2html]** slot converts the specified Markdown content to HTML. Basic usage is as follows.
+
+```
+.yaml:@"
+Howdy world
+
+* Foo
+* Bar
+"
+markdown2html:x:@.yaml
+```
+
+The above will produce the following result.
+
+```html
+markdown2html:@"<p>Howdy world</p>
+<ul>
+<li>Foo</li>
+<li>Bar</li>
+</ul>
+```
+
+### Front matter
+
+The **[markdown2html]** slot can also handle _"front matter"_, which allows you to inject YAML at the front
+of your Markdown. Front matter again is just a YAML declaration injected at the front of your Markdown,
+separated by `---` to separate your YAML from your Markdown. This allows you to add structured data to
+associate with your Markdown content.
+
+```
+.yaml:@"---
+foo: bar
+---
+Howdy world
+
+* Foo
+* Bar
+"
+markdown2html:x:@.yaml
+```
+
+Internally, the library will invoke **[yaml2lambda]** for any front matter declarations to actually parse
+the specified YAML front matter parts, implying for details about how this part works, please refer to
+the _"magic.lambda.json"_ project.
 
 ## Project website
 
