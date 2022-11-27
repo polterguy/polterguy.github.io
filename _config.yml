@@ -103,6 +103,8 @@ nav_sections:
         name: magic.lambda.json
       - url: /documentation/magic.lambda.html/
         name: magic.lambda.html
+      - url: /documentation/magic.lambda.xml/
+        name: magic.lambda.xml
       - url: /documentation/magic.lambda.mail/
         name: magic.lambda.mail
       - url: /documentation/magic.lambda.mime/
