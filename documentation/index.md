@@ -37,6 +37,7 @@ requirements for your endpoints, etc.
 * [magic.lambda.csv](/documentation/magic.lambda.csv/) - Manipulating CSV from Hyperlambda
 * [magic.lambda.json](/documentation/magic.lambda.json/) - Manipulating JSON from Hyperlambda
 * [magic.lambda.html](/documentation/magic.lambda.html/) - Manipulating HTML from Hyperlambda
+* [magic.lambda.xml](/documentation/magic.lambda.xml/) - Manipulating XML from Hyperlambda
 * [magic.lambda.mail](/documentation/magic.lambda.mail/) - Sending and retrieving emails from Hyperlambda
 * [magic.lambda.mime](/documentation/magic.lambda.mime/) - Parsing email messages in Hyperlambda
 * [magic.lambda.auth](/documentation/magic.lambda.auth/) - Authentication and authorisation from Hyperlambda
@@ -255,6 +256,12 @@ create new releases of Magic.
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.html/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.html&metric=alert_status"></td>
       <td><img alt="Lines of code" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.html&metric=ncloc"></td>
+   </tr>
+   <tr>
+      <td><a href="https://github.com/polterguy/magic.lambda.xml">magic.lambda.xml</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.xml/actions/workflows/build.yaml/badge.svg"></td>
+      <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.xml&metric=alert_status"></td>
+      <td><img alt="Lines of code" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.xml&metric=ncloc"></td>
    </tr>
    <tr>
       <td><a href="https://github.com/polterguy/magic.lambda.image">magic.lambda.image</a></td>
