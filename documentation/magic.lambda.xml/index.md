@@ -3,8 +3,8 @@
 
 This project provides XML helper slots for Hyperlambda. More specifically, it provides the following slots.
 
-* __[xml2lambda]__ - Creates a lambda object out of an XML input string.
-* __[lambda2xml]__ - Creates an XML string from a lambda object.
+* __[xml2lambda]__ - Creates a lambda object out of an XML input string
+* __[lambda2xml]__ - Creates an XML string from a lambda object
 
 ## Usage
 
