@@ -35,8 +35,8 @@ requirements for your endpoints, etc.
 * [magic.lambda.math](/documentation/magic.lambda.math/) - Math operations from Hyperlambda
 * [magic.lambda.http](/documentation/magic.lambda.http/) - Invoking HTTP REST endpoints from Hyperlambda
 * [magic.lambda.csv](/documentation/magic.lambda.csv/) - Manipulating CSV from Hyperlambda
-* [magic.lambda.json](/documentation/magic.lambda.json/) - Manipulating JSON from Hyperlambda
-* [magic.lambda.html](/documentation/magic.lambda.html/) - Manipulating HTML from Hyperlambda
+* [magic.lambda.json](/documentation/magic.lambda.json/) - Manipulating JSON and YAML from Hyperlambda
+* [magic.lambda.html](/documentation/magic.lambda.html/) - Manipulating HTML and Markdown from Hyperlambda
 * [magic.lambda.xml](/documentation/magic.lambda.xml/) - Manipulating XML from Hyperlambda
 * [magic.lambda.mail](/documentation/magic.lambda.mail/) - Sending and retrieving emails from Hyperlambda
 * [magic.lambda.mime](/documentation/magic.lambda.mime/) - Parsing email messages in Hyperlambda
