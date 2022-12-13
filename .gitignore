@@ -332,3 +332,4 @@ ASALocalRun/
 _site/**
 
 !/documentation/magic/components/log
+.jekyll-metadata

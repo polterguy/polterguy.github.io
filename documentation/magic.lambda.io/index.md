@@ -200,8 +200,8 @@ io.file.unzip:/misc/foo.zip
 ## [io.file.mixin]
 
 This slot takes a filename as its primary argument, and optionally any amount of lambda children objects.
-It allows for dynamically substituting for instance `{{*/.name}}` segments in your original source file,
-by invoking lambda objects it can find by evaluating your `{{xyz}}` segment as an expression, that
+It allows for dynamically substituting for instance `{{ '{{' }}*/.name}}` segments in your original source file,
+by invoking lambda objects it can find by evaluating your `{{ '{{' }}xyz}}` segment as an expression, that
 leads to the lambda object you want to execute. Below is an example of usage that assumes you've got a
 file named _"foo.html"_ at the root folder of your installation resembling the following.
 
@@ -215,7 +215,7 @@ file named _"foo.html"_ at the root folder of your installation resembling the f
     <body>
         <h1>Hello world</h1>
         <p>
-           Hello there {{*/.name}}, 2 + 5 is {{*/.add}}
+           Hello there {{ '{{' }}*/.name}}, 2 + 5 is {{ '{{' }}*/.add}}
         </p>
     </body>
 </html>
