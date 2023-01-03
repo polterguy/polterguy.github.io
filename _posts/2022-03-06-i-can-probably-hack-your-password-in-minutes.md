@@ -4,6 +4,7 @@ author: thomas
 title: I can probably hack your password in MINUTES!
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blogs/password-entropy.jpg"
 description: Your password is probably easily hacked in seconds by an experienced hacker, here's why, and what you can do to avoid it.
+canonical_url: https://aista.com/blog/i-can-probably-hack-your-password-in-minutes/
 ---
 
 The average password is easily hacked in minutes by an experienced software developer. This is because of a fundamental flaw in how we were taught to create our passwords. An example of a bad password is for instance; _"qWxc4&Gh"_. On the surface such passwords seems to be impossible to hack, but such a password can actually easily be hacked in 39 minutes by an experienced hacker by simply _"guessing"_, using a technique referred to as brute force, where a computer tries all combinations of characters one after the other. The reason is because of something we refer to as _"entropy"_ in computer programming and cryptography. There are simply not enough possible combinations in short passwords such as the above to be _"random enough"_ to prevent a computer from guessing it by trying all combinations of characters one after the other. Below is a list taken from [Hive Systems](https://www.hivesystems.io/) illustrating the problem.

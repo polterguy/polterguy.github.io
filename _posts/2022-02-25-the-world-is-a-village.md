@@ -4,6 +4,7 @@ author: thomas
 title: The world is a Village
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blogs/ukraine.jpeg"
 description: I have friends in Ukraine, Aista also have close partners, people whom I care about, and I'm asking myself how I can help. It might not be much, but for me it's everything.
+canonical_url: https://aista.com/blog/the-world-is-a-village/
 ---
 
 Aista as a company have many Ukrainian partners, I have personal friends in Kiev, and I have close Russian friends too.

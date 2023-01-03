@@ -5,6 +5,7 @@ This project provides the ability to create, invoke (signal), modify, inspect, a
 More specifically, this project provides the following slots.
 
 * __[signal]__ - Invokes a dynamically create slot that has been created with the __[slots.create]__ slot
+* __[try-signal]__ - Invokes a dynamically create slot that has been created with the __[slots.create]__ slot, but will _not_ throw exceptions if the slot doesn't exist
 * __[slots.create]__ - Creates a dynamic slot, that can be invoked with the __[signal]__ slot
 * __[slots.get]__ - Returns the entire lambda object for a slot that has been previously created with the __[slots.create]__ slot
 * __[slots.delete]__ - Deletes a slot that has been previously created with the __[slots.create]__ slot

@@ -287,6 +287,61 @@ Notice, the **[eval]** slot is _not_ immutable, as in it has access to the outer
 illustrated above, where we set the value of a node existing _outside_ of the **[.lambda]** itself.
 Implying **[eval]** cannot return values or nodes the same way for instance **[signal]** can.
 
+## [invoke]
+
+This slot works similarly to **[eval]**, except it treats the invocation similarly to an invocation to
+a dynamic slot, allowing you to pass in arguments, and return nodes from the invocation.
+
+```
+.lambda
+   strings.concat
+      .:"Hello "
+      get-value:x:@.arguments/*/name
+   return:x:-
+invoke:x:@.lambda
+   name:John
+```
+
+Notice, you cannot supply an expression leading to multiple nodes, and the slot invokes the lambda
+object immutable, such that it doesn't change. The invocation also does _not_ have access to anything
+outside of its own lambda object.
+
+```
+.res:
+
+.lambda
+   set-value:x:@.res
+      strings.concat
+         get-value:x:@.res
+         .:" OK 1 "
+
+.lambda
+   set-value:x:@.res
+      strings.concat
+         get-value:x:@.res
+         .:" OK 2 "
+
+eval:x:../*/.lambda
+```
+
+You can also provide the lambda object as children of the **[eval]** node itself, such as the following
+illustrates.
+
+```
+.res
+
+eval
+   set-value:x:@.res
+      .:Yup!
+```
+
+Notice, the **[eval]** slot is _not_ immutable, as in it has access to the outer graph object such as
+illustrated above, where we set the value of a node existing _outside_ of the **[.lambda]** itself.
+Implying **[eval]** cannot return values or nodes the same way for instance **[signal]** can.
+
+You will see that it invokes your **[who]** lambda object, and substitutes the value of `{{foo}}`
+with the return value from the invocation.
+
 ## Branching and conditional execution
 
 Branching implies to change the execution path of your code, and examples includes function invocations, and
@@ -810,6 +865,28 @@ This slot will remove all nodes its expression is pointing to.
 remove-nodes:x:@.data/*/foo2
 ```
 
+### [include]
+
+This slot is logically the combination of a **[for-each]**, **[add]** and **[eval/invoke]**. The slot takes a lambda
+object, that will be executed with a **[.dp]** node, for each node resulting from evaluating its expression passed
+in by reference. The returned nodes will then be appended into the currently iterated node, allowing you to _"include"_
+sub trees into a destination tree using a declarative syntax. It is useful for adding nodes dynamically to an existing
+graph object, declaratively, according to the state of its destination nodes.
+
+```
+.data
+   foo1:bar1
+   foo2:bar2include
+   foo3:bar3
+include:x:@.data/*
+   strings.concat
+      get-value:x:@.dp/#
+      .:" howdy"
+   unwrap:x:+/*
+   return
+      howdy:x:@strings.concat
+```
+
 ### [set-value]
 
 Changes the value of all nodes referenced as its main expression to whatever its single source happens to be.
@@ -912,6 +989,49 @@ return false.
 .src2
 exists:x:@.src1/*
 exists:x:@.src2/*
+```
+
+### [not-exists]
+
+**[not-exists]** will evaluate to true if its specified expression yields zero results. If not, it will
+return false. It's the logical opposite of **[exists]**.
+
+```
+.src1
+   foo
+.src2
+not-exists:x:@.src1/*
+not-exists:x:@.src2/*
+```
+
+### [null]
+
+**[null]** will evaluate to true if its specified expression yields null, or the expression returns no nodes.
+If not, it will return false.
+
+```
+.src1
+   foo:foo
+.src2
+   foo
+null:x:@.src1/*
+null:x:@.src2/*
+```
+
+### [not-null]
+
+**[not-null]** will evaluate to true if its specified expression returns nodes and at least one of those nodes has a value.
+If not, it will return false.
+
+```
+.src1
+   foo:foo
+.src2
+   foo
+.src3
+not-null:x:@.src1/*
+not-null:x:@.src2/*
+not-null:x:@.src3/*
 ```
 
 ### [reference]

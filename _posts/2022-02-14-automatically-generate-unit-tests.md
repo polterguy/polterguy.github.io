@@ -4,6 +4,7 @@ author: thomas
 title: Automatically generate your Unit Tests
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/new-assumption.jpg"
 description: With Magic you can automatically generate your Unit Tests by simply clicking a button. This article demonstrates the concept and shows you how to achieve the same with your own HTTP endpoints.
+canonical_url: https://aista.com/blog/automatically-generate-unit-tests/
 ---
 
 Unit Tests is one of those things everybody's talking about, but few have time to actually create. Every time I've been

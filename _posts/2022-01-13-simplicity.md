@@ -1,6 +1,7 @@
 ---
 layout: post
 author: thomas
+canonical_url: https://aista.com/blog/simplicity/
 ---
 
 > "If it's not simple, there's something wrong with it!"

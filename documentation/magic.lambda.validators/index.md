@@ -14,28 +14,94 @@ This project contains input validators for Magic. More specifically it contains 
 * __[validators.recaptcha]__ - reCAPTCHA validator, to avoid bots from invoking your APIs
 
 All of the above slots takes an expression, or values, as its main input, and will throw exceptions if their input expression's
-value(s), or its value, does not follow the rules specified by the validator. This makes them perfect fits for _"intercepting"_ the
-input specified to an HTTP REST endpoint, to verify the input data conforms to some sort of predefined validation scheme.
+value(s), or its value, does not follow the rules specified by the validator. Some of the above slots takes additional arguments.
+This makes them perfect fits for _"intercepting"_ the input specified to an HTTP REST endpoint, to verify the input data conforms
+to some sort of predefined validation scheme.
 
-## Usage
+## General usage
 
 ```
 .foo
-   number:int:11
-
-validators.integer:x:@.foo/*/number
-   min:int:5
-   max:int:10
+   email:foo@bar.com
+validators.email:x:@.foo/*/email
 ```
 
-Most validators requires some sort of argument(s), such as you can see above in the integer validator - However, some of
-these validators are without arguments, such as the email validator, that simply verifies the input is a valid email address.
-To use the **[validators.regex]** validator, you should probably [learn regular expression](https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285).
-However, this is beyond the scope of this article.
+Most validators requires some sort of argument(s) - However, some of
+these validators does not require arguments, such as the email validator, that simply verifies the input is a valid email address.
+To use the **[validators.regex]** validator, you should probably [learn regular expression](https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285). However, this is beyond the scope of this article.
 
 **Notice** - No attempt to invoke the type validator logic will be done unless the value is a _non null_ value. If you want
 to enforce such logic, you'll have to combine the specific type validators with the **[validators.mandatory]** validator,
-which enforces that a value must be specified and be non null.
+that enforces that a value must be specified and not have a null value.
+
+### [validators.recaptcha]
+
+This is probably the most complex validator, and required 3 arguments.
+
+* __[site-key]__ - Site key as provided to you by Google's reCAPTCHA admin panel
+* __[secret]__ - Secret as provided to you by Google's reCAPTCHA admin panel
+* __[min]__ - Minimum value, a decimal value between 0 and 1. A good value here is typically 0.3
+
+To use this validator you will need a Google reCAPTCHA account, version 3, at which point you can use it as
+follows.
+
+```
+validators.recaptcha:x:@.arguments/*/recaptcha_value
+   site-key:xyz
+   secret:qwerty
+   min:decimal:0.3
+```
+
+### [validators.integer]
+
+This value takes a **[min]** and **[max]** value, both of which are optional, and declares the minimum, and/or
+maximum value of the integer input. Usage could be as follows.
+
+```
+validators.integer:x:@.arguments/*/some-integer-argument
+   min:50
+   max:100
+```
+
+If the specified integer value is not within the range of the min and max value, an exception will be thrown.
+
+### [validators.date]
+
+This works similarly to the **[validator.integer]** validator, except instead of providing a min/max
+integer value, you're expected to provide a min/max _date_ value.
+
+### [validators.string]
+
+This works the same way as the **[validators.integer]** validator, except instead of being a min/max
+_value_ the min/max arguments declares the minimum and maximum _length_ of the string, allowing you
+to restrict string length of arguments to a min/max value for your Hyperlambda.
+
+### [validators.enum]
+
+This validator will throw an exception unless the specified string argument is one of the legal values. Usage
+could be as follows.
+
+```
+validators.enum:x:@.arguments/*/enum_value
+   .:val1
+   .:val2
+```
+
+If the above **[enum_value]** is not either `val1` or `val2` the validator will throw an exception.
+
+### [validators.regex]
+
+This validator requires a **[regex]** argument, that is a regular expression that must match the argument
+specified. Usage can be found below.
+
+```
+.arguments
+   foo:howdy world
+validators.regex:x:@.arguments/*/foo
+   regex:howdy
+```
+
+If you remove the _"howdy"_ parts of your above argument, an exception will be thrown.
 
 ## Internals
 
@@ -57,7 +123,7 @@ validators.integer:x:@.arguments/*/*/no
 ```
 
 First the above expression will be evaluated, then *every* resulting value will be validated, and if *any* of them are
-not validated according to the validtor's arguments - Which for the above example is number between 5 and 10 - The
+not validated according to the validator's arguments - Which for the above example is number between 5 and 10 - The
 validater will throw an exception, providing the invalid value, and the name of the last iterator (effectively being the argument name)
 to the caller. This allows you to use *one single validator* to validate multiple arguments, such as the above illustrates.
 This might be useful if you for instance have an endpoint accepting multiple address fields, and zip code is a mandatory

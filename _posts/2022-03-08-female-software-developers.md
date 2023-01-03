@@ -4,6 +4,7 @@ author: thomas
 title: Female Software Developers
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blogs/march-8.jpg"
 description: It is actually kind of sad that we need a special day to remember that women are equals to men. I would therefor like to write an article about women in software.
+canonical_url: https://aista.com/blog/female-software-developers/
 ---
 
 Today is the 8th of March, and we celebrate 100+ years of women liberation, equality, and freedom. It's actually kind of sad that we still need such celebrations, but this is not an article about problems, it's an article about all the great innovations that women have contributed with to software development over the last centuries. Because even though software development has traditionally been an extremely male dominated profession, it didn't always use to be that way.

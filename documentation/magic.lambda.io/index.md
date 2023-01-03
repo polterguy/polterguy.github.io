@@ -26,6 +26,7 @@ This project provides file/folder slots for Magic. More specifically, it provide
 * __[io.stream.close]__ - Closes a previously opened stream
 * __[io.content.zip-stream]__ - Creates a ZipStream for you, without touching the file system.
 * __[.io.folder.root]__ - Returns the root folder of your system. (private C# slot)
+* __[io.file.mixin]__ - Allows you to invoke lambda objects from a file and substitute content dynamically in your original file
 
 ## Fundamentals
 
@@ -195,6 +196,62 @@ of the ZIP file you're unzipping will be used if no **[folder]** argument is giv
 io.file.unzip:/misc/foo.zip
    folder:/misc/backup/
 ```
+
+## [io.file.mixin]
+
+This slot takes a filename as its primary argument, and optionally any amount of lambda children objects.
+It allows for dynamically substituting for instance `{{ '{{' }}*/.name}}` segments in your original source file,
+by invoking lambda objects it can find by evaluating your `{{ '{{' }}xyz}}` segment as an expression, that
+leads to the lambda object you want to execute. Below is an example of usage that assumes you've got a
+file named _"foo.html"_ at the root folder of your installation resembling the following.
+
+**/foo.html**
+
+```
+<html>
+    <head>
+        <title>Hello world</title>
+    </head>
+    <body>
+        <h1>Hello world</h1>
+        <p>
+           Hello there {{ '{{' }}*/.name}}, 2 + 5 is {{ '{{' }}*/.add}}
+        </p>
+    </body>
+</html>
+```
+
+If you create the above file you can invoke **[io.file.mixin]** as follows to see the result.
+
+```
+io.file.mixin:/foo.html
+   .name:Thomas Hansen
+   .add
+      math.add
+         .:int:2
+         .:int:5
+      return:x:-
+```
+
+The above will substitute all your `{{xyz}}` segments and give you a result resembling the following.
+
+```
+<html>
+    <head>
+        <title>Hell world</title>
+    </head>
+    <body>
+        <h1>Hello world</h1>
+        <p>
+           Hello there Thomas Hansen, 2 + 5 is 7
+        </p>
+    </body>
+</html>
+
+```
+
+Notice, if the node your expression is leading to has a value such as illustrated above, it will return that value
+instead of executing your node as a lambda object.
 
 ### [io.content.zip-stream]
 

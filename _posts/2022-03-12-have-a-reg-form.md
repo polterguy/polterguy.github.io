@@ -4,6 +4,7 @@ author: thomas
 title: Have a registration form
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blogs/reg-form.jpg"
 description: For weird reasons registration forms seems to have been the curse of my life. You wouldn't think it's all that difficult though; Supply your email address, repeat some password, have the user confirms his email - Really, how difficult can it be?
+canonical_url: https://aista.com/blog/have-a-reg-form/
 ---
 
 I once worked for a non-disclosed company where we spent two years trying to create a freakin' registration form. We didn't succeed. For the record, I was not project lead in any ways what so ever here. The process is quite simple though.

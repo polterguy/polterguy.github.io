@@ -2,6 +2,7 @@
 layout: post
 author: thomas
 title: What is the value of No-Code and Low-Code?
+canonical_url: https://aista.com/blog/what-is-the-value-of-no-code-and-low-code/
 ---
 
 According to Gartner the markep cap of Low-Code and No-Code is 48 billion US dollars annually, and it's

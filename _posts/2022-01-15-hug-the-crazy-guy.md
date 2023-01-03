@@ -1,6 +1,7 @@
 ---
 layout: post
 author: thomas
+canonical_url: https://aista.com/blog/hug-the-crazy-guy/
 ---
 
 Yesterday we published a [new release of Magic](https://github.com/polterguy/magic/releases).

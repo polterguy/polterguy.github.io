@@ -4,6 +4,7 @@ author: thomas
 title: An introduction to Hyperlambda
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/eval-component.jpg"
 description: Hyperlambda is a unique programming language, since it allows for your computer to generate most of your code. However, in this article I will show you how to manually code in Hyperlambda.
+canonical_url: https://aista.com/blog/an-introduction-to-hyperlambda/
 ---
 
 The purpose of Hyperlambda is to have a programming language that allows your computer to generate most of your code.

@@ -143,77 +143,13 @@ any parts of the connection string unless you know what you're doing. Then provi
 password, and follow the wizard to the end. This process is similar to the process you follow as you
 configure Magic locally on your development machine.
 
-## Installing a generated Angular frontend
-
-Once you have installed Magic you probably want to check out its capabilities in regards to Low-Code
-and No-Code, which is easily achieved by going to the SQL menu item in your dashboard, click the Load
-button, choose _"sakila"_, and then click execute. This creates a database for you called sakila.
-For the record, you can of course choose any existing database you have, or an alternative create
-database MySQL script you've got.
-
-After you've done the above you can go back to your dashboard in Magic and choose the _"CRUD"_
-menu item. Then click the little spiral arrow to refresh your server side cache, and once the page
-reloads choose the database you just created and click _"Crudify all tables"_. Then choose the _"Frontend"_
-tab at the top of your page, give your app a name, choose the _"angular"_ template, choose a _"Deployment domain"_
-being the URL where you want to deploy your frontend, and click _"Generate"_.
-After a couple of seconds you should be given a ZIP file as a download. If you don't get a ZIP file,
-make sure you disable popup blockers in your browser and click _"Generate"_ once more.
-
-If you want to crudify your own database here, you can easily do so by adding a connection string
-to an existing database through the _"Config"_ menu item, and then choose your own connection string's
-name as you crudify your backend. If you do this you can choose any Microsoft SQL Server, MySQL, or
-PostgreSQL database connection string.
-Once you have generated an Angular frontend, you can easily install this on the same VPS. This
-is possible since the generated frontend also contains a _"docker-compose.yml"_ file. The easiest way
-to do this is to upload your generated ZIP file to your VPS container using for instance the following
-from your local development machine. Yet again, use your VPS' IP address here.
-
-```
-scp foo.zip root@123.123.123:~
-```
-
-Then login to your VPS through your terminal, unzip the file and change into the unzipped folder with
-something such as the following.
-
-```
-unzip foo.zip
-cd foo
-```
-
-If you get an error when executing the above unzip command, you can install unzip on your VPS using the
-following command and rerun the above commands afterwards.
-
-```
-apt install unzip
-```
-
-When you have unzipped your Angular frontend you can start your docker container using the following
-command in your VPS from within your unzipped Angular frontend folder.
-
-```
-docker-compose up -d
-```
-
-The above assumes you have configured a DNS A record pointing to your virtual machine with
-the URL of where you want to deploy your frontend, and that you used this URL as you generated
-your frontend - In addition to that you _generated your app on your Magic VPS instance_. The last part
-is important since by default a generated Angular frontend will use the same API URL as the URL
-you are using to generate your frontend. At this point you should have your frontend up running on
-the sub-domain you chose as you generated your frontend. Now simply visit this URL in your browser,
-and after some 5 minutes of negotiating a new SSL certificate from LetsEncrypt your Angular app
-should work. Use your default Magic _"root"_ credentials to login to your generated Angular frontend.
-
 ## Securing your VPS
 
 You might want to install a firewall on your Linux server to further secure your installation. This can be done
 by executing the following commands in order of appearance.
 
 ```
-apt install ufw
-ufw allow 80
-ufw allow 443
-ufw allow 22
-ufw enable
+apt install ufw; ufw allow 80; ufw allow 443; ufw allow 22; ufw enable;
 ```
 
 The above will install _"Uncomplicated FireWall"_ on your server, for then to shut off all ports except
@@ -228,7 +164,7 @@ pull the Magic images from docker hub, and restart your containers using the fol
 
 ```
 docker-compose down
-docker pull servergardens/magic-frontend
-docker pull servergardens/magic-backend
+docker pull aistamagic/magic-frontend
+docker pull aistamagic/magic-backend
 docker-compose up -d
 ```

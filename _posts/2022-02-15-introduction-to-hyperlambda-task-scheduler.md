@@ -4,6 +4,7 @@ author: thomas
 title: An introduction to the Hyperlambda Task Scheduler
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/scheduling-task.jpg"
 description: Magic's Hyperlambda Task Scheduler allows you to dynamically create Hyperlambda tasks and schedule your Hyperlambda for future execution.
+canonical_url: https://aista.com/blog/introduction-to-hyperlambda-task-scheduler/
 ---
 
 One of my favourite features with Magic is how easy it is to create and administrate scheduled tasks in the system.

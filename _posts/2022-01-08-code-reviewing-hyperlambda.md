@@ -1,6 +1,7 @@
 ---
 layout: post
 author: thomas
+canonical_url: https://aista.com/blog/code-reviewing-hyperlambda/
 ---
 
 One of our partners has just finished the initial implementation of a medium complex FinTech project using

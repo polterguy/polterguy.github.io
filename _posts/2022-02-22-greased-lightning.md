@@ -4,6 +4,7 @@ author: thomas
 title: Greased Lightning!!
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blogs/greased-lightning.jpg"
 description: We just published our second miracle release of Magic today, and the main focus was 25 to 50 times improved speed, and some major improvements to its UI.
+canonical_url: https://aista.com/blog/greased-lightning/
 ---
 
 Yet another _"miracle release"_ from Aista. This time the focus was weeding out the remaining UI issues, particularly

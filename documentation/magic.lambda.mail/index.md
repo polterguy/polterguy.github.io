@@ -112,6 +112,20 @@ mail.smtp.send
 
 To construct your email's **[message]** part, see the documentation for the magic.lambda.mime project.
 
+**Notice** - You can also construct **[from]**, **[to]** and **[cc]** arguments such as follows.
+
+```
+mail.smtp.send
+
+   message
+      to
+         .
+            name:Jane Doe
+            email:jane@doe.com
+```
+
+This makes it easier to dynamically **[unwrap]** arguments to the slot.
+
 ## Retrieving emails
 
 To retrieve emails from a POP3 server is equally easy. Below is an example.

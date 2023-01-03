@@ -1,6 +1,7 @@
 ---
 layout: post
 author: thomas
+canonical_url: https://aista.com/blog/teach-yourself-a-new-programming-language-in-an-hour/
 ---
 
 We have just now cleaned up all of our Hyperlambda and Magic tutorials here the last week, and having

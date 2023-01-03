@@ -40,7 +40,7 @@ to allow for registrations, verify your user's email address, allow them to chan
 ## User registration
 
 Assuming you've configured Magic's SMTP settings, registering a user results in a two phase commit workflow,
-where the user is supposed to provide his or her email address as a username, resulting in a _"confirm email address"_
+where the user is supposed to provide his or her email address, a username, and a password, resulting in a _"confirm email address"_
 email being sent to the user, allowing the user to confirm the email address supplied during registration. Only
 when the user has confirmed the email address supplied, the user will have a fully functional user in Magic.
 There are two important endpoints related to this workflow, and these are as follows.
@@ -54,27 +54,32 @@ her email address before given access to the site. The _"register"_ endpoint req
 
 ```json
 {
-  "username": "john@doe.com",
+  "username": "janedoe",
   "password": "some-password",
   "frontendUrl": "https://your-frontend-url.com",
   "template": "/some/path/to-some-email-template.html",
   "subject": "Subject line of registration email",
   "extra": {
-    "name": "John Doe"
+    "name": "John Doe",
+    "email": "john@doe.com"
   }
 }
 ```
 
-The most important argument above is the **[username]** obviously. Usernames must be a unique email address,
-implying the email address cannot have been used previously to register towards the same backend. The
-**[frontendUrl]** argument allows you to provide the registration endpoint with a URL where you later extract
-query parameters automatically created by the registration process and sent to the user as a hyperlink he or
-she must click to verify their email address. The **[template]** is a HTML file somewhere in your backend
-that the registration welcome email is automatically generated from, and the **[subject]** is the subject
-line of this welcome email. Both the **[template]** and the **[subject]** arguments are optional, and default
+The most important argument above is the **[username]** and **[email]** obviously. Usernames must be unique,
+implying the username cannot have been used previously to register towards the same backend, and the email which
+is actually optionally, and an _"extra"_ field associated with the user is used for sending the user his
+or her double optin email. The **[frontendUrl]** argument allows you to provide the registration endpoint with a
+URL where you later extract query parameters automatically created by the registration process and sent to the
+user as a hyperlink he or she must click to verify their email address. The **[template]** is a HTML file somewhere
+in your backend that the registration welcome email is automatically generated from, and the **[subject]** is the
+subject line of this welcome email. Both the **[template]** and the **[subject]** arguments are optional, and default
 values will be used if they are not supplied. The **[extra]** field is additional extra information associated
 with the user and Magic can be configured to allow for any additional extra information you need to be associated
-with registered users. By default only _"name"_ is allowed as extra information.
+with registered users. By default only _"name"_ and _"email"_ is allowed as extra information. Unless the user
+provides an _"email"_ value, no email will be sent to the user, and the user has to be _manually_ verified by
+a root user in the system. If you want to enforce double optins you'll have to add logic in your frontend
+to enforce a valid email address as users are registering.
 
 As the user registers he or she is associated with the _"unconfirmed"_ role. This is the most restricted role
 in the system, and doesn't allow the user to do anything, except of course verifying his or her email address.
@@ -104,11 +109,13 @@ following.
 ```
 
 When you have passed the above payload into your `verify-email` endpoint, the user will be de-associated
-with the _"unconfirmed"_ role and associated with the _"guest"_ role. This gives the user
+with the _"unconfirmed"_ role and associated with the _"guest"_ role - In addition to that a valid JWT
+token will be returned that you can associate with the user, implying the user is already logged in towards
+your backend. This _"guest"_ role gives the user
 slightly more access in your backend, but is still a highly restricted role, and does not
 give the user access to any of your system endpoints allowing him to tamper with your
 backend in any ways. If you want to grant the user additional access in your backend, you'll
-have to manually add him or her to additional roles through the Magic dashboard's _"Auth"_ menu
+have to manually add him or her to additional roles through the Magic dashboard's _"Users & roles"_ menu
 item. When the above workflow is completely done executing, the user has registered, and verified
 his or her email address, the user can login to the system as a _"guest"_ account. Below you can
 see two such registered users; One having not yet confirmed his or her email address, and the
@@ -131,7 +138,7 @@ endpoint, and requires the following payload.
 
 ```json
 {
-  "username": "john@doe.com",
+  "username": "username",
   "frontendUrl": "https://your-frontend-url.com",
   "template": "/some/path/to-some-email-template.html",
   "subject": "Subject line of forgot password email"

@@ -255,13 +255,19 @@ amount of time, not clogging the server or HTTP endpoint meta generating process
 In addition to the meta retrieval endpoint described above, the module contains the following
 slots.
 
+* __[server.ip]__ - Returns the IP address of the server itself
 * __[response.status.set]__ - Sets the status code (e.g. 404) on the response object
 * __[request.cookies.list]__ - Lists all HTTP request cookies
 * __[request.cookies.get]__ - Returns the value of a cookie sent by the request
 * __[response.cookies.set]__ - Creates a cookie that will be returned to the client over the response
 * __[request.headers.list]__ - Lists all HTTP request headers sent by the request
 * __[request.headers.get]__ - Returns a single HTTP header associated with the request
+* __[request.ip]__ - Returns the IP address of the HTTP request
+* __[request.url]__ - Returns the relative URL associated with the request, without its magic/ prefix
+* __[request.host]__ - Returns the host name associated with the request
+* __[request.scheme]__ - Returns the scheme associated with the request
 * __[response.headers.set]__ - Adds an HTTP header to the response object
+* __[mime.add]__ - Associates a file extension with a MIME type
 
 ## Misc
 
@@ -301,6 +307,19 @@ slot takes the following arguments.
 
 Only the **[value]** from above is mandatory. To delete a cookie on the client, set the expiration date to a value
 in the past.
+
+### [mime.add]
+
+This slots associates a file extension with a MIME type. Notice, it will override previous associations if existing.
+Example usage can be found below.
+
+```
+mime.add:py
+   .:application/python
+```
+
+Then later when the endpoint resolver is returning files ending with _".py"_, it will return these with
+a `Content-Type` of _"application/python"_.
 
 ## Project website
 

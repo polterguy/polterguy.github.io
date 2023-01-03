@@ -373,24 +373,7 @@ you to parametrize your pattern any ways you see fit.
 ### [tasks.scheduler.start]
 
 Notice, this slot is not intended for being directly invoked by your code, but internally used by Magic
-after the system has been setup. But if you intend to significantly change the internals of Magic, the way it
-works is that it requires an integer number between 1 and 100, that sets the maximum number of concurrently
-executed tasks on the scheduler parts, and also schedules all tasks persisted into your database.
-
-Typically you would _never directly invoke this slot yourself_, but rather rely upon Magic's middleware
-to automatically take care of starting the scheduler for you. The scheduler is automatically started
-as Magic starts. If you want to change the number of concurrent threads in your particular Magic installation,
-this can be achieved by changing the `magic:scheduler:max-threads` configuration setting and restarting
-your Magic backend. The default number of concurrently executed tasks are 8, unless explicitly changed
-through your configuration settings. This implies that only 8 tasks will be scheduled to execute in
-parallel at the same time, resulting in any tasks beyond that will be queued up and have to wait for
-another task to finish before it's allowed to execute. This prevents the task scheduler from exhausting
-your backend server due to too many threads executing at the same time.
-
-If you have a lot of tasks that are scheduled to repeat often, and all your tasks are doing a lot
-of IO, you might want to increase the number of concurrently executed tasks to a higher value, since
-as your tasks are waiting for IO, the thread they're executing on will be released back to
-the operating system, implying the task will not block a thread as it waits for IO.
+after the system has been setup.
 
 ### Internals
 

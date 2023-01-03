@@ -6,7 +6,10 @@ og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/maste
 
 # Getting started with Magic and Hyperlambda
 
-This tutorial covers the following parts of Magic and Hyperlambda.
+The absolute easiest way to get started with Magic is to signup at [Aista website](https://aista.com), for then
+to create a _"cloudlet"_ with Magic deployed. This gives you CDN, security out of the box, a pre configured backend,
+etc, etc, etc. However, for some it's necessary to install Magic locally on a development machine, and/or their
+own servers. This tutorial covers the following parts of Magic and Hyperlambda.
 
 * How to setup Magic locally in your own development environment using Docker or the code
 * How to deploy Magic to your own VPS
@@ -14,14 +17,14 @@ This tutorial covers the following parts of Magic and Hyperlambda.
 * How to clone Magic's code
 * How to get support for Magic
 
-The easiest way to get started is to [download the docker-compose file from the primary Aista website](https://aista.com?a=download&t=docker), assuming you have [Docker](https://www.docker.com/products/docker-desktop) installed, and then execute the following in a terminal window where you saved the file.
+The easiest way to get started locally is to [download the docker-compose file from the primary Aista website](https://github.com/polterguy/magic/releases/download/v14.4.5/docker-compose.yml), assuming you have [Docker](https://www.docker.com/products/docker-desktop) installed, and then execute the following in a terminal window where you saved the file.
 
 ```
 docker-compose up
 ```
 
 When your docker containers have started, open your browser and go to [http://localhost:5555](http://localhost:5555),
-use the default connection string for MySQL, choose a root password, crudify your Magic database,
+use the default connection string for SQLite, choose a root password, crudify your Magic database,
 type your name and email address when you generate a key pair, and Magic should work out of the box without
 any hassle. If you want to test Magic's CRUD automation capabilities, there's a _"sakila"_ SQL script that you
 can execute in the _"SQL"_ menu item to create an example database. In the video below I am illustrating this process.
@@ -30,7 +33,7 @@ can execute in the _"SQL"_ menu item to create an example database. In the video
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/wCOcch2r03A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-If you want to use Magic with Microsoft SQL Server or PostgreSQL you can find recipes for this below.
+If you want to use Magic with Microsoft SQL Server, MySQL or PostgreSQL you can find recipes for this below.
 
 * [Using Magic with Microsoft SQL Server](/tutorials/sql-server/)
 * [Using Magic with PostgreSQL](/tutorials/postgresql/)
@@ -44,10 +47,10 @@ development machine using the code directly. If so you will first of all need th
 1. [Visual Studio](https://visualstudio.microsoft.com/downloads/) or [VS Code](https://code.visualstudio.com/download) + [DotNet CLI and SDK](https://dotnet.microsoft.com/download)
 2. [NodeJS](https://nodejs.org/en/download/)
 3. [Angular](https://angular.io/cli)
-4. [MySQL](https://dev.mysql.com/downloads/mysql/) or [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
-5. [Download Magic Cloud's source code](https://aista.com?a=download&t=source) from Aista's website
+4. [MySQL](https://dev.mysql.com/downloads/mysql/), [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) or [PostgreSQL](https://www.postgresql.org/download/)
+5. [Download Magic Cloud's source code](https://github.com/polterguy/magic) from GitHub
 
-## Deploy Magic
+## Deploy Magic to a VPS
 
 To deploy Magic into production you can follow [this recipe](/documentation/magic.deploy/), which
 guides you through setting up your VPS server to host Magic.
@@ -61,8 +64,8 @@ in _the same folder_ as where your main Magic _"docker-compose.yml"_ file is.
 
 ```
 docker-compose down
-docker pull servergardens/magic-frontend
-docker pull servergardens/magic-backend
+docker pull aistamagic/magic-frontend
+docker pull aistamagic/magic-backend
 docker-compose up
 ```
 

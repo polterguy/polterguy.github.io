@@ -3,6 +3,7 @@ layout: post
 author: thomas
 title: The Magic setup process
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/setup-explained.jpg"
+canonical_url: https://aista.com/blog/setup-process-explained/
 ---
 
 When you first start Magic you will have to configure it. Before I guide you through this process though,

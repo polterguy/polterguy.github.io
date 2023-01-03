@@ -4,6 +4,7 @@ author: thomas
 title: The Beauty of Open Source
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/blogs/open-source.png"
 description: 20 years ago when I initially discovered Open Source, few could see its beauty. Today the model is such an obvious game changer nobody really argues anymore.
+canonical_url: https://aista.com/blog/the-beauty-of-open-source/
 ---
 
 At [Aista](https://aista.com) we have chosen to base our entire business model upon open source. For a traditional business based upon secrecy and _"trade secrets"_, such a choice might look weird, since we're basically giving away our filet mignon for free you might say. However, for a small startup it allows us to _"compete"_ in a segment traditionally unreachable for a small company such as us. Let me illustrate this with a simple story about our codebase to illustrate the point.

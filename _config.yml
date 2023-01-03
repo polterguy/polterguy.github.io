@@ -20,7 +20,7 @@ google_analytics: G-9TJ79M3VVN
 # Copyright displayed in the bottom right corner
 copyright: Copyright © Aista, Ltd 2020 - 2022, info@aista.com
 
-# Most Wanted Response, most important link on your site
+# Most Wanted Response, most important link on your site.
 mwr: /tutorials/getting-started/
 mwr_text: Start
 
@@ -29,7 +29,7 @@ banner_bg: /assets/bg.jpeg
 body_bg: /assets/bg2.jpeg
 
 # Open Graph image for pages when shared on Facebook or Twitter, etc
-og_image: https://raw.githubusercontent.com/polterguy/magic/master/artwork/new-logo/logo-2.jpg
+og_image: https://aista.com/assets/images/og-cover-logo.jpg
 
 # Title for your blog page
 blog_title: A Software Developer's Dream
@@ -91,6 +91,8 @@ nav_sections:
     items:
       - url: /documentation/magic.lambda/
         name: magic.lambda
+      - url: /documentation/magic.lambda.io/
+        name: magic.lambda.io
       - url: /documentation/magic.lambda.math/
         name: magic.lambda.math
       - url: /documentation/magic.lambda.http/
@@ -101,6 +103,8 @@ nav_sections:
         name: magic.lambda.json
       - url: /documentation/magic.lambda.html/
         name: magic.lambda.html
+      - url: /documentation/magic.lambda.xml/
+        name: magic.lambda.xml
       - url: /documentation/magic.lambda.mail/
         name: magic.lambda.mail
       - url: /documentation/magic.lambda.mime/
@@ -173,10 +177,6 @@ nav_sections:
         name: magic.clone
   - name: Misc
     items:
-      - url: /about
-        name: about
-      - url: /blog/
-        name: blog
       - url: https://youtube.com/ThomasHansen-Magic
         name: youtube
       - url: https://t.me/aistamagic

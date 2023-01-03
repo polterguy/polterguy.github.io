@@ -1,6 +1,7 @@
 ---
 layout: post
 author: thomas
+canonical_url: https://aista.com/blog/github-pages-and-jekyll/
 ---
 
 Once every year I force myself to learn something completely new. Over the years this has resulted in

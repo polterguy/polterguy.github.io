@@ -1,6 +1,7 @@
 ---
 layout: post
 author: thomas
+canonical_url: https://aista.com/blog/if-you-are-the-smartest-guy-in-the-room/
 ---
 
 A friend of mine once told me the following, and forgive me for not completing the sentence yet, but hopefully

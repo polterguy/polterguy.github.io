@@ -22,7 +22,7 @@ version: "3.3"
 services:
 
   backend:
-    image: servergardens/magic-backend:latest
+    image: aistamagic/magic-backend:latest
     depends_on:
       - db
     restart: always
@@ -34,7 +34,7 @@ services:
       - config_magic_folder_sqlite:/magic/config
 
   frontend:
-    image: servergardens/magic-frontend:latest
+    image: aistamagic/magic-frontend:latest
     depends_on:
       - backend
     restart: always
