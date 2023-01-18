@@ -373,7 +373,7 @@ whether or not the **[.lambda]** object should be executed or not. Below is an e
 
 ```
 .arguments
-   foo:bool
+   foo:bool:true
 .dest
 
 if
@@ -388,7 +388,7 @@ that is assumed to evaluate to either boolean `true` or boolean `false`, such as
 
 ```
 .arguments
-   foo:bool
+   foo:bool:true
 .dest
 
 if:x:@.arguments/*/foo
