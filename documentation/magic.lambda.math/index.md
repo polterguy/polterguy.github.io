@@ -1,5 +1,5 @@
 
-# Math slots in Hyperlambda
+# magic.lambda.math
 
 This project provides math functions to Magic. More specifically, it provides the following slots.
 

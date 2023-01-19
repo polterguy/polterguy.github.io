@@ -1,7 +1,7 @@
 
-# Invoking HTTP endpoints from Hyperlambda
+# magic.lambda.http
 
-This project provides HTTP invocation capabilities for Magic and Hyperlambda. More specifically the
+The magic.lambda.http project provides HTTP invocation capabilities for Magic and Hyperlambda. More specifically the
 project contains the following 5 slots.
 
 * __[http.get]__ - Returns some resource using the HTTP GET verb towards the specified URL
@@ -192,6 +192,93 @@ request.headers.list
 lambda2hyper:x:../*
 log.info:x:-
 ```
+
+## How to use [http.get]
+
+This slot accepts a URL as its value, an optionally http headers as a **[headers]** argument. In its simplest version
+it would resemble something such as the following.
+
+```
+http.get:"https://docs.aista.com"
+```
+
+The slot returns the result of the specified HTTP GET invocation, including the HTTP headers returned from the endpoint,
+and status code, in addition to the response object itself.
+
+## How to use [http.put]
+
+This slot accepts a URL as its value, an optionally http headers as a **[headers]** argument, and a mandatory
+**[payload]** argument, being whatever payload you want to transfer to the endpoint. In its simplest version
+it would resemble something such as the following.
+
+```
+http.put:"https://some_website.com/your-put-endpoint"
+   payload:@"{""foo"": ""bar""}"
+```
+
+The slot returns the result of the specified HTTP PUT invocation, including the HTTP headers returned from the endpoint,
+and status code, in addition to the response object itself. To automatically convert the response object to whatever
+type of response your URL returns, provide a **[convert]** argument, and set its value to true, such as follows.
+
+```
+http.put:"https://some_website.com/your-put-endpoint"
+   payload:@"{""foo"": ""bar""}"
+   convert:true
+```
+
+## How to use [http.post]
+
+This slot accepts a URL as its value, an optionally http headers as a **[headers]** argument, and a mandatory
+**[payload]** argument, being whatever payload you want to transfer to the endpoint. In its simplest version
+it would resemble something such as the following.
+
+```
+http.post:"https://some_website.com/your-post-endpoint"
+   payload:@"{""foo"": ""bar""}"
+```
+
+The slot returns the result of the specified HTTP POST invocation, including the HTTP headers returned from the endpoint,
+and status code, in addition to the response object itself. To automatically convert the response object to whatever
+type of response your URL returns, provide a **[convert]** argument, and set its value to true, such as follows.
+
+```
+http.post:"https://some_website.com/your-post-endpoint"
+   payload:@"{""foo"": ""bar""}"
+   convert:true
+```
+
+## How to use [http.patch]
+
+This slot accepts a URL as its value, an optionally http headers as a **[headers]** argument, and a mandatory
+**[payload]** argument, being whatever payload you want to transfer to the endpoint. In its simplest version
+it would resemble something such as the following.
+
+```
+http.patch:"https://some_website.com/your-patch-endpoint"
+   payload:@"{""foo"": ""bar""}"
+```
+
+The slot returns the result of the specified HTTP PATCH invocation, including the HTTP headers returned from the endpoint,
+and status code, in addition to the response object itself. To automatically convert the response object to whatever
+type of response your URL returns, provide a **[convert]** argument, and set its value to true, such as follows.
+
+```
+http.patch:"https://some_website.com/your-patch-endpoint"
+   payload:@"{""foo"": ""bar""}"
+   convert:true
+```
+
+## How to use [http.delete]
+
+This slot accepts a URL as its value, an optionally http headers as a **[headers]** argument. In its simplest version
+it would resemble something such as the following.
+
+```
+http.delete:"https://your_website.com/your-delete-endpoint"
+```
+
+The slot returns the result of the specified HTTP DELETE invocation, including the HTTP headers returned from the endpoint,
+and status code, in addition to the response object itself.
 
 ## Project website
 
