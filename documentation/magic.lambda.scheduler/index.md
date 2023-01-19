@@ -1,5 +1,5 @@
 
-# Scheduling and persisting tasks from Hyperlambda
+# magic.lambda.scheduler
 
 This project gives you the ability to create persisted and scheduled Hyperlambda tasks
 for Magic. More specifically it provides the following slots.
@@ -15,7 +15,7 @@ for Magic. More specifically it provides the following slots.
 * __[tasks.schedule.delete]__ - Deletes an existing schedule
 * __[tasks.scheduler.start]__ - Starts the task scheduler
 
-## Creating a task
+## How to use [tasks.create]
 
 To create and persist a task you can use something such as the following.
 
@@ -42,9 +42,6 @@ tasks.create:foo-bar-task-2
 
 **Notice** - Your task's **[id]** argument, can only contain alpha numeric characters, 
 a-z, 0-9 - In addition to the following special characters; `.`, `-` and `_`.
-
-### Convenience methods
-
 When you create a task, you can also optionally schedule it simultaneously, by providing any amount of **[due]**
 dates, and/or **[repeats]** patterns, which will create and schedule the task at the same time. Below is an example.
 
@@ -83,7 +80,7 @@ tasks.update:foo-bar-task-4
       log.info:Another log entry now!
 ```
 
-## Executing a task
+## How to use [tasks.execute]
 
 You can explicitly execute a persisted task by invoking **[tasks.execute]** and pass
 in the ID of your task. Below is an example, that assumes you have created the above _"foo-bar-task-4"_ task
@@ -95,7 +92,7 @@ tasks.execute:foo-bar-task-4
 
 Notice, if you try to execute a non-existing task, an exception will be thrown.
 
-## Deleting a task
+## How to use [tasks.delete]
 
 Use the **[tasks.delete]** signal to delete a task. This will also delete all future schedules for your task and
 automatically dispose any timers associated with the task. An example can be found below.
@@ -106,7 +103,7 @@ tasks.delete:task-id
 
 Besides from the task ID, the delete task signal doesn't take any arguments.
 
-## Inspecting a task
+## How to use [tasks.get]
 
 To inspect a task you can use the following.
 
@@ -123,7 +120,7 @@ tasks.get:task-id
    schedules:true
 ```
 
-## Listing tasks
+## How to use [tasks.list]
 
 To list tasks, you can use the **[tasks.list]** signal. This slot optionally
 handles an **[offset]** and a **[limit]** argument, allowing you to page, which might be
@@ -137,7 +134,7 @@ tasks.list
    limit:10
 ```
 
-## Persisting tasks
+## How tasks are stored
 
 All tasks are persisted into your `magic` database, either in MySQL, PostgreSQL, or Microsoft SQL Server.
 Which implies that even if the server is stopped, all scheduled tasks and persisted tasks will automatically
@@ -147,7 +144,7 @@ with a due date in the past, are executed immediately as the server restarts aga
 Tasks are by default persisted into your `tasks` table, and schedules are persisted into your
 `task_due` table.
 
-## Workflows and Magic Tasks
+## How to use tasks as business process workflows
 
 The above allows you to persist a _"function invocation"_ for later to execute it, once some specific condition
 occurs - Effectively giving you the most important features from Microsoft Workflow Foundation, without the
@@ -155,7 +152,7 @@ ridiculous XML and WYSIWYG features - In addition to that this also is a .Net Co
 to MWF that only works for the full .Net Framework. The Hyperlambda task scheduler is also probably at
 least somewhere between 200 and 400 times faster than MWF, due to not needing any reflection.
 
-## Scheduling tasks
+## How to schedule a task
 
 If you want to create a _scheduled_ task, you can choose to have the task executed once in the future, at a specified
 date and time, by invoking **[tasks.schedule]**, and reference your task after it's been created, passing in
@@ -180,7 +177,7 @@ the **[tasks.schedule]** slot. If you add schedules during invocations to **[tas
 IDs are returned, but you can still retrieve all schedules by invoking **[tasks.get]** and passing in **[schedules]**
 to have the slot return all schedules for a specific task.
 
-### Repeating tasks
+### How to repeatedly execute a task
 
 There are 3 basic **[repeats]** patterns for the Magic Lambda Scheduler, in addition to that you can extend
 it with your own parametrized repeating `IRepetitionPattern` implementation. The built in repetition patterns,
@@ -195,7 +192,7 @@ Notice, MM, dd, and ww can have double asterix (\*\*) as their values, implying 
 MM, dd and ww can also have multiple values, separated by the pipe character (|), to provide multiple values
 for these types. See examples of this further below in this documentation.
 
-### Intervals
+### Evaluating a task periodically
 
 Evaluating your task every second/minute/hour/etc can be done by using something such as the following.
 
@@ -304,9 +301,9 @@ tasks.schedule:task-id-567
 You can also provide a double asterix (\*\*) for the weekdays pattern, implying _"all days of the week"_.
 Notice how weekdays are case-insensitive as illustrated above.
 
-### Creating your own repetition pattern
+### Creating your own task repetition pattern
 
-In addition to the above 3 types of repetition patterns, you can also create your own repetition pattern type,
+In addition to the internally provided repetition patternsfor tasks, you can also create your own repetition pattern type,
 by implementing the `IRepetitionPattern` interface on one of your own types, and registering your type create function
 by using the `PatternFactory.AddExtensionPattern` method. If you do, you'll have to reference your repetition
 pattern type using _"ext:"_, combined with its resolver key. Implying if you register your `IRepetitionPattern` type such
@@ -375,7 +372,7 @@ you to parametrize your pattern any ways you see fit.
 Notice, this slot is not intended for being directly invoked by your code, but internally used by Magic
 after the system has been setup.
 
-### Internals
+### Task scheduler internals
 
 One `System.Threading.Timer` object will be created for each due date/repetition pattern you have, and kept
 in memory of your Magic server, which doesn't lend itself to thousands of schedules for obvious reasons - But
