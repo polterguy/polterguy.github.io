@@ -1,7 +1,7 @@
 
-# Caching with Magic and Hyperlambda
+# magic.lambda.caching
 
-Cache helper slots for Magic. More specifically this project provides the following slots.
+This project contains caching helper slots for Hyperlambda. More specifically this project provides the following slots.
 
 * __[cache.set]__ - Adds the specified item to the cache
 * __[cache.get]__ - Returns a previously cached item, if existing, if not returns nothing
@@ -118,6 +118,19 @@ This slot also supports the following optional arguments.
 * __[limit]__ - Maximum number of items to return.
 * __[offset]__ - Offset of where to start returning items.
 * Filter as value of node being the filter condition declaring which items to return. See the __[cache.clear]__ slot to understand how it works, since this argument works in the exact same way, assuming your filter is a _"namespace"_.
+
+## How to use [cache.count]
+
+This slot works similarly to the **[cache.list]** slot, except it only returns the number of items.
+Below is an example of creating a new cache entry, for then to count how many cache items exists
+in your cache.
+
+```
+cache.set:cache-item-key
+   expiration:5
+   value:Howdy world
+cache.count
+```
 
 ## Internals
 
