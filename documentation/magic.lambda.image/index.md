@@ -1,8 +1,8 @@
 
-# Image manipulation with Hyperlambda
+# magic.lambda.image
 
-Image manipulation library for Magic, allowing you to do basic manipulation of images, in addition to generating
-QR codes. More specifically this project contains the following slot.
+The magic.lambda.image project contains image manipulation functions for Hyperlambda, allowing you to do basic
+manipulation of images, in addition to generating QR codes. More specifically this project contains the following slot.
 
 * __[image.generate-qr]__ - Generate a QR code with the specified payload
 * __[image.size]__ - Returns the width and height of the specified image
@@ -30,7 +30,7 @@ In addition you can provide a **[dest]** argument, which if specified, becomes t
 save the image after transformation has been applied. If not specified, the image will be returned as a stream
 to caller, otherwise the image will be saved to the specified file.
 
-### Resizing an image
+### How to use [image.resize]
 
 Resizing an image can be done as follows.
 
@@ -52,7 +52,7 @@ to return the image after the transformation has been applied, and can be any of
 above. Notice, the image might be stretched in one direction if you change the existing width and height ratio
 during the transformation.
 
-### Cropping an image
+### How to use [image.crop]
 
 To crop an image you specify the following arguments.
 
@@ -70,7 +70,7 @@ image.crop:/modules/test/qr.png
    right:50
 ```
 
-### Converting an image
+### How to use [image.convert]
 
 To convert an image from for instance png to jpeg, you can use something such as follows.
 
@@ -81,7 +81,7 @@ image.convert:/some-image.png
 
 The above keeps the image as is, except converts it from its existing format to a jpeg image.
 
-## Generating a QR code
+## How to use [image.generate-qr]
 
 You can use the **[image.generate-qr]** slot to create a QR code. This slot returns the QR code as a `MemoryStream`, which
 allows you to return its output directly over the HTTP response object, which again will persist the QR code

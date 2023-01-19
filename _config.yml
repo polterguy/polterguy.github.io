@@ -125,8 +125,6 @@ nav_sections:
         name: magic.lambda.sqlite
       - url: /documentation/magic.lambda.odbc/
         name: magic.lambda.odbc
-      - url: /documentation/magic.lambda.cql/
-        name: magic.lambda.cql
       - url: /documentation/magic.lambda.image/
         name: magic.lambda.image
       - url: /documentation/magic.lambda.crypto/
@@ -165,8 +163,6 @@ nav_sections:
         name: magic.endpoint
       - url: /documentation/magic.data.common/
         name: magic.data.common
-      - url: /documentation/magic.data.cql/
-        name: magic.data.cql
       - url: /documentation/magic.library/
         name: magic.library
       - url: /documentation/magic.deploy/

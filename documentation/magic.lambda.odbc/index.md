@@ -1,5 +1,5 @@
 
-# Using ODBC from Hyperlambda
+# magic.lambda.odbc
 
 This is the ODBC data adapter for Magic. This project provides slots to open an ODBC database
 connection, and allows you to execute your own SQL statements towards an open ODBC connection. Slots
@@ -17,9 +17,10 @@ All of the slots in this project are documented in the documentation for the _"m
 If you replace the **[data.xxx]** or **[sql.xxx]** slots with **[odbc.xxx]**, you will use the ODBC specific
 slots, instead of the generic, and/or polymorphistic slots.
 Hence, please refer to the documentation for _"magic.data.common"_ to see the complete documentation for this
-project.
+project. If you need for instance documentation about the **[odbc.connect]** slot you should look for the
+documentation for **[data.connect]**, since it's more or less the exact same documentation.
 
-## ODBS data adapter drivers
+## ODBC data adapter drivers
 
 Notice, Magic does _not_ install any ODBC drivers for your specific database type during installation. Hence,
 depending upon which database type you want to use, you're going to have to manually make sure you install
