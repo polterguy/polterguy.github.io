@@ -1,8 +1,8 @@
 
-# Parsing and creating MIME messages with Hyperlambda
+# magic.lambda.mime
 
 magic.lambda.mime gives you the ability to parse and create MIME messages from Hyperlambda.
-The project contains the following slots.
+This project contains the following slots.
 
 * __[mime.parse]__ - Parses a MIME message, and returns it as a lambda object
 * __[mime.create]__ - Creates a MIME message for you, and returns the entire message as text, being the MIME entity
