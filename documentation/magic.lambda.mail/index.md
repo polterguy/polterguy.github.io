@@ -1,12 +1,12 @@
 
-# Sending and retrieving emails from Hyperlambda
+# magic.lambda.mail
 
- SMTP and POP3 helpers for Magic. More specifically, this project contains the following slots.
+This project contains SMTP and POP3 helpers for Magic. More specifically, this project contains the following slots.
 
 * __[mail.smtp.send]__ - Sends email(s) through an SMTP server
 * __[mail.pop3.fetch]__ - Retrieves emails from a POP3 server
 
-## Sending email(s)
+## How to use [mail.smtp.send]
 
 ```
 mail.smtp.send
@@ -126,7 +126,7 @@ mail.smtp.send
 
 This makes it easier to dynamically **[unwrap]** arguments to the slot.
 
-## Retrieving emails
+## How to use [mail.pop3.fetch]
 
 To retrieve emails from a POP3 server is equally easy. Below is an example.
 
