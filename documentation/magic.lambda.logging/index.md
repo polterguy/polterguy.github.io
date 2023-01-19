@@ -1,8 +1,8 @@
 
-# Audit logging from Hyperlambda
+# magic.lambda.logging
 
-Logging wrapper slots for Magic. More specifically, this project provides the following slots allowing you
-to create log entries.
+This project contains logging wrapper slots for Magic. More specifically, this project provides the following
+slots allowing you to create log entries.
 
 * __[log.info]__ - Information log entries, typically smaller pieces of information
 * __[log.debug]__ - Debug log entries, typically additional debugging information not enabled in production
@@ -17,31 +17,18 @@ basic statistics from your log. These can be found below.
 * __[log.query]__ - Returns a list of log items according to its arguments
 * __[log.capabilities]__ - Returns the capabilities of the log implementation
 
-By default, this project will log into your `magic.log_entries` database/table, using either MySQL, PostgreSQL, or
-Microsoft SQL Server. This allows you to use SQL to generate statistics on top of your logs. However, the project
-also allows for using NoSQL database systems as your log implementation, and/or any other types of implementation
-you see fit. An example of logging an info piece of information can be found below.
+By default, this project will log into your `magic.log_entries` database/table, using either MySQL, PostgreSQL,
+Microsoft SQL Server or SQLite. This allows you to use SQL to generate statistics on top of your logs.
+An example of creating a log entry can be found below.
 
 ```
 log.info:Howdy world from magic.lambda.logging
 ```
 
-You can supply content to your log item two different ways. Either as a piece of string, or if you choose
-to set its value to nothing, it will concatenate all children node's values, after having evaluated it as a lambda
-object. This allows you to create rich log entries, based upon evaluating the children of the log invocation.
-This gives you a convenience shortcut to create log entries that have strings concatenated as their content,
-without having to manually concatenate them yourself. An example of the latter can be found below.
+You can of course exchange the above **[log.info]** with **[log.error]**, **[log.debug]** or **[log.fatal]**.
 
-```
-.a:foo bar
-
-log.info
-   .:"A's value is "
-   get-value:x:@.a
-```
-
-If you provide a value for your log invocation, then children nodes will be assumed to be _"meta information"_ associated
-with the invocation, allowing you to log data such as follows.
+Children nodes will be assumed to be _"meta information"_ associated with the invocation, allowing you to
+log data such as follows.
 
 ```
 log.info:Some log entry

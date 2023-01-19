@@ -1,12 +1,12 @@
 
-# Using Cryptography with Hyperlambda and Magic
+# magic.lambda.crypto
 
-This project provides cryptography helper slots for Magic, allowing you to use both symmetric and asymmetric cryptography
-operations in your Hyperlambda applications. The symmetric parts of the project is using AES internally, and the
-asymmetric parts is using RSA. In addition to a bunch of _"low level slots"_, the project also contains combination
-slots, combining RSA and AES, allowing you to both encrypt and sign a message, using a single signal invocation.
-This project also allows you to create RSA key pairs, in addition to cryptographically hashing files and payloads, etc.
-More specifically this project contains the following slots.
+The magic.lambda.crypto project provides cryptography helper slots for Magic, allowing you to use both symmetric
+and asymmetric cryptography operations in your Hyperlambda applications. The symmetric parts of the project is
+using AES internally, and the asymmetric parts is using RSA. In addition to a bunch of _"low level slots"_, the
+project also contains combination slots, combining RSA and AES, allowing you to both encrypt and sign a message,
+using a single signal invocation. This project also allows you to create RSA key pairs, in addition to
+cryptographically hashing files and payloads, etc. More specifically this project contains the following slots.
 
 * __[crypto.rsa.create-key]__ - Creates a new RSA keypair
 * __[crypto.rsa.encrypt]__ - RSA encrypts a message

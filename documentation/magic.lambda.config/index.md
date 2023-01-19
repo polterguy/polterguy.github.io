@@ -1,5 +1,5 @@
 
-# Reading configuration settings from Hyperlambda
+# magic.lambda.config
 
 This project provides configuration settings slots for Magic. The project provides the following
 slots, allowing you to retrieve configuration settings from your _"appsettings.json"_ configuration file,
@@ -10,9 +10,12 @@ in addition to saving and loading your configuration file.
 * __[config.load]__ - Loads your _"appsettings.json"_ file and returns as a string
 * __[config.save]__ - Saves your _"appsettings.json"_ file, sanity checking it's valid JSON before persisting your file
 
-To retrieve settings you can supply a _"path"_ such as _"foo:bar"_ to for instance an invocation to **[config.get]**.
-This will traverse into your _"foo"_ config setting, find its _"bar"_ key, and return the value of your _"bar"_ key.
-Below is an example of usage.
+## How to use [config.get]
+
+This slot allows you to retrieve configuration settings. To retrieve settings you can supply a
+_"path"_ such as _"foo:bar"_ to for instance an invocation to **[config.get]**. This will traverse into
+your _"foo"_ config setting, find its _"bar"_ key, and return the value of your _"bar"_ key. Below is
+an example of usage.
 
 ```
 config.get:"foo:bar"
