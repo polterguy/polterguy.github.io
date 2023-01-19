@@ -1,7 +1,7 @@
 
-# Hyperlambda as a Turing complete programming language
+# The magic.lambda project
 
-magic.lambda is where you will find the _"keywords"_ of Hyperlambda.
+magic.lambda is where you will find the _"programming language keywords"_ of Hyperlambda.
 It is what makes Hyperlambda Turing complete, and contains slots such as **[for-each]**,
 **[if]**, and **[while]**.
 
@@ -176,7 +176,7 @@ including referencing UNICODE characters in your strings. Hyperlambda is _always
 so you can add any UNICODE characters in your Hyperlambda you wish. Just make sure you save your files
 as UTF8 if you are using an external code editor to edit your Hyperlambda files.
 
-## Comments
+## How to comment your code
 
 Hyperlambda accepts comments the exacts same way C# does, and you can use either multiline comments
 or single line comments, like the following example illustrates.
@@ -233,7 +233,7 @@ with an error such as follows _"No slot exists for [src]"_ since this slot doesn
 vocabulary - Unless you for some reasons have an installation where this slot has been explicitly added to
 your vocabulary.
 
-## [eval]
+## How to use [eval]
 
 This is the by far most important slot in Hyperlambda, since it's arguably _"the heart"_ of Hyperlambda,
 allowing Hyperlambda to execute Hyperlambda. This slot executes the specified lambda object(s) assumed
@@ -287,7 +287,7 @@ Notice, the **[eval]** slot is _not_ immutable, as in it has access to the outer
 illustrated above, where we set the value of a node existing _outside_ of the **[.lambda]** itself.
 Implying **[eval]** cannot return values or nodes the same way for instance **[signal]** can.
 
-## [invoke]
+## How to use [invoke]
 
 This slot works similarly to **[eval]**, except it treats the invocation similarly to an invocation to
 a dynamic slot, allowing you to pass in arguments, and return nodes from the invocation.
@@ -350,7 +350,7 @@ branching implies to changing the position of the execution pointer, according t
 this implies constructs such as `if`, `else`, `goto` etc in traditional programming languages.
 Hyperlambda contains the following branching slots by default.
 
-### [if]
+### How to use [if]
 
 This is the Hyperlambda equivalent of `if` from other programming languages. It allows you to test for some condition,
 and evaluate a lambda object, only if the condition evaluates to true. **[if]** must be given two arguments.
@@ -400,7 +400,7 @@ If you use this shorthand version for the slot(s), its lambda object is assumed 
 of the **[if]** or **[else-if]** slot itself, and there are no needs to explicitly declare your lambda objects as
 a **[.lambda]** argument. This only works if the expression leads to a boolean value.
 
-### [else-if]
+### How to use [else-if]
 
 **[else-if]** is the younger sibling of **[if]**, and must be preceeded by its older sibling, or other **[else-if]** nodes,
 and will only be evaluated if all of its previous conditional slots evaluates to false - At which point **[else-if]** is
@@ -424,7 +424,7 @@ else-if
 **[else-if]** can also be given an expression directly the same way **[if]** can. See the example for **[if]**
 to understand how this works.
 
-### [else]
+### How to use [else]
 
 **[else]** is the last of the _"conditional siblings"_ that will only be evaluated as a last resort, only if none of its
 elder _"siblings"_ evaluates to true. Notice, contrary to both **[if]** and **[else-if]**, **[else]** contains its lambda object
@@ -458,7 +458,7 @@ else
       .:nope
 ```
 
-### [switch]
+### How to use [switch]
 
 **[switch]** works similarly to a switch/case block in a traditional programming language, and will find the
 first **[case]** node with a value matching the evaluated value of the **[switch]** node, and execute that
@@ -523,7 +523,7 @@ the LHS part, and the second its RHS part - Or you can alternatively supply the 
 leading to a value, at which point the only child argument assumed for your comparison becomes the RHS argument.
 Magic contains the following comparison slots out of the box.
 
-### [eq]
+### How to use [eq]
 
 **[eq]** is the equality _"operator"_ in Magic, and it requires two arguments, both of which will be evaluated as potential
 signals - And the result of evaluating **[eq]** will only be true if the values of these two arguments are _exactly the same_.
@@ -535,7 +535,7 @@ eq
    .:int:5
 ```
 
-### [neq]
+### How to use [neq]
 
 **[neq]** is the _not_ equal _"operator"_ in Magic, and it requires two arguments, both of which will be evaluated as potential
 signals - And the result of evaluating **[neq]** will only be true if the values of these two arguments are _not the same_.
@@ -547,7 +547,7 @@ neq
    .:int:5
 ```
 
-### [lt]
+### How to use [lt]
 
 **[lt]** will do a comparison between its two arguments, and only return true if its first argument is _"less than"_
 its seconds argument. Consider the following.
@@ -559,7 +559,7 @@ lt
    .:int:5
 ```
 
-### [lte]
+### How to use [lte]
 
 **[lte]** will do a comparison between its two arguments, and only return true if its first argument is _"less than or equal"_
 to its seconds argument. Consider the following.
@@ -571,7 +571,7 @@ lte
    .:int:4
 ```
 
-### [mt]
+### How to use [mt]
 
 **[mt]** will do a comparison between its two arguments, and only return true if its first argument is _"more than"_
 its seconds argument. Consider the following.
@@ -583,7 +583,7 @@ mt
    .:int:5
 ```
 
-### [mte]
+### How to use [mte]
 
 **[mte]** will do a comparison between its two arguments, and only return true if its first argument is _"more than or equal"_
 to its seconds argument. Consider the following.
@@ -646,7 +646,7 @@ if (arg1 == "foo")
 
 ## Boolean logical conditions
 
-### [and]
+### How to use [and]
 
 **[and]** requires two or more arguments, and will only evaluate to true, if all of its arguments evaluates to true. Consider
 the following.
@@ -683,7 +683,7 @@ if
          .:OK
 ```
 
-### [or]
+### How to use [or]
 
 **[or]** is similar to **[and]**, except it will evaluate to true if _any_ of its arguments evaluates to true, such
 as the following illustrates. **[or]** will also evaluate its arguments, allowing you to use it as a part of richer comparison
@@ -705,7 +705,7 @@ or
 none of its conditions afterwards will be considered, since the **[or]** as a whole evaluates to true
 if _any_ of its arguments evaluates to true.
 
-### [not]
+### How to use [not]
 
 **[not]** expects _exactly one argument_, and will negate its boolean value, whatever it is, such as the following illustrates.
 
@@ -773,7 +773,7 @@ the ability to change your nodes as you execute your Hyperlambda. Magic provides
 both to change the names, values, and types of your nodes - In addition to adding a range of nodes into some
 other node, and/or remove nodes from the children collection of your nodes.
 
-### [add]
+### How to use [add]
 
 This slot allows you to dynamically add nodes into a destination node. Its primary argument is the destination,
 and it assumes that each children is a collection of nodes it should append to the destination node's children
@@ -825,7 +825,7 @@ add:x:../*/.dest
 Notice how _both_ of our **[.dest]** nodes above ends up having _both_ the **[foo1]** and the **[foo2]** nodes in
 its children collection after executing the above Hyperlambda.
 
-### [insert-before]
+### How to use [insert-before]
 
 This slot works the exact same way as the **[add]** node, except it will insert the nodes _before_ the
 node(s) referenced in its main/destination argument.
@@ -839,7 +839,7 @@ insert-before:x:@.foo/*/foo1
       inserted
 ```
 
-### [insert-after]
+### How to use [insert-after]
 
 This slot works the exact same way as the **[add]** and **[insert-before]** slots, except it will insert the
 nodes _after_ the node(s) referenced in its main/destination argument.
@@ -853,7 +853,7 @@ insert-after:x:@.foo/*/foo1
       inserted
 ```
 
-### [remove-nodes]
+### How to use [remove-nodes]
 
 This slot will remove all nodes its expression is pointing to.
 
@@ -865,7 +865,7 @@ This slot will remove all nodes its expression is pointing to.
 remove-nodes:x:@.data/*/foo2
 ```
 
-### [include]
+### How to use [include]
 
 This slot is logically the combination of a **[for-each]**, **[add]** and **[eval/invoke]**. The slot takes a lambda
 object, that will be executed with a **[.dp]** node, for each node resulting from evaluating its expression passed
@@ -887,7 +887,7 @@ include:x:@.data/*
       howdy:x:@strings.concat
 ```
 
-### [set-value]
+### How to use [set-value]
 
 Changes the value of all nodes referenced as its main expression to whatever its single source happens to be.
 Notice, when you invoke a slot that tries to change the value, name, or the node itself of some expression,
@@ -902,7 +902,7 @@ set-value:x:../*/.foo
    .:SUCCESS
 ```
 
-### [set-name]
+### How to use [set-name]
 
 Changes the name of all nodes referenced as its main expression to whatever its single source happens to be.
 
@@ -915,7 +915,7 @@ set-name:x:@.foo/*
 
 The **[set-name]** invocation can also be given multiple destinations, but only _one_ source.
 
-### [unwrap]
+### How to use [unwrap]
 
 This slot is useful if you want to invoke another slot, but before you do, you want to evaluate some expressions
 inside of some argument to your slot. Imagine the following.
@@ -938,7 +938,7 @@ and you want to return the _value_ the expression evaluates to, and not the expr
 In addition to the above slots allowing you to _change_ your graph objects as they are executed, Hyperlambda also
 contains a whole range of slots that allows you to _retrieve_ parts of your lambda objects during execution.
 
-### [get-value]
+### How to use [get-value]
 
 Returns the value of the node its expression is pointing to.
 
@@ -947,7 +947,7 @@ Returns the value of the node its expression is pointing to.
 get-value:x:-
 ```
 
-### [get-name]
+### How to use [get-name]
 
 Returns the name of the node referenced in its expression.
 
@@ -956,7 +956,7 @@ Returns the name of the node referenced in its expression.
 get-name:x:-
 ```
 
-### [get-count]
+### How to use [get-count]
 
 This slot returns the number of nodes its expression is pointing to.
 
@@ -967,7 +967,7 @@ This slot returns the number of nodes its expression is pointing to.
 get-count:x:@.data/*
 ```
 
-### [get-nodes]
+### How to use [get-nodes]
 
 Returns the nodes its expression is referencing.
 
@@ -978,7 +978,7 @@ Returns the nodes its expression is referencing.
 get-nodes:x:-/*
 ```
 
-### [exists]
+### How to use [exists]
 
 **[exists]** will evaluate to true if its specified expression yields one or more results. If not, it will
 return false.
@@ -991,7 +991,7 @@ exists:x:@.src1/*
 exists:x:@.src2/*
 ```
 
-### [not-exists]
+### How to use [not-exists]
 
 **[not-exists]** will evaluate to true if its specified expression yields zero results. If not, it will
 return false. It's the logical opposite of **[exists]**.
@@ -1004,7 +1004,7 @@ not-exists:x:@.src1/*
 not-exists:x:@.src2/*
 ```
 
-### [null]
+### How to use [null]
 
 **[null]** will evaluate to true if its specified expression yields null, or the expression returns no nodes.
 If not, it will return false.
@@ -1018,7 +1018,7 @@ null:x:@.src1/*
 null:x:@.src2/*
 ```
 
-### [not-null]
+### How to use [not-null]
 
 **[not-null]** will evaluate to true if its specified expression returns nodes and at least one of those nodes has a value.
 If not, it will return false.
@@ -1034,7 +1034,7 @@ not-null:x:@.src2/*
 not-null:x:@.src3/*
 ```
 
-### [reference]
+### How to use [reference]
 
 This slot will evaluate its expression, and add the entire node the expression is pointing to, as a referenced node into
 its value. This allows you to pass a node _into_ a slot by reference, and have that slot modify the node itself, or
@@ -1061,7 +1061,7 @@ since they result in unpredictable results. In theory passing in a node by refer
 the logic of the calling function, resulting in changing the code that is being executed, which obviously
 makes the code literally impossible to understand. Hence, be careful with the **[reference]** slot!
 
-### [get-first-value]
+### How to use [get-first-value]
 
 Returns the _first_ non-null value resulting from evaluating its expression, and/or its children nodes.
 
@@ -1078,7 +1078,7 @@ This node returns only the first non-null value resulting from evaluating its ex
 nodes. This is useful when you for instance have arguments to some lambda object, but want to apply default
 values if the argument is not specified - And or want to have guarantees of that only a single value is returned.
 
-### [get-context]
+### How to use [get-context]
 
 This slot returns a context stack object, which is an object added to the stack using **[context]**.
 Below is an example of usage.
@@ -1104,7 +1104,7 @@ mechanism to raise errors in such a way that the stack is completely rewinded, t
 where you want to handle error conditions. This allows you to _"ignore"_ errors occurring in all places,
 except a single point in your code, from where you want to handle said exceptions.
 
-### [try]
+### How to use [try]
 
 This slot allows you to create a try/catch/finally block in Hyperlambda, from where exceptions are caught,
 and optionally handled in a **[.catch]** lambda, and/or a **[.finally]** lambda.
@@ -1126,7 +1126,7 @@ its **[.catch]** block - And regardless of whether or not an exception is thrown
 block will _always_ execute, allowing you to some extend create deterministic execution of Hyperlambda
 code, which has a guarantee of executing, regardless of whether or not an exception is thrown or not.
 
-### [throw]
+### How to use [throw]
 
 This slot simply throws an exception, with the exception message taken from its value.
 See the **[try]** slot above for an example. Notice, you can make the exception propagate to the client
@@ -1157,7 +1157,7 @@ end up looking from the client's point of view.
 Loops in programming languages implies doing something x number of times, where x is any number. Hyperlambda
 provides two basic slots for looping; **[for-each]** and **[while]**.
 
-### [for-each]
+### How to use [for-each]
 
 **[for-each]** iterates through each node being the result of an expression, and evaluates its lambda object,
 passing in the currently iterated node as a **[.dp]** argument, containing the node currently
@@ -1176,7 +1176,7 @@ for-each:x:-/*
 
 See the documentation for the **[reference]** slot to understand how reference nodes works.
 
-### [while]
+### How to use [while]
 
 Semantically similar to **[if]**, but instead of evaluating its lambda object once, will iterate it for
 as long as the condition evaluates to true. Requires _exactly_ two arguments, the same way **[if]** does.
@@ -1205,7 +1205,7 @@ _"Set .no to 0, then loop while .no is less than 5, where the loop adds a node i
 These are slots that doesn't belong to one specific group of slots, but are still useful enough in general
 to have implementations in Hyperlambda.
 
-### [types]
+### How to use [types]
 
 This slot returns all Hyperlambda types your current installation supports.
 
@@ -1213,7 +1213,7 @@ This slot returns all Hyperlambda types your current installation supports.
 types
 ```
 
-### [type]
+### How to use [type]
 
 This slot return the Hyperlambda type name of some value.
 
@@ -1224,7 +1224,7 @@ type:x:-
 
 After invoking the above, the value of **[type]** will be `int`.
 
-### [convert]
+### How to use [convert]
 
 This slot converts the value of an expression from its original type, to whatever **[type]** declaration you
 supply as its argument.
@@ -1240,7 +1240,7 @@ _"from-base64"_ as your **[type]** argument. The value of the object you want to
 conversion to the specified type, and will throw an exception if no conversion is possible, such as if you
 for instance try to convert the string of _"foo-bar"_ to an integer.
 
-### [format]
+### How to use [format]
 
 This slot converts some expression or value according to some specified `String.Format` pattern.
 The following code will string format the number 57 to make sure it's prefixed with leading zeros, always ending
@@ -1268,7 +1268,7 @@ this slot as you can use in C# and .Net. To see an extensive list of for instanc
 can use for a date and time object, you can browse the [Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings)
 related to this. If you don't supply a **[culture]** argument the invariant culture will be used.
 
-### [vocabulary]
+### How to use [vocabulary]
 
 Returns the name of every static slot in your system, optionally passing in a string, or an expression leading to
 a string, which is a filtering condition, where the slot must _start_ with the filter specified to be considered
@@ -1282,7 +1282,7 @@ vocabulary
 vocabulary:io.file
 ```
 
-### [whitelist]
+### How to use [whitelist]
 
 This slot temporarily within the given scope changes the available slots, allowing you to declare a block
 of lambda, where only a sub-set of your vocabulary is available for some piece of code to invoke. This allows
@@ -1327,7 +1327,7 @@ a dynamic slot works in Hyperlambda, in that the invocation treats its **[.lambd
 it was a dynamic slot, isolating it from the rest of our code, allowing the lambda object to return
 values and nodes to the caller.
 
-### [context]
+### How to use [context]
 
 This slot allows you to add an object unto the stack, such that it can later be retrieved with
 the **[get-context]** slot. Below is an example.
@@ -1368,7 +1368,7 @@ the context value called _"foo"_, and can retrieve this. This feature allows you
 _"long lasting arguments"_ that are accessible from within the entirety of a piece of Hyperlambda, including
 each slot it invokes, and/or Hyperlambda files it executes.
 
-### [apply]
+### How to use [apply]
 
 This slot takes an expression in addition to a list of arguments, and _"applies"_ the arguments unto the expression's
 result node set, allowing you to perform dynamic substitutions on lambda hierarchies such as the following illustrates.

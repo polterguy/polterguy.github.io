@@ -1,5 +1,5 @@
 
-# File IO with Magic and Hyperlambda
+# The magic.lambda.io project
 
 This project provides file/folder slots for Magic. More specifically, it provides the following slots.
 
@@ -40,7 +40,7 @@ folder where your application is running from within. There is nothing preventin
 absolute path, but if you do, you must make sure your web server process have full rights to modify
 files within this folder.
 
-### [io.folder.create]
+### How to use [io.folder.create]
 
 Creates a new folder on disc. The example below will create a folder named _"foo"_ inside of the _"misc"_ folder.
 Notice, will throw an exception if the folder already exists.
@@ -49,7 +49,7 @@ Notice, will throw an exception if the folder already exists.
 io.folder.create:/misc/foo/
 ```
 
-### [io.folder.exists]
+### How to use [io.folder.exists]
 
 Returns true if specified folder exists on disc.
 
@@ -57,7 +57,7 @@ Returns true if specified folder exists on disc.
 io.folder.exists:/misc/foo/
 ```
 
-### [io.folder.delete]
+### How to use [io.folder.delete]
 
 Deletes the specified folder on disc. Notice, will throw an exception if the folder doesn't exists.
 
@@ -65,7 +65,7 @@ Deletes the specified folder on disc. Notice, will throw an exception if the fol
 io.folder.delete:/misc/foo/
 ```
 
-### [io.folder.list]
+### How to use [io.folder.list]
 
 Lists all folders inside of the specified folder. By default hidden folders will not be shown, unless
 you pass in **[display-hidden]** and set its value to boolean _"true"_.
@@ -74,7 +74,7 @@ you pass in **[display-hidden]** and set its value to boolean _"true"_.
 io.folder.list:/misc/
 ```
 
-### [io.folder.move]
+### How to use [io.folder.move]
 
 Moves the specified source folder to its specified destination folder.
 
@@ -83,7 +83,7 @@ io.folder.move:/misc/source-folder/
    .:/misc/destination-folder/
 ```
 
-### [io.folder.copy]
+### How to use [io.folder.copy]
 
 Copies the specified source folder to its specified destination folder. Notice, this slot doesn't copy
 the folder itself, but rather the folder's content. Below is an example.
@@ -96,7 +96,7 @@ io.folder.copy:/misc/source-folder/
 After invocation of the above, every single file and folder inside your _"source-folder"_ can now
 be found as a copy inside your _"destination-folder"_.
 
-### [io.file.load]
+### How to use [io.file.load]
 
 Loads the specified text file from disc. This slot can _only load text files_. Or to be specific,
 there are no ways you can change binary files, hence loading a binary file is for the most parts
@@ -108,7 +108,7 @@ io.file.load:/misc/README.md
 
 **Notice** - If you want to load binary content you should use the **[io.file.load.binary]** override.
 
-### [io.file.save]
+### How to use [io.file.save]
 
 Saves the specified content to the specified file on disc, overwriting any previous content if the
 file exists from before, creating a new file if no such file already exists. The value of the first
@@ -124,7 +124,7 @@ io.file.save:/misc/README2.md
 
 **Notice** - If you want to save binary content you should use the **[io.file.save.binary]** override.
 
-### [io.file.exists]
+### How to use [io.file.exists]
 
 Returns true if specified file exists from before.
 
@@ -132,7 +132,7 @@ Returns true if specified file exists from before.
 io.file.exists:/misc/README.md
 ```
 
-### [io.file.delete]
+### How to use [io.file.delete]
 
 Deletes the specified file. Will throw an exception if the file doesn't exist.
 
@@ -140,7 +140,7 @@ Deletes the specified file. Will throw an exception if the file doesn't exist.
 io.file.load:/misc/DOES-NOT-EXIST.md
 ```
 
-### [io.file.copy]
+### How to use [io.file.copy]
 
 Copies the specified file to the specified destination folder and file.
 Notice, requires the destination folder to exist from before, and the source
@@ -157,7 +157,7 @@ io.file.copy:/misc/README.md
 Notice, the folder parts of thye destination folder is _optional_, and if you don't supply a folder
 as a part of the path, the source folder will be used by default.
 
-### [io.file.execute]
+### How to use [io.file.execute]
 
 Executes the specified Hyperlambda file. Just like when evaluating a dynamic slot, you can
 pass in an **[.arguments]** node to the file, which will be considered arguments to your file.
@@ -169,7 +169,7 @@ project.
 io.file.execute:/misc/some-hyperlambda-file.hl
 ```
 
-### [io.file.list]
+### How to use [io.file.list]
 
 Lists all files inside of the specified folder. By default hidden files will not be shown, unless
 you pass in **[display-hidden]** and set its value to boolean _"true"_.
@@ -178,7 +178,7 @@ you pass in **[display-hidden]** and set its value to boolean _"true"_.
 io.file.list:/misc/
 ```
 
-### [io.file.move]
+### How to use [io.file.move]
 
 Similar to **[io.file.copy]** but deletes the source file after evaluating.
 
@@ -187,7 +187,7 @@ io.file.move:/misc/README.md
    .:/misc/backup/README-backup.md
 ```
 
-### [io.file.unzip]
+### How to use [io.file.unzip]
 
 Unzips a ZIP file. Notice, the **[folder]** argument is optional, and the current folder
 of the ZIP file you're unzipping will be used if no **[folder]** argument is given.
@@ -197,7 +197,7 @@ io.file.unzip:/misc/foo.zip
    folder:/misc/backup/
 ```
 
-## [io.file.mixin]
+### How to use [io.file.mixin]
 
 This slot takes a filename as its primary argument, and optionally any amount of lambda children objects.
 It allows for dynamically substituting for instance `{{ '{{' }}*/.name}}` segments in your original source file,
@@ -253,7 +253,7 @@ The above will substitute all your `{{xyz}}` segments and give you a result rese
 Notice, if the node your expression is leading to has a value such as illustrated above, it will return that value
 instead of executing your node as a lambda object.
 
-### [io.content.zip-stream]
+### How to use [io.content.zip-stream]
 
 Creates a memory based ZIP stream you can return over the HTTP response object. Notice,
 this doesn't create a zip file, but rather a zip stream, which you can manipulate using other
@@ -269,7 +269,7 @@ io.content.zip-stream
       .:content of file
 ```
 
-### [io.stream.open-file]
+### How to use [io.stream.open-file]
 
 Works similarly to **[io.file.load]** but instead of returning the file's content,
 it returns the raw stream back to caller.
@@ -281,7 +281,7 @@ io.stream.open-file:/foo/bar.txt
 After invoking the above, assuming the file exists, a raw `Stream` object can be
 found as the value of the **[io.stream.open-file]** node.
 
-### [io.stream.save-file]
+### How to use [io.stream.save-file]
 
 Works similarly to **[io.file.save]** but instead of taking source content of some kind,
 it assumes the source is an open `Stream` of some sort.
@@ -304,7 +304,7 @@ object, the file above will contain the content from the stream.
 pass in an **[overwrite]** argument and set its value to false, at which point an exception
 will be thrown if the file exists from before.
 
-### [io.stream.read]
+### How to use [io.stream.read]
 
 Works similarly to **[io.file.load]** but instead of taking a source filename of some kind,
 it assumes the source is an open `Stream` of some sort.
@@ -318,7 +318,7 @@ it assumes the source is an open `Stream` of some sort.
 io.stream.read:x:@.stream
 ```
 
-### [io.stream.close]
+### How to use [io.stream.close]
 
 Closes a previously opened stream.
 
@@ -343,7 +343,7 @@ io.stream.close:x:-
 After invoking the above, assuming **[.stream]** is a valid stream, the stream's raw
 `byte[]` content can be found in **[io.stream.read]**.
 
-### [.io.folder.root]
+### How to use [.io.folder.root]
 
 Returns the root folder of the system. Cannot be invoked from Hyperlambda, but only from C#. Intended as
 a support function for other C# slots.

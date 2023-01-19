@@ -32,7 +32,7 @@ More specifically this project contains the following slots.
 * __[crypto.verify]__ - High level slot to verify a signature of some message
 * __[crypto.seed]__ - Allows you to explicitly seed the CSRNG instance using for instance a manually provided seed
 
-## [crypto.random]
+## How to use [crypto.random]
 
 This slot create a bunch of random characters, or bytes for you.
 The slot can optionally take a **[min]** and **[max]** argument, which defines the min/max length of the
@@ -53,7 +53,7 @@ value to boolean true, at which point the slot will return the raw bytes as a `b
 larger amount of entropy than simply using alphanumeric characters for the same size - Which is
 important as you start creating keys for AES cryptography operations etc.
 
-## [crypto.hash] and [crypto.hash.xxx]
+## How to use [crypto.hash] and [crypto.hash.xxx]
 
 The **[crypto.hash]** slot can be used to generate hash values. When you invoke it, you can choose
 between having the hash returned as raw a `byte[]`, as a _"fingerprint"_ or as its bit encoded hex
@@ -108,7 +108,7 @@ The fingerprint format resulting from a hash invocation is useful due to being m
 humans, and in such a regard better suited for being stored as a key reference into for instance a database,
 and/or transmitted as a key reference over the network to other machines.
 
-## [crypto.seed]
+## How to use [crypto.seed]
 
 No cryptography operation is more secure than the CSRNG instance used to generate random numbers and characters.
 This project accommodates for that, by explicitly allowing you to add to its CSRNG seed with something resembling

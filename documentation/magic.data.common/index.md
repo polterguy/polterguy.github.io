@@ -1,22 +1,22 @@
 
-# The common data adapter parts of Magic
+# magic.data.common
 
-This is the generic data adapter, that transform dynamically from a lambda node structure into SQL, and
-polymorphistically invokes your specialised data adapter, resulting in SQL statements executed towards
-your database type of choice. In addition, it contains helper slots to give you more _"raw"_ database
-access, and also slots to help you open database connections, create transactions, execute SQL, etc.
+The magic.data.commonproject is the generic data adapter, that transform dynamically from a lambda node
+structure into SQL, and polymorphistically invokes your specialised data adapter, resulting in SQL
+statements executed towards your database type of choice. In addition, it contains helper slots to give
+you more _"raw"_ database access, in addition to slots helping you to open database connections,
+create transactions, execute SQL, etc.
 
-## [sql.*] slots
+## How to use [sql.*]
 
 These slots never executes SQL towards your data adapter, but rather simply generates your SQL, and
 returns the results of the SQL generation process back to you. They're mostly intended for debugging
 purposes, and/or learning purposes, and can be interchanged with their **[data.xxx]** equivalent,
-and/or their **[mysql.xxx]**/**[mssql.xxx]**/**[pgsql.xxx]** equivalent, etc. In this documentation we
-will mostly be using these slots, but you can substitute our usage of these slots with for
-instance **[data.xxx]** if you wish to actually execute some SQL towards your database adapter of
-choice.
+and/or their **[mysql.xxx]**/**[mssql.xxx]**/**[pgsql.xxx]** equivalent, etc. You can substitute
+these slots with for instance **[data.xxx]** if you wish to actually execute some SQL towards your
+database adapter of choice.
 
-## [data.*] slots
+## How to use [data.*]
 
 All of the **[data.xxx]** slots are actually just polymorphistically evaluating your specialised adapter's
 slots, such as for instance **[data.connect]**, that will invoke **[mysql.connect]** if this is your default
@@ -31,7 +31,7 @@ and you invoke for instance **[data.connect]**, this will transform into an invo
 allowing you to use generic database slot invocations, ignoring your database type, creating the correct
 SQL dialect for you automagically.
 
-### [data.connect]
+### How to use [data.connect]
 
 This slot will open a database connection for you. You can pass in a complete connection string (not recommended),
 or only the database name if you wish. If you pass in only the database name, the generic connection string for your
@@ -49,7 +49,7 @@ data.connect:sakila
 Since the **[data.connect]** slot actually takes a lambda object, you can also add any amount
 of other lambda invocations inside of the lambda object supplied to the slot, allowing you to for instance
 create loops, conditional executions, etc, _inside_ of your invocation to **[data.connect]**. This is also
-true for all other slots taking a lambda object, such as for instance **[data.transaction.create]**, etc.
+true for all other slots taking a lambda object, such as for instance **[data.transaction.create]**.
 Inside your lambda object, an invocation towards your database such as e.g. **[data.read]**, will be
 using this database connection, as long as the type of database is matching. The database connection will
 be kept open, and implicitly used, for the entirety of the lambda object. If you need another database
@@ -72,7 +72,7 @@ a connection string configuration setting.
 "generic": "Server=localhost\\SQLEXPRESS;Database={database};Trusted_Connection=True;"
 ```
 
-### [data.select]
+### How to use [data.select]
 
 This slot allows you to pass in any arbitrary SQL you wish, and evaluate it to a `DataReader`, and return
 all records as a lambda object. You can find an example below.
@@ -140,7 +140,7 @@ Which would result in something resembling the following.
             field2:bar2
 ```
 
-### [data.scalar]
+### How to use [data.scalar]
 
 This slot is similar to the **[data.select]** slot, but will only return one value as the
 value of its node after execution. This slot is typically used for aggregate results. You can see
@@ -160,7 +160,7 @@ data.connect
 
 Yet again you should prefer the **[data.\*]** slots if you can.
 
-### [data.execute]
+### How to use [data.execute]
 
 This slot should be used if you don't expect any type of result at all, such as in for instance
 delete or update invocations, where you don't care about the result of the operation. You can
@@ -214,7 +214,7 @@ A transaction typically follows your connection, implying to count items
 after the transaction has been rolled back, we'll need a _new_ connection, as the
 above example illustrates.
 
-## [sql.*] slots
+## How to use [sql.*] slots
 
 All of these slots simply generates SQL for you, using the _generic_ SQL dialect syntax,
 which might or might not work for your database adapter of choice. This allows you to create
@@ -229,7 +229,7 @@ as configured in your _"appsettings.json"_ file.
 Hence, the documentation for these slots is also the documentation for your **[data.\*]**
 slots.
 
-### [sql.create]
+### How to use [sql.create]
 
 This slot will generate the SQL necessary to insert a record into a database for you. Besides the table
 argument, this slot can only be given one argument, which is __[values]__. Below is an example of usage.
@@ -259,7 +259,7 @@ The slot will in its specialized implementations return the ID of the inserted r
 unless you explicitly parametrize it with a **[return-id]** argument and set its value to boolean
 `false`.
 
-### [sql.read]
+### How to use [sql.read]
 
 This slot requires only one mandatory argument, being your table name. The slot creates a select
 SQL statement for you. An example can be found below.
@@ -658,7 +658,7 @@ select count(*) from 'table1' group by 'table1'.'foo1','table1'.'foo2'
 You can of course combine your **[group]** arguments with **[where]** arguments, and **[join]** arguments,
 allowing you to create complex aggregate results, statistics, joining multiple tables, etc.
 
-### [sql.update]
+### How to use [sql.update]
 
 This slot allows you to update one or more records, in a specified **[table]**. Just like create, it requires
 one mandatory argument, being **[values]**, implying columns/values you wish to update. This slot also takes
@@ -683,7 +683,7 @@ sql.update:update 'table1' set 'field1' = @v0
 be updated - Which is highly unlikely what your intentions are. Hence, make sure you apply a
 **[where]** argument as you invoke this slot.
 
-### [sql.delete]
+### How to use [sql.delete]
 
 This slot is for deleting records. Its **[where]** argument is applied in a similar fashion as the where
 argument to **[sql.select]** and **[sql.update]**. You can find an example further down in this document of

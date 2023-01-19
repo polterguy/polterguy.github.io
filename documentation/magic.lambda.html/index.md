@@ -7,7 +7,7 @@ This project provides HTML helper slots for Magic. More specifically, it provide
 * __[lambda2html]__ - Creates an HTML string out of the specified lambda object.
 * __[markdown2html]__ - Creates HTML out of the specified Markdown input string.
 
-## [html2lambda]
+## How to use [html2lambda]
 
 ```
 .html:@"<html>
@@ -48,7 +48,7 @@ following.
 get-value:x:-/**/title/*\#text
 ```
 
-## [lambda2html]
+## How to use [lambda2html]
 
 This is the reverse of **[html2lambda]** and returns HTML resulting from the specified lambda object. Below
 is example usage.
@@ -79,7 +79,7 @@ The above will result in the following HTML, formatted for brevity.
 </html>
 ```
 
-## [markdown2html]
+## How to use [markdown2html]
 
 This library can also handle Markdown, since Markdown is arguably just another representation of HTML.
 The **[markdown2html]** slot converts the specified Markdown content to HTML. Basic usage is as follows.

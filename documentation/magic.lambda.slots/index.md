@@ -40,7 +40,7 @@ in a folder called _"magic.startup"_ in your module's folder, e.g. _"/files/modu
 All files inside of modules that exists within a _"magic.startup"_ folder will be executed every time your web
 server restarts for some reasons.
 
-### [slots.create]
+### How to use [slots.create]
 
 Creates a dynamic slot that can be invoked using **[signal]**. Below is an example.
 
@@ -55,7 +55,7 @@ make sure you are somehow creating it during server startup, which can normally 
 a Hyperlambda file into your module's _"magic.startup"_ folder, which makes sure the code is executed during startup
 of your web app.
 
-### [signal]
+### How to use [signal]
 
 Invokes a previously created dynamic slot. Assuming you have executed the above code snippet, you can invoke the slot using
 the following Hyperlambda.
@@ -103,7 +103,7 @@ This _might_ create security issues for you if you have dynamically created slot
 execute lambda object supplied to them. Hence as a general rule of thumb, you should _avoid_ whitelisting
 slots that executes lambda objects supplied to them.
 
-### [slots.get]
+### How to use [slots.get]
 
 Returns the entire lambda code for a previously created dynamic slot. Example can be found below.
 
@@ -114,7 +114,7 @@ slots.create:foo
 slots.get:foo
 ```
 
-### [slots.delete]
+### How to use [slots.delete]
 
 Deletes a previously created dynamic slot. The following example _will throw an exception_.
 
@@ -128,7 +128,7 @@ slots.delete:foo
 slots.get:foo
 ```
 
-### [return-nodes]
+### How to use [return-nodes]
 
 Returns a bunch of nodes (lambda) from your slot. Can only be invoked from the inside of
 a dynamically created slot, and other slots explicitly creating a return context. An example can be
@@ -143,7 +143,7 @@ slots.create:foo
 signal:foo
 ```
 
-### [return-value]
+### How to use [return-value]
 
 Returns a single value from your slot. Can only be invoked from the inside of
 a dynamically created slot, and other slots explicitly creating a return context. An example can be
@@ -156,7 +156,7 @@ slots.create:foo
 signal:foo
 ```
 
-### [slots.exists]
+### How to use [slots.exists]
 
 Returns true if the specified slot exists. Example can be found below.
 
@@ -168,7 +168,7 @@ slots.exists:foo
 slots.exists:DOES-NOT-EXISTS
 ```
 
-### [slots.vocabulary]
+### How to use [slots.vocabulary]
 
 Returns the names of all dynamically created slots to caller. Example can be
 found below.

@@ -370,7 +370,7 @@ custom repetition pattern, the `custom-pattern` parts resolves to your `IRepetit
 and the _"some-arguments-here"_ parts will be passed into your above `ExtPattern` constructor allowing
 you to parametrize your pattern any ways you see fit.
 
-### [tasks.scheduler.start]
+### How to use [tasks.scheduler.start]
 
 Notice, this slot is not intended for being directly invoked by your code, but internally used by Magic
 after the system has been setup.

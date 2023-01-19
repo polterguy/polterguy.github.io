@@ -10,7 +10,7 @@ This project provides JSON helper slots for Magic. More specifically, it provide
 * __[lambda2json]__ - Creates JSON out of a lambda object.
 * __[lambda2yaml]__ - Converts a lambda object to its YAML equivalent.
 
-## [json2lambda] and [lambda2json]
+## How to use [json2lambda] and [lambda2json]
 
 ```
 .json:@"{""property"": ""value""}"
@@ -25,7 +25,7 @@ resulting JSON will be indented and nicely formated, making it more readable.
 lambda allows for having multiple nodes with the same name for instance, which would result in a JSON object with
 multiple properties having the same key. Hence, have this in mind as you persist your lambda objects into JSON.
 
-## [yaml2lambda] and [lambda2yaml]
+## How to use [yaml2lambda] and [lambda2yaml]
 
 The **[yaml2lambda]** slot converts a YAML input string to a lambda object. Since YAML arguably is just another representation of
 JSON, these slot have been added to this project. Notice, the same constraints applies for YAML as does for JSON, implying
@@ -60,7 +60,7 @@ lambda2yaml: /* ... YAML content ... */
 Internally the **[yaml2lambda]** slot first converts the input YAML to JSON, for then to use the **[json2lambda]**
 logic, ensuring the exact same result, regardless of whether or not you start out with JSON or YAML.
 
-## [yaml2json] and [json2yaml]
+## How to use [yaml2json] and [json2yaml]
 
 The **[yaml2json]** slot converts the specified YAML input string to a JSON string. Basic usage is as follows.
 

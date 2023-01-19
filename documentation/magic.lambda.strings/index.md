@@ -38,7 +38,7 @@ strings.replace:x:-
    .:super cool
 ```
 
-### [strings.replace]
+### How to use [strings.replace]
 
 This slot replaces occurrencies of a string inside a string, with some other string. The simplest version is like
 follows.
@@ -73,7 +73,7 @@ The above is a general pattern for most of these slots, where the node arguments
 evaluated as a lambda object, before the arguments are consumed, allowing you to use arguments that are the
 result of invoking other slots as arguments to your original outer most slot.
 
-### [strings.replace-not-of]
+### How to use [strings.replace-not-of]
 
 This slot will replace every single character in your original string, that cannot be found in its first
 argument, with the value of its second argument. This slot is useful if you want to remove all characters
@@ -91,7 +91,7 @@ The above will result in the following result
 strings.replace-not-of:foo-bar-howdy
 ```
 
-### [strings.capitalize]
+### How to use [strings.capitalize]
 
 Turns the first character of your string into a CAPS character.
 
@@ -103,7 +103,7 @@ strings.capitalize:thomas
  */
 ```
 
-### [strings.concat]
+### How to use [strings.concat]
 
 Concatenates a list of strings into one string. Similar to **[strings.join]**, except it doesn't take a
 separating character.
@@ -124,7 +124,7 @@ strings.concat
  */
 ```
 
-### [strings.contains]
+### How to use [strings.contains]
 
 Returns true if the specified string contains some sequence of characters.
 
@@ -134,7 +134,7 @@ strings.contains:Thomas Hansen Is Cool
    .:Hansen
 ```
 
-### [strings.ends-with]
+### How to use [strings.ends-with]
 
 Returns true if the specified string ends with some sequence of characters.
 
@@ -148,7 +148,7 @@ strings.ends-with:Thomas Hansen Is Coolio
    .:Cool
 ```
 
-### [strings.starts-with]
+### How to use [strings.starts-with]
 
 Returns true if the specified string starts with some sequence of characters.
 
@@ -162,7 +162,7 @@ strings.ends-with:Thomas Hansen Is Cool
    .:Hansen
 ```
 
-### [strings.join]
+### How to use [strings.join]
 
 Similar to **[strings.concat]**, except it also takes an optional separating character, allowing you to
 concatenate a bunch of strings, and making sure each original string is separated by some sequence of strings.
@@ -179,7 +179,7 @@ strings.join:x:@.src/*
  */
 ```
 
-### [strings.length]
+### How to use [strings.length]
 
 Returns the length of a string as an integer number.
 
@@ -188,7 +188,7 @@ Returns the length of a string as an integer number.
 strings.length:thomas
 ```
 
-### [strings.regex-replace]
+### How to use [strings.regex-replace]
 
 Replaces matches of the given regular expression with some static sequence of characters.
 
@@ -202,7 +202,7 @@ strings.regex-replace:foo bar hansen
 The first argument is what regular expression to match, the second argument is what to replace
 all matches with.
 
-### [strings.split]
+### How to use [strings.split]
 
 Splits a string into multiple strings, where a sequence of characters can be found, removing the original
 sequence of characters from the resulting node set.
@@ -223,7 +223,7 @@ strings.split:x:-
    .:string
 ```
 
-### [strings.to-lower]
+### How to use [strings.to-lower]
 
 Turns every single character in your input string into a lowercase character.
 
@@ -233,7 +233,7 @@ strings.to-lower:Thomas Hansen Is Cool
 // Results in "thomas hansen is cool"
 ```
 
-### [strings.to-upper]
+### How to use [strings.to-upper]
 
 Turns every single character in your input string into a UPPER case character.
 
@@ -243,7 +243,7 @@ strings.to-upper:Thomas Hansen Is Cool
 // Results in "THOMAS HANSEN IS COOL"
 ```
 
-### [strings.trim], [strings.trim-start], [strings.trim-end]
+### How to use [strings.trim], [strings.trim-start], [strings.trim-end]
 
 Trims a string, either both sides, only the start of it, or only the end of it, for
 occurrencies of characters found in the sequence of characters provided as its argument.
@@ -255,7 +255,7 @@ strings.trim:09thomas12
 // Results in "thomas"
 ```
 
-### [strings.url-encode]
+### How to use [strings.url-encode]
 
 URL encodes a string. Example can be found below.
 
@@ -269,7 +269,7 @@ Resulting in the following after execution.
 strings.url-encode:thomas%40servergardens.com
 ```
 
-### [strings.url-decode]
+### How to use [strings.url-decode]
 
 URL decodes a string, the opposite of **[strings.url-encode]**. Example can be found below.
 
@@ -285,7 +285,7 @@ strings.url-encode:thomas%40servergardens.com
 strings.url-decode:thomas@servergardens.com
 ```
 
-### [strings.substring]
+### How to use [strings.substring]
 
 Returns a substring of the specified string.
 
@@ -305,7 +305,7 @@ strings.substring:ar Howd
 Notice, the second argument is the _number of characters to return_ and not the offset into the string
 of where to stop returning. In such a regard, it works the same way as the C# `Substring` method.
 
-### [strings.matches]
+### How to use [strings.matches]
 
 Returns all regular expression matches from specified source string.
 

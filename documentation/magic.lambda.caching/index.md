@@ -16,7 +16,7 @@ something else besides a string, you'll need to correctly convert the object bef
 and correctly convert it after extracting it again later. If you need to preserve typing information, you can
 store Hyperlambda strings into your cache.
 
-## [cache.set]
+## How to use [cache.set]
 
 Invoke this slot to save an item to the cache. The slot takes 3 properties, which are as follows.
 
@@ -39,7 +39,7 @@ To remove the above item, you can use the following Hyperlambda.
 cache.set:cache-item-key
 ```
 
-## [cache.get]
+## How to use [cache.get]
 
 Returns an item from your cache, or null if there are no items matching the specified key. Below is an
 example of retrieving the item we saved to the cache above.
@@ -48,7 +48,7 @@ example of retrieving the item we saved to the cache above.
 cache.get:cache-item-key
 ```
 
-## [cache.try-get]
+## How to use [cache.try-get]
 
 This slot checks your cache to look for an item matching your specified key, and if not found, it will
 invoke its **[.lambda]** argument, and save its returned value to the cache with the specified key,
@@ -69,7 +69,7 @@ item and store into the cache. Notice, this is _not_ true if you are using an ou
 implementation, such as the one found in the _"magic.data.cql"_ project. This should in general be
 your _"goto slot"_ whenever you want to use the cache slots in this project.
 
-## [cache.clear]
+## How to use [cache.clear]
 
 This is a shorthand slot to completely clear cache, removing all items.
 
@@ -102,7 +102,7 @@ While an item with a key of _"x.foo.bar"_ will _not_ be removed. This allows you
 your cache items, and clearing out for instance all cache items matching the specified namespace
 in one invocation.
 
-## [cache.list]
+## How to use [cache.list]
 
 Lists all items in cache, and returns to caller.
 

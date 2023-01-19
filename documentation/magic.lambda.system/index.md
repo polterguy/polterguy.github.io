@@ -73,7 +73,7 @@ automatically killed and disposed, and any future attempts to reference it, will
 This is to avoid having hanging processes on the server, in case a terminal process is started, and
 then something happens, which disconnects the client, resulting in _"hanging sessions"_.
 
-## [system.execute]
+## How to use [system.execute]
 
 If you only want to execute a specific program in your system you can use **[system.execute]**, and pass in
 the name of the command as a value, and any arguments as children, optionally applying a **[structured]** argument

@@ -6,7 +6,7 @@ of your threads, creating the illusion of having your computer doing multiple ti
 is often referred to as _"multi tasking"_ and is crucial for any modern operating system, and/or programming
 language. Hyperlambda contains several multi tasking related slots.
 
-## [fork]
+## How to use [fork]
 
 Forks the given lambda into a new thread of execution, using a thread from the thread pool. This
 slot is useful for creating _"fire and forget"_ lambda objects, where you don't need to wait
@@ -29,7 +29,7 @@ individual task needs to wait for IO data, threading typically speeds up your ap
 since it can make multiple requests for IO simultaneously, and have other machines, and/or
 processes working in parallel.
 
-## [join]
+## How to use [join]
 
 Joins all child **[fork]** invocations, implying the slot will wait until all forks directly below it
 has finished executing, and automatically copy the result of the **[fork]** into the original node.
@@ -46,7 +46,7 @@ As an analogy for what occurs above, imagine the two rivers from our above **[fo
 that forked from one larger river into two smaller rivers, for then again to join up and becoming one
 large river again further down.
 
-## [semaphore]
+## How to use [semaphore]
 
 Creates a named semaphore, where only one thread will be allowed to evaluate the same semaphore at
 the same time. Notice, the semaphore to use is defined through its value, implying you can use the same
@@ -69,7 +69,7 @@ to shared resources, where only _one_ thread should be allowed to access the sha
 time. Such shared resources might be for instance files, or other things shared between multiuple threads,
 where it's crucial that only one thread is allowed to access the shared resource at the same time.
 
-## [sleep]
+## How to use [sleep]
 
 This slot will sleep the current thread for x number of milliseconds, where x is an integer value, expected
 to be passed in as its main value.

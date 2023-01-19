@@ -34,7 +34,7 @@ To use the **[validators.regex]** validator, you should probably [learn regular 
 to enforce such logic, you'll have to combine the specific type validators with the **[validators.mandatory]** validator,
 that enforces that a value must be specified and not have a null value.
 
-### [validators.recaptcha]
+### How to use [validators.recaptcha]
 
 This is probably the most complex validator, and required 3 arguments.
 
@@ -52,7 +52,7 @@ validators.recaptcha:x:@.arguments/*/recaptcha_value
    min:decimal:0.3
 ```
 
-### [validators.integer]
+### How to use [validators.integer]
 
 This value takes a **[min]** and **[max]** value, both of which are optional, and declares the minimum, and/or
 maximum value of the integer input. Usage could be as follows.
@@ -65,18 +65,18 @@ validators.integer:x:@.arguments/*/some-integer-argument
 
 If the specified integer value is not within the range of the min and max value, an exception will be thrown.
 
-### [validators.date]
+### How to use [validators.date]
 
 This works similarly to the **[validator.integer]** validator, except instead of providing a min/max
 integer value, you're expected to provide a min/max _date_ value.
 
-### [validators.string]
+### How to use [validators.string]
 
 This works the same way as the **[validators.integer]** validator, except instead of being a min/max
 _value_ the min/max arguments declares the minimum and maximum _length_ of the string, allowing you
 to restrict string length of arguments to a min/max value for your Hyperlambda.
 
-### [validators.enum]
+### How to use [validators.enum]
 
 This validator will throw an exception unless the specified string argument is one of the legal values. Usage
 could be as follows.
@@ -89,7 +89,7 @@ validators.enum:x:@.arguments/*/enum_value
 
 If the above **[enum_value]** is not either `val1` or `val2` the validator will throw an exception.
 
-### [validators.regex]
+### How to use [validators.regex]
 
 This validator requires a **[regex]** argument, that is a regular expression that must match the argument
 specified. Usage can be found below.

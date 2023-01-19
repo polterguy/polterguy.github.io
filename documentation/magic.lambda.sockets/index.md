@@ -34,7 +34,7 @@ this.connection.invoke(
 The above will resolve to a Hyperlambda file expected to exist at `/modules/foo/some-hyperlambda-file.socket.hl`,
 passing in the `foo` argument as lambda nodes.
 
-## [sockets.signal]
+## How to use [sockets.signal]
 
 In addition to the above, you can explicitly publish SignalR events by signaling the **[sockets.signal]** slot,
 which will automatically transform the specified children **[args]** nodes to JSON, and invoke the specified
