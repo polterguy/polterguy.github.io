@@ -1,9 +1,9 @@
 
-# Using MySQL from Hyperlambda
+# magic.lambda.mysql
 
-This is the MySQL data adapter for Magic. This project allows you to provide a semantic lambda structure
-to its slots, which in turn will dynamically create a MySQL dialect SQL statement for you, for all basic
-types of CRUD SQL statements. In addition, it provides slots to open a MySQL database connection, and
+The magic.lambda.mysql project is Hyperlambda's MySQL data adapter. This project allows you to provide a semantic
+lambda structure to its slots, which in turn will dynamically create a MySQL dialect SQL statement for you, for
+all basic types of CRUD SQL statements. In addition, it provides slots to open a MySQL database connection, and
 such allows you to declare your own SQL statements to be executed towards a MySQL database. Slots
 this project contains are as follows.
 

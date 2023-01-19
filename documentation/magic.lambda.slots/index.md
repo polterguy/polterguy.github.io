@@ -1,8 +1,8 @@
 
-# Creating dynamic slots from Hyperlambda
+# magic.lambda.slots
 
-This project provides the ability to create, invoke (signal), modify, inspect, and delete dynamic slots for Magic.
-More specifically, this project provides the following slots.
+The magic.lambda.slots project provides the ability to create, invoke (signal), modify, inspect, and delete
+dynamic slots in Hyperlambda. More specifically, this project provides the following slots.
 
 * __[signal]__ - Invokes a dynamically create slot that has been created with the __[slots.create]__ slot
 * __[try-signal]__ - Invokes a dynamically create slot that has been created with the __[slots.create]__ slot, but will _not_ throw exceptions if the slot doesn't exist
@@ -57,8 +57,8 @@ of your web app.
 
 ### How to use [signal]
 
-Invokes a previously created dynamic slot. Assuming you have executed the above code snippet, you can invoke the slot using
-the following Hyperlambda.
+Invokes a previously created dynamic slot. Assuming you have created the foo slot from the create slot example,
+you can invoke the slot using the following Hyperlambda.
 
 ```
 signal:foo
@@ -102,6 +102,16 @@ allowing you to whitelist a single dynamic slot, for then to ignore what the slo
 This _might_ create security issues for you if you have dynamically created slots that for some reasons
 execute lambda object supplied to them. Hence as a general rule of thumb, you should _avoid_ whitelisting
 slots that executes lambda objects supplied to them.
+
+### How to use [try-signal]
+
+Invokes a previously created dynamic slot. This slots works exactly the same as **[signal]** except it does
+not throw an exception if the slot does not exist. Assuming you have created the foo slot from the create slot example,
+you can invoke the slot using the following Hyperlambda.
+
+```
+try-signal:foo
+```
 
 ### How to use [slots.get]
 
