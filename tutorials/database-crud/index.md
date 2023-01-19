@@ -4,10 +4,11 @@ description: By using Magic you can automatically generate a CRUD API wrapping y
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-crud.jpg"
 ---
 
-# Generate a CRUD API in seconds
+# Generate a CRUD API
 
 This is a _"hands on tutorial"_, and assumes you've already [installed Magic](/tutorials/getting-started/)
-locally or at some server. This tutorial covers the following parts of Magic and Hyperlambda.
+locally, or [created a cloudlet at Aista.com](https://aista.com). This tutorial covers the following parts of
+Magic and Hyperlambda.
 
 * How to automatically generate a Hyperlambda HTTP CRUD API wrapping your database
 * The SQL, CRUD, Endpoints and Hyper IDE menu items

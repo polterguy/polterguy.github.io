@@ -5,8 +5,8 @@ description: This section lists all our Hyperlambda and Magic tutorials, and wal
 
 # Magic and Hyperlambda Tutorials
 
-If you are new to Magic, this is probably where you want start out learning both Hyperlambda and Magic.
-These tutorials guides you through everything you need to know, one concept at the time. The tutorials are intended to
+If you are new to Magic, this is probably where you want start out learning Hyperlambda and Magic.
+These tutorials guides you through everything you need to know, one concept at the time. These tutorials are intended to
 be followed as hands on exercises, from top to bottom, and it is assumed you've got access to a Magic server somehow, either
 locally installed, or some other place allowing you to play around with Hyperlambda and its dashboard. However, the
 first _"getting started"_ tutorial will help you install Magic locally on your development machine if needed.

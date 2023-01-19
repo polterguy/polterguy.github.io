@@ -7,37 +7,30 @@ og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/maste
 # Getting started with Magic and Hyperlambda
 
 The absolute easiest way to get started with Magic is to signup at [Aista website](https://aista.com), for then
-to create a _"cloudlet"_ with Magic deployed. This gives you CDN, security out of the box, a pre configured backend,
-etc, etc, etc. However, for some it's necessary to install Magic locally on a development machine, and/or their
-own servers. This tutorial covers the following parts of Magic and Hyperlambda.
+to create a _"cloudlet"_. This gives you CDN, security out of the box, a pre configured backend,
+etc. If you create a cloudlet at Aista.com, you can [skip to the next tutorial](/tutorials/database-crud/).
+If you intend to run Magic locally, you should probably follow this article hands on.
 
 * How to setup Magic locally in your own development environment using Docker or the code
-* How to deploy Magic to your own VPS
 * How to update Magic
 * How to clone Magic's code
 * How to get support for Magic
 
-The easiest way to get started locally is to [download the docker-compose file from the primary Aista website](https://github.com/polterguy/magic/releases/download/v14.4.5/docker-compose.yml), assuming you have [Docker](https://www.docker.com/products/docker-desktop) installed, and then execute the following in a terminal window where you saved the file.
+The easiest way to get started locally is to [download the docker-compose file from the primary Aista website](https://github.com/polterguy/magic/releases/download/v15.3.0/docker-compose.yml), assuming you have [Docker](https://www.docker.com/products/docker-desktop) installed, and then execute the following in a terminal window where you saved the file.
 
 ```
-docker-compose up
+docker compose up
 ```
 
 When your docker containers have started, open your browser and go to [http://localhost:5555](http://localhost:5555),
-use the default connection string for SQLite, choose a root password, crudify your Magic database,
-type your name and email address when you generate a key pair, and Magic should work out of the box without
-any hassle. If you want to test Magic's CRUD automation capabilities, there's a _"sakila"_ SQL script that you
-can execute in the _"SQL"_ menu item to create an example database. In the video below I am illustrating this process.
-
-<div class="video">
-<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/wCOcch2r03A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
-If you want to use Magic with Microsoft SQL Server, MySQL or PostgreSQL you can find recipes for this below.
+use the default connection string for SQLite, choose a root password, type in your name and email address, and Magic
+should work out of the box without any hassle. If you want to test Magic's CRUD automation capabilities, you can
+download the Sakila SQLite plugin that creates a database for you to play with. You can use Magic with SQL Server,
+MySQL, MariaDB or PostgreSQL if you don't want to use SQLite.
 
 * [Using Magic with Microsoft SQL Server](/tutorials/sql-server/)
 * [Using Magic with PostgreSQL](/tutorials/postgresql/)
-* [Using Magic with MySQL](/tutorials/mysql/)
+* [Using Magic with MySQL or MariaDB](/tutorials/mysql/)
 
 ## Download the code
 
@@ -47,13 +40,7 @@ development machine using the code directly. If so you will first of all need th
 1. [Visual Studio](https://visualstudio.microsoft.com/downloads/) or [VS Code](https://code.visualstudio.com/download) + [DotNet CLI and SDK](https://dotnet.microsoft.com/download)
 2. [NodeJS](https://nodejs.org/en/download/)
 3. [Angular](https://angular.io/cli)
-4. [MySQL](https://dev.mysql.com/downloads/mysql/), [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) or [PostgreSQL](https://www.postgresql.org/download/)
-5. [Download Magic Cloud's source code](https://github.com/polterguy/magic) from GitHub
-
-## Deploy Magic to a VPS
-
-To deploy Magic into production you can follow [this recipe](/documentation/magic.deploy/), which
-guides you through setting up your VPS server to host Magic.
+4. [Download Magic Cloud's source code](https://github.com/polterguy/magic) from GitHub
 
 ## Updating Magic
 
@@ -71,10 +58,10 @@ docker-compose up
 
 ## Cloning Magic
 
-Magic is not one project, it's actually 35+ projects, implying if you clone only Magic,
-you'll only get some few hundreds lines of code, while most of its actual code exists in one
-of the 35+ satellite projects. Hence, to clone Magic to for instance maintain it, or look at its
-code, you'll have to follow [this recipe](/documentation/magic.clone/).
+Magic is not one project, it's actually 40+ projects, implying if you clone only Magic,
+you'll only get some few hundreds lines of C# code, while most of its actual code exists in one
+of the 40+ satellite projects. Hence, to clone Magic to for instance maintain it, or look at its
+code, you'll have to follow [the recipe provided in the magic.clone project](/documentation/magic.clone/).
 
 ## Support
 
