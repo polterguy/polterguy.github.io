@@ -86,3 +86,11 @@ supported.
 No, besides SQL Studio there are no _"visual designers"_ in Magic. Magic is based upon
 software development automation, and machine learning and AI, and not graphical user
 interfaces allowing you to visually design neither backends nor frontends.
+
+## What was Magic built with?
+
+Aista Magic Cloud is created on top of .Net Core and Active Events, or Super Signals.
+Super Signals again is a simple design pattern invented by Thomas Hansen in 2009, facilitating
+for extremely loosely coupled components of C# and .Net classes, resulting in Hyperlambda
+ending up as an _"orchestration programming language"_, giving Aista Magic Cloud its
+software development automation features.
