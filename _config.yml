@@ -149,8 +149,6 @@ nav_sections:
         name: magic.lambda.sockets
       - url: /documentation/magic.lambda.threading/
         name: magic.lambda.threading
-      - url: /documentation/magic.lambda.system/
-        name: magic.lambda.system
   - name: Docs utilities
     items:
       - url: /documentation/magic/
@@ -171,6 +169,8 @@ nav_sections:
         name: magic.clone
   - name: Misc
     items:
+      - url: /documentation/faq/
+        name: faq
       - url: https://youtube.com/ThomasHansen-Magic
         name: youtube
       - url: https://t.me/aistamagic

@@ -1,10 +1,11 @@
 
-# Threading in Hyperlambda and Magic
+# magic.lambda.threading
 
-Threading in software development implies doing multiple things concurrently, scheduling CPU time for each
-of your threads, creating the illusion of having your computer doing multiple times concurrently. This concept
-is often referred to as _"multi tasking"_ and is crucial for any modern operating system, and/or programming
-language. Hyperlambda contains several multi tasking related slots.
+This project contains all thread related slots for Hyperlambda. Threading in software development implies
+doing multiple things concurrently, scheduling CPU time for each of your threads, creating the illusion
+of having your computer doing multiple times concurrently. This concept is often referred to as
+_"multi tasking"_ and is crucial for any modern operating system, and/or programming language.
+Hyperlambda contains several multi tasking related slots.
 
 ## How to use [fork]
 

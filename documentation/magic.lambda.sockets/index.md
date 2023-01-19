@@ -1,7 +1,7 @@
 
-# Using Web Sockets and SignalR from Hyperlambda
+# magic.lambda.sockets
 
-This project provides web sockets hooks for for Magic.
+This project provides web sockets slots for Hyperlambda.
 The main idea of the project, is that it allows you to resolve Hyperlambda files, execute these,
 passing in a URL and JSON arguments over a web socket connection - In addition to subscribing to messages
 published by the server over a web socket connection from some client of your choosing. The project builds
