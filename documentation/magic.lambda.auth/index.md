@@ -1,8 +1,8 @@
 
-# Authentication and Authorization with Magic and Hyperlambda
+# magic.lambda.auth
 
-This project contains authentication and authorization helper slots for Magic. The project allows you to create and consume
-JWT tokens, to secure your magic installation. The project contains the following slots.
+The magic.lambda.auth project contains authentication and authorization helper slots for Magic. The project allows you
+to create and consume JWT tokens, to secure your Magic cloudlet. The project contains the following slots.
 
 * __[auth.ticket.get]__ - Returns the JWT token's payload as a lambda structure, and also verifies the token in the process
 * __[auth.ticket.create]__ - Creates a new JWT token, that you can return to your client, any ways you see fit
@@ -147,6 +147,75 @@ endpoints using the above slots, but rather the _verify_ slot above, to avoid ha
 resulting in that an unauthorized user gains access to invoke an endpoint he should not be allowed to invoke.
 The **[auth.ticket.get]** slot will also return any custom claims you have associated with your JWT token
 as it was created.
+
+## How to use [auth.ticket.get]
+
+This slot returns the currently authenticated user, its roles, and what claims the user has. Below is example
+usage. The slot returns the username as the value of its invocation and the roles as a **[roles]** list.
+
+```
+auth.ticket.get
+```
+
+Like all auth related slots, it only makes sense to invoke from within a context of having an authorised
+user, such as an HTTP endpoint intended to be invoked by an authenticated user.
+
+## How to use [auth.ticket.create]
+
+This slot create a new JWT token for you, and accepts a username and optionally a list of roles. Below
+is some example usage.
+
+```
+auth.ticket.create
+   username:foo
+   roles
+      .:howdy
+      .:world
+```
+
+Like all auth related slots, it only makes sense to invoke from within a context of having an authorised
+user, such as an HTTP endpoint intended to be invoked by an authenticated user.
+
+## How to use [auth.ticket.refresh]
+
+This slot returns a new JWT token from an old existing (and valid) token. However, the new token will
+have a new expiration date, further into the future, allowing you to create a timer that occassionally
+invokes the server to create a new token, preventing the user from being logged out due to having his
+or her JWT token becoming expired.
+
+```
+auth.ticket.refresh
+```
+
+Like all auth related slots, it only makes sense to invoke from within a context of having an authorised
+user, such as an HTTP endpoint intended to be invoked by an authenticated user.
+
+## How to use [auth.ticket.verify]
+
+This slot verifies that the currently authenticated user belongs to one or more roles provided as
+a comma separated list of names. If the user does not belong to any of the specified roles, the
+slot will throw an exception. Below is example usage.
+
+```
+auth.ticket.verify:root,admin,guest
+```
+
+Like all auth related slots, it only makes sense to invoke from within a context of having an authorised
+user, such as an HTTP endpoint intended to be invoked by an authenticated user.
+
+## How to use [auth.ticket.in-role]
+
+This slot verifies that the currently authenticated user belongs to one or more roles provided as
+a comma separated list of names. Contrary to the **[auth.ticket.verify]** slot this slot will _not_
+throw an exception if the user does not belong to one or more roles, but simply return false.
+Below is example usage.
+
+```
+auth.ticket.in-role:root,admin,guest
+```
+
+Like all auth related slots, it only makes sense to invoke from within a context of having an authorised
+user, such as an HTTP endpoint intended to be invoked by an authenticated user.
 
 ## Project website
 
