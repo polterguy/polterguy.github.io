@@ -111,8 +111,6 @@ nav_sections:
         name: magic.lambda.mime
       - url: /documentation/magic.lambda.auth/
         name: magic.lambda.auth
-      - url: /documentation/magic.lambda.ad-auth/
-        name: magic.lambda.ad-auth
       - url: /documentation/magic.lambda.dates/
         name: magic.lambda.dates
       - url: /documentation/magic.lambda.slots/

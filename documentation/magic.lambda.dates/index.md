@@ -1,7 +1,7 @@
 
-# Manipulating dates from Hyperlambda
+# magic.lambda.dates
 
-Date manipulation slots for Magic. More specifically, this project contains the following slots.
+This project contains date manipulation slots for Magic. More specifically, this project contains the following slots.
 
 * __[date.now]__ - Returns the now date, equivalent of `DateTime.Now`.
 * __[date.from-unix]__ - Converts the specified Unix timestamp to a `DateTime` object.
@@ -27,6 +27,58 @@ math.add
 date.format:x:-
    format:"yyyy-MM-dd HH:mm:ss"
 ```
+
+## How to use [date.now]
+
+This slot takes no arguments and simply returns the current date and time. Basic usage can be found below.
+
+```
+date.now
+```
+
+## How to use [date.from-unix]
+
+This slot takes a Unix date and time stamp, and returns a typed date object as its result. Below is an example.
+
+```
+date.from-unix:1674132584
+```
+
+## How to use [date.min]
+
+This slot simply returns the minimum value a date and time object can hold. Usage can be found below.
+
+```
+date.min
+```
+
+## How to use [date.format]
+
+This slot formats a date and time object as a string. Patterns are the same as patterns for C#. Below is
+example usage.
+
+```
+date.format:date:"2023-01-19T12:49:44.000Z"
+   format:dd. MMMM yyyy
+```
+
+## How to use [time]
+
+This slots returns a time object, which is useful for doing math operations with a date and time object,
+allowing you to for instance subtract 5 days from the current date and time. Below is an example.
+
+```
+time
+   days:5
+```
+
+This slots can be given the following arguments;
+
+- **[days]** - Number of days
+- **[hours]** - Number of hours
+- **[minutes]** - Number of minutes
+- **[seconds]** - Number of seconds
+- **[milliseconds]** - Number of milliseconds
 
 ## Project website
 
