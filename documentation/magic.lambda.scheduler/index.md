@@ -152,7 +152,7 @@ ridiculous XML and WYSIWYG features - In addition to that this also is a .Net Co
 to MWF that only works for the full .Net Framework. The Hyperlambda task scheduler is also probably at
 least somewhere between 200 and 400 times faster than MWF, due to not needing any reflection.
 
-## How to schedule a task
+## How to use [tasks.schedule]
 
 If you want to create a _scheduled_ task, you can choose to have the task executed once in the future, at a specified
 date and time, by invoking **[tasks.schedule]**, and reference your task after it's been created, passing in
