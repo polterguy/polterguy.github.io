@@ -40,6 +40,39 @@ cases you might want to use  _different_ null value, at which point you can supp
 to both slots. If you supply a **[null-value]** argument, but set its value to _null_ - Null values will be ignored,
 and no null values will be persisted in any direction.
 
+## How to use [csv2lambda]
+
+This slot converts a CSV string into a lambda object. In its simplest form it would resemble the following.
+
+```
+.csv:@"name,age
+Thomas Hansen,47
+John Doe,67"
+
+csv2lambda:x:@.csv
+```
+
+It can optionally take a type declaration through a **[types]** argument, which allows you to add typing support
+to the slot.
+
+## How to use [lambda2csv]
+
+This slot converts the specified lambda object to a CSV string. Below is an example of usage.
+
+```
+.data
+   .
+      name:Thomas Hansen
+      age:int:47
+   .
+      name:John Doe
+      age:int:67
+
+lambda2csv:x:-/*
+```
+
+The slot will return type information as children of your **[lambda2csv]** invocation.
+
 ## Project website
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.csv](https://github.com/polterguy/magic.lambda.csv), and you can provide feedback, provide bug reports, etc at the same place.
