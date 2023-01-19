@@ -1,8 +1,8 @@
 
-# Parsing Hyperlambda using Magic
+# magic.lambda.hyperlambda
 
-This is the Hyperlambda parser and generator in Magic. More specifically, this project provides you
-with the following two slots.
+This is the Hyperlambda parser and generator in Magic, and allows you to parse Hyperlambda, in addition
+to generate Hyperlambda. More specifically, this project provides you with the following slots.
 
 * __[hyper2lambda]__ - Transforms a piece of Hyperlambda (text) to a lambda hierarchy
 * __[lambda2hyper]__ - Transforms a lambda hierarchy to Hyperlambda (text)
@@ -45,6 +45,30 @@ eval:x:-
 at which point both **[lambda2hyper]** and **[hyper2lambda]** will preserve comments, and persist these as
 **[..]** nodes into your lambda, and reverse the process for the other direction. This allows you to keep the
 comments of your Hyperlambda parts as semantic nodes, as you handle your Hyperlambda and node hierarchy.
+
+## How to use [hyper2lambda]
+
+This slot creates a semantic lambda object (graph object) from the specified text. Below is an example
+of usage.
+
+```
+.hl:@"log.info:""This was logged from a piece of text"""
+hyper2lambda:x:-
+```
+
+The above of course produces an executable lambda object from your specified Hyperlambda text.
+
+## How to use [lambda2hyper]
+
+This slot creates a Hyperlambda string from your specified lambda object. This allows you to
+transfer your Hyperlambda to some other server, and/or persist it to disc. Below is example
+usage.
+
+```
+.hl
+   log.info:This is some example logging invocation
+lambda2hyper:x:-/*
+```
 
 ## Project website
 
