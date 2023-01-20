@@ -4,11 +4,11 @@ description: Where the Machine Creates your Code, using Artificial Intelligence,
 og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg
 ---
 
-# What is Aista Magic Cloud
+# What is Aista Magic Cloud?
 
 Aista Magic Cloud, or Magic for short, is a software development platform that creates most of your code _"automagically"_,
 by leveraging meta programming, declarative programming, artificial intelligence, and software development
-automation. This allows you to focus on the creative tasks, while having the machine implement the
+automation. This allows you to focus on creative tasks, while having the machine implement the
 boring parts. Aista Magic Cloud is [open source](https://github.com/polterguy/magic), but Aista also
 offers [hosting of Magic](https://aista.com) for a monthly fee.
 
@@ -30,9 +30,10 @@ Aista Magic Cloud is not suitable for all tasks. Its
 primary strength is for generating backend code, that is database heavy in nature, and/or integrates with
 other web APIs. However, when you can use Magic, it easily saves you 80% of your time, and sometimes it will
 save you 95% of your time and resources, depending upon your requirements. Below are some examples of
-apps where it makes sense to use Aista Magic Cloud.
+apps where it makes sense to use Magic.
 
 * CRM systems
+* Headless CMS systems
 * EPJ systems tracking patients and journals of patients
 * Inventory systems
 * Task management systems, such as ClickUp, Monday.com, or similar types of systems
@@ -55,8 +56,8 @@ can be used as the foundation for your own frontend.
 The web API generator takes care of left joins, referential integrity, validators, authentication and authorisation,
 while allowing you to declaratively tell it how to generate your API. It also allows you to publish
 web socket messages as endpoints are invoked, in addition to having tons of additional features simplifying
-your life. If your endpoints are simple wrappers around your database, the endpoint generator can do 100%
-of your job automagically.
+your life as a software developer. If your endpoints are simple wrappers around your database, the endpoint
+generator can do 100% of your job automagically.
 
 ## SQL endpoint generator
 
