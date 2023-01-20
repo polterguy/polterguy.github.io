@@ -6,54 +6,83 @@ og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master
 
 # Aista Magic Cloud
 
-Aista Magic Cloud is a software development platform that creates most of your code 100% automatically,
+Aista Magic Cloud, or Magic for short, is a software development platform that creates most of your code _"automagically"_,
 by leveraging meta programming, declarative programming, artificial intelligence, and software development
-automation. This allows you to focus on the creative tasks while having the computer take care of the
-boring parts.
+automation. This allows you to focus on the creative tasks, while having the machine implement the
+boring parts. Aista Magic Cloud is [open source](https://github.com/polterguy/magic), but Aista also
+offers [hosting of Magic](https://aista.com) for a monthly fee.
 
 <div class="video">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/n8Y4sTrprqk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
+## Why use Magic?
+
 As a software developer typically 80% of your job is literally so simple that it can be replaced
 with artificial intelligence and software development automation, based upon meta programming constructs.
-This results in more secure applications and robust solutions, with less bugs, better scaling, and more freedom
+This results in more secure and robust solutions, with less bugs, better scaling, and more freedom
 for you to pursue more creative tasks. In general Aista Magic Cloud makes you at least 5 times as productive,
-sometimes hundreds of times more productive. Aista Magic Cloud is not suitable for all tasks though. It's
-primary strength is for generating backend code, that is database centric in nature, and/or integrates with
-other web APIs. However, when you can use it, it easily saves you 80% of your time, and sometimes it will
-save you 95% of your time and resources.
+sometimes hundreds of times more productive.
 
-## CRUD generator
+## What can I use Magic for?
 
-The CRUD generator allows you to wrap any database you have in CRUD API endpoints in seconds. It reads
+Aista Magic Cloud is not suitable for all tasks. Its
+primary strength is for generating backend code, that is database heavy in nature, and/or integrates with
+other web APIs. However, when you can use Magic, it easily saves you 80% of your time, and sometimes it will
+save you 95% of your time and resources, depending upon your requirements. Below are some examples of
+apps where it makes sense to use Aista Magic Cloud.
+
+* CRM systems
+* EPJ systems tracking patients and journals of patients
+* Inventory systems
+* Task management systems, such as ClickUp, Monday.com, or similar types of systems
+* Logistic systems
+* Basically, anything that requires collecting and managing data, where CRUD operations towards your data is crucial
+
+As an example of how useful Magic is, realise that at Aista we built our [entire hub](https://hub.aista.com) using
+nothing but Magic and Hyperlambda. This saved us roughly 90% of the resource requirements we would have needed if
+we were to create the same system using for instance GoLang, Python or PHP.
+
+## The backend generator
+
+The backend generator allows you to wrap any database you have in CRUD API endpoints in some few seconds. It reads
 meta data from your database, and automatically generates a web API for you, producing thousands
 of lines of code for you in the process. The generated API is secured according to your instructions, and
 can be used as the foundation for your own frontend.
 
-![CRUD API generator](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg)
+![Backend generator](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg)
 
 The web API generator takes care of left joins, referential integrity, validators, authentication and authorisation,
-while allowing you to declaratively inform it how to generate your web API. It also allows you to publish
-web socket messages as endpoints are invoked.
+while allowing you to declaratively tell it how to generate your API. It also allows you to publish
+web socket messages as endpoints are invoked, in addition to having tons of additional features simplifying
+your life. If your endpoints are simple wrappers around your database, the endpoint generator can do 100%
+of your job automagically.
 
-## SQL API generator
+## SQL endpoint generator
 
 Magic allows you to create HTTP endpoints using SQL. This allows you to compose some SQL statement,
-and rapidly wrap it inside an HTTP endpoint. You can find this component in the Endpoint Generator.
-Choose your database, provide some SQL, add arguments that you reference in your SQL, and click the
-_"Generate"_ button.
+and rapidly wrap it inside an HTTP endpoint. You can find this component in the Endpoint Generator,
+in its _"SQL Endpoint Generator"_ tab. Choose your database, provide some SQL, add arguments that you
+reference in your SQL, and click the _"Generate"_ button.
 
 ![Creating a Web API using SQL](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-web-api.jpg)
 
-The SQL API generator allows you to secure your endpoints, declare arguments, use all 5 most common HTTP
-verbs, etc. You can use it with SQL Server, MySQL, MariaDB, PostgreSQL or SQLite.
+The SQL API generator allows you to secure your endpoints, declare what arguments your endpoint can handle,
+use all 5 most common HTTP verbs for your endpoints, etc. You can use it with SQL Server, MySQL, MariaDB,
+PostgreSQL or SQLite - However, you need to write SQL that is valid for your particular database type as
+you create your endpoints. Some use cases can be found below.
+
+* Statistic endpoints
+* Endpoints for charts
+* Endpoints for reports
+* Etc, etc, etc
 
 ## SQL Studio
 
 Magic allows you to visually design your database using a graphical user interface. No need to mess with complex
 SQL DDL. Use SQL Studio to visually design your database and save hours of searching the web for the correct
-syntax to use when creating foreign keys. SQL Studio supports the following databases.
+syntax to use when creating foreign keys or needing other constructs rarely if ever remembered by the human brain.
+SQL Studio supports the following databases.
 
 * Microsoft SQL Server
 * PostgreSQL
@@ -61,16 +90,16 @@ syntax to use when creating foreign keys. SQL Studio supports the following data
 * MariaDB
 * SQLite
 
-![Aista's SQL Studio](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-autocomplete.jpg)
+![Aista's SQL Studio database designer](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-designer.jpg)
 
 SQL Studio also allows you to execute any SQL towards your database of choice, giving you superior database
 management tools, allowing you to administer your databases from anywhere in the world. By combining SQL Studio
-with the CRUD API generator and more specifically the SQL API generator, you can compose some SQL, and wrap
+with the backend generator, and especially the SQL API generator, you can compose some SQL, and wrap
 it into a web API endpoint in seconds.
 
 ![SQL Studio](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-studio-2.jpg)
 
-Are you an expert DB admin, but have no knowledge of backend programming? No problem. Wrap your SQL into
+Are you an expert DB admin, but have no knowledge of backend programming? No problem, wrap your SQL into
 a web API endpoint 100% automagically with zero coding besides providing the SQL generator with some SQL
 you want it to execute as your endpoint is invoked.
 
@@ -83,13 +112,13 @@ of your modifications by executing your endpoint without ever having to leave yo
 
 ![Magic's Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide-actions.jpg)
 
-The real power of the CRUD Generator is that it generates code you can edit, with a declarative programming language
+The real power of the backend generator is that it generates code you can edit, with a declarative programming language
 called Hyperlambda. If you need to add business logic to your generated CRUD endpoints, this is easily achieved
 using Hyper IDE. Hyper IDE integrates perfectly with our Machine Learning component, built on top of OpenAI's
 ChatGPT, allowing you to write your requests in plain English, and have Hyper IDE and ChatGPT automatically
 generate code for you solving your problem.
 
-## Create your own AI expert system
+## Machine Learning and AI
 
 Aista Magic Cloud allows you to generate your own Machine Learning models in seconds, by scraping any website,
 and generating training data for you that you can use to create your own ChatGPT model, answering questions
@@ -101,6 +130,8 @@ training data you can upload to your cloudlet. Use cases might be;
 * Medical expert advice system based upon AI and machine learning, giving you help when diagnosing patients and clients
 * Support chat bot for your enterprise, giving your client support for whatever questions they might have
 * Etc, etc, etc
+
+![Magic's Machine Learning parts](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/machine-learning.jpg)
 
 Creating a Machine Learning training model is incredibly difficult unless you know what you're doing.
 With Aista Magic Cloud it becomes 1,000 times easier, and you can literally do it by pointing Aista
@@ -130,13 +161,24 @@ component. Import users from your existing database, provide access to modules a
 to what roles your users belongs to, and make sure only authorised users have access to private and secured
 data.
 
+![Users and roles administration in Magic](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/auth.jpg)
+
+The user and role systemin Magic is based upon RBAC implying Role Based Access Control, allowing you to
+provide access to components and modules based upon roles, for then to associate roles with users.
+
 ## Task scheduler
 
 Aista Magic Cloud allows you to create and administer tasks. A task is a background job, that is persisted
 into your database as Hyperlambda, and it can either be executed by a _"trigger"_ occurring somewhere
-else in your system, or periodically schedlued to execute repeatedly, or at some specific date and time in
+else in your system, or periodically scheduled to execute repeatedly, or at some specific date and time in
 the future. The task scheduler allows you to easily manage your tasks, edit them, and create new tasks
 as you see fit.
+
+![Hyperlambda task scheduler](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/scheduling-task.jpg)
+
+Due to its dynamic nature, the task scheduler is also a perfect foundation for your own business process
+workflows, where functionality is dynamically built and executed by _"triggers"_ occurring in your
+own code.
 
 ## Plugins
 
@@ -147,49 +189,80 @@ below;
 * Stripe payment integrations
 * Translation micro service
 * Ticket backend administration system
-* Etc, etc, etc - Contact us if you need something specific we still haven't built
+* Etc, etc, etc - [Contact us](mailto:info@aista.com) if you need something specific we still haven't built
+
+![Magic's plugins](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/bazaar.jpg)
 
 ## Integrated log
 
 Aista Magic Cloud also comes with an integrated log component, allowing you to browse your server log,
-easily giving you control over events occurring that might somehow have consequences for your system.
+giving you control over events occurring that might somehow have consequences for your system.
 
-## Open Source
+![Magic log](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/log.jpg)
+
+When you create your own Hyperlambda applications, you can also create log entries as you see fit,
+to log important events, such as deleting records, executing tasks, registering users, etc.
+
+## Aista Magic Cloud is Open Source
 
 Aista Magic Cloud is 100% open source, and you can use it free of charge in proprietary projects
 as you see fit. You can find its code at [GitHub](https://github.com/polterguy/magic), and
-we accept pull requests for itif your code is high quality. We also provide docker images
+we accept pull requests for it if your code is high quality. We also provide docker images
 for Magic, allowing you to install it locally in seconds without having to mess with dependencies,
 such as the .Net CLI and NodeJS. However, the fastest way to get started with Magic is to
 create a free 90 day trial cloudlet at [Aista.com](https://aista.com).
 
 * [Get started with Magic](https://aista.com)
 
-## Features
+## Primary features of Aista Magic Cloud
 
 Aista Magic Cloud contains the following features;
 
-* Hyper IDE, and integrated IDE allowing you to create and maintain your code directly on your server
-* SQL Studio, allowing you to visuall design your database, and execute any SQL towards it, getting instant feedback on the result
-* Machine Learning, allowing you to write in plain English your request to the machine, resulting in OpenAI generating functioning code for you that you can immediately use in your own solutions
-* Machine Learning automation, allowing you to create your own Machine Learning model by scraping your website
-* Database management tools to administer your databases in one place with a uniform UI
-* User administration allowing you to control who's got access to what with a role based access control (RBAC) UI component
-* Task scheduler allowing you to manage and schedule tasks
-* Plugins for installing backend micro service components solving your particular needs
-* Log component giving you easy access to see what occurs in your system over time
-* Cryptography features for managing super sensitive data
-* Health check component allowing you to automatically test integrity of your particular system
-* Configuration component allowing you to manage your server's configuration settings
-* Endpoints component giving you a _"Swagger like UI"_ for testing your endpoints
-* Hyperlambda playground allowing you to execute some Hyperlambda snippet
-* Web Sockets component allowing you to debug and test your web socket integrations
-* Etc, etc, etc
+* [Hyper IDE](/documentation/magic/components/hyper-ide/), an integrated IDE allowing you to create and maintain your code directly on your server
+* [SQL Studio](/documentation/magic/components/sql/), allowing you to visually design your database, and execute any SQL towards it, getting instant feedback on the result
+* [Machine Learning](/documentation/magic/components/machine-learning/), allowing you to write in plain English your request to the machine, resulting in OpenAI generating functioning code for you that you can immediately use in your own solutions, in addition to making it easy for you to create your own Machine Learning AI models
+* [User administration](/documentation/magic/components/auth/) allowing you to control who's got access to what with a role based access control (RBAC) UI component
+* [Task scheduler](/documentation/magic/components/tasks/) allowing you to manage and schedule tasks and business process workflows
+* [Plugins](/documentation/magic/components/bazar/) for installing backend micro service components solving your particular needs
+* [Log](/documentation/magic/components/log/) component giving you easy access to see what occurs in your system over time
+* [Cryptography](/documentation/magic/components/crypto/) features for managing super sensitive data
+* [Health check](/documentation/magic/components/assumptions/) component allowing you to automatically test integrity of your particular installation of Magic
+* [Configuration](/documentation/magic/components/config/) component allowing you to manage your server's configuration settings
+* [Endpoints](/documentation/magic/components/endpoints/) component giving you a _"Swagger like UI"_ for testing your endpoints
+* [Hyperlambda playground](/documentation/magic/components/evaluator/) allowing you to execute some Hyperlambda snippet in _"immediate mode"_
+* [Web sockets](/documentation/magic/components/sockets/) component allowing you to debug and test your web socket integrations
+* Plus many more ...
 
 Aista Magic Cloud is basically your _"one stop shop"_ for most of your software development requirements,
 with its edge of course being that it generates most of your code 100% automagically.
 
+## A complete lists of Magic's components
+
+Below is a complete list of Aista Magic Cloud's frontend UI components, allowing you to graphically administrate
+your Magic installation.
+
+* [Endpoint generator component](/documentation/magic/components/crudifier/backend/)
+* [Frontend generator component](/documentation/magic/components/crudifier/frontend/)
+* [SQL Studio](/documentation/magic/components/sql/)
+* [Machine Learning](/documentation/magic/components/machine-learning/)
+* [Hyper IDE](/documentation/magic/components/hyper-ide/)
+* [Hyperlambda Playground](/documentation/magic/components/evaluator/)
+* [Endpoints](/documentation/magic/components/endpoints/)
+* [Plugins component](/documentation/magic/components/bazar/)
+* [Tasks component](/documentation/magic/components/tasks/)
+* [Users and roles component](/documentation/magic/components/auth/)
+* [Users component](/documentation/magic/components/auth/users/)
+* [Roles component](/documentation/magic/components/auth/roles/)
+* [Cryptography component](/documentation/magic/components/crypto/)
+* [Health check](/documentation/magic/components/assumptions/)
+* [Sockets](/documentation/magic/components/sockets/)
+* [Config component](/documentation/magic/components/config/)
+* [Profile component](/documentation/magic/components/profile/)
+* [Log](/documentation/magic/components/log/)
+
 ## More
+
+In addition we provide the following sections for more information about Aista Magic Cloud
 
 * [Tutorials](/tutorials/) - Tutorials about how to get started with Aista Magic Cloud
 * [Docs](/documentation/) - Reference documentation for Aista Magic Cloud

@@ -100,3 +100,43 @@ software development automation features.
 Aista Magic Cloud is 100% Open Source and free of charge to use. The main backend is licensed as MIT,
 the dashboard is GPL, and the plugins are LGPL. This allows you to use Magic to create closed source
 applications, while also ensuring improvements to the project itself *stays* Open Source.
+
+## What is meta programming?
+
+Meta programming is when the human software developer does _not_ create software directly, but rather
+relies upon other software systems automagically generating software. Meta programming is typically
+based upon access to meta information about the task at hand, such as DDL information for some SQL based
+relational database, and OpenAPI Swagger files, etc. Once the computer has access to meta information,
+it can automatically generate a large part of your software, resulting in much faster iterations,
+and much less resource usage. Meta programming is often associated with declarative programming.
+
+## What is declarative programming?
+
+Declarative programming is an extremely high abstraction level in software development, where you
+do not focus on _"how"_ but exclusively focus on _"what"_. An example can be illustrated with
+sending an email, which requires to create a socket connection, transmit handshake messages to
+the SMTP server, establish a TLS channel for securely transmitting bytes, etc. The required steps
+to send an email in traditional programming is mind baffling, and makes the process very difficult.
+In declarative programming sending an email would simply imple invoking a function called for
+instance _"sendEmail"_ passing in recipient, body and subject of your email, at which point the
+task becomes much easier, since it requires much less thinking, and fewer things can go wrong.
+
+## How is Machine Learning and AI implemented in Magic?
+
+Magic internally is using OpenAI's ChatGPT Machine Learning API. However, instead of relying
+upon the _"generic"_ and publicly available API, Magic allows you to create your own model,
+by simplifying training, allowing you to for instance upload XML files or scrape your existing
+website for training data, resulting in your own _"private"_ AI model, that you control access
+to. This results in an AI model that is much _"sharper"_ for your particular domain than
+the generally available ChatGPT model everybody can access at OpenAI's website.
+
+## How is the task scheduler created?
+
+The task scheduler in Magic allows you to create Hyperlambda code, and save your code into
+your magic database. Each task can optionally be given one or more schedules, allowing your
+tasks to execute at some deterministic date and time in the future, either once, or repeatedly
+according to some sort of repetition pattern or schedule. When a task is due for execution,
+it is executed on a background thread, to make sure the backend is still as reponsive as
+possible. The task scheduler also takes care of thread pooling, to prevent multiple
+tasks running at the same time resulting in that your backend becomes unresponsive.
+

@@ -74,23 +74,24 @@ is as a general rule of thumb your _"goto component"_ when you need to create so
 
 ## Dashboard components
 
-* [Log component](/documentation/magic/components/log/)
-* [Health check component](/documentation/magic/components/assumptions/)
-* [Endpoints component](/documentation/magic/components/endpoints/)
-* [Sockets component](/documentation/magic/components/sockets/)
-* [Hyper IDE component](/documentation/magic/components/hyper-ide/)
-* [Evaluator component](/documentation/magic/components/evaluator/)
-* [SQL component](/documentation/magic/components/sql/)
 * [Endpoint generator component](/documentation/magic/components/crudifier/backend/)
 * [Frontend generator component](/documentation/magic/components/crudifier/frontend/)
+* [SQL Studio](/documentation/magic/components/sql/)
+* [Machine Learning](/documentation/magic/components/machine-learning/)
+* [Hyper IDE](/documentation/magic/components/hyper-ide/)
+* [Hyperlambda Playground](/documentation/magic/components/evaluator/)
+* [Endpoints](/documentation/magic/components/endpoints/)
+* [Plugins component](/documentation/magic/components/bazar/)
 * [Tasks component](/documentation/magic/components/tasks/)
 * [Users and roles component](/documentation/magic/components/auth/)
 * [Users component](/documentation/magic/components/auth/users/)
 * [Roles component](/documentation/magic/components/auth/roles/)
+* [Cryptography component](/documentation/magic/components/crypto/)
+* [Health check](/documentation/magic/components/assumptions/)
+* [Sockets](/documentation/magic/components/sockets/)
 * [Config component](/documentation/magic/components/config/)
-* [Crypto component](/documentation/magic/components/crypto/)
-* [Plugins component](/documentation/magic/components/bazar/)
 * [Profile component](/documentation/magic/components/profile/)
+* [Log](/documentation/magic/components/log/)
 
 ## Backend and middleware documentation
 
