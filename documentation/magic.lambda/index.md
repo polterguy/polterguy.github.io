@@ -358,13 +358,12 @@ Implying **[eval]** cannot return values or nodes the same way for instance **[s
 You will see that it invokes your **[who]** lambda object, and substitutes the value of `{{foo}}`
 with the return value from the invocation.
 
-## Branching and conditional execution
+## Hyperlambda branching and conditional execution
 
 Branching implies to change the execution path of your code, and examples includes function invocations, and
 other similar mechanisms that changes the position of your computer's _"execution pointer"_. Conditional
 branching implies to changing the position of the execution pointer, according to some condition. Typically
 this implies constructs such as `if`, `else`, `goto` etc in traditional programming languages.
-Hyperlambda contains the following branching slots by default.
 
 ### How to use [if]
 
@@ -525,7 +524,7 @@ an expression. However, any types can be used as values for your **[case]** node
 must at the very least have minimum one **[case]** node. The **[default]** node is optional though. You can mix
 and match different types as you see fit in your **[case]** nodes.
 
-## Comparisons
+## Hyperlambda comparison
 
 All comparison _"operators"_ works the same way in Hyperlambda, in that they have an LHS and a RHS, implying
 respectively _"Left Hand Side"_ and _"Right Hand Side"_. However, since the _"comparison operators"_ in Hyperlambda
@@ -537,7 +536,6 @@ of _"true"_, and the integer value of 5 is _not_ the same as the decimal value o
 You can provide the two arguments to these slots either as children nodes, where the first child node becomes
 the LHS part, and the second its RHS part - Or you can alternatively supply the LHS part as an expression
 leading to a value, at which point the only child argument assumed for your comparison becomes the RHS argument.
-Magic contains the following comparison slots out of the box.
 
 ### How to use [eq]
 
@@ -782,7 +780,7 @@ its **[.foo2]** data node to boolean `true`, you will see that your second child
 considered, since your **[or]** invocation is _"short circuiting"_. You can nest as many **[or]** and **[and]**
 invocations as you wish, creating any amount of complexity in your Hyperlambda.
 
-## Modifying your graph
+## Modifying your lambda graph object
 
 Since there are no explicit variables in Hyperlambda, yet all nodes potentially might change, this requires
 the ability to change your nodes as you execute your Hyperlambda. Magic provides many slots to achieve this,
@@ -1113,7 +1111,7 @@ Notice how **[get-context]** inside your above **[.lambda]** invocation is able 
 named _"foo"_, having the value of _"bar"_. See the **[context]** slot further down in this document for
 details about how this works.
 
-## Exceptions
+## Hyperlambda exceptions
 
 Exceptions in Hyperlambda are similar to exceptions in traditional programming languages, and are basically a
 mechanism to raise errors in such a way that the stack is completely rewinded, to the point in your code
