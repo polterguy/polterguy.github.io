@@ -16,7 +16,13 @@ of your Magic Cloudlet, such as your scheduled tasks, machine learning models, H
 In addition the dashboard contains some key performance indicators and charts, showing you how often
 others are authenticating to your cloudlet, your last 10 log items, etc. The first time you open your dashboard,
 you will see a YouTube that guides you through how to get started with Magic and Hyperlambda. We recommend
-that you watch this video to understand how to use Magic. Your Magic dashboard contains the following components.
+that you watch this video to understand how to use Magic.
+
+<div class="video">
+<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/pJHuUiItrnc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+## The Magic dashboard contains the following components.
 
 * [Endpoint generator component](/documentation/magic/components/crudifier/backend/)
 * [Frontend generator component](/documentation/magic/components/crudifier/frontend/)
