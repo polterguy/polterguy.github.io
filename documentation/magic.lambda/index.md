@@ -6,20 +6,20 @@ It is what makes Hyperlambda Turing complete, and contains slots such as **[for-
 **[if]**, and **[while]**. If you've watched the [Hyperlambda 101 YouTube video playlist](https://www.youtube.com/watch?v=v1D3DtrmhS8&list=PLgyI389Eb9HNlhKpF9EHXO7D1EE7_dklg),
 and you want to learn more, this is probably where you should start.
 
-## Structure
+## Hyperlambda internals
 
 _Everything_ is a slot in Hyperlambda. This allows you to evaluate and extend its conditional operators and logical operators
-the same way you would evaluate or create a function in a traditional programming language. This might at first seem a bit unintuitive
+the same way you would evaluate or create a function in a traditional programming language. This might at first seem a bit weird
 if you come from a traditional programming language, but has a lot of advantages, such as allowing the computer to look
 at the entirety of your function object as a hierarchical tree structure, parsing it as such, and executing your lambda
 object as an _"execution tree"_.
 
-For instance, in a normal programming language, the equal operator must have a left hand side (lhs), and a right hand
-side (rhs). In Hyperlambda this is not true, since the equal slot is the main invocation of a function, requiring two
+In a normal programming language, the equal operator must have a left hand side (lhs), and a right hand
+side (rhs). In Hyperlambda this is different, since the equal slot is the main invocation of a function, requiring two
 arguments, allowing you to think about it as a _function_. To compare this to the way a traditional programming might
 have implemented this, imagine the equal operator as a function, such as the following pseudo code illustrates.
 
-```
+```csharp
 equals(object lhs, object rhs)
 ```
 
@@ -32,19 +32,21 @@ eq
    .:rhs
 ```
 
-As you study Hyperlambda it might be beneficial to use the _"Eval"_ component that you can find in its
+As you study Hyperlambda it might be beneficial to use the _"Hyperlambda Playground"_ component that you can find in its
 frontend dashboard. This component allows you to play with Hyperlambda in _"immediate mode"_,
 experiment with Hyperlambda, execute it immediately from your browser, in a rich code editor,
-providing syntax highlighting for you, autocomplete on slots, etc. The _"Eval"_ component also allows
-you to save your snippets for later on your server. Below is a screenshot of the _"Eval"_ component to
+providing syntax highlighting for you, autocomplete on slots, etc. The _"Hyperlambda Playground"_ component also allows
+you to save your snippets for later on your server. Below is a screenshot of the component to
 give you an idea of what you might expect.
 
 ![Hyperlambda evaluator](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/eval-component.jpg)
 
 If you put your cursor on an empty line and click CTRL+SPACE or FN+CONTROL+SPACE on a Mac, you will be given
 autocomplete, allowing you to easily see which slots are available for you.
+
 Logically the Hyperlambda evaluator will signal each nodes in your Hyperlambda code sequentially, assuming
 all of your nodes are referencing an `ISlot` class, unless the node's name starts with a _"."_ or has an empty name.
+Most slots again are recursively executing their children slots, resulting in a recursively executed _"execution tree"_.
 
 ## Hyperlambda structure
 
@@ -75,7 +77,7 @@ this makes the Hyperlambda evaluator recursive in nature, allowing a slot to eva
 after executing its custom logic, etc. And yes, before you ask, Hyperlambda has been heavily influenced by
 LISP. In some ways Hyperlambda _is_ Lisp for C#, only with a completely different syntax, and without S-Expressions.
 
-## Extending Hyperlambda
+## Extending Hyperlambda with C#
 
 To understand the relationship between C# and Hyperlambda, it might be beneficial for you to analyze the
 following code. The following code creates a new `ISlot` for you, implementing the interface found in
