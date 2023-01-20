@@ -21,7 +21,8 @@ This results in more secure applications and robust solutions, with less bugs, b
 for you to pursue more creative tasks. In general Aista Magic Cloud makes you at least 5 times as productive,
 sometimes hundreds of times more productive. Aista Magic Cloud is not suitable for all tasks though. It's
 primary strength is for generating backend code, that is database centric in nature, and/or integrates with
-other web APIs.
+other web APIs. However, when you can use it, it easily saves you 80% of your time, and sometimes it will
+save you 95% of your time and resources.
 
 ## CRUD generator
 

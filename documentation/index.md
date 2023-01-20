@@ -3,23 +3,18 @@ title: Reference documentation for Magic and Hyperlambda
 description: This section contains the reference documentation for Magic and Hyperlambda, and documents all plugins, Hyperlambda the programming language, and every single component in Magic.
 ---
 
-# Magic and Hyperlambda docs
+# Magic and Hyperlambda documentation
 
-This is the reference documentation for Magic. If you just started out with Magic and Hyperlambda, you would probably
-benefit from startout out with the [tutorials](/tutorials/) section, and refer to these parts afterwards.
-
-## Reference documentation core projects
-
-This is the documentation for the core projects in Magic. This is what wires up your application,
-takes care of routing, loads Hyperlambda files, executes HTTP endpoints, etc - In addition to projects
-helping you deploy Magic into production, or clone it to work locally with it.
+Aista Magic Cloud is not one project, in fact it is more than 40 projects. Each project encapsulates
+some part of Hyperlambda, such as sending emails, parsing XML or JSON, etc. The documentation for Magic is therefor
+divided up into separate parts, where each part documents one project, and hence one concept. The core projects, or
+the most _"important"_ parts of the documentation if you wish, are the following parts.
 
 * [middleware](/documentation/magic/) - Explains the middleware in Magic
 * [magic.node](/documentation/magic.node/) - Explains nodes, Hyperlambda and Expressions
 * [magic.signals](/documentation/magic.signals/) - Magic's Super Signals implementation
 * [magic.endpoint](/documentation/magic.endpoint/) - Endpoint resolving in Magic
 * [magic.data.common](/documentation/magic.data.common/) - Commonalities for data adapters in Magic
-* [magic.data.cql](/documentation/magic.data.cql/) - CQL IO and logging support for Magic and Hyperlambda
 * [magic.library](/documentation/magic.library/) - A single NuGet package helper wrapping everything together
 * [magic.deploy](/documentation/magic.deploy/) - How to deploy Magic to your VPS using Docker.
 * [magic.clone](/documentation/magic.clone/) - How to clone Magic and its entire codebase.
@@ -69,7 +64,7 @@ requirements for your endpoints, etc.
 In the following playlist we walk you through most parts of the system.
 
 <div class="video">
-<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/videoseries?list=PLgyI389Eb9HPkKFKUCb1LMf-w0PUd-2CC" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/videoseries?list=PLgyI389Eb9HNlhKpF9EHXO7D1EE7_dklg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 ## Support
