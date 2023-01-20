@@ -66,16 +66,16 @@ and rapidly wrap it inside an HTTP endpoint. You can find this component in the 
 in its _"SQL Endpoint Generator"_ tab. Choose your database, provide some SQL, add arguments that you
 reference in your SQL, and click the _"Generate"_ button.
 
-![Creating a Web API using SQL](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-web-api.jpg)
+![Creating a Web API using SQL](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/)
 
 The SQL API generator allows you to secure your endpoints, declare what arguments your endpoint can handle,
 use all 5 most common HTTP verbs for your endpoints, etc. You can use it with SQL Server, MySQL, MariaDB,
 PostgreSQL or SQLite - However, you need to write SQL that is valid for your particular database type as
 you create your endpoints. Some use cases can be found below.
 
-* Statistic endpoints
+* Statistics
+* Reports
 * Endpoints for charts
-* Endpoints for reports
 * Etc, etc, etc
 
 ## SQL Studio
@@ -127,11 +127,12 @@ Aista Magic Cloud allows you to generate your own Machine Learning models in sec
 and generating training data for you that you can use to create your own ChatGPT model, answering questions
 related to your domain. Need a chat bot for your company answering questions about your company or domain?
 That's a 5 seconds job for Aista Magic Cloud as long as you have an existing website, and/or structured
-training data you can upload to your cloudlet. Use cases might be;
+training data you can upload to your cloudlet. Use cases might be.
 
 * Expert law system, answering legal questions for your clients
 * Medical expert advice system based upon AI and machine learning, giving you help when diagnosing patients and clients
 * Support chat bot for your enterprise, giving your client support for whatever questions they might have
+* Automated sales expert systems, converting leads on your website into paying clients
 * Etc, etc, etc
 
 ![Magic's Machine Learning parts](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/machine-learning.jpg)
@@ -160,7 +161,7 @@ line of code.
 
 Aista Magic Cloud allows you to administer your users easily, by giving you a graphical user interface,
 allowing you to manage your application's users and roles, using a role based access control (RBAC)
-component. Import users from your existing database, provide access to modules and components according
+component. Import users from your existing system, provide access to modules and components according
 to what roles your users belongs to, and make sure only authorised users have access to private and secured
 data.
 

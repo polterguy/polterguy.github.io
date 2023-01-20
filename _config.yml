@@ -22,7 +22,7 @@ copyright: Copyright © Aista, Ltd 2020 - 2023, info@aista.com
 
 # Most Wanted Response, most important link on your site.
 mwr: /documentation/magic/
-mwr_text: Getting Started
+mwr_text: Documentation
 
 # Background images for banner and the main body/content parts of your site
 banner_bg: /assets/bg.jpeg
