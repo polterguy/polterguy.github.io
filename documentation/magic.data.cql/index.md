@@ -18,7 +18,7 @@ although you can create as many NoSQL cluster connection settings as you wish, a
 the IO, caching, and logging services requires you to use `generic` as your cluster name, and you cannot change
 this.
 
-```json
+```
 {
   "magic": {
     "cql": {
@@ -44,7 +44,7 @@ The above configures the adapter to use `127.0.0.1` as the host for your contact
 the adapter to store files and folders inside of its CQL based database, you can alternatively add something such
 as follows to your _"appsettings.json"_ file.
 
-```json
+```
 {
   "magic": {
     "io": {
@@ -63,7 +63,7 @@ can be found in the same namespace, but are named _"MixedXXX"_ instead of using 
 If you want to use a CQL based log implementation, you'll have to configure Magic to use the NoSQL
 `ILogger` service such as follows.
 
-```json
+```
 {
   "magic": {
     "logging": {
@@ -76,7 +76,7 @@ If you want to use a CQL based log implementation, you'll have to configure Magi
 If you want to use a CQL based caching implementation, you'll have to configure Magic to use the NoSQL
 `IMagicCache` service such as follows.
 
-```json
+```
 {
   "magic": {
     "caching": {

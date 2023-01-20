@@ -23,7 +23,7 @@ config.get:"foo:bar"
 
 Assuming your configuration file looks like the following.
 
-```json
+```
 {
    "foo": {
       "bar": 42

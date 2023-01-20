@@ -18,7 +18,7 @@ value(s), or its value, does not follow the rules specified by the validator. So
 This makes them perfect fits for _"intercepting"_ the input specified to an HTTP REST endpoint, to verify the input data conforms
 to some sort of predefined validation scheme.
 
-## General usage
+## Commonalities between validators
 
 ```
 .foo
@@ -26,7 +26,7 @@ to some sort of predefined validation scheme.
 validators.email:x:@.foo/*/email
 ```
 
-Most validators requires some sort of argument(s) - However, some of
+Most Hyperlambda validators requires some sort of argument(s) - However, some of
 these validators does not require arguments, such as the email validator, that simply verifies the input is a valid email address.
 To use the **[validators.regex]** validator, you should probably [learn regular expression](https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285). However, this is beyond the scope of this article.
 
@@ -145,7 +145,7 @@ validators.recaptcha:x:@.arguments/*/recaptcha_value
    min:decimal:0.3
 ```
 
-## Internals
+## Validator internals
 
 You can use one invocation to any of the validators to validate multiple nodes, such as the following illustrates.
 

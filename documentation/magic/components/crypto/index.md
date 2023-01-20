@@ -30,4 +30,4 @@ ensure the data was not tampered with in any ways before reaching your server.
 ## Cryptography receipts
 
 These are your cryptography receipts, implying receipts for cryptographically signed payloads sent by other
-parties as a part of [cryptographically secured lambda invocations](/tutorials/crypto-lambda-http/).
+parties as a part of cryptographically secured lambda invocations.

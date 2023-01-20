@@ -102,11 +102,14 @@ crypto.hash.sha256
    filename:/README.md
 ```
 
-### About fingerprints
+### About cryptography fingerprints
 
 The fingerprint format resulting from a hash invocation is useful due to being much more easily read by
 humans, and in such a regard better suited for being stored as a key reference into for instance a database,
 and/or transmitted as a key reference over the network to other machines.
+
+A fingerprint is actually just a cryptographic hash of your data, such as for instance your public key,
+payload, etc.
 
 ## How to use [crypto.seed]
 
@@ -128,9 +131,9 @@ using combination cryptography, etc. Such seed invocations are _"cummulative"_ a
 entropy, implying for each invocation to **[crypto.seed]**, the CSRNG engine of Magic becomes more
 unpredictable.
 
-## Cryptography
+## Hyperlambda and cryptography
 
-This library also supports several cryptographic services, but first a bit of cryptography theory.
+The magic.lambda.crypto project supports several cryptographic functions, but first a bit of cryptography theory.
 Public key cryptography, or what's often referred to as _"asymmetric cryptography"_ is based upon
 a *key pair*. One of your keys are intended for being publicly shared, and is often referred to
 as _"your public key"_. This key can do two important things.
@@ -250,7 +253,7 @@ true, at which point the returned signature will be returned as a raw `byte[]`. 
 useful, if you for instance need to persist the signature to disc, as a binary file, etc.
 If you don't provide a raw argument, the returned value will be a base64 encoded byte array.
 
-### Encrypting and decrypting a message
+### Encrypting and decrypting a message using RSA
 
 To encrypt a message, you can use something as follows.
 
@@ -276,10 +279,10 @@ not a string, but rather an array of `byte[]`. Base64 encoding a byte array norm
 and also require CPU resources in both ends of the communication, implying it is sometimes important to have the
 raw byte array, instead of its base64 encoded equivalent.
 
-### Symmetric cryptography
+### Symmetric cryptography using AES
 
-RSA is asymmetric cryptography, implying a different key is used for *decrypting* the data, than that which
-was used to *encrypt* the data. This project also supports *symmetric* cryptography, more specifically the AES
+RSA is asymmetric cryptography, implying a different key is used for *decrypting* the data than the key that
+was used to *encrypt* the data. Hyperlambda also supports *symmetric* cryptography, more specifically the AES
 encryption algorithm. This algorithm requires the *same key* to decrypt some content that was used to encrypt
 the data, and the key must either be 128, 192 or 256 bits long. Below is an example.
 

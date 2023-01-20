@@ -18,7 +18,7 @@ a _random_ salt, unique for _your_ installation)
 However, during installation, Magic will automatically create a random secret for you. Below is an example of how this
 might look like.
 
-```json
+```
 {
   "auth": {
     "secret":"some-rubbish-random23545456-characters-goes-hereqwertygfhdfSDFGFDdfgh45fDFGH"
@@ -97,17 +97,19 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.xyz.qwerty
 You can see how Magic does this internally by inspecting what the Magic dashboard transmits to the backend
 after having authenticated using e.g. Chrome Developer Tools.
 
-## Refreshing your token
+## Refreshing your JWT token
 
 JWT tokens have an expiration date. This is typically configured in your _"appsettings.json"_ file in your Magic
 backend as `magic:auth:valid-minutes`, and once this time has passed, the token will no longer be considered
 valid, and using the token after this period, will result in an _"Access Denied"_ being returned from the server.
+
 However, since JWT token are just JSON, and the expiration time is just a Unix timestamp, you can parse the
 JWT token in your frontend, calculate the expiration date, and make sure you refresh your token _before_ the
-expiration date is reached, and replace your existing token with the new token returned by Magic. Magic
-contains a `refresh` token endpoint to achieve this. Internally this endpoint will use the **[auth.ticket.refresh]**
-slot to create a new token, where the only difference between your old and your new token is that it has a new
-expiration date.
+expiration date is reached, and replace your existing token with the new token returned by Magic.
+
+Magic contains a `refresh` token endpoint to achieve this. Internally this endpoint will use
+the **[auth.ticket.refresh]** slot to create a new token, where the only difference between your old and your
+new token is that it has a new expiration date.
 
 ## Securing your endpoints
 
@@ -126,9 +128,10 @@ this out, by pasting the following into your Hyperlambda evaluator in your dashb
 auth.ticket.verify:non-existing-role
 ```
 
-## Inspecting your token's payload
+## Inspecting your JWT token's payload
 
-The following slots allows you to inspect the token's payload.
+The following slots allows you to inspect the token's payload, implying get the username and roles
+the current HTTP request originates from.
 
 * __[auth.ticket.get]__ - Returns the username and the roles the user belongs to
 * __[auth.ticket.in-role]__ - Convenience slot returning true if user belongs to the specified role(s)

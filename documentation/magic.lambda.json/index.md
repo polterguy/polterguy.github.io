@@ -78,7 +78,7 @@ json2yaml:x:-
 
 The above results in the following.
 
-```json
+```
 {
   "foo": "howdy",
   "bar": "jo",

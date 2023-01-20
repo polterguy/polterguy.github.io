@@ -51,7 +51,7 @@ part of the invocation.
 An example of how your configuration might look like, if you choose to use configuration settings,
 instead of having to supply server configuration every time you invoke the slot, can be found below.
 
-```json
+```
 {
   "magic":{
     "smtp":{
@@ -165,7 +165,7 @@ POP3 connection, if not explicitly given as part of invocation.
 You can find an example of how your configuration might look like below if you choose to use configuration
 settings instead of having to supply server configuration every time you invoke the slot.
 
-```json
+```
 {
   "magic":{
     "pop3":{

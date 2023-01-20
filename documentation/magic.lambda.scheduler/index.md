@@ -134,23 +134,23 @@ tasks.list
    limit:10
 ```
 
-## How tasks are stored
+## How Hyperlambda tasks are stored
 
-All tasks are persisted into your `magic` database, either in MySQL, PostgreSQL, or Microsoft SQL Server.
-Which implies that even if the server is stopped, all scheduled tasks and persisted tasks will automatically
+All tasks are persisted into your `magic` database, either in MySQL, SQLite, PostgreSQL, or Microsoft SQL Server.
+This implies that even if your server is stopped, all scheduled tasks and persisted tasks will automatically
 load up again, and be available and re-scheduled as the server is restarted. This _might_ imply that
 all tasks in the past are immediately executed, which is important for you to understand, since any tasks
 with a due date in the past, are executed immediately as the server restarts again.
 Tasks are by default persisted into your `tasks` table, and schedules are persisted into your
 `task_due` table.
 
-## How to use tasks as business process workflows
+## How to use Hyperlambda tasks as business process workflows
 
-The above allows you to persist a _"function invocation"_ for later to execute it, once some specific condition
+Hyperlambda tasks allows you to persist a _"function invocation"_ for later to execute it, once some specific condition
 occurs - Effectively giving you the most important features from Microsoft Workflow Foundation, without the
 ridiculous XML and WYSIWYG features - In addition to that this also is a .Net Core library, contrary
 to MWF that only works for the full .Net Framework. The Hyperlambda task scheduler is also probably at
-least somewhere between 200 and 400 times faster than MWF, due to not needing any reflection.
+least somewhere between 200 and 400 times faster than MWF, due to not using reflection during execution.
 
 ## How to use [tasks.schedule]
 
@@ -272,10 +272,11 @@ tasks.schedule:task-id-555
    repeats:**.**.22.00.00
 ```
 
-### Weekdays pattern
+### Weekdays pattern and Hyperlambda tasks
 
-If you use the weekdays pattern, you can create any combinations of weekdays, allowing you to supply multiple
-weekdays in a single repetition pattern. Below is an exhaustive list of all possible weekdays.
+If you use the weekdays pattern when you create your tasks, you can create any combinations of weekdays,
+allowing you to supply multiple weekdays in a single repetition pattern. Below is an exhaustive list of
+all possible weekdays.
 
 * Monday
 * Tuesday
@@ -312,7 +313,7 @@ to reference it later, as you wish to create an instance of your custom pattern 
 are any arguments supplied to your pattern during creation. Below is an example that creates a custom
 repetition pattern.
 
-```csharp
+```
 private class ExtPattern : IRepetitionPattern
 {
     readonly string _args;
@@ -337,7 +338,7 @@ After you have declared your custom `IRepetitionPattern` type, you'll need to in
 that you want to use the above class, and resolve it using some specific key from your schedules.
 This is accomplished using something resembling the following code.
 
-```csharp
+```
 PatternFactory.AddExtensionPattern(
     "custom-type",
     str =>

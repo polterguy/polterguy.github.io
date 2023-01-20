@@ -104,7 +104,7 @@ markdown2html:@"<p>Howdy world</p>
 </ul>
 ```
 
-### Front matter
+### Front matter and [markdown2html]
 
 The **[markdown2html]** slot can also handle _"front matter"_, which allows you to inject YAML at the front
 of your Markdown. Front matter again is just a YAML declaration injected at the front of your Markdown,

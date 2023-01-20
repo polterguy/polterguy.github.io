@@ -132,7 +132,7 @@ cache.set:cache-item-key
 cache.count
 ```
 
-## Internals
+## Hyperlambda caching internals
 
 Internally the cache implementation is _not_ using the `MemoryCache` from .Net, since this class
 suffers from a whole range of problems in regards to its API, such as not being able to count or

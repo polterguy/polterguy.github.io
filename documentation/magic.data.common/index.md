@@ -517,6 +517,7 @@ There is one crucial semantic difference between a **[join]** condition and a **
 that the library assumes a join is _always_ between two columns, while a where always assume you're _always_
 comparing against a static value. This implies that you _cannot_ add static values into your SQL as a part of
 your **[join]** condition, while the opposite is true for a **[while]**.
+
 Although this technically doesn't allow you to create any SQL you want to create, it is still more
 in _"the spirit"_ of SQL as a standard - And you can always add your static conditions into your **[where]**
 parts, while adding your table comparisons into your **[join]** conditions. This allows you to create
@@ -868,7 +869,7 @@ The above will generate the following SQL, in addition to returning 3 parameters
 select * from 'table1' where 'table1'.'field1' in (@0,@1,@2) limit 25
 ```
 
-### Escaping character
+### Escaping characters
 
 If you by some freak accident happen to have a column in one of your tables that is named for instance `neq`,
 you can escape your column name, by prepending a `\` to it. See an example below.
@@ -916,7 +917,7 @@ You can also extend the existing comparison operators with your own, such as for
 resulting in `<>`, etc. To do this, you'll have to register your comparison operator using the static
 `AddComparisonOperator` method on the `SqlWhereBuilder` class. Below is an example.
 
-```csharp
+```
 SqlWhereBuilder.AddComparisonOperator("ltmt", (builder, args, colNode, escapeChar) => {
     builder.Append(" <> ");
     SqlWhereBuilder.AppendArgs(args, colNode, builder, escapeChar);
@@ -925,7 +926,7 @@ SqlWhereBuilder.AddComparisonOperator("ltmt", (builder, args, colNode, escapeCha
 
 The above will give you access to use `ltmt` as a comparison operator, resolving to `<>` in your SQL.
 
-### Meta data
+### magic.data.common and meta data
 
 One of the really nice things about this semantic approach to generating SQL is that it
 allows you to retrieve meta data from your Hyperlambda snippets, asking questions such as for instance
@@ -940,6 +941,7 @@ This project protects you automatically against SQL injection attacks, and prote
 But you should _not_ allow any potentially insecure clients to dynamically declare which columns
 to select, and/or field _names_ for your `where` clauses. It will only protect your _values_,
 and _not_ table names or column names against SQL injection attacks.
+
 The project does also _not_ verify that your SQL is possible to execute towards your database, such as verifying
 that specified tables or columns actually exists. It does its best however, to verify that your Hyperlambda
 is structured correctly, and that it will create somewhat valid SQL - But you should *not assume* the SQL

@@ -5,7 +5,7 @@ magic.signals is a _"Super Signals"_ implementation for .Net 6 built on top of m
 allowing you to invoke functions from one assembly in another assembly without having any direct references between
 your projects.
 
-## Rationale
+## Active Events or Super Signals internals
 
 Below you can find a couple of articles written about the idea by yours truly.
 
@@ -16,7 +16,7 @@ The above is made possible by always having a YALOA, allowing us to invoke metho
 a _"magic string"_, which references a type in a dictionary, where the string is its key, and the types
 are dynamically loaded during startup of your AppDomain. Imagine the following code.
 
-```csharp
+```
 [Slot(Name = "foo.bar")]
 public class FooBar : ISlot
 {
@@ -30,7 +30,7 @@ public class FooBar : ISlot
 The above declares a _"slot"_ for the signal **[foo.bar]**. In any other place in our AppDomain we can use an `ISignaler`
 instance to Signal the above slot by using something such as the following.
 
-```csharp
+```
 /*
  * This will invoke our Signal method above
  */
@@ -69,7 +69,7 @@ letting the runtime choose which implementation to use, depending upon whether o
 an `async` execution context or not. Below you can see how to accomplish the same as above, except this
 time the slot will be invoked within an `async` context.
 
-```csharp
+```
 [Slot(Name = "foo.bar")]
 public class FooBar : ISlotAsync
 {
@@ -84,7 +84,7 @@ public class FooBar : ISlotAsync
 It's a common practice to implements slots that recursively invokes other slots, by combining the above two constructs, into
 one single class. Below is an example.
 
-```csharp
+```
 [Slot(Name = "foo.bar")]
 public class FooBar : ISlot, ISlotAsync
 {

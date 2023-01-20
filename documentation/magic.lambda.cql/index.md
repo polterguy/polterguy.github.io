@@ -38,7 +38,7 @@ node's value, and/or expression's value.
 
 The primary configuration for the project to apply for your _"appsettings.json"_ file can be found below.
 
-```json
+```
 {
   "magic": {
     "cql": {

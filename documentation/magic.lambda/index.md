@@ -19,7 +19,7 @@ side (rhs). In Hyperlambda this is different, since the equal slot is the main i
 arguments, allowing you to think about it as a _function_. To compare this to the way a traditional programming might
 have implemented this, imagine the equal operator as a function, such as the following pseudo code illustrates.
 
-```csharp
+```
 equals(object lhs, object rhs)
 ```
 
@@ -83,7 +83,7 @@ To understand the relationship between C# and Hyperlambda, it might be beneficia
 following code. The following code creates a new `ISlot` for you, implementing the interface found in
 the NuGet package called _"magic.signals.contracts"_.
 
-```csharp
+```
 using magic.node;
 using magic.signals.contracts;
 
@@ -609,7 +609,7 @@ mte
    .:int:5
 ```
 
-### Commonalities for all comparison slots
+### Commonalities for all Hyperlambda comparison slots
 
 All comparison slots can optionally be given an expression that will be assumed to be their LHS argument,
 or _"Left Hand Side"_ argument, that if given will replace the first child argument. Below is an example for
@@ -625,7 +625,7 @@ In the above example the expression `:x:@.src1` becomes the left hand side, whil
 side of the comparison. To translate the above into how it might look like in a traditional programming language to
 give you an idea of its structure please consider the following.
 
-```csharp
+```
 src1 >= 5
 ```
 
@@ -648,7 +648,7 @@ if
 
 The above is the equivalent of the following in a more traditional programming language.
 
-```csharp
+```
 string result;
 var arg1 = "foo";
 
@@ -780,7 +780,7 @@ its **[.foo2]** data node to boolean `true`, you will see that your second child
 considered, since your **[or]** invocation is _"short circuiting"_. You can nest as many **[or]** and **[and]**
 invocations as you wish, creating any amount of complexity in your Hyperlambda.
 
-## Modifying your lambda graph object
+## Modifying your Hyperlambda graph object
 
 Since there are no explicit variables in Hyperlambda, yet all nodes potentially might change, this requires
 the ability to change your nodes as you execute your Hyperlambda. Magic provides many slots to achieve this,
@@ -1111,7 +1111,22 @@ details about how this works.
 Exceptions in Hyperlambda are similar to exceptions in traditional programming languages, and are basically a
 mechanism to raise errors in such a way that the stack is completely rewinded, to the point in your code
 where you want to handle error conditions. This allows you to _"ignore"_ errors occurring in all places,
-except a single point in your code, from where you want to handle said exceptions.
+except a single point in your code, from where you want to handle said exceptions. Below is some example
+Hyperlambda code illustrating how to use exceptions.
+
+```
+try
+   throw:Whatever
+
+.catch
+   log.info:ERROR HAPPENED!! 42, 42, 42!
+
+.finally
+   log.info:Yup, we are finally there!
+```
+
+Like most modern programming languages, Hyperlambda supports both try, catch and finally. However,
+the catch is referenced as **[.catch]** and the finally block is referenced as **[.finally]**.
 
 ### How to use [try]
 
@@ -1161,7 +1176,8 @@ how this propagates to the client without the exception handler.
 ## Hyperlambda loops
 
 Loops in programming languages implies doing something x number of times, where x is any number. Hyperlambda
-provides two basic slots for looping; **[for-each]** and **[while]**.
+provides two basic slots for looping; **[for-each]** and **[while]**. Notice, there is no _"for"_ loop
+in Hyperlambda, since this can always be created using the **[while]** loop.
 
 ### How to use [for-each]
 

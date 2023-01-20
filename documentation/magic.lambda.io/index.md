@@ -349,7 +349,7 @@ After invoking the above, assuming **[.stream]** is a valid stream, the stream's
 Returns the root folder of the system. Cannot be invoked from Hyperlambda, but only from C#. Intended as
 a support function for other C# slots.
 
-```csharp
+```
 var node = new Node();
 signaler.Signal(".io.folder.root", node);
 

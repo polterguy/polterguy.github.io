@@ -67,7 +67,7 @@ setting through your _"appsetting.json"_ file. Below is an example configuration
 default value for log level is _"debug"_. In a production environment you might want to increase this to at
 least _"info"_.
 
-```json
+```
 {
   "magic": {
     "logging": {

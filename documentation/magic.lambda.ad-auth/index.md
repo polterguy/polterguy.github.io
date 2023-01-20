@@ -18,7 +18,7 @@ such that it points to your LDAP URL. Typically, your network administrator know
 Below is an example of this configuration. Make sure you change the `LDAP://foo.acme.somewhere`
 to your actual LDAP URL.
 
-```json
+```
 {
   "magic": {
     "auth": {
@@ -66,7 +66,7 @@ To use this method, you'll have to change the `magic.auth.auto-auth` setting in 
 file, and set its value to _"auth.ad.get-username"_. Below is an example of how to accomplish this, assuming
 you change the _"LDAP://foo.acme.somewhere"_ value to the URL of your actual LDAP server.
 
-```json
+```
 {
   "magic": {
     "auth": {

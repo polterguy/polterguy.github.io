@@ -163,10 +163,10 @@ The above will automatically serialize your lambda object as Hyperlambda, since 
 a type supported by the automatic conversion functions, and transfer the request as a string to the endpoint,
 preserving expressions as is _without_ unwrapping them before transmitting your **[payload]**.
 
-## Sending multipart/form-data
+## Passing in multipart/form-data payloads with your HTTP requests
 
-You can also transfer multipart/form-data which internally will use the MIME parser to semantically create
-a multipart message. Below is example code of how to achieve this.
+You can also transfer multipart/form-data with all HTTP slots in Hyperlambda. This internally will use
+the MIME parser to semantically create a multipart message. Below is example code of how to achieve this.
 
 ```
 http.post:"http://localhost:5000/magic/modules/foo/foo"
