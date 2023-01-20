@@ -1,10 +1,10 @@
 ---
-title: Getting started with Aista Magic Cloud
+title: Documentation for Aista Magic Cloud and Hyperlambda
 description: Where the Machine Creates your Code, using Artificial Intelligence, Machine Learning, meta programming, and software development automation
 og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg
 ---
 
-# Aista Magic Cloud
+# What is Aista Magic Cloud
 
 Aista Magic Cloud, or Magic for short, is a software development platform that creates most of your code _"automagically"_,
 by leveraging meta programming, declarative programming, artificial intelligence, and software development
@@ -16,7 +16,7 @@ offers [hosting of Magic](https://aista.com) for a monthly fee.
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/n8Y4sTrprqk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## Why use Magic?
+## Why use Aista Magic Cloud?
 
 As a software developer typically 80% of your job is literally so simple that it can be replaced
 with artificial intelligence and software development automation, based upon meta programming constructs.
@@ -24,7 +24,7 @@ This results in more secure and robust solutions, with less bugs, better scaling
 for you to pursue more creative tasks. In general Aista Magic Cloud makes you at least 5 times as productive,
 sometimes hundreds of times more productive.
 
-## What can I use Magic for?
+## What can I do with Magic?
 
 Aista Magic Cloud is not suitable for all tasks. Its
 primary strength is for generating backend code, that is database heavy in nature, and/or integrates with
@@ -114,7 +114,9 @@ of your modifications by executing your endpoint without ever having to leave yo
 
 The real power of the backend generator is that it generates code you can edit, with a declarative programming language
 called Hyperlambda. If you need to add business logic to your generated CRUD endpoints, this is easily achieved
-using Hyper IDE. Hyper IDE integrates perfectly with our Machine Learning component, built on top of OpenAI's
+using Hyper IDE.
+
+Hyper IDE also integrates perfectly with our Machine Learning component, built on top of OpenAI's
 ChatGPT, allowing you to write your requests in plain English, and have Hyper IDE and ChatGPT automatically
 generate code for you solving your problem.
 

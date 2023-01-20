@@ -161,8 +161,6 @@ dynamically created slots in the cache as _"hidden"_ items.
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.caching](https://github.com/polterguy/magic.lambda.caching), and you can provide feedback, provide bug reports, etc at the same place.
 
-## Quality gates
-
 - ![Build status](https://github.com/polterguy/magic.lambda.caching/actions/workflows/build.yaml/badge.svg)
 - [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.caching&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.caching)
 - [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.caching&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.caching)

@@ -28,17 +28,18 @@ This project provides file/folder slots for Magic. More specifically, it provide
 * __[.io.folder.root]__ - Returns the root folder of your system. (private C# slot)
 * __[io.file.mixin]__ - Allows you to invoke lambda objects from a file and substitute content dynamically in your original file
 
-## Fundamentals
+## magic.lambda.io fundamentals
 
-All of these slots can _only_ manipulate files and folders inside of your _"files"_ folder in your web server.
+magic.lambda.io can _only_ manipulate files and folders inside of your _"files"_ folder in your web server.
 This are normally files inside of the folder you have configured in your _"appsettings.json"_ file, with the
 key _"magic.io.root-folder"_. This implies that all paths are _relative_ to this path, and no files or folders
-from outside of this folder can in any ways be manipulated using these slots.
+from outside of this folder can in any ways be manipulated using these slots. These are the files you
+can see when you open Hyper IDE.
 
 Notice, if you wish to change this configuration value, then the character tilde "~" means root
 folder where your application is running from within. There is nothing preventing you from using an
 absolute path, but if you do, you must make sure your web server process have full rights to modify
-files within this folder.
+files within this folder. We do not recommend changing this configuration setting.
 
 ### How to use [io.folder.create]
 
@@ -359,8 +360,6 @@ var rootFolder = node.Get<string>();
 ## Project website for magic.lambda.io
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.io](https://github.com/polterguy/magic.lambda.io), and you can provide feedback, provide bug reports, etc at the same place.
-
-## Quality gates
 
 - ![Build status](https://github.com/polterguy/magic.lambda.io/actions/workflows/build.yaml/badge.svg)
 - [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.io&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.io)

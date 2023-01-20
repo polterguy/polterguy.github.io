@@ -67,19 +67,6 @@ math.increment:x:-
 for instance an invocation to **[get-value]**, or your custom slots. This is dues to that the first argument supplied
 to these slots will be assumed to be the _"step"_ value you want.
 
-## Modulo
-
-The modulo slot divides its argument(s) by its base, and returns the remainder.
-
-```
-.int:17
-
-math.modulo:x:-
-   .:int:10
-```
-
-The above results in 7.
-
 ## How to use [math.multiply]
 
 This slot multiplies two or more values with each other, and can be given as many arguments as you wish,
@@ -191,8 +178,6 @@ math.increment:x:@.arg
 ## Project website for magic.lambda.math
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.math](https://github.com/polterguy/magic.lambda.math), and you can provide feedback, provide bug reports, etc at the same place.
-
-## Quality gates
 
 - ![Build status](https://github.com/polterguy/magic.lambda.math/actions/workflows/build.yaml/badge.svg)
 - [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.math&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.math)

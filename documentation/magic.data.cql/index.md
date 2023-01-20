@@ -253,8 +253,6 @@ created according to the `Host` HTTP header of requests.
 
 The source code for this repository can be found at [github.com/polterguy/magic.data.cql](https://github.com/polterguy/magic.data.cql), and you can provide feedback, provide bug reports, etc at the same place.
 
-## Quality gates
-
 - ![Build status](https://github.com/polterguy/magic.data.cql/actions/workflows/build.yaml/badge.svg)
 - [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.data.cql&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.data.cql)
 - [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.data.cql&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.data.cql)

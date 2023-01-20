@@ -37,8 +37,6 @@ documentation for **[data.connect]**, since it's more or less the exact same doc
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.sqlite](https://github.com/polterguy/magic.lambda.sqlite), and you can provide feedback, provide bug reports, etc at the same place.
 
-## Quality gates
-
 - ![Build status](https://github.com/polterguy/magic.lambda.sqlite/actions/workflows/build.yaml/badge.svg)
 - [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.sqlite&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.sqlite)
 - [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.sqlite&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.sqlite)

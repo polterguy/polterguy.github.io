@@ -947,11 +947,6 @@ it allows you to _"forward evaluate"_ said expressions inside your lambda object
 is actually executed. It's also useful when you have expressions inside for instance a **[return]** slot,
 and you want to return the _value_ the expression evaluates to, and not the expression itself.
 
-## Source slots
-
-In addition to the above slots allowing you to _change_ your graph objects as they are executed, Hyperlambda also
-contains a whole range of slots that allows you to _retrieve_ parts of your lambda objects during execution.
-
 ### How to use [get-value]
 
 Returns the value of the node its expression is pointing to.
@@ -1163,7 +1158,7 @@ throw:Whatever error message here
 If you create an endpoint using for instance _"Hyper IDE"_, and throw the above exception, you can see
 how this propagates to the client without the exception handler.
 
-## Loops
+## Hyperlambda loops
 
 Loops in programming languages implies doing something x number of times, where x is any number. Hyperlambda
 provides two basic slots for looping; **[for-each]** and **[while]**.
@@ -1210,11 +1205,6 @@ while
 
 The above Hyperlambda snippet basically implies the following if we are to translate it into plain English;
 _"Set .no to 0, then loop while .no is less than 5, where the loop adds a node into .res, before it increments .no by 1"_.
-
-## Miscellaneous slots
-
-These are slots that doesn't belong to one specific group of slots, but are still useful enough in general
-to have implementations in Hyperlambda.
 
 ### How to use [types]
 

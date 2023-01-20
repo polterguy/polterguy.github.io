@@ -331,8 +331,6 @@ of where to stop returning. In such a regard, it works the same way as the C# `S
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.strings](https://github.com/polterguy/magic.lambda.strings), and you can provide feedback, provide bug reports, etc at the same place.
 
-## Quality gates
-
 - ![Build status](https://github.com/polterguy/magic.lambda.strings/actions/workflows/build.yaml/badge.svg)
 - [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.strings&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.strings)
 - [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.strings&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.strings)
