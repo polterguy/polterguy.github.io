@@ -1161,10 +1161,7 @@ throw:Whatever error message here
 ```
 
 If you create an endpoint using for instance _"Hyper IDE"_, and throw the above exception, you can see
-how this propagates to the client without the exception handler. Below is a screenshot of how this will
-end up looking from the client's point of view.
-
-![Unhandled publicly visible exception](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/throw.jpg)
+how this propagates to the client without the exception handler.
 
 ## Loops
 
