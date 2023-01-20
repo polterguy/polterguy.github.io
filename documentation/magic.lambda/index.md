@@ -243,10 +243,16 @@ name with square brackets surrounding it, such as **[this]** illustrates, where 
 a node, and is the name of a node. We will also make such node references **bold**, to make them
 more easy to see.
 
+## Lambda expressions
+
+Hyperlambda is heavily using _"lambda expressions"_. Think of these like XPath, except instead
+of referencing XML nodes they're referencing Hyperlambda nodes. You can find the documentation
+for expressions in the [/documentation/magic.node/](magic.node) project.
+
 ## How to use [eval]
 
 This is the by far most important slot in Hyperlambda, since it's arguably _"the heart"_ of Hyperlambda,
-allowing Hyperlambda to execute Hyperlambda. This slot executes the specified lambda object(s) assumed
+allowing Hyperlambda to execute. This slot executes the specified lambda object(s) assumed
 to exist either as a lambda in its children collection, or as an expression leading to one or more nodes,
 where each of these nodes will be executed. The example below illustrates how to use **[eval]** with
 an expression.
