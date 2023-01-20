@@ -66,7 +66,7 @@ and rapidly wrap it inside an HTTP endpoint. You can find this component in the 
 in its _"SQL Endpoint Generator"_ tab. Choose your database, provide some SQL, add arguments that you
 reference in your SQL, and click the _"Generate"_ button.
 
-![Creating a Web API using SQL](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/)
+![Creating a Web API using SQL](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-web-api.jpg)
 
 The SQL API generator allows you to secure your endpoints, declare what arguments your endpoint can handle,
 use all 5 most common HTTP verbs for your endpoints, etc. You can use it with SQL Server, MySQL, MariaDB,
