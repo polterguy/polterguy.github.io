@@ -8,9 +8,13 @@ og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/maste
 
 The Magic Dashboard is your primary tool when you're using Aista Magic Cloud, and it contains a graphical
 user interface for managing your Magic installation, allowing you to solve all sort of different tasks
-related to your cloudlet.
+related to your cloudlet. Using the navbar at the top of your dashboard allows you to manage all aspects
+of your Magic Cloudlet, such as your scheduled tasks, machine learning models, Hyperlambda code, etc.
 
 ![Your Magic dashboard](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/Aista-Magic-Cloud.jpeg)
+
+In addition the dashboard contains some key performance indicators and charts, showing you how often
+others are authenticating to your cloudlet, your last 10 log items, etc.
 
 ## Magic dashboard components
 
