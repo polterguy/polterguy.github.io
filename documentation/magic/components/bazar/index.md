@@ -1,7 +1,7 @@
 ---
 title: The Bazaar, an AppStore for your server
 description: With the Bazaar you can rapidly purchase, and/or install free backend micro services on the fly, without interrupting your production environment. Click a button, pay the purchase price if any, download the micro service, and voila! You've got a new micro service solving some problem related to your particular problem.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-bazaar.jpg"
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/bazaar.jpg"
 ---
 
 # The Plugins component

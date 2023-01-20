@@ -1,7 +1,7 @@
 ---
 title: Configuring your server
 description: Configuring your server can easily be achieved with a root user using the configuration component in Magic. Configuration settings are immediately applied, and changes your server's behaviour instantly.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-configuration.jpg"
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/config-component.jpg"
 ---
 
 # The Configuration component

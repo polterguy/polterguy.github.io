@@ -1,7 +1,7 @@
 ---
 title: Create a frontend web app in 1 second
 description: After having automatically generated your backend Magic can also create your frontend in 1 second by reading meta information from your backend and automatically generate a frontend wrapping your backend.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-frontend-crud.jpg"
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/crud-frontend.jpg"
 ---
 
 # The frontend generator component

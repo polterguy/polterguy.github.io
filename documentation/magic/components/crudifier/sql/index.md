@@ -1,7 +1,7 @@
 ---
 title: Create an HTTP endpoint with SQL
 description: Magic allows you to create HTTP endpoints using only SQL. You provide the SQL, and Magic automatically wires up everything else required to execute your SQL (securely) through HTTP.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-sql-crud.jpg"
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-web-api.jpg"
 ---
 
 # Create an HTTP endpoint with SQL

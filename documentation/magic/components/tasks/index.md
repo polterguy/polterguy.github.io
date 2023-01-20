@@ -1,7 +1,7 @@
 ---
 title: Persist and schedule tasks
 description: You can easily create Hyperlambda code that you save for later execution, for then to schedule your task to be executed in the future.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-tasks.jpg"
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/scheduling-task.jpg"
 ---
 
 # The tasks component

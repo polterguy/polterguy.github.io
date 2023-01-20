@@ -1,7 +1,7 @@
 ---
 title: Your Magic log
 description: The log component allows you to browse your server side log items, verifying your system is optimally functioning and healthy, and/or drill down to see errors occurring in your system.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-log.jpg"
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/log.jpg"
 ---
 
 # The log component

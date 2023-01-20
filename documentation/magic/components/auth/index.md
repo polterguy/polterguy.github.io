@@ -1,7 +1,7 @@
 ---
 title: Authentication and authorisation
 description: Tired of creating authentication and authorisation code? Magic contains both of these constructs out of the box, allowing you to use Magic's existing HTTP endpoints to authenticate your users.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-auth.jpg"
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/auth.jpg"
 ---
 
 # The Users and Roles component

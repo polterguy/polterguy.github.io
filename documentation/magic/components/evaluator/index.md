@@ -1,7 +1,7 @@
 ---
 title: Execute code on your server through your browser
 description: The evaluator allows you to submit Hyperlambda to your server and have your code executed in 'immediate' mode. This is useful for administrating your Magic server, and/or learning Hyperlambda.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-send-email.jpg"
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/eval-component.jpg"
 ---
 
 # The Hyperlambda Playground component

@@ -9,7 +9,7 @@ og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/maste
 The easiest way to get started with Aista Magic Cloud is to signup at the [Aista website](https://aista.com), for then
 to create a _"cloudlet"_. This gives you CDN, security out of the box, a pre configured backend,
 etc. The process takes less than 5 minutes, and we allow users to create trial cloudlets that lasts
-for 90 days without asking for money or VISA details.
+for 90 days without asking for money or VISA information.
 
 ## Get started Magic using Docker
 

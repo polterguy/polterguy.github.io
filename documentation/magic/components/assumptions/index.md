@@ -1,7 +1,7 @@
 ---
 title: Automatically generated integration/unit tests
 description: Magic allows you to automatically generate unit tests, or integration tests. The assumptions component allows you to automatically run all such tests to sanity check your system's health.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-assumptions.jpg"
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/assumptions.jpg"
 ---
 
 # The health check component

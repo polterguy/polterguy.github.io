@@ -1,7 +1,7 @@
 ---
 title: A web based SQL workbench
 description: The web based SQL 'workbench' allows you to execute any SQL, see the result immediately, in addition to storing your frequently used SQL snippets for later.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-sql-component.jpg"
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-editor.jpg"
 ---
 
 # The SQL Studio component

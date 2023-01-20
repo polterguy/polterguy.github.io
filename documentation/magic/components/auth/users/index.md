@@ -1,7 +1,7 @@
 ---
 title: Administrating users
 description: Magic allows you to easily create new users and grant these access to parts of the system you need for these to have access to. Combined with the registration component in Magic, this makes it very easy to manage and administrate your users.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-auth.jpg"
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/auth.jpg"
 ---
 
 # Administrating users

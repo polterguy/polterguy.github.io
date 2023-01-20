@@ -21,7 +21,7 @@ google_analytics: G-9TJ79M3VVN
 copyright: Copyright © Aista, Ltd 2020 - 2023, info@aista.com
 
 # Most Wanted Response, most important link on your site.
-mwr: /tutorials/getting-started/
+mwr: "https://aista.com"
 mwr_text: Start
 
 # Background images for banner and the main body/content parts of your site
@@ -43,51 +43,7 @@ plugins:
 
 # Your navigation section. Declares the drop down menu items for your hamburger menu.
 nav_sections:
-  - name: Tutorials
-    items:
-      - url: /tutorials/getting-started/
-        name: Getting started with Magic and Hyperlambda
-      - url: /tutorials/database-crud/
-        name: Automatically generate a CRUD Web API
-      - url: /tutorials/sql-web-api/
-        name: Use SQL to create a Web API
-      - url: /tutorials/hello-world-endpoint/
-        name: Hyperlambda Hello World
-      - url: /tutorials/http-rest/
-        name: HTTP invocations with Hyperlambda
-      - url: /tutorials/sending-emails/
-        name: Sending emails with Hyperlambda
-      - url: /tutorials/registering/
-        name: Registration and Authentication
-      - url: /tutorials/expressions-slots-nodes/
-        name: Expressions, slots, and nodes
-      - url: /tutorials/loops-and-conditions/
-        name: Loops and branching in Hyperlambda
-      - url: /tutorials/auth/
-        name: Authentication and Authorisation
-      - url: /tutorials/web-sockets/
-        name: Hyperlambda and Web Sockets
-      - url: /tutorials/threading/
-        name: Threading and async Hyperlambda
-      - url: /tutorials/super-dry/
-        name: Interceptors and exception handlers
-      - url: /tutorials/dynamic-slots/
-        name: Dynamic Hyperlambda slots
-      - url: /tutorials/task-scheduler/
-        name: Hyperlambda tasks and scheduled tasks
-      - url: /tutorials/crypto-lambda-http/
-        name: Cryptographically signed HTTP invocations
-      - url: /tutorials/auth-internals/
-        name: Customised authentication
-      - url: /tutorials/sql-server/
-        name: Using Magic with Microsoft SQL Server
-      - url: /tutorials/sqlite/
-        name: Using Magic with SQLite
-      - url: /tutorials/postgresql/
-        name: Using Magic with PostgreSQL
-      - url: /tutorials/mysql/
-        name: Using Magic with MySQL
-  - name: Docs plugins
+  - name: Documentation for plugins
     items:
       - url: /documentation/magic.lambda/
         name: magic.lambda
@@ -149,10 +105,8 @@ nav_sections:
         name: magic.lambda.sockets
       - url: /documentation/magic.lambda.threading/
         name: magic.lambda.threading
-  - name: Docs utilities
+  - name: Documentation for utility projects
     items:
-      - url: /documentation/magic/
-        name: middleware
       - url: /documentation/magic.node/
         name: magic.node
       - url: /documentation/magic.signals/
@@ -167,8 +121,10 @@ nav_sections:
         name: magic.deploy
       - url: /documentation/magic.clone/
         name: magic.clone
-  - name: Misc
+  - name: Misc documentation
     items:
+      - url: /documentation/magic/
+        name: dashboard
       - url: /documentation/faq/
         name: faq
       - url: https://youtube.com/ThomasHansen-Magic

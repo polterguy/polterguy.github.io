@@ -1,7 +1,7 @@
 ---
 title: Machine Learning component
 description: Magic allows you to automatically generate your own private AI based Machine Learning model based upon OpenAI and ChatGPT
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-assumptions.jpg"
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/machine-learning.jpg"
 ---
 
 # The Machine Learning component

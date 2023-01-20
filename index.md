@@ -1,7 +1,7 @@
 ---
 title: Getting started with Aista Magic Cloud
 description: Where the Machine Creates your Code, using Artificial Intelligence, Machine Learning, meta programming, and software development automation
-og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/Aista-Magic-Cloud.jpeg
+og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg
 ---
 
 # Aista Magic Cloud
@@ -212,7 +212,7 @@ for Magic, allowing you to install it locally in seconds without having to mess 
 such as the .Net CLI and NodeJS. However, the fastest way to get started with Magic is to
 create a free 90 day trial cloudlet at [Aista.com](https://aista.com).
 
-* [Get started with Magic](https://aista.com)
+* [Get started with Magic at Aista.com](https://aista.com)
 
 ## Primary features of Aista Magic Cloud
 
@@ -259,10 +259,3 @@ your Magic installation.
 * [Config component](/documentation/magic/components/config/)
 * [Profile component](/documentation/magic/components/profile/)
 * [Log](/documentation/magic/components/log/)
-
-## More
-
-In addition we provide the following sections for more information about Aista Magic Cloud
-
-* [Tutorials](/tutorials/) - Tutorials about how to get started with Aista Magic Cloud
-* [Docs](/documentation/) - Reference documentation for Aista Magic Cloud

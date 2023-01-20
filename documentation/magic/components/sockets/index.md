@@ -1,7 +1,7 @@
 ---
 title: Web Sockets in Magic and Hyperlambda
 description: Using web sockets is easily achieved with Magic by simply clicking a button. Hyperlambda contains native support for web sockets through SignalR, and allows you to use this as you see fit in your own apps literally in seconds.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-sockets.jpg"
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sockets.jpg"
 ---
 
 # The sockets component

@@ -1,7 +1,7 @@
 ---
 title: Administrating roles
 description: Magic's authorisation system is based upon role based access, where you grant access to some parts of your system based upon roles, for then to associate users with these roles somehow.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-auth.jpg"
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/auth.jpg"
 ---
 
 # Administrating roles
