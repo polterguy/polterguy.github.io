@@ -32,7 +32,7 @@ Hence, please refer to the documentation for _"magic.data.common"_ to see the co
 project. If you need for instance documentation about the **[mysql.connect]** slot you should look for the
 documentation for **[data.connect]**, since it's more or less the exact same documentation.
 
-## Project website
+## Project website for magic.lambda.mysql
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.mysql](https://github.com/polterguy/magic.lambda.mysql), and you can provide feedback, provide bug reports, etc at the same place.
 

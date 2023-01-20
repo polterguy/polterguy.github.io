@@ -80,7 +80,7 @@ This slots can be given the following arguments;
 - **[seconds]** - Number of seconds
 - **[milliseconds]** - Number of milliseconds
 
-## Project website
+## Project website formagic.lambda.dates
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.dates](https://github.com/polterguy/magic.lambda.dates), and you can provide feedback, provide bug reports, etc at the same place.
 

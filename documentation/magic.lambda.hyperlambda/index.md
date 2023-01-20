@@ -70,7 +70,7 @@ usage.
 lambda2hyper:x:-/*
 ```
 
-## Project website
+## Project website for magic.lambda.hyperlambda
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.hyperlambda](https://github.com/polterguy/magic.lambda.hyperlambda), and you can provide feedback, provide bug reports, etc at the same place.
 

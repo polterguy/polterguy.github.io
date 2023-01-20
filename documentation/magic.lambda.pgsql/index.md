@@ -32,7 +32,7 @@ Hence, please refer to the documentation for _"magic.data.common"_ to see the co
 project. If you need for instance documentation about the **[pgsql.connect]** slot you should look for the
 documentation for **[data.connect]**, since it's more or less the exact same documentation.
 
-## Project website
+## Project website for magic.lambda.pgsql
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.pgsql](https://github.com/polterguy/magic.lambda.pgsql), and you can provide feedback, provide bug reports, etc at the same place.
 

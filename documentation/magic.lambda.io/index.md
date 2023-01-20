@@ -356,7 +356,7 @@ signaler.Signal(".io.folder.root", node);
 var rootFolder = node.Get<string>();
 ```
 
-## Project website
+## Project website for magic.lambda.io
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.io](https://github.com/polterguy/magic.lambda.io), and you can provide feedback, provide bug reports, etc at the same place.
 

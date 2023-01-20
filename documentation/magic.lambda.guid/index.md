@@ -14,7 +14,7 @@ can be found below.
 guid.new
 ```
 
-## Project website
+## Project website for magic.lambda.guid
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.guid](https://github.com/polterguy/magic.lambda.guid), and you can provide feedback, provide bug reports, etc at the same place.
 

@@ -6,7 +6,7 @@ This project provides CSV helper slots for Magic. More specifically, it provides
 * __[lambda2csv]__ - Creates a CSV string from a lambda object
 * __[csv2lambda]__ - Creates a lambda object from a CSV string
 
-## Usage
+## Convert from lambda to CSV and back again
 
 ```
 .data
@@ -73,7 +73,7 @@ lambda2csv:x:-/*
 
 The slot will return type information as children of your **[lambda2csv]** invocation.
 
-## Project website
+## Project website for magic.lambda.csv
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.csv](https://github.com/polterguy/magic.lambda.csv), and you can provide feedback, provide bug reports, etc at the same place.
 

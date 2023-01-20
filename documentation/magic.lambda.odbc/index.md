@@ -29,7 +29,7 @@ the _"backend.csproj"_ file yourself, using for instance the DotNet CLI. The rea
 exists literally hundreds of different databases out there having specific ODBC data adapter drivers, and
 installing all of these would be impossible for us to do.
 
-## Project website
+## Project website for magic.lambda.odbc
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.odbc](https://github.com/polterguy/magic.lambda.odbc), and you can provide feedback, provide bug reports, etc at the same place.
 

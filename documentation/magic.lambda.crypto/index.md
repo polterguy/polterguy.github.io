@@ -511,7 +511,7 @@ to **[crypto.password.verify]** by for instance adding one random character to i
 Internally these are the slots Magic uses when it creates its JWT authentication database, and stores
 passswords into your Magic database.
 
-## Project website
+## Project website for magic.lambda.crypto
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.crypto](https://github.com/polterguy/magic.lambda.crypto), and you can provide feedback, provide bug reports, etc at the same place.
 

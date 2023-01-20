@@ -187,7 +187,7 @@ found below.
 slots.vocabulary
 ```
 
-## Project website
+## Project website for magic.lambda.slots
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.slots](https://github.com/polterguy/magic.lambda.slots), and you can provide feedback, provide bug reports, etc at the same place.
 

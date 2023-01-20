@@ -127,7 +127,7 @@ Internally, the library will invoke **[yaml2lambda]** for any front matter decla
 the specified YAML front matter parts, implying for details about how this part works, please refer to
 the _"magic.lambda.json"_ project.
 
-## Project website
+## Project website for magic.lambda.html
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.html](https://github.com/polterguy/magic.lambda.html), and you can provide feedback, provide bug reports, etc at the same place.
 

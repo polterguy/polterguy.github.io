@@ -99,7 +99,7 @@ end up becoming the response object returned to the client.
 The default exception handler can be found in _"/files/exceptions.hl"_, which will be invoked if no custom exception
 handler is declared further down in your folder hierarchy.
 
-## Project website
+## Project website for magic.lambda.library
 
 The source code for this repository can be found at [github.com/polterguy/magic.library](https://github.com/polterguy/magic.library), and you can provide feedback, provide bug reports, etc at the same place.
 

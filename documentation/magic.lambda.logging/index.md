@@ -106,7 +106,7 @@ will have a content value of _"We successfully authenticated user 'root'"_. To r
 according to content as illustrated above, but rather only page items. Invoke **[log.capabilities]** to see if
 your implementation supports querying before relying upon its existence.
 
-## Project website
+## Project website for magic.lambda.logging
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.logging](https://github.com/polterguy/magic.lambda.logging), and you can provide feedback, provide bug reports, etc at the same place.
 

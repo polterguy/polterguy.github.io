@@ -1485,11 +1485,9 @@ the crudification process. You can also combine transformations of names, values
 same template nodes. The process is also recursive in nature, performing substitutions through the entire
 hierarchy of your template lambda.
 
-## Project website
+## Project website for magic.lambda
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda](https://github.com/polterguy/magic.lambda), and you can provide feedback, provide bug reports, etc at the same place.
-
-## Quality gates
 
 - ![Build status](https://github.com/polterguy/magic.lambda/actions/workflows/build.yaml/badge.svg)
 - [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda)

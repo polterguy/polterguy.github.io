@@ -101,7 +101,7 @@ you do.
 Only one of **[users]**, **[roles]**, **[clients]**, or **[groups]** can be supplied, and all
 the above arguments are optional.
 
-## Groups and users
+## Publishing socket messages to groups and users
 
 You can associate a user with one or more groups. This is done with the following slots.
 
@@ -132,9 +132,9 @@ a group, _all_ connections are associated with that group. The message will only
 published to connections explicitly having registered an interest in the `foo.bar` message for our
 above example, irrelevant of whether the user belongs to the group or not.
 
-## Meta data
+## Sockets meta data
 
-This project also allows you to retrieve meta data about currently connected users, through for instance
+Hyperlambda also allows you to retrieve meta data about currently connected users, through for instance
 the **[sockets.users]** slot and the **[sockets.users.count]** slot, that will return the username of
 all currently connected users, and the count matching your specified filter condition. An example
 of using it can be found below.
@@ -155,7 +155,7 @@ user might have multiple connections, and this will return each connection for e
 the specified filter condition.
 The filter conditions and paging arguments are optional, and will be `null` and `0-10` if not specified.
 
-## Connection context
+## Sockets connection context
 
 From within your Hyperlambda files executed by invoking the `execute` method, you have access to
 your SignalR connectionId as a context object named _"sockets.connection"_. Below is an example of
@@ -193,7 +193,7 @@ sockets.connection.leave-group:x:@get-context
    group:foo-bar-group
 ```
 
-## Project website
+## Project website for magic.lambda.sockets
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.sockets](https://github.com/polterguy/magic.lambda.sockets), and you can provide feedback, provide bug reports, etc at the same place.
 

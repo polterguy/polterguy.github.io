@@ -280,7 +280,7 @@ http.delete:"https://your_website.com/your-delete-endpoint"
 The slot returns the result of the specified HTTP DELETE invocation, including the HTTP headers returned from the endpoint,
 and status code, in addition to the response object itself.
 
-## Project website
+## Project website for magic.lambda.http
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.http](https://github.com/polterguy/magic.lambda.http), and you can provide feedback, provide bug reports, etc at the same place.
 

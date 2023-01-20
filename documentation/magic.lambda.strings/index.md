@@ -327,7 +327,7 @@ Notice, the second argument is the _number of characters to return_ and not the 
 of where to stop returning. In such a regard, it works the same way as the C# `Substring` method.
 
 
-## Project website
+## Project website for magic.lambda.strings
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.strings](https://github.com/polterguy/magic.lambda.strings), and you can provide feedback, provide bug reports, etc at the same place.
 

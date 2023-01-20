@@ -144,7 +144,7 @@ programming Language implementation, allowing you to easily create your own prog
 based upon Hyperlambda syntax trees. Hyperlambda in this context being the textual representation of your `Node`
 hierarchy.
 
-## Project website
+## Project website for magic.signals
 
 The source code for this repository can be found at [github.com/polterguy/magic.signals](https://github.com/polterguy/magic.signals), and you can provide feedback, provide bug reports, etc at the same place.
 

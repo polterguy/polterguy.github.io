@@ -188,7 +188,7 @@ math.increment:x:@.arg
    .:int:2
 ```
 
-## Project website
+## Project website for magic.lambda.math
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.math](https://github.com/polterguy/magic.lambda.math), and you can provide feedback, provide bug reports, etc at the same place.
 
