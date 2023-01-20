@@ -216,6 +216,15 @@ for Magic, allowing you to install it locally in seconds without having to mess 
 such as the .Net CLI and NodeJS. However, the fastest way to get started with Magic is to
 create a free 90 day trial cloudlet at [Aista.com](https://aista.com).
 
+## Get started
+
+You can of course download the open source code from GitHub, but the easiest way to get started
+immediately is to simply register at [Aista.com](https://aista.com), at which point you'll
+get a free 90 days trial cloudlet, with security, CDN, automatically configured with
+all best practices applied out of the box.
+
+* [Signup at Aista.com for your free 90 days cloudlet](https://aista.com)
+
 ## Primary features of Aista Magic Cloud
 
 Below is a more or less complete list of Aista Magic Cloud's frontend UI components and features,
