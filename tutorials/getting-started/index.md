@@ -6,15 +6,12 @@ og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/maste
 
 # Getting started with Magic and Hyperlambda
 
-The absolute easiest way to get started with Magic is to signup at [Aista website](https://aista.com), for then
+The easiest way to get started with Aista Magic Cloud is to signup at the [Aista website](https://aista.com), for then
 to create a _"cloudlet"_. This gives you CDN, security out of the box, a pre configured backend,
-etc. If you create a cloudlet at Aista.com, you can [skip to the next tutorial](/tutorials/database-crud/).
-If you intend to run Magic locally, you should probably follow this article hands on.
+etc. The process takes less than 5 minutes, and we allow users to create trial cloudlets that lasts
+for 90 days without asking for money or VISA details.
 
-* How to setup Magic locally in your own development environment using Docker or the code
-* How to update Magic
-* How to clone Magic's code
-* How to get support for Magic
+## Get started Magic using Docker
 
 The easiest way to get started locally is to [download the docker-compose file from the primary Aista website](https://github.com/polterguy/magic/releases/download/v15.3.0/docker-compose.yml), assuming you have [Docker](https://www.docker.com/products/docker-desktop) installed, and then execute the following in a terminal window where you saved the file.
 
@@ -22,7 +19,7 @@ The easiest way to get started locally is to [download the docker-compose file f
 docker compose up
 ```
 
-When your docker containers have started, open your browser and go to [http://localhost:5555](http://localhost:5555),
+When your docker containers have started, open your browser and go to [localhost:5555](http://localhost:5555),
 use the default connection string for SQLite, choose a root password, type in your name and email address, and Magic
 should work out of the box without any hassle. If you want to test Magic's CRUD automation capabilities, you can
 download the Sakila SQLite plugin that creates a database for you to play with. You can use Magic with SQL Server,
@@ -42,7 +39,7 @@ development machine using the code directly. If so you will first of all need th
 3. [Angular](https://angular.io/cli)
 4. [Download Magic Cloud's source code](https://github.com/polterguy/magic) from GitHub
 
-## Updating Magic
+## Updating Magic's docker images
 
 If you're using the docker images, updating Magic is fairly easy, and only requires you to stop Magic
 for some few seconds, update the core, and restart your docker containers again. Below is the entire
@@ -55,6 +52,9 @@ docker pull aistamagic/magic-frontend
 docker pull aistamagic/magic-backend
 docker-compose up
 ```
+
+Notice, if you create a cloudlet at Aista.com, we automatically update your cloudlet every time
+we publish a new release.
 
 ## Cloning Magic
 
