@@ -4,22 +4,18 @@ description: Tired of creating authentication and authorisation code? Magic cont
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-auth.jpg"
 ---
 
-# Authentication and authorisation
+# The Users and Roles component
 
-This component allows you to manage and administrate your users and roles in your system, and/or
-create new users giving them access to your backend somehow. This is the primary component you
-would want to use for granting access to parts of Magic to other people. Below is a screenshot
-of how it looks like.
+The users and roles component allows you to manage and administrate your users and roles in your system, and/or
+create new users and roles giving access to your backend somehow to your users and roles. This is the primary component you
+would want to use for granting access to parts of Magic to other people.
 
-![Authentication and authorisation in Magic](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/auth.jpg)
+![Users and roles administration in Magic](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/auth.jpg)
 
-Magic is built upon JWT authentication and authorisation. This is a commonly used web standard, and allows
-for you to easily use its existing authentication and authorisation system in your own code. To understand
-how to achieve this, you can read the [following article](/tutorials/registering/) that explains in details
-how to create your own custom registration forms wrapping Magic's existing auth system.
+Magic is built upon [JWT](https://jwt.io) authentication and authorisation. This is a commonly used web standard, and allows
+for you to easily use its existing authentication and authorisation system in your own code. JWT implies JSON Web Token,
+and is typically transmitted from your frontend to your backend as a _"Bearer"_ token in your _"Authorization"_ HTTP header.
 
-* [Administrating users](/documentation/magic/components/auth/users/)
-* [Administrating roles](/documentation/magic/components/auth/roles/)
-* [Registration tutorial](/tutorials/registering/)
-* [Back to middleware documentation](/documentation/magic/)
-* [Back to main documentation](/documentation/)
+Each user again belongs to one or more roles, and you assign access rights to parts of your system by declaring what access a
+role has. This is referred to as RBAC security, and implies Role Based Access Control. This makes it easy for you to see
+what access rights an individual user has by seeing what role(s) the user belongs to.

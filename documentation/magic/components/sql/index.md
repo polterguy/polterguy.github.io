@@ -4,22 +4,21 @@ description: The web based SQL 'workbench' allows you to execute any SQL, see th
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-sql-component.jpg"
 ---
 
-# A web based SQL workbench
+# The SQL Studio component
 
-The SQL component allows you to execute any arbitrary SQL towards your database of choice. This component also
+SQL Studio allows you to execute any arbitrary SQL towards your database of choice. This component also
 allows you to export the result of some SQL to a CSV file, in addition to saving frequently used
-SQL statements by using its _"Load"_ and _"Save"_ buttons. Out of the box Magic also comes with
+SQL statements by using its _"Snippets"_ and _"Save"_ buttons. Out of the box Magic also comes with
 a whole range of example SQL snippets, implying the SQL component in Magic is also a nice place
-to start out if you want to teach yourself SQL. Below is a screenshot of how loading an SQL
-snippet would look like in your SQL component.
+to start out if you want to teach yourself SQL. To access the SQL editor in SQL Studio open up
+SQL Studio and click _"SQL view"_.
 
-![Loading SQL snippets](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-editor.jpg)
+![SQL Studio SQL view](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-editor.jpg)
 
-The SQL component also provides you with syntax highlighting, in addition to autocomplete on
-tables and columns that can be shown by clicking CTRL+SPACE on Windows or FN+CONTROL+SPACE on a Mac. Below
-is a screenshot of how it would look like if you toggle autocomplete. Notice, it only shows you tables
-and columns within your currently selected database. If you don't find the tables you're looking for,
-make sure you have selected the correct database.
+SQL Studio also provides you with syntax highlighting, in addition to autocomplete on
+tables and columns that can be shown by clicking CTRL+SPACE on Windows or FN+CONTROL+SPACE on a Mac.
+Notice, it only shows you tables and columns within your currently selected database. If you don't find the
+tables you're looking for, make sure you have selected the correct database.
 
 ![SQL autocomplete](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-autocomplete.jpg)
 
@@ -27,15 +26,4 @@ The _"Safe mode"_ checkbox above prevents you from selecting more than 200 rows 
 If you need to select more rows you must click this checkbox _off_. However, if you return thousands of records
 in this component, your server might become unresponsive, and/or you may end up exhausting your
 server's memory. You can save your frequently used SQL statements as _"snippets"_ here similarly to
-how you can save frequently used Hyperlambda in your _"Evaluator"_ component.
-
-If you have some SQL Server script that creates a database, and/or contains _"go"_ keywords,
-you'll need to turn on _"Batch mode"_ to have Magic understand your SQL. If you click the _"Load"_ button
-you will also find several example _"create database"_ types of scripts, for each database type Magic supports.
-This allows you to create some database in your database type of choice, and play around with for instance
-the _"Crudifier"_ to generate web APIs automatically. If you execute a script that creates a database, you'll
-have to empty your server side cache before you can select this database in your database select drop down.
-You can do this by clicking the circular _"refresh"_ button next to the load button.
-
-* [Back to middleware documentation](/documentation/magic/)
-* [Back to main documentation](/documentation/)
+how you can save frequently used Hyperlambda in your _"Hyperlambda Playground"_ component.

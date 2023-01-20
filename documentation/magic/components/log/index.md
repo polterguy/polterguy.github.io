@@ -4,19 +4,18 @@ description: The log component allows you to browse your server side log items, 
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-log.jpg"
 ---
 
-# Your Magic log
+# The log component
 
 The log component allows you to browse your server's log. When an important event occurs in
 Magic, a log entry will typically be created describing the event. Examples of such events
-are when users are logging in, or errors are occuring in the system for some reasons. Below you can
-see a screenshot of how the log component looks like.
+are when users are logging in, or errors are occuring in the system for some reasons.
 
 ![Magic log](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/log.jpg)
 
-Notice, as you scroll to the bottom of your log, it will automatically retrieve more items from your backend,
-giving you the ability to rapidly scroll down to the time period you want to view. Since log items are displayed
-such that the last item is displayed at the top, this allows you to _"browse backwards in time"_.
-You can also create your own log entries in your own Hyperlambda by using code resembling the following.
+You can also filter your server's log, looking for specific items, to find bugs happening
+as your system is being used. Notice, if you created a cloudlet at Aista.com, by default all log
+entries older than 2 weeks will be automatically deleted to avoid exhausting your cloudlet's persistent
+storage. You can create your own log entries using Hyperlambda code such as the following.
 
 ```
 log.info:Something important happened
@@ -44,14 +43,10 @@ to avoid flooding your server with debug log entries. This implies that in your 
 all log entries, including your debug log entries - While in production Magic won't create log entries for
 debug log items.
 
-## Internals
+## Log internals
 
-By default log items will be persisted into your magic _"log_entries"_ database table, but it is possible
-to persist log items into for instance a NoSQL based database.
-See [how to configure NoSQL logging here](/documentation/magic.data.cql/). If you use NoSQL logging however,
-you will not be able to view statistics in your dashboard due to how NoSQL database systems don't provide
-(good) mechanisms to aggregate and group data.
+By default log items will be persisted into your magic _"log_entries"_ database table, but this can be
+changed. We don't recommend this though. The magic.lambda.logging project is what encapsulates the logging
+related slots in Hyperlambda.
 
-* [Read more about logging from Hyperlambda](/documentation/magic.lambda.logging/)
-* [Back to middleware documentation](/documentation/magic/)
-* [Back to main documentation](/documentation/)
+* [magic.lambda.logging](/documentation/magic.lambda.logging/)

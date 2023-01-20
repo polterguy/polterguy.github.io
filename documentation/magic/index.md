@@ -4,15 +4,29 @@ description: The Magic middleware is the parts wiring up Magic, allowing you to 
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-getting-started.jpg"
 ---
 
-# Magic middleware documentation
+# Magic's middleware
 
-This is the documentation for Magic itself, implying the _"middleware"_ found in Magic's core.
-This part documents everything that wires up Magic, and the backend of modules
-such as Hyper IDE and the CRUDifier. This is where you will find information about the file system
-of Magic, system endpoints, system slots, and everything that makes Magic _"tick"_. This is hence
-the documentation of [Magic itself](https://github.com/polterguy/magic).
+Magic's middleware gives you a whole range of HTTP endpoints allowing you to administrate your particular
+Magic installation, in addition to providing you with UI components you can use to manage your installation.
+The middleware is the part you typically _"see"_, and the parts you interact with as you create your
+own applications and modules.
 
-## File structure
+## Initialisation
+
+When you start Magic for the first time, the system might need to initialise itself, which implies doing 2
+things.
+
+* Create a magic database, insert a root user into it, and initialise the authentication secret
+* Create a cryptography key pair for your server
+
+These steps are what you're going through as you initially install Magic, either locally, or on
+a VPS of your chosing. The first step requires you to have a database of some sort somewhere, where
+Magic can create its internal `magic` database. Magic will use this database for authenticating users,
+logging, persisting tasks, etc. If you don't have a database, you can use SQLite.
+The 2nd step is required to create a public and private server key pair. This key is used for among
+other things cryptographically secured Hyperlambda invocations.
+
+## Magic's file structure
 
 There are 4 primary folders in Magic, these are as follows.
 
@@ -51,34 +65,7 @@ by creating a folder _inside_ your module and name this module _"magic.startup"_
 inside this folder will be executed as the system starts, and/or the module is installed. You can also create
 such startup folders inside of _sub_ folders within your module's main folder.
 
-## Initialisation
-
-When you start Magic for the first time, the system might need to initialise itself, which implies doing 3
-things.
-
-* Create a magic database, insert a root user into it, and initialise the authentication secret
-* CRUDify the magic database
-* Create a cryptography key pair for your server
-
-These 3 steps is what you're going through as you initially install Magic, either locally, or on
-a VPS of your chosing. The first step requires you to have a database of some sort somewhere, where
-Magic can create its internal `magic` database. Magic will use this database for authenticating users,
-logging, persisting tasks, etc.
-The second step implies generating CRUD HTTP backend endpoints wrapping this database, to allow
-you to interact with it through a client of some sort. The 3rd step is required to create a
-public and private server key pair. This key is used for cryptographically secured lambda
-invocations, but also in other parts of the system. Below is a screenshot of how this process
-looks like as you install Magic initially.
-
-![Configuring Magic initially](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/configuring-magic.jpg)
-
-After you have followed the above process, you can see that inside your _"modules"_ folder there
-exists Hyperlambda endpoint files wrapping your entire magic database into CRUD HTTP endpoints.
-These files were created in the second step of the above process, and is required to have Magic
-functioning properly. Below you can see a screenshot of how the folder structure looks like in
-Magic through Hyper IDE.
-
-![Magic folder structure through Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/folder-structure.jpg)
+## How Magic handles exceptions
 
 The _"exceptions.hl"_ file at the root of your folder structure is the default exception handler
 that will be used if no module creates its own exception handler logic to override the default handler.
@@ -88,24 +75,24 @@ is as a general rule of thumb your _"goto component"_ when you need to create so
 ## Dashboard components
 
 * [Log component](/documentation/magic/components/log/)
-* [Assumptions component](/documentation/magic/components/assumptions/)
-* [Cache component](/documentation/magic/components/cache/)
+* [Health check component](/documentation/magic/components/assumptions/)
 * [Endpoints component](/documentation/magic/components/endpoints/)
 * [Sockets component](/documentation/magic/components/sockets/)
 * [Hyper IDE component](/documentation/magic/components/hyper-ide/)
 * [Evaluator component](/documentation/magic/components/evaluator/)
 * [SQL component](/documentation/magic/components/sql/)
-* [Crudifier component](/documentation/magic/components/crudifier/)
-* [Terminal component](/documentation/magic/components/terminal/)
+* [Endpoint generator component](/documentation/magic/components/crudifier/backend/)
+* [Frontend generator component](/documentation/magic/components/crudifier/frontend/)
 * [Tasks component](/documentation/magic/components/tasks/)
-* [Auth component](/documentation/magic/components/auth/)
+* [Users and roles component](/documentation/magic/components/auth/)
+* [Users component](/documentation/magic/components/auth/users/)
+* [Roles component](/documentation/magic/components/auth/roles/)
 * [Config component](/documentation/magic/components/config/)
 * [Crypto component](/documentation/magic/components/crypto/)
-* [Bazar component](/documentation/magic/components/bazar/)
+* [Plugins component](/documentation/magic/components/bazar/)
 * [Profile component](/documentation/magic/components/profile/)
 
-## Backend/middleware documentation
+## Backend and middleware documentation
 
 * [Endpoints documentation](/documentation/magic/endpoints/)
 * [Slots documentation](/documentation/magic/slots/)
-* [Back to main documentation](/documentation/)

@@ -4,16 +4,13 @@ description: Using web sockets is easily achieved with Magic by simply clicking 
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-sockets.jpg"
 ---
 
-# Web Sockets in Magic and Hyperlambda
+# The sockets component
 
 The sockets component allows you to subscribe to and publish socket messages. This is useful when
-debugging and developing modules that somehow is using the integrated socket slots from Magic.
-To understand Magic's socket features from a _"hands on"_ perspective refer
-to [this tutorial](/tutorials/web-sockets/) where we go through sockets by creating a chat client, 
-or [its primary documentation](/documentation/magic.lambda.sockets/). The sockets component allows you to
-subscribe to any type of socket message, for then to see messages as they are published to
-your _"channel"_, allowing you to more easily debug and develop your modules that are using sockets.
-Below is a screenshot of how subscribing to a socket message should look like.
+debugging and developing modules that somehow is using the integrated socket slots from Magic. The
+sockets component allows you to subscribe to any type of socket message, for then to see messages as
+they are published to your _"channel"_, allowing you to more easily debug and develop your modules
+that are using sockets.
 
 ![Sockets](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sockets.jpg)
 
@@ -21,10 +18,10 @@ If you subscribe to socket messages named _"foo"_ for then to later click the pu
 publish a message named _"foo"_ you can see how you're notified of this message in your sockets
 component automatically.
 
-## Internals
+## Web sockets internals
 
 Sockets are probably one of the most complex features related to web development. In Magic
-we have significantly simplified it though, by giving you high level Hyperlambda slots, allowing you
+we have significantly simplified it, by giving you high level Hyperlambda slots, allowing you
 to easily publish socket messages. However, before you can understand how to use sockets, a little
 bit of theory is required. First of all, each socket message consists of two primary parts.
 
@@ -33,18 +30,18 @@ bit of theory is required. First of all, each socket message consists of two pri
 
 This implies that if I subscribe to messages named _"foo.bar"_ in my client/frontend code, then every time
 somebody publishes a message with the name of _"foo.bar"_, my code will be automatically invoked,
-with the payload from the parts of my Hyperlambda that published the message. If somebody publishes
-a _"howdy.world"_ message though, my code will _not_ be invoked, and I will _not_ be notified of
-the message. This creates a communication channel through which my backend code can _"push"_ messages
-to my frontend code, as long as the client and the backend agrees upon the name of the message(s)
-published, or agrees upon which _"channel"_ to publish messages over.
+with the payload from my Hyperlambda code that published the message. If somebody publishes
+a _"howdy.world"_ message though, my code will _not_ be invoked unless I also subscribe to such messages.
+This creates a communication channel that my backend code can _"push"_ messages through
+to my frontend, as long as the client and the backend agrees upon the name of the message(s)
+published.
 
-### Authorisation
+### Socket authorisation
 
-The above results in a problem, which is that it allows anybody with knowledge about the name of
+Allowing everyone to listen to socket messages creates a problem, which is that it allows anybody with knowledge of the name of
 your _"channel"_ to subscribe to that channel and be notified every time messages are published
 in the channel. Socket messages of course might contain sensitive information, not intended for
-all to see. The way this is solved in Magic is by creating a whole range of alternatives for
+all. The way this is solved in Magic is by creating a whole range of alternatives for
 autorisation related to publishing messages. What this implies is that the backend needs to choose
 which type of authorisation it wants to require from clients subscribing to messages, and only
 if the client fulfills the authorisation requirements the backend has associated with the message
@@ -53,7 +50,7 @@ to its payload. There are 3 levels of authorisation you can apply when publishin
 
 * __[roles]__ - Only subscribers belonging to one of the comma separated roles will be notified
 * __[groups]__ - Only subscribers being members of one of the comma separated groups will be notified
-* __[users]__ - Only subscribers having authenticated and with a username from one of the comma separated list of usernames will be notified
+* __[users]__ - Only subscribers having authenticated with a username from one of the comma separated list of usernames will be notified
 
 In practice what this implies, is that you have to choose _one_ (or zero) of the above authorisation
 schemes when publishing a socket message. Below is some Hyperlambda code illustrating publishing
@@ -84,8 +81,3 @@ Magic's socket library is built on top of SignalR, which contains client side li
 hundreds of different frameworks, and/or programming languages, allowing you to easily subscribe
 to socket messages in Angular, ReactJS, Swift or Java. Which library you'll need for your
 client depends upon which programming language, and/or framework you're using to build your client.
-[Here](/tutorials/web-sockets/) you can find a tutorial building a chat client using Magic's socket
-functionality in addition to Angular as the frontend framework.
-
-* [Back to middleware documentation](/documentation/magic/)
-* [Back to main documentation](/documentation/)

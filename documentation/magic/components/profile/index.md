@@ -4,12 +4,9 @@ description: The profile component allows you to change your user's password, an
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-profile.jpg"
 ---
 
-# Managing your profile
+# The profile component
 
-This component allows you to edit your profile, such as changing your user's pasword for instance. Below is a
-screenshot of how it looks like.
+The profile component allows you to edit your profile, such as changing your user's password for instance, in addition
+to changing what theme you want to use, etc.
 
-![Changing password](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-profile.jpg)
-
-* [Back to middleware documentation](/documentation/magic/)
-* [Back to main documentation](/documentation/)
+![Your Magic profile](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-profile.jpg)

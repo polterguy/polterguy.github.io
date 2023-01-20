@@ -6,23 +6,24 @@ og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/maste
 
 # Administrating roles
 
-This component allows you to manage and administrate roles in your system, and/or
+The users and roles component allows you to manage and administrate roles in your system, and/or
 create new roles, fine tuning access to your backend through a role based access system.
-Below is a screenshot of the component.
 
-![Roles in Magic](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/auth-roles.jpg)
+![Users in Magic](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/auth.jpg)
 
 Notice, all access in Magic is based upon roles, implying all users belonging to the same role(s)
 have access to the same parts of your backend. This makes it easier to provide access to specific parts
-of your system(s), and/or also see which parts of your system specific users have access to. To create
-a new role click the plus button in the top/right corner of the component.
+of your system(s), and/or also see which parts of your system specific users have access to. This is referred
+to as RBAC or Role Based Access Control.
+
+To create a new role choose _"Role management"_ and click the plus button in the top/right corner of the component.
 
 ## Internals
 
 Magic does _not_ create _"access rights"_ associations for roles. Instead the system allows individual
-endpoints to declare themselves which roles are allowed to invoke the endpoint. This is done by invoking
-**[auth.ticket.verify]** in your Hyperlambda code, and pass in a comma separated list of roles that are
-allowed to invoke the endpoint. Below is an example.
+endpoints to declare themselves which roles are allowed to invoke the endpoint. This is often referred to
+as _"Inversion of Control"_ or IoC. This is done by invoking **[auth.ticket.verify]** from your Hyperlambda code,
+and pass in a comma separated list of roles that are allowed to invoke the endpoint. Below is an example.
 
 ```
 // Some Hyperlambda endpoint file.
@@ -35,14 +36,12 @@ these roles exists, only that the JWT token the client submits contains this rol
 This reduces the number of touch points related to authorisation in Magic, for the cost of making
 it slightly more difficult to see which endpoints each user, and/or role is allowed to invoke.
 To see _"access rights"_ for a specific role, you'll have to use the _"Endpoints"_ menu item,
-which will show you which roles are allowed to invoke your endpoints. Below is a screenshot
-illustrating this.
+and click the endpoint in question, which will show you which roles are allowed to invoke your
+endpoints.
 
 ![Authorisation in Hyperlambda endpoints](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/endpoints.jpg)
 
-Above you can see how the _"Authorization"_ object for that particular endpoint has the value of _"root, admin"_
-implying only root users and admin users are allowed to invoke it. If a user not belonging to any
-of the previously mentioned roles invokes the endpoint, and exception will be thrown, and the rest
+If a user not belonging to any of roles required to invoke the endpoint, an exception will be thrown, and the rest
 of your Hyperlambda file will not execute. You can also retrieve the access rights associations
 for all endpoints in the system from your own code by invoking the `magic/system/auth/endpoints`
 endpoint. This endpoint does not require authentication or authorisation, but returns all
@@ -81,6 +80,3 @@ can be invoked by any user, but the user must be authenticated to invoke the end
 endpoint caches its result on the server for 5 minutes, implying if you create new endpoints, and/or change
 the roles requirements for an endpoint, you'll either have to wait 5 minutes before the changes takes effect,
 or explicitly purge your server side cache.
-
-* [Back to middleware documentation](/documentation/magic/)
-* [Back to main documentation](/documentation/)
