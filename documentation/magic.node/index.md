@@ -45,7 +45,7 @@ foreach (var idxChild in root.Children)
 this is the node that's returned to you after parsing. All nodes you declare in your Hyperlambda will be
 returned to you as children of this root node.
 
-## Types Hyperlambda supports
+## Supported types
 
 Although the node structure itself can hold any value type you need inside of its `Value` property,
 Hyperlambda only supports serialising the following types by default.

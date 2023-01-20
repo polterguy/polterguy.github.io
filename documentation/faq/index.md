@@ -1,9 +1,9 @@
 
-# Frequently asked questions
+# FAQ
 
 These are frequently asked questions related to Magic and Hyperlambda, and serves as an FAQ for
 anything related to Aista, Magic and Hyperlambda. If your question is not answered, you can
-send your question to info@aista.com, and we will try to answer you at the best of our abilities.
+send your question to [info@aista.com](mailto:info@aista.com), and we will try to answer you at the best of our abilities.
 
 ## What is Aista Magic Cloud?
 
@@ -140,7 +140,7 @@ it is executed on a background thread, to make sure the backend is still as repo
 possible. The task scheduler also takes care of thread pooling, to prevent multiple
 tasks running at the same time resulting in that your backend becomes unresponsive.
 
-# Can I extend Magic with C#
+## Can I extend Magic with C#?
 
 Yes, but we don't currently allow hosting of modified Magic installations. However,
 extending Hyperlambda and Aista Magic Cloud with C# is very easy. Start out by
@@ -149,4 +149,14 @@ project's documentation, at which point you can easily create your own Hyperlamb
 keywords probably in a couple of hours. If you do, and you open source license your
 code, please [let us know](mailto:info@aista.com) since we love to hear about community
 driven extentions, and we might be interested in promoting your work if it's good.
+
+## How can I learn Hyperlambda?
+
+The easiest way to learn Hyperlambda is to follow our hands on YouTube course that lasts
+for roughly 5 hours.
+
+- [www.youtube.com/watch?v=v1D3DtrmhS8&list=PLgyI389Eb9HNlhKpF9EHXO7D1EE7_dklg](https://www.youtube.com/watch?v=v1D3DtrmhS8&list=PLgyI389Eb9HNlhKpF9EHXO7D1EE7_dklg)
+
+When you have watched the above videos, you can find the reference documentation
+for each project and slot in the navbar section of the primary documentation for Magic.
 

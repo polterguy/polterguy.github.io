@@ -3,7 +3,8 @@
 
 magic.lambda is where you will find the _"programming language keywords"_ of Hyperlambda.
 It is what makes Hyperlambda Turing complete, and contains slots such as **[for-each]**,
-**[if]**, and **[while]**.
+**[if]**, and **[while]**. If you've watched the Hyperlambda 101 YouTube video playlist,
+and you want to learn more, this is probably where you should start.
 
 ## Structure
 
