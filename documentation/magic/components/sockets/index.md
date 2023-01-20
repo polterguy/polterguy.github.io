@@ -18,7 +18,7 @@ If you subscribe to socket messages named _"foo"_ for then to later click the pu
 publish a message named _"foo"_ you can see how you're notified of this message in your sockets
 component automatically.
 
-## Web sockets internals
+## Sockets internals
 
 Sockets are probably one of the most complex features related to web development. In Magic
 we have significantly simplified it, by giving you high level Hyperlambda slots, allowing you
@@ -36,7 +36,7 @@ This creates a communication channel that my backend code can _"push"_ messages 
 to my frontend, as long as the client and the backend agrees upon the name of the message(s)
 published.
 
-### Socket authorisation
+### Sockets authorisation
 
 Allowing everyone to listen to socket messages creates a problem, which is that it allows anybody with knowledge of the name of
 your _"channel"_ to subscribe to that channel and be notified every time messages are published

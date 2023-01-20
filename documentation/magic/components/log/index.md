@@ -46,7 +46,5 @@ debug log items.
 ## Log internals
 
 By default log items will be persisted into your magic _"log_entries"_ database table, but this can be
-changed. We don't recommend this though. The magic.lambda.logging project is what encapsulates the logging
-related slots in Hyperlambda.
-
-* [magic.lambda.logging](/documentation/magic.lambda.logging/)
+changed. The [magic.lambda.logging](/documentation/magic.lambda.logging/) project is what encapsulates
+the logging related slots in Hyperlambda.

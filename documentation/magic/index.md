@@ -1,7 +1,7 @@
 ---
 title: Magic middleware documentation
 description: The Magic middleware is the parts wiring up Magic, allowing you to use Magic in your own projects, providing you with a default backend for your own frontend apps, authentication, authorisation, and CRUD endpoints wrapping your database(s).
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-getting-started.jpg"
+og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/Aista-Magic-Cloud.jpeg"
 ---
 
 # Magic's dashboard
@@ -14,11 +14,9 @@ of your Magic Cloudlet, such as your scheduled tasks, machine learning models, H
 ![Your Magic dashboard](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/Aista-Magic-Cloud.jpeg)
 
 In addition the dashboard contains some key performance indicators and charts, showing you how often
-others are authenticating to your cloudlet, your last 10 log items, etc.
-
-## Magic dashboard components
-
-Your Magic dashboard contains the following components.
+others are authenticating to your cloudlet, your last 10 log items, etc. The first time you open your dashboard,
+you will see a YouTube that guides you through how to get started with Magic and Hyperlambda. We recommend
+that you watch this video to understand how to use Magic. Your Magic dashboard contains the following components.
 
 * [Endpoint generator component](/documentation/magic/components/crudifier/backend/)
 * [Frontend generator component](/documentation/magic/components/crudifier/frontend/)

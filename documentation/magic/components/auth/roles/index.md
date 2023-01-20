@@ -7,18 +7,15 @@ og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/maste
 # Administrating roles
 
 The users and roles component allows you to manage and administrate roles in your system, and/or
-create new roles, fine tuning access to your backend through a role based access system.
+create new roles, to fine tune access to your backend through a role based access system.
 
 ![Users in Magic](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/auth.jpg)
 
 Notice, all access in Magic is based upon roles, implying all users belonging to the same role(s)
 have access to the same parts of your backend. This makes it easier to provide access to specific parts
 of your system(s), and/or also see which parts of your system specific users have access to. This is referred
-to as RBAC or Role Based Access Control.
-
-To create a new role choose _"Role management"_ and click the plus button in the top/right corner of the component.
-
-## Internals
+to as RBAC or Role Based Access Control. To create a new role choose _"Role management"_ and click the plus
+button in the top/right corner of the component.
 
 Magic does _not_ create _"access rights"_ associations for roles. Instead the system allows individual
 endpoints to declare themselves which roles are allowed to invoke the endpoint. This is often referred to
@@ -38,8 +35,6 @@ it slightly more difficult to see which endpoints each user, and/or role is allo
 To see _"access rights"_ for a specific role, you'll have to use the _"Endpoints"_ menu item,
 and click the endpoint in question, which will show you which roles are allowed to invoke your
 endpoints.
-
-![Authorisation in Hyperlambda endpoints](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/endpoints.jpg)
 
 If a user not belonging to any of roles required to invoke the endpoint, an exception will be thrown, and the rest
 of your Hyperlambda file will not execute. You can also retrieve the access rights associations

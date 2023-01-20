@@ -212,34 +212,10 @@ for Magic, allowing you to install it locally in seconds without having to mess 
 such as the .Net CLI and NodeJS. However, the fastest way to get started with Magic is to
 create a free 90 day trial cloudlet at [Aista.com](https://aista.com).
 
-* [Get started with Magic at Aista.com](https://aista.com)
-
 ## Primary features of Aista Magic Cloud
 
-Aista Magic Cloud contains the following features;
-
-* [Hyper IDE](/documentation/magic/components/hyper-ide/), an integrated IDE allowing you to create and maintain your code directly on your server
-* [SQL Studio](/documentation/magic/components/sql/), allowing you to visually design your database, and execute any SQL towards it, getting instant feedback on the result
-* [Machine Learning](/documentation/magic/components/machine-learning/), allowing you to write in plain English your request to the machine, resulting in OpenAI generating functioning code for you that you can immediately use in your own solutions, in addition to making it easy for you to create your own Machine Learning AI models
-* [User administration](/documentation/magic/components/auth/) allowing you to control who's got access to what with a role based access control (RBAC) UI component
-* [Task scheduler](/documentation/magic/components/tasks/) allowing you to manage and schedule tasks and business process workflows
-* [Plugins](/documentation/magic/components/bazar/) for installing backend micro service components solving your particular needs
-* [Log](/documentation/magic/components/log/) component giving you easy access to see what occurs in your system over time
-* [Cryptography](/documentation/magic/components/crypto/) features for managing super sensitive data
-* [Health check](/documentation/magic/components/assumptions/) component allowing you to automatically test integrity of your particular installation of Magic
-* [Configuration](/documentation/magic/components/config/) component allowing you to manage your server's configuration settings
-* [Endpoints](/documentation/magic/components/endpoints/) component giving you a _"Swagger like UI"_ for testing your endpoints
-* [Hyperlambda playground](/documentation/magic/components/evaluator/) allowing you to execute some Hyperlambda snippet in _"immediate mode"_
-* [Web sockets](/documentation/magic/components/sockets/) component allowing you to debug and test your web socket integrations
-* Plus many more ...
-
-Aista Magic Cloud is basically your _"one stop shop"_ for most of your software development requirements,
-with its edge of course being that it generates most of your code 100% automagically.
-
-## A complete lists of Magic's components
-
-Below is a complete list of Aista Magic Cloud's frontend UI components, allowing you to graphically administrate
-your Magic installation.
+Below is a more or less complete list of Aista Magic Cloud's frontend UI components and features,
+allowing you to graphically administrate your Magic installation.
 
 * [Endpoint generator component](/documentation/magic/components/crudifier/backend/)
 * [Frontend generator component](/documentation/magic/components/crudifier/frontend/)

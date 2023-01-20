@@ -21,8 +21,8 @@ google_analytics: G-9TJ79M3VVN
 copyright: Copyright © Aista, Ltd 2020 - 2023, info@aista.com
 
 # Most Wanted Response, most important link on your site.
-mwr: "https://aista.com"
-mwr_text: Start
+mwr: /documentation/magic/
+mwr_text: Getting Started
 
 # Background images for banner and the main body/content parts of your site
 banner_bg: /assets/bg.jpeg
@@ -43,7 +43,7 @@ plugins:
 
 # Your navigation section. Declares the drop down menu items for your hamburger menu.
 nav_sections:
-  - name: Documentation for plugins
+  - name: Primary documentation
     items:
       - url: /documentation/magic.lambda/
         name: magic.lambda
@@ -105,7 +105,7 @@ nav_sections:
         name: magic.lambda.sockets
       - url: /documentation/magic.lambda.threading/
         name: magic.lambda.threading
-  - name: Documentation for utility projects
+  - name: Misc helper projects
     items:
       - url: /documentation/magic.node/
         name: magic.node
@@ -121,17 +121,15 @@ nav_sections:
         name: magic.deploy
       - url: /documentation/magic.clone/
         name: magic.clone
-  - name: Misc documentation
+  - name: Misc
     items:
-      - url: /documentation/magic/
-        name: dashboard
       - url: /documentation/faq/
-        name: faq
+        name: FAQ
       - url: https://youtube.com/ThomasHansen-Magic
-        name: youtube
+        name: "Magic's YouTube channel"
       - url: https://t.me/aistamagic
-        name: telegram
+        name: Telegram channel
       - url: https://www.linkedin.com/company/77018722
-        name: linkedin
+        name: LinkedIn
       - url: https://github.com/polterguy/magic
-        name: github
+        name: GitHub project
