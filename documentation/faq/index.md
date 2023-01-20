@@ -30,7 +30,7 @@ Aista means a lot of things. It can be an acronym, at which point it implies _"A
 Intelligence Software Technology Assistance"_. In Hindi it implies _"Taking it easy and relaxing"_,
 which arguably becomes the end result for the software developer as the machine creates most of your
 code. In ancient Gothic it means _"In awe of, and in respect of"_, which are our company values.
-While in Greek it implies _"Let it be, leave it go"_, which is what you can fo with most of
+While in Greek it implies _"Let it be, leave it go"_, which is what you can do with most of
 your software development efforts once the machine creates most of your code.
 
 ## What is Hyperlambda?
@@ -139,4 +139,14 @@ according to some sort of repetition pattern or schedule. When a task is due for
 it is executed on a background thread, to make sure the backend is still as reponsive as
 possible. The task scheduler also takes care of thread pooling, to prevent multiple
 tasks running at the same time resulting in that your backend becomes unresponsive.
+
+# Can I extend Magic with C#
+
+Yes, but we don't currently allow hosting of modified Magic installations. However,
+extending Hyperlambda and Aista Magic Cloud with C# is very easy. Start out by
+cloning the _"magic.clone"_ project, look at its code, refer to the _"magic.signals"_
+project's documentation, at which point you can easily create your own Hyperlambda
+keywords probably in a couple of hours. If you do, and you open source license your
+code, please [let us know](mailto:info@aista.com) since we love to hear about community
+driven extentions, and we might be interested in promoting your work if it's good.
 
