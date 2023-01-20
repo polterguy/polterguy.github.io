@@ -131,7 +131,7 @@ To create your own C# or F# slots, you can follow the following recipe.
 
 **Notice** - You can also implement `ISlotAsync` if you want to support `async` invocations.
 
-## The gory details
+## How Hyperlambda invokes slots
 
 At the heart of Hyperlambda is the **[eval]** slot. This slot is responsible for executing your lambda object
 and follows a couple of simple rules. All nodes starting with a _"."_ will be ignored, and **[eval]** will not
@@ -158,7 +158,7 @@ while
       math.increment:x:@.no
 ```
 
-## Tokens
+## Hyperlambda tokens
 
 The separating of a node's name and its value is done by using a `:` character. To the left is the node's
 name, and to the right is its value. The value of a node can also be a C# type of string, using double
@@ -179,7 +179,7 @@ including referencing UNICODE characters in your strings. Hyperlambda is _always
 so you can add any UNICODE characters in your Hyperlambda you wish. Just make sure you save your files
 as UTF8 if you are using an external code editor to edit your Hyperlambda files.
 
-## How to comment your code
+## How to comment your Hyperlambda code
 
 Hyperlambda accepts comments the exacts same way C# does, and you can use either multiline comments
 or single line comments, like the following example illustrates.
@@ -213,7 +213,7 @@ also for comments. If you de-indent the above comment, you might get unpredictab
 if you're serializing and de-serializing your Hyperlambda preserving comments. Comments should as a general
 rule of thumb be applied with the same amount of indentation as the node below them.
 
-## Data segments
+## Hyperlambda data segments
 
 Hyperlambda does not separate between a _"variable"_ and a _"function invocation"_. Hence, a node
 might serve as both at the same time. This allows you to dynamically modify your lambda structure, as you
@@ -235,6 +235,13 @@ If you change name of the above **[.src]** node to simply **[src]**, your code w
 with an error such as follows _"No slot exists for [src]"_ since this slot doesn't exist in your Hyperlambda
 vocabulary - Unless you for some reasons have an installation where this slot has been explicitly added to
 your vocabulary.
+
+## Hyperlambda documentation conventions
+
+When we document Hyperlambda slots, and nodes, which are almost the same, we will document the node's
+name with square brackets surrounding it, such as **[this]** illustrates, where _"this"_ is referencing
+a node, and is the name of a node. We will also make such node references **bold**, to make them
+more easy to see.
 
 ## How to use [eval]
 
