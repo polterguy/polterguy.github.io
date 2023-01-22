@@ -1,5 +1,5 @@
 
-# magic.clone
+# magic.clone - How to clone magic locally
 
 The magic.clone project helps you clone Magic locally, and assumes you've got VS Code, NodeJS, Angular CLI,
 and the .Net SDK version 6 or higher installed locally. When you've made sure you've got all of these parts,

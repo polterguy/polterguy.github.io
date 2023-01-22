@@ -1,5 +1,5 @@
 
-# magic.lambda.scheduler
+# magic.lambda.scheduler - Creating and maintaining tasks and schedules from Hyperlambda
 
 This project gives you the ability to create persisted and scheduled Hyperlambda tasks
 for Magic. More specifically it provides the following slots.

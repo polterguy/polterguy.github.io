@@ -1,5 +1,5 @@
 
-# magic.lambda.auth
+# magic.lambda.auth - How to do authentication and authorisation from Hyperlambda
 
 The magic.lambda.auth project contains authentication and authorization helper slots for Magic. The project allows you
 to create and consume JWT tokens, to secure your Magic cloudlet. The project contains the following slots.

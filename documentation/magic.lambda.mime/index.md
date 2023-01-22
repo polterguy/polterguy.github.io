@@ -1,5 +1,5 @@
 
-# magic.lambda.mime
+# magic.lambda.mime - Creating and parsing MIME messages from Hyperlambda
 
 magic.lambda.mime gives you the ability to parse and create MIME messages from Hyperlambda.
 This project contains the following slots.

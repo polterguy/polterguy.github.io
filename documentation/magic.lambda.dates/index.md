@@ -1,5 +1,5 @@
 
-# magic.lambda.dates
+# magic.lambda.dates - Manipulating dates from Hyperlambda
 
 This project contains date manipulation slots for Magic. More specifically, this project contains the following slots.
 

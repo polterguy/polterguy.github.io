@@ -1,5 +1,5 @@
 
-# magic.library
+# magic.library - Tying Magic together
 
 This project helps you to wire up everything related to Magic. Normally you'd use it simply like the following from
 your startup class in your .Net 6 Web API project.

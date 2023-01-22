@@ -1,5 +1,5 @@
 
-# The magic.lambda.io project
+# magic.lambda.io - Accessing your file system from Hyperlambda
 
 This project provides file/folder slots for Magic. More specifically, it provides the following slots.
 

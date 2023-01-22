@@ -1,5 +1,5 @@
 
-# magic.lambda.validators
+# magic.lambda.validators - Hyperlambda validators
 
 This project contains argument validators for Hyperlambda. More specifically it contains the following slots.
 

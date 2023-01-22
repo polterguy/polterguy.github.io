@@ -1,5 +1,5 @@
 
-# magic.lambda.config
+# magic.lambda.config - Accessing your server's configuration from Hyperlambda
 
 This project provides configuration settings slots for Magic. The project provides the following
 slots, allowing you to retrieve configuration settings from your _"appsettings.json"_ configuration file,
