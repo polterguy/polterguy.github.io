@@ -22,10 +22,11 @@ that you watch this video to understand how to use Magic.
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/pJHuUiItrnc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## The Magic dashboard contains the following components.
+## Aista Magic Cloud contains the following parts
 
 * [Endpoint generator component](/documentation/magic/components/crudifier/backend/)
 * [Frontend generator component](/documentation/magic/components/crudifier/frontend/)
+* [SQL endpoint generator component](/documentation/magic/components/crudifier/sql/)
 * [SQL Studio](/documentation/magic/components/sql/)
 * [Machine Learning](/documentation/magic/components/machine-learning/)
 * [Hyper IDE](/documentation/magic/components/hyper-ide/)
@@ -34,11 +35,11 @@ that you watch this video to understand how to use Magic.
 * [Plugins component](/documentation/magic/components/bazar/)
 * [Tasks component](/documentation/magic/components/tasks/)
 * [Users and roles component](/documentation/magic/components/auth/)
-* [Users component](/documentation/magic/components/auth/users/)
-* [Roles component](/documentation/magic/components/auth/roles/)
 * [Cryptography component](/documentation/magic/components/crypto/)
 * [Health check](/documentation/magic/components/assumptions/)
 * [Sockets](/documentation/magic/components/sockets/)
-* [Config component](/documentation/magic/components/config/)
+* [Configuration component](/documentation/magic/components/config/)
 * [Profile component](/documentation/magic/components/profile/)
 * [Log](/documentation/magic/components/log/)
+* [HTTP endpoints in Magic](/documentation/magic/endpoints/)
+* [Dynamic Hyperlambda slots in Magic](/documentation/magic/slots/)
