@@ -75,3 +75,7 @@ Curie is first of all significantly less expensive than DaVinci, in addition to 
 faster than DaVinci. Magic comes with almost 1,000 Hyperlambda training snippets, but we
 are constantly adding more machine learning training data to it.
 
+If you edit any other files, such as an HTML file or a JavaScript file, the machine learning
+component will automatically use the strongest DaVinci model as its AI model. This gives you
+the same quality of code as GitHub CoPilot gives you.
+
