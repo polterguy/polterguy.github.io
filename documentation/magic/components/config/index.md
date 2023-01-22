@@ -12,38 +12,32 @@ retrieve configuration settings, such as for instance SMTP settings when email s
 
 ![Configuring Magic](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/config-component.jpg)
 
-Notice, you should be careful as you edit your server's configuration settings, since this might
+You should be careful as you edit your server's configuration settings, since this might
 result in that your server becomes erronously configured, resulting in that your system stops working -
 In addition to that if you edit your server's configuration erronously, you might open up your server
-such that malicious adversaries gains access to your system. The configuration component also have helper
-UI elements to help you configure things such as OpenAI and SMTP.
+such that malicious adversaries gains access to your system. The configuration component have helper
+UI elements to help you configure things such as OpenAI and SMTP, giving you a graphical user interface
+to edit some of its most important parts.
 
-## Configuration sections
-
-What configuration sections your particular server has obviously depends upon which apps, and/or
-modules you've installed, and which settings these modules depends upon - However, below is a
-list of the common _"system configuration settings"_ Magic relies upon out of the box, and what
-these configuration settings implies.
-
-**frontend**
+## Frontend configuration
 
 The `magic:frontend:urls` section allows you to explicitly specify CORS, implying frontend URLs that are
 allowed to retrieve data from the backend. Its default setting implies _all_ URLs are allowed to retrieve
 data from your backend, but sometimes you need to explicitly specify one or more URLs here. You can do this
 by adding a comma separated list of URLs in this setting.
 
-**smtp**
+## SMTP configuration
 
-This `magic:smtp` section allows you to specify which SMTP server Magic should use for sending emails.
+The `magic:smtp` section allows you to specify which SMTP server Magic should use for sending emails.
 Some modules such as the registration module needs to be able to send emails to function optimally.
 This section allows you to specify which SMTP server settings to use when sending emails. Most parts of
 this section is self explanatory, but the `from` section is the default from name and address to use,
 which is only used if an email is sent _without_ explicitly declaring who it originated from.
 
-**databases**
+## Database configuration
 
-These are your database connection strings. Magic supports 4 relational database types, these are
-as follows.
+The `magic:databases` section allows you to configure your database connection strings. Magic supports
+4 relational database types, these are as follows.
 
 * `sqlite` - SQLite
 * `mysql` - MySQL
@@ -53,11 +47,11 @@ as follows.
 You can use all of the above database types in your Magic server. However, to access your database
 you need to provide Magic with one or more connection strings. Each of these section contains
 a key/value pair where the key becomes the name of your connection string, and the value its actual
-connection string value. This section also has a `default` setting, which is the default database
+connection string. This section also has a `default` setting, which is the default database
 type to use if not specified by caller. This needs to be one of _"mysql"_, _"pgsql"_, _"sqlite"_, or _"mssql"_ -
 Implying MySQL, PostgreSQL, SQLite or SQL Server.
 
-**auth**
+## Authentication and authorisation configuration
 
 This section allows you to override the default authentication and authorisation values for Magic.
 Its sub-sections implies the following.
@@ -69,7 +63,7 @@ Its sub-sections implies the following.
 * `registration:allow` - Turns on or off registrations. If this value is false, users cannot register in Magic
 * `registration:confirm-email` - Allows you to override where to send the _"confirm email address"_ email, to instead of sending it to the user registering, sending it to for instance yourself, allowing for you to explicitly allow users to register in Magic
 
-**logging**
+## Logging configuration
 
 The `level` parts of this section implies which logging level you want to use. Magic supports 5 legal values for
 this setting, and these are as follows.
@@ -85,32 +79,12 @@ your minimum level are logged, while the rest of your log invocations will be ig
 implies that everything will be logged. Notice, you can also override which `service` to use for actually
 logging here.
 
-**caching**
-
-This section allows you to override the service to use for your cache. The default implementation implies
-using a memory based cache, but you can also use NoSQL cache services, and/or roll your own.
-
-**io**
-
-The `root-folder` setting in this section allows you to change where Magic will store your dynamic files.
-This allows you to for instance have some folder on disc where all your dynamic files are stored, as
-an alternative to the default value, which is inside your Magic server's _"files"_ folder. The other
-parts of this configuration settings implies the following.
-
-* `file-service` - What `IFileService` implementation to use
-* `folder-service` - What `IFolderService` implementation to use
-* `stream-service` - What `IStreamService` implementation to use
-
-To understand the 3 settings above, realise that Magic supports _"virtual file and folder systems"_, through
-for instance storing files and folders in Scylla or Cassandra, allowing you to virtually resolve files from
-alternative storages besides your physical file system.
-
-**sockets**
+## Sockets configuration
 
 The `url` setting here allows you to override which URL clients needs to use to negotiate a socket
 channel with your server. You can also completely turn OFF web sockets entirely here, by changing the
 value to `null` or remove the section entirely.
 
-**bazars**
+## Plugins configuration
 
-This setting allows you to change which base URL Magic should use as its repository for its plugins component.
+The `bazar` setting allows you to change which base URL Magic should use as its repository for its plugins component.
