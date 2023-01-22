@@ -33,10 +33,11 @@ the repetetive tasks he experienced himself as an enterprise software developer 
 FinTech space, but at some point Magic became such a solid product that we decided to start a company
 around it and look for funding. Hyperlambda is currently documented at [Microsoft's website](https://docs.microsoft.com/en-us/archive/msdn-magazine/2017/june/csharp-make-csharp-more-dynamic-with-hyperlambda), it has 1.5 million page views
 at [DZone](https://dzone.com/users/3044876/mrgaia.html), and it's got roughly 4 million downloads of its NuGet packages.
-If you want to write articles about Aista Magic Cloud, and or belong to the press, you can use the logo below.
+If you want to write an article about Aista Magic Cloud, or you belong to the press, you can use the logo below.
 
 ![Aista logo](/assets/aista-logo.svg)
 
 ## Contact us
 
-If you want to contact Aista, you can send an email to [info@aista.com](mailto:info@aista.com).
+If you want to contact Aista, you can send an email to [info@aista.com](mailto:info@aista.com) or
+use our contact form at [aista.com](https://aista.com).
