@@ -4,40 +4,52 @@ description: Magic allows you to create HTTP endpoints using only SQL. You provi
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-web-api.jpg"
 ---
 
-# Create an HTTP endpoint with SQL
+# The SQL endpoint generator component
 
-The SQL component allows you to automatically generate an HTTP web API endpoint wrapping some arbitrary SQL statement.
-It is similar to the [backend CRUD generator](/documentation/magic/components/crudifier/backend/), but instead of
+The SQL endpoint generator component allows you to generate an API endpoint wrapping an SQL statement.
+It is similar to the [backend generator](/documentation/magic/components/crudifier/backend/), but instead of
 automatically creating your SQL, it allows you to provide your own custom SQL, and then securely wrap your SQL into
-an HTTP endpoint. Below is a screenshot of the component.
+an HTTP endpoint. It allows you to create endpoints wrapping any of the 5 most popular HTTP verbs, takes care of
+authentication and authorisation, in addition to that it allows you to declare arguments to your endpoints.
 
 ![SQL web API](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-web-api.jpg)
 
-The process works as follows.
+## How to use the SQL endpoint generator
+
+You can find the SQL endpoint generator as an additional tab inside your endpoint generator. The SQL generator
+is much simpler to understand than the endpoint generator, since it has much less settings you can apply.
+However, the SQL endpoint generator obviously requires that you've got a solid understanding of SQL.
+The process to use the SQL endpoint generator to create an endpoint is as follows.
 
 1. Choose your database
-2. Choose an HTTP verb and a URL for your endpoint
-3. Select which roles should be allowed to invoke your endpoint (optional)
-4. Provide arguments to your endpoint (optional)
-5. Write your SQL referencing arguments if you provided arguments in the above step
+2. Choose an HTTP verb
+3. Choose URL(s) for your endpoint
+4. Select which roles are authorised to invoke your endpoint (optional)
+5. Provide arguments to your endpoint (optional)
+6. Write your SQL referencing arguments if you provided arguments in the above step
 
 When you've done with the above, simply click the _"Generate"_ button, and you've got an HTTP endpoint
-wrapping your SQL. Read [this article](/tutorials/sql-web-api/) for a hands on tutorial about the component.
+wrapping your SQL.
 
-## Settings
+## Settings for the SQL generator
 
 The SQL generator allows you to override authorisation requirements, the URL of your endpoint, and which arguments
 your endpoint requires. The last parts is important since it allows you to add arguments to your endpoint that
-you can reference in your SQL somehow. In the above screenshot we have created a _"filter"_ argument, that we're
-referencing inside our SQL using `@filter`. Above we're using this argument to make sure we're only returning
-items having either a _"first\_name"_, _"title"_, or _"description"_ that contains the specified filter value - But you
-can also reference arguments for insert, update, or delete SQL statements. If you generate an SQL endpoint using the
-PUT, PATCH or POST verb, the caller will have to supply his or her arguments as a JSON payload. If you generate a GET or
-DELETE endpoint, the endpoint requires your arguments as query parameters instead. When you add arguments to your
-endpoint's declaration, you'll have to choose a _"type"_. This ensures that Magic is automagically converting
-the incoming argument's value to the type of your choice. Below is a screenshot of this process.
+you can reference in your SQL somehow. To reference an argument in your SQL, prefix your argument's name with an alpha
+character (@), implying if your argument is named _"foo"_, you'll have to reference your argument in your SQL
+as _"@foo"_. Notice, arguments supplied to your SQL endpoint are obviously mandatory, since once you've generated
+your endpoint, there is no known mechanisms for removing the argument from your SQL. However, your arguments
+could be supplied as null values, at which point the resulting SQL would use the value null as a substitute
+for your argument.
 
 ![SQL arguments](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-arguments.jpg)
 
-* [Back to middleware documentation](/documentation/magic/)
-* [Back to main documentation](/documentation/)
+## HTTP endpoints the SQL endpoint generator accepts
+
+The SQL endpoint generator can create endpoints wrapping these HTTP verbs.
+
+* POST
+* GET
+* PUT
+* PATCH
+* DELETE

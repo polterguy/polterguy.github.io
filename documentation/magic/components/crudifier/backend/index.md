@@ -43,19 +43,18 @@ after you've generated your backend.
 ## Backend generator settings
 
 Once you have selected a database and a table, you can override individual settings for how Magic should
-create CRUD endpoints wrapping your table. Below is a screenshot where we have chosen to publish SignalR socket
-messages upon write invocations to our table, implying create, update, and delete invocations. You can also turn
-on or off specific columns, preventing Magic from accepting values for these columns, for individual CRUD verbs.
-If you have a read only type of column for instance, that should only be set during _"create"_ invocations, you
-can easily remove that field from your _"update"_ endpoint, making sure Magic does not accept new values to that
-column when its update endpoint is invoked.
+create CRUD endpoints wrapping your table. You can also turn on or off specific columns, preventing Magic
+from accepting values for these columns, for individual CRUD verbs. If you have a read only type of column
+for instance, that should only be set during _"create"_ invocations, you can easily remove that field from
+your _"update"_ endpoint, making sure Magic does not accept new values to that column when its update endpoint
+is invoked.
 
 ![CRUD backend settings](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/crud-settings.jpg)
 
 You can also override what URLs your endpoints should use, what authorisation requirements
 your endpoints should have, in addition to a lot of other settings, such as turning on logging, caching, etc.
 
-## Backend generator settings
+## Backend generator settings complete list
 
 Below is a complete list of what settings you can apply when generating your endpoints. Notice, some of these
 settings are only possible to apply if you've selected only _one_ table.
