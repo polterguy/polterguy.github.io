@@ -27,6 +27,7 @@ that you watch this video to understand how to use Magic.
 * [Endpoint generator component](/documentation/magic/components/crudifier/backend/)
 * [Frontend generator component](/documentation/magic/components/crudifier/frontend/)
 * [SQL endpoint generator component](/documentation/magic/components/crudifier/sql/)
+* [The database component](/documentation/magic/components/databases/)
 * [SQL Studio](/documentation/magic/components/sql/)
 * [Machine Learning](/documentation/magic/components/machine-learning/)
 * [Hyper IDE](/documentation/magic/components/hyper-ide/)
