@@ -629,7 +629,3 @@ the above Hyperlambda will result in something resembling the following.
 
 This makes it perfect for _"transforming"_ input payloads containing passwords before persisting these into
 your database.
-
-* [Back to middleware documentation](/documentation/magic/)
-* [Endpoints documentation](/documentation/magic/endpoints/)
-* [Main documentation](/documentation/)

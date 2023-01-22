@@ -1679,7 +1679,3 @@ argument. The endpoint can only be invoked by a root user. The endpoint requires
 * __[filter]__ - Optional filtering criteria the socket connection must contain to be considered a match
 
 This endpoint is not intended for you to consume in your own code.
-
-* [Back to middleware documentation](/documentation/magic/)
-* [Slots documentation](/documentation/magic/slots/)
-* [Main documentation](/documentation/)

@@ -20,7 +20,7 @@ button in the top/right corner of the component.
 Magic does _not_ create _"access rights"_ associations for roles. Instead the system allows individual
 endpoints to declare themselves which roles are allowed to invoke the endpoint. This is often referred to
 as _"Inversion of Control"_ or IoC. This is done by invoking **[auth.ticket.verify]** from your Hyperlambda code,
-and pass in a comma separated list of roles that are allowed to invoke the endpoint. Below is an example.
+and pass in a comma separated list of roles that are allowed to invoke the endpoint.
 
 ```
 // Some Hyperlambda endpoint file.

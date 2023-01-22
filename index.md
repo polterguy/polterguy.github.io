@@ -251,3 +251,4 @@ allowing you to graphically administrate your Magic installation.
 * [Profile component](/documentation/magic/components/profile/)
 * [Log](/documentation/magic/components/log/)
 * [HTTP endpoints in Magic](/documentation/magic/endpoints/)
+* [Dynamic Hyperlambda slots in Magic](/documentation/magic/slots/)
