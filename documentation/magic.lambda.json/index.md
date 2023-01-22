@@ -1,5 +1,5 @@
 
-# JSON and YAML support in Hyperlambda
+# magic.lambda.json
 
 This project provides JSON helper slots for Magic. More specifically, it provides the following slots.
 

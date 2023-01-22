@@ -1,10 +1,9 @@
 
 # magic.clone
 
-This recipe helps you clone Magic locally, and assumes you've got VS Code, NodeJS, Angular CLI, and the .Net SDK
-version 6 or higher. You can also use Visual Studio instead of VS Code if you're on Windows, at which point
-you only need to open the _"magic.sln"_ file. When you've made sure you've got all of these parts, clone
-this repository locally using the following.
+The magic.clone project helps you clone Magic locally, and assumes you've got VS Code, NodeJS, Angular CLI,
+and the .Net SDK version 6 or higher installed locally. When you've made sure you've got all of these parts,
+clone this repository locally using the following.
 
 ```bash
 git clone https://github.com/polterguy/magic.clone.git
@@ -47,7 +46,8 @@ ng serve
 When `ng serve` and `dotnet run` is done, you can visit [localhost:4200](https://localhost:4200) in your
 browser, and you should be set. Notice, you will need a database to configure Magic. Below are recipies
 for how to accomplish this if you don't have a database accessible already somewhere.
-To debug, make sure you've got the OmniSharp C# debugger plugin installed in VSCode, click F5 while in VS Code, 
+
+To debug Magic, make sure you've got the OmniSharp C# debugger plugin installed in VSCode, click F5 while in VS Code, 
 and set breakpoints where you wish to debug Magic locally on your development machine. This is configured through
 the `.vscode/launch.json` and `.vscode/tasks.json` files. If you started Magic first with `dotnet run` you have to
 stop that process before you start debugging Magic.
