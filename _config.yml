@@ -123,6 +123,8 @@ nav_sections:
         name: magic.clone
   - name: Misc
     items:
+      - url: /about
+        name: About
       - url: /documentation/faq/
         name: FAQ
       - url: https://youtube.com/ThomasHansen-Magic

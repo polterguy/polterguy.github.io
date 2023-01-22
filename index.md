@@ -7,7 +7,7 @@ og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master
 # What is Aista Magic Cloud?
 
 Aista Magic Cloud, or Magic for short, is a software development platform that creates most of your code _"automagically"_,
-by leveraging meta programming, declarative programming, artificial intelligence, and software development
+by leveraging meta programming, declarative programming, artificial intelligence, and low-code software development
 automation. This allows you to focus on creative tasks, while having the machine implement the
 boring parts. Aista Magic Cloud is [open source](https://github.com/polterguy/magic), but Aista also
 offers [hosting of Magic](https://aista.com) for a monthly fee.
@@ -24,7 +24,7 @@ This results in more secure and robust solutions, with less bugs, better scaling
 for you to pursue more creative tasks. In general Aista Magic Cloud makes you at least 5 times as productive,
 sometimes hundreds of times more productive.
 
-## What can I do with Magic?
+## What can I create with Magic?
 
 Aista Magic Cloud is not suitable for all tasks. Its
 primary strength is for generating backend code, that is database heavy in nature, and/or integrates with
