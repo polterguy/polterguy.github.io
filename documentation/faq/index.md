@@ -160,6 +160,16 @@ for roughly 5 hours.
 When you have watched the above videos, you can find the reference documentation
 for each project and slot in the navbar section of the primary documentation for Magic.
 
+## Where can I find the documentation for Aista Magic Cloud?
+
+You can find Magic's documentation at [docs.aista.com](https://docs.aista.com)
+
+## What is Aista's slogan?
+
+Our slogan is _"Where the Machine Creates the Code"_, and it implies that when you're
+using Aista Magic Cloud, the machine will be able to create a lot of your code, especially
+the repetetive and boring code.
+
 ## What is a cloudlet?
 
 A cloudlet is a Kubernets POD deployed into our Kubernetes cluster, with Aista Magic Cloud
