@@ -6,12 +6,12 @@ og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/maste
 
 # The Hyperlambda Playground component
 
-The Hyperlambda playground component allows you to play with Hyperlambda code, and execute your code in _"immediate mode"_,
-for then to see the result of your execution immediately. The evaluator is also a nice starting
+The Hyperlambda Playground component allows you to play with Hyperlambda code, and execute your code in _"immediate mode"_,
+for then to see the result of your execution immediately. The Hyperlambda playground is also a nice starting
 point to learn Hyperlambda, since it contains a whole range of _"Hyperlambda snippets"_ that
 somehow demonstrates Hyperlambda's capabilities, and provides examples for you as you start out
 learning Hyperlambda. Click the _"Snippets"_ button to load up some snippet, study it, modify it,
-and then execute it, for afterwards to see the result of the execution.
+and then execute it, for then afterwards to see the result of the execution.
 
 ![Evaluator component](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/eval-component.jpg)
 
@@ -25,7 +25,21 @@ some Hyperlambda task at will.
 
 The evaluator will transmit your Hyperlambda to the server, where Magic will _"transpile"_ your Hyperlambda
 into a graph object, referencing CLR _"slots"_ implemented in C#, resulting in being able to dynamically
-execute code, and returning the result of the invocation to caller. In such a regard Hyperlambda resembles
+execute code, and returning the result of the invocation to the caller. In such a regard Hyperlambda resembles
 XML, XSLT and XPath, although with a much less confusing syntax, where executing a snippet of Hyperlambda
 returns a _"transformed"_ lambda object, which again is serialised as Hyperlambda and returned back to the
 client. This is why after having executed your Hyperlambda you can see its _"result"_.
+
+## Hyperlambda as a meta programming language
+
+Since Hyperlambda is a meta programming language, implying the machine can easily generate functioning
+Hyperlambda that it executes, this allows you touse the Hyperlambda Playground as a _"software development extention"_,
+creating snippets of Hyperlambda, that somehow creates or modifies existing Hyperlambda code, and can be dynamically
+executed on demand.
+
+In the Hyperlambda Playground's snippets collection, you can find some snippets that does such tasks for
+you, such as one snippet called _"format-hyperlambda"_ that you can parametrise with some folder and execute.
+Once executed this Hyperlambda snippet will correctly format all code recursively within that folder, by
+reading all Hyperlambda files inside of this folder recursively, for then to correctly format your files.
+You can of course create your own similar snippets, that automatically performs similar types of tasks,
+for then to save these Hyperlambda files to your snippets collection.

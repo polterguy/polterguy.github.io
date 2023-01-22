@@ -8,7 +8,9 @@ og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/maste
 
 Hyper IDE is your _"goto component"_ when you want to create your own modules using Magic and Hyperlambda.
 It's a fully fledged web based IDE or Integrated Development Environment, allowing you to edit your code,
-create new modules, and contains most things you're used to from a traditional IDE.
+create new modules, and contains most things you're used to from a traditional IDE. It is also the natural
+extention of Magic's [endpoint generator](/documentation/magic/components/crudifier/backend/), since it
+allows you to edit the Hyperlambda endpoint files after Magic has generated your CRUD backend.
 
 ![Editing a file in Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-hyper-ide-2.jpg)
 
@@ -41,4 +43,26 @@ upload endpoints for you. To execute a macro, first select which module you want
 the macro action button, and parametrise your macro.
 
 ![Hyper IDE macros](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/execute-macro.jpg)
+
+## Hyper IDE features
+
+Hyper IDE is not a fully fledged IDE, and cannot compare to something like VS Code or Visual Studio. However,
+its purpose is to function as an extention on top of the endpoint generator, giving you code editing capabilities
+of your generated Hyperlambda files. You can use Hyper IDE to edit TypeScript, Ruby, HTML and C# code, but we
+don't recommend exchanging it with your existing code editor, since other IDEs have much more features than
+Hyper IDE. However, the opposite is also correct, implying Hyper IDE have features your existing IDE does not have.
+
+One example of such features is its integrated machine learning and AI features. With Hyper IDE, you can use
+OpenAI's API to ask it to create code for you. This resembles the way GitHub CoPilot works, with the difference
+being that Hyper IDE's AI models are much more tightly integrated than VS Code's GitHub CoPilot is.
+
+In addition, Hyper IDE supports macros, that automatically generates code for you, by reading meta data
+from your existing code, allowing it to semantically understand what your existing code does, before it
+applies its changes. This of course only works with Hyperlambda, but gives you some extra _"super powers"_
+when it comes to code editing, and can be a real time saver for you when possible to use.
+
+Another difference is that Hyperlambda is a dynamic programming language, implying once you've saved
+your Hyperlambda files, you can immediately test your code by executing it from within Hyper IDE.
+This results in a much tighter development model than a traditionally compiled programming language
+gives you, making it much faster to find bugs and create working code.
 
