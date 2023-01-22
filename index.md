@@ -250,3 +250,4 @@ allowing you to graphically administrate your Magic installation.
 * [Configuration component](/documentation/magic/components/config/)
 * [Profile component](/documentation/magic/components/profile/)
 * [Log](/documentation/magic/components/log/)
+* [HTTP endpoints in Magic](/documentation/magic/endpoints/)

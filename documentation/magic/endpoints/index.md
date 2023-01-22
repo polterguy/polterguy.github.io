@@ -1,6 +1,10 @@
+---
+title: Documentation for Aista Magic Cloud and Hyperlambda
+description: Where the Machine Creates your Code, using Artificial Intelligence, Machine Learning, meta programming, and software development automation
+og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg
+---
 
-
-# Endpoints
+# Magic's Endpoints
 
 Magic contains a whole range of endpoints, or _"middleware"_ parts, that the system itself
 relies upon to function. You can play around with these endpoints by using the _"Endpoints"_
@@ -10,12 +14,12 @@ rule of thumb _not_ be consumed directly by you - But some of these endpoints ar
 as implementing authentication and authorisation in your own code. Below is a screenshot of how Magic
 allows you to browse and try your endpoints through its _"Endpoints"_ menu item.
 
-![Magic endpoints menu item](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/endpoints-2.jpg)
+![Endpoints](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/endpoints.jpg)
 
 Notice, all endpoints that requires authorization of some sort assumes a valid JWT token is transmitted
 in the `Authorization` HTTP header as a _"Bearer"_ type of token, and if not, the user will not be
 allowed to invoke the endpoint, and an HTTP status code of 401 will be returned. To retrieve a JWT token
-use the `magic/system/auth/authenticate` endpoint documented further down in this document.
+use the `magic/system/auth/authenticate` endpoint.
 
 ## Authentication and authorisation endpoints
 
@@ -27,8 +31,8 @@ are intended for you to consume yourself as you see fit.
 ### GET magic/system/auth/authenticate
 
 This endpoint allows you to authenticate towards your Magic backend with a username and password
-combination. It's mostly a thin layer on top of your **[magic.auth.authenticate]** slot that you
-can read about further down in this document. It requires two query arguments being as follows.
+combination. It's mostly a thin layer on top of your **[magic.auth.authenticate]** slot.
+**[magic.auth.authenticate]** requires two query arguments being as follows.
 
 * __[username]__ - Username of user wanting to authenticate
 * __[password]__ - Password of user wanting to authenticate
@@ -39,20 +43,7 @@ to invoke endpoints your user is authorised to invoking. Notice, Magic relies up
 being transmitted as _"Bearer"_ tokens in the _"Authorization"_ HTTP header, implying you'll have to
 ensure the resulting JWT token from invoking the above endpoint is attached to your HTTP requests as
 such in later requests. This endpoint can be invoked by anyone, including non-authenticated clients.
-
 This endpoints is intended for you to consume from your own code.
-
-### GET magic/system/auth/auto-auth
-
-This endpoint always returns _"off"_ unless you've configured Magic to use automatic LDAP authentication
-by following [this recipe](/tutorials/auth-internals/). The idea with this endpoint is to use the frontend
-to check if automatic authentication has been turned on, and if so, simply invoking the authenticate
-endpoint directly without any username or password combination, which works only if you've enabled
-LDAP authentication, and your frontend is deployed on a local domain where LDAP credentials are
-transmitted to the backend. The endpoint does not require any arguments. The endpoint can be invoked by
-anyone, and does not have any authorisation requirements. The endpoint does not require any arguments.
-
-Notice, this endpoint is considered obsolete and might be removed in future versions of Magic.
 
 ### PUT magic/system/auth/change-password
 
@@ -79,7 +70,6 @@ authorisation. The endpoint can be invoked by anyone, and does not have any auth
 itself. Notice, this endpoint caches its result for 5 minutes, implying changes done to the authorisation
 requirements of your endpoints will not be accessible for clients before 5 minutes after your changes have
 been applied, unless you explicitly delete the cache item for the endpoint.
-
 This endpoints is intended for you to consume from your own code.
 
 ### GET magic/system/auth/impersonate
@@ -92,8 +82,7 @@ you to impersonate the other user in the system. The endpoint requires the follo
 This endpoint can only be invoked by a root user. This endpoint is useful when debugging user related
 errors, and/or supporting/helping users who for some reasons needs help, allowing you to use the
 system within the context of the user you impersonate.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/auth/reset-password
 
@@ -105,8 +94,7 @@ The endpoint requires the following argument(s).
 
 This endpoint can only be invoked by a root user. However there exists another endpoint you can see further
 down in this document allowing a user to have Magic send him a _"forgot password email"_.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### PUT magic/system/auth/imprison
 
@@ -124,8 +112,7 @@ correctly unless scheduled tasks are enabled in the system. The endpoint takes t
 
 The release date is the date when the user should be released from his _"imprisonment"_. This endpoint
 is considered obsolete and might be removed in a future version of Magic.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/auth/refresh-ticket
 
@@ -136,7 +123,6 @@ a new JWT token, preventing the user from being thrown out of the backend as his
 expires. The endpoint does not take any arguments, but can only be invoked by an already authenticated
 user, implying you'll need to pass in your JWT token to it in the Authorization HTTP header as a
 _"Bearer"_ token or the endpoint will return _"Access denied"_.
-
 This endpoints is intended for you to consume from your own code.
 
 ### POST magic/system/auth/register
@@ -204,7 +190,6 @@ number as they are registering in addition to their names, you can modify this s
 
 Whatever extra information you pass in to this endpoint during registration, will be associated with the user
 and returned as the user authenticates.
-
 This endpoint does not require the caller to be authenticated and can be invoked by anyone. If you have
 configured the system to send _"confirm email address"_ emails, the URL transmitted to the user to confirm
 his or her email address will resemble the following, except the query parameters will be URL encoded of
@@ -240,7 +225,6 @@ You can override the email template used to send user a _"verify email address"_
 used can be found at `/system/auth/email-templates/register.html`. However, if you create your own email
 template you'll have to make sure you _keep_ the dynamically substituted `url` parts in your own custom template.
 See how the `href` parameter for the default email template is constructed to understand how this works.
-
 This endpoints is intended for you to consume from your own code.
 
 ### POST magic/system/auth/verify-email
@@ -258,7 +242,6 @@ The endpoint does not require authorisation, but takes the following payload.
 
 Notice, the above `token` must be the same token generated by Magic as the user registered, and sent
 to the user on his or her email.
-
 This endpoints is intended for you to consume from your own code.
 
 ### POST magic/system/auth/send-reset-password-link
@@ -287,7 +270,6 @@ The above arguments implies the following.
 
 The endpoint does not require the caller to be authenticated and can be invoked by anyone, but the endpoint can
 only be invoked for a user who's username is a valid email address.
-
 This endpoints is intended for you to consume from your own code.
 
 ### GET magic/system/auth/verify-ticket
@@ -298,18 +280,15 @@ The endpoint can be invoked by any user as long as the user is authenticated. Th
 take any arguments, but can only be invoked by an already authenticated user, implying you'll need
 to pass in your JWT token to it in the Authorization HTTP header as a _"Bearer"_ token. If the JWT
 token is not valid the endpoint will return a 401 status code with _"Access denied"_ as its message.
-
 This endpoints is intended for you to consume from your own code.
 
-## Bazar endpoints
+## Plugins endpoints
 
 These are endpoints related to the Bazar somehow, allowing you to install new Bazar modules, and check
 which Bazar modules have already been installed. The Bazar is a micro service _"AppStore"_ for your
 Magic server, allowing your Magic server to install backend modules on the fly, resulting
 in having some backend micro service installed into your backend, without interrupting normal
-usage.
-
-**Notice** - None of these endpoints are really intended to be consumed by your own code, but only
+usage. None of these endpoints are really intended to be consumed by your own code, but only
 for internal usage by Magic itself.
 
 ### GET magic/system/bazar/app-manifests
@@ -334,7 +313,7 @@ it requires no arguments.
 ]
 ```
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/bazar/can-install
 
@@ -347,8 +326,7 @@ requires the following argument(s).
 * __[required_magic_version]__ - Minimum version of Magic requried
 
 This endpoint is considered obsolete and might be removed in a future version of Magic.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### POST magic/system/bazar/download-from-bazar
 
@@ -369,8 +347,7 @@ install the module, but only unzip it and create its folder structure. To instal
 been unzipped make sure you invoke the `/system/file-system/install` endpoint.
 
 Notice, this endpoint is considered obsolete and will be changed in a future version of Magic.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### POST magic/system/bazar/download-from-url
 
@@ -392,8 +369,7 @@ The above arguments implies the following.
 The __[url]__ field needs to be a valid URL returning a file, with the `Content-Disposition` HTTP
 header correctly applied, since the `Content-Disposition` header's _"filename"_ value becomes
 the name of the file on your server.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ## Cache related endpoints
 
@@ -404,7 +380,7 @@ database. Sometimes you need to manually purge your cache, and/or delete individ
 on your server, to re-retrieve data invalidating your cache in the process. This section provides
 information about such operations for such scenarios.
 
-**Notice** - None of these endpoints are really intended to be consumed in your own code, but only
+None of these endpoints are really intended to be consumed in your own code, but only
 for internal usage by Magic itself.
 
 ### GET magic/system/cache/list
@@ -418,9 +394,8 @@ with the following query parameters.
 
 The endpoint can only be invoked by a root user.
 
-**Notice** - This endpoint is to be considered obsolete and might change in a future version of Magic.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is to be considered obsolete and might change in a future version of Magic.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/cache/count
 
@@ -430,9 +405,9 @@ The endpoint requires the following argument(s).
 
 * __[filter]__ - Optional filter declaring _"namespace"_ of cache items to count
 
-**Notice** - This endpoint is to be considered obsolete and might change in a future version of Magic.
+This endpoint is to be considered obsolete and might change in a future version of Magic.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### DELETE magic/system/cache/delete
 
@@ -441,9 +416,8 @@ cache item. It can only be invoked by a root user. The endpoint requires the fol
 
 * __[id]__ - Mandatory id of cache item to evict
 
-**Notice** - This endpoint is to be considered obsolete and might change in a future version of Magic.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is to be considered obsolete and might change in a future version of Magic.
+This endpoint is not intended for you to consume in your own code.
 
 ### DELETE magic/system/cache/empty
 
@@ -454,9 +428,8 @@ following argument(s).
 
 * __[filter]__ - Optional filter declaring _"namespace"_ of cache items to evict
 
-**Notice** - This endpoint is to be considered obsolete and might change in a future version of Magic.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is to be considered obsolete and might change in a future version of Magic.
+This endpoint is not intended for you to consume in your own code.
 
 ## Configuration related endpoints
 
@@ -464,8 +437,7 @@ These endpoints are related to configuration of your system, and allows you to r
 configuration settings as you see fit. These endpoints are typically not intended for being used
 directly by your code, but for the most parts only used during initialisation of your Magic server,
 and/or as you change configuration settings in Magic.
-
-**Notice** - None of these endpoints are really intended to be consumed in your own code, but only
+None of these endpoints are really intended to be consumed in your own code, but only
 for internal usage by Magic itself.
 
 ### GET magic/system/config/load
@@ -473,7 +445,7 @@ for internal usage by Magic itself.
 This endpoint loads your configuration settings and returns it to the caller. The endpoint
 can only be invoked by a root user and does not require any arguments.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### POST magic/system/config/save
 
@@ -483,8 +455,7 @@ can only be invoked by a root user. The endpoint can accept any type of JSON pay
 however whatever you supply to the endpoint will in its entirety be persisted in
 your backend as your _"appsettings.json"_ file, implying if you supply bogus data,
 your backend will no longer function correctly.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/config/status
 
@@ -508,8 +479,7 @@ The fields in the above payload implies the following.
 If any of the above fields does _not_ return true, the frontend dashboard will guide you through the process
 of finishing the configuration process before allowing you to gain access to other parts of your Magic server.
 The endpoint can only be invoked by a root user.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### POST magic/system/config/setup
 
@@ -541,8 +511,7 @@ that if you forget your root user's password the easiest way to change it is in 
 back to some value with less than 50 characters in length, for then to log out and login
 again, which will allow you to run through the configuration process again, overwriting your root user's existing
 password.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/config/version-compare
 
@@ -559,9 +528,8 @@ The query parameters the endpoint requires are as follows.
 If __[version_1]__ is lower than __[version_2]__ the endpoint will return -1. If the versions are the same
 the endpoint will return 0, if __[version_1]__ is higher it will return 1.
 
-**Notice** - This endpoint is considered obsolete and might be removed in future versions of Magic.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is considered obsolete and might be removed in future versions of Magic.
+This endpoint is not intended for you to consume in your own code.
 
 ## CRUD related endpoints
 
@@ -641,8 +609,7 @@ The CRUD endpoints to HTTP verb mappings this endpoint generates are as follows.
 
 This endpoint can only be invoked by a root user. This endpoint is to be considered obsolete and will probably
 change in a future version of Magic.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### POST magic/system/crudifier/custom-sql
 
@@ -678,8 +645,7 @@ The arguments implies the following.
 * __[isList]__ - If true, the endpoint will return an array of objects - Otherwise it will return the first object only.
 
 The endpoint can only be invoked by a root user.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ## Frontend generator
 
@@ -691,8 +657,7 @@ your previously created backend endpoints.
 This endpoint returns all frontend templates the system can use for generating frontends. It requires no arguments,
 but can only be invoked by a root user. This is used to allow the user to select a frontend template as he or she
 wants to generate a frontend of some sort.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/crudifier/template
 
@@ -704,7 +669,7 @@ requires the following query argument(s).
 
 * __[name]__ - Name of template to return Markdown for
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/crudifier/template-args
 
@@ -715,7 +680,7 @@ root user. The endpoint requires the following query argument(s).
 
 * __[name]__ - Name of template to return template arguments for
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### POST magic/system/crudifier/generate-frontend
 
@@ -749,8 +714,7 @@ The above arguments implies the following.
 * __[args]__ - Optional argument collection for your template. These are different depending upon which template you use. You can use the _"template-args"_ endpoint to retrieve which arguments, and/or different values each template accepts
 
 The endpoint can only be invoked by a root user.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ## Cryptography related endpoints
 
@@ -779,8 +743,7 @@ user you want to associate with the public key. Invoking this endpoint allows th
 towards the backend using a _"cryptography challenge"_, implying zero username/password, allowing the user
 to authenticate using his private cryptography key instead, by giving the client a _"cryptography challenge"_
 the client is assumed to be able to cryptographically sign using his or her own private key.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### PUT magic/system/crypto/deassociate-user
 
@@ -795,8 +758,7 @@ key. Payload to endpoint is as follows.
 
 Whatever users are associated with the above public key will be de-associated with their existing key association,
 and no longer be able to use cryptography challenges to authenticate towards the backend.
-
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/crypto/challenge
 
@@ -845,7 +807,7 @@ to a public key in the database being enabled and allowed to create such HTTP in
 will be executed within the **[whitelist]** declaration associated with the key the payload was
 signed with.
 
-**Notice** - This endpoint is not intended for you to consume in your own code, but rather used indirectly
+This endpoint is not intended for you to consume in your own code, but rather used indirectly
 through the **[magic.crypto.http.eval]** slot.
 
 ### POST magic/system/crypto/generate-keypair
@@ -872,7 +834,7 @@ The above arguments implies the following.
 * __[email]__ - Email address where the above subject can be reached
 * __[domain]__ - Domain associated with the key pair. When creating a new server key pair, this is typically your backend's domain prefixed by `https://`
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/crypto/get-fingerprint
 
@@ -883,7 +845,7 @@ argument(s).
 
 * __[key]__ - Public key to generate a fingerprint from
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### POST magic/system/crypto/import
 
@@ -955,7 +917,7 @@ following query arguments(s).
 
 * __[keyId]__ - Id of public key as persisted into your _"crypto_keys"_ database table
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ## Diagnostic endpoints
 
@@ -994,7 +956,7 @@ The above arguments implies the following.
 * __[produces]__ - Assumed Content-Type above URL produces when given the specified payload
 * __[response]__ - Assumed response after invoking above URL. Optional, and if not specified will not create assumptions about result besides the status code
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/diagnostics/execute-test
 
@@ -1005,7 +967,7 @@ query argument(s).
 * __[root_url]__ - The root URL of where to invoke the assumption towards. Typically the domain parts of your backend
 * __[test_file]__ - The full relative path of the test file to execute
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/diagnostics/system-information
 
@@ -1013,7 +975,7 @@ This endpoint returns system related information to the caller, such as Magic ba
 tasks, log items count, etc. The endpoint can only be invoked by a root user. The endpoint does not
 require any arguments. The endpoint can only be invoked by a root user.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ## File system related endpoints
 
@@ -1030,7 +992,7 @@ an existing folder in the Magic backend. The endpoint requires the following que
 
 * __[folder]__ - Full relative path of which folder to ZIP and download to the client
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### DELETE magic/system/file-system/file
 
@@ -1039,7 +1001,7 @@ root user. The endpoint requires the following query argument(s).
 
 * __[file]__ - Full relative path of which file to delete
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/file-system/file
 
@@ -1048,7 +1010,7 @@ a root user. The endpoint requires the following query argument(s).
 
 * __[file]__ - Full relative path of file to download
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### PUT magic/system/file-system/file
 
@@ -1058,7 +1020,7 @@ and the attached **[file]** becomes the file to save, assuming the file has a na
 as a part of its MIME entity as its Content-Disposition header's `filename`. The endpoint
 can only be invoked by a root user.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### DELETE magic/system/file-system/folder
 
@@ -1067,7 +1029,7 @@ invoked by a root user. The endpoint requires the following query argument(s).
 
 * __[folder]__ - Full relative path of folder to delete
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### PUT magic/system/file-system/folder
 
@@ -1081,7 +1043,7 @@ This endpoint creates a new folder in your backend given the specified payload.
 
 The endpoint can only be invoked by a root user.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### PUT magic/system/file-system/install
 
@@ -1108,7 +1070,7 @@ The above arguments implies the following.
 
 The endpoint can only be invoked by a root user.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/file-system/list-folders-recursively
 
@@ -1118,7 +1080,7 @@ argument(s).
 
 * __[folder]__ - Root folder of where to start listing folders. Will return all folders existing within this folder to caller
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/file-system/list-files-recursively
 
@@ -1128,7 +1090,7 @@ argument(s).
 
 * __[folder]__ - Root folder of where to start listing files. Will return all files existing within this folder to caller
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/file-system/list-files
 
@@ -1139,7 +1101,7 @@ requires the following argument(s).
 * __[folder]__ - Folder to list files within
 * __[filter]__ - Optional filter criteria filenames must contain in order to be considered a match
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/file-system/list-folders
 
@@ -1148,7 +1110,7 @@ can only be invoked by a root user. The endpoint requires the following argument
 
 * __[folder]__ - Folder to list folder within
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### POST magic/system/file-system/rename
 
@@ -1165,7 +1127,7 @@ Notice, the endpoint can rename both files or folders, but can only be invoked b
 The **[oldName]** is the _full path_ of the file's or folder's _current_ name. The **[newName]**
 is its new full name or path.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### PUT magic/system/file-system/unzip
 
@@ -1180,7 +1142,7 @@ following payload.
 
 The endpoint can only be invoked by a root user.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ## Log related endpoints
 
@@ -1195,7 +1157,7 @@ the log has varies from which service is used for persisting log items.
 This endpoint counts the total number of log items in your backend. The endpoint can only be invoked by
 a root user.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/log/get
 
@@ -1204,7 +1166,7 @@ only be invoked by a root user. The endpoint requires the following query argume
 
 * __[id]__ - Id of log item to retrieve
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/log/list
 
@@ -1214,7 +1176,7 @@ following query parameters.
 * __[from]__ - Id of an existing log item from where items will be returned _"from"_, not including
 * __[max]__ - Maximum number of log items to return
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### POST magic/system/log/log-loc
 
@@ -1236,7 +1198,7 @@ The above arguments implies the following.
 * __[type]__ - Either `backend` or `frontend`
 * __[name]__ - Name of module or frontend that was generated
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### POST magic/system/log/log
 
@@ -1276,7 +1238,7 @@ in the Magic dashboard.
 This endpoint returns all database connection strings existing in the backend, being of type **[databaseType]**,
 where the type can be one of 'mysql', 'mssql' or 'pgsql'. The endpoint can only be invoked by a root user.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/sql/databases
 
@@ -1292,7 +1254,7 @@ Notice, the endpoint is fairly expensive to execute, and therefor its result is 
 the key of _"magic.sql.databases.xxx.yyy"_ where _"xxx"_ is the database type and _"yyy"_ is the connection
 string name.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/sql/default-database-type
 
@@ -1313,7 +1275,7 @@ supports. An example of invoking the endpoint can be found below.
 The above result implies that MySQL is the default database type, while the system still has support for both
 'mssql' and 'pgsql" in addition to 'mysql'. The endpoint can only be invoked by a root user.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### POST magic/system/sql/evaluate
 
@@ -1340,7 +1302,7 @@ The above arguments implies the following.
 
 The endpoint can only be invoked by a root user.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/sql/list-files
 
@@ -1369,7 +1331,7 @@ The above arguments implies the following.
 Your SQL snippet files are saved in your backend inside of your _"/etc/xxx/templates/"_ folder, where _"xxx"_
 is your database type such as for instance 'pgsql', 'mysql' or 'mssql'.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ## Task related endpoints
 
@@ -1387,7 +1349,7 @@ This endpoint returns a list of all your tasks, optionally matching the specifie
 All the above arguments are optional, and the endpoint can only be invoked by a root user.
 Notice, this endpoint should be considered obsolete and might change in a future version of Magic.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/tasks/get
 
@@ -1398,7 +1360,7 @@ of your task. This endpoint can only be invoked by a root user, and it requires 
 
 Notice, this endpoint should be considered obsolete and will change in a future version of Magic.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/tasks/count
 
@@ -1409,7 +1371,7 @@ This endpoint can only be invoked by a root user. The endpoint requires the foll
 
 Notice, this endpoint should be considered obsolete and might change in a future version.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### POST magic/system/tasks/create
 
@@ -1431,7 +1393,7 @@ The above arguments implies the following.
 
 This endpoint can only be invoked by a root user.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### POST magic/system/tasks/update
 
@@ -1451,7 +1413,7 @@ The above arguments are the same as when creating a new task and implies the fol
 * __[description]__ - The new description of the task
 * __[hyperlambda]__ - The new Hyperlambda associated with your task
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### DELETE magic/system/tasks/delete
 
@@ -1460,7 +1422,7 @@ can only be invoked by a root user. The endpoint requires the following query ar
 
 * __[id]__ - Id of task to delete
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### POST magic/system/tasks/due/add
 
@@ -1484,7 +1446,7 @@ The above arguments implies the following.
 To understand how the **[repetition]** works see the documentation
 for [magic.lambda.scheduler](/documentation/magic.lambda.scheduler/). This endpoint can only be invoked by a root user.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### DELETE magic/system/tasks/due/delete
 
@@ -1493,7 +1455,7 @@ only be invoked by a root user. The endpoint requires the following query argume
 
 * __[id]__ - Id of due date object to delete
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ## Terminal related endpoints
 
@@ -1520,7 +1482,7 @@ The **[cmd]** above is a terminal or bash command, such as `ls` or `mkdir` - Whi
 is the name of a previously created channel in your backend. To create a unique channel you can use the `gibberish`
 endpoint. This endpoint can only be invoked by a root user.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### SOCKET magic/system/terminal/start
 
@@ -1538,7 +1500,7 @@ The above **[channel]** becomes a unique reference for future commands transmitt
 while the **[folder]** becomes the initial default folder from where to run your terminal within on
 your server. This endpoint can only be invoked by a root user.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### SOCKET magic/system/terminal/stop
 
@@ -1554,7 +1516,7 @@ the following payload.
 The above **[channel]** is a channel previously created using the start socket endpoint. This endpoint
 can only be invoked by a root user.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ## Misc endpoints
 
@@ -1566,7 +1528,7 @@ middleware, and used by the frontend dashboard somehow.
 This endpoint returns the email address and full name of the root user. The endpoint can only be invoked
 by a root user.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/diagnostics/assumptions
 
@@ -1577,7 +1539,7 @@ query argument(s).
 * __[verb]__ - HTTP verb of endpoint
 * __[endpoint]__ - Relative URL of endpoint
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/endpoints/list
 
@@ -1585,7 +1547,7 @@ This endpoint returns all endpoints in the system, their meta data such as descr
 and resulting response if possible. The endpoint can only be invoked by a root user. The endpoints requires
 no argument(s).
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### POST magic/system/evaluator/evaluate
 
@@ -1598,14 +1560,14 @@ The endpoint can only be invoked by a root user and takes the following payload.
 }
 ```
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/evaluator/vocabulary
 
 This endpoint returns the Hyperlambda vocabulary from the backend, implying which Hyperlambda slots
 exists on the server. The endpoint can only be invoked by a root user.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/ide/macro
 
@@ -1630,7 +1592,7 @@ macro will return something resembling the following.
 
 The endpoint can only be invoked by a root user.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### POST magic/system/ide/execute-macro
 
@@ -1648,7 +1610,7 @@ The **[macro]** is the _full_ filename of the macro to execute, while the **[arg
 the macro itself, and differs according to what macro is being executed. See the above endpoint for
 how to retrieve arguments related to a specific macro. The endpoint can only be invoked by a root user.
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/images/generate-qr
 
@@ -1696,7 +1658,7 @@ The endpoint can only be invoked by a root user. The above arguments implies the
 * __[name]__ - The name of the message to publish
 * __[message]__ - Any JSON data that will become the published message
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/sockets/count-users
 
@@ -1707,7 +1669,7 @@ argument(s).
 
 * __[filter]__ - Optional filtering criteria the socket connection must contain to be considered a match
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/sockets/list-users
 
@@ -1716,7 +1678,7 @@ argument. The endpoint can only be invoked by a root user. The endpoint requires
 
 * __[filter]__ - Optional filtering criteria the socket connection must contain to be considered a match
 
-**Notice** - This endpoint is not intended for you to consume in your own code.
+This endpoint is not intended for you to consume in your own code.
 
 * [Back to middleware documentation](/documentation/magic/)
 * [Slots documentation](/documentation/magic/slots/)
