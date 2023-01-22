@@ -13,7 +13,7 @@ your Magic database, and such can be recalled at any point in the future to be e
 
 ![Hyperlambda task scheduler](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/scheduling-task.jpg)
 
-## The idee behind the task component
+## The idea behind the task component
 
 The idea behind the task scheduler is first of all to allow for creating dynamically persisted tasks that can be triggered
 by some future event, facilitating for _"Business Process Workflows"_ - In addition to scheduling your
@@ -28,6 +28,8 @@ are often built upon statically compiled programming languages.
 Your tasks will be saved into your Magic database and its table called _"tasks"_,
 in addition to your _"task\_due"_ table for schedules. This implies that even if your server for some
 reasons _"drops"_, and/or is rebooted, your tasks will automatically be re-scheduled as your server restarts.
+Notice, for tasks repeating every nth unit, this process is not 100% perfect, since it might imply
+the execution date for your tasks are being moved forward if your server reboots for some reasons.
 
 ## Scheduling tasks
 
@@ -36,5 +38,30 @@ a task to be executed at some specific date and time in the future. This is done
 a date and time in the future when you want your task to execute.
 
 ![Hyperlambda task scheduler](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/scheduling-tasks.jpg)
+
+In addition to scheduling a task to be executed at a specific date and time in the future, you
+can also schedule your task to be repeated according to some sort of repetition pattern. The simplest
+pattern here is _"every n unit"_, where n can be any integer, and unit can be any of seconds, minutes,
+hours, days, weeks and months.
+
+Slightly more complex repetition units can be provided by choosing a custom repetition pattern.
+There exists two such custom repetition patterns in Magic out of the box, and they are as follows.
+
+* `MM.dd.HH.mm.ss` - Where the entities are in sequence months, days in months, hours, minutes and seconds.
+* `ww.HH.mm.ss` - Where the entities are weekdays, hour, minute and second.
+
+Notice, MM, dd, and ww can have double asterix (\*\*) as their values, implying _"whatever value"_.
+MM, dd and ww can also have multiple values, separated by the pipe character (|), to provide multiple values
+for these types. To for instance create a task that is execute on the 5th and 15th of January and February
+you could use a task such as follows; _"01|02.5|15.05.00.00"_. This is because both the day and the month
+parts of a monthly repetition value can be piped together declaring multiple months and days, where
+the task will be executed at any of the days and months you declare in your repetition value. The same
+is true for the weekdays depetition pattern. If you want to create a scheduled task that repeats
+every Monday and Friday, you can use a pattern such as follows; _"Monday|Friday.23.59.59"_. This task
+will execute one second to midnight both Mondays and Fridays.
+
+To understand which repetition pattern is which, simply count the number of periods in your value,
+and if there are 4 periods, it's a month/day type of pattern. If there are only 3 periods in your
+pattern, it's a weekday pattern.
 
 
