@@ -4,7 +4,7 @@ description: The evaluator allows you to submit Hyperlambda to your server and h
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/eval-component.jpg"
 ---
 
-# The Hyperlambda Playground component
+# The Hyperlambda Playground
 
 The Hyperlambda Playground component allows you to play with Hyperlambda code, and execute your code in _"immediate mode"_,
 for then to see the result of your execution immediately. The Hyperlambda playground is also a nice starting

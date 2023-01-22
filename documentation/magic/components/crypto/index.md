@@ -4,7 +4,7 @@ description: Using cryptography in Magic is as easy as clicking a button. The in
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/crypto-receipt.jpg"
 ---
 
-# The cryptography component
+# Cryptography
 
 The cryptography component allows you to manage and administrate your server's cryptography key pair, and/or your
 server's public keys. The latter are public keys belonging to others, allowing you to securely communicate

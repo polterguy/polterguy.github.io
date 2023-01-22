@@ -4,7 +4,7 @@ description: Magic allows you to create HTTP endpoints using only SQL. You provi
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-web-api.jpg"
 ---
 
-# The SQL endpoint generator component
+# The SQL endpoint generator
 
 The SQL endpoint generator component allows you to generate an API endpoint wrapping an SQL statement.
 It is similar to the [backend generator](/documentation/magic/components/crudifier/backend/), but instead of

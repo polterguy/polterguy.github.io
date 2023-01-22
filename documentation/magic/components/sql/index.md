@@ -4,7 +4,7 @@ description: The web based SQL 'workbench' allows you to execute any SQL, see th
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-editor.jpg"
 ---
 
-# The SQL Studio component
+# SQL Studio
 
 The SQL Studio component allows you to execute any SQL towards your database of choice. SQL Studio also
 allows you to export the result of some SQL to a CSV file, in addition to saving frequently used

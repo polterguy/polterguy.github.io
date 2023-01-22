@@ -4,7 +4,7 @@ description: Where the Machine Creates your Code, using Artificial Intelligence,
 og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg
 ---
 
-# Magic's Endpoints
+# Endpoints
 
 Magic contains a whole range of endpoints, or _"middleware"_ parts, that the system itself
 relies upon to function. You can play around with these endpoints by using the _"Endpoints"_

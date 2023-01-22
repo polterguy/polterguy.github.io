@@ -4,7 +4,7 @@ description: Magic allows you to automatically generate unit tests, or integrati
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/assumptions.jpg"
 ---
 
-# The health check component
+# Health check
 
 The health check component allows you to easily sanity check your system, providing you with a
 diagnostic tool, ensuring that your system is functioning as it should. A health check test is basically

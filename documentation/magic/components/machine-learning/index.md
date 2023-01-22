@@ -4,7 +4,7 @@ description: Magic allows you to automatically generate your own private AI base
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/machine-learning.jpg"
 ---
 
-# The Machine Learning component
+# Machine Learning
 
 Aista Magic Cloud's machine learning component allows you to create your own AI based machine learning model, either by
 crawling your website scraping it for data, or by manually uploading your own training data, resulting in a private

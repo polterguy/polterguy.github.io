@@ -4,7 +4,7 @@ description: Tired of creating authentication and authorisation code? Magic cont
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/auth.jpg"
 ---
 
-# The Users and Roles component
+# Users and Roles
 
 The users and roles component allows you to manage and administrate your users and roles in your system, and/or
 create new users and roles, which again grants access to invoking endpoints for your end users. This component

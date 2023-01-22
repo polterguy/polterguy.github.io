@@ -4,7 +4,7 @@ description: The log component allows you to browse your server side log items, 
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/log.jpg"
 ---
 
-# The log component
+# Your Magic log
 
 The log component allows you to browse your server's log. When an important event occurs in
 Magic, a log entry will typically be created describing the event. Examples of such events

@@ -4,7 +4,7 @@ description: Configuring your server can easily be achieved with a root user usi
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/config-component.jpg"
 ---
 
-# The Configuration component
+# Configuration
 
 The configuration component allows you to view and edit your server's configuration settings. Your server's configuration
 is basically your _"appsettings.json"_ file, which is being used in all parts of the system to

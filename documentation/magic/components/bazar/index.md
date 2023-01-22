@@ -4,7 +4,7 @@ description: With the Bazaar you can rapidly purchase, and/or install free backe
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/bazaar.jpg"
 ---
 
-# The Plugins component
+# Plugins
 
 The plugins component is Magic's integrated _"AppStore"_, and allows you to install backend micro
 services on the fly, without interrupting normal usage. It resolves towards Aista's repository of plugins, that

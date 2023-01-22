@@ -4,7 +4,7 @@ description: Using web sockets is easily achieved with Magic by simply clicking 
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sockets.jpg"
 ---
 
-# The sockets component
+# Sockets
 
 The sockets component allows you to subscribe to and publish socket messages. This is useful when
 debugging and developing modules that somehow is using the integrated socket slots from Magic. The

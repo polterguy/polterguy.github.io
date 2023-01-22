@@ -4,7 +4,7 @@ description: Hyper IDE is a fully fledged integrated development environment, gi
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-hyper-ide-2.jpg"
 ---
 
-# The Hyper IDE component
+# Hyper IDE
 
 Hyper IDE is your _"goto component"_ when you want to create your own modules using Magic and Hyperlambda.
 It's a fully fledged web based IDE or Integrated Development Environment, allowing you to edit your code,

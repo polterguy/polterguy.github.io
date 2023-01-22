@@ -4,7 +4,7 @@ description: The backend CRUD generator allows you to create a CRUD API wrapping
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg"
 ---
 
-# The Endpoint Generator component
+# The Endpoint Generator
 
 The endpoint generator component allows you to automatically generate an HTTP CRUD web API wrapping your database
 of choice. This component is the corecomponent of the low-code and software development automation parts of Magic,

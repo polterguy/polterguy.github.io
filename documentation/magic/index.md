@@ -4,7 +4,7 @@ description: The Magic middleware is the parts wiring up Magic, allowing you to 
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/Aista-Magic-Cloud.jpeg"
 ---
 
-# Magic's dashboard
+# Magic's Dashboard
 
 The Magic Dashboard is your primary tool when you're using Aista Magic Cloud, and it contains a graphical
 user interface for managing your Magic installation, allowing you to solve all sort of different tasks

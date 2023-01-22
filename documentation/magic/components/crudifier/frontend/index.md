@@ -4,7 +4,7 @@ description: After having automatically generated your backend Magic can also cr
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/crud-frontend.jpg"
 ---
 
-# The frontend generator component
+# The frontend generator
 
 The frontend generator component allows you to automatically generate a frontend wrapping your previously generated backend
 created by the [endpoint generator](/documentation/magic/components/crudifier/backend/).
