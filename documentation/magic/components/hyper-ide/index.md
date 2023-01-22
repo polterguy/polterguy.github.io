@@ -66,3 +66,12 @@ your Hyperlambda files, you can immediately test your code by executing it from 
 This results in a much tighter development model than a traditionally compiled programming language
 gives you, making it much faster to find bugs and create working code.
 
+## Machine learning in Hyper IDE
+
+Hyper IDE contains an integrated Machine Learning part, based upon OpenAI's ChatGPT, allowing
+you to generate code using AI, directly from its IDE. To use this on Hyperlambda, you'll need
+to train the existing _"hl"_ model. We suggest using Curie as your base model if you do this.
+Curie is first of all significantly less expensive than DaVinci, in addition to that it's
+faster than DaVinci. Magic comes with almost 1,000 Hyperlambda training snippets, but we
+are constantly adding more machine learning training data to it.
+
