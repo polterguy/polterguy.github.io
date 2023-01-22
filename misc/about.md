@@ -14,6 +14,8 @@ if you want to clone Magic.
 
 ## What they say about Magic Cloud
 
+Below you can see what others are saying about Aista Magic Cloud.
+
 * “Grand Salute to thought process behind this" - D.M.
 * "This is so awesome" - Sacha Wharton
 * "Very nice work" - Ali Abdallah
