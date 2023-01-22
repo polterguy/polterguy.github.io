@@ -42,4 +42,5 @@ needing a database, etc.
 After you have installed a plugin, you can see its code by using [Hyper IDE](/documentation/magic/components/hyper-ide/)
 and expand the modules folder for then to expand the folder where your plugin was installed, and look at
 its files using Hyper IDE. You can even immediately edit any files this way too, but if you do, you
-can no longer update your plugin.
+can no longer update your plugin. If your plugin creates a database of some sort, you can also immediately
+look at your database using [SQL Studio](/documentation/magic/components/sql/).
