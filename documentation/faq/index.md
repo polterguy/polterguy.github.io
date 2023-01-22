@@ -160,3 +160,13 @@ for roughly 5 hours.
 When you have watched the above videos, you can find the reference documentation
 for each project and slot in the navbar section of the primary documentation for Magic.
 
+## What is a cloudlet?
+
+A cloudlet is a Kubernets POD deployed into our Kubernetes cluster, with Aista Magic Cloud
+preconfigured and installed. We have automated the entire process of creating such
+cloudlets, as a part of our hosting service, giving you your own private Magic installation.
+We refer to such Magic installations as _"cloudlets"_. A cloudlet comes in different
+sizes, with differences here implying how much storage, how much CPU, and how much memory
+the cloudlet has - In addition to that a cloudlet can be delivered with a fully
+managed database, either MySQL or PostgreSQL to replace the SQLite database we give
+you with a _"managed database"_.

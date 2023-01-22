@@ -38,7 +38,7 @@ apps where it makes sense to use Magic.
 * Inventory systems
 * Task management systems, such as ClickUp, Monday.com, or similar types of systems
 * Logistic systems
-* Basically, anything that requires collecting and managing data, where CRUD operations towards your data is crucial
+* Basically, anything that requires collecting and managing data, where CRUD operations are important
 
 As an example of how useful Magic is, realise that at Aista we built our [entire hub](https://hub.aista.com) using
 nothing but Magic and Hyperlambda. This saved us roughly 90% of the resource requirements we would have needed if
@@ -59,7 +59,7 @@ web socket messages as endpoints are invoked, in addition to having tons of addi
 your life as a software developer. If your endpoints are simple wrappers around your database, the endpoint
 generator can do 100% of your job automagically.
 
-## SQL endpoint generator
+## The SQL endpoint generator
 
 Magic allows you to create HTTP endpoints using SQL. This allows you to compose some SQL statement,
 and rapidly wrap it inside an HTTP endpoint. You can find this component in the Endpoint Generator,
@@ -123,26 +123,27 @@ generate code for you solving your problem.
 
 ## Machine Learning and AI
 
-Aista Magic Cloud allows you to generate your own Machine Learning models in seconds, by scraping any website,
-and generating training data for you that you can use to create your own ChatGPT model, answering questions
-related to your domain. Need a chat bot for your company answering questions about your company or domain?
-That's a 5 seconds job for Aista Magic Cloud as long as you have an existing website, and/or structured
+Aista Magic Cloud is scattered with AI and allows you to generate your own Machine Learning models in seconds,
+by scraping any website, and generating training data for you that you can use to create your own ChatGPT model,
+answering questions related to your domain. Need a chat bot for your company answering questions about your company
+or domain? That's a 5 seconds job for Aista Magic Cloud as long as you have an existing website, and/or structured
 training data you can upload to your cloudlet. Use cases might be.
 
-* Expert law system, answering legal questions for your clients
+* Expert legal system, answering legal questions for clients
 * Medical expert advice system based upon AI and machine learning, giving you help when diagnosing patients and clients
-* Support chat bot for your enterprise, giving your client support for whatever questions they might have
+* Support chat bot for your enterprise, giving your clients support for whatever questions they might have related to your company
 * Automated sales expert systems, converting leads on your website into paying clients
+* Cognitive assistants, helping your employees with some specific task at hand
 * Etc, etc, etc
 
 ![Magic's Machine Learning parts](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/machine-learning.jpg)
 
 Creating a Machine Learning training model is incredibly difficult unless you know what you're doing.
 With Aista Magic Cloud it becomes 1,000 times easier, and you can literally do it by pointing Aista
-to your existing website, have our website scraper crawl your website, resulting in a custom AI expert
-system in some few seconds.
+to your existing website, have our web scraper crawl your website, resulting in a custom AI expert
+system model in some few seconds.
 
-## Frontend generator
+## The frontend generator
 
 In addition to the backend web API generator, Aista also contains a frontend generator, that creates
 a fully functional frontend web application for you in seconds. The generated code is perfect Angular code,
@@ -170,7 +171,7 @@ data.
 The user and role systemin Magic is based upon RBAC implying Role Based Access Control, allowing you to
 provide access to components and modules based upon roles, for then to associate roles with users.
 
-## Task scheduler
+## The task scheduler
 
 Aista Magic Cloud allows you to create and administer tasks. A task is a background job, that is persisted
 into your database as Hyperlambda, and it can either be executed by a _"trigger"_ occurring somewhere
@@ -197,7 +198,7 @@ below;
 
 ![Magic's plugins](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/bazaar.jpg)
 
-## Integrated log
+## The integrated log
 
 Aista Magic Cloud also comes with an integrated log component, allowing you to browse your server log,
 giving you control over events occurring that might somehow have consequences for your system.
@@ -221,7 +222,9 @@ create a free 90 day trial cloudlet at [Aista.com](https://aista.com).
 You can of course download the open source code from GitHub, but the easiest way to get started
 immediately is to simply register at [Aista.com](https://aista.com), at which point you'll
 get a free 90 days trial cloudlet, with security, CDN, automatically configured with
-all best practices applied out of the box.
+all best practices applied out of the box. We do charge a fee for such cloudlets, but we
+also provide 90 days trial cloudlets for free, without asking you for anything else but
+your email address.
 
 * [Signup at Aista.com for your free 90 days cloudlet](https://aista.com)
 
