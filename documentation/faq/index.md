@@ -203,3 +203,24 @@ that you can inject into your own website by including a simple JavaScript file.
 we did for our [docs.aista.com](https://docs.aista.com) website in fact, and creating such
 a personal ChatGPT based chatbot can typically be done in a day, assuming you've got a good
 website, and/or other sources of training material allowing us to train your custom AI model.
+
+If you're a little bit skilled in IT you can probably do it yourself in a day or two in fact,
+and the way to do this is to [signup for a cloudlet](https://aista.com) and go to the Machine
+Learning component. If you need help with this, we would be happy to assist. Send us an
+email to [info@aista.com](mailto:info@aista.com) and let's get started.
+
+## How was your chatbot created
+
+Our chatbot is based upon OpenAI's ChatGPT. We created it by crawling our own website, scraping
+it for information, generating an AI training model in the process. After the crawling was done,
+we fine tuned our own personal AL model from the information found at our website, and injected
+a simple JavaScript file into our website resulting in the chat button you can see at
+[docs.aista.com](https://docs.aista.com).
+
+## Can I change the design of the ChatGPT chat window
+
+Yes, but if you want us to do this for you such that it matches your existing company profile,
+this is a service we charge extra for. However, the ChatGPT based chat window is
+created by injecting a simple JavaScript file into your page. If you're comfortable with
+JavaScript, CSS, and HTML, you can easily create your own JavaScript file to inject as
+an alternative.
