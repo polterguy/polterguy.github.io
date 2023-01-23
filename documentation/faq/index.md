@@ -209,13 +209,21 @@ and the way to do this is to [signup for a cloudlet](https://aista.com) and go t
 Learning component. If you need help with this, we would be happy to assist. Send us an
 email to [info@aista.com](mailto:info@aista.com) and let's get started.
 
+Notice, Machine Learning an AI is not a miracle worker. It can never become better than
+whatever training data you've got available. If you provide garbage training data, you get
+garbage AI. Whether or not your website can be intelligently scraped for information to
+generate correct training data depends upon the quality of your website.
+
 ## How was your chatbot created
 
 Our chatbot is based upon OpenAI's ChatGPT. We created it by crawling our own website, scraping
-it for information, generating an AI training model in the process. After the crawling was done,
-we fine tuned our own personal AL model from the information found at our website, and injected
+our site for information, generating an AI training model in the process. After the crawling was done,
+we fine tuned our own personal AI model from the information found at our website, and injected
 a simple JavaScript file into our website resulting in the chat button you can see at
-[docs.aista.com](https://docs.aista.com).
+[docs.aista.com](https://docs.aista.com). And in fact, if you browse our docs.aista.com
+website and read the information you find there, and you ask our AI bot some few questions,
+you can actually easily understand by the answers it is providing that the bot was created by
+assembling information found at this website.
 
 ## Can I change the design of the ChatGPT chat window
 
@@ -224,3 +232,34 @@ this is a service we charge extra for. However, the ChatGPT based chat window is
 created by injecting a simple JavaScript file into your page. If you're comfortable with
 JavaScript, CSS, and HTML, you can easily create your own JavaScript file to inject as
 an alternative.
+
+Notice, if you create your own design you will need to store your JavaScript file in
+the _"/etc/system/openai/js/"_ folder with the extention of _".js"_.
+
+## Can I talk to a human
+
+Sure, send an email to [info@aista.com](mailto:info@aista.com) and let's get the conversation
+started. If you send an email to info@aista.com you will be contacted by a human employee
+from Aista within some few hours.
+
+## Do I get support?
+
+Yes, we will help you to the best of our abilities if you purchase a professional cloudlet
+up to a certain extent, implying we will help you getting started, and show you how things work
+in a private meeting. However, our entry level product starting out at 498 EUROs in installation
+fee, and 198 EUROs per month has limited support. If you need more support, training, custom
+development, etc - This is a service we are charging extra for.
+
+## Is the ChatGPT bot perfect
+
+No, if it doesn't have quality training data to generate its response from, it will start
+_"fabricating"_ answers. This might include repetetive answers, not making any sense what
+so ever, in addition to that it might also flat out provide _wrong_ answers to your questions,
+such as claiming 2+2 equals 5. You need to _monitor_ your chatbot initially by configuring
+your model to have _"supervised"_ mode turned on.
+
+Later you will have to periodically check your requests, and probably also doing several
+training sessions with your AI model, before you can get it up to a maximum level of
+maybe 95 to 98 percent accuracy. But this requires _hard work_ and it is not a silver bullet.
+However, once your bot starts generating high quality answers consistently, it will
+continue delivering high quality answers for its entire life time.
