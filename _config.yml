@@ -41,6 +41,9 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
 
+js_files:
+  - "https://api.aista.com/magic/system/openai/include-javascript?file=default&type=aista_chat&header=Ask%20and%20you%20shall%20be%20given%20an%20answer&button=Chat%20with%20AI"
+
 # Your navigation section. Declares the drop down menu items for your hamburger menu.
 nav_sections:
   - name: Primary documentation
