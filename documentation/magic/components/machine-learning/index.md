@@ -4,7 +4,7 @@ description: Magic allows you to automatically generate your own private AI base
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/machine-learning.jpg"
 ---
 
-# Machine Learning
+# Machine Learning and AI
 
 Aista Magic Cloud's machine learning component allows you to create your own AI based machine learning model, either by
 crawling your website scraping it for data, or by manually uploading your own training data, resulting in a private
@@ -125,3 +125,19 @@ an [OpenAI API key](https://beta.openai.com/account/api-keys). This will also co
 you some money, but OpenAI gives you a balance of 18 dollars initially. 18 dollars
 is typically enough for a training session with some 500 to 1,000 training snippets,
 in addition to playing around with your model after you've trained your model.
+
+## Create your own ChatGPT bot
+
+You can create your own ChatGPT based chat bot with Aista Magic Cloud. To get the JavaScript
+needed to include your bot on your own website, only takes a couple of seconds, and can
+be done as you are configuring your machine learning model.
+
+![A private ChatGPT bot](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/chatgpt-dialogue.jpg)
+
+As long as you have a website where you can somehow add a JavaScript file, Aista Magic
+Cloud will do the rest, associate your bot with your model, also your custom model,
+and render a chat window wrapping your own AI model for asking questions.
+
+Combined with the ability to create your own Machine Learning model by scraping your
+website, it could be argued this _"allows your customers to chat with your website"_.
+

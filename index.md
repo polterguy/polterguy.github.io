@@ -238,7 +238,7 @@ allowing you to graphically administrate your Magic installation.
 * [SQL endpoint generator component](/documentation/magic/components/crudifier/sql/)
 * [The database component](/documentation/magic/components/databases/)
 * [SQL Studio](/documentation/magic/components/sql/)
-* [Machine Learning](/documentation/magic/components/machine-learning/)
+* [Machine Learning and AI](/documentation/magic/components/machine-learning/)
 * [Hyper IDE](/documentation/magic/components/hyper-ide/)
 * [Hyperlambda Playground](/documentation/magic/components/evaluator/)
 * [Endpoints](/documentation/magic/components/endpoints/)
