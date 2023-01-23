@@ -180,3 +180,26 @@ sizes, with differences here implying how much storage, how much CPU, and how mu
 the cloudlet has - In addition to that a cloudlet can be delivered with a fully
 managed database, either MySQL or PostgreSQL to replace the SQLite database we give
 you with a _"managed database"_.
+
+## What is the price of a Magic cloudlet?
+
+The price for an Aista Magic Cloud cloudlet varies according to your needs. Our entry level
+product will typically cost you 498 EUROs in installation and 198 EUROs per month after that,
+and it requires that you're willing to sign up for at least one year. This is suitable for most
+smaller companies with 20 or less employees.
+However, we also provide much larger services, with load balancing across multiple cloudlets,
+managed databases in the terabyte range, and 24/7 support services, which will
+obviously be much more expensive.
+
+We do also provide 30 days trial cloudlets, so you don't need to commit to a commercial
+plan at all before you decide if you want to buy.
+
+## Can I have my own ChatGPT
+
+Yes, this is one of our most sought after products, and we sell it as a commercial offering,
+included in our flagship product called Aista Magic Cloud. It works by scraping your website,
+or any other website for that matter for data, which it will use to create a _"custom private AI model"_,
+that you can inject into your own website by including a simple JavaScript file. This is what
+we did for our [docs.aista.com](https://docs.aista.com) website in fact, and creating such
+a personal ChatGPT based chatbot can typically be done in a day, assuming you've got a good
+website, and/or other sources of training material allowing us to train your custom AI model.
