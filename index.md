@@ -217,7 +217,7 @@ for Magic, allowing you to install it locally in seconds without having to mess 
 such as the .Net CLI and NodeJS. However, the fastest way to get started with Magic is to
 create a free 90 day trial cloudlet at [Aista.com](https://aista.com).
 
-## Get started
+## How to get started
 
 You can of course download the open source code from GitHub, but the easiest way to get started
 immediately is to simply register at [Aista.com](https://aista.com), at which point you'll
