@@ -250,7 +250,7 @@ in a private meeting. However, our entry level product starting out at 498 EUROs
 fee, and 198 EUROs per month has limited support. If you need more support, training, custom
 development, etc - This is a service we are charging extra for.
 
-## Is the ChatGPT bot perfect
+## Is the ChatGPT bot perfect?
 
 No, if it doesn't have quality training data to generate its response from, it will start
 _"fabricating"_ answers. This might include repetetive answers, not making any sense what
@@ -263,3 +263,53 @@ training sessions with your AI model, before you can get it up to a maximum leve
 maybe 95 to 98 percent accuracy. But this requires _hard work_ and it is not a silver bullet.
 However, once your bot starts generating high quality answers consistently, it will
 continue delivering high quality answers for its entire life time.
+
+## How much training data do I need for a chatbot?
+
+To successfully train a support chatbot with 90 percent accuracy, you would typically
+need thousands of _"training snippets"_ - However, it's not only a question of quantity,
+but also a question of quality. Your training can be scraped from your website, it can be
+extracted from your support or CRM system, it can even be extracted from your emails.
+
+In Aista we can help you with this, and this is a service we provide for a fee in fact.
+If you need help to improve your bot's accurace, please contact us at [info@aista.com](mailto:info@aista.com).
+
+## Where is Aista located?
+
+We are a Cyprus company outside of the beautiful city of Limassol, but we have clients
+from all over the world.
+
+## How big is Aista?
+
+We are a small startup, and we have only been in business since December 2021. However,
+we are a handful of dedicated employees with an extraordinarily faith in what we do.
+We also have partners and subsidiaries helping us all over the world, ranging from Ukraine
+to Norway.
+
+## Can you deliver AI based expert systems?
+
+Yes, we can also deliver custom tailored expert systems based upon AI. These can for
+instance be secured systems, protected by authentication and authorisation, only
+allowing authorised users acces. Such systems can help you with anything from legal
+documents, to medical diagnoses. However, this is a service we charge for,
+and would be considered custom development.
+
+## How much work is it to train a chatbot?
+
+A successful chatbot based upon AI typically needs thousands of high quality
+training snippets. However, even if you have huge amounts of data, your data
+typically needs to be _"washed"_ before you start training your own chatbot.
+This is a manuall process, and typically requires one human being for some 3 to
+5 days going through your training data, at which point if you've got good quality
+data, and at least a couple of thousands of snippets, you can expect an accuracy
+of around 90%, depending upon the complexity of your domain.
+
+## How can I get my own chatbot on my website?
+
+Signup at [Aista.com](https://aista.com), create a cloudlet, and create training
+data in the machine learning component by for instance scraping your website.
+
+## Is scraping websites legal?
+
+Yes, in fact if it wasn't, Google wouldn't exist. Scraping websites, also websites
+you don't own yourself is 100% legal.
