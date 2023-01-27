@@ -313,3 +313,12 @@ data in the machine learning component by for instance scraping your website.
 
 Yes, in fact if it wasn't, Google wouldn't exist. Scraping websites, also websites
 you don't own yourself is 100% legal.
+
+## How was your chatbot made?
+
+It was made by scraping [docs.aista.com](https://docs.aista.com) for training
+data, for then to submit that data to OpenAI's API. Afterwards, the bot was further
+fine-tuned by making sure it was initially put into _"supervised"_ mode, which
+allowed us to see what types of answers it was giving to questions, for then
+to manually edit its wrong answers, and re-train it again with refined data.
+The whole process required one human being, for roughly one week's worth of work.
