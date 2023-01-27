@@ -8,11 +8,10 @@ og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master
 
 Magic contains a whole range of endpoints, or _"middleware"_ parts, that the system itself
 relies upon to function. You can play around with these endpoints by using the _"Endpoints"_
-menu item in your dashboard, ensure you show your system endpoints, while filtering on _"magic/system"_.
+menu item in your dashboard and ensure you show your system endpoints.
 Most of these endpoints are for internal use through the Magic dashboard, and should as a general
 rule of thumb _not_ be consumed directly by you - But some of these endpoints are useful for things such
-as implementing authentication and authorisation in your own code. Below is a screenshot of how Magic
-allows you to browse and try your endpoints through its _"Endpoints"_ menu item.
+as implementing authentication and authorisation in your own code.
 
 ![Endpoints](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/endpoints.jpg)
 
@@ -460,76 +459,10 @@ This endpoint is not intended for you to consume in your own code.
 ### GET magic/system/config/status
 
 This endpoint returns the setup status of your system, implying if the system has been correctly
-initialised. The endpoint requires no argument. The response object will resemble the following.
-
-```
-{
-  "config_done": true,
-  "magic_crudified": true,
-  "server_keypair": true
-}
-```
-
-The fields in the above payload implies the following.
-
-* __[config_done]__ - If true the primary configuration process of your server has been done, implying Magic has created a magic database, and changed your _"appsettings.json"_ file, applying a valid connection string to an existing database, and an auth secret
-* __[magic_crudified]__ - If true your magic database has been CRUDified
-* __[server_keypair]__ - If true the server has a cryptography key pair
-
-If any of the above fields does _not_ return true, the frontend dashboard will guide you through the process
-of finishing the configuration process before allowing you to gain access to other parts of your Magic server.
-The endpoint can only be invoked by a root user.
-This endpoint is not intended for you to consume in your own code.
-
-### POST magic/system/config/setup
-
-This endpoint sets up your system, and requires the following payload.
-
-```
-{
-  "password": "yyy",
-  "settings": "*"
-}
-```
-
-The above fields implies the following.
-
-* __[password]__ - The root user's password
-* __[settings]__ - The initial value for your _"appsettings.json"_ file. This is the entire JSON content of your _"appsettings.json"_ file, and will be sanity checked on the server to some extent before saved and applied
-
-The endpoint can only be invoked by a root user, and will setup Magic to use the specified connection string found
-in your __[settings]__ field, verify the database server exists and can be connected to, create the `magic` database
-if not existing from before, and create a root user account in the `users` table for you with the specified __[password]__.
-
-The endpoint can only be invoked _once_ and will throw an exception if the system has previously been setup - Which Magic
-determines by checking the `auth:secret` value of your existing _"appsettings.json"_ file, and if it's more than 50
-characters in length, Magic will assume it's been previously setup and throw an exception.
-
-If the `magic` database already exists in your database server, it will only run its migration scripts, and replace
-the existing root user's password with whatever you provided as a payload to the endpoint invocation. This implies
-that if you forget your root user's password the easiest way to change it is in fact to manually change the `auth:secret`
-back to some value with less than 50 characters in length, for then to log out and login
-again, which will allow you to run through the configuration process again, overwriting your root user's existing
-password.
-This endpoint is not intended for you to consume in your own code.
-
-### GET magic/system/config/version-compare
-
-This endpoint requires two version numbers and return -1, 0 or 1 depending upon which of the two versions
-comes before the other one. It's useful for validating the backend is at least at some specific version number
-or higher, before for instance installing modules and such requiring a specific version. The versions it expects
-to perform this comparison must be in the form of `vn.n.n`, e.g. _"v10.14.33"_. Refer to the **[version]** slot
-further down in this document to understand how a Magic version provides semantic meaning with its version entities.
-The query parameters the endpoint requires are as follows.
-
-* __[version_1]__ - Left hand side comparison argument
-* __[version_2]__ - Right hand side comparison argument
-
-If __[version_1]__ is lower than __[version_2]__ the endpoint will return -1. If the versions are the same
-the endpoint will return 0, if __[version_1]__ is higher it will return 1.
-
-This endpoint is considered obsolete and might be removed in future versions of Magic.
-This endpoint is not intended for you to consume in your own code.
+initialised. The endpoint requires no argument. If this endpoint does _not_ return true, the
+frontend dashboard will guide you through the process of finishing the configuration process before
+allowing you to gain access to other parts of your Magic server. The endpoint can only be invoked
+by a root user. This endpoint is not intended for you to consume in your own code.
 
 ## CRUD related endpoints
 
@@ -1333,7 +1266,7 @@ is your database type such as for instance 'pgsql', 'mysql' or 'mssql'.
 
 This endpoint is not intended for you to consume in your own code.
 
-## Task related endpoints
+## Tasks related endpoints
 
 These are endpoints related to administrating tasks, and/or due dates for executing tasks. To understand the
 task scheduler and how it works please refer to the [following article](/tutorials/task-scheduler/).
@@ -1454,67 +1387,6 @@ This endpoint deletes the specified **[id]** due/repeats instance in your backen
 only be invoked by a root user. The endpoint requires the following query argument(s).
 
 * __[id]__ - Id of due date object to delete
-
-This endpoint is not intended for you to consume in your own code.
-
-## Terminal related endpoints
-
-These are terminal related endpoints, and/or socket connection points. Magic has support for subscribing
-to web socket messages using SignalR, in addition to executing Hyperlambda files over the same socket
-connection. This part of the documentation describes the endpoints related to such socket operations
-in regards to the integrated _"Terminal"_ component. The terminal component again allows for executing
-terminal or bash commands in your backend, and see the result of the command in your frontend.
-
-### SOCKET magic/system/terminal/command
-
-This socket URL allows you to transmit a command to a previously opened terminal instance on your
-server. The socket endpoints can only be invoked by a root user. The endpoints requires the following
-payload.
-
-```
-{
-  "cmd": "cd",
-  "channel": "xyz"
-}
-```
-
-The **[cmd]** above is a terminal or bash command, such as `ls` or `mkdir` - While the **[channel]** above
-is the name of a previously created channel in your backend. To create a unique channel you can use the `gibberish`
-endpoint. This endpoint can only be invoked by a root user.
-
-This endpoint is not intended for you to consume in your own code.
-
-### SOCKET magic/system/terminal/start
-
-This socket URL allows you to create a new terminal instance on your server, allowing you to transmit
-bash command over. The socket endpoint requires the following payload.
-
-```
-{
-  "channel": "foo",
-  "folder": "/modules/"
-}
-```
-
-The above **[channel]** becomes a unique reference for future commands transmitted to your server,
-while the **[folder]** becomes the initial default folder from where to run your terminal within on
-your server. This endpoint can only be invoked by a root user.
-
-This endpoint is not intended for you to consume in your own code.
-
-### SOCKET magic/system/terminal/stop
-
-This socket URL allows you to stop a previously created terminal instance on your server. It requires
-the following payload.
-
-```
-{
-  "channel": "foo"
-}
-```
-
-The above **[channel]** is a channel previously created using the start socket endpoint. This endpoint
-can only be invoked by a root user.
 
 This endpoint is not intended for you to consume in your own code.
 
