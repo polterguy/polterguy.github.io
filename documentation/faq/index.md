@@ -26,12 +26,13 @@ and also encapsulates our vision and goal.
 
 ## What does Aista mean?
 
-Aista means a lot of things. It can be an acronym, at which point it implies _"Artificial
-Intelligence Software Technology Assistance"_. In Hindi it implies _"Taking it easy and relaxing"_,
-which arguably becomes the end result for the software developer as the machine creates most of your
-code. In ancient Gothic it means _"In awe of, and in respect of"_, which are our company values.
-While in Greek it implies _"Let it be, leave it go"_, which is what you can do with most of
-your software development efforts once the machine creates most of your code.
+Aista means a lot of things. It can be an acronym, at which point it implies
+_"Artificial Intelligence Software Technology Assistance"_. In Hindi it
+implies _"Taking it easy and relaxing"_, which arguably becomes the end result for
+the software developer as the machine creates most of your code. In ancient Gothic it
+means _"In awe of, and in respect of"_, which are our company values. While in Greek it
+implies _"Let it be, leave it go"_, which is what you can do with most of your software
+development efforts once the machine creates most of your code.
 
 ## What is Hyperlambda?
 
