@@ -10,6 +10,7 @@ This project provides math functions to Magic. More specifically, it provides th
 * __[math.modulo]__ - Modulo
 * __[math.decrement]__ - Decrements a node's value, optionally by **[step]**, defaulting to 1
 * __[math.increment]__ - Increments a node's value, optionally by **[step]**, defaulting to 1
+* __[math.dot]__ - Returns the dot product of two lists, where each list must be a `double` value
 
 All of the above besides the two last slots can be given any number of arguments, including as its value,
 and will treat the first argument as the _"base"_, and performing the rest of the arguments self assigning
@@ -174,6 +175,27 @@ It can optionally be given a **[step]** argument, such as illustrated below.
 math.increment:x:@.arg
    .:int:2
 ```
+
+## How to use [math.dot]
+
+This slot returns the dot product of two lists.
+
+```
+.list1
+   .:double:0.5
+   .:double:0.7
+   .:double:0.1
+.list2
+   .:double:0.56
+   .:double:0.89
+   .:double:0.33
+math.dot
+   get-nodes:x:@.list1/*
+   get-nodes:x:@.list2/*
+```
+
+This slot is useful for calculating similarities between two different objects in Machine Learning, where
+each list is an _"embedding"_ or a vector.
 
 ## Project website for magic.lambda.math
 

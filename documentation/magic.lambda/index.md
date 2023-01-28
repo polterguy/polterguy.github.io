@@ -1491,6 +1491,43 @@ the crudification process. You can also combine transformations of names, values
 same template nodes. The process is also recursive in nature, performing substitutions through the entire
 hierarchy of your template lambda.
 
+### How to use [sort]
+
+Sort takes an expression leading to a list of nodes, in addition to a lambda object. Your lambda
+object will be invoked several times, with an **[.lhs]**, an **[.rhs]** and a **[.result]** argument.
+It is your code's responsibility to set the value of the **[.result]** node according to which of the
+**[.lhs]** and **[.rhs]** node should comes first in the sorted result.
+
+```
+.data
+   .
+      name:Thomas
+   .
+      name:John
+   .
+      name:Jane
+   .
+      name:Peter
+sort:x:@.data/*
+   if
+      lt:x:@.lhs/#/*/name
+         get-value:x:@.rhs/#/*/name
+      .lambda
+         set-value:x:@.result
+            .:int:-1
+   else-if
+      mt:x:@.lhs/#/*/name
+         get-value:x:@.rhs/#/*/name
+      .lambda
+         set-value:x:@.result
+            .:int:1
+   else
+      set-value:x:@.result
+         .:int:0
+```
+
+Notice, **[sort]** does not modify the original list, but returns a new list of nodes after having executed.
+
 ## Project website for magic.lambda
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda](https://github.com/polterguy/magic.lambda), and you can provide feedback, provide bug reports, etc at the same place.
