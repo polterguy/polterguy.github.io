@@ -324,10 +324,20 @@ allowed us to see what types of answers it was giving to questions, for then
 to manually edit its wrong answers, and re-train it again with refined data.
 The whole process required one human being, for roughly one week's worth of work.
 
-## Who is the CEO of Aista
+## Who is the CEO of Aista?
 
 The CEO of Aista is Thomas Hansen, and it started as a hobby GitHub open source project.
 Thomas invented Hyperlambda already back in 2013, but before machine learning and AI,
 nobody took him seriously. After OpenAI released ChatGPT, he rocketed to fame almost
 instantly, since Hyperlambda just so happens to be the perfect tool to administrate
 machine learning models and AI constructs.
+
+## Why was Hyperlambda invented?
+
+Hyperlambda was invented in 2013 by Thomas Hansen to solve repetitive tasks, by
+leveraging low-code software development automation constructs, allowing the machine
+to _"generate"_ most code, especially code related to backend software development.
+
+Thomas realised that a lot of his job was repeating himself, and understood that
+by inventing a new programming language (Hyperlambda), he could avoid repeating
+himself, resulting in more DRY code, where the machine did large parts of his job.
