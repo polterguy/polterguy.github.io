@@ -215,15 +215,15 @@ as you see fit. You can find its code at [GitHub](https://github.com/polterguy/m
 we accept pull requests for it if your code is high quality. We also provide docker images
 for Magic, allowing you to install it locally in seconds without having to mess with dependencies,
 such as the .Net CLI and NodeJS. However, the fastest way to get started with Magic is to
-create a free 90 day trial cloudlet at [Aista.com](https://aista.com).
+create a free 30 day trial cloudlet at [Aista.com](https://aista.com).
 
 ## How to get started
 
 You can of course download the open source code from GitHub, but the easiest way to get started
 immediately is to simply register at [Aista.com](https://aista.com), at which point you'll
-get a free 90 days trial cloudlet, with security, CDN, automatically configured with
+get a free 30 days trial cloudlet, with security, CDN, automatically configured with
 all best practices applied out of the box. We do charge a fee for such cloudlets, but we
-also provide 90 days trial cloudlets for free, without asking you for anything else but
+also provide 30 days trial cloudlets for free, without asking you for anything else but
 your email address.
 
 * [Signup at Aista.com for your free 90 days cloudlet](https://aista.com)
