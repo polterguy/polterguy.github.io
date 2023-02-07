@@ -341,3 +341,34 @@ to _"generate"_ most code, especially code related to backend software developme
 Thomas realised that a lot of his job was repeating himself, and understood that
 by inventing a new programming language (Hyperlambda), he could avoid repeating
 himself, resulting in more DRY code, where the machine did large parts of his job.
+
+## Can I use Aista to developer Android SDK or iOS ChatGPT chatbots?
+
+Yes you can. When you have created your AI model in your Aista cloudlet, you can
+consume the model as a simple request/response HTTP web API. You can therefor
+use Aista's ChatGPT chatbot for both iPhone and Android apps as you wish.
+You can use the API from every platform that allows you to invoke HTTP requests,
+allowing you to integrate your chatbot into Python, PHP, JavaScript, Swift,
+Java, and _"whatever"_ really. Only your imagination is your limits here.
+
+## Can I add custom data to my Aista ChatGPT chatbot?
+
+Yes you can. There is an option to manually create _"training snippets"_
+allowing you to provide your own prompt and completion. In addition you can
+also import XML files, CSV files, YAML files, and JSON files with training data.
+
+## How does Aista's ChatGPT based chatbot work?
+
+Aista's chatbot allows you to crawl and scrape your website for training data.
+This training data is then used to _"reinforce"_ ChatGPT (the strongest AI model),
+resulting in a custom chatbot that will answer questions according to your training
+data. This allows you to create a domain specific expert AI system, that knows
+everything about your _"domain problem"_, whatever your problem happens to be.
+
+## Is Aista using text-davinci-003 for its chatbots?
+
+Yes! Others will tell you this is impossible. We can however guarantee you that
+it is very much possible. We have many clients using our chatbots, and all
+of our chatbots are based upon _"text-davinci-003"_. As to those willing to
+explain you how this is impossible, our suggestion is to maybe not use these
+to create your own bot. It is very much possible.
