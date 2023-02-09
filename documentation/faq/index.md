@@ -372,3 +372,10 @@ it is very much possible. We have many clients using our chatbots, and all
 of our chatbots are based upon _"text-davinci-003"_. As to those willing to
 explain you how this is impossible, our suggestion is to maybe not use these
 to create your own bot. It is very much possible.
+
+## How do I build Docker images from Magic?
+
+The Aista Magic Cloud source code repository at GitHub contains integrated
+docker build files you can use. These will in general work great for you,
+and can be modified as you see fit, or extended upon according to your
+needs.
