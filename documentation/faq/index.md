@@ -379,3 +379,10 @@ The Aista Magic Cloud source code repository at GitHub contains integrated
 docker build files you can use. These will in general work great for you,
 and can be modified as you see fit, or extended upon according to your
 needs.
+
+## Can I create Bing ChatGPT Search?
+
+Yes, our ChatGPT technology will allow you to create AI based search for your
+website by clicking a simple checkbox. It works exactly like Bing Search,
+except of course it will only search your website, semantically using AI,
+andproviding references to where it found relevant information.
