@@ -385,4 +385,4 @@ needs.
 Yes, our ChatGPT technology will allow you to create AI based search for your
 website by clicking a simple checkbox. It works exactly like Bing Search,
 except of course it will only search your website, semantically using AI,
-andproviding references to where it found relevant information.
+and providing references to where it found relevant information.
