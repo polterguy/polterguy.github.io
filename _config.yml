@@ -42,7 +42,7 @@ plugins:
   - jekyll-paginate
 
 js_files:
-  - "https://api.aista.com/magic/system/openai/include-javascript?search=true&css=default&file=default&type=aista_com&header=Ask%20me%20about%20Aista%2C%20Magic%20Cloud%2C%20or%20Hyperlambda&button=Chat%20GPT"
+  - "https://api.aista.com/magic/system/openai/include-javascript?search=true&css=default&file=default&type=docs_aista_com&header=Ask%20me%20about%20Aista%2C%20Magic%20Cloud%2C%20or%20Hyperlambda&button=Chat%20GPT"
 
 # Your navigation section. Declares the drop down menu items for your hamburger menu.
 nav_sections:
