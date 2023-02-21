@@ -32,6 +32,7 @@ other web APIs. However, when you can use Magic, it easily saves you 80% of your
 save you 95% of your time and resources, depending upon your requirements. Below are some examples of
 apps where it makes sense to use Magic.
 
+* Custom ChatGPT website chatbots
 * CRM systems
 * Headless CMS systems
 * EPJ systems tracking patients and journals of patients
@@ -43,6 +44,20 @@ apps where it makes sense to use Magic.
 As an example of how useful Magic is, realise that at Aista we built our [entire hub](https://hub.aista.com) using
 nothing but Magic and Hyperlambda. This saved us roughly 90% of the resource requirements we would have needed if
 we were to create the same system using for instance GoLang, Python or PHP.
+
+## Custom ChatGPT website chatbots
+
+You can use Magic to create your own custom ChatGPT chatbot in minutes, for then to embed it into your
+website in some few seconds. The Chatbot Wizard component in Magic will ask you for your OpenAI API key,
+your Google reCAPTCHA settings, for then to allow you to scrape your website generating a custom machine
+learning model in the process. This model allows your users to ask questions related to _your website_,
+and have the chatbot answer how you _want it to answer questions_. Want to have a chatbot that tells your
+users you're the President of China? No problem, it's a 5 minute job for Magic.
+
+![Custom ChatGPT website chatbot](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/custom-chatgpt-chatbot.jpg)
+
+It works by scraping your website, generating training data in the process, for then to end up with a
+custom machine learning model that answers questions according to your training data.
 
 ## The backend generator
 
@@ -247,6 +262,7 @@ allowing you to graphically administrate your Magic installation.
 * [Users and roles component](/documentation/magic/components/auth/)
 * [Cryptography component](/documentation/magic/components/crypto/)
 * [Health check](/documentation/magic/components/assumptions/)
+* [Custom ChatGPT website chatbots](/documentation/magic/components/chatbot-wizard/)
 * [Sockets](/documentation/magic/components/sockets/)
 * [Configuration component](/documentation/magic/components/config/)
 * [Profile component](/documentation/magic/components/profile/)

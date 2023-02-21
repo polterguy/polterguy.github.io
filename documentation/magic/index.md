@@ -38,6 +38,7 @@ that you watch this video to understand how to use Magic.
 * [Users and roles component](/documentation/magic/components/auth/)
 * [Cryptography component](/documentation/magic/components/crypto/)
 * [Health check](/documentation/magic/components/assumptions/)
+* [Custom ChatGPT website chatbots](/documentation/magic/components/chatbot-wizard/)
 * [Sockets](/documentation/magic/components/sockets/)
 * [Configuration component](/documentation/magic/components/config/)
 * [Profile component](/documentation/magic/components/profile/)
