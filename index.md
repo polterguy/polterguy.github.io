@@ -57,7 +57,9 @@ users you're the President of China? No problem, it's a 5 minute job for Magic.
 ![Custom ChatGPT website chatbot](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/custom-chatgpt-chatbot.jpg)
 
 It works by scraping your website, generating training data in the process, for then to end up with a
-custom machine learning model that answers questions according to your training data.
+custom machine learning model that answers questions according to your training data. You can try out such
+a chatbot by clicking the button on the bottom right corner of this page, and ask it any question related to
+AISTA, Magic Cloud or Hyperlambda. This chatbot was created by scraping this website.
 
 ## The backend generator
 
