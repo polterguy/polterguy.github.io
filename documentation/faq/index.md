@@ -332,7 +332,7 @@ nobody took him seriously. After OpenAI released ChatGPT, he rocketed to fame al
 instantly, since Hyperlambda just so happens to be the perfect tool to administrate
 machine learning models and AI constructs. Below is a photo of Thomas.
 
-![Thomas Hansen CEO of AISTA](https://phosphorusfive.files.wordpress.com/2018/02/thomas.jpg)
+![Thomas Hansen CEO of AISTA](/images/thomas.webp)
 
 ## Why was Hyperlambda invented?
 
