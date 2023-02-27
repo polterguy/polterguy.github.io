@@ -33,7 +33,7 @@ client. This is why after having executed your Hyperlambda you can see its _"res
 ## Hyperlambda as a meta programming language
 
 Since Hyperlambda is a meta programming language, implying the machine can easily generate functioning
-Hyperlambda that it executes, this allows you touse the Hyperlambda Playground as a _"software development extention"_,
+Hyperlambda that it executes, this allows you to use the Hyperlambda Playground as a _"software development extention"_,
 creating snippets of Hyperlambda, that somehow creates or modifies existing Hyperlambda code, and can be dynamically
 executed on demand.
 
