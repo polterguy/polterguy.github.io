@@ -108,6 +108,10 @@ nav_sections:
         name: magic.lambda.sockets
       - url: /documentation/magic.lambda.threading/
         name: magic.lambda.threading
+      - url: /documentation/magic.lambda.pdf/
+        name: magic.lambda.pdf
+      - url: /documentation/magic.lambda.openai/
+        name: magic.lambda.openai
   - name: Misc helper projects
     items:
       - url: /documentation/magic.node/

@@ -18,6 +18,7 @@ cryptographically hashing files and payloads, etc. More specifically this projec
 * __[crypto.fingerprint]__ - Creates a fingerprint of something
 * __[crypto.get-key]__ - Returns the fingerprint of the public key associated with message
 * __[crypto.random]__ - CSRNG creating random seeds for you
+* __[crypto.random.int]__ - CSRNG creating random integer value for you
 * __[crypto.hash]__ - Hash some message or payload using the specified **[algo]** or **[algorithm]**
 * __[crypto.hash.md5]__ - MD5 hash some message or payload
 * __[crypto.hash.sha1]__ - SHA1 hash some message or payload
@@ -52,6 +53,19 @@ it easily traversed using any string library. However, you can provide a **[raw]
 value to boolean true, at which point the slot will return the raw bytes as a `byte[]`. This has a much
 larger amount of entropy than simply using alphanumeric characters for the same size - Which is
 important as you start creating keys for AES cryptography operations etc.
+
+## How to use [crypto.random.int]
+
+This slot create a random integer value for you using a CSRNG generator.
+The slot can optionally take a **[max]** argument, which defines the maximum value it will return.
+This slot is useful for creating random integers where you need cryptographically
+secured random values. An example of generating a cryptographically secure random string integer
+with a maximum value of 1024 can be found below.
+
+```
+crypto.random.int
+   max:1024
+```
 
 ## How to use [crypto.hash] and [crypto.hash.xxx]
 
