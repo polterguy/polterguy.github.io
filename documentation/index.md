@@ -52,6 +52,7 @@ endpoints, etc.
 * [magic.lambda.sockets](/documentation/magic.lambda.sockets/) - Web socket support for Magic using SignalR
 * [magic.lambda.threading](/documentation/magic.lambda.threading/) - Thread support for Magic and Hyperlambda
 * [magic.lambda.pdf](/documentation/magic.lambda.pdf/) - PDF support for Magic and Hyperlambda
+* [magic.lambda.openai](/documentation/magic.lambda.openai/) - OpenAI specific slots
 
 In addition to the above projects, Magic also contains [middleware](/documentation/magic/), which is the
 dashboard components, and the Hyperlambda endpoints we provide out of the box. On Aista's YouTube channel you will also
