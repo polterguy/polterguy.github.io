@@ -297,6 +297,18 @@ the code is DRY, implying it does not repeat itself and follows all best practic
       <td><img alt="Lines of code" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.threading&metric=ncloc"></td>
    </tr>
    <tr>
+      <td><a href="https://github.com/polterguy/magic.lambda.pdf">magic.lambda.pdf</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.pdf/actions/workflows/build.yaml/badge.svg"></td>
+      <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=alert_status"></td>
+      <td><img alt="Lines of code" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=ncloc"></td>
+   </tr>
+   <tr>
+      <td><a href="https://github.com/polterguy/magic.lambda.openai">magic.lambda.openai</a></td>
+      <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.openai/actions/workflows/build.yaml/badge.svg"></td>
+      <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.openai&metric=alert_status"></td>
+      <td><img alt="Lines of code" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.openai&metric=ncloc"></td>
+   </tr>
+   <tr>
       <td><a href="https://github.com/polterguy/magic.lambda.system">magic.lambda.system</a></td>
       <td><img alt="Build badge" src="https://github.com/polterguy/magic.lambda.system/actions/workflows/build.yaml/badge.svg"></td>
       <td><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.system&metric=alert_status"></td>
