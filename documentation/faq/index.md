@@ -357,7 +357,8 @@ Java, and _"whatever"_ really. Only your imagination is your limits here.
 
 Yes you can. There is an option to manually create _"training snippets"_
 allowing you to provide your own prompt and completion. In addition you can
-also import XML files, CSV files, YAML files, and JSON files with training data.
+also import XML files, CSV files, YAML files, PDF files and JSON files to
+create training data from files.
 
 ## How does Aista's ChatGPT based chatbot work?
 
