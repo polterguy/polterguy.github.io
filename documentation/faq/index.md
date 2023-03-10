@@ -197,13 +197,13 @@ plan at all before you decide if you want to buy.
 
 ## Can I have my own ChatGPT
 
-Yes, this is one of our most sought after products, and we sell it as a commercial offering,
-included in our flagship product called Aista Magic Cloud. It works by scraping your website,
-or any other website for that matter for data, which it will use to create a _"custom private AI model"_,
-that you can inject into your own website by including a simple JavaScript file. This is what
-we did for our [docs.aista.com](https://docs.aista.com) website in fact, and creating such
+Yes, this is one of our most sought after products, and we sell it as a commercial offering
+included in our flagship product called Aista Magic Cloud. It works by scraping your website
+for training data, or any other website. Magic will use the result of scraping to create a
+_"custom private AI model"_, that you can include on your own website. This is what
+we did for our [docs.aista.com](https://docs.aista.com) website in fact, and creating
 a personal ChatGPT based chatbot can typically be done in a day, assuming you've got a good
-website, and/or other sources of training material allowing us to train your custom AI model.
+website, and/or other sources of training material to create your custom AI model.
 
 If you're a little bit skilled in IT you can probably do it yourself in a day or two in fact,
 and the way to do this is to [signup for a cloudlet](https://aista.com) and go to the Machine
