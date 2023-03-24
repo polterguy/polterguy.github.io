@@ -202,8 +202,8 @@ io.file.unzip:/misc/foo.zip
 
 This slot takes a filename as its primary argument, and optionally any amount of lambda children objects.
 It allows for dynamically substituting for instance `{{ '{{' }}*/.name}}` segments in your original source file,
-by invoking lambda objects it can find by evaluating your `{{ '{{' }}xyz}}` segment as an expression, that
-leads to the lambda object you want to execute. Below is an example of usage that assumes you've got a
+by invoking lambda objects it can find by evaluating your `{{ '{{' }}xyz}}` segment as an expression 
+leading to some lambda object you want to execute. Below is an example of usage that assumes you've got a
 file named _"foo.html"_ at the root folder of your installation resembling the following.
 
 **/foo.html**
@@ -248,11 +248,14 @@ The above will substitute all your `{{xyz}}` segments and give you a result rese
         </p>
     </body>
 </html>
-
 ```
 
 Notice, if the node your expression is leading to has a value such as illustrated above, it will return that value
 instead of executing your node as a lambda object.
+
+All **[.oninit]** lambda objects found as children of your **[io.file.mixin]** invocation will be executed before
+any mixin logic is executed, allowing for you to create common initialisation logic, that runs once but is referenced
+in multiple mixin expressions.
 
 ### How to use [io.content.zip-stream]
 
