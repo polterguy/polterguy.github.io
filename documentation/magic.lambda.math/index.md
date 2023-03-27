@@ -11,6 +11,8 @@ This project provides math functions to Magic. More specifically, it provides th
 * __[math.decrement]__ - Decrements a node's value, optionally by **[step]**, defaulting to 1
 * __[math.increment]__ - Increments a node's value, optionally by **[step]**, defaulting to 1
 * __[math.dot]__ - Returns the dot product of two lists, where each list must be a `double` value
+* __[math.max]__ - Returns the max value
+* __[math.min]__ - Returns the min value
 
 All of the above besides the two last slots can be given any number of arguments, including as its value,
 and will treat the first argument as the _"base"_, and performing the rest of the arguments self assigning
@@ -174,6 +176,26 @@ It can optionally be given a **[step]** argument, such as illustrated below.
 .arg:int:5
 math.increment:x:@.arg
    .:int:2
+```
+
+## How to use [math.min]
+
+This slot returns the min value of its input.
+
+```
+math.min
+   .:int:5
+   .:int:7
+```
+
+## How to use [math.max]
+
+This slot returns the max value of its input.
+
+```
+math.max
+   .:int:11
+   .:int:12
 ```
 
 ## How to use [math.dot]

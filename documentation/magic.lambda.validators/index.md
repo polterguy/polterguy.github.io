@@ -12,6 +12,7 @@ This project contains argument validators for Hyperlambda. More specifically it 
 * __[validators.string]__ - Verifies that some string input is between __[min]__ and __[max]__ in length
 * __[validators.url]__ - Verifies that some string input is a legal URL, either HTTP or HTTPS type of scheme
 * __[validators.recaptcha]__ - reCAPTCHA validator, to avoid bots from invoking your APIs
+* __[validators.default]__ - Default validator, adding default argument if not specified
 
 All of the above slots takes an expression, or values, as its main input, and will throw exceptions if their input expression's
 value(s), or its value, does not follow the rules specified by the validator. Some of the above slots takes additional arguments.
@@ -143,6 +144,19 @@ validators.recaptcha:x:@.arguments/*/recaptcha_value
    site-key:xyz
    secret:qwerty
    min:decimal:0.3
+```
+
+### How to use [validators.default]
+
+This validator takes one or more arguments with any name and any value, and if this node does not exist as
+a child of the node collection specified as its expression value, it appends the node to it.
+If the node exists but has a null value, it sets its value to the value of the argument.
+
+
+```
+.arguments
+validators.default:x:@.arguments
+   foo1:bar1
 ```
 
 ## Validator internals
