@@ -3,7 +3,7 @@
 
 These are frequently asked questions related to Magic and Hyperlambda, and serves as an FAQ for
 anything related to Aista, Magic and Hyperlambda. If your question is not answered, you can
-send your question to [info@aista.com](mailto:info@aista.com), and we will try to answer you at the best of our abilities.
+send your question to [team@ainiro.io](mailto:team@ainiro.io), and we will try to answer you at the best of our abilities.
 
 ## What is Aista Magic Cloud?
 
@@ -148,7 +148,7 @@ extending Hyperlambda and Aista Magic Cloud with C# is very easy. Start out by
 cloning the _"magic.clone"_ project, look at its code, refer to the _"magic.signals"_
 project's documentation, at which point you can easily create your own Hyperlambda
 keywords probably in a couple of hours. If you do, and you open source license your
-code, please [let us know](mailto:info@aista.com) since we love to hear about community
+code, please [let us know](mailto:team@ainiro.io) since we love to hear about community
 driven extentions, and we might be interested in promoting your work if it's good.
 
 ## How can I learn Hyperlambda?
@@ -205,11 +205,6 @@ we did for our [polterguy.github.io](https://polterguy.github.io) website in fac
 a personal ChatGPT based chatbot can typically be done in a day, assuming you've got a good
 website, and/or other sources of training material to create your custom AI model.
 
-If you're a little bit skilled in IT you can probably do it yourself in a day or two in fact,
-and the way to do this is to [signup for a cloudlet](https://aista.com) and go to the Machine
-Learning component. If you need help with this, we would be happy to assist. Send us an
-email to [info@aista.com](mailto:info@aista.com) and let's get started.
-
 Notice, Machine Learning an AI is not a miracle worker. It can never become better than
 whatever training data you've got available. If you provide garbage training data, you get
 garbage AI. Whether or not your website can be intelligently scraped for information to
@@ -239,9 +234,9 @@ the _"/etc/system/openai/js/"_ folder with the extention of _".js"_.
 
 ## Can I talk to a human
 
-Sure, send an email to [info@aista.com](mailto:info@aista.com) and let's get the conversation
-started. If you send an email to info@aista.com you will be contacted by a human employee
-from Aista within some few hours.
+Sure, send an email to [team@ainiro.io](mailto:team@ainiro.io) and let's get the conversation
+started. If you send an email to team@ainiro.io you will be contacted by a human employee
+from AINIRO within some few hours.
 
 ## Do I get support?
 
@@ -273,7 +268,7 @@ but also a question of quality. Your training can be scraped from your website, 
 extracted from your support or CRM system, it can even be extracted from your emails.
 
 In Aista we can help you with this, and this is a service we provide for a fee in fact.
-If you need help to improve your bot's accurace, please contact us at [info@aista.com](mailto:info@aista.com).
+If you need help to improve your bot's accurace, please contact us at [team@ainiro.io](mailto:team@ainiro.io).
 
 ## Where is Aista located?
 
@@ -307,7 +302,7 @@ of around 90%, depending upon the complexity of your domain.
 
 ## How can I get my own chatbot on my website?
 
-Signup at [Aista.com](https://aista.com), create a cloudlet, and create training
+Signup at [AINIRO.IO](https://ainiro.io), create a cloudlet, and create training
 data in the machine learning component by for instance scraping your website.
 
 ## Is scraping websites legal?

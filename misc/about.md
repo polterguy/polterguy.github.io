@@ -41,5 +41,5 @@ If you want to write an article about Aista Magic Cloud, or you belong to the pr
 
 ## Contact us
 
-If you want to contact Aista, you can send an email to [info@aista.com](mailto:info@aista.com) or
-use our contact form at [aista.com](https://aista.com).
+If you want to contact AINIRO, you can send an email to [team@ainiro.io](mailto:team@ainiro.io) or
+use our contact form at [ainiro.io](https://ainiro.io).

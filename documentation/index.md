@@ -64,8 +64,7 @@ find several playlists, that guides you through the entire platform.
 
 ## Support
 
-If you have a support request of private nature, you can send us an email
-at [info@aista.com](mailto:info@aista.com). If you want to submit a feature request or a bug report,
+If you have a support request of private nature, you can send us a feature request or a bug report,
 you can do this at [github.com/polterguy/magic/issues](https://github.com/polterguy/magic/issues).
 We would also love to discuss Magic with you
 at [github.com/polterguy/magic/discussions](https://github.com/polterguy/magic/discussions)

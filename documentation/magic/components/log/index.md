@@ -13,7 +13,7 @@ are when users are logging in, or errors are occuring in the system for some rea
 ![Magic log](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/log.jpg)
 
 You can also filter your server's log, looking for specific items, to find bugs happening
-as your system is being used. Notice, if you created a cloudlet at Aista.com, by default all log
+as your system is being used. Notice, if you created a cloudlet at AINIRO.IO, by default all log
 entries older than 2 weeks will be automatically deleted to avoid exhausting your cloudlet's persistent
 storage.
 
