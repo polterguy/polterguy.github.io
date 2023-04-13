@@ -9,8 +9,8 @@ og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master
 Aista Magic Cloud, or Magic for short, is a software development platform that creates most of your code _"automagically"_,
 by leveraging meta programming, declarative programming, artificial intelligence, and low-code software development
 automation. This allows you to focus on creative tasks, while having the machine implement the
-boring parts. Aista Magic Cloud is [open source](https://github.com/polterguy/magic), but Aista also
-offers [hosting of Magic](https://aista.com) for a monthly fee.
+boring parts. Aista Magic Cloud is [open source](https://github.com/polterguy/magic), but AINIRO.IO also
+offers [hosting of Magic](https://ainiro.io) for a monthly fee.
 
 <div class="video">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/n8Y4sTrprqk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -41,7 +41,7 @@ apps where it makes sense to use Magic.
 * Logistic systems
 * Basically, anything that requires collecting and managing data, where CRUD operations are important
 
-As an example of how useful Magic is, realise that at Aista we built our [entire hub](https://hub.aista.com) using
+As an example of how useful Magic is, realise that at Aista we built our [entire hub](https://hub.ainiro.io) using
 nothing but Magic and Hyperlambda. This saved us roughly 90% of the resource requirements we would have needed if
 we were to create the same system using for instance GoLang, Python or PHP.
 
@@ -211,7 +211,7 @@ below;
 * Stripe payment integrations
 * Translation micro service
 * Ticket backend administration system
-* Etc, etc, etc - [Contact us](mailto:info@aista.com) if you need something specific we still haven't built
+* Etc, etc, etc - [Contact us](mailto:team@ainiro.io) if you need something specific we still haven't built
 
 ![Magic's plugins](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/bazaar.jpg)
 
@@ -232,18 +232,18 @@ as you see fit. You can find its code at [GitHub](https://github.com/polterguy/m
 we accept pull requests for it if your code is high quality. We also provide docker images
 for Magic, allowing you to install it locally in seconds without having to mess with dependencies,
 such as the .Net CLI and NodeJS. However, the fastest way to get started with Magic is to
-create a free 30 day trial cloudlet at [Aista.com](https://aista.com).
+create a free 7 day trial cloudlet at [AINIRO.IO](https://ainiro.io).
 
 ## How to get started
 
 You can of course download the open source code from GitHub, but the easiest way to get started
-immediately is to simply register at [Aista.com](https://aista.com), at which point you'll
+immediately is to simply register at [AINIRO.IO](https://ainiro.io), at which point you'll
 get a free 30 days trial cloudlet, with security, CDN, automatically configured with
 all best practices applied out of the box. We do charge a fee for such cloudlets, but we
 also provide 30 days trial cloudlets for free, without asking you for anything else but
 your email address.
 
-* [Signup at Aista.com for your free 90 days cloudlet](https://aista.com)
+* [Signup at AINIRO for your free 7 days cloudlet](https://ainiro.io)
 
 ## Primary features of Aista Magic Cloud
 
