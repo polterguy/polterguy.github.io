@@ -12,13 +12,13 @@ title: Aista Magic Cloud
 slogan: A Software Developer's Dream
 
 # Description of your site
-description: An Open Source Low-Code Cloud system allowing you to generate your web applications by simply clicking a button
+description: We put ChatGPT on your website and make it way what you want it to say
 
 # Google Analytics tracking code
-google_analytics: G-9TJ79M3VVN
+google_analytics: G-NP2EPX943P
 
 # Copyright displayed in the bottom right corner
-copyright: Copyright © Aista, Ltd 2020 - 2023, info@aista.com
+copyright: Copyright © Aista, Ltd 2020 - 2023
 
 # Most Wanted Response, most important link on your site.
 mwr: /documentation/magic/
@@ -29,10 +29,10 @@ banner_bg: /assets/bg.jpeg
 body_bg: /assets/bg2.jpeg
 
 # Open Graph image for pages when shared on Facebook or Twitter, etc
-og_image: https://aista.com/assets/images/og-cover-logo.jpg
+og_image: https://ainiro.io/assets/images/ainiro-chatgpt-website-chatbot.png
 
 # Title for your blog page
-blog_title: A Software Developer's Dream
+blog_title: Custom ChatGPT-based website chatbot
 paginate: 5
 paginate_path: "/blog/page:num/"
 
@@ -42,7 +42,7 @@ plugins:
   - jekyll-paginate
 
 js_files:
-  - "https://api.aista.com/magic/system/openai/include-javascript?search=true&css=default&file=default&type=docs_aista_com&header=Ask%20me%20about%20Aista%2C%20Magic%20Cloud%2C%20or%20Hyperlambda&button=Chat%20GPT"
+  - "https://ainiro.io/magic/system/openai/include-javascript?markdown=true&speech=false&search=false&chat=true&css=frank&file=default&type=ainiro_io&header=Ask%20about%20AINIRO&button="
 
 # Your navigation section. Declares the drop down menu items for your hamburger menu.
 nav_sections:
@@ -134,11 +134,11 @@ nav_sections:
         name: About
       - url: /documentation/faq/
         name: FAQ
-      - url: https://youtube.com/ThomasHansen-Magic
-        name: "Magic's YouTube channel"
-      - url: https://t.me/aistamagic
-        name: Telegram channel
-      - url: https://www.linkedin.com/company/aista
-        name: LinkedIn
+      - url: https://youtube.com/ainiro-io
+        name: "AINIRO's YouTube channel"
+      - url: https://twitter.com/AIniroTeam
+        name: Twitter Account
+      - url: https://www.linkedin.com/company/ainiro-io
+        name: AINIRO.IO on LinkedIn
       - url: https://github.com/polterguy/magic
-        name: GitHub project
+        name: "Magic's GitHub project"
