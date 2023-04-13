@@ -1,91 +1,38 @@
 
-# magic.lambda.csv - Parsing and creating CSV from Hyperlambda
+# magic.lambda.pdf - PDF support for Magic and Hyperlambda
 
-This project provides CSV helper slots for Magic. More specifically, it provides the following slots.
+This project provides PDF slots for Magic. The project provides the following
+slots, allowing you to convert a PDF file, stream or raw bytes to its text representation.
 
-* __[lambda2csv]__ - Creates a CSV string from a lambda object
-* __[csv2lambda]__ - Creates a lambda object from a CSV string
+* __[pdf2text]__ - Converts the specified PDF file or stream to text
 
-## Convert from lambda to CSV and back again
+## How to use [pdf2text]
 
-```
-.data
-   .
-      name:Thomas Hansen
-      age:int:47
-   .
-      name:John Doe
-      age:int:67
-
-lambda2csv:x:-/*
-
-add:x:+/*/types
-   get-nodes:x:@lambda2csv/*
-
-csv2lambda:x:@lambda2csv
-   types
-```
-
-Notice, the **[lambda2csv]** slot will return type information, and the **[csv2lambda]** slot can optionally be
-given type information in its **[types]** argument, allowing you to convert correctly back to the correct type(s)
-as you convert a CSV string to its lambda objects. The **[lambda2csv]** slot will also create headers for your
-CSV string, and the **[csv2lambda]** slot will use the first line to retrieve these headers, to rebuild the lambda
-object correctly.
-
-This allows you to roundtrip from a lambda object, to CSV format, and back to lambda again, without loosing
-type information or names of your nodes. This is necessary since CSV doesn't preserve types in any ways. By
-default the **[lambda2csv]** will also treat null values correctly, by adding these into the CSV file as _"[NULL]"_.
-This allows you to preserve null values, which isn't really possible with CSV normally - However, for some edge
-cases you might want to use  _different_ null value, at which point you can supply this as **[null-value]** argument
-to both slots. If you supply a **[null-value]** argument, but set its value to _null_ - Null values will be ignored,
-and no null values will be persisted in any direction.
-
-## How to use [csv2lambda]
-
-This slot converts a CSV string into a lambda object. In its simplest form it would resemble the following.
+This slot allows you to retrieve only the text parts of a PDF document.
 
 ```
-.csv:@"name,age
-Thomas Hansen,47
-John Doe,67"
-
-csv2lambda:x:@.csv
+pdf2text:/foo/bar.pdf
 ```
 
-It can optionally take a type declaration through a **[types]** argument, which allows you to add typing support
-to the slot.
+Notice, the slot can also accept a stream, such as for instance supplied as an uploaded
+document, and react directly on the stream, avoid having to save the streamto a file first.
+It can also accept a string as its input, at which point it assumes the string is the
+relative path to a file. Finally, the slot can accept raw bytes, which it then assumes
+is the raw content from a PDF document.
 
-## How to use [lambda2csv]
+## Project website for magic.lambda.pdf
 
-This slot converts the specified lambda object to a CSV string. Below is an example of usage.
+The source code for this repository can be found at [github.com/polterguy/magic.lambda.pdf](https://github.com/polterguy/magic.lambda.pdf), and you can provide feedback, provide bug reports, etc at the same place.
 
-```
-.data
-   .
-      name:Thomas Hansen
-      age:int:47
-   .
-      name:John Doe
-      age:int:67
-
-lambda2csv:x:-/*
-```
-
-The slot will return type information as children of your **[lambda2csv]** invocation.
-
-## Project website for magic.lambda.csv
-
-The source code for this repository can be found at [github.com/polterguy/magic.lambda.csv](https://github.com/polterguy/magic.lambda.csv), and you can provide feedback, provide bug reports, etc at the same place.
-
-- ![Build status](https://github.com/polterguy/magic.lambda.csv/actions/workflows/build.yaml/badge.svg)
-- [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.csv&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.csv)
-- [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.csv&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.csv)
-- [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.csv&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.csv)
-- [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.csv&metric=coverage)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.csv)
-- [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.csv&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.csv)
-- [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.csv&metric=ncloc)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.csv)
-- [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.csv&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.csv)
-- [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.csv&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.csv)
-- [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.csv&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.csv)
-- [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.csv&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.csv)
-- [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.csv&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.csv)
+- ![Build status](https://github.com/polterguy/magic.lambda.pdf/actions/workflows/build.yaml/badge.svg)
+- [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
+- [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
+- [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
+- [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=coverage)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
+- [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
+- [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=ncloc)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
+- [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
+- [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
+- [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
+- [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
+- [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)

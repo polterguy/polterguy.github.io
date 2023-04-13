@@ -93,7 +93,7 @@ back as the response to the caller if you're in a web project of some sort using
 Below is an example of usage
 
 ```
-image.generate-qr:"https://polterguy.github.io"
+image.generate-qr:"https://docs.aista.com"
    size:8
 ```
 

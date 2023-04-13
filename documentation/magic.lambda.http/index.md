@@ -199,7 +199,7 @@ This slot accepts a URL as its value, an optionally http headers as a **[headers
 it would resemble something such as the following.
 
 ```
-http.get:"https://polterguy.github.io"
+http.get:"https://docs.aista.com"
 ```
 
 The slot returns the result of the specified HTTP GET invocation, including the HTTP headers returned from the endpoint,
