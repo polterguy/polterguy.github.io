@@ -163,7 +163,7 @@ for each project and slot in the navbar section of the primary documentation for
 
 ## Where can I find the documentation for Aista Magic Cloud?
 
-You can find Magic's documentation at [docs.aista.com](https://docs.aista.com)
+You can find Magic's documentation at [polterguy.github.io](https://polterguy.github.io)
 
 ## What is Aista's slogan?
 
@@ -201,7 +201,7 @@ Yes, this is one of our most sought after products, and we sell it as a commerci
 included in our flagship product called Aista Magic Cloud. It works by scraping your website
 for training data, or any other website. Magic will use the result of scraping to create a
 _"custom private AI model"_, that you can include on your own website. This is what
-we did for our [docs.aista.com](https://docs.aista.com) website in fact, and creating
+we did for our [polterguy.github.io](https://polterguy.github.io) website in fact, and creating
 a personal ChatGPT based chatbot can typically be done in a day, assuming you've got a good
 website, and/or other sources of training material to create your custom AI model.
 
@@ -221,7 +221,7 @@ Our chatbot is based upon OpenAI's ChatGPT. We created it by crawling our own we
 our site for information, generating an AI training model in the process. After the crawling was done,
 we fine tuned our own personal AI model from the information found at our website, and injected
 a simple JavaScript file into our website resulting in the chat button you can see at
-[docs.aista.com](https://docs.aista.com). And in fact, if you browse our docs.aista.com
+[polterguy.github.io](https://polterguy.github.io). And in fact, if you browse our polterguy.github.io
 website and read the information you find there, and you ask our AI bot some few questions,
 you can actually easily understand by the answers it is providing that the bot was created by
 assembling information found at this website.
@@ -317,7 +317,7 @@ you don't own yourself is 100% legal.
 
 ## How was your chatbot made?
 
-It was made by scraping [docs.aista.com](https://docs.aista.com) for training
+It was made by scraping [polterguy.github.io](https://polterguy.github.io) for training
 data, for then to submit that data to OpenAI's API. Afterwards, the bot was further
 fine-tuned by making sure it was initially put into _"supervised"_ mode, which
 allowed us to see what types of answers it was giving to questions, for then
