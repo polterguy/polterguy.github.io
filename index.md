@@ -271,3 +271,4 @@ allowing you to graphically administrate your Magic installation.
 * [Log](/documentation/magic/components/log/)
 * [HTTP endpoints in Magic](/documentation/magic/endpoints/)
 * [Dynamic Hyperlambda slots in Magic](/documentation/magic/slots/)
+
