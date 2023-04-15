@@ -168,3 +168,7 @@ docker pull aistamagic/magic-frontend
 docker pull aistamagic/magic-backend
 docker-compose up -d
 ```
+
+## Copyright and maintenance
+
+The projects is copyright of Aista, Ltd 2021 - 2023, and professionally maintained by [AINIRO your friendly ChatGPT website chatbot vendor](https://ainiro.io).

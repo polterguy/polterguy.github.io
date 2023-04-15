@@ -70,3 +70,7 @@ The connection strings for each database type can be found below.
 * __SQL Server__ - Server=localhost;Initial Catalog={database};User=sa;Password=Your_password123;
 * __MySQL__ - Server=localhost;Database={database};Uid=root;Pwd=ThisIsNotAGoodPassword;SslMode=Preferred;Old Guids=true;Port=54321;
 * __PostgreSQL__ - User ID=postgres;Password=ThisIsNotAGoodPassword;Host=localhost;Database={database}; Port=54321;
+
+## Copyright and maintenance
+
+The projects is copyright of Aista, Ltd 2021 - 2023, and professionally maintained by [AINIRO your friendly ChatGPT website chatbot vendor](https://ainiro.io).
