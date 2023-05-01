@@ -12,10 +12,6 @@ automation. This allows you to focus on creative tasks, while having the machine
 boring parts. Magic Cloud is [open source](https://github.com/polterguy/magic), but [AINIRO.IO](https://ainiro.io)
 offers hosting of Magic for a monthly fee.
 
-<div class="video">
-<iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/n8Y4sTrprqk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
 ## Why use Magic Cloud?
 
 As a software developer typically 80% of your job is literally so simple that it can be replaced

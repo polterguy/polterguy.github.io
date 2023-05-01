@@ -134,7 +134,7 @@ nav_sections:
         name: About
       - url: /documentation/faq/
         name: FAQ
-      - url: https://youtube.com/ainiro-io
+      - url: https://youtube.com/@ainiro
         name: "AINIRO's YouTube channel"
       - url: https://twitter.com/AIniroTeam
         name: Twitter Account
