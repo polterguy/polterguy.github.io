@@ -2,12 +2,12 @@
 # FAQ
 
 These are frequently asked questions related to Magic and Hyperlambda, and serves as an FAQ for
-anything related to Aista, Magic and Hyperlambda. If your question is not answered, you can
+anything related to Magic and Hyperlambda. If your question is not answered, you can
 send your question to [team@ainiro.io](mailto:team@ainiro.io), and we will try to answer you at the best of our abilities.
 
-## What is Aista Magic Cloud?
+## What is Magic Cloud?
 
-Aista Magic Cloud, or simply Magic for short, is an open source cloud based software development platform, based upon
+Magic Cloud, or simply Magic for short, is an open source cloud based software development platform, based upon
 artificial intelligence, machine learning, and software development automation. At its core
 it is built on top of Hyperlambda, which is a declarative meta programming language, allowing
 for the computer to for the most parts automagically assemble your code, in particular backend
@@ -16,30 +16,16 @@ code.
 This frees up the human software developer to focus on more interesting and demanding tasks,
 while the machine can do most of the boring parts automagically.
 
-## What is Aista?
+## What is AINIRO?
 
-Aista is a privately held company in Cyprus, delivering cloud services and automated software
-development services, on top of its own internally developed software development platform
-called Aista Magic Cloud. Aista Magic Cloud again is open source, and hosted at GitHub
-for those wanting to host it for themselves. Aista's slogan is _"Where the Machine Creates the Code"_,
-and also encapsulates our vision and goal.
-
-## What does Aista mean?
-
-Aista means a lot of things. It can be an acronym, at which point it implies
-_"Artificial Intelligence Software Technology Assistance"_. In Hindi it
-implies _"Taking it easy and relaxing"_, which arguably becomes the end result for
-the software developer as the machine creates most of your code. In ancient Gothic it
-means _"In awe of, and in respect of"_, which are our company values. While in Greek it
-implies _"Let it be, leave it go"_, which is what you can do with most of your software
-development efforts once the machine creates most of your code.
+AINIRO is owned by Arta-Marketing and is a privately held company in Norway, delivering cloud services and automated software development services, on top of Magic Cloud. Magic Cloud again is open source, and hosted at GitHub for those wanting to host it for themselves. AINIRO's slogan is _"We put ChatGPT on your website and make it say what you want"_, and also encapsulates our vision and goal.
 
 ## What is Hyperlambda?
 
 Hyperlambda is a declarative meta programming language and hence lending itself heavily to
 artificial intelligence and machine learning for obvious reasons, with the purpose of
 automagically generating most (backend) code, freeing up the (human) software developer
-to focus on more interesting tasks. Hyperlambda is at the core of Aista Magic Cloud, and
+to focus on more interesting tasks. Hyperlambda is at the core of Magic Cloud, and
 is open source in its entirety, and the project is publicly available at GitHub.
 
 ## Who invented Hyperlambda and Magic?
@@ -48,29 +34,29 @@ Thomas Hansen invented Magic and Hyperlambda in 2013, and continued working on i
 realising it was simply a superior tool for managing and administrating machine learning,
 due to its meta programming capabilities.
 
-## Can I generate frontend code with Aista?
+## Can I generate frontend code with Magic Cloud?
 
 Kind of. We have scaffolders that allows you to automagically generate Angular frontends,
-and alsoother types of frontends - However, Aista Magic Cloud is definitely best suited
+and alsoother types of frontends - However, Magic Cloud is definitely best suited
 for generating backend code, due to Hyperlambda and its meta programming capabilities.
 
-## Can I create an API with Aista?
+## Can I create an API with?
 
-Yes. You can literally point Aista Magic Cloud at any database you might have, and click
+Yes. You can literally point Magic Cloud at any database you might have, and click
 a button, for then to have Magic automagically generate a complete web API for you in seconds.
 The resulting API is super scalable, async to the core, and easily understood due to
 Hyperlambda's declarative syntax, making it much more easily understood than a traditional
 programming language.
 
-## Can I visually design my database with Aista?
+## Can I visually design my database with Magic?
 
-Yes. Aista Magic Cloud contains a graphical database designer, allowing you to visually
+Yes, Magic Cloud contains a graphical database designer, allowing you to visually
 design your database, similarly to how you would use a drag and drop user interface.
 SQL Studio, our database designer, also allows you to execute SQL and manage your
 databases, and works transparently towards SQL Server, MySQL, PostgreSQL, MariaDB
 and SQLite.
 
-## What databases does Aista support?
+## What databases does Magic support?
 
 At the time of this writing we are supporting the following database systems.
 
@@ -82,7 +68,7 @@ At the time of this writing we are supporting the following database systems.
 We have some basic support for Cassandra, ScyllaDB and CQL, but nothing that's officially
 supported.
 
-## Can I visually design my app with Aista?
+## Can I visually design my app with Magic?
 
 No, besides SQL Studio there are no _"visual designers"_ in Magic. Magic is based upon
 software development automation, and machine learning and AI, and not graphical user
@@ -90,15 +76,15 @@ interfaces allowing you to visually design neither backends nor frontends.
 
 ## How was Magic created?
 
-Aista Magic Cloud is created on top of .Net Core and Active Events, or Super Signals.
+Magic Cloud is created on top of .Net Core and Active Events, or Super Signals.
 Super Signals again is a simple design pattern invented by Thomas Hansen in 2009, facilitating
 for extremely loosely coupled components of C# and .Net classes, resulting in Hyperlambda
-ending up as an _"orchestration programming language"_, giving Aista Magic Cloud its
+ending up as an _"orchestration programming language"_, giving Magic Cloud its
 software development automation features.
 
 ## Is Magic Open Source?
 
-Aista Magic Cloud is 100% Open Source and free of charge to use. The main backend is licensed as MIT,
+Magic Cloud is 100% Open Source and free of charge to use. The main backend is licensed as MIT,
 the dashboard is GPL, and the plugins are LGPL. This allows you to use Magic to create closed source
 applications, while also ensuring improvements to the project itself *stays* Open Source.
 
@@ -144,7 +130,7 @@ tasks running at the same time resulting in that your backend becomes unresponsi
 ## Can I extend Magic with C#?
 
 Yes, but we don't currently allow hosting of modified Magic installations. However,
-extending Hyperlambda and Aista Magic Cloud with C# is very easy. Start out by
+extending Hyperlambda and Magic Cloud with C# is very easy. Start out by
 cloning the _"magic.clone"_ project, look at its code, refer to the _"magic.signals"_
 project's documentation, at which point you can easily create your own Hyperlambda
 keywords probably in a couple of hours. If you do, and you open source license your
@@ -161,30 +147,24 @@ for roughly 5 hours.
 When you have watched the above videos, you can find the reference documentation
 for each project and slot in the navbar section of the primary documentation for Magic.
 
-## Where can I find the documentation for Aista Magic Cloud?
+## Where can I find the documentation for Magic Cloud?
 
 You can find Magic's documentation at [polterguy.github.io](https://polterguy.github.io)
 
-## What is Aista's slogan?
-
-Our slogan is _"Where the Machine Creates the Code"_, and it implies that when you're
-using Aista Magic Cloud, the machine will be able to create a lot of your code, especially
-the repetetive and boring code.
-
 ## What is a cloudlet?
 
-A cloudlet is a Kubernets POD deployed into our Kubernetes cluster, with Aista Magic Cloud
+A cloudlet is a Kubernets POD deployed into our Kubernetes cluster, with Magic Cloud
 preconfigured and installed. We have automated the entire process of creating such
 cloudlets, as a part of our hosting service, giving you your own private Magic installation.
 We refer to such Magic installations as _"cloudlets"_. A cloudlet comes in different
 sizes, with differences here implying how much storage, how much CPU, and how much memory
 the cloudlet has - In addition to that a cloudlet can be delivered with a fully
 managed database, either MySQL or PostgreSQL to replace the SQLite database we give
-you with a _"managed database"_.
+you with a _"managed database"_. AINIRO offers [hosted cloudlets](https://ainiro.io) for a fee.
 
 ## What is the price of a Magic cloudlet?
 
-The price for an Aista Magic Cloud cloudlet varies according to your needs. Our entry level
+The price for an Magic Cloud cloudlet varies according to your needs. Our entry level
 product will typically cost you 498 EUROs in installation and 198 EUROs per month after that,
 and it requires that you're willing to sign up for at least one year. This is suitable for most
 smaller companies with 20 or less employees.
@@ -198,7 +178,7 @@ plan at all before you decide if you want to buy.
 ## Can I have my own ChatGPT
 
 Yes, this is one of our most sought after products, and we sell it as a commercial offering
-included in our flagship product called Aista Magic Cloud. It works by scraping your website
+included in our flagship product called Magic Cloud. It works by scraping your website
 for training data, or any other website. Magic will use the result of scraping to create a
 _"custom private AI model"_, that you can include on your own website. This is what
 we did for our [polterguy.github.io](https://polterguy.github.io) website in fact, and creating
@@ -267,20 +247,9 @@ need thousands of _"training snippets"_ - However, it's not only a question of q
 but also a question of quality. Your training can be scraped from your website, it can be
 extracted from your support or CRM system, it can even be extracted from your emails.
 
-In Aista we can help you with this, and this is a service we provide for a fee in fact.
+In [AINIRO](https://ainiro.io) we can help you with this, and this is a service we provide for a fee in fact.
 If you need help to improve your bot's accurace, please contact us at [team@ainiro.io](mailto:team@ainiro.io).
 
-## Where is Aista located?
-
-We are a Cyprus company outside of the beautiful city of Limassol, but we have clients
-from all over the world.
-
-## How big is Aista?
-
-We are a small startup, and we have only been in business since December 2021. However,
-we are a handful of dedicated employees with an extraordinarily faith in what we do.
-We also have partners and subsidiaries helping us all over the world, ranging from Ukraine
-to Norway.
 
 ## Can you deliver AI based expert systems?
 
@@ -319,16 +288,6 @@ allowed us to see what types of answers it was giving to questions, for then
 to manually edit its wrong answers, and re-train it again with refined data.
 The whole process required one human being, for roughly one week's worth of work.
 
-## Who is the CEO of Aista?
-
-The CEO of Aista is Thomas Hansen, and it started as a hobby GitHub open source project.
-Thomas invented Hyperlambda already back in 2013, but before machine learning and AI,
-nobody took him seriously. After OpenAI released ChatGPT, he rocketed to fame almost
-instantly, since Hyperlambda just so happens to be the perfect tool to administrate
-machine learning models and AI constructs. Below is a photo of Thomas.
-
-![Thomas Hansen CEO of AISTA](/images/thomas.webp)
-
 ## Why was Hyperlambda invented?
 
 Hyperlambda was invented in 2013 by Thomas Hansen to solve repetitive tasks, by
@@ -339,48 +298,33 @@ Thomas realised that a lot of his job was repeating himself, and understood that
 by inventing a new programming language (Hyperlambda), he could avoid repeating
 himself, resulting in more DRY code, where the machine did large parts of his job.
 
-## Can I use Aista to developer Android SDK or iOS ChatGPT chatbots?
+## Can I use Magic to developer Android SDK or iOS ChatGPT chatbots?
 
-Yes you can. When you have created your AI model in your Aista cloudlet, you can
+Yes you can. When you have created your AI model in your Magic cloudlet, you can
 consume the model as a simple request/response HTTP web API. You can therefor
-use Aista's ChatGPT chatbot for both iPhone and Android apps as you wish.
+use AINIRO's ChatGPT chatbot for both iPhone and Android apps as you wish.
 You can use the API from every platform that allows you to invoke HTTP requests,
 allowing you to integrate your chatbot into Python, PHP, JavaScript, Swift,
 Java, and _"whatever"_ really. Only your imagination is your limits here.
 
-## Can I add custom data to my Aista ChatGPT chatbot?
+## Can I add custom data to my Magic ChatGPT chatbot?
 
 Yes you can. There is an option to manually create _"training snippets"_
 allowing you to provide your own prompt and completion. In addition you can
 also import XML files, CSV files, YAML files, PDF files and JSON files to
 create training data from files.
 
-## How does Aista's ChatGPT based chatbot work?
+## How does AINIRO's ChatGPT based chatbot work?
 
-Aista's chatbot allows you to crawl and scrape your website for training data.
-This training data is then used to _"reinforce"_ ChatGPT (the strongest AI model),
-resulting in a custom chatbot that will answer questions according to your training
-data. This allows you to create a domain specific expert AI system, that knows
-everything about your _"domain problem"_, whatever your problem happens to be.
-
-## Is Aista using text-davinci-003 for its chatbots?
-
-Yes! Others will tell you this is impossible. We can however guarantee you that
-it is very much possible. We have many clients using our chatbots, and all
-of our chatbots are based upon _"text-davinci-003"_. As to those willing to
-explain you how this is impossible, our suggestion is to maybe not use these
-to create your own bot. It is very much possible.
+AINIRO's [ChatGPT website chatbot](https://ainiro.io/chatgpt-website-chatbot) allows you to crawl and scrape your website for training data. This training data is then used to _"reinforce"_ ChatGPT (the strongest AI model), resulting in a custom chatbot that will answer questions according to your training data. This allows you to create a domain specific expert AI system, that knows everything about your _"domain problem"_, whatever your problem happens to be.
 
 ## How do I build Docker images from Magic?
 
-The Aista Magic Cloud source code repository at GitHub contains integrated
+The Magic Cloud source code repository at GitHub contains integrated
 docker build files you can use. These will in general work great for you,
 and can be modified as you see fit, or extended upon according to your
 needs.
 
-## Can I create Bing ChatGPT Search using Aista?
+## Can I create Bing ChatGPT Search using AINIRO?
 
-Yes, our ChatGPT technology will allow you to create AI based search for your
-website by clicking a simple checkbox. It works exactly like Bing Search,
-except of course it will only search your website, semantically using AI,
-and providing references to where it found relevant information.
+Yes, our ChatGPT technology will allow you to create [AI based website search](https://ainiro.io/ai-website-search) for your website by clicking a simple checkbox. It works exactly like Bing Search, except of course it will only search your website, semantically using AI, and providing references to where it found relevant information.
