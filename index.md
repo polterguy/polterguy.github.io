@@ -1,36 +1,33 @@
 ---
-title: Documentation for Aista Magic Cloud and Hyperlambda
-description: Where the Machine Creates your Code, using Artificial Intelligence, Machine Learning, meta programming, and software development automation
+title: Documentation for Magic Cloud and Hyperlambda
+description: "Where the Machine Creates your Code, using Artificial Intelligence, Machine Learning, meta programming, and software development automation"
 og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg
 ---
 
-# What is Aista Magic Cloud?
+# What is Magic Cloud?
 
-Aista Magic Cloud, or Magic for short, is a software development platform that creates most of your code _"automagically"_,
-by leveraging meta programming, declarative programming, artificial intelligence, and low-code software development
+Magic Cloud, or Magic for short, is a software development platform that creates most of your code _"automagically"_,
+by leveraging meta programming, declarative programming, artificial intelligence, machine learning, and low-code software development
 automation. This allows you to focus on creative tasks, while having the machine implement the
-boring parts. Aista Magic Cloud is [open source](https://github.com/polterguy/magic), but AINIRO.IO also
-offers [hosting of Magic](https://ainiro.io) for a monthly fee.
+boring parts. Magic Cloud is [open source](https://github.com/polterguy/magic), but [AINIRO.IO](https://ainiro.io)
+offers hosting of Magic for a monthly fee.
 
 <div class="video">
 <iframe width="560" height="315" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/n8Y4sTrprqk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## Why use Aista Magic Cloud?
+## Why use Magic Cloud?
 
 As a software developer typically 80% of your job is literally so simple that it can be replaced
 with artificial intelligence and software development automation, based upon meta programming constructs.
 This results in more secure and robust solutions, with less bugs, better scaling, and more freedom
-for you to pursue more creative tasks. In general Aista Magic Cloud makes you at least 5 times as productive,
+for you to pursue more creative tasks. In general Magic Cloud makes you at least 5 times as productive,
 sometimes hundreds of times more productive.
 
 ## What can I create with Magic?
 
-Aista Magic Cloud is not suitable for all tasks. Its
-primary strength is for generating backend code, that is database heavy in nature, and/or integrates with
-other web APIs. However, when you can use Magic, it easily saves you 80% of your time, and sometimes it will
-save you 95% of your time and resources, depending upon your requirements. Below are some examples of
-apps where it makes sense to use Magic.
+Magic Cloud is not suitable for all tasks. Its primary strength is for generating backend code, that is database heavy in nature, and/or integrates with other web APIs. However, when you can use Magic, it easily saves you 80% of your time, and sometimes it will
+save you 95% of your time and resources, depending upon your requirements. Below are some examples of apps where it makes sense to use Magic.
 
 * Custom ChatGPT website chatbots
 * CRM systems
@@ -40,8 +37,11 @@ apps where it makes sense to use Magic.
 * Task management systems, such as ClickUp, Monday.com, or similar types of systems
 * Logistic systems
 * Basically, anything that requires collecting and managing data, where CRUD operations are important
+* [ChatGPT website chatbot](https://ainiro.io/chatgpt-website-chatbot)
+* [AI Website Search](https://ainiro.io/ai-website-search)
+* [AI Expert Systems](https://ainiro.io/ai-expert-systems)
 
-As an example of how useful Magic is, realise that at Aista we built our [entire hub](https://hub.ainiro.io) using
+As an example of how useful Magic is, realise that at AINIRO we built our [entire hub](https://hub.ainiro.io) using
 nothing but Magic and Hyperlambda. This saved us roughly 90% of the resource requirements we would have needed if
 we were to create the same system using for instance GoLang, Python or PHP.
 
@@ -59,7 +59,12 @@ users you're the President of China? No problem, it's a 5 minute job for Magic.
 It works by scraping your website, generating training data in the process, for then to end up with a
 custom machine learning model that answers questions according to your training data. You can try out such
 a chatbot by clicking the button on the bottom right corner of this page, and ask it any question related to
-AISTA, Magic Cloud or Hyperlambda. This chatbot was created by scraping this website.
+AINIRO, Magic Cloud, or Hyperlambda. This chatbot was created by scraping this website. AINIRO allows you to
+create such [ChatGPT-based website chatbots in 5 minutes](https://ainiro.io/chatgpt-website-chatbot).
+
+## AI Website Search
+
+In addition to the above, you can use the generated machine learning model for [AI Website Search](https://ainiro.io/ai-website-search). This works similarly to the above ChatGPT solution, but is much faster because it doesn't use the ChatGPT-based APIs from OpenAI, but only relies upon semantic AI-based search.
 
 ## The backend generator
 
@@ -108,7 +113,7 @@ SQL Studio supports the following databases.
 * MariaDB
 * SQLite
 
-![Aista's SQL Studio database designer](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-designer.jpg)
+![AINIRO's SQL Studio database designer](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-designer.jpg)
 
 SQL Studio also allows you to execute any SQL towards your database of choice, giving you superior database
 management tools, allowing you to administer your databases from anywhere in the world. By combining SQL Studio
@@ -140,10 +145,10 @@ generate code for you solving your problem.
 
 ## Machine Learning and AI
 
-Aista Magic Cloud is scattered with AI and allows you to generate your own Machine Learning models in seconds,
+Magic Cloud is scattered with AI and allows you to generate your own Machine Learning models in seconds,
 by scraping any website, and generating training data for you that you can use to create your own ChatGPT model,
 answering questions related to your domain. Need a chat bot for your company answering questions about your company
-or domain? That's a 5 seconds job for Aista Magic Cloud as long as you have an existing website, and/or structured
+or domain? That's a 5 seconds job for Magic Cloud as long as you have an existing website, and/or structured
 training data you can upload to your cloudlet. Use cases might be.
 
 * Expert legal system, answering legal questions for clients
@@ -156,13 +161,13 @@ training data you can upload to your cloudlet. Use cases might be.
 ![Magic's Machine Learning parts](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/machine-learning.jpg)
 
 Creating a Machine Learning training model is incredibly difficult unless you know what you're doing.
-With Aista Magic Cloud it becomes 1,000 times easier, and you can literally do it by pointing Aista
+With Magic Cloud it becomes 1,000 times easier, and you can literally do it by pointing
 to your existing website, have our web scraper crawl your website, resulting in a custom AI expert
 system model in some few seconds.
 
 ## The frontend generator
 
-In addition to the backend web API generator, Aista also contains a frontend generator, that creates
+In addition to the backend web API generator, also contains a frontend generator, that creates
 a fully functional frontend web application for you in seconds. The generated code is perfect Angular code,
 and can be modified according to your needs after the generator is done.
 
@@ -177,7 +182,7 @@ line of code.
 
 ## User management
 
-Aista Magic Cloud allows you to administer your users easily, by giving you a graphical user interface,
+Magic Cloud allows you to administer your users easily, by giving you a graphical user interface,
 allowing you to manage your application's users and roles, using a role based access control (RBAC)
 component. Import users from your existing system, provide access to modules and components according
 to what roles your users belongs to, and make sure only authorised users have access to private and secured
@@ -190,7 +195,7 @@ provide access to components and modules based upon roles, for then to associate
 
 ## The task scheduler
 
-Aista Magic Cloud allows you to create and administer tasks. A task is a background job, that is persisted
+Magic Cloud allows you to create and administer tasks. A task is a background job, that is persisted
 into your database as Hyperlambda, and it can either be executed by a _"trigger"_ occurring somewhere
 else in your system, or periodically scheduled to execute repeatedly, or at some specific date and time in
 the future. The task scheduler allows you to easily manage your tasks, edit them, and create new tasks
@@ -204,7 +209,7 @@ own code.
 
 ## Plugins
 
-Aista Magic Cloud also contains its own _"marketplace"_ allowing you to rapidly install some plugin
+Magic Cloud also contains its own _"marketplace"_ allowing you to rapidly install some plugin
 solving some particular need you might have in your own applications. Some example plugins are listed
 below;
 
@@ -217,7 +222,7 @@ below;
 
 ## The integrated log
 
-Aista Magic Cloud also comes with an integrated log component, allowing you to browse your server log,
+Magic Cloud also comes with an integrated log component, allowing you to browse your server log,
 giving you control over events occurring that might somehow have consequences for your system.
 
 ![Magic log](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/log.jpg)
@@ -225,9 +230,9 @@ giving you control over events occurring that might somehow have consequences fo
 When you create your own Hyperlambda applications, you can also create log entries as you see fit,
 to log important events, such as deleting records, executing tasks, registering users, etc.
 
-## Aista Magic Cloud is Open Source
+## Magic Cloud is Open Source
 
-Aista Magic Cloud is 100% open source, and you can use it free of charge in proprietary projects
+Magic Cloud is 100% open source, and you can use it free of charge in proprietary projects
 as you see fit. You can find its code at [GitHub](https://github.com/polterguy/magic), and
 we accept pull requests for it if your code is high quality. We also provide docker images
 for Magic, allowing you to install it locally in seconds without having to mess with dependencies,
@@ -245,9 +250,9 @@ your email address.
 
 * [Signup at AINIRO for your free 7 days cloudlet](https://ainiro.io)
 
-## Primary features of Aista Magic Cloud
+## Primary features of Magic Cloud
 
-Below is a more or less complete list of Aista Magic Cloud's frontend UI components and features,
+Below is a more or less complete list of Magic Cloud's frontend UI components and features,
 allowing you to graphically administrate your Magic installation.
 
 * [Endpoint generator component](/documentation/magic/components/crudifier/backend/)
