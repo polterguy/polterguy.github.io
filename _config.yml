@@ -42,7 +42,7 @@ plugins:
   - jekyll-paginate
 
 js_files:
-  - "https://ainiro.io/magic/system/openai/include-javascript?markdown=true&speech=false&search=false&chat=true&css=frank&file=default&type=ainiro_io&header=Ask%20about%20AINIRO&button="
+  - "https://vss-team.us.ainiro.io/magic/system/openai/include-javascript?markdown=true&speech=false&rtl=false&search=false&chat=true&css=scandinavian-honey&file=default&type=polterguy_github_io&header=Ask%20me%20about%20Hyperlambda&button="
 
 # Your navigation section. Declares the drop down menu items for your hamburger menu.
 nav_sections:
