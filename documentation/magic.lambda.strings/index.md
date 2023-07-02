@@ -23,6 +23,7 @@ This project contains string manipulation slots for Magic. More specifically, it
 * __[strings.url-decode]__ - URL decodes the specified string
 * __[strings.substring]__ - Returns the sub-string of the specified string
 * __[strings.matches]__ - Returns the regular expression matches found from specified source
+* __[strings.mixin]__ - Allows for minin logic of strings and Hyperlambda
 
 ## Usage
 
@@ -326,6 +327,21 @@ strings.matches
 Notice, the second argument is the _number of characters to return_ and not the offset into the string
 of where to stop returning. In such a regard, it works the same way as the C# `Substring` method.
 
+### How to use [strings.mixin]
+
+Combines the result of the specified Hyperlambda and concatenates inline into its surrounding string.
+
+```
+strings.mixin:@"foo {{return:bar}}"
+```
+
+The above will result in the following.
+
+```
+strings.mixin:foo bar
+```
+
+Notice, any inline Hyperlambda is added by adding two braces around your Hyperlambda, at which point the inline Hyperlambda will be executed, and whatever it returns is _"mixed into the surrounding string inline"_.
 
 ## Project website for magic.lambda.strings
 
