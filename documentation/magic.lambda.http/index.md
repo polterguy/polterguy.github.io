@@ -37,6 +37,11 @@ The status code of the request is returned as the value of **[http.xxx]**, heade
 can be found in **[headers]** as a key/value pair, and **[content]** contains the actual content response
 object returned by the server.
 
+All of these slots can optionally take a **[timeout]** argument, that overrides the default timeout of 300 seconds,
+with whatever integer value you provide. The timout is specified as an integer value, being the number of seconds
+to allow for the invocation, before the request is aborted and given up on. If they timeout period elapses, an
+exception will be thrown.
+
 ## HTTP headers
 
 If you want to have more control over your HTTP request, you can also explicitly add your own
