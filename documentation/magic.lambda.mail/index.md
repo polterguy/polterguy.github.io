@@ -10,22 +10,18 @@ This project contains SMTP and POP3 helpers for Magic. More specifically, this p
 
 ```
 mail.smtp.send
-
    server
       host:foo.com
       port:123
       secure:true
       username:xxx
       password:yyy
-
    message
-
       to
          John Doe:john@doe.com
       from
          Jane Doe:jane@doe.com
       subject:Subject line
-
       entity:text/plain
          content:Body content
 ```
@@ -78,12 +74,10 @@ settings, from addresses, etc - And leave this as a part of your deployment tran
 
 ```
 mail.smtp.send
-
    message
       to
          Jane Doe:jane@doe.com
       subject:Subject line
-
       entity:text/plain
          content:Body content
 ```
@@ -95,17 +89,13 @@ Below is an example of an email with a single attachment.
 
 ```
 mail.smtp.send
-
    message
       to
          Jane Doe:jane@doe.com
       subject:Subject line
-
       entity:multipart/mixed
-
         entity:text/plain
            content:Body content
-
         entity:text/plain
            filename:/files/foo.txt
 ```
@@ -116,7 +106,6 @@ To construct your email's **[message]** part, see the documentation for the magi
 
 ```
 mail.smtp.send
-
    message
       to
          .
@@ -132,17 +121,14 @@ To retrieve emails from a POP3 server is equally easy. Below is an example.
 
 ```
 mail.pop3.fetch
-
    server
       host:foo.com
       port:123
       secure:true
       username:xxx
       password:yyy
-
    max:int:50
    raw:bool:false
-
    .lambda
 
       /*
