@@ -112,6 +112,8 @@ nav_sections:
         name: magic.lambda.pdf
       - url: /documentation/magic.lambda.openai/
         name: magic.lambda.openai
+      - url: /documentation/magic.lambda.system/
+        name: magic.lambda.system
   - name: Misc helper projects
     items:
       - url: /documentation/magic.node/
