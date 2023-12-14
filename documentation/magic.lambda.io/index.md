@@ -3,20 +3,23 @@
 
 This project provides file/folder slots for Magic. More specifically, it provides the following slots.
 
-* __[io.folder.create]__ - Creates a folder on disc for you on your server.
-* __[io.folder.exists]__ - Returns true if folder exists, otherwise false.
-* __[io.folder.delete]__ - Deletes a folder on disc on your server.
-* __[io.folder.list]__ - Lists all folders within another source folder.
-* __[io.folder.move]__ - Moves a folder to its specified destination.
-* __[io.folder.copy]__ - Copies a folder to its specified destination.
-* __[io.file.load]__ - Loads a file from disc on your server.
-* __[io.file.load.binary]__ - Loads a file from disc on your server as a byte array.
-* __[io.file.save]__ - Saves a file on disc on your server.
-* __[io.file.save.binary]__ - Saves a file on disc on your server but contrary to the above assumes content to save is binary.
+* __[io.folder.create]__ - Creates a folder on disc for you on your server
+* __[io.folder.exists]__ - Returns true if folder exists, otherwise false
+* __[io.folder.delete]__ - Deletes a folder on disc on your server
+* __[io.folder.list]__ - Lists all folders within another source folder
+* __[io.folder.move]__ - Moves a folder to its specified destination
+* __[io.folder.copy]__ - Copies a folder to its specified destination
+* __[io.file.load]__ - Loads a file from disc on your server
+* __[load-file]__ - Alias for **[io.file.load]**
+* __[io.file.load.binary]__ - Loads a file from disc on your server as a byte array
+* __[io.file.save]__ - Saves a file on disc on your server
+* __[save-file]__ - Alias for **[io.file.save]**
+* __[io.file.save.binary]__ - Saves a file on disc on your server but contrary to the above assumes content to save is binary
 * __[io.file.exists]__ - Returns true if file exists, otherwise false.
 * __[io.file.delete]__ - Deletes a file on your server.
 * __[io.file.copy]__ - Copies a file on your server.
 * __[io.file.execute]__ - Executes a Hyperlambda file on your server.
+* __[execute-file]__ - Alias for **[io.file.execute]**
 * __[io.file.list]__ - List files in the specified folder on your server.
 * __[io.file.move]__ - Moves a file on your server.
 * __[io.file.unzip]__ - Unzips a file on your server.
@@ -24,7 +27,7 @@ This project provides file/folder slots for Magic. More specifically, it provide
 * __[io.stream.save-file]__ - Saves a stream to the specified destination path
 * __[io.stream.read]__ - Reads all content from the specified stream as a byte array
 * __[io.stream.close]__ - Closes a previously opened stream
-* __[io.content.zip-stream]__ - Creates a ZipStream for you, without touching the file system.
+* __[io.content.zip-stream]__ - Creates a ZipStream for you, without touching the file system
 * __[.io.folder.root]__ - Returns the root folder of your system. (private C# slot)
 * __[io.file.mixin]__ - Allows you to invoke lambda objects from a file and substitute content dynamically in your original file
 

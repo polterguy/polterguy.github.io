@@ -249,6 +249,28 @@ Hyperlambda is heavily using _"lambda expressions"_. Think of these like XPath, 
 of referencing XML nodes they're referencing Hyperlambda nodes. You can find the documentation
 for expressions in the [magic.node](https://docs.aista.com/documentation/magic.node/) project.
 
+## How to use [compose]
+
+Compose allows you to dynamically create expressions by supplying it with a list of iterators. To understand it
+realise the following invocation.
+
+```
+compose
+   .:..
+   .:*
+   .:.data
+   .:*
+```
+
+Results in the following result.
+
+```
+compose:x:../*/.data/*
+```
+
+Since expressions are for the most parts recursively evaluated, this allows you to dynamically compose
+expressions you de-reference, allowing you to dynamically create expressions you're using in your code.
+
 ## How to use [eval]
 
 This is the by far most important slot in Hyperlambda, since it's arguably _"the heart"_ of Hyperlambda,
