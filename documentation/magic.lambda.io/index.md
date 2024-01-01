@@ -19,7 +19,7 @@ This project provides file/folder slots for Magic. More specifically, it provide
 * __[io.file.delete]__ - Deletes a file on your server.
 * __[io.file.copy]__ - Copies a file on your server.
 * __[io.file.execute]__ - Executes a Hyperlambda file on your server.
-* __[execute-file]__ - Alias for **[io.file.execute]**
+* __[execute-file]__ - Alias for **[io.file.execute]** except it will forward evaluate all descendant nodes using **[unwrap]**
 * __[io.file.list]__ - List files in the specified folder on your server.
 * __[io.file.move]__ - Moves a file on your server.
 * __[io.file.unzip]__ - Unzips a file on your server.

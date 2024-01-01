@@ -5,7 +5,7 @@ The magic.lambda.slots project provides the ability to create, invoke (signal), 
 dynamic slots in Hyperlambda. More specifically, this project provides the following slots.
 
 * __[signal]__ - Invokes a dynamically create slot that has been created with the __[slots.create]__ slot
-* __[execute]__ - Alias for **[signal]** except it will **[unwrap]** all children nodes explicitly
+* __[execute]__ - Alias for **[signal]** except it will **[unwrap]** all descendant nodes explicitly
 * __[try-signal]__ - Invokes a dynamically create slot that has been created with the __[slots.create]__ slot, but will _not_ throw exceptions if the slot doesn't exist
 * __[slots.create]__ - Creates a dynamic slot, that can be invoked with the __[signal]__ slot
 * __[function]__ - Alias for **[slots.create]**
@@ -16,6 +16,7 @@ dynamic slots in Hyperlambda. More specifically, this project provides the follo
 * __[return-value]__ - Returns a single value to caller from inside of your slot
 * __[return]__ - Returns either a list of nodes, or a single value, or both, depending upon the results of its expression,
 or whether or not it has a static value, or a list of nodes
+* __[yield]__ - Alias for **[return-nodes]** but similarly to **[execute]** it will **[unwrap]** all descendant nodes explicitly
 * __[slots.vocabulary]__ - Returns the names of all dynamically created slots
 
 ```
