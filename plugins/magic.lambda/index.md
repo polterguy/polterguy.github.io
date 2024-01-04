@@ -37,10 +37,7 @@ As you study Hyperlambda it might be beneficial to use the _"Hyperlambda Playgro
 frontend dashboard. This component allows you to play with Hyperlambda in _"immediate mode"_,
 experiment with Hyperlambda, execute it immediately from your browser, in a rich code editor,
 providing syntax highlighting for you, autocomplete on slots, etc. The _"Hyperlambda Playground"_ component also allows
-you to save your snippets for later on your server. Below is a screenshot of the component to
-give you an idea of what you might expect.
-
-![Hyperlambda evaluator](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/eval-component.jpg)
+you to save your snippets for later on your server.
 
 If you put your cursor on an empty line and click CTRL+SPACE or FN+CONTROL+SPACE on a Mac, you will be given
 autocomplete, allowing you to easily see which slots are available for you.
@@ -1570,4 +1567,4 @@ The source code for this repository can be found at [github.com/polterguy/magic.
 
 ## Copyright and maintenance
 
-The projects is copyright of Aista, Ltd 2021 - 2023, and professionally maintained by [AINIRO your friendly ChatGPT website chatbot vendor](https://ainiro.io).
+The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

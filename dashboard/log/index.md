@@ -1,10 +1,8 @@
 ---
-title: Your Magic log
+title: Log
 description: The log component allows you to browse your server side log items, verifying your system is optimally functioning and healthy, and/or drill down to see errors occurring in your system.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/log.jpg"
 ---
-
-# Your Magic log
 
 The log component allows you to browse your server's log. When an important event occurs in
 Magic, a log entry will typically be created describing the event. Examples of such events
@@ -29,7 +27,7 @@ log.info:Something important happened
 
 In the above example we are creating an _"info"_ type of log entry, and the _"Something important happened"_
 will become the item's sub-type, while the **[what]** and **[importance]** parts becomes meta data associated
-with your log entry. If you execute the above Hyperlambda using your dashboard's _"Eval"_ component you can
+with your log entry. If you execute the above Hyperlambda using the _"Hyperlambda Playground"_ component you can
 see your log entry in your _"Log"_ component at the top afterwards. There are 4 types of log entries you
 can create by default.
 
@@ -52,5 +50,5 @@ debug log items.
 ## Log internals
 
 By default log items will be persisted into your magic _"log_entries"_ database table, but this can be
-changed. The [magic.lambda.logging](/documentation/magic.lambda.logging/) project is what encapsulates
+changed. The [magic.lambda.logging](/plugins/magic.lambda.logging/) project is what encapsulates
 the logging related slots in Hyperlambda.

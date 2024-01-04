@@ -3,7 +3,7 @@ title: Plugins
 description: This section contains the reference documentation for Magic and Hyperlambda, and documents all plugins, and Hyperlambda the programming language.
 ---
 
-AINIRO.IO's Magic Cloud is not one project, it's more than 40 projects in fact. Each project encapsulates
+AINIRO.IO's Magic Cloud is not one project, it's more than 40 projects. Each project encapsulates
 some part of Hyperlambda, such as sending emails, parsing XML or JSON, etc.
 
 The following are the _"plugins"_ projects for Magic and Hyperlambda, typically implementing one or more

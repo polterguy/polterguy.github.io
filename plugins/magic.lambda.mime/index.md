@@ -91,4 +91,4 @@ The source code for this repository can be found at [github.com/polterguy/magic.
 
 ## Copyright and maintenance
 
-The projects is copyright of Aista, Ltd 2021 - 2023, and professionally maintained by [AINIRO your friendly ChatGPT website chatbot vendor](https://ainiro.io).
+The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

@@ -1,26 +1,26 @@
 ---
-title: A web based SQL workbench
+title: SQL Studio
 description: The web based SQL 'workbench' allows you to execute any SQL, see the result immediately, in addition to storing your frequently used SQL snippets for later.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-editor.jpg"
 ---
 
-# SQL Studio
+SQL Studio allows you to visually design your database, and also execute any SQL towards your database of choice.
+SQL Studio also allows you to export the result of some SQL to a CSV file, in addition to saving frequently used
+SQL statements by using the _"Snippets"_ and _"Save"_ buttons.
 
-The SQL Studio component allows you to execute any SQL towards your database of choice. SQL Studio also
-allows you to export the result of some SQL to a CSV file, in addition to saving frequently used
-SQL statements by using the _"Snippets"_ and _"Save"_ buttons. If you install one of the SQLite database
-plugins using [the plugins component](/documentation/magic/components/bazar/), you also typically get a lot
+If you install one of the SQLite database
+plugins using [the plugins component](/dashboard/plugins/), you also typically get a lot
 of example SQL statements - Implying SQL Studio is also a nice place to start out if you
 want to teach yourself SQL. To access the SQL editor open up SQL Studio and click _"SQL view"_.
 
 ![SQL Studio SQL view](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-editor.jpg)
 
-## Use SQL Studio to visually design your database
+## Design your database Visually
 
 You can also use SQL Studio to visually design your database. This is a graphical user interface, where
 you don't need to write any SQL DDL to create your database structure. SQL Studio's database designer
 allows you to create new tables, add fields to your tables, and create foreign keys referencing other tables
-as you wish. In addition SQL Studio's designer also allows you to create _"link tables"_ automatically
+as you wish. In addition SQL Studio's designer also allows you to create _"link tables"_, automatically
 encapsulating a many to many relationship between two tables.
 
 ![SQL Studio design view](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-designer.jpg)
@@ -30,8 +30,6 @@ tables and columns that can be shown by clicking CTRL+SPACE on Windows or FN+CON
 This results in a fluent experience as you're writing your SQL, allowing you to have the machine help
 you out as you compose your SQL.
 
-![SQL Studio and autocomplete](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-autocomplete.jpg)
-
 ## SQL Studio features
 
 The _"Safe mode"_ checkbox prevents you from selecting more than 200 rows from your database.
@@ -40,7 +38,7 @@ with some SQL statement, your server might become unresponsive, and/or you may e
 server's memory.
 
 You can save your frequently used SQL statements as _"snippets"_ similarly to how you can save frequently
-used Hyperlambda in the [Hyperlambda Playground](/documentation/magic/components/evaluator/) component.
+used Hyperlambda in the [Hyperlambda Playground](/dashboard/hyperlambda-playground/) component.
 This allows you to store frequently used SQL snippets for later, creating a library of snippets you
 can tap into later as you need to execute the same SQL over again.
 
@@ -61,10 +59,9 @@ referencing a role with a foreign key"_.
 
 ![SQL Studio and machine learning](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-studio-ai.jpg)
 
-The artificial intelligence features of SQL Studio doesn't always produce perfect code, but it is built
+The AI features of SQL Studio doesn't always produce perfect code, but it is built
 on top of OpenAI's ChatGPT API, so it should be good enough to give you at least an approximation
-of what you want to achieve, simplifying your life significantly as you're writing your SQL.
-Notice, you need an API key with OpenAI to have these parts of SQL Studio work.
+of what you want to achieve. Notice, you need an API key with OpenAI to have these parts of SQL Studio work.
 
 ## SQL Studio designer features
 
@@ -83,7 +80,7 @@ with 90% of what you need as you are designing your database schema. When you cr
 it will ask you if you want to allow for null values in your foreign keys, and if you wants to turn on cascading
 deletes - But it will not ask you if you want to set to null upon deletions. We are constantly improving
 upon SQL Studio's designer features, so whatever feature you're missing, might be implemented in the next version
-of Aista Magic Cloud.
+of Magic.
 
 When you are exporting your table(s)' DDL, you can also optionally export your DDL to a _"module"_. This is
 useful if you are creating plugins or similar functionality using Magic, since it will automatically wire

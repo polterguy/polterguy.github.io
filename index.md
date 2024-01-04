@@ -1,78 +1,51 @@
 ---
-title: "AINIRO.IO's Magic Cloud"
-description: "Where the Machine Creates your Code, using Artificial Intelligence, Machine Learning, meta programming, and software development automation"
+title: "Magic Cloud Documentation"
+description: "Magic Cloud is an AI-based Low-Code and No-Code software development automation framework, allowing for the machine to create most of your code"
 ---
 
-Magic Cloud, or Magic for short, is a software development platform that creates most of your code _"automagically"_,
-by leveraging meta programming, declarative programming, artificial intelligence, machine learning, and low-code software development
-automation. This allows you to focus on creative tasks, while having the machine implement the
-boring parts. Magic Cloud is [open source](https://github.com/polterguy/magic), but [AINIRO.IO](https://ainiro.io)
-offers hosting of Magic for a monthly fee.
+Magic Cloud, or Magic for short, is a backend software development platform that creates most of your code _"automagically"_,
+by leveraging meta programming, declarative programming, artificial intelligence, low-code, and no-code
+software development automation. This allows you to focus on creative tasks, while having the machine create the
+boring parts. Magic Cloud is [open source](https://github.com/polterguy/magic), and professionally hosted by
+[AINIRO.IO](https://ainiro.io) for a monthly fee.
 
-## Why use Magic Cloud?
+## Why use Magic?
 
-As a software developer typically 80% of your job is literally so simple that it can be replaced
-with artificial intelligence and software development automation, based upon meta programming constructs.
-This results in more secure and robust solutions, with less bugs, better scaling, and more freedom
-for you to pursue more creative tasks. In general Magic Cloud makes you at least 5 times as productive,
-sometimes hundreds of times more productive.
+As a software developer typically 80% of your job is so simple that it can be replaced
+with artificial intelligence and software development automation, based upon meta programming constructs and
+declarative programming. This results in more secure and robust solutions, with less bugs, better scaling,
+and more freedom for you to pursue more creative tasks.
 
-## What can I create with Magic?
+With Magic you can sometimes accomplish in some few minutes what requires weeks
+of coding in a more traditional platform. The following YouTube video illustrates how to create such a workflow, and wrap
+it into an API.
 
-Magic Cloud is not suitable for all tasks. Its primary strength is for generating backend code, that is database heavy in nature, and/or integrates with other web APIs. However, when you can use Magic, it easily saves you 80% of your time, and sometimes it will
-save you 95% of your time and resources, depending upon your requirements. Below are some examples of apps where it makes sense to use Magic.
+<iframe style="margin-left: auto; margin-right: auto; width: 560px; max-with: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/ITz1ASqsWoM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-* Custom ChatGPT website chatbots
-* CRM systems
-* Headless CMS systems
-* EPJ systems tracking patients and journals of patients
-* Inventory systems
-* Task management systems, such as ClickUp, Monday.com, or similar types of systems
-* Logistic systems
-* Basically, anything that requires collecting and managing data, where CRUD operations are important
-* [ChatGPT website chatbot](https://ainiro.io/chatgpt-website-chatbot)
-* [AI Website Search](https://ainiro.io/ai-website-search)
-* [AI Expert Systems](https://ainiro.io/ai-expert-systems)
+## What can you create with Magic?
 
-As an example of how useful Magic is, realise that at AINIRO we built our [entire hub](https://hub.ainiro.io) using
-nothing but Magic and Hyperlambda. This saved us roughly 90% of the resource requirements we would have needed if
-we were to create the same system using for instance GoLang, Python or PHP.
+Magic's primary strength is its ability to generate backend code, that is database heavy in nature, and/or integrates
+with other web APIs. Magic contains a backend API generator among other things, that allows you to generate a CRUD API
+wrapping your database in some few seconds. Below are some of the primary compoments in Magic.
 
-## Custom ChatGPT website chatbots
+* [SQL Studio](/dashboard/sql-studio/)
+* [Backend Generator](/dashboard/backend-generator/)
+* [Task Manager](/dashboard/task-manager/)
+* [Hyper IDE](/dashboard/hyper-ide/)
+* Plus many more ...
 
-You can use Magic to create your own custom ChatGPT chatbot in minutes, for then to embed it into your
-website in some few seconds. The Chatbot Wizard component in Magic will ask you for your OpenAI API key,
-your Google reCAPTCHA settings, for then to allow you to scrape your website generating a custom machine
-learning model in the process. This model allows your users to ask questions related to _your website_,
-and have the chatbot answer how you _want it to answer questions_. Want to have a chatbot that tells your
-users you're the President of China? No problem, it's a 5 minute job for Magic.
+## The Endpoint Generator
 
-![Custom ChatGPT website chatbot](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/custom-chatgpt-chatbot.jpg)
+The Endpoint Generator allows you to wrap any database you have in CRUD API endpoints. It reads
+meta data from your database, and automatically generates a web API for you. The generated API is
+secured according to your instructions, and can be used as the foundation for your own frontend.
 
-It works by scraping your website, generating training data in the process, for then to end up with a
-custom machine learning model that answers questions according to your training data. You can try out such
-a chatbot by clicking the button on the bottom right corner of this page, and ask it any question related to
-AINIRO, Magic Cloud, or Hyperlambda. This chatbot was created by scraping this website. AINIRO allows you to
-create such [ChatGPT-based website chatbots in 5 minutes](https://ainiro.io/chatgpt-website-chatbot).
+![Endpoint Generator](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg)
 
-## AI Website Search
-
-In addition to the above, you can use the generated machine learning model for [AI Website Search](https://ainiro.io/ai-website-search). This works similarly to the above ChatGPT solution, but is much faster because it doesn't use the ChatGPT-based APIs from OpenAI, but only relies upon semantic AI-based search.
-
-## The backend generator
-
-The backend generator allows you to wrap any database you have in CRUD API endpoints in some few seconds. It reads
-meta data from your database, and automatically generates a web API for you, producing thousands
-of lines of code for you in the process. The generated API is secured according to your instructions, and
-can be used as the foundation for your own frontend.
-
-![Backend generator](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg)
-
-The web API generator takes care of left joins, referential integrity, validators, authentication and authorisation,
-while allowing you to declaratively tell it how to generate your API. It also allows you to publish
-web socket messages as endpoints are invoked, in addition to having tons of additional features simplifying
-your life as a software developer. If your endpoints are simple wrappers around your database, the endpoint
-generator can do 100% of your job automagically.
+The web API generator takes care of left joins, referential integrity, validators, authentication, and authorisation -
+While allowing you to declaratively tell it how to generate your API. It also allows you to publish
+web socket messages as endpoints are invoked, in addition to having lots of additional features simplifying
+your life as a software developer.
 
 ## The SQL endpoint generator
 
@@ -86,19 +59,12 @@ reference in your SQL, and click the _"Generate"_ button.
 The SQL API generator allows you to secure your endpoints, declare what arguments your endpoint can handle,
 use all 5 most common HTTP verbs for your endpoints, etc. You can use it with SQL Server, MySQL, MariaDB,
 PostgreSQL or SQLite - However, you need to write SQL that is valid for your particular database type as
-you create your endpoints. Some use cases can be found below.
-
-* Statistics
-* Reports
-* Endpoints for charts
-* Etc, etc, etc
+you create your endpoints.
 
 ## SQL Studio
 
-Magic allows you to visually design your database using a graphical user interface. No need to mess with complex
-SQL DDL. Use SQL Studio to visually design your database and save hours of searching the web for the correct
-syntax to use when creating foreign keys or needing other constructs rarely if ever remembered by the human brain.
-SQL Studio supports the following databases.
+Magic allows you to visually design your database using a graphical user interface. SQL Studio supports
+the following databases.
 
 * Microsoft SQL Server
 * PostgreSQL
@@ -108,23 +74,17 @@ SQL Studio supports the following databases.
 
 ![AINIRO's SQL Studio database designer](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-designer.jpg)
 
-SQL Studio also allows you to execute any SQL towards your database of choice, giving you superior database
-management tools, allowing you to administer your databases from anywhere in the world. By combining SQL Studio
-with the backend generator, and especially the SQL API generator, you can compose some SQL, and wrap
-it into a web API endpoint in seconds.
+SQL Studio also allows you to execute any SQL towards your database of choice, allowing you to administer
+your databases from anywhere. By combining SQL Studio with the backend generator, and especially
+the SQL API generator, you can compose some SQL, and rapidly wrap it into a web API endpoint.
 
 ![SQL Studio](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-studio-2.jpg)
 
-Are you an expert DB admin, but have no knowledge of backend programming? No problem, wrap your SQL into
-a web API endpoint 100% automagically with zero coding besides providing the SQL generator with some SQL
-you want it to execute as your endpoint is invoked.
-
 ## Hyper IDE
 
-Magic also contains its own IDE or integrated development environment.
-Hyper IDE provides syntax highlighting for most popular programming languages, in addition
-to autocomplete for Hyperlambda. With Hyper IDE you can edit your code, save it, and immediately see the result
-of your modifications by executing your endpoint without ever having to leave your IDE.
+Magic also contains its own IDE or integrated development environment. Hyper IDE provides syntax highlighting 
+and autocomplete for Hyperlambda. With Hyper IDE you can edit your code, save it, and immediately see the result
+of your modifications, by executing your endpoint without ever having to leave your IDE.
 
 ![Magic's Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide-actions.jpg)
 
@@ -136,52 +96,32 @@ Hyper IDE also integrates perfectly with our Machine Learning component, built o
 ChatGPT, allowing you to write your requests in plain English, and have Hyper IDE and ChatGPT automatically
 generate code for you solving your problem.
 
+However, the most powerful parts of Hyper IDE is its _"workflows"_ feature, allowing you to dynamically orchestrate
+backend Hyperlambda code together, without needing to know Hyperlambda.
+
+> With Hyper IDE manually writing code is actually optional
+
 ## Machine Learning and AI
 
-Magic Cloud is scattered with AI and allows you to generate your own Machine Learning models in seconds,
+Magic Cloud is scattered with AI and allows you to create your own Machine Learning models using OpenAI,
 by scraping any website, and generating training data for you that you can use to create your own ChatGPT model,
-answering questions related to your domain. Need a chat bot for your company answering questions about your company
-or domain? That's a 5 seconds job for Magic Cloud as long as you have an existing website, and/or structured
-training data you can upload to your cloudlet. Use cases might be.
+answering questions related to your domain. Use cases might be.
 
 * Expert legal system, answering legal questions for clients
 * Medical expert advice system based upon AI and machine learning, giving you help when diagnosing patients and clients
-* Support chat bot for your enterprise, giving your clients support for whatever questions they might have related to your company
+* Support chatbot for your enterprise, giving your clients support for whatever questions they might have related to your company
 * Automated sales expert systems, converting leads on your website into paying clients
 * Cognitive assistants, helping your employees with some specific task at hand
 * Etc, etc, etc
 
-![Magic's Machine Learning parts](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/machine-learning.jpg)
-
-Creating a Machine Learning training model is incredibly difficult unless you know what you're doing.
-With Magic Cloud it becomes 1,000 times easier, and you can literally do it by pointing
-to your existing website, have our web scraper crawl your website, resulting in a custom AI expert
-system model in some few seconds.
-
-## The frontend generator
-
-In addition to the backend web API generator, also contains a frontend generator, that creates
-a fully functional frontend web application for you in seconds. The generated code is perfect Angular code,
-and can be modified according to your needs after the generator is done.
-
-![Frontend generator](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sakila.jpg)
-
-The generated frontend will be secured with authentication and authorisation, and wrap all your database
-tables with UI components required to create, read, update and delete records from your database. The frontend
-generator will also create autocomplete components with searching and filtering capabilities for referenced
-tables with foreign keys, take care of types for you automatically, and basically provide you with a
-starter kit solving 80% of your frontend software development problems before you have to write a single
-line of code.
+You can try out such a chatbot in the bottom/right corner of this page.
 
 ## User management
 
-Magic Cloud allows you to administer your users easily, by giving you a graphical user interface,
+Magic Cloud allows you to administer your users, by giving you a graphical user interface,
 allowing you to manage your application's users and roles, using a role based access control (RBAC)
-component. Import users from your existing system, provide access to modules and components according
-to what roles your users belongs to, and make sure only authorised users have access to private and secured
-data.
-
-![Users and roles administration in Magic](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/auth.jpg)
+component. Provide access to modules and components according to what roles your users belongs to,
+and make sure only authorised users have access to private and secured data.
 
 The user and role systemin Magic is based upon RBAC implying Role Based Access Control, allowing you to
 provide access to components and modules based upon roles, for then to associate roles with users.
@@ -194,8 +134,6 @@ else in your system, or periodically scheduled to execute repeatedly, or at some
 the future. The task scheduler allows you to easily manage your tasks, edit them, and create new tasks
 as you see fit.
 
-![Hyperlambda task scheduler](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/scheduling-task.jpg)
-
 Due to its dynamic nature, the task scheduler is also a perfect foundation for your own business process
 workflows, where functionality is dynamically built and executed by _"triggers"_ occurring in your
 own code.
@@ -207,65 +145,54 @@ solving some particular need you might have in your own applications. Some examp
 below;
 
 * Stripe payment integrations
-* Translation micro service
-* Ticket backend administration system
+* Registration workflow actions
 * Etc, etc, etc - [Contact us](mailto:team@ainiro.io) if you need something specific we still haven't built
-
-![Magic's plugins](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/bazaar.jpg)
 
 ## The integrated log
 
 Magic Cloud also comes with an integrated log component, allowing you to browse your server log,
 giving you control over events occurring that might somehow have consequences for your system.
 
-![Magic log](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/log.jpg)
-
 When you create your own Hyperlambda applications, you can also create log entries as you see fit,
 to log important events, such as deleting records, executing tasks, registering users, etc.
+
+## Custom ChatGPT website chatbots
+
+You can also use Magic to create your own custom ChatGPT chatbot, for then to embed it into your
+website. The Chatbot Wizard component in Magic will ask you for your OpenAI API key,
+your Google reCAPTCHA settings, for then to scrape your website generating a VSS database in the process.
+The end result allows your users to ask questions related to your website, and have the chatbot answer
+how you want it to answer questions.
+
+It works by scraping your website, generating training data in the process, for then to end up with a
+custom _"machine learning model"_ (based upon RAG), that answers questions according to your training data.
+You can try out such a chatbot by clicking the button on the bottom right corner of this page, and ask it
+any question related to AINIRO.IO, or concepts from this website. This chatbot was created by scraping this
+website. At AINIRO.IO we also delivers such chatbots as one of our services. Read more about
+[our ChatGPT-based AI chatbots here](https://ainiro.io/chatgpt-website-chatbot).
 
 ## Magic Cloud is Open Source
 
 Magic Cloud is 100% open source, and you can use it free of charge in proprietary projects
-as you see fit. You can find its code at [GitHub](https://github.com/polterguy/magic), and
-we accept pull requests for it if your code is high quality. We also provide docker images
-for Magic, allowing you to install it locally in seconds without having to mess with dependencies,
-such as the .Net CLI and NodeJS. However, the fastest way to get started with Magic is to
-create a free 7 day trial cloudlet at [AINIRO.IO](https://ainiro.io).
+as you see fit, as long as you obey by the GPL license terms. You can find its code
+at [GitHub](https://github.com/polterguy/magic). We also provide docker images
+for Magic, allowing you to install it locally without having to mess with dependencies,
+such as the .Net CLI and NodeJS. [AINIRO.IO](https://ainiro.io) also hosts Magic Cloud in
+our cloud infrastructure if you're interested in a simpler solution.
 
-## How to get started
+## The goal of the project
 
-You can of course download the open source code from GitHub, but the easiest way to get started
-immediately is to simply register at [AINIRO.IO](https://ainiro.io), at which point you'll
-get a free 30 days trial cloudlet, with security, CDN, automatically configured with
-all best practices applied out of the box. We do charge a fee for such cloudlets, but we
-also provide 30 days trial cloudlets for free, without asking you for anything else but
-your email address.
+Magic was created by Thomas Hansen as the means to avoid having to repeat himself after
+having worked as an enterprise software developer for decades. The idea was to _"outsource"_
+everything he needed into reusable components, such that he didn't have to create the same
+components over and over again, every time he switched between projects.
 
-* [Signup at AINIRO for your free 7 days cloudlet](https://ainiro.io)
+Magic therefor contains almost everything you need yourself to be able to create fault
+tolerant, scalable, and secure enterprise backend code. Magic is based upon two primary
+axioms; Low-Code/No-Code and AI. Both of these axioms just so happens to significantly
+increase your productivity as a software developer.
 
-## Primary features of Magic Cloud
+The goal of the project is to make it possible for everybody to produce high quality code,
+much faster, without security holes, in an extremely scalable runtime. AKA ...
 
-Below is a more or less complete list of Magic Cloud's frontend UI components and features,
-allowing you to graphically administrate your Magic installation.
-
-* [Endpoint generator component](/documentation/magic/components/crudifier/backend/)
-* [Frontend generator component](/documentation/magic/components/crudifier/frontend/)
-* [SQL endpoint generator component](/documentation/magic/components/crudifier/sql/)
-* [The database component](/documentation/magic/components/databases/)
-* [SQL Studio](/documentation/magic/components/sql/)
-* [Machine Learning and AI](/documentation/magic/components/machine-learning/)
-* [Hyper IDE](/documentation/magic/components/hyper-ide/)
-* [Hyperlambda Playground](/documentation/magic/components/evaluator/)
-* [Endpoints](/documentation/magic/components/endpoints/)
-* [Plugins component](/documentation/magic/components/bazar/)
-* [Tasks component](/documentation/magic/components/tasks/)
-* [Users and roles component](/documentation/magic/components/auth/)
-* [Cryptography component](/documentation/magic/components/crypto/)
-* [Health check](/documentation/magic/components/assumptions/)
-* [Custom ChatGPT website chatbots](/documentation/magic/components/chatbot-wizard/)
-* [Sockets](/documentation/magic/components/sockets/)
-* [Configuration component](/documentation/magic/components/config/)
-* [Profile component](/documentation/magic/components/profile/)
-* [Log](/documentation/magic/components/log/)
-* [HTTP endpoints in Magic](/documentation/magic/endpoints/)
-* [Dynamic Hyperlambda slots in Magic](/documentation/magic/slots/)
+> Where the Machine Creates the Code!

@@ -1,13 +1,11 @@
 ---
-title: Create an HTTP CRUD web API in 1 second
+title: Endpoint Generator
 description: The backend CRUD generator allows you to create a CRUD API wrapping your database in seconds. Magic will read meta data from your database, and automatically create all required code for you.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg"
 ---
 
-# The Endpoint Generator
-
-The endpoint generator component allows you to automatically generate an HTTP CRUD web API wrapping your database
-of choice. This component is the corecomponent of the low-code and software development automation parts of Magic,
+The Endpoint Generator component allows you to automatically generate an HTTP CRUD web API wrapping your database
+of choice. This component is one of the core components of the low-code and software development automation parts of Magic,
 and allows you to generate a web API wrapping your database by clicking a button. The endpoint generator component
 works by reading meta data from your database, which it then uses to generate Hyperlambda HTTP endpoints for you
 automatically.
@@ -40,7 +38,7 @@ the endpoint generator tries to intelligently choose defaults for your tables as
 However, it is not always able to choose correctly for you, so you might want to sanity check its result
 after you've generated your backend.
 
-## Backend generator settings
+## Endpoint generator settings
 
 Once you have selected a database and a table, you can override individual settings for how Magic should
 create CRUD endpoints wrapping your table. You can also turn on or off specific columns, preventing Magic
@@ -54,14 +52,12 @@ is invoked.
 You can also override what URLs your endpoints should use, what authorisation requirements
 your endpoints should have, in addition to a lot of other settings, such as turning on logging, caching, etc.
 
-## Backend generator settings complete list
+## Endpoint generator settings complete list
 
 Below is a complete list of what settings you can apply when generating your endpoints. Notice, some of these
 settings are only possible to apply if you've selected only _one_ table.
 
 * What fields each CRUD endpoint accepts
-* Display as which is only relevant for foreign keys, and only used when generating a frontend later, allowing you to declare one string field in the referenced table that you can do lookups from later when generating a frontend
-* Template being for instance email, url, phone, etc, which changes the way the field is displayed later as you generate a frontend
 * Authorisation requirements for each CRUD endpoint, allowing you to declare which role a user must have to be able to invoke your endpoints
 * Primary and secondary URL, allowing you to tell the backend generator what URLs to generate for a particular table
 * Paging and sorting, allowing you to turn on or off paging of data and sorting of data
@@ -71,17 +67,13 @@ settings are only possible to apply if you've selected only _one_ table.
 * Whether or not _"write"_ endpoints should publish socket messages, where write endpoints implies create, update and delete. If you turn on publishing of socket messages here, a socket message with the name of the database, table, and HTTP verb will be published as the endpoint is invoked. If you turn on publishing of socket messages, you can optionally declare what type of authorisation the socket message will require in order to deliver the message to connected users
 * Left joins, allowing you to declare whether or not you want to join on referenced tables or not, implying if a field is a foreign key, it will in addition to giving you all columns from your specific table, also pull in one string field from the referenced table as it's returning data from your read endpoint
 * Verbose filtering, which if turned on, will create a lot more arguments, providibng you with much more filtering capabilities for your generated endpoints
-* Overwrite, which if true, will overwrite an existing endpoint. Byt default, the backend generator will _not_ overwrite existing files unless you explicitly tell it to do so
+* Overwrite, which if true, will overwrite an existing endpoint. By default, the endpoint generator will _not_ overwrite existing files unless you explicitly tell it to do so
 
-In addition to the above settings, the backend generator also allows you to declare Hyperlambda code that is added to
-your endpoint. This is typically useful if you want to add validators, to for instance validate an email field being a
-valid email address, etc.
+## Endpoint generator internals
 
-## Backend generator internals
-
-The backend generator will actually create 5 files for you, one file for each CRUD verb, and one file to count items.
+The endpoint generator will actually create 5 files for you, one file for each CRUD verb, and one file to count items.
 These files will be Hyperlambda files, and you can see these after the process is done by
-using [Hyper IDE](/documentation/magic/components/hyper-ide) and expand your _"modules"_ folder. The generated Hyperlambda
+using [Hyper IDE](/dashboard/hyper-ide/) and expand your _"modules"_ folder. The generated Hyperlambda
 will basically be wrappers around the **[data.connect]** slot, in addition to one of the following slots, depending
 upon which CRUD verb the file you're looking at is wrapping.
 
@@ -91,10 +83,10 @@ upon which CRUD verb the file you're looking at is wrapping.
 * __[data.delete]__ - The Hyperlambda slot for deleting items from your database
 
 
-# The SQL endpoint generator
+## The SQL endpoint generator
 
 The SQL endpoint generator component allows you to generate an API endpoint wrapping an SQL statement.
-It is similar to the [backend generator](/documentation/magic/components/crudifier/backend/), but instead of
+It is similar to the endpoint generator, but instead of
 automatically creating your SQL, it allows you to provide your own custom SQL, and then securely wrap your SQL into
 an HTTP endpoint. It allows you to create endpoints wrapping any of the 5 most popular HTTP verbs, takes care of
 authentication and authorisation, in addition to that it allows you to declare arguments to your endpoints.
@@ -131,9 +123,9 @@ for your argument.
 
 ![SQL arguments](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-arguments.jpg)
 
-## HTTP endpoints the SQL endpoint generator accepts
+## HTTP verbs
 
-The SQL endpoint generator can create endpoints wrapping these HTTP verbs.
+Both the SQL endpoint generator and the endpoint generator can create endpoints wrapping any of these HTTP verbs.
 
 * POST
 * GET

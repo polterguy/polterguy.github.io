@@ -1,12 +1,10 @@
 ---
-title: Persist and schedule tasks
+title: Task Manager
 description: You can easily create Hyperlambda code that you save for later execution, for then to schedule your task to be executed in the future.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/scheduling-task.jpg"
 ---
 
-# Hyperlambda tasks
-
-The tasks component allows you to create and administrate persisted Hyperlambda tasks, and/or schedule
+The Task Manager component allows you to create and administrate persisted Hyperlambda tasks, and/or schedule
 tasks for executing, either in a repeating pattern somehow, or at an exact date and time in the future.
 A Magic task again, is really nothing but a snippet of Hyperlambda code, that is persisted into
 your Magic database, and such can be recalled at any point in the future to be executed at will.

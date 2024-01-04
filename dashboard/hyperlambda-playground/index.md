@@ -1,14 +1,12 @@
 ---
-title: Execute code on your server through your browser
+title: Hyperlambda Playground
 description: The evaluator allows you to submit Hyperlambda to your server and have your code executed in 'immediate' mode. This is useful for administrating your Magic server, and/or learning Hyperlambda.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/eval-component.jpg"
 ---
 
-# The Hyperlambda Playground
-
 The Hyperlambda Playground component allows you to play with Hyperlambda code, and execute your code in _"immediate mode"_,
 for then to see the result of your execution immediately. The Hyperlambda playground is also a nice starting
-point to learn Hyperlambda, since it contains a whole range of _"Hyperlambda snippets"_ that
+point to learn Hyperlambda, since it contains a whole range of Hyperlambda snippets that
 somehow demonstrates Hyperlambda's capabilities, and provides examples for you as you start out
 learning Hyperlambda. Click the _"Snippets"_ button to load up some snippet, study it, modify it,
 and then execute it, for then afterwards to see the result of the execution.
@@ -33,7 +31,7 @@ client. This is why after having executed your Hyperlambda you can see its _"res
 ## Hyperlambda as a meta programming language
 
 Since Hyperlambda is a meta programming language, implying the machine can easily generate functioning
-Hyperlambda that it executes, this allows you to use the Hyperlambda Playground as a _"software development extention"_,
+Hyperlambda that it executes, this allows you to use the Hyperlambda Playground as a _"software development extension"_,
 creating snippets of Hyperlambda, that somehow creates or modifies existing Hyperlambda code, and can be dynamically
 executed on demand.
 

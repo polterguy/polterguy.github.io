@@ -1,22 +1,20 @@
 ---
-title: Machine Learning component
+title: Machine Learning
 description: Magic allows you to automatically generate your own private AI based Machine Learning model based upon OpenAI and ChatGPT
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/machine-learning.jpg"
 ---
 
-# Machine Learning and AI
-
-Aista Magic Cloud's machine learning component allows you to create your own AI based machine learning model, either by
+Magic's Machine Learning component allows you to create your own AI based machine learning model, either by
 crawling your website scraping it for data, or by manually uploading your own training data, resulting in a private
-and custom machine learning model, solving your particular need. Machine learning in Magic is built upon OpenAI's
+and custom _"machine learning model"_. Machine learning in Magic is built upon OpenAI's
 ChatGPT, and contains a lot of additional services, such as the ability to monitor or supervise usage, storing
-questions and answers into your database, and use these as the foundation for reinforcement learning to improve
+questions and answers into your database, and use these as the foundation for reinforced learning to improve
 its accuracy.
 
 ![Magic's Machine Learning parts](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/machine-learning.jpg)
 
 You can crawl your website for training data, or upload your own training data in a wide variety of formats,
-such as XML, JSON, YAML and CSV.
+such as XML, JSON, YAML, CSV and PDF.
 
 ## Use cases for Magic's Machine Learning parts
 
@@ -36,13 +34,13 @@ company. Chances are that ChatGPT have no idea how to answer your questions corr
 company's website, and/or upload your own training data, you could create a custom version of ChatGPT that
 is able to answer support requests, and/or convince leads and potential clients to become
 paying customers, etc. This is of course _impossible_ with the general ChatGPT implementation, but
-can sometimes be created in some few minutes using Aista Magic Cloud.
+can sometimes be created in some few minutes using Magic Cloud.
 
 ## Internals of Magic's Machine Learning crawler
 
 You can upload training data in a wide variety of formats. However, most interestingly for most is that
 you can simply point Magic at your website, and it will crawl your website, and scrape it for training data
-that you can later use to train your own OpenAI model. OpenAI refers to such training sessions as _"fine tuning"_.
+that you can later use to train your own OpenAI model, or consume using RAG.
 
 The way the crawler works, is by first checking if your website has a sitemap file. If your site has a sitemap,
 it will retrieve all pages referenced in your sitemap file(s). Once it has retrieved an HTML document, it
@@ -54,40 +52,12 @@ and follow hyperlinks it finds to retrieve additional documents for its scraping
 This process resembles the process Google and other search engines are doing as they crawl your site,
 and one of the bonus features of scraping your website, is that you get to some extent see how
 search engines sees your website. Hence, it is also a somewhat valuable tool to SEO quality assure your
-site. Aista Magic Cloud's crawler explicitly identifies as a crawler, and if you see
-_"Aista-MachineLearning-Spider"_ in your webserver's log, you know you've been crawled for
-machine learning data by some Magic cloudlet.
-
-## "Smart" machine learning crawling
-
-In addition to _"chopping up"_ each page into Hx and paragraphs, it will also preserve the entire
-page and associate all paragraphs with a completion that is associated with your page's H1 tag as
-its prompt. It also contains several other _"intelligent"_ parts, resulting in as much learning
-material as it can extract from your website, to further strenghten the quality of the final
-machine learning model. One example of how Magic is using intelligent crawling is how it will
-attempt to take each page it finds using this process, submit to OpenAI using the _"text-davinci-003"_
-model to create a summary of your page, which it then saves as more additional training data.
-
-The point about machine learning and AI, is that often the same information must be specified
-multiple times to the model before it understands it, and is able to create its associations.
-Preferably with smaller modifications, saying the same thing multiple times, with slightly
-different words for each iteration. Aista Magic Cloud makes this part as easy as it can,
-by creating as much machine learning training material as possible from your original website.
-
-## How much machine learning training data do you need?
-
-How much training data you need to create an effective AI model depends upon what you want
-to accomplish. For a chat bot for a website, you typically need thousands of snippets
-with training data. The quality of your AI model will never be better than your training data.
-
-Another thing which is important to think about, is what quality your training data has.
-The higher quality your website is, and the better structure it has, the better the
-end resulting model will become. It's impossible to create an AI model that's better
-than whatever data you train it on.
+site. Magic's crawler explicitly identifies as a crawler, and obeys by all the standard crawler rules from
+your robots.txt file.
 
 ## Machine learning questions/answers log
 
-Once you've created a machine learning model in Magic, you can turn on logging. This implies that
+Once you've created a machine learning model in Magic, you can turn on supervised. This implies that
 Magic will store each question and answers it's given, and this can be turned on by checking
 the _"supervised"_ property as you configure your model. This data can serve as reinforcement
 learning material later, and can also work as an L2 cache, where once your model is asked
@@ -96,48 +66,31 @@ but can return the previous answer if it's got a good completion for the specifi
 
 The _"supervised"_ feature also allows you to _"monitor"_ your machine learning model, to verify
 it is functioning optimally, allowing you to correct it where it fails and provide the correct answer,
-for then to later upload this to OpenAI's API as _"reinforcement fine tuning material"_.
+for then to later upload this to OpenAI's API as _"reinforcement fine tuning material"_, or use
+it as RAG by creating new training snippets based upon existing questions/answers.
 You can easily turn on and off both machine learning caching, and machine learning
 supervision, by editing the configuration for your model.
-
-## Disclaimer about machine learning an AI
-
-It is important that you supervise your model. This is especially true in the beginning.
-Initially as you start out using machine learning and AI, your model will inevitably
-produce a lot of bad results, that will seem like random guess work. To accommodate for this,
-you should always sanity check your AI model by asking it a lot of different questions,
-and see how it responds. When it gives you the wrong answer, you can gointo the requests
-parts of Magic's machine learning component, and simply edit its response. As you've acquired
-some few hundreds of such _"corrections"_, you can upload these to OpenAI to reinforce
-your model, making it stronger and better.
-
-We suggest you still keep on _"supervised mode"_ at least in the beginning as you start
-using your AI model and expose it to your users. This allows you to continue gathering
-training data as you get to see your model in the real world.
 
 ## Magic is scattered with machine learning and AI
 
 Magic's machine learning component is actually horizontally implemented into almost
 every single component in Magic. Need to use AI from SQL Studio, no problem, it's
-an integrated feature. The same is true for Hyper IDE, and even the help section.
+an integrated feature. The same is true for Hyper IDE, and even the help section is
+implemented using OpenAI and ChatGPT.
+
 However, in order to use machine learning with Magic, you will need
 an [OpenAI API key](https://beta.openai.com/account/api-keys). This will also cost
-you some money, but OpenAI gives you a balance of 18 dollars initially. 18 dollars
-is typically enough for a training session with some 500 to 1,000 training snippets,
-in addition to playing around with your model after you've trained your model.
+you some money, but OpenAI gives you a balance of 18 dollars initially.
 
 ## Create your own ChatGPT bot
 
-You can create your own ChatGPT based chat bot with Aista Magic Cloud. To get the JavaScript
+You can create your own ChatGPT based chat bot with Magic. To get the JavaScript
 needed to include your bot on your own website, only takes a couple of seconds, and can
 be done as you are configuring your machine learning model.
 
-![A private ChatGPT bot](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/chatgpt-dialogue.jpg)
-
-As long as you have a website where you can somehow add a JavaScript file, Aista Magic
-Cloud will do the rest, associate your bot with your model, also your custom model,
-and render a chat window wrapping your own AI model for asking questions.
+As long as you have a website where you can somehow add a JavaScript file, Magic will
+do the rest, associate your bot with your model, also your custom model, and render a
+chat window wrapping your own AI model for asking questions.
 
 Combined with the ability to create your own Machine Learning model by scraping your
 website, it could be argued this _"allows your customers to chat with your website"_.
-
