@@ -1,5 +1,6 @@
-
-# magic.lambda.xml - Parsing and creating XML from Hyperlambda
+---
+title: magic.lambda.xml
+---
 
 This project provides XML helper slots for Hyperlambda. More specifically, it provides the following slots.
 

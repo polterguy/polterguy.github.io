@@ -1,5 +1,6 @@
-
-# magic.lambda.sqlite - Using SQLite from Hyperlambda
+---
+title: magic.lambda.sqlite
+---
 
 This is the SQLite data adapter for Magic. This project allows you to provide a semantic lambda structure
 to its slots, which in turn will dynamically create a SQLite dialect SQL statement for you, for all basic

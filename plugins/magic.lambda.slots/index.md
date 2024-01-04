@@ -1,5 +1,6 @@
-
-# magic.lambda.slots - Creating and administering dynamic Hyperlambda slots
+---
+title: magic.lambda.slots
+---
 
 The magic.lambda.slots project provides the ability to create, invoke (signal), modify, inspect, and delete
 dynamic slots in Hyperlambda. More specifically, this project provides the following slots.

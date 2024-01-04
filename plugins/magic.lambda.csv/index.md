@@ -1,5 +1,6 @@
-
-# magic.lambda.csv - Parsing and creating CSV from Hyperlambda
+---
+title: magic.lambda.csv
+---
 
 This project provides CSV helper slots for Magic. More specifically, it provides the following slots.
 

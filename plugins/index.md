@@ -3,21 +3,19 @@ title: Plugins
 description: This section contains the reference documentation for Magic and Hyperlambda, and documents all plugins, and Hyperlambda the programming language.
 ---
 
-Aista Magic Cloud is not one project, it's more than 40 projects in fact. Each project encapsulates
-some part of Hyperlambda, such as sending emails, parsing XML or JSON, etc. The core projects, or
-the most _"important"_ projects if you wish, are the following.
-
-* [magic.node](/plugins/magic.node/) - Nodes, lambda, Hyperlambda and Expressions
-* [magic.signals](/plugins/magic.signals/) - Magic's Super Signals implementation or Active Events if you wish
-* [magic.endpoint](/plugins/magic.endpoint/) - Endpoint resolving in Magic
-* [magic.data.common](/plugins/magic.data.common/) - Commonalities for data adapters in Magic
-* [magic.library](/plugins/magic.library/) - A single project wrapping everything together
+AINIRO.IO's Magic Cloud is not one project, it's more than 40 projects in fact. Each project encapsulates
+some part of Hyperlambda, such as sending emails, parsing XML or JSON, etc.
 
 The following are the _"plugins"_ projects for Magic and Hyperlambda, typically implementing one or more
 slots each, whom in its combined results becomes the programming language called Hyperlambda. These are the parts
 that allows you to interact with your database, apply authentication and authorization requirements for your
 endpoints, etc.
 
+* [magic.node](/plugins/magic.node/) - Nodes, lambda, Hyperlambda and Expressions
+* [magic.signals](/plugins/magic.signals/) - Magic's Super Signals implementation or Active Events if you wish
+* [magic.endpoint](/plugins/magic.endpoint/) - Endpoint resolving in Magic
+* [magic.data.common](/plugins/magic.data.common/) - Commonalities for data adapters in Magic
+* [magic.library](/plugins/magic.library/) - A single project wrapping everything together
 * [magic.lambda](/plugins/magic.lambda/) - The Hyperlambda DSL, and its primary keywords
 * [magic.lambda.math](/plugins/magic.lambda.math/) - Math operations from Hyperlambda
 * [magic.lambda.http](/plugins/magic.lambda.http/) - Invoking HTTP endpoints from Hyperlambda

@@ -1,5 +1,6 @@
-
-# magic.lambda.openai - OpenAI related slots for Hyperlambda
+---
+title: magic.lambda.openai
+---
 
 This project provides OpenAI related slots for Magic. More specifically, it provides the following slots.
 

@@ -1,5 +1,6 @@
-
-# magic.endpoint - How Hyperlambda endpoints are resolved
+---
+title: magic.endpoint
+---
 
 magic.endpoint is a dynamic endpoint URL controller, allowing you to declare endpoints that are dynamically
 resolved using your `IHttpExecutorAsync` service implementation. The default implementation of this interface,
@@ -332,7 +333,7 @@ files in your _"/etc/www/"_ folder, you can see this logic in action.
 
 **index.html**
 
-```html
+```
 <html>
     <head>
         <title>Hell world</title>

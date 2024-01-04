@@ -1,5 +1,6 @@
-
-# magic.lambda.caching - Caching from Hyperlambda
+---
+title: magic.lambda.caching
+---
 
 This project contains caching helper slots for Hyperlambda. More specifically this project provides the following slots.
 

@@ -1,5 +1,6 @@
-
-# System related slots for Hyperlambda
+---
+title: magic.lambda.system
+---
 
 This project contains _"system slots"_ to be able to invoke system commands, and/or dynamically compile and load plugins, etc. More specifically the project contains the following slots.
 

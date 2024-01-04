@@ -1,5 +1,6 @@
-
-# magic.lambda.auth - How to do authentication and authorisation from Hyperlambda
+---
+title: magic.lambda.auth
+---
 
 The magic.lambda.auth project contains authentication and authorization helper slots for Magic. The project allows you
 to create and consume JWT tokens, to secure your Magic cloudlet. The project contains the following slots.
@@ -70,6 +71,8 @@ from .Net and the JWT standard then a restriction of Magic.
 will _not_ be an array, but simply a string. Yet again, this is simply how .Net works, and there is little we can do
 about this. Hence, remember to check in your frontend as you retrieve your roles if the roles claims is a string
 or an array of strings before associating your user with a role in your client logic.
+
+When you invoke **[auth.ticket.create]** or **[auth.ticket.refresh]** you can choose to either provide an **[expires]** which is a future date for when the ticket expires, or a **[duration]** which is a positive integer informing the slot of how many minutes the token should last before it's no longer valid.
 
 ## JWT tokens internals
 

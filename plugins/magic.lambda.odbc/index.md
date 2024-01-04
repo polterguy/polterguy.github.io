@@ -1,5 +1,6 @@
-
-# magic.lambda.odbc - Using an ODBC database from Hyperlambda
+---
+title: magic.lambda.odbc
+---
 
 This is the ODBC data adapter for Magic. This project provides slots to open an ODBC database
 connection, and allows you to execute your own SQL statements towards an open ODBC connection. Slots

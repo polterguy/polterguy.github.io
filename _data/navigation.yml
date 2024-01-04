@@ -1,5 +1,5 @@
 docs:
-  - title: Dashboard
+  - title: Quick Links
     children:
       - title: "Users and Roles"
         url: /dashboard/users-roles/
@@ -31,72 +31,5 @@ docs:
         url: /dashboard/configuration/
       - title: "Chatbot Wizard"
         url: /dashboard/chatbot-wizard/
-
-  - title: Plugins
-    children:
-      - title: "magic.lambda"
-        url: /plugins/magic.lambda/
-      - title: "magic.lambda.auth"
-        url: /plugins/magic.lambda.auth/
-      - title: "magic.lambda.caching"
-        url: /plugins/magic.lambda.caching/
-      - title: "magic.lambda.config"
-        url: /plugins/magic.lambda.config/
-      - title: "magic.lambda.crypto"
-        url: /plugins/magic.lambda.crypto/
-      - title: "magic.lambda.csv"
-        url: /plugins/magic.lambda.csv/
-      - title: "magic.lambda.dates"
-        url: /plugins/magic.lambda.dates/
-      - title: "magic.lambda.guid"
-        url: /plugins/magic.lambda.guid/
-      - title: "magic.lambda.html"
-        url: /plugins/magic.lambda.html/
-      - title: "magic.lambda.http"
-        url: /plugins/magic.lambda.http/
-      - title: "magic.lambda.hyperlambda"
-        url: /plugins/magic.lambda.hyperlambda/
-      - title: "magic.lambda.image"
-        url: /plugins/magic.lambda.image/
-      - title: "magic.lambda.io"
-        url: /plugins/magic.lambda.io/
-      - title: "magic.lambda.json"
-        url: /plugins/magic.lambda.json/
-      - title: "magic.lambda.logging"
-        url: /plugins/magic.lambda.logging/
-      - title: "magic.lambda.mail"
-        url: /plugins/magic.lambda.mail/
-      - title: "magic.lambda.math"
-        url: /plugins/magic.lambda.math/
-      - title: "magic.lambda.mime"
-        url: /plugins/magic.lambda.mime/
-      - title: "magic.lambda.mssql"
-        url: /plugins/magic.lambda.mssql/
-      - title: "magic.lambda.mysql"
-        url: /plugins/magic.lambda.mysql/
-      - title: "magic.lambda.odbc"
-        url: /plugins/magic.lambda.odbc/
-      - title: "magic.lambda.openai"
-        url: /plugins/magic.lambda.openai/
-      - title: "magic.lambda.pdf"
-        url: /plugins/magic.lambda.pdf/
-      - title: "magic.lambda.pgsql"
-        url: /plugins/magic.lambda.pgsql/
-      - title: "magic.lambda.scheduler"
-        url: /plugins/magic.lambda.scheduler/
-      - title: "magic.lambda.slots"
-        url: /plugins/magic.lambda.slots/
-      - title: "magic.lambda.sockets"
-        url: /plugins/magic.lambda.sockets/
-      - title: "magic.lambda.sqlite"
-        url: /plugins/magic.lambda.sqlite/
-      - title: "magic.lambda.strings"
-        url: /plugins/magic.lambda.strings/
-      - title: "magic.lambda.system"
-        url: /plugins/magic.lambda.system/
-      - title: "magic.lambda.threading"
-        url: /plugins/magic.lambda.threading/
-      - title: "magic.lambda.validators"
-        url: /plugins/magic.lambda.validators/
-      - title: "magic.lambda.xml"
-        url: /plugins/magic.lambda.xml/
+      - title: "Plugins"
+        url: /plugins/

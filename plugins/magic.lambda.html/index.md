@@ -1,5 +1,6 @@
-
-# magic.lambda.html - HTML and Markdown support in Hyperlambda
+---
+title: magic.lambda.html
+---
 
 This project provides HTML helper slots for Magic. More specifically, it provides the following slots.
 
