@@ -29,7 +29,7 @@ with other web APIs. Magic contains a backend API generator among other things, 
 wrapping your database in some few seconds. Below are some of the primary compoments in Magic.
 
 * [SQL Studio](/dashboard/sql-studio/)
-* [Backend Generator](/dashboard/backend-generator/)
+* [Endpoint Generator](/dashboard/endpoint-generator/)
 * [Task Manager](/dashboard/task-manager/)
 * [Hyper IDE](/dashboard/hyper-ide/)
 * Plus many more ...

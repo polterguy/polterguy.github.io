@@ -29,3 +29,7 @@ docs:
         url: /dashboard/chatbot-wizard/
       - title: "Plugins (core project plugins)"
         url: /plugins/
+      - title: "Endpoints"
+        url: /endpoints/
+      - title: "Slots"
+        url: /slots/

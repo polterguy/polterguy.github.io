@@ -71,48 +71,6 @@ requirements of your endpoints will not be accessible for clients before 5 minut
 been applied, unless you explicitly delete the cache item for the endpoint.
 This endpoints is intended for you to consume from your own code.
 
-### GET magic/system/auth/impersonate
-
-This endpoint allows you to generate a JWT token on behalf of another user, by providing a username allowing
-you to impersonate the other user in the system. The endpoint requires the following argument(s).
-
-* __[username]__ - Username of user to impersonate
-
-This endpoint can only be invoked by a root user. This endpoint is useful when debugging user related
-errors, and/or supporting/helping users who for some reasons needs help, allowing you to use the
-system within the context of the user you impersonate.
-This endpoint is not intended for you to consume in your own code.
-
-### GET magic/system/auth/reset-password
-
-This endpoint allows you to generate a reset password JWT token on behalf of another user, by providing a
-username, returning a _"reset password"_ JWT token that can _only_ be used to reset the user's password.
-The endpoint requires the following argument(s).
-
-* __[username]__ - Username of user to generate token for
-
-This endpoint can only be invoked by a root user. However there exists another endpoint you can see further
-down in this document allowing a user to have Magic send him a _"forgot password email"_.
-This endpoint is not intended for you to consume in your own code.
-
-### PUT magic/system/auth/imprison
-
-This endpoint allows you to _"imprison"_ a user in your system. When a user is imprisoned, the user cannot
-login to the system for as long as the user is _"imprisoned"_. This endpoint can only be invoked by a root user,
-and the endpoint relies upon scheduled tasks to release users imprisoned, so the endpoint will not function
-correctly unless scheduled tasks are enabled in the system. The endpoint takes the following JSON payload.
-
-```
-{
-  "username": "user-to-imprison",
-  "releaseDate": "2022-01-31T05:44:52.439Z"
-}
-```
-
-The release date is the date when the user should be released from his _"imprisonment"_. This endpoint
-is considered obsolete and might be removed in a future version of Magic.
-This endpoint is not intended for you to consume in your own code.
-
 ### GET magic/system/auth/refresh-ticket
 
 This endpoint allows an already authenticated user to retrieve a new JWT token with an expiration date
@@ -122,153 +80,6 @@ a new JWT token, preventing the user from being thrown out of the backend as his
 expires. The endpoint does not take any arguments, but can only be invoked by an already authenticated
 user, implying you'll need to pass in your JWT token to it in the Authorization HTTP header as a
 _"Bearer"_ token or the endpoint will return _"Access denied"_.
-This endpoints is intended for you to consume from your own code.
-
-### POST magic/system/auth/register
-
-This endpoint allows a user to register in your backend, which implies creating a new user. The endpoint
-requires the username to be a valid email address. If you want users to confirm their email address as they
-register, you'll have to configure your SMTP settings. Configuring your SMTP settings can be done by reading
-the [following parts](/documentation/magic.lambda.mail/). In addition you need to provide a `frontendUrl`
-to the endpoint that will be used by the email template as a _"confirm email address link"_
-is sent to the user to dynamically create a link the user must click to confirm his or her email address. The
-endpoint requires the payload below to be transmitted by the client. Notice, the `frontendUrl`
-is only used if the system has been configured with an SMTP server, resulting in that the endpoint
-invocation tries to send the registered user an email to have the user confirm his or her email address.
-If you don't care about having users confirm their email address, and/or haven't configured SMTP
-settings, you don't have to supply the `frontendUrl` argument.
-
-When a user registers using this endpoint, a new user will be created, but the user will be added to
-the _"unconfirmed"_ role, resulting in that the user have no access to any parts of the system at
-all before his or her email address has been confirmed. When his or her email address is confirmed,
-the _"unconfirmed"_ user/role association is deleted, and the user is added to the _"guest"_ role. The guest
-role still doesn't have access to much of the system, so if the user is to gain access to more of the
-system, this must be manually added by a root user after the user has confirmed his or her email address.
-
-```
-{
-  "username": "john@doe.com",
-  "password": "some-password",
-  "frontendUrl": "https://your-frontend-url.com",
-  "template": "/some/path/to-some-email-template.html",
-  "subject": "Subject line of registration email",
-  "extra": {
-    "name": "John Doe"
-  }
-}
-```
-
-The above arguments implies the following.
-
-* __[username]__ - Username for user, implying user's email address
-* __[password]__ - Password user wants to use on site
-* __[frontendUrl]__ - The URL to the frontend responsible for validating the user's email address. Optional, and if not given will not send user a _"confirm email address"_ email
-* __[template]__ - The full relative path to an email template used to send user a verify email address link. Optional, and if not given will default to _"/system/auth/email-templates/register.html"_
-* __[subject]__ - Subject line of welcome email. Optional, and if not supplied the default value of _"Thank you for registering with Aista Magic Cloud"_ will be used
-* __[extra]__ - Additional key/value list of extra information associated with the user. See remarks below for details.
-
-The **[extra]** field is _optional_ and if not supplied will be ignored. This field declares additional extra
-information associated with the created user, and can be anything you wish, such as for instance _"phone"_,
-_"name"_, etc. Notice, what type of extra information the system accepts is configured as a comma separated
-list in your _"appsettings.json"_ file, and can be edited in the _"Config"_ menu item, by adding a key named
-_"extra"_ beneath your _"registration"_ configuration object. By default the only accepted extra information
-you can associate with users is _"name"_, but if you for instance want to allow users to provide their phone
-number as they are registering in addition to their names, you can modify this section as follows.
-
-```
-{
-  "magic": {
-    "auth": {
-      "registration": {
-        "extra": "name,phone"
-      }
-    }
-  }
-}
-```
-
-Whatever extra information you pass in to this endpoint during registration, will be associated with the user
-and returned as the user authenticates.
-This endpoint does not require the caller to be authenticated and can be invoked by anyone. If you have
-configured the system to send _"confirm email address"_ emails, the URL transmitted to the user to confirm
-his or her email address will resemble the following, except the query parameters will be URL encoded of
-course.
-
-```
-https://your-frontend-url.com?
-token=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&
-username=john@doe.com&
-url=https://your-backend-url.com
-```
-
-The above arguments in the URL sent to the user's email address implies the following.
-
-* __[token]__ - A cryptographically secure token that must be supplied to the `verify-email` endpoint as the user confirms his or her email address. Notice, this is _not_ a JWT token but rather a cryptographic hash based upon the user's email address and the auth secret from your _"appsettings.json"_ file. Hence this token can only be used to verify the user's email address, and not to authorise the user in any ways
-* __[username]__ - The username of the user that also needs to be submitted to the `verify-email` endpoint as the user confirms his or her email address
-* __[url]__ - The root URL for your backend, implying the backend to use as you invoke the `verify-email` endpoint. This might seem a little bit weird until you realise that one backend can have a multitude of frontends, and one frontend can in theory use multiple backends, implying the same frontend client might in theory be able to use multiple different backends. If you only have one backend you can ignore this parameter
-
-This endpoint allows you to create a frontend page somewhere where you accept the above `token` query parameter,
-the `username` query parameter, and the `url` query parameter, for then to invoke the `verify-email`
-endpoint found below to verify the user's email address, passing in the `token` value found in your query
-parameters above as the `token` argument to the `verify-email` endpoint. Notice, Magic's dashboard will
-correctly handle these URL arguments if you supply the root-URL/domain to your Magic dashboard as your
-`frontendUrl` when invoking the endpoint, but this will of course result in the user being brought onwards
-to the Magic dashboard's frontend, which might not be what you wish for in your own apps. The _"register"_
-endpoint can return one of the following values if it successfully executes.
-
-* __confirm-email-address-email-sent__ - This implies the user was successfully sent a _"verify email address"_ email
-* __already-registered__ - This implies the user has already registered at the site
-* __success__ - This implies the user was successfully registered, but no verify email address email was sent
-
-You can override the email template used to send user a _"verify email address"_ email. The default email template
-used can be found at `/system/auth/email-templates/register.html`. However, if you create your own email
-template you'll have to make sure you _keep_ the dynamically substituted `url` parts in your own custom template.
-See how the `href` parameter for the default email template is constructed to understand how this works.
-This endpoints is intended for you to consume from your own code.
-
-### POST magic/system/auth/verify-email
-
-This endpoint allows a registered user to verify his or her email address, and is typically occurring
-after a user has registered and the system has sent the user an email to confirm his or her email address.
-The endpoint does not require authorisation, but takes the following payload.
-
-```
-{
-  "username": "john@doe.com",
-  "token": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-}
-```
-
-Notice, the above `token` must be the same token generated by Magic as the user registered, and sent
-to the user on his or her email.
-This endpoints is intended for you to consume from your own code.
-
-### POST magic/system/auth/send-reset-password-link
-
-This endpoint sends a _"reset password email"_ to a registered user. Like the register endpoint, the
-endpoint requires a `frontendUrl` field, in addition to of course a username. The
-username must be an email address. This endpoint requires that you have configured Magic's SMTP settings
-such that it can send an email to the user allowing him or her to reset the password. Below is an
-example payload.
-
-```
-{
-  "username": "john@doe.com",
-  "frontendUrl": "https://your-frontend-url.com",
-  "template": "/some/path/to-some-email-template.html",
-  "subject": "Subject line of change password email"
-}
-```
-
-The above arguments implies the following.
-
-* __[username]__ - Username/email address for user requesting a new password for
-* __[frontendUrl]__ - The URL of the frontend where you want to allow the user to change his or her password
-* __[template]__ - The email template used to send the user the _"forgot password"_ email. Optional, and if not specified will default to _"/system/auth/email-templates/reset-password.html"_
-* __[subject]__ - Subject line of email to send. Optional, and if not supplied will default to _"Change your password at Aista Magic Cloud"_
-
-The endpoint does not require the caller to be authenticated and can be invoked by anyone, but the endpoint can
-only be invoked for a user who's username is a valid email address.
 This endpoints is intended for you to consume from your own code.
 
 ### GET magic/system/auth/verify-ticket
@@ -314,23 +125,11 @@ it requires no arguments.
 
 This endpoint is not intended for you to consume in your own code.
 
-### GET magic/system/bazar/can-install
+### POST magic/system/bazar/install-plugin
 
-This endpoint requires a Magic version number, such as _"v10.0.15"_, and returns either _"SUCCESS"_ or _"ERROR"_,
-depending upon whether or not the current version of Magic is above or beneath the specified version number.
-It is typically used to verify that a Bazar app can be installed, to verify the Magic version is high enough
-for the Bazar item to be successfully installed. The endpoint can only be invoked by a root user. The endpoint
-requires the following argument(s).
-
-* __[required_magic_version]__ - Minimum version of Magic requried
-
-This endpoint is considered obsolete and might be removed in a future version of Magic.
-This endpoint is not intended for you to consume in your own code.
-
-### POST magic/system/bazar/download-from-bazar
-
-This endpoint downloads a Bazar item as a ZIP file from the specified URL, and unzips the file into the backend.
-The endpoint can only be invoked by a root user and requires the following payload.
+This endpoint downloads a plugin item as a ZIP file from the specified URL, and unzips the file into the backend,
+for the to install the plugin by executing its startup files. The endpoint can only be invoked by a root user
+and requires the following payload.
 
 ```
 {
@@ -339,36 +138,9 @@ The endpoint can only be invoked by a root user and requires the following paylo
 }
 ```
 
-The Bazar item will be downloaded from the specified URL and assumed to be a ZIP file. The ZIP file
+The plugin will be downloaded from the specified URL and assumed to be a ZIP file. The ZIP file
 will then be unzipped, and unzipped into your _"modules"_ folder as the specified _"name"_. Notice, any
-previously installed modules with the same name will be automatically deleted, and the endpoint will _not_
-install the module, but only unzip it and create its folder structure. To install the module after it has
-been unzipped make sure you invoke the `/system/file-system/install` endpoint.
-
-Notice, this endpoint is considered obsolete and will be changed in a future version of Magic.
-This endpoint is not intended for you to consume in your own code.
-
-### POST magic/system/bazar/download-from-url
-
-This endpoint downloads a file from its specified __[url]__ and saves it to the specified __[folder]__
-in your backend. The endpoint can only be invoked by a root user, and requires the following payload.
-
-```
-{
-  "folder": "foo",
-  "url": "foo"
-}
-```
-
-The above arguments implies the following.
-
-* __[folder]__ - The folder in your backend you want to save the file
-* __[url]__ - The URL to download the file from
-
-The __[url]__ field needs to be a valid URL returning a file, with the `Content-Disposition` HTTP
-header correctly applied, since the `Content-Disposition` header's _"filename"_ value becomes
-the name of the file on your server.
-This endpoint is not intended for you to consume in your own code.
+previously installed modules with the same name will be automatically deleted and uninstalled.
 
 ## Cache related endpoints
 
@@ -382,50 +154,12 @@ information about such operations for such scenarios.
 None of these endpoints are really intended to be consumed in your own code, but only
 for internal usage by Magic itself.
 
-### GET magic/system/cache/list
-
-This endpoint returns the number of cache items on your server, optionally allowing you to page
-with the following query parameters.
-
-* __[limit]__ - Maximum number of items to return
-* __[offset]__ - Offset of where to start returning items
-* __[filter]__ - Filter key cache items must start with in order to be considered a hit
-
-The endpoint can only be invoked by a root user.
-
-This endpoint is to be considered obsolete and might change in a future version of Magic.
-This endpoint is not intended for you to consume in your own code.
-
-### GET magic/system/cache/count
-
-This endpoint returns the number of cache items in total on your server, optionally starting out
-with the _"filter"_ query parameter as their key. The endpoint can only be invoked by a root user.
-The endpoint requires the following argument(s).
-
-* __[filter]__ - Optional filter declaring _"namespace"_ of cache items to count
-
-This endpoint is to be considered obsolete and might change in a future version of Magic.
-
-This endpoint is not intended for you to consume in your own code.
-
 ### DELETE magic/system/cache/delete
 
 This endpoint requires an **[id]** as a query parameter, and will delete the associated server side
 cache item. It can only be invoked by a root user. The endpoint requires the following argument(s).
 
 * __[id]__ - Mandatory id of cache item to evict
-
-This endpoint is to be considered obsolete and might change in a future version of Magic.
-This endpoint is not intended for you to consume in your own code.
-
-### DELETE magic/system/cache/empty
-
-This endpoint completely empties your server side cache, optionally taking a _"filter"_ query
-parameter, which if specified will ensure only cache items _starting_ with the specified filter
-key will be deleted. The endpoint can only be invoked by a root user. The endpoint requires the
-following argument(s).
-
-* __[filter]__ - Optional filter declaring _"namespace"_ of cache items to evict
 
 This endpoint is to be considered obsolete and might change in a future version of Magic.
 This endpoint is not intended for you to consume in your own code.
@@ -463,6 +197,11 @@ initialised. The endpoint requires no argument. If this endpoint does _not_ retu
 frontend dashboard will guide you through the process of finishing the configuration process before
 allowing you to gain access to other parts of your Magic server. The endpoint can only be invoked
 by a root user. This endpoint is not intended for you to consume in your own code.
+
+### POST magic/system/config/setup
+
+This endpoint will setup Magic, and should only be used initially as you install Magic, and should
+never be invoked afterwards, unless you need to reset your root user's password.
 
 ## CRUD related endpoints
 
@@ -580,328 +319,6 @@ The arguments implies the following.
 The endpoint can only be invoked by a root user.
 This endpoint is not intended for you to consume in your own code.
 
-## Frontend generator
-
-This part describes the frontend generator allowing you to create some sort of frontend, wrapping
-your previously created backend endpoints.
-
-### GET magic/system/crudifier/templates
-
-This endpoint returns all frontend templates the system can use for generating frontends. It requires no arguments,
-but can only be invoked by a root user. This is used to allow the user to select a frontend template as he or she
-wants to generate a frontend of some sort.
-This endpoint is not intended for you to consume in your own code.
-
-### GET magic/system/crudifier/template
-
-This endpoint returns Markdown describing the specified template with a humanly understandable description, implying
-it returns the README.md file associated with the template specified as the **[name]** query parameter. As the user is
-selecting a template, typically displaying the result of invoking this endpoint makes sense, since it allows the user
-to understand what the template does for him or her. The endpoint can only be invoked by a root user. The endpoint
-requires the following query argument(s).
-
-* __[name]__ - Name of template to return Markdown for
-
-This endpoint is not intended for you to consume in your own code.
-
-### GET magic/system/crudifier/template-args
-
-This endpoint returns the additional custom arguments the specified frontend template can handle. It requires one
-query parameter being **[name]** of template you wish to retrieve arguments for. The return value of invocations to this
-endpoint becomes the **[args]** collection for invocations to the above endpoint. The endpoint can only be invoked by a
-root user. The endpoint requires the following query argument(s).
-
-* __[name]__ - Name of template to return template arguments for
-
-This endpoint is not intended for you to consume in your own code.
-
-### POST magic/system/crudifier/generate-frontend
-
-This endpoint generates a frontend based upon a template, and either puts the result into a local folder on
-the server, or returns as a ZIP file download to the client. The endpoint requires the following payload.
-
-```
-{
-  "templateName": "xxx",
-  "apiUrl": "xxx",
-  "frontendUrl": "xxx",
-  "email": "xxx",
-  "name": "xxx",
-  "copyright": "xxx",
-  "endpoints": "*",
-  "deployLocally": true,
-  "args": "*"
-}
-```
-
-The above arguments implies the following.
-
-* __[templateName]__ - Name of template to use. This must be one of the folders found inside of your _"/misc/templates/"_ folder, _minus_ the _"common"_ folder, which is common for all templates
-* __[apiUrl]__ - The API URL the frontend will use
-* __[frontendUrl]__ - The URL you intend to deploy the frontend to, which will be used in the _"docker-compose.yml"_ file that is automatically generated
-* __[email]__ - Email address of person administrating the SSL certificate for the frontend. Typically your email address.
-* __[name]__ - Name of frontend. Typically the name of your app.
-* __[copyright]__ - Copyright notice put into each source file where such can be put, implying TypeScript files, JavaScript files, CSS files, etc - But not HTML files.
-* __[endpoints]__ - Endpoints declaration
-* __[deployLocally]__ - If true will deploy your frontend locally within _"/etc/frontends/"_, otherwise invocation will return a ZIP file to the client
-* __[args]__ - Optional argument collection for your template. These are different depending upon which template you use. You can use the _"template-args"_ endpoint to retrieve which arguments, and/or different values each template accepts
-
-The endpoint can only be invoked by a root user.
-This endpoint is not intended for you to consume in your own code.
-
-## Cryptography related endpoints
-
-These are endpoints related to cryptography somehow, implying among other things the cryptographically secured
-HTTP lambda implementation. To understand this feature [read the following article](/tutorials/crypto-lambda-http/)
-that describes them from a high level perspective. However, the basic foundation for this feature is to allow
-for cryptographically signing a Hyperlambda payload, for then to transmit the payload to another Magic server,
-for then to have that Magic server _securely_ execute the specified Hyperlambda, without risking compromising
-the server in any ways. In addition this section also describes how to associate a user with a cryptography
-key pair, allowing users to sign in with zero username/password requirements, etc.
-
-### PUT magic/system/crypto/associate-user
-
-Associates a specified public cryptography key with a specified user. The endpoints requires the following
-payload.
-
-```
-{
-  "keyId": 42,
-  "username": "foo"
-}
-```
-
-The **[keyId]** is the ID of the public cryptography key, and the **[username]** is the username of the
-user you want to associate with the public key. Invoking this endpoint allows the specified user to authenticate
-towards the backend using a _"cryptography challenge"_, implying zero username/password, allowing the user
-to authenticate using his private cryptography key instead, by giving the client a _"cryptography challenge"_
-the client is assumed to be able to cryptographically sign using his or her own private key.
-This endpoint is not intended for you to consume in your own code.
-
-### PUT magic/system/crypto/deassociate-user
-
-The opposite of the above endpoint, allowing a root user to de-associate a user with the specified public
-key. Payload to endpoint is as follows.
-
-```
-{
-  "keyId": 42
-}
-```
-
-Whatever users are associated with the above public key will be de-associated with their existing key association,
-and no longer be able to use cryptography challenges to authenticate towards the backend.
-This endpoint is not intended for you to consume in your own code.
-
-### GET magic/system/crypto/challenge
-
-Returns a new cryptography challenge to the client, allowing him to use it to cryptographically sign the
-specified challenge, submit the cryptographically signed result to another endpoint, to generate a JWT token
-that authorises the client on behalf of the user associated with the public key. The challenge is is valid
-for 300 seconds, implying the client needs to be able to cryptographically sign the result, and submit the
-cryptographically signed result to the coupled endpoint within 5 minutes to be able to authenticate as the
-user associated with his cryptography key. The endpoint can be invoked by anyone, and does not require
-any argument(s).
-
-This endpoints is intended for you to consume from your own code.
-
-### POST magic/system/crypto/challenge
-
-Coupled with the above endpoint, this endpoint allows the user to use his private cryptography key to
-authenticate towards the backend without having to supply his or her username/password combination.
-After having cryptographically signed the challenge returned from the above endpoint, the user can submit
-the signed challenge to this endpoint, resulting in a JWT token being returned, allowing the user to
-invoke endpoints afterwards within the context of the user associated with the cryptography key pair.
-
-If the invocation to this endpoint is successful, a valid JWT token will be returned, allowing the
-client to use this JWT token to invoke other endpoints authorised as the user associated with the
-public cryptography key on the server using the JWT token. The endpoint requires the following
-payload.
-
-```
-{
-  "challenge": "cryptographically-signed-challenge"
-}
-```
-
-The above argument implies the following.
-
-* __[challenge]__ - Cryptographically signed result from the GET counterpart endpoint in base64 encoded format
-
-This endpoints is intended for you to consume from your own code.
-
-### PATCH magic/system/crypto/eval-id
-
-Executes a cryptographically secured lambda invocation.
-See [cryptographically secured lambda invocations](/tutorials/crypto-lambda-http/) to understand what this
-implies. The payload is assumed to be binary in the form of `application/octet-stream`, assumed to be
-a cryptographically signed Hyperlambda snippet, and only after the signature has been confirmed to belong
-to a public key in the database being enabled and allowed to create such HTTP invocations, the Hyperlambda
-will be executed within the **[whitelist]** declaration associated with the key the payload was
-signed with.
-
-This endpoint is not intended for you to consume in your own code, but rather used indirectly
-through the **[magic.crypto.http.eval]** slot.
-
-### POST magic/system/crypto/generate-keypair
-
-This endpoint generates a new server cryptography key pair, both its public key and its private key, and
-takes a backup of the old key, making the newly generated key the default server key. The endpoint requires
-the following payload.
-
-```
-{
-  "strength": 4096,
-  "seed": "qwertyuiop",
-  "subject": "John Doe",
-  "email": "john@doe.com",
-  "domain": "https://johndoe.com"
-}
-```
-
-The above arguments implies the following.
-
-* __[strength]__ - Key bit strength, typically 1024, 2048, 4096 or 8192. Notice, anything below 2048 is _not_ considered secure, but to be safe you should only use at least 4096 in your production environment
-* __[seed]__ - Random text gibberish used to seed the CSRNG implementation
-* __[subject]__ - The subject owning the cryptography key pair, typically the full name of the individual whom the key is created for
-* __[email]__ - Email address where the above subject can be reached
-* __[domain]__ - Domain associated with the key pair. When creating a new server key pair, this is typically your backend's domain prefixed by `https://`
-
-This endpoint is not intended for you to consume in your own code.
-
-### GET magic/system/crypto/get-fingerprint
-
-This endpoint returns the fingerprint for the specified public key. The public key must be base64 encoded
-DER format. The endpoint requires one query parameter being its **[key]**, which is the key the invocation
-will return the fingerprint for. The endpoint can only be invoked by a root user and it requires the following
-argument(s).
-
-* __[key]__ - Public key to generate a fingerprint from
-
-This endpoint is not intended for you to consume in your own code.
-
-### POST magic/system/crypto/import
-
-This endpoint allows _any_ user to import his or her public key to the backend. By default the key
-will _not_ be enabled, but disabled, and needs to be enabled by an administrator before it can be
-used to create cryptographically secured lambda invocations. The payload for the endpoint is as
-follows.
-
-```
-{
-  "subject": "xxx",
-  "email": "xxx",
-  "domain": "xxx",
-  "content": "xxx"
-}
-```
-
-The above arguments implies the following.
-
-* __[subject]__ - Subject owning public key, typically the full name of a single person, e.g. _"John Doe"_
-* __[email]__ - Email associated with the public key
-* __[domain]__ - Domain associated with the public key, e.g. `https://foo.com`
-* __[content]__ - Actual public key in BASE64 encoded DER format
-
-Notice, currently Magic only supports RSA keys base64 encoded in DER format.
-
-This endpoints is intended for you to consume from your own code.
-
-### GET magic/system/crypto/public-key-raw
-
-Returns the server's public key as base64 encoded DER format. This endpoint can be invoked by anyone, allowing
-others to import your server's public key into their own database. The endpoint requires no arguments.
-
-This endpoints is intended for you to consume from your own code.
-
-### GET magic/system/crypto/public-key
-
-This endpoint is similar to the above endpoint, but instead of returning the public key of your server
-in raw base64 encoded DER format, it returns the following response.
-
-```
-{
-  "fingerprint": "d090-3322-fcfa-c064-27e3-fd45-d5bc-1035-5c3f-13c8-7c53-1d03-ecb7-ad71-2ea2-cce1",
-  "publicKey": "MIIBIjANBgkq... snip ...3QIDAQAB",
-  "keyFormat": "base64/DER",
-  "fingerprintFormat": "SHA256-fingerprint",
-  "keyType": "RSA"
-}
-```
-
-The above fields implies the following.
-
-* __[fingerprint]__ - Fingerprint associated with key
-* __[publicKey]__ - The base64 encoded DER format of the key. The key's actual content
-* __[keyFormat]__ - If the key has been encoded differently than base64/DER this will have a different value
-* __[fingerprintFormat]__ - Format of the fingerprint returned
-* __[keyType]__ - Type of key. Magic only supports RSA keys currently
-
-This endpoint can be invoked by anyone and does not require authentication. The endpoint requires no argument(s).
-
-This endpoints is intended for you to consume from your own code.
-
-### GET magic/system/crypto/user-association
-
-This endpoint returns the username associated with the specified public cryptography key ID. The endpoint
-can only be invoked by a root account, and requires **[keyId]** as a query parameter, being the ID of the
-public key as taken from the `crypto_keys` table from your magic database. The endpoint requires the
-following query arguments(s).
-
-* __[keyId]__ - Id of public key as persisted into your _"crypto_keys"_ database table
-
-This endpoint is not intended for you to consume in your own code.
-
-## Diagnostic endpoints
-
-These endpoints are diagnostic endpoints, allowing you to diagnose your backend, and/or run
-assumptions to sanity check your current installation. An assumption is a high level integration
-test specifically created to verify that some HTTP endpoint returns what is _"assumed"_ given
-a specific payload of some sort. Notice, assumptions can also be manually ceated as lambda objects,
-to execute arbitrary Hyperlambda code, throwing exceptions if assumptions are incorrect.
-
-### POST magic/system/diagnostics/create-test
-
-This endpoint creates a new assumption test. The endpoint can only be invoked by a root user
-and requires the following payload.
-
-```
-{
-  "filename": "foo",
-  "verb": "foo",
-  "url": "foo",
-  "status": 42,
-  "description": "foo",
-  "payload": "foo",
-  "response": "foo",
-  "produces": "foo"
-}
-```
-
-The above arguments implies the following.
-
-* __[filename]__ - Filename for assumption
-* __[verb]__ - HTTP verb assumption should use
-* __[url]__ - URL assumption will invoke
-* __[status]__ - Assumed status code for invoking above URL
-* __[description]__ - Description for your assumption
-* __[payload]__ - JSON payload to transmit to above endpoint. Only relevant for POST or PUT endpoints
-* __[produces]__ - Assumed Content-Type above URL produces when given the specified payload
-* __[response]__ - Assumed response after invoking above URL. Optional, and if not specified will not create assumptions about result besides the status code
-
-This endpoint is not intended for you to consume in your own code.
-
-### GET magic/system/diagnostics/execute-test
-
-This endpoint executes the specified assumption test, given through its **[root_url]** and **[test_file]**
-query parameters. The endpoint can only be invoked by a root user. The endpoint requires the following
-query argument(s).
-
-* __[root_url]__ - The root URL of where to invoke the assumption towards. Typically the domain parts of your backend
-* __[test_file]__ - The full relative path of the test file to execute
-
-This endpoint is not intended for you to consume in your own code.
-
 ### GET magic/system/diagnostics/system-information
 
 This endpoint returns system related information to the caller, such as Magic backend version, number of
@@ -978,33 +395,6 @@ The endpoint can only be invoked by a root user.
 
 This endpoint is not intended for you to consume in your own code.
 
-### PUT magic/system/file-system/install
-
-This endpoint installs a new module already assumed to be unzipped somehow inside your modules
-folder, by recursively executing all files found beneath _"magic.startup"_ folders within
-your module's primary folder, and/or within folders directly within the main folder of
-your module's folder. The endpoint requires the following payload.
-
-```
-{
-  "folder": "/modules/bar/",
-  "app_version": "v15.0.11",
-  "name": "bar",
-  "token": "xyz"
-}
-```
-
-The above arguments implies the following.
-
-* __[folder]__ - Full path of folder where module exists
-* __[app_version]__ - Version of module currently installed, e.g. _"v10.0.26"_
-* __[name]__ - Name of app in humanly readable form
-* __[token]__ - Token needed to update the module form the Bazar
-
-The endpoint can only be invoked by a root user.
-
-This endpoint is not intended for you to consume in your own code.
-
 ### GET magic/system/file-system/list-folders-recursively
 
 This endpoint lists all folders recursively starting from the specified **[folder]** argument.
@@ -1076,6 +466,10 @@ following payload.
 The endpoint can only be invoked by a root user.
 
 This endpoint is not intended for you to consume in your own code.
+
+## PUT magic/system/file-system/install-module
+
+This endpoint uploads a ZIP file assumed to be a module, and installs it.
 
 ## Log related endpoints
 

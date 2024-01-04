@@ -9,7 +9,7 @@ description: AI-based Low-Code and No-Code Software Development Automation using
 url: "https://polterguy.github.io"
 repository: "polterguy/magic"
 footer_scripts:
- - "https://ainiro.io/magic/system/openai/include-javascript?markdown=true&speech=false&rtl=false&submit_button=true&stream=true&search=false&chat=true&css=scandinavian-mulberry&file=default&type=ainiro&header=Ask%20about%20our%20services%20or%20products&button="
+ - "https://ainiro.io/magic/system/openai/include-javascript?markdown=true&speech=false&rtl=false&submit_button=true&stream=true&search=false&chat=true&css=scandinavian-pumpkin&file=default&type=magic-documentation&header=Ask%20about%20Magic%20Cloud%20or%20Hyperlambda&button="
 atom_feed:
   hide: true
 twitter:
@@ -37,6 +37,8 @@ analytics:
 copyright: Copyright © Thomas Hansen, 2023 - 2024
 
 minimal_mistakes_skin: dark
+
+baseurl: "/"
 
 # Additional plugins to use
 plugins:
