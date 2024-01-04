@@ -138,6 +138,8 @@ GEM
     jekyll-github-metadata (2.13.0)
       jekyll (>= 3.4, < 5.0)
       octokit (~> 4.0, != 4.4.0)
+    jekyll-include-cache (0.2.1)
+      jekyll (>= 3.7, < 5.0)
     jekyll-mentions (1.6.0)
       html-pipeline (~> 2.3)
       jekyll (>= 3.7, < 5.0)
@@ -269,13 +271,10 @@ GEM
       ethon (>= 0.9.0)
     tzinfo (1.2.10)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2022.1)
-      tzinfo (>= 1.0.0)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8)
     unicode-display_width (1.8.0)
-    wdm (0.1.1)
     webrick (1.7.0)
     zeitwerk (2.6.6)
 
@@ -283,12 +282,14 @@ PLATFORMS
   universal-darwin-20
   universal-darwin-21
   x64-unknown
+  x86_64-darwin-23
   x86_64-linux
 
 DEPENDENCIES
   github-pages (~> 219)
   jekyll (~> 3.9.0)
   jekyll-feed (~> 0.12)
+  jekyll-include-cache
   minima (~> 2.5)
   tzinfo (~> 1.2)
   tzinfo-data

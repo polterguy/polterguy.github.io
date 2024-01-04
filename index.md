@@ -1,10 +1,7 @@
 ---
-title: Documentation for Magic Cloud and Hyperlambda
+title: "AINIRO.IO's Magic Cloud"
 description: "Where the Machine Creates your Code, using Artificial Intelligence, Machine Learning, meta programming, and software development automation"
-og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg
 ---
-
-# What is Magic Cloud?
 
 Magic Cloud, or Magic for short, is a software development platform that creates most of your code _"automagically"_,
 by leveraging meta programming, declarative programming, artificial intelligence, machine learning, and low-code software development

@@ -332,7 +332,7 @@ files in your _"/etc/www/"_ folder, you can see this logic in action.
 
 **index.html**
 
-```
+```html
 <html>
     <head>
         <title>Hell world</title>

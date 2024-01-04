@@ -1,146 +1,53 @@
 
 # The next line declares you want to use this theme
-remote_theme: polterguy/aista-dox
-
-# The next line declares the URL structure of your blog items
-permalink: /blog/:title
+remote_theme: mmistakes/minimal-mistakes@4.23.0
 
 # Title of your site
-title: Aista Magic Cloud
-
-# Slogan of your site
-slogan: A Software Developer's Dream
-
-# Description of your site
-description: We put ChatGPT on your website and make it way what you want it to say
+title: AINIRO.IO Magic Cloud
+subtitle: Where the Machine Creates the Code
+description: AI-based Low-Code and No-Code Software Development Automation using Workflows, Software Development Orchestration and AI
+url: "https://polterguy.github.io"
+repository: "polterguy/magic"
+footer_scripts:
+ - "https://ainiro.io/magic/system/openai/include-javascript?markdown=true&speech=false&rtl=false&submit_button=true&stream=true&search=false&chat=true&css=scandinavian-mulberry&file=default&type=ainiro&header=Ask%20about%20our%20services%20or%20products&button="
+atom_feed:
+  hide: true
+twitter:
+  usertitle: "AIniroTeam"
+facebook:
+  usertitle: "ainiro.io"
+og_image: "/assets/images/roi-with-ai-2.jpeg"
+social:
+  type:  Organization
+  title:  AINIRO.IO
+  links:
+    - "https://twitter.com/AIniroTeam"
+    - "https://www.facebook.com/ainiro.io"
+    - "https://www.linkedin.com/company/ainiro-io"
 
 # Google Analytics tracking code
 google_analytics: G-T5962ES73V
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: "G-T5962ES73V"
+    anonymize_ip: false # default
 
 # Copyright displayed in the bottom right corner
-copyright: Copyright © Aista, Ltd 2020 - 2023
+copyright: Copyright © Thomas Hansen, 2023 - 2024
 
-# Most Wanted Response, most important link on your site.
-mwr: /documentation/magic/
-mwr_text: Documentation
-
-# Background images for banner and the main body/content parts of your site
-banner_bg: /assets/bg.jpeg
-body_bg: /assets/bg2.jpeg
-
-# Open Graph image for pages when shared on Facebook or Twitter, etc
-og_image: https://ainiro.io/assets/images/ainiro-chatgpt-website-chatbot.png
-
-# Title for your blog page
-blog_title: Custom ChatGPT-based website chatbot
-paginate: 5
-paginate_path: "/blog/page:num/"
+minimal_mistakes_skin: dark
 
 # Additional plugins to use
 plugins:
   - jekyll-sitemap
   - jekyll-paginate
+  - jekyll-include-cache
 
-js_files:
-  - "https://vss-team.us.ainiro.io/magic/system/openai/include-javascript?markdown=true&speech=false&rtl=false&search=false&chat=true&css=scandinavian-honey&file=default&type=polterguy_github_io&header=Ask%20me%20about%20Hyperlambda&button="
+defaults:
+  - values:
+      layout: single
+      toc: true
+      sidebar:
+        nav: "docs"
 
-# Your navigation section. Declares the drop down menu items for your hamburger menu.
-nav_sections:
-  - name: Primary documentation
-    items:
-      - url: /documentation/magic.lambda/
-        name: magic.lambda
-      - url: /documentation/magic.lambda.io/
-        name: magic.lambda.io
-      - url: /documentation/magic.lambda.math/
-        name: magic.lambda.math
-      - url: /documentation/magic.lambda.http/
-        name: magic.lambda.http
-      - url: /documentation/magic.lambda.csv/
-        name: magic.lambda.csv
-      - url: /documentation/magic.lambda.json/
-        name: magic.lambda.json
-      - url: /documentation/magic.lambda.html/
-        name: magic.lambda.html
-      - url: /documentation/magic.lambda.xml/
-        name: magic.lambda.xml
-      - url: /documentation/magic.lambda.mail/
-        name: magic.lambda.mail
-      - url: /documentation/magic.lambda.mime/
-        name: magic.lambda.mime
-      - url: /documentation/magic.lambda.auth/
-        name: magic.lambda.auth
-      - url: /documentation/magic.lambda.dates/
-        name: magic.lambda.dates
-      - url: /documentation/magic.lambda.slots/
-        name: magic.lambda.slots
-      - url: /documentation/magic.lambda.mysql/
-        name: magic.lambda.mysql
-      - url: /documentation/magic.lambda.pgsql/
-        name: magic.lambda.pgsql
-      - url: /documentation/magic.lambda.mssql/
-        name: magic.lambda.mssql
-      - url: /documentation/magic.lambda.sqlite/
-        name: magic.lambda.sqlite
-      - url: /documentation/magic.lambda.odbc/
-        name: magic.lambda.odbc
-      - url: /documentation/magic.lambda.image/
-        name: magic.lambda.image
-      - url: /documentation/magic.lambda.crypto/
-        name: magic.lambda.crypto
-      - url: /documentation/magic.lambda.guid/
-        name: magic.lambda.guid
-      - url: /documentation/magic.lambda.config/
-        name: magic.lambda.config
-      - url: /documentation/magic.lambda.logging/
-        name: magic.lambda.logging
-      - url: /documentation/magic.lambda.caching/
-        name: magic.lambda.caching
-      - url: /documentation/magic.lambda.strings/
-        name: magic.lambda.strings
-      - url: /documentation/magic.lambda.scheduler/
-        name: magic.lambda.scheduler
-      - url: /documentation/magic.lambda.validators/
-        name: magic.lambda.validators
-      - url: /documentation/magic.lambda.hyperlambda/
-        name: magic.lambda.hyperlambda
-      - url: /documentation/magic.lambda.sockets/
-        name: magic.lambda.sockets
-      - url: /documentation/magic.lambda.threading/
-        name: magic.lambda.threading
-      - url: /documentation/magic.lambda.pdf/
-        name: magic.lambda.pdf
-      - url: /documentation/magic.lambda.openai/
-        name: magic.lambda.openai
-      - url: /documentation/magic.lambda.system/
-        name: magic.lambda.system
-  - name: Misc helper projects
-    items:
-      - url: /documentation/magic.node/
-        name: magic.node
-      - url: /documentation/magic.signals/
-        name: magic.signals
-      - url: /documentation/magic.endpoint/
-        name: magic.endpoint
-      - url: /documentation/magic.data.common/
-        name: magic.data.common
-      - url: /documentation/magic.library/
-        name: magic.library
-      - url: /documentation/magic.deploy/
-        name: magic.deploy
-      - url: /documentation/magic.clone/
-        name: magic.clone
-  - name: Misc
-    items:
-      - url: /about
-        name: About
-      - url: /documentation/faq/
-        name: FAQ
-      - url: https://youtube.com/@ainiro
-        name: "AINIRO's YouTube channel"
-      - url: https://twitter.com/AIniroTeam
-        name: Twitter Account
-      - url: https://www.linkedin.com/company/ainiro-io
-        name: AINIRO.IO on LinkedIn
-      - url: https://github.com/polterguy/magic
-        name: "Magic's GitHub project"
