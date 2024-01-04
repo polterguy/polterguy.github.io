@@ -1,6 +1,8 @@
 ---
 title: "Magic Cloud Documentation"
 description: "Magic Cloud is an AI-based Low-Code and No-Code software development automation framework, allowing for the machine to create most of your code"
+header:
+  image: /assets/images/wizard-large.png
 ---
 
 Magic Cloud, or Magic for short, is a backend software development platform that creates most of your code _"automagically"_,
@@ -12,22 +14,25 @@ boring parts. Magic Cloud is [open source](https://github.com/polterguy/magic), 
 ## Trained Monkeys
 
 Let's face it, as a software developer typically 80% of your job is so simple that it can be replaced
-by trained monkeys. Magic uses meta programming, declarative programming, AI and software development
-automation to an extent that it becomes that _"trained monkey"_.
-This results in more secure and robust solutions, with less bugs, better scaling, and more freedom for
-you to pursue more creative tasks.
+by trained monkeys. Magic uses meta programming, declarative programming, AI, and software development
+automation to an extent that it becomes a _"trained monkey"_. This results in more secure and robust
+solutions, with less bugs, better scaling, and more freedom for you to pursue more creative tasks.
 
-With Magic you can sometimes accomplish in some few minutes what requires weeks
-of coding in a more traditional platform. The following YouTube video illustrates how to create such a workflow, and wrap
-it into an API.
+> Where the Machine Creates the Code!
+
+With Magic you can sometimes accomplish in some few minutes what requires weeks of coding in a more
+traditional platform. The following YouTube video illustrates how to create a [workflow](/workflows/), and wrap
+it into an API. It's a fairly complex workflow too, which handles Stripe payments - Something most
+experienced software developers often struggle with. In the video I wire up Stripe payments in some
+few minutes using declarative programming.
 
 <iframe style="margin-left: auto; margin-right: auto; width: 560px; max-with: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/ITz1ASqsWoM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ## What can you create with Magic?
 
-Magic's primary strength is its ability to generate backend code, that is database heavy in nature, and/or integrates
-with other web APIs. Magic contains a backend API generator among other things, that allows you to generate a CRUD API
-wrapping your database in some few seconds. Below are some of the primary compoments in Magic.
+Another one of Magic's strengths is its ability to generate backend code, that is database heavy in nature,
+and/or integrates with other web APIs. Magic contains a backend API generator, that allows you to generate
+a CRUD API wrapping your database in some few seconds. Below are some of the primary compoments in Magic.
 
 * [SQL Studio](/dashboard/sql-studio/)
 * [Endpoint Generator](/dashboard/endpoint-generator/)
@@ -128,15 +133,15 @@ and make sure only authorised users have access to private and secured data.
 The user and role systemin Magic is based upon RBAC implying Role Based Access Control, allowing you to
 provide access to components and modules based upon roles, for then to associate roles with users.
 
-## The task scheduler
+## The task manager
 
 Magic Cloud allows you to create and administer tasks. A task is a background job, that is persisted
 into your database as Hyperlambda, and it can either be executed by a _"trigger"_ occurring somewhere
 else in your system, or periodically scheduled to execute repeatedly, or at some specific date and time in
-the future. The task scheduler allows you to easily manage your tasks, edit them, and create new tasks
+the future. The task manager allows you to easily manage your tasks, edit them, and create new tasks
 as you see fit.
 
-Due to its dynamic nature, the task scheduler is also a perfect foundation for your own business process
+Due to its dynamic nature, the task manager is also a perfect foundation for your own business process
 workflows, where functionality is dynamically built and executed by _"triggers"_ occurring in your
 own code.
 
@@ -148,6 +153,7 @@ below;
 
 * Stripe payment integrations
 * Registration workflow actions
+* Several example SQLite databases
 * Etc, etc, etc - [Contact us](mailto:team@ainiro.io) if you need something specific we still haven't built
 
 ## The integrated log
@@ -183,16 +189,6 @@ such as the .Net CLI and NodeJS. [AINIRO.IO](https://ainiro.io) also hosts Magic
 our cloud infrastructure if you're interested in a simpler solution.
 
 ## The goal of the project
-
-Magic was created by Thomas Hansen as the means to avoid having to repeat himself after
-having worked as an enterprise software developer for decades. The idea was to _"outsource"_
-everything he needed into reusable components, such that he didn't have to create the same
-components over and over again, every time he switched between projects.
-
-Magic therefor contains almost everything you need yourself to be able to create fault
-tolerant, scalable, and secure enterprise backend code. Magic is based upon two primary
-axioms; Low-Code/No-Code and AI. Both of these axioms just so happens to significantly
-increase your productivity as a software developer.
 
 The goal of the project is to make it possible for everybody to produce high quality code,
 much faster, without security holes, in an extremely scalable runtime. AKA ...
