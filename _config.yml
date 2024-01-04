@@ -7,23 +7,13 @@ title: Magic Cloud
 subtitle: Where the Machine Creates the Code
 description: AI-based Low-Code and No-Code Software Development Automation using Workflows, Software Development Orchestration and AI
 url: "https://polterguy.github.io"
+baseurl: "/"
 repository: "polterguy/magic"
 footer_scripts:
  - "https://ainiro.io/magic/system/openai/include-javascript?markdown=true&speech=false&rtl=false&submit_button=true&stream=true&search=false&chat=true&css=scandinavian-pumpkin&file=default&type=magic-documentation&header=Ask%20about%20Magic%20Cloud%20or%20Hyperlambda&button="
 atom_feed:
   hide: true
-twitter:
-  usertitle: "AIniroTeam"
-facebook:
-  usertitle: "ainiro.io"
 og_image: "/assets/images/magic-documentation.png"
-social:
-  type:  Organization
-  title:  AINIRO.IO
-  links:
-    - "https://twitter.com/AIniroTeam"
-    - "https://www.facebook.com/ainiro.io"
-    - "https://www.linkedin.com/company/ainiro-io"
 
 # Google Analytics tracking code
 google_analytics: G-T5962ES73V
@@ -37,8 +27,6 @@ analytics:
 copyright: Copyright © Thomas Hansen, 2023 - 2024
 
 minimal_mistakes_skin: dark
-
-baseurl: "/"
 
 # Additional plugins to use
 plugins:

@@ -1,5 +1,7 @@
-
-# Dynamic Hyperlambda slots
+---
+title: Slots
+description: Documentation for the most important dynamic slots you can find in Magic's middleware
+---
 
 Magic creates the following dynamic slots during startup. Notice, most of these slots are there exclusively
 to make sure the middleware of Magic works correctly, and are _not_ intended to be used directly by you

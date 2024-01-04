@@ -1,10 +1,8 @@
 ---
-title: Documentation for Aista Magic Cloud and Hyperlambda
-description: Where the Machine Creates your Code, using Artificial Intelligence, Machine Learning, meta programming, and software development automation
+title: Endpoints
+description: Documentation for the most important endpoints you can find in Magic's middleware
 og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg
 ---
-
-# Endpoints
 
 Magic contains a whole range of endpoints, or _"middleware"_ parts, that the system itself
 relies upon to function. You can play around with these endpoints by using the _"Endpoints"_

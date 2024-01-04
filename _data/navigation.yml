@@ -33,3 +33,5 @@ docs:
         url: /endpoints/
       - title: "Slots"
         url: /slots/
+      - title: "Workflows"
+        url: /workflows/

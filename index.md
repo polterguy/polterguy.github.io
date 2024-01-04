@@ -9,12 +9,13 @@ software development automation. This allows you to focus on creative tasks, whi
 boring parts. Magic Cloud is [open source](https://github.com/polterguy/magic), and professionally hosted by
 [AINIRO.IO](https://ainiro.io) for a monthly fee.
 
-## Why use Magic?
+## Trained Monkeys
 
-As a software developer typically 80% of your job is so simple that it can be replaced
-with artificial intelligence and software development automation, based upon meta programming constructs and
-declarative programming. This results in more secure and robust solutions, with less bugs, better scaling,
-and more freedom for you to pursue more creative tasks.
+Let's face it, as a software developer typically 80% of your job is so simple that it can be replaced
+by trained monkeys. Magic uses meta programming, declarative programming, AI and software development
+automation to an extent that it becomes that _"trained monkey"_.
+This results in more secure and robust solutions, with less bugs, better scaling, and more freedom for
+you to pursue more creative tasks.
 
 With Magic you can sometimes accomplish in some few minutes what requires weeks
 of coding in a more traditional platform. The following YouTube video illustrates how to create such a workflow, and wrap
@@ -32,6 +33,7 @@ wrapping your database in some few seconds. Below are some of the primary compom
 * [Endpoint Generator](/dashboard/endpoint-generator/)
 * [Task Manager](/dashboard/task-manager/)
 * [Hyper IDE](/dashboard/hyper-ide/)
+* [Workflows](/workflows/)
 * Plus many more ...
 
 ## The Endpoint Generator
