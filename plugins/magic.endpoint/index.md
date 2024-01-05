@@ -127,7 +127,9 @@ by setting their values to `*`, such as the following illustrates.
 In the above arguments declaration, **[arg1]** and **[arg2]** will be sanity checked, and input converted
 to `string` or `date` (DateTime) - But the **[arg3]** parts will be completely ignored, allowing the caller
 to invoke it with _anything_ as `arg3` during invocation - Including complete graph JSON objects, assuming
-the above declaration is for a `PUT`, `POST` or `PATCH` Hyperlambda file. The '\*' value for an argument also turn
+the above declaration is for a `PUT`, `POST` or `PATCH` Hyperlambda file.
+
+The '\*' value for an argument also turn
 off all conversion, implying everything will be given to your lambda object with the JSON type the argument
 was passed in as.
 All arguments declared are considered optional, and the file will still resolve if the argument is not given,
@@ -186,7 +188,7 @@ if you want to be able to for instance handle _"text/xml"_ or _"text/csv"_ types
 objects, and intelligently and automatically create an argument collection from it. Below is example
 code illustrating how to create your own HTTP request resolver for the MIME type of _"application/x-foo"_.
 
-```
+```csharp
 EndpointController.RegisterContentType("application/x-foo", async (signaler, request) =>
 {
    var args = new Node();
@@ -202,11 +204,12 @@ your Content-Type handler and the **[.arguments]** declaration in your Hyperlamb
 needs to agree upon the arguments, and if a non-valid argument is specified to a Hyperlambda file,
 an exception will be thrown. Also notice that registering a custom Content-Type is _not_ thread
 safe, and should be done as you start your application, and not during its life time.
+
 You can also provide your own HTTP response resolver that will be invoked given some specified
 Content-Type from your Hyperlambda file. This is done in a similar manner using something resembling
 the following.
 
-```
+```csharp
 EndpointController.RegisterContentType("application/x-foo", (response) =>
 {
    /* ... Return some sort of IActionResult here ... */
