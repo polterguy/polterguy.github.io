@@ -27,6 +27,8 @@ analytics:
 copyright: Copyright © Thomas Hansen, 2023 - 2024
 
 minimal_mistakes_skin: dark
+locale: "en"
+url: "https://docs.ainiro.io"
 
 # Additional plugins to use
 plugins:

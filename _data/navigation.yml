@@ -1,6 +1,8 @@
 docs:
   - title: Main
     children:
+      - title: "Getting Started"
+        url: /getting-started/
       - title: "Hyperlambda"
         url: /hyperlambda/
       - title: "Workflows"
