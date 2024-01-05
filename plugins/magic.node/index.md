@@ -138,7 +138,7 @@ var foo = node.Get<Foo>();
 
 ## String literals in Hyperlambda
 
-Hyperlambda also support strings the same way C# supports string, using any of the following string representations.
+Hyperlambda also support strings the same way C# supports strings, using any of the following string representations.
 
 ```
 // Single quotes
@@ -193,7 +193,6 @@ node who's name is _".foo"_. To see a slightly more advanced example, imagine th
    item1:john
    item2:thomas
    item3:peter
-
 get-value:x:@.data/*/item2
 ```
 
@@ -235,11 +234,8 @@ Below is an example of a slightly more advanced expression.
    howdy:wo/rld
    jo:nothing
    howdy:earth
-
 .dyn:.foo
-
 for-each:x:@"./*/{@.dyn}/*/""=wo/rld"""
-
    set-value:x:@.dp/#
       :thomas was here
 ```
@@ -262,7 +258,6 @@ And in fact, there are thousands of lines of Hyperlambda code in Magic's middlew
 ```
 .arguments
    foo1:string
-
 get-value:x:@.arguments/*/foo1
 ```
 
@@ -276,12 +271,10 @@ the following example.
 
 ```
 .arg1:foo2
-
 .data
    foo1:john
    foo2:thomas
    foo3:peter
-
 get-value:x:@.data/*/{@.arg1}
 ```
 
@@ -291,12 +284,10 @@ values, such as illustrated below.
 
 ```
 .arg1:thomas
-
 .data
    foo1:john
    foo2:thomas
    foo3:peter
-
 get-name:x:@.data/*/={@.arg1}
 ```
 
