@@ -355,7 +355,7 @@ the way XML does.
 Once you have a `Node` object, you can easily reverse the process by using the `HyperlambdaGenerator`
 class, and its `GetHyperlambda` method such as the following illustrates.
 
-```
+```csharp
 using magic.node.extensions.hyperlambda;
 
 var hl1 = GetHyperlambdaAsString();
@@ -363,69 +363,10 @@ var result = HyperlambdaParser.Parse(hl1);
 var hl2 = HyperlambdaGenerator.GetHyperlambda(result.Children);
 ```
 
-## Formal specification of Hyperlambda
-
-**Notice** - This part is mostly intended for developers wanting to implement their own Hyperlambda parser, and
-is strictly not needed to understand neither Magic nor Hyperlambda. Feel free to skip this section if it seems
-like Greek to you.
-
-Hyperlambda contains 8 possible tokens in total, however since single line comments and multi line comments are
-interchangeable, we simplify the specification by combining these into one logical token type - And the `null` token
-isn't really an actual token, but rather a placeholder implying _"absence of token"_. Possible logical tokens
-found in Hyperlambda hence becomes as follows.
-
-1. **IND** - Indent token consisting of _exactly_ 3 SP characters.
-2. **COM** - Comment token. Either C style (`/**/`) or C++ (`//`) style comments.
-3. **NAM** - Name token declaring the name of some node.
-4. **SEP** - Separator token separating the name of a node from its type, and/or value.
-5. **TYP** - Type token declaring the type of value preceeding it. See possible types further up on page.
-6. **VAL** - Value token, being the value of the node.
-7. **CRLF** - CRLF character sequence, implying a CR, LF or CRLF. Except for inside string literals, Hyperlambda does not discriminate between and of these 3 possible combinations, and they all become interchangeable CRLF token types after parsing.
-8. **NUL** - Null token, implying empty or non-existing token.
-
-Notice, a **VAL** and a **NAM** token can be wrapped inside of quotes (') or double quotes ("), like a C# string type.
-In addition to wrapping it inside a multiline C# type of string (@""). This allows you to declare **VAL** and **NAM** tokens
-with CR/LF sequences as a part of their actual value.
-
-The formal specification of Hyperlambda is derived from combining the above 7 tokens into the following. Notice, in the
-following formal specification `->` means _"must be followed by if existing"_, `[0..n]` implies _"zero to any number of repetitions"_,
-`[0..1]` implies _"zero to 1 repetition"_, `[1..n]` implies _"at least one must exist"_,
-and `|` implies _"logical or"_. The paranthesis `()` implies a logical grouping of some token type(s), and the `x=` parts is
-an assignable variable starting at 0, optionally incremented by one for each iteration through the loop. `[0..x]`
-implies  _"zero to x repetitions"_ where `x` is the value of x, and `[x..x+1]` implies _"x to x+1 number of repetitions"_.
-The `=` character assigns the numbers of repetitions in its RHS value to the variable `x`. The default number of repetitions
-if none are explicitly given is 1.
-
-0. **x=0, CRLF\[0..n\]**
-1. **(COM->CRLF\[1..n\])\[0..n\]**
-2. **(NAM->(NUL \| (SEP->VAL\[0..1\]) \| (SEP->TYP->SEP->VAL\[0..1\])))\[0..1\]->CRLF\[0..n\]->(x=IND\[x..x+1\])**
-3. **GOTO 1 while not EOF**
-
 ## Documenting nodes, arguments to slots, etc
 
 When referencing nodes in the documentation for Magic, it is common to reference them like __[this]__, where
 _"this"_ would be the name of some node - Implying in __bold__ characters, wrapped by square [brackets].
-
-## C# extensions
-
-If you want to, you can easily completely exchange the underlaying file system, with your own _"virtual file system"_, since all interaction with the physical file system is done through the `IFileService` and 
-`IFolderService` interfaces. This allows you to circumvent the default dependency injected service, and
-binding towards some other implementation, at least in theory allowing you to (for instance) use a database
-based file system, etc. If you want to do this, you'll need to supply your own bindings to the following
-three interfaces, using your IoC container.
-
-* `magic.node.contracts.IFileService`
-* `magic.node.contracts.IFolderService`
-* `magic.node.contracts.IStreamService`
-* `magic.node.contracts.IRootResolver`
-
-If you want to do this, you would probably want to manually declare your own implementation for these classes,
-by tapping into _"magic.library"_ somehow, or not invoking its default method that binds towards the default
-implementation classes somehow.
-In addition to the above file interfaces, the following interfaces are also declared in magic.node.extensions.
-
-* `magic.node.contracts.IMagicConfiguration` - Allows you to override (parts) of the internally used configuration object
-* `magic.node.contracts.IServiceCreator` - Helper interface allowing you to avoid the service locator pattern, yet still dynamically create services on a per need basis from within your own C# code
 
 ## Project website for magic.node
 
