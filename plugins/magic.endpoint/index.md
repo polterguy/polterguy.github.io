@@ -369,7 +369,7 @@ files in your _"/etc/www/"_ folder, you can see this logic in action.
    return:x:-
 ```
 
-The above will substitute your `{{*/.calculate}}` parts with the result of invoking your **[.calculate]** lambda
+The above will substitute your `\{\{*/.calculate\}\}` parts with the result of invoking your **[.calculate]** lambda
 object, resulting in 4. To understand how this works, you need to read about the **[io.file.mixin]** slot in
 the _"magic.lambda.io"_ project, and realise that the above will actually transform to the following as the
 mixin logic is executed.
