@@ -1,6 +1,8 @@
 ---
 title: Workflows
 description: A workflow is a collection of chained actions, where each action can take as input the output produced by previous actions.
+header:
+  image: /assets/images/wizard-magically-creating-things.png
 ---
 
 A workflow is a chained collection of actions, where each action can produce output, that consecutive actions can consume as input. The most famous example of a workflow system is probably MWF, or Microsoft Workflow Foundation.

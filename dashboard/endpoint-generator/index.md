@@ -17,7 +17,7 @@ Magic will create more than 3,000 lines of Hyperlambda code for you automaticall
 roughly 100 HTTP endpoints for you, providing you with all CRUD operations towards all
 tables in your database - However, Magic can also generate an API wrapping your existing databases. If you
 want to use your existing databases as input, you'll have to provide Magic with a connection strings
-that allows it to connect to your database. You can do this through the _"Databases"_ component.
+that allows it to connect to your database. You can do this through the [databases](/dashboard/databases/) component.
 
 ## How to use the endpoint generator
 

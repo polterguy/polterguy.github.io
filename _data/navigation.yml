@@ -1,11 +1,11 @@
 docs:
-  - title: Primary Concepts
+  - title: Main
     children:
       - title: "Hyperlambda"
         url: /hyperlambda/
       - title: "Workflows"
         url: /workflows/
-  - title: Components
+  - title: Dashboard
     children:
       - title: "SQL Studio"
         url: /dashboard/sql-studio/
@@ -33,7 +33,7 @@ docs:
         url: /dashboard/configuration/
       - title: "Chatbot Wizard"
         url: /dashboard/chatbot-wizard/
-  - title: Middleware
+  - title: Core
     children:
       - title: "Plugins (core project plugins)"
         url: /plugins/

@@ -1,5 +1,5 @@
 ---
-title: "Magic Cloud Documentation"
+title: "Magic Cloud"
 description: "Magic Cloud is an AI-based Low-Code and No-Code software development automation framework, allowing for the machine to create most of your code"
 header:
   image: /assets/images/wizard-large.png
@@ -8,44 +8,49 @@ header:
 Magic Cloud, or Magic for short, is a backend software development platform that creates most of your code _"automagically"_,
 by leveraging meta programming, declarative programming, artificial intelligence, low-code, and no-code
 software development automation. This allows you to focus on creative tasks, while having the machine create the
-boring parts. Magic Cloud is [open source](https://github.com/polterguy/magic), and professionally hosted by
-[AINIRO.IO](https://ainiro.io) for a monthly fee.
+boring parts. Magic Cloud is open source and [hosted at GitHub](https://github.com/polterguy/magic), and professionally hosted and maintained by [AINIRO.IO](https://ainiro.io) for a fee.
 
-## Trained Monkeys
+## Workflows
 
-Let's face it, as a software developer typically 80% of your job is so simple that it can be replaced
-by trained monkeys. Magic uses meta programming, declarative programming, AI, and software development
-automation to an extent that it becomes a _"trained monkey"_. This results in more secure and robust
-solutions, with less bugs, better scaling, and more freedom for you to pursue more creative tasks.
-
-> Where the Machine Creates the Code!
-
-With Magic you can sometimes accomplish in some few minutes what requires weeks of coding in a more
+With Magic you can sometimes accomplish in some few minutes what requires weeks of coding with a more
 traditional platform. The following YouTube video illustrates how to create a [workflow](/workflows/), and wrap
-it into an API. It's a fairly complex workflow too, which handles Stripe payments - Something most
+it into an API. It's a fairly complex workflow too, handling Stripe payments - Something even
 experienced software developers often struggle with. In the video I wire up Stripe payments in some
-few minutes using declarative programming.
+few minutes using declarative programming and workflows.
 
 <iframe style="margin-left: auto; margin-right: auto; width: 560px; max-with: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/ITz1ASqsWoM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-## What can you create with Magic?
+## The Magic Dashboard
 
-Another one of Magic's strengths is its ability to generate backend code, that is database heavy in nature,
-and/or integrates with other web APIs. Magic contains a backend API generator, that allows you to generate
-a CRUD API wrapping your database in some few seconds. Below are some of the primary compoments in Magic.
+Although Magic's purpose is to help you with backend code, it comes with a dashboard allowing you to manage your Magic backend. The dashboard contains UI components for most things you'll need when creating and maintaining your backend code.
 
-* [SQL Studio](/dashboard/sql-studio/)
-* [Endpoint Generator](/dashboard/endpoint-generator/)
-* [Task Manager](/dashboard/task-manager/)
 * [Hyper IDE](/dashboard/hyper-ide/)
-* [Workflows](/workflows/)
+* [Endpoint Generator](/dashboard/endpoint-generator/)
+* [SQL Studio](/dashboard/sql-studio/)
 * Plus many more ...
+
+## Hyper IDE
+
+Magic also contains its own IDE or integrated development environment. [Hyper IDE](/dashboard/hyper-ide/) provides syntax highlighting 
+and autocomplete for Hyperlambda. With Hyper IDE you can edit your code, save it, and immediately see the result
+of your modifications, by executing your endpoint without ever having to leave your IDE.
+
+![Magic's Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide-actions.jpg)
+
+Hyper IDE also integrates perfectly with our Machine Learning component, built on top of OpenAI's
+ChatGPT, allowing you to write your requests in plain English, and have Hyper IDE and ChatGPT automatically
+generate code for you solving your problem.
+
+However, the most powerful parts of Hyper IDE is its _"workflows"_ feature, allowing you to dynamically orchestrate
+backend Hyperlambda code together, without needing to know Hyperlambda.
+
+> With Hyper IDE manually writing code is __optional__
 
 ## The Endpoint Generator
 
-The Endpoint Generator allows you to wrap any database you have in CRUD API endpoints. It reads
+The [Endpoint Generator](/dashboard/endpoint-generator/) allows you to wrap any database you have in CRUD API endpoints. It reads
 meta data from your database, and automatically generates a web API for you. The generated API is
-secured according to your instructions, and can be used as the foundation for your own frontend.
+secured according to your instructions, and can be modified after it's created.
 
 ![Endpoint Generator](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg)
 
@@ -53,6 +58,8 @@ The web API generator takes care of left joins, referential integrity, validator
 While allowing you to declaratively tell it how to generate your API. It also allows you to publish
 web socket messages as endpoints are invoked, in addition to having lots of additional features simplifying
 your life as a software developer.
+
+By combining the Endpoint Generator with Hyperlambda [Workflows](/workflows/), you can sometimes create your entire backend code exclusively by _"clicking buttons"_.
 
 ## The SQL endpoint generator
 
@@ -87,27 +94,6 @@ the SQL API generator, you can compose some SQL, and rapidly wrap it into a web 
 
 ![SQL Studio](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-studio-2.jpg)
 
-## Hyper IDE
-
-Magic also contains its own IDE or integrated development environment. Hyper IDE provides syntax highlighting 
-and autocomplete for Hyperlambda. With Hyper IDE you can edit your code, save it, and immediately see the result
-of your modifications, by executing your endpoint without ever having to leave your IDE.
-
-![Magic's Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide-actions.jpg)
-
-The real power of the backend generator is that it generates code you can edit, with a declarative programming language
-called Hyperlambda. If you need to add business logic to your generated CRUD endpoints, this is easily achieved
-using Hyper IDE.
-
-Hyper IDE also integrates perfectly with our Machine Learning component, built on top of OpenAI's
-ChatGPT, allowing you to write your requests in plain English, and have Hyper IDE and ChatGPT automatically
-generate code for you solving your problem.
-
-However, the most powerful parts of Hyper IDE is its _"workflows"_ feature, allowing you to dynamically orchestrate
-backend Hyperlambda code together, without needing to know Hyperlambda.
-
-> With Hyper IDE manually writing code is actually optional
-
 ## Machine Learning and AI
 
 Magic Cloud is scattered with AI and allows you to create your own Machine Learning models using OpenAI,
@@ -141,20 +127,16 @@ else in your system, or periodically scheduled to execute repeatedly, or at some
 the future. The task manager allows you to easily manage your tasks, edit them, and create new tasks
 as you see fit.
 
-Due to its dynamic nature, the task manager is also a perfect foundation for your own business process
-workflows, where functionality is dynamically built and executed by _"triggers"_ occurring in your
-own code.
-
 ## Plugins
 
-Magic Cloud also contains its own _"marketplace"_ allowing you to rapidly install some plugin
+Magic Cloud also contains its own _"App Store"_, allowing you to rapidly install some plugin
 solving some particular need you might have in your own applications. Some example plugins are listed
 below;
 
 * Stripe payment integrations
 * Registration workflow actions
 * Several example SQLite databases
-* Etc, etc, etc - [Contact us](mailto:team@ainiro.io) if you need something specific we still haven't built
+* Etc, etc, etc
 
 ## The integrated log
 
@@ -164,7 +146,7 @@ giving you control over events occurring that might somehow have consequences fo
 When you create your own Hyperlambda applications, you can also create log entries as you see fit,
 to log important events, such as deleting records, executing tasks, registering users, etc.
 
-## Custom ChatGPT website chatbots
+## Custom AI chatbots
 
 You can also use Magic to create your own custom ChatGPT chatbot, for then to embed it into your
 website. The Chatbot Wizard component in Magic will ask you for your OpenAI API key,
@@ -174,15 +156,15 @@ how you want it to answer questions.
 
 It works by scraping your website, generating training data in the process, for then to end up with a
 custom _"machine learning model"_ (based upon RAG), that answers questions according to your training data.
-You can try out such a chatbot by clicking the button on the bottom right corner of this page, and ask it
+You can try out such a chatbot by clicking the button in the bottom right corner of this page, and ask it
 any question related to AINIRO.IO, or concepts from this website. This chatbot was created by scraping this
 website. At AINIRO.IO we also delivers such chatbots as one of our services. Read more about
 [our ChatGPT-based AI chatbots here](https://ainiro.io/chatgpt-website-chatbot).
 
 ## Magic Cloud is Open Source
 
-Magic Cloud is 100% open source, and you can use it free of charge in proprietary projects
-as you see fit, as long as you obey by the GPL license terms. You can find its code
+Magic Cloud is 100% open source, and you can use it free of charge as you see fit,
+as long as you obey by the GPL license terms. You can find its code
 at [GitHub](https://github.com/polterguy/magic). We also provide docker images
 for Magic, allowing you to install it locally without having to mess with dependencies,
 such as the .Net CLI and NodeJS. [AINIRO.IO](https://ainiro.io) also hosts Magic Cloud in

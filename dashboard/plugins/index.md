@@ -20,8 +20,8 @@ executed, allowing for startup and installation logic. And in fact, if you creat
 using Hyperlambda, you should create such startup folders yourself, where you initialise your plugin, by creating
 slots your module depends upon, creating its initial database if it's needing a database, etc.
 
-After you have installed a plugin, you can see its code by using [Hyper IDE](/dashboard/hyper-ide/)
+After you have installed a plugin, you can see its code by using [Hyper IDE](/dashboard/hyper-ide/),
 and expand the modules folder for then to expand the folder where your plugin was installed, and look at
-its files using Hyper IDE. You can even immediately edit any files this way too, but if you do, you
-can no longer update your plugin. If your plugin creates a database of some sort, you can also immediately
+its files. You can even immediately edit any files this way too, but if you do, you
+can no longer update your plugin. If your plugin creates a database of some sort, you can also
 look at your database using [SQL Studio](/dashboard/sql-studio/).

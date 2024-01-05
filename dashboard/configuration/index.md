@@ -17,18 +17,18 @@ such that malicious adversaries gains access to your system. The configuration c
 UI elements to help you configure things such as OpenAI and SMTP, giving you a graphical user interface
 to edit some of its most important parts.
 
-## Frontend configuration
+## CORS
 
 The `magic:frontend:urls` section allows you to explicitly specify CORS, implying frontend URLs that are
-allowed to retrieve data from the backend. Its default setting implies _all_ URLs are allowed to retrieve
+allowed to retrieve data from your backend. Its default setting implies _all_ URLs are allowed to retrieve
 data from your backend, but sometimes you need to explicitly specify one or more URLs here. You can do this
 by adding a comma separated list of URLs in this setting.
 
 ## SMTP configuration
 
 The `magic:smtp` section allows you to specify which SMTP server Magic should use for sending emails.
-This section allows you to specify which SMTP server settings to use when sending emails. Most parts of
-this section is self explanatory, but the `from` section is the default from name and address to use,
+Most parts of
+this section are self explanatory, but the `from` section is the default from name and address to use,
 which is only used if an email is sent _without_ explicitly declaring who it originated from.
 
 ## Database configuration
@@ -79,5 +79,5 @@ logging here.
 ## Sockets configuration
 
 The `url` setting here allows you to override which URL clients needs to use to negotiate a socket
-channel with your server. You can also completely turn OFF web sockets entirely here, by changing the
+channel with your server. You can also completely turn off web sockets entirely here, by changing the
 value to `null` or remove the section entirely.

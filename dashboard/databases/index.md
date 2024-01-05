@@ -5,8 +5,8 @@ og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/maste
 ---
 
 The databases component allows you to manage your connection strings, in addition to your external
-and internal databases. This is your goto component if you want to connect to an external database,
-and it allows you to connect to any MySQL, PostgreSQL, SQL Server or MariaDB database. Provide it with
+and internal databases. This is your goto component if you want to connect to an external database.
+It allows you to connect to any MySQL, PostgreSQL, SQL Server, or MariaDB database. Provide it with
 your connection string, give your connection string a name, and click connect.
 
 ![Assumptions](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/databases.jpg)

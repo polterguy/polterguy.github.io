@@ -4,17 +4,17 @@ description: Browsing your HTTP endpoints is easy in Magic with the integrated '
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/endpoints.jpg"
 ---
 
-The endpoints component allows you to see all your HTTP endpoints, and also invoke these, similarly
+The Endpoints component allows you to see your HTTP endpoints, and invoke these, similarly
 to how Swagger works. From your endpoints menu item you can search for, parametrise, and invoke
-your endpoints, allowing you to simulate a client, and play with your endpoints to understand how
-they work. This component hence serves a lot of purposes, one being documenting your endpoints,
-while another purpose being testing your endpoint.
+your endpoints - Allowing you to simulate a client, to understand how
+they work. This component hence serves two purposes; One being documenting your endpoints,
+another being testing your endpoints.
 
 ![Endpoints](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/endpoints.jpg)
 
 ## Hyperlambda endpoint meta data
 
-Notice, Hyperlambda endpoints have a type declaration providing some sort of semantic type of information about
+Hyperlambda endpoints have a type declaration providing some sort of semantic type of information about
 your endpoint, and typically if this type declaration is _"internal"_, the endpoint is _not_
 intended for being consumed by your own code, but only for internal usage by Magic.
 This meta data is displayed in the endpoint component, and allows you to more easily classify
@@ -43,4 +43,4 @@ whole range of _"meta data"_. This gives you high level information about your e
 The endpoint's meta information is retrieved directly from your Hyperlambda files. Magic automatically allows you
 to invoke your user defined endpoints with this component.
 
-The endpoints component in Magic is obviouisly not as strong as something such as OpenAPI, Swagger or Postman - But for Hyperlambda files, and playing around with Hyperlambda, it's probably more than good enough.
+The endpoints component in Magic is obviouisly not as strong as something such as OpenAPI, Swagger, or Postman - But for Hyperlambda endpoints, it's probably more than enough.

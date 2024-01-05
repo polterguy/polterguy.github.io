@@ -32,20 +32,20 @@ you out as you compose your SQL.
 
 ## SQL Studio features
 
-The _"Safe mode"_ checkbox prevents you from selecting more than 200 rows from your database.
-If you need to select more rows you must click this checkbox _off_. However, if you return thousands of records
+The _"Safe mode"_ checkbox prevents you from selecting more than 200 records from your database.
+If you need to select more records you must click this checkbox _off_. However, if you return thousands of records
 with some SQL statement, your server might become unresponsive, and/or you may end up exhausting your
 server's memory.
 
 You can save your frequently used SQL statements as _"snippets"_ similarly to how you can save frequently
 used Hyperlambda in the [Hyperlambda Playground](/dashboard/hyperlambda-playground/) component.
 This allows you to store frequently used SQL snippets for later, creating a library of snippets you
-can tap into later as you need to execute the same SQL over again.
+can tap into later as you need to execute the same SQL later.
 
 SQL Studio also provides you with autocomplete on both your tables and columns in your tables. This typically
 works best of you write SQL statements where your tables are aliased, and you write the alias of your table,
-followed by a dot (.), for then to trigger autocomplete. To launch autocomplete click FN+COMMAND+SPACE
-on a Mac, or CRTL+SPACE on Windows.
+followed by a dot (.), for then to trigger autocomplete. To launch autocomplete click FN+CONTROL+SPACE
+on a Mac, or CTRL+SPACE on Windows.
 
 In addition, you can import SQL statements from your local development machine by clicking the _"Import"_
 button, which will bring up a browse for file dialogue, allowing you to import some SQL file from your local
@@ -85,7 +85,7 @@ of Magic.
 When you are exporting your table(s)' DDL, you can also optionally export your DDL to a _"module"_. This is
 useful if you are creating plugins or similar functionality using Magic, since it will automatically wire
 up everything required to automatically create your database if it doesn't exist on whatever cloudlet it's
-supposed to run on, in addition to sequentially executing all migrate scripts associated with your module.
+supposed to run on - In addition to sequentially executing all migrate scripts associated with your module.
 This implies that if you create a reusable module or plugin, once your plugin is installed, it will automatically
 create its database, and execute all SQL migration scripts as it is installed.
 

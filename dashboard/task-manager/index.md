@@ -6,7 +6,7 @@ og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/maste
 
 The Task Manager component allows you to create and administrate persisted Hyperlambda tasks, and/or schedule
 tasks for executing, either in a repeating pattern somehow, or at an exact date and time in the future.
-A Magic task again, is really nothing but a snippet of Hyperlambda code, that is persisted into
+A Magic task is just a snippet of Hyperlambda code, that is persisted into
 your Magic database, and such can be recalled at any point in the future to be executed at will.
 
 ![Hyperlambda task scheduler](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/scheduling-task.jpg)
@@ -14,12 +14,10 @@ your Magic database, and such can be recalled at any point in the future to be e
 ## The idea behind the task component
 
 The idea behind the task scheduler is first of all to allow for creating dynamically persisted tasks that can be triggered
-by some future event, facilitating for _"Business Process Workflows"_ - In addition to scheduling your
-tasks to be executed at some specific date and time in the future, and/or in a repeating fashion. Since tasks
-are dynamically created Hyperlambda snippets of code, this allows you to dynamically create and orchestrate
-_"business process workflows"_ using the task scheduler, in addition to that you have no restrictions
-in regards to what you want your scheduled tasks to do, contrary to most other task schedulers, that
-are often built upon statically compiled programming languages.
+by some future event - In addition to scheduling your
+tasks to be executed at some specific date and time in the future, and/or in a repeating pattern. Since tasks
+are dynamically created Hyperlambda snippets of code, this makes the system very flexible contrary to most other
+task schedulers, that are often built upon statically compiled programming languages.
 
 ## Tasks internals
 
@@ -61,5 +59,7 @@ will execute one second to midnight both Mondays and Fridays.
 To understand which repetition pattern is which, simply count the number of periods in your value,
 and if there are 4 periods, it's a month/day type of pattern. If there are only 3 periods in your
 pattern, it's a weekday pattern.
+
+To understand tasks more in details, you can read read about the [magic.lambda.scheduler](/plugins/magic.lambda.scheduler/).
 
 
