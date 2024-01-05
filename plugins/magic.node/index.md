@@ -27,7 +27,7 @@ You can optionally supply a type between a node's name and its value, which you 
 the `:int:` parts between one of our **[foo]** nodes' name and value. If you don't explicitly declare a type
 `string` will be assumed.
 
-## Parsing Hyperlambda from C#
+## Traversing Hyperlambda from C#
 
 To traverse the nodes later in for instance C#, you could do something such as the following.
 
