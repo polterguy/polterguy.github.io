@@ -3,7 +3,7 @@ title: magic.library
 ---
 
 This project helps you to wire up everything related to Magic. Normally you'd use it simply like the following from
-your startup class in your .Net 6 Web API project.
+your startup class in your .Net 8 Web API project.
 
 ```csharp
 using Microsoft.AspNetCore.Builder;
