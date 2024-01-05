@@ -22,9 +22,8 @@ The resolver will be invoked for all relative URLs starting with _"magic/"_, for
 * `PATCH`
 
 The default service implementation will resolve everything after the _"magic/"_ parts in the
-given URL, to a Hyperlambda file assumed to be found relatively beneath your _"/files/"_ folder -
-Although, exactly where you physically put your files on disc, can be configured
-through your _"appsettings.json"_ file. The HTTP verb is assumed to be the last parts of your
+given URL, to a Hyperlambda file assumed to be found relatively inside your _"/files/"_ folder.
+The HTTP verb is assumed to be the last parts of your
 filename, before its extension, implying an HTTP request such as the following.
 
 ```
@@ -41,6 +40,7 @@ Only the _"magic"_ part of your URL is rewritten before the verb is appended to 
 finally the extension _".hl"_ appended. Then the file is loaded and parsed as Hyperlambda, and whatever
 arguments you pass in, either as query parameters or as your JSON payload is appended into your
 resulting lambda node's **[.arguments]** node as arguments to your Hyperlambda file invocation.
+
 The resolver will never return files directly, but is only able to execute Hyperlambda files,
 so by default there is no way to get static files, unless you create a Hyperlambda endpoint that returns
 a static file somehow.
@@ -48,12 +48,17 @@ a static file somehow.
 The default resolver will only allow the client to resolve files inside your _"/files/modules/"_
 folder and _"/files/system/"_ folder. This allows you to safely keep files that parts of your system
 relies upon inside your dynamic _"/files/"_ folder, without accidentally creating endpoints clients can
-resolve, resulting in breaches in your security. Only characters a-z, 0-9 and '-', '\_' and '/' are legal
+resolve, resulting in breaches in your security.
+
+Only the characters a-z, 0-9 and '-', '\_' and '/' are legal
 characters for the resolvers, and only lowercase characters to avoid file system incompatibilities between
-Linux and Windows. There is _one exception_ to this rule though, which is that the resolver will resolve
+Linux and Windows.
+
+There is _one exception_ to this rule though, which is that the resolver will resolve
 files and folder starting out with a period (.) character, since this is necessary to allow for having
 _"hidden files"_ being resolved as endpoints - Which is a requirement to make things such as
 Apple's _".well-known"_ endpoints being resolved.
+
 Below is probably the simplest HTTP endpoint you could create. Save the following Hyperlambda in a
 file at the path of `/modules/tutorials/foo.get.hl` using for instance your Magic 
 _"Hyper IDE"_ menu item.
