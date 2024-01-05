@@ -31,7 +31,7 @@ the `:int:` parts between one of our **[foo]** nodes' name and value. If you don
 
 To traverse the nodes later in for instance C#, you could do something such as the following.
 
-```
+```csharp
 var root = var result = HyperlambdaParser.Parse(hyperlambda);
 
 foreach (var idxChild in root.Children)
@@ -90,7 +90,7 @@ the `Converter.AddConverter` method, that can be found in the `magic.node.extens
 Below is an example of how to extend the typing system, to allow for serializing and de-serializing instances
 of a `Foo` class into Hyperlambda.
 
-```
+```csharp
 /*
  * Class you want to serialize into Hyperlambda.
  */
@@ -304,7 +304,7 @@ methods.
 Below is a C# example, that creates a dynamic iterator, that will only return nodes having a value,
 that once converted into a string, has _exactly_ `n` characters, not less and not more.
 
-```
+```csharp
 Iterator.AddDynamicIterator('%', (iteratorValue) => {
     var no = int.Parse(iteratorValue.Substring(1));
     return (identity, input) => {
