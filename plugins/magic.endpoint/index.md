@@ -391,7 +391,7 @@ files.
 Notice, interceptor files will be executed as normally, allowing you to apply interceptor files similarly
 to how you apply these with your _"/magic/"_ endpoints. In addition, any file called _"default.html"_ having
 a Hyperlambda counterpart will be used for default URL resolving if no explicit URL is found, allowing
-you to handle dynamica URLs with this file.
+you to handle dynamic URLs with this file.
 
 ## Project website for magic.endpoint
 
