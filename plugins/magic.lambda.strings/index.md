@@ -333,7 +333,7 @@ of where to stop returning. In such a regard, it works the same way as the C# `S
 Combines the result of the specified Hyperlambda and concatenates inline into its surrounding string.
 
 ```
-strings.mixin:@"foo {{return:bar}}"
+strings.mixin:@"foo {{"{{"}}return:bar}}"
 ```
 
 The above will result in the following.
