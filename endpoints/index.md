@@ -1,6 +1,6 @@
 ---
 title: Endpoints
-description: Documentation for the most important endpoints you can find in Magic's middleware
+description: This article is the documentation for the most important endpoints you can find in Magic's middleware
 og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg
 ---
 

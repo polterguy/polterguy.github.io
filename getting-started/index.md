@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-description: This article is about how to get started with Magic Cloud and start leveraging its Low-Code and No-Code features
+description: This article is about how to get started with Magic Cloud using Docker, and start leveraging its Low-Code and No-Code features in your own systems
 header:
   image: /assets/images/getting-started.png
 ---

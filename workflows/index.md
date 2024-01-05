@@ -21,7 +21,7 @@ In the following video I am creating a complete registration API in 15 minutes t
 
 The point being that creating a registration API manually is a task that might take weeks of manual coding. Doing it in 15 minutes obviously has advantages, especially considering the skill level required to accomplish the above, which is close to nothing.
 
-Creating a registration API using C#, GoLang, or Java, typically requires years of training, knowing a bajillion things. In Magic you can do it after some few minutes of watching a YouTube video - And you can implement it 1,000 times faster than a senior software developer can in most other programming languages.
+Creating a registration API using C#, GoLang, or Java, typically requires years of training, in addition to knowledge about a _"bajillion"_ things. In Magic you can do it after some few minutes of watching a YouTube video - And you can implement it 1,860 times faster than a senior software developer can in most other programming languages, assuming the industry average of 325 lines of code per month is correct.
 
 ## Declarative programming
 
