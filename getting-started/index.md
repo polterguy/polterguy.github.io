@@ -5,7 +5,7 @@ header:
   image: /assets/images/getting-started.png
 ---
 
-The easiest way to get started with Magic is to [signup for a cloudlet at AINIRO.IO](https://ainiro.io). However, if you want to install Magic on your own server, this is very much possible. The second easiest way to get started is to use the Docker images.
+The easiest way to get started with Magic is to [signup for a cloudlet at AINIRO.IO](https://ainiro.io). However, if you want to install Magic on your own server, this is very much possible. The easiest way to do this is to use the Docker images.
 
 ## Using Docker
 
@@ -47,3 +47,7 @@ Once your containers are up running you need to use your browser to navigate to 
 ![Initially configuring Magic](/images/setup-magic.jpeg)
 
 After you've provided a root password, your name, and your email address, you will be redirected to the main dashboard and you can start using Magic.
+
+## Copyright and maintenance
+
+The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

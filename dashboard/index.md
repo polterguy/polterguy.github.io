@@ -1,6 +1,8 @@
 ---
 title: Dashboard
 description: The Magic Dashboard allows you to manage your Magic Cloud backend by providing a GUI interface towards the backend.
+header:
+  image: /assets/images/finding-components.png
 ---
 
 The Magic Dashboard is how you would manage your cloudlet. When you login to your cloudlet, you will be greeted by PKI charts, displaying important information about your cloudlet. It typically resembles the following.
@@ -40,3 +42,7 @@ The most important additional component is probably the _"Generate Token"_ compo
 ![Generate JWT token component](/images/generate-token.jpeg)
 
 This allows you to create a token you can use to authorize HTTP requests towards your cloudlet, if you need other systems to have extended rights towards your cloudlet. Tokens should be passed into your cloudlet as Bearer tokens in the Authorization HTTP header.
+
+## Copyright and maintenance
+
+The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

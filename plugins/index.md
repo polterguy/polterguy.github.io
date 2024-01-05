@@ -47,3 +47,7 @@ endpoints, etc.
 * [magic.lambda.threading](/plugins/magic.lambda.threading/) - Thread support for Magic and Hyperlambda
 * [magic.lambda.pdf](/plugins/magic.lambda.pdf/) - PDF support for Magic and Hyperlambda
 * [magic.lambda.openai](/plugins/magic.lambda.openai/) - OpenAI specific slots
+
+## Copyright and maintenance
+
+The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

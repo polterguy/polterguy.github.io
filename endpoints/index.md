@@ -831,3 +831,7 @@ be invoked by anyone and optionally handles the following argument(s).
 * __[max]__ - Maximum length of gibberish returned
 
 This endpoints is intended for you to consume from your own code.
+
+## Copyright and maintenance
+
+The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

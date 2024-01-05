@@ -114,3 +114,7 @@ The most important parts of Hyperlambda is implemented in the following projects
 
 * [magic.lambda](/plugins/magic.lambda/)
 * [magic.node](/plugins/magic.node/)
+
+## Copyright and maintenance
+
+The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

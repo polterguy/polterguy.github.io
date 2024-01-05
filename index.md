@@ -176,3 +176,7 @@ The goal of the project is to make it possible for everybody to produce high qua
 much faster, without security holes, in an extremely scalable runtime. AKA ...
 
 > Where the Machine Creates the Code!
+
+## Copyright and maintenance
+
+The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

@@ -68,3 +68,7 @@ The above constructs allows for _"meta programming"_, where the machine assemble
 > Where the Machine Creates the Code
 
 * [Read more about Hyperlambda](/hyperlambda/)
+
+## Copyright and maintenance
+
+The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

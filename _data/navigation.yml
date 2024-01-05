@@ -1,18 +1,29 @@
+main:
+  - title: "Getting Started"
+    url: /getting-started/
+  - title: "Dashboard"
+    url: /dashboard/
+  - title: "Hyperlambda"
+    url: /hyperlambda/
+  - title: "Workflows"
+    url: /workflows/
+  - title: "Deploy Magic"
+    url: /deploy/
 docs:
   - title: Main
     children:
       - title: "Getting Started"
         url: /getting-started/
+      - title: "Dashboard"
+        url: /dashboard/
       - title: "Hyperlambda"
         url: /hyperlambda/
       - title: "Workflows"
         url: /workflows/
       - title: "Deploy Magic"
         url: /deploy/
-  - title: Dashboard
+  - title: Components
     children:
-      - title: "Dashboard"
-        url: /dashboard/
       - title: "SQL Studio"
         url: /dashboard/sql-studio/
       - title: "Hyper IDE"
