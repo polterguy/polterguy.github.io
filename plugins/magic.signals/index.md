@@ -2,18 +2,13 @@
 title: magic.signals
 ---
 
-magic.signals is a _"Super Signals"_ implementation for .Net 6 built on top of magic.node,
+magic.signals is a _"Super Signals"_ implementation for .Net 8 built on top of magic.node,
 allowing you to invoke functions from one assembly in another assembly without having any direct references between
 your projects.
 
 ## Active Events or Super Signals internals
 
-Below you can find a couple of articles written about the idea by yours truly.
-
-* [Super Signals - DZone](https://dzone.com/articles/super-signals-in-aspnet-core)
-* [Super Scalable Software Systems](https://dzone.com/articles/the-http-protocol-and-super-scalable-software-syst)
-
-The above is made possible by always having a YALOA, allowing us to invoke methods in classes through
+Zero cross project references is made possible by always having a YALOA, allowing us to invoke methods in classes through
 a _"magic string"_, which references a type in a dictionary, where the string is its key, and the types
 are dynamically loaded during startup of your AppDomain. Imagine the following code.
 
