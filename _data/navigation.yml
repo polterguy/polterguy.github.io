@@ -1,10 +1,10 @@
 docs:
   - title: Primary Concepts
     children:
-      - title: "Workflows"
-        url: /workflows/
       - title: "Hyperlambda"
         url: /hyperlambda/
+      - title: "Workflows"
+        url: /workflows/
   - title: Components
     children:
       - title: "SQL Studio"
