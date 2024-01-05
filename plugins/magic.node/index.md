@@ -337,7 +337,7 @@ but is included here for reference purposes.
 
 Magic allows you to easily parse Hyperlambda from C# if you need it, which can be done as follows.
 
-```
+```csharp
 using magic.node.extensions.hyperlambda;
 
 var hl = GetHyperlambdaAsString();
