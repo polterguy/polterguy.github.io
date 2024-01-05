@@ -1,7 +1,6 @@
 ---
 title: Getting Started
 description: This article is about how to get started with Magic Cloud and start leveraging its Low-Code and No-Code features
-image: /assets/images/getting-started-full-size.png
 header:
   image: /assets/images/getting-started.png
 ---

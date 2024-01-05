@@ -7,8 +7,12 @@ docs:
         url: /hyperlambda/
       - title: "Workflows"
         url: /workflows/
+      - title: "Deploy Magic"
+        url: /deploy/
   - title: Dashboard
     children:
+      - title: "Dashboard"
+        url: /dashboard/
       - title: "SQL Studio"
         url: /dashboard/sql-studio/
       - title: "Hyper IDE"
