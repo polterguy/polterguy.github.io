@@ -12,7 +12,7 @@ Zero cross project references is made possible by always having a YALOA, allowin
 a _"magic string"_, which references a type in a dictionary, where the string is its key, and the types
 are dynamically loaded during startup of your AppDomain. Imagine the following code.
 
-```
+```csharp
 [Slot(Name = "foo.bar")]
 public class FooBar : ISlot
 {
@@ -26,7 +26,7 @@ public class FooBar : ISlot
 The above declares a _"slot"_ for the signal **[foo.bar]**. In any other place in our AppDomain we can use an `ISignaler`
 instance to Signal the above slot by using something such as the following.
 
-```
+```csharp
 /*
  * This will invoke our Signal method above
  */
@@ -49,7 +49,9 @@ cross projects references in any ways.
 This results in an extremely loosely coupled architecture of related components, where any one component can easily be
 exchanged with any other component, as long as it is obeying by the implicit interface of the component you're replacing.
 Completely eliminating _"strongly typing"_, making interchanging components with other components equally simply in a
-static programming language such as the .Net CLR as providing a function object in JavaScript. In many ways, this
+static programming language such as the .Net CLR as providing a function object in JavaScript.
+
+In many ways, this
 results in having all the advantages from a functional programming language in a static programming language, while still
 keeping the strongly typing around for cases where you need strongly typing - Allowing you to choose which paradigm you
 want to use, based upon individual use cases, and not having the language and platform dictate your choices in these
@@ -65,7 +67,7 @@ letting the runtime choose which implementation to use, depending upon whether o
 an `async` execution context or not. Below you can see how to accomplish the same as above, except this
 time the slot will be invoked within an `async` context.
 
-```
+```csharp
 [Slot(Name = "foo.bar")]
 public class FooBar : ISlotAsync
 {
@@ -80,7 +82,7 @@ public class FooBar : ISlotAsync
 It's a common practice to implements slots that recursively invokes other slots, by combining the above two constructs, into
 one single class. Below is an example.
 
-```
+```csharp
 [Slot(Name = "foo.bar")]
 public class FooBar : ISlot, ISlotAsync
 {
@@ -91,7 +93,7 @@ public class FooBar : ISlot, ISlotAsync
     }
 
     // Async version.
-    public Task SignalAsync(ISignaler signaler, Node input)
+    public async Task SignalAsync(ISignaler signaler, Node input)
     {
         input.Value = 42;
         await Task.Yield();
@@ -112,12 +114,15 @@ advantages for your application's throughput.
 ## Passing arguments to your slots
 
 The Node class provides a graph object for you, allowing you to automagically pass in any arguments you wish.
-Notice, the whole idea is to de-couple your assemblies, hence you shouldn't really pass in anything but _"native types"_,
+Notice, the whole idea is to de-couple your assemblies, hence you shouldn't really pass in anything but native types,
 such as for instance `System.String`, `System.DateTime`, integers, etc. However, most complex POD structures, can also
-easily be represented using this `Node` class. The Node class is basically a name/value/children graph object, where
+easily be represented using this `Node` class.
+
+The Node class is basically a name/value/children graph object, where
 the value can be any object, the name a string, and children is a list of children Nodes. In such a way, it provides
 a more C# friendly graph object, kind of resembling JSON, allowing you to internally within your assemblies, pass
 in a Node object as your parameters from the point of your signal, to the slot where you handle the signal.
+
 The `Node` POCO class again, is a bi-directional POD instance, allowing you to both pass arguments _into_ the
 slot, in addition to having the slot _return_ values back to the caller.
 
@@ -126,7 +131,7 @@ be executed after the signal has been executed. This is useful for cases where y
 invocation, but not invoking it immediately, and rather returning it as a `Task` to some other parts of your
 system, to ensure something occurs _after_ the signal has been executed. Below is an example.
 
-```
+```csharp
 var args = new Node();
 return signaler.SignalAsync("foo.bar", args, () => { /* ... This will happen AFTER execution of signal ... */ });
 
