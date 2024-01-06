@@ -381,7 +381,9 @@ data.connect:magic
          name
 ```
 
-The above **[.interceptor]** node will be replaced by the content of your resolved Hyperlambda file. This allows you to create more DRY code, by having commonalities inside a common Hyperlambda file, one common file for each folder, and/or its sub-folders. Interceptors such as the above are recursively applied, allowing you to create as many levels of interceptors as you wish.
+The above **[.interceptor]** node will be replaced by the content of your resolved Hyperlambda file. This allows you to create more DRY code, by having commonalities inside a common Hyperlambda file, one common file for each folder, and/or its sub-folders.
+
+Interceptors such as the above are recursively applied, allowing you to create as many levels of interceptors as you wish.
 
 ## Exception handlers
 
