@@ -6,9 +6,8 @@ magic.endpoint is a dynamic endpoint URL controller, allowing you to declare end
 resolved using your `IHttpExecutorAsync` service implementation. The default implementation of this interface,
 is the class called `HttpExecutorAsync`.
 
-Technically, you could exchange this with your own implementation if you wish, completely changing the behaviour
-of the library if you wish to for instance resolve endpoints to Python, Ruby, or any other dynamic programming language
-implementation, and you have some means to execute such code from within a .Net 8 environment - But that's
+Technically you could exchange this with your own implementation if you wish, completely changing the behaviour
+of the library if you wish to for instance resolve endpoints to Python, Ruby - But that's
 not something we will cover in this document.
 
 The resolver will be invoked for all relative URLs starting with _"magic/"_, for the following verbs.
@@ -334,9 +333,9 @@ a `Content-Type` of _"application/python"_.
 
 ## Hyperlambda code behind files
 
-The resolver will resolve anything not starting out with `/magic/` as a static file, optionally applied
-as a mixin file having a Hyperlambda code behind file for mixing in dynamic content with any _".html"_
-files. This allows you to render HTML, CSS, JavaScript and _"whatever"_, with the ability to dynamically
+The `HttpFileExecutorAsync` resolver will resolve anything not starting out with `/magic/` as a static file,
+optionally applied as a mixin file having a Hyperlambda code behind file for mixing in dynamic content with
+any _".html"_ files. This allows you to render HTML, CSS, JavaScript and _"whatever"_, with the ability to dynamically
 render parts of your HTML files using Hyperlambda. This logic relies upon the **[io.file.mixin]** slot
 from the _"magic.lambda.io"_ project. If you create two files such as follows and put both of these
 files in your _"/etc/www/"_ folder, you can see this logic in action.
