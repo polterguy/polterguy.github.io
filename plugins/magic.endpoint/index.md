@@ -286,7 +286,7 @@ your `Content-Type` accordingly.
 
 ## Hyperlambda code behind files
 
-The `HttpFileExecutorAsync` resolver will resolve anything not starting out with `/magic/` as a static file,
+The `HttpFileExecutorAsync` resolver will resolve everything _not_ starting out with `/magic/` as a static file,
 optionally applied as a mixin file having a Hyperlambda code behind file for mixing in dynamic content with
 any _".html"_ files. This allows you to render HTML, CSS, JavaScript and _"whatever"_, with the ability to dynamically
 render parts of your HTML files using Hyperlambda. This logic relies upon the **[io.file.mixin]** slot
@@ -338,10 +338,50 @@ result of invoking some lambda object. If you have an HTML file _without_ a Hype
 it will be served as a static file. CSS files, JavaScript files, and images will also be served as static
 files.
 
+This resolver will resolve to everything within your _"/etc/www/"_ folder. If you've got an _"index.html"_ page in some folder, this file will be assumed to be the default document of that folder.
+
 Notice, interceptor files will be executed as normally, allowing you to apply interceptor files similarly
 to how you apply these with your _"/magic/"_ endpoints. In addition, any file called _"default.html"_ having
 a Hyperlambda counterpart will be used for default URL resolving if no explicit URL is found, allowing
 you to handle dynamic URLs with this file.
+
+### Dynamic URLs
+
+If you've got a file called _"default.html"_, coupled with a _"default.hl"_ file, and the client is requesting a URL that does not have an associated physical file existing for the absolute path specified - Then your _"default.html/hl"_ files will resolve the specified URL. This allows you to use dynamic URLs, to for instance lookup files from your database and serve back as dynamic content.
+
+## Interceptors
+
+An interceptor is a Hyperlambda file named _"interceptor.hl"_. It will intercept all requests going to the folder it's located, or a sub-folder, and create a combined lambda object consisting of both the interceptor.hl file, and the file responsible for resolving the URL.
+
+To understand interceptors, imagining the following two Hyperlambda files.
+
+**interceptor.hl**
+
+```
+data.connect:magic
+   .interceptor
+```
+
+**foo.get.hl**
+
+```
+data.read
+   table:roles
+   columns
+      name
+```
+
+When a request goes towards your backend that is resolved by the above _"foo.get.hl"_ file, the Hyperlambda that actually executes becomes the following.
+
+```
+data.connect:magic
+   data.read
+      table:roles
+      columns
+         name
+```
+
+The above **[.interceptor]** node will be replaced by the content of your resolved Hyperlambda file. This allows you to create more DRY code, by having commonalities inside a common file, one common file for each folder, and/or its sub-folders.
 
 ## Slots related to endpoints and the HTTP context
 
