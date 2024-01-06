@@ -355,14 +355,14 @@ An interceptor is a Hyperlambda file named _"interceptor.hl"_. It will intercept
 
 To understand interceptors, imagining the following two Hyperlambda files.
 
-**interceptor.hl**
+**/modules/foo/interceptor.hl**
 
 ```
 data.connect:magic
    .interceptor
 ```
 
-**foo.get.hl**
+**/modules/foo/bar.get.hl**
 
 ```
 data.read
@@ -371,7 +371,7 @@ data.read
       name
 ```
 
-When a request goes towards your backend that is resolved by the above _"foo.get.hl"_ file, the Hyperlambda that actually executes becomes the following.
+When an HTTP GET request enters your backend with the URL of _"magic/modules/foo/bar"_ , the Hyperlambda that actually executes becomes the following.
 
 ```
 data.connect:magic
@@ -381,7 +381,7 @@ data.connect:magic
          name
 ```
 
-The above **[.interceptor]** node will be replaced by the content of your resolved Hyperlambda file. This allows you to create more DRY code, by having commonalities inside a common Hyperlambda file, one common file for each folder, and/or its sub-folders.
+The above **[.interceptor]** node in your interceptor will be replaced by the content of your resolved Hyperlambda file. This allows you to create more DRY code, by having commonalities inside a common Hyperlambda file, one common file for each folder, and/or its sub-folders. You _can_ have as many **[.interceptor]** nodes as you wish in your interceptors, but for obvious reasons we recommend only having _one_.
 
 Interceptors such as the above are recursively applied, allowing you to create as many levels of interceptors as you wish.
 
