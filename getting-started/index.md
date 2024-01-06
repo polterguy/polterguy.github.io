@@ -48,6 +48,14 @@ Once your containers are up running you need to use your browser to navigate to 
 
 After you've provided a root password, your name, and your email address, you will be redirected to the main dashboard and you can start using Magic.
 
+## Deploy to production
+
+If you want to deploy Magic to production we have created a detailed description [here](/deploy/). To deploy Magic requires a lot of technical knowledge, and to maintain it requires knowledge about security, CDNs, etc. 
+
+Unless you're a highly skilled and professional software developer, and you're willing to spend dozens of hours installing Magic, we do _not_ encourage you to do this. There's a reason we charge $198 per month as a starting price for a cloudlet at AINIRO.IO.
+
+If you don't have these skills, [AINIRO.IO](https://ainiro.io) can do it for you, in exchange for a monthly fee, at which point you get professional support, installation, maintenance, upgrades, and everything else required to create and maintain Magic. However, if you cannot afford our services, and you're willing to do everything yourself, you can use the above link to deploy Magic to your own server.
+
 ## Copyright and maintenance
 
 The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).
