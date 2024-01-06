@@ -387,7 +387,16 @@ The above **[.interceptor]** node will be replaced by the content of your resolv
 
 If you've got a file named _"exceptions.hl"_ inside one of your folders, it will be invoked if an unhandled exception occurs. Your exception handler will be invoked only for unhandled exceptions for requests inside the folder where it exists physically, allowing you to have different exceptions handlers for different parts of your app.
 
-Notice, contrary to interceptors exception handlers will _not_ be recursively applied, and only the inner most exception handler will be invoked.
+Notice, contrary to interceptors exception handlers will _not_ be recursively applied, and only the inner most exception handler will be invoked. Below is a simple exception handler that simply creates a log entry, returning a static message to the client, with the message propagating to the client, and its status code being 456.
+
+```
+log.error:x:@.arguments/*/message
+   url:x:@.arguments/*/path
+return
+   message:Jo dude! Erred!
+   public:bool:true
+   status:int:456
+```
 
 ## Slots related to endpoints and the HTTP context
 
