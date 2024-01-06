@@ -5,8 +5,8 @@ title: magic.endpoint
 magic.endpoint is your dynamic endpoint URL controller responsible for handling all HTTP requests.
 It has two implementations. Which implementation is being used depends upon the URL you specify.
 
-* `HttpApiExecutorAsync` - Resolves everything starting out with _"magic/"_
-* `HttpFileExecutorAsync` - Resolving everything else
+* `HttpApiExecutorAsync` - Resolves everything starting out with _"magic/"_ and is your primary API URL resolver
+* `HttpFileExecutorAsync` - Resolving everything else and is your document and HTML resolver
 
 ## API URLs
 
