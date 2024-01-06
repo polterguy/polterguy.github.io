@@ -2,15 +2,15 @@
 title: magic.endpoint
 ---
 
-magic.endpoint is a dynamic endpoint URL controller, allowing you to declare endpoints that are dynamically
-resolved using your `IHttpExecutorAsync` service implementation. The default implementation of this interface,
-is the class called `HttpExecutorAsync`.
+magic.endpoint is a dynamic endpoint URL controller with two `IHttpExecutorAsync` implementations.
 
-Technically you could exchange this with your own implementation if you wish, completely changing the behaviour
-of the library if you wish to for instance resolve endpoints to Python, Ruby - But that's
-not something we will cover in this document.
+* `HttpApiExecutorAsync` - Resolves everything starting out with _"magic/"_
+* `HttpFileExecutorAsync` - Resolving everything else
 
-The resolver will be invoked for all relative URLs starting with _"magic/"_, for the following verbs.
+## API URLs
+
+The `HttpApiExecutorAsync` resolver will be invoked for all relative URLs starting with _"magic/"_,
+for the following verbs.
 
 * `GET`
 * `POST`
