@@ -40,8 +40,8 @@ arguments you pass in, either as query parameters or as your JSON payload is app
 resulting lambda node's **[.arguments]** node as arguments to your Hyperlambda file invocation.
 
 The resolver will never return files directly, but is only able to execute Hyperlambda files,
-so by default there is no way to get static files, unless you create a Hyperlambda endpoint that returns
-a static file somehow.
+so by default there is no way to get static files starting with _"magic/"_ as the URL, unless
+you create a Hyperlambda endpoint that returns a static file somehow.
 
 The default resolver will only allow the client to resolve files inside your _"/files/modules/"_
 folder and _"/files/system/"_ folder. This allows you to safely keep files that parts of your system
@@ -286,11 +286,11 @@ your `Content-Type` accordingly.
 
 ## Hyperlambda code behind files
 
-The `HttpFileExecutorAsync` resolver will resolve everything _not_ starting out with `magic/` as a static file,
-optionally applied as a mixin file having a Hyperlambda code behind file for mixing in dynamic content with
-any _".html"_ files. This allows you to render HTML, CSS, JavaScript and _"whatever"_, with the ability to dynamically
-render parts of your HTML files using Hyperlambda. This logic relies upon the **[io.file.mixin]** slot
-from the _"magic.lambda.io"_ project. If you create two files such as follows, and put both of these
+The `HttpFileExecutorAsync` resolver will resolve everything _not_ starting out with `magic/` as a file,
+optionally applied as a mixin file having a Hyperlambda code behind file for mixing in dynamic content
+with _".html"_ files. This allows you to render HTML, CSS, JavaScript and _"whatever"_, with the ability
+to dynamically render parts of your HTML files using Hyperlambda. This logic relies upon the **[io.file.mixin]**
+slot from the _"magic.lambda.io"_ project. If you create two files such as follows, and put both of these
 files in your _"/etc/www/"_ folder, you can see this logic in action.
 
 **index.html**
@@ -303,7 +303,8 @@ files in your _"/etc/www/"_ folder, you can see this logic in action.
     <body>
         <h1>Hello world</h1>
         <p>
-           Hello there Thomas Hansen, 2+2 equals {{"{{"}}*/.calculate}}
+           Hello there Thomas Hansen,
+           2+2 equals {{"{{"}}*/.calculate}}
         </p>
     </body>
 </html>
@@ -345,6 +346,12 @@ to how you apply these with your _"/magic/"_ endpoints.
 
 The resolver will also rewrite and redirect automatically every URL ending with _".html"_ and remove the file extension parts, in addition to removing _"index"_ at the end afterwards, to avoid duplicated URLs.
 
+### Dynamic URLs
+
+If you've got a file called _"default.html"_, and the client is requesting a URL that does not have an associated physical file existing for the absolute path specified - Then your _"default.html"_ file will resolve the specified URL. Such a _"default.html"_ file can also optionally have a Hyperlambda code behind file, allowing you to serve dynamic content based upon the URL of the request. This allows you to use dynamic URLs, to for instance lookup files from your database and serve back as dynamic content.
+
+If you want to use dynamic pages, you can retrieve the request URL by invoking the **[request.url]** slot to retrieve the request URL.
+
 ### Configuring your code behind resolver
 
 You can also apply a **[.config]** file at the root of you _"/etc/www/"_ folder that partially changes the resolver's behavior. To illustrate how to use such a config file, consider the following.
@@ -372,15 +379,9 @@ The **[not_found]** parts declares an HTML file to serve if no file is found tha
 
 The last setting called **[spa_enabled]** will default resolving to your _"/etc/www/index.html"_ file, unless some other file matches any other rules, such as a _"default.html"_ file in some sub-folder triggering a match. This allows you to create SPA web applications, where resolving occurs on the frontend. This is useful for things such as Angular and ReactJS that's using frontend URL routing, where everything is still served the same _"index.html"_ file. Its default value is false.
 
-### Dynamic URLs
-
-If you've got a file called _"default.html"_, and the client is requesting a URL that does not have an associated physical file existing for the absolute path specified - Then your _"default.html"_ file will resolve the specified URL. Such a _"default.html"_ file can also optionally have a Hyperlambda code behind file, allowing you to serve dynamic content based upon the URL of the request. This allows you to use dynamic URLs, to for instance lookup files from your database and serve back as dynamic content.
-
-If you want to use dynamic pages, you can retrieve the request URL by invoking the **[request.url]** slot to retrieve the request URL.
-
 ## Interceptors
 
-An interceptor is a Hyperlambda file named _"interceptor.hl"_. It will intercept all requests going to the folder it's located, or a sub-folder, and create a combined lambda object consisting of both the interceptor.hl file, and the file responsible for resolving the URL.
+Interceptors are a common feature for both the `HttpApiExecutorAsync` resolver and the `HttpFileExecutorAsync` resolver. An interceptor is a Hyperlambda file named _"interceptor.hl"_. It will intercept all requests going to the folder it's located, or a sub-folder, and create a combined lambda object consisting of both the interceptor.hl file, and the file responsible for resolving the URL.
 
 To understand interceptors, imagining the following two Hyperlambda files.
 
