@@ -42,6 +42,8 @@ Combined with [lambda expressions](/plugins/magic.node/#lambda-expressions), thi
 
 Actions are the basic atomic building blocks of workflows, and an action is defined as _"the smallest piece of code that does something useful"_. This allows you to create chains of actions that somehow implements your business logic, _without_ having to manually write the code yourself.
 
+### Create your own actions
+
 Actions are just declaratively created snippets of Hyperlambda, allowing you to create custom actions you can later reference in your own workflows. Below is the _"file-load"_ action to illustrated how an action looks like.
 
 ```
