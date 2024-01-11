@@ -96,6 +96,8 @@ This results in a _"point and click software development model"_, where complexi
 
 Many plugins found in the [Plugins](/plugins/) component comes with additional actions you can consume. For instance the _"Stripe"_ plugin contains Stripe related actions, allowing you to easily consume Stripe's API and accept payments in your backend code.
 
+Refer to each individual plugin's description to see which actions a specific plugin contain, if any.
+
 ## Meta programming
 
 The above constructs allows for _"meta programming"_, where the machine assembles the code required to create functionality, allowing the software developer to become more of an _"orchestrator"_, while having the internals of your actions encapsulate the nitty gritty stuff. Or as we say ...
