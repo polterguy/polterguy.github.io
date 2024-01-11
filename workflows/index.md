@@ -100,7 +100,7 @@ Refer to each individual plugin's description to see which actions a specific pl
 
 ## Meta programming
 
-The above constructs allows for _"meta programming"_, where the machine assembles the code required to create functionality, allowing the software developer to become more of an _"orchestrator"_, while having the internals of your actions encapsulate the nitty gritty stuff. Or as we say ...
+The above constructs allows for _"meta programming"_, where the machine assembles the code required to create functionality, allowing the software developer to become more of an _"orchestrator"_, while having the internals of your actions encapsulate the nitty gritty stuff. Or as we phrase it ...
 
 > Where the Machine Creates the Code
 
