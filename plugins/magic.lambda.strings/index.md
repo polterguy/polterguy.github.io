@@ -333,12 +333,12 @@ of where to stop returning. In such a regard, it works the same way as the C# `S
 Combines the result of the specified Hyperlambda and concatenates inline into its surrounding string.
 
 ```
-strings.mixin:@"2+2 equals {{"{{"}}
+strings.mixin:@"2+2 equals {{"{ {"}}
 math.add
    .:int:2
    .:int:2
 return:x:-
-}}"
+} }"
 ```
 
 The above will result in the following.
@@ -350,14 +350,16 @@ strings.mixin:2+2 equals 4
 Notice, any inline Hyperlambda is added by adding two braces around your Hyperlambda, at which point the inline Hyperlambda will be executed, and whatever it returns is _"mixed into the surrounding string inline"_. This slot can be used similarly to **[invoke]**, allowing you to pass in parameters to it by simply adding nodes as children when invoking it. To understand the last point consider the following code.
 
 ```
-strings.mixin:@"2 + val equals {{"{{"}}
+strings.mixin:@"2 + val equals {{"{ {"}}
 math.add
    .:int:2
    get-value:x:@.arguments/*/val
 return:x:-
-}}"
+} }"
    val:int:5
 ```
+
+Notice, in the above code there are SP characters between the `{` characters. These should be _removed_ if you copy and paste the code to execute it.
 
 ## Project website for magic.lambda.strings
 
