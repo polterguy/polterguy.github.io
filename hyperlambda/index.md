@@ -3,6 +3,7 @@ title: Hyperlambda
 description: Hyperlambda is a relational file format allowing you to create execution trees, replacing XML as a dynamic markup language for declarative programming
 header:
   image: /assets/images/hyperlambda-wizard.png
+  image_description: Wizard flying through the air symbolizing the power of Hyperlambda
 ---
 
 Hyperlambda is at the core of Magic. It's the primary axiom around which everything evolves. Technically it's _not_ a programming language, even though you can create anything in it that you can create in any other programming language. In its purest form, it's a relational file format, similar to XML and JSON, that allows you to declaratively create execution trees, that just so happens to allow for executing functionality.

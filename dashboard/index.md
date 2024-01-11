@@ -3,6 +3,7 @@ title: Dashboard
 description: The Magic Dashboard allows you to manage your Magic Cloud backend by providing a GUI interface towards the backend.
 header:
   image: /assets/images/finding-components.png
+  image_description: Wizard standing in his laboratory trying to find out what Magic spell he should use
 ---
 
 The Magic Dashboard is how you would manage your cloudlet. When you login to your cloudlet, you will be greeted by PKI charts, displaying important information about your cloudlet. It typically resembles the following.
