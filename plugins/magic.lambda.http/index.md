@@ -205,7 +205,7 @@ This slot accepts a URL as its value, an optionally http headers as a **[headers
 it would resemble something such as the following.
 
 ```
-http.get:"https://docs.aista.com"
+http.get:"https://docs.ainiro.io"
 ```
 
 The slot returns the result of the specified HTTP GET invocation, including the HTTP headers returned from the endpoint,

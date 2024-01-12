@@ -94,7 +94,7 @@ back as the response to the caller if you're in a web project of some sort using
 Below is an example of usage
 
 ```
-image.generate-qr:"https://docs.aista.com"
+image.generate-qr:"https://docs.ainiro.io"
    size:8
 ```
 
