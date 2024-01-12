@@ -245,7 +245,7 @@ more easy to see.
 
 Hyperlambda is heavily using _"lambda expressions"_. Think of these like XPath, except instead
 of referencing XML nodes they're referencing Hyperlambda nodes. You can find the documentation
-for expressions in the [magic.node](https://docs.ainiro.io/plugins/magic.node/) project.
+for expressions in the [magic.node](https://docs.aista.com/documentation/magic.node/) project.
 
 ## How to use [compose]
 
@@ -1570,6 +1570,10 @@ sort:x:@.data/*
 ```
 
 Notice, **[sort]** does not modify the original list, but returns a new list of nodes after having executed.
+
+## Magic's GitHub project page
+
+Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
 
 ## Project website for magic.lambda
 

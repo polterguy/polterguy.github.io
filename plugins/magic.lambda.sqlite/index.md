@@ -34,6 +34,10 @@ Hence, please refer to the documentation for _"magic.data.common"_ to see the co
 project. If you need for instance documentation about the **[sqlite.connect]** slot you should look for the
 documentation for **[data.connect]**, since it's more or less the exact same documentation.
 
+## Magic's GitHub project page
+
+Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
+
 ## Project website for magic.lambda.sqlite
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.sqlite](https://github.com/polterguy/magic.lambda.sqlite), and you can provide feedback, provide bug reports, etc at the same place.

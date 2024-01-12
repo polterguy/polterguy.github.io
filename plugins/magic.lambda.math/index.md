@@ -220,6 +220,10 @@ math.dot
 This slot is useful for calculating similarities between two different objects in Machine Learning, where
 each list is an _"embedding"_ or a vector.
 
+## Magic's GitHub project page
+
+Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
+
 ## Project website for magic.lambda.math
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.math](https://github.com/polterguy/magic.lambda.math), and you can provide feedback, provide bug reports, etc at the same place.

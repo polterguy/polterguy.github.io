@@ -21,6 +21,10 @@ It can also accept a string as its input, at which point it assumes the string i
 relative path to a file. Finally, the slot can accept raw bytes, which it then assumes
 is the raw content from a PDF document.
 
+## Magic's GitHub project page
+
+Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
+
 ## Project website for magic.lambda.pdf
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.pdf](https://github.com/polterguy/magic.lambda.pdf), and you can provide feedback, provide bug reports, etc at the same place.

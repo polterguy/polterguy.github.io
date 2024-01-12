@@ -71,6 +71,10 @@ usage.
 lambda2hyper:x:-/*
 ```
 
+## Magic's GitHub project page
+
+Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
+
 ## Project website for magic.lambda.hyperlambda
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.hyperlambda](https://github.com/polterguy/magic.lambda.hyperlambda), and you can provide feedback, provide bug reports, etc at the same place.

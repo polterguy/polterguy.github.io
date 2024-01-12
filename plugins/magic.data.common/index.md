@@ -963,6 +963,14 @@ whatever parts of these classes that doesn't by default work as your database ty
 If you wish to do this, you would probably benefit from looking at one of the existing specialised
 implementations, such as the MySQL, SQL Server or PostgreSQL specific implementations.
 
+## Magic's GitHub project page
+
+Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
+
+## Magic's GitHub project page
+
+Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
+
 ## Project website for magic.data.common
 
 The source code for this repository can be found at [github.com/polterguy/magic.data.common](https://github.com/polterguy/magic.data.common), and you can provide feedback, provide bug reports, etc at the same place.

@@ -16,6 +16,10 @@ openai.tokenize:This is some query
 
 Thx to Devis Lucato for publishing the original work under CC0 [here](https://github.com/dluc/openai-tools).
 
+## Magic's GitHub project page
+
+Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
+
 ## Project website for magic.lambda.openai
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.openai](https://github.com/polterguy/magic.lambda.openai), and you can provide feedback, provide bug reports, etc at the same place.

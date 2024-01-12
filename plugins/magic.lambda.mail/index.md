@@ -178,6 +178,10 @@ structure. If you choose to retrieve messages in **[raw]** format, the message n
 the raw MIME message as text. If you choose this path, and you later want to actually parse the message,
 to make it become a structured lambda object - You can use the **[mime.parse]** slot from magic.lambda.mime.
 
+## Magic's GitHub project page
+
+Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
+
 ## Project website for magic.lambda.mail
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.mail](https://github.com/polterguy/magic.lambda.mail), and you can provide feedback, provide bug reports, etc at the same place.

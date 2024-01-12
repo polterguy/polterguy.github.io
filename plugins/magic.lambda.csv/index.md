@@ -74,6 +74,10 @@ lambda2csv:x:-/*
 
 The slot will return type information as children of your **[lambda2csv]** invocation.
 
+## Magic's GitHub project page
+
+Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
+
 ## Project website for magic.lambda.csv
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.csv](https://github.com/polterguy/magic.lambda.csv), and you can provide feedback, provide bug reports, etc at the same place.

@@ -186,6 +186,10 @@ to the caller. This allows you to use *one single validator* to validate multipl
 This might be useful if you for instance have an endpoint accepting multiple address fields, and zip code is a mandatory
 argument, and it needs to be an integer with a **[max]** and **[min]** value.
 
+## Magic's GitHub project page
+
+Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
+
 ## Project website for magic.lambda.validators
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.validators](https://github.com/polterguy/magic.lambda.validators), and you can provide feedback, provide bug reports, etc at the same place.

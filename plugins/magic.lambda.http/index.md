@@ -205,7 +205,7 @@ This slot accepts a URL as its value, an optionally http headers as a **[headers
 it would resemble something such as the following.
 
 ```
-http.get:"https://docs.ainiro.io"
+http.get:"https://docs.aista.com"
 ```
 
 The slot returns the result of the specified HTTP GET invocation, including the HTTP headers returned from the endpoint,
@@ -291,6 +291,10 @@ and status code, in addition to the response object itself.
 All slots also supports SSE by adding an **[.sse]** lambda object, which will be invoked once for each event published by the
 server. Your lambda object will be invoked with a **[message]** argument containing the raw message published by the server.
 You are responsible to convert the message to the correct type, since it's passed in as a UTF8 encoded raw string.
+
+## Magic's GitHub project page
+
+Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
 
 ## Project website for magic.lambda.http
 

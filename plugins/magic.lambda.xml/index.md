@@ -76,6 +76,10 @@ To convert from a lambda object to an XML object you can use something such as f
 lambda2xml:x:@.xml/*
 ```
 
+## Magic's GitHub project page
+
+Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
+
 ## Project website for magic.lambda.xml
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.xml](https://github.com/polterguy/magic.lambda.xml), and you can provide feedback, provide bug reports, etc at the same place.

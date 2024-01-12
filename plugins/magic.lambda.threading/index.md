@@ -85,6 +85,10 @@ sleep:1000
 the current thread is _"sleeping"_, it will not be a blocking call, and require ZERO physical operating
 system threads while it is sleeping. This is true because of Hyperlambda's 100% perfectly `async` nature.
 
+## Magic's GitHub project page
+
+Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
+
 ## Project website for magic.lambda.threading
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.threading](https://github.com/polterguy/magic.lambda.threading), and you can provide feedback, provide bug reports, etc at the same place.

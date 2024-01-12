@@ -54,6 +54,10 @@ Since the above _"non-existing-key"_ doesn't exist in your configuration file, t
 return the value _"foo"_ being the result of the invocation to the **[get-value]** slot. This allows you
 to create default values your code resorts to if the specified configuration setting doesn't exist.
 
+## Magic's GitHub project page
+
+Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
+
 ## Project website for magic.lambda.config
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.config](https://github.com/polterguy/magic.lambda.config), and you can provide feedback, provide bug reports, etc at the same place.

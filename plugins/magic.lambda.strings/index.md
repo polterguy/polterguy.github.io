@@ -361,6 +361,10 @@ return:x:-
 
 Notice, in the above code there are SP characters between the `{` characters. These should be _removed_ if you copy and paste the code to execute it.
 
+## Magic's GitHub project page
+
+Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
+
 ## Project website for magic.lambda.strings
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.strings](https://github.com/polterguy/magic.lambda.strings), and you can provide feedback, provide bug reports, etc at the same place.

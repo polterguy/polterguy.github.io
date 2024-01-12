@@ -529,6 +529,10 @@ to **[crypto.password.verify]** by for instance adding one random character to i
 Internally these are the slots Magic uses when it creates its JWT authentication database, and stores
 passswords into your Magic database.
 
+## Magic's GitHub project page
+
+Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
+
 ## Project website for magic.lambda.crypto
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.crypto](https://github.com/polterguy/magic.lambda.crypto), and you can provide feedback, provide bug reports, etc at the same place.

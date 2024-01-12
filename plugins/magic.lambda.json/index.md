@@ -93,6 +93,10 @@ The above results in the following.
 Notice, the above have been formatted for brevity. The actual JSON result will _not_ be formatted, or having indentation to ensure
 result is as compact as possible.
 
+## Magic's GitHub project page
+
+Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
+
 ## Project website for magic.lambda.json
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.json](https://github.com/polterguy/magic.lambda.json), and you can provide feedback, provide bug reports, etc at the same place.

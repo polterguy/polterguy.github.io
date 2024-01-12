@@ -194,6 +194,10 @@ sockets.connection.leave-group:x:@get-context
    group:foo-bar-group
 ```
 
+## Magic's GitHub project page
+
+Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
+
 ## Project website for magic.lambda.sockets
 
 The source code for this repository can be found at [github.com/polterguy/magic.lambda.sockets](https://github.com/polterguy/magic.lambda.sockets), and you can provide feedback, provide bug reports, etc at the same place.
