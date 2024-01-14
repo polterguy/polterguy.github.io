@@ -103,7 +103,7 @@ your database DDL SQL to a module, assuming your module has the same name as you
 feature, Magic will automatically create your database, and even apply migration scripts if required
 during installation.
 
-## CI/CD
+## Continuous Integration and Deployment
 
 You can even connect creation of such modules, and automatically deploying them to for instance a GitHub
 action using CI/CD, by creating a token using your _"username/Generate Token"_ menu item. This give you a
