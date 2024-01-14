@@ -2,6 +2,8 @@
 title: Task Manager
 description: You can easily create Hyperlambda code that you save for later execution, for then to schedule your task to be executed in the future.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/scheduling-task.jpg"
+header:
+  image: /assets/images/wizard-magically-bending-time-and-space.png
 ---
 
 The Task Manager component allows you to create and administrate persisted Hyperlambda tasks, and/or schedule

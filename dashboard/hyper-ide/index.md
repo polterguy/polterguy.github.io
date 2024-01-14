@@ -2,6 +2,8 @@
 title: Hyper IDE
 description: Hyper IDE is a fully fledged integrated development environment, giving you most important features from other IDEs. Hyper IDE works perfectly on your phone, tablet, computer, or any other device you might have access to with a browser.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-hyper-ide-2.jpg"
+header:
+  image: /assets/images/wizard-flying-through-air-with-hyperlambda-raining-from-stars.png
 ---
 
 Hyper IDE is your _"goto component"_ when you want to create your own modules using Magic and Hyperlambda.

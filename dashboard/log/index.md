@@ -2,6 +2,8 @@
 title: Log
 description: The log component allows you to browse your server side log items, verifying your system is optimally functioning and healthy, and/or drill down to see errors occurring in your system.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/log.jpg"
+header:
+  image: /assets/images/wizard-writing-secret-spells-into-his-spell-book.png
 ---
 
 The log component allows you to browse your server's log. When an important event occurs in

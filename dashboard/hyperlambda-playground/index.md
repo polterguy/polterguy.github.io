@@ -2,6 +2,8 @@
 title: Hyperlambda Playground
 description: The evaluator allows you to submit Hyperlambda to your server and have your code executed in 'immediate' mode. This is useful for administrating your Magic server, and/or learning Hyperlambda.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/eval-component.jpg"
+header:
+  image: /assets/images/wizard-playing-magic-games-with-children.png
 ---
 
 The Hyperlambda Playground component allows you to play with [Hyperlambda](/hyperlambda/) code, and execute your code in _"immediate mode"_,

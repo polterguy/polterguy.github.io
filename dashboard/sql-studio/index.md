@@ -2,6 +2,8 @@
 title: SQL Studio
 description: The web based SQL 'workbench' allows you to execute any SQL, see the result immediately, in addition to storing your frequently used SQL snippets for later.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-editor.jpg"
+header:
+  image: /assets/images/wizard-creating-sql-statements.png
 ---
 
 SQL Studio allows you to visually design your database, and also execute any SQL towards your database of choice.

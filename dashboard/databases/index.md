@@ -2,6 +2,8 @@
 title: Databases
 description: Magic allows you to automatically generate unit tests, or integration tests. The assumptions component allows you to automatically run all such tests to sanity check your system's health.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/assumptions.jpg"
+header:
+  image: /assets/images/wizard-asking-oracle-of-delphi.png
 ---
 
 The databases component allows you to manage your connection strings, in addition to your external

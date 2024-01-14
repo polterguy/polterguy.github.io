@@ -2,6 +2,8 @@
 title: Machine Learning
 description: Magic allows you to automatically generate your own private AI based Machine Learning model based upon OpenAI and ChatGPT
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/machine-learning.jpg"
+header:
+  image: /assets/images/wizard-teaching-robot-magic.png
 ---
 
 Magic's Machine Learning component allows you to create your own AI based machine learning model, either by

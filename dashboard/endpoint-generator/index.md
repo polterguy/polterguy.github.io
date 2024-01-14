@@ -2,6 +2,8 @@
 title: Endpoint Generator
 description: The backend CRUD generator allows you to create a CRUD API wrapping your database in seconds. Magic will read meta data from your database, and automatically create all required code for you.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg"
+header:
+  image: /assets/images/wizard-magically-creating-computers.png
 ---
 
 The Endpoint Generator component allows you to automatically generate an HTTP CRUD web API wrapping your database

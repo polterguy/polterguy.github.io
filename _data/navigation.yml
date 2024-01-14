@@ -24,6 +24,10 @@ docs:
         url: /deploy/
   - title: Components
     children:
+      - title: "Chatbot Wizard"
+        url: /dashboard/chatbot-wizard/
+      - title: "Machine Learning"
+        url: /dashboard/machine-learning/
       - title: "SQL Studio"
         url: /dashboard/sql-studio/
       - title: "Hyper IDE"
@@ -38,8 +42,6 @@ docs:
         url: /dashboard/task-manager/
       - title: "Plugins (installable from the Bazar)"
         url: /dashboard/plugins/
-      - title: "Machine Learning"
-        url: /dashboard/machine-learning/
       - title: "Log"
         url: /dashboard/log/
       - title: "Hyperlambda Playground"
@@ -48,8 +50,6 @@ docs:
         url: /dashboard/databases/
       - title: "Configuration"
         url: /dashboard/configuration/
-      - title: "Chatbot Wizard"
-        url: /dashboard/chatbot-wizard/
   - title: Core
     children:
       - title: "Plugins (core project plugins)"
