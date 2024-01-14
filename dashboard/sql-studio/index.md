@@ -58,6 +58,9 @@ The AI features of SQL Studio doesn't always produce perfect code, but it is bui
 on top of OpenAI's APIs, so it should be good enough to give you at least an approximation
 of what you want to achieve. Notice, you need an API key with OpenAI to have these parts of SQL Studio work.
 
+If you use the AI chat interface in SQL Studio you can ask the AI to create, and/or modify your code, and
+such have _"conversations"_ with the AI about your code.
+
 ## SQL Studio designer features
 
 The SQL Studio database designer allows you to do the following things.
