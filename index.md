@@ -38,8 +38,7 @@ of your modifications, by executing your endpoint without ever having to leave y
 
 ![Magic's Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide-actions.jpg)
 
-Hyper IDE also integrates perfectly with our Machine Learning component, built on top of OpenAI's
-ChatGPT, allowing you to write your requests in plain English, and have Hyper IDE and ChatGPT automatically
+Hyper IDE also integrates perfectly with our Machine Learning component, built on top of OpenAI, allowing you to write your requests in plain English, and have Hyper IDE and OpenAI automatically
 generate code for you solving your problem.
 
 However, the most powerful parts of Hyper IDE is its _"workflows"_ feature, allowing you to dynamically orchestrate
@@ -98,7 +97,7 @@ the SQL API generator, you can compose some SQL, and rapidly wrap it into a web 
 ## Machine Learning and AI
 
 Magic Cloud is scattered with AI and allows you to create your own Machine Learning models using OpenAI,
-by scraping any website, and generating training data for you that you can use to create your own ChatGPT model,
+by scraping any website, and generating training data for you that you can use to create your own OpenAI model,
 answering questions related to your domain. Use cases might be.
 
 * Expert legal system, answering legal questions for clients
@@ -149,7 +148,7 @@ to log important events, such as deleting records, executing tasks, registering 
 
 ## Custom AI chatbots
 
-You can also use Magic to create your own custom ChatGPT chatbot, for then to embed it into your
+You can also use Magic to create your own custom AI chatbot, for then to embed it into your
 website. The Chatbot Wizard component in Magic will ask you for your OpenAI API key,
 your Google reCAPTCHA settings, for then to scrape your website generating a VSS database in the process.
 The end result allows your users to ask questions related to your website, and have the chatbot answer
@@ -160,7 +159,7 @@ custom _"machine learning model"_ (based upon RAG), that answers questions accor
 You can try out such a chatbot by clicking the button in the bottom right corner of this page, and ask it
 any question related to AINIRO.IO, or concepts from this website. This chatbot was created by scraping this
 website. At AINIRO.IO we also delivers such chatbots as one of our services. Read more about
-[our ChatGPT-based AI chatbots here](https://ainiro.io/chatgpt-website-chatbot).
+[our AI chatbots here](/dashboard/chatbot-wizard/).
 
 ## Magic Cloud is Open Source
 
