@@ -87,3 +87,18 @@ will resort to using your _"default"_ type.
 
 This allows you to create your own unique models using RAG or fine-tuning, that are matched to
 your file extensions, to for instance teach the AI about your own code, etc.
+
+## Modules
+
+Magic is modularized, allowing you to easily move modules from one machine to another. This is
+the purpose of your _"/modules/"_ folder, as in each folder inside this folder is considered a module
+in Magic.
+
+If you're developing a module in your own local installation of Magic, you can mark the folder in
+the tree control, and click the action button for downloading the folder. This will give you a zip file
+you can easily upload to another server using the install module action button.
+
+This is also horizontally integrated into [SQL Studio](/dashboard/sql-studio/), allowing you to _"export"_
+your database DDL SQL to a module, assuming your module has the same name as your database. If you use this
+feature, Magic will automatically create your database, and even apply migration scripts if required
+during installation.
