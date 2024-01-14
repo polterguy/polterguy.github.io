@@ -102,3 +102,11 @@ This is also horizontally integrated into [SQL Studio](/dashboard/sql-studio/), 
 your database DDL SQL to a module, assuming your module has the same name as your database. If you use this
 feature, Magic will automatically create your database, and even apply migration scripts if required
 during installation.
+
+## CI/CD
+
+You can even connect creation of such modules, and automatically deploying them to for instance a GitHub
+action using CI/CD, by creating a token using your _"username/Generate Token"_ menu item. This give you a
+JWT token you can use to authenticate a process such that it's allowed to invoke
+your `/magic/system/file-system/install-module` endpoint, that will allow you to automatically upload a
+zip file, and re-install it after uploading it.
