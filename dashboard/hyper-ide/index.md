@@ -11,7 +11,7 @@ It's a web based IDE, allowing you to edit your code,
 create new modules, and contains a lot of things you're used to from a traditional IDE. It is also the natural
 extension of Magic's [endpoint generator](/dashboard/endpoint-generator/), since it
 allows you to edit the Hyperlambda endpoint files after Magic have generated your CRUD backend. Another
-important feature is its ability to help you when creating [workflows](/workflows/).
+important feature is its ability to help you create [workflows](/workflows/).
 
 ![Editing a file in Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-hyper-ide-2.jpg)
 
@@ -26,25 +26,29 @@ when your code editor has focus.
 ## Hyper IDE features
 
 Hyper IDE is not a fully fledged IDE, and cannot compare to something like VS Code or Visual Studio. However,
-its purpose is to function as an extention on top of the endpoint generator, giving you code editing capabilities
+its purpose is to function as an extension on top of the endpoint generator, giving you code editing capabilities
 of your generated Hyperlambda files - In addition to rapidly allowing you to create [workflows](/workflows/) and edit Hyperlambda
 files.
 
-You _can_ use Hyper IDE to edit TypeScript, Ruby, HTML and C# code, but we don't recommend exchanging it
+You _can_ use Hyper IDE to edit TypeScript, Ruby, HTML and C# code, but we don't recommend replacing it
 with your existing code editor, since other IDEs have much more features than Hyper IDE. However, the opposite
 is also true, implying Hyper IDE have features your existing IDE does not have - Especially in regards to
 [Hyperlambda](/hyperlambda/), which is the axiom around which Magic evolves.
+
+For a walkthrough of Hyper IDE's most important features you can watch the [following YouTube video](https://www.youtube.com/watch?v=g8r8asbLIkA).
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/g8r8asbLIkA?si=45Vedtt3-0ros8x6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 One example of such features is its integrated machine learning and AI features. With Hyper IDE, you can use
 OpenAI's API to ask it to create code for you. This resembles the way GitHub CoPilot works.
 
 Another difference is that Hyperlambda is a dynamic programming language, implying once you've saved
 your Hyperlambda files, you can immediately test your code by executing it from within Hyper IDE by clicking
-F5. This results in a much tighter development model than a traditionally compiled programming language
+F5. This results in a much tighter development model than a traditional compiled programming language
 gives you, making it much faster to find bugs and create working code.
 
 If you execute code in immediate mode using F5, and your code requires arguments, Hyper IDE will ask you
-for what topasss in as arguments. This isn't perfect, and only works for first level arguments - But if
+for what to pass in as arguments. This isn't perfect, and only works for first level arguments - But if
 you need more complexity, you can always use the [Hyperlambda Playground](/dashboard/hyperlambda-playground/),
 and/or the [Endpoints Component](/dashboard/endpoints/).
 
@@ -56,8 +60,8 @@ you with instant feedback as you create your code.
 Hyper IDE allows you to execute Hyperlambda without ever leaving your IDE by clicking F5. This makes it easy for
 you to test your code as you are creating it, and is the closest you come to the equivalent of a _"debugger"_ in Magic.
 
-If you're creating a workflow, it will even communicate everything it does back to the client over web sockets,
-allowing you to see input arguments to specific actions, and what they returned as a result. If an error occurs
+If you're creating a workflow, Hyper IDE will communicate everything it does back to the client over web sockets,
+allowing you to see input arguments to specific actions, and what they return. If an error occurs
 as you're executing a workflow, Hyper IDE will show you exactly where the error occurred.
 
 ![Executing a workflow in Hyper IDE](/assets/images/executing-workflow.jpeg)
@@ -88,6 +92,16 @@ will resort to using your _"default"_ type.
 This allows you to create your own unique models using RAG or fine-tuning, that are matched to
 your file extensions, to for instance teach the AI about your own code, etc.
 
+## Workflows and declarative programming
+
+Probably Hyper IDE's most important feature is its ability to create code _"declaratively"_. With traditional programming you need to describe the _"how"_. Declarative programming allows you to ignore the _"how"_ and focus on the _"what"_. This trait of Hyper IDE significantly lowers the bar and makes it easier to create working software, also for people without any prior software development experience.
+
+For instance, to invoke Stripe's API to create a subscription or a payment requires knowledge of HTTP, JSON, Stripe's API, etc. With Hyper IDE it's as easy as clicking a button and decorating an _"action"_.
+
+![Declarative programming with Hyper IDE](/assets/images/declarative-programming-with-hyper-ide.jpeg)
+
+Actions can be chained together into workflows, where each consecutive action chains output arguments from its previous actions into input arguments to itself.
+
 ## Modules
 
 Magic is modularized, allowing you to easily move modules from one machine to another. This is
@@ -110,3 +124,11 @@ action using CI/CD, by creating a token using your _"username/Generate Token"_ m
 JWT token you can use to authenticate a process such that it's allowed to invoke
 your `/magic/system/file-system/install-module` endpoint, that will allow you to automatically upload a
 zip file, and re-install it after uploading it.
+
+## Hyper, Hyper
+
+For some tasks Hyper IDE literally makes you 1,000x more productive. For other tasks it's close to useless compared to other tools. Hyper IDE's purpose is to allow you to extremely rapidly create backend code and APIs. Don't expect Hyper IDE to replace your existing IDE, if you do, you will be disappointed.
+
+Expect it to instead allow you to rapidly create backend code and APIs. If you do, you might be positively surprised at how expressive it is due to its declarative constructs based upon meta programming and Hyperlambda.
+
+However, Hyper IDE is not a free lunch. It still requires mastering the tool, and spending time learning how to use it. If you do, you might realise that for some tasks that it was created for, a single junior software developer might some times replace the work of entire departments filled with senior software developers.

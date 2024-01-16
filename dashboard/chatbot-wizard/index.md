@@ -54,7 +54,12 @@ Finally you can scrape your website. Provide the chatbot wizard with your websit
 
 ![Scraping your website to create an AI chatbot](/assets/images/chatbot-wizard-scrape-website.jpeg)
 
-When the process is done, it will resemble the following.
+If you provide a sub-URL such as for instance `foo.com/blogs`, the scraper will only scrape pages beneath `/blogs`.
+This allows you to scrape an explicitly defined sub-portion of your website, and such have some control over
+which pages are being scraped.
+
+When the process is done, Magic will show you an embed dialog allowing you to
+copy the JavaScript inclusion script required to embed your chatbot on your site.
 
 ![Chatbot Wizard is done with scraping a website](/assets/images/chatbot-wizard-after-scraping.jpeg)
 
@@ -67,6 +72,8 @@ At this point you can already embed your chatbot on your website. Choose your th
 * RTL - For Arabic, Hebrew, Farsi and other right to left language
 * Submit button - If the chatbot should have a submit button
 * Stream - If the chatbot should stream its results back to the client
+
+If you want to see how the different themes looks like, you can try all different themese [here](https://ainiro.io/blog/try-our-chatbot-themes).
 
 For a complete walkthrough of the entire process, including things not discussed in this article, you can watch the [following YouTube playlist](https://www.youtube.com/watch?v=VdF8F6tvgqQ&list=PL_iESc2yi8IUCwO1TDft2oAfrUvJHuzU9).
 
