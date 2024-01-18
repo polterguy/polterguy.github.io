@@ -78,6 +78,10 @@ with 90% of what you need as you are designing your database schema. When you cr
 it will ask you if you want to allow for null values in your foreign keys, and if you wants to turn on cascading
 deletes - But it will not ask you if you want to set to null upon deletions.
 
+For a walkthrough of SQL Studio's most important features you can watch the [following YouTube video](https://www.youtube.com/watch?v=xQYwPFEOTAI).
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xQYwPFEOTAI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ### Exporting your DDL to a module
 
 When you are exporting your table(s)' DDL, you can also optionally export your DDL to a _"module"_. This is
