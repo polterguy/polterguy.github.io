@@ -1,0 +1,19 @@
+---
+title: Tutorials
+description: Here you can find tutorials about how to start using Magic on your own. Most of these are hands on, allowing you to experiement for yourself.
+header:
+  image: /assets/images/wizard-teaching-magic-to-school-children.png
+  image_description: Wizard teaching Magic to school children
+---
+
+Below are tutorials about how to get started with Magic. All of these are accompanied with YouTube videoes, demonstrating hands on how to get started with Magic's Low-Code, No-Code, and AI software development automation constructs.
+
+* [Hyper IDE, using No-Code and Low-Code to Generate Software](https://ainiro.io/blog/hyper-ide-using-no-code-and-no-code-to-generate-software)
+* [SQL Studio, Visually Designing your Database](https://ainiro.io/blog/sql-studio-visually-designing-your-database)
+* [Generate a CRUD API using Low-Code and No-Code](https://ainiro.io/blog/generate-a-crud-api-using-low-code-and-no-code)
+* [Create Custom Actions for your Hyperlambda Workflows](https://ainiro.io/blog/create-custom-actions-for-your-hyperlambda-workflows)
+
+
+## Copyright and maintenance
+
+The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

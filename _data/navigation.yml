@@ -1,6 +1,8 @@
 main:
   - title: "Getting Started"
     url: /getting-started/
+  - title: "Tutorials"
+    url: /tutorials/
   - title: "Dashboard"
     url: /dashboard/
   - title: "Hyperlambda"
@@ -14,6 +16,8 @@ docs:
     children:
       - title: "Getting Started"
         url: /getting-started/
+      - title: "Tutorials"
+        url: /tutorials/
       - title: "Dashboard"
         url: /dashboard/
       - title: "Hyperlambda"
