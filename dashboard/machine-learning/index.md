@@ -65,6 +65,22 @@ your robots.txt file.
 
 ![Scraping your website from machine learning](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/machine-learning.jpg)
 
+### Spicing
+
+The spice feature in Magic allows you to scrape a single URL. This provides you with more control, since you can scrape individual pages, and add individual pages to a type. This might be useful if you've got additional information you want to put into the same type, such as WikiPedia pages, individual articles, etc.
+
+To spice a type chose the _"Training data"_ tab in Machine Learning, chose your type, and click the _"Spice"_ button.
+
+![Spice your type and import an individual page](/assets/images/spice-your-type.jpeg)
+
+### Periodically re-crawl site
+
+You can configure Magic such that it periodically re-crawls your site. This is done by providing _"Website"_ value in your type's configuration. By default Magic contains a scheduled task that is executed once every 24 hours. This task will re-crawl all types you've configured with a website property.
+
+![Periodically re-crawl your website](/assets/images/periodically-re-crawl.jpeg)
+
+When re-crawling Magic will update any existing pages that were changed, and add new pages it finds. When it is done crawling your site it will automatically vectorize your type.
+
 ## Types
 
 A _"type"_ is a collection of training snippets. When a chatbot is asked a question, it will use VSS search to find training data that is relevant to your question from one specific _"type"_. Then it will transmit this training data as _"context"_ to OpenAI, and have OpenAI answer questions using the _"context"_ as its source of information.
@@ -92,6 +108,40 @@ The most important parts from above is the _"System message"_. This becomes the 
 > * You should return relevant images and hyperlinks formatted as Markdown
 > * You may use emojis if it makes sense
 > * If you cannot find the answer to the question in the context, then inform the user that you are only configured to answer questions about Acme, Inc. and that the user should provide some keywords for you to find relevant information
+
+#### Configuration settings
+
+* Type name, being the name of your type. Cannot be changed once created.
+* Initial questionnaire, being questions the chatbot will ask users before they're given access to the chatbot itself. Useful to collect information such as email address, name, etc
+* Website, which if supplied, will re-crawl the specified website once every 24 hours.
+* Flavor, being a pre-defined list of templates for system messages. Once you select a flavor, your system message will update accordingly.
+* System message, implying the _"instruction"_ to OpenAI. Allows you to change your chatbot's behaviour.
+* Greeting, being a static initial greeting, such as for instance _"Hello there, how can I help you?"_
+* Prefix, legacy settings for non-GPT models. Similar to system message, which is preferred unless you use a very old model.
+* Authorisation, implying roles users must belong to in order to query type. Requires the user is authenticated through Magic with a valid JWT token if you turn this on.
+* reCAPTCHA, being reCAPTCHA value for accepting queries. Typically a good value here is 0.3.
+* Supervised, which if turned on, will store all questions/answers allowing you to access these through the history tab.
+* Cached, legacy property, only relevant for older non-GPT models.
+* Vectors, implying the chatbot will use the vector database to find context. Magic do support fine-tuning or training. If you turn _off_ vectors you will be able to use your own customfine-tuned model. We do _not_ recommend turning this off.
+* API key, being overridden OpenAI API key for a specific type. By default Magic will read API key from your configuration. You can override this on a per-type level.
+* Search postfix, implying a static value appended to queries as it searches your training snippets for context data. Useful for things such as _"best_seller"_ tags in your training data, where you want to prioritise best selling products.
+* No requests, being total number of requests the chatbot has answered the current month.
+* Max requests, implying maximum requests the chatbot will answer per month. Useful to cap your chatbot to avoid runaway costs. Logically it's using no requests to see if it can continue answering requests.
+* Temperature, implying chances the OpenAI model is willing to take. Some times referred to as _"creativity"_, although this isn't correct.
+* Threshold, implying threshold for training data to kick in. Similarity value allowing you to filter out any training data not matching. Value between 0 and 1, where 0 implies _"match anything"_ and 1 implies _"only match 100% equal snippets"_. A good value here is between 0.3 and 0.5, depending upon how strict you want the chatbot to match towards your training data.
+* Completion/chat model, implying the OpenAI base modelto use for queries. Notice, if you have created your own models using fine-tuning, these will be listed here too.
+* Vector model, implying vector model to create embeddings for your training data.
+* Max Context tokens, implying how many tokens from your training data the type will maximumly use when sending your context to OpenAI to answer questions.
+* Max Request tokens, implying the maximum number of tokens the type allows for the user's questions.
+* Max Response tokens, implying maximum tokens to allow for OpenAI to return as answers to questions.
+* Max Message tokens, which is calculated according to your completion model's token size, and your request, response and context tokens. If this goes to negative, your settings cannot be correctly saved.
+* Lead email address, implying where to send emails of chatlogs if you've configured the _"lead generation feature"_.
+* Email reply, implying a static message the chatbot will respond with if a user drops his or her email address into the prompt. Requires a lead email setting to work.
+* Twilio Account SID and Twilio Auth Token for Twilio integrations.
+* Incoming message slot, implying a slot to invoke as messages are coming into the chatbot from Twilio integrations.
+* Incoming webhook URL, implying a URL to invoke as messages are coming in from Twilio.
+* Outgoing message slot, implying a slot to invoke as chat response has returned.
+* Outgoing webhook URL, implying a URL to invoke as messages are returned from OpenAI.
 
 ## Training snippets
 
