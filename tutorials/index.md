@@ -16,6 +16,7 @@ Below are tutorials about how to get started with Magic. All of these are accomp
 * [SQL Studio, Visually Designing your Database](https://ainiro.io/blog/sql-studio-visually-designing-your-database)
 * [Generate a CRUD API using Low-Code and No-Code](https://ainiro.io/blog/generate-a-crud-api-using-low-code-and-no-code)
 * [Create Custom Actions for your Hyperlambda Workflows](https://ainiro.io/blog/create-custom-actions-for-your-hyperlambda-workflows)
+* [Create a login API endpoint with Actions and Workflows](https://ainiro.io/blog/create-a-login-api-endpoint-in-4-minutes)
 
 
 ## Copyright and maintenance
