@@ -6,10 +6,19 @@ header:
   image_description: Wizard standing in his library reading a book symbolizing the power of Magic Cloud
 ---
 
-Magic Cloud, or Magic for short, is a backend software development platform that creates most of your code _"automagically"_,
-by leveraging meta programming, declarative programming, artificial intelligence, low-code, and no-code
-software development automation. This allows you to focus on creative tasks, while having the machine create the
-boring parts. Magic Cloud is open source and [hosted at GitHub](https://github.com/polterguy/magic), and professionally hosted and maintained by [AINIRO.IO](https://ainiro.io) for a fee.
+Magic Cloud, or Magic for short, is a backend software development platform that creates most of your code _"automagically"_, by leveraging meta programming, declarative programming, artificial intelligence, low-code, and no-code software development automation. This allows you to focus on creative tasks, while having the machine create the boring parts. Magic comes in two flavors.
+
+* Enterprise Version
+* Open Source Community Edition
+
+The open source community edition is no longer actively maintained, and should be considered legacy, or at best a _"trial version"_. It's still available, but it will not have bug fixes, security patches, or any future changes.
+
+The Enterprise Version is closed source and contains everything the community edition contains, in addition to a lot of additional things. The Enterprise Version comes with professional support and comes in two prices.
+
+* Single Server License at $5,000 per month
+* Kubernetes Cluster License for $20,000 per month
+
+If you're interested in purchasing a professional license you can [contact me here](mailto:thomas@ainiro.io). If you're only looking for a hosted cloudlet allowing you to use all plugins, create workflows, and AI chatbots - You can purchase a cloudlet from AINIRO.IO [here](https://ainiro.io/buy).
 
 ## Workflows
 
