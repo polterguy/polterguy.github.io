@@ -18,7 +18,7 @@ The Enterprise Version is closed source and contains everything the community ed
 * Single Server License at $5,000 per month
 * Kubernetes Cluster License for $20,000 per month
 
-If you're interested in purchasing a professional license you can [contact me here](mailto:thomas@ainiro.io). If you're only looking for a hosted cloudlet allowing you to use all plugins, create workflows, and AI chatbots - You can purchase a cloudlet from AINIRO.IO [here](https://ainiro.io/buy).
+If you're interested in purchasing a professional license you can [contact us here](mailto:thomas@ainiro.io). If you're only looking for a hosted cloudlet allowing you to use all plugins, create workflows, and AI chatbots - You can purchase a cloudlet from AINIRO.IO [here](https://ainiro.io/buy).
 
 ## Workflows
 
