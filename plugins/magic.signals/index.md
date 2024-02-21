@@ -1,4 +1,6 @@
-# magic.signals
+---
+title: magic.signals
+---
 
 magic.signals is a _"Super Signals"_ implementation for .Net 8 built on top of magic.node,
 allowing you to invoke functions from one assembly in another assembly without having any direct references between

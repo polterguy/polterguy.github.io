@@ -1,4 +1,6 @@
-# magic.lambda.io
+---
+title: magic.lambda.io
+---
 
 This project provides file/folder slots for Magic. More specifically, it provides the following slots.
 

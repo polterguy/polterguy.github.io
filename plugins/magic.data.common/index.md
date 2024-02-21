@@ -1,4 +1,6 @@
-# magic.data.common
+---
+title: magic.data.common
+---
 
 The magic.data.commonproject is the generic data adapter, that transform dynamically from a lambda node
 structure into SQL, and polymorphistically invokes your specialised data adapter, resulting in SQL

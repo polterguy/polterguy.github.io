@@ -1,4 +1,6 @@
-# magic.lambda.html
+---
+title: magic.lambda.html
+---
 
 This project provides HTML helper slots for Magic. More specifically, it provides the following slots.
 

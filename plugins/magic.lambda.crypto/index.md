@@ -1,4 +1,6 @@
-# magic.lambda.crypto
+---
+title: magic.lambda.crypto
+---
 
 The magic.lambda.crypto project provides cryptography helper slots for Magic, allowing you to use both symmetric
 and asymmetric cryptography operations in your Hyperlambda applications. The symmetric parts of the project is

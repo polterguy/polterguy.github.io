@@ -1,4 +1,6 @@
-# magic.lambda.openai
+---
+title: magic.lambda.openai
+---
 
 This project provides OpenAI related slots for Magic. More specifically, it provides the following slots.
 

@@ -1,4 +1,6 @@
-# magic.endpoint
+---
+title: magic.endpoint
+---
 
 magic.endpoint is your dynamic endpoint URL controller responsible for handling all HTTP requests.
 It has two implementations. Which implementation is being used depends upon the URL you specify.

@@ -1,4 +1,6 @@
-# magic.lambda.guid
+---
+title: magic.lambda.guid
+---
 
 This project allows you to generate a new (random) Guid, and contains the following slot.
 

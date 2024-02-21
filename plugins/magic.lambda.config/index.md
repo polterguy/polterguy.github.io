@@ -1,4 +1,6 @@
-# magic.lambda.config
+---
+title: magic.lambda.config
+---
 
 This project provides configuration settings slots for Magic. The project provides the following
 slots, allowing you to retrieve configuration settings from your _"appsettings.json"_ configuration file,

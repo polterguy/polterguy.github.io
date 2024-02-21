@@ -1,4 +1,6 @@
-# magic.lambda.image
+---
+title: magic.lambda.image
+---
 
 The magic.lambda.image project contains image manipulation functions for Hyperlambda, allowing you to do basic
 manipulation of images, in addition to generating QR codes. More specifically this project contains the following slot.
