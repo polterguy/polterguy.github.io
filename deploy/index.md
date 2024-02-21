@@ -2,7 +2,7 @@
 title: Deploy Magic
 description: This article explains how to deploy Magic to a server once you're ready to put Magic into production
 header:
-  image: /assets/images/wizard-deploying-magic.png
+  image: /assets/images/wizard-deploying-magic.webp
 ---
 
 **Warning** - Magic Cloud is open source, and if you're a skilled software developer, you might be able to install it yourself on your own server - However, there is a reason why AINIRO.IO can make a living out of hosting it. Deploying and managing your own Magic installation is not for the faint at heart, the same way deploying and managing your own website is challenging. If you prefer a simpler solution, we do host Magic for a fee at AINIRO.IO.

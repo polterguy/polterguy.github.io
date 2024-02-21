@@ -2,7 +2,7 @@
 title: Users & Roles
 description: Tired of creating authentication and authorisation code? Magic contains both of these constructs out of the box, allowing you to use Magic's existing HTTP endpoints to authenticate your users.
 header:
-  image: /assets/images/wizard-helping-his-village.png
+  image: /assets/images/wizard-helping-his-village.webp
 ---
 
 The Users & Roles component allows you to manage and administrate your users and roles in your system, and/or

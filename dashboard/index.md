@@ -2,7 +2,7 @@
 title: Dashboard
 description: The Magic Dashboard allows you to manage your Magic Cloud backend by providing a GUI interface towards the backend.
 header:
-  image: /assets/images/finding-components.png
+  image: /assets/images/finding-components.webp
   image_description: Wizard standing in his laboratory trying to find out what Magic spell he should use
 ---
 

@@ -2,7 +2,7 @@
 title: "Magic Cloud"
 description: "Magic Cloud is an AI-based Low-Code and No-Code software development automation framework, allowing for the machine to create most of your code"
 header:
-  image: /assets/images/wizard-large.png
+  image: /assets/images/wizard-large.webp
   image_description: Wizard standing in his library reading a book symbolizing the power of Magic Cloud
 ---
 

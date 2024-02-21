@@ -2,7 +2,7 @@
 title: Workflows
 description: A workflow is a collection of chained actions, where each action can take as input the output produced by previous actions.
 header:
-  image: /assets/images/wizard-magically-creating-things.png
+  image: /assets/images/wizard-magically-creating-things.webp
   image_description: Wizard creating workflows out of thin air symbolizing the power of Hyperlambda workflows
 ---
 

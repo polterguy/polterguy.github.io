@@ -3,7 +3,7 @@ title: Endpoints
 description: Browsing your HTTP endpoints is easy in Magic with the integrated 'Swagger component' that comes with Magic out of the box. This component also allows you to invoke your endpoints, with any payload/arguments you wish, to see the result of your invocation immediately.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/endpoints.jpg"
 header:
-  image: /assets/images/wizard-in-forrest-tying-lose-ends-together.png
+  image: /assets/images/wizard-in-forrest-tying-lose-ends-together.webp
 ---
 
 The Endpoints component allows you to see your HTTP endpoints, and invoke these, similarly

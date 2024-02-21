@@ -3,7 +3,7 @@ title: Chatbot Wizard
 description: Magic allows you to create an AI chatbot that you can embed into your website in some few minutes. Point Magic to your website, automatically scrape your site, and you're done.
 og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/custom-chatgpt-chatbot.jpg"
 header:
-  image: /assets/images/wizard-magically-pulling-ai-chatbots-our-of-cauldron.png
+  image: /assets/images/wizard-magically-pulling-ai-chatbots-our-of-cauldron.webp
 ---
 
 The Chatbot Wizard component allows you to rapidly create an AI website chatbot powered by OpenAI that you can embed on

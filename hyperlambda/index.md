@@ -2,7 +2,7 @@
 title: Hyperlambda
 description: Hyperlambda is a relational file format allowing you to create execution trees, replacing XML as a dynamic markup language for declarative programming
 header:
-  image: /assets/images/hyperlambda-wizard.png
+  image: /assets/images/hyperlambda-wizard.webp
   image_description: Wizard flying through the air symbolizing the power of Hyperlambda
 ---
 

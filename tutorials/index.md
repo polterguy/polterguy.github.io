@@ -2,7 +2,7 @@
 title: Tutorials
 description: Here you can find tutorials about how to start using Magic on your own. Most of these are hands on, allowing you to experiement for yourself.
 header:
-  image: /assets/images/wizard-teaching-magic-to-school-children.png
+  image: /assets/images/wizard-teaching-magic-to-school-children.webp
   image_description: Wizard teaching Magic to school children
 ---
 
