@@ -1,6 +1,4 @@
----
-title: magic.lambda.logging
----
+# magic.lambda.logging
 
 This project contains logging wrapper slots for Magic. More specifically, this project provides the following
 slots allowing you to create log entries.

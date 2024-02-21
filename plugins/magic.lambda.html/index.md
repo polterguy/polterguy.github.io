@@ -1,6 +1,4 @@
----
-title: magic.lambda.html
----
+# magic.lambda.html
 
 This project provides HTML helper slots for Magic. More specifically, it provides the following slots.
 
@@ -135,7 +133,14 @@ impossible to consistently turn HTML into Markdown, but it is very strong in com
 out there.
 
 You can optionally supply a **[url]** argument, which will be used to resolve relative URLs in your HTML.
-The process will also return meta information, such as title, description, etc.
+The process will also return meta information, such as title, description, etc, in addition to all URLs it finds
+in the document as a list of URLs in **[urls]**.
+
+You can also optionally supply the following arguments, which all defaults to boolean true.
+
+* **[images]** - If true imports images
+* **[code]** - If true imports code
+* **[lists]** - If true imports lists
 
 ### Front matter and [markdown2html]
 

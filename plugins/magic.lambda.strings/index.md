@@ -1,6 +1,4 @@
----
-title: magic.lambda.strings
----
+# magic.lambda.strings
 
 This project contains string manipulation slots for Magic. More specifically, it gives you the following slots.
 

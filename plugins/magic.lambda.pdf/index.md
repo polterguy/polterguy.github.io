@@ -1,6 +1,4 @@
----
-title: magic.lambda.pdf
----
+# magic.lambda.pdf
 
 This project provides PDF slots for Magic. The project provides the following
 slots, allowing you to convert a PDF file, stream or raw bytes to its text representation.

@@ -1,6 +1,4 @@
----
-title: magic.lambda.mail
----
+# magic.lambda.mail
 
 This project contains SMTP and POP3 helpers for Magic. More specifically, this project contains the following slots.
 

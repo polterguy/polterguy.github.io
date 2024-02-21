@@ -1,6 +1,4 @@
----
-title: magic.lambda.json
----
+# magic.lambda.json
 
 This project provides JSON helper slots for Magic. More specifically, it provides the following slots.
 

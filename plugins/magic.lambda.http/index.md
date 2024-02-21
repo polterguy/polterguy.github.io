@@ -1,6 +1,4 @@
----
-title: magic.lambda.http
----
+# magic.lambda.http
 
 The magic.lambda.http project provides HTTP invocation capabilities for Magic and Hyperlambda. More specifically the
 project contains the following 5 slots.

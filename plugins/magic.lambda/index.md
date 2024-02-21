@@ -1,6 +1,4 @@
----
-title: magic.lambda
----
+# magic.lambda
 
 magic.lambda is where you will find the _"programming language keywords"_ of Hyperlambda.
 It is what makes Hyperlambda Turing complete, and contains slots such as **[for-each]**,

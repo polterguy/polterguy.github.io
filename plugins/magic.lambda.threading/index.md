@@ -1,6 +1,4 @@
----
-title: magic.lambda.threading
----
+# magic.lambda.threading
 
 This project contains all thread related slots for Hyperlambda. Threading in software development implies
 doing multiple things concurrently, scheduling CPU time for each of your threads, creating the illusion

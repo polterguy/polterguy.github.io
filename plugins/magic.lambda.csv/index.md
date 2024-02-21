@@ -1,6 +1,4 @@
----
-title: magic.lambda.csv
----
+# magic.lambda.csv
 
 This project provides CSV helper slots for Magic. More specifically, it provides the following slots.
 

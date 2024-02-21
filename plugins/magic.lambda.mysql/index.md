@@ -1,6 +1,4 @@
----
-title: magic.lambda.mysql
----
+# magic.lambda.mysql
 
 The magic.lambda.mysql project is Hyperlambda's MySQL data adapter. This project allows you to provide a semantic
 lambda structure to its slots, which in turn will dynamically create a MySQL dialect SQL statement for you, for

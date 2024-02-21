@@ -1,6 +1,4 @@
----
-title: magic.lambda.sockets
----
+# magic.lambda.sockets
 
 This project provides web sockets slots for Hyperlambda.
 The main idea of the project, is that it allows you to resolve Hyperlambda files, execute these,
