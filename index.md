@@ -11,7 +11,7 @@ Magic Cloud, or Magic for short, is a backend software development platform that
 * Enterprise Version
 * Open Source Community Edition
 
-The open source community edition is no longer actively maintained, and should be considered legacy, or at best a _"trial version"_. It's still available, but it will not have bug fixes, security patches, or any future changes.
+The open source community edition is no longer actively maintained, and should be considered legacy. It's still available, but it will not have bug fixes, security patches, or any future changes, and I doubt you can make it worksince it relies upon 42 projects that have been made private.
 
 The Enterprise Version is closed source and contains everything the community edition contains, in addition to a lot of additional things. The Enterprise Version comes with professional support and comes in two prices.
 
@@ -19,6 +19,8 @@ The Enterprise Version is closed source and contains everything the community ed
 * Kubernetes Cluster License for $20,000 per month
 
 If you're interested in purchasing a professional license you can [contact us here](mailto:thomas@ainiro.io). If you're only looking for a hosted cloudlet allowing you to use all plugins, create workflows, and AI chatbots - You can purchase a cloudlet from AINIRO.IO [here](https://ainiro.io/buy).
+
+Notice, AINIRO.IO also provides cloudlets, which are basically Kubernetes PODs, with the complete Magic installation, starting out at some few hundred bucks per month, if you don't have the budget to pay $5,000 or $20,000 per month for access to an on-premise solution. You can find more information about our cloudlets [here](https://ainiro.io).
 
 ## Workflows
 
@@ -170,14 +172,9 @@ any question related to AINIRO.IO, or concepts from this website. This chatbot w
 website. At AINIRO.IO we also delivers such chatbots as one of our services. Read more about
 [our AI chatbots here](/dashboard/chatbot-wizard/).
 
-## Magic Cloud is Open Source
+## Magic Cloud is NOT Open Source
 
-Magic Cloud is 100% open source, and you can use it free of charge as you see fit,
-as long as you obey by the GPL license terms. You can find its code
-at [GitHub](https://github.com/polterguy/magic). We also provide docker images
-for Magic, allowing you to install it locally without having to mess with dependencies,
-such as the .Net CLI and NodeJS. [AINIRO.IO](https://ainiro.io) also hosts Magic Cloud in
-our cloud infrastructure if you're interested in a simpler solution.
+Magic Cloud started as open source. However, the project had 10 million downloads of its NuGet packages, zero contributions, and zero donations, so we could no longer justify maintaining it as an open source project. If you're interested in accessing its source code, we do provide the source with a server license and kubernetes license, which has a cost of $5,000 per month, and $20,000 per month, which gives you access to its source code.
 
 ## The goal of the project
 
@@ -185,7 +182,3 @@ The goal of the project is to make it possible for everybody to produce high qua
 much faster, without security holes, in an extremely scalable runtime. AKA ...
 
 > Where the Machine Creates the Code!
-
-## Copyright and maintenance
-
-The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

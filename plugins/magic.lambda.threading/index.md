@@ -84,28 +84,3 @@ sleep:1000
 **Notice** - This slot is typically releasing the thread back to the operating system, implying as
 the current thread is _"sleeping"_, it will not be a blocking call, and require ZERO physical operating
 system threads while it is sleeping. This is true because of Hyperlambda's 100% perfectly `async` nature.
-
-## Magic's GitHub project page
-
-Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
-
-## Project website for magic.lambda.threading
-
-The source code for this repository can be found at [github.com/polterguy/magic.lambda.threading](https://github.com/polterguy/magic.lambda.threading), and you can provide feedback, provide bug reports, etc at the same place.
-
-- ![Build status](https://github.com/polterguy/magic.lambda.threading/actions/workflows/build.yaml/badge.svg)
-- [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.threading&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.threading)
-- [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.threading&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.threading)
-- [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.threading&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.threading)
-- [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.threading&metric=coverage)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.threading)
-- [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.threading&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.threading)
-- [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.threading&metric=ncloc)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.threading)
-- [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.threading&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.threading)
-- [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.threading&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.threading)
-- [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.threading&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.threading)
-- [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.threading&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.threading)
-- [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.threading&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.threading)
-
-## Copyright and maintenance
-
-The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

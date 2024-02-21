@@ -144,28 +144,3 @@ and especially its ability to parse Hyperlambda, it becomes a very good foundati
 programming Language implementation, allowing you to easily create your own programming languages, and keywords,
 based upon Hyperlambda syntax trees. Hyperlambda in this context being the textual representation of your `Node`
 hierarchy.
-
-## Magic's GitHub project page
-
-Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
-
-## Project website for magic.signals
-
-The source code for this repository can be found at [github.com/polterguy/magic.signals](https://github.com/polterguy/magic.signals), and you can provide feedback, provide bug reports, etc at the same place.
-
-- ![Build status](https://github.com/polterguy/magic.signals/actions/workflows/build.yaml/badge.svg)
-- [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.signals&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.signals)
-- [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.signals&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.signals)
-- [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.signals&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.signals)
-- [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.signals&metric=coverage)](https://sonarcloud.io/dashboard?id=polterguy_magic.signals)
-- [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.signals&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=polterguy_magic.signals)
-- [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.signals&metric=ncloc)](https://sonarcloud.io/dashboard?id=polterguy_magic.signals)
-- [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.signals&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.signals)
-- [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.signals&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.signals)
-- [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.signals&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.signals)
-- [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.signals&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic.signals)
-- [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.signals&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic.signals)
-
-## Copyright and maintenance
-
-The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

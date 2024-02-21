@@ -222,28 +222,3 @@ auth.ticket.in-role:root,admin,guest
 
 Like all auth related slots, it only makes sense to invoke from within a context of having an authorised
 user, such as an HTTP endpoint intended to be invoked by an authenticated user.
-
-## Magic's GitHub project page
-
-Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
-
-## Project website for magic.lambda.caching
-
-The source code for this repository can be found at [github.com/polterguy/magic.lambda.auth](https://github.com/polterguy/magic.lambda.auth), and you can provide feedback, provide bug reports, etc at the same place.
-
-- ![Build status](https://github.com/polterguy/magic.lambda.auth/actions/workflows/build.yaml/badge.svg)
-- [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.auth&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.auth)
-- [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.auth&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.auth)
-- [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.auth&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.auth)
-- [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.auth&metric=coverage)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.auth)
-- [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.auth&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.auth)
-- [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.auth&metric=ncloc)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.auth)
-- [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.auth&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.auth)
-- [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.auth&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.auth)
-- [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.auth&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.auth)
-- [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.auth&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.auth)
-- [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.auth&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.auth)
-
-## Copyright and maintenance
-
-The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

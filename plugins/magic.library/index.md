@@ -99,27 +99,3 @@ end up becoming the response object returned to the client.
 
 The default exception handler can be found in _"/files/exceptions.hl"_, which will be invoked if no custom exception
 handler is declared further down in your folder hierarchy.
-
-## Magic's GitHub project page
-
-Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
-
-## Project website for magic.lambda.library
-
-The source code for this repository can be found at [github.com/polterguy/magic.library](https://github.com/polterguy/magic.library), and you can provide feedback, provide bug reports, etc at the same place.
-
-- ![Build status](https://github.com/polterguy/magic.library/actions/workflows/build.yaml/badge.svg)
-- [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.library&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.library)
-- [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.library&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.library)
-- [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.library&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.library)
-- [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.library&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=polterguy_magic.library)
-- [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.library&metric=ncloc)](https://sonarcloud.io/dashboard?id=polterguy_magic.library)
-- [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.library&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.library)
-- [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.library&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.library)
-- [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.library&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.library)
-- [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.library&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic.library)
-- [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.library&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic.library)
-
-## Copyright and maintenance
-
-The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

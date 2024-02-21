@@ -20,28 +20,3 @@ document, and react directly on the stream, avoid having to save the streamto a 
 It can also accept a string as its input, at which point it assumes the string is the
 relative path to a file. Finally, the slot can accept raw bytes, which it then assumes
 is the raw content from a PDF document.
-
-## Magic's GitHub project page
-
-Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
-
-## Project website for magic.lambda.pdf
-
-The source code for this repository can be found at [github.com/polterguy/magic.lambda.pdf](https://github.com/polterguy/magic.lambda.pdf), and you can provide feedback, provide bug reports, etc at the same place.
-
-- ![Build status](https://github.com/polterguy/magic.lambda.pdf/actions/workflows/build.yaml/badge.svg)
-- [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
-- [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
-- [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
-- [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=coverage)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
-- [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
-- [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=ncloc)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
-- [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
-- [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
-- [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
-- [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
-- [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.pdf&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.pdf)
-
-## Copyright and maintenance
-
-The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

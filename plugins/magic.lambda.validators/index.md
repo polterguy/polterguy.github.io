@@ -185,28 +185,3 @@ validater will throw an exception, providing the invalid value, and the name of 
 to the caller. This allows you to use *one single validator* to validate multiple arguments, such as the above illustrates.
 This might be useful if you for instance have an endpoint accepting multiple address fields, and zip code is a mandatory
 argument, and it needs to be an integer with a **[max]** and **[min]** value.
-
-## Magic's GitHub project page
-
-Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
-
-## Project website for magic.lambda.validators
-
-The source code for this repository can be found at [github.com/polterguy/magic.lambda.validators](https://github.com/polterguy/magic.lambda.validators), and you can provide feedback, provide bug reports, etc at the same place.
-
-- ![Build status](https://github.com/polterguy/magic.lambda.validators/actions/workflows/build.yaml/badge.svg)
-- [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.validators&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.validators)
-- [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.validators&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.validators)
-- [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.validators&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.validators)
-- [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.validators&metric=coverage)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.validators)
-- [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.validators&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.validators)
-- [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.validators&metric=ncloc)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.validators)
-- [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.validators&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.validators)
-- [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.validators&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.validators)
-- [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.validators&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.validators)
-- [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.validators&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.validators)
-- [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.validators&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.validators)
-
-## Copyright and maintenance
-
-The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

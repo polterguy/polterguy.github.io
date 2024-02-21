@@ -386,28 +386,3 @@ its interval pattern - Implying that if you use a 5 second pattern, the schedule
 calculated 5 seconds from the time the task _finished_ executing, which might not necessarily imply that your tasks
 are executed exactly every 5 seconds, depending upon how much time your task requires to execute. The interval
 pattern declares how many units to count to before executing the task again, from when the task _finished_ executing.
-
-## Magic's GitHub project page
-
-Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
-
-## Project website for magic.lambda.scheduler
-
-The source code for this repository can be found at [github.com/polterguy/magic.lambda.scheduler](https://github.com/polterguy/magic.lambda.scheduler), and you can provide feedback, provide bug reports, etc at the same place.
-
-- ![Build status](https://github.com/polterguy/magic.lambda.scheduler/actions/workflows/build.yaml/badge.svg)
-- [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.scheduler&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.scheduler)
-- [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.scheduler&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.scheduler)
-- [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.scheduler&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.scheduler)
-- [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.scheduler&metric=coverage)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.scheduler)
-- [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.scheduler&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.scheduler)
-- [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.scheduler&metric=ncloc)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.scheduler)
-- [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.scheduler&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.scheduler)
-- [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.scheduler&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.scheduler)
-- [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.scheduler&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.scheduler)
-- [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.scheduler&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.scheduler)
-- [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.scheduler&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.scheduler)
-
-## Copyright and maintenance
-
-The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

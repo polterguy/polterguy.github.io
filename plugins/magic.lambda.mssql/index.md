@@ -32,28 +32,3 @@ specific slots, instead of the generic, and/or polymorphistic slots.
 Hence, please refer to the documentation for _"magic.data.common"_ to see the complete documentation for this
 project. If you need for instance documentation about the **[mssql.connect]** slot you should look for the
 documentation for **[data.connect]**, since it's more or less the exact same documentation.
-
-## Magic's GitHub project page
-
-Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
-
-## Project website for magic.lambda.mssql
-
-The source code for this repository can be found at [github.com/polterguy/magic.lambda.mssql](https://github.com/polterguy/magic.lambda.mssql), and you can provide feedback, provide bug reports, etc at the same place.
-
-- ![Build status](https://github.com/polterguy/magic.lambda.mssql/actions/workflows/build.yaml/badge.svg)
-- [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.mssql&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.mssql)
-- [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.mssql&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.mssql)
-- [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.mssql&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.mssql)
-- [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.mssql&metric=coverage)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.mssql)
-- [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.mssql&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.mssql)
-- [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.mssql&metric=ncloc)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.mssql)
-- [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.mssql&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.mssql)
-- [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.mssql&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.mssql)
-- [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.mssql&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.mssql)
-- [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.mssql&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.mssql)
-- [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.mssql&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.mssql)
-
-## Copyright and maintenance
-
-The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

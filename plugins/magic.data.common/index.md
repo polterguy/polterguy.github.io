@@ -962,32 +962,3 @@ If you create your own database implementation, you'll need to inherit from the 
 whatever parts of these classes that doesn't by default work as your database type needs it to work.
 If you wish to do this, you would probably benefit from looking at one of the existing specialised
 implementations, such as the MySQL, SQL Server or PostgreSQL specific implementations.
-
-## Magic's GitHub project page
-
-Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
-
-## Magic's GitHub project page
-
-Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
-
-## Project website for magic.data.common
-
-The source code for this repository can be found at [github.com/polterguy/magic.data.common](https://github.com/polterguy/magic.data.common), and you can provide feedback, provide bug reports, etc at the same place.
-
-- ![Build status](https://github.com/polterguy/magic.data.common/actions/workflows/build.yaml/badge.svg)
-- [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.data.common&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.data.common)
-- [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.data.common&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.data.common)
-- [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.data.common&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.data.common)
-- [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.data.common&metric=coverage)](https://sonarcloud.io/dashboard?id=polterguy_magic.data.common)
-- [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.data.common&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=polterguy_magic.data.common)
-- [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.data.common&metric=ncloc)](https://sonarcloud.io/dashboard?id=polterguy_magic.data.common)
-- [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.data.common&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.data.common)
-- [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.data.common&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.data.common)
-- [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.data.common&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.data.common)
-- [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.data.common&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic.data.common)
-- [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.data.common&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic.data.common)
-
-## Copyright and maintenance
-
-The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

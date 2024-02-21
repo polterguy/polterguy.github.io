@@ -166,28 +166,3 @@ markdown2html:x:@.yaml
 Internally, the library will invoke **[yaml2lambda]** for any front matter declarations to actually parse
 the specified YAML front matter parts, implying for details about how this part works, please refer to
 the _"magic.lambda.json"_ project.
-
-## Magic's GitHub project page
-
-Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
-
-## Project website for magic.lambda.html
-
-The source code for this repository can be found at [github.com/polterguy/magic.lambda.html](https://github.com/polterguy/magic.lambda.html), and you can provide feedback, provide bug reports, etc at the same place.
-
-- ![Build status](https://github.com/polterguy/magic.lambda.html/actions/workflows/build.yaml/badge.svg)
-- [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.html&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.html)
-- [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.html&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.html)
-- [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.html&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.html)
-- [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.html&metric=coverage)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.html)
-- [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.html&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.html)
-- [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.html&metric=ncloc)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.html)
-- [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.html&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.html)
-- [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.html&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.html)
-- [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.html&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.html)
-- [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.html&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.html)
-- [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.html&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.html)
-
-## Copyright and maintenance
-
-The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

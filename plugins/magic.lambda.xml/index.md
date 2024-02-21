@@ -75,28 +75,3 @@ To convert from a lambda object to an XML object you can use something such as f
             #text:031599
 lambda2xml:x:@.xml/*
 ```
-
-## Magic's GitHub project page
-
-Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
-
-## Project website for magic.lambda.xml
-
-The source code for this repository can be found at [github.com/polterguy/magic.lambda.xml](https://github.com/polterguy/magic.lambda.xml), and you can provide feedback, provide bug reports, etc at the same place.
-
-- ![Build status](https://github.com/polterguy/magic.lambda.xml/actions/workflows/build.yaml/badge.svg)
-- [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.xml&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.xml)
-- [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.xml&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.xml)
-- [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.xml&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.xml)
-- [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.xml&metric=coverage)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.xml)
-- [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.xml&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.xml)
-- [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.xml&metric=ncloc)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.xml)
-- [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.xml&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.xml)
-- [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.xml&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.xml)
-- [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.xml&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.xml)
-- [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.xml&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.xml)
-- [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.xml&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.xml)
-
-## Copyright and maintenance
-
-The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

@@ -29,28 +29,3 @@ the driver for it yourself, by adding the NuGet package for your particular data
 the _"backend.csproj"_ file yourself, using for instance the DotNet CLI. The reasons for this is because there
 exists literally hundreds of different databases out there having specific ODBC data adapter drivers, and
 installing all of these would be impossible for us to do.
-
-## Magic's GitHub project page
-
-Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
-
-## Project website for magic.lambda.odbc
-
-The source code for this repository can be found at [github.com/polterguy/magic.lambda.odbc](https://github.com/polterguy/magic.lambda.odbc), and you can provide feedback, provide bug reports, etc at the same place.
-
-- ![Build status](https://github.com/polterguy/magic.lambda.odbc/actions/workflows/build.yaml/badge.svg)
-- [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.odbc&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.odbc)
-- [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.odbc&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.odbc)
-- [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.odbc&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.odbc)
-- [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.odbc&metric=coverage)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.odbc)
-- [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.odbc&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.odbc)
-- [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.odbc&metric=ncloc)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.odbc)
-- [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.odbc&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.odbc)
-- [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.odbc&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.odbc)
-- [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.odbc&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.odbc)
-- [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.odbc&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.odbc)
-- [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.odbc&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.odbc)
-
-## Copyright and maintenance
-
-The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

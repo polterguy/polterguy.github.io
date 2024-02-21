@@ -5,12 +5,6 @@ header:
   image: /assets/images/wizard-deploying-magic.webp
 ---
 
-**Warning** - Magic Cloud is open source, and if you're a skilled software developer, you might be able to install it yourself on your own server - However, there is a reason why AINIRO.IO can make a living out of hosting it. Deploying and managing your own Magic installation is not for the faint at heart, the same way deploying and managing your own website is challenging. If you prefer a simpler solution, we do host Magic for a fee at AINIRO.IO.
-
-* [Contact us](https://ainiro.io/contact-us)
-
-## Deployment Guide
-
 This guide helps you deploy Magic unto a VPS or a private server. The guide has been tested with
 Ubuntu 20.04 (LTS) x64, but _might_ work with other Debian based distributions. You will need a
 VPS instance somewhere, which you can buy at for instance [DigitalOcean](https://www.digitalocean.com/).
@@ -173,7 +167,3 @@ docker pull servergardens/magic-frontend
 docker pull servergardens/magic-backend
 docker-compose up -d
 ```
-
-## Copyright and maintenance
-
-The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

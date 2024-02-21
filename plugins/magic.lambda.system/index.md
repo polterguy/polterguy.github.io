@@ -370,28 +370,3 @@ Below is example usage of both.
 system.is-os:OSX
 system.os
 ```
-
-## Magic's GitHub project page
-
-Magic is 100% Open Source and you can find the primary project GitHub page [here](https://github.com/polterguy/magic).
-
-## Project website for magic.lambda.system
-
-The source code for this repository can be found at [github.com/polterguy/magic.lambda.system](https://github.com/polterguy/magic.lambda.system), and you can provide feedback, provide bug reports, etc at the same place.
-
-- ![Build status](https://github.com/polterguy/magic.lambda.system/actions/workflows/build.yaml/badge.svg)
-- [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.system&metric=alert_status)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.system)
-- [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.system&metric=bugs)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.system)
-- [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.system&metric=code_smells)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.system)
-- [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.system&metric=coverage)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.system)
-- [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.system&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.system)
-- [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.system&metric=ncloc)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.system)
-- [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.system&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.system)
-- [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.system&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.system)
-- [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.system&metric=security_rating)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.system)
-- [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.system&metric=sqale_index)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.system)
-- [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=polterguy_magic.lambda.system&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=polterguy_magic.lambda.system)
-
-## Copyright and maintenance
-
-The projects is copyright Thomas Hansen 2023 - 2024, and professionally maintained by [AINIRO.IO](https://ainiro.io).

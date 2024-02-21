@@ -24,7 +24,7 @@ analytics:
     anonymize_ip: false # default
 
 # Copyright displayed in the bottom right corner
-copyright: Copyright © Thomas Hansen, 2023 - 2024
+copyright: Copyright © Thomas Hansen, 2019 - 2024
 
 minimal_mistakes_skin: dark
 locale: "en"
