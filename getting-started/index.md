@@ -6,7 +6,7 @@ header:
   image_description: Baby Wizard waving his magic wand over his magic hat to practice his spell casting
 ---
 
-The easiest way to get started with Magic is to [signup for a cloudlet at AINIRO.IO](https://ainiro.io). However, if you want to install Magic on your own server, this is very much possible. The easiest way to do this is to use the Docker images.
+The easiest way to get started with Magic is to [signup for a cloudlet at AINIRO.IO](https://ainiro.io). However, if you want to install Magic on your own server, this is very much possible. The easiest way to do this is to use the Docker images, assuming you've obtained a licence granting you access to its Docker images.
 
 ## Using Docker
 
@@ -43,16 +43,21 @@ volumes:
 
 The above file will spawn the frontend at port 5555 and the backend at port 4444. The above file creates volumes for all the important folders, that contains files you typically change as you're using Magic. The _"/misc/"_ and _"/system/"_ folders should not have volumes, since these should be changed when you update your image.
 
-Once your containers are up running you need to use your browser to navigate to `localhost:5555`, and login to your backend. Your backend can be found at `localhost:4444`, and its username is _"root"_ and its password is _"root"_. Once you've logged in, you'll be asked to setup Magic. This will resemble the following.
+Once your containers are up running you need to use your browser to navigate to `localhost:5555`, and login to your backend. Your backend can be found at `localhost:4444`, and its username and password is _"root"_ and _"root"_. Once you've logged in, you'll be asked to setup Magic. This will resemble the following.
 
 ![Initially configuring Magic](/images/setup-magic.jpeg)
 
 After you've provided a root password, your name, and your email address, you will be redirected to the main dashboard and you can start using Magic.
 
+## Using the source code version
+
+If you've got an enterprise license plan, you should have been given read only access to Magic's source code. Clone the repository, make sure you've got .Net Core version 8 installed, the latest version of NodeJS, and Angular, and enter the _"backend"_ and _"frontend"_ folders with two terminal windows, and execute the respective commands.
+
+1. `dotnet run`
+2. `ng serve`
+
+After some few minutes you should be able to access the dashboard from `localhost:4200`, and login to your cloudlet using `http://localhost:5000` as your backend URL. The intial username and password combination is the same; _"root"_ and "_root"_.
+
 ## Deploy to production
 
-If you want to deploy Magic to production we have created a detailed description [here](/deploy/). To deploy Magic requires a lot of technical knowledge, and to maintain it requires knowledge about security, CDNs, etc. 
-
-Unless you're a highly skilled and professional software developer, and you're willing to spend dozens of hours installing Magic, we do _not_ encourage you to do this. There's a reason we charge $198 per month as a starting price for a cloudlet at AINIRO.IO.
-
-If you don't have these skills, [AINIRO.IO](https://ainiro.io) can do it for you, in exchange for a monthly fee, at which point you get professional support, installation, maintenance, upgrades, and everything else required to create and maintain Magic. However, if you cannot afford our services, and you're willing to do everything yourself, you can use the above link to deploy Magic to your own server.
+If you want to deploy Magic to production we have created a detailed description [here](/deploy/). To deploy Magic requires a lot of technical knowledge, and to maintain it requires knowledge about security, CDNs, etc - However, help with this is an integrated part of our Enterprise Single Server and Kubernetes Cluster license plans.

@@ -32,9 +32,9 @@ The above code _"declares"_ a `for-each` loop, that iterates through each of our
 
 The above invocation to **[for-each]** is referred to as a _"slot invocation"_, and the **[for-each]** slot is implemented in C#, specifically in the [magic.lambda](/plugins/magic.lambda/#how-to-use-for-each) project. Typically we refer to such slots in Magic's documentation using square brackets and bold text.
 
-Hyperlambda contains slots for all the most important programming constructs, such as **[if]**, **[while]**, **[slots.create]**, **[execute-file]**, etc - Allowing you to use it as if it was a programing language, even though technically it's not.
+Hyperlambda contains slots for all the most important programming constructs, such as **[if]**, **[while]**, **[slots.create]**, **[execute-file]**, etc - Allowing you to use it as if it was a programing language, even though technically it's not. Most of these slots are declared in the project called _"magic.lambda"_.
 
-* [Read more about the programming constructs of Hyperlambda](/plugins/magic.lambda/)
+* [Read more about magic.lambda](/plugins/magic.lambda/)
 
 ## Hyperlambda structure
 

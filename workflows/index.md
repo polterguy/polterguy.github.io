@@ -8,7 +8,9 @@ header:
 
 A workflow is a chained collection of actions, where each action can produce output, that consecutive actions can consume as input. The most famous example of a workflow system is probably MWF, or Microsoft Workflow Foundation.
 
-Magic implements workflows using [Hyperlambda](/hyperlambda/), which largely eliminates the need to visualise workflows using charts, and allows the user to use the source code as the primary means to edit and maintain the workflow. Watch the following video to understand how such workflows are built.
+Magic implements workflows using [Hyperlambda](/hyperlambda/), which largely eliminates the need to visualise workflows using a graphical user interface, and allows the user to use the source code as the primary means to edit and maintain the workflow. This is only possible by completely dropping the idea of using XML and JSON as _"your workflow description language"_.
+
+To understand the above point, try to compare a Hyperlambda Workflow file with the equivalent XML-based workflow file. The Hyperlambda file is easily understood, while its XML equivalent is roughly as readable as machine code instructions. Watch the following video to understand how such workflows are built.
 
 <iframe style="margin-left: auto; margin-right: auto; width: 560px; max-with: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/ITz1ASqsWoM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
@@ -16,13 +18,13 @@ Magic implements workflows using [Hyperlambda](/hyperlambda/), which largely eli
 
 Being able to _"drag'n'drop"_ backend code together the way we do in the above video, have huge benefits. First of all it significantly lowers the bar for software development, allowing people without prior software development experience to create backend code. Secondly, it makes it much faster to create said code. I clocked myself in regards to this, and found that in theory I could create 604,000 lines of code per month.
 
-Obviously using LOC as a measure stick for productivity is typically not a good thing, but these were production ready lines of code, highly secure, scalable, and performing in regards to all neutral metrics - And I produced something useful that would require _a lot_ of manual coding to create.
+Obviously using LOC as a measure stick for productivity is typically not a good thing, but these were production grade lines of code, highly secure, scalable, and performing in regards to all neutral metrics - And I produced something useful that would require _a lot_ of manual coding to create.
 
 In the following video I am creating a complete registration API in 15 minutes to illustrate the point.
 
 <iframe style="margin-left: auto; margin-right: auto; width: 560px; max-with: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/Ntunzh-DdaY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-The point being that creating a registration API manually is a task that might take weeks of manual coding. Doing it in 15 minutes obviously has advantages, especially considering the skill level required to accomplish the above, which is close to nothing.
+The point being that creating a registration API manually is a task that might take weeks of manual coding. Doing it in 15 minutes obviously has advantages, especially considering the skill level required to accomplish the above in Hyperlambda, which is close to nothing.
 
 Creating a registration API using C#, GoLang, or Java, typically requires years of training - In addition to knowledge about a _"bajillion"_ things. In Magic you can do it after some few minutes of watching a YouTube video - And you can implement it 1,860 times faster than a senior software developer can in most other programming languages, assuming the industry average of 325 lines of code per month is correct.
 

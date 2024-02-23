@@ -6,7 +6,7 @@ header:
   image_description: Wizard teaching Magic to school children
 ---
 
-Below are tutorials about how to get started with Magic. All of these are accompanied with YouTube videoes, demonstrating hands on how to get started with Magic's Low-Code, No-Code, and AI software development automation constructs.
+Below are tutorials about how to get started with Magic. Most of these are accompanied with YouTube videoes, demonstrating hands on, how to get started with Magic's Low-Code, No-Code, and AI software development automation constructs.
 
 * [Uploading files to your AI chatbot](https://ainiro.io/blog/uploading-files-to-your-ai-chatbot)
 * [Design your own AI chatbot theme](https://ainiro.io/blog/design-your-own-chatgpt-chatbot)

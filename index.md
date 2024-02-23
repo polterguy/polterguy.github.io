@@ -8,12 +8,10 @@ header:
 
 Magic Cloud, or Magic for short, is a backend software development platform that creates most of your code _"automagically"_, by leveraging meta programming, declarative programming, artificial intelligence, low-code, and no-code software development automation. This allows you to focus on creative tasks, while having the machine create the boring parts. Magic comes in two flavors.
 
-* Enterprise Version
-* Open Source Community Edition
+* Single Server Enterprise License
+* Kubernetes Cluster Enterprise License
 
-The open source community edition is no longer actively maintained, and should be considered legacy. It's still available, but it will not have bug fixes, security patches, or any future changes, and I doubt you can make it worksince it relies upon 42 projects that have been made private.
-
-The Enterprise Version is closed source and contains everything the community edition contains, in addition to a lot of additional things. The Enterprise Version comes with professional support and comes in two prices.
+**Notice** - The open source community edition is no longer actively maintained, and should be considered legacy. It's still available, but it will not have bug fixes, security patches, or any future changes, and I doubt you can make it work since it relies upon 42 projects that have been made private. The Enterprise Version comes with professional support in two different price ranges.
 
 * Single Server License at $5,000 per month
 * Kubernetes Cluster License for $20,000 per month
@@ -52,7 +50,7 @@ of your modifications, by executing your endpoint without ever having to leave y
 Hyper IDE also integrates perfectly with our Machine Learning component, built on top of OpenAI, allowing you to write your requests in plain English, and have Hyper IDE and OpenAI automatically
 generate code for you solving your problem.
 
-However, the most powerful parts of Hyper IDE is its _"workflows"_ feature, allowing you to dynamically orchestrate
+However, the most powerful parts of Hyper IDE is its [workflows](/workflows/) feature, allowing you to dynamically orchestrate
 backend Hyperlambda code together, without needing to know Hyperlambda.
 
 > With Hyper IDE manually writing code is __optional__
@@ -70,9 +68,9 @@ While allowing you to declaratively tell it how to generate your API. It also al
 web socket messages as endpoints are invoked, in addition to having lots of additional features simplifying
 your life as a software developer.
 
-By combining the Endpoint Generator with Hyperlambda [Workflows](/workflows/), you can sometimes create your entire backend code exclusively by _"clicking buttons"_.
+By combining the Endpoint Generator with [Hyperlambda Workflows](/workflows/), you can sometimes create your entire backend code exclusively by _"clicking buttons"_.
 
-## The SQL endpoint generator
+## The SQL Endpoint Generator
 
 Magic allows you to create HTTP endpoints using SQL. This allows you to compose some SQL statement,
 and rapidly wrap it inside an HTTP endpoint. You can find this component in the Endpoint Generator,
@@ -81,9 +79,9 @@ reference in your SQL, and click the _"Generate"_ button.
 
 ![Creating a Web API using SQL](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-web-api.jpg)
 
-The SQL endpoint generator allows you to secure your endpoints, declare what arguments your endpoint can handle,
+The SQL endpoint generator allows you to secure your endpoints, declare what arguments your endpoints can handle,
 use all 5 most common HTTP verbs for your endpoints, etc. You can use it with SQL Server, MySQL, MariaDB,
-PostgreSQL or SQLite - However, you need to write SQL that is valid for your particular database type as
+PostgreSQL, or SQLite - However, you need to write SQL that is valid for your particular database type as
 you create your endpoints.
 
 ## SQL Studio

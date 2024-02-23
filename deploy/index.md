@@ -7,17 +7,10 @@ header:
 
 This guide helps you deploy Magic unto a VPS or a private server. The guide has been tested with
 Ubuntu 20.04 (LTS) x64, but _might_ work with other Debian based distributions. You will need a
-VPS instance somewhere, which you can buy at for instance [DigitalOcean](https://www.digitalocean.com/).
-You will also need a domain and point _two_ DNS A records to your server's IP address. Typically
-these would resemble the following.
+VPS instance somewhere first. You will also need a domain and point _two_ DNS A records to your server's IP address. Typically these would resemble the following.
 
-* __api.yourdomain.com__
-* __magic.yourdomain.com__
-
-We suggest you don't buy the cheapest VPS droplet from DigitalOcean, but chose at least the one
-that will cost you $12 per month. Their cheapest droplet simply doesn't have enough memory to
-run Magic optimally. 2GB of memory should be enought to host the backend and the frontend
-dashboard.
+* __api.YOURDOMAIN.COM__
+* __magic.YOURDOMAIN.COM__
 
 ## Cloning docker-compose file
 
@@ -80,8 +73,13 @@ your terminal. This installs docker for you, in addition to docker compose.
 apt install docker docker-compose
 ```
 
-After you have installed docker and docker compose, you have to create a virtual docker network.
-This is necessary to make sure your containers have a virtual network to communicate with each other.
+After you have installed docker and docker compose, you will need to login to Docker Hub with a username and password combination we've given access to our docker images. This can be accomplished using the following.
+
+```bash
+docker login
+```
+
+This ensures your machine persists your credentials, and attaches these as you try to retrieve the docker images required to get Magic up running. Then you have to create a virtual docker network. This is necessary to make sure your containers have a virtual network to communicate with each other.
 
 ```
 docker network create nginx-proxy
@@ -94,6 +92,8 @@ above network, you can start your docker containers using the following command.
 ```
 docker-compose up -d
 ```
+
+If you want to debug the containers, you can drop the `-d` argument, which will ensure dockers writes errors to the console as it proceeds.
 
 ## Internals
 
@@ -133,10 +133,10 @@ into the top textbox and click the tab key on your keyboard. If your domain was 
 you created your DNS records as illustrated above, your API backend URL would be the following.
 
 ```
-https://magic-api.yourdomain.com
+https://api.yourdomain.com
 ```
 
-To configure Magic login with _"root/root"_. Then provide Magic with a root
+To configure Magic login with _"root"_/_"root"_. Then provide Magic with a root
 password, and follow the wizard to the end. This process is similar to the process you follow as you
 configure Magic locally on your development machine. This should resemble the following.
 
@@ -159,7 +159,7 @@ distributing your particular Linux installation.
 ## Updating Magic
 
 Updating Magic should be fairly straight forward and only requires that you tear down your containers,
-pull the Magic images from docker hub, and restart your containers using the following.
+pull the Magic images from docker hub, and restart your containers using the following from the same directory where you'we got your docker-compose file.
 
 ```
 docker-compose down
@@ -167,3 +167,9 @@ docker pull servergardens/magic-frontend
 docker pull servergardens/magic-backend
 docker-compose up -d
 ```
+
+## Additional parts
+
+If you want to use something else besides LetsEncrypt, you will have to figure out how to do this yourself. We will of course assist, but we don't have documentation for anything besides LetsEncrypt.
+
+If you get authentication errors as you're trying to pull magic-backend, you're not authorised to access our private docker images, and/or you've not logged into docker hub from your terminal. See description further up on page to see how to accomplish this.
