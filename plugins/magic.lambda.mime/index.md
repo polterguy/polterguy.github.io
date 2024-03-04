@@ -88,5 +88,21 @@ mime.create:multipart/mixed
 
 The above will create one multipart MIME entity with two children, where one of its children are declaring itself as an attachment, with the filename of _"README.md"_ due to its `Content-Disposition` header. If you parse the resulting MIME message using **[mime.parse]**, you will end up with roughly what you started with.
 
-You can add any headers you wish into individual MIME entities using the above syntax.
+You can add any headers you wish into individual MIME entities using the above syntax. The `Content-Type` header will be ignored though, since it's assumed to be the value of your **[entity]** node.
+
+### File attachments
+
+If you want to attach physical files, it's probably smart to attach these using **[filename]** as an alternative to loading the entire file into memory first. This will transmit the file directly from your file system to the socket, and never load the file into memory. This obviously preserves a lot of memoery for you, especially for large file.
+
+If we're to change the above code to illustrate how this ends up looking like, it would become something resembling the following.
+
+```
+mime.create:multipart/mixed
+   entity:text/plain
+      content:Some text content
+   entity:text/markdown
+      filename:/etc/README.md
+```
+
+Notice, if you supply a **[filename]** argument, then the library will automatically associate the correct `Content-Disposition` header with your MIME entity, unless explicitly overridden by your code.
 
