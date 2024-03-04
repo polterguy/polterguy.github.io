@@ -46,10 +46,8 @@ same input as its sibling produces as output. Below is an example.
 ```
 mime.create:multipart/mixed
    structured:false
-
    entity:text/plain
-      content:this is the body text
-      
+      content:this is the body text     
    entity:text/plain
       content:this is another body text
 ```
@@ -71,4 +69,24 @@ mime.create
    Content-Type:"multipart/mixed; boundary=\"=-EbMBZ3eHrSrMqtB2KHSv+A==\""
    content:"--=-EbMBZ3eHrSrMqtB2KHSv+A==\nContent-Type: text/plain\n\nthis is the body text\n--=-EbMBZ3eHrSrMqtB2KHSv+A==\nContent-Type: text/plain\n\nthis is another body text\n--=-EbMBZ3eHrSrMqtB2KHSv+A==--\n"
 ```
+
+This is useful if you for some reasons don't want the `Content-Type` to be a part of the MIME message itself, which is useful when creating HTTP envelopes and content for instance, where the Content-Type parts needs to be submitted separately as an HTTP header.
+
+### MIME headers
+
+To supply MIME headers for individual MIME entites, you can add a **[headers]** section as a child to your **[entity]** node. Below is an example of how to construct a MIME text entity with an attachement, wrapped inside a multipart/mixed parent.
+
+```
+mime.create:multipart/mixed
+   entity:text/plain
+      content:Some text content
+   entity:text/markdown
+      headers
+         Content-Disposition:attachment; filename=README.md
+      content:Some Markdown content here
+```
+
+The above will create one multipart MIME entity with two children, where one of its children are declaring itself as an attachment, with the filename of _"README.md"_ due to its `Content-Disposition` header. If you parse the resulting MIME message using **[mime.parse]**, you will end up with roughly what you started with.
+
+You can add any headers you wish into individual MIME entities using the above syntax.
 

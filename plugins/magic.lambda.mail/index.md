@@ -101,7 +101,7 @@ mail.smtp.send
            filename:/files/foo.txt
 ```
 
-To construct your email's **[message]** part, see the documentation for the magic.lambda.mime project.
+To construct your email's **[message]** part, see the documentation for the [magic.lambda.mime](/plugins/magic.lambda.mime/) project.
 
 **Notice** - You can also construct **[from]**, **[to]** and **[cc]** arguments such as follows.
 
@@ -137,7 +137,9 @@ mail.smtp.send
             content:Some Markdown content here
 ```
 
-The above will construct a plain text email with a Markdown file attachment.
+The above will construct a plain text email with a Markdown file attachment. The point being that each child of the above **[headers]** node will be considered a MIME header for that particular entity, allowing you to supply MIME headers for specific entities in your tree hierarchy.
+
+You can add any MIME header like the above code illustrates, including custom headers.
 
 ## How to use [mail.pop3.fetch]
 
