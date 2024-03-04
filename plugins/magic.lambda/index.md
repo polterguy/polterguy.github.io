@@ -1570,3 +1570,4 @@ sort:x:@.data/*
 ```
 
 Notice, **[sort]** does not modify the original list, but returns a new list of nodes after having executed.
+

@@ -367,3 +367,4 @@ var hl2 = HyperlambdaGenerator.GetHyperlambda(result.Children);
 
 When referencing nodes in the documentation for Magic, it is common to reference them like __[this]__, where
 _"this"_ would be the name of some node - Implying in __bold__ characters, wrapped by square [brackets].
+

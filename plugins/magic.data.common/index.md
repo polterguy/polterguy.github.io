@@ -962,3 +962,4 @@ If you create your own database implementation, you'll need to inherit from the 
 whatever parts of these classes that doesn't by default work as your database type needs it to work.
 If you wish to do this, you would probably benefit from looking at one of the existing specialised
 implementations, such as the MySQL, SQL Server or PostgreSQL specific implementations.
+

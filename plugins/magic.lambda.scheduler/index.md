@@ -386,3 +386,4 @@ its interval pattern - Implying that if you use a 5 second pattern, the schedule
 calculated 5 seconds from the time the task _finished_ executing, which might not necessarily imply that your tasks
 are executed exactly every 5 seconds, depending upon how much time your task requires to execute. The interval
 pattern declares how many units to count to before executing the task again, from when the task _finished_ executing.
+

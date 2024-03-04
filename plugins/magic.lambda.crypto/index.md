@@ -528,3 +528,4 @@ to **[crypto.password.verify]** by for instance adding one random character to i
 `false` from the second invocation.
 Internally these are the slots Magic uses when it creates its JWT authentication database, and stores
 passswords into your Magic database.
+

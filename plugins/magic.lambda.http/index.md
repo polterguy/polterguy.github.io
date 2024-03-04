@@ -291,3 +291,4 @@ and status code, in addition to the response object itself.
 All slots also supports SSE by adding an **[.sse]** lambda object, which will be invoked once for each event published by the
 server. Your lambda object will be invoked with a **[message]** argument containing the raw message published by the server.
 You are responsible to convert the message to the correct type, since it's passed in as a UTF8 encoded raw string.
+

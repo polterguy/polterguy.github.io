@@ -166,3 +166,4 @@ markdown2html:x:@.yaml
 Internally, the library will invoke **[yaml2lambda]** for any front matter declarations to actually parse
 the specified YAML front matter parts, implying for details about how this part works, please refer to
 the _"magic.lambda.json"_ project.
+

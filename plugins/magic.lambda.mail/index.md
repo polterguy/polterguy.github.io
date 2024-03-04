@@ -116,6 +116,29 @@ mail.smtp.send
 
 This makes it easier to dynamically **[unwrap]** arguments to the slot.
 
+### Creating MIME messages
+
+This project relies upon [magic.lambda.mime](/plugins/magic.lambda.mime/) for parsing MIME message. Magic's MIME project again, is a complete section in the documentation by itself, and for a detailed description, please refer to magic.lambda.mime's documentation. However, the basic idea is that a MIME message is actually a tree structure, allowing you to create MIME entities, that consists of children MIME entities, to add attachments etc to your emails. Below is an example of how to create a message with an attachment.
+
+```
+mail.smtp.send
+   message
+      to
+         .
+            email:someemail@whatever.com
+            name:John Doe
+      subject:Some subject line
+      entity:multipart/mixed
+         entity:text/plain
+            content:Some text content
+         entity:text/markdown
+            headers
+               Content-Disposition:@"attachment; filename=""README.md"""
+            content:Some Markdown content here
+```
+
+The above will construct a plain text email with a Markdown file attachment.
+
 ## How to use [mail.pop3.fetch]
 
 To retrieve emails from a POP3 server is equally easy. Below is an example.
@@ -177,3 +200,4 @@ the magic.lambda.mime project's documentation for details to understand this
 structure. If you choose to retrieve messages in **[raw]** format, the message node's value will contain
 the raw MIME message as text. If you choose this path, and you later want to actually parse the message,
 to make it become a structured lambda object - You can use the **[mime.parse]** slot from magic.lambda.mime.
+

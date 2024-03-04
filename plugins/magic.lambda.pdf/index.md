@@ -20,3 +20,4 @@ document, and react directly on the stream, avoid having to save the streamto a 
 It can also accept a string as its input, at which point it assumes the string is the
 relative path to a file. Finally, the slot can accept raw bytes, which it then assumes
 is the raw content from a PDF document.
+

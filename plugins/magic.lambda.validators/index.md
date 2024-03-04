@@ -185,3 +185,4 @@ validater will throw an exception, providing the invalid value, and the name of 
 to the caller. This allows you to use *one single validator* to validate multiple arguments, such as the above illustrates.
 This might be useful if you for instance have an endpoint accepting multiple address fields, and zip code is a mandatory
 argument, and it needs to be an integer with a **[max]** and **[min]** value.
+

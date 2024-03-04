@@ -70,3 +70,4 @@ usage.
    log.info:This is some example logging invocation
 lambda2hyper:x:-/*
 ```
+

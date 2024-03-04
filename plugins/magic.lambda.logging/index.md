@@ -106,3 +106,4 @@ will have a content value of _"We successfully authenticated user 'root'"_. To r
 **Notice** - If your particular log implementation does not support querying you _cannot_ query items
 according to content as illustrated above, but rather only page items. Invoke **[log.capabilities]** to see if
 your implementation supports querying before relying upon its existence.
+
