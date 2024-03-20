@@ -1328,6 +1328,14 @@ this slot as you can use in C# and .Net. To see an extensive list of for instanc
 can use for a date and time object, you can browse the [Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings)
 related to this. If you don't supply a **[culture]** argument the invariant culture will be used.
 
+### How to use [number2words]
+
+This slot takes a signed 64 bit integer and converts it to its word representation, such as for instance 1200050 becoming _"one million two hundred thousand and fifty"_. Below is an example of using the slot.
+
+```
+number2words:1200050
+```
+
 ### How to use [vocabulary]
 
 Returns the name of every static slot in your system, optionally passing in a string, or an expression leading to
