@@ -6,11 +6,12 @@ header:
   image_description: Wizard teaching Magic to school children
 ---
 
-Below are tutorials about how to get started with Magic. Most of these are accompanied with YouTube videoes, demonstrating hands on, how to get started with Magic's Low-Code, No-Code, and AI software development automation constructs.
+Below are tutorials about how to get started with Magic. Most of these are accompanied with YouTube videoes, demonstrating hands on, how to get started with Magic's Low-Code, No-Code, and AI-based software development automation concepts.
 
 * [Uploading files to your AI chatbot](https://ainiro.io/blog/uploading-files-to-your-ai-chatbot)
 * [Design your own AI chatbot theme](https://ainiro.io/blog/design-your-own-chatgpt-chatbot)
 * [Connect your AI Chatbot to your Shopify account](https://ainiro.io/blog/how-to-connect-your-ai-chatbot-to-shopify)
+* [Order tracking in Shopify](https://ainiro.io/blog/track-shopify-orders-in-your-ai-chatbot)
 * [How to collect phone numbers with your AI Chatbot](https://ainiro.io/blog/how-to-capture-phone-numbers-with-your-ai-chatbot)
 * [How to Scrape a URL for your Custom GPTs](https://ainiro.io/blog/how-to-scrape-a-url-for-your-custom-gpts)
 * [Turn your CSV file into an AI chatbot](https://ainiro.io/blog/turn-your-csv-file-into-an-ai-chatbot)
