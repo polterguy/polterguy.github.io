@@ -1,7 +1,7 @@
 ---
 title: Endpoint Generator
 description: The backend CRUD generator allows you to create a CRUD API wrapping your database in seconds. Magic will read meta data from your database, and automatically create all required code for you.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg"
+og_image: "/images/backend-crud.jpg"
 header:
   image: /assets/images/wizard-magically-creating-computers.webp
 ---
@@ -12,7 +12,7 @@ and allows you to generate a web API wrapping your database by clicking a button
 works by reading meta data from your database, which it then uses to generate Hyperlambda HTTP endpoints for you
 automatically.
 
-![Backend CRUD generator](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg)
+![Backend CRUD generator](/images/backend-crud.jpg)
 
 If you use the generator on for instance the _"SQLite Sakila"_ database that you can find as a plugin,
 Magic will create more than 3,000 lines of Hyperlambda code for you automatically, resulting in some
@@ -30,7 +30,7 @@ etc. If you deselect all tables and select only one table, you get a lot more op
 to choose from. This is useful if you need additional control over how your API endpoints are generated,
 and what results the endpoint generator should give you.
 
-![Configuring CRUD endpoints](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/configuring-crud.jpg)
+![Configuring CRUD endpoints](/images/configuring-crud.jpg)
 
 The backend CRUD generator creates 5 HTTP endpoints by default for each table. One endpoint
 for all CRUD operations, and a 5th endpoint to count items. If your table does not have a primary key,
@@ -49,7 +49,7 @@ for instance, that should only be set during _"create"_ invocations, you can eas
 your _"update"_ endpoint, making sure Magic does not accept new values to that column when its update endpoint
 is invoked.
 
-![CRUD backend settings](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/crud-settings.jpg)
+![CRUD backend settings](/images/crud-settings.jpg)
 
 You can also override what URLs your endpoints should use, what authorisation requirements
 your endpoints should have, in addition to a lot of other settings, such as turning on logging, caching, etc.
@@ -93,7 +93,7 @@ automatically creating your SQL, it allows you to provide your own custom SQL, a
 an HTTP endpoint. It allows you to create endpoints wrapping any of the 5 most popular HTTP verbs, takes care of
 authentication and authorisation, in addition to that it allows you to declare arguments to your endpoints.
 
-![SQL web API](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-web-api.jpg)
+![SQL web API](/images/sql-web-api.jpg)
 
 ## How to use the SQL endpoint generator
 
@@ -123,7 +123,7 @@ your endpoint, there is no known mechanisms for removing the argument from your 
 could be supplied as null values, at which point the resulting SQL would use the value null as a substitute
 for your argument.
 
-![SQL arguments](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-arguments.jpg)
+![SQL arguments](/images/sql-arguments.jpg)
 
 ## HTTP verbs
 

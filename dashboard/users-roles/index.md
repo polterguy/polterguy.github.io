@@ -12,7 +12,7 @@ in your company, being C-level executives, managers, and employers. Typically th
 have access to the same parts, so you want to associate users belonging to these different roles to different
 roles in Magic.
 
-![Users and roles administration in Magic](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/auth.jpg)
+![Users and roles administration in Magic](/images/auth.jpg)
 
 ## Managing users and roles
 

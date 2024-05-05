@@ -1,7 +1,7 @@
 ---
 title: Hyperlambda Playground
 description: The evaluator allows you to submit Hyperlambda to your server and have your code executed in 'immediate' mode. This is useful for administrating your Magic server, and/or learning Hyperlambda.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/eval-component.jpg"
+og_image: "/images/eval-component.jpg"
 header:
   image: /assets/images/wizard-playing-magic-games-with-children.webp
 ---
@@ -13,7 +13,7 @@ somehow demonstrates Hyperlambda's capabilities, and provides examples for you a
 learning Hyperlambda. Click the _"Snippets"_ button to load up some snippet, study it, modify it,
 and then execute it - For then to afterwards see the result of the execution.
 
-![Evaluator component](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/eval-component.jpg)
+![Evaluator component](/images/eval-component.jpg)
 
 If you create a Hyperlambda snippet you for some reason want to save for later, you can save your
 Hyperlambda to your _"snippets"_ collection, by clicking the _"Save"_ button and give your

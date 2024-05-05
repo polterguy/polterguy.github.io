@@ -1,7 +1,7 @@
 ---
 title: Endpoints
 description: Browsing your HTTP endpoints is easy in Magic with the integrated 'Swagger component' that comes with Magic out of the box. This component also allows you to invoke your endpoints, with any payload/arguments you wish, to see the result of your invocation immediately.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/endpoints.jpg"
+og_image: "/images/endpoints.jpg"
 header:
   image: /assets/images/wizard-in-forrest-tying-lose-ends-together.webp
 ---
@@ -12,7 +12,7 @@ your endpoints - Allowing you to simulate a client, to understand how
 they work. This component hence serves two purposes; One being documenting your endpoints,
 another being testing your endpoints.
 
-![Endpoints](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/endpoints.jpg)
+![Endpoints](/images/endpoints.jpg)
 
 ## Hyperlambda endpoint meta data
 

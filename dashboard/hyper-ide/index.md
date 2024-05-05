@@ -1,7 +1,7 @@
 ---
 title: Hyper IDE
 description: Hyper IDE is a fully fledged integrated development environment, giving you most important features from other IDEs. Hyper IDE works perfectly on your phone, tablet, computer, or any other device you might have access to with a browser.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-hyper-ide-2.jpg"
+og_image: "/images/og-hyper-ide-2.jpg"
 header:
   image: /assets/images/wizard-flying-through-air-with-hyperlambda-raining-from-stars.webp
 ---
@@ -13,7 +13,7 @@ extension of Magic's [endpoint generator](/dashboard/endpoint-generator/), since
 allows you to edit the Hyperlambda endpoint files after Magic have generated your CRUD backend. Another
 important feature is its ability to help you create [workflows](/workflows/).
 
-![Editing a file in Hyper IDE](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/og-hyper-ide-2.jpg)
+![Editing a file in Hyper IDE](/images/og-hyper-ide-2.jpg)
 
 Hyper IDE also provides integrated autocomplete if your editor has focus and you click CTRL+SPACE
 in Windows or FN+CONTROL+SPACE on your Mac. This allows you to very rapidly create Hyperlambda code,
@@ -21,7 +21,7 @@ while having Hyper IDE ensure your code is using existing slots. Click the _"Sho
 a list of all keyboard shortcuts Hyper IDE provides. Notice, these keyboard shortcuts are only available
 when your code editor has focus.
 
-![Hyper IDE autocomplete](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/hyper-ide-actions.jpg)
+![Hyper IDE autocomplete](/images/hyper-ide-actions.jpg)
 
 ## Hyper IDE features
 

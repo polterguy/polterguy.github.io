@@ -1,7 +1,7 @@
 ---
 title: Task Manager
 description: You can easily create Hyperlambda code that you save for later execution, for then to schedule your task to be executed in the future.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/scheduling-task.jpg"
+og_image: "/images/scheduling-task.jpg"
 header:
   image: /assets/images/wizard-magically-bending-time-and-space.webp
 ---
@@ -11,7 +11,7 @@ tasks for executing, either in a repeating pattern somehow, or at an exact date 
 A Magic task is just a snippet of Hyperlambda code, that is persisted into
 your Magic database, and such can be recalled at any point in the future to be executed at will.
 
-![Hyperlambda task scheduler](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/scheduling-task.jpg)
+![Hyperlambda task scheduler](/images/scheduling-task.jpg)
 
 ## The idea behind the task component
 
@@ -35,7 +35,7 @@ Tasks can be scheduled according to a whole range of different patterns. First o
 a task to be executed at some specific date and time in the future. This is done by simply choosing
 a date and time in the future when you want your task to execute.
 
-![Hyperlambda task scheduler](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/scheduling-tasks.jpg)
+![Hyperlambda task scheduler](/images/scheduling-tasks.jpg)
 
 In addition to scheduling a task to be executed at a specific date and time in the future, you
 can also schedule your task to be repeated according to some sort of repetition pattern. The simplest

@@ -1,7 +1,7 @@
 ---
 title: Configuration
 description: Configuring your server can easily be achieved with a root user using the configuration component in Magic. Configuration settings are immediately applied, and changes your server's behaviour instantly.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/config-component.jpg"
+og_image: "/images/config-component.jpg"
 header:
   image: /assets/images/wizard-configuring-mechanical-device.png
 ---
@@ -10,7 +10,7 @@ The configuration component allows you to view and edit your server's configurat
 is basically your _"appsettings.json"_ file, which is being used in all parts of the system to
 retrieve configuration settings, such as for instance SMTP settings when email slots are sending emails, etc.
 
-![Configuring Magic](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/config-component.jpg)
+![Configuring Magic](/images/config-component.jpg)
 
 You should be careful as you edit your server's configuration settings, since this might
 result in that your server becomes erronously configured, resulting in that your system stops working -

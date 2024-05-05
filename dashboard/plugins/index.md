@@ -1,7 +1,7 @@
 ---
 title: Plugins
 description: With the Bazaar you can rapidly purchase, and/or install free backend micro services on the fly, without interrupting your production environment. Click a button, pay the purchase price if any, download the micro service, and voila! You've got a new micro service solving some problem related to your particular problem.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/bazaar.jpg"
+og_image: "/images/bazaar.jpg"
 header:
   image: /assets/images/wizard-creating-useful-things.webp
 ---
@@ -12,7 +12,7 @@ that contains several pre-fabricated backend micro services, serving some generi
 for instance Stripe payments, OpenAI helpers, and registration helpers. Most plugins automatically takes
 care of creating their databases, and other things required to initialise the plugin.
 
-![Magic's plugins](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/bazaar.jpg)
+![Magic's plugins](/images/bazaar.jpg)
 
 ## How plugins works in Magic
 

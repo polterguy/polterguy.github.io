@@ -1,7 +1,7 @@
 ---
 title: SQL Studio
 description: The web based SQL 'workbench' allows you to execute any SQL, see the result immediately, in addition to storing your frequently used SQL snippets for later.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-editor.jpg"
+og_image: "/images/sql-editor.jpg"
 header:
   image: /assets/images/wizard-creating-sql-statements.webp
 ---
@@ -15,7 +15,7 @@ plugins using [the plugins component](/dashboard/plugins/), you also typically g
 of example SQL statements - Implying SQL Studio is also a nice place to start out if you
 want to teach yourself SQL. To access the SQL editor open up SQL Studio and click _"SQL view"_.
 
-![SQL Studio SQL view](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-editor.jpg)
+![SQL Studio SQL view](/images/sql-editor.jpg)
 
 ## Create and design your database visually
 
@@ -25,7 +25,7 @@ allows you to create new tables, add fields to your tables, and create foreign k
 as you wish. In addition SQL Studio's designer also allows you to create _"link tables"_, automatically
 encapsulating a many to many relationship between two tables.
 
-![SQL Studio design view](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/sql-designer.jpg)
+![SQL Studio design view](/images/sql-designer.jpg)
 
 ## SQL Studio features
 

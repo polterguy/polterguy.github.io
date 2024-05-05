@@ -1,7 +1,7 @@
 ---
 title: Endpoints
 description: This article is the documentation for the most important endpoints you can find in Magic's middleware
-og_image: https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/backend-crud.jpg
+og_image: /images/backend-crud.jpg
 ---
 
 Magic contains a whole range of endpoints, or _"middleware"_ parts, that the system itself
@@ -10,7 +10,7 @@ component and ensure you show your system endpoints.
 Most of these endpoints are for internal use through the Magic dashboard, and should as a general
 rule of thumb _not_ be consumed directly by you - But some of these endpoints are useful for your own projects.
 
-![Endpoints](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/endpoints.jpg)
+![Endpoints](/images/endpoints.jpg)
 
 Notice, all endpoints that requires authorization of some sort assumes a valid JWT token is transmitted
 in the `Authorization` HTTP header as a _"Bearer"_ type of token, and if not, the user will not be

@@ -1,7 +1,7 @@
 ---
 title: Log
 description: The log component allows you to browse your server side log items, verifying your system is optimally functioning and healthy, and/or drill down to see errors occurring in your system.
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/log.jpg"
+og_image: "/images/log.jpg"
 header:
   image: /assets/images/wizard-writing-secret-spells-into-his-spell-book.webp
 ---
@@ -10,7 +10,7 @@ The log component allows you to browse your server's log. When an important even
 Magic, a log entry will typically be created describing the event. Examples of such events
 are when users are logging in, or errors are occuring in the system for some reasons.
 
-![Magic log](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/log.jpg)
+![Magic log](/images/log.jpg)
 
 You can also filter your server's log, looking for specific items, to find bugs happening
 as your system is being used. Notice, if you created a cloudlet at AINIRO.IO, by default all log

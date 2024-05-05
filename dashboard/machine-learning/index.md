@@ -1,7 +1,7 @@
 ---
 title: Machine Learning
 description: Magic allows you to automatically generate your own private AI based Machine Learning model based upon OpenAI and ChatGPT
-og_image: "https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/machine-learning.jpg"
+og_image: "/images/machine-learning.jpg"
 header:
   image: /assets/images/wizard-teaching-robot-magic.webp
 ---
@@ -63,7 +63,7 @@ search engines sees your website. Hence, it is also a somewhat valuable tool to 
 site. Magic's crawler explicitly identifies as a crawler, and obeys by all the standard crawler rules from
 your robots.txt file.
 
-![Scraping your website from machine learning](https://raw.githubusercontent.com/polterguy/polterguy.github.io/master/images/machine-learning.jpg)
+![Scraping your website from machine learning](/images/machine-learning.jpg)
 
 ### Spicing
 
