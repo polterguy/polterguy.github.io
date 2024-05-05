@@ -142,7 +142,7 @@ It works by scraping your website, generating training data in the process, for 
 
 ## Magic Cloud is NOT Open Source
 
-Magic Cloud started as open source. However, the project had 10 million downloads of its NuGet packages, zero contributions, and zero donations, so we could no longer justify maintaining it as an open source project. If you're interested in accessing its source code, we do provide the source with a server license and kubernetes license, which has a cost of $5,000 per month, and $20,000 per month, which gives you access to its source code.
+Magic Cloud started as open source. However, the project had 10 million downloads of its NuGet packages, zero contributions, and zero donations, so we could no longer justify maintaining it as an open source project. We do provide the source code with a server license and Kubernetes license, which has a cost of respectively $5,000 per month and $20,000 per month. If interested, you can [contact Thomas](mailto:thomas@ainiro.io).
 
 ## The goal of the project
 

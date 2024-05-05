@@ -34,11 +34,13 @@ sk-xyGHa45xyzQWEghjKLMNOaBCdQHHllsdf345SFGfdg
 
 The above is obviously _not_ a valid API key, but simply provided to illustrate roughly how it looks like.
 
-### 2. Configuring Magic with reCAPTCHA keys
+### 2. Configuring Magic with reCAPTCHA keys - OPTIONAL
 
 To avoid having your chatbot overrun by bots, you should use some sort of CAPTCHA library. Magic contains its own PoW-based CAPTCHA library, but you might want to use Google reCAPTCHA as an alternative here. You can create a Google reCAPTCHA key pair for free by clicking [here](https://www.google.com/recaptcha). Copy and paste bot the site-key and the secret into the dialog asking you for your reCAPTCHA settings.
 
 ![Screenshot of providing Magic with your reCAPTCHA keys](/assets/images/chatbot-wizard-configure-recaptcha.jpeg)
+
+Since Magic contains its own internal PoW-based CAPTCHA library, this step is optional, and you can just ignore it unless you want extract tight security for your chatbot.
 
 ### 3. Scraping your website
 
@@ -52,17 +54,16 @@ If you provide a sub-URL such as for instance `foo.com/blogs`, the scraper will 
 
 When the process is done, Magic will show you an embed dialog allowing you to copy the JavaScript inclusion script required to embed your chatbot on your site.
 
-![Screenshot of the Chatbot Wizard being finished with scraping a website](/assets/images/chatbot-wizard-after-scraping.jpeg)
+![Screenshot of the Chatbot Wizard being finished with scraping a website](/assets/images/chatbot-wizard-after-scraping-2.jpeg)
 
-At this point you can already embed your chatbot on your website. Choose your theme, title, button text, etc - And click the _"Copy"_ button. This will put the HTML required to embed your chatbot on your own website onto your clipboard. The settings you can choose when embedding implies as follows.
+At this point you can already embed your chatbot on your website. Choose your theme, title, button text, etc - And click the _"Copy HTML"_ button. This will put the HTML required to embed your chatbot on your website onto your clipboard. The settings you can choose when embedding implies as follows.
 
+* Follow up - Whether or not the chatbot should display follow questions. Notice, requires a special system instruction instructing OpenAI to generate follow up questions.
 * References - If the chatbot should provide citations from your website
-* Chat - Must be true to enable chatting
-* Markdown - If the chatbot should transform the result from Markdown to HTML
-* Speech - If true, the chatbot will support speech recognition and speech synthesis
 * RTL - For Arabic, Hebrew, Farsi and other right to left language
-* Submit button - If the chatbot should have a submit button
-* Stream - If the chatbot should stream its results back to the client
+* Clear button - If the chatbot should have a _"start new session"_ button
+* Copy button - If the chatbot should have a _"copy response to clipboard"_ button
+* New tab - If the chatbot should open all hyperlinks in new tabs
 
 If you want to see how the different themes looks like, you can try all different themese [here](https://ainiro.io/blog/try-our-chatbot-themes).
 
