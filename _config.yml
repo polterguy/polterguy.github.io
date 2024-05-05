@@ -15,14 +15,6 @@ atom_feed:
 og_image: "/assets/images/magic-documentation.png"
 breadcrumbs: true
 
-# Google Analytics tracking code
-google_analytics: G-T5962ES73V
-analytics:
-  provider: "google-gtag"
-  google:
-    tracking_id: "G-T5962ES73V"
-    anonymize_ip: false # default
-
 # Copyright displayed in the bottom right corner
 copyright: Copyright © Thomas Hansen, 2019 - 2024
 
