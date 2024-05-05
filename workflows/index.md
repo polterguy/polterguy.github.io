@@ -91,11 +91,11 @@ execute:magic.workflows.actions.execute
 
 This results in a _"point and click software development model"_, where complexity is hidden to an extent where the cognitive requirements to produce working code is almost completely absent.
 
-### Plugins
+### Custom actions in Plugins
 
 Many plugins found in the [Plugins](/plugins/) component comes with additional actions you can consume. For instance the _"Stripe"_ plugin contains Stripe related actions, allowing you to easily consume Stripe's API and accept payments in your backend code.
 
-Refer to each individual plugin's description to see which actions a specific plugin contain, if any.
+Refer to each individual plugin's description to see which actions a specific plugin contains, if any.
 
 ## Meta programming
 

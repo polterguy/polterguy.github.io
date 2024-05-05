@@ -1,6 +1,6 @@
 ---
 title: Hyperlambda
-description: Hyperlambda is a relational file format allowing you to create execution trees, replacing XML as a dynamic markup language for declarative programming
+description: Hyperlambda is a relational file format allowing you to create execution trees, replacing XML as a dynamic markup language for declarative programming and Low-Code and No-Code workflow creation.
 header:
   image: /assets/images/hyperlambda-wizard.webp
   image_description: Wizard flying through the air symbolizing the power of Hyperlambda
@@ -28,12 +28,11 @@ for-each:x:@.data/*
    log.info:x:@.dp/#
 ```
 
-The above code _"declares"_ a `for-each` loop, that iterates through each of our **[.data]** node's children, and creates a log entry with its value as it iterates.
+The above code _"declares"_ a `for-each` loop, that iterates through each of our **[.data]** node's children, and creates a log entry with its value as it iterates. The above invocation to **[for-each]** is referred to as a _"slot invocation"_, and the **[for-each]** slot is implemented in C#, specifically in the [magic.lambda](/plugins/magic.lambda/#how-to-use-for-each) project. Typically we refer to such slots in Magic's documentation using square brackets and bold text.
 
-The above invocation to **[for-each]** is referred to as a _"slot invocation"_, and the **[for-each]** slot is implemented in C#, specifically in the [magic.lambda](/plugins/magic.lambda/#how-to-use-for-each) project. Typically we refer to such slots in Magic's documentation using square brackets and bold text.
+Hyperlambda contains slots for all the most important programming constructs, such as **[if]**, **[while]**, **[slots.create]**, **[execute-file]**, etc - Allowing you to use it as if it was a programing language, even though technically it's not. Most of these slots are declared in the project called _"magic.lambda"_ - But Magic actually contains almost 40 satellite projects, most of whom contains separate slots, that are somehow extending Magic with things such as database functions, file functions, etc.
 
-Hyperlambda contains slots for all the most important programming constructs, such as **[if]**, **[while]**, **[slots.create]**, **[execute-file]**, etc - Allowing you to use it as if it was a programing language, even though technically it's not. Most of these slots are declared in the project called _"magic.lambda"_.
-
+* [See documentation for all plugins](/plugins/)
 * [Read more about magic.lambda](/plugins/magic.lambda/)
 
 ## Hyperlambda structure
@@ -46,7 +45,47 @@ Hyperlambda is based upon nodes. Nodes have the following attributes.
 
 The name is separated from its value by a `:`, and children are found beneath a node, with 3 additional SP characters to _"scope"_ them as children of its above node. In the above example, our **[.data]** node has 3 children; **[item1]**, **[item2]**, and **[item3]**.
 
-Contrary to JSON, Hyperlambda does _not_ require unique names. JSON maps to fields, which is a dictionary - While Hyperlambda nodes have a _list_ of children and is not using a dictionary that requires unique names. This has huge syntactic advantages, making it much less verbose, while still being ridiculously fast to parse. To illustrate the advantage, try to imagine how you would declare a segment in JSON having two consecutive **[if]** nodes.
+Contrary to JSON, Hyperlambda does _not_ require unique names. JSON maps to fields, which is a dictionary - While Hyperlambda nodes have a _list_ of children and is not using a dictionary that requires unique names. This has huge syntactic advantages, making it much less verbose, while still being ridiculously fast to parse. To illustrate the advantage, try to imagine how you would declare a segment in JSON having two consecutive **[if]** nodes. To give you an idea below is an example JSON segment illustrating this.
+
+```json
+{
+   [
+      {
+         "name": "if",
+         "value": "@SOME_EXPRESSION",
+         "type": "expression",
+         "args": [
+            {
+               "name": "log.info",
+               "value": "YES!",
+               "type": "string"
+            }
+         ]
+      },
+      {
+         "name": "else",
+         "value": "@SOME_EXPRESSION",
+         "type": "expression",
+         "args": [
+            {
+               "name": "log.info",
+               "value": "Nope!",
+               "type": "string"
+            }
+         ]
+      }
+   ]
+}
+```
+
+In Hyperlambda the equivalent of the above JSON would resemble the following.
+
+```
+if:x:@SOME_EXPRESSION
+   log.info:Yes!
+else
+   log.info:Nope!
+```
 
 Hyperlambda is the name of the file format in its text representation. Lambda is the name of the nodes in memory, after having been parsed into a graph object. This distinction is similar to XML, operating with XML DOM or the XML Document Object Model.
 
