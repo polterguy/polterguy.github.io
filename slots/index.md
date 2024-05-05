@@ -1,6 +1,6 @@
 ---
 title: Slots
-description: Here you can find the documentation for the most important dynamic slots you can find in Magic's middleware
+description: Documentation for the most important dynamic slots you can find in Magic's middleware
 ---
 
 Magic creates the following dynamic slots during startup. Notice, most of these slots are there exclusively

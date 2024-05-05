@@ -87,19 +87,27 @@ else
    log.info:Nope!
 ```
 
-Hyperlambda is the name of the file format in its text representation. Lambda is the name of the nodes in memory, after having been parsed into a graph object. This distinction is similar to XML, operating with XML DOM or the XML Document Object Model.
+Using YAML would simplify the above JSON, but still not even come close to the simplicity of the Hyperlambda structure. Still Hyperlambda benefits from all the advantages of JSON, such as being easy to parse, extremely fast, and easy to dynamically change, since it's an object with children that you can insert new objects into and modify dynamically.
 
-It could be argued that Hyperlambda is a simplified and humanly readable XML alternative.
+Being able to dynamically change your code is of course crucial as you create code that generates and maintains code, similarly to how being able to dynamically mutate objects in JavaScript is crucial to manipulate data. The last point sums up the advantage of Hyperlambda, since instead of imagining Hyperlambda as static and immutable code, try to instead to imagine it as data, which just so happens to be possible to execute since it's a graph object mapping towards `if` constructs, `while` constructs, function invocations, etc.
 
-* [Read more about nodes](/plugins/magic.node/)
+> Hyperlambda's purpose is to be a mutable piece of executable code that you can change according to your needs
+
+## Lambda objects and Hyperlambda
+
+Hyperlambda is the name of the file format in its text representation, while lambda is the name of the nodes in memory, after having been parsed into a graph object. This distinction is similar to XML, operating with XML DOM or the XML Document Object Model, and XML itself being a file format. It is also similar to how JavaScript and JSON works, where JSON is a file format describing data, but also at the same time it's actually JavaScript too, or _"a JavaScript object"_ to be precise.
+
+It could be argued that Hyperlambda is a simplified and humanly readable alternative to XML and JSON.
+
+* [Read more about nodes](/plugins/magic.node/) to understand the difference between lambda objects and Hyperlambda.
 
 ## Lambda expressions
 
 Lambda expressions are what allows you to reference nodes in your lambda objects. They're similar to XPath, but have more features, and are in general more powerful.
 
-Technically Hyperlambda doesn't have variables. This is because _everything_ is a potential variable in Hyperlambda. However, by convention the Hyperlambda executor will not evaluate nodes prepended with a `.` character. This allows you to declare _"data segments"_ by prepending your node's name with a dot, such as illustrated in our above example with our **[.data]** node.
+Technically Hyperlambda doesn't have variables. This is because _everything_ is a potential variable in Hyperlambda. However, by convention the Hyperlambda executor will not evaluate nodes starting with a `.` character. This allows you to declare _"data segments"_ by prepending your node's name with a dot, such as illustrated in our above example with our **[.data]** node.
 
-Without the dot character in our above example, the Hyperlambda execution engine would attempt to invoke **[data]** as a _"slot"_. There's no slot named **[data]** so this would result in a runtime error.
+Without the dot character in our above example, the Hyperlambda execution engine would attempt to invoke **[data]** as a _"slot"_. Since there's no slot named **[data]**, this would result in a runtime error or an exception.
 
 * [Read more about lambda expressions](/plugins/magic.node/#lambda-expressions)
 
@@ -132,7 +140,7 @@ add:x:@.destination
    get-nodes:x:@.source/*
 ```
 
-The above **[add]** node for instance, is given a lambda object containing one node, being **[get-nodes]**. Our above **[get-nodes]** invocation is executed first, becoming the source for our **[add]** invocation - Resulting in the following result after execution.
+The above **[add]** node for instance, is given a lambda object containing one child node, being **[get-nodes]**. Our above **[get-nodes]** invocation is executed first, becoming the source for our **[add]** invocation - Resulting in the following result after execution.
 
 ```
 .source

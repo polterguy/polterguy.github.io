@@ -1,22 +1,16 @@
 ---
 title: Chatbot Wizard
-description: Magic allows you to create an AI chatbot that you can embed into your website in some few minutes. Point Magic to your website, automatically scrape your site, and you're done.
+description: Magic allows you to create an AI chatbot that you can embed on your website. Point Magic to your website, automatically scrape your site, and you're done.
 og_image: "/images/custom-chatgpt-chatbot.jpg"
 header:
   image: /assets/images/wizard-magically-pulling-ai-chatbots-our-of-cauldron.webp
 ---
 
-The Chatbot Wizard component allows you to rapidly create an AI website chatbot powered by OpenAI that you can embed on
-your website. It's not as powerful as the [Machine Learning](/dashboard/machine-learning/) component, but much easier to use.
-You can start out with the Chatbot Wizard, for then to later configure your model with the Machine Learning component.
+The Chatbot Wizard component allows you to rapidly create an AI website chatbot powered by OpenAI that you can embed on your website. It's not as powerful as the [Machine Learning](/dashboard/machine-learning/) component, but much easier to use. You can start out with the Chatbot Wizard, for then to later configure your model with the Machine Learning component.
 
-![Scraping your website for custom AI chatbot data](/images/custom-chatgpt-chatbot.jpg)
+![Screenshot of scraping your website for custom AI chatbot RAG data](/images/custom-chatgpt-chatbot.jpg)
 
-You'll need an OpenAI API account, and provide Magic with your API key. In addition you'll need a reCAPTCHA account,
-and provide your site-key and secret to Magic. Once you've done this, you can provide your website URL,
-click a button, and some few minutes later you've got an AI chatbot you can include on your website.
-Once you're done with this process, you can further configure your model using the Machine Learning component,
-manually adding training snippets, edit training snippets, etc.
+You'll need an OpenAI API account, and provide Magic with your API key. You can optionally configure reCAPTCHA if you want to, but Magic contains Magic CAPTCHA out of the box, which should be good enough for most. Once you've done this, you can provide your website URL, click a button, and some few minutes later you've got an AI chatbot you can include on your website. Once you're done with this process, you can further configure your model using the Machine Learning component, manually adding training snippets, edit training snippets, etc.
 
 In the bottom/right corner of this page you can try our chatbot to understand roughly what you'll end up with.
 
@@ -28,7 +22,7 @@ The process of creating an AI chatbot is fairly straight forward. The following 
 
 To create your own AI chatbot you first have to supply Magic with your OpenAI API key.
 
-![Providing Magic with your OpenAI API key](/assets/images/chatbot-wizard-configure-openai.jpeg)
+![Screenshot of configuring Magic with your OpenAI API key](/assets/images/chatbot-wizard-configure-openai.jpeg)
 
 If you don't have an OpenAI API key you can click [here](https://platform.openai.com/api-keys) to go to OpenAI's platform and create one. Notice, you have to _make at least one payment to OpenAI before you're given access to GPT4_.
 
@@ -38,32 +32,29 @@ Your API key should resemble the following;
 sk-xyGHa45xyzQWEghjKLMNOaBCdQHHllsdf345SFGfdg
 ```
 
-Notice, the above is _not_ a valid API key, but just provided to illustrate how it looks like.
+The above is obviously _not_ a valid API key, but simply provided to illustrate roughly how it looks like.
 
-### 2. Configuring magic with reCAPTCHA keys
+### 2. Configuring Magic with reCAPTCHA keys
 
-To avoid having your chatbot overrun by bots, you want to use Google reCAPTCHA. You can create a Google reCAPTCHA key pair for free by clicking [here](https://www.google.com/recaptcha). Copy and paste bot the site-key and the secret into the dialog asking you for your reCAPTCHA settings.
+To avoid having your chatbot overrun by bots, you should use some sort of CAPTCHA library. Magic contains its own PoW-based CAPTCHA library, but you might want to use Google reCAPTCHA as an alternative here. You can create a Google reCAPTCHA key pair for free by clicking [here](https://www.google.com/recaptcha). Copy and paste bot the site-key and the secret into the dialog asking you for your reCAPTCHA settings.
 
-![Providing Magic with your reCAPTCHA keys](/assets/images/chatbot-wizard-configure-recaptcha.jpeg)
-
-Before you click start, you can choose a flavor, how many pages you want to scrape, what base model from OpenAI to use, if you want to automatically recrawl the website once every 24 hours, and if you want to automatically vectorize the website once you're done scraping it.
+![Screenshot of providing Magic with your reCAPTCHA keys](/assets/images/chatbot-wizard-configure-recaptcha.jpeg)
 
 ### 3. Scraping your website
 
+Before you click start, you can choose a flavor, how many pages you want to scrape, what base model from OpenAI to use, if you want to automatically recrawl the website once every 24 hours, and if you want to automatically vectorize the website once you're done scraping it. You can also choose a _"flavor"_ which is a template for a system message or OpenAI instruction. If you choose a flavor with the word _"DYNAMIC"_ in its name, the system message will be dynamically created according to the landing page of the website you are crawling, and typically produce a mugh higher quality chatbot for you. We recommend using _"Frank - DYNAMIC"_ here.
+
 Finally you can scrape your website. Provide the chatbot wizard with your website's URL, and click the _"Start"_ button.
 
-![Scraping your website to create an AI chatbot](/assets/images/chatbot-wizard-scrape-website.jpeg)
+![Screenshot of scraping your website to create an AI chatbot using the Chatbot Wizard](/assets/images/chatbot-wizard-scrape-website.jpeg)
 
-If you provide a sub-URL such as for instance `foo.com/blogs`, the scraper will only scrape pages beneath `/blogs`.
-This allows you to scrape an explicitly defined sub-portion of your website, and such have some control over
-which pages are being scraped.
+If you provide a sub-URL such as for instance `foo.com/blogs`, the scraper will only scrape pages beneath `/blogs`. This allows you to scrape an explicitly defined sub-portion of your website, and such have some control over which pages are being scraped.
 
-When the process is done, Magic will show you an embed dialog allowing you to
-copy the JavaScript inclusion script required to embed your chatbot on your site.
+When the process is done, Magic will show you an embed dialog allowing you to copy the JavaScript inclusion script required to embed your chatbot on your site.
 
-![Chatbot Wizard is done with scraping a website](/assets/images/chatbot-wizard-after-scraping.jpeg)
+![Screenshot of the Chatbot Wizard being finished with scraping a website](/assets/images/chatbot-wizard-after-scraping.jpeg)
 
-At this point you can already embed your chatbot on your website. Choose your theme, title, button text, etc - And click the _"Copy"_ button. This will put the HTML required to embed your chatbot on your own website on your clipboard. The last settings implies.
+At this point you can already embed your chatbot on your website. Choose your theme, title, button text, etc - And click the _"Copy"_ button. This will put the HTML required to embed your chatbot on your own website onto your clipboard. The settings you can choose when embedding implies as follows.
 
 * References - If the chatbot should provide citations from your website
 * Chat - Must be true to enable chatting

@@ -1,34 +1,22 @@
 ---
 title: Endpoints
-description: This article is the documentation for the most important endpoints you can find in Magic's middleware
+description: Documentation for the most important endpoints you can find in Magic's middleware
 og_image: /images/backend-crud.jpg
 ---
 
-Magic contains a whole range of endpoints, or _"middleware"_ parts, that the system itself
-relies upon to function. You can play around with these endpoints by using the [Endpoints](/dashboard/endpoints/)
-component and ensure you show your system endpoints.
-Most of these endpoints are for internal use through the Magic dashboard, and should as a general
-rule of thumb _not_ be consumed directly by you - But some of these endpoints are useful for your own projects.
+Magic contains a whole range of endpoints, or _"middleware"_ parts, that the system itself relies upon to function. You can play around with these endpoints by using the [Endpoints](/dashboard/endpoints/) component and ensure you show your system endpoints. Most of these endpoints are for internal use through the Magic dashboard, and should as a general rule of thumb _not_ be consumed directly by you - But some of these endpoints are useful for your own projects.
 
-![Endpoints](/images/endpoints.jpg)
+![Screenshot of the Endpoints component](/images/endpoints.jpg)
 
-Notice, all endpoints that requires authorization of some sort assumes a valid JWT token is transmitted
-in the `Authorization` HTTP header as a _"Bearer"_ type of token, and if not, the user will not be
-allowed to invoke the endpoint, and an HTTP status code of 401 will be returned. To retrieve a JWT token
-use the `magic/system/auth/authenticate` endpoint.
+Notice, all endpoints that requires authorization of some sort assumes a valid JWT token is transmitted in the `Authorization` HTTP header as a _"Bearer"_ type of token, and if not, the user will not be allowed to invoke the endpoint, and an HTTP status code of 401 will be returned. To retrieve a JWT token use the `magic/system/auth/authenticate` endpoint. When you use the Endpoint component, it will automatically associate your existing JWT token with your invocations.
 
 ## Authentication and authorisation endpoints
 
-These are the endpoints related to the authentication and authorisation parts of Magic. You can find
-their Hyperlambda files in the _"/system/auth/"_ folder. These endpoints are typically useful for you
-as you implement your own authentication logic in your own code, and most of these endpoints
-are intended for you to consume yourself as you see fit.
+These are the endpoints related to the authentication and authorisation parts of Magic. You can find their Hyperlambda files in the _"/system/auth/"_ folder. These endpoints are typically useful for you as you implement your own authentication logic in your own code, and most of these endpoints are intended for you to consume yourself as you see fit.
 
 ### GET magic/system/auth/authenticate
 
-This endpoint allows you to authenticate towards your Magic backend with a username and password
-combination. It's mostly a thin layer on top of your **[magic.auth.authenticate]** slot.
-**[magic.auth.authenticate]** requires two query arguments being as follows.
+This endpoint allows you to authenticate towards your Magic backend with a username and password combination. It's mostly a thin layer on top of your **[magic.auth.authenticate]** slot. **[magic.auth.authenticate]** requires two query arguments being as follows.
 
 * __[username]__ - Username of user wanting to authenticate
 * __[password]__ - Password of user wanting to authenticate
@@ -115,11 +103,8 @@ it requires no arguments.
 ```
 [
   {
-    "name": "Babel Fish",
     "version": "v1.0.0",
-    "module_name": "babelfish",
-    "installed_by": "root",
-    "installed": "2022-01-31T06:03:01.669Z"
+    "module_name": "babelfish"
   }
 ]
 ```
