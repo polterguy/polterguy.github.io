@@ -21,3 +21,4 @@ Below are tutorials about how to get started with Magic. Most of these are accom
 * [Create Custom Actions for your Hyperlambda Workflows](https://ainiro.io/blog/create-custom-actions-for-your-hyperlambda-workflows)
 * [Create a login API endpoint with Actions and Workflows](https://ainiro.io/blog/create-a-login-api-endpoint-in-4-minutes)
 * [Create a registration endpoint with Actions and Workflows](https://ainiro.io/blog/create-a-registration-api-in-15-minutes)
+* [Magic CAPTCHA](/tutorials/magic-captcha-outperforming-google-2567-times/)
