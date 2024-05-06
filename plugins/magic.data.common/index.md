@@ -2,7 +2,7 @@
 title: magic.data.common
 ---
 
-The magic.data.commonproject is the generic data adapter, that transform dynamically from a lambda node
+This project is the generic data adapter, that transform dynamically from a lambda node
 structure into SQL, and polymorphistically invokes your specialised data adapter, resulting in SQL
 statements executed towards your database type of choice. In addition, it contains helper slots to give
 you more _"raw"_ database access, in addition to slots helping you to open database connections,
