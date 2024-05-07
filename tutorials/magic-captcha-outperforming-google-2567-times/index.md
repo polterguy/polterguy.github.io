@@ -67,9 +67,42 @@ PoW on the Blockchain implies having a seed value starting out at e.g. 0 that yo
 
 For most endpoints where Magic CAPTCHA is feasible, a workload of 3 or possibly 4 is a good value. 5 implies generating a token might take minutes, even on an M3 CPU. 2 is too small, and barely uses the CPU at all before a valid token has been generated.
 
+## The frontend code
+
+To understand how Magic CAPTCHA works, it might be easier for some to look at its code. Below is a typicaly JavaScript client library to generates a CAPTCHA token.
+
+```javascript
+(function() {
+window.mcaptcha = {};
+mcaptcha.token = async function(callback, workload = 3) {
+  const now = Date.now();
+  const toHash = '[[public-key]];' + now;
+  let seed = 0;
+  const trailing = '0'.repeat(workload);
+  while (true) {
+    const uIntArray = new TextEncoder('utf-8').encode(toHash + ';' + seed);
+    const array = await crypto.subtle.digest('SHA-256', uIntArray);
+    const hashArray = Array.from(new Uint8Array(array));
+    const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
+    if (hashHex.endsWith(trailing)) {
+      const token = hashHex + ';' + now + ';' + seed;
+      const finished = Date.now();
+      callback(token);
+      return;
+    }
+    seed += 1;
+  }
+}
+})();
+```
+
+The point about the above code is that it's a mathematical _"trapdoor"_, which forces the client to create thousands of SHA256 value to generate a valid token. Creating one SHA256 is very fast, but creating 5,000 SHA256 values is where it starts to become a expensive from a CPU perspective.
+
+The server on the other hand can easily verify the token by creating a single SHA256, while the client needs to generate thousands of SHA256 values to create a valid token.
+
 ## Benefits
 
-First of all, Magic CAPTCHA is literally 0.04% of the size of reCAPTCHA, implying it has zero negative consequences for your page load speed - Where Google's reCAPTCHA typically eats up 25% of your total page load speed according to Google's own measurement tools. This implies that for pages that needs to load fast, reCAPTCHA is **fundamentally broken**. Magic CAPTCHA is _not_ broken, and has _zero_ consequences for your page load speed.
+First of all, Magic CAPTCHA is literally 0.04% of the size of reCAPTCHA, implying it has zero negative consequences for your page load speed - Where Google's reCAPTCHA typically eats up 25% of your total page load speed according to Google's own measurement tools. This implies that for pages that need to load fast, reCAPTCHA is **fundamentally broken**. Magic CAPTCHA is _not_ broken, and has _zero_ consequences for your page load speed.
 
 In addition Google's reCAPTCHA will constantly invoke Google with information about events occurring on your page. This eats up more bandwidth, which becomes a really big deal on phones and tablets with slow internet connections.
 
