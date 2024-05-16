@@ -14,4 +14,10 @@ In addition to allowing you to connect to external databases, this is also the p
 
 ## Adding a connection string
 
-It is important that you exchange your catalogue name, or database name, with the text _"{database}"_. This is because Magic needs to be able to dynamically connect to multiple catalogues or databases in your database server.
+It is important that you exchange your catalogue name, or database name, with the text _"{database}"_. This is because Magic needs to be able to dynamically connect to multiple catalogues or databases in your database server. Magic needs to be able to read system databases, in addition to connecting generically to any database in your system it's got access to. This is why it'll need the above `{database}` parts in its connection string.
+
+If you're hosting your database in for instance Azure or AWS, you might also have to white list your cloudlet's IP address. You can get the IP address by [contacting AINIRO](mailto:team@ainiro.io) and ask us about it.
+
+## Backup your SQLite databases
+
+Every now and then, you should download a backup of your SQLite databases to make sure you've got a local backup if something goes wrong. We have global backups of our K8S volumes as a whole, but it might also be beneficial to have local backups in your own machine too.
