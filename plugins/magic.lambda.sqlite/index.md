@@ -20,6 +20,7 @@ this project contains are as follows.
 * __[sqlite.transaction.commit]__ - Explicitly commits an open transaction
 * __[sqlite.transaction.rollback]__ - Explicitly rolls back an open transaction
 * __[sqlite.connections.flush]__ - Flushed cached schemas and connection pools
+* __[sqlite.backup]__ - Creates a backup of the currently active database
 
 **Notice** - If you use any of the CRUD slots from above, the whole idea is that you can polymorphistically
 use the same lambda object, towards any of the underlaying database types, and the correct specific syntax
@@ -33,4 +34,16 @@ slots, instead of the generic, and/or polymorphistic slots.
 Hence, please refer to the documentation for _"magic.data.common"_ to see the complete documentation for this
 project. If you need for instance documentation about the **[sqlite.connect]** slot you should look for the
 documentation for **[data.connect]**, since it's more or less the exact same documentation.
+
+## How to use [sqlite.backup]
+
+To create a backup of the database called for instance _"foo"_, you would use code resembling the following.
+
+```
+sqlite.connect:[generic|foo]
+   sqlite.backup:foo.backup
+```
+
+The above will create a backup of your foo database and store it at _"/data/foo.backup"_, allowing you to restore it if
+it for some reasons becomes invalid.
 
