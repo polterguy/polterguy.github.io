@@ -2,9 +2,9 @@
 title: Magic CAPTCHA - Outperforming Google reCAPTCHA by 2,567 times
 ---
 
-Magic CAPTCHA is an alternative to Google reCAPTCHA and is used by Magic internally. It is based upon Proof of Work (PoW), and is tiny in comparison to reCAPTCHA. In fact, Google's reCAPTCHA is 2,567 times larger on bandwidth consumption than Magic CAPTCHA.
+Magic CAPTCHA is an alternative to Google reCAPTCHA and is used by Magic internally. It is based upon Proof of Work (PoW), and is tiny in comparison to reCAPTCHA. In fact, Google's reCAPTCHA is 2,143 times larger on bandwidth consumption than Magic CAPTCHA.
 
-* Magic CAPTCHA - 662 bytes
+* Magic CAPTCHA - 793 bytes
 * Google reCAPTCHA 1.7MB
 
 This is a big deal since the more JavaScript you put on your page, the slower your site will load - And to further the insult reCAPTCHA is blocking JavaScript, so it basically _"destroys"_ your website's experience as you include it on your page. Magic CAPTCHA typically loads in 0.050 seconds, implying 50 milliseconds - While reCAPTCHA needs several seconds to load, typically 2 to 5 seconds even on a high bandwidth connection. You can read more about the basic idea of PoW-based CAPTCHA in the articles below.
@@ -42,7 +42,7 @@ mcaptcha.token(function (token) {
 The last argument to the `token` function is the workload, implying the number of trailing zeros before a valid token has been generated. The path to your magic-captcha.js file is typically something as follows.
 
 ```
-YOUR-CLOUDLET.us.ainiro.io/magic/system/misc/magic-captcha.js
+YOUR-CLOUDLET.us.ainiro.io/magic/system/misc/magic-captcha-challenge.js
 ```
 
 Once your client has a valid token, you have n seconds to invoke your server before the token is no longer considered valid. This is because the UTC time for generating the token is a part of its value, and the server will only allow for tokens that are fresher than n seconds to be considered. You can configure this value by overriding it on your server with an **[age]** argument to your invocation to the **[magic.auth.captcha-verify]** slot, but the default value is 10000, implying 10 seconds (10,000 milliseconds).
@@ -73,36 +73,52 @@ To understand how Magic CAPTCHA works, it might be easier for some to look at it
 
 ```javascript
 (function() {
+
 window.mcaptcha = {};
+
 mcaptcha.token = async function(callback, workload = 3) {
-  const now = Date.now();
-  const toHash = '[[public-key]];' + now;
-  let seed = 0;
-  const trailing = '0'.repeat(workload);
-  while (true) {
-    const uIntArray = new TextEncoder('utf-8').encode(toHash + ';' + seed);
-    const array = await crypto.subtle.digest('SHA-256', uIntArray);
-    const hashArray = Array.from(new Uint8Array(array));
-    const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
-    if (hashHex.endsWith(trailing)) {
-      const token = hashHex + ';' + now + ';' + seed;
-      const finished = Date.now();
-      callback(token);
-      return;
-    }
-    seed += 1;
-  }
+  const url = '[[url]]';
+  fetch(url + '/magic/system/misc/challenge')
+    .then(res => {
+      if (res.status >= 200 && res.status <= 299) {
+        return res.json();
+      } else {
+        throw res;
+      }
+    })
+    .then(async res => {
+      const toHash = '[[public-key]];' + res.result;
+      let seed = 0;
+      const trailing = '0'.repeat(workload);
+      while (true) {
+        const uIntArray = new TextEncoder('utf-8').encode(toHash + ';' + seed);
+        const array = await crypto.subtle.digest('SHA-256', uIntArray);
+        const hashArray = Array.from(new Uint8Array(array));
+        const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
+        if (hashHex.endsWith(trailing)) {
+          const token = hashHex + ';' + res.result + ';' + seed;
+          callback(token);
+          return;
+        }
+        seed += 1;
+      }
+    }).catch(err => {
+      err.json().then(err => {
+        console.log(err);
+        alert('Could not get Magic CAPTCHA challenge, contact sys admin');
+      });
+    });
 }
 })();
 ```
 
-The point about the above code is that it's a mathematical _"trapdoor"_, which forces the client to create thousands of SHA256 value to generate a valid token. Creating one SHA256 is very fast, but creating 5,000 SHA256 values is where it starts to become a expensive from a CPU perspective.
+The point about the above code is that it's a mathematical _"trapdoor"_, which forces the client to create thousands of SHA256 value to generate a valid token, based upon a challenge returned by the server. Creating one SHA256 is very fast, but creating 5,000 SHA256 values is where it starts to become a expensive from a CPU perspective.
 
 The server on the other hand can easily verify the token by creating a single SHA256, while the client needs to generate thousands of SHA256 values to create a valid token.
 
 ## Benefits
 
-First of all, Magic CAPTCHA is literally 0.04% of the size of reCAPTCHA, implying it has zero negative consequences for your page load speed - Where Google's reCAPTCHA typically eats up 25% of your total page load speed according to Google's own measurement tools. This implies that for pages that need to load fast, reCAPTCHA is **fundamentally broken**. Magic CAPTCHA is _not_ broken, and has _zero_ consequences for your page load speed.
+First of all, Magic CAPTCHA is literally 0.05% of the size of reCAPTCHA, implying it has zero negative consequences for your page load speed - Where Google's reCAPTCHA typically eats up 25% of your total page load speed according to Google's own measurement tools. This implies that for pages that need to load fast, reCAPTCHA is **fundamentally broken**. Magic CAPTCHA is _not_ broken, and has _zero_ consequences for your page load speed.
 
 In addition Google's reCAPTCHA will constantly invoke Google with information about events occurring on your page. This eats up more bandwidth, which becomes a really big deal on phones and tablets with slow internet connections.
 
