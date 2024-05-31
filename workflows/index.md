@@ -12,7 +12,7 @@ Magic implements workflows using [Hyperlambda](/hyperlambda/), which largely eli
 
 To understand the above point, try to compare a Hyperlambda Workflow file with the equivalent XML-based workflow file. The Hyperlambda file is easily understood, while its XML equivalent is roughly as readable as machine code instructions. Watch the following video to understand how such workflows are built.
 
-<iframe style="margin-left: auto; margin-right: auto; width: 560px; max-with: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/ITz1ASqsWoM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe style="margin-left: auto; margin-right: auto; width: 560px; max-width: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/ITz1ASqsWoM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ## Advantages
 
@@ -20,7 +20,7 @@ Being able to _"drag'n'drop"_ backend code together the way we do in the above v
 
 Obviously using LOC as a measure stick for productivity is typically not a good thing, but these were production grade lines of code, highly secure, scalable, and performing in regards to all neutral metrics - And I produced something _useful_ that would require _a lot_ of manual coding to create. In the following video I am creating a complete registration API in 15 minutes to illustrate the point.
 
-<iframe style="margin-left: auto; margin-right: auto; width: 560px; max-with: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/Ntunzh-DdaY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe style="margin-left: auto; margin-right: auto; width: 560px; max-width: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/Ntunzh-DdaY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 The point being that creating a registration API manually is a task that might take weeks of manual coding. Doing it in 15 minutes obviously has advantages, especially considering the skill level required to accomplish the above in Hyperlambda, which is close to nothing.
 

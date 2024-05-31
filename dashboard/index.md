@@ -12,7 +12,7 @@ The Magic Dashboard is how you would manage your cloudlet. When you login to you
 
 In addition to the elements shown in the above screenshot, you will have a _"splash screen"_ containing some hyperlinks, and also a YouTube playlist that helps you configure your cloudlet, mostly focusing on creating AI chatbots initially. Below is the entire video series if you prefer watching it here.
 
-<iframe style="margin-left: auto; margin-right: auto; width: 560px; max-with: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL_iESc2yi8IUCwO1TDft2oAfrUvJHuzU9" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe style="margin-left: auto; margin-right: auto; width: 560px; max-width: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL_iESc2yi8IUCwO1TDft2oAfrUvJHuzU9" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ## Components
 

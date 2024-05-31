@@ -69,6 +69,6 @@ If you want to see how the different themes looks like, you can try all differen
 
 For a complete walkthrough of the entire process, including things not discussed in this article, you can watch the [following YouTube playlist](https://www.youtube.com/watch?v=VdF8F6tvgqQ&list=PL_iESc2yi8IUCwO1TDft2oAfrUvJHuzU9).
 
-<iframe style="margin-left: auto; margin-right: auto; width: 560px; max-with: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL_iESc2yi8IUCwO1TDft2oAfrUvJHuzU9" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe style="margin-left: auto; margin-right: auto; width: 560px; max-width: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL_iESc2yi8IUCwO1TDft2oAfrUvJHuzU9" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 When you're done with the above you probably want to use the [Machine Learning component](/dashboard/machine-learning/) to further configure and manage your chatbot.

@@ -38,5 +38,5 @@ The authentication and authorisation system in Magic is very flexible, and allow
 
 In the video below, I am creating a custom registration module in 15 minutes if you're interested in seeing how to create your own custom auth module.
 
-<iframe style="margin-left: auto; margin-right: auto; width: 560px; max-with: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/Ntunzh-DdaY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe style="margin-left: auto; margin-right: auto; width: 560px; max-width: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/Ntunzh-DdaY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 

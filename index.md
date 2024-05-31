@@ -23,7 +23,7 @@ it into an API. It's a fairly complex workflow too, handling Stripe payments - S
 experienced software developers often struggle with. In the video I wire up Stripe payments in some
 few minutes using declarative programming and workflows.
 
-<iframe style="margin-left: auto; margin-right: auto; width: 560px; max-with: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/ITz1ASqsWoM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe style="margin-left: auto; margin-right: auto; width: 560px; max-width: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/ITz1ASqsWoM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ## The Magic Dashboard
 
