@@ -22,3 +22,4 @@ Below are tutorials about how to get started with Magic. Most of these are accom
 * [Create a login API endpoint with Actions and Workflows](https://ainiro.io/blog/create-a-login-api-endpoint-in-4-minutes)
 * [Create a registration endpoint with Actions and Workflows](https://ainiro.io/blog/create-a-registration-api-in-15-minutes)
 * [Magic CAPTCHA](/tutorials/magic-captcha-outperforming-google-2567-times/)
+* [Getting started with AI Functions](https://ainiro.io/blog/getting-started-with-ai-functions)
