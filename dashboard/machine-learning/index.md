@@ -84,6 +84,8 @@ The most important parts from above is the _"System message"_. This becomes the 
 
 Magic contains several pre-defined flavors, including dynamically created flavors that will scrape some page to create a highly personalised and custom system type that OpenAI will use as its instruction when it is asked questions. Dynamic flavors contains the text _"DYNAMIC"_ as a part of their name, and when selected, it will ask you for a website URL from where to extract information from.
 
+Notice, the system message can contain Hyperlambda mixin logic, similarly to how training snippets can. To understand how this works, read the section about adding Hyperlambda code to your training snippets.
+
 #### Configuration settings
 
 * Type name, being the name of your type. This cannot be changed once created.
@@ -110,6 +112,8 @@ Magic contains several pre-defined flavors, including dynamically created flavor
 * Max Request tokens, implying the maximum number of tokens the type allows for the user's questions.
 * Max Response tokens, implying maximum tokens to allow for OpenAI to return as answers to questions.
 * Max Message tokens, which is calculated according to your completion model's token size, and your request, response and context tokens. If this goes to negative, your settings cannot be correctly saved.
+* Max Function Invocations, which is the maximum number of times the model will invoke OpenAI for a single prompt. To understand this number you'll have to read our tutorial about [how to create AI functions](https://ainiro.io/blog/getting-started-with-ai-functions).
+* Max Session Items, which is the maximum number of historical requests and answers the model will keep in its session when invoking OpenAI before it starts pruning older messages.
 * Lead email address, implying where to send emails of chatlogs if you've configured the _"lead generation feature"_.
 * Email reply, implying a static message the chatbot will respond with if a user drops his or her email address into the prompt. Requires a lead email setting to work.
 * Twilio Account SID and Twilio Auth Token for Twilio integrations if you want to integrate your chatbot with Twilio to for instance use it over WhatsApp, Messenger or SMS.
@@ -184,8 +188,8 @@ To create a questionnaire, you will typically first create a questionnaire, for 
 
 ```
 * Before we start I will need your name to ensure you get a high quality personalized experience => type=message
-* What is your name? => context=1
-* What is your email?
+* What is your name? => context=1, name=name
+* What is your email? => name=email
 * Thank you, you can now ask me anything related to the company in the context => type=message
 * If you want to contact us you can just leave your name and email in the chatbot, with a short message 😊 => type=message
 ```
@@ -221,6 +225,12 @@ Notice, to get structured data inside your slot you will have to apply a _"name"
 ```
 
 The above questionnaire will invoke your slot with a **[name]** and **[email]** argument once it's done.
+
+## AI Functions
+
+This is a subject on its own, but basically a machine learning model has the ability to execute AI functions. This works by instructing OpenAI to respond with the path to a Hyperlambda file and some JSON arguments given some specific condition(s). To understand AI functions, you can read the following tutorial.
+
+* [Getting started with AI Functions](https://ainiro.io/blog/getting-started-with-ai-functions)
 
 ## A Machine Learning platform
 
