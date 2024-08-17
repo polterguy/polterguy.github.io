@@ -23,3 +23,4 @@ Below are tutorials about how to get started with Magic. Most of these are accom
 * [Create a registration endpoint with Actions and Workflows](https://ainiro.io/blog/create-a-registration-api-in-15-minutes)
 * [Magic CAPTCHA](/tutorials/magic-captcha-outperforming-google-2567-times/)
 * [Getting started with AI Functions](https://ainiro.io/blog/getting-started-with-ai-functions)
+* [How to connect your AI Chatbot to the Internet](https://ainiro.io/blog/how-to-connect-your-ai-chatbot-to-the-internet)
