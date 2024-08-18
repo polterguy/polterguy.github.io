@@ -234,6 +234,10 @@ io.file.unzip:/misc/foo.zip
    folder:/misc/backup/
 ```
 
+Optionally provide **[overwrite]** argument and set its value to boolean true if you want the operation to
+overwrite any existing files in the destination folder. Otherwise the operation will throw an exception
+if any of the files exists from before.
+
 ### How to use [io.file.mixin]
 
 This slot takes a filename as its primary argument, and optionally any amount of lambda children objects.
