@@ -39,7 +39,7 @@ The way the crawler works, is by first checking if your website has a sitemap fi
 This process resembles the process Google and other search engines are following as they crawl your site, and one of the bonus features of scraping your website, is that you get to some extent see how search engines sees your website. Hence, it is also a somewhat valuable tool to SEO quality assure your site. Magic's crawler explicitly identifies as a crawler, and obeys by all the standard crawler rules from
 your robots.txt file.
 
-![Screenshot of crawling and scraping your website for RAG data for your machine leaning model](/images/machine-learning-import-dialogue-screenshot.webp)
+![Screenshot of crawling and scraping your website for RAG data for your machine leaning model](/assets/images/machine-learning-import-dialogue-screenshot.webp)
 
 ### Spicing
 
