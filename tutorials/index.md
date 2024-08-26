@@ -24,3 +24,4 @@ Below are tutorials about how to get started with Magic. Most of these are accom
 * [Magic CAPTCHA](/tutorials/magic-captcha-outperforming-google-2567-times/)
 * [Getting started with AI Functions](https://ainiro.io/blog/getting-started-with-ai-functions)
 * [How to connect your AI Chatbot to the Internet](https://ainiro.io/blog/how-to-connect-your-ai-chatbot-to-the-internet)
+* [Use No-Code to connect ChatGPT to your Database](https://ainiro.io/blog/use-no-code-to-connect-chatgpt-to-your-database)
