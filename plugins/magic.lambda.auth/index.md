@@ -10,6 +10,7 @@ to create and consume JWT tokens, to secure your Magic cloudlet. The project con
 * __[auth.ticket.refresh]__ - Refreshes a JWT token. Useful for refreshing a token before it expires, which would require the user to login again
 * __[auth.ticket.verify]__ - Verifies a JWT token, and that the user is logged in, in addition to (optionally) that he belongs to one roles supplied as a comma separated list of roles
 * __[auth.ticket.in-role]__ - The same as **[auth.ticket.verify]**, but returns true or false, depending upon whether or not user is in any of the roles provided or not
+* __[auth.token.verify]__ - This slot accepts an external OpenID Connect token, for then to verify its authenticity and returning its email claim.
 
 Notice, you will have to modify your `auth:secret` configuration setting, to provide a unique salt for your installation.
 If you don't do this, some adversary can easily reproduce your tokens, and impersonate your users. Example of
@@ -223,3 +224,17 @@ auth.ticket.in-role:root,admin,guest
 Like all auth related slots, it only makes sense to invoke from within a context of having an authorised
 user, such as an HTTP endpoint intended to be invoked by an authenticated user.
 
+## OpenID Connect [auth.token.verify]
+
+This slot accepts an external token created by OpenID Connect providers, and verifies the token's authenticity, and throws an exception if the token is not valid. If the token is valid it will return the **[email]** claim and the **[name]** claim if existing, but not do anything besides from that. The slot requires two arguments.
+
+* __[token]__ - Being the actual token as created by the OIDC provider.
+
+Example usage.
+
+```text
+auth.token.verify
+   token:SOME_JWT_TOKEN_HERE
+```
+
+The slot will download well known configurations automatically, in addition to signing keys, which it will use to verify the token. Notice, the slot will accept all issuers by default, but it will return the issuer as **[issuer]** allowing you to check in your code if you trust the issuer or not after having invoked the slot.
