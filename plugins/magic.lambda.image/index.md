@@ -118,30 +118,25 @@ The primary argument to the slot invocation must be one of the above values, whi
 * height - Height of chart
 * filename - Path and name of file of where to save the chart. If not specified the slot will return the chart as a stream.
 
-The slot will always return the chart as a PNG file.
+The slot will always return the chart as a PNG image.
 
 ### Creating bar charts
 
 This slot requires two additional arguments which are as follows:
 
-* bars - List of numerical values that are the individual bar values
-* ticks - Labels for x-axis, needs to be the same amount as the number of bars
+* bars - List of numerical values that are the individual bar values, in addition to labels for the x-axis
 
 Below you can find example usage.
 
 ```text
 image.chart:bars
-   filename:/bars.png
+   filename:/bar-chart.png
    width:600
    height:300
    bars
-      .:int:2
-      .:int:5
-      .:int:10
-   ticks
-      .:Spring
-      .:Summer
-      .:Autumn
+      Spring:int:2
+      Summer:int:5
+      Autumn:int:10
 ```
 
 The above results in the following.
@@ -152,9 +147,8 @@ The above results in the following.
 
 This slot requires 3 arguments being:
 
-* bars
-* ticks
-* legend
+* bars - List of x-axis labels in addition to list of individual values
+* legend - Legend for individual parts of your stacked values
 
 An example of usage can be found below.
 
@@ -164,22 +158,18 @@ image.chart:stacked
    width:600
    height:300
    bars
-      .
+      Spring
          .:int:2
          .:int:5
          .:int:10
-      .
+      Summer
          .:int:4
          .:int:7
          .:int:10
-      .
+      Autumn
          .:int:2
          .:int:5
          .:int:4
-   ticks
-      .:Spring
-      .:Summer
-      .:Autumn
    legend
       .:Phones
       .:Computers
@@ -200,22 +190,18 @@ image.chart:grouped
    width:600
    height:300
    bars
-      .
+      Spring
          .:int:2
          .:int:5
          .:int:10
-      .
+      Summer
          .:int:4
          .:int:7
          .:int:10
-      .
+      Autumn
          .:int:2
          .:int:5
          .:int:4
-   ticks
-      .:Spring
-      .:Summer
-      .:Autumn
    legend
       .:Phones
       .:Computers
