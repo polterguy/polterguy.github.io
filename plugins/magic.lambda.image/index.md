@@ -122,7 +122,31 @@ The slot will always return the chart as a PNG file.
 
 ### Creating bar charts
 
-TODO: Finish
+This slot requires two additional arguments which are as follows:
+
+* bars - List of numerical values that are the individual bar values
+* ticks - Labels for x-axis, needs to be the same amount as the number of bars
+
+Below you can find example usage.
+
+```text
+image.chart:bars
+   filename:/bars.png
+   width:600
+   height:300
+   bars
+      .:int:2
+      .:int:5
+      .:int:10
+   ticks
+      .:Spring
+      .:Summer
+      .:Autumn
+```
+
+The above results in the following.
+
+![Bar chart](/assets/images/bar-chart.png)
 
 ### Creating stacked charts
 
@@ -136,7 +160,7 @@ An example of usage can be found below.
 
 ```text
 image.chart:stacked
-   filename:/bars.png
+   filename:/stacked-chart.png
    width:600
    height:300
    bars
@@ -165,3 +189,40 @@ image.chart:stacked
 The above will produce the following chart.
 
 ![Stacked chart](/assets/images/stacked-chart.png)
+
+### Creating grouped charts
+
+This slot is almost identical to the stacked chart, except it generates a grouped chart instead of a stacked chart. Example usage can be found below.
+
+```text
+image.chart:grouped
+   filename:/grouped-chart.png
+   width:600
+   height:300
+   bars
+      .
+         .:int:2
+         .:int:5
+         .:int:10
+      .
+         .:int:4
+         .:int:7
+         .:int:10
+      .
+         .:int:2
+         .:int:5
+         .:int:4
+   ticks
+      .:Spring
+      .:Summer
+      .:Autumn
+   legend
+      .:Phones
+      .:Computers
+      .:Tablets
+```
+
+The above will produce the following chart.
+
+![Grouped chart](/assets/images/grouped-chart.png)
+
