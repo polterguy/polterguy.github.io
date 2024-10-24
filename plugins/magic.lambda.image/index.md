@@ -118,7 +118,7 @@ The primary argument to the slot invocation must be one of the above values, whi
 * height - Height of chart
 * filename - Path and name of file of where to save the chart. If not specified the slot will return the chart as a stream.
 
-The slot will always return the chart as a PNG image.
+The slot will always return the chart as a PNG image, and if you provide a **[filename]** the slot will overwrite any existing files automatically with the same path and filename.
 
 ### Creating bar charts
 
@@ -142,6 +142,19 @@ image.chart:bars
 The above results in the following.
 
 ![Bar chart](/assets/images/bar-chart.png)
+
+In addition to providing integer values you can also supply decimal, double, or floating point values such as illustrated below.
+
+```text
+image.chart:bars
+   filename:/bars.png
+   width:600
+   height:300
+   bars
+      Spring:decimal:2.5
+      Summer:decimal:5.7
+      Autumn:decimal:9.8
+```
 
 ### Creating stacked charts
 
@@ -180,6 +193,8 @@ The above will produce the following chart.
 
 ![Stacked chart](/assets/images/stacked-chart.png)
 
+This slot can also accept decimal, float, or double values for its individual values.
+
 ### Creating grouped charts
 
 This slot is almost identical to the stacked chart, except it generates a grouped chart instead of a stacked chart. Example usage can be found below.
@@ -211,4 +226,6 @@ image.chart:grouped
 The above will produce the following chart.
 
 ![Grouped chart](/assets/images/grouped-chart.png)
+
+This slot can also accept decimal, float, or double values for its individual values.
 
