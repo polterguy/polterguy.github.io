@@ -228,4 +228,3 @@ The above will produce the following chart.
 ![Grouped chart](/assets/images/grouped-chart.png)
 
 This slot can also accept decimal, float, or double values for its individual values.
-
