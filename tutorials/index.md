@@ -25,4 +25,5 @@ Below are tutorials about how to get started with Magic. Most of these are accom
 * [Getting started with AI Functions](https://ainiro.io/blog/getting-started-with-ai-functions)
 * [How to connect your AI Chatbot to the Internet](https://ainiro.io/blog/how-to-connect-your-ai-chatbot-to-the-internet)
 * [Use No-Code to connect ChatGPT to your Database](https://ainiro.io/blog/use-no-code-to-connect-chatgpt-to-your-database)
+* [How to wrap your SQL Database Inside an AI Agent](https://ainiro.io/blog/how-to-wrap-your-sql-database-inside-an-ai-agent)
 * [How to render charts in your AI Chatbot](https://medium.com/@thomas_78526/how-to-render-charts-in-yourai-chatbot-033c5bb2ec37)
