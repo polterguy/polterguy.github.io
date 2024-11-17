@@ -59,6 +59,27 @@ If you don't add an explicit **[headers]** collection the invocation will assume
 accepted response is JSON. If you want to change this you'll have to add at least one header to your request,
 at which point the default headers will _not_ be applied.
 
+## QUERY parameters
+
+Instead of having to manually modify the URL according to query parameters, you can optionally pass in a **[query]**
+argument, which can either contain an expression leading to a node set that will be used as query parameters - Or you
+can add child nodes to the query node. See example below.
+
+```text
+.query
+   foo1:bar1
+   foo2:bar2
+http.get:"https://foo.com"
+   query:x:@.query/*
+
+// Or, alternatively ...
+
+http.get:"https://foo.com"
+   query
+      foo1:bar1
+      foo2:bar2
+```
+
 ## POSTing, PUTting, and PATCHing data
 
 The POST, PUT and PATCH slots, requires a **[payload]** argument, or a **[filename]** argument,
