@@ -28,13 +28,13 @@ Deleting a user works similarly, except it requires the username to be specified
 
 ## Retrieving users
 
-To retrieve users from the backend you can use the above GET endpoint. Notice, this endpoint will also return extra fields in addition to the roles each user belongs to. In addition it allows for filtering, allowing you to search for users using a `username.eq` or `username.like` argument, in addition to query parameters for paging and ordering being `limit`, `offset`, `order` and `direction`. For instance, if you want to return users with the characters _"fo"_ in their usernames ordered by username descending, and only return 5 results, you will use something resembling the following.
+To retrieve users from the backend you can use the above GET endpoint. Notice, this endpoint will also return all extra fields, in addition to the roles each user belongs to. In addition it allows for filtering, allowing you to search for users using a `username.eq` or `username.like` argument, in addition to query parameters for paging and ordering being `limit`, `offset`, `order` and `direction`. For instance, if you want to return users starting out with the characters _"fo"_ in their usernames ordered by username descending, and only return 5 results, you will need to use something resembling the following.
 
 ```text
 /magic/system/magic/users?username.like=fo%25&order=username&direction=desc&limit=5
 ```
 
-Notice, all endpoints that allows you to somehow modify users requires the username returned from teh above invocation as its primary key to change the user.
+Notice, all endpoints that allows you to somehow modify users requires the username returned from the above invocation as its primary key to change the user. Also notice that Magic will never return the password of a user. However, finding the user's password is anyway cryptographically impossible, and if you've forgotten your password, it can only be reset, and not retrieved.
 
 ## Roles associations
 
@@ -53,7 +53,7 @@ Notice, the above endpoints takes _"user"_ and _"role"_ as its arguments, and th
 }
 ```
 
-Notice, if the role or user doesn't exist, the above will of course throw an exception and return an error. Notice how the above does also not contain an update endpoint (PUT), since updating is effectively to delete one role association, for then to later create a new one.
+Notice, if the role or user doesn't exist, the above will of course throw an exception and return an error. Notice how the above does also not contain an update endpoint (PUT), since updating is effectively to delete one role association, for then to later create a new one. Also notice that the role you associate with a user must already exist or the backend will throw an exception.
 
 ## Managing roles
 
@@ -84,3 +84,30 @@ When querying roles using the above GET endpoint you can filter using the follow
 * description.like
 
 This is a general pattern in Magic, where each field typically has a bunch of comparison operators associated with it, such as illustrated above.
+
+## Extra fields
+
+Extra fields are additional information associated with the user. This can be name, email, address, etc. Anything really. The extra fields works similarly to the user/roles associations, and has the following endpoints.
+
+* __POST - "/magic/system/magic/users_extra"__ - Creates a new extra field associated with an existing user
+* __GET - "/magic/system/magic/users_extra"__ - Returns a list of extra fields matching an optional filtering criteria
+* __PUT - "/magic/system/magic/users_extra"__ - Updates an existing extra field
+* __DELETE - "/magic/system/magic/users_extra"__ - Deletes an existing extra field
+
+Extra fields are divided by a _"type"_ field, which typically has a value such as _"email"_, _"name"_, or _"address"_, etc. To create a new extra field and associate with a user you can supply a payload such as the following to the above POST endpoint.
+
+```json
+{
+  "type": "streetAddress",
+  "value": "Foo Bar St. 57",
+  "user": "some_existing_user"
+}
+```
+
+The above will throw an exception if the user doesn't exist, and the type can only contain lowercase a to z, uppercase A-Z, 0 to 9, - or _ characters, and each user can only have one extra field of the same type - But the value can be anything you wish, and can be used to associate the user with additional extra information besides his or her username.
+
+## Wrapping up
+
+This tutorial has shown you the basics of how to implement a user management component. If you want to play with these endpoints, or see every possible argument they can handle - You can use the [Endpoints component](https://docs.ainiro.io/dashboard/endpoints/) as your playground. Just make sure you check off _"System endpoints"_ to see internal endpoints.
+
+![Managing users from the Endpoints component](/assets/images/endpoints-managing-users.png)
