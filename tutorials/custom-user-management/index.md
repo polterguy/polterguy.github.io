@@ -2,7 +2,9 @@
 title: Creating a Custom User Management component
 ---
 
-Every now and then you'll need to deliver something that allows for managing users and roles in the system. Luckily Magic contains all the backend API endpoints you'll ever need, assuming you're OK with only _"root"_ accounts being able to manage users. You will find the following API endpoints in Magic related to users.
+Every now and then you'll need to deliver something that allows for managing users and roles in the system and you can't use the Magic Dashboard for whatever reason. Luckily Magic contains all the backend API endpoints you'll ever need, assuming you're OK with only _"root"_ accounts being able to manage users. We _deeply encourage_ you to use these endpoints and _not_ create your own user system, since the existing RBAC-based user system permutates everything in Magic and already has existing slots and logic for all possible scenarios.
+
+You will find the following API endpoints in Magic related to users.
 
 * __POST - "/magic/system/magic/users"__ - Creates a new user
 * __GET - "/magic/system/magic/users"__ - Returns a list of users matching an optional filtering criteria
