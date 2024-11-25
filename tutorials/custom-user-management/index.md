@@ -108,8 +108,28 @@ Extra fields are divided by a _"type"_ field, which typically has a value such a
 
 The above will throw an exception if the user doesn't exist, and the type can only contain lowercase a to z, uppercase A-Z, 0 to 9, - or _ characters, and each user can only have one extra field of the same type - But the value can be anything you wish, and can be used to associate the user with additional extra information besides his or her username.
 
+## Authorization
+
+The really great thing about using these endpoints and the existing RBAC-based user module in Magic is that it ties into everything that already exists, allowing you to use the existing slots to authorize users before giving them access to some resource. Imagine the following Hyperlambda for instance.
+
+```text
+auth.ticket.verify:admin, marketing_manager, c_exec
+```
+
+The above Hyperlambda ensures that only users belonging to either of the following roles can access the code beneath it.
+
+* admin
+* marketing_manager
+* c_exec
+
+If any user not belonging to any of the above roles tries to execute the above code the system will throw an exception, preventing the rest of your Hyperlambda file to execute, resulting in an error being returned to the client.
+
 ## Wrapping up
 
 This tutorial has shown you the basics of how to implement a user management component. If you want to play with these endpoints, or see every possible argument they can handle - You can use the [Endpoints component](https://docs.ainiro.io/dashboard/endpoints/) as your playground. Just make sure you check off _"System endpoints"_ to see internal endpoints.
 
 ![Managing users from the Endpoints component](/assets/images/endpoints-managing-users.png)
+
+## Further reading
+
+Magic also contains CCO/OIDC in addition to that it's also very easy to create your own registration endpoint. If you're interested in how to allow for users to register, you can [read the following article](https://ainiro.io/blog/create-a-registration-api-in-15-minutes).
