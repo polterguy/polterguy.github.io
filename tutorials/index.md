@@ -30,3 +30,5 @@ Below are tutorials about how to get started with Magic. Most of these are accom
 * [An AI Agent for NetSuite](https://ainiro.io/blog/an-ai-agents-for-netsuite)
 * [Creating a Custom User Management Component](/tutorials/custom-user-management/)
 * [Protecting your AI Chatbot from Abuse](https://ainiro.io/blog/protecting-your-ai-chatbot-against-abuse)
+* [Improving Brand awareness with Customisable CSS Themes for Chatbots](https://medium.com/@barnascript/improving-brand-awareness-with-customisable-css-themes-for-chatbots-ainiro-5b9ab119f4f9)
+
