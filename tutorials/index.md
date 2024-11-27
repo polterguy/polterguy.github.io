@@ -29,3 +29,4 @@ Below are tutorials about how to get started with Magic. Most of these are accom
 * [How to render charts in your AI Chatbot](https://medium.com/@thomas_78526/how-to-render-charts-in-yourai-chatbot-033c5bb2ec37)
 * [An AI Agent for NetSuite](https://ainiro.io/blog/an-ai-agents-for-netsuite)
 * [Creating a Custom User Management Component](/tutorials/custom-user-management/)
+* [Protecting your AI Chatbot from Abuse](https://ainiro.io/blog/protecting-your-ai-chatbot-against-abuse)
