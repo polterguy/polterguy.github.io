@@ -6,12 +6,7 @@ header:
   image_description: Wizard standing in his library reading a book symbolizing the power of Magic Cloud
 ---
 
-Magic Cloud, or Magic for short, is a backend software development platform that creates most of your code _"automagically"_, by leveraging meta programming, declarative programming, AI, low-code, and no-code software development automation. This allows you to focus on creative tasks, while having the machine create the boring parts. Magic comes in two flavors.
-
-* Single Server Enterprise License at $5,000 per month
-* Kubernetes Cluster Enterprise License at $20,000 per month
-
-**Notice** - The open source community edition is no longer actively maintained, and should be considered legacy.
+Magic Cloud, or Magic for short, is a backend software development platform that creates most of your code _"automagically"_, by leveraging meta programming, declarative programming, AI, low-code, and no-code software development automation. This allows you to focus on creative tasks, while having the machine create the boring parts.
 
 If you're interested in purchasing a professional license you can [contact us here](mailto:thomas@ainiro.io). If you're only looking for a hosted cloudlet allowing you to use all plugins, create workflows, and AI chatbots - You can purchase a cloudlet from AINIRO.IO [here](https://ainiro.io/buy).
 
@@ -139,10 +134,6 @@ When you create your own Hyperlambda applications, you can also create log entri
 You can also use Magic to create your own custom AI chatbot, for then to embed it into your website. The Chatbot Wizard component in Magic will ask you for your OpenAI API key, for then to scrape your website generating a RAG database in the process. The end result allows your users to ask questions related to your website, and have the chatbot answer how you want it to answer questions.
 
 It works by scraping your website, generating training data in the process, for then to end up with a custom _"machine learning model"_ (based upon RAG), that answers questions according to your training data. You can try out such a chatbot by clicking the button in the bottom / right corner of this page, and ask it any question about Magic Cloud. This chatbot was created by scraping this website. At AINIRO we also delivers such chatbots as one of our services. Read more about [our AI chatbots here](/dashboard/chatbot-wizard/).
-
-## Magic Cloud is NOT Open Source
-
-Magic Cloud started as open source. However, the project had 10 million downloads of its NuGet packages, zero contributions, and zero donations, so we could no longer justify maintaining it as an open source project. We do provide the source code with a server license and Kubernetes license, which has a cost of respectively $5,000 per month and $20,000 per month. If interested, you can [contact Thomas](mailto:thomas@ainiro.io).
 
 ## The goal of the project
 

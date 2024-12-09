@@ -53,7 +53,7 @@ After you've provided a root password, your name, and your email address, you wi
 
 ## Using the source code version
 
-If you've got an enterprise license plan, you should have been given read only access to Magic's source code. Clone the repository, make sure you've got .Net Core version 8 installed, the latest version of NodeJS, and Angular, and enter the _"backend"_ and _"frontend"_ folders with two terminal windows, and execute the following commands in the respective terminals.
+If you've got an enterprise license plan, you should have been given read only access to Magic's source code. Clone the repository, make sure you've got .Net Core version 9 installed, the latest version of NodeJS, and Angular, and enter the _"backend"_ and _"frontend"_ folders with two terminal windows, and execute the following commands in the respective terminals.
 
 1. `dotnet run`
 2. `ng serve`
