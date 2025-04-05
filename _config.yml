@@ -9,7 +9,7 @@ description: AI-based Low-Code and No-Code Software Development Automation using
 url: "https://polterguy.github.io"
 repository: "polterguy/magic"
 footer_scripts:
- - "https://ainiro.io/magic/system/openai/include-chatbot.js?rtl=false&follow_up=true&type=magic-documentation&header=Ask%20me%20about%20Magic%20Cloud%20and%20Hyperlambda&button=Ask%20Me%20Anything&placeholder=Ask%20me%20anything%20about%20Hyperlambda%20or%20Magic%20Cloud%20...&color=%23fefefe&start=%2368708b&end=%233b3e46&link=%23fe8464&theme=modern-square&v=sdiuygqw"
+ - "https://ainiro.io/magic/system/openai/include-chatbot.js?rtl=false&follow_up=true&type=magic-documentation&header=Ask%20me%20about%20Magic%20Cloud%20and%20Hyperlambda&button=Ask%20Me%20Anything&placeholder=Ask%20me%20anything%20about%20Hyperlambda%20or%20Magic%20Cloud%20...&color=%23fefefe&start=%2368708b&end=%233b3e46&link=%23fe8464&theme=modern-square&code=true&v=sdiuygqw"
 atom_feed:
   hide: true
 og_image: "/assets/images/magic-documentation.png"
