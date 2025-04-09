@@ -17,6 +17,7 @@ endpoints, etc.
 * [magic.data.common](/plugins/magic.data.common/) - Commonalities for data adapters in Magic
 * [magic.library](/plugins/magic.library/) - A single project wrapping everything together
 * [magic.lambda](/plugins/magic.lambda/) - The Hyperlambda DSL, and its primary keywords
+* [magic.lambda.io](/plugins/magic.lambda.io/) - File and folder operations in Hyperlambda
 * [magic.lambda.math](/plugins/magic.lambda.math/) - Math operations from Hyperlambda
 * [magic.lambda.http](/plugins/magic.lambda.http/) - Invoking HTTP endpoints from Hyperlambda
 * [magic.lambda.csv](/plugins/magic.lambda.csv/) - Parsing and creating CSV from Hyperlambda
