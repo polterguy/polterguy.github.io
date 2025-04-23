@@ -8,7 +8,7 @@ header:
 
 Magic Cloud, or Magic for short, is a backend software development platform that creates most of your code _"automagically"_, by leveraging meta programming, declarative programming, AI, low-code, and no-code software development automation. This allows you to focus on creative tasks, while having the machine create the boring parts.
 
-If you're interested in purchasing a professional license you can [contact us here](mailto:thomas@ainiro.io). If you're only looking for a hosted cloudlet allowing you to use all plugins, create workflows, and AI chatbots - You can purchase a cloudlet from AINIRO.IO [here](https://ainiro.io/buy).
+Magic is 100% open source, and you can find its [GitHub repo here](http://github.com/polterguy/magic). If you don't want to mess with hosting yourself, you can check out our professional or enterprise hosting plans [here](https://ainiro.io).
 
 ## Workflows
 
@@ -33,7 +33,7 @@ Magic's purpose is to help you with backend code, but it comes with a dashboard 
 
 Magic contains its own IDE or integrated development environment. [Hyper IDE](/dashboard/hyper-ide/) provides syntax highlighting 
 and autocomplete for Hyperlambda. With Hyper IDE you can edit your code, save it, and immediately see the result
-of your modifications, by executing your endpoint without ever having to leave your IDE.
+of your modifications, by executing your endpoint without ever having to leave your IDE. Magic even has its own backend _"vibe coding"_ prompting mechanisms, allowing you to generate Hyperlambda from natural language using generative AI.
 
 ![Screenshot of Magic's Hyper IDE with autocomplete open for Hyperlambda slots](/images/hyper-ide-actions.jpg)
 
