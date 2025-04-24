@@ -13,9 +13,10 @@ The easiest and least expensive way to get started with Magic is to [signup for 
 Below is a docker-compose file you can use that downloads the images and starts the correct containers.
 
 ```yaml
-version: "3.3"
+
 services:
-  magic_backend:
+
+  backend:
     image: servergardens/magic-backend:latest
     container_name: magic_backend
     restart: always
@@ -26,22 +27,22 @@ services:
       - magic_files_data:/magic/files/data
       - magic_files_config:/magic/files/config
       - magic_files_modules:/magic/files/modules
-  magic_frontend:
+
+  frontend:
     image: servergardens/magic-frontend:latest
     container_name: magic_frontend
     depends_on:
-      - backend
+      - magic_backend
     restart: always
     ports:
       - "5555:80"
+
 volumes:
   magic_files_etc:
   magic_files_data:
   magic_files_config:
   magic_files_modules:
 ```
-
-Notice, the above images are private and only clients having purchased a license can access these images. You also might want to consider creating your own images and push to for instance Docker hub as private images for your organisation, instead of using our images. Magic contains Docker files and GitHub workflows to easily allow you to create your own images. If you do, you will have to change the images in the above docker-compose file.
 
 The above file will spawn the frontend at port 5555 and the backend at port 4444. The above file creates volumes for all the important folders, that contains files you typically change as you're using Magic. The _"/misc/"_ and _"/system/"_ folders should not have volumes, since these should be changed when you update your image.
 
@@ -53,7 +54,7 @@ After you've provided a root password, your name, and your email address, you wi
 
 ## Using the source code version
 
-If you've got an enterprise license plan, you should have been given read only access to Magic's source code. Clone the repository, make sure you've got .Net Core version 9 installed, the latest version of NodeJS, and Angular, and enter the _"backend"_ and _"frontend"_ folders with two terminal windows, and execute the following commands in the respective terminals.
+Clone the repository, make sure you've got .Net Core version 9 installed, the latest version of NodeJS, and Angular, and enter the _"backend"_ and _"frontend"_ folders with two terminal windows, and execute the following commands in the respective terminals.
 
 1. `dotnet run`
 2. `ng serve`
@@ -62,4 +63,4 @@ After some few minutes you should be able to access the dashboard from `localhos
 
 ## Deploy to production
 
-If you want to deploy Magic to production we have created a detailed description [here](/deploy/). To deploy Magic requires a lot of technical knowledge, and to maintain it requires knowledge about security, CDNs, etc - However, help with this is an integrated part of our Single Server license plan and Kubernetes Cluster license plans.
+If you want to deploy Magic to production we have created a detailed description [here](/deploy/). To deploy Magic requires a lot of technical knowledge, and to maintain it requires knowledge about security, CDNs, etc - However, we're here to help you for a fee if needed.
