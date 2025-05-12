@@ -21,7 +21,7 @@ If you go to Hyper IDE for example, and you create a new Hyperlambda file (exten
 
 **DISCLAIMER** - Magic and Hyperlambda isn't really an _"all purpose language"_, it's an orchestration language. If you're using it for complex algorithms, you're doing something wrong. So whatever description you supply, must be comething that is a good fit for Hyperlambda. Below is the result for the above prompt from the screenshot.
 
-```hyperlambda
+```text
 /*
  * Endpoint: chinook.artist.read
  * Purpose: Reads artists from chinook database, including albums for each artist.
