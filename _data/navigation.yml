@@ -38,6 +38,8 @@ docs:
         url: /dashboard/hyper-ide/
       - title: "Endpoint Generator"
         url: /dashboard/endpoint-generator/
+      - title: "Hyperlambda Generator"
+        url: /dashboard/hyperlambda-generator/
       - title: "Endpoints"
         url: /dashboard/endpoints/
       - title: "Users & Roles"
