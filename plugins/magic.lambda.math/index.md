@@ -220,3 +220,38 @@ math.dot
 This slot is useful for calculating similarities between two different objects in Machine Learning, where
 each list is an _"embedding"_ or a vector.
 
+
+## How to use [math.abs]
+
+This slot returns the absolute value of its input, implying its positive counterpart if the value is negative, or unchanged if it's already positive.
+
+```
+math.abs:x:@.arguments/*/number
+```
+
+
+## How to use [math.sqrt]
+
+This slot returns the square root of its input.
+
+```
+math.sqrt:x:@.arguments/*/number
+```
+
+
+## How to use [math.sin]
+
+This slot returns the sin value of its input.
+
+```
+math.sin:x:@.arguments/*/number
+```
+
+
+## How to use [math.cos]
+
+This slot returns the cos value of its input.
+
+```
+math.sin:x:@.arguments/*/number
+```
