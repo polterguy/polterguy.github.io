@@ -44,6 +44,8 @@ data.connect:chinook
       artists:x:@data.read/*
 ```
 
+Notice, if the AI creates wrong code, you can click `CTRL+Z` or `OPTION+Z` on a Mac to undo the generator's changes, at which point you can start over again by clicking `OPTION+Q` or `ALT+Q`, allowing you to edit the text to be more specific.
+
 ## Modifying your code with AI
 
 Below your main code view in Hyper IDE and the Hyperlambda Playground, you can see an input textbox that says _"Where the Machine Creates the Code"_. This bar allows you to provide change instructions to the LLM. Examples of prompts you might want to test can be found below.
