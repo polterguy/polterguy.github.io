@@ -12,8 +12,8 @@ Magic contains its own Hyperlambda Generator. This isn't a single component, but
 
 You have to write _"formal specifications using technical language"_, in order for it to understand what to do. But if you've got some basic knowledge about software development, you should be able to rapidly understand how to use it. Below are some examples of prompts to give you an ide.
 
-* HTTP endpoint that selects rows from Artist table in chinook database, including Album rows for each individual artist. Use ArtistId as foreign key.
-* Executable Hyperlambda file that send an email using [name], [email], [subject], and [body] arguments. Endpoint can only be executed by root and admin accounts.
+* _"HTTP endpoint that selects rows from Artist table in chinook database, including Album rows for each individual artist. Use ArtistId as foreign key"_
+* _"Executable Hyperlambda file that send an email using [name], [email], [subject], and [body] arguments. Endpoint can only be executed by root and admin accounts"_
 
 ## How to use it
 
