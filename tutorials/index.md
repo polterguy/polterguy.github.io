@@ -11,6 +11,7 @@ Below are tutorials about how to get started with Magic. Most of these are accom
 ## Vibe Coding tutorials
 
 * [Vibe Coding Saturday](https://ainiro.io/blog/vibe-coding-saturday)
+* [Implement Open API Specification using AI](https://ainiro.io/blog/implementing-openapi-spec-using-ai)
 
 ## General Tutorials
 
