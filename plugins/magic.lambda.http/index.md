@@ -80,6 +80,22 @@ http.get:"https://foo.com"
       foo2:bar2
 ```
 
+## URL parameters
+
+URL parameters are dynamically substituting parts of your URL to make it easier to create REST invocations. Below is an example.
+
+```text
+http.put:"https://api.example.com/v1/contacts/{id}"
+   convert:true
+   url-params
+      id:int:5
+   payload
+      name:John
+      email:john@doe.com
+```
+
+The point being that the above `{id}` will be dynamically replaced with the integer `5`. You can also use expressions here, allowing you to easily build your URL dynamically. URL parameters can be used for all verbs.
+
 ## POSTing, PUTting, and PATCHing data
 
 The POST, PUT and PATCH slots, requires a **[payload]** argument, or a **[filename]** argument,
