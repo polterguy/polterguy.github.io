@@ -104,6 +104,8 @@ Below is how this would typically look like from within [Hyper IDE](/dashboard/h
 
 **Notice**, how to edit your CSS is beyond the scope of this article, and you should obviously know and understand CSS in order to create your own theme. We recommend using for instance the _"Inspect"_ feature of your browser to see the CSS values of individual properties, and use this as the means to _"visually design"_ your AI chatbot during usage.
 
+Also please realise that you can minify your CSS and create an additional file in your cloudlet ending with `.min.css`. This file will be prioritised during inclusion of your CSS, allowing you to use the minified version instead of the full version. You do _not_ have to change the query parameter for the chatbot, since the cloudlet will autommatically prioritise files ending with `.min.css`, without you having to change your embed script.
+
 ## Wrapping up
 
 The process of creating your own theme is a little but complex, but the advantages is that if done correctly, the bandwidth consumption of your AI chatbot will never exceed 60KB - And your AI chatbot's static files will be served blistering fast, due to a very aggressive CDN and caching strategy.
