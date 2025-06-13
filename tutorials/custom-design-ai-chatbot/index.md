@@ -71,7 +71,7 @@ html>body.ainiro_bdy>button.ainiro.ainiro_hide {
 
 In addition the chatbot will add a CSS selector to the `body` tag of your page during inclusion to allow us to override some properties on the body tag itself. These are important to stop scrolling of the page during a chat session, and they also allows us to create extremely specific CSS selectors, such as illustrated above, ensuring that our properties takes precedence over global CSS properties created by your existing CSS.
 
-Hence, to override CSS properties you should use fully qualified CSS selectors, such as for instance `html>body.ainiro_bdy>button.ainiro.ainiro_hide`. This ensures that your custom theme does not interfere with other CSS files you have in your page.
+Hence, to override CSS properties you should use fully qualified CSS selectors, such as for instance `html>body.ainiro_bdy>button.ainiro.ainiro_hide`. This ensures that your custom theme does not interfere with other CSS/DOM elements you have in your page.
 
 We suggest that if you want to create a new theme, you start out by copying the content of one of our system themes, and pasting this into your custom theme CSS file, for then to start modifying its CSS properties.
 
@@ -89,7 +89,7 @@ Below is how this would typically look like from within [Hyper IDE](/dashboard/h
 
 ![Editing your custom theme](/assets/images/editing-your-theme.png)
 
-**Notice**, how to edit your CSS is beyond the scope of this article, and you should obviously know and understand CSS in order to create your own theme.
+**Notice**, how to edit your CSS is beyond the scope of this article, and you should obviously know and understand CSS in order to create your own theme. We recommend using for instance the _"Inspect"_ feature of your browser to see the CSS values of individual properties, and use this as the means to _"visually design"_ your AI chatbot during usage.
 
 ## Wrapping up
 
@@ -97,6 +97,6 @@ The process of creating your own theme is a little but complex, but the advantag
 
 In addition, the fully qualified CSS selectors allows us to specify overrides for DOM elements highly specifically, without making our CSS influence the rest of your page's CSS and vice versa. And since the AI chatbot itself will dynamically load resources on demand, the end result becomes the absolutely smallest and fastest page load time for an AI chatbot that exists in the industry - Something we are very proud of for the record.
 
-If you need help to create a custom theme for your AI chatbot, this is one of many services we offer at AINIRO, and you can contact us below.
+If you still find this difficult, and you need help to create a custom theme for your AI chatbot, this is one of many services we offer at AINIRO, and you can contact us below to get started.
 
 * [Contact AINIRO](https://ainiro.io/contact-us)
