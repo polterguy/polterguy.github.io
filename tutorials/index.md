@@ -17,8 +17,8 @@ Below are tutorials about how to get started with Magic. Most of these are accom
 
 * [Generate a CRUD API using Low-Code and No-Code](https://ainiro.io/blog/generate-a-crud-api-using-low-code-and-no-code)
 * [Uploading files to your AI chatbot](https://ainiro.io/blog/uploading-files-to-your-ai-chatbot)
-* [Design your own AI chatbot theme - Detailed version](/tutorials/custom-user-management/)
-* [Design your own AI chatbot theme](https://ainiro.io/blog/design-your-own-chatgpt-chatbot)
+* [Design your own AI chatbot theme - Modern version](/tutorials/custom-user-management/)
+* [Design your own AI chatbot theme - Legacy version](https://ainiro.io/blog/design-your-own-chatgpt-chatbot)
 * [Connect your AI Chatbot to your Shopify account](https://ainiro.io/blog/how-to-connect-your-ai-chatbot-to-shopify)
 * [Order tracking in Shopify](https://ainiro.io/blog/track-shopify-orders-in-your-ai-chatbot)
 * [How to collect phone numbers with your AI Chatbot](https://ainiro.io/blog/how-to-capture-phone-numbers-with-your-ai-chatbot)
