@@ -2,7 +2,7 @@
 title: Creating a Custom Design for your AI Chatbot
 ---
 
-The AI chatbot's design is easily modified. This is useful of you need to change the chatbot's design beyond what is possible by changing its colours, or other properties that are dynamically built through the embed screen's options. Below is a screenshot of how one of our customers modified theirs to have it match their existing design profile.
+The AI chatbot's design is easily modified. This is useful of you need to change the chatbot's design beyond what is possible by changing its colours, nor other properties that are dynamically built through the embed screen's options. Below is a screenshot of how one of our customers modified theirs to have it match their existing design profile.
 
 ![AI Chatbot with Custom Design](/assets/images/ai-chatbot-with-custom-design.png)
 
