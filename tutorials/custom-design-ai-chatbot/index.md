@@ -33,7 +33,7 @@ The way this works, is that when you embed your AI chatbot using the embed butto
 
 These CSS files are pre-processed in the cloudlet as they're embedded, and parts of their content is dynamically substituted. For instance, a common CSS file is  by default dynamically included into your CSS file at a specific position by doing a simple string substitution operation. Specifically the `.common{opacity:0}` is important to keep _exactly as is_ if you want this dynamic substitution to take place. This part of your custom theme is being dynamically substituted with the content from the _"/system/openai/front.files/chat/common.css"_ file. This common file contains common CSS properties you'd normally want to include in your custom theme. Below is an example of how this would look like if you create your own theme.
 
-```text
+```css
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap);
 
 /*
@@ -60,7 +60,7 @@ The AI chatbot has two primary DOM elements; The AI chatbot button that opens th
 
 Both of these CSS selectors starts out with the string _"ainiro"_ to avoid clashing with existing selectors in your page. Below is an example of how the CSS properties might look like for the chatbot's button when it's hidden.
 
-```text
+```css
 html>body.ainiro_bdy>button.ainiro.ainiro_hide {
   animation-name: ainiro_hide_button;
   animation-duration: .4s;
@@ -74,6 +74,19 @@ In addition the chatbot will add a CSS selector to the `body` tag of your page d
 Hence, to override CSS properties you should use fully qualified CSS selectors, such as for instance `html>body.ainiro_bdy>button.ainiro.ainiro_hide`. This ensures that your custom theme does not interfere with other CSS/DOM elements you have in your page.
 
 We suggest that if you want to create a new theme, you start out by copying the content of one of our system themes, and pasting this into your custom theme CSS file, for then to start modifying its CSS properties.
+
+**Notice** - The structure of the CSS file assumes there exists several CSS variables in your page. These are created by the JS embed script using your query parameters, and are there to ensure that colours and other dynamic settings from your embed script are correctly applied. In general you should not directly modify neither the values of your CSS properties, or the values of these dynamically injected variables, but rather choose the correct values as you are embedding your chatbot. This allows you to share the same theme with different colour profiles, etc. Below is an example of such a CSS variable.
+
+```css
+html>body.ainiro_bdy>button.ainiro:hover,
+html>body.ainiro_bdy>button.ainiro:active,
+html>body.ainiro_bdy>button.ainiro:focus {
+  transition: color .1s ease-in-out;
+  color: var(--ainiro-link);
+}
+```
+
+These variables all starts out with _"ainiro"_, and if you copy an existing theme to start out creating your own design, these variables are already correctly applied. As a general rule, you should _not_ change any of the CSS properties where such CSS variables are used.
 
 ## CDN
 
