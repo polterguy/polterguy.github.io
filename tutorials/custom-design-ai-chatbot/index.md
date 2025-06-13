@@ -2,7 +2,7 @@
 title: Creating a Custom Design for your AI Chatbot
 ---
 
-The AI chatbot's design is easily modified. This is useful of you need to change the chatbot's design beyond what is possible by changing its colours, nor other properties that are dynamically built through the embed screen's options. Below is a screenshot of how one of our customers modified theirs to have it match their existing design profile.
+The AI chatbot's design is easily modified. This is useful of you need to change the chatbot's design beyond what is possible by changing its colours, or other properties that are dynamically built through the embed screen's options. Below is a screenshot of how one of our customers modified theirs to have it match their existing design profile.
 
 ![AI Chatbot with Custom Design](/assets/images/ai-chatbot-with-custom-design.png)
 
@@ -75,7 +75,7 @@ Hence, to override CSS properties you should use fully qualified CSS selectors, 
 
 We suggest that if you want to create a new theme, you start out by copying the content of one of our system themes, and pasting this into your custom theme CSS file, for then to start modifying its CSS properties.
 
-**Notice** - The structure of the CSS file assumes there exists several CSS variables in your page. These are created by the JS embed script using your query parameters, and are there to ensure that colours and other dynamic settings from your embed script are correctly applied. In general you should not directly modify neither the values of your CSS properties, or the values of these dynamically injected variables, but rather choose the correct values as you are embedding your chatbot. This allows you to share the same theme with different colour profiles, etc. Below is an example of such a CSS variable.
+**Notice** - The structure of the CSS file assumes there exists several CSS variables in your page. These are created by the JS embed script using your query parameters, and are there to ensure that colours and other dynamic settings from your embed script are correctly applied. In general you should not directly modify neither the values of your CSS properties, nor the values of these dynamically injected variables, but rather choose the correct values as you are embedding your chatbot. This allows you to share the same theme with different colour profiles, etc. Below is an example of such a CSS variable.
 
 ```css
 html>body.ainiro_bdy>button.ainiro:hover,
