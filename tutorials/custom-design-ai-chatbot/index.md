@@ -20,7 +20,7 @@ The above are basically references to CSS files that exists within your cloudlet
 
 ![Embedding your AI Chatbot](/assets/images/embed-ai-chatbot.png)
 
-These CSS files are fetched from the _"/system/openai/front.files/chat/"_ folder. This folder contains the _"system designs"_ and you _should not_ modify these files, but rather create your own file based upon one of these files and put into your _"/etc/system/openai/css/chat/"_ folder. This makes the system recognise your CSS file as a custom theme automatically, and results in that you can choose this theme as you embed your chatbot. Below is an image illustrating how this looks like for Seattle Ballooning specifically.
+These CSS files are fetched from the _"/system/openai/front.files/chat/"_ folder. This folder contains the system designs and you _should not_ modify these files, but rather create your own file based upon one of these files and put into your _"/etc/system/openai/css/chat/"_ folder. This makes the system recognise your CSS file as a custom theme automatically, and results in that you can choose this theme as you embed your chatbot. Below is an image illustrating how this looks like for Seattle Ballooning specifically.
 
 ![Embed form with custom designs](/assets/images/seattle-ballooning-themes.png)
 
@@ -29,7 +29,7 @@ In the above screenshot there are two custom themes in their cloudlet named;
 * _"/etc/system/openai/css/chat/modern-seattle-ballooning-2.css"_
 * _"/etc/system/openai/css/chat/modern-seattle-ballooning.css"_
 
-The way this works, is that when you embed your AI chatbot using the embed button, the system will list all CSS files in _both_ your system folder and your custom design folder, allowing you to choose any CSS file from one of these folders. However, and this is _very important_; Your custom design files _must_ start with _"modern-"_. This is because of our legacy CSS structure, allowing the system to filter out files not starting out with _"modern-"_ and discard all of the files as _"legacy design files"_. Only files starting with _"modern-"_ are considered as modern themes as you embed your AI chatbot, so to create a new custom theme, you can create a file named for instance _"/etc/system/openai/css/chat/modern-my-theme.css"_ to make the system recognise your design as a _"modern design"_.
+The way this works, is that when you embed your AI chatbot using the embed button, the system will list all CSS files in _both_ your system folder and your custom design folder, allowing you to choose any CSS file from one of these folders. However, and this is _very important_; Your custom design files _must_ start with _"modern-"_. This is because of our legacy CSS structure, allowing the system to filter out files not starting out with _"modern-"_ and discard all of the files as _"legacy design files"_. Only files starting with _"modern-"_ are considered as modern themes as you embed your AI chatbot, so to create a new custom theme, you can create a file named for instance _"/etc/system/openai/css/chat/modern-my-theme.css"_ to make the system recognise your design as a modern design.
 
 These CSS files are pre-processed in the cloudlet as they're embedded, and parts of their content is dynamically substituted. For instance, a common CSS file is  by default dynamically included into your CSS file at a specific position by doing a simple string substitution operation. Specifically the `.common{opacity:0}` is important to keep _exactly as is_ if you want this dynamic substitution to take place. This part of your custom theme is being dynamically substituted with the content from the _"/system/openai/front.files/chat/common.css"_ file. This common file contains common CSS properties you'd normally want to include in your custom theme. Below is an example of how this would look like if you create your own theme.
 
@@ -43,16 +43,16 @@ These CSS files are pre-processed in the cloudlet as they're embedded, and parts
 
 html>body.ainiro_bdy>button.ainiro,
 html>body.ainiro_bdy>div.ainiro {
-    font-family: "Modern", Sans-serif
+  font-family: "Modern", Sans-serif
 }
 /* ... the rest of your CSS here ... */
 ```
 
+Notice, if you ommit the `.common{opacity:0}` parts, this common CSS file is _not_ included into your CSS file as the cloudlet is returning it to the client.
+
 If you create your own theme CSS file named _"modern-my-theme.css"_, your embed form will end up resembling the following.
 
 ![Creating a custom theme and embedding it](/assets/images/custom-theme-embed-form.png)
-
-Notice, if you ommit the `.common{opacity:0}` parts, this common CSS file is _not_ included into your CSS file as the cloudlet is returning it to the client.
 
 ## CSS Structure
 
