@@ -4,6 +4,8 @@ title: Using the AI Chatbot API
 
 Sometimes you need to apply customisations beyond what you can do with [custom CSS](/tutorials/custom-design-ai-chatbot/). For these cases, you can use the raw API yourself, and create your own completely custom frontend. This can be useful for creating an Angular or React component, or for cases where you have to create your own custom JavaScript. This article explores the API in details, allowing you to roll your own JavaScript or client side code consuming the API.
 
+We will be using JavaScript here, but assuming you can find a SignalR client-side library for your platform of choice, you'll typically just have to exchange the client-side SignalR code to accommodate for your specific client. Microsoft provides client-side SignalR libraries for iOS, Android, JavaScript, and probably all other popular platforms out there.
+
 ## API Endpoint Method
 
 The chatbot is primarily using one HTTP method. This is a `POST` method, and its fully qualified URL depends upon the name of your cloudlet - But its relative URL is as follows; `/magic/system/openai/chat`.
