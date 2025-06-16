@@ -108,7 +108,7 @@ Also please realise that you can minify your CSS and create an additional file i
 
 ## Wrapping up
 
-The process of creating your own theme is a little but complex, but the advantages is that if done correctly, the bandwidth consumption of your AI chatbot will never exceed 60KB - And your AI chatbot's static files will be served blistering fast, due to a very aggressive CDN and caching strategy.
+The process of creating your own theme is a little bit complex, but the advantages is that if done correctly, the bandwidth consumption of your AI chatbot will never exceed 60KB - And your AI chatbot's static files will be served blistering fast, due to a very aggressive CDN and caching strategy.
 
 In addition, the fully qualified CSS selectors allows us to specify overrides for DOM elements highly specifically, without making our CSS influence the rest of your page's CSS and vice versa. And since the AI chatbot itself will dynamically load resources on demand, the end result becomes the absolutely smallest and fastest page load time for an AI chatbot that exists in the industry - Something we are very proud of for the record.
 
