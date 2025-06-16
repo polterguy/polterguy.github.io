@@ -21,7 +21,7 @@ This HTTP POST endpoint can be invoked either by sending your content as JSON, o
 * session - ID uniquely identifying the user's session. Similar to user ID, but must be unique for each session.
 * stream - If true, the AI chatbot will stream its response back to the client using SignalR instead of returning the content as the invocation's response. Optional, defaults to false.
 * data - Additional context, allowing the client to supply additional context to the backend. Optional.
-* referrer - HTTP referrer field, allowing you to understand from the server side what URL the request was originating from. Optional argument.
+* referrer - HTTP referrer field, allowing you to understand from the server side what URL the request was originating from. Optional argument. The cloudlet will try to determine the HTTP Referrer header's value, and use this by default, unless you provide an explicit override using this argument.
 * file - Only relevant if you invoke the endpoint with `multipart/form-data` content, at which point this is expected to contain a file reference to for instance an image or something you want the LLM to analyse. Optional argument.
 
 Below is a typical example payload in JSON.
@@ -40,11 +40,11 @@ Below is a typical example payload in JSON.
 }
 ```
 
-The above invocation will _not_ stream the response, but rather return the answer immediately as the response of your HTTP invocation.
+The above invocation will _not_ stream the response, but rather return the answer immediately as the response of your HTTP invocation, due to its `stream` argument being `false`. Typically you would want to rather use streaming by setting this to `true`.
 
 ### Streaming data
 
-If you set the above `stream` argument to true, the above endpoint will _not_ wait for and return the LLM's response, but rather stream the response one token at the time to a SignalR channel with its name being the same as your `session` value, and the endpoit will return immediately long before the response is ready. This implies you first have to connect to the cloudlet using SignalR from your client, for then to listen to SignalR events using your unique `session` ID.
+If you set the above `stream` argument to true, the above endpoint will _not_ wait the LLM's response, but rather stream the response one token at the time to a SignalR channel with its name being the same as your `session` value, and the endpoit will return immediately long before the response is ready. This implies you first have to connect to the cloudlet using SignalR from your client, for then to listen to SignalR events using your unique `session` ID.
 
 This argument should as a general rule of thumb _almost always be set to true_, to allow for streaming the response. The reasons for this is that the CDN we're using will shut down the HTTP connection if the cloudlet takes more than 60 seconds to answer. And with multiple questions, maybe analysing files too, and also possibly multiple function invocations within the cloudlet, the LLM might easily end up in a situation where it requires more than 60 seconds to provide an answer.
 
@@ -55,7 +55,7 @@ This implies the steps for initiating a chat session with your cloudlet becomes 
 3. Transmit your chat message with the _same session you used to connect to SignalR_
 4. Handle messages from within your SignalR `on` callback
 
-Below is some example code to understand how to deal with individual messages.
+Below is some example JavaScript code to understand how to deal with individual messages.
 
 ```javascript
 this.socket = new signalR.HubConnectionBuilder()
@@ -116,4 +116,15 @@ Also notice the function related parts of the above JavaScript callback. These a
 
 It is also important that you _clean up your SignalR object_ by making sure that the socket connection is closed in a clean manner once you're done with your chat session, and you obviously need a client-side SignalR library to connect to the cloudlet. The latter should be easily accomplished regardless of what client you're building, since Microsoft have created client-side SignalR libraries for all popular platforms.
 
+Below is a list of all possible callbacks you can expect, with a simple explanation explaining its purpose.
+
+* `finished` - SignalR message transmitted by the backend when the request has finished
+* `error` - SignalR message transmitted if the request triggered an error of some sort
+* `function_waiting` - SignalR message transmitted when the cloudlet is waiting for an AI function invocation to finish
+* `function_result` - SignalR message transmitted when an AI function is finished
+* `function_error` - SignalR message transmitted when an AI function invocation resulted in an error of some sort
+
+If you handle the above types on your object callback, you should be set for dealing with most scenarios. Notice, if you need further help, AINIRO provides support and custom software development services for our platform - At which point you can contact us below.
+
+* [Contact AINIRO](https://ainiro.io/contact-us)
 
