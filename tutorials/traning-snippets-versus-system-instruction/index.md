@@ -4,7 +4,7 @@ title: Training Snippets versus System Instruction
 
 There are two basic ways to provide _"context information"_ for your AI chatbot that doesn't require programming; System Instruction and Training Snippets (RAG). Since the relationship between these two can sometimes be confusing, I will try to explain the difference in this article. However, let's first ask ourselves exactly what context information is.
 
-## Context Information
+## What is Context Information?
 
 Context information is information that is automatically transmitted to OpenAI as the user is asking your chatbot a question. Without context information, the chatbot will perform just like a vanilla ChatGPT request, without having any knowledge about your company or organisation. If you add context information, the AI chatbot will be able to use this context as the basis for answering users' questions. It's similar to uploading a PDF to ChatGPT and asking it questions about the PDF, except everything happens automatically behind the scenes, and is invisible to the end user.
 
