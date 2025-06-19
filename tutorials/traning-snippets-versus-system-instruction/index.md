@@ -22,7 +22,7 @@ Since the system instruction is _always_ transmitted to OpenAI, this makes it a 
 
 The system instruction should not be too long, but only contain the most important information and instructions required to modify its behaviour according to your requirements. However, there's no real difference between the system instruction and a training snippet conceptually, since they both end up as context information.
 
-This allows you to provide the most important parts of your expected behaviour to the system instruction, and can for instance contain information such as _"The name of your company"_, _"How to call your company"_, or _"How to act if the user is showing frustration"_, etc. Think of the system instruction as the foundation for your AI chatbot, as in the contextual information it should _always_ have access to, regardless of what questions the user is asking.
+This allows you to provide the most important parts of your expected behaviour to the system instruction, and can for instance contain information such as the name of your company, company phone number, or how to act if the user is showing frustration, etc. Think of the system instruction as the foundation for your AI chatbot, as in the contextual information it should _always_ have access to, regardless of what questions the user is asking.
 
 ## Training Snippets
 
