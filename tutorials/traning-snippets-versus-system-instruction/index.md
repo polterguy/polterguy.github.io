@@ -68,7 +68,7 @@ Also notice, that gpt-4.1 has a context window of 1 million tokens, and we will 
 
 However, due to our _"rolling context"_ concept, the AI chatbot will basically _"become smarter for every question asked"_ until it's filled up its available context window.
 
-## System Instruction of Training Snippets?
+## System Instruction or Training Snippets?
 
 So, what should you choose as your primary source for adding information to your AI chatbot? Actually, there's no real difference between the system instruction and training snippets, and they can both take both instructions and information.
 
