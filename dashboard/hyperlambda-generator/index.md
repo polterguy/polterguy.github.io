@@ -19,7 +19,7 @@ You have to write _"formal specifications using technical language"_, in order f
 
 If you go to Hyper IDE for example, and you create a new Hyperlambda file (extension ".hl"), then a popup dialog will ask you to provide a description and arguments. If you write what you want the code to do for you, and you click _"Save & Generate"_, the description will be sent through our LLM, transforming your English to working Hyperlambda.
 
-**DISCLAIMER** - Magic and Hyperlambda isn't really an _"all purpose language"_, it's an orchestration language. If you're using it for complex algorithms, you're doing something wrong. So whatever description you supply, must be comething that is a good fit for Hyperlambda. Below is the result for the above prompt from the screenshot.
+**DISCLAIMER** - Magic and Hyperlambda isn't really an _"all purpose language"_, it's an orchestration language. If you're using it for complex algorithms, you're doing something wrong. So whatever description you supply, must be something that is a good fit for Hyperlambda. Below is the result for the above prompt from the screenshot.
 
 ```text
 /*
