@@ -39,8 +39,7 @@ of your modifications, by executing your endpoint without ever having to leave y
 
 Hyper IDE also integrates with our Machine Learning component, built on top of OpenAI, allowing you to write your requests in plain English, and have Hyper IDE and OpenAI automatically generate code for you solving your problem.
 
-However, the most powerful parts of Hyper IDE is its [workflows](/workflows/) feature, allowing you to dynamically orchestrate
-backend Hyperlambda code together, without needing to know Hyperlambda.
+In addition its [workflows](/workflows/) feature allows you to dynamically orchestrate backend Hyperlambda code together, without needing to know Hyperlambda.
 
 > With Hyper IDE manually writing code is optional
 
@@ -70,8 +69,9 @@ reference in your SQL, and click the _"Generate"_ button.
 
 The SQL endpoint generator allows you to secure your endpoints, declare what arguments your endpoints can handle,
 use all 5 most common HTTP verbs for your endpoints, etc. You can use it with SQL Server, MySQL, MariaDB,
-PostgreSQL, or SQLite - However, you need to write SQL that is valid for your particular database type as
-you create your endpoints.
+PostgreSQL, or SQLite - And if you don't know SQL, then SQL Studio even has integrated support for generating SQL from natural language. You can see an example below.
+
+![Screenshot of the SQL Endpoint Generator allowing you to create HTTP endpoints with SQL](/images/sql-generator.png)
 
 ## SQL Studio
 
