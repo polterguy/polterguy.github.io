@@ -12,15 +12,12 @@ Magic Cloud, or Magic for short, is a backend software development platform that
 
 Magic is 100% open source, and you can find its [GitHub repo here](http://github.com/polterguy/magic). If you don't want to mess with hosting yourself, you can check out our professional or enterprise hosting plans [here](https://ainiro.io).
 
-## Workflows
+## AI Generated Code
 
 With Magic you can sometimes accomplish in some few minutes what requires weeks of coding with a more
-traditional platform. The following YouTube video illustrates how to create a [workflow](/workflows/), and wrap
-it into an API. It's a fairly complex workflow too, handling Stripe payments - Something even
-experienced software developers often struggle with. In the video I wire up Stripe payments in some
-few minutes using declarative programming and workflows.
+traditional platform. The following video illustrates how to create an API with no-code and _"vibe coding"_, having the AI generate the code.
 
-<iframe style="margin-left: auto; margin-right: auto; width: 560px; max-width: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/ITz1ASqsWoM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe style="margin-left: auto; margin-right: auto; width: 560px; max-width: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/watch?v=pnvw0e2zBHA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ## The Magic Dashboard
 
