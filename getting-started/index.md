@@ -6,7 +6,7 @@ header:
   image_description: Baby Wizard waving his magic wand over his magic hat to practice his spell casting
 ---
 
-The easiest and least expensive way to get started with Magic is to [signup for a cloudlet at AINIRO.IO](https://ainiro.io/buy). However, if you have purchased a single server license, or a Kubernetes license, you have been given access to its source code - At which point you can install Magic locally on your own development machine. The easiest way to get started with the source code is to use Docker.
+The easiest way to get started with Magic is to [signup for a cloudlet at AINIRO.IO](https://ainiro.io/buy). However, if you want to run it locally you can use either Docker or the source code. The easiest way to get started is to use Docker.
 
 ## Using Docker
 
