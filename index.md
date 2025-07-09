@@ -21,12 +21,7 @@ traditional platform. The following video illustrates how to create an API with 
 
 ## The Magic Dashboard
 
-Magic's purpose is to help you with backend code, but it comes with a dashboard allowing you to manage your backend. The dashboard contains UI components for most things you'll need when creating and maintaining your backend code.
-
-* [Hyper IDE](/dashboard/hyper-ide/)
-* [Endpoint Generator](/dashboard/endpoint-generator/)
-* [SQL Studio](/dashboard/sql-studio/)
-* Plus many more ...
+Magic's purpose is to help you with backend code, and it comes with a dashboard allowing you to manage your backend. The dashboard contains UI components for most things you'll need when creating and maintaining your backend code. Below you can find some general information about some of its most important components.
 
 ## Hyper IDE
 
