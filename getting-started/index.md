@@ -63,4 +63,4 @@ After some few minutes you should be able to access the dashboard from `localhos
 
 ## Deploy to production
 
-If you want to deploy Magic to production we have created a detailed description [here](/deploy/). To deploy Magic requires a lot of technical knowledge, and to maintain it requires knowledge about security, CDNs, etc - However, we're here to help you for a fee if needed.
+If you want to deploy Magic to production we have created a detailed description [here](/deploy/). To deploy Magic requires a lot of technical knowledge, and to maintain it requires knowledge about security, CDNs, etc - However, we're here to [help you for a fee](https://ainiro.io/contact-us) if needed.
