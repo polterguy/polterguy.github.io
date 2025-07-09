@@ -6,7 +6,9 @@ header:
   image_description: Wizard standing in his library reading a book symbolizing the power of Magic Cloud
 ---
 
-Magic Cloud, or Magic for short, is a backend software development platform that creates most of your code _"automagically"_, by leveraging meta programming, declarative programming, AI, low-code, and no-code software development automation. This allows you to focus on creative tasks, while having the machine create the boring parts.
+Magic Cloud, or Magic for short, is a backend software development platform that creates most of your code _"automagically"_, by leveraging meta programming, declarative programming, AI, low-code, and no-code. This allows you to focus on creative tasks, while having the machine create the boring parts.
+
+> Where the Machine Creates the Code!
 
 Magic is 100% open source, and you can find its [GitHub repo here](http://github.com/polterguy/magic). If you don't want to mess with hosting yourself, you can check out our professional or enterprise hosting plans [here](https://ainiro.io).
 
