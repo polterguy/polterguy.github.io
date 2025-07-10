@@ -1,13 +1,12 @@
 ---
 title: Hyper IDE
-description: Hyper IDE is a fully fledged integrated development environment, but probably works best with Hyperlambda, and is not intended to replace your primary IDE for JavaScript or HTML.
+description: Hyper IDE is an AI-enabled integrated development environment for Hyperlambda and allows you to build APIs and backends with No-Code constructs.
 og_image: "/images/og-hyper-ide-2.jpg"
 header:
   image: /assets/images/wizard-flying-through-air-with-hyperlambda-raining-from-stars.webp
 ---
 
-Hyper IDE is your _"goto component"_ when you want to create your own modules using Magic and Hyperlambda. It's a web based IDE, allowing you to edit your code, create new modules, and contains a lot of things you're used to from a traditional IDE. It is also the natural
-extension of Magic's [endpoint generator](/dashboard/endpoint-generator/), since it allows you to edit the Hyperlambda endpoint files after Magic have generated your CRUD backend, and the foundation for [Hyperlambda Workflows](/workflows/).
+Hyper IDE is your _"goto component"_ when you want to create your own modules using Magic and Hyperlambda. It's a web based IDE, allowing you to edit your code, create new modules, and contains a lot of things you're used to from a traditional IDE. It is also the natural extension of Magic's [endpoint generator](/dashboard/endpoint-generator/), since it allows you to edit the Hyperlambda endpoint files after Magic have generated your CRUD backend. In addition, Hyper IDE allows you to use AI to generate code using _"vibe coding"_ constructs.
 
 ![Screenshot of editing a Hyperlambda file in Hyper IDE](/images/og-hyper-ide-2.jpg)
 
@@ -17,7 +16,7 @@ Hyper IDE also provides integrated autocomplete if your editor has focus and you
 
 ## Hyper IDE features
 
-Hyper IDE is not a fully fledged IDE, and cannot compare to something like VS Code or Visual Studio. However, its purpose is to function as an extension on top of the endpoint generator, giving you code editing capabilities of your generated Hyperlambda files - In addition to rapidly allowing you to create [workflows](/workflows/) and edit Hyperlambda files.
+Hyper IDE is not a fully fledged IDE, and cannot compare to something like VS Code or Visual Studio. However, its purpose is to function as an extension on top of the endpoint generator, giving you code editing capabilities of your generated Hyperlambda files - In addition to rapidly allowing you to create [workflows](/workflows/) and edit Hyperlambda files and use AI to generate or modify existing code.
 
 You _can_ use Hyper IDE to edit TypeScript, Ruby, HTML, and C# code, but we don't recommend replacing it with your existing code editor, since other IDEs have much more features here than Hyper IDE. However, the opposite is also true, implying Hyper IDE have features your existing IDE does not have - Especially in regards to [Hyperlambda](/hyperlambda/).
 
@@ -44,6 +43,8 @@ If you're creating a workflow, Hyper IDE will communicate everything it does bac
 If you mark some Hyperlambda code in Hyper IDE and click F1, it will invoke AINIRO's machine learning type for Hyperlambda, and actually explain your code using natural language.
 
 ![Screenshot of Hyper IDE's integrated Hyperlambda F1-based help component](/assets/images/hyperlambda-ai-help.jpeg)
+
+In addition you can use the textbox below the CodeMirror input surface to instruct the Hyperlambda Generator to create code for you using natural language. You can also generate code from your file level comment, allowing you to write a file level comment, click save and generate, and have the Hyperlambda Generator create your code.
 
 ## Machine learning features
 
