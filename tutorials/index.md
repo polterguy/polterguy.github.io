@@ -13,8 +13,9 @@ Below are tutorials about how to get started with Magic. Most of these are accom
 * [Vibe Coding Saturday](https://ainiro.io/blog/vibe-coding-saturday)
 * [Implement Open API Specification using AI](https://ainiro.io/blog/implementing-openapi-spec-using-ai)
 
-## General Tutorials
+## Misc Tutorials
 
+* [How to embed your AI chatbot](/tutorials/how-to-embed-ai-chatbot)
 * [Generate a CRUD API using Low-Code and No-Code](https://ainiro.io/blog/generate-a-crud-api-using-low-code-and-no-code)
 * [Uploading files to your AI chatbot](https://ainiro.io/blog/uploading-files-to-your-ai-chatbot)
 * [Design your own AI chatbot theme - Modern version](/tutorials/custom-design-ai-chatbot/)
