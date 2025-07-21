@@ -2,7 +2,7 @@
 title: How to embed your AI chatbot
 ---
 
-When you're done with creating your machine learning type, and you've quality assured its content, it is time to embed the AI chatbot on your website. This is easily accomplished if you can somehow add a JavaScript inclusion tag on your site. All modern CMS systems have this capability, but the process differs for different platforms, so please check up your system specifically for how to achieve this before proceeding. This tutorial will explain the different query parameters and settings, allowing you to easily create the correct JavaScript embed code, but it will not dive into internals related to specific systems such as WordPress, Umbraco, or Joomla etc.
+When you're done with creating your machine learning type, and you've quality assured its content, it is time to embed the AI chatbot on your website. This is easily accomplished if you can somehow add a JavaScript inclusion tag on your site. All modern CMS systems have this capability, but the process differs for different platforms, so please check up your system specifically for how to achieve this before proceeding.
 
 ## The embed form
 
@@ -74,20 +74,46 @@ In order to have the `follow_up` setting correctly work, you will need to add so
 ```markdown
 ### Follow up questions instructions
 
-- Always finish your response with a carriage return, ---, and 3 follow up questions the user can ask you related to the context, unless you are about to execute a function. These questions are intended to be displayed to the user as example follow up questions the user can ask you. DO NOT RETURN THESE AS QUESTIONS TO THE USER, RETURN THESE AS EXAMPLE QUESTIONS THE USER CAN ASK YOU. Never return follow up questions if you're about to execute a function.
+- Always finish your response with a carriage return, ---,
+and 3 follow up questions the user can ask you related to
+the context, unless you are about to execute a function.
+These questions are intended to be displayed to the user
+as example follow up questions the user can ask you.
+DO NOT RETURN THESE AS QUESTIONS TO THE USER, RETURN THESE
+AS EXAMPLE QUESTIONS THE USER CAN ASK YOU. Never return
+follow up questions if you're about to execute a function.
 
 #### Example of follow up questions
 
-```text
 RESPONSE HERE
 
 ---
 * What's the price?
 * What's your best selling product?
 * How can I contact you?
-```
 
-In the above Markdown code section you can find an example of a response and its follow up questions.
+In the above paragraph you can find an example of a response
+and its follow up questions.
 ```
 
 The reasons is because it's the LLM's job to actually generate follow up questions that are relevant to the current context and previous questions. However, you still have to make sure the `follow_up` query parameter is set to `true` to allow for the frontend to correctly render these as follow up questions.
+
+## References
+
+References or citations will ensure that all training snippets having a valid URL value will be listed as citations at the bottom of the chat window after the LLM is done responding. This is useful for complex answers, where you might want to have users being able to check up the source for the chatbot's answer. These references are shown such that the closest _"match"_ will show first.
+
+This is a highly useful feature for AI chatbots you'd like to behave more like a _"search AI"_ than an AI chatbot, since it will list all URLs and allow the user to find the source document for the LLM's answer.
+
+Notice, only training snippets with a _valid URL_ will be shown here, and only _unique or distinct URLs_ will show up.
+
+## Custom themes
+
+By default, Magic comes with 5 themes out of the box. These are as follows:
+
+* modern-bubbles
+* modern-clear
+* modern-small-theme
+* modern-square
+* modern
+
+The `theme` query parameter can be any of these. However, you can also [roll your own custom theme](/tutorials/custom-design-ai-chatbot/) entirely, at which point you can completely override the look and feel of the chatbot. See the previous link for details about how to accomplish this.
