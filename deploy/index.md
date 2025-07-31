@@ -5,8 +5,6 @@ header:
   image: /assets/images/wizard-deploying-magic.webp
 ---
 
-Notice, this guide requires that you have obtained a single server license or a Kubernetes cluster license, and that you have access to Magic's source code somehow, and/or its Docker images. You can [contact Thomas](mailto:thomas@ainiro.io) to obtain such a license and get access.
-
 This guide helps you deploy Magic unto a VPS or a private server. The guide has been tested with Ubuntu 20.04 (LTS) x64, but _might_ work with other Debian based distributions. You will need a VPS instance somewhere first. You will also need a domain and point _two_ DNS A records to your server's IP address. Typically these would resemble the following.
 
 * __api.YOURDOMAIN.COM__
