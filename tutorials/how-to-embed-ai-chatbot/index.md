@@ -36,6 +36,7 @@ Since all of the above settings reflects a query parameter, this allows you to m
 * sticky - If true, will automatically reopen the chatbot when the user is navigating to a new page, and the chatbot was already visible on the previous page
 * attachments - If true, allows your users to attach files and upload these to the LLM
 * extra - Additional extra parameters, which can be anything, and is typically used for complex integrations where _"instance information"_ is required on a _"per chatbot window"_ basis
+* history - If true the chatbot will allow its users to see historical requests and continue previous conversations.
 
 Most of the above query parameters have a GUI equivalent in the embed screen as seen in the above screenshot. Let's dive into some of the most important settings from above and see how they change your AI chatbot's look and feel.
 
