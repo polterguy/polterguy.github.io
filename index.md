@@ -15,7 +15,7 @@ Magic is 100% open source, and you can find its [GitHub repo here](http://github
 ## AI Generated Code
 
 With Magic you can sometimes accomplish in some few minutes what requires weeks of coding with a more
-traditional platform. The following video illustrates how to create an API with no-code and _"vibe coding"_, having the AI generate the code.
+traditional platform. The following video illustrates how to create a full stack app using Magic Cloud.
 
 <iframe style="margin-left: auto; margin-right: auto; width: 560px; max-width: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/k6eSKxc6oM8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
