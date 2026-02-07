@@ -12,7 +12,7 @@ Magic Cloud, or Magic for short, is a backend software development platform that
 
 Magic is 100% open source, and you can find its [GitHub repo here](http://github.com/polterguy/magic). If you don't want to mess with hosting yourself, you can check out our professional or enterprise hosting plans [here](https://ainiro.io).
 
-## AI Generated Code
+## AI Generated Code - "Vibe Coding"
 
 With Magic you can sometimes accomplish in some few minutes what requires weeks of coding with a more
 traditional platform. The following video illustrates how to create a full stack app using Magic Cloud.
