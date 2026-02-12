@@ -2,8 +2,8 @@
 title: magic.lambda.git
 ---
 
-The magic.lambda.git project provides Git invocation capabilities for Magic and Hyperlambda. More specifically the
-project contains the following 6 slots.
+The magic.lambda.git project provides Git and GitHub invocation capabilities for Magic and Hyperlambda. More specifically the
+project contains the following 10 slots.
 
 * __[git.clone-repo]__ - Clones a repository into a folder
 * __[git.create-repo]__ - Initializes a folder as a Git repository
@@ -11,12 +11,16 @@ project contains the following 6 slots.
 * __[git.commit]__ - Adds files and creates a commit
 * __[git.push]__ - Pushes commits to a remote
 * __[git.checkout]__ - Switches branches (optionally creating a new branch)
+* __[git.remote.add]__ - Adds a Git remote
+* __[github.repo.create]__ - Creates a GitHub repository
+* __[github.repo.delete]__ - Deletes a GitHub repository
+* __[github.repo.list]__ - Lists GitHub repositories
 
 All slots use the Git CLI under the hood. Paths are always resolved **inside** your _"/files/"_ folder using
 `IRootResolver`, and folder paths **must** start with `/` and end with `/`.
 
 **Notice** - The primary argument to all slots is always the node value. Optional arguments must be provided
-as child nodes.
+as child nodes. Folder paths are required to start with `/` and end with `/`.
 
 ## GitHub authentication (HTTPS)
 
@@ -27,9 +31,12 @@ If you use HTTPS for GitHub, the slots will inject a per-command `Authorization`
 magic:git:github:username
 magic:git:github:token
 magic:git:github:host
+magic:git:github:api-base
 ```
 
-The `host` value defaults to `github.com` if not provided.
+The `host` value defaults to `github.com` if not provided. The `api-base` value defaults to
+`https://api.github.com`, but should be set to your GitHub Enterprise API base URL if you use it
+(typically `https://your-ghe-domain/api/v3`).
 
 ## How to use [git.clone-repo]
 
@@ -134,3 +141,90 @@ git.checkout:/modules/stripe/
    branch:feature-x
    create:true
 ```
+
+## How to use [git.remote.add]
+
+Adds a remote to a repository. The repo path is the node value. The `url` child node is required.
+The `name` child node defaults to `origin` if omitted.
+
+```
+git.remote.add:/modules/stripe/
+   url:"https://github.com/polterguy/stripe.git"
+```
+
+```
+git.remote.add:/modules/stripe/
+   name:origin
+   url:"https://github.com/polterguy/stripe.git"
+```
+
+## How to use [github.repo.create]
+
+Creates a GitHub repository. The repository name is the node value. Optionally provide an
+organization owner and additional settings.
+
+```
+github.repo.create:my-new-repo
+```
+
+```
+github.repo.create:my-new-repo
+   owner:my-org
+   private:true
+   description:"Example repo"
+   homepage:"https://example.com"
+   auto-init:true
+   default-branch:main
+```
+
+Optional arguments:
+
+* __[owner]__ - Organization name to create repo within (omit to create under authenticated user)
+* __[private]__ - Boolean
+* __[description]__ - String
+* __[homepage]__ - String
+* __[auto-init]__ - Boolean
+* __[default-branch]__ - String
+* __[gitignore-template]__ - String
+* __[license-template]__ - String
+
+## How to use [github.repo.delete]
+
+Deletes a GitHub repository. The repository name is the node value. The `owner` argument is optional,
+and defaults to the configured `magic:git:github:username`.
+
+```
+github.repo.delete:my-old-repo
+```
+
+```
+github.repo.delete:my-old-repo
+   owner:my-org
+```
+
+## How to use [github.repo.list]
+
+Lists GitHub repositories. If `owner` is omitted, it will list repositories visible to the
+authenticated user. If `owner` is provided, it will list repositories for the organization (not a user).
+
+**Notice** - For the authenticated user endpoint, GitHub does not allow combining `visibility` and `type`.
+Provide only one of them.
+
+The result is returned as a list, each containing the following fields:
+
+* `name`
+* `full_name`
+* `private`
+* `html_url`
+* `description`
+* `default_branch`
+
+```
+github.repo.list
+   owner:my-org
+   visibility:all
+   type:all
+   per-page:100
+   page:1
+```
+
