@@ -48,3 +48,4 @@ endpoints, etc.
 * [magic.lambda.threading](/plugins/magic.lambda.threading/) - Thread support for Magic and Hyperlambda
 * [magic.lambda.pdf](/plugins/magic.lambda.pdf/) - PDF support for Magic and Hyperlambda
 * [magic.lambda.openai](/plugins/magic.lambda.openai/) - OpenAI specific slots
+* [magic.lambda.git](/plugins/magic.lambda.git/) - Git specific slots
