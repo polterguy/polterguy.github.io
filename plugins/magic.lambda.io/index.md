@@ -31,6 +31,7 @@ This project provides file/folder slots for Magic. More specifically, it provide
 * __[io.content.zip-stream]__ - Creates a ZipStream for you, without touching the file system
 * __[.io.folder.root]__ - Returns the root folder of your system. (private C# slot)
 * __[io.file.mixin]__ - Allows you to invoke lambda objects from a file and substitute content dynamically in your original file
+* __[io.file.search]__ - Searches file content and returns filename + line numbers
 
 ## magic.lambda.io fundamentals
 
@@ -215,6 +216,42 @@ you pass in **[display-hidden]** and set its value to boolean _"true"_.
 io.file.list:/misc/
 ```
 
+### How to use [io.file.search]
+
+Searches all files recursively inside the specified folder and returns filenames with line numbers
+containing the specified pattern.
+
+```
+io.file.search:/modules/
+   pattern:"TODO"
+```
+
+Optional arguments:
+
+* __[regex]__ - Treats pattern as regular expression
+* __[case-sensitive]__ - Enables case sensitive search
+* __[extensions]__ - Comma-separated list of extensions (e.g. .cs,.hl)
+
+Example with regex + extensions:
+
+```
+io.file.search:/modules/
+   pattern:"class\\s+Git"
+   regex:true
+   extensions:.cs,.hl
+```
+
+Return value example:
+
+```
+io.file.search
+   .
+      file:/modules/foo/bar.cs
+      lines
+         .:12
+         .:48
+```
+
 ### How to use [io.file.move]
 
 Similar to **[io.file.copy]** but deletes the source file after evaluating.
@@ -242,7 +279,7 @@ if any of the files exists from before.
 
 This slot takes a filename as its primary argument, and optionally any amount of lambda children objects.
 It allows for dynamically substituting for instance `{{ '{{' }}*/.name}}` segments in your original source file,
-by invoking lambda objects it can find by evaluating your `{{ '{{' }}xyz}}` segment as an expression 
+by invoking lambda objects it can find by evaluating your `{{ '{{' }}xyz}}` segment as an expression
 leading to some lambda object you want to execute. Below is an example of usage that assumes you've got a
 file named _"foo.html"_ at the root folder of your installation resembling the following.
 
@@ -399,4 +436,3 @@ signaler.Signal(".io.folder.root", node);
 // Retrieving root folder after evaluating slot.
 var rootFolder = node.Get<string>();
 ```
-
