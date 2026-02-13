@@ -9,10 +9,9 @@ This project contains _"system slots"_ to be able to invoke system commands, and
 * __[system.plugin.unload]__ - Unloads a previously loaded plugin assembly and unregister any slots
 * __[system.plugin.execute]__ - Short hand combining load with unload and a lambda object
 * __[system.plugin.list]__ - Lists all dynamically loaded plugins
-* __[system.terminal.create]__ - Creates a new terminal process on the server
-* __[system.terminal.write-line]__ - Writes a line/command to a previously created terminal process on the server
-* __[system.terminal.destroy]__ - Destroys/kills a previously created terminal process on the server
 * __[system.execute]__ - Execute the specified command returning the result to caller
+* __[system.os]__ - Returns description of your operating system
+* __[system.is-os]__ - Returns true if your underlaying operating system is of the specified type
 
 The most important feature of this project is probably that it gives you the ability to dynamically compile C# code, persist to an assembly/dll, and dynamically load this assembly as if it was a _"plugin"_.
 
@@ -40,12 +39,12 @@ using magic.node;
 using magic.signals.contracts;
 
 // Our slot class.
-[Slot(Name = ""foo"")]
+[Slot(Name = "foo")]
 public class Foo : ISlot
 {
    public void Signal(ISignaler signaler, Node input)
    {
-      input.Value = ""Foo was here!"";
+      input.Value = "Foo was here!";
    }
 }"
 ```
@@ -160,12 +159,12 @@ using magic.node.extensions;
 using magic.signals.contracts;
 
 // Our slot class.
-[Slot(Name = ""foo"")]
+[Slot(Name = "foo")]
 public class Foo : ISlot
 {
    public void Signal(ISignaler signaler, Node input)
    {
-      input.Value = $""Hi {input.GetEx<string>()}, how may I assist you?"";
+      input.Value = $"Hi {input.GetEx<string>()}, how may I assist you?";
    }
 }"
    assembly-name:foo.dll
@@ -214,12 +213,12 @@ using magic.node;
 using magic.signals.contracts;
 
 // Our slot class.
-[Slot(Name = ""bar"")]
+[Slot(Name = "bar")]
 public class Bar : ISlot
 {
    public void Signal(ISignaler signaler, Node input)
    {
-      input.Value = ""Hello from C#"";
+      input.Value = "Hello from C#";
    }
 }"
    assembly-name:bar.dll
@@ -250,110 +249,27 @@ This slot returns a list of all dynamically loaded plugins allowing you to trave
 system.plugin.list
 ```
 
-## Terminal system commands
-
-There are also terminal slots in this project that allows you to not only execute terminal commands, but also in fact create your own terminal session, through where you can dynamically submit commands that are executed in a terminal on your server.
-
-By combining these slots with for instance the _"magic.lambda.sockets"_ project, you can spawn off terminal/bash
-processes on your server, creating _"virtual web based terminal sessions"_ on your server. To create a new
-terminal process, use something such as the following.
-
-```
-system.terminal.create:my-terminal
-   folder:/
-
-   /*
-    * STDOUT callback, invoked when something is channeled over STDOUT.
-    */
-   .stdOut
-
-      /*
-       * Do standard out stuff here, with the incoming [.arguments]/[cmd] command.
-       */
-      log.info:x:@.arguments/*/cmd
-
-
-   /*
-    * STDERROR callback, invoked when something is channeled over STDOUT.
-    */
-   .stdErr
-
-      /*
-       * Do standard out stuff here, with the incoming [.arguments]/[cmd] command.
-       */
-      log.info:x:@.arguments/*/cmd
-```
-
-The above **[.stdOut]** and **[.stdErr]** lambda objects are invoked when output data or error data is
-received from the process, allowing you to handle it any ways you see fit. The **[folder]** argument
-is the default/initial folder to spawn of the process in. All of these arguments are optional.
-
-The name or the value of the **[system.terminal.create]** invocation however is important. This becomes
-a unique reference for you, which you can later use to de-reference the instance, while for instance
-feeding the terminal lines of input, using for instance the **[system.terminal.write-line]** slot.
-To write a command line to an existing terminal window, such as the one created above, you can use
-something such as the following.
-
-```
-system.terminal.write-line:my-terminal
-   cmd:ls -l
-```
-
-The above will execute the `ls -l` command in your previously create _"my-terminal"_ instance, and
-invoke your **[.stdOut]** callback once for each line of output the command results in. To destroy
-the above created terminal, you can use something such as the following.
-
-```
-system.terminal.destroy:my-terminal
-```
-
-All terminal slots _requires a name_ to be able to uniquely identify _which_ instance you wish to create,
-write to, or destroy. This allows you to create as many terminals as you wish on your server, only restricted
-by memory on your system, and/or your operating system of choice.
-The terminal slots works transparently for both Windows, Linux and Mac OS X, except of course the commands
-you pass into them will differ depending upon your operating system.
-
-**Notice** - If you don't reference a terminal session for more than 30 minutes, the process will be
-automatically killed and disposed, and any future attempts to reference it, will resolve in an error.
-This is to avoid having hanging processes on the server, in case a terminal process is started, and
-then something happens, which disconnects the client, resulting in _"hanging sessions"_.
-
-Notice, by default Magic's Docker image will run in a restriced user called _"magic"_, which implies you do *not* have root access to the underlying operating system unless you modify this somehow yourself, which is not recommended.
-
 ## How to use [system.execute]
 
 If you only want to execute a specific program in your system you can use **[system.execute]**, and pass in
-the name of the command as a value, and any arguments as children, optionally applying a **[structured]** argument
-to signifiy if you want each line of input to be returned as a single node or not. Below is an example.
+the name of the command as a value, with any arguments as a single **[args]** child node. You can also
+optionally specify **[working-directory]**.
 
 ```
 system.execute:ls
-   structured:true
-   .:-l
+   args:"-l"
 ```
 
-The above will result in something such as follows.
+To specify a working directory.
 
 ```
-system.execute
-   .:total 64
-   .:"-rw-r--r--  1 thomashansen  staff   495  9 Nov 10:37 Dockerfile"
-   .:"-rw-r--r--  1 thomashansen  staff  1084 29 Oct 14:51 LICENSE"
-   .:"-rw-r--r--  1 thomashansen  staff   604 29 Oct 14:51 Program.cs"
-   .:"drwxr-xr-x  3 thomashansen  staff    96 29 Oct 16:53 Properties"
-   .:"-rw-r--r--  1 thomashansen  staff  3154 29 Oct 14:51 Startup.cs"
-   .:"-rw-r--r--  1 thomashansen  staff  1458 11 Nov 10:57 appsettings.json"
-   .:"-rw-r--r--  1 thomashansen  staff   650  9 Nov 08:26 backend.csproj"
-   .:"drwxr-xr-x  3 thomashansen  staff    96  9 Nov 10:23 bin"
-   .:"-rw-r--r--  1 thomashansen  staff   700  9 Nov 07:29 dev_backend.csproj"
-   .:"drwxr-xr-x  9 thomashansen  staff   288 12 Nov 10:31 files"
-   .:"drwxr-xr-x  9 thomashansen  staff   288  9 Nov 19:05 obj"
-   .:"drwxr-xr-x  6 thomashansen  staff   192 29 Oct 14:51 slots"
-   .:"-rw-r--r--  1 thomashansen  staff  1905 29 Oct 14:51 web.config"
+system.execute:ls
+   args:"-l"
+   working-directory:"/"
 ```
 
-**Notice** - If you ommit the **[structured]** argument, or set its value to _"false"_, the result of the
-above invocation will return a single string.
+**Notice** - The slot returns stdout as a string, and throws an exception on non-zero exit code, using
+stderr if present.
 
 ## Querying operating system version
 
@@ -370,4 +286,3 @@ Below is example usage of both.
 system.is-os:OSX
 system.os
 ```
-
