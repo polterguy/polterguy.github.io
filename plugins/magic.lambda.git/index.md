@@ -3,7 +3,7 @@ title: magic.lambda.git
 ---
 
 The magic.lambda.git project provides Git and GitHub invocation capabilities for Magic and Hyperlambda. More specifically the
-project contains the following 10 slots.
+project contains the following 14 slots.
 
 * __[git.clone-repo]__ - Clones a repository into a folder
 * __[git.create-repo]__ - Initializes a folder as a Git repository
@@ -12,6 +12,10 @@ project contains the following 10 slots.
 * __[git.push]__ - Pushes commits to a remote
 * __[git.checkout]__ - Switches branches (optionally creating a new branch)
 * __[git.remote.add]__ - Adds a Git remote
+* __[git.fetch]__ - Fetches updates from a remote
+* __[git.pull]__ - Pulls updates from a remote
+* __[git.status]__ - Shows repository status
+* __[git.branch.list]__ - Lists branches
 * __[github.repo.create]__ - Creates a GitHub repository
 * __[github.repo.delete]__ - Deletes a GitHub repository
 * __[github.repo.list]__ - Lists GitHub repositories
@@ -87,7 +91,7 @@ Creates a commit. The repo path is the node value. The `message` child node is r
 
 ```
 git.commit:/modules/stripe/
-   message:"Initial commit"
+   message:Initial commit
 ```
 
 Optional arguments:
@@ -156,6 +160,70 @@ git.remote.add:/modules/stripe/
 git.remote.add:/modules/stripe/
    name:origin
    url:"https://github.com/polterguy/stripe.git"
+```
+
+## How to use [git.fetch]
+
+Fetches updates from a remote. The repo path is the node value. The `remote` child node defaults to `origin`.
+
+```
+git.fetch:/modules/stripe/
+```
+
+```
+git.fetch:/modules/stripe/
+   remote:origin
+   refspec:main
+```
+
+## How to use [git.pull]
+
+Pulls updates from a remote. The repo path is the node value. The `remote` child node defaults to `origin`.
+
+```
+git.pull:/modules/stripe/
+```
+
+```
+git.pull:/modules/stripe/
+   remote:origin
+   branch:main
+   rebase:false
+   ff-only:false
+```
+
+## How to use [git.status]
+
+Shows repo status. The repo path is the node value. By default this returns the raw `git status` output.
+If you provide `structured:true`, each line is returned as a `.` node.
+
+```
+git.status:/modules/stripe/
+```
+
+```
+git.status:/modules/stripe/
+   porcelain:true
+   branch:true
+   structured:true
+```
+
+## How to use [git.branch.list]
+
+Lists branches. The repo path is the node value. Each branch is returned as a `.` node.
+
+```
+git.branch.list:/modules/stripe/
+```
+
+```
+git.branch.list:/modules/stripe/
+   remote:true
+```
+
+```
+git.branch.list:/modules/stripe/
+   all:true
 ```
 
 ## How to use [github.repo.create]
@@ -227,4 +295,3 @@ github.repo.list
    per-page:100
    page:1
 ```
-
