@@ -50,3 +50,4 @@ endpoints, etc.
 * [magic.lambda.openai](/plugins/magic.lambda.openai/) - OpenAI specific slots
 * [magic.lambda.git](/plugins/magic.lambda.git/) - Git specific slots
 * [magic.lambda.git](/plugins/magic.lambda.system/) - System specific slots
+* [magic.lambda.git](/plugins/magic.lambda.puppeteer/) - PuppeteerSharp, a headless browser allowing you to browse the web using automation
