@@ -130,6 +130,34 @@ io.file.save:/misc/README2.md
 
 **Notice** - If you want to save binary content you should use the **[io.file.save.binary]** override.
 
+### How to use [io.file.patch]
+
+Applies a unified diff patch to the specified file on disc. The patch is provided as the first child argument.
+This slot evaluates its children before applying the patch, which allows you to dynamically create the patch
+using other slots.
+
+```
+io.file.patch:/misc/README2.md
+   .:@"@@ -5,1 +5,1 @@
+-Old line here
++New line here"
+```
+
+#### Patch format rules
+
+The patch parser accepts standard unified diff format, but still enforces some rules and will throw if the patch deviates.
+
+* The patch must target **exactly one file**.
+* Each hunk must start with a header line in this format: `@@ -a,b +c,d @@`.
+* Every line inside a hunk must begin with one of these characters:
+  * ` ` (space) for context lines
+  * `-` for deletions
+  * `+` for additions
+  * `\` for the `\ No newline at end of file` marker
+* Empty lines inside a hunk are allowed and treated as context lines.
+* Context lines must match the file content **exactly**, otherwise the patch will fail.
+* Hunk line counts are not enforced, but the starting line number must match.
+
 ### How to use [io.file.exists]
 
 Returns true if specified file exists from before.
