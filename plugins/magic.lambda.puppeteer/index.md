@@ -154,7 +154,10 @@ Arguments:
 * Slot value - Session identifier.
 * `selector` - CSS selector to type into.
 * `text` - Text to type.
+* `config-key` - Configuration key resolving the text value.
 * `delay` - Delay between key presses in milliseconds.
+
+Supply exactly one of `text` or `config-key`.
 
 Examples:
 
@@ -171,6 +174,12 @@ puppeteer.type:SESSION_ID
    delay:25
 ```
 
+```
+puppeteer.type:SESSION_ID
+   selector:"#password"
+   config-key:"magic:secrets:example-password"
+```
+
 ## [puppeteer.fill]
 
 Clears and types text into a selector.
@@ -180,7 +189,10 @@ Arguments:
 * Slot value - Session identifier.
 * `selector` - CSS selector to fill.
 * `text` - Text to type after clearing.
+* `config-key` - Configuration key resolving the text value.
 * `delay` - Delay between key presses in milliseconds.
+
+Supply exactly one of `text` or `config-key`.
 
 Examples:
 
@@ -188,6 +200,12 @@ Examples:
 puppeteer.fill:SESSION_ID
    selector:"#email"
    text:"thomas@gaiasoul.com"
+```
+
+```
+puppeteer.fill:SESSION_ID
+   selector:"#password"
+   config-key:"magic:secrets:example-password"
 ```
 
 ## [puppeteer.press]
