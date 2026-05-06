@@ -8,6 +8,13 @@ of having your computer doing multiple times concurrently. This concept is often
 _"multi tasking"_ and is crucial for any modern operating system, and/or programming language.
 Hyperlambda contains several multi tasking related slots.
 
+* __[fork]__ - Executes lambda in a separate thread pool work item
+* __[join]__ - Waits for descendant forks to complete
+* __[semaphore]__ - Synchronizes concurrent access to shared resources
+* __[sleep]__ - Suspends the current execution for a number of milliseconds
+* __[execution.kill]__ - Cancels another running execution by its execution id
+* __[execution.timeout]__ - Configures a timeout for the current execution context
+
 ## How to use [fork]
 
 Forks the given lambda into a new thread of execution, using a thread from the thread pool. This
@@ -85,3 +92,30 @@ sleep:1000
 the current thread is _"sleeping"_, it will not be a blocking call, and require ZERO physical operating
 system threads while it is sleeping. This is true because of Hyperlambda's 100% perfectly `async` nature.
 
+## How to use [execution.kill]
+
+Cancels another running execution by its execution id. This is useful when you have previously returned
+an execution id to a caller and later want to stop that execution from another request or thread.
+
+```
+execution.kill:6c5a0bd3f7d64d6382d6cf3e7df5dc7c
+```
+
+The slot returns a boolean value indicating whether or not a matching live execution was found and
+cancelled.
+
+## How to use [execution.timeout]
+
+Configures a timeout for the **current** execution context. The value must be a positive number of
+milliseconds and is interpreted relative to _now_.
+
+```
+execution.timeout:30000
+```
+
+The above means the current execution may continue for at most 30 more seconds. The slot returns a
+boolean value indicating whether or not the timeout actually tightened the current deadline.
+
+If multiple timeouts are applied to the same execution, the earliest deadline wins. Any child work
+created through **[fork]** inherits the same execution context, implying the timeout applies to
+forked work too.
