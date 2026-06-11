@@ -218,7 +218,7 @@ _"n"_ with a number, and _"x"_ with an expression.
 * `!xxx` Traverses all descendants except those matching specified _"xxx"_ name and returns
 * `{x}` Extrapolated expression that will be evaluated assuming it yields one result, replacing itself with the value of whatever node it points to
 * `=xxx` Retrieves the node with the _"xxx"_ value, converting to string if necessary
-* `[n,n]` Retrieves a subset of its previous result set, implying _"from, to"_ meaning \[n1,n2\>
+* `[n,n]` Retrieves a subset of its previous result set, implying _"skip, count"_, or _"offset, count"_
 * `@xxx` Returns the first node _"before"_ in its hierarchy that matches the given _"xxx"_ in its name
 * `n` (any number) Returns the n'th child of its previous result set
 * `[x|y]` Pipe separated list of names returning all nodes having a name of either _"x"_ or _"y"_
