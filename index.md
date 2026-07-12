@@ -19,6 +19,20 @@ traditional platform. The following video illustrates how to create a full stack
 
 <iframe style="margin-left: auto; margin-right: auto; width: 560px; max-width: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/k6eSKxc6oM8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
+## MCP Support
+
+Magic's contains an integrated MCP server, with OAuth, allowing you to connect it to.
+
+* Claude Code
+* Codex
+* Cursor
+* Qoder
+* Grok
+
+The above is just of what I've tried it with, but it should work with everything having MCP support. Below is a video where I'm using Claude Code to create an embeddable AI chatbot, with a landing page, and a _"widget"_ which is kind of like a micro app inside the chat stream itself.
+
+<iframe style="margin-left: auto; margin-right: auto; width: 560px; max-width: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/GExHc4k8GiU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 ## The Magic Dashboard
 
 Magic's purpose is to help you with your backend, and it comes with a dashboard allowing you to manage all aspects of your backend. The dashboard contains UI components for most things you'll need when creating and maintaining your API and backend code. Below you can find some general information about some of its most important components.
