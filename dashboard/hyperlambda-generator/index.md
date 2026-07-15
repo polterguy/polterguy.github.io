@@ -1,14 +1,21 @@
 ---
 title: Hyperlambda Generator
-description: Magic contains a Hyperlambda AI-based generator, allowing you to create your backend APIs using natural language.
+description: The Hyperlambda Generator is a proprietary SLM fine-tuned with more than 600,000 training snippets, transforming natural language into working backend code in seconds, without hallucinating function invocations.
 og_image: "/images/custom-chatgpt-chatbot.jpg"
 header:
   image: /assets/images/wizard-magically-pulling-ai-chatbots-our-of-cauldron.webp
 ---
 
-Magic contains its own Hyperlambda Generator. This isn't a single component, but goes through most parts of the platform that somehow allow you to create Hyperlambda code. It's built as a custom LLM we have fine tuned on top of OpenAI's GPT-4.1 model, with more than 20,000 training examples, so it's actually very strong on creating backend code, even though it's using a _"small base model"_.
+Magic contains its own Hyperlambda Generator. This isn't a single component, but goes through most parts of the platform that somehow allow you to create Hyperlambda code. It's built as our own proprietary SLM (Small Language Model), fine-tuned with more than 600,000 training snippets, so it's actually very strong on creating backend code, even though it's using a _"small base model"_.
 
 ![Screenshot of the Hyperlambda Generator creating an HTTP CRUD endpoint](/assets/images/hyperlambda-generator.png)
+
+## What makes it different
+
+* **It's fast** - Since it's a small model, it typically generates your code in 1.5 to 5 seconds, allowing you to iterate rapidly, and allowing AI agents to create tools without noticeable delay.
+* **It cannot hallucinate function invocations** - Every slot the generated code invokes is verified against the slots that actually exist in your cloudlet before the code is returned. If the model invokes something that doesn't exist, the code is rejected and regenerated - You will never be handed code invoking made-up functions.
+* **It's trained exclusively on Hyperlambda** - More than 600,000 training snippets covering the entire platform; database access, HTTP endpoints, authentication, validation, email, file handling, scheduling, etc.
+* **It's built for AI agents** - The generator is available over the [MCP server](/tutorials/how-to-connect-the-mcp-server/), allowing a connected AI agent such as Claude to create new endpoints - and hence new tools for itself - on demand.
 
 You have to write _"formal specifications using technical language"_, in order for it to understand what to do. But if you've got some basic knowledge about software development, you should be able to rapidly understand how to use it. Below are some examples of prompts to give you an idea.
 

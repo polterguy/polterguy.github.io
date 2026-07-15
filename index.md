@@ -33,6 +33,12 @@ The above is just some of what I've tried it with, but it should work with every
 
 <iframe style="margin-left: auto; margin-right: auto; width: 560px; max-width: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/GExHc4k8GiU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
+## The Hyperlambda Generator
+
+At the heart of Magic you'll find the [Hyperlambda Generator](/dashboard/hyperlambda-generator/) — our own proprietary SLM (Small Language Model), fine-tuned with more than 600,000 training snippets, transforming natural language into working Hyperlambda code in typically 1.5 to 5 seconds. Unlike general purpose LLMs, it cannot hallucinate function invocations — every slot the generated code invokes is verified against the slots that actually exist in your cloudlet before the code is returned to you.
+
+Combined with the [MCP server](/tutorials/how-to-connect-the-mcp-server/), this allows an AI agent such as Claude to create new tools for itself on demand — describing the endpoint it needs in plain English, and having the generator create it in seconds.
+
 ## The Magic Dashboard
 
 Magic's purpose is to help you with your backend, and it comes with a dashboard allowing you to manage all aspects of your backend. The dashboard contains UI components for most things you'll need when creating and maintaining your API and backend code. Below you can find some general information about some of its most important components.
