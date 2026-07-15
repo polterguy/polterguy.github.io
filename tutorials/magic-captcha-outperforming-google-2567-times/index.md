@@ -60,16 +60,16 @@ YOUR-CLOUDLET.us.ainiro.io/magic/system/misc/magic-captcha-verify
 PoW on the Blockchain implies having a seed value starting out at e.g. 0 that you append to some string value, for then to generate a hash until you've got n trailing zeros at the end of your hash. If you don't get a resulting hash value with n trailing zeros, you increment the seed value by 1, and try again - Until you've got a hash value with enough trailing zeros to be considered valid. This implies a client wanting a valid token needs to generate n amount of hash values, depending upon how many trailing zeros you need for a valid token.
 
 * 1 ZERO requires on average 16 hash values
-* 2 ZEROs requires on average 256 hash values
-* 3 ZEROs requires on average 4,096 hash values
-* 4 ZEROs requires on average 65,536 hash values
-* 5 ZEROs requires on average 1,048,576 hash values
+* 2 ZEROs require on average 256 hash values
+* 3 ZEROs require on average 4,096 hash values
+* 4 ZEROs require on average 65,536 hash values
+* 5 ZEROs require on average 1,048,576 hash values
 
 For most endpoints where Magic CAPTCHA is feasible, a workload of 3 or possibly 4 is a good value. 5 implies generating a token might take minutes, even on an M3 CPU. 2 is too small, and barely uses the CPU at all before a valid token has been generated.
 
 ## The frontend code
 
-To understand how Magic CAPTCHA works, it might be easier for some to look at its code. Below is a typicaly JavaScript client library to generates a CAPTCHA token.
+To understand how Magic CAPTCHA works, it might be easier for some to look at its code. Below is a typical JavaScript client library that generates a CAPTCHA token.
 
 ```javascript
 (function() {
@@ -112,7 +112,7 @@ mcaptcha.token = async function(callback, workload = 3) {
 })();
 ```
 
-The point about the above code is that it's a mathematical _"trapdoor"_, which forces the client to create thousands of SHA256 value to generate a valid token, based upon a challenge returned by the server. Creating one SHA256 is very fast, but creating 5,000 SHA256 values is where it starts to become a expensive from a CPU perspective.
+The point about the above code is that it's a mathematical _"trapdoor"_, which forces the client to create thousands of SHA256 values to generate a valid token, based upon a challenge returned by the server. Creating one SHA256 is very fast, but creating 5,000 SHA256 values is where it starts to become expensive from a CPU perspective.
 
 The server on the other hand can easily verify the token by creating a single SHA256, while the client needs to generate thousands of SHA256 values to create a valid token.
 
@@ -126,16 +126,16 @@ On top of that, simply loading _anything_ from a Google domain forces you to sho
 
 > All in all Google reCAPTCHA is for the above reasons **fundamentally broken**!
 
-Magic CAPTCHA also allows for _"friendly bots"_ to invoke your endpoints without additional authentication or authorisation schemes. Sometimes you want to create publicly available endpoints that prevents malicious bots from invoking thousands of times, while still allowing _"friendly bots"_ to invoke the same endpoints. Magic CAPTCHA allows for this, since the cost/benefit becomes a calculation the bot can do to calculate that the cost of generating a token is actually worth it - Resulting in that a bot might want to invoke your endpoint once or twice, but will probably avoid invoking it 10,000 times, unless it is very persistent and willing to waste a lot of energy (read money) to invoke your endpoint.
+Magic CAPTCHA also allows for _"friendly bots"_ to invoke your endpoints without additional authentication or authorisation schemes. Sometimes you want to create publicly available endpoints that prevent malicious bots from invoking thousands of times, while still allowing _"friendly bots"_ to invoke the same endpoints. Magic CAPTCHA allows for this, since the cost/benefit becomes a calculation the bot can do to calculate that the cost of generating a token is actually worth it - Resulting in that a bot might want to invoke your endpoint once or twice, but will probably avoid invoking it 10,000 times, unless it is very persistent and willing to waste a lot of energy (read money) to invoke your endpoint.
 
 ## Concerns
 
 Magic CAPTCHA does not technically eliminate bots. In fact, any bot _can_ easily invoke your endpoint, but the idea is to scare bots away from doing that repeatedly due to the cost of having to create thousands of SHA256 values for each invocation, which spends a lot of CPU, and therefore becomes expensive over time.
 
-This implies that technically Magic CAPTCHA isn't actually a CAPTCHA according to its strict definition, and malicious bots might go through it and invoke your endpoint. The idea with Magic CAPTCHA is that the cost of doing such a thing becomes so large over time, that few will choose to do it simply for this reason. And even those that invokes your endpoint, will probably not want to invoke it thousands of times consecutively.
+This implies that technically Magic CAPTCHA isn't actually a CAPTCHA according to its strict definition, and malicious bots might go through it and invoke your endpoint. The idea with Magic CAPTCHA is that the cost of doing such a thing becomes so large over time, that few will choose to do it simply for this reason. And even those that invoke your endpoint, will probably not want to invoke it thousands of times consecutively.
 
 In addition, when generating a token the client's CPU will run on maximum performance for 0.05 to 5 seconds, depending upon the CPU's power and your workload requirements. This spends extra power on the client, which might be a concern for phones and other devices that are running on battery, and/or endpoints the client needs to invoke many times, over and over again.
 
-For the above reasons Magic CAPTCHA isn't a drop-in replacement of Google's reCAPTCHA, and only really work in some few scenarios. However, when it does work, it runs in circles around Google reCAPTCHA on all parameters that matters.
+For the above reasons Magic CAPTCHA isn't a drop-in replacement of Google's reCAPTCHA, and only really works in a few scenarios. However, when it does work, it runs in circles around Google reCAPTCHA on all parameters that matter.
 
 Notice, Magic still contains Google reCAPTCHA logic allowing you to resort to reCAPTCHA when Magic CAPTCHA isn't enough for these reasons, since Magic CAPTCHA can't replace Google's reCAPTCHA on everything. However, when it can replace reCAPTCHA it is literally _"a bajillion"_ times better.

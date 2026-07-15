@@ -12,7 +12,7 @@ The Endpoint Generator component allows you to automatically generate an HTTP CR
 
 If you use the generator on for instance the _"SQLite Sakila"_ database that you can find as a [plugin](/dashboard/plugins/), Magic will create more than 3,000 lines of Hyperlambda code for you automatically, resulting in some roughly 100 HTTP endpoints for you, providing you with all CRUD operations towards all tables in your database.
 
-Magic can also generate an API wrapping your existing databases. If you want to use your existing databases as input, you'll have to provide Magic with a connection strings that allows it to connect to your database. You can do this through the [databases](/dashboard/databases/) component.
+Magic can also generate an API wrapping your existing databases. If you want to use your existing databases as input, you'll have to provide Magic with a connection string that allows it to connect to your database. You can do this through the [databases](/dashboard/databases/) component.
 
 ## How to use the endpoint generator
 
@@ -22,7 +22,7 @@ Notice, if you deselect all tables and select only one table, you get a lot more
 
 ![Screenshot of configuring one individual table in the CRUD Backend Generator](/images/configuring-crud.jpg)
 
-The Backend Generator creates 5 HTTP endpoints by default for each table. One endpoint for all CRUD operations, and a 5th endpoint to count items. If your table does not have a primary key, it will not be able to generate delete or update endpoints. If your primary key has a default value, it will not generate endpoint code requiring a primary key value for its create endpoints. In general, the endpoint generator tries to intelligently choose defaults for your tables as it generates your backend. However, it is not always able to choose correctly for you, so you might want to sanity check its result after you've generated your backend.
+The Backend Generator creates 5 HTTP endpoints by default for each table. One endpoint for each CRUD operation, and a 5th endpoint to count items. If your table does not have a primary key, it will not be able to generate delete or update endpoints. If your primary key has a default value, it will not generate endpoint code requiring a primary key value for its create endpoints. In general, the endpoint generator tries to intelligently choose defaults for your tables as it generates your backend. However, it is not always able to choose correctly for you, so you might want to sanity check its result after you've generated your backend.
 
 ## Endpoint generator settings
 
@@ -43,7 +43,7 @@ Below is a complete list of what settings you can apply when generating your end
 * Turning on or off logging when your create, update and delete endpoints are invoked
 * reCAPTCHA value, and what endpoint to apply reCAPTCHA for, allowing you to tell the backend generator that you want to apply reCAPTCHA for the create, read, update or delete endpoint. Notice, Magic is using reCAPTCHA version 3 from Google
 * Caching, implying HTTP cache, or the _"Cache-Control"_ HTTP header, and whether or not to turn on public cache or not, where public caching allows proxies to cache your endpoint's result
-* Whether or not _"write"_ endpoints should publish socket messages, where write endpoints implies create, update and delete. If you turn on publishing of socket messages here, a socket message with the name of the database, table, and HTTP verb will be published as the endpoint is invoked. If you turn on publishing of socket messages, you can optionally declare what type of authorisation the socket message will require in order to deliver the message to connected users
+* Whether or not _"write"_ endpoints should publish socket messages, where write endpoints imply create, update and delete. If you turn on publishing of socket messages here, a socket message with the name of the database, table, and HTTP verb will be published as the endpoint is invoked. If you turn on publishing of socket messages, you can optionally declare what type of authorisation the socket message will require in order to deliver the message to connected users
 * Left joins, allowing you to declare whether or not you want to join on referenced tables or not, implying if a field is a foreign key, it will in addition to giving you all columns from your specific table, also pull in one string field from the referenced table as it's returning data from your read endpoint
 * Verbose filtering, which if turned on, will create a lot more arguments, providing you with much more filtering capabilities for your generated endpoints
 * Overwrite, which if true, will overwrite an existing endpoint. By default, the endpoint generator will _not_ overwrite existing files unless you explicitly tell it to do so
@@ -74,15 +74,15 @@ You can find the SQL endpoint generator as an additional tab inside your endpoin
 5. Provide arguments to your endpoint (optional)
 6. Write your SQL referencing arguments if you provided arguments in the above step
 
-When you've done with the above, simply click the _"Generate"_ button, and you've got an HTTP endpoint wrapping your SQL.
+When you're done with the above, simply click the _"Generate"_ button, and you've got an HTTP endpoint wrapping your SQL.
 
 ## Settings for the SQL generator
 
-The SQL generator allows you to override authorisation requirements, the URL of your endpoint, and which arguments your endpoint requires. The last parts is important since it allows you to add arguments to your endpoint that you can reference in your SQL somehow. To reference an argument in your SQL, prefix your argument's name with an alpha character (@), implying if your argument is named _"foo"_, you'll have to reference your argument in your SQL as _"@foo"_.
+The SQL generator allows you to override authorisation requirements, the URL of your endpoint, and which arguments your endpoint requires. The last part is important since it allows you to add arguments to your endpoint that you can reference in your SQL somehow. To reference an argument in your SQL, prefix your argument's name with an at character (@), implying if your argument is named _"foo"_, you'll have to reference your argument in your SQL as _"@foo"_.
 
-Notice, arguments supplied to your SQL endpoint are obviously mandatory, since once you've generated your endpoint, there is no known mechanisms for removing the argument from your SQL. However, your arguments could be supplied as null values, at which point the resulting SQL would use the value null as a substitute for your argument.
+Notice, arguments supplied to your SQL endpoint are obviously mandatory, since once you've generated your endpoint, there are no known mechanisms for removing the argument from your SQL. However, your arguments could be supplied as null values, at which point the resulting SQL would use the value null as a substitute for your argument.
 
-![Screenshot of how to declare an argument to your SQL endpoint inthe Backend Generator](/images/sql-arguments.jpg)
+![Screenshot of how to declare an argument to your SQL endpoint in the Backend Generator](/images/sql-arguments.jpg)
 
 ## HTTP verbs
 

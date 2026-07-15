@@ -6,7 +6,7 @@ header:
   image: /assets/images/wizard-flying-through-air-with-hyperlambda-raining-from-stars.webp
 ---
 
-Hyper IDE is your _"goto component"_ when you want to create your own modules using Magic and Hyperlambda. It's a web based IDE, allowing you to edit your code, create new modules, and contains a lot of things you're used to from a traditional IDE. It is also the natural extension of Magic's [endpoint generator](/dashboard/endpoint-generator/), since it allows you to edit the Hyperlambda endpoint files after Magic have generated your CRUD backend. In addition, Hyper IDE allows you to use AI to generate code using _"vibe coding"_ constructs.
+Hyper IDE is your _"goto component"_ when you want to create your own modules using Magic and Hyperlambda. It's a web based IDE, allowing you to edit your code, create new modules, and contains a lot of things you're used to from a traditional IDE. It is also the natural extension of Magic's [endpoint generator](/dashboard/endpoint-generator/), since it allows you to edit the Hyperlambda endpoint files after Magic has generated your CRUD backend. In addition, Hyper IDE allows you to use AI to generate code using _"vibe coding"_ constructs.
 
 ![Screenshot of editing a Hyperlambda file in Hyper IDE](/images/og-hyper-ide-2.jpg)
 
@@ -18,7 +18,7 @@ Hyper IDE also provides integrated autocomplete if your editor has focus and you
 
 Hyper IDE is not a fully fledged IDE, and cannot compare to something like VS Code or Visual Studio. However, its purpose is to function as an extension on top of the endpoint generator, giving you code editing capabilities of your generated Hyperlambda files - In addition to rapidly allowing you to create [workflows](/workflows/) and edit Hyperlambda files and use AI to generate or modify existing code.
 
-You _can_ use Hyper IDE to edit TypeScript, Ruby, HTML, and C# code, but we don't recommend replacing it with your existing code editor, since other IDEs have much more features here than Hyper IDE. However, the opposite is also true, implying Hyper IDE have features your existing IDE does not have - Especially in regards to [Hyperlambda](/hyperlambda/).
+You _can_ use Hyper IDE to edit TypeScript, Ruby, HTML, and C# code, but we don't recommend replacing it with your existing code editor, since other IDEs have much more features here than Hyper IDE. However, the opposite is also true, implying Hyper IDE has features your existing IDE does not have - Especially in regards to [Hyperlambda](/hyperlambda/).
 
 For a walkthrough of Hyper IDE's most important features you can watch the [following YouTube video](https://www.youtube.com/watch?v=g8r8asbLIkA).
 
@@ -52,7 +52,7 @@ Hyper IDE contains a machine learning component, similar to [SQL Studio](/dashbo
 
 ![Screenshot of how to use AI to generate code in Hyper IDE](/assets/images/use-ai-to-generate-code-in-hyper-ide.jpeg)
 
-If you use the AI chatbot interface in Hyper IDE, you can ask the AI to create, and/or modify your code, and such have _"conversations"_ with the AI about your code - And even use the AI as your _"AI-based pair programming buddy"_. Such requests will be paired to a local type with the same name as your file extension, implying if you're asking the AI to help you when you've got an HTML file open, the AI will search for a type who's name is _"html"_. If the backend does not find such a type, it will resort to using your _"default"_ type.
+If you use the AI chatbot interface in Hyper IDE, you can ask the AI to create, and/or modify your code, and such have _"conversations"_ with the AI about your code - And even use the AI as your _"AI-based pair programming buddy"_. Such requests will be paired to a local type with the same name as your file extension, implying if you're asking the AI to help you when you've got an HTML file open, the AI will search for a type whose name is _"html"_. If the backend does not find such a type, it will resort to using your _"default"_ type.
 
 This allows you to create your own unique models using RAG or fine-tuning, that are matched to your file extensions, to for instance teach the AI about your own code, etc.
 
@@ -76,4 +76,4 @@ This is also horizontally integrated into [SQL Studio](/dashboard/sql-studio/), 
 
 ## Continuous Integration and Deployment
 
-You can even connect creation of such modules, and automatically deploying them to production through for instance a GitHub action using CI/CD, by creating a token using your _"username/Generate Token"_ menu item. This give you a JWT token you can use to authenticate a process, such that it's allowed to invoke your `/magic/system/file-system/install-module` endpoint. This will allow you to automatically upload a zip file, and re-install it after uploading it.
+You can even connect creation of such modules, and automatically deploying them to production through for instance a GitHub action using CI/CD, by creating a token using your _"username/Generate Token"_ menu item. This gives you a JWT token you can use to authenticate a process, such that it's allowed to invoke your `/magic/system/file-system/install-module` endpoint. This will allow you to automatically upload a zip file, and re-install it after uploading it.

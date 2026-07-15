@@ -6,7 +6,7 @@ header:
   image_description: Wizard standing in his laboratory trying to find out what Magic spell he should use
 ---
 
-The Magic Dashboard is how you would manage your cloudlet. When you login to your cloudlet, you will be greeted by PKI charts, displaying important information about your cloudlet. This typically resembles the following.
+The Magic Dashboard is how you would manage your cloudlet. When you login to your cloudlet, you will be greeted by KPI charts, displaying important information about your cloudlet. This typically resembles the following.
 
 ![Screenshot of the Magic Dashboard](/images/dashboard.jpeg)
 
@@ -36,7 +36,7 @@ In addition to the above, there's also the profile component, allowing you to ch
 
 ## Generate token
 
-The most important additional component is probably the _"Generate Token"_ component, that allows you to ceate long lasting JWT tokens, you can use when interacting with your cloudlet from other systems. Below is a screenshot.
+The most important additional component is probably the _"Generate Token"_ component, that allows you to create long lasting JWT tokens, you can use when interacting with your cloudlet from other systems. Below is a screenshot.
 
 ![Generate JWT token component](/images/generate-token.jpeg)
 

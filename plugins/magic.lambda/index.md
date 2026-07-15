@@ -42,7 +42,7 @@ you to save your snippets for later on your server.
 If you put your cursor on an empty line and click CTRL+SPACE or FN+CONTROL+SPACE on a Mac, you will be given
 autocomplete, allowing you to easily see which slots are available for you.
 
-Logically the Hyperlambda evaluator will signal each nodes in your Hyperlambda code sequentially, assuming
+Logically the Hyperlambda evaluator will signal each node in your Hyperlambda code sequentially, assuming
 all of your nodes are referencing an `ISlot` class, unless the node's name starts with a _"."_ or has an empty name.
 Most slots again are recursively executing their children slots, resulting in a recursively executed _"execution tree"_.
 
@@ -61,7 +61,7 @@ has one child node, with the name of _"child1"_. Its child node does _not_ howev
 in its value being _"null"_. The reason why the Hyperlambda parser understands _"child1"_ as the child of 
 the _"name"_ node, is because it is prefixed by 3 spaces (SP) relative to the _"name"_ node. This allows you
 to create graph objects (tree structures) with any depth you wish, by simply starting out with the number of
-spaces the node above has, add 3 additional spaces, and you have declares children nodes of the node above.
+spaces the node above has, add 3 additional spaces, and you have declared children nodes of the node above.
 
 If you think of these nodes as a sequence of function invocations, from the top to bottom, where all of the
 nodes are assumed to be referencing slots, and all children nodes arguments to your slots - You can imagine
@@ -179,7 +179,7 @@ as UTF8 if you are using an external code editor to edit your Hyperlambda files.
 
 ## How to comment your Hyperlambda code
 
-Hyperlambda accepts comments the exacts same way C# does, and you can use either multiline comments
+Hyperlambda accepts comments the exact same way C# does, and you can use either multiline comments
 or single line comments, like the following example illustrates.
 
 ```
@@ -342,42 +342,6 @@ Notice, you cannot supply an expression leading to multiple nodes, and the slot 
 object immutable, such that it doesn't change. The invocation also does _not_ have access to anything
 outside of its own lambda object.
 
-```
-.res:
-
-.lambda
-   set-value:x:@.res
-      strings.concat
-         get-value:x:@.res
-         .:" OK 1 "
-
-.lambda
-   set-value:x:@.res
-      strings.concat
-         get-value:x:@.res
-         .:" OK 2 "
-
-eval:x:../*/.lambda
-```
-
-You can also provide the lambda object as children of the **[eval]** node itself, such as the following
-illustrates.
-
-```
-.res
-
-eval
-   set-value:x:@.res
-      .:Yup!
-```
-
-Notice, the **[eval]** slot is _not_ immutable, as in it has access to the outer graph object such as
-illustrated above, where we set the value of a node existing _outside_ of the **[.lambda]** itself.
-Implying **[eval]** cannot return values or nodes the same way for instance **[signal]** can.
-
-You will see that it invokes your **[who]** lambda object, and substitutes the value of `{{foo}}`
-with the return value from the invocation.
-
 ## Hyperlambda branching and conditional execution
 
 Branching implies to change the execution path of your code, and examples includes function invocations, and
@@ -437,7 +401,7 @@ a **[.lambda]** argument. This only works if the expression leads to a boolean v
 
 ### How to use [else-if]
 
-**[else-if]** is the younger sibling of **[if]**, and must be preceeded by its older sibling, or other **[else-if]** nodes,
+**[else-if]** is the younger sibling of **[if]**, and must be preceded by its older sibling, or other **[else-if]** nodes,
 and will only be evaluated if all of its previous conditional slots evaluates to false - At which point **[else-if]** is
 allowed to test its condition - And only if its condition evaluates to true, it evaluate its lambda object. Semantically **[else-if]**
 is similar to **[if]**, in that it requires two arguments with the same structure as **[if]**.
@@ -584,7 +548,7 @@ neq
 ### How to use [lt]
 
 **[lt]** will do a comparison between its two arguments, and only return true if its first argument is _"less than"_
-its seconds argument. Consider the following.
+its second argument. Consider the following.
 
 ```
 .src1:int:4
@@ -596,7 +560,7 @@ lt
 ### How to use [lte]
 
 **[lte]** will do a comparison between its two arguments, and only return true if its first argument is _"less than or equal"_
-to its seconds argument. Consider the following.
+to its second argument. Consider the following.
 
 ```
 .src1:int:4
@@ -608,7 +572,7 @@ lte
 ### How to use [mt]
 
 **[mt]** will do a comparison between its two arguments, and only return true if its first argument is _"more than"_
-its seconds argument. Consider the following.
+its second argument. Consider the following.
 
 ```
 .src1:int:7
@@ -620,7 +584,7 @@ mt
 ### How to use [mte]
 
 **[mte]** will do a comparison between its two arguments, and only return true if its first argument is _"more than or equal"_
-to its seconds argument. Consider the following.
+to its second argument. Consider the following.
 
 ```
 .src1:int:7
@@ -910,7 +874,7 @@ graph object, declaratively, according to the state of its destination nodes.
 ```
 .data
    foo1:bar1
-   foo2:bar2include
+   foo2:bar2
    foo3:bar3
 include:x:@.data/*
    strings.concat
@@ -1209,7 +1173,7 @@ try
 Semantically this works the exact same way as try/catch/finally in other programming languages, such as
 C# for instance, in that an exception thrown inside of a try/catch block will always end up inside of
 its **[.catch]** block - And regardless of whether or not an exception is thrown, the **[.finally]**
-block will _always_ execute, allowing you to some extend create deterministic execution of Hyperlambda
+block will _always_ execute, allowing you to some extent create deterministic execution of Hyperlambda
 code, which has a guarantee of executing, regardless of whether or not an exception is thrown or not.
 
 ### How to use [throw]
@@ -1355,7 +1319,7 @@ This slot takes a signed 64 bit integer and converts it to its word representati
 int2words:1200050
 ```
 
-The slot works with signed 64 bit integer values, implying it can work with numbers in the trillions if required. The result of executing the above should resembled the following.
+The slot works with signed 64 bit integer values, implying it can work with numbers in the trillions if required. The result of executing the above should resemble the following.
 
 ```
 int2words:one million two hundred thousand and fifty
@@ -1541,7 +1505,7 @@ apply
 ```
 
 Above you can also see how typing information is not lost, since the **[foo1]** and **[foo2]** nodes
-are both having integrer values of 5 after apply is done executing. At the same time you can see how
+are both having integer values of 5 after apply is done executing. At the same time you can see how
 the **[foo3]** node instead of having a simple value applied, actually ended up with a copy of all
 children passed in as **[arg2]**. You can also substitute names of nodes, such as the following
 illustrates.

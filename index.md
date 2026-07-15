@@ -21,7 +21,7 @@ traditional platform. The following video illustrates how to create a full stack
 
 ## MCP Support
 
-Magic's contains an integrated MCP server, with OAuth, allowing you to connect it to.
+Magic contains an integrated MCP server, with OAuth, allowing you to connect it to.
 
 * Claude Code
 * Codex
@@ -29,7 +29,7 @@ Magic's contains an integrated MCP server, with OAuth, allowing you to connect i
 * Qoder
 * Grok
 
-The above is just of what I've tried it with, but it should work with everything having MCP support. Below is a video where I'm using Claude Code to create an embeddable AI chatbot, with a landing page, and a _"widget"_ which is kind of like a micro app inside the chat stream itself.
+The above is just some of what I've tried it with, but it should work with everything having MCP support. Below is a video where I'm using Claude Code to create an embeddable AI chatbot, with a landing page, and a _"widget"_ which is kind of like a micro app inside the chat stream itself.
 
 <iframe style="margin-left: auto; margin-right: auto; width: 560px; max-width: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/GExHc4k8GiU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
@@ -112,9 +112,7 @@ You can try out such a chatbot in the bottom/right corner of this page.
 
 ## User management
 
-Magic Cloud allows you to create and administer users, by giving you a graphical user interface, allowing you to manage your application's users and roles, using a role based access control (RBAC) component. Provide access to modules and components according to what roles your users belongs to, and make sure only authorised users have access to private and secured data.
-
-The user and role systemin Magic is based upon RBAC implying Role Based Access Control, allowing you to provide access to components and modules based upon roles, for then to associate roles with users.
+Magic Cloud allows you to create and administer users, by giving you a graphical user interface, allowing you to manage your application's users and roles, using a role based access control (RBAC) component. Provide access to modules and components according to what roles your users belong to, and make sure only authorised users have access to private and secured data.
 
 ## The task manager
 
@@ -141,7 +139,7 @@ When you create your own Hyperlambda applications, you can also create log entri
 
 You can also use Magic to create your own custom AI chatbot, for then to embed it into your website. The Chatbot Wizard component in Magic will ask you for your OpenAI API key, for then to scrape your website generating a RAG database in the process. The end result allows your users to ask questions related to your website, and have the chatbot answer how you want it to answer questions.
 
-It works by scraping your website, generating training data in the process, for then to end up with a custom _"machine learning model"_ (based upon RAG), that answers questions according to your training data. You can try out such a chatbot by clicking the button in the bottom / right corner of this page, and ask it any question about Magic Cloud. This chatbot was created by scraping this website. At AINIRO we also delivers such chatbots as one of our services. Read more about [our AI chatbots here](/dashboard/chatbot-wizard/).
+It works by scraping your website, generating training data in the process, for then to end up with a custom _"machine learning model"_ (based upon RAG), that answers questions according to your training data. You can try out such a chatbot by clicking the button in the bottom / right corner of this page, and ask it any question about Magic Cloud. This chatbot was created by scraping this website. At AINIRO we also deliver such chatbots as one of our services. Read more about [our AI chatbots here](/dashboard/chatbot-wizard/).
 
 ## The goal of the project
 

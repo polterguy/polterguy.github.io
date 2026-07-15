@@ -2,7 +2,7 @@
 title: Creating a Custom User Management component
 ---
 
-Every now and then you'll need to deliver something that allows for managing users and roles in the system and you can't use the Magic Dashboard for whatever reason. Luckily Magic contains all the backend API endpoints you'll ever need, assuming you're OK with only _"root"_ accounts being able to manage users. We _deeply encourage_ you to use these endpoints and _not_ create your own user system, since the existing RBAC-based user system permutates everything in Magic and already has existing slots and logic for all possible scenarios.
+Every now and then you'll need to deliver something that allows for managing users and roles in the system and you can't use the Magic Dashboard for whatever reason. Luckily Magic contains all the backend API endpoints you'll ever need, assuming you're OK with only _"root"_ accounts being able to manage users. We _deeply encourage_ you to use these endpoints and _not_ create your own user system, since the existing RBAC-based user system permeates everything in Magic and already has existing slots and logic for all possible scenarios.
 
 You will find the following API endpoints in Magic related to users.
 
@@ -13,7 +13,7 @@ You will find the following API endpoints in Magic related to users.
 
 ## Creating and updating users
 
-To create a new user you have to invoke the above POST endepoint. This endpoint takes a username and a password as JSON.
+To create a new user you have to invoke the above POST endpoint. This endpoint takes a username and a password as JSON.
 
 ```json
 {
@@ -36,22 +36,22 @@ To retrieve users from the backend you can use the above GET endpoint. Notice, t
 /magic/system/magic/users?username.like=fo%25&order=username&direction=desc&limit=5
 ```
 
-Notice, all endpoints that allows you to somehow modify users requires the username returned from the above invocation as its primary key to change the user. Also notice that Magic will never return the password of a user. However, finding the user's password is anyway cryptographically impossible, and if you've forgotten your password, it can only be reset, and not retrieved.
+Notice, all endpoints that allow you to somehow modify users require the username returned from the above invocation as its primary key to change the user. Also notice that Magic will never return the password of a user. However, finding the user's password is anyway cryptographically impossible, and if you've forgotten your password, it can only be reset, and not retrieved.
 
 ## Roles associations
 
-Magic contains RBAC-based access control features, allowing you to restrict what users are allowed to access some resource by declaring what roles can access the resource. Then you associate one or more roles with each user. When you create a new user you typically want to associate it with one or more roles. The following endpoints allows for managing user's roles associations.
+Magic contains RBAC-based access control features, allowing you to restrict what users are allowed to access some resource by declaring what roles can access the resource. Then you associate one or more roles with each user. When you create a new user you typically want to associate it with one or more roles. The following endpoints allow for managing user's roles associations.
 
 * __POST - "/magic/system/magic/users_roles"__ - Creates a new user/role association
 * __GET - "/magic/system/magic/users_roles"__ - Returns a list of user/role associations matching an optional filtering criteria
 * __DELETE - "/magic/system/magic/users_roles"__ - Deletes an existing user/role association
 
-Notice, the above endpoints takes _"user"_ and _"role"_ as its arguments, and the GET and DELETE endpoints obviously takes these arguments as QUERY parameters - While the POST endpoint takes a JSON payload containing _"role"_ and _"user"_ fields. Below is an example of how to create a user/role association.
+Notice, the above endpoints take _"user"_ and _"role"_ as their arguments, and the GET and DELETE endpoints obviously take these arguments as QUERY parameters - While the POST endpoint takes a JSON payload containing _"role"_ and _"user"_ fields. Below is an example of how to create a user/role association.
 
 ```json
 {
-  "role": "some_username",
-  "user": "some_existing_role"
+  "role": "some_existing_role",
+  "user": "some_username"
 }
 ```
 
@@ -89,7 +89,7 @@ This is a general pattern in Magic, where each field typically has a bunch of co
 
 ## Extra fields
 
-Extra fields are additional information associated with the user. This can be name, email, address, etc. Anything really. The extra fields works similarly to the user/roles associations, and has the following endpoints.
+Extra fields are additional information associated with the user. This can be name, email, address, etc. Anything really. The extra fields work similarly to the user/roles associations, and have the following endpoints.
 
 * __POST - "/magic/system/magic/users_extra"__ - Creates a new extra field associated with an existing user
 * __GET - "/magic/system/magic/users_extra"__ - Returns a list of extra fields matching an optional filtering criteria
@@ -122,7 +122,7 @@ The above Hyperlambda ensures that only users belonging to either of the followi
 * marketing_manager
 * c_exec
 
-If any user not belonging to any of the above roles tries to execute the above code the system will throw an exception, preventing the rest of your Hyperlambda file to execute, resulting in an error being returned to the client.
+If any user not belonging to any of the above roles tries to execute the above code the system will throw an exception, preventing the rest of your Hyperlambda file from executing, resulting in an error being returned to the client.
 
 ## Wrapping up
 
@@ -132,4 +132,4 @@ This tutorial has shown you the basics of how to implement a user management com
 
 ## Further reading
 
-Magic also contains CCO/OIDC in addition to that it's also very easy to create your own registration endpoint. If you're interested in how to allow for users to register, you can [read the following article](https://ainiro.io/blog/create-a-registration-api-in-15-minutes).
+Magic also contains SSO/OIDC in addition to that it's also very easy to create your own registration endpoint. If you're interested in how to allow for users to register, you can [read the following article](https://ainiro.io/blog/create-a-registration-api-in-15-minutes).

@@ -6,7 +6,7 @@ header:
   image: /assets/images/wizard-writing-secret-spells-into-his-spell-book.webp
 ---
 
-The log component allows you to browse your server's log. When an important event occurs in Magic, a log entry will typically be created describing the event. Examples of such events are when users are logging in, or errors are occuring in the system for some reasons.
+The log component allows you to browse your server's log. When an important event occurs in Magic, a log entry will typically be created describing the event. Examples of such events are when users are logging in, or errors are occurring in the system for some reason.
 
 ![Screenshot of Magic's integrated log component](/images/log.jpg)
 
@@ -22,12 +22,12 @@ log.info:Something important happened
    importance:High
 ```
 
-In the above example we are creating an _"info"_ type of log entry, and the _"Something important happened"_ will become the item's content, while the **[what]** and **[importance]** parts becomes meta data associated with your log entry. If you execute the above Hyperlambda using the _"Hyperlambda Playground"_ component you can see your log entry in your _"Log"_ component at the top afterwards. There are 4 types of log entries you can create by default.
+In the above example we are creating an _"info"_ type of log entry, and the _"Something important happened"_ will become the item's content, while the **[what]** and **[importance]** parts become meta data associated with your log entry. If you execute the above Hyperlambda using the _"Hyperlambda Playground"_ component you can see your log entry in your _"Log"_ component at the top afterwards. There are 4 types of log entries you can create by default.
 
 * __[log.debug]__ - These are debug log entries intended for helping you debug your modules and components. These are typically not displayed in a production cloudlet since typically you would turn _off_ debug logging in production
 * __[log.info]__ - These are information types of entries providing information about general things occurring in your system
 * __[log.error]__ - These are errors and logs when an error occurs in your system and you should pay particular notice to these
-* __[log.fatal]__ - These are fatal errors that prevents your system from working correctly and are fatal, implying they might prevent your cloudlet from working
+* __[log.fatal]__ - These are fatal errors that prevent your system from working correctly, implying they might prevent your cloudlet from working
 
 ## Configuring logging
 

@@ -6,14 +6,14 @@ header:
   image: /assets/images/wizard-magically-pulling-ai-chatbots-our-of-cauldron.webp
 ---
 
-Magic contains its own Hyperlambda Generator. This isn't a single component, but goes through most parts of the platform that somehow allows you to create Hyperlambda code. It's built as a custom LLM we have fine tuned on top of OpenAI's GPT-4.1 model, with more than 20,000 training examples, so it's actually very strong on creating backend code, even though it's using a _"small base model"_.
+Magic contains its own Hyperlambda Generator. This isn't a single component, but goes through most parts of the platform that somehow allow you to create Hyperlambda code. It's built as a custom LLM we have fine tuned on top of OpenAI's GPT-4.1 model, with more than 20,000 training examples, so it's actually very strong on creating backend code, even though it's using a _"small base model"_.
 
 ![Screenshot of the Hyperlambda Generator creating an HTTP CRUD endpoint](/assets/images/hyperlambda-generator.png)
 
-You have to write _"formal specifications using technical language"_, in order for it to understand what to do. But if you've got some basic knowledge about software development, you should be able to rapidly understand how to use it. Below are some examples of prompts to give you an ide.
+You have to write _"formal specifications using technical language"_, in order for it to understand what to do. But if you've got some basic knowledge about software development, you should be able to rapidly understand how to use it. Below are some examples of prompts to give you an idea.
 
 * _"HTTP endpoint that selects rows from Artist table in chinook database, including Album rows for each individual artist. Use ArtistId as foreign key"_
-* _"Executable Hyperlambda file that send an email using [name], [email], [subject], and [body] arguments. Endpoint can only be executed by root and admin accounts"_
+* _"Executable Hyperlambda file that sends an email using [name], [email], [subject], and [body] arguments. Endpoint can only be executed by root and admin accounts"_
 
 ## How to use it
 
@@ -44,7 +44,7 @@ data.connect:chinook
       artists:x:@data.read/*
 ```
 
-Notice, if the AI creates wrong code, you can click `CTRL+Z` or `OPTION+Z` on a Mac to undo the generator's changes, at which point you can start over again by clicking `OPTION+Q` or `ALT+Q`, allowing you to edit the text to be more specific.
+Notice, if the AI creates wrong code, you can press `CTRL+Z` or `OPTION+Z` on a Mac to undo the generator's changes, at which point you can start over again by pressing `OPTION+Q` or `ALT+Q`, allowing you to edit the text to be more specific.
 
 ## Modifying your code with AI
 

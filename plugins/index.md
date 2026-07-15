@@ -7,8 +7,8 @@ AINIRO.IO's Magic Cloud is not one project, it's more than 40 projects. Each pro
 some part of Hyperlambda, such as sending emails, parsing XML or JSON, etc.
 
 The following are the _"plugins"_ projects for Magic and Hyperlambda, typically implementing one or more
-slots each, whom in its combined results becomes the programming language called Hyperlambda. These are the parts
-that allows you to interact with your database, apply authentication and authorization requirements for your
+slots each, which in their combined result become the programming language called Hyperlambda. These are the parts
+that allow you to interact with your database, apply authentication and authorization requirements for your
 endpoints, etc.
 
 * [magic.node](/plugins/magic.node/) - Nodes, lambda, Hyperlambda and Expressions
@@ -49,5 +49,5 @@ endpoints, etc.
 * [magic.lambda.pdf](/plugins/magic.lambda.pdf/) - PDF support for Magic and Hyperlambda
 * [magic.lambda.openai](/plugins/magic.lambda.openai/) - OpenAI specific slots
 * [magic.lambda.git](/plugins/magic.lambda.git/) - Git specific slots
-* [magic.lambda.git](/plugins/magic.lambda.system/) - System specific slots
-* [magic.lambda.git](/plugins/magic.lambda.puppeteer/) - PuppeteerSharp, a headless browser allowing you to browse the web using automation
+* [magic.lambda.system](/plugins/magic.lambda.system/) - System specific slots
+* [magic.lambda.puppeteer](/plugins/magic.lambda.puppeteer/) - PuppeteerSharp, a headless browser allowing you to browse the web using automation

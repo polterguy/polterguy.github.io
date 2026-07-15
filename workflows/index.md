@@ -6,7 +6,7 @@ header:
   image_description: Wizard creating workflows out of thin air symbolizing the power of Hyperlambda workflows
 ---
 
-A workflow is a chained collection of actions, where each action can produce output, that consecutive actions can consume as input. The most famous example of a workflow system is probably MWF, or Microsoft Workflow Foundation. MWF of course is junkware and no longer actively maintained by Microsoft, wo we created Magic as a better replacement.
+A workflow is a chained collection of actions, where each action can produce output, that consecutive actions can consume as input. The most famous example of a workflow system is probably MWF, or Microsoft Workflow Foundation. MWF of course is junkware and no longer actively maintained by Microsoft, so we created Magic as a better replacement.
 
 Magic implements workflows using [Hyperlambda](/hyperlambda/), which largely eliminates the need to visualise workflows using a graphical user interface, and allows the user to use the source code as the primary means to edit and maintain the workflow. This is only possible by completely dropping the idea of using XML and JSON as _"your workflow description language"_.
 
@@ -16,7 +16,7 @@ To understand the above point, try to compare a Hyperlambda Workflow file with t
 
 ## Advantages
 
-Being able to _"drag'n'drop"_ backend code together the way we do in the above video, have huge benefits. First of all it significantly lowers the bar for software development, allowing people without prior software development experience to create high quality backend code. Secondly, it makes it much faster to create said code. I clocked myself in regards to this, and found that in theory I could create 604,000 lines of code per month instead of 550 which is the industry standard.
+Being able to _"drag'n'drop"_ backend code together the way we do in the above video, has huge benefits. First of all it significantly lowers the bar for software development, allowing people without prior software development experience to create high quality backend code. Secondly, it makes it much faster to create said code. I clocked myself in regards to this, and found that in theory I could create 604,000 lines of code per month instead of 550 which is the industry standard.
 
 Obviously using LOC as a measure stick for productivity is typically not a good thing, but these were production grade lines of code, highly secure, scalable, and performing in regards to all neutral metrics - And I produced something _useful_ that would require _a lot_ of manual coding to create. In the following video I am creating a complete registration API in 15 minutes to illustrate the point.
 
@@ -32,15 +32,15 @@ However, since workflows in Magic are based upon Hyperlambda, this allows you to
 
 ## Functional programming
 
-This is facilitated for by functional constructs. Each slot in [Hyperlambda](/hyperlambda/) takes a node-set as its input, and returns another node-set after executing. This is what allows for _"chaining"_ Hyperlambda actions such as illustrated in the above video. Combined with [lambda expressions](/plugins/magic.node/#lambda-expressions), this allows you to chain _"function invocations"_ or slots, where the output from one slot is used as input to the next.
+This is facilitated by functional constructs. Each slot in [Hyperlambda](/hyperlambda/) takes a node-set as its input, and returns another node-set after executing. This is what allows for _"chaining"_ Hyperlambda actions such as illustrated in the above video. Combined with [lambda expressions](/plugins/magic.node/#lambda-expressions), this allows you to chain _"function invocations"_ or slots, where the output from one slot is used as input to the next.
 
 ## Actions
 
-Actions are the basic atomic building blocks of workflows, and an action is defined as _"the smallest piece of code that does something useful"_. This allows you to create chains of actions that somehow implements your business logic, _without_ having to manually write the code yourself.
+Actions are the basic atomic building blocks of workflows, and an action is defined as _"the smallest piece of code that does something useful"_. This allows you to create chains of actions that somehow implement your business logic, _without_ having to manually write the code yourself.
 
 ### Create your own actions
 
-Actions are just declaratively created snippets of Hyperlambda, allowing you to create custom actions you can later reference in your own workflows. Below is the _"file-load"_ action to illustrated how an action looks like.
+Actions are just declaratively created snippets of Hyperlambda, allowing you to create custom actions you can later reference in your own workflows. Below is the _"file-load"_ action to illustrate what an action looks like.
 
 ```
 /*
@@ -89,17 +89,17 @@ execute:magic.workflows.actions.execute
       email:foo@bar.com
 ```
 
-This results in a _"point and click software development model"_, where complexity is hidden to an extent where the cognitive requirements to produce working code is almost completely absent.
+This results in a _"point and click software development model"_, where complexity is hidden to an extent where the cognitive requirements to produce working code are almost completely absent.
 
 ### Custom actions in Plugins
 
-Many plugins found in the [Plugins](/plugins/) component comes with additional actions you can consume. For instance the _"Stripe"_ plugin contains Stripe related actions, allowing you to easily consume Stripe's API and accept payments in your backend code.
+Many plugins found in the [Plugins](/plugins/) component come with additional actions you can consume. For instance the _"Stripe"_ plugin contains Stripe related actions, allowing you to easily consume Stripe's API and accept payments in your backend code.
 
 Refer to each individual plugin's description to see which actions a specific plugin contains, if any.
 
 ## Meta programming
 
-The above constructs allows for _"meta programming"_, where the machine assembles the code required to create functionality, allowing the software developer to become more of an _"orchestrator"_, while having the internals of your actions encapsulate the nitty gritty stuff. Or as we phrase it ...
+The above constructs allow for _"meta programming"_, where the machine assembles the code required to create functionality, allowing the software developer to become more of an _"orchestrator"_, while having the internals of your actions encapsulate the nitty gritty stuff. Or as we phrase it ...
 
 > Where the Machine Creates the Code
 

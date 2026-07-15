@@ -8,7 +8,7 @@ Magic contains a whole range of endpoints, or _"middleware"_ parts, that the sys
 
 ![Screenshot of the Endpoints component](/images/endpoints.jpg)
 
-Notice, all endpoints that requires authorization of some sort assumes a valid JWT token is transmitted in the `Authorization` HTTP header as a _"Bearer"_ type of token, and if not, the user will not be allowed to invoke the endpoint, and an HTTP status code of 401 will be returned. To retrieve a JWT token use the `magic/system/auth/authenticate` endpoint. When you use the Endpoint component, it will automatically associate your existing JWT token with your invocations.
+Notice, all endpoints that require authorization of some sort assume a valid JWT token is transmitted in the `Authorization` HTTP header as a _"Bearer"_ type of token, and if not, the user will not be allowed to invoke the endpoint, and an HTTP status code of 401 will be returned. To retrieve a JWT token use the `magic/system/auth/authenticate` endpoint. When you use the Endpoint component, it will automatically associate your existing JWT token with your invocations.
 
 ## Authentication and authorisation endpoints
 
@@ -29,7 +29,7 @@ Magic relies upon the JWT tokens
 being transmitted as _"Bearer"_ tokens in the _"Authorization"_ HTTP header, implying you'll have to
 ensure the resulting JWT token from invoking the above endpoint is attached to consecutive HTTP requests.
 This endpoint can be invoked by anyone, including non-authenticated clients.
-This endpoints is intended for you to consume from your own code.
+This endpoint is intended for you to consume from your own code.
 
 ### PUT magic/system/auth/change-password
 
@@ -43,7 +43,7 @@ the currently authenticated user, and takes the new password as the following pa
 ```
 
 This endpoint can be invoked by anyone as long as they have authenticated towards your backend previously.
-This endpoints is intended for you to consume from your own code.
+This endpoint is intended for you to consume from your own code.
 
 ### GET magic/system/auth/endpoints
 
@@ -56,7 +56,7 @@ The endpoint can be invoked by anyone, and does not have any authorisation requi
 This endpoint caches its result for 5 minutes, implying changes done to the authorisation
 requirements of your endpoints will not be accessible for clients before 5 minutes after your changes have
 been applied, unless you explicitly delete the cache item for the endpoint.
-This endpoints is intended for you to consume from your own code.
+This endpoint is intended for you to consume from your own code.
 
 ### GET magic/system/auth/refresh-ticket
 
@@ -69,7 +69,7 @@ expires.
 The endpoint does not take any arguments, but can only be invoked by an already authenticated
 user, implying you'll need to pass in your JWT token to it in the Authorization HTTP header as a
 _"Bearer"_ token or the endpoint will return _"Access denied"_.
-This endpoints is intended for you to consume from your own code.
+This endpoint is intended for you to consume from your own code.
 
 ### GET magic/system/auth/verify-ticket
 
@@ -81,7 +81,7 @@ The endpoint does not
 require any arguments, but can only be invoked by an already authenticated user, implying you'll need
 to pass in your JWT token to it in the Authorization HTTP header as a _"Bearer"_ token. If the JWT
 token is not valid the endpoint will return a 401 status code with _"Access denied"_ as its message.
-This endpoints is intended for you to consume from your own code.
+This endpoint is intended for you to consume from your own code.
 
 ## Plugins endpoints
 
@@ -114,7 +114,7 @@ This endpoint is not intended for you to consume in your own code.
 ### POST magic/system/bazar/install-plugin
 
 This endpoint downloads a plugin item as a zip file from the specified URL, and unzips the file into the backend,
-for the to install the plugin by executing its startup files. The endpoint can only be invoked by a root user
+for then to install the plugin by executing its startup files. The endpoint can only be invoked by a root user
 and requires the following payload.
 
 ```
@@ -130,8 +130,8 @@ previously installed plugins with the same name will be automatically deleted an
 
 ## Cache related endpoints
 
-These are the endpoints related to your server side cache, and allows you to delete a single
-cache item on the server. Internally Magic is using server-side cache sparsingly for some
+These are the endpoints related to your server side cache, and allow you to delete a single
+cache item on the server. Internally Magic is using server-side cache sparingly for some
 expensive operations, such as retrieving meta data from your database. Sometimes you need to
 manually purge your cache, and/or delete individual cache items on your server, to re-retrieve
 data invalidating your cache in the process. This section provides
@@ -151,7 +151,7 @@ This endpoint is not intended for you to consume in your own code.
 
 ## Configuration related endpoints
 
-These endpoints are related to configuration of your system, and allows you to read and modify
+These endpoints are related to configuration of your system, and allow you to read and modify
 configuration settings as you see fit. These endpoints are typically not intended for being used
 directly by your code, but for the most parts only used during initialisation of your Magic server,
 and/or as you change configuration settings in Magic.
@@ -167,7 +167,7 @@ This endpoint is not intended for you to consume in your own code.
 
 ### POST magic/system/config/save
 
-This endpoint allows you to save your configuration settings. The specified paylod will
+This endpoint allows you to save your configuration settings. The specified payload will
 in its entirety overwrite your existing _"appsettings.json"_ file. The endpoint
 can only be invoked by a root user.
 
@@ -194,14 +194,14 @@ a JWT secret, etc.
 
 ## CRUD related endpoints
 
-These endpoints allows you to among other things generate CRUD HTTP backend modules, and is at the heart of
-the [Endpoint Generator](/dashboard/endpoint-generator/). In addition these endpoints allows you to generate
+These endpoints allow you to among other things generate CRUD HTTP backend modules, and are at the heart of
+the [Endpoint Generator](/dashboard/endpoint-generator/). In addition these endpoints allow you to generate
 SQL based HTTP endpoints. These endpoints are not intended for being directly
 invoked by your code, but rather from the Magic dashboard as it is creating backend endpoints for you.
 
 ## Backend CRUD operations
 
-This section describes the parts that generates backend HTTP endpoints for you, typically wrapping a database
+This section describes the parts that generate backend HTTP endpoints for you, typically wrapping a database
 table with CRUD operations.
 
 ### POST magic/system/crudifier/crudify
@@ -235,7 +235,7 @@ with the specified HTTP verb/CRUD-operation. The endpoint requires the following
 }
 ```
 
-The above fields implies the following.
+The above fields imply the following.
 
 * __[verbose]__ - If true more query parameter types will be generated for your GET/read endpoint
 * __[join]__ - If true, joins will be automatically applied for the endpoint
@@ -291,13 +291,13 @@ in syntax. It requires the following payload.
 }
 ```
 
-The arguments implies the following.
+The arguments imply the following.
 
 * __[databaseType]__ - Database type your SQL is wrapping. E.g. 'mysql', 'pgsql' or 'mssql'
 * __[authorization]__ - Comma separated list of roles allowed to invoke the endpoint
 * __[moduleName]__ - Primary URL of endpoint
 * __[database]__ - Name of database, and connection string, e.g. `[generic|sakila]`
-* __[arguments]__ - Hyperlambda declaratiun of arguments endpoint can handle. E.g. `filter:string`.
+* __[arguments]__ - Hyperlambda declaration of arguments endpoint can handle. E.g. `filter:string`.
 * __[verb]__ - HTTP verb endpoint wraps. This can be any of 'get', 'post', 'put', 'delete', and 'patch'
 * __[endpointName]__ - Secondary URL for endpoint
 * __[sql]__ - Actual SQL executed as endpoint is executing
@@ -317,7 +317,7 @@ This endpoint is not intended for you to consume in your own code.
 
 ## File system related endpoints
 
-These endpoints are related to the file system somehow and allows you to upload and download files,
+These endpoints are related to the file system somehow and allow you to upload and download files,
 create and delete folders, etc. These endpoints are arguably the foundation of Hyper IDE,
 allowing you to edit your files on your server. Most of these endpoints can only be invoked by a root user, and
 you would typically not consume these endpoints yourself directly from your own code.
@@ -334,7 +334,7 @@ This endpoint is not intended for you to consume in your own code.
 
 ### DELETE magic/system/file-system/file
 
-This endpoints deletes the specified **[file]** in the backend. The endpoint can only be invoked by a
+This endpoint deletes the specified **[file]** in the backend. The endpoint can only be invoked by a
 root user. The endpoint requires the following query argument(s).
 
 * __[file]__ - Full relative path of which file to delete
@@ -506,7 +506,7 @@ the following payload.
 }
 ```
 
-The above arguments implies the following.
+The above arguments imply the following.
 
 * __[loc]__ - Number of lines of code generated
 * __[type]__ - Either `backend` or `frontend`
@@ -530,7 +530,7 @@ This endpoint allows you to log some arbitrary log item, and takes the following
 }
 ```
 
-The above arguments implies the following.
+The above arguments imply the following.
 
 * __[type]__ - Type of log entry to create, one of 'debug', 'info', 'error' or 'fatal'
 * __[content]__ - Content description for your log item
@@ -539,18 +539,18 @@ The above arguments implies the following.
 The endpoint can be invoked by _any_ user but requires the user to be authenticated towards the backend
 and transmit his JWT token in the `Authorization` HTTP header as a _"Bearer"_ token.
 
-This endpoints is intended for you to consume from your own code.
+This endpoint is intended for you to consume from your own code.
 
 ## SQL related endpoints
 
-These endpoints allows you to retrieve meta data about your databases, and/or connection strings, in addition
+These endpoints allow you to retrieve meta data about your databases, and/or connection strings, in addition
 to execute SQL towards a specific database, etc. These endpoints are the foundation for the _"SQL"_ menu item
 in the Magic dashboard.
 
 ### GET magic/system/sql/connection-strings
 
 This endpoint returns all database connection strings existing in the backend, being of type **[databaseType]**,
-where the type can be one of 'mysql', 'mssql' or 'pgsql'. The endpoint can only be invoked by a root user.
+where the type can be one of 'mysql', 'mssql', 'pgsql' or 'sqlite'. The endpoint can only be invoked by a root user.
 
 This endpoint is not intended for you to consume in your own code.
 
@@ -561,10 +561,10 @@ combination, such as all databases, all tables within each database, all columns
 between columns. The endpoint can only be invoked by a root user. The endpoint requires the following query
 argument(s).
 
-* __[databaseType]__ - Type of database, one of 'mysql', 'mssql', or 'pgsql'
+* __[databaseType]__ - Type of database, one of 'mysql', 'mssql', 'pgsql', or 'sqlite'
 * __[connectionString]__ - Name of connection string such as for instance _"generic"_
 
-Notice, the endpoint is fairly expensive to execute, and therefor its result is cached on the server with
+Notice, the endpoint is fairly expensive to execute, and therefore its result is cached on the server with
 the key of _"magic.sql.databases.xxx.yyy"_ where _"xxx"_ is the database type and _"yyy"_ is the connection
 string name.
 
@@ -587,7 +587,7 @@ supports. An example of invoking the endpoint can be found below.
 ```
 
 The above result implies that MySQL is the default database type, while the system still has support for both
-'mssql' and 'pgsql" in addition to 'mysql'. The endpoint can only be invoked by a root user.
+'mssql' and 'pgsql' in addition to 'mysql'. The endpoint can only be invoked by a root user.
 
 This endpoint is not intended for you to consume in your own code.
 
@@ -606,9 +606,9 @@ following payload.
 }
 ```
 
-The above arguments implies the following.
+The above arguments imply the following.
 
-* __[databaseType]__ - Type of database to execute your SQL towards, either 'mysql', 'pgsql' or 'mssql'
+* __[databaseType]__ - Type of database to execute your SQL towards, either 'mysql', 'pgsql', 'mssql' or 'sqlite'
 * __[database]__ - Name of database to execute your SQL towards _and_ connection string to use. E.g. `[generic|mysql]`
 * __[sql]__ - Actual SQL to execute
 * __[safeMode]__ - If true only the first 200 records will be returned, to avoid exhausting your server for huge responses
@@ -636,7 +636,7 @@ This endpoint saves a template SQL snippet file in your backend, and requires th
 }
 ```
 
-The above arguments implies the following.
+The above arguments imply the following.
 
 * __[databaseType]__ - Type of database, e.g. 'mysql', 'pgsql' or 'mssql'
 * __[filename]__ - Filename of where to save the SQL file
@@ -683,7 +683,7 @@ This endpoint is not intended for you to consume in your own code.
 
 ### POST magic/system/tasks/create
 
-This endpoint creates a new task in your backend. The endpoints requires the following payload.
+This endpoint creates a new task in your backend. The endpoint requires the following payload.
 
 ```
 {
@@ -693,7 +693,7 @@ This endpoint creates a new task in your backend. The endpoints requires the fol
 }
 ```
 
-The above arguments implies the following.
+The above arguments imply the following.
 
 * __[id]__ - ID or name of task. Must be unique and non-existing
 * __[description]__ - Humanly readable description of your task. Optional
@@ -714,7 +714,7 @@ This endpoint updates an existing task, and requires the following payload.
 }
 ```
 
-The above arguments are the same as when creating a new task and implies the following.
+The above arguments are the same as when creating a new task and imply the following.
 
 * __[id]__ - The id or name of the task you want to update
 * __[description]__ - The new description of the task
@@ -733,7 +733,7 @@ This endpoint is not intended for you to consume in your own code.
 
 ### POST magic/system/tasks/due/add
 
-This endpoints adds a due date, or a repetition pattern, to a previously persisted task. It requires
+This endpoint adds a due date, or a repetition pattern, to a previously persisted task. It requires
 the following payload.
 
 ```
@@ -744,14 +744,14 @@ the following payload.
 }
 ```
 
-The above arguments implies the following.
+The above arguments imply the following.
 
 * __[id]__ - ID or name of task you want to associate your schedule with
 * __[due]__ - A date and time for when you want to execute the task. Mutually exclusive with the **[repeats]** argument
 * __[repeats]__ - A repetition value for the task. Mutually exclusive with the **[due]** argument
 
-To understand how the **[repetition]** works see the documentation
-for [magic.lambda.scheduler](/documentation/magic.lambda.scheduler/). This endpoint can only be invoked by a root user.
+To understand how the **[repeats]** works see the documentation
+for [magic.lambda.scheduler](/plugins/magic.lambda.scheduler/). This endpoint can only be invoked by a root user.
 
 This endpoint is not intended for you to consume in your own code.
 
@@ -772,14 +772,14 @@ middleware, and used by the frontend dashboard somehow.
 ### GET magic/system/endpoints/list
 
 This endpoint returns all endpoints in the system, their meta data such as description, input arguments,
-and resulting response if possible. The endpoint can only be invoked by a root user. The endpoints requires
+and resulting response if possible. The endpoint can only be invoked by a root user. The endpoint requires
 no argument(s).
 
 This endpoint is not intended for you to consume in your own code.
 
 ### GET magic/system/endpoints/openapi
 
-This endpoints returns an OpenAPI (Swagger) specification. Optionally pass in `system` as true if you want
+This endpoint returns an OpenAPI (Swagger) specification. Optionally pass in `system` as true if you want
 to retrieve system endpoints, or optionally apply a `filter` which is a partial path endpoints must match
 to be returned.
 
@@ -801,7 +801,7 @@ This endpoint is not intended for you to consume in your own code.
 ### GET magic/system/evaluator/vocabulary
 
 This endpoint returns the Hyperlambda vocabulary from the backend, implying which Hyperlambda slots
-exists on the server. The endpoint can only be invoked by a root user.
+exist on the server. The endpoint can only be invoked by a root user.
 
 This endpoint is not intended for you to consume in your own code.
 
@@ -815,4 +815,4 @@ be invoked by anyone and optionally handles the following argument(s).
 * __[min]__ - Minimum length of gibberish returned
 * __[max]__ - Maximum length of gibberish returned
 
-This endpoints is intended for you to consume from your own code.
+This endpoint is intended for you to consume from your own code.

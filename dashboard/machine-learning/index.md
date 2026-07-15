@@ -6,9 +6,9 @@ header:
   image: /assets/images/wizard-teaching-robot-magic.webp
 ---
 
-Magic's Machine Learning component allows you to create your own AI based machine learning model, either by crawling your website and scraping it for data, or by manually uploading files, resulting in a private and custom _"machine learning model"_. Machine learning in Magic is built upon OpenAI's API and is similar to ChatGPT, and beneath the hoods it's using RAG and VSS towards your own database to extrect context as it's answering questions using OpenAI.
+Magic's Machine Learning component allows you to create your own AI based machine learning model, either by crawling your website and scraping it for data, or by manually uploading files, resulting in a private and custom _"machine learning model"_. Machine learning in Magic is built upon OpenAI's API and is similar to ChatGPT, and under the hood it's using RAG and VSS towards your own database to extract context as it's answering questions using OpenAI.
 
-Magic contains a lot of additional services, such as the ability to monitor or supervise usage, storing questions and answers into your database, and use these as the foundation for reinforced learning to improve your model's accuracy over time. You can also use historical requests for business intelligence, or lead generation. In addition it ties into Magic's AI Agent abilities, allowing you to integrate AI functions triggering AI workflows from instructions provided by the user.
+Magic contains a lot of additional services, such as the ability to monitor or supervise usage, storing questions and answers into your database, and use these as the foundation for reinforcement learning to improve your model's accuracy over time. You can also use historical requests for business intelligence, or lead generation. In addition it ties into Magic's AI Agent abilities, allowing you to integrate AI functions triggering AI workflows from instructions provided by the user.
 
 You can crawl and scrape your website for training data, or upload your own files in a wide variety of formats, such as XML, JSON, YAML, CSV, or PDF. You can use either RAG/VSS or fine-tuning. We recommend using RAG for 99% of use cases since it eliminates AI hallucinations, resulting in higher accuracy, and because it is also significantly less expensive.
 
@@ -23,7 +23,7 @@ You can crawl and scrape your website for training data, or upload your own file
 
 The advantage of creating your own Machine Learning model is that you can create a private and custom AI chatbot. This can become a much _"sharper"_ intelligence than the publicly available ChatGPT, with knowledge about your particular problem domain, problems ChatGPT is not able to correctly provide answers to.
 
-To understand what I mean here go to [ChatGPT](https://chat.openai.com) and ask it about your company. Chances are that ChatGPT have no idea how to answer your questions correctly. If you scrape your company's website, and/or upload your own training data, you could create a _"custom version of ChatGPT"_, that is able to answer support requests, and/or convince leads and potential clients to become
+To understand what I mean here go to [ChatGPT](https://chat.openai.com) and ask it about your company. Chances are that ChatGPT has no idea how to answer your questions correctly. If you scrape your company's website, and/or upload your own training data, you could create a _"custom version of ChatGPT"_, that is able to answer support requests, and/or convince leads and potential clients to become
 paying customers, etc. This is of course _impossible_ with the general ChatGPT implementation, but can sometimes be created in some few minutes using Magic Cloud.
 
 This is one of the primary services [AINIRO.IO](https://ainiro.io) is providing, and we have a lot of experience with building high quality AI chatbots. If you want us to create you a chatbot, you can [create a demo chatbot on our website](https://ainiro.io), or [contact us here](https://ainiro.io/contact-us).
@@ -36,14 +36,14 @@ You can upload training data in a wide variety of formats. However, most interes
 
 The way the crawler works, is by first checking if your website has a sitemap file. If your site has a sitemap, it will retrieve all pages referenced in your sitemap file(s). Once it has retrieved an HTML document, it will scrape each individual page, transform it into Markdown, apply some intelligence related to chopping pages up into multiple training snippets - For then to finally store these as training snippets in your RAG database.
 
-This process resembles the process Google and other search engines are following as they crawl your site, and one of the bonus features of scraping your website, is that you get to some extent see how search engines sees your website. Hence, it is also a somewhat valuable tool to SEO quality assure your site. Magic's crawler explicitly identifies as a crawler, and obeys by all the standard crawler rules from
+This process resembles the process Google and other search engines are following as they crawl your site, and one of the bonus features of scraping your website, is that you get to some extent see how search engines see your website. Hence, it is also a somewhat valuable tool to SEO quality assure your site. Magic's crawler explicitly identifies as a crawler, and obeys all the standard crawler rules from
 your robots.txt file.
 
-![Screenshot of crawling and scraping your website for RAG data for your machine leaning model](/assets/images/machine-learning-import-dialogue-screenshot.webp)
+![Screenshot of crawling and scraping your website for RAG data for your machine learning model](/assets/images/machine-learning-import-dialogue-screenshot.webp)
 
 ### Spicing
 
-The spice feature in Magic allows you to scrape a single URL. This provides you with more control, since you can scrape individual pages, and add individual pages to a type. This might be useful if you've got additional information you want to put into the same type, such as WikiPedia pages, individual articles, etc. To spice a type chose the _"Training data"_ tab in Machine Learning, chose your type, and click the _"Spice"_ button.
+The spice feature in Magic allows you to scrape a single URL. This provides you with more control, since you can scrape individual pages, and add individual pages to a type. This might be useful if you've got additional information you want to put into the same type, such as Wikipedia pages, individual articles, etc. To spice a type choose the _"Training data"_ tab in Machine Learning, choose your type, and click the _"Spice"_ button.
 
 ![Screenshot of how to spice your type and import an individual page](/assets/images/spice-your-type.jpeg)
 
@@ -59,7 +59,7 @@ When re-crawling Magic will update any existing pages that were changed, and add
 
 A _"type"_ is a collection of training snippets. When a chatbot is asked a question, it will use VSS search to find training data that is relevant to your question from one specific _"type"_. Then it will transmit this training data as _"context"_ to OpenAI, and have OpenAI answer questions using the _"context"_ as its source of information.
 
-You can create many types in Magic, and therefor many chatbots solving different problems.
+You can create many types in Magic, and therefore many chatbots solving different problems.
 
 ![Screenshot showing a list of multiple machine learning types](/assets/images/machine-learning-types.jpeg)
 
@@ -71,7 +71,7 @@ A single machine learning type has dozens of configuration settings, for everyth
 
 ![Screenshot of how to configure your machine learning type](/assets/images/recrawl-site-periodically.webp)
 
-The most important parts from above is the _"System message"_. This becomes the equivalent of a ChatGPT _"instruction"_, telling the type how to behave. Below is an example system instruction to give you an example.
+The most important part from above is the _"System message"_. This becomes the equivalent of a ChatGPT _"instruction"_, telling the type how to behave. Below is an example system instruction to give you an example.
 
 > You are Frank, a sales executive for Acme, Inc. Follow these rules when replying to my questions:
 > 
@@ -83,7 +83,7 @@ The most important parts from above is the _"System message"_. This becomes the 
 > * You may use emojis if it makes sense
 > * If you cannot find the answer to the question in the context, then inform the user that you are only configured to answer questions about Acme, Inc. and that the user should provide some keywords for you to find relevant information
 
-Magic contains several pre-defined flavors, including dynamically created flavors that will scrape some page to create a highly personalised and custom system type that OpenAI will use as its instruction when it is asked questions. Dynamic flavors contains the text _"DYNAMIC"_ as a part of their name, and when selected, it will ask you for a website URL from where to extract information from.
+Magic contains several pre-defined flavors, including dynamically created flavors that will scrape some page to create a highly personalised and custom system type that OpenAI will use as its instruction when it is asked questions. Dynamic flavors contain the text _"DYNAMIC"_ as a part of their name, and when selected, it will ask you for a website URL from where to extract information.
 
 Notice, the system message can contain Hyperlambda mixin logic, similarly to how training snippets can. To understand how this works, read the section about adding Hyperlambda code to your training snippets. The system message can also contain AI function declarations, instructing OpenAI to return JSON for a function invocation given some specific instruction, such as for instance _"Search the web for Thomas Hansen Hyperlambda."_
 
@@ -95,19 +95,19 @@ Notice, the system message can contain Hyperlambda mixin logic, similarly to how
 * Flavor, being a pre-defined list of templates for system messages. Once you select a flavor, your system message will update accordingly.
 * System message, implying the _"instruction"_ to OpenAI. Allows you to change your chatbot's behaviour.
 * Conversation starters, implying a pre-defined set of suggested questions to start a conversation with the chatbot.
-* Greeting, being a static initial greeting, such as for instance _"Hello there, how can I help you?"_ Notice, you can also using questionnaires to create multiple greetings.
+* Greeting, being a static initial greeting, such as for instance _"Hello there, how can I help you?"_ Notice, you can also use questionnaires to create multiple greetings.
 * Prefix, legacy settings for non-GPT models. Similar to system message, which is preferred unless you use a very old model.
 * Authorisation, implying roles users must belong to in order to query type. Requires the user is authenticated through Magic with a valid JWT token if you turn this on.
 * reCAPTCHA, being reCAPTCHA value for accepting queries. This is a legacy setting and you should set it to 0 since we've implemented our own PoW-based CAPTCHA library that's 0.1% of the size of reCAPTCHA.
 * Supervised, which if turned on, will store all questions/answers allowing you to access these through the history tab.
 * Cached, legacy property, only relevant for older non-GPT models.
-* Vectors, implying the chatbot will use the vector database to find context. Magic do support fine-tuning or training. If you turn _off_ vectors you will be able to use your own customfine-tuned model. We do _not_ recommend turning this off.
+* Vectors, implying the chatbot will use the vector database to find context. Magic does support fine-tuning or training. If you turn _off_ vectors you will be able to use your own custom fine-tuned model. We do _not_ recommend turning this off.
 * API key, being overridden OpenAI API key for a specific type. By default Magic will read API key from your configuration. You can override this on a per-type level.
 * Search postfix, implying a static value appended to queries as it searches your training snippets for context data. Useful for things such as _"best_seller"_ tags in your training data, where you want to prioritise best selling products.
 * No requests, being total number of requests the chatbot has answered the current month.
 * Max requests, implying maximum requests the chatbot will answer per month. Useful to cap your chatbot to avoid runaway costs. Logically it's using no requests to see if it can continue answering requests.
-* Temperature, implying chances the OpenAI model is willing to take. Some times referred to as _"creativity"_.
-* Threshold, implying threshold for training data to kick in. Similarity value allowing you to filter out any training data not matching. This calue can be between 0 and 1, where 0 implies _"match anything"_ and 1 implies _"only match 100% equal snippets"_. A good value here is between 0.2 and 0.6, depending upon how strict you want the chatbot to match towards your training data.
+* Temperature, implying chances the OpenAI model is willing to take. Sometimes referred to as _"creativity"_.
+* Threshold, implying threshold for training data to kick in. Similarity value allowing you to filter out any training data not matching. This value can be between 0 and 1, where 0 implies _"match anything"_ and 1 implies _"only match 100% equal snippets"_. A good value here is between 0.2 and 0.6, depending upon how strict you want the chatbot to match towards your training data.
 * Completion/chat model, implying the OpenAI base model to use for queries. Notice, if you have created your own models using fine-tuning, these will be listed here too.
 * Vector model, implying vector model to create embeddings for your training data.
 * Max Context tokens, implying how many tokens from your training data the type will maximumly use when sending your context to OpenAI to answer questions.
@@ -126,7 +126,7 @@ Notice, the system message can contain Hyperlambda mixin logic, similarly to how
 
 ## Training snippets
 
-Magic supports fine tuning your own machine learning model, but we recommend using RAG to 99% of our clients. RAG is much less expensive, and most of the time also much more accurate. RAG works by using OpenAI's embeddings API to create embeddings for your training snippets, for then to create embeddings for questions asked towards your type.
+Magic supports fine tuning your own machine learning model, but we recommend using RAG for 99% of our clients. RAG is much less expensive, and most of the time also much more accurate. RAG works by using OpenAI's embeddings API to create embeddings for your training snippets, for then to create embeddings for questions asked towards your type.
 
 This allows us to use _"AI search"_ to find training snippets relevant to the question asked, for then to pass this as _"context data"_ to OpenAI to answer questions.
 
@@ -146,7 +146,7 @@ In general you should be very careful with caching too many snippets, since it m
 
 ### Adding Hyperlambda code to training snippets
 
-A single training snippet can also contain Hyperlambda. If this training snippets scores as the first for some query, only this training snippet will be used, and the Hyperlambda code will be executed before the snippet is sent to OpenAI to answer the user's question. Below is an example of such a training snippet.
+A single training snippet can also contain Hyperlambda. If this training snippet scores as the first for some query, only this training snippet will be used, and the Hyperlambda code will be executed before the snippet is sent to OpenAI to answer the user's question. Below is an example of such a training snippet.
 
 **How many questions have you answered lately?**
 
@@ -200,13 +200,13 @@ To create a questionnaire, you will typically first create a questionnaire, for 
 
 The first message above becomes a message, and the chatbot will _not_ wait for the user to answer before it shows question number 2. This is due to the _"type"_ parts at the end being _"message"_. The second question will have its answer transferred to OpenAI, allowing your chatbot to know the name of your users, and use this in its conversations. This is due to the _"context"_ having a value of _"1"_.
 
-If you ommit the context, or set its value to _"0"_, this data will never be sent to OpenAI, allowing you to gather the email address of your users, without compromising your user's privacy in any ways.
+If you omit the context, or set its value to _"0"_, this data will never be sent to OpenAI, allowing you to gather the email address of your users, without compromising your user's privacy in any way.
 
 Only when the user has finished the above questionnaire, he or she will gain access to the chatbot, allowing them to use machine learning to answer their questions. To create a new questionnaire, click the _"Questionnaire"_ tab, for then to click the _"Add"_ button. Give your questionnaire a name, choose a type, and optionally provide it with an action.
 
 ![Screenshot of how to create a new questionnaire](/assets/images/new-questionnaire.jpeg)
 
-When you're done with the above, you can provide your questionnaire with questions. _"single-shot"_ implies each individual user will only be asked these questions _once_. _"sendgrid-subscribe"_ implies an action the chatbot will invoke once the user has finished the questionnaire. You can create your own Hyperlambda slots that will be invoked after a questionnaire is done as follow.
+When you're done with the above, you can provide your questionnaire with questions. _"single-shot"_ implies each individual user will only be asked these questions _once_. _"sendgrid-subscribe"_ implies an action the chatbot will invoke once the user has finished the questionnaire. You can create your own Hyperlambda slots that will be invoked after a questionnaire is done as follows.
 
 ```
 slots.create:magic.questionnaires.action.MY-ACTION
@@ -282,7 +282,7 @@ and even help is implemented using OpenAI and ChatGPT. If you need help with som
 
 ![Screenshot of clicking F1 and have OpenAI explain some Hyperlambda code](/images/hyperlambda-ai-help.jpeg)
 
-You can also use OpenAI to generate code for you. Both Hyper IDE and SQL Studio as a little textbox at the bottom that says _"Where the machine creates the code."_ If you add some piece of instruction here, Magic will invoke OpenAI with your prompt and generate code according to your instructions.
+You can also use OpenAI to generate code for you. Both Hyper IDE and SQL Studio has a little textbox at the bottom that says _"Where the machine creates the code."_ If you add some piece of instruction here, Magic will invoke OpenAI with your prompt and generate code according to your instructions.
 
 ### Magic's integrated support chatbot
 

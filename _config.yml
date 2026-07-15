@@ -6,7 +6,6 @@ remote_theme: mmistakes/minimal-mistakes@4.23.0
 title: Magic Cloud
 subtitle: Where the Machine Creates the Code
 description: AI-based Low-Code and No-Code Software Development Automation using Workflows, Software Development Orchestration and AI
-url: "https://polterguy.github.io"
 repository: "polterguy/magic"
 footer_scripts:
  - "https://ainiro.io/magic/system/openai/include-chatbot.js?rtl=false&follow_up=true&type=magic-documentation&header=Ask%20me%20about%20Magic%20Cloud%20and%20Hyperlambda&button=Ask%20Me%20Anything&placeholder=Ask%20me%20anything%20about%20Hyperlambda%20or%20Magic%20Cloud%20...&color=%23fefefe&start=%2368708b&end=%233b3e46&link=%23fe8464&theme=modern-square&code=true&v=sdiuygqw"
@@ -16,7 +15,7 @@ og_image: "/assets/images/magic-documentation.png"
 breadcrumbs: true
 
 # Copyright displayed in the bottom right corner
-copyright: Copyright © Thomas Hansen, 2019 - 2024
+copyright: Copyright © Thomas Hansen, 2019 - 2026
 
 minimal_mistakes_skin: dark
 locale: "en"

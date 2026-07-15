@@ -8,7 +8,7 @@ to create and consume JWT tokens, to secure your Magic cloudlet. The project con
 * __[auth.ticket.get]__ - Returns the JWT token's payload as a lambda structure, and also verifies the token in the process
 * __[auth.ticket.create]__ - Creates a new JWT token, that you can return to your client, any ways you see fit
 * __[auth.ticket.refresh]__ - Refreshes a JWT token. Useful for refreshing a token before it expires, which would require the user to login again
-* __[auth.ticket.verify]__ - Verifies a JWT token, and that the user is logged in, in addition to (optionally) that he belongs to one roles supplied as a comma separated list of roles
+* __[auth.ticket.verify]__ - Verifies a JWT token, and that the user is logged in, in addition to (optionally) that he belongs to one of the roles supplied as a comma separated list of roles
 * __[auth.ticket.in-role]__ - The same as **[auth.ticket.verify]**, but returns true or false, depending upon whether or not user is in any of the roles provided or not
 * __[auth.token.verify]__ - This slot accepts an external OpenID Connect token, for then to verify its authenticity and returning its email claim.
 
@@ -66,7 +66,7 @@ auth.ticket.create
 ```
 
 All additional (non-roles) claims will have their values converted to string though, which is more of a restriction
-from .Net and the JWT standard then a restriction of Magic.
+from .Net and the JWT standard than a restriction of Magic.
 
 **Notice** - Also notice that if you create a JWT token with a user belonging to _only one role_, the roles claims
 will _not_ be an array, but simply a string. Yet again, this is simply how .Net works, and there is little we can do
@@ -91,7 +91,7 @@ is still vulnerable for being stolen, so make sure you only return it over a sec
 ## Using your JWT token
 
 Magic expects the token to be specified as a `Bearer` token in your HTTP invocation's `Authorization` HTTP header.
-To use the token therefor implies adding an HTTP `Authorization` header, and setting its value to something resembling
+To use the token therefore implies adding an HTTP `Authorization` header, and setting its value to something resembling
 the following.
 
 ```
@@ -125,7 +125,7 @@ auth.ticket.verify:root, admin, user
 ```
 
 The above will throw an exception unless the endpoint is given a valid JWT token, and the user belongs to
-one of the roles that you pass in as a comma separated list of role in its invocation. In fact, you can try
+one of the roles that you pass in as a comma separated list of roles in its invocation. In fact, you can try
 this out, by pasting the following into your Hyperlambda evaluator in your dashboard and execute it.
 
 ```
@@ -169,7 +169,7 @@ user, such as an HTTP endpoint intended to be invoked by an authenticated user.
 
 ## How to use [auth.ticket.create]
 
-This slot create a new JWT token for you, and accepts a username and optionally a list of roles. Below
+This slot creates a new JWT token for you, and accepts a username and optionally a list of roles. Below
 is some example usage.
 
 ```
@@ -186,7 +186,7 @@ user, such as an HTTP endpoint intended to be invoked by an authenticated user.
 ## How to use [auth.ticket.refresh]
 
 This slot returns a new JWT token from an old existing (and valid) token. However, the new token will
-have a new expiration date, further into the future, allowing you to create a timer that occassionally
+have a new expiration date, further into the future, allowing you to create a timer that occasionally
 invokes the server to create a new token, preventing the user from being logged out due to having his
 or her JWT token becoming expired.
 

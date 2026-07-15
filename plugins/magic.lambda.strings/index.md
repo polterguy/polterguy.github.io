@@ -4,7 +4,7 @@ title: magic.lambda.strings
 
 This project contains string manipulation slots for Magic. More specifically, it gives you the following slots.
 
-* __[strings.replace]__ - Replaces occurrencies of the specified argument with the value of its specified argument
+* __[strings.replace]__ - Replaces occurrences of the specified argument with the value of its specified argument
 * __[strings.replace-not-of]__ - Replaces all characters found in string, except those found in its single argument
 * __[strings.capitalize]__ - Turns the first character in your string into a CAPS
 * __[strings.concat]__ - Concatenates two or more strings
@@ -13,7 +13,7 @@ This project contains string manipulation slots for Magic. More specifically, it
 * __[strings.starts-with]__ - Returns true if the specified string starts with its argument
 * __[strings.join]__ - Joins multiple strings together, with a separating string between each string joined
 * __[strings.length]__ - Returns the length in characters of the given string
-* __[strings.regex-replace]__ - Replaces occurrencies matching the given regular expression with its argument
+* __[strings.regex-replace]__ - Replaces occurrences matching the given regular expression with its argument
 * __[strings.split]__ - Splits a string into multiple strings on every match of its given argument
 * __[strings.to-lower]__ - Returns the lower caps version of its given argument
 * __[strings.to-upper]__ - Returns the upper caps version of its specified argument
@@ -24,7 +24,7 @@ This project contains string manipulation slots for Magic. More specifically, it
 * __[strings.url-decode]__ - URL decodes the specified string
 * __[strings.substring]__ - Returns the sub-string of the specified string
 * __[strings.matches]__ - Returns the regular expression matches found from specified source
-* __[strings.mixin]__ - Allows for minin logic of strings and Hyperlambda
+* __[strings.mixin]__ - Allows for mixin logic of strings and Hyperlambda
 
 ## Usage
 
@@ -42,7 +42,7 @@ strings.replace:x:-
 
 ### How to use [strings.replace]
 
-This slot replaces occurrencies of a string inside a string, with some other string. The simplest version is like
+This slot replaces occurrences of a string inside a string, with some other string. The simplest version is like
 follows.
 
 ```
@@ -156,11 +156,11 @@ Returns true if the specified string starts with some sequence of characters.
 
 ```
 // Returns true
-strings.ends-with:Thomas Hansen Is Cool
+strings.starts-with:Thomas Hansen Is Cool
    .:Thomas
 
 // Returns false
-strings.ends-with:Thomas Hansen Is Cool
+strings.starts-with:Thomas Hansen Is Cool
    .:Hansen
 ```
 
@@ -248,7 +248,7 @@ strings.to-upper:Thomas Hansen Is Cool
 ### How to use [strings.trim], [strings.trim-start], [strings.trim-end]
 
 Trims a string, either both sides, only the start of it, or only the end of it, for
-occurrencies of characters found in the sequence of characters provided as its argument.
+occurrences of characters found in the sequence of characters provided as its argument.
 
 ```
 strings.trim:09thomas12
@@ -262,13 +262,13 @@ strings.trim:09thomas12
 URL encodes a string. Example can be found below.
 
 ```
-strings.url-encode:thomas@servergardens.com
+strings.url-encode:thomas@ainiro.io
 ```
 
 Resulting in the following after execution.
 
 ```
-strings.url-encode:thomas%40servergardens.com
+strings.url-encode:thomas%40ainiro.io
 ```
 
 ### How to use [strings.url-decode]
@@ -276,15 +276,15 @@ strings.url-encode:thomas%40servergardens.com
 URL decodes a string, the opposite of **[strings.url-encode]**. Example can be found below.
 
 ```
-strings.url-encode:thomas@servergardens.com
+strings.url-encode:thomas@ainiro.io
 strings.url-decode:x:-
 ```
 
 Resulting in the following after execution.
 
 ```
-strings.url-encode:thomas%40servergardens.com
-strings.url-decode:thomas@servergardens.com
+strings.url-encode:thomas%40ainiro.io
+strings.url-decode:thomas@ainiro.io
 ```
 
 ### How to use [strings.substring]
@@ -325,21 +325,20 @@ strings.matches
    .:{match2}
 ```
 
-Notice, the second argument is the _number of characters to return_ and not the offset into the string
-of where to stop returning. In such a regard, it works the same way as the C# `Substring` method.
-
 ### How to use [strings.mixin]
 
 Combines the result of the specified Hyperlambda and concatenates inline into its surrounding string.
 
+{% raw %}
 ```
-strings.mixin:@"2+2 equals {{"{ {"}}
+strings.mixin:@"2+2 equals {{
 math.add
    .:int:2
    .:int:2
 return:x:-
-} }"
+}}"
 ```
+{% endraw %}
 
 The above will result in the following.
 
@@ -349,15 +348,15 @@ strings.mixin:2+2 equals 4
 
 Notice, any inline Hyperlambda is added by adding two braces around your Hyperlambda, at which point the inline Hyperlambda will be executed, and whatever it returns is _"mixed into the surrounding string inline"_. This slot can be used similarly to **[invoke]**, allowing you to pass in parameters to it by simply adding nodes as children when invoking it. To understand the last point consider the following code.
 
+{% raw %}
 ```
-strings.mixin:@"2 + val equals {{"{ {"}}
+strings.mixin:@"2 + val equals {{
 math.add
    .:int:2
    get-value:x:@.arguments/*/val
 return:x:-
-} }"
+}}"
    val:int:5
 ```
-
-Notice, in the above code there are SP characters between the `{` characters. These should be _removed_ if you copy and paste the code to execute it.
+{% endraw %}
 

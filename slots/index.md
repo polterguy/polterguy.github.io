@@ -40,7 +40,7 @@ Magic, or replacing parts of its core with your own custom logic.
 
 ## Authentication and authorisation related slots
 
-These are slots related to authentication and authorisation, and allows you to authenticate, 
+These are slots related to authentication and authorisation, and allow you to authenticate, 
 change password of users, and other things related to the _"auth"_ parts of the system. Notice, you would
 rarely if ever use these slots directly, since the system contains several endpoints helping you out with
 the consumption of these slots. However, to be complete, we've chosen to document these none the less.
@@ -115,21 +115,21 @@ signal:magic.auth.ensure-role
    description:This is the foo role
 ```
 
-If you execute the above Hyperlambda and go to USers & Roles afterwards, you will see how you now
+If you execute the above Hyperlambda and go to Users & Roles afterwards, you will see how you now
 have a _"foo-role"_ in your system.
 
 ## Database meta traversal
 
-All the following slots are a part of the database meta system, and allows you to retrieve meta data about your
+All the following slots are a part of the database meta system, and allow you to retrieve meta data about your
 databases, such as database names, table names, columns names, and foreign keys for tables. These slots are heavily
 relied upon by the CRUDifier, as it creates a Hyperlambda backend for you, in order to determine which arguments
-your HTTP endpoints requires, and how to validate these during HTTP invocations towards your backend.
+your HTTP endpoints require, and how to validate these during HTTP invocations towards your backend.
 
 All these have at least 4 versions, one for SQLite, one for MySQL, one for PostgreSQL, and a fourth for SQL Server,
 and their only difference is that the MySQL versions use _"mysql"_ as its slot name, SQL Server uses _"mssql"_, PostgreSQL
 uses _"pgsql"_ and SQLite uses _"sqlite"_. Besides from this, they're identical in regards to their APIs, which is
-the point, since it allows for these slots to be used transparently, or _"polymorphistically"_ towards any underlaying
-database type. In the following section, we therefor document their MySQL version, implying you'll have to exchange
+the point, since it allows for these slots to be used transparently, or _"polymorphistically"_ towards any underlying
+database type. In the following section, we therefore document their MySQL version, implying you'll have to exchange
 the _"mysql"_ parts to test these towards a different database type.
 
 ### [magic.db.mysql.databases]
@@ -229,7 +229,7 @@ signal
       hl:string
 ```
 
-The fields implies the following.
+The fields imply the following.
 
 * __[name]__ - Name of column
 * __[db]__ - Database type for column
@@ -267,7 +267,7 @@ signal
 
 In the above result we can see how the _"role"_ column in the _"users_roles"_ table for instance has a foreign
 key declaration pointing towards the _"name"_ column in the _"roles"_ table, and similarly for the _"user"_
-column pointing towards the _"users"_ table's _"username"_ column. The resulting values implies the following.
+column pointing towards the _"users"_ table's _"username"_ column. The resulting values imply the following.
 
 * __[column]__ - Name of column in table you're querying
 * __[foreign_table]__ - Name of table the column is referencing

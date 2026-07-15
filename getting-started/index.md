@@ -44,7 +44,7 @@ volumes:
   magic_files_modules:
 ```
 
-The above file will spawn the frontend at port 5555 and the backend at port 4444. The above file creates volumes for all the important folders, that contains files you typically change as you're using Magic. The _"/misc/"_ and _"/system/"_ folders should not have volumes, since these should be changed when you update your image.
+The above file will spawn the frontend at port 5555 and the backend at port 4444. The above file creates volumes for all the important folders, that contain files you typically change as you're using Magic. The _"/misc/"_ and _"/system/"_ folders should not have volumes, since these should be changed when you update your image.
 
 Once your containers are up running you need to use your browser to navigate to `localhost:5555`, and login to your backend. Your backend can be found at `localhost:4444`, and its username and password is _"root"_ and _"root"_. Once you've logged in, you'll be asked to setup Magic. This will resemble the following.
 
@@ -54,12 +54,12 @@ After you've provided a root password, your name, and your email address, you wi
 
 ## Using the source code version
 
-Clone the repository, make sure you've got .Net Core version 9 installed, the latest version of NodeJS, and Angular, and enter the _"backend"_ and _"frontend"_ folders with two terminal windows, and execute the following commands in the respective terminals.
+Clone the repository, make sure you've got .Net version 10 installed, the latest version of NodeJS, and Angular, and enter the _"backend"_ and _"frontend"_ folders with two terminal windows, and execute the following commands in the respective terminals.
 
 1. `dotnet run`
 2. `ng serve`
 
-After some few minutes you should be able to access the dashboard from `localhost:4200`, and login to your cloudlet using `http://localhost:5000` as your backend URL. The intial username and password combination is the same; _"root"_ and "_root"_.
+After some few minutes you should be able to access the dashboard from `localhost:4200`, and login to your cloudlet using `http://localhost:5000` as your backend URL. The initial username and password combination is the same; _"root"_ and _"root"_.
 
 ## Deploy to production
 

@@ -42,7 +42,7 @@ math.multiply
       get-value:x:@.two
 ```
 
-The above of course will first add 5 and 2, then multiple the result of that with 3, resulting in 21.
+The above of course will first add 5 and 2, then multiply the result of that with 3, resulting in 21.
 
 ## Incrementing and decrementing values
 
@@ -58,7 +58,7 @@ math.decrement:x:-
    .:int:2
 ```
 
-After executing the above, the result of **[.value]** will be 3. The default _"step"_ value if ommitted will be 1.
+After executing the above, the result of **[.value]** will be 3. The default _"step"_ value if omitted will be 1.
 Below is an example.
 
 ```
@@ -68,7 +68,7 @@ math.increment:x:-
 ```
 
 **Notice** - You can use any slot invocation to retrieve the step value for the increment/decrement slots, including
-for instance an invocation to **[get-value]**, or your custom slots. This is dues to that the first argument supplied
+for instance an invocation to **[get-value]**, or your custom slots. This is due to the fact that the first argument supplied
 to these slots will be assumed to be the _"step"_ value you want.
 
 ## How to use [math.multiply]
@@ -99,7 +99,7 @@ math.divide
 ```
 
 It accepts both slot invocations, retrieving some value by invoking a slot, in addition to static values such as
-illustrated above where we provide the number 3 as one of its values.
+illustrated above where we provide the number 2 as one of its values.
 
 ## How to use [math.add]
 
@@ -126,7 +126,7 @@ math.subtract
 ```
 
 It accepts both slot invocations, retrieving some value by invoking a slot, in addition to static values such as
-illustrated above where we provide the number 3 as one of its values.
+illustrated above where we provide the number 2 as one of its values.
 
 ## How to use [math.modulo]
 
@@ -141,7 +141,7 @@ math.modulo
 ```
 
 It accepts both slot invocations, retrieving some value by invoking a slot, in addition to static values such as
-illustrated above where we provide the number 3 as one of its values.
+illustrated above where we provide the number 2 as one of its values.
 
 ## How to use [math.decrement]
 
@@ -253,5 +253,5 @@ math.sin:x:@.arguments/*/number
 This slot returns the cos value of its input.
 
 ```
-math.sin:x:@.arguments/*/number
+math.cos:x:@.arguments/*/number
 ```
