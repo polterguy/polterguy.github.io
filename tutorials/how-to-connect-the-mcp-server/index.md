@@ -3,6 +3,8 @@ title: How to connect the MCP server
 description: Magic contains an integrated MCP server with OAuth, allowing you to connect Claude, Claude Code, Cursor, and any other MCP client to your cloudlet, giving the AI secure access to your backend, your data, and your Hyperlambda Generator.
 ---
 
+**Prerequisite** - This tutorial assumes you already have Magic up running. If you don't, visit [Getting Started](/getting-started/) first.
+
 Magic comes with an integrated MCP server, allowing you to connect AI clients such as Claude, Claude Code, Codex, Cursor, and anything else supporting the [Model Context Protocol](https://modelcontextprotocol.io) to your cloudlet. Once connected, the AI can discover and invoke your backend's endpoints as MCP _"tools"_ — and since the Hyperlambda Generator itself is exposed as a tool, the AI can even _create new tools on demand_, by generating Hyperlambda endpoints for you.
 
 ## Installing the MCP server
