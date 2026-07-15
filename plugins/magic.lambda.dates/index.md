@@ -65,7 +65,7 @@ date.format:date:"2023-01-19T12:49:44.000Z"
 
 ## How to use [time]
 
-This slots returns a time object, which is useful for doing math operations with a date and time object,
+This slot returns a time object, which is useful for doing math operations with a date and time object,
 allowing you to for instance subtract 5 days from the current date and time. Below is an example.
 
 ```
@@ -73,7 +73,7 @@ time
    days:5
 ```
 
-This slots can be given the following arguments;
+This slot can be given the following arguments;
 
 - **[days]** - Number of days
 - **[hours]** - Number of hours

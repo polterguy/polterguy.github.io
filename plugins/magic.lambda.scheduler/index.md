@@ -189,7 +189,7 @@ are as follows.
 * `MM.dd.HH.mm.ss` - Where the entities are in sequence months, days in months, hours, minutes and seconds.
 * `ww.HH.mm.ss` - Where the entities are weekdays, hour, minute and second.
 
-Notice, MM, dd, and ww can have double asterix (\*\*) as their values, implying _"whatever value"_.
+Notice, MM, dd, and ww can have double asterisk (\*\*) as their values, implying _"whatever value"_.
 MM, dd and ww can also have multiple values, separated by the pipe character (|), to provide multiple values
 for these types. See examples of this further below in this documentation.
 
@@ -246,7 +246,7 @@ tasks.schedule:task-id-xyx
 ```
 
 Hours must be supplied as _"military hours"_, implying from 00:00 to 23:59, where for instance 22 equals 10PM UTC time.
-Also notice how we provided a double asterix (\*\*) for the month parts, implying _"all months"_. We could also have provided
+Also notice how we provided a double asterisk (\*\*) for the month parts, implying _"all months"_. We could also have provided
 multiple days, and/or months, such as the following illustrates. The Hyperlambda below will create a task that is executed
 in January and February, but only on the 5th and 15th of these months.
 
@@ -260,7 +260,7 @@ tasks.schedule:task-id
    repeats:01|02.5|15.05.00.00
 ```
 
-By using the double asterix for month and day of month, you can create a task that is executed _every_ day, at
+By using the double asterisk for month and day of month, you can create a task that is executed _every_ day, at
 some specific time of the day (UTC time). Below is an example.
 
 ```
@@ -300,7 +300,7 @@ tasks.schedule:task-id-567
    repeats:saturday|SUNDAY.22.00.00
 ```
 
-You can also provide a double asterix (\*\*) for the weekdays pattern, implying _"all days of the week"_.
+You can also provide a double asterisk (\*\*) for the weekdays pattern, implying _"all days of the week"_.
 Notice how weekdays are case-insensitive as illustrated above.
 
 ### Creating your own task repetition pattern

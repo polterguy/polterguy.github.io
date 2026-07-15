@@ -13,7 +13,7 @@ project contains the following 5 slots.
 
 The __[http.put]__, __[http.post]__ and __[http.patch]__ slots requires you to provide a __[payload]__
 or __[filename]__ argument that will be transferred to the endpoint as is. All 5 endpoints can (optionally)
-take a __[token]__ arguments, which will be transferred as a `Bearer Authorization` token to the endpoint
+take a __[token]__ argument, which will be transferred as a `Bearer Authorization` token to the endpoint
 in the `Authorization` header of your request. If you provide a __[filename]__ argument, this is assumed
 to be a file relatively found within your _"/files/"_ folder somewhere. Below is an example of
 retrieving the document found at the specified URL by creating an HTTP GET request.
@@ -39,8 +39,8 @@ can be found in **[headers]** as a key/value pair, and **[content]** contains th
 object returned by the server.
 
 All of these slots can optionally take a **[timeout]** argument, that overrides the default timeout of 300 seconds,
-with whatever integer value you provide. The timout is specified as an integer value, being the number of seconds
-to allow for the invocation, before the request is aborted and given up on. If they timeout period elapses, an
+with whatever integer value you provide. The timeout is specified as an integer value, being the number of seconds
+to allow for the invocation, before the request is aborted and given up on. If the timeout period elapses, an
 exception will be thrown.
 
 ## HTTP headers
@@ -238,7 +238,7 @@ log.info:x:-
 
 ## How to use [http.get]
 
-This slot accepts a URL as its value, an optionally http headers as a **[headers]** argument. In its simplest version
+This slot accepts a URL as its value, and optionally HTTP headers as a **[headers]** argument. In its simplest version
 it would resemble something such as the following.
 
 ```
@@ -250,7 +250,7 @@ and status code, in addition to the response object itself.
 
 ## How to use [http.put]
 
-This slot accepts a URL as its value, an optionally http headers as a **[headers]** argument, and a mandatory
+This slot accepts a URL as its value, and optionally HTTP headers as a **[headers]** argument, and a mandatory
 **[payload]** argument, being whatever payload you want to transfer to the endpoint. In its simplest version
 it would resemble something such as the following.
 
@@ -271,7 +271,7 @@ http.put:"https://some_website.com/your-put-endpoint"
 
 ## How to use [http.post]
 
-This slot accepts a URL as its value, an optionally http headers as a **[headers]** argument, and a mandatory
+This slot accepts a URL as its value, and optionally HTTP headers as a **[headers]** argument, and a mandatory
 **[payload]** argument, being whatever payload you want to transfer to the endpoint. In its simplest version
 it would resemble something such as the following.
 
@@ -292,7 +292,7 @@ http.post:"https://some_website.com/your-post-endpoint"
 
 ## How to use [http.patch]
 
-This slot accepts a URL as its value, an optionally http headers as a **[headers]** argument, and a mandatory
+This slot accepts a URL as its value, and optionally HTTP headers as a **[headers]** argument, and a mandatory
 **[payload]** argument, being whatever payload you want to transfer to the endpoint. In its simplest version
 it would resemble something such as the following.
 
@@ -313,7 +313,7 @@ http.patch:"https://some_website.com/your-patch-endpoint"
 
 ## How to use [http.delete]
 
-This slot accepts a URL as its value, an optionally http headers as a **[headers]** argument. In its simplest version
+This slot accepts a URL as its value, and optionally HTTP headers as a **[headers]** argument. In its simplest version
 it would resemble something such as the following.
 
 ```
@@ -325,7 +325,7 @@ and status code, in addition to the response object itself.
 
 ## SSE or Server-Side Events
 
-All slots also supports SSE by adding an **[.sse]** lambda object, which will be invoked once for each event published by the
+All slots also support SSE by adding an **[.sse]** lambda object, which will be invoked once for each event published by the
 server. Your lambda object will be invoked with a **[message]** argument containing the raw message published by the server.
 You are responsible to convert the message to the correct type, since it's passed in as a UTF8 encoded raw string.
 

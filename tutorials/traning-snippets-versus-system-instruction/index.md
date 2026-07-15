@@ -14,7 +14,7 @@ In a way it could be argued that providing context information to the LLM is wha
 
 ## System Instruction
 
-The system instruction is _always_ transmitted to the LLM as an invisible message number 1. If you're acquinted with OpenAI's APIs, it's the _"system"_ message of an HTTP invocation towards their chat API.
+The system instruction is _always_ transmitted to the LLM as an invisible message number 1. If you're acquainted with OpenAI's APIs, it's the _"system"_ message of an HTTP invocation towards their chat API.
 
 Since the system instruction is _always_ transmitted to OpenAI, this makes it a very good place for instructions that are general and should always be sent to the LLM. This makes it highly useful for providing _"instructions"_ such as a tone of voice, in addition to basic information that the AI chatbot should always know. You can edit the system instruction by clicking _"Configure"_ on your type from the machine learning component. Below is an example for an imaginary AI chatbot created for SalesForce, intended to act as a sales executive.
 
@@ -44,13 +44,13 @@ The _"Tokens"_ column again is important to understand, since it's the number of
 
 ![Max Context Window value for your machine learning model](/assets/images/max-context-window.png)
 
-This value is an instruction to the cloudlet of how many tokens to attach from your RAG training snippets, for each individual request. In the above image it's set to 4,000, while our training snippets from the image above is in the range of 126 to 865.
+This value is an instruction to the cloudlet of how many tokens to attach from your RAG training snippets, for each individual request. In the above image it's set to 4,000, while our training snippets from the image above are in the range of 126 to 865.
 
 When a question is being asked, the cloudlet will retrieve the most relevant training snippets, and start adding context information from the top of the list returned, until it has filled up its context window with a maximum of 4,000 tokens, or it can no longer find snippets with a similarity that's within the _"Threshold"_ value of your type.
 
-Notice, this implies that if you've got an individual training snippet that's 4,001 tokens, this snippet will _never be used_. As a general rule of thumb, we advice to never create snippets that are larger than 80% of your _"Max Context tokens"_ value. During import or website scraping however, we automatically reduce the size of snippets such that they never exceed this 80% threshold.
+Notice, this implies that if you've got an individual training snippet that's 4,001 tokens, this snippet will _never be used_. As a general rule of thumb, we advise never creating snippets that are larger than 80% of your _"Max Context tokens"_ value. During import or website scraping however, we automatically reduce the size of snippets such that they never exceed this 80% threshold.
 
-For our _"What's the price"_ example above, it will probably have room for all training snippets on page 1, and possibly add some 15 to 20 training snippets to the request in total. The cloudlet will _never_ add more than 4,000 tokens in total though from your training snippets, and it will never add snippets that's not within the _"Threshold"_ value for your type.
+For our _"What's the price"_ example above, it will probably have room for all training snippets on page 1, and possibly add some 15 to 20 training snippets to the request in total. The cloudlet will _never_ add more than 4,000 tokens in total though from your training snippets, and it will never add snippets that are not within the _"Threshold"_ value for your type.
 
 This allows you to modify the _"Max Context tokens"_ value of your type to reduce or increase how much context you want to provide. In general more context is better, but also more expensive, since it will consume additional input tokens when invoking OpenAI. In general, 4,000 is the _"sweet spot"_ for context tokens, and 0.3 for threshold - Unless you have special requirements.
 
@@ -58,7 +58,7 @@ This allows you to modify the _"Max Context tokens"_ value of your type to reduc
 
 _"Rolling context"_ is a concept we've invented ourselves, and _significantly_ increases the quality of the chatbot's response. To understand the concept you first have to realise that AINIRO's AI chatbots are _"conversational AI chatbots"_. This implies it will remember previous questions, _and_ previous contexts, until it's filled up the available context window the specific model you're using is capable of dealing with (as a general rule of thumb).
 
-This is what allows users to for instance ask questions like _"Who's your CEO"_, for then to get an answer and continue with follow up questions such as _"Can you show me an image of him"_. The word _"him"_ being the subject of the conversation here, and since the LLM will be given previous questions and answers from the same conversation, the LLM will automatically associate _"him"_ with the CEO from the previous answer, and display in image of the CEO if it's got that in its context.
+This is what allows users to for instance ask questions like _"Who's your CEO"_, for then to get an answer and continue with follow up questions such as _"Can you show me an image of him"_. The word _"him"_ being the subject of the conversation here, and since the LLM will be given previous questions and answers from the same conversation, the LLM will automatically associate _"him"_ with the CEO from the previous answer, and display an image of the CEO if it's got that in its context.
 
 Since every question triggers a _new context_ due to VSS search through your training snippets for each question asked, this allows us to attach multiple contexts for each question, by preserving the _previously_ used contexts for consecutive questions. Only when the total available context window for the LLM is exhausted, the cloudlet will start _"pruning"_ messages from the top of the conversation to avoid overflowing the LLM with too many input tokens. This implies that for gpt-4o for instance, we've got 128,000 tokens to use at most. With a 4,000 max context value for individual requests, this implies that for each question an additional 4,000 tokens are associated with the request as context, until we reach the max value of the LLM.
 
@@ -72,7 +72,7 @@ However, due to our _"rolling context"_ concept, the AI chatbot will basically _
 
 So, what should you choose as your primary source for adding information to your AI chatbot? Actually, there's no real difference between the system instruction and training snippets, and they can both take both instructions and information.
 
-Our general rule of thumb is that the most important information, such as contact us information, name of company, etc, we add to the type's system instruction. While more dynamic data, such as information about specific products or services, we add as training snippets. This is because the system instruction is _always_ there, implying whatever you write into its system instruction will _always_ be available for the LLM to use as information to answer questions - While training snippets needs to match the question asked.
+Our general rule of thumb is that the most important information, such as contact us information, name of company, etc, we add to the type's system instruction. While more dynamic data, such as information about specific products or services, we add as training snippets. This is because the system instruction is _always_ there, implying whatever you write into its system instruction will _always_ be available for the LLM to use as information to answer questions - While training snippets need to match the question asked.
 
 We suggest you keep your system instruction small in size though, max 2 pages of text in a PDF document roughly, unless you've got special requirements. While you add additional information as individual training snippets.
 

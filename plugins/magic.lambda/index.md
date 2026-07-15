@@ -1258,7 +1258,7 @@ types
 
 ### How to use [type]
 
-This slot return the Hyperlambda type name of some value.
+This slot returns the Hyperlambda type name of some value.
 
 ```
 .foo:int:57
@@ -1466,7 +1466,7 @@ allows you to create _"template lambda objects"_ that you dynamically transform 
 really caring about its original structure, but rather only its set of dynamic substitution arguments. This
 slot leaves all other nodes as is.
 
-Basically, the way it works, is that it takes your expression, and recursively iterate each node below the
+Basically, the way it works, is that it takes your expression, and recursively iterates each node below the
 result of your expression, checks to see if the node's value is an argument such as e.g. `{howdy}` -
 And if so, it substitutes the `{howdy}` parts with the value of the argument you are expected to supply to your
 invocation having the name **[howdy]**.
@@ -1538,7 +1538,7 @@ hierarchy of your template lambda.
 Sort takes an expression leading to a list of nodes, in addition to a lambda object. Your lambda
 object will be invoked several times, with an **[.lhs]**, an **[.rhs]** and a **[.result]** argument.
 It is your code's responsibility to set the value of the **[.result]** node according to which of the
-**[.lhs]** and **[.rhs]** node should comes first in the sorted result.
+**[.lhs]** and **[.rhs]** node should come first in the sorted result.
 
 ```
 .data

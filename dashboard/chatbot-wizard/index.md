@@ -32,19 +32,19 @@ Your API key should resemble the following;
 sk-xyGHa45xyzQWEghjKLMNOaBCdQHHllsdf345SFGfdg
 ```
 
-The above is obviously _not_ a valid API key, but simply provided to illustrate roughly how it looks like.
+The above is obviously _not_ a valid API key, but simply provided to illustrate roughly what it looks like.
 
 ### 2. Configuring Magic with reCAPTCHA keys - OPTIONAL
 
-To avoid having your chatbot overrun by bots, you should use some sort of CAPTCHA library. Magic contains its own PoW-based CAPTCHA library, but you might want to use Google reCAPTCHA as an alternative here. You can create a Google reCAPTCHA key pair for free by clicking [here](https://www.google.com/recaptcha). Copy and paste bot the site-key and the secret into the dialog asking you for your reCAPTCHA settings.
+To avoid having your chatbot overrun by bots, you should use some sort of CAPTCHA library. Magic contains its own PoW-based CAPTCHA library, but you might want to use Google reCAPTCHA as an alternative here. You can create a Google reCAPTCHA key pair for free by clicking [here](https://www.google.com/recaptcha). Copy and paste both the site-key and the secret into the dialog asking you for your reCAPTCHA settings.
 
 ![Screenshot of providing Magic with your reCAPTCHA keys](/assets/images/chatbot-wizard-configure-recaptcha.jpeg)
 
-Since Magic contains its own internal PoW-based CAPTCHA library, this step is optional, and you can just ignore it unless you want extract tight security for your chatbot.
+Since Magic contains its own internal PoW-based CAPTCHA library, this step is optional, and you can just ignore it unless you want extra tight security for your chatbot.
 
 ### 3. Scraping your website
 
-Before you click start, you can choose a flavor, how many pages you want to scrape, what base model from OpenAI to use, if you want to automatically recrawl the website once every 24 hours, and if you want to automatically vectorize the website once you're done scraping it. You can also choose a _"flavor"_ which is a template for a system message or OpenAI instruction. If you choose a flavor with the word _"DYNAMIC"_ in its name, the system message will be dynamically created according to the landing page of the website you are crawling, and typically produce a mugh higher quality chatbot for you. We recommend using _"Frank - DYNAMIC"_ here.
+Before you click start, you can choose a flavor, how many pages you want to scrape, what base model from OpenAI to use, if you want to automatically recrawl the website once every 24 hours, and if you want to automatically vectorize the website once you're done scraping it. You can also choose a _"flavor"_ which is a template for a system message or OpenAI instruction. If you choose a flavor with the word _"DYNAMIC"_ in its name, the system message will be dynamically created according to the landing page of the website you are crawling, and typically produce a much higher quality chatbot for you. We recommend using _"Frank - DYNAMIC"_ here.
 
 Finally you can scrape your website. Provide the chatbot wizard with your website's URL, and click the _"Start"_ button.
 
@@ -56,16 +56,16 @@ When the process is done, Magic will show you an embed dialog allowing you to co
 
 ![Screenshot of the Chatbot Wizard being finished with scraping a website](/assets/images/chatbot-wizard-after-scraping-2.jpeg)
 
-At this point you can already embed your chatbot on your website. Choose your theme, title, button text, etc - And click the _"Copy HTML"_ button. This will put the HTML required to embed your chatbot on your website onto your clipboard. The settings you can choose when embedding implies as follows.
+At this point you can already embed your chatbot on your website. Choose your theme, title, button text, etc - And click the _"Copy HTML"_ button. This will put the HTML required to embed your chatbot on your website onto your clipboard. The settings you can choose when embedding imply as follows.
 
-* Follow up - Whether or not the chatbot should display follow questions. Notice, requires a special system instruction instructing OpenAI to generate follow up questions.
+* Follow up - Whether or not the chatbot should display follow-up questions. Notice, requires a special system instruction instructing OpenAI to generate follow up questions.
 * References - If the chatbot should provide citations from your website
-* RTL - For Arabic, Hebrew, Farsi and other right to left language
+* RTL - For Arabic, Hebrew, Farsi and other right to left languages
 * Clear button - If the chatbot should have a _"start new session"_ button
 * Copy button - If the chatbot should have a _"copy response to clipboard"_ button
 * New tab - If the chatbot should open all hyperlinks in new tabs
 
-If you want to see how the different themes looks like, you can try all different themese [here](https://ainiro.io/blog/try-our-chatbot-themes).
+If you want to see what the different themes look like, you can try all different themes [here](https://ainiro.io/blog/try-our-chatbot-themes).
 
 For a complete walkthrough of the entire process, including things not discussed in this article, you can watch the [following YouTube playlist](https://www.youtube.com/watch?v=VdF8F6tvgqQ&list=PL_iESc2yi8IUCwO1TDft2oAfrUvJHuzU9).
 

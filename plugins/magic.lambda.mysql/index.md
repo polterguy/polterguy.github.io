@@ -15,13 +15,13 @@ this project contains are as follows.
 * __[mysql.delete]__ - Deletes a single record in the specified table
 * __[mysql.select]__ - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
 * __[mysql.scalar]__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
-* __[mysql.execute]__ - Executes an aribitrary SQL statement
+* __[mysql.execute]__ - Executes an arbitrary SQL statement
 * __[mysql.transaction.create]__ - Creates a new transaction
 * __[mysql.transaction.commit]__ - Explicitly commits an open transaction
 * __[mysql.transaction.rollback]__ - Explicitly rolls back an open transaction
 
 **Notice** - If you use any of the CRUD slots from above, the whole idea is that you can polymorphistically
-use the same lambda object, towards any of the underlaying database types, and the correct specific syntax
+use the same lambda object, towards any of the underlying database types, and the correct specific syntax
 for your particular database vendor's SQL syntax will be automatically generated. This allows you to
 transparently use the same lambda object, towards any of the database types Magic supports, without having to
 change it in any ways.

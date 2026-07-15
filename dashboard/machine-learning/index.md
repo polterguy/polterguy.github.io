@@ -282,7 +282,7 @@ and even help is implemented using OpenAI and ChatGPT. If you need help with som
 
 ![Screenshot of clicking F1 and have OpenAI explain some Hyperlambda code](/images/hyperlambda-ai-help.jpeg)
 
-You can also use OpenAI to generate code for you. Both Hyper IDE and SQL Studio has a little textbox at the bottom that says _"Where the machine creates the code."_ If you add some piece of instruction here, Magic will invoke OpenAI with your prompt and generate code according to your instructions.
+You can also use OpenAI to generate code for you. Both Hyper IDE and SQL Studio have a little textbox at the bottom that says _"Where the machine creates the code."_ If you add some piece of instruction here, Magic will invoke OpenAI with your prompt and generate code according to your instructions.
 
 ### Magic's integrated support chatbot
 

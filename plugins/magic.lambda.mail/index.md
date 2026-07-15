@@ -164,7 +164,7 @@ mail.pop3.fetch
 ```
 
 Just like its SMTP counterpart, the entirety of the above **[server]** node is optional, and fetched
-from your configuration if ommitted. Below are the keys used to fetch configuration settings for your
+from your configuration if omitted. Below are the keys used to fetch configuration settings for your
 POP3 connection, if not explicitly given as part of invocation.
 
 * magic.pop3.host

@@ -28,7 +28,7 @@ This project contains string manipulation slots for Magic. More specifically, it
 
 ## Usage
 
-All the above slots that requires two arguments, will use the first argument as its _"what"_ argument, and the second
+All the above slots that require two arguments, will use the first argument as its _"what"_ argument, and the second
 as its _"with"_ argument. Avoiding naming these though, allows you to reference other slots, and use these as sources
 to parametrize your invocations to the above slots. Below is an example of how this would look like.
 

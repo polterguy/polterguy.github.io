@@ -32,7 +32,7 @@ the `:int:` parts between one of our **[foo]** nodes' name and value. If you don
 To traverse the nodes later in for instance C#, you could do something such as the following.
 
 ```csharp
-var root = var result = HyperlambdaParser.Parse(hyperlambda);
+var root = HyperlambdaParser.Parse(hyperlambda);
 
 foreach (var idxChild in root.Children)
 {
@@ -60,8 +60,8 @@ Hyperlambda only supports serialising the following types by default.
 * `ulong` = System.UInt64
 * `decimal` = System.Decimal
 * `double` = System.Double
-* `single` = System.Float
-* `float` = System.Float - Alias for above
+* `single` = System.Single
+* `float` = System.Single - Alias for above
 * `bool` = System.Boolean
 * `date` = System.DateTime - _Always_ interpreted and serialized as UTC time!
 * `time` = System.TimeSpan
@@ -73,7 +73,7 @@ Hyperlambda only supports serialising the following types by default.
 * `node` = magic.node.Node
 
 The type declaration should be declared in your Hyperlambda in between the name and its value, separated by colon (:).
-The default type if ommitted is `string` and strings do not need quotes or double quotes for this reason. An example
+The default type if omitted is `string` and strings do not need quotes or double quotes for this reason. An example
 of declaring a couple of types associated with a node's value can be found below.
 
 ```
@@ -138,7 +138,7 @@ var foo = node.Get<Foo>();
 
 ## String literals in Hyperlambda
 
-Hyperlambda also support strings the same way C# supports strings, using any of the following string representations.
+Hyperlambda also supports strings the same way C# supports strings, using any of the following string representations.
 
 ```
 // Single quotes
@@ -157,7 +157,7 @@ are supported in C#, allowing you to use e.g. `\r\n` etc.
 
 ## Lambda expressions
 
-Lambda expressions are kind of like XPath expressions, except they will references nodes
+Lambda expressions are kind of like XPath expressions, except they will reference nodes
 in your Node graph object instead of XML nodes. Below is an example to give you an idea.
 
 ```
@@ -242,7 +242,7 @@ for-each:x:@"./*/{@.dyn}/*/""=wo/rld"""
 
 After evaluating the above Hyperlambda, the value of all nodes having _"wo/rld"_ as their value
 inside of **[.foo]** will be updated to become _"thomas was here"_. Obviously, the above expression
-is a ridiculous complex example, that you will probably never encounter in your own code. However,
+is a ridiculously complex example, that you will probably never encounter in your own code. However,
 for reference purposes, let's break it down into its individual parts.
 
 1. Get parent node
@@ -346,7 +346,7 @@ var lambda = HyperlambdaParser.Parse(hl);
 
 The `GetHyperlambdaAsString` above could for instance load Hyperlambda from a file, retrieve it
 from your network, or some other way retrieve a snippet of Hyperlambda text. The `HyperlambdaParser.Parse`
-parts above will return your Hyperlambda as its `Node` equivalent. The `Parser` class also have an
+parts above will return your Hyperlambda as its `Node` equivalent. The `Parser` class also has an
 overloaded constructor for taking a `Stream` instead of a `string`.
 
 **Notice** - The `Node` returned above will be a root node, wrapping all nodes found in your

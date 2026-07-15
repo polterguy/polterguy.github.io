@@ -62,7 +62,7 @@ In total there are _6 entries_ you need to change, and the email address needs t
 * image: servergardens/magic-backend:latest
 * image: servergardens/magic-frontend:latest
 
-When you are done editing the docker-compose.yml file, hold down the CTRL key and click X, then type _"Y"_ when Nano asks you if you want to save the file after you have edited the file, and save it with its existing filename. Then you will have to install Docker and docker-compose on your VPS. This can be achieved with the following terminal command.
+When you are done editing the docker-compose.yml file, hold down the CTRL key and press X, then type _"Y"_ when Nano asks you if you want to save the file after you have edited the file, and save it with its existing filename. Then you will have to install Docker and docker-compose on your VPS. This can be achieved with the following terminal command.
 
 ```
 apt install docker docker-compose
@@ -88,7 +88,7 @@ above network, you can start your docker containers using the following command.
 docker-compose up -d
 ```
 
-If you want to debug the containers, you can drop the `-d` argument, which will ensure dockers writes errors to the console as it proceeds. Notice, the default docker-compose file will take care of SSL automatically using Acme and LetsEncrypt. If you want to use your own SSL certificates here instead, you're on your own.
+If you want to debug the containers, you can drop the `-d` argument, which will ensure docker writes errors to the console as it proceeds. Notice, the default docker-compose file will take care of SSL automatically using Acme and LetsEncrypt. If you want to use your own SSL certificates here instead, you're on your own.
 
 ## Internals
 
@@ -108,7 +108,7 @@ In addition to the above containers, docker will also create several volumes for
 
 Notice, there are two dynamic folders that Magic will _not_ create volumes for, these are your _"system"_ and _"misc"_ folders. These folders will contain system files the middleware itself depends upon to function, and might be updated as we publish new releases. You should _not change_ files in these folders, since once you restart your container, and/or update Magic, all your changes here will be overwritten. These folders and files will be marked as red (warning) in Hyper IDE if you display your system folders to prevent accidental editing.
 
-The rest of the volumes are documented in either of the following two container projects that Magic's internal deployment containers depends upon.
+The rest of the volumes are documented in either of the following two container projects that Magic's internal deployment containers depend upon.
 
 * [nGinx Proxy](https://github.com/nginx-proxy/nginx-proxy)
 * [Acme companion](https://github.com/nginx-proxy/acme-companion)
@@ -139,7 +139,7 @@ The above will install _"Uncomplicated FireWall"_ on your server, for then to sh
 
 ## Updating Magic
 
-Updating Magic should be fairly straight forward and only requires that you tear down your containers, pull the Magic images from docker hub, and restart your containers using the following commands from the same directory where you'we got your docker-compose file.
+Updating Magic should be fairly straight forward and only requires that you tear down your containers, pull the Magic images from docker hub, and restart your containers using the following commands from the same directory where you've got your docker-compose file.
 
 ```
 docker-compose down

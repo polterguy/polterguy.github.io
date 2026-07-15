@@ -134,7 +134,7 @@ auth.ticket.verify:non-existing-role
 
 ## Inspecting your JWT token's payload
 
-The following slots allows you to inspect the token's payload, implying get the username and roles
+The following slots allow you to inspect the token's payload, implying get the username and roles
 the current HTTP request originates from.
 
 * __[auth.ticket.get]__ - Returns the username and the roles the user belongs to
@@ -147,7 +147,7 @@ auth.ticket.in-role:foo, root
 auth.ticket.get
 ```
 
-The first slot return _true_ because your root user belongs to _one_ of the roles you supplied as
+The first slot returns _true_ because your root user belongs to _one_ of the roles you supplied as
 a comma separated list of roles. The second slot above returns the username, and all the roles the user
 belongs to as a structured lambda object. As a general rule of thumb though, you'd not want to secure your
 endpoints using the above slots, but rather the _verify_ slot above, to avoid having errors in your code

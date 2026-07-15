@@ -131,7 +131,7 @@ validators.url:x:@.some-url
 
 ### How to use [validators.recaptcha]
 
-This is probably the most complex validator, and required 3 arguments.
+This is probably the most complex validator, and requires 3 arguments.
 
 * __[site-key]__ - Site key as provided to you by Google's reCAPTCHA admin panel
 * __[secret]__ - Secret as provided to you by Google's reCAPTCHA admin panel

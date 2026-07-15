@@ -27,9 +27,9 @@ You can also use SQL Studio to visually create and design your database. This is
 
 The _"Safe mode"_ slider prevents you from selecting more than 200 records from your database in one go. If you need to select more records you must turn this slider _off_. However, if you return thousands of records with some SQL statement, your server might become unresponsive, and/or you may end up exhausting your server's memory or your client's memory.
 
-You can save your frequently used SQL statements as _"snippets"_ similarly to how you can save frequently used Hyperlambda in the [Hyperlambda Playground](/dashboard/hyperlambda-playground/) component. This allows you to store frequently used SQL snippets for later, creating a library of snippets you can tap into later as you need to execute the same SQL later.
+You can save your frequently used SQL statements as _"snippets"_ similarly to how you can save frequently used Hyperlambda in the [Hyperlambda Playground](/dashboard/hyperlambda-playground/) component. This allows you to store frequently used SQL snippets for later, creating a library of snippets you can tap into as you need to execute the same SQL again.
 
-SQL Studio also provides you with autocomplete on both your tables and columns. This typically works best of you write SQL statements where your tables are aliased, and you write the alias of your table, followed by a dot (.), for then to trigger autocomplete. To launch autocomplete click FN+CONTROL+SPACE on a Mac, or CTRL+SPACE on Windows.
+SQL Studio also provides you with autocomplete on both your tables and columns. This typically works best if you write SQL statements where your tables are aliased, and you write the alias of your table, followed by a dot (.), for then to trigger autocomplete. To launch autocomplete click FN+CONTROL+SPACE on a Mac, or CTRL+SPACE on Windows.
 
 In addition, you can import SQL statements from your local development machine by clicking the _"Import"_ button, which will bring up a browse for file dialogue, allowing you to import some SQL file from your local machine into the SQL editor surface of SQL Studio.
 
@@ -37,7 +37,7 @@ In addition, you can import SQL statements from your local development machine b
 
 SQL Studio integrates with the machine learning and AI parts of Magic. This allows you to ask SQL related questions, such as; _"Create an SQLite DDL for me that creates a users and roles table, where each user is referencing a role with a foreign key"_.
 
-The AI features of SQL Studio doesn't always produce perfect code, but it is built on top of OpenAI's APIs, so it should be good enough to give you at least an approximation of what you want to achieve. Notice, you need an API key with OpenAI to have these parts of SQL Studio work.
+The AI features of SQL Studio don't always produce perfect code, but it is built on top of OpenAI's APIs, so it should be good enough to give you at least an approximation of what you want to achieve. Notice, you need an API key with OpenAI to have these parts of SQL Studio work.
 
 If you use the AI chat interface in SQL Studio you can ask the AI to create, and/or modify your code, and such have _"conversations"_ with the AI about your code.
 
@@ -53,7 +53,7 @@ The SQL Studio database designer allows you to do the following things.
 * Export all tables' DDL
 * Automatically create migration scripts
 
-SQL Studio doesn't give you every single feature of SQL DDL, but it's good enough to provide you with 90% of what you need as you are designing your database schema. When you create a new foreign key for instance, it will ask you if you want to allow for null values in your foreign keys, and if you wants to turn on cascading deletes - But it will not ask you if you want to set to null upon deletions.
+SQL Studio doesn't give you every single feature of SQL DDL, but it's good enough to provide you with 90% of what you need as you are designing your database schema. When you create a new foreign key for instance, it will ask you if you want to allow for null values in your foreign keys, and if you want to turn on cascading deletes - But it will not ask you if you want to set to null upon deletions.
 
 For a walkthrough of SQL Studio's most important features you can watch the [following YouTube video](https://www.youtube.com/watch?v=xQYwPFEOTAI).
 

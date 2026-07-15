@@ -110,7 +110,7 @@ simply key/value arguments. Only POST, PUT and PATCH endpoints can handle payloa
 supply a payload to a GET or DELETE endpoint, an exception will be thrown, and an error
 returned to the caller.
 
-To allow for _any_ arguments to your files, simply _ommit_ the **[.arguments]** node
+To allow for _any_ arguments to your files, simply _omit_ the **[.arguments]** node
 in your Hyperlambda althogether, or supply an **[.arguments]** node and set its value to `*`.
 Alternatively, you can also _partially_ ignore arguments sanity checking of individual nodes,
 by setting their values to `*`, such as the following illustrates.
@@ -146,7 +146,7 @@ yourself in your own Hyperlambda files.
 
 Also realise that if the value originates from a payload, as in from a PUT, PATCH or POST JSON object
 for instance, these types of objects might contain null values. If they do, no conversion will be attempted,
-and internally within your endpoint's Hyperlambda code, you might therefor expect to see for instance
+and internally within your endpoint's Hyperlambda code, you might therefore expect to see for instance
 `long` values being in fact _null_, even though technically these are not nullable types in .Net.
 
 ### Accepted Content-Type values for Hyperlambda endpoints
@@ -295,6 +295,7 @@ files in your _"/etc/www/"_ folder, you can see this logic in action.
 
 **index.html**
 
+{% raw %}
 ```
 <html>
     <head>
@@ -304,11 +305,12 @@ files in your _"/etc/www/"_ folder, you can see this logic in action.
         <h1>Hello world</h1>
         <p>
            Hello there Thomas Hansen,
-           2+2 equals {{"{ {"}}*/.calculate} }
+           2+2 equals {{*/.calculate}}
         </p>
     </body>
 </html>
 ```
+{% endraw %}
 
 **index.hl**
 
@@ -320,9 +322,7 @@ files in your _"/etc/www/"_ folder, you can see this logic in action.
    return:x:-
 ```
 
-Notice, in the above code there are SP characters between the `{` characters. These should be _removed_ if you copy and paste the code to execute it.
-
-The above will substitute your `{{"{ {"}}*/.calculate} }` parts with the result of invoking your **[.calculate]** lambda
+The above will substitute your {% raw %}`{{*/.calculate}}`{% endraw %} parts with the result of invoking your **[.calculate]** lambda
 object, resulting in 4. To understand how this works, you need to read about the **[io.file.mixin]** slot in
 the _"magic.lambda.io"_ project, and realise that the above will actually transform to the following as the
 mixin logic is executed.
@@ -478,7 +478,7 @@ in the past.
 
 ### How to use [mime.add]
 
-This slots associates a file extension with a MIME type. Notice, it will override previous associations if existing.
+This slot associates a file extension with a MIME type. Notice, it will override previous associations if existing.
 Example usage can be found below.
 
 ```

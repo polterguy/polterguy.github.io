@@ -8,6 +8,10 @@ header:
 
 Below are tutorials about how to get started with Magic. Most of these are accompanied with YouTube videos, demonstrating hands on, how to get started with Magic's Low-Code, No-Code, and AI-based software development automation concepts.
 
+## MCP and AI agents
+
+* [How to connect the MCP server](/tutorials/how-to-connect-the-mcp-server/) - Connect Claude, Claude Code, Cursor, or any other MCP client to your cloudlet
+
 ## Vibe Coding tutorials
 
 * [Vibe Coding Saturday](https://ainiro.io/blog/vibe-coding-saturday)

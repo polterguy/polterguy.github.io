@@ -9,7 +9,7 @@ this project contains are as follows.
 * __[odbc.connect]__ - Connects to a database
 * __[odbc.select]__ - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
 * __[odbc.scalar]__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
-* __[odbc.execute]__ - Executes an aribitrary SQL statement
+* __[odbc.execute]__ - Executes an arbitrary SQL statement
 * __[odbc.transaction.create]__ - Creates a new transaction
 * __[odbc.transaction.commit]__ - Explicitly commits an open transaction
 * __[odbc.transaction.rollback]__ - Explicitly rolls back an open transaction

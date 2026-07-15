@@ -29,7 +29,7 @@ Magic contains an integrated MCP server, with OAuth, allowing you to connect it 
 * Qoder
 * Grok
 
-The above is just some of what I've tried it with, but it should work with everything having MCP support. Below is a video where I'm using Claude Code to create an embeddable AI chatbot, with a landing page, and a _"widget"_ which is kind of like a micro app inside the chat stream itself.
+The above is just some of what I've tried it with, but it should work with everything having MCP support. To get started, check out [how to connect the MCP server](/tutorials/how-to-connect-the-mcp-server/). Below is a video where I'm using Claude Code to create an embeddable AI chatbot, with a landing page, and a _"widget"_ which is kind of like a micro app inside the chat stream itself.
 
 <iframe style="margin-left: auto; margin-right: auto; width: 560px; max-width: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/GExHc4k8GiU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 

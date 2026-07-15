@@ -21,7 +21,7 @@ database adapter of choice.
 
 All of the **[data.xxx]** slots are actually just polymorphistically evaluating your specialised adapter's
 slots, such as for instance **[data.connect]**, that will invoke **[mysql.connect]** if this is your default
-database. However, all of these lots can also be given an explicit **[database-type]** argument, being for
+database. However, all of these slots can also be given an explicit **[database-type]** argument, being for
 instance _"mssql"_, allowing you to choose a database type explicitly as you invoke it.
 
 If you don't provide an explicit **[database-type]** argument to these slots, the default database
@@ -107,7 +107,7 @@ data.connect
 ```
 
 This slot requires SQL resembling your specialised database type of dialect, and will
-not in any ways transpile the SQL towards your specific underlaying database type's SQL dialect.
+not in any ways transpile the SQL towards your specific underlying database type's SQL dialect.
 If you can, you should rather use **[data.read]**, to avoid lockin towards a specific database
 vendor's SQL dialect.
 You can also select multiple result sets if you have batch type of SQL statements, containing
@@ -179,7 +179,7 @@ Yet again, prefer **[data.delete]** if you can.
 ### Database transactions
 
 Although you should be careful with database transactions, sometimes you _really_ need them. For those cases you
-can use the following 3 slots to create, rollback, and/or commit transactions towards your underlaying database.
+can use the following 3 slots to create, rollback, and/or commit transactions towards your underlying database.
 
 * __[data.transaction.create]__ - Creates a new database transaction
 * __[data.transaction.commit]__ - Commits an existing open transaction
@@ -187,7 +187,7 @@ can use the following 3 slots to create, rollback, and/or commit transactions to
 
 **Notice** - The default logic for a database transaction, is that unless it's _explicitly committed_
 before leaving scope, it will roll back by default. Below is an example of a transaction that will
-rollback, since it's not explicitly commited before leaving scope.
+rollback, since it's not explicitly committed before leaving scope.
 
 ```
 data.connect:sakila
@@ -345,7 +345,7 @@ If you do, the ordering is sequentially applied.
 ### Aggregate results
 
 You can also create aggregate results, by simply adding your aggregate as your column, such as the
-following illustrates. The reasons why this works, is because if the SQL generator finds a paranthesis in your
+following illustrates. The reasons why this works, is because if the SQL generator finds a parenthesis in your
 column declaration, it will simply ignore parsing that column altogether, and directly inject it into the
 resulting SQL's columns declaration.
 
@@ -517,7 +517,7 @@ resulting in the equivalent type of join for your SQL.
 There is one crucial semantic difference between a **[join]** condition and a **[where]** condition, which is
 that the library assumes a join is _always_ between two columns, while a where always assume you're _always_
 comparing against a static value. This implies that you _cannot_ add static values into your SQL as a part of
-your **[join]** condition, while the opposite is true for a **[while]**.
+your **[join]** condition, while the opposite is true for a **[where]**.
 
 Although this technically doesn't allow you to create any SQL you want to create, it is still more
 in _"the spirit"_ of SQL as a standard - And you can always add your static conditions into your **[where]**
@@ -688,7 +688,7 @@ be updated - Which is highly unlikely what your intentions are. Hence, make sure
 ### How to use [sql.delete]
 
 This slot is for deleting records. Its **[where]** argument is applied in a similar fashion as the where
-argument to **[sql.select]** and **[sql.update]**. You can find an example further down in this document of
+argument to **[sql.read]** and **[sql.update]**. You can find an example further down in this document of
 how to use **[where]**.
 
 ```
@@ -776,7 +776,7 @@ sql.read:select * from 'table1' where 'field1' = @0 or 'field2' = @1
     @1:world
 ```
 
-You can also nest operators, producing paranthesis, and create complex conditions, such as the following
+You can also nest operators, producing parenthesis, and create complex conditions, such as the following
 illustrates.
 
 ```
@@ -804,7 +804,7 @@ sql.read:select * from 'table1' where 'field1' = @0 or ('field2' = @1 and 'field
 
 The parent of a list of criteria is deciding which logical operator to separate your conditions
 with, contrary to traditional languages, where you separate your conditions with the logical operator, and
-explicitly add paranthesis to group your levels. This might seem a little bit weird in the beginning,
+explicitly add parenthesis to group your levels. This might seem a little bit weird in the beginning,
 but this is a general rule with everything in Hyperlambda, and after a while will feel more natural than
 the alternative. The reasons for this is to allow for semantically traversing your lambda objects, allowing
 the computer to logically understand what it does more easily - Among other things. Think of the boolean

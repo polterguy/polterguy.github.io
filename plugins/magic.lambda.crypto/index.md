@@ -41,7 +41,7 @@ The slot can optionally take a **[min]** and **[max]** argument, which defines t
 random bytes/characters returned. If not supplied, the default values for these arguments are respectively 10 and 20.
 This slot is useful for creating random secrets, and similar types of random strings, where you need cryptographically
 secured random strings or byte arrays. An example of generating a cryptographically secure random string of text
-between 50 and 100 characters in lenght can be found below.
+between 50 and 100 characters in length can be found below.
 
 ```
 crypto.random
@@ -259,7 +259,7 @@ crypto.rsa.verify:x:@.message
 If somebody tampers with the content between the signing process and the verify process, an exception will
 be thrown during the verify stage. Something you can verify yourself by uncommenting the above **[set-value]**
 invocation. Throwing an exception is a conscious choice, due to the potential security breaches an error
-in your code might have, creating a false positive if you erronously invert an **[if]** statement. Even though
+in your code might have, creating a false positive if you erroneously invert an **[if]** statement. Even though
 this is technically _"using exceptions for control flow"_, it has been a conscious design choice
 as the library was created, to avoid false positives during the verification process of a signature.
 

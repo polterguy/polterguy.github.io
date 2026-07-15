@@ -16,7 +16,7 @@ pdf2text:/foo/bar.pdf
 ```
 
 Notice, the slot can also accept a stream, such as for instance supplied as an uploaded
-document, and react directly on the stream, avoid having to save the streamto a file first.
+document, and react directly on the stream, avoiding having to save the stream to a file first.
 It can also accept a string as its input, at which point it assumes the string is the
 relative path to a file. Finally, the slot can accept raw bytes, which it then assumes
 is the raw content from a PDF document.

@@ -1,6 +1,8 @@
 main:
   - title: "Getting Started"
     url: /getting-started/
+  - title: "MCP Server"
+    url: /tutorials/how-to-connect-the-mcp-server/
   - title: "Tutorials"
     url: /tutorials/
   - title: "Dashboard"
@@ -16,6 +18,8 @@ docs:
     children:
       - title: "Getting Started"
         url: /getting-started/
+      - title: "MCP Server"
+        url: /tutorials/how-to-connect-the-mcp-server/
       - title: "Tutorials"
         url: /tutorials/
       - title: "Dashboard"

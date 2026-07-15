@@ -11,7 +11,7 @@ This project contains _"system slots"_ to be able to invoke system commands, and
 * __[system.plugin.list]__ - Lists all dynamically loaded plugins
 * __[system.execute]__ - Execute the specified command returning the result to caller
 * __[system.os]__ - Returns description of your operating system
-* __[system.is-os]__ - Returns true if your underlaying operating system is of the specified type
+* __[system.is-os]__ - Returns true if your underlying operating system is of the specified type
 
 The most important feature of this project is probably that it gives you the ability to dynamically compile C# code, persist to an assembly/dll, and dynamically load this assembly as if it was a _"plugin"_.
 
@@ -123,7 +123,7 @@ io.file.save.binary:/etc/foo.dll
 
 ## How to use [system.plugin.load] and [system.plugin.unload]
 
-These slots allows you to load and unload assemblies and instantiate any slots found in it, and such dynamically during runtime changes your available slots. If you imagine you saved the above resulting compiled assembly as _"/etc/foo.dll"_, and you want to load it as a plugin, you could use code resembling the following.
+These slots allow you to load and unload assemblies and instantiate any slots found in it, and such dynamically during runtime changes your available slots. If you imagine you saved the above resulting compiled assembly as _"/etc/foo.dll"_, and you want to load it as a plugin, you could use code resembling the following.
 
 ```
 system.plugin.load:/etc/foo.dll
@@ -276,7 +276,7 @@ stderr if present.
 In addition to the above slots this project also contains the following slots.
 
 * __[system.os]__ - Returns description of your operating system
-* __[system.is-os]__ - Returns true if your underlaying operating system is of the specified type
+* __[system.is-os]__ - Returns true if your underlying operating system is of the specified type
 
 The last slot above takes an argument such as _"Windows"_, _"OSX_, _"Linux"_, etc, and will return true
 of the operating system you are currently running on belongs to the specified family of operating systems.

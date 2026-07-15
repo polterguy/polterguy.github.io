@@ -15,7 +15,7 @@ this project contains are as follows.
 * __[sqlite.delete]__ - Deletes a single record in the specified table
 * __[sqlite.select]__ - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
 * __[sqlite.scalar]__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
-* __[sqlite.execute]__ - Executes an aribitrary SQL statement
+* __[sqlite.execute]__ - Executes an arbitrary SQL statement
 * __[sqlite.transaction.create]__ - Creates a new transaction
 * __[sqlite.transaction.commit]__ - Explicitly commits an open transaction
 * __[sqlite.transaction.rollback]__ - Explicitly rolls back an open transaction
@@ -23,7 +23,7 @@ this project contains are as follows.
 * __[sqlite.backup]__ - Creates a backup of the currently active database
 
 **Notice** - If you use any of the CRUD slots from above, the whole idea is that you can polymorphistically
-use the same lambda object, towards any of the underlaying database types, and the correct specific syntax
+use the same lambda object, towards any of the underlying database types, and the correct specific syntax
 for your particular database vendor's SQL syntax will be automatically generated. This allows you to
 transparently use the same lambda object, towards any of the database types Magic supports, without having to
 change it in any ways.
