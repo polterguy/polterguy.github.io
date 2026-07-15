@@ -5,12 +5,8 @@ main:
     url: /tutorials/how-to-connect-the-mcp-server/
   - title: "Tutorials"
     url: /tutorials/
-  - title: "Dashboard"
-    url: /dashboard/
   - title: "Hyperlambda"
     url: /hyperlambda/
-  - title: "Workflows"
-    url: /workflows/
   - title: "Deploy Magic"
     url: /deploy/
 docs:
