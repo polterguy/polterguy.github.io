@@ -1,102 +1,55 @@
 ---
 title: Workflows
-description: A workflow is a collection of chained actions, where each action can take as input the output produced by previous actions.
+description: Build AI-driven workflows by connecting an orchestrator AI such as Claude to your Magic cloudlet, and letting it combine Magic and Hyperlambda to dynamically solve problems.
 header:
   image: /assets/images/wizard-magically-creating-things.webp
-  image_description: Wizard creating workflows out of thin air symbolizing the power of Hyperlambda workflows
+  image_description: Wizard creating workflows out of thin air symbolizing the power of AI-driven Magic workflows
 ---
 
-A workflow is a chained collection of actions, where each action can produce output, that consecutive actions can consume as input. The most famous example of a workflow system is probably MWF, or Microsoft Workflow Foundation. MWF of course is junkware and no longer actively maintained by Microsoft, so we created Magic as a better replacement.
+A workflow is a chain of operations that together accomplish some larger task, where each step can consume the output produced by previous steps. In Magic you build workflows by connecting an orchestrator AI - such as Claude - to your cloudlet over the [MCP server](/tutorials/how-to-connect-the-mcp-server/), and letting it combine Magic's tools and the [Hyperlambda Generator](/dashboard/hyperlambda-generator/) to solve problems dynamically.
 
-Magic implements workflows using [Hyperlambda](/hyperlambda/), which largely eliminates the need to visualise workflows using a graphical user interface, and allows the user to use the source code as the primary means to edit and maintain the workflow. This is only possible by completely dropping the idea of using XML and JSON as _"your workflow description language"_.
+Instead of wiring steps together by hand, you describe the outcome you want in plain English, and the AI figures out which tools to call, in which order, feeding the result of one step into the next.
 
-To understand the above point, try to compare a Hyperlambda Workflow file with the equivalent XML-based workflow file. The Hyperlambda file is easily understood, while its XML equivalent is roughly as readable as machine code instructions. Watch the following video for an introduction to Hyperlambda workflows.
+## The AI is the orchestrator
 
-<iframe style="margin-left: auto; margin-right: auto; width: 560px; max-width: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/ITz1ASqsWoM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+When you connect an AI agent to your cloudlet, every one of your endpoints - and a large library of [built-in tools](/tutorials/how-to-connect-the-mcp-server/) - becomes something the AI can invoke. That means a single instruction can turn into a multi-step workflow, where the AI:
 
-## Advantages
+* queries and writes to your databases,
+* calls external HTTP APIs and services,
+* reads and writes files on your cloudlet,
+* sends emails, generates images or PDFs, scrapes websites, and more,
 
-Being able to assemble backend code from reusable actions the way shown above has huge benefits. First of all it significantly lowers the bar for software development, allowing people without prior software development experience to create high quality backend code. Secondly, it makes it much faster to create said code. I clocked myself in regards to this, and found that in theory I could create 604,000 lines of code per month instead of 550 which is the industry standard.
+chaining these together to reach the goal you described. You stay the orchestrator - you decide _what_ you want - while the AI works out the _how_.
 
-Obviously using LOC as a measure stick for productivity is typically not a good thing, but these were production grade lines of code, highly secure, scalable, and performing in regards to all neutral metrics - And I produced something _useful_ that would require _a lot_ of manual coding to create. In the following video I am creating a complete registration API in 15 minutes to illustrate the point.
+## Hyperlambda is the execution layer
 
-<iframe style="margin-left: auto; margin-right: auto; width: 560px; max-width: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/Ntunzh-DdaY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+Every step the AI takes ultimately runs as [Hyperlambda](/hyperlambda/) inside your cloudlet. This is what makes AI workflows in Magic so powerful; when the AI needs logic that doesn't exist yet, it doesn't get stuck - it uses the [Hyperlambda Generator](/dashboard/hyperlambda-generator/) to create it.
 
-The point being that creating a registration API manually is a task that might take weeks of manual coding. Doing it in 15 minutes obviously has advantages, especially considering the skill level required to accomplish the above in Hyperlambda, which is close to nothing.
+The AI describes the endpoint it needs in plain English, the generator produces working Hyperlambda in seconds, and the new endpoint immediately becomes another tool the AI can call. In other words, the AI can _extend its own capabilities in the middle of a workflow_, building exactly the tools it needs, on demand.
 
-## Declarative programming
+## Why Hyperlambda and AI fit together so well
 
-Workflows are based upon actions, and each action is an _"atomic piece of functionality that does something useful"_. This implies you do not lose much flexibility when using workflows, and at least in theory you could create anything using Magic workflows you could create using traditional software development.
+* **Hyperlambda is a meta programming language** - the machine can easily generate functioning Hyperlambda that it then executes, which is exactly what an orchestrating AI needs.
+* **The generator cannot hallucinate function invocations** - every slot the generated code invokes is verified against the slots that actually exist in your cloudlet before the code is returned, so the tools the AI builds actually work.
+* **Everything runs inside your cloudlet** - behind your own authentication and role based access control, so the AI can only ever do what the consenting user is allowed to do, and your data never leaves your database.
+* **Slots compose naturally** - each slot in Hyperlambda takes a node-set as input and returns another node-set, which is what allows the output of one operation to flow into the next as you chain them together.
 
-However, since workflows in Magic are based upon Hyperlambda, this allows you to sprinkle in Hyperlambda directly into your workflow where required, and even invoke C# code when needed - So you get the best of both worlds; Declarative programming as your primary tool of choice, with the ability to hook into the CLR and C# through Hyperlambda when required.
+## An example
 
-## Functional programming
+Imagine you tell your connected AI:
 
-This is facilitated by functional constructs. Each slot in [Hyperlambda](/hyperlambda/) takes a node-set as its input, and returns another node-set after executing. This is what allows for _"chaining"_ Hyperlambda actions such as illustrated in the above video. Combined with [lambda expressions](/plugins/magic.node/#lambda-expressions), this allows you to chain _"function invocations"_ or slots, where the output from one slot is used as input to the next.
+> "Every morning, find yesterday's new signups in my CRM database, and email me a short summary."
 
-## Actions
+To fulfil this, the AI composes a workflow from Magic's tools; it inspects your database schema, generates and runs the Hyperlambda that selects yesterday's rows, formats a summary, sends it with the email tool, and schedules the whole thing as a recurring task - all from that one sentence, and all as real, secured Hyperlambda running on your cloudlet.
 
-Actions are the basic atomic building blocks of workflows, and an action is defined as _"the smallest piece of code that does something useful"_. This allows you to create chains of actions that somehow implement your business logic, _without_ having to manually write the code yourself.
+## The building blocks
 
-### Create your own actions
+The operations the AI composes into workflows are the same tools documented in the [MCP guide](/tutorials/how-to-connect-the-mcp-server/) - covering databases, files, machine learning, HTTP, email, Git, tasks, browser automation, and more - plus any endpoints you have created yourself with the [Endpoint Generator](/dashboard/endpoint-generator/) or by hand in [Hyper IDE](/dashboard/hyper-ide/).
 
-Actions are just declaratively created snippets of Hyperlambda, allowing you to create custom actions you can later reference in your own workflows. Below is the _"file-load"_ action to illustrate what an action looks like.
-
-```
-/*
- * Loads the specified [file] and returns to caller as [content].
- */
-.arguments
-   file
-      type:string
-      mandatory:bool:true
-.icon:insert_drive_file
-
-// Loads the specified file.
-load-file:x:@.arguments/*/file
-
-// Returning result of above invocation to caller.
-yield
-   content:x:@load-file
-```
-
-To extend your workflows with your own custom actions is as easy as creating a Hyperlambda file using for instance [Hyper IDE](/dashboard/hyper-ide/), and store it in your _"/etc/workflows/actions/"_ folder. The point being to create encapsulated actions you can reuse multiple times in other components and modules.
-
-### Consuming actions
-
-You consume an action by adding an `execute` invocation to your Hyperlambda file that references the action's file. You can write this by hand in [Hyper IDE](/dashboard/hyper-ide/), or have the [Hyperlambda Generator](/dashboard/hyperlambda-generator/) create it for you from a plain-English description. Each action can take, as its input arguments, the arguments given to your workflow and the values returned from previous actions - which is what lets you chain actions together. A consumed action ends up resembling the following.
-
-```
-/*
- * Creates a customer object in Stripe with the given [name], [email] and
- * optionally [ip_address].
- *
- * If you supply an [ip_address], the country of origin for the IP address
- * will be used as the default tax location for your customer in Stripe.
- *
- * Will use your Stripe API token found from your settings as it's interacting
- * with the Stripe API.
- */
-execute:magic.workflows.actions.execute
-   name:stripe-customer-create
-   filename:/modules/stripe/workflows/actions/stripe-customer-create.hl
-   arguments
-      name:x:@.arguments/*/name
-      email:foo@bar.com
-```
-
-This results in a _"point and click software development model"_, where complexity is hidden to an extent where the cognitive requirements to produce working code are almost completely absent.
-
-### Custom actions in Plugins
-
-Many plugins found in the [Plugins](/plugins/) component come with additional actions you can consume. For instance the _"Stripe"_ plugin contains Stripe related actions, allowing you to easily consume Stripe's API and accept payments in your backend code.
-
-Refer to each individual plugin's description to see which actions a specific plugin contains, if any.
-
-## Meta programming
-
-The above constructs allow for _"meta programming"_, where the machine assembles the code required to create functionality, allowing the software developer to become more of an _"orchestrator"_, while having the internals of your actions encapsulate the nitty gritty stuff. Or as we phrase it ...
+This results in a _"point and click software development model"_ raised to a whole new level; you describe the problem, and the machine assembles - and where necessary writes - the code required to solve it. Or as we phrase it ...
 
 > Where the Machine Creates the Code
 
 * [Read more about Hyperlambda](/hyperlambda/)
+* [Connect the MCP server](/tutorials/how-to-connect-the-mcp-server/)
+* [The Hyperlambda Generator](/dashboard/hyperlambda-generator/)
