@@ -1,6 +1,6 @@
 ---
 title: Machine Learning
-description: Documentation for how to create your own machine learning model based upon RAG and VSS in Magic.
+description: Create your own machine-learning model in Magic by scraping any website into RAG training data, answering domain questions with vector search.
 header:
   image: /assets/images/hero/machine-learning.png
   og_image: /assets/images/hero/machine-learning-og.png

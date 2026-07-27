@@ -1,6 +1,6 @@
 ---
 title: Hyperlambda Playground
-description: The Hyperlambda Playground allows you to submit Hyperlambda to your server and have your code executed in 'immediate' mode. This is useful for administrating your Magic server, and/or learning Hyperlambda.
+description: Submit Hyperlambda to your cloudlet and run it instantly in 'immediate' mode, ideal for administering your Magic server and learning Hyperlambda.
 header:
   image: /assets/images/hero/playground.png
   og_image: /assets/images/hero/playground-og.png

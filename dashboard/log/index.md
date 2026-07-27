@@ -1,6 +1,6 @@
 ---
 title: Log
-description: Documentation for your Magic log component, allowing you to verify your cloudlet is healthy and running optimally.
+description: Browse your Magic cloudlet's server log to confirm it's healthy and running optimally, and to review important events as they happen.
 header:
   image: /assets/images/hero/log.png
   og_image: /assets/images/hero/log-og.png

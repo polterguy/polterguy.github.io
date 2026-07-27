@@ -1,6 +1,6 @@
 ---
 title: Workflows
-description: Build AI-driven workflows by connecting an orchestrator AI such as Claude to your Magic cloudlet, and letting it combine Magic and Hyperlambda to dynamically solve problems.
+description: Build AI-driven workflows by connecting an orchestrator like Claude to your cloudlet, letting it combine Magic and Hyperlambda to solve problems dynamically.
 header:
   image: /assets/images/hero/workflows.png
   og_image: /assets/images/hero/workflows-og.png

@@ -1,6 +1,6 @@
 ---
 title: Users & Roles
-description: Documentation for Magic's User & Roles component, allowing you to use an RBAC-based authentication and authorisation mechanism for your own code.
+description: Secure your own code with Magic's role-based access control (RBAC), managing users, roles, authentication, and authorisation from one component.
 header:
   image: /assets/images/hero/users-roles.png
   og_image: /assets/images/hero/users-roles-og.png

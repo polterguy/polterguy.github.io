@@ -1,6 +1,6 @@
 ---
 title: Configuration
-description: Configuring your server can easily be achieved with a root user using the configuration component in Magic. Configuration settings are immediately applied, and change your server's behaviour instantly.
+description: Manage your Magic server's settings as a root user. Changes take effect instantly and immediately alter your server's behaviour, with no restart needed.
 header:
   image: /assets/images/hero/configuration.png
   og_image: /assets/images/hero/configuration-og.png

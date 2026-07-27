@@ -1,6 +1,6 @@
 ---
 title: Deploy Magic
-description: How to deploy Magic to a server once you're ready to put Magic into production
+description: How to deploy Magic to a server and take your cloudlet into production, covering hosting, security, CDNs, and the DevOps involved.
 header:
   image: /assets/images/hero/deploy.png
   og_image: /assets/images/hero/deploy-og.png

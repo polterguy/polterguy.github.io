@@ -1,6 +1,6 @@
 ---
 title: Endpoint Generator
-description: The backend Endpoint Generator allows you to create a CRUD API wrapping your database. Magic will read meta data from your database, and automatically create all required code for you.
+description: The Endpoint Generator reads your database's metadata and automatically generates a secured CRUD API wrapping it, with no manual coding required.
 header:
   image: /assets/images/hero/endpoint-generator.png
   og_image: /assets/images/hero/endpoint-generator-og.png

@@ -1,6 +1,6 @@
 ---
 title: Tutorials
-description: Tutorials about how to start using Magic on your own. Most of these are hands on, allowing you to experiment for yourself, and also come with walk-through videos.
+description: Hands-on tutorials for using Magic on your own, letting you experiment for yourself, most with step-by-step walk-through videos.
 header:
   image: /assets/images/hero/tutorials.png
   og_image: /assets/images/hero/tutorials-og.png

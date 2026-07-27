@@ -1,6 +1,6 @@
 ---
-title: Endpoints
-description: Documentation for the most important endpoints you can find in Magic's middleware
+title: Middleware Endpoints
+description: A reference to the most important built-in HTTP endpoints in Magic's middleware, covering files, authentication, and system operations.
 header:
   image: /assets/images/hero/endpoints-top.png
   og_image: /assets/images/hero/endpoints-top-og.png

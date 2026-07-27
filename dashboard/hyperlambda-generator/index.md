@@ -1,6 +1,6 @@
 ---
 title: Hyperlambda Generator
-description: The Hyperlambda Generator is a proprietary SLM fine-tuned with more than 600,000 training snippets, transforming natural language into working backend code in seconds, without hallucinating function invocations.
+description: A proprietary SLM fine-tuned on 600,000+ snippets that turns natural language into working Hyperlambda in seconds, and never hallucinates function calls.
 header:
   image: /assets/images/hero/hyperlambda-generator.png
   og_image: /assets/images/hero/hyperlambda-generator-og.png

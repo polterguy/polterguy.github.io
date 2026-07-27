@@ -1,6 +1,6 @@
 ---
 title: Plugins
-description: Documentation for Magic's integrated plugin component, allowing you to extend your cloudlet with plugins, such as Shopify plugins, WordPress plugins, etc
+description: Extend your Magic cloudlet with plugins from the integrated App Store — Stripe payments, Shopify and WordPress chatbots, example databases, and more.
 header:
   image: /assets/images/hero/plugins-dash.png
   og_image: /assets/images/hero/plugins-dash-og.png

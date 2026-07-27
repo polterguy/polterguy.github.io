@@ -1,6 +1,6 @@
 ---
 title: Hyperlambda
-description: Hyperlambda is a relational file format allowing you to create execution trees, replacing XML as a dynamic markup language for declarative programming and Low-Code and No-Code workflow creation.
+description: Hyperlambda is a relational file format for building execution trees, a concise declarative language for Low-Code and No-Code backend development in Magic.
 header:
   image: /assets/images/hero/hyperlambda.png
   og_image: /assets/images/hero/hyperlambda-og.png

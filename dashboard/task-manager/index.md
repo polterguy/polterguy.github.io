@@ -1,6 +1,6 @@
 ---
 title: Task Manager
-description: The Task Manager allows you to create and administrate tasks, and schedule tasks for being executed in the future, or repeatedly according to some kind of repetition pattern.
+description: Create, administer, and schedule background tasks in Magic, running them once at a future time, or repeatedly on a recurring schedule.
 header:
   image: /assets/images/hero/task-manager.png
   og_image: /assets/images/hero/task-manager-og.png

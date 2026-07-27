@@ -1,6 +1,6 @@
 ---
 title: Magic Cloud
-description: Magic Cloud is an AI-based Low-Code and No-Code software development automation framework, allowing for the machine to create most of your code
+description: Magic Cloud is an AI, Low-Code and No-Code platform that builds and hosts your entire backend, and powers database-driven AI agents over MCP.
 header:
   image: /assets/images/hero/home.png
   og_image: /assets/images/hero/home-og.png
