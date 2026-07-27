@@ -6,11 +6,11 @@ header:
   image_description: Wizard standing in his laboratory trying to find out what Magic spell he should use
 ---
 
-The Magic Dashboard is how you would manage your cloudlet. When you login to your cloudlet, you will be greeted by KPI charts, displaying important information about your cloudlet. This typically resembles the following.
+The Magic Dashboard is how you would manage your cloudlet. When you login to your cloudlet, you will be greeted by the dashboard's landing page, showing key numbers about your cloudlet - its Magic version, and how many endpoints, users, scheduled tasks, and log items it has. This typically resembles the following.
 
 ![Screenshot of the Magic Dashboard](/images/dashboard.jpeg)
 
-In addition to the elements shown in the above screenshot, you will have a _"splash screen"_ containing some hyperlinks, and also a YouTube playlist that helps you configure your cloudlet, mostly focusing on creating AI chatbots initially. Below is the entire video series if you prefer watching it here.
+Below the key numbers, the landing page gives you quick access to the things you'll reach for most often. If your cloudlet has the MCP module installed, it shows the MCP URL you hand to an AI agent so it can discover and invoke your endpoints as tools. The _Chatbot Wizard_ crawls a website, turns what it finds into training data, and gives you an embeddable AI chatbot in a few minutes. A _"What everything does"_ section explains every part of your cloudlet and where to find it, and a _Tasks_ section lets you execute your scheduled tasks on demand. If you prefer to learn by video, the series below walks you through configuring your cloudlet, mostly focusing on creating AI chatbots.
 
 <iframe style="margin-left: auto; margin-right: auto; width: 560px; max-width: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL_iESc2yi8IUCwO1TDft2oAfrUvJHuzU9" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 

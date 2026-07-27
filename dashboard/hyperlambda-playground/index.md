@@ -6,11 +6,11 @@ header:
   image: /assets/images/wizard-playing-magic-games-with-children.webp
 ---
 
-The Hyperlambda Playground component allows you to play with [Hyperlambda](/hyperlambda/) code, and execute your code in _"immediate mode"_, for then to see the result of your execution immediately. The Hyperlambda playground is also a nice starting point to learn Hyperlambda, since it contains a whole range of Hyperlambda snippets that somehow demonstrate Hyperlambda's capabilities, and provides examples for you as you start out learning Hyperlambda. Click the _"Snippets"_ button to load up some snippet, study it, modify it, and then execute it - For then to afterwards see the result of the execution.
+The Hyperlambda Playground component allows you to play with [Hyperlambda](/hyperlambda/) code, and execute your code in _"immediate mode"_, for then to see the result of your execution immediately. The Hyperlambda playground is also a nice starting point to learn Hyperlambda, since it contains a whole range of Hyperlambda snippets that somehow demonstrate Hyperlambda's capabilities, and provides examples for you as you start out learning Hyperlambda. Use the _"Load snippet…"_ dropdown to load up some snippet, study it, modify it, and then execute it - For then to afterwards see the result of the execution.
 
 ![Screenshot of the Hyperlambda Playground Component executing some arbitrary Hyperlambda](/images/eval-component.jpg)
 
-If you create a Hyperlambda snippet you for some reason want to save for later, you can save your Hyperlambda to your _"snippets"_ collection, by clicking the _"Save"_ button, and give your snippet a name. This allows you to create snippets you need to periodically execute, and store these as your _"admin snippets"_, to rapidly execute snippets that somehow execute some Hyperlambda task at will.
+If you create a Hyperlambda snippet you for some reason want to save for later, you can save your Hyperlambda to your _"snippets"_ collection, by clicking the _"Save snippet"_ button, and give your snippet a name. This allows you to create snippets you need to periodically execute, and store these as your _"admin snippets"_, to rapidly execute snippets that somehow execute some Hyperlambda task at will.
 
 ## Hyperlambda Playground internals
 
