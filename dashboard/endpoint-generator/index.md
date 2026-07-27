@@ -28,7 +28,7 @@ The Backend Generator creates 5 HTTP endpoints by default for each table. One en
 
 In addition to the standard CRUD endpoints, the generator can optionally create a few extra query endpoints for a table. You enable these per table before you generate your backend.
 
-* **Aggregate** - Creates an endpoint that returns the minimum, maximum, average, sum, or count for a column you specify, optionally grouped by another column. This lets you produce totals and statistics directly from your database, without writing any SQL yourself.
+* **Aggregate** - Creates an endpoint that returns the minimum, maximum, average, sum, or count for a column you specify, grouped by another column. The grouping column is mandatory, so the endpoint always returns your aggregate value per group. This lets you produce totals and statistics directly from your database, without writing any SQL yourself.
 * **Distinct** - Creates an endpoint that returns the unique, distinct values from a column, allowing you to list every value that occurs in a column without duplicates.
 * **Search** - Creates an endpoint that performs a _"keyword density search"_ across your table, ranking each row by how many of your keywords it matches, and sorting the result by _"most matches"_ first. This gives you a simple relevance-ranked, full-text style search endpoint out of the box.
 
