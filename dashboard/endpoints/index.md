@@ -14,7 +14,7 @@ The Endpoints component allows you to see your HTTP endpoints, and invoke these,
 
 Hyperlambda endpoints have a type declaration providing some sort of semantic type of information about your endpoint, and typically if this type declaration is _"internal"_, the endpoint is _not_ intended for being consumed by your own code, but only for internal usage by Magic. This meta data is displayed in the endpoint component, and allows you to more easily classify your endpoints, understanding what an endpoint does.
 
-Magic will automatically determine what type your query parameter is, and show the correct form control in its endpoint component for whatever type is required as input to your endpoint. This implies it will show checkbox elements for boolean arguments, date time pickers for date and time arguments, etc. This component also supports providing JSON payloads to POST and PUT endpoints, using syntax highlighting through CodeMirror.
+Magic will automatically determine what type your query parameter is, and show the correct form control in its endpoint component for whatever type is required as input to your endpoint. This implies it will show checkbox elements for boolean arguments, date time pickers for date and time arguments, etc. This component also supports providing request payloads to your POST, PUT and PATCH endpoints in all the most common formats - such as JSON, YAML, Hyperlambda, and XML - with syntax highlighting through CodeMirror. In addition you can upload files to endpoints that accept file uploads, and download the files an endpoint returns, allowing you to work with binary and document endpoints directly from the component.
 
 ## Endpoint meta data features
 

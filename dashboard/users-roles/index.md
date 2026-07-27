@@ -19,6 +19,8 @@ Users again have extra fields, which can be any information you wish - However, 
 
 Magic is built upon [JWT](https://jwt.io) authentication and authorisation. This is a commonly used web standard, and allows you to easily use its existing authentication and authorisation system in your own code. JWT implies JSON Web Token, and is typically transmitted from your frontend to your backend as a _"Bearer"_ token in your _"Authorization"_ HTTP header.
 
+In addition to its own username and password authentication, Magic can act as an OAuth server, and it can use OIDC (OpenID Connect) for authentication - allowing your users to sign in through an external identity provider such as Google, Microsoft, or any other OIDC-compliant provider. Regardless of how a user signs in - whether through Magic's own login, as an OAuth client, or through an OIDC identity provider - they are still mapped onto Magic's own internal roles, and access is still governed by the same internal RBAC-based system described below. This gives you the convenience of federated, standards-based sign-in, without giving up the fine-grained role-based control Magic provides over your endpoints.
+
 ## Users and roles internals
 
 All access in Magic is based upon roles, implying by default all users belonging to the same role(s) have access to the same parts of your backend. This makes it easier to provide access to specific parts of your system(s), and/or also see which parts of your system specific users have access to. This is referred to as RBAC or Role Based Access Control.
