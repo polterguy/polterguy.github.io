@@ -27,7 +27,7 @@ Which engine answers depends on the file you have open.
 
 You can also select some text in the editor and click the _"Generate"_ button to run your selection through the generator, or write a file-level comment describing what you want and generate your code from that.
 
-The bar works like a conversation, so you can keep refining and modifying your code, using it as an _"AI-based pair programming buddy"_. Requests are paired to a local machine learning type with the same name as your file's extension - so with an HTML file open the AI searches for a type named _"html"_, falling back to your _"default"_ type if none exists. This lets you create your own RAG or fine-tuned models, matched to your file extensions, to teach the AI about your own code.
+The bar works like a conversation, so you can keep refining and modifying your code, using it as an _"AI-based pair programming buddy"_. Requests are paired to a local machine learning type with the same name as your file's extension - so with an HTML file open the AI searches for a type named _"html"_, falling back to your _"default"_ type if none exists. This lets you create your own RAG models, matched to your file extensions, to teach the AI about your own code.
 
 Hyper IDE also provides integrated autocomplete if your editor has focus and you click CTRL+SPACE in Windows or FN+CONTROL+SPACE on your Mac. This allows you to very rapidly create Hyperlambda code, while having Hyper IDE ensure your code is using existing slots. Notice, these keyboard shortcuts are only available when your code editor has focus.
 
@@ -72,8 +72,6 @@ When you're editing a file that lives under `/etc/www/`, Hyper IDE gives you a _
 Magic is modularized, allowing you to easily move modules from one machine to another. This is the purpose of your _"/modules/"_ folder, as in each folder inside this folder is considered a module in Magic.
 
 If you're developing a module in your own local installation of Magic, you can mark the folder in the tree control, and click the action button for downloading the folder. This will give you a zip file you can easily upload to another server using the install module action button.
-
-This is also horizontally integrated into [SQL Studio](/dashboard/sql-studio/), allowing you to _"export"_ your database DDL SQL to a module, assuming your module has the same name as your database. If you use this feature, Magic will automatically create your database, and even apply migration scripts if required during installation.
 
 ## Continuous Integration and Deployment
 

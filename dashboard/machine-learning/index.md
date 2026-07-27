@@ -1,6 +1,6 @@
 ---
 title: Machine Learning
-description: Documentation for how to create your own machine learning type based upon RAG and VSS in Magic.
+description: Documentation for how to create your own machine learning model based upon RAG and VSS in Magic.
 og_image: "/images/machine-learning.jpg"
 header:
   image: /assets/images/wizard-teaching-robot-magic.webp
@@ -8,7 +8,7 @@ header:
 
 Magic's Machine Learning component allows you to create your own AI based machine learning model, either by crawling your website and scraping it for data, or by manually uploading files, resulting in a private and custom _"machine learning model"_. Machine learning in Magic is built upon OpenAI's API and is similar to ChatGPT, and under the hood it's using RAG and VSS towards your own database to extract context as it's answering questions using OpenAI.
 
-Magic contains a lot of additional services, such as the ability to monitor or supervise usage, storing questions and answers into your database, and use these as the foundation for reinforcement learning to improve your model's accuracy over time. You can also use historical requests for business intelligence, or lead generation. In addition it ties into Magic's AI Agent abilities, allowing you to integrate AI functions triggering AI workflows from instructions provided by the user.
+Magic contains a lot of additional services, such as the ability to monitor or supervise usage, storing questions and answers into your database, and use these to review and improve your model's accuracy over time. You can also use historical requests for business intelligence, or lead generation. In addition it ties into Magic's AI Agent abilities, allowing you to integrate AI functions triggering AI workflows from instructions provided by the user.
 
 You can crawl and scrape your website for training data, or upload your own files in a wide variety of formats, such as XML, JSON, YAML, CSV, or PDF. Magic uses RAG/VSS to power your model, which eliminates AI hallucinations, resulting in higher accuracy, and is also significantly less expensive.
 
@@ -30,9 +30,9 @@ This is one of the primary services [AINIRO.IO](https://ainiro.io) is providing,
 
 ## Crawling your website
 
-To crawl and scrape your website, create a type, then click the _"Import"_ button on your type, and provide it with your website's URL.
+To crawl and scrape your website, create a model, then click the _"Import"_ button on your model, and provide it with your website's URL.
 
-You can upload training data in a wide variety of formats. However, most interestingly for most is that you can simply point Magic at your website, and it will crawl your website, and scrape it for training data that you can later use to train your own OpenAI model, or consume using RAG.
+You can upload training data in a wide variety of formats. However, most interestingly for most is that you can simply point Magic at your website, and it will crawl your website, and scrape it for training data that you can later consume using RAG.
 
 The way the crawler works, is by first checking if your website has a sitemap file. If your site has a sitemap, it will retrieve all pages referenced in your sitemap file(s). Once it has retrieved an HTML document, it will scrape each individual page, transform it into Markdown, apply some intelligence related to chopping pages up into multiple training snippets - For then to finally store these as training snippets in your RAG database.
 
@@ -43,17 +43,17 @@ your robots.txt file.
 
 ### Spicing
 
-The spice feature in Magic allows you to scrape a single URL. This provides you with more control, since you can scrape individual pages, and add individual pages to a type. This might be useful if you've got additional information you want to put into the same type, such as Wikipedia pages, individual articles, etc. To spice a type choose the _"Training data"_ tab in Machine Learning, choose your type, and click the _"Spice"_ button.
+The spice feature in Magic allows you to scrape a single URL. This provides you with more control, since you can scrape individual pages, and add individual pages to a model. This might be useful if you've got additional information you want to put into the same model, such as Wikipedia pages, individual articles, etc. To spice a model choose the _"Training data"_ tab in Machine Learning, choose your model, and click the _"Spice"_ button.
 
-![Screenshot of how to spice your type and import an individual page](/assets/images/spice-your-type.jpeg)
+![Screenshot of how to spice your model and import an individual page](/assets/images/spice-your-type.jpeg)
 
 ### Periodically re-crawl site
 
-You can configure Magic such that it periodically re-crawls your site. This is done by providing _"Website"_ value in your type's configuration. By default Magic contains a scheduled task that is executed once every 24 hours. This task will re-crawl all types you've configured with a website property.
+You can configure Magic such that it periodically re-crawls your site. This is done by providing _"Website"_ value in your model's configuration. By default Magic contains a scheduled task that is executed once every 24 hours. This task will re-crawl all models you've configured with a website property.
 
 ![Screenshot of how to periodically re-crawl your website by changing its website property](/assets/images/recrawl-site-periodically.webp)
 
-When re-crawling Magic will update any existing pages that were changed, and add new pages it finds. When it is done crawling your site it will automatically vectorize your type.
+When re-crawling Magic will update any existing pages that were changed, and add new pages it finds. When it is done crawling your site it will automatically vectorize your model.
 
 ## Models
 
@@ -115,7 +115,7 @@ Notice, the system message can contain Hyperlambda mixin logic, similarly to how
 
 ## Training snippets
 
-Magic uses RAG for your machine learning model, which we recommend for 99% of our clients. RAG is much less expensive, and most of the time also much more accurate. RAG works by using OpenAI's embeddings API to create embeddings for your training snippets, for then to create embeddings for questions asked towards your type.
+Magic uses RAG for your machine learning model, which we recommend for 99% of our clients. RAG is much less expensive, and most of the time also much more accurate. RAG works by using OpenAI's embeddings API to create embeddings for your training snippets, for then to create embeddings for questions asked towards your model.
 
 This allows us to use _"AI search"_ to find training snippets relevant to the question asked, for then to pass this as _"context data"_ to OpenAI to answer questions.
 
@@ -143,7 +143,7 @@ data.connect:[generic|magic]
 } } questions from happy users.
 ```
 
-Notice, the `{` and `}` characters have spaces between them. Remove these in your own Hyperlambda snippets to ensure the Hyperlambda is executed. If the user asks the questions; _"How many questions have you answered"_, the type will match the above training snippet, and the Hyperlambda will be executed. After executing the Hyperlambda, the context will end up resembling the following.
+Notice, the `{` and `}` characters have spaces between them. Remove these in your own Hyperlambda snippets to ensure the Hyperlambda is executed. If the user asks the questions; _"How many questions have you answered"_, the model will match the above training snippet, and the Hyperlambda will be executed. After executing the Hyperlambda, the context will end up resembling the following.
 
 > The last 14 days I have answered 123 questions from happy users.
 
@@ -151,7 +151,7 @@ This will then be transmitted to OpenAI as context data, allowing it to use this
 
 ## History tab
 
-Once you've created a machine learning model in Magic, you can turn on _"supervised"_. This implies that Magic will store each question and answers it's given. This data can serve as reinforcement learning material later, allowing you to review and improve how your model performs over time.
+Once you've created a machine learning model in Magic, you can turn on _"supervised"_. This implies that Magic will store each question and answers it's given. This data allows you to review and improve how your model performs over time.
 
 The _"supervised"_ feature also allows you to _"monitor"_ your machine learning model, to verify it is functioning optimally, allowing you to correct it where it fails and provide the correct answer - For then to use it as RAG by creating new training snippets based upon existing questions/answers.
 
@@ -202,7 +202,7 @@ Description of arguments:
 
 The above tells OpenAI to return JSON and `FUNCTION_INVOCATION` if the user asks it to send an email. This results in a _"function invocation"_ in the cloudlet, which is executed, for then to send the result of the invocation back to OpenAI again to answer the original question.
 
-Magic Cloud contains dozens of pre-defined functions, and most of these are easily implemented using no-code constructs. To integrate one of the pre-defined AI functions into your type, you need to choose your type in the _"Training data"_ tab, click the _"Add function"_ button, at which point you'll see all the pre-defined no-code AI functions existing in the system.
+Magic Cloud contains dozens of pre-defined functions, and most of these are easily implemented using no-code constructs. To integrate one of the pre-defined AI functions into your model, you need to choose your model in the _"Training data"_ tab, click the _"Add function"_ button, at which point you'll see all the pre-defined no-code AI functions existing in the system.
 
 ![Screenshot of installing an AI function](/assets/images/install-ai-function.webp)
 

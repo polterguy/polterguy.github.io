@@ -21,6 +21,7 @@ Below is the documentation for each individual dashboard component.
 * [SQL Studio](/dashboard/sql-studio/)
 * [Hyper IDE](/dashboard/hyper-ide/)
 * [Endpoint Generator](/dashboard/endpoint-generator/)
+* [Hyperlambda Generator](/dashboard/hyperlambda-generator/)
 * [Endpoints](/dashboard/endpoints/)
 * [Users & Roles](/dashboard/users-roles/)
 * [Task Manager](/dashboard/task-manager/)
