@@ -12,8 +12,6 @@ The Chatbot Wizard component allows you to rapidly create an AI website chatbot 
 
 You'll need an OpenAI API account, and provide Magic with your API key. You can optionally configure reCAPTCHA if you want to, but Magic contains Magic CAPTCHA out of the box, which should be good enough for most. Once you've done this, you can provide your website URL, click a button, and some few minutes later you've got an AI chatbot you can include on your website. Once you're done with this process, you can further configure your model using the Machine Learning component, manually adding training snippets, edit training snippets, etc.
 
-In the bottom/right corner of this page you can try our chatbot to understand roughly what you'll end up with.
-
 ## Create your own AI chatbot
 
 The process of creating an AI chatbot is fairly straight forward. The following guides you through everything you need to know to get started.
@@ -44,28 +42,17 @@ Since Magic contains its own internal PoW-based CAPTCHA library, this step is op
 
 ### 3. Scraping your website
 
-Before you click start, you can choose a flavor, how many pages you want to scrape, what base model from OpenAI to use, if you want to automatically recrawl the website once every 24 hours, and if you want to automatically vectorize the website once you're done scraping it. You can also choose a _"flavor"_ which is a template for a system message or OpenAI instruction. If you choose a flavor with the word _"DYNAMIC"_ in its name, the system message will be dynamically created according to the landing page of the website you are crawling, and typically produce a much higher quality chatbot for you. We recommend using _"Frank - DYNAMIC"_ here.
+Before you click _"Create chatbot"_, you can choose a base model from OpenAI, a _"persona"_, how many pages you want to scrape, and whether the chatbot should be automatically deleted after 7 days. The persona is a template for a system message or OpenAI instruction. If you choose a persona with the word _"DYNAMIC"_ in its name, the system message will be dynamically created according to the landing page of the website you are crawling, and typically produce a much higher quality chatbot for you. We recommend using _"Frank - DYNAMIC"_ here.
 
-Finally you can scrape your website. Provide the chatbot wizard with your website's URL, and click the _"Start"_ button.
+Finally you can scrape your website. Provide the chatbot wizard with your website's URL, and click the _"Create chatbot"_ button.
 
 ![Screenshot of scraping your website to create an AI chatbot using the Chatbot Wizard](/assets/images/chatbot-wizard-scrape-website.jpeg)
 
 If you provide a sub-URL such as for instance `foo.com/blogs`, the scraper will only scrape pages beneath `/blogs`. This allows you to scrape an explicitly defined sub-portion of your website, and such have some control over which pages are being scraped.
 
-When the process is done, Magic will show you an embed dialog allowing you to copy the JavaScript inclusion script required to embed your chatbot on your site.
+The wizard reports its progress as it crawls your site and turns the pages into training data, and a few minutes later your chatbot is ready. From here you manage and embed your chatbot using the [Machine Learning component](/dashboard/machine-learning/), where you can further edit its training data and copy the HTML snippet required to embed it on your website.
 
-![Screenshot of the Chatbot Wizard being finished with scraping a website](/assets/images/chatbot-wizard-after-scraping-2.jpeg)
-
-At this point you can already embed your chatbot on your website. Choose your theme, title, button text, etc - And click the _"Copy HTML"_ button. This will put the HTML required to embed your chatbot on your website onto your clipboard. The settings you can choose when embedding imply as follows.
-
-* Follow up - Whether or not the chatbot should display follow-up questions. Notice, requires a special system instruction instructing OpenAI to generate follow up questions.
-* References - If the chatbot should provide citations from your website
-* RTL - For Arabic, Hebrew, Farsi and other right to left languages
-* Clear button - If the chatbot should have a _"start new session"_ button
-* Copy button - If the chatbot should have a _"copy response to clipboard"_ button
-* New tab - If the chatbot should open all hyperlinks in new tabs
-
-If you want to see what the different themes look like, you can try all different themes [here](https://ainiro.io/blog/try-our-chatbot-themes).
+If you want to see what the different chatbot themes look like, you can try all different themes [here](https://ainiro.io/blog/try-our-chatbot-themes).
 
 For a complete walkthrough of the entire process, including things not discussed in this article, you can watch the [following YouTube playlist](https://www.youtube.com/watch?v=VdF8F6tvgqQ&list=PL_iESc2yi8IUCwO1TDft2oAfrUvJHuzU9).
 

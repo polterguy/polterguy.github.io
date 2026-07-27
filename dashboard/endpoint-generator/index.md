@@ -40,12 +40,9 @@ Below is a complete list of what settings you can apply when generating your end
 * Authorisation requirements for each CRUD endpoint, allowing you to declare which role a user must have to be able to invoke your endpoints
 * Primary and secondary URL, allowing you to tell the backend generator what URLs to generate for a particular table
 * Paging and sorting, allowing you to turn on or off paging of data and sorting of data
+* Additional GET endpoints, such as aggregate, distinct, and search endpoints, giving you more ways to query your table
 * Turning on or off logging when your create, update and delete endpoints are invoked
-* reCAPTCHA value, and what endpoint to apply reCAPTCHA for, allowing you to tell the backend generator that you want to apply reCAPTCHA for the create, read, update or delete endpoint. Notice, Magic is using reCAPTCHA version 3 from Google
 * Caching, implying HTTP cache, or the _"Cache-Control"_ HTTP header, and whether or not to turn on public cache or not, where public caching allows proxies to cache your endpoint's result
-* Whether or not _"write"_ endpoints should publish socket messages, where write endpoints imply create, update and delete. If you turn on publishing of socket messages here, a socket message with the name of the database, table, and HTTP verb will be published as the endpoint is invoked. If you turn on publishing of socket messages, you can optionally declare what type of authorisation the socket message will require in order to deliver the message to connected users
-* Left joins, allowing you to declare whether or not you want to join on referenced tables or not, implying if a field is a foreign key, it will in addition to giving you all columns from your specific table, also pull in one string field from the referenced table as it's returning data from your read endpoint
-* Verbose filtering, which if turned on, will create a lot more arguments, providing you with much more filtering capabilities for your generated endpoints
 * Overwrite, which if true, will overwrite an existing endpoint. By default, the endpoint generator will _not_ overwrite existing files unless you explicitly tell it to do so
 
 ## Endpoint generator internals
@@ -86,10 +83,10 @@ Notice, arguments supplied to your SQL endpoint are obviously mandatory, since o
 
 ## HTTP verbs
 
-Both the SQL endpoint generator and the endpoint generator can create endpoints wrapping any of these HTTP verbs.
+The CRUD endpoint generator creates endpoints wrapping the POST, GET, PUT, and DELETE verbs, while the SQL endpoint generator can additionally wrap PATCH.
 
 * POST - Typically used for creating or inserting new items
 * GET - Typically used for retrieving or counting records
 * PUT - Typically used for updating values in your database
-* PATCH - Alternative to PUT with similar semantics, typically when adding new fields
+* PATCH - Alternative to PUT with similar semantics, typically when adding new fields (SQL endpoint generator only)
 * DELETE - Typically used when deleting records in your database.

@@ -13,13 +13,13 @@ SQL statements by using the _"Snippets"_ and _"Save"_ buttons.
 If you install one of the SQLite database
 plugins using [the plugins component](/dashboard/plugins/), you also typically get a lot
 of example SQL statements - Implying SQL Studio is also a nice place to start out if you
-want to teach yourself SQL. To access the SQL editor open up SQL Studio and click _"SQL view"_.
+want to teach yourself SQL. To access the SQL editor open up SQL Studio and click the _"SQL"_ tab.
 
 ![Screenshot of SQL Studio in SQL view to execute SQL with syntax highlighting and autocomplete](/images/sql-editor.jpg)
 
 ## Create and design your database visually
 
-You can also use SQL Studio to visually create and design your database. This is a graphical user interface, where you don't need to write any SQL DDL to create your database structure. SQL Studio's database designer allows you to create new tables, add fields to your tables, and create foreign keys referencing other tables as you wish. In addition SQL Studio's designer also allows you to create _"link tables"_, automatically encapsulating a many to many relationship between two tables.
+You can also use SQL Studio to visually create and design your database. This is a graphical user interface, where you don't need to write any SQL DDL to create your database structure. SQL Studio's database designer allows you to create new tables, add fields to your tables, and create foreign keys referencing other tables as you wish.
 
 ![Screenshot of SQL Studio and its design view allowing you to visually design your databases](/images/sql-designer.jpg)
 
@@ -48,10 +48,8 @@ The SQL Studio database designer allows you to do the following things.
 * Create new tables
 * Create new fields
 * Create new foreign keys
-* Create many to many link tables automatically
 * Export one table's DDL
 * Export all tables' DDL
-* Automatically create migration scripts
 
 SQL Studio doesn't give you every single feature of SQL DDL, but it's good enough to provide you with 90% of what you need as you are designing your database schema. When you create a new foreign key for instance, it will ask you if you want to allow for null values in your foreign keys, and if you want to turn on cascading deletes - But it will not ask you if you want to set to null upon deletions.
 
@@ -59,23 +57,7 @@ For a walkthrough of SQL Studio's most important features you can watch the [fol
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xQYwPFEOTAI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-### Exporting your DDL to a module
-
-When you are exporting your table(s)' DDL, you can also optionally export your DDL to a _"module"_. This is useful if you are creating plugins or similar functionality using Magic, since it will automatically wire up everything required to automatically create your database if it doesn't exist on whatever cloudlet you install your module on - In addition to sequentially executing all migrate scripts associated with your module.
-
-This implies that if you create a reusable module or plugin, once your plugin is installed, it will automatically create its database, and execute all SQL migration scripts as it is installed or updated.
-
 SQL Studio's designer works transparently towards all database types, implying you can use it to create databases for MySQL, PostgreSQL, SQLite, MariaDB, and SQL Server. However, what types of fields you can create differs between database types.
-
-![Screenshot of how to export your database DDL to a module](/assets/images/export-database-ddl.jpeg)
-
-## Auto migrations
-
-If you turn on _"Auto migrate"_ by clicking the triple dots icon in design view, and turn on auto migrate, SQL Studio will ask you if you want to apply auto migration as you change your database DDL. This functionality will automatically create the required files to apply automatic migration as you're editing your database.
-
-![Screenshot of auto migrating your changes as you change the database DDL](/assets/images/auto-migrate-database.jpeg)
-
-This is useful if you're editing a reusable module you want to install on other cloudlets somehow, since if the module is (re)-installed it will run through each of your migration scripts, and automatically change your database structure.
 
 ## How to create a database using SQL Studio
 

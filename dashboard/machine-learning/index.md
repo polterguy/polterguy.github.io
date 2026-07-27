@@ -67,11 +67,11 @@ Once you're done with importing training snippets into your type, you'll have to
 
 ### Configuring your type
 
-A single machine learning type has dozens of configuration settings, for everything you can imagine. Its most important settings can be found in its _"Type"_ tab.
+A single machine learning type has dozens of configuration settings, for everything you can imagine. Its settings are organised across the _"General"_, _"Behaviour"_, and _"Integrations"_ tabs of the type's edit dialog.
 
 ![Screenshot of how to configure your machine learning type](/assets/images/recrawl-site-periodically.webp)
 
-The most important part from above is the _"System message"_. This becomes the equivalent of a ChatGPT _"instruction"_, telling the type how to behave. Below is an example system instruction to give you an example.
+The most important setting is the _"System message"_, found on the _"Behaviour"_ tab. This becomes the equivalent of a ChatGPT _"instruction"_, telling the type how to behave. Below is an example system instruction to give you an example.
 
 > You are Frank, a sales executive for Acme, Inc. Follow these rules when replying to my questions:
 > 
@@ -90,20 +90,17 @@ Notice, the system message can contain Hyperlambda mixin logic, similarly to how
 #### Configuration settings
 
 * Type name, being the name of your type. This cannot be changed once created.
-* Initial questionnaire, being questions the chatbot will ask users before they're given access to the chatbot itself. Useful to collect information such as email address, name, etc
 * Website, which if supplied, will re-crawl the specified website once every 24 hours.
 * Flavor, being a pre-defined list of templates for system messages. Once you select a flavor, your system message will update accordingly.
 * System message, implying the _"instruction"_ to OpenAI. Allows you to change your chatbot's behaviour.
 * Conversation starters, implying a pre-defined set of suggested questions to start a conversation with the chatbot.
-* Greeting, being a static initial greeting, such as for instance _"Hello there, how can I help you?"_ Notice, you can also use questionnaires to create multiple greetings.
-* Prefix, legacy settings for non-GPT models. Similar to system message, which is preferred unless you use a very old model.
+* Greeting, being a static initial greeting, such as for instance _"Hello there, how can I help you?"_
 * Authorisation, implying roles users must belong to in order to query type. Requires the user is authenticated through Magic with a valid JWT token if you turn this on.
 * reCAPTCHA, being reCAPTCHA value for accepting queries. This is a legacy setting and you should set it to 0 since we've implemented our own PoW-based CAPTCHA library that's 0.1% of the size of reCAPTCHA.
 * Supervised, which if turned on, will store all questions/answers allowing you to access these through the history tab.
 * Cached, legacy property, only relevant for older non-GPT models.
 * Vectors, implying the chatbot will use the vector database to find context. Magic does support fine-tuning or training. If you turn _off_ vectors you will be able to use your own custom fine-tuned model. We do _not_ recommend turning this off.
 * API key, being overridden OpenAI API key for a specific type. By default Magic will read API key from your configuration. You can override this on a per-type level.
-* Search postfix, implying a static value appended to queries as it searches your training snippets for context data. Useful for things such as _"best_seller"_ tags in your training data, where you want to prioritise best selling products.
 * No requests, being total number of requests the chatbot has answered the current month.
 * Max requests, implying maximum requests the chatbot will answer per month. Useful to cap your chatbot to avoid runaway costs. Logically it's using no requests to see if it can continue answering requests.
 * Temperature, implying chances the OpenAI model is willing to take. Sometimes referred to as _"creativity"_.
@@ -116,13 +113,6 @@ Notice, the system message can contain Hyperlambda mixin logic, similarly to how
 * Max Message tokens, which is calculated according to your completion model's token size, and your request, response and context tokens. If this goes to negative, your settings cannot be saved.
 * Max Function Invocations, which is the maximum number of times the model will invoke OpenAI for a single prompt. To understand this number you'll have to read our tutorial about [how to create AI functions](https://ainiro.io/blog/getting-started-with-ai-functions).
 * Max Session Items, which is the maximum number of historical requests and answers the model will keep in its session when invoking OpenAI before it starts pruning older messages.
-* Lead email address, implying where to send emails of chatlogs if you've configured the _"lead generation feature"_. Legacy setting and you should instead use AI functions here.
-* Email reply, implying a static message the chatbot will respond with if a user drops his or her email address into the prompt. Requires a lead email setting to work. Legacy setting and you should instead use AI functions here.
-* Twilio Account SID and Twilio Auth Token for Twilio integrations if you want to integrate your chatbot with Twilio to for instance use it over WhatsApp, Messenger or SMS.
-* Incoming message slot, implying a slot to invoke as messages are coming into the chatbot from Twilio integrations.
-* Incoming webhook URL, implying a URL to invoke as messages are coming in from Twilio.
-* Outgoing message slot, implying a slot to invoke as chat response has returned.
-* Outgoing webhook URL, implying a URL to invoke as messages are returned from OpenAI.
 
 ## Training snippets
 
@@ -182,52 +172,6 @@ Caching on the training snippet however, works for all types, and will use the m
 
 As a general rule of thumb _you should be very careful with caching_. At AINIRO we almost _never use it_ ourselves when we're configuring types for our clients.
 
-## Questionnaires
-
-A chatbot can also ask its users initial questions before the user is allowed to access the chatbot. This can be useful for gathering information such as the user's name and email address, and is a part of our lead generation features.
-
-To create a questionnaire, you will typically first create a questionnaire, for then to add questions such as the following.
-
-```
-* Before we start I will need your name to ensure you get a high quality personalized experience => type=message
-* What is your name? => context=1, name=name
-* What is your email? => name=email
-* Thank you, you can now ask me anything related to the company in the context => type=message
-* If you want to contact us you can just leave your name and email in the chatbot, with a short message 😊 => type=message
-```
-
-![Screenshot of how to create a new questionnaire](/assets/images/creating-questionnaire.jpeg)
-
-The first message above becomes a message, and the chatbot will _not_ wait for the user to answer before it shows question number 2. This is due to the _"type"_ parts at the end being _"message"_. The second question will have its answer transferred to OpenAI, allowing your chatbot to know the name of your users, and use this in its conversations. This is due to the _"context"_ having a value of _"1"_.
-
-If you omit the context, or set its value to _"0"_, this data will never be sent to OpenAI, allowing you to gather the email address of your users, without compromising your user's privacy in any way.
-
-Only when the user has finished the above questionnaire, he or she will gain access to the chatbot, allowing them to use machine learning to answer their questions. To create a new questionnaire, click the _"Questionnaire"_ tab, for then to click the _"Add"_ button. Give your questionnaire a name, choose a type, and optionally provide it with an action.
-
-![Screenshot of how to create a new questionnaire](/assets/images/new-questionnaire.jpeg)
-
-When you're done with the above, you can provide your questionnaire with questions. _"single-shot"_ implies each individual user will only be asked these questions _once_. _"sendgrid-subscribe"_ implies an action the chatbot will invoke once the user has finished the questionnaire. You can create your own Hyperlambda slots that will be invoked after a questionnaire is done as follows.
-
-```
-slots.create:magic.questionnaires.action.MY-ACTION
-
-   // Sanity checking invocation.
-   validators.mandatory:x:@.arguments/*/name
-   validators.mandatory:x:@.arguments/*/email
-   validators.email:x:@.arguments/*/email
-```
-
-For then to provide _"MY-ACTION"_ as the action to perform after the questionnaire is finished.
-
-Notice, to get structured data inside your slot you will have to apply a _"name"_ attribute for each question you want to semantically handle inside your slot, such as follows.
-
-```
-* What is your name? => name=name
-* What is your email? => name=email
-```
-
-The above questionnaire will invoke your slot with a **[name]** and **[email]** argument once it's done.
-
 ## AI Functions
 
 This is a subject on its own, but basically a machine learning model has the ability to execute AI functions. This works by instructing OpenAI to respond with the path to a Hyperlambda file and some JSON arguments given some specific condition(s). To understand AI functions, you can read the following tutorial.
@@ -286,6 +230,6 @@ You can also use OpenAI to generate code for you. Both Hyper IDE and SQL Studio 
 
 ### Magic's integrated support chatbot
 
-In addition, Magic integrates a support chatbot directly into its dashboard. This provides you with integrated help directly from the dashboard. Click the chat button in the top right corner in your dashboard to access this chatbot.
+In addition, Magic integrates a support chatbot directly into its dashboard. This provides you with integrated help directly from the dashboard. Click the AI chatbot button at the bottom of the navigation sidebar to access this chatbot.
 
 ![Screenshot of Magic's integrated support chatbot](/assets/images/integrated-chatbot.jpeg)

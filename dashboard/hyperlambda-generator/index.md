@@ -24,9 +24,9 @@ You have to write _"formal specifications using technical language"_, in order f
 
 ## How to use it
 
-If you go to Hyper IDE for example, and you create a new Hyperlambda file (extension ".hl"), then a popup dialog will ask you to provide a description and arguments. If you write what you want the code to do for you, and you click _"Save & Generate"_, the description will be sent through our LLM, transforming your English to working Hyperlambda.
+If you go to Hyper IDE for example, and you create a new Hyperlambda file (extension ".hl"), you can write a description of what you want the code to do for you. Then select your description and click the _"Generate"_ button, and the description will be sent through our LLM, transforming your English to working Hyperlambda that replaces your selection.
 
-**DISCLAIMER** - Magic and Hyperlambda isn't really an _"all purpose language"_, it's an orchestration language. If you're using it for complex algorithms, you're doing something wrong. So whatever description you supply, must be something that is a good fit for Hyperlambda. Below is the result for the above prompt from the screenshot.
+**DISCLAIMER** - Magic and Hyperlambda isn't really an _"all purpose language"_, it's an orchestration language. If you're using it for complex algorithms, you're doing something wrong. So whatever description you supply, must be something that is a good fit for Hyperlambda. Below is an example of the type of code the generator produces from a similar prompt.
 
 ```text
 /*
@@ -51,7 +51,7 @@ data.connect:chinook
       artists:x:@data.read/*
 ```
 
-Notice, if the AI creates wrong code, you can press `CTRL+Z` or `OPTION+Z` on a Mac to undo the generator's changes, at which point you can start over again by pressing `OPTION+Q` or `ALT+Q`, allowing you to edit the text to be more specific.
+Notice, if the AI creates wrong code, you can press `CTRL+Z` (or `CMD+Z` on a Mac) to undo the generator's changes, then edit your description to be more specific and generate again.
 
 ## Modifying your code with AI
 
