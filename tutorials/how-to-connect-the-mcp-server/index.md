@@ -9,7 +9,7 @@ Magic comes with an integrated MCP server, allowing you to connect AI clients su
 
 ## Installing the MCP server
 
-The MCP server is delivered as two plugins you install through your dashboard. Open your dashboard, go to _"Misc/Plugins"_, and install the following two plugins.
+The MCP server is delivered as two plugins you install through your dashboard. Open your dashboard, go to _"Plugins"_, and install the following two plugins.
 
 * __oauth__ - The OAuth 2.1 authorization server, allowing MCP clients to authenticate through the normal browser login and consent flow
 * __mcp__ - The MCP server itself, exposing your endpoints as tools

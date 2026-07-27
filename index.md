@@ -53,7 +53,7 @@ of your modifications, by executing your endpoint without ever having to leave y
 
 Hyper IDE also integrates with our Machine Learning component, built on top of OpenAI, allowing you to write your requests in plain English, and have Hyper IDE and OpenAI automatically generate code for you solving your problem.
 
-In addition its [workflows](/workflows/) feature allows you to dynamically orchestrate backend Hyperlambda code together, without needing to know Hyperlambda.
+It also integrates with Hyperlambda [workflows](/workflows/), letting you chain reusable actions together to compose your backend logic.
 
 > With Hyper IDE manually writing code is optional
 
@@ -70,7 +70,7 @@ While allowing you to declaratively tell it how to generate your API. It also al
 web socket messages as endpoints are invoked, in addition to having lots of additional features simplifying
 your life as a software developer.
 
-By combining the Endpoint Generator with [Hyperlambda Workflows](/workflows/), you can sometimes create your entire backend code exclusively by _"clicking buttons"_.
+By combining the Endpoint Generator with the [Hyperlambda Generator](/dashboard/hyperlambda-generator/) and an AI agent connected over MCP, you can create entire backends straight from natural language.
 
 ## The SQL Endpoint Generator
 

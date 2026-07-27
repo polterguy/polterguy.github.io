@@ -27,6 +27,8 @@ You can also use SQL Studio to visually create and design your database. This is
 
 The _"Safe mode"_ slider prevents you from selecting more than 200 records from your database in one go. If you need to select more records you must turn this slider _off_. However, if you return thousands of records with some SQL statement, your server might become unresponsive, and/or you may end up exhausting your server's memory or your client's memory.
 
+When you execute SQL, you can run your entire statement, or highlight part of it in the code editor and execute only the selected portion. If you have a selection, only the selected SQL is executed - which is handy when your editor contains several statements and you only want to run one of them.
+
 You can save your frequently used SQL statements as _"snippets"_ similarly to how you can save frequently used Hyperlambda in the [Hyperlambda Playground](/dashboard/hyperlambda-playground/) component. This allows you to store frequently used SQL snippets for later, creating a library of snippets you can tap into as you need to execute the same SQL again.
 
 SQL Studio also provides you with autocomplete on both your tables and columns. This typically works best if you write SQL statements where your tables are aliased, and you write the alias of your table, followed by a dot (.), for then to trigger autocomplete. To launch autocomplete click FN+CONTROL+SPACE on a Mac, or CTRL+SPACE on Windows.

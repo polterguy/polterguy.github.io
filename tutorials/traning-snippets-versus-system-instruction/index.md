@@ -16,7 +16,7 @@ In a way it could be argued that providing context information to the LLM is wha
 
 The system instruction is _always_ transmitted to the LLM as an invisible message number 1. If you're acquainted with OpenAI's APIs, it's the _"system"_ message of an HTTP invocation towards their chat API.
 
-Since the system instruction is _always_ transmitted to OpenAI, this makes it a very good place for instructions that are general and should always be sent to the LLM. This makes it highly useful for providing _"instructions"_ such as a tone of voice, in addition to basic information that the AI chatbot should always know. You can edit the system instruction by clicking _"Configure"_ on your type from the machine learning component. Below is an example for an imaginary AI chatbot created for SalesForce, intended to act as a sales executive.
+Since the system instruction is _always_ transmitted to OpenAI, this makes it a very good place for instructions that are general and should always be sent to the LLM. This makes it highly useful for providing _"instructions"_ such as a tone of voice, in addition to basic information that the AI chatbot should always know. You can edit the system message by clicking _"Edit"_ on your model in the Machine Learning component. Below is an example for an imaginary AI chatbot created for SalesForce, intended to act as a sales executive.
 
 ![Screenshot of editing the system instruction](/assets/images/system-instruction-editing.png)
 
@@ -36,23 +36,23 @@ When a question is being asked, your cloudlet will find the top n matching train
 
 In the above image you can see a number in square brackets for each training snippet in the first column. This is the _"similarity value"_ of each individual snippet, and basically the lower this number is, the more relevant the particular snippet is to the question being asked. A similarity of 0 means the question is the _exact_ same content as the snippet. While a similarity of 1 means it's the exact _opposite_ and completely irrelevant. This allows us to match for instance a question being _"What's the price"_ towards training snippets containing price information.
 
-Notice, this _"similarity"_ value is also related to the threshold of your configuration - Since only snippets that are _within_ the threshold you've got in your LLM tab's value are considered. Notice, this number is inversed, so a snippet of 0.56 similarity, will be considered if you've got a threshold of 0.3, since 0.3 + 0.56 is less than 1.0. A snippet with a similarity of 0.71 again will _not_ be considered, since 0.71 + 0.3 becomes 1.01. This allows you to exclude irrelevant training snippets if they're below some threshold value in similarity.
+Notice, this _"similarity"_ value is also related to the threshold of your configuration - Since only snippets that are _within_ the threshold value in your model's configuration are considered. Notice, this number is inversed, so a snippet of 0.56 similarity, will be considered if you've got a threshold of 0.3, since 0.3 + 0.56 is less than 1.0. A snippet with a similarity of 0.71 again will _not_ be considered, since 0.71 + 0.3 becomes 1.01. This allows you to exclude irrelevant training snippets if they're below some threshold value in similarity.
 
 ### Max Context tokens
 
-The _"Tokens"_ column again is important to understand, since it's the number of OpenAI tokens one specific training snippet is consuming. If you look at your AI chatbot's configuration, and choose the _"LLM"_ tab, you will see one important field that's related to training snippets. This is its _"Max Context tokens"_ value. In the screenshot below you can see this number being 4,000 in the bottom left parts of your configuration.
+The _"Tokens"_ column again is important to understand, since it's the number of OpenAI tokens one specific training snippet is consuming. If you look at your model's configuration, on the _"General"_ tab, you will see one important field that's related to training snippets. This is its _"Max Context tokens"_ value. In the screenshot below you can see this number being 4,000 in the bottom left parts of your configuration.
 
 ![Max Context Window value for your machine learning model](/assets/images/max-context-window.png)
 
 This value is an instruction to the cloudlet of how many tokens to attach from your RAG training snippets, for each individual request. In the above image it's set to 4,000, while our training snippets from the image above are in the range of 126 to 865.
 
-When a question is being asked, the cloudlet will retrieve the most relevant training snippets, and start adding context information from the top of the list returned, until it has filled up its context window with a maximum of 4,000 tokens, or it can no longer find snippets with a similarity that's within the _"Threshold"_ value of your type.
+When a question is being asked, the cloudlet will retrieve the most relevant training snippets, and start adding context information from the top of the list returned, until it has filled up its context window with a maximum of 4,000 tokens, or it can no longer find snippets with a similarity that's within the _"Threshold"_ value of your model.
 
 Notice, this implies that if you've got an individual training snippet that's 4,001 tokens, this snippet will _never be used_. As a general rule of thumb, we advise never creating snippets that are larger than 80% of your _"Max Context tokens"_ value. During import or website scraping however, we automatically reduce the size of snippets such that they never exceed this 80% threshold.
 
-For our _"What's the price"_ example above, it will probably have room for all training snippets on page 1, and possibly add some 15 to 20 training snippets to the request in total. The cloudlet will _never_ add more than 4,000 tokens in total though from your training snippets, and it will never add snippets that are not within the _"Threshold"_ value for your type.
+For our _"What's the price"_ example above, it will probably have room for all training snippets on page 1, and possibly add some 15 to 20 training snippets to the request in total. The cloudlet will _never_ add more than 4,000 tokens in total though from your training snippets, and it will never add snippets that are not within the _"Threshold"_ value for your model.
 
-This allows you to modify the _"Max Context tokens"_ value of your type to reduce or increase how much context you want to provide. In general more context is better, but also more expensive, since it will consume additional input tokens when invoking OpenAI. In general, 4,000 is the _"sweet spot"_ for context tokens, and 0.3 for threshold - Unless you have special requirements.
+This allows you to modify the _"Max Context tokens"_ value of your model to reduce or increase how much context you want to provide. In general more context is better, but also more expensive, since it will consume additional input tokens when invoking OpenAI. In general, 4,000 is the _"sweet spot"_ for context tokens, and 0.3 for threshold - Unless you have special requirements.
 
 ## Rolling context
 
@@ -72,7 +72,7 @@ However, due to our _"rolling context"_ concept, the AI chatbot will basically _
 
 So, what should you choose as your primary source for adding information to your AI chatbot? Actually, there's no real difference between the system instruction and training snippets, and they can both take both instructions and information.
 
-Our general rule of thumb is that the most important information, such as contact us information, name of company, etc, we add to the type's system instruction. While more dynamic data, such as information about specific products or services, we add as training snippets. This is because the system instruction is _always_ there, implying whatever you write into its system instruction will _always_ be available for the LLM to use as information to answer questions - While training snippets need to match the question asked.
+Our general rule of thumb is that the most important information, such as contact us information, name of company, etc, we add to the model's system instruction. While more dynamic data, such as information about specific products or services, we add as training snippets. This is because the system instruction is _always_ there, implying whatever you write into its system instruction will _always_ be available for the LLM to use as information to answer questions - While training snippets need to match the question asked.
 
 We suggest you keep your system instruction small in size though, max 2 pages of text in a PDF document roughly, unless you've got special requirements. While you add additional information as individual training snippets.
 
@@ -80,7 +80,7 @@ And there's nothing preventing you from adding _"instructions"_ to individual tr
 
 ## Wrapping up
 
-In this article we discussed the relationship between the system message of your machine learning type and its training snippets. We showed how we're using VSS and embeddings to match questions towards your training data, to transmit context information to the LLM - In addition to the relationship between the _"Max context window"_ size, _"Threshold"_ value, and how this is used to extract relevant information from your training snippets as you're prompting the LLM.
+In this article we discussed the relationship between the system message of your machine learning model and its training snippets. We showed how we're using VSS and embeddings to match questions towards your training data, to transmit context information to the LLM - In addition to the relationship between the _"Max context window"_ size, _"Threshold"_ value, and how this is used to extract relevant information from your training snippets as you're prompting the LLM.
 
 If you find this difficult to understand, [AINIRO](https://ainiro.io) is providing this as a service to our clients, and we'd love to help you out creating an amazing AI chatbot for your company. If you're interested in having us help you out, you can [contact us here](https://ainiro.io/contact-us).
 

@@ -10,13 +10,13 @@ A workflow is a chained collection of actions, where each action can produce out
 
 Magic implements workflows using [Hyperlambda](/hyperlambda/), which largely eliminates the need to visualise workflows using a graphical user interface, and allows the user to use the source code as the primary means to edit and maintain the workflow. This is only possible by completely dropping the idea of using XML and JSON as _"your workflow description language"_.
 
-To understand the above point, try to compare a Hyperlambda Workflow file with the equivalent XML-based workflow file. The Hyperlambda file is easily understood, while its XML equivalent is roughly as readable as machine code instructions. Watch the following video to understand how such workflows are built.
+To understand the above point, try to compare a Hyperlambda Workflow file with the equivalent XML-based workflow file. The Hyperlambda file is easily understood, while its XML equivalent is roughly as readable as machine code instructions. Watch the following video for an introduction to Hyperlambda workflows.
 
 <iframe style="margin-left: auto; margin-right: auto; width: 560px; max-width: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/ITz1ASqsWoM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ## Advantages
 
-Being able to _"drag'n'drop"_ backend code together the way we do in the above video, has huge benefits. First of all it significantly lowers the bar for software development, allowing people without prior software development experience to create high quality backend code. Secondly, it makes it much faster to create said code. I clocked myself in regards to this, and found that in theory I could create 604,000 lines of code per month instead of 550 which is the industry standard.
+Being able to assemble backend code from reusable actions the way shown above has huge benefits. First of all it significantly lowers the bar for software development, allowing people without prior software development experience to create high quality backend code. Secondly, it makes it much faster to create said code. I clocked myself in regards to this, and found that in theory I could create 604,000 lines of code per month instead of 550 which is the industry standard.
 
 Obviously using LOC as a measure stick for productivity is typically not a good thing, but these were production grade lines of code, highly secure, scalable, and performing in regards to all neutral metrics - And I produced something _useful_ that would require _a lot_ of manual coding to create. In the following video I am creating a complete registration API in 15 minutes to illustrate the point.
 
@@ -64,11 +64,7 @@ To extend your workflows with your own custom actions is as easy as creating a H
 
 ### Consuming actions
 
-You would typically consume an action by ensuring your caret is at the correct position in your Hyperlambda file, for then to choose an action from your toolbox. Once you have chosen an action, you will have to parametrise or decorate it using a modal dialog such as illustrated below.
-
-![Consuming an action in your own Hyperlambda code](/images/using-actions-in-your-own-code.jpeg)
-
-As you are decorating your action, the dialog will suggest arguments given to your workflow as suggestions for input arguments to your action, in addition to values returned from previous actions. Once you're done and you've added the action to your code, you will end up with something resembling the following.
+You consume an action by adding an `execute` invocation to your Hyperlambda file that references the action's file. You can write this by hand in [Hyper IDE](/dashboard/hyper-ide/), or have the [Hyperlambda Generator](/dashboard/hyperlambda-generator/) create it for you from a plain-English description. Each action can take, as its input arguments, the arguments given to your workflow and the values returned from previous actions - which is what lets you chain actions together. A consumed action ends up resembling the following.
 
 ```
 /*

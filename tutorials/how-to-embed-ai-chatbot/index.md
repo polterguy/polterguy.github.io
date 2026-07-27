@@ -2,17 +2,17 @@
 title: How to embed your AI chatbot
 ---
 
-When you're done with creating your machine learning type, and you've quality assured its content, it is time to embed the AI chatbot on your website. This is easily accomplished if you can somehow add a JavaScript inclusion tag on your site. All modern CMS systems have this capability, but the process differs for different platforms, so please check up your system specifically for how to achieve this before proceeding.
+When you're done with creating your machine learning model, and you've quality assured its content, it is time to embed the AI chatbot on your website. This is easily accomplished if you can somehow add a JavaScript inclusion tag on your site. All modern CMS systems have this capability, but the process differs for different platforms, so please check up your system specifically for how to achieve this before proceeding.
 
 ## The embed form
 
-Your machine learning type has an _"embed"_ button. If you click this button you will be served something resembling the following.
+Your machine learning model has an _"embed"_ button. If you click this button you will be served something resembling the following.
 
 ![Embedding your AI Chatbot](/assets/images/embed-ai-chatbot-2.png)
 
 Since all of the above settings reflect a query parameter, this allows you to manually edit the embed script assuming you can somehow ensure your parameters are valid and URL encoded. Below is an exhaustive list of what query parameters the embed script supports:
 
-* type - The full name of your machine learning type
+* type - The full name of your machine learning model
 * header - The header of the chat window
 * button - The text of the chatbot button that opens the window
 * rtl - Implies _"right to left"_ and allows for creating a user interface for RTL languages
@@ -60,7 +60,7 @@ If you set the `hidden` query parameter to `true` then the JavaScript file will 
 
 ![Rolling your own trigger button](/assets/images/custom-ai-chatbot-trigger-button.png)
 
-In the above screenshot you can see a button in the top right corner with the text _"AI Support"_. This button doesn't have anything to do with the chatbot itself, but is a custom button which once clicked executes the following JavaScript code.
+In the above screenshot you can see the sparkle button at the bottom of the navigation sidebar. This button doesn't have anything to do with the chatbot itself, but is a custom button which once clicked executes the following JavaScript code.
 
 ```javascript
 window.ainiro.show();

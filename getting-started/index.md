@@ -54,12 +54,12 @@ After you've provided a root password, your name, and your email address, you wi
 
 ## Using the source code version
 
-Clone the repository, make sure you've got .Net version 10 installed, the latest version of NodeJS, and Angular, and enter the _"backend"_ and _"frontend"_ folders with two terminal windows, and execute the following commands in the respective terminals.
+Clone the repository, make sure you've got .Net version 10 installed and the latest version of NodeJS, and enter the _"backend"_ and _"frontend"_ folders with two terminal windows, and execute the following commands in the respective terminals.
 
 1. `dotnet run`
-2. `ng serve`
+2. `npm install && npm run dev`
 
-After some few minutes you should be able to access the dashboard from `localhost:4200`, and login to your cloudlet using `http://localhost:5000` as your backend URL. The initial username and password combination is the same; _"root"_ and _"root"_.
+After some few minutes you should be able to access the dashboard from `localhost:4201`, and login to your cloudlet using `http://localhost:5000` as your backend URL. The initial username and password combination is the same; _"root"_ and _"root"_.
 
 ## Deploy to production
 
