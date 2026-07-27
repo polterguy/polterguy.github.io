@@ -2,8 +2,9 @@
 title: Tutorials
 description: Tutorials about how to start using Magic on your own. Most of these are hands on, allowing you to experiment for yourself, and also come with walk-through videos.
 header:
-  image: /assets/images/wizard-teaching-magic-to-school-children.webp
-  image_description: Wizard teaching Magic to school children
+  image: /assets/images/hero/tutorials.png
+  og_image: /assets/images/hero/tutorials-og.png
+  image_description: Magic tutorials
 ---
 
 Below are tutorials about how to get started with Magic. Most of these are accompanied with YouTube videos, demonstrating hands on, how to get started with Magic's Low-Code, No-Code, and AI-based software development automation concepts.

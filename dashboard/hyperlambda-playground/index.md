@@ -1,9 +1,10 @@
 ---
 title: Hyperlambda Playground
 description: The Hyperlambda Playground allows you to submit Hyperlambda to your server and have your code executed in 'immediate' mode. This is useful for administrating your Magic server, and/or learning Hyperlambda.
-og_image: "/images/eval-component.jpg"
 header:
-  image: /assets/images/wizard-playing-magic-games-with-children.webp
+  image: /assets/images/hero/playground.png
+  og_image: /assets/images/hero/playground-og.png
+  image_description: The Hyperlambda Playground
 ---
 
 The Hyperlambda Playground component allows you to play with [Hyperlambda](/hyperlambda/) code, and execute your code in _"immediate mode"_, for then to see the result of your execution immediately. The Hyperlambda playground is also a nice starting point to learn Hyperlambda, since it contains a whole range of Hyperlambda snippets that somehow demonstrate Hyperlambda's capabilities, and provides examples for you as you start out learning Hyperlambda. Use the _"Load snippet…"_ dropdown to load up some snippet, study it, modify it, and then execute it - For then to afterwards see the result of the execution.

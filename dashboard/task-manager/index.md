@@ -1,9 +1,10 @@
 ---
 title: Task Manager
 description: The Task Manager allows you to create and administrate tasks, and schedule tasks for being executed in the future, or repeatedly according to some kind of repetition pattern.
-og_image: "/images/scheduling-task.jpg"
 header:
-  image: /assets/images/wizard-magically-bending-time-and-space.webp
+  image: /assets/images/hero/task-manager.png
+  og_image: /assets/images/hero/task-manager-og.png
+  image_description: The Task Manager
 ---
 
 The Task Manager component allows you to create and administrate persisted Hyperlambda tasks, and/or schedule tasks for executing, either in a repeating pattern somehow, or at an exact date and time in the future. A Magic task is just a snippet of Hyperlambda code, that is persisted into your Magic database, and such can be recalled at any point in the future to be executed at will.

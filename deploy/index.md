@@ -2,7 +2,9 @@
 title: Deploy Magic
 description: How to deploy Magic to a server once you're ready to put Magic into production
 header:
-  image: /assets/images/wizard-deploying-magic.webp
+  image: /assets/images/hero/deploy.png
+  og_image: /assets/images/hero/deploy-og.png
+  image_description: Deploy Magic
 ---
 
 This guide helps you deploy Magic unto a VPS or a private server. The guide has been tested with Ubuntu 20.04 (LTS) x64, but _might_ work with other Debian based distributions. You will need a VPS instance somewhere first. You will also need a domain and point _two_ DNS A records to your server's IP address. Typically these would resemble the following.

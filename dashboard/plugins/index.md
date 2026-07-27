@@ -1,9 +1,10 @@
 ---
 title: Plugins
 description: Documentation for Magic's integrated plugin component, allowing you to extend your cloudlet with plugins, such as Shopify plugins, WordPress plugins, etc
-og_image: "/images/bazaar.jpg"
 header:
-  image: /assets/images/wizard-creating-useful-things.webp
+  image: /assets/images/hero/plugins-dash.png
+  og_image: /assets/images/hero/plugins-dash-og.png
+  image_description: The Plugins component
 ---
 
 The Plugins component is Magic's integrated _"AppStore"_, and allows you to install backend micro services on the fly, without interrupting normal usage. It resolves towards AINIRO's repository of plugins, that contains several pre-fabricated backend micro services, serving some generic requirement, such as for instance Stripe payments, OpenAI helpers, and registration helpers. Most plugins automatically take care of creating their databases, and other things required to initialise the plugin.

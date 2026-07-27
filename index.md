@@ -1,14 +1,19 @@
 ---
-title: "Magic Cloud"
-description: "Magic Cloud is an AI-based Low-Code and No-Code software development automation framework, allowing for the machine to create most of your code"
+title: Magic Cloud
+description: Magic Cloud is an AI-based Low-Code and No-Code software development automation framework, allowing for the machine to create most of your code
 header:
-  image: /assets/images/wizard-large.webp
-  image_description: Wizard standing in his library reading a book symbolizing the power of Magic Cloud
+  image: /assets/images/hero/home.png
+  og_image: /assets/images/hero/home-og.png
+  image_description: Magic Cloud
 ---
 
 Magic Cloud, or Magic for short, is a backend software development platform that creates most of your code _"automagically"_, by leveraging meta programming, declarative programming, AI, low-code, and no-code. This allows you to focus on creative tasks, while having the machine create the boring parts.
 
 > Where the Machine Creates the Code!
+
+Magic gives you everything you need to build your entire backend — your database, your API, your business logic, your background jobs, and your authentication and authorisation — and to host it, all in one place. And when you connect it to an AI-based [MCP](/tutorials/how-to-connect-the-mcp-server/) client such as Claude, or point it at OpenAI, the machine can generate your frontend too — turning a plain-English description into a working full stack application.
+
+This also makes Magic exceptionally well suited for building AI agents, and _especially database-driven agents_. Because your entire backend and its data become secured tools the AI can invoke over MCP, an agent can query and update your database, call your endpoints, and even create brand new endpoints on demand — all behind your own authentication and role based access control, with your data never leaving your database.
 
 Magic is 100% open source, and you can find its [GitHub repo here](http://github.com/polterguy/magic). If you don't want to mess with hosting yourself, you can check out our professional or enterprise hosting plans [here](https://ainiro.io).
 
@@ -53,8 +58,6 @@ of your modifications, by executing your endpoint without ever having to leave y
 
 Hyper IDE also integrates with our Machine Learning component, built on top of OpenAI, allowing you to write your requests in plain English, and have Hyper IDE and OpenAI automatically generate code for you solving your problem.
 
-It also integrates with Hyperlambda [workflows](/workflows/), letting you chain reusable actions together to compose your backend logic.
-
 > With Hyper IDE manually writing code is optional
 
 ## The Endpoint Generator
@@ -65,10 +68,9 @@ secured according to your instructions, and can be modified after it's created.
 
 ![Screenshot of Endpoint Generator allowing you to generate CRUD apps wrapping your database of choice](/images/backend-crud.jpg)
 
-The Endpoint Generator takes care of left joins, referential integrity, validators, authentication, and authorisation -
-While allowing you to declaratively tell it how to generate your API. It also allows you to publish
-web socket messages as endpoints are invoked, in addition to having lots of additional features simplifying
-your life as a software developer.
+The Endpoint Generator takes care of referential integrity, validators, authentication, and authorisation -
+While allowing you to declaratively tell it how to generate your API, in addition to having lots of
+additional features simplifying your life as a software developer.
 
 By combining the Endpoint Generator with the [Hyperlambda Generator](/dashboard/hyperlambda-generator/) and an AI agent connected over MCP, you can create entire backends straight from natural language.
 

@@ -2,8 +2,9 @@
 title: Getting Started
 description: This article is about how to get started with Magic Cloud using Docker, and start leveraging its Low-Code and No-Code features in your own systems
 header:
-  image: /assets/images/getting-started.webp
-  image_description: Baby Wizard waving his magic wand over his magic hat to practice his spell casting
+  image: /assets/images/hero/getting-started.png
+  og_image: /assets/images/hero/getting-started-og.png
+  image_description: Getting started with Magic
 ---
 
 The easiest way to get started with Magic is to [signup for a cloudlet at AINIRO.IO](https://ainiro.io/buy). However, if you want to run it locally you can use either Docker or the source code. The easiest way to get started is to use Docker.

@@ -2,8 +2,9 @@
 title: Workflows
 description: Build AI-driven workflows by connecting an orchestrator AI such as Claude to your Magic cloudlet, and letting it combine Magic and Hyperlambda to dynamically solve problems.
 header:
-  image: /assets/images/wizard-magically-creating-things.webp
-  image_description: Wizard creating workflows out of thin air symbolizing the power of AI-driven Magic workflows
+  image: /assets/images/hero/workflows.png
+  og_image: /assets/images/hero/workflows-og.png
+  image_description: AI-driven workflows
 ---
 
 A workflow is a chain of operations that together accomplish some larger task, where each step can consume the output produced by previous steps. In Magic you build workflows by connecting an orchestrator AI - such as Claude - to your cloudlet over the [MCP server](/tutorials/how-to-connect-the-mcp-server/), and letting it combine Magic's tools and the [Hyperlambda Generator](/dashboard/hyperlambda-generator/) to solve problems dynamically.

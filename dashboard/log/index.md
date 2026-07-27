@@ -1,9 +1,10 @@
 ---
 title: Log
 description: Documentation for your Magic log component, allowing you to verify your cloudlet is healthy and running optimally.
-og_image: "/images/log.jpg"
 header:
-  image: /assets/images/wizard-writing-secret-spells-into-his-spell-book.webp
+  image: /assets/images/hero/log.png
+  og_image: /assets/images/hero/log-og.png
+  image_description: The Log component
 ---
 
 The log component allows you to browse your server's log. When an important event occurs in Magic, a log entry will typically be created describing the event. Examples of such events are when users are logging in, or errors are occurring in the system for some reason.

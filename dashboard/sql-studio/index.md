@@ -1,9 +1,10 @@
 ---
 title: SQL Studio
 description: The web based SQL 'workbench' allows you to execute any SQL, see the result immediately, in addition to storing your frequently used SQL snippets for later.
-og_image: "/images/sql-editor.jpg"
 header:
-  image: /assets/images/wizard-creating-sql-statements.webp
+  image: /assets/images/hero/sql-studio.png
+  og_image: /assets/images/hero/sql-studio-og.png
+  image_description: SQL Studio
 ---
 
 SQL Studio allows you to visually design your database, and also execute any SQL towards your database of choice.

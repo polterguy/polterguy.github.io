@@ -1,9 +1,10 @@
 ---
 title: Endpoints
 description: The Endpoints component in Magic allows you to browse your endpoints and execute these, similarly to how Swagger works.
-og_image: "/images/endpoints.jpg"
 header:
-  image: /assets/images/wizard-in-forrest-tying-lose-ends-together.webp
+  image: /assets/images/hero/endpoints-dash.png
+  og_image: /assets/images/hero/endpoints-dash-og.png
+  image_description: The Endpoints component
 ---
 
 The Endpoints component allows you to see your HTTP endpoints, and invoke these, similarly to how Swagger works. From your endpoints menu item you can search for, parametrise, and invoke your endpoints - Allowing you to simulate a client, to understand how your endpoints work, and _"debug"_ these as you develop them. This component hence serves two purposes; One being documenting your endpoints, another being testing your endpoints.

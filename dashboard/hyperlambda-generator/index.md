@@ -1,9 +1,10 @@
 ---
 title: Hyperlambda Generator
 description: The Hyperlambda Generator is a proprietary SLM fine-tuned with more than 600,000 training snippets, transforming natural language into working backend code in seconds, without hallucinating function invocations.
-og_image: "/images/custom-chatgpt-chatbot.jpg"
 header:
-  image: /assets/images/wizard-magically-pulling-ai-chatbots-our-of-cauldron.webp
+  image: /assets/images/hero/hyperlambda-generator.png
+  og_image: /assets/images/hero/hyperlambda-generator-og.png
+  image_description: The Hyperlambda Generator
 ---
 
 Magic contains its own Hyperlambda Generator. This isn't a single component, but goes through most parts of the platform that somehow allow you to create Hyperlambda code. It's built as our own proprietary SLM (Small Language Model), fine-tuned with more than 600,000 training snippets, so it's actually very strong on creating backend code, even though it's using a _"small base model"_.

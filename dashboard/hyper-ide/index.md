@@ -1,9 +1,10 @@
 ---
 title: Hyper IDE
 description: Hyper IDE is an AI-enabled integrated development environment for Hyperlambda and allows you to build APIs and backends with No-Code constructs.
-og_image: "/images/og-hyper-ide-2.jpg"
 header:
-  image: /assets/images/wizard-flying-through-air-with-hyperlambda-raining-from-stars.webp
+  image: /assets/images/hero/hyper-ide.png
+  og_image: /assets/images/hero/hyper-ide-og.png
+  image_description: Editing Hyperlambda in Hyper IDE
 ---
 
 Hyper IDE is your _"goto component"_ when you want to create your own modules using Magic and Hyperlambda. It's a web based IDE, allowing you to edit your code, create new modules, and contains a lot of things you're used to from a traditional IDE. It is also the natural extension of Magic's [endpoint generator](/dashboard/endpoint-generator/), since it allows you to edit the Hyperlambda endpoint files after Magic has generated your CRUD backend. In addition, Hyper IDE allows you to use AI to generate code using _"vibe coding"_ constructs.

@@ -1,9 +1,10 @@
 ---
 title: Machine Learning
 description: Documentation for how to create your own machine learning model based upon RAG and VSS in Magic.
-og_image: "/images/machine-learning.jpg"
 header:
-  image: /assets/images/wizard-teaching-robot-magic.webp
+  image: /assets/images/hero/machine-learning.png
+  og_image: /assets/images/hero/machine-learning-og.png
+  image_description: Machine Learning models
 ---
 
 Magic's Machine Learning component allows you to create your own AI based machine learning model, either by crawling your website and scraping it for data, or by manually uploading files, resulting in a private and custom _"machine learning model"_. Machine learning in Magic is built upon OpenAI's API and is similar to ChatGPT, and under the hood it's using RAG and VSS towards your own database to extract context as it's answering questions using OpenAI.

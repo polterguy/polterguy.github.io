@@ -1,9 +1,10 @@
 ---
 title: Configuration
 description: Configuring your server can easily be achieved with a root user using the configuration component in Magic. Configuration settings are immediately applied, and change your server's behaviour instantly.
-og_image: "/images/config-component.jpg"
 header:
-  image: /assets/images/wizard-configuring-mechanical-device.png
+  image: /assets/images/hero/configuration.png
+  og_image: /assets/images/hero/configuration-og.png
+  image_description: The Configuration component
 ---
 
 The configuration component allows you to view and edit your server's configuration settings. Your server's configuration is basically your _"appsettings.json"_ file, which is being used in all parts of the system to retrieve configuration settings, such as for instance SMTP settings when email slots are sending emails, etc.

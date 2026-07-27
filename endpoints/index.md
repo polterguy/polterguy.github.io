@@ -1,7 +1,10 @@
 ---
 title: Endpoints
 description: Documentation for the most important endpoints you can find in Magic's middleware
-og_image: /images/backend-crud.jpg
+header:
+  image: /assets/images/hero/endpoints-top.png
+  og_image: /assets/images/hero/endpoints-top-og.png
+  image_description: Endpoints
 ---
 
 Magic contains a whole range of endpoints, or _"middleware"_ parts, that the system itself relies upon to function. You can play around with these endpoints by using the [Endpoints](/dashboard/endpoints/) component and ensure you show your system endpoints. Most of these endpoints are for internal use through the Magic dashboard, and should as a general rule of thumb _not_ be consumed directly by you - But some of these endpoints are useful for your own projects.

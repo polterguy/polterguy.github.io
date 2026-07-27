@@ -2,8 +2,9 @@
 title: Dashboard
 description: The Magic Dashboard allows you to manage your Magic Cloud backend by providing a graphical user interface towards your backend cloudlet.
 header:
-  image: /assets/images/finding-components.webp
-  image_description: Wizard standing in his laboratory trying to find out what Magic spell he should use
+  image: /assets/images/hero/dashboard.png
+  og_image: /assets/images/hero/dashboard-og.png
+  image_description: The Magic dashboard
 ---
 
 The Magic Dashboard is how you would manage your cloudlet. When you login to your cloudlet, you will be greeted by the dashboard's landing page, showing key numbers about your cloudlet - its Magic version, and how many endpoints, users, scheduled tasks, and log items it has.
@@ -39,7 +40,7 @@ Below is the documentation for each individual dashboard component.
 * [Configuration](/dashboard/configuration/)
 * [Chatbot Wizard](/dashboard/chatbot-wizard/)
 
-In addition to the above, there's also the profile component, allowing you to change what theme to use, change your password, and change some other settings related to your profile.
+In addition to the above, there's also the profile component, allowing you to change your password, and change some other settings related to your profile.
 
 ## Generate token
 

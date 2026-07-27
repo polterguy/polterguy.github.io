@@ -2,7 +2,9 @@
 title: Users & Roles
 description: Documentation for Magic's User & Roles component, allowing you to use an RBAC-based authentication and authorisation mechanism for your own code.
 header:
-  image: /assets/images/wizard-helping-his-village.webp
+  image: /assets/images/hero/users-roles.png
+  og_image: /assets/images/hero/users-roles-og.png
+  image_description: Users and roles
 ---
 
 The Users & Roles component allows you to manage and administrate users and roles in your system, and/or create new users and roles. This component is what allows you to control how others are accessing your system. You might for instance have 3 different roles in your company, being C-level executives, managers, and employees. Typically these 3 different roles should not have access to the same parts, so you want to associate users with these different roles in Magic.

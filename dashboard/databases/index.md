@@ -1,9 +1,10 @@
 ---
 title: Databases
 description: The databases component allows you to manage your connection strings, connect to external databases, and create new SQLite databases in Magic.
-og_image: "/images/assumptions.jpg"
 header:
-  image: /assets/images/wizard-asking-oracle-of-delphi.webp
+  image: /assets/images/hero/databases.png
+  og_image: /assets/images/hero/databases-og.png
+  image_description: The Databases component
 ---
 
 The databases component allows you to manage your connection strings, in addition to your external and internal databases. This is your goto component if you want to connect to an external database. It allows you to connect to any MySQL, PostgreSQL, SQL Server, or MariaDB database. Provide it with your connection string, give your connection string a name, and click connect.
