@@ -22,7 +22,7 @@ To create your own AI chatbot you first have to supply Magic with your OpenAI AP
 
 ![Screenshot of configuring Magic with your OpenAI API key](/assets/images/chatbot-wizard-configure-openai.jpeg)
 
-If you don't have an OpenAI API key you can click [here](https://platform.openai.com/api-keys) to go to OpenAI's platform and create one. Notice, you have to _make at least one payment to OpenAI before you're given access to GPT4_.
+If you don't have an OpenAI API key you can click [here](https://platform.openai.com/api-keys) to go to OpenAI's platform and create one. Notice, you have to _make at least one payment to OpenAI before you're given access to their latest models_.
 
 Your API key should resemble the following;
 
