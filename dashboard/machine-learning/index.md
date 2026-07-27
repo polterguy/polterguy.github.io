@@ -10,7 +10,7 @@ Magic's Machine Learning component allows you to create your own AI based machin
 
 Magic contains a lot of additional services, such as the ability to monitor or supervise usage, storing questions and answers into your database, and use these as the foundation for reinforcement learning to improve your model's accuracy over time. You can also use historical requests for business intelligence, or lead generation. In addition it ties into Magic's AI Agent abilities, allowing you to integrate AI functions triggering AI workflows from instructions provided by the user.
 
-You can crawl and scrape your website for training data, or upload your own files in a wide variety of formats, such as XML, JSON, YAML, CSV, or PDF. You can use either RAG/VSS or fine-tuning. We recommend using RAG for 99% of use cases since it eliminates AI hallucinations, resulting in higher accuracy, and because it is also significantly less expensive.
+You can crawl and scrape your website for training data, or upload your own files in a wide variety of formats, such as XML, JSON, YAML, CSV, or PDF. Magic uses RAG/VSS to power your model, which eliminates AI hallucinations, resulting in higher accuracy, and is also significantly less expensive.
 
 ## Use cases
 
@@ -55,23 +55,23 @@ You can configure Magic such that it periodically re-crawls your site. This is d
 
 When re-crawling Magic will update any existing pages that were changed, and add new pages it finds. When it is done crawling your site it will automatically vectorize your type.
 
-## Types
+## Models
 
-A _"type"_ is a collection of training snippets. When a chatbot is asked a question, it will use VSS search to find training data that is relevant to your question from one specific _"type"_. Then it will transmit this training data as _"context"_ to OpenAI, and have OpenAI answer questions using the _"context"_ as its source of information.
+A _"model"_ is a collection of training snippets. When a chatbot is asked a question, it will use VSS search to find training data that is relevant to your question from one specific _"model"_. Then it will transmit this training data as _"context"_ to OpenAI, and have OpenAI answer questions using the _"context"_ as its source of information.
 
-You can create many types in Magic, and therefore many chatbots solving different problems.
+You can create many models in Magic, and therefore many chatbots solving different problems.
 
-![Screenshot showing a list of multiple machine learning types](/assets/images/machine-learning-types.jpeg)
+![Screenshot showing a list of multiple machine learning models](/assets/images/machine-learning-types.jpeg)
 
-Once you're done with importing training snippets into your type, you'll have to click _"Vectorize"_ on your type before the data can be used by your chatbot.
+Once you're done with importing training snippets into your model, you'll have to click _"Vectorize"_ on your model before the data can be used by your chatbot.
 
-### Configuring your type
+### Configuring your model
 
-A single machine learning type has dozens of configuration settings, for everything you can imagine. Its settings are organised across the _"General"_, _"Behaviour"_, and _"Integrations"_ tabs of the type's edit dialog.
+A single machine learning model has dozens of configuration settings, for everything you can imagine. Its settings are organised across the _"General"_, _"Behaviour"_, and _"Integrations"_ tabs of the model's edit dialog.
 
-![Screenshot of how to configure your machine learning type](/assets/images/recrawl-site-periodically.webp)
+![Screenshot of how to configure your machine learning model](/assets/images/recrawl-site-periodically.webp)
 
-The most important setting is the _"System message"_, found on the _"Behaviour"_ tab. This becomes the equivalent of a ChatGPT _"instruction"_, telling the type how to behave. Below is an example system instruction to give you an example.
+The most important setting is the _"System message"_, found further down on the _"General"_ tab - just scroll down to find it. This becomes the equivalent of a ChatGPT _"instruction"_, telling the model how to behave. Below is an example system instruction to give you an example.
 
 > You are Frank, a sales executive for Acme, Inc. Follow these rules when replying to my questions:
 > 
@@ -83,32 +83,31 @@ The most important setting is the _"System message"_, found on the _"Behaviour"_
 > * You may use emojis if it makes sense
 > * If you cannot find the answer to the question in the context, then inform the user that you are only configured to answer questions about Acme, Inc. and that the user should provide some keywords for you to find relevant information
 
-Magic contains several pre-defined flavors, including dynamically created flavors that will scrape some page to create a highly personalised and custom system type that OpenAI will use as its instruction when it is asked questions. Dynamic flavors contain the text _"DYNAMIC"_ as a part of their name, and when selected, it will ask you for a website URL from where to extract information.
+Magic contains several pre-defined flavors, including dynamically created flavors that will scrape some page to create a highly personalised and custom system message that OpenAI will use as its instruction when it is asked questions. Dynamic flavors contain the text _"DYNAMIC"_ as a part of their name, and when selected, it will ask you for a website URL from where to extract information.
 
 Notice, the system message can contain Hyperlambda mixin logic, similarly to how training snippets can. To understand how this works, read the section about adding Hyperlambda code to your training snippets. The system message can also contain AI function declarations, instructing OpenAI to return JSON for a function invocation given some specific instruction, such as for instance _"Search the web for Thomas Hansen Hyperlambda."_
 
 #### Configuration settings
 
-* Type name, being the name of your type. This cannot be changed once created.
+* Model name, being the name of your model. This cannot be changed once created.
 * Website, which if supplied, will re-crawl the specified website once every 24 hours.
 * Flavor, being a pre-defined list of templates for system messages. Once you select a flavor, your system message will update accordingly.
 * System message, implying the _"instruction"_ to OpenAI. Allows you to change your chatbot's behaviour.
 * Conversation starters, implying a pre-defined set of suggested questions to start a conversation with the chatbot.
 * Greeting, being a static initial greeting, such as for instance _"Hello there, how can I help you?"_
-* Authorisation, implying roles users must belong to in order to query type. Requires the user is authenticated through Magic with a valid JWT token if you turn this on.
+* Authorisation, implying roles users must belong to in order to query model. Requires the user is authenticated through Magic with a valid JWT token if you turn this on.
 * reCAPTCHA, being reCAPTCHA value for accepting queries. This is a legacy setting and you should set it to 0 since we've implemented our own PoW-based CAPTCHA library that's 0.1% of the size of reCAPTCHA.
 * Supervised, which if turned on, will store all questions/answers allowing you to access these through the history tab.
-* Cached, legacy property, only relevant for older non-GPT models.
-* Vectors, implying the chatbot will use the vector database to find context. Magic does support fine-tuning or training. If you turn _off_ vectors you will be able to use your own custom fine-tuned model. We do _not_ recommend turning this off.
-* API key, being overridden OpenAI API key for a specific type. By default Magic will read API key from your configuration. You can override this on a per-type level.
+* Vectors, implying the chatbot will use the vector database to find context. We do _not_ recommend turning this off.
+* API key, being overridden OpenAI API key for a specific model. By default Magic will read API key from your configuration. You can override this on a per-model level.
 * No requests, being total number of requests the chatbot has answered the current month.
 * Max requests, implying maximum requests the chatbot will answer per month. Useful to cap your chatbot to avoid runaway costs. Logically it's using no requests to see if it can continue answering requests.
 * Temperature, implying chances the OpenAI model is willing to take. Sometimes referred to as _"creativity"_.
 * Threshold, implying threshold for training data to kick in. Similarity value allowing you to filter out any training data not matching. This value can be between 0 and 1, where 0 implies _"match anything"_ and 1 implies _"only match 100% equal snippets"_. A good value here is between 0.2 and 0.6, depending upon how strict you want the chatbot to match towards your training data.
-* Completion/chat model, implying the OpenAI base model to use for queries. Notice, if you have created your own models using fine-tuning, these will be listed here too.
+* Completion/chat model, implying the OpenAI base model to use for queries.
 * Vector model, implying vector model to create embeddings for your training data.
-* Max Context tokens, implying how many tokens from your training data the type will maximumly use when sending your context to OpenAI to answer questions.
-* Max Request tokens, implying the maximum number of tokens the type allows for the user's questions.
+* Max Context tokens, implying how many tokens from your training data the model will maximumly use when sending your context to OpenAI to answer questions.
+* Max Request tokens, implying the maximum number of tokens the model allows for the user's questions.
 * Max Response tokens, implying maximum tokens to allow for OpenAI to return as answers to questions.
 * Max Message tokens, which is calculated according to your completion model's token size, and your request, response and context tokens. If this goes to negative, your settings cannot be saved.
 * Max Function Invocations, which is the maximum number of times the model will invoke OpenAI for a single prompt. To understand this number you'll have to read our tutorial about [how to create AI functions](https://ainiro.io/blog/getting-started-with-ai-functions).
@@ -116,7 +115,7 @@ Notice, the system message can contain Hyperlambda mixin logic, similarly to how
 
 ## Training snippets
 
-Magic supports fine tuning your own machine learning model, but we recommend using RAG for 99% of our clients. RAG is much less expensive, and most of the time also much more accurate. RAG works by using OpenAI's embeddings API to create embeddings for your training snippets, for then to create embeddings for questions asked towards your type.
+Magic uses RAG for your machine learning model, which we recommend for 99% of our clients. RAG is much less expensive, and most of the time also much more accurate. RAG works by using OpenAI's embeddings API to create embeddings for your training snippets, for then to create embeddings for questions asked towards your type.
 
 This allows us to use _"AI search"_ to find training snippets relevant to the question asked, for then to pass this as _"context data"_ to OpenAI to answer questions.
 
@@ -129,10 +128,6 @@ One training snippet is one such atomic piece of information. Typically as we tr
 Training snippets can be automatically created as we scrape your website, upload files, or even manually created. In addition, Magic has plugins allowing to connect to a Shopify account through its API, or a WordPress account, etc to import training data. When we setup a chatbot a lot of the work is actually related to _"washing your training data"_ to further increase the quality of the chatbot. By connecting the chatbot to semantic data using an API instead of scraping, the quality of the data typically increases 10x. However, sometimes you will have to manually edit your training snippets. The process of how to do this is shown below.
 
 ![Screenshot of editing one training snippet](/assets/images/editing-one-training-snippet.jpeg)
-
-If you turn on caching on a single training snippet, the snippet will be _"hard cached"_, which implies that if it scores at the top for some query, it will be returned _"as is"_, without being transmitted to OpenAI. This can be beneficial for things you want to return exactly as is, without transformation before displaying the result to the end user.
-
-In general you should be very careful with caching too many snippets, since it might result in inferior quality due to false positives. We rarely do this ourselves.
 
 ### Adding Hyperlambda code to training snippets
 
@@ -152,25 +147,17 @@ Notice, the `{` and `}` characters have spaces between them. Remove these in you
 
 > The last 14 days I have answered 123 questions from happy users.
 
-This will then be transmitted to OpenAI as context data unless the snippet is cached, allowing it to use this to answer your question. This allows your chatbot to work with real time data, and connect itself to any additional data source, to dynamically create context data it sends to OpenAI.
+This will then be transmitted to OpenAI as context data, allowing it to use this to answer your question. This allows your chatbot to work with real time data, and connect itself to any additional data source, to dynamically create context data it sends to OpenAI.
 
 ## History tab
 
-Once you've created a machine learning type in Magic, you can turn on _"supervised"_. This implies that Magic will store each question and answers it's given. This data can serve as reinforcement learning material later, and can also work as a cache, where once your model is asked a question it has been asked before, it no longer needs to query OpenAI's API for the completion, but can return its previous answer.
+Once you've created a machine learning model in Magic, you can turn on _"supervised"_. This implies that Magic will store each question and answers it's given. This data can serve as reinforcement learning material later, allowing you to review and improve how your model performs over time.
 
-The _"supervised"_ feature also allows you to _"monitor"_ your machine learning model, to verify it is functioning optimally, allowing you to correct it where it fails and provide the correct answer - For then to later upload this to OpenAI's API as _"reinforcement fine tuning material"_, or use it as RAG by creating new training snippets based upon existing questions/answers.
+The _"supervised"_ feature also allows you to _"monitor"_ your machine learning model, to verify it is functioning optimally, allowing you to correct it where it fails and provide the correct answer - For then to use it as RAG by creating new training snippets based upon existing questions/answers.
 
-You can easily turn on and off both machine learning caching, and machine learning supervision, by editing the configuration for your snippet or model.
+You can easily turn on and off machine learning supervision by editing the configuration for your model.
 
-Notice, caching on the type only works for non-GPT types, implying types where you're using for instance `text-davinci-003` as your completion model. If you turn on caching on your type, it will return cached answers given the same question.
-
-![Screenshot of how to turn on caching in the history tab](/assets/images/caching-on-history-requests.jpeg)
-
-To turn on caching in the history tab, you need to first turn on caching for your type, and then turn on caching for individual previous requests you want to cache.
-
-Caching on the training snippet however, works for all types, and will use the matching training snippet only if the cached training snippet scores as the top matching snippet for a question. This makes the training snippet cache capable of returning answers from the cache also when the question is _not_ an exact match of a previous question. This makes training snippet caching _"broader"_, which might result in it returning an incorrect answer.
-
-As a general rule of thumb _you should be very careful with caching_. At AINIRO we almost _never use it_ ourselves when we're configuring types for our clients.
+![Screenshot of the History tab showing previous questions and answers](/assets/images/history-tab-requests.jpeg)
 
 ## AI Functions
 
