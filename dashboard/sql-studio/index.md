@@ -53,8 +53,18 @@ The SQL Studio database designer allows you to do the following things.
 * Create new foreign keys
 * Export one table's DDL
 * Export all tables' DDL
+* Import a CSV file as a new table
+* Flush the server-side schema cache
 
 SQL Studio doesn't give you every single feature of SQL DDL, but it's good enough to provide you with 90% of what you need as you are designing your database schema. When you create a new foreign key for instance, it will ask you if you want to allow for null values in your foreign keys, and if you want to turn on cascading deletes - But it will not ask you if you want to set to null upon deletions.
+
+### Importing a CSV file
+
+The designer can also create a table directly from a CSV file. Click the _"Import .csv"_ button, choose a CSV file from your local machine, and Magic creates a new table named after the file, with one column for each column in your CSV file. It automatically picks a numeric or text type for each column based on its values, adds an automatically incrementing primary key, and then imports every row from your file. The import runs in the background, so you'll be notified once it completes - just reload the page afterwards to see your new table in the designer.
+
+### Flushing the server-side cache
+
+For performance, Magic caches your database schema on the server. If your schema changes outside the designer - for instance when you import a CSV file, or when an AI agent creates a table over the [MCP server](/tutorials/how-to-connect-the-mcp-server/) - click the _"Flush cache"_ button to clear this cached schema. Doing so reloads the page, so the designer reflects the current state of your database.
 
 For a walkthrough of SQL Studio's most important features you can watch the [following YouTube video](https://www.youtube.com/watch?v=xQYwPFEOTAI).
 
