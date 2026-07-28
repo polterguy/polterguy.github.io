@@ -11,43 +11,75 @@ The easiest way to get started with Magic is to [signup for a cloudlet at AINIRO
 
 ## Using Docker
 
-Below is a docker-compose file you can use that downloads the images and starts the correct containers.
+The fastest way to run Magic locally is with [Docker](https://www.docker.com/). Once Docker is installed, paste the command below into your terminal — it pulls a ready-made `docker-compose` file and starts both containers for you.
 
-```yaml
+<div class="hl-terminal" markdown="0">
+  <div class="hl-terminal-bar">
+    <span class="hl-dot hl-dot-red"></span>
+    <span class="hl-dot hl-dot-yellow"></span>
+    <span class="hl-dot hl-dot-green"></span>
+    <button class="hl-copy" type="button" onclick="hlCopyCmd(this)">Copy</button>
+    <span class="hl-terminal-label">terminal</span>
+  </div>
+  <div class="hl-terminal-body"><code id="hl-cmd">curl -fsSL https://hyperlambda.dev/docker-compose.yaml | docker compose -f - up</code></div>
+</div>
 
-services:
+<script>
+function hlCopyCmd(btn){
+  var cmd = document.getElementById('hl-cmd').textContent;
+  navigator.clipboard.writeText(cmd).then(function(){
+    var label = btn.textContent;
+    btn.textContent = 'Copied!';
+    btn.classList.add('hl-copied');
+    setTimeout(function(){ btn.textContent = label; btn.classList.remove('hl-copied'); }, 1600);
+  });
+}
+</script>
 
-  backend:
-    image: servergardens/magic-backend:latest
-    container_name: magic_backend
-    restart: always
-    ports:
-      - "4444:4444"
-    volumes:
-      - magic_files_etc:/magic/files/etc
-      - magic_files_data:/magic/files/data
-      - magic_files_config:/magic/files/config
-      - magic_files_modules:/magic/files/modules
+<style>
+.hl-terminal{
+  margin:1.6em 0;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;
+  background:#181b21;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;
+}
+.hl-terminal-bar{
+  display:flex;align-items:center;gap:.55em;
+  padding:.7em .9em;
+  background:#20242c;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.hl-dot{width:12px;height:12px;border-radius:50%;display:inline-block;flex:0 0 auto;}
+.hl-dot-red{background:#ff5f57;}
+.hl-dot-yellow{background:#febc2e;}
+.hl-dot-green{background:#28c840;}
+.hl-copy{
+  margin-left:.45em;
+  border:1px solid rgba(255,255,255,.22);
+  background:transparent;color:#e8eaed;
+  font-family:inherit;font-size:.78em;font-weight:600;
+  padding:.28em .85em;border-radius:999px;cursor:pointer;
+  transition:background .15s,border-color .15s,color .15s;
+}
+.hl-copy:hover{background:rgba(124,92,255,.18);border-color:#7c5cff;}
+.hl-copy.hl-copied{background:#7c5cff;border-color:#7c5cff;color:#fff;}
+.hl-terminal-label{margin-left:auto;color:#8b93a1;font-size:.8em;letter-spacing:.02em;}
+.hl-terminal-body{
+  padding:1em 1.1em;
+  overflow-x:auto;
+  color:#e8eaed;font-size:.92em;line-height:1.6;
+  white-space:pre;
+}
+.hl-terminal-body::before{content:"$ ";color:#7c5cff;font-weight:700;}
+.hl-terminal-body code{background:none;border:none;color:inherit;padding:0;font-size:inherit;font-family:inherit;}
+</style>
 
-  frontend:
-    image: servergardens/magic-frontend:latest
-    container_name: magic_frontend
-    depends_on:
-      - backend
-    restart: always
-    ports:
-      - "5555:80"
+This spins up the frontend at port 5555 and the backend at port 4444, and creates volumes for all the folders whose files you typically change as you use Magic. The _"/misc/"_ and _"/system/"_ folders deliberately have no volumes, since those are meant to be replaced when you update your image.
 
-volumes:
-  magic_files_etc:
-  magic_files_data:
-  magic_files_config:
-  magic_files_modules:
-```
-
-The above file will spawn the frontend at port 5555 and the backend at port 4444. The above file creates volumes for all the important folders, that contain files you typically change as you're using Magic. The _"/misc/"_ and _"/system/"_ folders should not have volumes, since these should be changed when you update your image.
-
-Once your containers are up running you need to use your browser to navigate to `localhost:5555`, and login to your backend. Your backend can be found at `localhost:4444`, and its username and password is _"root"_ and _"root"_. Once you've logged in, you'll be asked to setup Magic. This will resemble the following.
+Once your containers are up and running, navigate your browser to `localhost:5555`, and login to your backend at `localhost:4444`, using _"root"_ as both the username and password. Once you've logged in, you'll be asked to setup Magic. This will resemble the following.
 
 ![Screenshot of how to initially configure Magic](/images/setup-magic.jpeg)
 
