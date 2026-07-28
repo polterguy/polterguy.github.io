@@ -13,6 +13,14 @@ The databases component allows you to manage your connection strings, in additio
 
 In addition to allowing you to connect to external databases, this is also the place you go to create a new SQLite file-based database.
 
+## Creating and designing SQLite databases
+
+Besides connecting to external databases, you can create your own file-based SQLite databases directly from this component — no server or connection string required. Just give your database a name, and Magic creates it for you.
+
+Once created, you can design your database visually in [SQL Studio](/dashboard/sql-studio/), adding tables, columns, and foreign keys through a graphical designer without writing any DDL by hand. You can of course also execute SQL against your database directly if you prefer.
+
+You can even let an AI do it for you. If you connect your cloudlet to an AI agent such as Claude over the [MCP server](/tutorials/how-to-connect-the-mcp-server/), you can describe the database you want in plain English, and have the orchestrating LLM create the SQLite database and its schema for you.
+
 ## Adding a connection string
 
 It is important that you exchange your catalogue name, or database name, with the text _"{database}"_. This is because Magic needs to be able to dynamically connect to multiple catalogues or databases in your database server. Magic needs to be able to read system databases, in addition to connecting generically to any database in your system it's got access to. This is why it'll need the above `{database}` parts in its connection string.
