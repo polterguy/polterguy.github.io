@@ -7,6 +7,23 @@ header:
   image_description: Deploy Magic
 ---
 
+## Deploying to DigitalOcean in one copy-paste
+
+If you're deploying to [DigitalOcean](https://www.digitalocean.com/), there's a much faster route than the manual steps below. A single `cloud-init` file installs Docker, builds the all-in-one image, and starts Magic behind [Caddy](https://caddyserver.com/) — API, admin dashboard, database, and automatic Let's Encrypt HTTPS — on a droplet from around $12 per month.
+
+1. Create an Ubuntu 24.04 droplet with at least 2 GB RAM (4 GB is more comfortable, since the first-boot frontend build is memory-hungry).
+2. Open `.do/cloud-init.yaml` from the [Magic repository](https://github.com/polterguy/magic), and edit the single `DOMAIN=` line.
+3. Paste the whole file into _"Advanced Options → User Data"_ on the droplet creation form, and create the droplet.
+4. Point your domain's DNS A record at the droplet's IP address.
+
+First boot takes 15 to 20 minutes — mostly the frontend build — and your domain won't answer until it finishes. That's expected, not a failure; Caddy brings HTTPS up automatically once your DNS propagates. When it's ready, browse to your domain over HTTPS and login with _"root"_/_"root"_. Changing the root password also rotates the default JWT secret for you.
+
+For the complete walk-through, including the day-2 upgrade commands, see [From Zero to Production Backend with HTTPS in One Copy-Paste](https://hyperlambda.dev/blog/magic-cloud-digitalocean-one-copy-paste).
+
+If you're deploying to another provider, or want full control over the reverse proxy and certificates, the manual guide below covers everything.
+
+## Manual deployment on any VPS
+
 This guide helps you deploy Magic unto a VPS or a private server. The guide has been tested with Ubuntu 20.04 (LTS) x64, but _might_ work with other Debian based distributions. You will need a VPS instance somewhere first. You will also need a domain and point _two_ DNS A records to your server's IP address. Typically these would resemble the following.
 
 * __api.YOURDOMAIN.COM__
