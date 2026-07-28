@@ -85,9 +85,7 @@ reference in your SQL, and click the _"Generate"_ button.
 
 The SQL endpoint generator allows you to secure your endpoints, declare what arguments your endpoints can handle,
 use all 5 most common HTTP verbs for your endpoints, etc. You can use it with SQL Server, MySQL, MariaDB,
-PostgreSQL, or SQLite - And if you don't know SQL, then SQL Studio even has integrated support for generating SQL from natural language. You can see an example below.
-
-![Screenshot of the SQL Endpoint Generator allowing you to create HTTP endpoints with SQL](/images/sql-generator.png)
+PostgreSQL, or SQLite - And if you don't know SQL, then SQL Studio even has integrated support for generating SQL from natural language.
 
 ## SQL Studio
 
