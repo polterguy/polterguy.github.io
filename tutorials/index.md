@@ -1,13 +1,13 @@
 ---
 title: Tutorials
-description: Hands-on tutorials for using Magic on your own, letting you experiment for yourself, most with step-by-step walk-through videos.
+description: Hands-on tutorials for using Magic on your own, letting you experiment for yourself.
 header:
   image: /assets/images/hero/tutorials.png
   og_image: /assets/images/hero/tutorials-og.png
   image_description: Magic tutorials
 ---
 
-Below are tutorials about how to get started with Magic. Most of these are accompanied with YouTube videos, demonstrating hands on, how to get started with Magic's Low-Code, No-Code, and AI-based software development automation concepts.
+Below are tutorials demonstrating hands on how to get started with Magic's Low-Code, No-Code, and AI-based software development automation concepts.
 
 ## MCP and AI agents
 

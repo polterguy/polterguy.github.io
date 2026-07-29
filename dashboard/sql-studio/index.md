@@ -66,10 +66,6 @@ The designer can also create a table directly from a CSV file. Click the _"Impor
 
 For performance, Magic caches your database schema on the server. If your schema changes outside the designer - for instance when you import a CSV file, or when an AI agent creates a table over the [MCP server](/tutorials/how-to-connect-the-mcp-server/) - click the _"Flush cache"_ button to clear this cached schema. Doing so reloads the page, so the designer reflects the current state of your database.
 
-For a walkthrough of SQL Studio's most important features you can watch the [following YouTube video](https://www.youtube.com/watch?v=xQYwPFEOTAI).
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xQYwPFEOTAI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
 SQL Studio's designer works transparently towards all database types, implying you can use it to create databases for MySQL, PostgreSQL, SQLite, MariaDB, and SQL Server. However, what types of fields you can create differs between database types.
 
 ## How to create a database using SQL Studio

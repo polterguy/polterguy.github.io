@@ -40,10 +40,6 @@ Hyper IDE is not a fully fledged IDE, and cannot compare to something like VS Co
 
 You _can_ use Hyper IDE to edit TypeScript, Ruby, HTML, and C# code, but we don't recommend replacing it with your existing code editor, since other IDEs have much more features here than Hyper IDE. However, the opposite is also true, implying Hyper IDE has features your existing IDE does not have - Especially in regards to [Hyperlambda](/hyperlambda/).
 
-For a walkthrough of Hyper IDE's most important features you can watch the [following YouTube video](https://www.youtube.com/watch?v=g8r8asbLIkA).
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/g8r8asbLIkA?si=45Vedtt3-0ros8x6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
 Another benefit is that Hyperlambda is a dynamic programming language, implying once you've saved your Hyperlambda files, you can immediately test your code by executing it from within Hyper IDE by clicking F5. This results in a much tighter development model than a traditional compiled programming language gives you, making it much faster to find bugs and create working code.
 
 If you execute code in immediate mode using F5, and your code requires arguments, Hyper IDE will ask you for what to pass in as arguments. This isn't perfect, and only works for first level arguments - But if you need more complexity, you can always use the [Hyperlambda Playground](/dashboard/hyperlambda-playground/), and/or the [Endpoints Component](/dashboard/endpoints/).

@@ -40,7 +40,3 @@ The above will throw an exception if the user is not authenticated, or does not 
 
 The authentication and authorisation system in Magic is very flexible, and allows you to consume it from your own apps. The auth system is built as a _"half fabricated auth system"_, allowing you to implement it any way you see fit, to customise it according to your needs.
 
-In the video below, I am creating a custom registration module in 15 minutes if you're interested in seeing how to create your own custom auth module.
-
-<iframe style="margin-left: auto; margin-right: auto; width: 560px; max-width: 100%; display: block;" width="560" height="315" src="https://www.youtube.com/embed/Ntunzh-DdaY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
