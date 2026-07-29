@@ -20,7 +20,11 @@ Magic is 100% open source, and you can find its [GitHub repo here](http://github
 ## AI Generated Code - "Vibe Coding"
 
 With Magic you can sometimes accomplish in some few minutes what requires weeks of coding with a more
-traditional platform.
+traditional platform. The CRM app below was created with Qoder in **7 minutes** over Magic's [MCP server](/tutorials/how-to-connect-the-mcp-server/), using Kimi K3, costing a grand total of **$0.50** in inference. It's a full stack app; A SQLite database with 3 tables, a secure API wrapping it, and authentication and authorisation - All generated from natural language.
+
+![A home grown CRM app with clients, notes and emails, vibe coded in 7 minutes for 50 cents](/assets/images/home-grown-app.png)
+
+Notice, the AI doesn't need to create your database from scratch - Legacy databases can be just as easily wrapped, turning your existing MySQL, PostgreSQL, SQL Server, or SQLite database into a secure API and a working app in minutes.
 
 ## MCP Support
 

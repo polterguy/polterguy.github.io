@@ -40,7 +40,7 @@ The way the crawler works, is by first checking if your website has a sitemap fi
 This process resembles the process Google and other search engines are following as they crawl your site, and one of the bonus features of scraping your website, is that you get to some extent see how search engines see your website. Hence, it is also a somewhat valuable tool to SEO quality assure your site. Magic's crawler explicitly identifies as a crawler, and obeys all the standard crawler rules from
 your robots.txt file.
 
-![Screenshot of crawling and scraping your website for RAG data for your machine learning model](/assets/images/machine-learning-import-dialogue-screenshot.webp)
+![Screenshot of crawling and scraping your website for RAG data for your machine learning model](/assets/images/machine-learning-import-dialogue-screenshot.jpeg)
 
 ### Spicing
 
@@ -52,7 +52,7 @@ The spice feature in Magic allows you to scrape a single URL. This provides you 
 
 You can configure Magic such that it periodically re-crawls your site. This is done by providing _"Website"_ value in your model's configuration. By default Magic contains a scheduled task that is executed once every 24 hours. This task will re-crawl all models you've configured with a website property.
 
-![Screenshot of how to periodically re-crawl your website by changing its website property](/assets/images/recrawl-site-periodically.webp)
+![Screenshot of how to periodically re-crawl your website by changing its website property](/assets/images/recrawl-site-periodically.jpeg)
 
 When re-crawling Magic will update any existing pages that were changed, and add new pages it finds. When it is done crawling your site it will automatically vectorize your model.
 
@@ -70,7 +70,7 @@ Once you're done with importing training snippets into your model, you'll have t
 
 A single machine learning model has dozens of configuration settings, for everything you can imagine. Its settings are organised across the _"General"_, _"Behaviour"_, and _"Integrations"_ tabs of the model's edit dialog.
 
-![Screenshot of how to configure your machine learning model](/assets/images/recrawl-site-periodically.webp)
+![Screenshot of how to configure your machine learning model](/assets/images/configure-machine-learning-model.jpeg)
 
 The most important setting is the _"System message"_, found further down on the _"General"_ tab - just scroll down to find it. This becomes the equivalent of a ChatGPT _"instruction"_, telling the model how to behave. Below is an example system instruction to give you an example.
 
@@ -205,7 +205,7 @@ The above tells OpenAI to return JSON and `FUNCTION_INVOCATION` if the user asks
 
 Magic Cloud contains dozens of pre-defined functions, and most of these are easily implemented using no-code constructs. To integrate one of the pre-defined AI functions into your model, you need to choose your model in the _"Training data"_ tab, click the _"Add function"_ button, at which point you'll see all the pre-defined no-code AI functions existing in the system.
 
-![Screenshot of installing an AI function](/assets/images/install-ai-function.webp)
+![Screenshot of installing an AI function](/assets/images/install-ai-function.jpeg)
 
 ## A Machine Learning platform
 

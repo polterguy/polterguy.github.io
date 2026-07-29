@@ -18,6 +18,10 @@ want to teach yourself SQL. To access the SQL editor open up SQL Studio and clic
 
 ![Screenshot of SQL Studio in SQL view to execute SQL with syntax highlighting and autocomplete](/images/sql-editor.jpg)
 
+## Creating SQL with natural language
+
+Below the SQL editor you'll find an input textbox that says _"Where the Machine Creates the Code"_. Describe the query you want in plain English - for instance _"Select all artists with their album count, ordered by number of albums"_ - click _"Ask"_, and the AI writes the SQL for you, aware of the database you've currently selected and its schema. If the editor already contains SQL, your prompt becomes a change instruction, so you can iterate on a query the same way. This means you can use SQL Studio productively even before you've learned SQL.
+
 ## Create and design your database visually
 
 You can also use SQL Studio to visually create and design your database. This is a graphical user interface, where you don't need to write any SQL DDL to create your database structure. SQL Studio's database designer allows you to create new tables, add fields to your tables, and create foreign keys referencing other tables as you wish.

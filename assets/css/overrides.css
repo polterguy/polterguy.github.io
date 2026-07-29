@@ -86,3 +86,51 @@ a, .page__content a { color: var(--warm-link) !important; }
   background-color: #241a10 !important;
   color: #e8dcc8 !important;
 }
+
+/* Code segments — warm surfaces instead of the skin's slate-blue. */
+div.highlighter-rouge,
+figure.highlight,
+.highlight {
+  background-color: #1c140c !important;
+}
+div.highlighter-rouge,
+figure.highlight {
+  position: relative;
+  border: 1px solid rgba(216, 185, 138, 0.22) !important;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.highlight pre { background-color: #1c140c !important; }
+
+/* Retint the syntax colors warm: gold strings, cream keywords, muted comments. */
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sb, .highlight .sx,
+.highlight .nv { color: var(--warm-gold) !important; }
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kr,
+.highlight .nt, .highlight .nf { color: #f0d9a8 !important; }
+.highlight .c, .highlight .c1, .highlight .cm { color: #8a7f70 !important; font-style: italic; }
+.highlight .m, .highlight .mi, .highlight .mf { color: #c9a86f !important; }
+.highlight .n, .highlight .p, .highlight .o { color: #ece6da !important; }
+
+/* Icon-only "copy code" button, top/right of every code segment. */
+.code-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid rgba(216, 185, 138, 0.3);
+  border-radius: 7px;
+  background: rgba(23, 17, 11, 0.85);
+  color: var(--warm-gold);
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.15s ease;
+}
+div.highlighter-rouge:hover .code-copy-btn,
+figure.highlight:hover .code-copy-btn,
+.code-copy-btn:focus-visible { opacity: 1; }
+.code-copy-btn.copied { color: #8fce9a; border-color: rgba(143, 206, 154, 0.5); }

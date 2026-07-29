@@ -69,6 +69,8 @@ The SQL endpoint generator component allows you to generate an API endpoint wrap
 
 ![Screenshot of how to create an HTTP endpoint using SQL in the Backend Generator](/images/sql-web-api.jpg)
 
+Notice, you don't have to write the SQL yourself. Below the SQL editor you'll find an input textbox that says _"Where the Machine Creates the Code"_ - describe the query you want in plain English, click _"Ask"_, and the AI generates the SQL for you, aware of your selected database and its schema. If the editor already contains SQL, your prompt is treated as a change instruction, allowing you to iterate until the query does exactly what you want, before wrapping it into an HTTP endpoint.
+
 ## How to use the SQL endpoint generator
 
 You can find the SQL endpoint generator as an additional tab inside your endpoint generator. The SQL generator is much simpler to understand than the endpoint generator, since it has much less settings you can apply. However, the SQL endpoint generator obviously requires that you've got a solid understanding of SQL. The process to use the SQL endpoint generator to create an endpoint is as follows.

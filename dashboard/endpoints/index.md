@@ -11,6 +11,16 @@ The Endpoints component allows you to see your HTTP endpoints, and invoke these,
 
 ![Screenshot of the Endpoints component in Magic and how it allows you to execute HTTP endpoints in your cloudlet](/images/endpoints.jpg)
 
+## Parametrising your invocations
+
+When you expand an endpoint, every argument the endpoint accepts becomes an input field, with its type displayed next to its name. For a CRUD read endpoint this means you can page with `limit` and `offset`, sort with `order` and `direction`, and expand the _"Filter arguments"_ section to filter on individual columns - all without writing a single line of code.
+
+![Screenshot of parametrising an endpoint invocation with limit, offset and order arguments](/assets/images/endpoints-parametrising-invocations.jpeg)
+
+When you click _"Invoke"_, the component shows you the response; its HTTP status code, how many milliseconds the invocation took, the response headers, and the response body itself with syntax highlighting. A _"Copy response"_ button lets you bring the result into your own code or documentation.
+
+![Screenshot of the response dialog showing status code, timing, and the JSON response body](/assets/images/endpoints-invocation-response.jpeg)
+
 ## Hyperlambda endpoint meta data
 
 Hyperlambda endpoints have a type declaration providing some sort of semantic type of information about your endpoint, and typically if this type declaration is _"internal"_, the endpoint is _not_ intended for being consumed by your own code, but only for internal usage by Magic. This meta data is displayed in the endpoint component, and allows you to more easily classify your endpoints, understanding what an endpoint does.

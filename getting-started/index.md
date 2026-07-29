@@ -87,7 +87,7 @@ After you've provided a root password, your name, and your email address, you wi
 
 ## Using the source code version
 
-Clone the repository, make sure you've got .Net version 10 installed and the latest version of NodeJS, and enter the _"backend"_ and _"frontend"_ folders with two terminal windows, and execute the following commands in the respective terminals.
+Clone [the Magic repository](https://github.com/polterguy/magic){:target="_blank"}, make sure you've got .Net version 10 installed and the latest version of NodeJS, and enter the _"backend"_ and _"frontend"_ folders with two terminal windows, and execute the following commands in the respective terminals.
 
 1. `dotnet run`
 2. `npm install && npm run dev`

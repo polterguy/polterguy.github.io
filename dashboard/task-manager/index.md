@@ -11,6 +11,10 @@ The Task Manager component allows you to create and administrate persisted Hyper
 
 ![Screenshot of how to create a Hyperlambda task](/images/scheduling-task.jpg)
 
+## Creating tasks with natural language
+
+You don't need to write the Hyperlambda for your tasks yourself. Below the code editor in the task editor you'll find an input textbox that says _"Where the Machine Creates the Code"_. Describe what you want your task to do in plain English - for instance _"Delete all log items older than 14 days"_ - click _"Ask"_, and the [Hyperlambda Generator](/dashboard/hyperlambda-generator/) transforms your description into working Hyperlambda that replaces the content of the editor. If the task already contains code, your prompt is treated as a change instruction, allowing you to modify existing tasks the same way. This makes the Task Manager fully usable without knowing any Hyperlambda at all.
+
 ## The idea behind the task component
 
 The idea behind the task scheduler is first of all to allow for creating dynamically persisted tasks that can be triggered by some future event - In addition to scheduling your tasks to be executed at some specific date and time in the future, and/or in a repeating pattern. Since tasks are dynamically created Hyperlambda snippets of code, this makes the system very flexible contrary to most other task schedulers, that are often built upon statically compiled programming languages.
