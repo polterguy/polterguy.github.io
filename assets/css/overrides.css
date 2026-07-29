@@ -9,3 +9,80 @@
 input.aista-chat-prompt:focus {
   box-shadow: none;
 }
+
+/*
+ * Warm brown/gold retheme — overrides the Minimal Mistakes "dark" skin so the
+ * site chrome matches the app and the hero banners (dark brown surfaces, gold
+ * accent) instead of the stock slate-blue + teal. Loaded last via footer.html.
+ */
+:root {
+  --warm-bg: #17110b;        /* page background */
+  --warm-surface: #1c140c;   /* masthead, sidebar cards, TOC */
+  --warm-footer: #120d08;
+  --warm-gold: #d8b98a;      /* brand accent (matches the hero eyebrow) */
+  --warm-link: #e0b56b;      /* slightly brighter gold for links */
+  --warm-text: #ece6da;
+}
+
+html, body, .initial-content, #main {
+  background-color: var(--warm-bg) !important;
+}
+
+/* Top navigation */
+.masthead {
+  background-color: var(--warm-surface) !important;
+  border-bottom: 1px solid rgba(216, 185, 138, 0.18) !important;
+}
+.greedy-nav { background-color: var(--warm-surface) !important; }
+.greedy-nav a,
+.masthead .site-title,
+.masthead__inner-wrap a { color: var(--warm-text) !important; }
+.greedy-nav a:hover { color: var(--warm-link) !important; }
+.greedy-nav .visible-links a:before { background: var(--warm-gold) !important; }
+.greedy-nav .hidden-links { background: var(--warm-surface) !important; }
+.greedy-nav .hidden-links a { color: var(--warm-text) !important; }
+
+/* Links / accent (was teal) */
+a, .page__content a { color: var(--warm-link) !important; }
+.breadcrumbs a { color: var(--warm-gold) !important; }
+.breadcrumbs .current { color: #f5f5f4 !important; }
+
+/* Sidebar navigation */
+.sidebar .nav__title { color: var(--warm-gold) !important; }
+.nav__list .nav__items a:hover { color: var(--warm-link) !important; }
+
+/* "On this page" table of contents */
+.toc, .toc__menu { background-color: var(--warm-surface) !important; }
+.toc { border: 1px solid rgba(216, 185, 138, 0.28) !important; }
+.toc .nav__title {
+  background-color: var(--warm-gold) !important;
+  color: var(--warm-bg) !important;
+}
+.toc__menu a {
+  background-color: var(--warm-surface) !important;
+  color: var(--warm-link) !important;
+  border-bottom: 1px solid rgba(216, 185, 138, 0.10) !important;
+}
+.toc__menu a:hover {
+  background-color: #241a10 !important;
+  color: #f0d9a8 !important;
+}
+
+/* Footer */
+.page__footer {
+  background-color: var(--warm-footer) !important;
+  color: #b8ab99 !important;
+}
+.page__footer a { color: var(--warm-gold) !important; }
+
+/* Buttons + inline code */
+.btn--primary {
+  background-color: var(--warm-gold) !important;
+  color: var(--warm-bg) !important;
+  border-color: var(--warm-gold) !important;
+}
+.page__content code.highlighter-rouge,
+.page__content p code {
+  background-color: #241a10 !important;
+  color: #e8dcc8 !important;
+}
