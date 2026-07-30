@@ -9,13 +9,19 @@ faq:
   - q: "What is SQL Studio?"
     a: "SQL Studio is a web based SQL workbench that allows you to execute any SQL towards your database of choice, and visually design your databases. It supports SQL Server, PostgreSQL, MySQL, MariaDB, and SQLite."
   - q: "Can SQL Studio generate SQL from natural language?"
-    a: "Yes. Below the SQL editor you will find an input textbox that says 'Where the Machine Creates the Code'. Describe the query you want in plain English, click Ask, and the AI writes the SQL for you, aware of your selected database and its schema. This also works for DDL, allowing you to generate entire database structures from a description."
+    a: "Yes. Below the SQL editor you will find an input textbox that says 'Where the Machine Creates the Code'. Describe the query you want in plain English, click Ask, and the AI writes the SQL for you, aware of your selected database and its schema. This also works for DDL, allowing you to generate entire database structures from a description such as 'A CRM system with 3 tables'."
   - q: "Do I need to write DDL to create tables?"
-    a: "No. The visual designer lets you create tables, add columns, and declare foreign keys through dialogs, without writing any DDL. You can still use plain SQL DDL from the SQL view if you prefer."
+    a: "No. The visual designer lets you create tables, add columns, and declare foreign keys through dialogs, without writing any DDL. You can still use plain SQL DDL from the SQL view if you prefer, or have the AI generate the DDL for you."
   - q: "What is Safe mode?"
     a: "Safe mode prevents you from selecting more than 200 records in one go, protecting your server and browser from exhausting memory. Turn it off if you need to select more records."
   - q: "Can I save frequently used SQL statements?"
-    a: "Yes. Save any statement as a named snippet and load it later from the Load snippet dropdown. You can also import .sql files from your local machine, and export query results as CSV files."
+    a: "Yes. Save any statement as a named snippet and load it later from the Load snippet dropdown. You can also import .sql files from your local machine."
+  - q: "Can I export query results?"
+    a: "Yes. Any result set can be exported as a CSV file with one click, letting you bring your data into Excel or any other tool."
+  - q: "Does SQL Studio have autocomplete?"
+    a: "Yes, on both tables and columns. Alias your tables, write the alias followed by a dot, and click CTRL+SPACE on Windows or FN+CONTROL+SPACE on a Mac to trigger autocomplete."
+  - q: "Can I execute only part of my SQL?"
+    a: "Yes. If you select a portion of the SQL in the editor, only the selection is executed - handy when your editor contains several statements and you only want to run one."
 ---
 
 SQL Studio allows you to visually design your database, and also execute any SQL towards your database of choice.

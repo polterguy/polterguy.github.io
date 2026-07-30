@@ -12,10 +12,12 @@ faq:
     a: "An OpenAI API key. Optionally you can configure Google reCAPTCHA, although Magic ships with its own PoW-based Magic CAPTCHA, which is good enough for most."
   - q: "What is a persona?"
     a: "A template for the chatbot's system instruction. Personas with DYNAMIC in their name generate the instruction from your website's landing page, typically producing a much higher quality chatbot."
+  - q: "Can I control which pages are scraped?"
+    a: "Yes. If you provide a sub-URL such as foo.com/blogs, only pages beneath /blogs are scraped, giving you control over which parts of your site become training data."
   - q: "How do I embed the chatbot on my website?"
     a: "Once created, use the Machine Learning component's Embed button, which gives you a script tag you can paste into your website, with themes and colours you can customise."
   - q: "Can I refine the chatbot afterwards?"
-    a: "Yes. The chatbot is a machine learning model, so you manage it with the Machine Learning component - editing training data, changing its model or instruction, and monitoring its usage."
+    a: "Yes. The chatbot is a machine learning model, so you manage it with the Machine Learning component - editing training data, changing its model or instruction, adding widgets and AI functions, and monitoring its usage."
 ---
 
 The Chatbot Wizard component allows you to rapidly create an AI website chatbot powered by OpenAI that you can embed on your website. It's not as powerful as the [Machine Learning](/dashboard/machine-learning/) component, but much easier to use. You can start out with the Chatbot Wizard, for then to later configure your model with the Machine Learning component.

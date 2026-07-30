@@ -8,10 +8,14 @@ header:
 faq:
   - q: "What is the Hyperlambda Playground?"
     a: "A component that executes Hyperlambda in 'immediate mode', showing you the result instantly. It is a great place to learn Hyperlambda, and ships with a collection of example snippets you can load, study, modify and execute."
+  - q: "Can the AI write the Hyperlambda for me?"
+    a: "Yes. The 'Where the Machine Creates the Code' bar below the editor turns a plain English description into working Hyperlambda through the Hyperlambda Generator, which you can then execute immediately."
+  - q: "Does the editor have autocomplete?"
+    a: "Yes, on every slot in your cloudlet - click CTRL+SPACE on Windows or FN+CONTROL+SPACE on a Mac."
   - q: "Why does the Playground have both an input and an output section?"
     a: "Executing Hyperlambda transforms its lambda graph, similar to how XSLT transforms XML. The output section shows your code as transformed by the execution itself."
   - q: "Can I save my own snippets?"
-    a: "Yes. Click Save snippet and give it a name, building a collection of admin snippets you can re-execute at will - including snippets that generate or modify other Hyperlambda code."
+    a: "Yes. Click Save snippet and give it a name, building a collection of admin snippets you can load back with the Load snippet dropdown and re-execute at will - including snippets that generate or modify other Hyperlambda code."
 ---
 
 The Hyperlambda Playground component allows you to play with [Hyperlambda](/hyperlambda/) code, and execute your code in _"immediate mode"_, for then to see the result of your execution immediately. The Hyperlambda playground is also a nice starting point to learn Hyperlambda, since it contains a whole range of Hyperlambda snippets that somehow demonstrate Hyperlambda's capabilities, and provides examples for you as you start out learning Hyperlambda. Use the _"Load snippet…"_ dropdown to load up some snippet, study it, modify it, and then execute it - For then to afterwards see the result of the execution.

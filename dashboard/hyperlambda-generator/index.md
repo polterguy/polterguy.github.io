@@ -10,6 +10,8 @@ faq:
     a: "Magic's own proprietary SLM (Small Language Model), fine-tuned with more than 600,000 training snippets, that transforms natural language into working Hyperlambda code in typically 1.5 to 5 seconds."
   - q: "Can it hallucinate function calls?"
     a: "No. Every slot the generated code invokes is verified against the slots that actually exist in your cloudlet before the code is returned. If the model invokes something that does not exist, the code is rejected and regenerated."
+  - q: "Does it require an OpenAI API key?"
+    a: "No. Hyperlambda generation goes through our own model and is currently free of charge - no API key, and no per-token billing."
   - q: "Where can I use it?"
     a: "Everywhere code can be created in the dashboard: Hyper IDE, the Hyperlambda Playground, the Task Manager, SQL Studio, and the Generator - plus AI agents can use it over MCP to create new endpoints on demand."
   - q: "How should I write my prompts?"

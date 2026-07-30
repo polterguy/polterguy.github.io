@@ -8,8 +8,12 @@ header:
 faq:
   - q: "What is the Users and roles component?"
     a: "A graphical user interface for managing your application's users and roles, built on role based access control (RBAC)."
+  - q: "What is RBAC?"
+    a: "Role Based Access Control - all access in Magic is based upon roles, so users belonging to the same roles have access to the same parts of your backend, making access rights easy to reason about."
   - q: "How does authentication work in Magic?"
     a: "Magic uses JWT (JSON Web Token) authentication, transmitted as a Bearer token in the Authorization HTTP header. Magic can also act as an OAuth server, and supports OIDC, letting users sign in through external identity providers such as Google or Microsoft."
+  - q: "Can users sign in with Google or Microsoft?"
+    a: "Yes. Magic supports OIDC (OpenID Connect), so users can authenticate through any OIDC compliant identity provider, while still being mapped onto Magic's own internal roles and RBAC."
   - q: "How do endpoints declare who can access them?"
     a: "Each endpoint declares its own access by invoking auth.ticket.verify with a comma separated list of roles. If the user is not authenticated or lacks the role, an exception is thrown."
   - q: "Can I build my own authentication on top of Magic?"

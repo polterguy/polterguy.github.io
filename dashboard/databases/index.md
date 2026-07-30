@@ -8,12 +8,14 @@ header:
 faq:
   - q: "What is the Databases component?"
     a: "The place to manage your connection strings and databases. Connect to any external MySQL, PostgreSQL, SQL Server or MariaDB database, or create file based SQLite databases with a single click - no server required."
+  - q: "How do I connect to an external database?"
+    a: "Provide your connection string, give it a name, and click connect. If your database is hosted in Azure or AWS, you may also need to whitelist your cloudlet's IP address."
   - q: "Why must my connection string contain {database}?"
     a: "Magic needs to dynamically connect to multiple catalogues on your database server, so you exchange the database name in your connection string with the text {database}."
   - q: "Can an AI create my database?"
-    a: "Yes. Connect your cloudlet to an AI agent such as Claude over the MCP server, describe the database you want in plain English, and the orchestrating LLM creates the SQLite database and its schema for you."
-  - q: "Should I backup my SQLite databases?"
-    a: "Yes. Download a backup of your SQLite databases every now and then, so you have a local copy if something goes wrong."
+    a: "Yes, two ways: connect an AI agent such as Claude over MCP and describe your database in plain English - or use SQL Studio's 'Where the Machine Creates the Code' bar to generate the DDL, for instance from 'Create DDL for a 3 table CRM system'."
+  - q: "Can I backup and restore SQLite databases?"
+    a: "Yes. Download a backup of any SQLite database with one click, and upload a backup to restore or move a database between cloudlets."
 ---
 
 The databases component allows you to manage your connection strings, in addition to your external and internal databases. This is your goto component if you want to connect to an external database. It allows you to connect to any MySQL, PostgreSQL, SQL Server, or MariaDB database. Provide it with your connection string, give your connection string a name, and click connect.

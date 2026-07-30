@@ -6,16 +6,30 @@ header:
   og_image: /assets/images/hero/machine-learning-og.png
   image_description: Machine Learning models
 faq:
-  - q: "What is the Machine Learning component?"
-    a: "It lets you create your own private AI models by crawling your website or uploading files, turning the content into RAG training data. Under the hood it uses OpenAI, with RAG and VSS towards your own database for accurate, domain specific answers."
-  - q: "How do I train a model?"
-    a: "Create a model, then click Import to crawl a website, or upload files in formats such as XML, JSON, YAML, CSV or PDF. Once imported, click Vectorize so the data can be used for VSS lookups."
-  - q: "What is a model?"
-    a: "A collection of training snippets. When a question is asked, VSS search finds the most relevant snippets, which are passed as context to OpenAI, which answers using only that context - drastically reducing hallucinations."
-  - q: "Can I supervise how my model is used?"
-    a: "Yes. Questions and answers are stored in the History tab, letting you review and improve your model over time, and use historical requests for business intelligence or lead generation."
+  - q: "What is the Machine Learning component in Magic?"
+    a: "It allows you to create your own private AI models by crawling websites or uploading files, turning the content into RAG training data. Under the hood it uses OpenAI, combined with RAG and VSS towards your own database, giving you accurate, domain specific answers without your data ever leaving your cloudlet's database."
+  - q: "Can I import files to my model?"
+    a: "Yes. Click Import on your model and either crawl a website, or upload files in a wide variety of formats - XML, JSON, YAML, CSV, PDF and more. Each file is turned into training snippets automatically."
+  - q: "How do I create an AI chatbot from my website?"
+    a: "Create a model, click Import, provide your website's URL, and Magic crawls and scrapes the site, turning every page into training data. For an even faster start, the Chatbot Wizard on the dashboard's landing page does all of this with one click."
+  - q: "What is a training snippet?"
+    a: "One atomic piece of information, consisting of a prompt and a completion. When answering a question, Magic picks the most relevant snippets - potentially from many different sources - and transmits them as context to OpenAI, which answers using only that context."
+  - q: "What does Vectorize do, and why do I need it?"
+    a: "Vectorising creates embeddings for your training snippets, enabling VSS (Vector Similarity Search) to find the most relevant snippets for each question. You must click Vectorize on your model after importing training data, before the model can be used."
+  - q: "Does my chatbot hallucinate?"
+    a: "RAG and VSS drastically reduce hallucinations, since the model answers exclusively from your own training data instead of inventing facts. This also makes it significantly less expensive than fine-tuning."
+  - q: "Can I edit or clean training snippets after importing?"
+    a: "Yes. Every snippet can be edited manually, and the snippet editor has its own AI bar allowing you to clean, reformat, or compress individual snippets with a plain English instruction - the AI transforms the snippet and writes the result back for you."
+  - q: "Can I search through my training data?"
+    a: "Yes, both with plain text filtering and with Vector search, which finds snippets by meaning rather than keywords - useful for verifying what context your model would use for a particular question."
+  - q: "What are widgets?"
+    a: "Micro apps rendered inside the chat stream itself - forms, calculators, booking widgets, and similar. You add them from the training data tab, and the chatbot displays them in the middle of the conversation when a user's question matches the widget's prompt."
   - q: "What are AI functions?"
-    a: "Installable functions your model can invoke as an AI agent - allowing the chatbot to trigger workflows, query your database, or create training snippets, according to instructions provided by the user."
+    a: "Installable functions that turn your model into an AI agent - allowing the chatbot to query your database, trigger workflows, or create training snippets, according to instructions provided by the user in natural language."
+  - q: "How do I embed my chatbot on my website?"
+    a: "Click Embed on your model, configure theme, colours, position and behaviour, and copy the generated script tag into your website's HTML. The chatbot then runs on your site, answering from your training data."
+  - q: "Can I monitor what users ask my chatbot?"
+    a: "Yes. The History tab stores questions and answers, letting you review and improve your model over time - and use historical requests for business intelligence or lead generation. Supervised models can also be corrected by editing bad answers into new training data."
 ---
 
 Magic's Machine Learning component allows you to create your own AI based machine learning model, either by crawling your website and scraping it for data, or by manually uploading files, resulting in a private and custom _"machine learning model"_. Machine learning in Magic is built upon OpenAI's API and is similar to ChatGPT, and under the hood it's using RAG and VSS towards your own database to extract context as it's answering questions using OpenAI.
@@ -142,6 +156,12 @@ One training snippet is one such atomic piece of information. Typically as we tr
 Training snippets can be automatically created as we scrape your website, upload files, or even manually created. In addition, Magic has plugins allowing to connect to a Shopify account through its API, or a WordPress account, etc to import training data. When we setup a chatbot a lot of the work is actually related to _"washing your training data"_ to further increase the quality of the chatbot. By connecting the chatbot to semantic data using an API instead of scraping, the quality of the data typically increases 10x. However, sometimes you will have to manually edit your training snippets. The process of how to do this is shown below.
 
 ![Screenshot of editing one training snippet](/assets/images/editing-one-training-snippet.jpeg)
+
+Notice, you don't have to wash your training data by hand. The snippet editor has its own _"Where the Machine Creates the Code"_ bar, allowing you to clean, edit, or compress individual snippets after importing - provide an instruction such as _"Remove the navigation links and compress this to its essence"_, and the AI transforms the snippet for you, writing the result straight back into the editor.
+
+### Widgets
+
+The _"Widget"_ button on the training data tab allows you to add _"widgets"_ to your model. A widget is a micro app rendered _inside_ the chat stream itself - such as a form, a booking calendar, or a calculator - implemented as a training snippet that instructs the model to render the widget when relevant. After adding a widget, edit its prompt to describe when the chatbot should show it, and the AI displays the widget in the middle of the conversation when a user's question matches.
 
 ### Adding Hyperlambda code to training snippets
 

@@ -14,6 +14,8 @@ faq:
     a: "The magic:frontend:urls section declares CORS, as a comma separated list of URLs allowed to retrieve data from your backend. By default all URLs are allowed."
   - q: "Where do I configure my database connections?"
     a: "The magic:databases section holds connection strings for sqlite, mysql, pgsql and mssql, each as name/value pairs, plus a default database type."
+  - q: "What is the auth secret?"
+    a: "The magic:auth section's secret is the key used to sign your JWT tokens - it must be kept secret, and changing it invalidates all previously issued tokens."
 ---
 
 The configuration component allows you to view and edit your server's configuration settings. Your server's configuration is basically your _"appsettings.json"_ file, which is being used in all parts of the system to retrieve configuration settings, such as for instance SMTP settings when email slots are sending emails, etc.

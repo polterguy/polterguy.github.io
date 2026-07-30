@@ -7,9 +7,17 @@ header:
   image_description: The Plugins component
 faq:
   - q: "What is the Plugins component?"
-    a: "Magic's own 'App Store', letting you rapidly install plugins solving particular needs - Stripe payments, registration workflows, AI chatbot integrations for Shopify and WordPress, example SQLite databases, and more."
-  - q: "How do I install a plugin?"
-    a: "Click install on any plugin in the list, and Magic downloads and initialises it for you. You can also install your own plugins from a ZIP file."
+    a: "Magic's own 'App Store', letting you rapidly install backend micro services and applications solving particular needs - Stripe payments, registration workflows, AI chatbot integrations, MCP, OAuth, example databases, and more."
+  - q: "What types of plugins exist?"
+    a: "Two types: modules and frontends. Modules are backend micro services installed into your modules folder, while frontends are complete applications served from your frontend domain."
+  - q: "Why can't I install frontends?"
+    a: "Frontends cannot be installed if your backend and frontend dashboard run on the same host or domain - which is the case for the all-in-one (aio) image and the DigitalOcean deployment - since installed frontends need their own domain to be served from."
+  - q: "Can I see what a plugin contains before installing?"
+    a: "Yes. Click Details on any plugin to read its complete description and see exactly what it contains - for instance which workflow actions a module gives you - before deciding to install."
+  - q: "How do plugins work under the hood?"
+    a: "Installing downloads a ZIP file and unzips it into your modules folder, after which all Hyperlambda files inside its magic.startup folder are executed, taking care of initialisation such as creating databases and slots."
+  - q: "Can I modify an installed plugin?"
+    a: "Yes, you can edit its files with Hyper IDE - but if you do, you can no longer update the plugin from the App Store."
 ---
 
 The Plugins component is Magic's integrated _"AppStore"_, and allows you to install backend micro services on the fly, without interrupting normal usage. It resolves towards AINIRO's repository of plugins, that contains several pre-fabricated backend micro services, serving some generic requirement, such as for instance Stripe payments, OpenAI helpers, and registration helpers. Most plugins automatically take care of creating their databases, and other things required to initialise the plugin.
@@ -18,9 +26,9 @@ The Plugins component is Magic's integrated _"AppStore"_, and allows you to inst
 
 There are two _types_ of plugins; _modules_ and _frontends_. Modules are backend micro services, installed into your cloudlet's modules folder. Frontends are complete applications served from your frontend domain. Notice, frontends can _not_ be installed if your backend and your frontend dashboard are running on the same host or domain - which is the case for the all-in-one (aio) image and the [DigitalOcean deployment](/deploy/) - since installed frontends need their own domain to be served from.
 
-Clicking the _"Details"_ button on a plugin shows you exactly what the plugin contains before you install it - for instance which workflow actions a module gives you.
+Before installing anything, click the _"Details"_ button on a plugin. This shows you the plugin's complete description - what it does, and exactly what it contains - for instance which workflow actions a module gives you, allowing you to read through everything the plugin provides and make an informed decision before you install it.
 
-![Screenshot of the Details dialog for a plugin, listing its workflow actions](/assets/images/plugin-details.jpeg)
+![Screenshot of the Details dialog for a plugin, showing its description and workflow actions](/assets/images/plugin-details.jpeg)
 
 ## How plugins work in Magic
 

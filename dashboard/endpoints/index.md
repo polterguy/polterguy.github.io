@@ -10,6 +10,8 @@ faq:
     a: "It lets you browse every HTTP endpoint in your cloudlet and invoke them, similarly to how Swagger works - documenting your endpoints and letting you test them from the same screen."
   - q: "How do I parametrise an invocation?"
     a: "When you expand an endpoint, every argument it accepts becomes a typed input field - checkboxes for booleans, date pickers for dates, and so on. CRUD endpoints additionally expose paging, sorting, and per-column filter arguments."
+  - q: "Which payload formats are supported?"
+    a: "JSON, YAML, Hyperlambda, and XML - all with syntax highlighting - for your POST, PUT and PATCH endpoints."
   - q: "Can I get an OpenAPI specification for my endpoints?"
     a: "Yes. Every endpoint has an OpenAPI button giving you its OpenAPI specification. You can copy both the URL and the specification itself, and paste it into another orchestrator LLM or AI agent, allowing the other party to understand your backend."
   - q: "Can I test file uploads and downloads?"

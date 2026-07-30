@@ -8,8 +8,12 @@ header:
 faq:
   - q: "What is the Log component?"
     a: "It lets you browse your server's log, giving you control over events that might have consequences for your system - errors, security events, task executions, and anything your own code logs."
+  - q: "How do I find the cause of an error?"
+    a: "Filter the log to find the relevant entry, then click it - log items carrying an exception expand to reveal the complete stack trace of whatever went wrong."
   - q: "Can my own code create log entries?"
-    a: "Yes. Your Hyperlambda code can create log entries as you see fit, to record important events such as deleting records, executing tasks, or registering users."
+    a: "Yes. Your Hyperlambda code can create log entries as you see fit - including structured meta data - to record important events such as deleting records, executing tasks, or registering users."
+  - q: "How long are log items kept?"
+    a: "On AINIRO hosted cloudlets, log entries older than 2 weeks are automatically deleted by default, to avoid exhausting your cloudlet's persistent storage."
 ---
 
 The log component allows you to browse your server's log. When an important event occurs in Magic, a log entry will typically be created describing the event. Examples of such events are when users are logging in, or errors are occurring in the system for some reason.

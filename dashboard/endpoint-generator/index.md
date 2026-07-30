@@ -8,14 +8,18 @@ header:
 faq:
   - q: "What does the Endpoint Generator do?"
     a: "It reads metadata from your database and automatically generates a complete CRUD web API wrapping it, secured according to your instructions. What would normally take weeks of coding is done in seconds."
+  - q: "Which databases can it wrap?"
+    a: "Any MySQL, PostgreSQL, SQL Server, MariaDB, or SQLite database - including existing legacy databases, which makes it a fast way to put a modern, secure API on top of an old system."
   - q: "Which endpoint types can it generate?"
     a: "POST, GET, PUT and DELETE endpoints for each table, plus additional GET endpoints such as count, aggregate, distinct, and a keyword density search endpoint."
   - q: "What is keyword density search?"
     a: "A search endpoint that ranks each row by how many of your keywords it matches, sorting by most matches first. It is a good substitute for RAG and VSS - no embeddings, no vector database, no AI inference - yet often yields surprisingly relevant results."
+  - q: "Is the generated API secure?"
+    a: "Yes. You declare which roles can invoke each verb, and the generator takes care of authentication, authorisation, validators, and referential integrity - plus optional logging of create, update and delete invocations."
   - q: "Does caching apply to all generated endpoints?"
     a: "No. Caching, implying the Cache-Control HTTP header, is only applied to GET endpoints in this component."
   - q: "Can I wrap my own SQL in an endpoint?"
-    a: "Yes. The SQL endpoint tab lets you provide any SQL statement, declare arguments you reference as @name in the SQL, choose an HTTP verb and authorisation, and generate a secure endpoint wrapping it. The AI prompt bar can even write the SQL for you."
+    a: "Yes. The SQL endpoint tab lets you provide any SQL statement, declare arguments you reference as @name in the SQL, choose an HTTP verb and authorisation, and generate a secure endpoint wrapping it. The AI prompt bar can even write the SQL for you, and you can load saved snippets or import .sql files."
 ---
 
 The Endpoint Generator component allows you to automatically generate an HTTP CRUD web API wrapping your database of choice. This component is one of the core components of the Low-Code and software development automation parts of Magic, and allows you to generate a web API wrapping your database automatically. The endpoint generator component works by reading meta data from your database, which it then uses to generate Hyperlambda HTTP endpoints for you automatically.
