@@ -38,7 +38,7 @@ You have to write _"formal specifications using technical language"_, in order f
 
 ## How to use it
 
-If you go to Hyper IDE for example, and you create a new Hyperlambda file (extension ".hl"), you can write a description of what you want the code to do for you. Then select your description and click the _"Generate"_ button, and the description will be sent through our LLM, transforming your English to working Hyperlambda that replaces your selection.
+If you go to Hyper IDE for example, and you create a new Hyperlambda file (extension ".hl"), you can simply write normal text into the file, describing what you want the code to do. Then select your text and click the _"Generate"_ button, and your description is sent through our LLM, transforming your English into working Hyperlambda that replaces your selection. This makes the workflow as natural as writing a comment; describe the intent, select it, generate - and the comment becomes code.
 
 **DISCLAIMER** - Magic and Hyperlambda isn't really an _"all purpose language"_, it's an orchestration language. If you're using it for complex algorithms, you're doing something wrong. So whatever description you supply, must be something that is a good fit for Hyperlambda. Below is an example of the type of code the generator produces from a similar prompt.
 
@@ -71,9 +71,19 @@ Notice, if the AI creates wrong code, you can press `CTRL+Z` (or `CMD+Z` on a Ma
 
 Below your main code view in Hyper IDE and the Hyperlambda Playground, you can see an input textbox that says _"Where the Machine Creates the Code"_. This bar allows you to provide change instructions to the LLM. Examples of prompts you might want to test can be found below.
 
+![The Where the Machine Creates the Code prompt bar](/assets/images/ask-bar-cropped.png)
+
 * Add a name argument and use this when sending the email
 * Make the title argument mandatory
 * Log all incoming arguments
 * Etc ...
+
+## Security
+
+The generator is built to be safe to hand to an AI - or to your users - without supervision.
+
+* **It cannot hallucinate function invocations** - The generator's vocabulary is closed; every slot the generated code invokes is verified against the slots that actually exist in your cloudlet, and code invoking anything else is rejected and regenerated. Read the deep-dive at [hyperlambda.dev](https://hyperlambda.dev/blog/zero-hallucination-code-generation-a-vocabulary-your-ai-cannot-escape).
+* **Generated endpoints are secured** - Endpoints created by the generator declare their own authorisation requirements through **[auth.ticket.verify]**, so RBAC applies to AI-generated code exactly as it applies to code you write yourself.
+* **Untrusted code can be sandboxed** - Hyperlambda's **[whitelist]** slot lets you execute partially untrusted Hyperlambda with an explicitly declared vocabulary, so even dynamically generated code can be constrained to exactly the slots you allow. See [how whitelist executes partially untrusted Hyperlambda safely](https://hyperlambda.dev/blog/how-i-use-whitelist-to-execute-partially-untrusted-hyperlambda-safely).
 
 {% include faq.html %}

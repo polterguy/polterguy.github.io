@@ -9,6 +9,10 @@ header:
 
 Below are tutorials demonstrating hands on how to get started with Magic's Low-Code, No-Code, and AI-based software development automation concepts.
 
+## Deploy to production in one copy-paste
+
+* [From Zero to Production Backend with HTTPS in One Copy-Paste](https://hyperlambda.dev/blog/magic-cloud-digitalocean-one-copy-paste) - Deploy Magic to DigitalOcean with a single cloud-init file, including automatic Let's Encrypt HTTPS
+
 ## MCP and AI agents
 
 * [How to connect the MCP server](/tutorials/how-to-connect-the-mcp-server/) - Connect Claude, Claude Code, Cursor, or any other MCP client to your cloudlet

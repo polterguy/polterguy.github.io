@@ -24,7 +24,7 @@ faq:
 
 Hyper IDE is your _"goto component"_ when you want to create your own modules using Magic and Hyperlambda. It's a web based IDE, allowing you to edit your code, create new modules, and contains a lot of things you're used to from a traditional IDE. It is also the natural extension of Magic's [endpoint generator](/dashboard/endpoint-generator/), since it allows you to edit the Hyperlambda endpoint files after Magic has generated your CRUD backend. In addition, Hyper IDE allows you to use AI to generate code using _"vibe coding"_ constructs.
 
-![Screenshot of editing a Hyperlambda file in Hyper IDE](/images/og-hyper-ide-2.jpg)
+![Screenshot of editing Hyperlambda code in Hyper IDE with autocomplete triggered](/assets/images/hyper-ide-hl-autocomplete.jpeg)
 
 ## The preferred way - MCP and an AI orchestrator
 
@@ -63,7 +63,9 @@ Magic does not separate between code creation and your code's production environ
 
 ## Executing Hyperlambda from Hyper IDE
 
-Hyper IDE allows you to execute Hyperlambda without ever leaving your IDE by clicking the _"Execute"_ button. This makes it easy for you to test your code as you are creating it, and is the closest you come to the equivalent of a _"debugger"_ in Magic.
+Hyper IDE allows you to execute Hyperlambda without ever leaving your IDE by clicking the _"Execute"_ button. This makes it easy for you to test your code as you are creating it, and is the closest you come to the equivalent of a _"debugger"_ in Magic. When executing an API endpoint file, you can parametrise the invocation, and the result is shown with its HTTP status code, execution time, and response body.
+
+![Screenshot of executing an API endpoint from Hyper IDE, showing the response](/assets/images/hyper-ide-execute-endpoint.jpeg)
 
 ## Integrated Hyperlambda AI help
 
@@ -71,15 +73,25 @@ If you mark some Hyperlambda code in Hyper IDE and click F1, it will invoke AINI
 
 ![Screenshot of Hyper IDE's integrated Hyperlambda F1-based help component](/assets/images/hyperlambda-ai-help.jpeg)
 
+## Creating full stack apps
+
+Hyper IDE isn't limited to backend code - you can create complete full stack applications from it. Since your cloudlet serves static files from `/etc/www/`, and the _"Where the Machine Creates the Code"_ bar generates HTML, CSS and JavaScript too, you can describe the frontend you want in plain English and have the AI build it - wired straight to the CRUD API the [Endpoint Generator](/dashboard/endpoint-generator/) created for your database. The CRM app below was built exactly this way; a SQLite database with 3 tables, a secure API wrapping it, and a working frontend - all generated from natural language.
+
+![A full stack CRM app with clients, notes and emails, generated from natural language](/assets/images/home-grown-app.png)
+
 ## Turning your endpoints into AI functions
 
 Hyper IDE also bridges your code and your [Machine Learning models](/dashboard/machine-learning/). Every Hyperlambda endpoint file has a _"Create AI function"_ action, adding that endpoint as an AI function to a model you select - allowing your chatbot or AI agent to invoke it. Folders have the same action, converting _all_ Hyperlambda endpoint files inside the folder into AI functions in one go. Endpoint files also have an _"OpenAPI"_ action, showing you the endpoint's OpenAPI specification.
+
+![Screenshot of creating an AI function from a Hyperlambda file, adding it to a machine learning model](/assets/images/hyper-ide-create-ai-function.jpeg)
 
 ## Editing web pages and static files
 
 Hyper IDE isn't only for Hyperlambda. Anything you place under the `/etc/www/` folder is served directly from the root of your cloudlet's domain by the backend, which turns Magic into a web server too. A file saved as `/etc/www/index.html` is served from your site's root, `/etc/www/css/main.css` from `/css/main.css`, and so on. This means you can host a landing page, a complete static website, or the HTML, CSS and JavaScript assets for a single-page application straight from your cloudlet, right next to the APIs that power it. Notice, hidden files and folders - those starting with a dot - are _not_ served, with the exception of `.well-known`, which the backend deliberately exposes so discovery documents remain publicly reachable.
 
 You edit these files the same way you edit any other file in Hyper IDE. Create or open an HTML, CSS, JavaScript, Markdown, or image file underneath `/etc/www/`, and edit it either the good old fashioned way by typing, or with the AI constructs described above - the _"Where the Machine Creates the Code"_ bar and the _"Generate"_ button work for HTML, CSS and JavaScript too. Since these are not Hyperlambda, they're generated through OpenAI, so they require an OpenAI API key in your configuration.
+
+![Screenshot of editing a static web file underneath /etc/www/ in Hyper IDE](/assets/images/hyper-ide-editing-web.jpeg)
 
 When you're editing a file that lives under `/etc/www/`, Hyper IDE gives you a _"Preview"_ action on the file, that opens the served page in a new browser tab, allowing you to see your changes exactly as a visitor to your site would.
 

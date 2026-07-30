@@ -36,9 +36,15 @@ When you click _"Invoke"_, the component shows you the response; its HTTP status
 
 ## OpenAPI specifications
 
-Every endpoint has an _"OpenAPI"_ button, giving you the OpenAPI specification for that particular endpoint - and every _module_ has one too, giving you the specification for all endpoints in the module at once. You can copy both the OpenAPI URL and the specification itself. This is particularly useful when working with AI - copy and paste the OpenAPI specification into some other orchestrator LLM or AI agent, and the other party immediately understands your backend; what endpoints exist, what arguments they take, and what they return - allowing the AI to correctly invoke your API, or generate a frontend consuming it.
+Every endpoint has an _"OpenAPI"_ button, giving you the OpenAPI specification for that particular endpoint - and every _module_ has one too, giving you the specification for all endpoints in the module at once.
+
+![Screenshot of the OpenAPI specification for the chinook module](/assets/images/endpoints-openapi-chinook.jpeg) You can copy both the OpenAPI URL and the specification itself. This is particularly useful when working with AI - copy and paste the OpenAPI specification into some other orchestrator LLM or AI agent, and the other party immediately understands your backend; what endpoints exist, what arguments they take, and what they return - allowing the AI to correctly invoke your API, or generate a frontend consuming it.
 
 The component also allows for uploading and downloading of files - you can upload files to endpoints accepting file uploads, and download the files an endpoint returns, allowing you to test binary and document endpoints directly from the component.
+
+## Your endpoints as MCP tools
+
+Notice, if the [MCP server](/tutorials/how-to-connect-the-mcp-server/) is installed, all endpoints in your system are automatically added as _"tools"_ to the MCP server - implying every endpoint you see in this component is also invocable by a connected AI agent. MCP tool invocations obey the same RBAC requirements as everything else; an agent can only invoke the endpoints its authenticated user's roles permit.
 
 ## Hyperlambda endpoint meta data
 

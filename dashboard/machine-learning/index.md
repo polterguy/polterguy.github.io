@@ -99,7 +99,43 @@ A single machine learning model has dozens of configuration settings, for everyt
 
 ![Screenshot of how to configure your machine learning model](/assets/images/configure-machine-learning-model.jpeg)
 
-The most important setting is the _"System message"_, found further down on the _"General"_ tab - just scroll down to find it. This becomes the equivalent of a ChatGPT _"instruction"_, telling the model how to behave. Below is an example system instruction to give you an example.
+The most important setting is the _"System message"_, found further down on the _"General"_ tab - just scroll down to find it. This becomes the equivalent of a ChatGPT _"instruction"_, telling the model how to behave. Clicking _"Edit system instruction"_ opens a large dedicated editor for it.
+
+![Screenshot of editing the system instruction in its dedicated editor](/assets/images/system-instruction-editing.png)
+
+#### Adding AI functions to your system instruction
+
+Inside the system instruction editor you'll find an _"AI function"_ button, listing every AI function available in your cloudlet, and appending the one you choose directly into your system instruction.
+
+![Screenshot of adding an AI function to the system instruction](/assets/images/ml-instruction-add-function.jpeg)
+
+The difference between this and adding an AI function as a training snippet is important. A function added as a training snippet is a _RAG function_ - it only becomes part of the AI's context if the user's question happens to match it through a VSS lookup, implying the AI might _miss_ the function if the question is phrased differently. A function added to the system instruction on the other hand is _always_ transmitted to the AI, making it a permanent part of the agent's capabilities regardless of what the user asks. Use the system instruction for the handful of functions your agent should always be able to invoke, and training snippets for large function libraries where a semantic match is good enough.
+
+Below is an example system instruction with an AI function declaration, that you can copy and paste as a starting point for your own agent.
+
+<pre>
+# Customer service agent
+
+You are a customer service agent for ACME Inc. Answer politely and
+succinctly, and use your functions when they are relevant to the
+user's question.
+
+## Count albums
+
+Counts albums in the chinook database, optionally filtered by title.
+Invoke this function when the user asks how many albums exist.
+
+```plaintext
+___
+FUNCTION_INVOCATION[/modules/chinook/Album-count.get.hl]:
+{
+  "Album.Title.like": "[string]"
+}
+___
+```
+</pre>
+
+Notice, below is an example of the type of instruction the _"System message"_ setting expects.
 
 > You are Frank, a sales executive for Acme, Inc. Follow these rules when replying to my questions:
 > 
