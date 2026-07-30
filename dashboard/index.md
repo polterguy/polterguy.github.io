@@ -21,6 +21,14 @@ When you log in, the dashboard typically resembles the following.
 
 Below the key numbers, the landing page gives you quick access to the things you'll reach for most often. The _Chatbot Wizard_ crawls a website, turns what it finds into training data, and gives you an embeddable AI chatbot in a few minutes. A _"What everything does"_ section explains every part of your cloudlet and where to find it, and a _Tasks_ section lets you execute your scheduled tasks on demand.
 
+## Create an AI chatbot
+
+The fastest way to experience Magic's AI capabilities is to create a chatbot straight from the dashboard's landing page. Provide a website URL to the Chatbot Wizard, choose a model and a persona, and click _"Create chatbot"_. The wizard crawls the site, scrapes each page it finds, and turns the content into training data (RAG data) for your chatbot - reporting its progress in real time as it works its way through the site.
+
+![Screenshot of the dashboard crawling and scraping a website to create an AI chatbot](/assets/images/scraping-website-for-chatbot-data.png)
+
+A few minutes later your chatbot is ready, and you can embed it on your website, or use it as the foundation for an AI agent. From here you manage its training data and configuration using the [Machine Learning component](/dashboard/machine-learning/). Read more about the entire process in the [Chatbot Wizard documentation](/dashboard/chatbot-wizard/).
+
 ## Components
 
 Below is the documentation for each individual dashboard component.

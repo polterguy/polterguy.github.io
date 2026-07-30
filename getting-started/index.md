@@ -39,18 +39,18 @@ function hlCopyCmd(btn){
 <style>
 .hl-terminal{
   margin:1.6em 0;
-  border:1px solid rgba(255,255,255,.12);
+  border:1px solid rgba(216,185,138,.25);
   border-radius:12px;
-  background:#181b21;
+  background:#1c140c;
   overflow:hidden;
-  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
   font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;
 }
 .hl-terminal-bar{
   display:flex;align-items:center;gap:.55em;
   padding:.7em .9em;
-  background:#20242c;
-  border-bottom:1px solid rgba(255,255,255,.08);
+  background:#241a10;
+  border-bottom:1px solid rgba(216,185,138,.15);
 }
 .hl-dot{width:12px;height:12px;border-radius:50%;display:inline-block;flex:0 0 auto;}
 .hl-dot-red{background:#ff5f57;}
@@ -58,22 +58,22 @@ function hlCopyCmd(btn){
 .hl-dot-green{background:#28c840;}
 .hl-copy{
   margin-left:.45em;
-  border:1px solid rgba(255,255,255,.22);
-  background:transparent;color:#e8eaed;
+  border:1px solid rgba(216,185,138,.35);
+  background:transparent;color:#ece6da;
   font-family:inherit;font-size:.78em;font-weight:600;
   padding:.28em .85em;border-radius:999px;cursor:pointer;
   transition:background .15s,border-color .15s,color .15s;
 }
-.hl-copy:hover{background:rgba(124,92,255,.18);border-color:#7c5cff;}
-.hl-copy.hl-copied{background:#7c5cff;border-color:#7c5cff;color:#fff;}
-.hl-terminal-label{margin-left:auto;color:#8b93a1;font-size:.8em;letter-spacing:.02em;}
+.hl-copy:hover{background:rgba(216,185,138,.16);border-color:#d8b98a;}
+.hl-copy.hl-copied{background:#d8b98a;border-color:#d8b98a;color:#17110b;}
+.hl-terminal-label{margin-left:auto;color:#8a7f70;font-size:.8em;letter-spacing:.02em;}
 .hl-terminal-body{
   padding:1em 1.1em;
   overflow-x:auto;
-  color:#e8eaed;font-size:.92em;line-height:1.6;
+  color:#ece6da;font-size:.92em;line-height:1.6;
   white-space:pre;
 }
-.hl-terminal-body::before{content:"$ ";color:#7c5cff;font-weight:700;}
+.hl-terminal-body::before{content:"$ ";color:#d8b98a;font-weight:700;}
 .hl-terminal-body code{background:none;border:none;color:inherit;padding:0;font-size:inherit;font-family:inherit;}
 </style>
 
