@@ -94,6 +94,10 @@ Every one of these runs with the roles of the user who consented, so the AI can 
 
 Because the Hyperlambda Generator is itself available over MCP, a connected AI client can create new endpoints for you — you describe what you want in plain English, the generator creates the Hyperlambda, and the new endpoint immediately becomes available as a tool. This turns your cloudlet into a backend the AI can both _use_ and _extend_, while your data stays in your own database, behind your own authorization.
 
+Below is what this looks like from Claude's side — a single Magic MCP connector exposing 220 tools; every endpoint in the cloudlet, including the CRUD endpoints the AI itself generated, each with its own per-tool permission settings.
+
+![Screenshot of all connected tools in Claude over a Magic MCP server](/assets/images/all-mcp-tools.png)
+
 Notice, some clients cache the tool list at the moment you connect. If you have created new endpoints and they don't show up as tools, disconnect and reconnect the MCP server in your client to refresh its tool list.
 
 ## Troubleshooting
