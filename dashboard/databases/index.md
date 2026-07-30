@@ -26,7 +26,7 @@ In addition to allowing you to connect to external databases, this is also the p
 
 Besides connecting to external databases, you can create your own file-based SQLite databases directly from this component — no server or connection string required. Just give your database a name, and Magic creates it for you.
 
-Once created, you can design your database visually in [SQL Studio](/dashboard/sql-studio/), adding tables, columns, and foreign keys through a graphical designer without writing any DDL by hand. You can of course also execute SQL against your database directly if you prefer.
+Once created, you can design your database visually in [SQL Studio](/dashboard/sql-studio/), adding tables, columns, and foreign keys through a graphical designer without writing any DDL by hand. You can of course also execute SQL against your database directly if you prefer - and you don't even have to write the DDL yourself. SQL Studio's _"Where the Machine Creates the Code"_ bar takes natural language input and generates the schema for you - ask it for something such as _"Create DDL for a 3 table CRM system"_, and execute the result.
 
 You can even let an AI do it for you. If you connect your cloudlet to an AI agent such as Claude over the [MCP server](/tutorials/how-to-connect-the-mcp-server/), you can describe the database you want in plain English, and have the orchestrating LLM create the SQLite database and its schema for you.
 

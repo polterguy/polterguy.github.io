@@ -16,6 +16,12 @@ The Plugins component is Magic's integrated _"AppStore"_, and allows you to inst
 
 ![Screenshot of the plugins component allowing you to extend your cloudlet](/images/bazaar.jpg)
 
+There are two _types_ of plugins; _modules_ and _frontends_. Modules are backend micro services, installed into your cloudlet's modules folder. Frontends are complete applications served from your frontend domain. Notice, frontends can _not_ be installed if your backend and your frontend dashboard are running on the same host or domain - which is the case for the all-in-one (aio) image and the [DigitalOcean deployment](/deploy/) - since installed frontends need their own domain to be served from.
+
+Clicking the _"Details"_ button on a plugin shows you exactly what the plugin contains before you install it - for instance which workflow actions a module gives you.
+
+![Screenshot of the Details dialog for a plugin, listing its workflow actions](/assets/images/plugin-details.jpeg)
+
 ## How plugins work in Magic
 
 When you install a plugin, a ZIP file is downloaded from our plugins repository, and unzipped into your modules folder. After unzipping the file, all Hyperlambda files inside the _"magic.startup"_ folder will be automatically executed, allowing for startup and installation logic. And in fact, if you create your own micro service module using Hyperlambda, you should create such startup folders yourself, where you initialise your plugin, by creating slots your module depends upon, creating its initial database if it's needing a database, etc.

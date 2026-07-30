@@ -16,7 +16,9 @@ The log component allows you to browse your server's log. When an important even
 
 ![Screenshot of Magic's integrated log component](/images/log.jpg)
 
-You can also filter your server's log, look up specific items, to find bugs happening as your system is being used. Notice, if you created a cloudlet at [AINIRO](https://ainiro.io), by default all log entries older than 2 weeks will be automatically deleted to avoid exhausting your cloudlet's persistent storage.
+You can also filter your server's log, look up specific items, to find bugs happening as your system is being used. Log items carrying an exception can be expanded by clicking them, revealing the complete stack trace of whatever went wrong - which combined with filtering makes tracking down bugs in your system much easier.
+
+![Screenshot of an expanded log item showing the complete stack trace of an error](/assets/images/log-expanded.jpeg) Notice, if you created a cloudlet at [AINIRO](https://ainiro.io), by default all log entries older than 2 weeks will be automatically deleted to avoid exhausting your cloudlet's persistent storage.
 
 ## Creating your own log items from Hyperlambda
 

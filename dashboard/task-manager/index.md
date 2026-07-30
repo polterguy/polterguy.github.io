@@ -18,11 +18,15 @@ faq:
 
 The Task Manager component allows you to create and administrate persisted Hyperlambda tasks, and/or schedule tasks for executing, either in a repeating pattern somehow, or at an exact date and time in the future. A Magic task is just a snippet of Hyperlambda code, that is persisted into your Magic database, and such can be recalled at any point in the future to be executed at will.
 
-![Screenshot of how to create a Hyperlambda task](/images/scheduling-task.jpg)
+![Screenshot of how to create a Hyperlambda task](/images/scheduling-tasks.jpg)
 
 ## Creating tasks with natural language
 
 You don't need to write the Hyperlambda for your tasks yourself. Below the code editor in the task editor you'll find an input textbox that says _"Where the Machine Creates the Code"_. Describe what you want your task to do in plain English - for instance _"Delete all log items older than 14 days"_ - click _"Ask"_, and the [Hyperlambda Generator](/dashboard/hyperlambda-generator/) transforms your description into working Hyperlambda that replaces the content of the editor. If the task already contains code, your prompt is treated as a change instruction, allowing you to modify existing tasks the same way. This makes the Task Manager fully usable without knowing any Hyperlambda at all.
+
+If you prefer writing the code yourself, the editor gives you autocomplete on all slots that exist in your cloudlet - click CTRL+SPACE on Windows or FN+CONTROL+SPACE on a Mac while editing a task, and choose from the list of matching slots.
+
+![Screenshot of editing an existing task with autocomplete triggered, showing matching slots](/assets/images/task-editing-autocomplete.jpeg)
 
 ## The idea behind the task component
 
@@ -36,7 +40,7 @@ Your tasks will be saved into your Magic database and its table called _"tasks"_
 
 Tasks can be scheduled according to a whole range of different patterns. First of all you can schedule a task to be executed at some specific date and time in the future. This is done by simply choosing a date and time in the future when you want your task to execute.
 
-![Screenshot of scheduling a Hyperlambda task to execute at a specific date in the future](/images/scheduling-tasks.jpg)
+![Screenshot of scheduling a Hyperlambda task to execute at a specific date in the future](/images/scheduling-task.jpg)
 
 In addition to scheduling a task to be executed at a specific date and time in the future, you can also schedule your task to be repeated according to some sort of repetition pattern. The simplest pattern here is _"every n unit"_, where n can be any integer, and unit can be any of seconds, minutes, hours, days, weeks and months.
 
