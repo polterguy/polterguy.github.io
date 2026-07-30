@@ -13,6 +13,8 @@ Such execution trees can be automatically created by the machine itself to a muc
 
 > Where the Machine Creates the Code
 
+Notice, you don't need to understand Hyperlambda to use Magic. The [Hyperlambda Generator](/dashboard/hyperlambda-generator/) - our own SLM fine-tuned with more than 600,000 training snippets - transforms plain English into working Hyperlambda in seconds, and it cannot hallucinate function invocations. You'll find it everywhere in the dashboard where code can be created; in [Hyper IDE](/dashboard/hyper-ide/), the [Hyperlambda Playground](/dashboard/hyperlambda-playground/), and the [Task Manager](/dashboard/task-manager/) - And AI agents can use it over [MCP](/tutorials/how-to-connect-the-mcp-server/) to create new endpoints for you. Reading Hyperlambda is much easier than writing it, so feel free to treat the rest of this document as background material rather than something you must master.
+
 Hyperlambda is implemented in C# and runs on .Net version 10, but you rarely have to consider this, unless you want to extend Hyperlambda with your own keywords, or use it as a DSL.
 
 ## Hyperlambda example
