@@ -5,6 +5,11 @@ header:
   image: /assets/images/hero/plugins-dash.png
   og_image: /assets/images/hero/plugins-dash-og.png
   image_description: The Plugins component
+faq:
+  - q: "What is the Plugins component?"
+    a: "Magic's own 'App Store', letting you rapidly install plugins solving particular needs - Stripe payments, registration workflows, AI chatbot integrations for Shopify and WordPress, example SQLite databases, and more."
+  - q: "How do I install a plugin?"
+    a: "Click install on any plugin in the list, and Magic downloads and initialises it for you. You can also install your own plugins from a ZIP file."
 ---
 
 The Plugins component is Magic's integrated _"AppStore"_, and allows you to install backend micro services on the fly, without interrupting normal usage. It resolves towards AINIRO's repository of plugins, that contains several pre-fabricated backend micro services, serving some generic requirement, such as for instance Stripe payments, OpenAI helpers, and registration helpers. Most plugins automatically take care of creating their databases, and other things required to initialise the plugin.
@@ -50,3 +55,5 @@ Below is the catalogue of plugins currently available from the AppStore. The lis
 * __woocommerce__ - Integrate with WooCommerce to import products as training snippets.
 * __wordpress__ - Import WordPress pages and posts through the REST API to create semantic training content.
 * __xpert-system__ - The React and TypeScript AI Expert System chat frontend, with streaming, OIDC, Stripe, white-labeling, and rich Markdown rendering.
+
+{% include faq.html %}

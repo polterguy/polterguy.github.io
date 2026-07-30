@@ -5,6 +5,15 @@ header:
   image: /assets/images/hero/task-manager.png
   og_image: /assets/images/hero/task-manager-og.png
   image_description: The Task Manager
+faq:
+  - q: "What is a task in Magic?"
+    a: "A task is a snippet of Hyperlambda code persisted into your database. It can be executed by a trigger elsewhere in your system, at a specific future date, or repeatedly on a schedule."
+  - q: "Can I create tasks without knowing Hyperlambda?"
+    a: "Yes. The 'Where the Machine Creates the Code' bar below the task editor turns a plain English description - such as 'Delete all log items older than 14 days' - into working Hyperlambda for you."
+  - q: "What scheduling patterns are supported?"
+    a: "A specific date and time, every n seconds/minutes/hours/days/weeks/months, or custom patterns for month/day (MM.dd.HH.mm.ss) and weekday (ww.HH.mm.ss) repetitions, including multiple values separated by the pipe character."
+  - q: "What happens to my tasks if the server reboots?"
+    a: "Tasks and their schedules live in your database, so they are automatically re-scheduled when your server restarts."
 ---
 
 The Task Manager component allows you to create and administrate persisted Hyperlambda tasks, and/or schedule tasks for executing, either in a repeating pattern somehow, or at an exact date and time in the future. A Magic task is just a snippet of Hyperlambda code, that is persisted into your Magic database, and such can be recalled at any point in the future to be executed at will.
@@ -42,4 +51,4 @@ To understand which repetition pattern is which, simply count the number of peri
 
 To understand tasks more in detail, you can read about the [magic.lambda.scheduler](/plugins/magic.lambda.scheduler/).
 
-
+{% include faq.html %}

@@ -5,6 +5,17 @@ header:
   image: /assets/images/hero/chatbot-wizard.png
   og_image: /assets/images/hero/chatbot-wizard-og.png
   image_description: The Chatbot Wizard
+faq:
+  - q: "What is the Chatbot Wizard?"
+    a: "The fastest way to create an AI website chatbot. Provide your website URL, and the wizard crawls the site, turns what it finds into training data, and gives you an embeddable chatbot a few minutes later."
+  - q: "What do I need before creating a chatbot?"
+    a: "An OpenAI API key. Optionally you can configure Google reCAPTCHA, although Magic ships with its own PoW-based Magic CAPTCHA, which is good enough for most."
+  - q: "What is a persona?"
+    a: "A template for the chatbot's system instruction. Personas with DYNAMIC in their name generate the instruction from your website's landing page, typically producing a much higher quality chatbot."
+  - q: "How do I embed the chatbot on my website?"
+    a: "Once created, use the Machine Learning component's Embed button, which gives you a script tag you can paste into your website, with themes and colours you can customise."
+  - q: "Can I refine the chatbot afterwards?"
+    a: "Yes. The chatbot is a machine learning model, so you manage it with the Machine Learning component - editing training data, changing its model or instruction, and monitoring its usage."
 ---
 
 The Chatbot Wizard component allows you to rapidly create an AI website chatbot powered by OpenAI that you can embed on your website. It's not as powerful as the [Machine Learning](/dashboard/machine-learning/) component, but much easier to use. You can start out with the Chatbot Wizard, for then to later configure your model with the Machine Learning component.
@@ -56,3 +67,5 @@ The wizard reports its progress as it crawls your site and turns the pages into 
 If you want to see what the different chatbot themes look like, you can try all different themes [here](https://ainiro.io/blog/try-our-chatbot-themes).
 
 When you're done with the above you probably want to use the [Machine Learning component](/dashboard/machine-learning/) to further configure and manage your chatbot.
+
+{% include faq.html %}

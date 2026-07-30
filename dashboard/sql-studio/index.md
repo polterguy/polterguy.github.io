@@ -5,6 +5,17 @@ header:
   image: /assets/images/hero/sql-studio.png
   og_image: /assets/images/hero/sql-studio-og.png
   image_description: SQL Studio
+faq:
+  - q: "What is SQL Studio?"
+    a: "SQL Studio is a web based SQL workbench that allows you to execute any SQL towards your database of choice, and visually design your databases. It supports SQL Server, PostgreSQL, MySQL, MariaDB, and SQLite."
+  - q: "Can SQL Studio generate SQL from natural language?"
+    a: "Yes. Below the SQL editor you will find an input textbox that says 'Where the Machine Creates the Code'. Describe the query you want in plain English, click Ask, and the AI writes the SQL for you, aware of your selected database and its schema. This also works for DDL, allowing you to generate entire database structures from a description."
+  - q: "Do I need to write DDL to create tables?"
+    a: "No. The visual designer lets you create tables, add columns, and declare foreign keys through dialogs, without writing any DDL. You can still use plain SQL DDL from the SQL view if you prefer."
+  - q: "What is Safe mode?"
+    a: "Safe mode prevents you from selecting more than 200 records in one go, protecting your server and browser from exhausting memory. Turn it off if you need to select more records."
+  - q: "Can I save frequently used SQL statements?"
+    a: "Yes. Save any statement as a named snippet and load it later from the Load snippet dropdown. You can also import .sql files from your local machine, and export query results as CSV files."
 ---
 
 SQL Studio allows you to visually design your database, and also execute any SQL towards your database of choice.
@@ -85,3 +96,5 @@ SQL Studio's designer works transparently towards all database types, implying y
 ## How to create a database using SQL Studio
 
 You cannot actually create a database with SQL Studio. This needs to be done using the [Databases menu item](/dashboard/databases/) below the _"Create"_ section. However, once you have created a database, you can use SQL Studio to create tables in it, and modify these as you see fit.
+
+{% include faq.html %}

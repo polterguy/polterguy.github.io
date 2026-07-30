@@ -5,6 +5,15 @@ header:
   image: /assets/images/hero/databases.png
   og_image: /assets/images/hero/databases-og.png
   image_description: The Databases component
+faq:
+  - q: "What is the Databases component?"
+    a: "The place to manage your connection strings and databases. Connect to any external MySQL, PostgreSQL, SQL Server or MariaDB database, or create file based SQLite databases with a single click - no server required."
+  - q: "Why must my connection string contain {database}?"
+    a: "Magic needs to dynamically connect to multiple catalogues on your database server, so you exchange the database name in your connection string with the text {database}."
+  - q: "Can an AI create my database?"
+    a: "Yes. Connect your cloudlet to an AI agent such as Claude over the MCP server, describe the database you want in plain English, and the orchestrating LLM creates the SQLite database and its schema for you."
+  - q: "Should I backup my SQLite databases?"
+    a: "Yes. Download a backup of your SQLite databases every now and then, so you have a local copy if something goes wrong."
 ---
 
 The databases component allows you to manage your connection strings, in addition to your external and internal databases. This is your goto component if you want to connect to an external database. It allows you to connect to any MySQL, PostgreSQL, SQL Server, or MariaDB database. Provide it with your connection string, give your connection string a name, and click connect.
@@ -30,3 +39,5 @@ If you're hosting your database in for instance Azure or AWS, you might also hav
 ## Backup your SQLite databases
 
 Every now and then, you should download a backup of your SQLite databases to make sure you've got a local backup if something goes wrong. We have global backups of our K8S volumes as a whole, but it might also be beneficial to have local backups in your own machine too.
+
+{% include faq.html %}

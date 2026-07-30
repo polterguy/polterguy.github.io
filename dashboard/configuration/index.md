@@ -5,6 +5,15 @@ header:
   image: /assets/images/hero/configuration.png
   og_image: /assets/images/hero/configuration-og.png
   image_description: The Configuration component
+faq:
+  - q: "What is the Configuration component?"
+    a: "It lets you view and edit your server's configuration - the appsettings.json file used throughout the system for settings such as SMTP, OpenAI, database connection strings, and authentication."
+  - q: "Is it dangerous to edit the configuration?"
+    a: "You should be careful, since erroneous configuration can stop your system from working or weaken its security. The component refuses to save invalid JSON, and provides helper dialogs for the most important sections such as OpenAI, SMTP and reCAPTCHA."
+  - q: "How do I restrict which frontends can call my backend?"
+    a: "The magic:frontend:urls section declares CORS, as a comma separated list of URLs allowed to retrieve data from your backend. By default all URLs are allowed."
+  - q: "Where do I configure my database connections?"
+    a: "The magic:databases section holds connection strings for sqlite, mysql, pgsql and mssql, each as name/value pairs, plus a default database type."
 ---
 
 The configuration component allows you to view and edit your server's configuration settings. Your server's configuration is basically your _"appsettings.json"_ file, which is being used in all parts of the system to retrieve configuration settings, such as for instance SMTP settings when email slots are sending emails, etc.
@@ -63,3 +72,5 @@ This works similarly to log4net, and implies _"minimum logging level"_, where an
 ## Sockets configuration
 
 The `url` setting here allows you to override which URL clients need to use to negotiate a socket channel with your server. You can also completely turn off web sockets entirely here, by changing the value to `null` or remove the section entirely.
+
+{% include faq.html %}

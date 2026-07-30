@@ -5,6 +5,17 @@ header:
   image: /assets/images/hero/machine-learning.png
   og_image: /assets/images/hero/machine-learning-og.png
   image_description: Machine Learning models
+faq:
+  - q: "What is the Machine Learning component?"
+    a: "It lets you create your own private AI models by crawling your website or uploading files, turning the content into RAG training data. Under the hood it uses OpenAI, with RAG and VSS towards your own database for accurate, domain specific answers."
+  - q: "How do I train a model?"
+    a: "Create a model, then click Import to crawl a website, or upload files in formats such as XML, JSON, YAML, CSV or PDF. Once imported, click Vectorize so the data can be used for VSS lookups."
+  - q: "What is a model?"
+    a: "A collection of training snippets. When a question is asked, VSS search finds the most relevant snippets, which are passed as context to OpenAI, which answers using only that context - drastically reducing hallucinations."
+  - q: "Can I supervise how my model is used?"
+    a: "Yes. Questions and answers are stored in the History tab, letting you review and improve your model over time, and use historical requests for business intelligence or lead generation."
+  - q: "What are AI functions?"
+    a: "Installable functions your model can invoke as an AI agent - allowing the chatbot to trigger workflows, query your database, or create training snippets, according to instructions provided by the user."
 ---
 
 Magic's Machine Learning component allows you to create your own AI based machine learning model, either by crawling your website and scraping it for data, or by manually uploading files, resulting in a private and custom _"machine learning model"_. Machine learning in Magic is built upon OpenAI's API and is similar to ChatGPT, and under the hood it's using RAG and VSS towards your own database to extract context as it's answering questions using OpenAI.
@@ -223,3 +234,5 @@ You can also use OpenAI to generate code for you. Both Hyper IDE and SQL Studio 
 In addition, Magic integrates a support chatbot directly into its dashboard. This provides you with integrated help directly from the dashboard. Click the AI chatbot button at the bottom of the navigation sidebar to access this chatbot.
 
 ![Screenshot of Magic's integrated support chatbot](/assets/images/integrated-chatbot.jpeg)
+
+{% include faq.html %}

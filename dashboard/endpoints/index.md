@@ -5,6 +5,17 @@ header:
   image: /assets/images/hero/endpoints-dash.png
   og_image: /assets/images/hero/endpoints-dash-og.png
   image_description: The Endpoints component
+faq:
+  - q: "What is the Endpoints component?"
+    a: "It lets you browse every HTTP endpoint in your cloudlet and invoke them, similarly to how Swagger works - documenting your endpoints and letting you test them from the same screen."
+  - q: "How do I parametrise an invocation?"
+    a: "When you expand an endpoint, every argument it accepts becomes a typed input field - checkboxes for booleans, date pickers for dates, and so on. CRUD endpoints additionally expose paging, sorting, and per-column filter arguments."
+  - q: "Can I get an OpenAPI specification for my endpoints?"
+    a: "Yes. Every endpoint has an OpenAPI button giving you its OpenAPI specification. You can copy both the URL and the specification itself, and paste it into another orchestrator LLM or AI agent, allowing the other party to understand your backend."
+  - q: "Can I test file uploads and downloads?"
+    a: "Yes. You can upload files to endpoints that accept file uploads, and download the files an endpoint returns, directly from the component."
+  - q: "What does the response dialog show?"
+    a: "The HTTP status code, how many milliseconds the invocation took, the response headers, and the response body with syntax highlighting - plus a button to copy the response."
 ---
 
 The Endpoints component allows you to see your HTTP endpoints, and invoke these, similarly to how Swagger works. From your endpoints menu item you can search for, parametrise, and invoke your endpoints - Allowing you to simulate a client, to understand how your endpoints work, and _"debug"_ these as you develop them. This component hence serves two purposes; One being documenting your endpoints, another being testing your endpoints.
@@ -20,6 +31,12 @@ When you expand an endpoint, every argument the endpoint accepts becomes an inpu
 When you click _"Invoke"_, the component shows you the response; its HTTP status code, how many milliseconds the invocation took, the response headers, and the response body itself with syntax highlighting. A _"Copy response"_ button lets you bring the result into your own code or documentation.
 
 ![Screenshot of the response dialog showing status code, timing, and the JSON response body](/assets/images/endpoints-invocation-response.jpeg)
+
+## OpenAPI specifications
+
+Every endpoint also has an _"OpenAPI"_ button, giving you the OpenAPI specification for that particular endpoint. You can copy both the OpenAPI URL and the specification itself. This is particularly useful when working with AI - copy and paste the OpenAPI specification into some other orchestrator LLM or AI agent, and the other party immediately understands your backend; what endpoints exist, what arguments they take, and what they return - allowing the AI to correctly invoke your API, or generate a frontend consuming it.
+
+The component also allows for uploading and downloading of files - you can upload files to endpoints accepting file uploads, and download the files an endpoint returns, allowing you to test binary and document endpoints directly from the component.
 
 ## Hyperlambda endpoint meta data
 
@@ -43,3 +60,5 @@ As you are browsing your endpoints, and you expand individual items, you'll noti
 The endpoint's meta information is retrieved directly from your Hyperlambda files. Magic automatically allows you to invoke your user defined endpoints with this component.
 
 The endpoints component in Magic is obviously not as strong as something such as OpenAPI, Swagger, or Postman - But for Hyperlambda endpoints, it's probably more than enough.
+
+{% include faq.html %}

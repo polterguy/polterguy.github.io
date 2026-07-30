@@ -134,3 +134,23 @@ div.highlighter-rouge:hover .code-copy-btn,
 figure.highlight:hover .code-copy-btn,
 .code-copy-btn:focus-visible { opacity: 1; }
 .code-copy-btn.copied { color: #8fce9a; border-color: rgba(143, 206, 154, 0.5); }
+
+/* FAQ sections (_includes/faq.html) — warm collapsible cards. */
+.faq { margin: 1em 0 1.6em 0; }
+.faq__item {
+  background: var(--warm-surface);
+  border: 1px solid rgba(216, 185, 138, 0.22);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 0;
+}
+.faq__item summary {
+  cursor: pointer;
+  padding: 0.85em 1.1em;
+  font-weight: 700;
+  color: var(--warm-text);
+  list-style-position: inside;
+}
+.faq__item summary::marker { color: var(--warm-gold); }
+.faq__item[open] summary { border-bottom: 1px solid rgba(216, 185, 138, 0.15); }
+.faq__item p { margin: 0; padding: 0.9em 1.1em; color: #cfc6b8; }

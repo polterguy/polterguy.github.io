@@ -5,6 +5,17 @@ header:
   image: /assets/images/hero/hyper-ide.png
   og_image: /assets/images/hero/hyper-ide-og.png
   image_description: Editing Hyperlambda in Hyper IDE
+faq:
+  - q: "What is Hyper IDE?"
+    a: "Hyper IDE is Magic's integrated development environment, running in your browser. It lets you browse and edit every file on your server, with syntax highlighting and autocomplete for Hyperlambda."
+  - q: "Can Hyper IDE generate code for me using AI?"
+    a: "Yes. Write a description of what you want your code to do, select it, and click Generate - or use the 'Where the Machine Creates the Code' bar below the editor. The Hyperlambda Generator transforms your English into working Hyperlambda in seconds."
+  - q: "How do I test my code?"
+    a: "Since Hyperlambda is a dynamic language, you can save your file and immediately execute it by clicking F5, without compiling anything. This gives you a much tighter development loop than compiled languages."
+  - q: "Can I edit other languages than Hyperlambda?"
+    a: "Yes, you can edit TypeScript, Ruby, HTML, C# and other file types, although for those languages a dedicated IDE will typically serve you better. Hyper IDE's strength is Hyperlambda."
+  - q: "What does F1 do?"
+    a: "F1 asks the integrated AI to explain the Hyperlambda code you have selected, giving you instant help understanding unfamiliar code."
 ---
 
 Hyper IDE is your _"goto component"_ when you want to create your own modules using Magic and Hyperlambda. It's a web based IDE, allowing you to edit your code, create new modules, and contains a lot of things you're used to from a traditional IDE. It is also the natural extension of Magic's [endpoint generator](/dashboard/endpoint-generator/), since it allows you to edit the Hyperlambda endpoint files after Magic has generated your CRUD backend. In addition, Hyper IDE allows you to use AI to generate code using _"vibe coding"_ constructs.
@@ -73,3 +84,5 @@ If you're developing a module in your own local installation of Magic, you can m
 ## Continuous Integration and Deployment
 
 You can even connect creation of such modules, and automatically deploying them to production through for instance a GitHub action using CI/CD, by creating a token using the _"Generate token"_ feature on your Profile screen. This gives you a JWT token you can use to authenticate a process, such that it's allowed to invoke your `/magic/system/file-system/install-module` endpoint. This will allow you to automatically upload a zip file, and re-install it after uploading it.
+
+{% include faq.html %}

@@ -5,6 +5,11 @@ header:
   image: /assets/images/hero/log.png
   og_image: /assets/images/hero/log-og.png
   image_description: The Log component
+faq:
+  - q: "What is the Log component?"
+    a: "It lets you browse your server's log, giving you control over events that might have consequences for your system - errors, security events, task executions, and anything your own code logs."
+  - q: "Can my own code create log entries?"
+    a: "Yes. Your Hyperlambda code can create log entries as you see fit, to record important events such as deleting records, executing tasks, or registering users."
 ---
 
 The log component allows you to browse your server's log. When an important event occurs in Magic, a log entry will typically be created describing the event. Examples of such events are when users are logging in, or errors are occurring in the system for some reason.
@@ -38,3 +43,5 @@ all log entries, including your debug log entries - While in production Magic wo
 ## Log internals
 
 Log items will be persisted into your magic _"log_entries"_ database table. The [magic.lambda.logging](/plugins/magic.lambda.logging/) project is what encapsulates the logging related slots in Hyperlambda.
+
+{% include faq.html %}

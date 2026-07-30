@@ -5,6 +5,17 @@ header:
   image: /assets/images/hero/hyperlambda-generator.png
   og_image: /assets/images/hero/hyperlambda-generator-og.png
   image_description: The Hyperlambda Generator
+faq:
+  - q: "What is the Hyperlambda Generator?"
+    a: "Magic's own proprietary SLM (Small Language Model), fine-tuned with more than 600,000 training snippets, that transforms natural language into working Hyperlambda code in typically 1.5 to 5 seconds."
+  - q: "Can it hallucinate function calls?"
+    a: "No. Every slot the generated code invokes is verified against the slots that actually exist in your cloudlet before the code is returned. If the model invokes something that does not exist, the code is rejected and regenerated."
+  - q: "Where can I use it?"
+    a: "Everywhere code can be created in the dashboard: Hyper IDE, the Hyperlambda Playground, the Task Manager, SQL Studio, and the Generator - plus AI agents can use it over MCP to create new endpoints on demand."
+  - q: "How should I write my prompts?"
+    a: "Use formal specifications with technical language, naming your tables, arguments, and conditions precisely. If the result is wrong, press CTRL+Z to undo, refine your description, and generate again."
+  - q: "Can AI agents use the generator?"
+    a: "Yes. The generator is available over the MCP server, allowing a connected AI agent such as Claude to create new endpoints - and hence new tools for itself - on demand."
 ---
 
 Magic contains its own Hyperlambda Generator. This isn't a single component, but goes through most parts of the platform that somehow allow you to create Hyperlambda code. It's built as our own proprietary SLM (Small Language Model), fine-tuned with more than 600,000 training snippets, so it's actually very strong on creating backend code, even though it's using a _"small base model"_.
@@ -62,3 +73,5 @@ Below your main code view in Hyper IDE and the Hyperlambda Playground, you can s
 * Make the title argument mandatory
 * Log all incoming arguments
 * Etc ...
+
+{% include faq.html %}
