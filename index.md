@@ -26,6 +26,8 @@ faq:
     a: "Yes. The Chatbot Wizard crawls your website, turns your content into RAG training data, and gives you an embeddable chatbot in minutes - which you can then refine with training data, widgets, and AI functions."
   - q: "Can Magic wrap my existing database?"
     a: "Yes. Point the Endpoint Generator at any MySQL, PostgreSQL, SQL Server, MariaDB or SQLite database, and it generates a complete, secured CRUD API from your existing schema in seconds."
+  - q: "Can I wrap my database into a CRUD AI agent?"
+    a: "Yes, in seconds. The CRUD generator wraps your database in secured endpoints, which become tools an AI agent can invoke over MCP - letting it read and write your data through natural language. And when the agent needs more than plain CRUD, the Hyperlambda Generator lets you add custom business logic on top, described in plain English."
   - q: "Is Magic secure?"
     a: "Magic is built on JWT authentication and role based access control, with every endpoint declaring which roles may invoke it. It also acts as an OAuth server, and supports OIDC for federated sign-in through providers such as Google and Microsoft."
   - q: "Is Magic open source, and where can I run it?"

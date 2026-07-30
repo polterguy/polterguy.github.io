@@ -38,6 +38,16 @@ Hyperlambda contains slots for all the most important programming constructs, su
 * [See documentation for all plugins](/plugins/)
 * [Read more about magic.lambda](/plugins/magic.lambda/)
 
+## Editing Hyperlambda
+
+You edit Hyperlambda in [Hyper IDE](/dashboard/hyper-ide/), which gives you syntax highlighting, and autocomplete on every slot that exists in your cloudlet - click CTRL+SPACE on Windows or FN+CONTROL+SPACE on a Mac, and choose from the list of matching slots.
+
+![Screenshot of editing Hyperlambda in Hyper IDE with autocomplete showing matching slots](/assets/images/hyper-ide-hl-autocomplete.jpeg)
+
+To experiment with the language, use the [Hyperlambda Playground](/dashboard/hyperlambda-playground/), which executes your code in _"immediate mode"_ - the input is your code, and the output is the transformed lambda after execution, giving you instant feedback as you learn.
+
+![Screenshot of executing Hyperlambda in the Hyperlambda Playground](/images/eval-component.jpg)
+
 ## Hyperlambda structure
 
 Hyperlambda is based upon nodes. Nodes have the following attributes.
