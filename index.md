@@ -38,15 +38,21 @@ Magic contains an integrated MCP server, with OAuth, allowing you to connect it 
 
 The above is just some of what I've tried it with, but it should work with everything having MCP support. To get started, check out [how to connect the MCP server](/tutorials/how-to-connect-the-mcp-server/).
 
+![The dashboard's MCP card with the URL an AI agent needs to connect to your cloudlet](/assets/images/mcp-dashboard-copy-url.png)
+
 ## The Hyperlambda Generator
 
 At the heart of Magic you'll find the [Hyperlambda Generator](/dashboard/hyperlambda-generator/) — our own proprietary SLM (Small Language Model), fine-tuned with more than 600,000 training snippets, transforming natural language into working Hyperlambda code in typically 1.5 to 5 seconds. Unlike general purpose LLMs, it cannot hallucinate function invocations — every slot the generated code invokes is verified against the slots that actually exist in your cloudlet before the code is returned to you.
 
 Combined with the [MCP server](/tutorials/how-to-connect-the-mcp-server/), this allows an AI agent such as Claude to create new tools for itself on demand — describing the endpoint it needs in plain English, and having the generator create it in seconds.
 
+![The Hyperlambda Generator transforming an English description into a working HTTP endpoint](/assets/images/hyperlambda-generator.png)
+
 ## The Magic Dashboard
 
 Magic's purpose is to help you with your backend, and it comes with a dashboard allowing you to manage all aspects of your backend. The dashboard contains UI components for most things you'll need when creating and maintaining your API and backend code. Below you can find some general information about some of its most important components.
+
+![Screenshot of the Magic dashboard with key numbers, the MCP card, and the Chatbot Wizard](/images/dashboard.jpeg)
 
 ## Hyper IDE
 
@@ -116,13 +122,19 @@ Magic Cloud is scattered with AI and allows you to create your own Machine Learn
 
 You can try out such a chatbot in the bottom/right corner of this page.
 
+![Screenshot of the Machine Learning component listing your AI models](/assets/images/machine-learning-types.jpeg)
+
 ## User management
 
 Magic Cloud allows you to create and administer users, by giving you a graphical user interface, allowing you to manage your application's users and roles, using a role based access control (RBAC) component. Provide access to modules and components according to what roles your users belong to, and make sure only authorised users have access to private and secured data.
 
+![Screenshot of the Users & roles component managing users and their access rights](/images/auth.jpg)
+
 ## The task manager
 
 Magic Cloud allows you to create and administer tasks. A task is a background job, that is persisted into your database as Hyperlambda, and it can either be executed by a _"trigger"_ occurring somewhere else in your system, or periodically scheduled to execute repeatedly, or at some specific date and time in the future. The task manager allows you to easily manage your tasks, edit them, and create new tasks as you see fit.
+
+![Screenshot of creating a Hyperlambda task in the Task Manager](/images/scheduling-task.jpg)
 
 ## Plugins
 
@@ -135,17 +147,23 @@ Magic Cloud also contains its own _"App Store"_, allowing you to rapidly install
 * Several example SQLite databases
 * Etc, etc, etc
 
+![Screenshot of the Plugins component, Magic's integrated App Store](/images/bazaar.jpg)
+
 ## The integrated log
 
 Magic Cloud also comes with an integrated log component, allowing you to browse your server log, giving you control over events occurring that might somehow have consequences for your system.
 
 When you create your own Hyperlambda applications, you can also create log entries as you see fit, to log important events, such as deleting records, executing tasks, registering users, etc.
 
+![Screenshot of the Log component while browsing server log items](/images/log.jpg)
+
 ## Custom AI chatbots
 
 You can also use Magic to create your own custom AI chatbot, for then to embed it into your website. The Chatbot Wizard component in Magic will ask you for your OpenAI API key, for then to scrape your website generating a RAG database in the process. The end result allows your users to ask questions related to your website, and have the chatbot answer how you want it to answer questions.
 
 It works by scraping your website, generating training data in the process, for then to end up with a custom _"machine learning model"_ (based upon RAG), that answers questions according to your training data. You can try out such a chatbot by clicking the button in the bottom / right corner of this page, and ask it any question about Magic Cloud. This chatbot was created by scraping this website. At AINIRO we also deliver such chatbots as one of our services. Read more about [our AI chatbots here](/dashboard/chatbot-wizard/).
+
+![Screenshot of an AI chatbot answering questions about Hyperlambda and Magic](/assets/images/integrated-chatbot.jpeg)
 
 ## The goal of the project
 
