@@ -20,6 +20,8 @@ First boot takes 15 to 20 minutes — mostly the frontend build — and your dom
 
 For the complete walk-through, including the day-2 upgrade commands, see [From Zero to Production Backend with HTTPS in One Copy-Paste](https://hyperlambda.dev/blog/magic-cloud-digitalocean-one-copy-paste).
 
+**Notice** - The all-in-one (aio) image, and hence also this DigitalOcean deployment, serves the API and the dashboard frontend from the _same domain_. This implies you cannot install additional frontends on such a deployment, since installed frontends require their own domain to be served from. If you need to host your own frontends, use the manual deployment below, which gives your backend and frontend separate domains.
+
 If you're deploying to another provider, or want full control over the reverse proxy and certificates, the manual guide below covers everything.
 
 ## Manual deployment on any VPS
