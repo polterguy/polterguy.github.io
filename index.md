@@ -5,6 +5,27 @@ header:
   image: /assets/images/hero/home.png
   og_image: /assets/images/hero/home-og.png
   image_description: Magic Cloud
+faq:
+  - q: "What is Magic Cloud?"
+    a: "An open source AI, Low-Code and No-Code platform that builds and hosts your entire backend - database, API, business logic, background jobs, and authentication - and powers database-driven AI agents over MCP."
+  - q: "What can I build with Magic?"
+    a: "Full stack apps such as CRM systems, secure web APIs wrapping new or legacy databases, custom AI chatbots trained on your own content, database-driven AI agents, scheduled background jobs, and static websites - most of it generated from natural language."
+  - q: "Do I need to know how to code?"
+    a: "No. The Hyperlambda Generator transforms plain English into working code, the Endpoint Generator creates complete CRUD APIs from your database without a single line of code, and AI prompt bars throughout the dashboard write SQL and Hyperlambda for you."
+  - q: "What is Hyperlambda?"
+    a: "Magic's declarative orchestration language - technically a relational file format for execution trees. Machines can generate it reliably, which is what makes Magic's AI code generation possible. You don't need to master it to use Magic."
+  - q: "What is the Hyperlambda Generator?"
+    a: "Magic's proprietary SLM, fine-tuned with more than 600,000 training snippets, turning natural language into working Hyperlambda in seconds - and it cannot hallucinate function invocations, since every generated slot is verified against your cloudlet."
+  - q: "How does Magic work with AI agents such as Claude?"
+    a: "Magic has an integrated MCP server with OAuth. Connect Claude, Claude Code, Cursor, Codex or any MCP client, and every endpoint in your cloudlet becomes a tool the agent can invoke - obeying your RBAC - while the agent can also create new endpoints for itself on demand."
+  - q: "Can I create an AI chatbot from my website?"
+    a: "Yes. The Chatbot Wizard crawls your website, turns your content into RAG training data, and gives you an embeddable chatbot in minutes - which you can then refine with training data, widgets, and AI functions."
+  - q: "Can Magic wrap my existing database?"
+    a: "Yes. Point the Endpoint Generator at any MySQL, PostgreSQL, SQL Server, MariaDB or SQLite database, and it generates a complete, secured CRUD API from your existing schema in seconds."
+  - q: "Is Magic secure?"
+    a: "Magic is built on JWT authentication and role based access control, with every endpoint declaring which roles may invoke it. It also acts as an OAuth server, and supports OIDC for federated sign-in through providers such as Google and Microsoft."
+  - q: "Is Magic open source, and where can I run it?"
+    a: "Yes, Magic is 100% open source. Run it locally with one Docker command, deploy it to any VPS, or use AINIRO.IO's professional hosting - a managed cloudlet with backups and HTTPS out of the box."
 ---
 
 Magic Cloud, or Magic for short, is a backend software development platform that creates most of your code _"automagically"_, by leveraging meta programming, declarative programming, AI, low-code, and no-code. This allows you to focus on creative tasks, while having the machine create the boring parts.
@@ -16,6 +37,21 @@ Magic gives you everything you need to build your entire backend — your databa
 This also makes Magic exceptionally well suited for building AI agents, and _especially database-driven agents_. Because your entire backend and its data become secured tools the AI can invoke over MCP, an agent can query and update your database, call your endpoints, and even create brand new endpoints on demand — all behind your own authentication and role based access control, with your data never leaving your database.
 
 Magic is 100% open source, and you can find its [GitHub repo here](http://github.com/polterguy/magic). If you don't want to mess with hosting yourself, you can check out our professional or enterprise hosting plans [here](https://ainiro.io).
+
+## What can you use Magic for?
+
+Magic is a general purpose backend platform, but some things it is _particularly_ good at. Below are the most important use cases.
+
+* **Full stack apps** - CRM systems, admin panels, booking systems, internal tools - a database, a secure API, and a frontend, generated from natural language in minutes
+* **Database-driven AI agents** - AI agents that query and update _your_ database, invoke _your_ endpoints, and even create new tools for themselves on demand - all behind your own RBAC
+* **A kick-ass MCP server** - connect Claude, Cursor, Codex, or any MCP client to your cloudlet, and every endpoint becomes a tool the agent can invoke
+* **Custom AI chatbots** - crawl your website, and get an embeddable chatbot trained on your own content, with widgets and AI functions
+* **Wrapping legacy databases** - point Magic at an existing MySQL, PostgreSQL, SQL Server or MariaDB database, and get a secured, modern web API in seconds
+* **Managing your databases** - design schemas visually, execute SQL from the browser, or let an AI agent administer your database through natural language
+* **Web APIs without code** - CRUD endpoints, custom SQL endpoints, aggregations and keyword search - generated, not written
+* **Background jobs and automation** - scheduled tasks written in Hyperlambda, or generated from plain English descriptions
+* **Hosting static websites and SPAs** - your cloudlet serves files from /etc/www/, turning it into a web server for landing pages and single-page apps, right next to the APIs powering them
+* **Email, workflows and integrations** - SMTP, Stripe, Shopify, WordPress, HubSpot, NetSuite and more, through installable plugins
 
 ## AI Generated Code - "Vibe Coding"
 
@@ -124,6 +160,12 @@ You can try out such a chatbot in the bottom/right corner of this page.
 
 ![Screenshot of the Machine Learning component listing your AI models](/assets/images/machine-learning-types.jpeg)
 
+## Create an AI chatbot
+
+Creating your own AI chatbot with Magic takes minutes. Provide the Chatbot Wizard with your website's URL, and it crawls your site, scrapes each page, and turns your content into training data - reporting its progress in real time as it works its way through the site. A few minutes later you have a chatbot trained on your own content, ready to embed on your website.
+
+![Screenshot of the dashboard crawling and scraping a website to create an AI chatbot](/assets/images/scraping-website-for-chatbot-data.png)
+
 ## User management
 
 Magic Cloud allows you to create and administer users, by giving you a graphical user interface, allowing you to manage your application's users and roles, using a role based access control (RBAC) component. Provide access to modules and components according to what roles your users belong to, and make sure only authorised users have access to private and secured data.
@@ -164,6 +206,8 @@ You can also use Magic to create your own custom AI chatbot, for then to embed i
 It works by scraping your website, generating training data in the process, for then to end up with a custom _"machine learning model"_ (based upon RAG), that answers questions according to your training data. You can try out such a chatbot by clicking the button in the bottom / right corner of this page, and ask it any question about Magic Cloud. This chatbot was created by scraping this website. At AINIRO we also deliver such chatbots as one of our services. Read more about [our AI chatbots here](/dashboard/chatbot-wizard/).
 
 ![Screenshot of an AI chatbot answering questions about Hyperlambda and Magic](/assets/images/integrated-chatbot.jpeg)
+
+{% include faq.html %}
 
 ## The goal of the project
 

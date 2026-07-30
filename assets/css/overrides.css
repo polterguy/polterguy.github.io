@@ -33,6 +33,12 @@ html, body, .initial-content, #main {
   background-color: var(--warm-surface) !important;
   border-bottom: 1px solid rgba(216, 185, 138, 0.18) !important;
 }
+
+/* Hero image — thin light-brown border below (the masthead's border draws the line above). */
+.page__hero,
+.page__hero--overlay {
+  border-bottom: 1px solid rgba(216, 185, 138, 0.4);
+}
 .greedy-nav { background-color: var(--warm-surface) !important; }
 .greedy-nav a,
 .masthead .site-title,

@@ -11,6 +11,18 @@ A workflow is a chain of operations that together accomplish some larger task, w
 
 Instead of wiring steps together by hand, you describe the outcome you want in plain English, and the AI figures out which tools to call, in which order, feeding the result of one step into the next.
 
+## A workflow in practice
+
+Below is a real example. The prompt asks for an AI agent to manage clients; a database with 3 tables, a CRUD API wrapping it, and a send email feature. The workflow was submitted to Qoder using Kimi K3 as the orchestrator LLM, connected to a cloudlet through Magic's MCP connector - giving the orchestrator full control over the server; creating the database, generating the API, securing the endpoints, and building the frontend. The whole thing ran **100% autonomously in 7 minutes**, and cost roughly **$0.50** in inference.
+
+![Screenshot of Qoder using Kimi K3 to build a full stack app autonomously over Magic's MCP connector](/assets/images/kimi-creating-full-stack-app.png)
+
+And below is the end result - a working full stack client management app, with search, statuses, notes, and email - created entirely by the workflow above.
+
+![Screenshot of the resulting My Clients full stack app created by the workflow](/assets/images/my-clients-screenshot.png)
+
+This is the point of workflows in Magic; you submit a description to some orchestrator LLM through Magic's MCP connector, and the orchestrator controls the server - creating apps, AI agents, databases, endpoints, and whatever else the workflow requires.
+
 ## The AI is the orchestrator
 
 When you connect an AI agent to your cloudlet, every one of your endpoints - and a large library of [built-in tools](/tutorials/how-to-connect-the-mcp-server/) - becomes something the AI can invoke. That means a single instruction can turn into a multi-step workflow, where the AI:
