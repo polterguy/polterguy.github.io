@@ -71,6 +71,10 @@ If you mark some Hyperlambda code in Hyper IDE and click F1, it will invoke AINI
 
 ![Screenshot of Hyper IDE's integrated Hyperlambda F1-based help component](/assets/images/hyperlambda-ai-help.jpeg)
 
+## Turning your endpoints into AI functions
+
+Hyper IDE also bridges your code and your [Machine Learning models](/dashboard/machine-learning/). Every Hyperlambda endpoint file has a _"Create AI function"_ action, adding that endpoint as an AI function to a model you select - allowing your chatbot or AI agent to invoke it. Folders have the same action, converting _all_ Hyperlambda endpoint files inside the folder into AI functions in one go. Endpoint files also have an _"OpenAPI"_ action, showing you the endpoint's OpenAPI specification.
+
 ## Editing web pages and static files
 
 Hyper IDE isn't only for Hyperlambda. Anything you place under the `/etc/www/` folder is served directly from the root of your cloudlet's domain by the backend, which turns Magic into a web server too. A file saved as `/etc/www/index.html` is served from your site's root, `/etc/www/css/main.css` from `/css/main.css`, and so on. This means you can host a landing page, a complete static website, or the HTML, CSS and JavaScript assets for a single-page application straight from your cloudlet, right next to the APIs that power it. Notice, hidden files and folders - those starting with a dot - are _not_ served, with the exception of `.well-known`, which the backend deliberately exposes so discovery documents remain publicly reachable.

@@ -36,7 +36,7 @@ When you click _"Invoke"_, the component shows you the response; its HTTP status
 
 ## OpenAPI specifications
 
-Every endpoint also has an _"OpenAPI"_ button, giving you the OpenAPI specification for that particular endpoint. You can copy both the OpenAPI URL and the specification itself. This is particularly useful when working with AI - copy and paste the OpenAPI specification into some other orchestrator LLM or AI agent, and the other party immediately understands your backend; what endpoints exist, what arguments they take, and what they return - allowing the AI to correctly invoke your API, or generate a frontend consuming it.
+Every endpoint has an _"OpenAPI"_ button, giving you the OpenAPI specification for that particular endpoint - and every _module_ has one too, giving you the specification for all endpoints in the module at once. You can copy both the OpenAPI URL and the specification itself. This is particularly useful when working with AI - copy and paste the OpenAPI specification into some other orchestrator LLM or AI agent, and the other party immediately understands your backend; what endpoints exist, what arguments they take, and what they return - allowing the AI to correctly invoke your API, or generate a frontend consuming it.
 
 The component also allows for uploading and downloading of files - you can upload files to endpoints accepting file uploads, and download the files an endpoint returns, allowing you to test binary and document endpoints directly from the component.
 

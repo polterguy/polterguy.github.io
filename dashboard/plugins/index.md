@@ -18,6 +18,8 @@ faq:
     a: "Installing downloads a ZIP file and unzips it into your modules folder, after which all Hyperlambda files inside its magic.startup folder are executed, taking care of initialisation such as creating databases and slots."
   - q: "Can I modify an installed plugin?"
     a: "Yes, you can edit its files with Hyper IDE - but if you do, you can no longer update the plugin from the App Store."
+  - q: "How do I update an installed plugin?"
+    a: "Plugins you have already installed show a Reinstall button, installing the App Store's current version over the one you have - which is also how you upgrade a plugin to its latest version."
 ---
 
 The Plugins component is Magic's integrated _"AppStore"_, and allows you to install backend micro services on the fly, without interrupting normal usage. It resolves towards AINIRO's repository of plugins, that contains several pre-fabricated backend micro services, serving some generic requirement, such as for instance Stripe payments, OpenAI helpers, and registration helpers. Most plugins automatically take care of creating their databases, and other things required to initialise the plugin.

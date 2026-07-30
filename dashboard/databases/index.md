@@ -34,6 +34,8 @@ You can even let an AI do it for you. If you connect your cloudlet to an AI agen
 
 ## Adding a connection string
 
+Before connecting, you can click _"Test"_ to verify your connection string actually works, without saving it. And once connected, the component lets you create and delete individual catalogues directly on your external database server - in addition to opening any database in [SQL Studio](/dashboard/sql-studio/) with one click.
+
 It is important that you exchange your catalogue name, or database name, with the text _"{database}"_. This is because Magic needs to be able to dynamically connect to multiple catalogues or databases in your database server. Magic needs to be able to read system databases, in addition to connecting generically to any database in your system it's got access to. This is why it'll need the above `{database}` parts in its connection string.
 
 If you're hosting your database in for instance Azure or AWS, you might also have to white list your cloudlet's IP address.

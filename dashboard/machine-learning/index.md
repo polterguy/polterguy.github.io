@@ -159,6 +159,8 @@ Training snippets can be automatically created as we scrape your website, upload
 
 Notice, you don't have to wash your training data by hand. The snippet editor has its own _"Where the Machine Creates the Code"_ bar, allowing you to clean, edit, or compress individual snippets after importing - provide an instruction such as _"Remove the navigation links and compress this to its essence"_, and the AI transforms the snippet for you, writing the result straight back into the editor.
 
+The training data tab also lets you work with snippets in bulk. _"Export"_ downloads your snippets as a CSV file - optionally only those matching your current filter - and _"Delete filtered"_ deletes every snippet matching your filter in one go, useful for removing an entire bad import. And once your model is ready, the _"Embed"_ button on the Models tab gives you the script tag for including your chatbot on your website, with themes, colours, position and behaviour you can configure.
+
 ### Widgets
 
 The _"Widget"_ button on the training data tab allows you to add _"widgets"_ to your model. A widget is a micro app rendered _inside_ the chat stream itself - such as a form, a booking calendar, or a calculator - implemented as a training snippet that instructs the model to render the widget when relevant. After adding a widget, edit its prompt to describe when the chatbot should show it, and the AI displays the widget in the middle of the conversation when a user's question matches.

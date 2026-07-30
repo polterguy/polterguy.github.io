@@ -11,7 +11,7 @@ The Magic Dashboard is how you would manage your cloudlet. When you login to you
 
 ## Your cloudlet is an AI agent (MCP)
 
-Every Magic cloudlet can act as an AI agent through its built-in [MCP server](/tutorials/how-to-connect-the-mcp-server/). Connect an orchestrator AI - such as Claude, Claude Code, Cursor, or Codex - to your cloudlet, and it can discover and invoke your endpoints as tools, query your databases, generate new Hyperlambda, and even build new tools for itself on demand. As soon as the MCP module is installed, the dashboard's landing page shows your MCP URL together with a _"Copy MCP URL"_ button. This is the preferred way to work with Magic - you orchestrate, and the AI builds and runs your backend for you.
+Every Magic cloudlet can act as an AI agent through its built-in [MCP server](/tutorials/how-to-connect-the-mcp-server/). Connect an orchestrator AI - such as Claude, Claude Code, Cursor, or Codex - to your cloudlet, and it can discover and invoke your endpoints as tools, query your databases, generate new Hyperlambda, and even build new tools for itself on demand. As soon as the MCP module is installed, the dashboard's landing page shows your MCP URL together with a _"Copy MCP URL"_ button. If the MCP or OAuth plugins are _not_ yet installed, the landing page instead shows a _"Turn this cloudlet into an AI agent"_ card, installing both plugins for you with a single click. This is the preferred way to work with Magic - you orchestrate, and the AI builds and runs your backend for you.
 
 ## The landing page
 
@@ -20,6 +20,8 @@ When you log in, the dashboard typically resembles the following.
 ![Screenshot of the Magic Dashboard](/images/dashboard.jpeg)
 
 Below the key numbers, the landing page gives you quick access to the things you'll reach for most often. The _Chatbot Wizard_ crawls a website, turns what it finds into training data, and gives you an embeddable AI chatbot in a few minutes. A _"What everything does"_ section explains every part of your cloudlet and where to find it, and a _Tasks_ section lets you execute your scheduled tasks on demand.
+
+If you get stuck anywhere, ask _Frank_ - AINIRO's AI support agent, trained on the Hyperlambda and Magic documentation. You'll find him both in the _"What everything does"_ section and behind the spark button in the bottom of the navigation, and he answers with code you can paste.
 
 ## Create an AI chatbot
 

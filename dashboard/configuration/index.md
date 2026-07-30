@@ -27,6 +27,8 @@ such that malicious adversaries gain access to your system. The configuration co
 
 Notice, if you supply buggy JSON the component will not allow for saving your configuration, but instead provide you with an error message informing you that your JSON has errors. You can also create your own configuration sections as you see fit to use in your own modules.
 
+The component also lets you download a backup of your entire configuration as a file, and restore your configuration from such a backup later - useful before making larger changes, or when moving settings between cloudlets.
+
 Below is a list of the most important sections you can configure in your cloudlet.
 
 ## CORS
