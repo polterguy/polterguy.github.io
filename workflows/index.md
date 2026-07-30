@@ -16,16 +16,18 @@ Instead of wiring steps together by hand, you describe the outcome you want in p
 Below is a real example. The prompt asks for an AI agent to manage clients; a database with 3 tables, a CRUD API wrapping it, and a send email feature. The workflow was submitted to Qoder using Kimi K3 as the orchestrator LLM, connected to a cloudlet through Magic's MCP connector - giving the orchestrator full control over the server; creating the database, generating the API, securing the endpoints, and building the frontend. The whole thing ran **100% autonomously in 7 minutes**, and cost roughly **$0.50** in inference. Below is the complete prompt, that you can copy and paste to try it out for yourself.
 
 ```text
-I need an AI agent to manage my clients. I need you to help me design
-a database, and generate a CRUD API for me. I want a database with 3
-tables named "my_clients", and I want to name the API "my_clients" too.
-I want to also have a send email feature, allowing me to send emails
-to clients.
+I need an AI agent to manage my clients. I need you to
+help me design a database, and generate a CRUD API for
+me. I want a database with 3 tables named "my_clients",
+and I want to name the API "my_clients" too. I want to
+also have a send email feature, allowing me to send
+emails to clients.
 
-I also want a full stack frontend, named "my_clients". Remember to use
-absolute paths for CSS and JS, and I want you to use the "magic auth"
-workflow (search for it first), and implement ONLY access for users
-that belongs to the "guest" roles.
+I also want a full stack frontend, named "my_clients".
+Remember to use absolute paths for CSS and JS, and I
+want you to use the "magic auth" workflow (search for
+it first), and implement ONLY access for users that
+belongs to the "guest" roles.
 ```
 
 ![Screenshot of Qoder using Kimi K3 to build a full stack app autonomously over Magic's MCP connector](/assets/images/kimi-creating-full-stack-app.png)
