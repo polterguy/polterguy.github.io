@@ -113,7 +113,7 @@ The difference between this and adding an AI function as a training snippet is i
 
 Below is an example system instruction with an AI function declaration, that you can copy and paste as a starting point for your own agent.
 
-<pre>
+~~~text
 # Customer service agent
 
 You are a customer service agent for ACME Inc. Answer politely and
@@ -133,7 +133,7 @@ FUNCTION_INVOCATION[/modules/chinook/Album-count.get.hl]:
 }
 ___
 ```
-</pre>
+~~~
 
 Notice, below is an example of the type of instruction the _"System message"_ setting expects.
 
@@ -200,6 +200,10 @@ The training data tab also lets you work with snippets in bulk. _"Export"_ downl
 ### Widgets
 
 The _"Widget"_ button on the training data tab allows you to add _"widgets"_ to your model. A widget is a micro app rendered _inside_ the chat stream itself - such as a form, a booking calendar, or a calculator - implemented as a training snippet that instructs the model to render the widget when relevant. After adding a widget, edit its prompt to describe when the chatbot should show it, and the AI displays the widget in the middle of the conversation when a user's question matches.
+
+Below is an example of a working widget. The user asks the chatbot to get in touch, and the AI renders a contact form in the middle of the conversation - allowing the user to submit his or her name and email address to be contacted by AINIRO, without ever leaving the chat.
+
+![Screenshot of a working widget rendering a contact form inside the chat stream](/assets/images/example-widget.png)
 
 ### Adding Hyperlambda code to training snippets
 

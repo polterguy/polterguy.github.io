@@ -64,7 +64,11 @@ Finally you can scrape your website. Provide the chatbot wizard with your websit
 
 If you provide a sub-URL such as for instance `foo.com/blogs`, the scraper will only scrape pages beneath `/blogs`. This allows you to scrape an explicitly defined sub-portion of your website, and such have some control over which pages are being scraped.
 
-The wizard reports its progress as it crawls your site and turns the pages into training data, and a few minutes later your chatbot is ready. From here you manage and embed your chatbot using the [Machine Learning component](/dashboard/machine-learning/), where you can further edit its training data and copy the HTML snippet required to embed it on your website.
+The wizard reports its progress as it crawls your site and turns the pages into training data - which pages it found, how many training snippets each page produced, and what it is currently working on.
+
+![Screenshot of the wizard reporting its progress while scraping a website](/assets/images/scraping-website-for-chatbot-data.png)
+
+Once the process is done, your AI chatbot has its own _landing page_, served straight from your cloudlet at `your-cloudlet-url/model-name` - the wizard shows an _"Open chatbot"_ button taking you there. This gives you a URL you can copy and paste, sharing your chatbot with anyone before you've even embedded it on your website - useful for testing it, or handing it to a client for review. A few minutes later your chatbot is ready. From here you manage and embed your chatbot using the [Machine Learning component](/dashboard/machine-learning/), where you can further edit its training data and copy the HTML snippet required to embed it on your website.
 
 If you want to see what the different chatbot themes look like, you can try all different themes [here](https://ainiro.io/blog/try-our-chatbot-themes).
 
