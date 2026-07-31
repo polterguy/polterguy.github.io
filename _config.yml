@@ -14,6 +14,21 @@ atom_feed:
 og_image: "/assets/images/magic-documentation.png"
 breadcrumbs: true
 
+# Unlocks the theme's Twitter/X card tags — it emits none at all without a
+# username, which left X falling back to the small summary card.
+twitter:
+  username: AIniroTeam
+
+# Structured data. Without this the theme emits a Person with a null name,
+# because it falls back to site.name, which this site does not set.
+social:
+  type: Organization
+  name: Magic Cloud
+  links:
+    - "https://x.com/AIniroTeam"
+    - "https://www.linkedin.com/in/thomas-hansen-ainiro/"
+    - "https://github.com/polterguy/magic"
+
 # Copyright displayed in the bottom right corner
 copyright: Copyright © Thomas Hansen, 2019 - 2026
 

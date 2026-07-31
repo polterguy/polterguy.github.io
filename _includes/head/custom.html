@@ -3,3 +3,32 @@
 <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+{% comment %}
+  Describes the share image itself. The theme emits og:image but never
+  og:image:alt, so a shared card has no text alternative.
+{% endcomment %}
+{%- assign share_title = page.title | default: site.title | markdownify | strip_html | strip_newlines | escape_once -%}
+<meta property="og:image:alt" content="{{ page.header.image_description | default: share_title }}">
+
+{% comment %}
+  sameAs links for the site's Organization.
+
+  The theme emits sameAs only in the Person branch of its JSON-LD — the
+  Organization branch carries url and logo and nothing else — so the profiles
+  in site.social.links would otherwise never reach the markup. This node is
+  anchored with @id to the same URL the theme uses, so the two describe one
+  entity rather than two.
+{% endcomment %}
+{% if site.social.type == "Organization" and site.social.links %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": {{ '/' | absolute_url | jsonify }},
+      "name": {{ site.social.name | default: site.title | jsonify }},
+      "url": {{ '/' | absolute_url | jsonify }},
+      "sameAs": {{ site.social.links | jsonify }}
+    }
+  </script>
+{% endif %}
