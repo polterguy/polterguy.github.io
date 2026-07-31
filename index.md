@@ -44,6 +44,10 @@ This also makes Magic exceptionally well suited for building AI agents, and _esp
 
 Magic is 100% open source, and you can find its [GitHub repo here](http://github.com/polterguy/magic). If you don't want to mess with hosting yourself, you can check out our professional or enterprise hosting plans [here](https://ainiro.io).
 
+The video below is a guided tour of the most important components in Magic Cloud, demonstrated from its dashboard — a good place to start before diving into the rest of this documentation.
+
+{% include video id="RMG6OPb7GqA" provider="youtube" %}
+
 ## What can you use Magic for?
 
 Magic is a general purpose backend platform, but some things it is _particularly_ good at. Below are the most important use cases.
