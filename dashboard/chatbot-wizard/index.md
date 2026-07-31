@@ -2,7 +2,7 @@
 title: Chatbot Wizard
 description: Magic allows you to create an AI chatbot that you can embed on your website. Point Magic to your website, automatically scrape your site, and you're done.
 header:
-  image: /assets/images/hero/chatbot-wizard.png
+  image: /assets/images/hero/chatbot-wizard.webp
   og_image: /assets/images/hero/chatbot-wizard-og.png
   image_description: The Chatbot Wizard
 faq:
@@ -22,7 +22,7 @@ faq:
 
 The Chatbot Wizard component allows you to rapidly create an AI website chatbot powered by OpenAI that you can embed on your website. It's not as powerful as the [Machine Learning](/dashboard/machine-learning/) component, but much easier to use. You can start out with the Chatbot Wizard, for then to later configure your model with the Machine Learning component.
 
-![Screenshot of scraping your website for custom AI chatbot RAG data](/images/custom-chatgpt-chatbot.jpg)
+<img src="/images/custom-chatgpt-chatbot.webp" alt="Screenshot of scraping your website for custom AI chatbot RAG data" loading="lazy" width="2400" height="1500">
 
 You'll need an OpenAI API account, and provide Magic with your API key. You can optionally configure reCAPTCHA if you want to, but Magic contains Magic CAPTCHA out of the box, which should be good enough for most. Once you've done this, you can provide your website URL, click a button, and some few minutes later you've got an AI chatbot you can include on your website. Once you're done with this process, you can further configure your model using the Machine Learning component, manually adding training snippets, edit training snippets, etc.
 
@@ -34,7 +34,7 @@ The process of creating an AI chatbot is fairly straight forward. The following 
 
 To create your own AI chatbot you first have to supply Magic with your OpenAI API key.
 
-![Screenshot of configuring Magic with your OpenAI API key](/assets/images/chatbot-wizard-configure-openai.jpeg)
+<img src="/assets/images/chatbot-wizard-configure-openai.webp" alt="Screenshot of configuring Magic with your OpenAI API key" loading="lazy" width="2400" height="1500">
 
 If you don't have an OpenAI API key you can click [here](https://platform.openai.com/api-keys) to go to OpenAI's platform and create one. Notice, you have to _make at least one payment to OpenAI before you're given access to their latest models_.
 
@@ -50,7 +50,7 @@ The above is obviously _not_ a valid API key, but simply provided to illustrate 
 
 To avoid having your chatbot overrun by bots, you should use some sort of CAPTCHA library. Magic contains its own PoW-based CAPTCHA library, but you might want to use Google reCAPTCHA as an alternative here. You can create a Google reCAPTCHA key pair for free by clicking [here](https://www.google.com/recaptcha). Copy and paste both the site-key and the secret into the dialog asking you for your reCAPTCHA settings.
 
-![Screenshot of providing Magic with your reCAPTCHA keys](/assets/images/chatbot-wizard-configure-recaptcha.jpeg)
+<img src="/assets/images/chatbot-wizard-configure-recaptcha.webp" alt="Screenshot of providing Magic with your reCAPTCHA keys" loading="lazy" width="2400" height="1500">
 
 Since Magic contains its own internal PoW-based CAPTCHA library, this step is optional, and you can just ignore it unless you want extra tight security for your chatbot.
 
@@ -60,13 +60,13 @@ Before you click _"Create chatbot"_, you can choose a base model from OpenAI, a 
 
 Finally you can scrape your website. Provide the chatbot wizard with your website's URL, and click the _"Create chatbot"_ button.
 
-![Screenshot of scraping your website to create an AI chatbot using the Chatbot Wizard](/assets/images/chatbot-wizard-scrape-website.jpeg)
+<img src="/assets/images/chatbot-wizard-scrape-website.webp" alt="Screenshot of scraping your website to create an AI chatbot using the Chatbot Wizard" loading="lazy" width="2400" height="1500">
 
 If you provide a sub-URL such as for instance `foo.com/blogs`, the scraper will only scrape pages beneath `/blogs`. This allows you to scrape an explicitly defined sub-portion of your website, and such have some control over which pages are being scraped.
 
 The wizard reports its progress as it crawls your site and turns the pages into training data - which pages it found, how many training snippets each page produced, and what it is currently working on.
 
-![Screenshot of the wizard reporting its progress while scraping a website](/assets/images/scraping-website-for-chatbot-data.png)
+<img src="/assets/images/scraping-website-for-chatbot-data.webp" alt="Screenshot of the wizard reporting its progress while scraping a website" loading="lazy" width="2822" height="1630">
 
 Once the process is done, your AI chatbot has its own _landing page_, served straight from your cloudlet at `your-cloudlet-url/model-name` - the wizard shows an _"Open chatbot"_ button taking you there. This gives you a URL you can copy and paste, sharing your chatbot with anyone before you've even embedded it on your website - useful for testing it, or handing it to a client for review. A few minutes later your chatbot is ready. From here you manage and embed your chatbot using the [Machine Learning component](/dashboard/machine-learning/), where you can further edit its training data and copy the HTML snippet required to embed it on your website.
 

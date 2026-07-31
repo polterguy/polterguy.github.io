@@ -2,7 +2,7 @@
 title: Misc endpoints
 description: Magic's miscellaneous built-in endpoints; endpoint meta data, OpenAPI specifications, Hyperlambda evaluation, and system diagnostics.
 header:
-  image: /assets/images/hero/endpoints-top.png
+  image: /assets/images/hero/endpoints-top.webp
   og_image: /assets/images/hero/endpoints-top-og.png
   image_description: Misc endpoints
 ---

@@ -2,7 +2,7 @@
 title: Cache endpoints
 description: Magic's built-in cache endpoints, allowing you to delete server-side cache items.
 header:
-  image: /assets/images/hero/endpoints-top.png
+  image: /assets/images/hero/endpoints-top.webp
   og_image: /assets/images/hero/endpoints-top-og.png
   image_description: Cache endpoints
 ---

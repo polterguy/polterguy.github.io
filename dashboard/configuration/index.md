@@ -2,7 +2,7 @@
 title: Configuration
 description: Manage your Magic server's settings as a root user. Changes take effect instantly and immediately alter your server's behaviour, with no restart needed.
 header:
-  image: /assets/images/hero/configuration.png
+  image: /assets/images/hero/configuration.webp
   og_image: /assets/images/hero/configuration-og.png
   image_description: The Configuration component
 faq:
@@ -20,22 +20,22 @@ faq:
 
 The configuration component allows you to view and edit your server's configuration settings. Your server's configuration is basically your _"appsettings.json"_ file, which is being used in all parts of the system to retrieve configuration settings, such as for instance SMTP settings when email slots are sending emails, etc.
 
-![Screenshot of configuring Magic through its Configuration component](/images/config-component.jpg)
+<img src="/images/config-component.webp" alt="Screenshot of configuring Magic through its Configuration component" loading="lazy" width="2400" height="1500">
 
 You should be careful as you edit your server's configuration settings, since this might result in that your server becomes erroneously configured, resulting in that your system stops working - In addition to that if you edit your server's configuration erroneously, you might open up your server
 such that malicious adversaries gain access to your system. The configuration component has helper UI elements to help you configure things such as OpenAI, SMTP and reCAPTCHA, giving you a graphical user interface to edit some of its most important parts.
 
 The _"OpenAI"_ button lets you supply your OpenAI API key without touching the JSON.
 
-![Screenshot of configuring your OpenAI API key](/assets/images/config-openai-key.jpeg)
+<img src="/assets/images/config-openai-key.webp" alt="Screenshot of configuring your OpenAI API key" loading="lazy" width="2400" height="1500">
 
 The _"reCAPTCHA"_ button similarly asks you for your reCAPTCHA site key and secret.
 
-![Screenshot of configuring your reCAPTCHA keys](/assets/images/config-recaptcha-keys.jpeg)
+<img src="/assets/images/config-recaptcha-keys.webp" alt="Screenshot of configuring your reCAPTCHA keys" loading="lazy" width="2400" height="1500">
 
 And the _"SMTP"_ button configures your email server; host, port, credentials, and the default from name and address.
 
-![Screenshot of configuring your SMTP settings](/assets/images/config-smtp-settings.jpeg)
+<img src="/assets/images/config-smtp-settings.webp" alt="Screenshot of configuring your SMTP settings" loading="lazy" width="2400" height="1500">
 
 Notice, if you supply buggy JSON the component will not allow for saving your configuration, but instead provide you with an error message informing you that your JSON has errors. You can also create your own configuration sections as you see fit to use in your own modules.
 

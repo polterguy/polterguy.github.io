@@ -2,7 +2,7 @@
 title: Plugins endpoints
 description: Magic's built-in plugin endpoints, listing installed plugins and installing new ones from the App Store.
 header:
-  image: /assets/images/hero/endpoints-top.png
+  image: /assets/images/hero/endpoints-top.webp
   og_image: /assets/images/hero/endpoints-top-og.png
   image_description: Plugins endpoints
 ---

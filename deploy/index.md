@@ -2,7 +2,7 @@
 title: Deploy Magic
 description: How to deploy Magic to a server and take your cloudlet into production, covering hosting, security, CDNs, and the DevOps involved.
 header:
-  image: /assets/images/hero/deploy.png
+  image: /assets/images/hero/deploy.webp
   og_image: /assets/images/hero/deploy-og.png
   image_description: Deploy Magic
 ---
@@ -146,7 +146,7 @@ https://api.YOURDOMAIN.COM
 
 To configure Magic login with _"root"_/_"root"_. Then provide Magic with a root password, and follow the wizard to the end. This process is similar to the process you follow as you configure Magic locally on your development machine. This should resemble the following.
 
-![Screenshot of initially configuring Magic after installing it on your VPS](/images/setup-magic.jpeg)
+<img src="/images/setup-magic.webp" alt="Screenshot of initially configuring Magic after installing it on your VPS" loading="lazy" width="2400" height="1500">
 
 ## Securing your VPS
 

@@ -2,7 +2,7 @@
 title: Databases
 description: The databases component allows you to manage your connection strings, connect to external databases, and create new SQLite databases in Magic.
 header:
-  image: /assets/images/hero/databases.png
+  image: /assets/images/hero/databases.webp
   og_image: /assets/images/hero/databases-og.png
   image_description: The Databases component
 faq:
@@ -20,7 +20,7 @@ faq:
 
 The databases component allows you to manage your connection strings, in addition to your external and internal databases. This is your goto component if you want to connect to an external database. It allows you to connect to any MySQL, PostgreSQL, SQL Server, or MariaDB database. Provide it with your connection string, give your connection string a name, and click connect.
 
-![Screenshot of the databases component](/images/databases.jpg)
+<img src="/images/databases.webp" alt="Screenshot of the databases component" loading="lazy" width="2400" height="1500">
 
 In addition to allowing you to connect to external databases, this is also the place you go to create a new SQLite file-based database.
 
@@ -30,13 +30,13 @@ Besides connecting to external databases, you can create your own file-based SQL
 
 Once created, you can design your database visually in [SQL Studio](/dashboard/sql-studio/), adding tables, columns, and foreign keys through a graphical designer without writing any DDL by hand. You can of course also execute SQL against your database directly if you prefer - and you don't even have to write the DDL yourself. SQL Studio's _"Where the Machine Creates the Code"_ bar takes natural language input and generates the schema for you - ask it for something such as _"Create DDL for a 3 table CRM system"_, and execute the result.
 
-![Screenshot of SQL Studio's designer view while designing a database](/images/sql-designer.jpg)
+<img src="/images/sql-designer.webp" alt="Screenshot of SQL Studio&#x27;s designer view while designing a database" loading="lazy" width="2400" height="1500">
 
 You can even let an AI do it for you. If you connect your cloudlet to an AI agent such as Claude over the [MCP server](/tutorials/how-to-connect-the-mcp-server/), you can describe the database you want in plain English, and have the orchestrating LLM create the SQLite database and its schema for you.
 
 ## Adding a connection string
 
-![Screenshot of the add database connection form with type, name and connection string](/assets/images/add-database-connection.png)
+<img src="/assets/images/add-database-connection.webp" alt="Screenshot of the add database connection form with type, name and connection string" loading="lazy" width="2408" height="164">
 
 Before connecting, you can click _"Test"_ to verify your connection string actually works, without saving it. And once connected, the component lets you create and delete individual catalogues directly on your external database server - in addition to opening any database in [SQL Studio](/dashboard/sql-studio/) with one click.
 

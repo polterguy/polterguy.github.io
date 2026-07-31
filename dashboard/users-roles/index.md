@@ -2,7 +2,7 @@
 title: Users & Roles
 description: Secure your own code with Magic's role-based access control (RBAC), managing users, roles, authentication, and authorisation from one component.
 header:
-  image: /assets/images/hero/users-roles.png
+  image: /assets/images/hero/users-roles.webp
   og_image: /assets/images/hero/users-roles-og.png
   image_description: Users and roles
 faq:
@@ -22,7 +22,7 @@ faq:
 
 The Users & Roles component allows you to manage and administrate users and roles in your system, and/or create new users and roles. This component is what allows you to control how others are accessing your system. You might for instance have 3 different roles in your company, being C-level executives, managers, and employees. Typically these 3 different roles should not have access to the same parts, so you want to associate users with these different roles in Magic.
 
-![Screenshot of how to create a new user in Magic](/images/auth.jpg)
+<img src="/images/auth.webp" alt="Screenshot of how to create a new user in Magic" loading="lazy" width="2400" height="1500">
 
 ## Managing users and roles
 
@@ -36,13 +36,13 @@ Magic is built upon [JWT](https://jwt.io) authentication and authorisation. This
 
 In addition to its own username and password authentication, Magic can act as an OAuth server, and it can use OIDC (OpenID Connect) for authentication - allowing your users to sign in through an external identity provider such as Google, Microsoft, or any other OIDC-compliant provider. Regardless of how a user signs in - whether through Magic's own login, as an OAuth client, or through an OIDC identity provider - they are still mapped onto Magic's own internal roles, and access is still governed by the same internal RBAC-based system described below. This gives you the convenience of federated, standards-based sign-in, without giving up the fine-grained role-based control Magic provides over your endpoints.
 
-![Screenshot of signing in to Magic through an external OIDC identity provider](/assets/images/oidc-login-magic.png)
+<img src="/assets/images/oidc-login-magic.webp" alt="Screenshot of signing in to Magic through an external OIDC identity provider" loading="lazy" width="2034" height="1322">
 
 ## Users and roles internals
 
 All access in Magic is based upon roles, implying by default all users belonging to the same role(s) have access to the same parts of your backend. This makes it easier to provide access to specific parts of your system(s), and/or also see which parts of your system specific users have access to. This is referred to as RBAC or Role Based Access Control.
 
-![Screenshot of the Roles tab listing all roles with their descriptions](/assets/images/roles.jpeg)
+<img src="/assets/images/roles.webp" alt="Screenshot of the Roles tab listing all roles with their descriptions" loading="lazy" width="2400" height="1500">
 
 Magic does _not_ create _"access rights"_ associations for roles. Instead the system allows individual endpoints to declare themselves what roles are allowed to invoke the endpoint. This is done by invoking **[auth.ticket.verify]** from your Hyperlambda code, and passing in a comma separated list of roles that are allowed to invoke the endpoint. Below is how you would lock down an endpoint from being accessed by users not belonging to either the root role or the admin role.
 

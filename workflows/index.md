@@ -2,7 +2,7 @@
 title: Workflows
 description: Build AI-driven workflows by connecting an orchestrator like Claude to your cloudlet, letting it combine Magic and Hyperlambda to solve problems dynamically.
 header:
-  image: /assets/images/hero/workflows.png
+  image: /assets/images/hero/workflows.webp
   og_image: /assets/images/hero/workflows-og.png
   image_description: AI-driven workflows
 ---
@@ -30,11 +30,11 @@ it first), and implement ONLY access for users that
 belongs to the "guest" roles.
 ```
 
-![Screenshot of Qoder using Kimi K3 to build a full stack app autonomously over Magic's MCP connector](/assets/images/kimi-creating-full-stack-app.png)
+<img src="/assets/images/kimi-creating-full-stack-app.webp" alt="Screenshot of Qoder using Kimi K3 to build a full stack app autonomously over Magic&#x27;s MCP connector" loading="lazy" width="1736" height="1522">
 
 And below is the end result - a working full stack client management app, with search, statuses, notes, and email - created entirely by the workflow above.
 
-![Screenshot of the resulting My Clients full stack app created by the workflow](/assets/images/my-clients-screenshot.png)
+<img src="/assets/images/my-clients-screenshot.webp" alt="Screenshot of the resulting My Clients full stack app created by the workflow" loading="lazy" width="2244" height="1318">
 
 This is the point of workflows in Magic; you submit a description to some orchestrator LLM through Magic's MCP connector, and the orchestrator controls the server - creating apps, AI agents, databases, endpoints, and whatever else the workflow requires.
 

@@ -2,7 +2,7 @@
 title: File system endpoints
 description: Magic's built-in file system endpoints; uploading, downloading, listing, renaming and deleting files and folders.
 header:
-  image: /assets/images/hero/endpoints-top.png
+  image: /assets/images/hero/endpoints-top.webp
   og_image: /assets/images/hero/endpoints-top-og.png
   image_description: File system endpoints
 ---

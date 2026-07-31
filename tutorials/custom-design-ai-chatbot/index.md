@@ -4,7 +4,7 @@ title: Creating a Custom Design for your AI Chatbot
 
 The AI chatbot's design is easily modified. This is useful if you need to change the chatbot's design beyond what is possible by changing its colours, or other properties that are dynamically built through the embed screen's options. Below is a screenshot of how one of our customers modified theirs to have it match their existing design profile.
 
-![AI Chatbot with Custom Design](/assets/images/ai-chatbot-with-custom-design.png)
+<img src="/assets/images/ai-chatbot-with-custom-design.webp" alt="AI Chatbot with Custom Design" loading="lazy" width="1200" height="699">
 
 ## Internals
 
@@ -18,11 +18,11 @@ The CSS file for the AI chatbot is dynamically included according to a query par
 
 The above are basically references to CSS files that exist within your cloudlet. When you embed your AI chatbot, the embed screen resembles the following.
 
-![Embedding your AI Chatbot](/assets/images/embed-ai-chatbot.png)
+<img src="/assets/images/embed-ai-chatbot.webp" alt="Embedding your AI Chatbot" loading="lazy" width="2400" height="1633">
 
 These CSS files are fetched from the _"/system/openai/front.files/chat/"_ folder. This folder contains the system designs and you _should not_ modify these files, but rather create your own file based upon one of these files and put into your _"/etc/system/openai/css/chat/"_ folder. This makes the system recognise your CSS file as a custom theme automatically, and results in that you can choose this theme as you embed your chatbot. Below is an image illustrating how this looks for Seattle Ballooning specifically.
 
-![Embed form with custom designs](/assets/images/seattle-ballooning-themes.png)
+<img src="/assets/images/seattle-ballooning-themes.webp" alt="Embed form with custom designs" loading="lazy" width="1200" height="843">
 
 In the above screenshot there are two custom themes in their cloudlet named;
 
@@ -52,7 +52,7 @@ Notice, if you omit the `.common{opacity:0}` parts, this common CSS file is _not
 
 If you create your own theme CSS file named _"modern-my-theme.css"_, your embed form will end up resembling the following.
 
-![Creating a custom theme and embedding it](/assets/images/custom-theme-embed-form.png)
+<img src="/assets/images/custom-theme-embed-form.webp" alt="Creating a custom theme and embedding it" loading="lazy" width="2400" height="1633">
 
 ## CSS Structure
 
@@ -100,7 +100,7 @@ This `v` parameter is actually not used for anything, and solely exists to allow
 
 Below is how this would typically look from within [Hyper IDE](/dashboard/hyper-ide/).
 
-![Editing your custom theme](/assets/images/editing-your-theme.png)
+<img src="/assets/images/editing-your-theme.webp" alt="Editing your custom theme" loading="lazy" width="1200" height="708">
 
 **Notice**, how to edit your CSS is beyond the scope of this article, and you should obviously know and understand CSS in order to create your own theme. We recommend using for instance the _"Inspect"_ feature of your browser to see the CSS values of individual properties, and use this as the means to _"visually design"_ your AI chatbot during usage.
 

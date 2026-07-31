@@ -2,7 +2,7 @@
 title: Magic Cloud Documentation
 description: Magic Cloud is an AI, Low-Code and No-Code platform that builds and hosts your entire backend, and powers database-driven AI agents over MCP.
 header:
-  image: /assets/images/hero/home.png
+  image: /assets/images/hero/home.webp
   og_image: /assets/images/hero/home-og.png
   image_description: Magic Cloud
 faq:
@@ -64,7 +64,7 @@ Magic is a general purpose backend platform, but some things it is _particularly
 With Magic you can sometimes accomplish in some few minutes what requires weeks of coding with a more
 traditional platform. The CRM app below was created with Qoder in **7 minutes** over Magic's [MCP server](/tutorials/how-to-connect-the-mcp-server/), using Kimi K3, costing a grand total of **$0.50** in inference. It's a full stack app; A SQLite database with 3 tables, a secure API wrapping it, and authentication and authorisation - All generated from natural language.
 
-![A home grown CRM app with clients, notes and emails, vibe coded in 7 minutes for 50 cents](/assets/images/home-grown-app.png)
+<img src="/assets/images/home-grown-app.webp" alt="A home grown CRM app with clients, notes and emails, vibe coded in 7 minutes for 50 cents" loading="lazy" width="2436" height="1334">
 
 Notice, the AI doesn't need to create your database from scratch - Legacy databases can be just as easily wrapped, turning your existing MySQL, PostgreSQL, SQL Server, or SQLite database into a secure API and a working app in minutes.
 
@@ -80,7 +80,7 @@ Magic contains an integrated MCP server, with OAuth, allowing you to connect it 
 
 The above is just some of what I've tried it with, but it should work with everything having MCP support. To get started, check out [how to connect the MCP server](/tutorials/how-to-connect-the-mcp-server/).
 
-![The dashboard's MCP card with the URL an AI agent needs to connect to your cloudlet](/assets/images/mcp-dashboard-copy-url.png)
+<img src="/assets/images/mcp-dashboard-copy-url.webp" alt="The dashboard&#x27;s MCP card with the URL an AI agent needs to connect to your cloudlet" loading="lazy" width="2400" height="392">
 
 ## The Hyperlambda Generator
 
@@ -88,13 +88,13 @@ At the heart of Magic you'll find the [Hyperlambda Generator](/dashboard/hyperla
 
 Combined with the [MCP server](/tutorials/how-to-connect-the-mcp-server/), this allows an AI agent such as Claude to create new tools for itself on demand — describing the endpoint it needs in plain English, and having the generator create it in seconds.
 
-![The Hyperlambda Generator transforming an English description into a working HTTP endpoint](/assets/images/hyperlambda-generator.png)
+<img src="/assets/images/hyperlambda-generator.webp" alt="The Hyperlambda Generator transforming an English description into a working HTTP endpoint" loading="lazy" width="2400" height="1500">
 
 ## The Magic Dashboard
 
 Magic's purpose is to help you with your backend, and it comes with a dashboard allowing you to manage all aspects of your backend. The dashboard contains UI components for most things you'll need when creating and maintaining your API and backend code. Below you can find some general information about some of its most important components.
 
-![Screenshot of the Magic dashboard with key numbers, the MCP card, and the Chatbot Wizard](/images/dashboard.jpeg)
+<img src="/images/dashboard.webp" alt="Screenshot of the Magic dashboard with key numbers, the MCP card, and the Chatbot Wizard" loading="lazy" width="2400" height="1500">
 
 ## Hyper IDE
 
@@ -102,7 +102,7 @@ Magic contains its own IDE or integrated development environment. [Hyper IDE](/d
 and autocomplete for Hyperlambda. With Hyper IDE you can edit your code, save it, and immediately see the result
 of your modifications, by executing your endpoint without ever having to leave your IDE. Magic even has its own backend _"vibe coding"_ prompting mechanisms, allowing you to generate Hyperlambda from natural language using generative AI.
 
-![Screenshot of Magic's Hyper IDE with autocomplete open for Hyperlambda slots](/images/hyper-ide-actions.jpg)
+<img src="/images/hyper-ide-actions.webp" alt="Screenshot of Magic&#x27;s Hyper IDE with autocomplete open for Hyperlambda slots" loading="lazy" width="2400" height="1500">
 
 Hyper IDE also integrates with our Machine Learning component, built on top of OpenAI, allowing you to write your requests in plain English, and have Hyper IDE and OpenAI automatically generate code for you solving your problem.
 
@@ -114,7 +114,7 @@ The [Endpoint Generator](/dashboard/endpoint-generator/) allows you to wrap any 
 meta data from your database, and automatically generates a web API for you. The generated API is
 secured according to your instructions, and can be modified after it's created.
 
-![Screenshot of Endpoint Generator allowing you to generate CRUD apps wrapping your database of choice](/images/backend-crud.jpg)
+<img src="/images/backend-crud.webp" alt="Screenshot of Endpoint Generator allowing you to generate CRUD apps wrapping your database of choice" loading="lazy" width="2400" height="1500">
 
 The Endpoint Generator takes care of referential integrity, validators, authentication, and authorisation -
 While allowing you to declaratively tell it how to generate your API, in addition to having lots of
@@ -129,7 +129,7 @@ and rapidly wrap it inside an HTTP endpoint. You can find this component in the 
 in its _"SQL Endpoint Generator"_ tab. Choose your database, provide some SQL, add arguments that you
 reference in your SQL, and click the _"Generate"_ button.
 
-![Screenshot of the SQL Endpoint Generator allowing you to create HTTP endpoints with SQL](/images/sql-web-api.jpg)
+<img src="/images/sql-web-api.webp" alt="Screenshot of the SQL Endpoint Generator allowing you to create HTTP endpoints with SQL" loading="lazy" width="2400" height="1500">
 
 The SQL endpoint generator allows you to secure your endpoints, declare what arguments your endpoints can handle,
 use all 5 most common HTTP verbs for your endpoints, etc. You can use it with SQL Server, MySQL, MariaDB,
@@ -145,11 +145,11 @@ SQL Studio allows you to visually design your database using a graphical user in
 * MariaDB
 * SQLite
 
-![Screenshot of SQL Studio's database designer while designing a database](/images/sql-designer.jpg)
+<img src="/images/sql-designer.webp" alt="Screenshot of SQL Studio&#x27;s database designer while designing a database" loading="lazy" width="2400" height="1500">
 
 SQL Studio also allows you to execute any SQL towards your database of choice, allowing you to administer your databases from anywhere. By combining SQL Studio with the Backend Generator, and especially the SQL API generator, you can compose some SQL, and rapidly wrap it into an API endpoint.
 
-![Screenshot of SQL Studio while executing an arbitrary SQL statement](/images/sql-studio-2.jpg)
+<img src="/images/sql-studio-2.webp" alt="Screenshot of SQL Studio while executing an arbitrary SQL statement" loading="lazy" width="2400" height="1500">
 
 ## Machine Learning and AI
 
@@ -164,25 +164,25 @@ Magic Cloud is scattered with AI and allows you to create your own Machine Learn
 
 You can try out such a chatbot in the bottom/right corner of this page.
 
-![Screenshot of the Machine Learning component listing your AI models](/assets/images/machine-learning-types.jpeg)
+<img src="/assets/images/machine-learning-types.webp" alt="Screenshot of the Machine Learning component listing your AI models" loading="lazy" width="2400" height="1500">
 
 ## Create an AI chatbot
 
 Creating your own AI chatbot with Magic takes minutes. Provide the Chatbot Wizard with your website's URL, and it crawls your site, scrapes each page, and turns your content into training data - reporting its progress in real time as it works its way through the site. A few minutes later you have a chatbot trained on your own content, ready to embed on your website.
 
-![Screenshot of the dashboard crawling and scraping a website to create an AI chatbot](/assets/images/scraping-website-for-chatbot-data.png)
+<img src="/assets/images/scraping-website-for-chatbot-data.webp" alt="Screenshot of the dashboard crawling and scraping a website to create an AI chatbot" loading="lazy" width="2822" height="1630">
 
 ## User management
 
 Magic Cloud allows you to create and administer users, by giving you a graphical user interface, allowing you to manage your application's users and roles, using a role based access control (RBAC) component. Provide access to modules and components according to what roles your users belong to, and make sure only authorised users have access to private and secured data.
 
-![Screenshot of the Users & roles component managing users and their access rights](/images/auth.jpg)
+<img src="/images/auth.webp" alt="Screenshot of the Users &amp; roles component managing users and their access rights" loading="lazy" width="2400" height="1500">
 
 ## The task manager
 
 Magic Cloud allows you to create and administer tasks. A task is a background job, that is persisted into your database as Hyperlambda, and it can either be executed by a _"trigger"_ occurring somewhere else in your system, or periodically scheduled to execute repeatedly, or at some specific date and time in the future. The task manager allows you to easily manage your tasks, edit them, and create new tasks as you see fit.
 
-![Screenshot of creating a Hyperlambda task in the Task Manager](/images/scheduling-task.jpg)
+<img src="/images/scheduling-task.webp" alt="Screenshot of creating a Hyperlambda task in the Task Manager" loading="lazy" width="2400" height="1500">
 
 ## Plugins
 
@@ -195,7 +195,7 @@ Magic Cloud also contains its own _"App Store"_, allowing you to rapidly install
 * Several example SQLite databases
 * Etc, etc, etc
 
-![Screenshot of the Plugins component, Magic's integrated App Store](/images/bazaar.jpg)
+<img src="/images/bazaar.webp" alt="Screenshot of the Plugins component, Magic&#x27;s integrated App Store" loading="lazy" width="2400" height="1500">
 
 ## The integrated log
 
@@ -203,7 +203,7 @@ Magic Cloud also comes with an integrated log component, allowing you to browse 
 
 When you create your own Hyperlambda applications, you can also create log entries as you see fit, to log important events, such as deleting records, executing tasks, registering users, etc.
 
-![Screenshot of the Log component while browsing server log items](/images/log.jpg)
+<img src="/images/log.webp" alt="Screenshot of the Log component while browsing server log items" loading="lazy" width="2400" height="1500">
 
 ## Custom AI chatbots
 
@@ -211,7 +211,7 @@ You can also use Magic to create your own custom AI chatbot, for then to embed i
 
 It works by scraping your website, generating training data in the process, for then to end up with a custom _"machine learning model"_ (based upon RAG), that answers questions according to your training data. You can try out such a chatbot by clicking the button in the bottom / right corner of this page, and ask it any question about Magic Cloud. This chatbot was created by scraping this website. At AINIRO we also deliver such chatbots as one of our services. Read more about [our AI chatbots here](/dashboard/chatbot-wizard/).
 
-![Screenshot of an AI chatbot answering questions about Hyperlambda and Magic](/assets/images/integrated-chatbot.jpeg)
+<img src="/assets/images/integrated-chatbot.webp" alt="Screenshot of an AI chatbot answering questions about Hyperlambda and Magic" loading="lazy" width="2400" height="1500">
 
 {% include faq.html %}
 

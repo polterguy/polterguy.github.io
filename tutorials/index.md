@@ -2,7 +2,7 @@
 title: Tutorials
 description: Hands-on tutorials for using Magic on your own, letting you experiment for yourself.
 header:
-  image: /assets/images/hero/tutorials.png
+  image: /assets/images/hero/tutorials.webp
   og_image: /assets/images/hero/tutorials-og.png
   image_description: Magic tutorials
 ---

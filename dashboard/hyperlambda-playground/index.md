@@ -2,7 +2,7 @@
 title: Hyperlambda Playground
 description: Submit Hyperlambda to your cloudlet and run it instantly in 'immediate' mode, ideal for administering your Magic server and learning Hyperlambda.
 header:
-  image: /assets/images/hero/playground.png
+  image: /assets/images/hero/playground.webp
   og_image: /assets/images/hero/playground-og.png
   image_description: The Hyperlambda Playground
 faq:
@@ -22,11 +22,11 @@ The Hyperlambda Playground component allows you to play with [Hyperlambda](/hype
 
 Notice, you don't have to write the Hyperlambda yourself. Below the editor you'll find an input textbox that says _"Where the Machine Creates the Code"_ - describe what you want in plain English, click _"Ask"_, and the [Hyperlambda Generator](/dashboard/hyperlambda-generator/) writes the code for you, which you can then execute immediately. And when you do write code yourself, the editor gives you autocomplete on every slot in your cloudlet - click CTRL+SPACE on Windows or FN+CONTROL+SPACE on a Mac.
 
-![Screenshot of the Hyperlambda Playground Component executing some arbitrary Hyperlambda](/images/eval-component.jpg)
+<img src="/images/eval-component.webp" alt="Screenshot of the Hyperlambda Playground Component executing some arbitrary Hyperlambda" loading="lazy" width="2400" height="1500">
 
 If you create a Hyperlambda snippet you for some reason want to save for later, you can save your Hyperlambda to your _"snippets"_ collection, by clicking the _"Save snippet"_ button, and give your snippet a name. This allows you to create snippets you need to periodically execute, and store these as your _"admin snippets"_, to rapidly execute snippets that somehow execute some Hyperlambda task at will. Saved snippets are loaded back with the _"Load snippet…"_ dropdown.
 
-![Screenshot of saving a Hyperlambda snippet with the Save snippet dialog](/assets/images/playground-save-snippet.jpeg)
+<img src="/assets/images/playground-save-snippet.webp" alt="Screenshot of saving a Hyperlambda snippet with the Save snippet dialog" loading="lazy" width="2400" height="1500">
 
 ## Hyperlambda Playground internals
 

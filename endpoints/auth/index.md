@@ -2,7 +2,7 @@
 title: Authentication and authorisation endpoints
 description: Magic's built-in authentication and authorisation endpoints; authenticating, changing passwords, refreshing and verifying JWT tokens.
 header:
-  image: /assets/images/hero/endpoints-top.png
+  image: /assets/images/hero/endpoints-top.webp
   og_image: /assets/images/hero/endpoints-top-og.png
   image_description: Authentication and authorisation endpoints
 ---

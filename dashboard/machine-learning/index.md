@@ -2,7 +2,7 @@
 title: Machine Learning
 description: Create your own machine-learning model in Magic by scraping any website into RAG training data, answering domain questions with vector search.
 header:
-  image: /assets/images/hero/machine-learning.png
+  image: /assets/images/hero/machine-learning.webp
   og_image: /assets/images/hero/machine-learning-og.png
   image_description: Machine Learning models
 faq:
@@ -34,7 +34,7 @@ faq:
 
 Magic's Machine Learning component allows you to create your own AI based machine learning model, either by crawling your website and scraping it for data, or by manually uploading files, resulting in a private and custom _"machine learning model"_. Machine learning in Magic is built upon OpenAI's API and is similar to ChatGPT, and under the hood it's using RAG and VSS towards your own database to extract context as it's answering questions using OpenAI.
 
-![Screenshot of the Machine Learning component showing a model's training data](/assets/images/machine-learning-component.jpeg)
+<img src="/assets/images/machine-learning-component.webp" alt="Screenshot of the Machine Learning component showing a model&#x27;s training data" loading="lazy" width="2400" height="1500">
 
 Magic contains a lot of additional services, such as the ability to monitor or supervise usage, storing questions and answers into your database, and use these to review and improve your model's accuracy over time. You can also use historical requests for business intelligence, or lead generation. In addition it ties into Magic's AI Agent abilities, allowing you to integrate AI functions triggering AI workflows from instructions provided by the user.
 
@@ -67,19 +67,19 @@ The way the crawler works, is by first checking if your website has a sitemap fi
 This process resembles the process Google and other search engines are following as they crawl your site, and one of the bonus features of scraping your website, is that you get to some extent see how search engines see your website. Hence, it is also a somewhat valuable tool to SEO quality assure your site. Magic's crawler explicitly identifies as a crawler, and obeys all the standard crawler rules from
 your robots.txt file.
 
-![Screenshot of crawling and scraping your website for RAG data for your machine learning model](/assets/images/machine-learning-import-dialogue-screenshot.jpeg)
+<img src="/assets/images/machine-learning-import-dialogue-screenshot.webp" alt="Screenshot of crawling and scraping your website for RAG data for your machine learning model" loading="lazy" width="2400" height="1500">
 
 ### Spicing
 
 The spice feature in Magic allows you to scrape a single URL. This provides you with more control, since you can scrape individual pages, and add individual pages to a model. This might be useful if you've got additional information you want to put into the same model, such as Wikipedia pages, individual articles, etc. To spice a model choose the _"Training data"_ tab in Machine Learning, choose your model, and click the _"Spice"_ button.
 
-![Screenshot of how to spice your model and import an individual page](/assets/images/spice-your-type.jpeg)
+<img src="/assets/images/spice-your-type.webp" alt="Screenshot of how to spice your model and import an individual page" loading="lazy" width="2400" height="1500">
 
 ### Periodically re-crawl site
 
 You can configure Magic such that it periodically re-crawls your site. This is done by providing _"Website"_ value in your model's configuration. By default Magic contains a scheduled task that is executed once every 24 hours. This task will re-crawl all models you've configured with a website property.
 
-![Screenshot of how to periodically re-crawl your website by changing its website property](/assets/images/recrawl-site-periodically.jpeg)
+<img src="/assets/images/recrawl-site-periodically.webp" alt="Screenshot of how to periodically re-crawl your website by changing its website property" loading="lazy" width="2400" height="1500">
 
 When re-crawling Magic will update any existing pages that were changed, and add new pages it finds. When it is done crawling your site it will automatically vectorize your model.
 
@@ -89,7 +89,7 @@ A _"model"_ is a collection of training snippets. When a chatbot is asked a ques
 
 You can create many models in Magic, and therefore many chatbots solving different problems.
 
-![Screenshot showing a list of multiple machine learning models](/assets/images/machine-learning-types.jpeg)
+<img src="/assets/images/machine-learning-types.webp" alt="Screenshot showing a list of multiple machine learning models" loading="lazy" width="2400" height="1500">
 
 Once you're done with importing training snippets into your model, you'll have to click _"Vectorize"_ on your model before the data can be used by your chatbot.
 
@@ -97,17 +97,17 @@ Once you're done with importing training snippets into your model, you'll have t
 
 A single machine learning model has dozens of configuration settings, for everything you can imagine. Its settings are organised across the _"General"_, _"Behaviour"_, and _"Integrations"_ tabs of the model's edit dialog.
 
-![Screenshot of how to configure your machine learning model](/assets/images/configure-machine-learning-model.jpeg)
+<img src="/assets/images/configure-machine-learning-model.webp" alt="Screenshot of how to configure your machine learning model" loading="lazy" width="2400" height="1500">
 
 The most important setting is the _"System message"_, found further down on the _"General"_ tab - just scroll down to find it. This becomes the equivalent of a ChatGPT _"instruction"_, telling the model how to behave. Clicking _"Edit system instruction"_ opens a large dedicated editor for it.
 
-![Screenshot of editing the system instruction in its dedicated editor](/assets/images/system-instruction-editing.png)
+<img src="/assets/images/system-instruction-editing.webp" alt="Screenshot of editing the system instruction in its dedicated editor" loading="lazy" width="2400" height="1500">
 
 #### Adding AI functions to your system instruction
 
 Inside the system instruction editor you'll find an _"AI function"_ button, listing every AI function available in your cloudlet, and appending the one you choose directly into your system instruction.
 
-![Screenshot of adding an AI function to the system instruction](/assets/images/ml-instruction-add-function.jpeg)
+<img src="/assets/images/ml-instruction-add-function.webp" alt="Screenshot of adding an AI function to the system instruction" loading="lazy" width="2400" height="1500">
 
 The difference between this and adding an AI function as a training snippet is important. A function added as a training snippet is a _RAG function_ - it only becomes part of the AI's context if the user's question happens to match it through a VSS lookup, implying the AI might _miss_ the function if the question is phrased differently. A function added to the system instruction on the other hand is _always_ transmitted to the AI, making it a permanent part of the agent's capabilities regardless of what the user asks. Use the system instruction for the handful of functions your agent should always be able to invoke, and training snippets for large function libraries where a semantic match is good enough.
 
@@ -200,7 +200,7 @@ One training snippet is one such atomic piece of information. Typically as we tr
 
 Training snippets can be automatically created as we scrape your website, upload files, or even manually created. In addition, Magic has plugins allowing to connect to a Shopify account through its API, or a WordPress account, etc to import training data. When we setup a chatbot a lot of the work is actually related to _"washing your training data"_ to further increase the quality of the chatbot. By connecting the chatbot to semantic data using an API instead of scraping, the quality of the data typically increases 10x. However, sometimes you will have to manually edit your training snippets. The process of how to do this is shown below.
 
-![Screenshot of editing one training snippet](/assets/images/editing-one-training-snippet.jpeg)
+<img src="/assets/images/editing-one-training-snippet.webp" alt="Screenshot of editing one training snippet" loading="lazy" width="2400" height="1500">
 
 Notice, you don't have to wash your training data by hand. The snippet editor has its own _"Where the Machine Creates the Code"_ bar, allowing you to clean, edit, or compress individual snippets after importing - provide an instruction such as _"Remove the navigation links and compress this to its essence"_, and the AI transforms the snippet for you, writing the result straight back into the editor.
 
@@ -212,7 +212,7 @@ The _"Widget"_ button on the training data tab allows you to add _"widgets"_ to 
 
 Below is an example of a working widget. The user asks the chatbot to get in touch, and the AI renders a contact form in the middle of the conversation - allowing the user to submit his or her name and email address to be contacted by AINIRO, without ever leaving the chat.
 
-![Screenshot of a working widget rendering a contact form inside the chat stream](/assets/images/example-widget.png)
+<img src="/assets/images/example-widget.webp" alt="Screenshot of a working widget rendering a contact form inside the chat stream" loading="lazy" width="2366" height="1698">
 
 ### Adding Hyperlambda code to training snippets
 
@@ -242,7 +242,7 @@ The _"supervised"_ feature also allows you to _"monitor"_ your machine learning 
 
 You can easily turn on and off machine learning supervision by editing the configuration for your model.
 
-![Screenshot of the History tab showing previous questions and answers](/assets/images/history-tab-requests.jpeg)
+<img src="/assets/images/history-tab-requests.webp" alt="Screenshot of the History tab showing previous questions and answers" loading="lazy" width="2400" height="1500">
 
 ## AI Functions
 
@@ -289,14 +289,14 @@ The above tells OpenAI to return JSON and `FUNCTION_INVOCATION` if the user asks
 
 Magic Cloud contains dozens of pre-defined functions, and most of these are easily implemented using no-code constructs. To integrate one of the pre-defined AI functions into your model, you need to choose your model in the _"Training data"_ tab, click the _"Add function"_ button, at which point you'll see all the pre-defined no-code AI functions existing in the system.
 
-![Screenshot of installing an AI function](/assets/images/install-ai-function.jpeg)
+<img src="/assets/images/install-ai-function.webp" alt="Screenshot of installing an AI function" loading="lazy" width="2400" height="1500">
 
 ## A Machine Learning platform
 
 Magic's machine learning component is actually horizontally implemented into almost every single component in Magic. Need to use AI from [SQL Studio](/dashboard/sql-studio/), no problem, it's an integrated feature. The same is true for [Hyper IDE](/dashboard/hyper-ide/),
 and even help is implemented using OpenAI and ChatGPT. If you need help with some [Hyperlambda](/hyperlambda/) code, just mark it in Hyper IDE and click F1, which will use AI to explain what the code does.
 
-![Screenshot of clicking F1 and have OpenAI explain some Hyperlambda code](/images/hyperlambda-ai-help.jpeg)
+<img src="/images/hyperlambda-ai-help.webp" alt="Screenshot of clicking F1 and have OpenAI explain some Hyperlambda code" loading="lazy" width="2400" height="1500">
 
 You can also use OpenAI to generate code for you. Both Hyper IDE and SQL Studio have a little textbox at the bottom that says _"Where the machine creates the code."_ If you add some piece of instruction here, Magic will invoke OpenAI with your prompt and generate code according to your instructions.
 
@@ -304,6 +304,6 @@ You can also use OpenAI to generate code for you. Both Hyper IDE and SQL Studio 
 
 In addition, Magic integrates a support chatbot directly into its dashboard. This provides you with integrated help directly from the dashboard. Click the AI chatbot button at the bottom of the navigation sidebar to access this chatbot.
 
-![Screenshot of Magic's integrated support chatbot](/assets/images/integrated-chatbot.jpeg)
+<img src="/assets/images/integrated-chatbot.webp" alt="Screenshot of Magic&#x27;s integrated support chatbot" loading="lazy" width="2400" height="1500">
 
 {% include faq.html %}

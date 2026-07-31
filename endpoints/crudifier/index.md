@@ -2,7 +2,7 @@
 title: CRUD generator endpoints
 description: Magic's built-in crudifier endpoints, generating CRUD and SQL based HTTP endpoints wrapping your database.
 header:
-  image: /assets/images/hero/endpoints-top.png
+  image: /assets/images/hero/endpoints-top.webp
   og_image: /assets/images/hero/endpoints-top-og.png
   image_description: CRUD generator endpoints
 ---

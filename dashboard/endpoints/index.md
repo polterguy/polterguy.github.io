@@ -2,7 +2,7 @@
 title: Endpoints
 description: The Endpoints component in Magic allows you to browse your endpoints and execute these, similarly to how Swagger works.
 header:
-  image: /assets/images/hero/endpoints-dash.png
+  image: /assets/images/hero/endpoints-dash.webp
   og_image: /assets/images/hero/endpoints-dash-og.png
   image_description: The Endpoints component
 faq:
@@ -22,23 +22,23 @@ faq:
 
 The Endpoints component allows you to see your HTTP endpoints, and invoke these, similarly to how Swagger works. From your endpoints menu item you can search for, parametrise, and invoke your endpoints - Allowing you to simulate a client, to understand how your endpoints work, and _"debug"_ these as you develop them. This component hence serves two purposes; One being documenting your endpoints, another being testing your endpoints.
 
-![Screenshot of the Endpoints component in Magic and how it allows you to execute HTTP endpoints in your cloudlet](/images/endpoints.jpg)
+<img src="/images/endpoints.webp" alt="Screenshot of the Endpoints component in Magic and how it allows you to execute HTTP endpoints in your cloudlet" loading="lazy" width="2400" height="1500">
 
 ## Parametrising your invocations
 
 When you expand an endpoint, every argument the endpoint accepts becomes an input field, with its type displayed next to its name. For a CRUD read endpoint this means you can page with `limit` and `offset`, sort with `order` and `direction`, and expand the _"Filter arguments"_ section to filter on individual columns - all without writing a single line of code.
 
-![Screenshot of parametrising an endpoint invocation with limit, offset and order arguments](/assets/images/endpoints-parametrising-invocations.jpeg)
+<img src="/assets/images/endpoints-parametrising-invocations.webp" alt="Screenshot of parametrising an endpoint invocation with limit, offset and order arguments" loading="lazy" width="2400" height="1500">
 
 When you click _"Invoke"_, the component shows you the response; its HTTP status code, how many milliseconds the invocation took, the response headers, and the response body itself with syntax highlighting. A _"Copy response"_ button lets you bring the result into your own code or documentation.
 
-![Screenshot of the response dialog showing status code, timing, and the JSON response body](/assets/images/endpoints-invocation-response.jpeg)
+<img src="/assets/images/endpoints-invocation-response.webp" alt="Screenshot of the response dialog showing status code, timing, and the JSON response body" loading="lazy" width="2400" height="1500">
 
 ## OpenAPI specifications
 
 Every endpoint has an _"OpenAPI"_ button, giving you the OpenAPI specification for that particular endpoint - and every _module_ has one too, giving you the specification for all endpoints in the module at once.
 
-![Screenshot of the OpenAPI specification for the chinook module](/assets/images/endpoints-openapi-chinook.jpeg) You can copy both the OpenAPI URL and the specification itself. This is particularly useful when working with AI - copy and paste the OpenAPI specification into some other orchestrator LLM or AI agent, and the other party immediately understands your backend; what endpoints exist, what arguments they take, and what they return - allowing the AI to correctly invoke your API, or generate a frontend consuming it.
+<img src="/assets/images/endpoints-openapi-chinook.webp" alt="Screenshot of the OpenAPI specification for the chinook module" loading="lazy" width="2400" height="1500"> You can copy both the OpenAPI URL and the specification itself. This is particularly useful when working with AI - copy and paste the OpenAPI specification into some other orchestrator LLM or AI agent, and the other party immediately understands your backend; what endpoints exist, what arguments they take, and what they return - allowing the AI to correctly invoke your API, or generate a frontend consuming it.
 
 The component also allows for uploading and downloading of files - you can upload files to endpoints accepting file uploads, and download the files an endpoint returns, allowing you to test binary and document endpoints directly from the component.
 

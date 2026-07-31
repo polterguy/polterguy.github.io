@@ -18,7 +18,7 @@ The system instruction is _always_ transmitted to the LLM as an invisible messag
 
 Since the system instruction is _always_ transmitted to OpenAI, this makes it a very good place for instructions that are general and should always be sent to the LLM. This makes it highly useful for providing _"instructions"_ such as a tone of voice, in addition to basic information that the AI chatbot should always know. You can edit the system message by clicking _"Edit"_ on your model in the Machine Learning component. Below is an example for an imaginary AI chatbot created for SalesForce, intended to act as a sales executive.
 
-![Screenshot of editing the system instruction](/assets/images/system-instruction-editing.png)
+<img src="/assets/images/system-instruction-editing.webp" alt="Screenshot of editing the system instruction" loading="lazy" width="2400" height="1500">
 
 The system instruction should not be too long, but only contain the most important information and instructions required to modify its behaviour according to your requirements. However, there's no real difference between the system instruction and a training snippet conceptually, since they both end up as context information.
 
@@ -30,7 +30,7 @@ Training snippets again are matched according to what questions the user is aski
 
 When a question is being asked, your cloudlet will find the top n matching training snippets, until it's filled up its context window, and transmit these to the LLM. This allows us to transmit only context information from your training snippets that is relevant to answer the user's question. If you want to synthesise this behaviour to see which training snippets are a part of a specific question, you can copy and paste your question into the search bar of the _"Training data"_ tab, and check the _"VSS"_ checkbox. Below is a screenshot to serve as an example.
 
-![Searching through your training snippets using VSS](/assets/images/vss-search-through-rag-data.png)
+<img src="/assets/images/vss-search-through-rag-data.webp" alt="Searching through your training snippets using VSS" loading="lazy" width="2400" height="1500">
 
 ### Threshold
 
@@ -42,7 +42,7 @@ Notice, this _"similarity"_ value is also related to the threshold of your confi
 
 The _"Tokens"_ column again is important to understand, since it's the number of OpenAI tokens one specific training snippet is consuming. If you look at your model's configuration, on the _"General"_ tab, you will see one important field that's related to training snippets. This is its _"Max Context tokens"_ value. In the screenshot below you can see this number being 4,000 in the bottom left parts of your configuration.
 
-![Max Context Window value for your machine learning model](/assets/images/max-context-window.png)
+<img src="/assets/images/max-context-window.webp" alt="Max Context Window value for your machine learning model" loading="lazy" width="2400" height="1500">
 
 This value is an instruction to the cloudlet of how many tokens to attach from your RAG training snippets, for each individual request. In the above image it's set to 4,000, while our training snippets from the image above are in the range of 126 to 865.
 

@@ -2,7 +2,7 @@
 title: SQL Studio
 description: The web based SQL 'workbench' allows you to execute any SQL, see the result immediately, in addition to storing your frequently used SQL snippets for later.
 header:
-  image: /assets/images/hero/sql-studio.png
+  image: /assets/images/hero/sql-studio.webp
   og_image: /assets/images/hero/sql-studio-og.png
   image_description: SQL Studio
 faq:
@@ -33,7 +33,7 @@ plugins using [the plugins component](/dashboard/plugins/), you also typically g
 of example SQL statements - Implying SQL Studio is also a nice place to start out if you
 want to teach yourself SQL. To access the SQL editor open up SQL Studio and click the _"SQL"_ tab.
 
-![Screenshot of SQL Studio having executed a join query, showing the result grid below the editor](/images/sql-editor.jpg)
+<img src="/images/sql-editor.webp" alt="Screenshot of SQL Studio having executed a join query, showing the result grid below the editor" loading="lazy" width="2400" height="1500">
 
 ## Creating SQL with natural language
 
@@ -43,15 +43,15 @@ Below the SQL editor you'll find an input textbox that says _"Where the Machine 
 
 You can also use SQL Studio to visually create and design your database. This is a graphical user interface, where you don't need to write any SQL DDL to create your database structure. SQL Studio's database designer allows you to create new tables, add fields to your tables, and create foreign keys referencing other tables as you wish.
 
-![Screenshot of SQL Studio and its design view allowing you to visually design your databases](/images/sql-designer.jpg)
+<img src="/images/sql-designer.webp" alt="Screenshot of SQL Studio and its design view allowing you to visually design your databases" loading="lazy" width="2400" height="1500">
 
 Creating a new table is as simple as clicking the _"New table"_ button, giving your table a name, and declaring its primary key.
 
-![Screenshot of creating a new table in SQL Studio's designer](/images/sql-new-table.jpg)
+<img src="/images/sql-new-table.webp" alt="Screenshot of creating a new table in SQL Studio&#x27;s designer" loading="lazy" width="2400" height="1500">
 
 Adding a column to an existing table is just as easy - declare its name, type, an optional default value, and whether it's nullable. The same dialog also has a _"Foreign key"_ tab, allowing you to create columns referencing other tables.
 
-![Screenshot of adding a column to a table in SQL Studio's designer](/images/sql-add-column.jpg)
+<img src="/images/sql-add-column.webp" alt="Screenshot of adding a column to a table in SQL Studio&#x27;s designer" loading="lazy" width="2400" height="1500">
 
 Notice, the designer is optional - you can just as well create your database structure with plain SQL DDL from the SQL view. And you don't even have to write the DDL yourself; ask the _"Where the Machine Creates the Code"_ bar below the SQL editor for something such as _"A CRM system with 3 tables allowing me to manage my contacts"_, and the AI generates the complete DDL for you - tables, primary keys, and foreign keys included - ready to execute.
 

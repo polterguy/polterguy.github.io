@@ -8,7 +8,7 @@ When you're done with creating your machine learning model, and you've quality a
 
 Your machine learning model has an _"embed"_ button. If you click this button you will be served something resembling the following.
 
-![Embedding your AI Chatbot](/assets/images/embed-ai-chatbot-2.png)
+<img src="/assets/images/embed-ai-chatbot-2.webp" alt="Embedding your AI Chatbot" loading="lazy" width="2400" height="1633">
 
 Since all of the above settings reflect a query parameter, this allows you to manually edit the embed script assuming you can somehow ensure your parameters are valid and URL encoded. Below is an exhaustive list of what query parameters the embed script supports:
 
@@ -46,7 +46,7 @@ The AI chatbot is actually using _two_ background colors. These two colors are e
 
 It is typically smart to use lighter colors as your `start` value and heavier or darker colors in the same spectrum as your `end` value. This creates a _"sun effect"_ and resembles the way things are in real life, since the sun always shines from the top, making darker colors further down in the same object. Exactly how these colors are being used, varies from theme to theme, but below you can see how the _"bubbles"_ theme uses these colors.
 
-![Gradient background color in your AI chatbot](/assets/images/bubbles-theme-gradients.png)
+<img src="/assets/images/bubbles-theme-gradients.webp" alt="Gradient background color in your AI chatbot" loading="lazy" width="1200" height="823">
 
 The `link` setting again is for hyperlinks, allowing you to provide a hexadecimal value, that becomes the color of hyperlinks inside the chatbot window. The `color` setting is for plain text. Both of these require hex values, such as for instance `#fefefe` which is off white.
 
@@ -58,7 +58,7 @@ RTL implies _"right to left"_ and is the way Hebrew, Arabic, and Farsi are writt
 
 If you set the `hidden` query parameter to `true` then the JavaScript file will *not* render the chatbot button. This is useful if you want to roll your own button, such as we've actually done in the Magic dashboard ourselves. Below you can see we've got our own custom trigger button.
 
-![Rolling your own trigger button](/assets/images/custom-ai-chatbot-trigger-button.png)
+<img src="/assets/images/custom-ai-chatbot-trigger-button.webp" alt="Rolling your own trigger button" loading="lazy" width="2400" height="1200">
 
 In the above screenshot you can see the sparkle button at the bottom of the navigation sidebar. This button doesn't have anything to do with the chatbot itself, but is a custom button which once clicked executes the following JavaScript code.
 

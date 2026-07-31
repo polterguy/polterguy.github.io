@@ -2,7 +2,7 @@
 title: Task Manager
 description: Create, administer, and schedule background tasks in Magic, running them once at a future time, or repeatedly on a recurring schedule.
 header:
-  image: /assets/images/hero/task-manager.png
+  image: /assets/images/hero/task-manager.webp
   og_image: /assets/images/hero/task-manager-og.png
   image_description: The Task Manager
 faq:
@@ -22,7 +22,7 @@ faq:
 
 The Task Manager component allows you to create and administrate persisted Hyperlambda tasks, and/or schedule tasks for executing, either in a repeating pattern somehow, or at an exact date and time in the future. A Magic task is just a snippet of Hyperlambda code, that is persisted into your Magic database, and such can be recalled at any point in the future to be executed at will.
 
-![Screenshot of how to create a Hyperlambda task](/images/scheduling-tasks.jpg)
+<img src="/images/scheduling-tasks.webp" alt="Screenshot of how to create a Hyperlambda task" loading="lazy" width="2400" height="1500">
 
 ## Creating tasks with natural language
 
@@ -30,7 +30,7 @@ You don't need to write the Hyperlambda for your tasks yourself. Below the code 
 
 If you prefer writing the code yourself, the editor gives you autocomplete on all slots that exist in your cloudlet - click CTRL+SPACE on Windows or FN+CONTROL+SPACE on a Mac while editing a task, and choose from the list of matching slots.
 
-![Screenshot of editing an existing task with autocomplete triggered, showing matching slots](/assets/images/task-editing-autocomplete.jpeg)
+<img src="/assets/images/task-editing-autocomplete.webp" alt="Screenshot of editing an existing task with autocomplete triggered, showing matching slots" loading="lazy" width="2400" height="1500">
 
 ## The idea behind the task component
 
@@ -44,7 +44,7 @@ Your tasks will be saved into your Magic database and its table called _"tasks"_
 
 Tasks can be scheduled according to a whole range of different patterns. First of all you can schedule a task to be executed at some specific date and time in the future. This is done by simply choosing a date and time in the future when you want your task to execute.
 
-![Screenshot of scheduling a Hyperlambda task to execute at a specific date in the future](/images/scheduling-task.jpg)
+<img src="/images/scheduling-task.webp" alt="Screenshot of scheduling a Hyperlambda task to execute at a specific date in the future" loading="lazy" width="2400" height="1500">
 
 In addition to scheduling a task to be executed at a specific date and time in the future, you can also schedule your task to be repeated according to some sort of repetition pattern. The simplest pattern here is _"every n unit"_, where n can be any integer, and unit can be any of seconds, minutes, hours, days, weeks and months.
 

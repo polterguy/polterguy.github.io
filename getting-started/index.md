@@ -2,7 +2,7 @@
 title: Getting Started
 description: This article is about how to get started with Magic Cloud using Docker, and start leveraging its Low-Code and No-Code features in your own systems
 header:
-  image: /assets/images/hero/getting-started.png
+  image: /assets/images/hero/getting-started.webp
   og_image: /assets/images/hero/getting-started-og.png
   image_description: Getting started with Magic
 ---
@@ -81,7 +81,7 @@ This spins up the frontend at port 5555 and the backend at port 4444, and create
 
 Once your containers are up and running, navigate your browser to `localhost:5555`, and login to your backend at `localhost:4444`, using _"root"_ as both the username and password. Once you've logged in, you'll be asked to setup Magic. This will resemble the following.
 
-![Screenshot of how to initially configure Magic](/images/setup-magic.jpeg)
+<img src="/images/setup-magic.webp" alt="Screenshot of how to initially configure Magic" loading="lazy" width="2400" height="1500">
 
 After you've provided a root password, your name, and your email address, you will be redirected to the main dashboard and you can start using Magic.
 

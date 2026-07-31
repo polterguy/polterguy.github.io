@@ -141,7 +141,7 @@ image.chart:bars
 
 The above results in the following.
 
-![Bar chart](/assets/images/bar-chart.png)
+<img src="/assets/images/bar-chart.webp" alt="Bar chart" loading="lazy" width="600" height="300">
 
 In addition to providing integer values you can also supply decimal, double, or floating point values such as illustrated below.
 
@@ -191,7 +191,7 @@ image.chart:stacked
 
 The above will produce the following chart.
 
-![Stacked chart](/assets/images/stacked-chart.png)
+<img src="/assets/images/stacked-chart.webp" alt="Stacked chart" loading="lazy" width="800" height="500">
 
 This slot can also accept decimal, float, or double values for its individual values.
 
@@ -225,6 +225,6 @@ image.chart:grouped
 
 The above will produce the following chart.
 
-![Grouped chart](/assets/images/grouped-chart.png)
+<img src="/assets/images/grouped-chart.webp" alt="Grouped chart" loading="lazy" width="600" height="300">
 
 This slot can also accept decimal, float, or double values for its individual values.

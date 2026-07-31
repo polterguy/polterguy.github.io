@@ -2,7 +2,7 @@
 title: Hyperlambda Generator
 description: A proprietary SLM fine-tuned on 600,000+ snippets that turns natural language into working Hyperlambda in seconds, and never hallucinates function calls.
 header:
-  image: /assets/images/hero/hyperlambda-generator.png
+  image: /assets/images/hero/hyperlambda-generator.webp
   og_image: /assets/images/hero/hyperlambda-generator-og.png
   image_description: The Hyperlambda Generator
 faq:
@@ -22,7 +22,7 @@ faq:
 
 Magic contains its own Hyperlambda Generator. This isn't a single component, but goes through most parts of the platform that somehow allow you to create Hyperlambda code. It's built as our own proprietary SLM (Small Language Model), fine-tuned with more than 600,000 training snippets, so it's actually very strong on creating backend code, even though it's using a _"small base model"_.
 
-![Screenshot of the Hyperlambda Generator creating an HTTP CRUD endpoint](/assets/images/hyperlambda-generator.png)
+<img src="/assets/images/hyperlambda-generator.webp" alt="Screenshot of the Hyperlambda Generator creating an HTTP CRUD endpoint" loading="lazy" width="2400" height="1500">
 
 ## What makes it different
 
@@ -71,7 +71,7 @@ Notice, if the AI creates wrong code, you can press `CTRL+Z` (or `CMD+Z` on a Ma
 
 Below your main code view in Hyper IDE and the Hyperlambda Playground, you can see an input textbox that says _"Where the Machine Creates the Code"_. This bar allows you to provide change instructions to the LLM. Examples of prompts you might want to test can be found below.
 
-![The Where the Machine Creates the Code prompt bar](/assets/images/ask-bar-cropped.png)
+<img src="/assets/images/ask-bar-cropped.webp" alt="The Where the Machine Creates the Code prompt bar" loading="lazy" width="2368" height="124">
 
 * Add a name argument and use this when sending the email
 * Make the title argument mandatory

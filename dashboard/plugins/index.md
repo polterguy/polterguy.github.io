@@ -2,7 +2,7 @@
 title: Plugins
 description: Extend your Magic cloudlet with plugins from the integrated App Store — Stripe payments, Shopify and WordPress chatbots, example databases, and more.
 header:
-  image: /assets/images/hero/plugins-dash.png
+  image: /assets/images/hero/plugins-dash.webp
   og_image: /assets/images/hero/plugins-dash-og.png
   image_description: The Plugins component
 faq:
@@ -24,13 +24,13 @@ faq:
 
 The Plugins component is Magic's integrated _"AppStore"_, and allows you to install backend micro services on the fly, without interrupting normal usage. It resolves towards AINIRO's repository of plugins, that contains several pre-fabricated backend micro services, serving some generic requirement, such as for instance Stripe payments, OpenAI helpers, and registration helpers. Most plugins automatically take care of creating their databases, and other things required to initialise the plugin.
 
-![Screenshot of the plugins component allowing you to extend your cloudlet](/images/bazaar.jpg)
+<img src="/images/bazaar.webp" alt="Screenshot of the plugins component allowing you to extend your cloudlet" loading="lazy" width="2400" height="1500">
 
 There are two _types_ of plugins; _modules_ and _frontends_. Modules are backend micro services, installed into your cloudlet's modules folder. Frontends are complete applications served from your frontend domain. Notice, frontends can _not_ be installed if your backend and your frontend dashboard are running on the same host or domain - which is the case for the all-in-one (aio) image and the [DigitalOcean deployment](/deploy/) - since installed frontends need their own domain to be served from.
 
 Before installing anything, click the _"Details"_ button on a plugin. This shows you the plugin's complete description - what it does, and exactly what it contains - for instance which workflow actions a module gives you, allowing you to read through everything the plugin provides and make an informed decision before you install it.
 
-![Screenshot of the Details dialog for a plugin, showing its description and workflow actions](/assets/images/plugin-details.jpeg)
+<img src="/assets/images/plugin-details.webp" alt="Screenshot of the Details dialog for a plugin, showing its description and workflow actions" loading="lazy" width="2400" height="1500">
 
 ## How plugins work in Magic
 

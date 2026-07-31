@@ -2,7 +2,7 @@
 title: Task endpoints
 description: Magic's built-in task endpoints, creating, updating, deleting, scheduling and listing background tasks.
 header:
-  image: /assets/images/hero/endpoints-top.png
+  image: /assets/images/hero/endpoints-top.webp
   og_image: /assets/images/hero/endpoints-top-og.png
   image_description: Task endpoints
 ---

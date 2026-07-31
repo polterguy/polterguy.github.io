@@ -128,7 +128,7 @@ If any user not belonging to any of the above roles tries to execute the above c
 
 This tutorial has shown you the basics of how to implement a user management component. If you want to play with these endpoints, or see every possible argument they can handle - You can use the [Endpoints component](https://docs.ainiro.io/dashboard/endpoints/) as your playground. Just make sure you check off _"System endpoints"_ to see internal endpoints.
 
-![Managing users from the Endpoints component](/assets/images/endpoints-managing-users.png)
+<img src="/assets/images/endpoints-managing-users.webp" alt="Managing users from the Endpoints component" loading="lazy" width="2400" height="1500">
 
 ## Further reading
 

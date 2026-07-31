@@ -2,7 +2,7 @@
 title: Hyperlambda
 description: Hyperlambda is a relational file format for building execution trees, a concise declarative language for Low-Code and No-Code backend development in Magic.
 header:
-  image: /assets/images/hero/hyperlambda.png
+  image: /assets/images/hero/hyperlambda.webp
   og_image: /assets/images/hero/hyperlambda-og.png
   image_description: Hyperlambda
 ---
@@ -42,11 +42,11 @@ Hyperlambda contains slots for all the most important programming constructs, su
 
 You edit Hyperlambda in [Hyper IDE](/dashboard/hyper-ide/), which gives you syntax highlighting, and autocomplete on every slot that exists in your cloudlet - click CTRL+SPACE on Windows or FN+CONTROL+SPACE on a Mac, and choose from the list of matching slots.
 
-![Screenshot of editing Hyperlambda in Hyper IDE with autocomplete showing matching slots](/assets/images/hyper-ide-hl-autocomplete.jpeg)
+<img src="/assets/images/hyper-ide-hl-autocomplete.webp" alt="Screenshot of editing Hyperlambda in Hyper IDE with autocomplete showing matching slots" loading="lazy" width="2400" height="1500">
 
 To experiment with the language, use the [Hyperlambda Playground](/dashboard/hyperlambda-playground/), which executes your code in _"immediate mode"_ - the input is your code, and the output is the transformed lambda after execution, giving you instant feedback as you learn.
 
-![Screenshot of executing Hyperlambda in the Hyperlambda Playground](/images/eval-component.jpg)
+<img src="/images/eval-component.webp" alt="Screenshot of executing Hyperlambda in the Hyperlambda Playground" loading="lazy" width="2400" height="1500">
 
 ## Hyperlambda structure
 

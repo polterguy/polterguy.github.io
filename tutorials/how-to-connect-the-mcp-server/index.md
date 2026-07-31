@@ -2,7 +2,7 @@
 title: How to connect the MCP server
 description: Connect Claude, Cursor, and any MCP client to your Magic cloudlet over OAuth, giving the AI secure access to your backend, data, and Hyperlambda Generator.
 header:
-  image: /assets/images/hero/mcp.png
+  image: /assets/images/hero/mcp.webp
   og_image: /assets/images/hero/mcp-og.png
   image_description: The Magic MCP server
 ---
@@ -28,13 +28,13 @@ That URL is all you need. Magic's MCP server supports OAuth 2.1 with automatic d
 
 Once the MCP module is installed, your dashboard's landing page shows a _"This cloudlet is an AI agent"_ panel containing this exact URL, together with a _"Copy MCP URL"_ button - so you never have to construct it by hand.
 
-![The Copy MCP URL button on the Magic dashboard](/assets/images/mcp-dashboard-copy-url.png)
+<img src="/assets/images/mcp-dashboard-copy-url.webp" alt="The Copy MCP URL button on the Magic dashboard" loading="lazy" width="2400" height="392">
 
 ## Adding the connector
 
 You add your MCP URL to your AI client as a custom connector. Below is Claude's own _"Connectors"_ settings, with the Magic MCP server added and ready to connect.
 
-![Adding the Magic MCP server as a connector in Claude](/assets/images/mcp-add-magic-connector.png)
+<img src="/assets/images/mcp-add-magic-connector.webp" alt="Adding the Magic MCP server as a connector in Claude" loading="lazy" width="2034" height="1528">
 
 ## Connecting Claude
 
@@ -96,7 +96,7 @@ Because the Hyperlambda Generator is itself available over MCP, a connected AI c
 
 Below is what this looks like from Claude's side — a single Magic MCP connector exposing 220 tools; every endpoint in the cloudlet, including the CRUD endpoints the AI itself generated, each with its own per-tool permission settings.
 
-![Screenshot of all connected tools in Claude over a Magic MCP server](/assets/images/all-mcp-tools.png)
+<img src="/assets/images/all-mcp-tools.webp" alt="Screenshot of all connected tools in Claude over a Magic MCP server" loading="lazy" width="2094" height="1578">
 
 Notice, some clients cache the tool list at the moment you connect. If you have created new endpoints and they don't show up as tools, disconnect and reconnect the MCP server in your client to refresh its tool list.
 

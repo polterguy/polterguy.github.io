@@ -2,7 +2,7 @@
 title: Endpoint Generator
 description: The Endpoint Generator reads your database's metadata and automatically generates a secured CRUD API wrapping it, with no manual coding required.
 header:
-  image: /assets/images/hero/endpoint-generator.png
+  image: /assets/images/hero/endpoint-generator.webp
   og_image: /assets/images/hero/endpoint-generator-og.png
   image_description: The Endpoint Generator
 faq:
@@ -24,7 +24,7 @@ faq:
 
 The Endpoint Generator component allows you to automatically generate an HTTP CRUD web API wrapping your database of choice. This component is one of the core components of the Low-Code and software development automation parts of Magic, and allows you to generate a web API wrapping your database automatically. The endpoint generator component works by reading meta data from your database, which it then uses to generate Hyperlambda HTTP endpoints for you automatically.
 
-![Screenshot of the backend Generator generating CRUD HTTP endpoints wrapping an SQL database](/images/backend-crud.jpg)
+<img src="/images/backend-crud.webp" alt="Screenshot of the backend Generator generating CRUD HTTP endpoints wrapping an SQL database" loading="lazy" width="2400" height="1500">
 
 If you use the generator on for instance the _"SQLite Sakila"_ database that you can find as a [plugin](/dashboard/plugins/), Magic will create more than 3,000 lines of Hyperlambda code for you automatically, resulting in some roughly 100 HTTP endpoints for you, providing you with all CRUD operations towards all tables in your database.
 
@@ -36,7 +36,7 @@ To use the endpoint generator component you must first select a database. Then y
 
 Notice, if you deselect all tables and select only one table, you get a lot more options to choose from. This is useful if you need additional control over how your API endpoints are generated, and what results the endpoint generator should give you.
 
-![Screenshot of configuring one individual table in the CRUD Backend Generator](/images/configuring-crud.jpg)
+<img src="/images/configuring-crud.webp" alt="Screenshot of configuring one individual table in the CRUD Backend Generator" loading="lazy" width="2400" height="1500">
 
 The Backend Generator creates 5 HTTP endpoints by default for each table. One endpoint for each CRUD operation, and a 5th endpoint to count items. If your table does not have a primary key, it will not be able to generate delete or update endpoints. If your primary key has a default value, it will not generate endpoint code requiring a primary key value for its create endpoints. In general, the endpoint generator tries to intelligently choose defaults for your tables as it generates your backend. However, it is not always able to choose correctly for you, so you might want to sanity check its result after you've generated your backend.
 
@@ -50,13 +50,13 @@ In addition to the standard CRUD endpoints, the generator can optionally create 
 
 Below is how the result looks like in [Hyper IDE](/dashboard/hyper-ide/) after having generated all endpoint types for a table - one Hyperlambda file per endpoint, including the count, distinct, aggregate, group, and search endpoints.
 
-![Screenshot of the generated endpoint files in Hyper IDE, one file per endpoint type](/assets/images/generated-endpoints-tree.jpeg)
+<img src="/assets/images/generated-endpoints-tree.webp" alt="Screenshot of the generated endpoint files in Hyper IDE, one file per endpoint type" loading="lazy" width="2400" height="1500">
 
 ## Endpoint generator settings
 
 Once you have selected a database and a table, you can override individual settings for how Magic should create CRUD endpoints wrapping your specified table. You can also turn on or off specific columns, preventing Magic from accepting values for these columns, also for individual CRUD verbs. If you have a read only type of column for instance, that should only be set during _"create"_ invocations, you can easily remove that field from your _"update"_ endpoint, making sure Magic does not accept new values to that column when its update endpoint is invoked.
 
-![Screenshot of how to modify the authorisation settings for the Backend Generator](/images/crud-settings.jpg)
+<img src="/images/crud-settings.webp" alt="Screenshot of how to modify the authorisation settings for the Backend Generator" loading="lazy" width="2400" height="1500">
 
 You can also override what URLs your endpoints should use, what authorisation requirements your endpoints should have, in addition to a lot of other settings, such as turning on logging, caching, etc.
 
@@ -86,7 +86,7 @@ The endpoint generator will actually create 5 files for you, one file for each C
 
 The SQL endpoint generator component allows you to generate an API endpoint wrapping an SQL statement. It is similar to the endpoint generator, but instead of automatically creating your SQL, it allows you to provide your own custom SQL, and then securely wrap your SQL into an HTTP endpoint. It allows you to create endpoints wrapping any of the 5 most popular HTTP verbs, takes care of authentication and authorisation, in addition to that it allows you to declare arguments to your endpoints.
 
-![Screenshot of how to create an HTTP endpoint using SQL in the Backend Generator](/images/sql-web-api.jpg)
+<img src="/images/sql-web-api.webp" alt="Screenshot of how to create an HTTP endpoint using SQL in the Backend Generator" loading="lazy" width="2400" height="1500">
 
 Notice, you don't have to write the SQL yourself. Below the SQL editor you'll find an input textbox that says _"Where the Machine Creates the Code"_ - describe the query you want in plain English, click _"Ask"_, and the AI generates the SQL for you, aware of your selected database and its schema. If the editor already contains SQL, your prompt is treated as a change instruction, allowing you to iterate until the query does exactly what you want, before wrapping it into an HTTP endpoint.
 
@@ -109,7 +109,7 @@ The SQL generator allows you to override authorisation requirements, the URL of 
 
 Notice, arguments supplied to your SQL endpoint are obviously mandatory, since once you've generated your endpoint, there are no known mechanisms for removing the argument from your SQL. However, your arguments could be supplied as null values, at which point the resulting SQL would use the value null as a substitute for your argument.
 
-![Screenshot of how to declare an argument to your SQL endpoint in the Backend Generator](/images/sql-arguments.jpg)
+<img src="/images/sql-arguments.webp" alt="Screenshot of how to declare an argument to your SQL endpoint in the Backend Generator" loading="lazy" width="2400" height="1500">
 
 ## HTTP verbs
 
