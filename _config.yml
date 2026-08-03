@@ -12,6 +12,9 @@ footer_scripts:
 atom_feed:
   hide: true
 og_image: "/assets/images/magic-documentation.png"
+
+# Rendered by the theme's masthead, to the left of the site title.
+logo: "/assets/images/logo-yellow.svg"
 breadcrumbs: true
 
 # Unlocks the theme's Twitter/X card tags — it emits none at all without a
