@@ -18,6 +18,12 @@ faq:
     a: "Connecting an orchestrator AI - such as Claude, Cursor, Codex or Qoder - to your cloudlet over MCP, and letting the agent generate endpoints, create database schemas, and deploy modules for you. Hyper IDE then becomes where you inspect, tweak, and debug what the agent produced."
   - q: "Can I edit other languages than Hyperlambda?"
     a: "Yes, you can edit TypeScript, Ruby, HTML, C# and other file types, although for those languages a dedicated IDE will typically serve you better. Hyper IDE's strength is Hyperlambda."
+  - q: "Does Hyper IDE have Git support?"
+    a: "Yes. Every top level folder inside /modules/ and /etc/ can be its own Git repository, and each has a Git action opening a panel where you can see status, commit, push, pull, fetch, and manage branches. Folders that aren't repositories yet can be initialized or cloned into. Commits are attributed to your profile's name and email, and GitHub authentication uses a personal access token from your configuration."
+  - q: "Can I build full stack apps with Hyper IDE?"
+    a: "Yes. Your cloudlet serves static files from /etc/www/, and the AI bar generates HTML, CSS and JavaScript too - so you can generate a frontend in plain English, wired to the CRUD API the Endpoint Generator created for your database, and host it straight from your cloudlet."
+  - q: "How do I move a module to another server?"
+    a: "Two ways; download the module folder as a zip and install it on the other server with the install module action - or push the module to GitHub with Hyper IDE's Git support and clone it into the other cloudlet, which also gives you history, branches and rollback."
   - q: "What does F1 do?"
     a: "F1 asks the integrated AI to explain the Hyperlambda code you have selected, giving you instant help understanding unfamiliar code."
 ---
@@ -100,6 +106,18 @@ When you're editing a file that lives under `/etc/www/`, Hyper IDE gives you a _
 Magic is modularized, allowing you to easily move modules from one machine to another. This is the purpose of your _"/modules/"_ folder, as in each folder inside this folder is considered a module in Magic.
 
 If you're developing a module in your own local installation of Magic, you can mark the folder in the tree control, and click the action button for downloading the folder. This will give you a zip file you can easily upload to another server using the install module action button.
+
+## Git support
+
+Every module can be its own Git repository, and Hyper IDE has Git built in. Top level folders inside your _"/modules/"_ and _"/etc/"_ folders are treated as repository roots, and each such folder has a Git action button, opening a panel showing the state of that repository - which branch you're on, whether you're ahead of or behind your remote, and every modified and untracked file.
+
+<img src="/assets/images/hyper-ide-git.webp" alt="Screenshot of Hyper IDE&#x27;s Git panel, showing branch, tracking status and commit actions for a module" loading="lazy" width="2400" height="1500">
+
+From the panel you can commit all changes with a message, push and pull, fetch from your remote, switch branches, and create new branches. A folder that isn't a repository yet gets initialize and clone actions instead, so the full lifecycle of a module lives inside Hyper IDE; initialize the repository, add a remote pointing to GitHub, commit, and push.
+
+Commits are attributed to _you_ - the author name and email are resolved from the authenticated user's profile, so commits made from Hyper IDE show up on GitHub with your name on them, not some shared server identity. Authentication towards GitHub uses a personal access token from your cloudlet's configuration, injected per invocation over HTTPS - nothing is ever written to the server's global Git configuration, and no SSH keys are involved. Add your GitHub username and a fine-grained PAT with _"Contents"_ read and write access to your configuration, and clone, pull and push simply work.
+
+Since modules are self-contained folders, this gives you version control per module; develop a module on one cloudlet, push it to GitHub, and clone it into another cloudlet - a natural companion to the zip-based module install described above, with history, branches and rollback included.
 
 ## Continuous Integration and Deployment
 
