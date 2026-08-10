@@ -11,9 +11,9 @@ faq:
   - q: "What is RBAC?"
     a: "Role Based Access Control - all access in Magic is based upon roles, so users belonging to the same roles have access to the same parts of your backend, making access rights easy to reason about."
   - q: "How does authentication work in Magic?"
-    a: "Magic uses JWT (JSON Web Token) authentication, transmitted as a Bearer token in the Authorization HTTP header. Magic can also act as an OAuth server, and supports OIDC, letting users sign in through external identity providers such as Google or Microsoft."
-  - q: "Can users sign in with Google or Microsoft?"
-    a: "Yes. Magic supports OIDC (OpenID Connect), so users can authenticate through any OIDC compliant identity provider, while still being mapped onto Magic's own internal roles and RBAC."
+    a: "Magic uses JWT (JSON Web Token) authentication, transmitted as a Bearer token in the Authorization HTTP header. Magic can also act as an OAuth server, and supports OIDC, letting users sign in through external identity providers such as Google, GitHub or Microsoft."
+  - q: "Can users sign in with Google or GitHub?"
+    a: "Yes. Magic ships sign-in support for Google, GitHub, LinkedIn, Microsoft Entra ID, Okta, Auth0, Keycloak and Slack out of the box, while still mapping every user onto Magic's own internal roles and RBAC. Each identity is scoped by provider, and new sign-ins start in the guest role until an administrator grants more."
   - q: "How do endpoints declare who can access them?"
     a: "Each endpoint declares its own access by invoking auth.ticket.verify with a comma separated list of roles. If the user is not authenticated or lacks the role, an exception is thrown."
   - q: "Can I build my own authentication on top of Magic?"
@@ -34,9 +34,11 @@ Users again have extra fields, which can be any information you wish - However, 
 
 Magic is built upon [JWT](https://jwt.io) authentication and authorisation. This is a commonly used web standard, and allows you to easily use its existing authentication and authorisation system in your own code. JWT implies JSON Web Token, and is typically transmitted from your frontend to your backend as a _"Bearer"_ token in your _"Authorization"_ HTTP header.
 
-In addition to its own username and password authentication, Magic can act as an OAuth server, and it can use OIDC (OpenID Connect) for authentication - allowing your users to sign in through an external identity provider such as Google, Microsoft, or any other OIDC-compliant provider. Regardless of how a user signs in - whether through Magic's own login, as an OAuth client, or through an OIDC identity provider - they are still mapped onto Magic's own internal roles, and access is still governed by the same internal RBAC-based system described below. This gives you the convenience of federated, standards-based sign-in, without giving up the fine-grained role-based control Magic provides over your endpoints.
+In addition to its own username and password authentication, Magic can act as an OAuth server, and it ships single sign-on support for **Google, GitHub, LinkedIn, Microsoft Entra ID, Okta, Auth0, Keycloak and Slack** - configured from the [Configuration component](/dashboard/configuration/), with a per-provider walkthrough in the [SSO sign-in providers tutorial](/tutorials/sso-sign-in-providers/). Regardless of how a user signs in - through Magic's own login, as an OAuth client, or through an external identity provider - they are still mapped onto Magic's own internal roles, and access is still governed by the same internal RBAC-based system described below. This gives you the convenience of federated, standards-based sign-in, without giving up the fine-grained role-based control Magic provides over your endpoints.
 
-<img src="/assets/images/oidc-login-magic.webp" alt="Screenshot of signing in to Magic through an external OIDC identity provider" loading="lazy" width="2034" height="1322">
+<img src="/assets/images/oidc-login-providers.png" alt="Screenshot of Magic's login screen with Continue with GitHub, Google and LinkedIn sign-in buttons" loading="lazy" width="2400" height="1500">
+
+Three properties of external sign-in are worth understanding as an administrator. Identities are *provider-scoped* - a user signing in through GitHub with the email `jane@example.com` becomes the user `github:jane@example.com`, which can never collide with a local account, or with another provider's idea of the same person. First sign-in creates the user with the *guest* role only, so nobody gains access to anything by merely authenticating - you grant roles explicitly from this component. And only email addresses the provider has actually *verified* are accepted, so nobody can reach an identity by adding someone else's address to their account.
 
 ## Users and roles internals
 

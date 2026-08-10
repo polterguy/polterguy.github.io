@@ -17,6 +17,10 @@ Below are tutorials demonstrating hands on how to get started with Magic's Low-C
 
 * [How to connect the MCP server](/tutorials/how-to-connect-the-mcp-server/) - Connect Claude, Claude Code, Cursor, or any other MCP client to your cloudlet
 
+## Authentication and SSO
+
+* [Single Sign-On with Google, GitHub, LinkedIn, Microsoft and more](/tutorials/sso-sign-in-providers/) - Configure any of Magic's eight sign-in providers, and understand how external identities map onto roles
+
 ## Vibe Coding tutorials
 
 * [Vibe Coding Saturday](https://ainiro.io/blog/vibe-coding-saturday)
