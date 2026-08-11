@@ -118,7 +118,7 @@ The [Endpoint Generator](/dashboard/endpoint-generator/) allows you to wrap any 
 meta data from your database, and automatically generates a web API for you. The generated API is
 secured according to your instructions, and can be modified after it's created.
 
-<img src="/images/backend-crud.webp" alt="Screenshot of Endpoint Generator allowing you to generate CRUD apps wrapping your database of choice" loading="lazy" width="2400" height="1500">
+<img src="/assets/images/api-wizard-walkthrough.gif" alt="Animation of the API Wizard turning the chinook database into 54 secured REST endpoints, invoking one, and extending it in plain English" loading="lazy" width="1000" height="567">
 
 The Endpoint Generator takes care of referential integrity, validators, authentication, and authorisation -
 While allowing you to declaratively tell it how to generate your API, in addition to having lots of
