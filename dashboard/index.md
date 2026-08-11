@@ -23,6 +23,8 @@ Below the key numbers, the landing page gives you quick access to the things you
 
 If you get stuck anywhere, ask _Frank_ - AINIRO's AI support agent, trained on the Hyperlambda and Magic documentation. You'll find him both in the _"What everything does"_ section and behind the spark button in the bottom of the navigation, and he answers with code you can paste.
 
+The fastest way around the dashboard is the command palette - click CTRL+K (COMMAND+K on a Mac) anywhere, and one search box jumps you to any page, file, endpoint, task or machine learning model, with fuzzy matching. CTRL+/ shows an overview of every [keyboard shortcut](/dashboard/hyper-ide/#keyboard-shortcuts) the dashboard supports.
+
 ## Create an AI chatbot
 
 The fastest way to experience Magic's AI capabilities is to create a chatbot straight from the dashboard's landing page. Provide a website URL to the Chatbot Wizard, choose a model and a persona, and click _"Create chatbot"_. The wizard crawls the site, scrapes each page it finds, and turns the content into training data (RAG data) for your chatbot - reporting its progress in real time as it works its way through the site.

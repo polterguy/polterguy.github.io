@@ -26,6 +26,8 @@ faq:
     a: "Two ways; download the module folder as a zip and install it on the other server with the install module action - or push the module to GitHub with Hyper IDE's Git support and clone it into the other cloudlet, which also gives you history, branches and rollback."
   - q: "What does F1 do?"
     a: "F1 asks the integrated AI to explain the Hyperlambda code you have selected, giving you instant help understanding unfamiliar code."
+  - q: "What keyboard shortcuts does the dashboard support?"
+    a: "Ctrl+K opens a command palette jumping to any page, file, endpoint, task or model, and Ctrl+/ shows an overview of every shortcut - including the editor shortcuts for autocomplete, search, fullscreen, save, execute, and Hyper IDE's file actions."
 ---
 
 Hyper IDE is your _"goto component"_ when you want to create your own modules using Magic and Hyperlambda. It's a web based IDE, allowing you to edit your code, create new modules, and contains a lot of things you're used to from a traditional IDE. It is also the natural extension of Magic's [endpoint generator](/dashboard/endpoint-generator/), since it allows you to edit the Hyperlambda endpoint files after Magic has generated your CRUD backend. In addition, Hyper IDE allows you to use AI to generate code using _"vibe coding"_ constructs.
@@ -56,6 +58,33 @@ Hyper IDE also provides integrated autocomplete if your editor has focus and you
 In addition to autocomplete, the editor documents your code as you read it - rest your mouse pointer on any slot invocation in a Hyperlambda file, and a tooltip appears explaining what the slot does, using the descriptions your cloudlet's slots declare about themselves. And CTRL+F on Windows or COMMAND+F on your Mac opens search inside the editor, highlighting every match as you type, with ENTER cycling through them - which matters once your Hyperlambda files grow to hundreds of lines.
 
 <img src="/images/hyper-ide-actions.webp" alt="Screenshot of Hyper IDE&#x27;s autocomplete feature with Hyperlambda" loading="lazy" width="2400" height="1500">
+
+## Keyboard shortcuts
+
+The dashboard documents its own shortcuts - click CTRL+/ (COMMAND+/ on a Mac) anywhere, and an overview opens listing every shortcut, or find it by opening the command palette with CTRL+K and typing _"keyboard"_. The complete list is as follows.
+
+| Shortcut | Where | What it does |
+| --- | --- | --- |
+| CTRL/CMD + K | Everywhere | Opens the command palette - jump to any page, file, endpoint, task or model |
+| CTRL/CMD + / | Everywhere | Shows the keyboard shortcut overview |
+| ESC | Everywhere | Closes the open dialog |
+| CTRL + SPACE | Code editors | Autocomplete - Hyperlambda slots, SQL tables and columns |
+| CTRL/CMD + F | Code editors | Search inside the editor - ENTER cycles matches, ESC closes |
+| ALT + M | Code editors | Toggles fullscreen editing - ESC leaves fullscreen |
+| TAB / SHIFT + TAB | Code editors | Indents or outdents the selection one level |
+| CTRL/CMD + S | Code editors | Saves the open file |
+| F5 | Code editors | Executes - runs the open file, snippet or SQL |
+| F1 | Code editors | Asks the AI to explain the selected Hyperlambda |
+| ALT + A | Hyper IDE | New file |
+| ALT + B | Hyper IDE | New folder |
+| ALT + R | Hyper IDE | Renames the open file |
+| ALT + D | Hyper IDE | Deletes the open file |
+| ALT + X | Hyper IDE | Deletes the active folder |
+| ALT + C | Hyper IDE | Closes the open file |
+
+Editor shortcuts require the code editor to have focus, and apply in every editor throughout the dashboard - Hyper IDE, the Hyperlambda Playground, and SQL Studio alike.
+
+On macOS the combos follow the platform's conventions, and the in-dashboard overview shows the macOS variants automatically: COMMAND substitutes for CTRL, OPTION for ALT, autocomplete is FN+CONTROL+SPACE, and the function keys need FN unless you have configured them as standard function keys.
 
 ## Hyper IDE features
 
