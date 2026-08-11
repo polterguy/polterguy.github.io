@@ -53,6 +53,8 @@ The bar works like a conversation, so you can keep refining and modifying your c
 
 Hyper IDE also provides integrated autocomplete if your editor has focus and you click CTRL+SPACE in Windows or FN+CONTROL+SPACE on your Mac. This allows you to very rapidly create Hyperlambda code, while having Hyper IDE ensure your code is using existing slots. Notice, these keyboard shortcuts are only available when your code editor has focus.
 
+In addition to autocomplete, the editor documents your code as you read it - rest your mouse pointer on any slot invocation in a Hyperlambda file, and a tooltip appears explaining what the slot does, using the descriptions your cloudlet's slots declare about themselves. And CTRL+F on Windows or COMMAND+F on your Mac opens search inside the editor, highlighting every match as you type, with ENTER cycling through them - which matters once your Hyperlambda files grow to hundreds of lines.
+
 <img src="/images/hyper-ide-actions.webp" alt="Screenshot of Hyper IDE&#x27;s autocomplete feature with Hyperlambda" loading="lazy" width="2400" height="1500">
 
 ## Hyper IDE features
@@ -66,6 +68,8 @@ Another benefit is that Hyperlambda is a dynamic programming language, implying 
 If you execute code in immediate mode using F5, and your code requires arguments, Hyper IDE will ask you for what to pass in as arguments. This isn't perfect, and only works for first level arguments - But if you need more complexity, you can always use the [Hyperlambda Playground](/dashboard/hyperlambda-playground/), and/or the [Endpoints Component](/dashboard/endpoints/).
 
 Magic does not separate between code creation and your code's production environment, providing you with instant feedback as you create your code.
+
+Hyper IDE also remembers which files you had open, per cloudlet - sign out, come back tomorrow, and your workspace opens the way you left it, with the same files in the same tabs.
 
 ## Executing Hyperlambda from Hyper IDE
 

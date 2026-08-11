@@ -9,7 +9,7 @@ faq:
   - q: "What is the Log component?"
     a: "It lets you browse your server's log, giving you control over events that might have consequences for your system - errors, security events, task executions, and anything your own code logs."
   - q: "How do I find the cause of an error?"
-    a: "Filter the log to find the relevant entry, then click it - log items carrying an exception expand to reveal the complete stack trace of whatever went wrong."
+    a: "When something fails in the dashboard, the error message carries a 'View log entry' link taking you straight to the log entry describing the error - highlighted, and expanded to reveal its stack trace. You can also filter the log manually and click any entry carrying an exception to expand it."
   - q: "Can my own code create log entries?"
     a: "Yes. Your Hyperlambda code can create log entries as you see fit - including structured meta data - to record important events such as deleting records, executing tasks, or registering users."
   - q: "How long are log items kept?"
@@ -24,6 +24,10 @@ You can also filter your server's log, look up specific items, to find bugs happ
 
 <img src="/assets/images/log-expanded.webp" alt="Screenshot of an expanded log item showing the complete stack trace of an error" loading="lazy" width="2400" height="1500"> Notice, if you created a cloudlet at [AINIRO](https://ainiro.io), by default all log entries older than 2 weeks will be automatically deleted to avoid exhausting your cloudlet's persistent storage.
 
+## From error to log entry in one click
+
+Most of the time you don't even have to search. When something fails anywhere in the dashboard, the error message contains a _"View log entry"_ link, taking you straight to the log entry the error created - highlighted in the list, and expanded to reveal its stack trace. This works because failed HTTP requests return a `log-id` field next to their error message, containing the id of the log entry the server wrote for the error - so your own API clients can apply the same trick, correlating any error a user reports with the exact server-side log entry describing what went wrong.
+
 ## Creating your own log items from Hyperlambda
 
 You can create your own log entries using Hyperlambda code such as the following.
@@ -34,7 +38,7 @@ log.info:Something important happened
    importance:High
 ```
 
-In the above example we are creating an _"info"_ type of log entry, and the _"Something important happened"_ will become the item's content, while the **[what]** and **[importance]** parts become meta data associated with your log entry. If you execute the above Hyperlambda using the _"Hyperlambda Playground"_ component you can see your log entry in your _"Log"_ component at the top afterwards. There are 4 types of log entries you can create by default.
+In the above example we are creating an _"info"_ type of log entry, and the _"Something important happened"_ will become the item's content, while the **[what]** and **[importance]** parts become meta data associated with your log entry. The invocation also returns the id of the log entry it created, allowing your own code to reference the entry later - for instance returning it to a client the way Magic's own error handling does. If you execute the above Hyperlambda using the _"Hyperlambda Playground"_ component you can see your log entry in your _"Log"_ component at the top afterwards. There are 4 types of log entries you can create by default.
 
 * __[log.debug]__ - These are debug log entries intended for helping you debug your modules and components. These are typically not displayed in a production cloudlet since typically you would turn _off_ debug logging in production
 * __[log.info]__ - These are information types of entries providing information about general things occurring in your system

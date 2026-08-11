@@ -28,6 +28,8 @@ log.info:Howdy world from magic.lambda.logging
 
 You can of course exchange the above **[log.info]** with **[log.error]**, **[log.debug]** or **[log.fatal]**.
 
+All four slots return the id of the log entry they created as their value, allowing you to reference the entry later - for instance passing it to **[log.get]**, or returning it to a client such that an error can be correlated with the exact log entry describing it. If the configured log level filtered the invocation out, such that no entry was created, the returned value is null.
+
 Children nodes will be assumed to be _"meta information"_ associated with the invocation, allowing you to
 log data such as follows.
 

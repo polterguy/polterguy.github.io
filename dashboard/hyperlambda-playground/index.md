@@ -28,6 +28,8 @@ If you create a Hyperlambda snippet you for some reason want to save for later, 
 
 <img src="/assets/images/playground-save-snippet.webp" alt="Screenshot of saving a Hyperlambda snippet with the Save snippet dialog" loading="lazy" width="2400" height="1500">
 
+Notice, the Playground also remembers your unsaved code within your browser session - you can navigate to another dashboard component to check something and come back, without losing what you were working on.
+
 ## Hyperlambda Playground internals
 
 The Hyperlambda Playground component will transmit your Hyperlambda to the server, where Magic will _"transpile"_ your Hyperlambda into a graph object, referencing CLR _"slots"_ implemented in C#, resulting in being able to dynamically execute code, and returning the result of the invocation to the caller. In such a regard Hyperlambda resembles XML, XSLT and XPath, although with a much less confusing syntax, where executing a snippet of Hyperlambda returns a _"transformed"_ lambda object, which again is serialised as Hyperlambda and returned back to the client. This is why after having executed your Hyperlambda you can see its _"result"_.

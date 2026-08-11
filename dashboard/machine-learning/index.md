@@ -91,6 +91,8 @@ You can create many models in Magic, and therefore many chatbots solving differe
 
 <img src="/assets/images/machine-learning-types.webp" alt="Screenshot showing a list of multiple machine learning models" loading="lazy" width="2400" height="1500">
 
+The models list also shows how many OpenAI tokens each model's system instruction consumes. This is the baseline cost every single request to the model starts out with - before the user's question and the RAG context are added on top - so a bloated system instruction quietly makes every conversation more expensive, and this column lets you spot it at a glance.
+
 Once you're done with importing training snippets into your model, you'll have to click _"Vectorize"_ on your model before the data can be used by your chatbot.
 
 ### Configuring your model

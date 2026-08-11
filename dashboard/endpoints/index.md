@@ -12,6 +12,8 @@ faq:
     a: "When you expand an endpoint, every argument it accepts becomes a typed input field - checkboxes for booleans, date pickers for dates, and so on. CRUD endpoints additionally expose paging, sorting, and per-column filter arguments."
   - q: "Which payload formats are supported?"
     a: "JSON, YAML, Hyperlambda, and XML - all with syntax highlighting - for your POST, PUT and PATCH endpoints. Endpoints consuming multipart/form-data are also supported, rendering one input field per form field, in addition to letting you attach files."
+  - q: "Can I see the code behind an endpoint?"
+    a: "Yes. Every endpoint has a source code button opening its Hyperlambda file directly in Hyper IDE, taking you from 'this endpoint misbehaves' to editing its implementation in one click."
   - q: "Can I get an OpenAPI specification for my endpoints?"
     a: "Yes. Every endpoint has an OpenAPI button giving you its OpenAPI specification. You can copy both the URL and the specification itself, and paste it into another orchestrator LLM or AI agent, allowing the other party to understand your backend."
   - q: "Can I test file uploads and downloads?"
@@ -66,6 +68,8 @@ As you are browsing your endpoints, and you expand individual items, you'll noti
 * Etc, etc, etc
 
 The endpoint's meta information is retrieved directly from your Hyperlambda files. Magic automatically allows you to invoke your user defined endpoints with this component.
+
+Every endpoint also has a source code button, opening the Hyperlambda file implementing the endpoint directly in [Hyper IDE](/dashboard/hyper-ide/). This takes you from _"this endpoint misbehaves"_ to editing its implementation in a single click - and since Hyperlambda endpoints are resolved per request, saving your change makes it live immediately, allowing you to invoke the endpoint again from this component to verify your fix.
 
 The endpoints component in Magic is obviously not as strong as something such as OpenAPI, Swagger, or Postman - But for Hyperlambda endpoints, it's probably more than enough.
 

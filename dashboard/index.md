@@ -19,7 +19,7 @@ When you log in, the dashboard typically resembles the following.
 
 <img src="/images/dashboard.webp" alt="Screenshot of the Magic Dashboard" loading="lazy" width="2400" height="1500">
 
-Below the key numbers, the landing page gives you quick access to the things you'll reach for most often. The _Chatbot Wizard_ crawls a website, turns what it finds into training data, and gives you an embeddable AI chatbot in a few minutes. A _"What everything does"_ section explains every part of your cloudlet and where to find it, and a _Tasks_ section lets you execute your scheduled tasks on demand.
+Below the key numbers, the landing page gives you quick access to the things you'll reach for most often. The _Chatbot Wizard_ crawls a website, turns what it finds into training data, and gives you an embeddable AI chatbot in a few minutes. The _"Create an API from your data"_ card starts a guided version of the [Endpoint Generator](/dashboard/endpoint-generator/), turning every table in one of your databases into secured REST endpoints in three steps. A _"What everything does"_ section explains every part of your cloudlet and where to find it, and a _Tasks_ section lets you execute your scheduled tasks on demand.
 
 If you get stuck anywhere, ask _Frank_ - AINIRO's AI support agent, trained on the Hyperlambda and Magic documentation. You'll find him both in the _"What everything does"_ section and behind the spark button in the bottom of the navigation, and he answers with code you can paste.
 
