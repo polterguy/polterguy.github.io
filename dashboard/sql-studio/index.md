@@ -13,7 +13,7 @@ faq:
   - q: "Do I need to write DDL to create tables?"
     a: "No. The visual designer lets you create tables, add columns, and declare foreign keys through dialogs, without writing any DDL. You can still use plain SQL DDL from the SQL view if you prefer, or have the AI generate the DDL for you."
   - q: "What is Safe mode?"
-    a: "Safe mode prevents you from selecting more than 200 records in one go, protecting your server and browser from exhausting memory. Turn it off if you need to select more records."
+    a: "Safe mode prevents you from selecting more than 200 records in one go, protecting your cloudlet and browser from exhausting memory. Turn it off if you need to select more records."
   - q: "Can I save frequently used SQL statements?"
     a: "Yes. Save any statement as a named snippet and load it later from the Load snippet dropdown. You can also import .sql files from your local machine."
   - q: "Can I export query results?"
@@ -57,7 +57,7 @@ Notice, the designer is optional - you can just as well create your database str
 
 ## SQL Studio features
 
-The _"Safe mode"_ slider prevents you from selecting more than 200 records from your database in one go. If you need to select more records you must turn this slider _off_. However, if you return thousands of records with some SQL statement, your server might become unresponsive, and/or you may end up exhausting your server's memory or your client's memory.
+The _"Safe mode"_ slider prevents you from selecting more than 200 records from your database in one go. If you need to select more records you must turn this slider _off_. However, if you return thousands of records with some SQL statement, your cloudlet might become unresponsive, and/or you may end up exhausting your cloudlet's memory or your client's memory.
 
 When you execute SQL, you can run your entire statement, or highlight part of it in the code editor and execute only the selected portion. If you have a selection, only the selected SQL is executed - which is handy when your editor contains several statements and you only want to run one of them.
 

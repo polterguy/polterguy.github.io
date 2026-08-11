@@ -1,13 +1,13 @@
 ---
 title: Configuration
-description: Manage your Magic server's settings as a root user. Changes take effect instantly and immediately alter your server's behaviour, with no restart needed.
+description: Manage your cloudlet's settings as a root user. Changes take effect instantly and immediately alter your cloudlet's behaviour, with no restart needed.
 header:
   image: /assets/images/hero/configuration.webp
   og_image: /assets/images/hero/configuration-og.png
   image_description: The Configuration component
 faq:
   - q: "What is the Configuration component?"
-    a: "It lets you view and edit your server's configuration - the appsettings.json file used throughout the system for settings such as SMTP, OpenAI, database connection strings, and authentication."
+    a: "It lets you view and edit your cloudlet's configuration - the appsettings.json file used throughout the system for settings such as SMTP, OpenAI, database connection strings, and authentication."
   - q: "Is it dangerous to edit the configuration?"
     a: "You should be careful, since erroneous configuration can stop your system from working or weaken its security. The component refuses to save invalid JSON, and provides helper dialogs for the most important sections such as OpenAI, SMTP and reCAPTCHA."
   - q: "How do I restrict which frontends can call my backend?"
@@ -20,11 +20,11 @@ faq:
     a: "Use the OpenID helper dialog to give the provider a client ID (and where required a secret), and register the dialog's redirect URI with the provider. Magic supports Google, GitHub, LinkedIn, Microsoft Entra ID, Okta, Auth0, Keycloak and Slack out of the box."
 ---
 
-The configuration component allows you to view and edit your server's configuration settings. Your server's configuration is basically your _"appsettings.json"_ file, which is being used in all parts of the system to retrieve configuration settings, such as for instance SMTP settings when email slots are sending emails, etc.
+The configuration component allows you to view and edit your cloudlet's configuration settings. Your server's configuration is basically your _"appsettings.json"_ file, which is being used in all parts of the system to retrieve configuration settings, such as for instance SMTP settings when email slots are sending emails, etc.
 
 <img src="/images/config-component.webp" alt="Screenshot of configuring Magic through its Configuration component" loading="lazy" width="2400" height="1500">
 
-You should be careful as you edit your server's configuration settings, since this might result in that your server becomes erroneously configured, resulting in that your system stops working - In addition to that if you edit your server's configuration erroneously, you might open up your server
+You should be careful as you edit your cloudlet's configuration settings, since this might result in that your cloudlet becomes erroneously configured, resulting in that your system stops working - In addition to that if you edit your cloudlet's configuration erroneously, you might open up your cloudlet
 such that malicious adversaries gain access to your system. The configuration component has helper UI elements to help you configure things such as OpenAI, SMTP and reCAPTCHA, giving you a graphical user interface to edit some of its most important parts.
 
 The _"OpenAI"_ button lets you supply your OpenAI API key without touching the JSON.
@@ -39,7 +39,7 @@ And the _"SMTP"_ button configures your email server; host, port, credentials, a
 
 <img src="/assets/images/config-smtp-settings.webp" alt="Screenshot of configuring your SMTP settings" loading="lazy" width="2400" height="1500">
 
-The _"OpenID"_ button configures single sign-on providers for the dashboard's login screen. The dropdown lists every provider your backend supports - Google, GitHub, LinkedIn, Microsoft Entra ID, Okta, Auth0, Keycloak and Slack - and marks the ones already configured. A provider is turned on by giving it a client ID, and turned off again by clearing the field. The dialog also shows the redirect URI you need to register with the provider, with a copy button. See the [SSO sign-in providers tutorial](/tutorials/sso-sign-in-providers/) for a walkthrough of each provider.
+The _"OpenID"_ button configures single sign-on providers for the dashboard's login screen. The dropdown lists every provider your cloudlet supports - Google, GitHub, LinkedIn, Microsoft Entra ID, Okta, Auth0, Keycloak and Slack - and marks the ones already configured. A provider is turned on by giving it a client ID, and turned off again by clearing the field. The dialog also shows the redirect URI you need to register with the provider, with a copy button. See the [SSO sign-in providers tutorial](/tutorials/sso-sign-in-providers/) for a walkthrough of each provider.
 
 <img src="/assets/images/config-openid-providers.png" alt="Screenshot of configuring OpenID sign-in providers, with the provider dropdown expanded" loading="lazy" width="1232" height="1122">
 
@@ -66,7 +66,7 @@ The `magic:databases` section allows you to configure your database connection s
 * `pgsql` - PostgreSQL
 * `mssql` - SQL Server
 
-You can use all of the above database types in your Magic server. However, to access your database you need to provide Magic with one or more connection strings. Each of these sections contains a key/value pair where the key becomes the name of your connection string, and the value its actual
+You can use all of the above database types in your cloudlet. However, to access your database you need to provide Magic with one or more connection strings. Each of these sections contains a key/value pair where the key becomes the name of your connection string, and the value its actual
 connection string. This section also has a `default` setting, which is the default database type to use if not specified by caller. This needs to be one of _"mysql"_, _"pgsql"_, _"sqlite"_, or _"mssql"_ - Implying MySQL, PostgreSQL, SQLite or SQL Server.
 
 You would typically never edit the default setting, since Magic only supports SQLite as its primary magic database out of the box.
@@ -108,6 +108,6 @@ This works similarly to log4net, and implies _"minimum logging level"_, where an
 
 ## Sockets configuration
 
-The `url` setting here allows you to override which URL clients need to use to negotiate a socket channel with your server. You can also completely turn off web sockets entirely here, by changing the value to `null` or remove the section entirely.
+The `url` setting here allows you to override which URL clients need to use to negotiate a socket channel with your cloudlet. You can also completely turn off web sockets entirely here, by changing the value to `null` or remove the section entirely.
 
 {% include faq.html %}

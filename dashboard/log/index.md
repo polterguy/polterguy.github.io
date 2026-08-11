@@ -7,7 +7,7 @@ header:
   image_description: The Log component
 faq:
   - q: "What is the Log component?"
-    a: "It lets you browse your server's log, giving you control over events that might have consequences for your system - errors, security events, task executions, and anything your own code logs."
+    a: "It lets you browse your cloudlet's log, giving you control over events that might have consequences for your system - errors, security events, task executions, and anything your own code logs."
   - q: "How do I find the cause of an error?"
     a: "When something fails in the dashboard, the error message carries a 'View log entry' link taking you straight to the log entry describing the error - highlighted, and expanded to reveal its stack trace. You can also filter the log manually and click any entry carrying an exception to expand it."
   - q: "Can my own code create log entries?"
@@ -16,11 +16,11 @@ faq:
     a: "On AINIRO hosted cloudlets, log entries older than 2 weeks are automatically deleted by default, to avoid exhausting your cloudlet's persistent storage."
 ---
 
-The log component allows you to browse your server's log. When an important event occurs in Magic, a log entry will typically be created describing the event. Examples of such events are when users are logging in, or errors are occurring in the system for some reason.
+The log component allows you to browse your cloudlet's log. When an important event occurs in Magic, a log entry will typically be created describing the event. Examples of such events are when users are logging in, or errors are occurring in the system for some reason.
 
 <img src="/images/log.webp" alt="Screenshot of Magic&#x27;s integrated log component" loading="lazy" width="2400" height="1500">
 
-You can also filter your server's log, look up specific items, to find bugs happening as your system is being used. Log items carrying an exception can be expanded by clicking them, revealing the complete stack trace of whatever went wrong - which combined with filtering makes tracking down bugs in your system much easier.
+You can also filter your cloudlet's log, look up specific items, to find bugs happening as your system is being used. Log items carrying an exception can be expanded by clicking them, revealing the complete stack trace of whatever went wrong - which combined with filtering makes tracking down bugs in your system much easier.
 
 <img src="/assets/images/log-expanded.webp" alt="Screenshot of an expanded log item showing the complete stack trace of an error" loading="lazy" width="2400" height="1500"> Notice, if you created a cloudlet at [AINIRO](https://ainiro.io), by default all log entries older than 2 weeks will be automatically deleted to avoid exhausting your cloudlet's persistent storage.
 
@@ -47,7 +47,7 @@ In the above example we are creating an _"info"_ type of log entry, and the _"So
 
 ## Configuring logging
 
-Your server has a _"log level"_ setting that decides how much it should log. This is an incrementally increasing value starting at _"debug"_ and ending at _"off"_. The latter implying logging is turned off. You can change this _"log level"_ by changing your `magic:logging:level` configuration setting. The log level declares at what _"level"_ your server will insert log entries. For instance, typically when debugging you want to set the level at _"debug"_, while in a production environment you want to increase it to (at least) _"info"_ to avoid flooding your server with debug log entries. This implies that in your debug environment you will see
+Your cloudlet has a _"log level"_ setting that decides how much it should log. This is an incrementally increasing value starting at _"debug"_ and ending at _"off"_. The latter implying logging is turned off. You can change this _"log level"_ by changing your `magic:logging:level` configuration setting. The log level declares at what _"level"_ your cloudlet will insert log entries. For instance, typically when debugging you want to set the level at _"debug"_, while in a production environment you want to increase it to (at least) _"info"_ to avoid flooding your cloudlet with debug log entries. This implies that in your debug environment you will see
 all log entries, including your debug log entries - While in production Magic won't create log entries for debug log items.
 
 ## Log internals

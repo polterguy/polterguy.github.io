@@ -151,7 +151,7 @@ SQL Studio allows you to visually design your database using a graphical user in
 
 <img src="/images/sql-designer.webp" alt="Screenshot of SQL Studio&#x27;s database designer while designing a database" loading="lazy" width="2400" height="1500">
 
-SQL Studio also allows you to execute any SQL towards your database of choice, allowing you to administer your databases from anywhere. By combining SQL Studio with the Backend Generator, and especially the SQL API generator, you can compose some SQL, and rapidly wrap it into an API endpoint.
+SQL Studio also allows you to execute any SQL towards your database of choice, allowing you to administer your databases from anywhere. By combining SQL Studio with the Endpoint Generator, and especially its SQL endpoint tab, you can compose some SQL, and rapidly wrap it into an API endpoint.
 
 <img src="/images/sql-studio-2.webp" alt="Screenshot of SQL Studio while executing an arbitrary SQL statement" loading="lazy" width="2400" height="1500">
 
@@ -203,7 +203,7 @@ Magic Cloud also contains its own _"App Store"_, allowing you to rapidly install
 
 ## The integrated log
 
-Magic Cloud also comes with an integrated log component, allowing you to browse your server log, giving you control over events occurring that might somehow have consequences for your system.
+Magic Cloud also comes with an integrated log component, allowing you to browse your cloudlet's log, giving you control over events occurring that might somehow have consequences for your system.
 
 When you create your own Hyperlambda applications, you can also create log entries as you see fit, to log important events, such as deleting records, executing tasks, registering users, etc.
 

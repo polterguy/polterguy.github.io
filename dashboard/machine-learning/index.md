@@ -85,7 +85,7 @@ When re-crawling Magic will update any existing pages that were changed, and add
 
 ## Models
 
-A _"model"_ is a collection of training snippets. When a chatbot is asked a question, it will use VSS search to find training data that is relevant to your question from one specific _"model"_. Then it will transmit this training data as _"context"_ to OpenAI, and have OpenAI answer questions using the _"context"_ as its source of information.
+A _"model"_ is a collection of training snippets. When a chatbot is asked a question, it will use VSS search to find training data that is relevant to your question from one specific _"model"_. Then it will transmit this training data as _"context"_ to OpenAI, and have OpenAI answer questions using the _"context"_ as its source of information. Notice, models are called _"types"_ in the API and database (`ml_types`) for historical reasons - not to be confused with the _OpenAI model_ (such as gpt-5.6-luna) doing the actual inference, which every model of yours declares as one of its settings.
 
 You can create many models in Magic, and therefore many chatbots solving different problems.
 

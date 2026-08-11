@@ -1,6 +1,6 @@
 ---
 title: Hyperlambda Playground
-description: Submit Hyperlambda to your cloudlet and run it instantly in 'immediate' mode, ideal for administering your Magic server and learning Hyperlambda.
+description: Submit Hyperlambda to your cloudlet and run it instantly in 'immediate' mode, ideal for administering your cloudlet and learning Hyperlambda.
 header:
   image: /assets/images/hero/playground.webp
   og_image: /assets/images/hero/playground-og.png

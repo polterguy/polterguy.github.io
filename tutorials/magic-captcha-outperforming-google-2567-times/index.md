@@ -45,7 +45,7 @@ The last argument to the `token` function is the workload, implying the number o
 YOUR-CLOUDLET.us.ainiro.io/magic/system/misc/magic-captcha-challenge.js
 ```
 
-Once your client has a valid token, you have n seconds to invoke your server before the token is no longer considered valid. This is because the UTC time for generating the token is a part of its value, and the server will only allow for tokens that are fresher than n seconds to be considered. You can configure this value by overriding it on your server with an **[age]** argument to your invocation to the **[magic.auth.captcha-verify]** slot, but the default value is 10000, implying 10 seconds (10,000 milliseconds).
+Once your client has a valid token, you have n seconds to invoke your cloudlet before the token is no longer considered valid. This is because the UTC time for generating the token is a part of its value, and the server will only allow for tokens that are fresher than n seconds to be considered. You can configure this value by overriding it on your cloudlet with an **[age]** argument to your invocation to the **[magic.auth.captcha-verify]** slot, but the default value is 10000, implying 10 seconds (10,000 milliseconds).
 
 ## Use it in 3rd party software
 

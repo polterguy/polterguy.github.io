@@ -7,7 +7,7 @@ header:
   image_description: Editing Hyperlambda in Hyper IDE
 faq:
   - q: "What is Hyper IDE?"
-    a: "Hyper IDE is Magic's integrated development environment, running in your browser. It lets you browse and edit every file on your server, with syntax highlighting and autocomplete for Hyperlambda."
+    a: "Hyper IDE is Magic's integrated development environment, running in your browser. It lets you browse and edit every file on your cloudlet, with syntax highlighting and autocomplete for Hyperlambda."
   - q: "Can Hyper IDE generate code for me using AI?"
     a: "Yes. Write a description of what you want your code to do, select it, and click Generate - or use the 'Where the Machine Creates the Code' bar below the editor. The Hyperlambda Generator transforms your English into working Hyperlambda in seconds."
   - q: "Is the AI code generation free?"
@@ -49,7 +49,7 @@ Which engine answers depends on the file you have open.
 
 You can also select some text in the editor and click the _"Generate"_ button to run your selection through the generator, or write a file-level comment describing what you want and generate your code from that.
 
-The bar works like a conversation, so you can keep refining and modifying your code, using it as an _"AI-based pair programming buddy"_. Requests are paired to a local machine learning type with the same name as your file's extension - so with an HTML file open the AI searches for a type named _"html"_, falling back to your _"default"_ type if none exists. This lets you create your own RAG models, matched to your file extensions, to teach the AI about your own code.
+The bar works like a conversation, so you can keep refining and modifying your code, using it as an _"AI-based pair programming buddy"_. Requests are paired to a local machine learning model with the same name as your file's extension - so with an HTML file open the AI searches for a model named _"html"_, falling back to your _"default"_ model if none exists. This lets you create your own RAG models, matched to your file extensions, to teach the AI about your own code.
 
 Hyper IDE also provides integrated autocomplete if your editor has focus and you click CTRL+SPACE in Windows or FN+CONTROL+SPACE on your Mac. This allows you to very rapidly create Hyperlambda code, while having Hyper IDE ensure your code is using existing slots. Notice, these keyboard shortcuts are only available when your code editor has focus.
 
@@ -79,7 +79,7 @@ Hyper IDE allows you to execute Hyperlambda without ever leaving your IDE by cli
 
 ## Integrated Hyperlambda AI help
 
-If you mark some Hyperlambda code in Hyper IDE and click F1, it will invoke AINIRO's machine learning type for Hyperlambda, and actually explain your code using natural language.
+If you mark some Hyperlambda code in Hyper IDE and click F1, it will invoke AINIRO's machine learning model for Hyperlambda, and actually explain your code using natural language.
 
 <img src="/assets/images/hyperlambda-ai-help.webp" alt="Screenshot of Hyper IDE&#x27;s integrated Hyperlambda F1-based help component" loading="lazy" width="2400" height="1500">
 

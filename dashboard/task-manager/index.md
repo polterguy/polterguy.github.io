@@ -17,7 +17,7 @@ faq:
   - q: "What scheduling patterns are supported?"
     a: "A specific date and time, every n seconds/minutes/hours/days/weeks/months, or custom patterns for month/day (MM.dd.HH.mm.ss) and weekday (ww.HH.mm.ss) repetitions, including multiple values separated by the pipe character."
   - q: "What happens to my tasks if the server reboots?"
-    a: "Tasks and their schedules live in your database, so they are automatically re-scheduled when your server restarts."
+    a: "Tasks and their schedules live in your database, so they are automatically re-scheduled when your cloudlet restarts."
 ---
 
 The Task Manager component allows you to create and administrate persisted Hyperlambda tasks, and/or schedule tasks for executing, either in a repeating pattern somehow, or at an exact date and time in the future. A Magic task is just a snippet of Hyperlambda code, that is persisted into your Magic database, and such can be recalled at any point in the future to be executed at will.
@@ -38,7 +38,7 @@ The idea behind the task scheduler is first of all to allow for creating dynamic
 
 ## Tasks internals
 
-Your tasks will be saved into your Magic database and its table called _"tasks"_, in addition to your _"task\_due"_ table for schedules. This implies that even if your server for some reason _"drops"_, and/or is rebooted, your tasks will automatically be re-scheduled as your server restarts. Notice, for tasks repeating every nth unit, this process is not 100% perfect, since it might imply the execution date for your tasks is being moved forward if your server reboots for some reason.
+Your tasks will be saved into your Magic database and its table called _"tasks"_, in addition to your _"task\_due"_ table for schedules. This implies that even if your cloudlet for some reason _"drops"_, and/or is rebooted, your tasks will automatically be re-scheduled as your cloudlet restarts. Notice, for tasks repeating every nth unit, this process is not 100% perfect, since it might imply the execution date for your tasks is being moved forward if your cloudlet reboots for some reason.
 
 ## Scheduling tasks
 

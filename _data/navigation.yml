@@ -26,6 +26,8 @@ docs:
         url: /workflows/
       - title: "Deploy Magic"
         url: /deploy/
+      - title: "Glossary"
+        url: /glossary/
   - title: Components
     children:
       - title: "Chatbot Wizard"
@@ -46,7 +48,7 @@ docs:
         url: /dashboard/users-roles/
       - title: "Task Manager"
         url: /dashboard/task-manager/
-      - title: "Plugins (installable from the Bazar)"
+      - title: "Plugins"
         url: /dashboard/plugins/
       - title: "Log"
         url: /dashboard/log/
@@ -58,7 +60,7 @@ docs:
         url: /dashboard/configuration/
   - title: Core
     children:
-      - title: "Plugins (core project plugins)"
+      - title: "Core Plugins (C#)"
         url: /plugins/
       - title: "Endpoints"
         url: /endpoints/

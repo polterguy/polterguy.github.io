@@ -15,7 +15,7 @@ Configuring a provider is the same three steps every time.
 
 <img src="/assets/images/config-openid-github.png" alt="The OpenID dialog with GitHub selected, showing client ID and client secret fields" loading="lazy" width="1232" height="1068">
 
-The dialog's dropdown lists every provider your backend supports and marks the ones already configured. A provider is *on* when it has a client ID, and turning one off again is clearing the field and saving.
+The dialog's dropdown lists every provider your cloudlet supports and marks the ones already configured. A provider is *on* when it has a client ID, and turning one off again is clearing the field and saving.
 
 ## What each provider needs
 
