@@ -190,9 +190,13 @@ Notice, the system message can contain Hyperlambda mixin logic, similarly to how
 
 ## Training snippets
 
-Magic uses RAG for your machine learning model, which we recommend for 99% of our clients. RAG is much less expensive, and most of the time also much more accurate. RAG works by using OpenAI's embeddings API to create embeddings for your training snippets, for then to create embeddings for questions asked towards your model.
+Magic uses RAG for your machine learning model, which we recommend for 99% of our clients. RAG is much less expensive, and most of the time also much more accurate. Each model has a _"Retrieval"_ setting deciding how training snippets are found for a question, with three choices:
 
-This allows us to use _"AI search"_ to find training snippets relevant to the question asked, for then to pass this as _"context data"_ to OpenAI to answer questions.
+* **Semantic (embeddings)** — the default. Uses OpenAI's embeddings API to create embeddings for your training snippets and for each question, matching by meaning — a paraphrased question finds a snippet sharing none of its words.
+* **Keyword (BM25)** — full-text search over your training snippets, built on SQLite's FTS5 index. This mode needs no OpenAI embeddings and no vectorise step at all — snippets are searchable the moment they are imported — and it excels at exact terms such as product names, error messages, and identifiers.
+* **Hybrid (mixed)** — runs both searches and fuses their rankings, so paraphrased questions and exact terms each find the right snippet. The model's _"Threshold"_ setting applies as a distance cutoff for the semantic part, and as a relative-to-best-hit cutoff for the keyword part.
+
+Whichever mode you choose, the best matching snippets are passed as _"context data"_ to the model answering the question.
 
 It could be argued that we don't ask OpenAI to answer questions, since we already know the answer - Instead we're using OpenAI to reassemble the answer into a sentence that makes sense according to what questions the model is being asked. This has huge benefits, such as for instance almost completely eliminating AI hallucinations, and allowing ChatGPT to answer questions it's got no idea about how to answer without having to train your own model.
 
