@@ -1,6 +1,6 @@
 ---
 title: Endpoint Generator
-description: The Endpoint Generator reads your database's metadata and automatically generates a secured CRUD API wrapping it, with no manual coding required.
+description: The Endpoint Generator reads your database's metadata and automatically generates a secured CRUD API wrapping it, wraps your own SQL into endpoints, and imports third party APIs from their OpenAPI specifications - with no manual coding required.
 header:
   image: /assets/images/hero/endpoint-generator.webp
   og_image: /assets/images/hero/endpoint-generator-og.png
@@ -20,6 +20,12 @@ faq:
     a: "No. Caching, implying the Cache-Control HTTP header, is only applied to GET endpoints in this component."
   - q: "What is the fastest way to create an API?"
     a: "The dashboard's landing page has an 'API Wizard' card starting a guided version of the Endpoint Generator - it preselects every table in your database, and when generation is done it links you directly to your new endpoints and to user management."
+  - q: "Can I wrap somebody else's API instead of a database?"
+    a: "Yes. The Import API tab reads an OpenAPI specification - OpenAPI 3.x or Swagger 2.0, JSON or YAML - and generates Hyperlambda endpoints wrapping whichever operations you select, complete with arguments, validators and documentation taken from the specification."
+  - q: "Where is the credential for an imported API stored?"
+    a: "In your configuration, never in the generated files. You nominate a configuration key, and the generated endpoints read the credential from it at invocation time, which keeps your files safe to check into source control."
+  - q: "Do imported endpoints work as MCP tools?"
+    a: "Yes. The importer writes the operation's summary as the file level comment and each argument's documentation as a comment above that argument, which is what Magic exposes as the tool's description and its arguments' descriptions - so an imported API becomes a set of self describing tools for an AI agent."
   - q: "Can I wrap my own SQL in an endpoint?"
     a: "Yes. The SQL endpoint tab lets you provide any SQL statement, declare arguments you reference as @name in the SQL, choose an HTTP verb and authorisation, and generate a secure endpoint wrapping it. The AI prompt bar can even write the SQL for you, and you can load saved snippets or import .sql files."
 ---
@@ -118,6 +124,39 @@ The SQL generator allows you to override authorisation requirements, the URL of 
 Notice, arguments supplied to your SQL endpoint are obviously mandatory, since once you've generated your endpoint, there are no known mechanisms for removing the argument from your SQL. However, your arguments could be supplied as null values, at which point the resulting SQL would use the value null as a substitute for your argument.
 
 <img src="/images/sql-arguments.webp" alt="Screenshot of how to declare an argument to your SQL endpoint in the Endpoint Generator" loading="lazy" width="2400" height="1500">
+
+## Import API - wrapping a third party API
+
+The third tab in the Endpoint Generator, _"Import API"_, works the other way around from the other two. Instead of generating endpoints from your own database or your own SQL, it reads an [OpenAPI](https://www.openapis.org/) specification belonging to somebody else's API - Stripe, GitHub, Slack, or any other API that publishes one - and generates Hyperlambda endpoints in your cloudlet wrapping the operations you choose.
+
+<img src="/images/import-api.webp" alt="Screenshot of the Import API tab reading an OpenAPI specification and selecting which operations to wrap" loading="lazy" width="2400" height="1500">
+
+Paste the URL of the specification and click _"Read"_. Magic fetches and parses it, then shows you every operation it found, grouped by the specification's own tags - or by the first meaningful segment of the path for specifications that don't use tags. Tick the operations you want, give the module a name, and click _"Import"_. A terminal dialog reports each endpoint as it is created, and tells you how many lines of Hyperlambda it generated when it finishes.
+
+Both major dialects are supported - OpenAPI 3.x and the older Swagger 2.0 - in either JSON or YAML. Specifications range from a handful of operations to well over a thousand, so the filter box and the group checkboxes let you pick out just the parts of an API you actually intend to use.
+
+### Arguments and documentation
+
+The generated endpoints are ordinary Hyperlambda endpoints, and they are documented from the specification as they are generated. URL parameters, query parameters, and form fields each become a named, typed argument with its own comment stating the type, whether it is required, its default value, the values it accepts, and the description the specification gave it. Required arguments get a **[validators.mandatory]** invocation, so a missing argument is refused before the upstream API is ever contacted.
+
+This matters beyond readability. Magic exposes the file level comment as an endpoint's description and each argument's comment as that argument's description, which is exactly what an [MCP](/tutorials/how-to-connect-the-mcp-server/) client reads when deciding how to call a tool. An imported API therefore arrives as a set of self describing tools an AI agent can use without any further work from you.
+
+### Authentication towards the upstream API
+
+Most third party APIs require a credential. You choose how the generated endpoints should authenticate - a bearer token, a custom header, a query parameter, or nothing at all - and which configuration key the credential is read from. The credential itself is never written into the generated files. It is read from your [configuration](/dashboard/configuration/) at the moment the endpoint is invoked, so your files stay safe to check into source control. The _"Set"_ button next to the configuration key lets you store the credential without leaving the component.
+
+You also declare which of your own roles are allowed to invoke the generated endpoints, exactly as you do for CRUD endpoints, so wrapping a third party API does not implicitly expose it to everybody.
+
+### Request bodies
+
+Magic generates different code depending upon what the operation expects, which it reads from the specification.
+
+* **JSON** - The endpoint takes a **[payload]** argument, and the fields the specification declares are documented above it, nested objects included.
+* **Form encoded** - Each field becomes a named argument of its own, unless the specification nests objects deeply enough to require bracketed keys, in which case the endpoint keeps a single **[payload]** argument.
+* **Multipart** - The endpoint accepts a file upload, and forwards it to the upstream API under the field name the specification asks for.
+* **Binary** - The endpoint accepts the raw request body and passes it on untouched, which is what APIs accepting an image or a document directly expect.
+
+By default the importer refuses to replace an endpoint that already exists, telling you which file was in the way. Tick _"Overwrite existing files"_ to re-import over an existing module, which is what you want when the upstream specification has changed and you need to regenerate.
 
 ## HTTP verbs
 
