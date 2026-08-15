@@ -76,17 +76,17 @@ Authorization is enforced the exact same way as for any other HTTP client: the a
 
 In addition to your own endpoints, the MCP server ships with a large library of built-in tools, grouped by area. Below is an overview of the most important groups, with a standout tool from each - your connected AI can use all of these, subject to your user's roles.
 
-* **Hyperlambda** - generate and run backend code. `generate-hyperlambda` turns a plain-English description into working Hyperlambda, while `execute-hyperlambda` and `execute-file` run it.
-* **Modules & endpoints** - scaffold entire APIs. `crudify` generates a complete CRUD backend wrapping a database, alongside `create-sql-endpoint`, `create-module` and `get-openapi-spec`.
+* **Hyperlambda** - generate, verify and run backend code. `generate-hyperlambda` turns a plain-English description into working Hyperlambda, `verify-hyperlambda` checks that code parses and only references slots that exist on your cloudlet, and `execute-hyperlambda` and `execute-file` run it.
+* **Modules & endpoints** - scaffold entire APIs. `crudify` generates a complete CRUD backend wrapping a database, alongside `create-sql-endpoint`, `create-module` and `get-openapi-spec`. `invoke-endpoint` calls one of your own endpoints by its URL and verb, so the AI can test what it just generated.
 * **Database** - work with SQL databases. `execute-sql` and `select-sql` run queries, with `get-database-schema`, `create-sqlite-database` and `create-database-backup` for management.
-* **Files** - read and write the cloudlet's file system. `read-file` and `create-file` edit files, with `list-files`, `search-files` and `download-from-web` for the rest.
+* **Files** - read and write the cloudlet's file system. `read-file` and `create-file` edit files, with `list-files`, `search-files` and `download-from-web` for the rest. Hyperlambda files saved through `create-file` are verified before they are written, so code that does not parse, or that references a slot which does not exist, never reaches your cloudlet.
 * **Machine Learning** - build AI chatbots and models. `crawl-website` scrapes a website into training data, with `create-type`, `vectorize-type` and `create-ai-function`.
 * **Browser automation** - drive a headless browser. `puppeteer-goto` opens a page and `puppeteer-content` scrapes it, with click, fill, screenshot and evaluate tools for everything in between.
 * **Git & GitHub** - version control your work. `git-commit` and `git-push` save changes, with `git-clone-repo` and `github-create-repo`.
 * **Users & roles** - manage RBAC access. `create-user`, `list-users`, `create-role` and `add-to-role`.
 * **Tasks** - schedule background jobs. `create-task` and `schedule-task`, plus `list-tasks`.
 * **Plugins** - extend the cloudlet on the fly. `install-plugin` and `list-plugins`.
-* **Misc & integrations** - the glue that ties everything together. `invoke-http` calls any external HTTP API, `send-email` sends mail, `execute-python` and `execute-terminal-command` run code, `generate-image` creates images, and `list-endpoints` / `list-slots` let the AI introspect what your cloudlet can do.
+* **Misc & integrations** - the glue that ties everything together. `invoke-http` calls any external HTTP API, `send-email` sends mail, `execute-python` and `execute-terminal-command` run code, `generate-image` creates images, `read-log` returns the most recent log entries with their full exceptions so the AI can diagnose a failure it caused, and `list-endpoints` / `list-slots` let the AI introspect what your cloudlet can do.
 
 Every one of these runs with the roles of the user who consented, so the AI can only ever do what that user is itself allowed to do.
 

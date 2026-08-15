@@ -27,7 +27,7 @@ faq:
   - q: "What does F1 do?"
     a: "F1 asks the integrated AI to explain the Hyperlambda code you have selected, giving you instant help understanding unfamiliar code."
   - q: "What keyboard shortcuts does the dashboard support?"
-    a: "Ctrl+K opens a command palette jumping to any page, file, endpoint, task or model, and Ctrl+/ shows an overview of every shortcut - including the editor shortcuts for autocomplete, search, fullscreen, save, execute, and Hyper IDE's file actions."
+    a: "Ctrl+K opens a command palette jumping to any page, file, endpoint, task or model, Ctrl+. opens Chat Ops, and Ctrl+/ shows an overview of every shortcut - including the editor shortcuts for autocomplete, search, fullscreen, save, execute, and Hyper IDE's file actions."
 ---
 
 Hyper IDE is your _"goto component"_ when you want to create your own modules using Magic and Hyperlambda. It's a web based IDE, allowing you to edit your code, create new modules, and contains a lot of things you're used to from a traditional IDE. It is also the natural extension of Magic's [endpoint generator](/dashboard/endpoint-generator/), since it allows you to edit the Hyperlambda endpoint files after Magic has generated your CRUD backend. In addition, Hyper IDE allows you to use AI to generate code using _"vibe coding"_ constructs.
@@ -67,6 +67,7 @@ The dashboard documents its own shortcuts - click CTRL+/ (COMMAND+/ on a Mac) an
 | --- | --- | --- |
 | CTRL/CMD + K | Everywhere | Opens the command palette - jump to any page, file, endpoint, task or model |
 | CTRL/CMD + / | Everywhere | Shows the keyboard shortcut overview |
+| CTRL/CMD + . | Everywhere | Opens [Chat Ops](/dashboard/chat-ops/) - the dashboard's own AI agent |
 | ESC | Everywhere | Closes the open dialog |
 | CTRL + SPACE | Code editors | Autocomplete - Hyperlambda slots, SQL tables and columns |
 | CTRL/CMD + F | Code editors | Search inside the editor - ENTER cycles matches, ESC closes |
@@ -81,6 +82,8 @@ The dashboard documents its own shortcuts - click CTRL+/ (COMMAND+/ on a Mac) an
 | ALT + D | Hyper IDE | Deletes the open file |
 | ALT + X | Hyper IDE | Deletes the active folder |
 | ALT + C | Hyper IDE | Closes the open file |
+| ALT + F | Hyper IDE | Switches to the next open file |
+| ALT + P | Hyper IDE | Switches to the previous open file |
 
 Editor shortcuts require the code editor to have focus, and apply in every editor throughout the dashboard - Hyper IDE, the Hyperlambda Playground, and SQL Studio alike.
 

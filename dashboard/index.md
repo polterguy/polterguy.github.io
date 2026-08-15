@@ -23,7 +23,17 @@ Below the key numbers, the landing page gives you quick access to the things you
 
 If you get stuck anywhere, ask _Frank_ - AINIRO's AI support agent, trained on the Hyperlambda and Magic documentation. You'll find him both in the _"What everything does"_ section and behind the spark button in the bottom of the navigation, and he answers with code you can paste.
 
-The fastest way around the dashboard is the command palette - click CTRL+K (COMMAND+K on a Mac) anywhere, and one search box jumps you to any page, file, endpoint, task or machine learning model, with fuzzy matching. CTRL+/ shows an overview of every [keyboard shortcut](/dashboard/hyper-ide/#keyboard-shortcuts) the dashboard supports.
+The fastest way around the dashboard is the command palette - click CTRL+K (COMMAND+K on a Mac) anywhere, and one search box jumps you to any page, file, endpoint, task or machine learning model, with fuzzy matching. Picking a task or a model opens it straight in its editor, rather than dropping you on the list it lives in. CTRL+/ shows an overview of every [keyboard shortcut](/dashboard/hyper-ide/#keyboard-shortcuts) the dashboard supports.
+
+<img src="/images/command-palette.webp" alt="Screenshot of the Magic dashboard's command palette searching files and endpoints" loading="lazy" width="3006" height="1702">
+
+The first time you open the dashboard, a short guided tour points out the things worth knowing on the landing page. You can skip it at any point, and re-run it later from the command palette by searching for _"tour"_. The Chatbot Wizard has a tour of its own, explaining what each field does.
+
+## Chat Ops - let the dashboard operate your cloudlet
+
+Where the command palette is the fastest way to *get* somewhere, [Chat Ops](/dashboard/chat-ops/) is the fastest way to get something *done*. Press CTRL+. (COMMAND+. on a Mac), describe what you want in plain English, and the dashboard's own AI agent does the work - generating endpoints, running SQL, reading your log to diagnose a failure, or editing files - showing every function it invoked as you go.
+
+It is the same capability you get by connecting Claude to your cloudlet over [MCP](/tutorials/how-to-connect-the-mcp-server/), except the AI client is the dashboard you are already signed in to, running as the user you signed in as. It needs an OpenAI API key, and appears once you have configured one.
 
 ## Create an AI chatbot
 
@@ -51,6 +61,7 @@ Below is the documentation for each individual dashboard component.
 * [Databases](/dashboard/databases/)
 * [Configuration](/dashboard/configuration/)
 * [Chatbot Wizard](/dashboard/chatbot-wizard/)
+* [Chat Ops](/dashboard/chat-ops/)
 
 In addition to the above, there's also the profile component, allowing you to change your password, and change some other settings related to your profile.
 

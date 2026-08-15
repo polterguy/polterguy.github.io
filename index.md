@@ -58,6 +58,12 @@ Magic is a general purpose backend platform, but some things it is _particularly
 * **Custom AI chatbots** - crawl your website, and get an embeddable chatbot trained on your own content, with widgets and AI functions
 * **Wrapping legacy databases** - point Magic at an existing MySQL, PostgreSQL, SQL Server or MariaDB database, and get a secured, modern web API in seconds
 * **Managing your databases** - design schemas visually, execute SQL from the browser, or let an AI agent administer your database through natural language
+
+## The dashboard is an agent too
+
+You don't need an external AI client to get the benefits above. Magic's dashboard ships with **[Chat Ops](/dashboard/chat-ops/)** - press CTRL+. anywhere, describe what you want in plain English, and the dashboard operates your cloudlet for you, generating endpoints, running SQL, reading your log to diagnose a failure, and showing every function it invoked. It is the MCP capability turned inwards, running as the user you signed in as, and it needs nothing beyond an OpenAI API key.
+
+Getting around is just as quick. The **command palette** - CTRL+K, or COMMAND+K on a Mac - is one search box that jumps you to any page, file, endpoint, task or machine learning model in your cloudlet, with fuzzy matching, and opens tasks and models straight in their editor. CTRL+/ lists every [keyboard shortcut](/dashboard/hyper-ide/#keyboard-shortcuts) the dashboard supports.
 * **Web APIs without code** - CRUD endpoints, custom SQL endpoints, aggregations and keyword search - generated, not written
 * **Background jobs and automation** - scheduled tasks written in Hyperlambda, or generated from plain English descriptions
 * **Hosting static websites and SPAs** - your cloudlet serves files from /etc/www/, turning it into a web server for landing pages and single-page apps, right next to the APIs powering them
