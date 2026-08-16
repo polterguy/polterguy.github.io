@@ -129,7 +129,7 @@ Notice, arguments supplied to your SQL endpoint are obviously mandatory, since o
 
 The third tab in the Endpoint Generator, _"Import API"_, works the other way around from the other two. Instead of generating endpoints from your own database or your own SQL, it reads an [OpenAPI](https://www.openapis.org/) specification belonging to somebody else's API - Stripe, GitHub, Slack, or any other API that publishes one - and generates Hyperlambda endpoints in your cloudlet wrapping the operations you choose.
 
-<img src="/images/import-api.webp" alt="Screenshot of the Import API tab reading an OpenAPI specification and selecting which operations to wrap" loading="lazy" width="2400" height="1500">
+<img src="/images/import-api.webp" alt="Screenshot of the Import API tab reading an OpenAPI specification and selecting which operations to wrap" loading="lazy" width="3004" height="1696">
 
 Paste the URL of the specification and click _"Read"_. Magic fetches and parses it, then shows you every operation it found, grouped by the specification's own tags - or by the first meaningful segment of the path for specifications that don't use tags. Tick the operations you want, give the module a name, and click _"Import"_. A terminal dialog reports each endpoint as it is created, and tells you how many lines of Hyperlambda it generated when it finishes.
 
