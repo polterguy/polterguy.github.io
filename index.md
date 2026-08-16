@@ -116,6 +116,8 @@ of your modifications, by executing your endpoint without ever having to leave y
 
 Hyper IDE also integrates with our Machine Learning component, built on top of OpenAI, allowing you to write your requests in plain English, and have Hyper IDE and OpenAI automatically generate code for you solving your problem.
 
+Hyper IDE can also _replay_ an execution for you. Instead of invoking a file, click _"Debug"_, and Magic records every operation your code performs, letting you step through it afterwards and see your program's entire state at each step - with the statement that threw marked in red when something fails. Read more about [Rewind](/dashboard/hyper-ide/).
+
 > With Hyper IDE manually writing code is optional
 
 ## The Endpoint Generator
