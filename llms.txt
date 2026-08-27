@@ -1,0 +1,137 @@
+# Magic Cloud Documentation
+
+> Magic Cloud is an MIT-licensed, self-hosted platform that builds and runs an entire backend — database, secured REST API, business logic, background jobs, authentication and role-based access control — and exposes all of it to AI agents over MCP. It runs Hyperlambda, a declarative language whose source is a tree structure rather than free-form text, which is what allows natural language to compile into deterministic, inspectable backend code. This site is the complete product and language reference.
+
+Key facts for agents and their humans:
+
+- Install and run locally with one command, then sign in at http://localhost:5555 with root/root:
+  curl -fsSL https://hyperlambda.dev/docker-compose.yaml | docker compose -f - up
+- Hyperlambda is executed, not compiled to a binary. Saving a file makes it live — there is no build or deploy step between writing code and invoking it.
+- Every HTTP endpoint is a `.hl` file in the `modules` folder whose filename encodes its URL and verb, and which declares the roles allowed to invoke it. Authorisation is enforced at execution time.
+- Databases: SQLite is built in; MySQL, PostgreSQL, MariaDB and Microsoft SQL Server connect as external databases and are wrapped in place, with no migration.
+- The Endpoint Generator reads a database schema and generates a complete secured CRUD API from it, and imports third-party APIs from their OpenAPI/Swagger specifications.
+- The Hyperlambda Generator is a proprietary SLM fine-tuned on 600,000+ snippets. Every slot it emits is verified against the live function registry of your cloudlet before the code is returned, so it cannot return hallucinated function invocations.
+- Magic ships an MCP server with OAuth, so any MCP client — Claude, Claude Code, Cursor, Codex — can use a cloudlet's endpoints as tools, and generate new endpoints for itself on demand, inside the same RBAC.
+- Everything is open source under the MIT licence: https://github.com/polterguy/magic
+
+## Start here
+
+- [Getting Started](https://docs.ainiro.io/getting-started/): installing Magic with Docker, from source, or on a VPS, and completing first-run setup
+- [Hyperlambda](https://docs.ainiro.io/hyperlambda/): the language itself — structure, lambda objects, expressions, types, and how execution works
+- [How to connect the MCP server](https://docs.ainiro.io/tutorials/how-to-connect-the-mcp-server/): exposing a cloudlet's endpoints as agent tools over OAuth
+- [Dashboard](https://docs.ainiro.io/dashboard/): the graphical interface to a cloudlet, and the entry point to every component below
+- [Workflows](https://docs.ainiro.io/workflows/): connecting an orchestrator such as Claude to a cloudlet and letting it combine Magic and Hyperlambda dynamically
+- [Deploy Magic](https://docs.ainiro.io/deploy/): taking a cloudlet into production — hosting, security, CDNs and the DevOps involved
+- [Glossary](https://docs.ainiro.io/glossary/): the canonical name for every concept, which synonyms are deprecated, and what things are called in the API where history differs
+
+## Tutorials
+
+- [Tutorials index](https://docs.ainiro.io/tutorials/): all hands-on tutorials
+- [How to connect the MCP server](https://docs.ainiro.io/tutorials/how-to-connect-the-mcp-server/): connect Claude, Cursor or any MCP client to a cloudlet over OAuth
+- [Single Sign-On providers](https://docs.ainiro.io/tutorials/sso-sign-in-providers/): signing in through Google, GitHub, LinkedIn, Microsoft Entra ID, Okta, Auth0, Keycloak or Slack — what each provider needs and where to find it
+- [How to embed your AI chatbot](https://docs.ainiro.io/tutorials/how-to-embed-ai-chatbot/): putting a trained chatbot on your own website with a JavaScript include
+- [Creating a custom design for your AI chatbot](https://docs.ainiro.io/tutorials/custom-design-ai-chatbot/): restyling the chatbot beyond the colours and properties exposed by the embed screen
+- [Using the AI chatbot API](https://docs.ainiro.io/tutorials/chatbot-api/): driving the chatbot from the raw API to build a completely custom frontend
+- [Training snippets versus system instruction](https://docs.ainiro.io/tutorials/traning-snippets-versus-system-instruction/): the two ways of giving a model context, and when each one applies
+- [Creating a custom user management component](https://docs.ainiro.io/tutorials/custom-user-management/): the backend endpoints for managing users and roles outside the dashboard
+- [Magic CAPTCHA](https://docs.ainiro.io/tutorials/magic-captcha-outperforming-google-2567-times/): a proof-of-work CAPTCHA used internally by Magic as an alternative to Google reCAPTCHA
+
+## Dashboard components
+
+- [Hyper IDE](https://docs.ainiro.io/dashboard/hyper-ide/): the AI-enabled IDE for Hyperlambda — editing, executing and debugging files on the server
+- [Hyperlambda Playground](https://docs.ainiro.io/dashboard/hyperlambda-playground/): executing Hyperlambda immediately, without saving it first
+- [Hyperlambda Generator](https://docs.ainiro.io/dashboard/hyperlambda-generator/): the SLM that turns natural language into working Hyperlambda
+- [Endpoint Generator](https://docs.ainiro.io/dashboard/endpoint-generator/): generating a secured CRUD API from a database schema, wrapping custom SQL, and importing OpenAPI specifications
+- [Endpoints](https://docs.ainiro.io/dashboard/endpoints/): browsing and invoking a cloudlet's endpoints, similar to Swagger
+- [SQL Studio](https://docs.ainiro.io/dashboard/sql-studio/): executing SQL from the browser, designing schemas, and storing SQL snippets
+- [Databases](https://docs.ainiro.io/dashboard/databases/): managing connection strings, connecting external databases, and creating new SQLite databases
+- [Chat Ops](https://docs.ainiro.io/dashboard/chat-ops/): operating a cloudlet conversationally — creating endpoints, querying data and running AI functions in plain English
+- [Chatbot Wizard](https://docs.ainiro.io/dashboard/chatbot-wizard/): crawling a website and turning it into an embeddable chatbot grounded in your own content
+- [Machine Learning](https://docs.ainiro.io/dashboard/machine-learning/): models, RAG training data, vector search, AI functions and widgets
+- [Users & Roles](https://docs.ainiro.io/dashboard/users-roles/): role-based access control, authentication and authorisation
+- [Task Manager](https://docs.ainiro.io/dashboard/task-manager/): background tasks, run once at a future time or repeatedly on a schedule
+- [Plugins](https://docs.ainiro.io/dashboard/plugins/): the integrated App Store — Stripe, Shopify and WordPress chatbots, example databases and more
+- [Configuration](https://docs.ainiro.io/dashboard/configuration/): cloudlet settings, applied instantly with no restart
+- [Log](https://docs.ainiro.io/dashboard/log/): the server log, and reviewing events as they happen
+
+## Hyperlambda language reference
+
+- [magic.lambda](https://docs.ainiro.io/plugins/magic.lambda/): the programming language keywords of Hyperlambda
+- [Branching and conditional execution](https://docs.ainiro.io/plugins/magic.lambda/branching/): `[if]`, `[else-if]`, `[else]` and `[switch]`
+- [Comparison and boolean logic](https://docs.ainiro.io/plugins/magic.lambda/conditions/): `[eq]`, `[neq]`, `[lt]`, `[lte]`, `[mt]`, `[mte]`, `[and]`, `[or]` and `[not]`
+- [Loops](https://docs.ainiro.io/plugins/magic.lambda/loops/): `[for-each]` and `[while]`
+- [Modifying your lambda object](https://docs.ainiro.io/plugins/magic.lambda/nodes/): `[add]`, `[insert-before]`, `[set-value]`, `[unwrap]`, `[get-value]`, `[exists]`, `[reference]` and more
+- [Executing lambda objects](https://docs.ainiro.io/plugins/magic.lambda/executing/): `[compose]`, `[eval]` and `[invoke]`
+- [Exceptions](https://docs.ainiro.io/plugins/magic.lambda/exceptions/): `[try]` and `[throw]`
+- [Types and conversion](https://docs.ainiro.io/plugins/magic.lambda/types/): `[types]`, `[type]`, `[convert]`, `[format]`, `[int2words]`, and `[vocabulary]` returning every slot in your cloudlet
+- [magic.node](https://docs.ainiro.io/plugins/magic.node/): the name/value/children graph object, the Hyperlambda parser, and lambda expressions
+- [magic.signals](https://docs.ainiro.io/plugins/magic.signals/): the Active Events (slots and signals) dispatcher Hyperlambda is built on
+
+## Plugin reference — the slots available to Hyperlambda
+
+- [Plugins index](https://docs.ainiro.io/plugins/): the reference documentation for every plugin and for Hyperlambda itself
+- [magic.lambda.io](https://docs.ainiro.io/plugins/magic.lambda.io/): file and folder slots, sandboxed to the cloudlet's own file system
+- [magic.lambda.strings](https://docs.ainiro.io/plugins/magic.lambda.strings/): string manipulation
+- [magic.lambda.math](https://docs.ainiro.io/plugins/magic.lambda.math/): arithmetic and math functions
+- [magic.lambda.dates](https://docs.ainiro.io/plugins/magic.lambda.dates/): date and time manipulation
+- [magic.lambda.json](https://docs.ainiro.io/plugins/magic.lambda.json/): converting between JSON and lambda objects
+- [magic.lambda.xml](https://docs.ainiro.io/plugins/magic.lambda.xml/): converting between XML and lambda objects
+- [magic.lambda.csv](https://docs.ainiro.io/plugins/magic.lambda.csv/): reading and writing CSV
+- [magic.lambda.html](https://docs.ainiro.io/plugins/magic.lambda.html/): parsing HTML into lambda objects and generating it back
+- [magic.lambda.http](https://docs.ainiro.io/plugins/magic.lambda.http/): invoking HTTP endpoints
+- [magic.lambda.hyperlambda](https://docs.ainiro.io/plugins/magic.lambda.hyperlambda/): parsing and generating Hyperlambda itself
+- [magic.lambda.slots](https://docs.ainiro.io/plugins/magic.lambda.slots/): creating, signalling, modifying, inspecting and deleting dynamic slots
+- [magic.lambda.auth](https://docs.ainiro.io/plugins/magic.lambda.auth/): authentication and authorisation, including JWT ticket verification
+- [magic.lambda.crypto](https://docs.ainiro.io/plugins/magic.lambda.crypto/): symmetric and asymmetric cryptography, hashing and signing
+- [magic.lambda.validators](https://docs.ainiro.io/plugins/magic.lambda.validators/): argument validators for endpoints
+- [magic.lambda.caching](https://docs.ainiro.io/plugins/magic.lambda.caching/): server-side caching
+- [magic.lambda.config](https://docs.ainiro.io/plugins/magic.lambda.config/): reading configuration settings
+- [magic.lambda.logging](https://docs.ainiro.io/plugins/magic.lambda.logging/): writing to the server log
+- [magic.lambda.mail](https://docs.ainiro.io/plugins/magic.lambda.mail/): sending and fetching email over SMTP and POP3
+- [magic.lambda.mime](https://docs.ainiro.io/plugins/magic.lambda.mime/): parsing and creating MIME messages
+- [magic.lambda.image](https://docs.ainiro.io/plugins/magic.lambda.image/): image manipulation
+- [magic.lambda.pdf](https://docs.ainiro.io/plugins/magic.lambda.pdf/): generating and reading PDF
+- [magic.lambda.guid](https://docs.ainiro.io/plugins/magic.lambda.guid/): generating GUIDs
+- [magic.lambda.threading](https://docs.ainiro.io/plugins/magic.lambda.threading/): threading and parallel execution
+- [magic.lambda.scheduler](https://docs.ainiro.io/plugins/magic.lambda.scheduler/): persisted and scheduled Hyperlambda tasks
+- [magic.lambda.sockets](https://docs.ainiro.io/plugins/magic.lambda.sockets/): web sockets
+- [magic.lambda.openai](https://docs.ainiro.io/plugins/magic.lambda.openai/): OpenAI inference and embeddings
+- [magic.lambda.puppeteer](https://docs.ainiro.io/plugins/magic.lambda.puppeteer/): headless Chromium automation through PuppeteerSharp, letting agents browse the web
+- [magic.lambda.git](https://docs.ainiro.io/plugins/magic.lambda.git/): Git and GitHub operations
+- [magic.lambda.system](https://docs.ainiro.io/plugins/magic.lambda.system/): invoking system commands, and dynamically compiling and loading C# plugins
+- [magic.lambda.mssql](https://docs.ainiro.io/plugins/magic.lambda.mssql/): the Microsoft SQL Server data adapter
+- [magic.lambda.mysql](https://docs.ainiro.io/plugins/magic.lambda.mysql/): the MySQL and MariaDB data adapter
+- [magic.lambda.pgsql](https://docs.ainiro.io/plugins/magic.lambda.pgsql/): the PostgreSQL data adapter
+- [magic.lambda.sqlite](https://docs.ainiro.io/plugins/magic.lambda.sqlite/): the SQLite data adapter
+- [magic.lambda.odbc](https://docs.ainiro.io/plugins/magic.lambda.odbc/): the ODBC data adapter
+- [magic.data.common](https://docs.ainiro.io/plugins/magic.data.common/): the generic data adapter that turns lambda nodes into SQL
+- [magic.endpoint](https://docs.ainiro.io/plugins/magic.endpoint/): the dynamic URL controller resolving every HTTP request to a Hyperlambda file
+- [magic.library](https://docs.ainiro.io/plugins/magic.library/): wiring Magic into a .NET application
+
+## Built-in HTTP endpoints
+
+- [Middleware endpoints](https://docs.ainiro.io/endpoints/): reference for the built-in HTTP endpoints in Magic's middleware
+- [Authentication and authorisation](https://docs.ainiro.io/endpoints/auth/): authenticating, changing passwords, refreshing and verifying JWT tokens
+- [CRUD generator](https://docs.ainiro.io/endpoints/crudifier/): generating CRUD and SQL-based endpoints wrapping a database
+- [SQL](https://docs.ainiro.io/endpoints/sql/): executing SQL, retrieving database meta data, and managing SQL snippets
+- [File system](https://docs.ainiro.io/endpoints/files/): uploading, downloading, listing, renaming and deleting files and folders
+- [Tasks](https://docs.ainiro.io/endpoints/tasks/): creating, updating, deleting, scheduling and listing background tasks
+- [Configuration](https://docs.ainiro.io/endpoints/configuration/): loading and saving appsettings.json, and first-run setup
+- [Plugins](https://docs.ainiro.io/endpoints/plugins/): listing installed plugins and installing new ones from the App Store
+- [Cache](https://docs.ainiro.io/endpoints/cache/): deleting server-side cache items
+- [Misc](https://docs.ainiro.io/endpoints/misc/): endpoint meta data, OpenAPI specifications, Hyperlambda evaluation and system diagnostics
+
+## Dynamic slots in the middleware
+
+- [Slots index](https://docs.ainiro.io/slots/): the most important dynamic slots in Magic's middleware
+- [Authentication and authorisation slots](https://docs.ainiro.io/slots/auth/): authenticating users, changing passwords, creating users, ensuring roles exist
+- [Database meta traversal slots](https://docs.ainiro.io/slots/database-meta/): listing databases, tables, columns, foreign keys and indexes across MySQL, SQL Server, PostgreSQL and SQLite
+- [Misc slots](https://docs.ainiro.io/slots/misc/): loading files recursively, ensuring module databases, installing modules, hashing passwords
+
+## Optional
+
+- [Full documentation as a single file](https://docs.ainiro.io/llms-full.txt): every page on this site concatenated, for ingesting the whole corpus in one fetch
+- [Hyperlambda.dev](https://hyperlambda.dev): the product site — positioning, comparisons, pricing and the AST playground
+- [GitHub repository](https://github.com/polterguy/magic): the complete MIT-licensed source code
+- [Discord community](https://discord.gg/PXyutS8Ej)
+- [Thomas Hansen](mailto:thomas@ainiro.io): creator of Hyperlambda and Magic Cloud

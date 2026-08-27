@@ -1,0 +1,34 @@
+---
+layout: none
+sitemap: false
+---
+# Magic Cloud Documentation — Full Text
+
+Every page of the Magic Cloud documentation, concatenated into one file, so an
+agent can ingest the whole corpus in a single fetch instead of crawling the site.
+Generated from the same sources that build https://docs.ainiro.io, so it is never
+out of date with the site.
+
+Magic Cloud is an MIT-licensed, self-hosted platform that builds and runs an
+entire backend — database, secured REST API, business logic, background jobs,
+authentication and role-based access control — and exposes all of it to AI agents
+over MCP. It runs Hyperlambda, a declarative language whose source is a tree
+structure rather than free-form text.
+
+Curated index of this site: https://docs.ainiro.io/llms.txt
+Source code: https://github.com/polterguy/magic
+
+Each page below starts with a level-one heading carrying its title, followed by
+the URL it is published at. Headings inside a page start at level two.
+{% assign docs = site.pages | where_exp: "doc", "doc.path contains '.md'" | sort: "url" %}
+{%- for doc in docs %}
+
+# {{ doc.title | default: doc.url }}
+
+URL: {{ site.url }}{{ doc.url }}
+{%- if doc.description %}
+Description: {{ doc.description }}
+{%- endif %}
+
+{{ doc.content }}
+{%- endfor %}
