@@ -334,4 +334,9 @@ _site/**
 !/documentation/magic/components/log
 .jekyll-metadata
 
+# The [Ll]og/ rule above comes from the Visual Studio template and matches any
+# folder named "log" - including documentation folders. Every documentation
+# folder named "log" must therefore be re-included explicitly, or it silently
+# never gets published.
 !/dashboard/log/
+!/endpoints/log/
