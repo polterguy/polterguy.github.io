@@ -119,6 +119,7 @@ Key facts for agents and their humans:
 - [Configuration](https://docs.ainiro.io/endpoints/configuration/): loading and saving appsettings.json, and first-run setup
 - [Plugins](https://docs.ainiro.io/endpoints/plugins/): listing installed plugins and installing new ones from the App Store
 - [Cache](https://docs.ainiro.io/endpoints/cache/): deleting server-side cache items
+- [Log](https://docs.ainiro.io/endpoints/log/): listing, counting and creating log items
 - [Misc](https://docs.ainiro.io/endpoints/misc/): endpoint meta data, OpenAPI specifications, Hyperlambda evaluation and system diagnostics
 
 ## Dynamic slots in the middleware
