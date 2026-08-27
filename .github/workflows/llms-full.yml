@@ -1,0 +1,60 @@
+# Keeps llms-full.txt in sync with the documentation sources.
+#
+# llms-full.txt used to be a Liquid template, which was wrong: reading another
+# page's `content` from a Jekyll template returns rendered HTML rather than the
+# markdown source, so the published file was 28% HTML tags. Nothing in Liquid
+# reverses that, and GitHub Pages allows no plugin that could, so the file is
+# generated here from the raw sources instead.
+#
+# This does not loop. It commits llms-full.txt, and the trigger only fires on
+# markdown sources and on the generator itself.
+
+name: Build llms-full.txt
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - '**.md'
+      - '.github/scripts/build-llms-full.py'
+      - '.github/workflows/llms-full.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: llms-full
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      # The runner's python does not ship PyYAML reliably; the generator parses
+      # every page's front matter with it.
+      - name: Install dependencies
+        run: pip install --quiet pyyaml
+
+      - name: Generate llms-full.txt
+        run: python3 .github/scripts/build-llms-full.py
+
+      # Only commit when the output actually changed, so unrelated markdown edits
+      # do not produce empty commits.
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- llms-full.txt; then
+            echo "llms-full.txt unchanged, nothing to commit."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add llms-full.txt
+          git commit -m "Rebuild llms-full.txt"
+          git push
