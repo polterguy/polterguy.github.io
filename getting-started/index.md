@@ -7,7 +7,7 @@ header:
   image_description: Getting started with Magic
 ---
 
-The easiest way to get started with Magic is to [signup for a cloudlet at AINIRO.IO](https://ainiro.io/buy). However, if you want to run it locally you can use either Docker or the source code. The easiest way to get started is to use Docker.
+The easiest way to get started with Magic is to [signup for a cloudlet at Hyperlambda.dev](https://hyperlambda.dev/pricing). If you sign up, you get 2 weeks for free, no strings attached. However, if you want to run it locally you can use either Docker or the source code. The easiest way to get started is to use Docker.
 
 ## Using Docker
 
