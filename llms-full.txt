@@ -1127,6 +1127,8 @@ For a folder that already is a repository, the panel shows which branch you're o
 
 <img src="/assets/images/hyper-ide-git.webp" alt="Screenshot of Hyper IDE&#x27;s Git panel, showing branch, tracking status and commit actions for a module" loading="lazy" width="2400" height="1500">
 
+Each changed file is a row you can expand. Expanding it shows the file's diff against HEAD, with additions and removals coloured, so you can read exactly what a commit will contain before writing its message. Untracked files show their whole content as additions, since there is no earlier version to compare with. Hovering a tracked file's row reveals a reset button that throws away that file's uncommitted changes and restores what HEAD has - both in the working tree and in any tab you have the file open in, so a later save cannot bring the discarded content back. The _"Reset to HEAD…"_ button does the same for the entire repository, and in addition deletes every untracked file and folder, leaving the module identical to its last commit. Both ask for confirmation first, and neither can be undone.
+
 Before your first commit, add your GitHub username and a fine-grained personal access token with _"Contents"_ read and write access to your configuration. Open the _"Configuration"_ screen, click the hamburger menu at the top, and choose _"Git…"_ to get a dialog doing this for you.
 
 <img src="/assets/images/hyper-ide-git-settings.webp" alt="Screenshot of the Git settings dialog on the Configuration screen, with GitHub username, token and host" loading="lazy" width="1180" height="1000">
@@ -1197,7 +1199,7 @@ Yes, you can edit TypeScript, Ruby, HTML, C# and other file types, although for 
 
 **Does Hyper IDE have Git support?**
 
-Yes. Every top level folder inside /modules/ and /etc/ can be its own Git repository, and each has a Git action opening a panel where you can see status, commit, push, pull, fetch, and manage branches. Folders that aren't repositories yet can be initialized or cloned into. Commits are attributed to your profile's name and email, and GitHub authentication uses a personal access token from your configuration.
+Yes. Every top level folder inside /modules/ and /etc/ can be its own Git repository, and each has a Git action opening a panel where you can see status, expand any changed file to read its diff, discard changes per file or for the whole repository, commit, push, pull, fetch, and manage branches. Folders that aren't repositories yet can be initialized or cloned into. Commits are attributed to your profile's name and email, and GitHub authentication uses a personal access token from your configuration.
 
 **Can I build full stack apps with Hyper IDE?**
 
@@ -6217,7 +6219,7 @@ This slot can be given the following arguments;
 URL: https://docs.ainiro.io/plugins/magic.lambda.git/
 
 The magic.lambda.git project provides Git and GitHub invocation capabilities for Magic and Hyperlambda. More specifically the
-project contains the following 14 slots.
+project contains the following 16 slots.
 
 * __[git.clone-repo]__ - Clones a repository into a folder
 * __[git.create-repo]__ - Initializes a folder as a Git repository
@@ -6229,6 +6231,8 @@ project contains the following 14 slots.
 * __[git.fetch]__ - Fetches updates from a remote
 * __[git.pull]__ - Pulls updates from a remote
 * __[git.status]__ - Shows repository status
+* __[git.diff]__ - Shows working tree changes relative to HEAD
+* __[git.restore]__ - Discards uncommitted changes for one file or the whole repository
 * __[git.branch.list]__ - Lists branches
 * __[github.repo.create]__ - Creates a GitHub repository
 * __[github.repo.delete]__ - Deletes a GitHub repository
@@ -6434,6 +6438,36 @@ git.status:/modules/stripe/
    porcelain:true
    branch:true
    structured:true
+```
+
+## How to use [git.diff]
+
+Shows the unified diff between the working tree and HEAD. The repo path is the node value. By default the
+whole repository is diffed, while providing a repo-relative `file` restricts the diff to that one file.
+Untracked files have no diff, since git knows nothing about them yet.
+
+```
+git.diff:/modules/stripe/
+```
+
+```
+git.diff:/modules/stripe/
+   file:README.md
+```
+
+## How to use [git.restore]
+
+Discards uncommitted changes. The repo path is the node value. With a repo-relative `file`, that one file is
+restored from HEAD in both index and working tree. Without `file`, the whole working tree is reset to HEAD
+**and untracked files and folders are removed**, leaving the folder identical to the last commit.
+
+```
+git.restore:/modules/stripe/
+   file:README.md
+```
+
+```
+git.restore:/modules/stripe/
 ```
 
 ## How to use [git.branch.list]
