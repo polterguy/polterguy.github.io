@@ -25,7 +25,7 @@ faq:
   - q: "Can I edit other languages than Hyperlambda?"
     a: "Yes, you can edit TypeScript, Ruby, HTML, C# and other file types, although for those languages a dedicated IDE will typically serve you better. Hyper IDE's strength is Hyperlambda."
   - q: "Does Hyper IDE have Git support?"
-    a: "Yes. Every top level folder inside /modules/ and /etc/ can be its own Git repository, and each has a Git action opening a panel where you can see status, commit, push, pull, fetch, and manage branches. Folders that aren't repositories yet can be initialized or cloned into. Commits are attributed to your profile's name and email, and GitHub authentication uses a personal access token from your configuration."
+    a: "Yes. Every top level folder inside /modules/ and /etc/ can be its own Git repository, and each has a Git action opening a panel where you can see status, expand any changed file to read its diff, discard changes per file or for the whole repository, commit, push, pull, fetch, and manage branches. Folders that aren't repositories yet can be initialized or cloned into. Commits are attributed to your profile's name and email, and GitHub authentication uses a personal access token from your configuration."
   - q: "Can I build full stack apps with Hyper IDE?"
     a: "Yes. Your cloudlet serves static files from /etc/www/, and the AI bar generates HTML, CSS and JavaScript too - so you can generate a frontend in plain English, wired to the CRUD API the Endpoint Generator created for your database, and host it straight from your cloudlet."
   - q: "How do I move a module to another server?"
@@ -185,6 +185,8 @@ Every module can be its own Git repository, and Hyper IDE has Git built in. Top 
 For a folder that already is a repository, the panel shows which branch you're on, whether you're ahead of or behind your remote, and every modified and untracked file. From here you can commit all changes with a message, push and pull, fetch from your remote, switch branches, and create new branches. Buttons that cannot possibly work in the repository's current state are disabled - push for instance is only enabled when you actually have commits your remote doesn't.
 
 <img src="/assets/images/hyper-ide-git.webp" alt="Screenshot of Hyper IDE&#x27;s Git panel, showing branch, tracking status and commit actions for a module" loading="lazy" width="2400" height="1500">
+
+Each changed file is a row you can expand. Expanding it shows the file's diff against HEAD, with additions and removals coloured, so you can read exactly what a commit will contain before writing its message. Untracked files show their whole content as additions, since there is no earlier version to compare with. Hovering a tracked file's row reveals a reset button that throws away that file's uncommitted changes and restores what HEAD has - both in the working tree and in any tab you have the file open in, so a later save cannot bring the discarded content back. The _"Reset to HEAD…"_ button does the same for the entire repository, and in addition deletes every untracked file and folder, leaving the module identical to its last commit. Both ask for confirmation first, and neither can be undone.
 
 Before your first commit, add your GitHub username and a fine-grained personal access token with _"Contents"_ read and write access to your configuration. Open the _"Configuration"_ screen, click the hamburger menu at the top, and choose _"Git…"_ to get a dialog doing this for you.
 

@@ -3,7 +3,7 @@ title: magic.lambda.git
 ---
 
 The magic.lambda.git project provides Git and GitHub invocation capabilities for Magic and Hyperlambda. More specifically the
-project contains the following 14 slots.
+project contains the following 16 slots.
 
 * __[git.clone-repo]__ - Clones a repository into a folder
 * __[git.create-repo]__ - Initializes a folder as a Git repository
@@ -15,6 +15,8 @@ project contains the following 14 slots.
 * __[git.fetch]__ - Fetches updates from a remote
 * __[git.pull]__ - Pulls updates from a remote
 * __[git.status]__ - Shows repository status
+* __[git.diff]__ - Shows working tree changes relative to HEAD
+* __[git.restore]__ - Discards uncommitted changes for one file or the whole repository
 * __[git.branch.list]__ - Lists branches
 * __[github.repo.create]__ - Creates a GitHub repository
 * __[github.repo.delete]__ - Deletes a GitHub repository
@@ -220,6 +222,36 @@ git.status:/modules/stripe/
    porcelain:true
    branch:true
    structured:true
+```
+
+## How to use [git.diff]
+
+Shows the unified diff between the working tree and HEAD. The repo path is the node value. By default the
+whole repository is diffed, while providing a repo-relative `file` restricts the diff to that one file.
+Untracked files have no diff, since git knows nothing about them yet.
+
+```
+git.diff:/modules/stripe/
+```
+
+```
+git.diff:/modules/stripe/
+   file:README.md
+```
+
+## How to use [git.restore]
+
+Discards uncommitted changes. The repo path is the node value. With a repo-relative `file`, that one file is
+restored from HEAD in both index and working tree. Without `file`, the whole working tree is reset to HEAD
+**and untracked files and folders are removed**, leaving the folder identical to the last commit.
+
+```
+git.restore:/modules/stripe/
+   file:README.md
+```
+
+```
+git.restore:/modules/stripe/
 ```
 
 ## How to use [git.branch.list]
