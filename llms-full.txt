@@ -22,7 +22,7 @@ the URL it is published at. Headings inside a page start at level two.
 URL: https://docs.ainiro.io/
 Description: Magic Cloud is an AI, Low-Code and No-Code platform that builds and hosts your entire backend, and powers database-driven AI agents over MCP.
 
-Magic Cloud, or Magic for short, is a backend software development platform that creates most of your code _"automagically"_, by leveraging meta programming, declarative programming, AI, low-code, and no-code. This allows you to focus on creative tasks, while having the machine create the boring parts.
+Magic Cloud, or Magic for short, is a backend software development platform that creates most of your code _"automagically"_, by leveraging meta programming, declarative programming, AI, low-code, and no-code. This allows you to focus on creative tasks, while having the machine create the boring parts. Read more about [Hyperlambda](https://hyperlambda.dev).
 
 > Where the Machine Creates the Code!
 
@@ -1124,8 +1124,6 @@ Every module can be its own Git repository, and Hyper IDE has Git built in. Top 
 <img src="/assets/images/hyper-ide-git-actions.webp" alt="Screenshot of a module folder&#x27;s action buttons in Hyper IDE&#x27;s file tree, with the Git branch icon among them" loading="lazy" width="2400" height="1500">
 
 For a folder that already is a repository, the panel shows which branch you're on, whether you're ahead of or behind your remote, and every modified and untracked file. From here you can commit all changes with a message, push and pull, fetch from your remote, switch branches, and create new branches. Buttons that cannot possibly work in the repository's current state are disabled - push for instance is only enabled when you actually have commits your remote doesn't.
-
-Each changed file is a row you can expand. Expanding it shows the file's diff against HEAD, with additions and removals coloured, so you can read exactly what a commit will contain before writing its message. Untracked files show their whole content as additions, since there is no earlier version to compare with. Hovering a tracked file's row reveals a reset button that throws away that file's uncommitted changes and restores what HEAD has - both in the working tree and in any tab you have the file open in, so a later save cannot bring the discarded content back. The _"Reset to HEAD…"_ button does the same for the entire repository, and in addition deletes every untracked file and folder, leaving the module identical to its last commit. Both ask for confirmation first, and neither can be undone.
 
 <img src="/assets/images/hyper-ide-git.webp" alt="Screenshot of Hyper IDE&#x27;s Git panel, showing branch, tracking status and commit actions for a module" loading="lazy" width="2400" height="1500">
 
