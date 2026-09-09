@@ -34,7 +34,7 @@ faq:
     a: "Yes, Magic is 100% open source. Run it locally with one Docker command, deploy it to any VPS, or use AINIRO.IO's professional hosting - a managed cloudlet with backups and HTTPS out of the box."
 ---
 
-Magic Cloud, or Magic for short, is a backend software development platform that creates most of your code _"automagically"_, by leveraging meta programming, declarative programming, AI, low-code, and no-code. This allows you to focus on creative tasks, while having the machine create the boring parts.
+Magic Cloud, or Magic for short, is a backend software development platform that creates most of your code _"automagically"_, by leveraging meta programming, declarative programming, AI, low-code, and no-code. This allows you to focus on creative tasks, while having the machine create the boring parts. Read more about [Hyperlambda](https://hyperlambda.dev).
 
 > Where the Machine Creates the Code!
 
