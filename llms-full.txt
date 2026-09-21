@@ -700,7 +700,7 @@ Yes. Download a backup of any SQLite database with one click, and upload a backu
 URL: https://docs.ainiro.io/dashboard/endpoint-generator/
 Description: The Endpoint Generator reads your database's metadata and automatically generates a secured CRUD API wrapping it, wraps your own SQL into endpoints, safely executes caller-supplied code inside a role-based sandbox, and imports third party APIs from their OpenAPI specifications - with no manual coding required.
 
-The Endpoint Generator component allows you to automatically generate an HTTP CRUD web API wrapping your database of choice. This component is one of the core components of the Low-Code and software development automation parts of Magic, and allows you to generate a web API wrapping your database automatically. The endpoint generator component works by reading meta data from your database, which it then uses to generate Hyperlambda HTTP endpoints for you automatically.
+The Endpoint Generator component allows you to automatically generate an HTTP CRUD web API wrapping your database of choice. The endpoint generator component works by reading meta data from your database, which it then uses to generate Hyperlambda HTTP endpoints for you automatically.
 
 <img src="/images/backend-crud.webp" alt="Screenshot of the Endpoint Generator generating CRUD HTTP endpoints wrapping an SQL database" loading="lazy" width="2400" height="1500">
 
