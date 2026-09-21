@@ -698,7 +698,7 @@ Yes. Download a backup of any SQLite database with one click, and upload a backu
 # Endpoint Generator
 
 URL: https://docs.ainiro.io/dashboard/endpoint-generator/
-Description: The Endpoint Generator reads your database's metadata and automatically generates a secured CRUD API wrapping it, wraps your own SQL into endpoints, and imports third party APIs from their OpenAPI specifications - with no manual coding required.
+Description: The Endpoint Generator reads your database's metadata and automatically generates a secured CRUD API wrapping it, wraps your own SQL into endpoints, safely executes caller-supplied code inside a role-based sandbox, and imports third party APIs from their OpenAPI specifications - with no manual coding required.
 
 The Endpoint Generator component allows you to automatically generate an HTTP CRUD web API wrapping your database of choice. This component is one of the core components of the Low-Code and software development automation parts of Magic, and allows you to generate a web API wrapping your database automatically. The endpoint generator component works by reading meta data from your database, which it then uses to generate Hyperlambda HTTP endpoints for you automatically.
 
@@ -795,9 +795,65 @@ Notice, arguments supplied to your SQL endpoint are obviously mandatory, since o
 
 <img src="/images/sql-arguments.webp" alt="Screenshot of how to declare an argument to your SQL endpoint in the Endpoint Generator" loading="lazy" width="2400" height="1500">
 
+## The Sandbox API generator
+
+The _"Sandbox API"_ tab generates a single endpoint that safely executes code its own callers supply. Where the CRUD and SQL generators turn _your_ data and _your_ SQL into fixed endpoints, the Sandbox API publishes one endpoint that accepts Hyperlambda - or a plain-English instruction it turns into Hyperlambda - from whoever calls it, and runs it inside a whitelist that decides, function by function, what that code is allowed to do. The caller never gets more power than the roles you granted, and a function you did not grant simply does not exist as far as their code is concerned.
+
+This is the same mechanism behind the public [Natural Language API](https://hyperlambda.dev/natural-language-api) demonstration, generalised so you can shape the vocabulary, the rate limit and the timeout per role, and mount it at a URL of your choice.
+
+### Input - Hyperlambda, natural language, or both
+
+The _"Input"_ selector decides what the generated endpoint accepts, and your choice is reflected both in the endpoint's arguments and in its documentation.
+
+* **Hyperlambda** - the endpoint takes a **[hyperlambda]** argument and executes it as-is
+* **Natural language** - the endpoint takes an **[instruction]** argument, sends it to the [Hyperlambda Generator](https://docs.ainiro.io/dashboard/hyperlambda-generator/) for code, and executes the result
+* **Both** - the endpoint accepts either; a non-empty **[instruction]** is used when present, otherwise the **[hyperlambda]** argument
+
+Whichever you choose, the generator writes a matching file level comment and argument comments, so the endpoint documents itself - and, because it becomes an [MCP](https://docs.ainiro.io/tutorials/how-to-connect-the-mcp-server/) tool, so does the tool an AI agent sees.
+
+### How the code is checked and run
+
+Every request goes through the same pipeline.
+
+1. **Verify** - the code is parsed and every function it references is checked against the functions that actually exist on this server. A hallucinated function stops here, before anything runs.
+2. **Execute** - the code runs inside a **[whitelist]** whose vocabulary is chosen from the caller's roles. A function that is not in the vocabulary does not resolve, and an argument that is pinned - such as a database name - must match exactly.
+3. **Return** - the response always carries a **[state]** saying what happened, the **[result]** the code produced, and a **[reason]** when the runtime refused the code or it failed.
+
+The possible states are `executed`, `rejected` (a function or a pinned argument was not allowed), `unknown-slot` (a referenced function does not exist), `error` (the code threw), `timeout` (execution exceeded the configured limit), and `generator-failed` (no code came back from the generator).
+
+### The policy - base vocabulary plus per-role grants
+
+What the sandbox can reach is defined by a policy you build in the component, made of an _"everybody"_ base rule plus any number of per-role rules.
+
+* **Everybody (base vocabulary)** - the language every caller gets, seeded for you with a safe set of pure, data-shaping functions (mirroring the public Natural Language API's vocabulary, minus database and HTTP access). It also carries the fallback rate limit and timeout.
+* **Role rules** - each adds more functions on top of the base for callers in that role. This is how you grant your CEO's role access to one database while your HR role cannot reach it - both keep the base language, and each role's extra functions are added to it.
+
+The vocabulary a given caller runs with is the _union_ of every rule they match, so capabilities compose. The rate limit and the timeout are resolved _independently_ - each is taken from the first matching rule, top to bottom, that declares it, so you order your rules most-privileged first and never have to calculate a maximum. The base rule sits last as the fallback for both.
+
+Functions are written one per line. A bare name such as `data.read` grants the function; a name with a value such as `data.connect:northwind` pins its primary argument - here restricting database access to exactly the `northwind` database. File and folder functions pin their path the same way, so `io.file.load:/etc/reports/` grants loading exactly that path.
+
+### Capability wizards
+
+Typing function names by hand is error-prone, so each role rule carries a row of wizards that write the correct lines for you. The _"Add capability"_ buttons cover Database, HTTP, Files, Email, Images, Logging, Tasks, Cache, Sockets, Identity, Crypto, AI, and a headless Browser. The Database wizard lets you pick a database and tick Read, Create, Update and Delete, and writes the pinned **[data.connect]** line plus a function per operation. The Files wizard grants Read, Write and/or Delete and can pin them all to a path. Deliberately omitted are configuration - which would expose secrets - and ticket minting, which is the one escalation the sandbox exists to prevent, so the Identity wizard is read-only.
+
+### Root, throttling and the timeout
+
+Two settings sit above the policy.
+
+* **Root bypasses the sandbox** - when on, a caller in the `root` role runs with the server's _full_ vocabulary and no whitelist at all. Root is trusted completely, so it is also never rate limited and never timed out, whether or not this is on - the setting only controls whether root additionally escapes the vocabulary restriction.
+* **Return code** - when on, the response includes the generated or supplied code; when off, only the state, result and any reason come back, which is usually what an application calling the endpoint wants.
+
+Rate limiting is per role, keyed by the caller's IP address, and the timeout cancels execution after the configured number of milliseconds - a caller's own code can shorten it, but never extend it.
+
+### Who may call, and self-description
+
+The _"Who may call"_ row gates the endpoint itself, exactly as for the other generators - leave it empty for a public endpoint, or name the roles allowed to invoke it. A caller who gets past that gate is then further constrained by the policy.
+
+Because the generated endpoint is an ordinary Hyperlambda endpoint, it is also an MCP tool. Its file level comment - which the generator writes to match the input mode - becomes the tool's description, and it even tells the calling model how to discover its own capability surface: sending the instruction _"Return server vocabulary"_, or Hyperlambda invoking **[vocabulary]**, lists exactly the functions that particular sandbox permits.
+
 ## Import API - wrapping a third party API
 
-The third tab in the Endpoint Generator, _"Import API"_, works the other way around from the other two. Instead of generating endpoints from your own database or your own SQL, it reads an [OpenAPI](https://www.openapis.org/) specification belonging to somebody else's API - Stripe, GitHub, Slack, or any other API that publishes one - and generates Hyperlambda endpoints in your cloudlet wrapping the operations you choose.
+The fourth tab in the Endpoint Generator, _"Import API"_, works the other way around from the other three. Instead of generating endpoints from your own database or your own SQL, it reads an [OpenAPI](https://www.openapis.org/) specification belonging to somebody else's API - Stripe, GitHub, Slack, or any other API that publishes one - and generates Hyperlambda endpoints in your cloudlet wrapping the operations you choose.
 
 <img src="/images/import-api.webp" alt="Screenshot of the Import API tab reading an OpenAPI specification and selecting which operations to wrap" loading="lazy" width="3004" height="1696">
 
@@ -830,12 +886,12 @@ By default the importer refuses to replace an endpoint that already exists, tell
 
 ## HTTP verbs
 
-The CRUD endpoint generator creates endpoints wrapping the POST, GET, PUT, and DELETE verbs, while the SQL endpoint generator can additionally wrap PATCH.
+The CRUD endpoint generator creates endpoints wrapping the POST, GET, PUT, and DELETE verbs, while the SQL and Sandbox API generators can additionally wrap PATCH.
 
 * POST - Typically used for creating or inserting new items
 * GET - Typically used for retrieving or counting records
 * PUT - Typically used for updating values in your database
-* PATCH - Alternative to PUT with similar semantics, typically when adding new fields (SQL endpoint generator only)
+* PATCH - Alternative to PUT with similar semantics, typically when adding new fields (SQL and Sandbox API generators)
 * DELETE - Typically used when deleting records in your database.
 
 ## Frequently asked questions
@@ -883,6 +939,22 @@ Yes. The importer writes the operation's summary as the file level comment and e
 **Can I wrap my own SQL in an endpoint?**
 
 Yes. The SQL endpoint tab lets you provide any SQL statement, declare arguments you reference as @name in the SQL, choose an HTTP verb and authorisation, and generate a secure endpoint wrapping it. The AI prompt bar can even write the SQL for you, and you can load saved snippets or import .sql files.
+
+**What is the Sandbox API tab?**
+
+It generates one endpoint that safely executes code its own callers supply - Hyperlambda, or plain English turned into Hyperlambda - inside a whitelist you define per role. Callers can only reach the functions you granted, a function you did not grant does not exist as far as their code is concerned, and a hallucinated function is refused before anything runs.
+
+**How do I limit what a Sandbox API caller can do?**
+
+You build a policy from an 'everybody' base vocabulary plus per-role rules that add functions on top. A caller runs with the union of the functions their roles grant, so you can, for example, give one role access to a specific database while another role cannot reach it. The rate limit and the execution timeout are set per role too, and root is trusted completely - never sandboxed, throttled, or timed out.
+
+**Can the Sandbox API run a natural-language instruction?**
+
+Yes. Choose the natural-language or 'both' input mode, and the endpoint sends the instruction to the Hyperlambda Generator, verifies every function the generated code references actually exists, and runs it inside the same whitelist. The response says whether it executed, and why not when it was refused.
+
+**Does the Sandbox API endpoint work as an MCP tool?**
+
+Yes. The generator writes the endpoint's file level comment to match its input mode, which Magic exposes as the tool's description, and the comment even tells the calling model how to discover its own capability surface - by asking the tool to 'Return server vocabulary'. An AI agent can therefore learn exactly which functions a given sandbox permits before it calls it.
 
 
 # Endpoints
