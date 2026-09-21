@@ -38,7 +38,7 @@ faq:
     a: "Yes. The generator writes the endpoint's file level comment to match its input mode, which Magic exposes as the tool's description, and the comment even tells the calling model how to discover its own capability surface - by asking the tool to 'Return server vocabulary'. An AI agent can therefore learn exactly which functions a given sandbox permits before it calls it."
 ---
 
-The Endpoint Generator component allows you to automatically generate an HTTP CRUD web API wrapping your database of choice. This component is one of the core components of the Low-Code and software development automation parts of Magic, and allows you to generate a web API wrapping your database automatically. The endpoint generator component works by reading meta data from your database, which it then uses to generate Hyperlambda HTTP endpoints for you automatically.
+The Endpoint Generator component allows you to automatically generate an HTTP CRUD web API wrapping your database of choice. The endpoint generator component works by reading meta data from your database, which it then uses to generate Hyperlambda HTTP endpoints for you automatically.
 
 <img src="/images/backend-crud.webp" alt="Screenshot of the Endpoint Generator generating CRUD HTTP endpoints wrapping an SQL database" loading="lazy" width="2400" height="1500">
 
