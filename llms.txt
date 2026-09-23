@@ -39,6 +39,7 @@ Key facts for agents and their humans:
 ## Dashboard components
 
 - [Hyper IDE](https://docs.ainiro.io/dashboard/hyper-ide/): the AI-enabled IDE for Hyperlambda — editing, executing and debugging files on the server
+- [Web Designer](https://docs.ainiro.io/dashboard/web-designer/): the WYSIWYG editor for the frontends a cloudlet serves — selecting, moving, restyling and rewriting a page on the real file
 - [Hyperlambda Playground](https://docs.ainiro.io/dashboard/hyperlambda-playground/): executing Hyperlambda immediately, without saving it first
 - [Hyperlambda Generator](https://docs.ainiro.io/dashboard/hyperlambda-generator/): the SLM that turns natural language into working Hyperlambda
 - [Endpoint Generator](https://docs.ainiro.io/dashboard/endpoint-generator/): generating a secured CRUD API from a database schema, wrapping custom SQL, and importing OpenAPI specifications

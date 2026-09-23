@@ -40,6 +40,8 @@ docs:
         url: /dashboard/sql-studio/
       - title: "Hyper IDE"
         url: /dashboard/hyper-ide/
+      - title: "Web Designer"
+        url: /dashboard/web-designer/
       - title: "Endpoint Generator"
         url: /dashboard/endpoint-generator/
       - title: "Hyperlambda Generator"
