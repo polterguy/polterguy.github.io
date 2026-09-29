@@ -146,6 +146,83 @@ a dynamic slot works in Hyperlambda, in that the invocation treats its **[.lambd
 it was a dynamic slot, isolating it from the rest of our code, allowing the lambda object to return
 values and nodes to the caller.
 
+### Pinning arguments in your [vocabulary]
+
+A **[vocabulary]** entry can optionally declare a _value_, which pins the slot to that exact argument.
+An entry without a value allows the slot with any argument, exactly as above, while an entry with a
+value only allows the slot when its argument matches.
+
+```
+.result
+whitelist
+
+   vocabulary
+      data.connect:chinook
+      data.read
+      return-nodes
+
+   .lambda
+
+      // Legal, since the vocabulary pins [data.connect] to exactly this database.
+      data.connect:chinook
+         data.read
+            table:Artist
+            limit:5
+         return-nodes:x:@data.read/*
+```
+
+With the above vocabulary, `data.connect:northwind` throws, because the argument does not match the
+pin. Repeat the same slot name with different values to allow more than one argument. This is how you
+confine a piece of untrusted Hyperlambda to one specific database, one specific URL, or one specific
+dynamic slot, instead of merely to the _name_ of a slot.
+
+Notice, dynamic slots are pinned the same way, through the slot that invokes them.
+
+```
+vocabulary
+   signal:accounting.report
+   signal:hr.hire
+```
+
+The above allows the caller to invoke those two dynamic slots, and no others.
+
+### Wildcards in pinned arguments
+
+A pin ending with an asterisk matches any argument _starting_ with the rest of the pin. Anything
+without an asterisk is an exact comparison, such that existing vocabularies keep behaving as before.
+
+```
+vocabulary
+   data.connect:test-*
+   http.post:"https://api.example.com/v3/*"
+```
+
+File and folder slots interpret their argument as a _path_, and compare it segment by segment, which
+confines a wildcard to the segment it occurs in, the same way a wildcard is confined in a shell.
+
+* __/etc/*__ - Every file directly in the folder, but _not_ in its sub folders
+* __/etc/*.md__ - Every markdown file directly in the folder
+* __/etc/*.tar.gz__ - Multi part extensions work the same way
+* __/etc/\*/config.json__ - That filename, one folder level below
+
+A folder ends with a slash by convention in Magic, hence a folder is pinned with its trailing slash.
+
+```
+vocabulary
+   io.file.load:/etc/*.md
+   io.folder.create:/etc/*/
+```
+
+An asterisk must be either an entire segment, or the start of the _filename_. Anything else throws,
+rather than silently matching something its author did not intend - such as `/etc/f*o.md`, or an
+extension on a folder segment such as `/etc/foo.*/howdy/*`. A folder has no extension, so `/etc/*.md/`
+throws for a folder slot even though the same wildcard is legal as a filename.
+
+Notice, a slot that reads a file on your behalf does so _through_ the file slot, and is therefore
+subject to the same pins. Attaching a file to an email with **[mail.smtp.send]**, hashing a file with
+**[crypto.hash]**, uploading one with **[http.post]**, or resizing an image, all require the relevant
+**[io.stream.open-file]** or **[io.stream.save-file]** pin in addition to the slot itself.
+
 ### How to use [context]
 
 This slot allows you to add an object unto the stack, such that it can later be retrieved with

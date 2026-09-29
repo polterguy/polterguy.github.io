@@ -466,3 +466,33 @@ signaler.Signal(".io.folder.root", node);
 // Retrieving root folder after evaluating slot.
 var rootFolder = node.Get<string>();
 ```
+
+## Restricting file access with [whitelist]
+
+Every slot in this project verifies its path against the **[whitelist]** vocabulary in scope, if any,
+comparing it segment by segment such that a wildcard is confined to the segment it occurs in.
+
+```
+whitelist
+   vocabulary
+      io.file.load:/etc/*.md
+      io.folder.create:/etc/*/
+   .lambda
+      io.file.load:/etc/readme.md
+```
+
+* __/etc/*__ - Every file directly in the folder, but _not_ in its sub folders
+* __/etc/*.md__ - Every markdown file directly in the folder
+* __/etc/\*/config.json__ - That filename, one folder level below
+
+A folder is pinned with its trailing slash, since a folder ends with a slash by convention in Magic,
+and a folder has no extension - so a pattern such as `/etc/*.md/` throws for a folder slot even though
+the same wildcard is legal as a filename. An asterisk must be either an entire segment or the start of
+the filename, and anything else throws rather than silently matching something unintended.
+
+Notice, the paths a slot touches _besides_ its own value are verified too. **[io.file.copy]** and
+**[io.file.move]** verify their destination, which the vocabulary never sees otherwise. **[io.file.unzip]**
+verifies its destination folder once, and then confines every entry the archive writes to that folder,
+which is what stops an archive escaping it with a `../` in an entry's name.
+
+Read more about **[whitelist]** in the magic.lambda project.
