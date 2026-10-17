@@ -9,7 +9,7 @@ Key facts for agents and their humans:
 - Hyperlambda is executed, not compiled to a binary. Saving a file makes it live — there is no build or deploy step between writing code and invoking it.
 - Every HTTP endpoint is a `.hl` file in the `modules` folder whose filename encodes its URL and verb, and which declares the roles allowed to invoke it. Authorisation is enforced at execution time.
 - Databases: SQLite is built in; MySQL, PostgreSQL, MariaDB and Microsoft SQL Server connect as external databases and are wrapped in place, with no migration.
-- The Endpoint Generator reads a database schema and generates a complete secured CRUD API from it, and imports third-party APIs from their OpenAPI/Swagger specifications.
+- The Endpoint Generator reads a database schema and generates a complete secured CRUD API from it, wraps custom SQL, generates Sandbox API endpoints that safely execute caller-supplied code inside a per-role whitelist (with business logic granted as pinned Hyperlambda files, never raw access), generates search endpoints over a machine learning type, and imports third-party APIs from their OpenAPI/Swagger specifications.
 - The Hyperlambda Generator is a proprietary SLM fine-tuned on 600,000+ snippets. Every slot it emits is verified against the live function registry of your cloudlet before the code is returned, so it cannot return hallucinated function invocations.
 - Magic ships an MCP server with OAuth, so any MCP client — Claude, Claude Code, Cursor, Codex — can use a cloudlet's endpoints as tools, and generate new endpoints for itself on demand, inside the same RBAC.
 - Everything is open source under the MIT licence: https://github.com/polterguy/magic
@@ -42,7 +42,7 @@ Key facts for agents and their humans:
 - [Web Designer](https://docs.ainiro.io/dashboard/web-designer/): the WYSIWYG editor for the frontends a cloudlet serves — selecting, moving, restyling and rewriting a page on the real file
 - [Hyperlambda Playground](https://docs.ainiro.io/dashboard/hyperlambda-playground/): executing Hyperlambda immediately, without saving it first
 - [Hyperlambda Generator](https://docs.ainiro.io/dashboard/hyperlambda-generator/): the SLM that turns natural language into working Hyperlambda
-- [Endpoint Generator](https://docs.ainiro.io/dashboard/endpoint-generator/): generating a secured CRUD API from a database schema, wrapping custom SQL, and importing OpenAPI specifications
+- [Endpoint Generator](https://docs.ainiro.io/dashboard/endpoint-generator/): generating a secured CRUD API from a database schema, wrapping custom SQL, sandboxed code execution per role with business logic granted as files, searching a machine learning type, and importing OpenAPI specifications
 - [Endpoints](https://docs.ainiro.io/dashboard/endpoints/): browsing and invoking a cloudlet's endpoints, similar to Swagger
 - [SQL Studio](https://docs.ainiro.io/dashboard/sql-studio/): executing SQL from the browser, designing schemas, and storing SQL snippets
 - [Databases](https://docs.ainiro.io/dashboard/databases/): managing connection strings, connecting external databases, and creating new SQLite databases
@@ -113,7 +113,7 @@ Key facts for agents and their humans:
 
 - [Middleware endpoints](https://docs.ainiro.io/endpoints/): reference for the built-in HTTP endpoints in Magic's middleware
 - [Authentication and authorisation](https://docs.ainiro.io/endpoints/auth/): authenticating, changing passwords, refreshing and verifying JWT tokens
-- [CRUD generator](https://docs.ainiro.io/endpoints/crudifier/): generating CRUD and SQL-based endpoints wrapping a database
+- [CRUD generator](https://docs.ainiro.io/endpoints/crudifier/): generating CRUD, SQL, sandbox and search endpoints
 - [SQL](https://docs.ainiro.io/endpoints/sql/): executing SQL, retrieving database meta data, and managing SQL snippets
 - [File system](https://docs.ainiro.io/endpoints/files/): uploading, downloading, listing, renaming and deleting files and folders
 - [Tasks](https://docs.ainiro.io/endpoints/tasks/): creating, updating, deleting, scheduling and listing background tasks

@@ -125,3 +125,76 @@ The arguments imply the following.
 
 The endpoint can only be invoked by a root user.
 This endpoint is not intended for you to consume in your own code.
+
+## Sandbox and search endpoints
+
+These two endpoints power the _"Sandbox API"_ and _"Search endpoint"_ tabs of the
+[Endpoint Generator](/dashboard/endpoint-generator/). Both generate one endpoint file from a template, inject the
+settings you chose into it, and can only be invoked by a root user. They are not intended for you to consume in
+your own code.
+
+### POST magic/system/crudifier/sandbox-api
+
+Creates one Hyperlambda endpoint that executes code its own callers supply, inside a whitelist chosen from the
+caller's roles. It requires the following payload.
+
+```
+{
+  "moduleName": "xxx",
+  "endpointName": "xxx",
+  "verb": "post",
+  "inputMode": "both",
+  "authorization": "xxx",
+  "policy": "xxx",
+  "overwrite": true
+}
+```
+
+* __[moduleName]__ and __[endpointName]__ - Primary and secondary URL of the endpoint
+* __[verb]__ - HTTP verb, one of 'post', 'get', 'put', 'delete' or 'patch'
+* __[inputMode]__ - What the endpoint accepts. 'hl' for Hyperlambda, 'nl' for natural language, or 'both'
+* __[authorization]__ - Comma separated list of roles allowed to invoke the endpoint. Empty makes it public
+* __[policy]__ - A JSON string holding the settings - `overrideRoot`, `returnCode`, `generatorUrl`, and a list of `rules`, each with a `role`, its `slots`, an optional `description`, and optionally a `limit`, `window` and `timeout`
+* __[overwrite]__ - If true any existing file is overwritten, otherwise the invocation throws if the file exists
+
+Besides saving the endpoint, the invocation lists it in the _"/etc/www/.well-known/hyperlambda-agent"_ discovery
+file, creating the folder and the file pair from templates if they do not yet exist. The endpoint that is
+generated accepts a **[describe]** argument, which returns what the caller may do instead of executing code.
+
+### POST magic/system/crudifier/search-api
+
+Creates one Hyperlambda endpoint that searches the training snippets of a single machine learning type. It
+requires the following payload.
+
+```
+{
+  "moduleName": "xxx",
+  "endpointName": "xxx",
+  "verb": "get",
+  "type": "xxx",
+  "retrieval": "",
+  "threshold": 0.3,
+  "limit": 5,
+  "uri": "",
+  "meta": "",
+  "result": "references",
+  "authorization": "xxx",
+  "rateLimit": 20,
+  "rateWindow": 60,
+  "cacheSeconds": 0,
+  "overwrite": true
+}
+```
+
+* __[moduleName]__ and __[endpointName]__ - Primary and secondary URL of the endpoint
+* __[verb]__ - HTTP verb, either 'get' or 'post'
+* __[type]__ - The machine learning type to search. It must exist
+* __[retrieval]__ - 'bm25' for keyword search, 'mixed' for keyword and meaning, 'embeddings' for meaning, or empty to use the type's own setting
+* __[threshold]__ - Optional similarity cutoff. Omit it to use the type's own
+* __[limit]__ - The most matches the endpoint returns
+* __[uri]__ and __[meta]__ - Optional filters, where the meta is a pattern in which % matches any text
+* __[result]__ - 'references' returns the prompt and URI of each match, 'rows' also returns its completion and meta
+* __[authorization]__ - Comma separated list of roles allowed to invoke the endpoint. Empty makes it public
+* __[rateLimit]__ and __[rateWindow]__ - Calls an IP may make per window of seconds, root excepted. 0 means no limit
+* __[cacheSeconds]__ - How long the caller may cache an answer, sent as a Cache-Control header
+* __[overwrite]__ - If true any existing file is overwritten, otherwise the invocation throws if the file exists

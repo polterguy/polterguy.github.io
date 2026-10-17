@@ -80,7 +80,7 @@ In addition to your own endpoints, the MCP server ships with a large library of 
 * **Modules & endpoints** - scaffold entire APIs. `crudify` generates a complete CRUD backend wrapping a database, alongside `create-sql-endpoint`, `create-module` and `get-openapi-spec`. `invoke-endpoint` calls one of your own endpoints by its URL and verb, so the AI can test what it just generated.
 * **Database** - work with SQL databases. `execute-sql` and `select-sql` run queries, with `get-database-schema`, `create-sqlite-database` and `create-database-backup` for management.
 * **Files** - read and write the cloudlet's file system. `read-file` and `create-file` edit files, with `list-files`, `search-files` and `download-from-web` for the rest. Hyperlambda files saved through `create-file` are verified before they are written, so code that does not parse, or that references a slot which does not exist, never reaches your cloudlet.
-* **Machine Learning** - build AI chatbots and models. `crawl-website` scrapes a website into training data, with `create-type`, `vectorize-type` and `create-ai-function`.
+* **Machine Learning** - build AI chatbots and models. `crawl-website` scrapes a website into training data, with `create-type`, `vectorize-type` and `create-ai-function`. It also gives the AI a long term memory - `create-memory`, `search-memory`, `update-memory` and `delete-memory` save and recall facts, preferences, decisions and reusable Hyperlambda across sessions, by keyword and by meaning. See [Memory](/dashboard/machine-learning/#memory---what-ai-agents-remember).
 * **Browser automation** - drive a headless browser. `puppeteer-goto` opens a page and `puppeteer-content` scrapes it, with click, fill, screenshot and evaluate tools for everything in between.
 * **Git & GitHub** - version control your work. `git-commit` and `git-push` save changes, with `git-clone-repo` and `github-create-repo`.
 * **Users & roles** - manage RBAC access. `create-user`, `list-users`, `create-role` and `add-to-role`.
@@ -89,6 +89,12 @@ In addition to your own endpoints, the MCP server ships with a large library of 
 * **Misc & integrations** - the glue that ties everything together. `invoke-http` calls any external HTTP API, `send-email` sends mail, `execute-python` and `execute-terminal-command` run code, `generate-image` creates images, `read-log` returns the most recent log entries with their full exceptions so the AI can diagnose a failure it caused, and `list-endpoints` / `list-slots` let the AI introspect what your cloudlet can do.
 
 Every one of these runs with the roles of the user who consented, so the AI can only ever do what that user is itself allowed to do.
+
+## Letting an AI call code safely - Sandbox API endpoints
+
+The [Sandbox API generator](/dashboard/endpoint-generator/) creates endpoints that execute code their own callers supply, inside a whitelist you define per role. Such an endpoint is also an MCP tool, and its description tells the AI how to ask what it is permitted to do - by calling it with `describe` set to true. A role can be given complex business logic, held in Hyperlambda files, without being given raw access to the databases and APIs the logic uses. The [Business logic without raw access](/dashboard/endpoint-generator/#business-logic-without-raw-access) section explains how.
+
+An agent that is not connected over MCP can still discover these endpoints. Magic lists every Sandbox API endpoint it generates at `/.well-known/hyperlambda-agent` on your cloudlet - a JSON document with each endpoint's path, verb, description, and the roles allowed to call it.
 
 ## Creating new tools with AI
 

@@ -105,7 +105,9 @@ the magic.lambda project. Inside your slots though any **[whitelist]** invocatio
 allowing you to whitelist a single dynamic slot, for then to ignore what the slot itself is doing internally.
 This _might_ create security issues for you if you have dynamically created slots that for some reasons
 execute lambda object supplied to them. Hence as a general rule of thumb, you should _avoid_ whitelisting
-slots that executes lambda objects supplied to them.
+slots that executes lambda objects supplied to them. The same is true for Hyperlambda files executed with
+**[execute-file]** or **[io.file.execute]**, which you can pin in a whitelist by path - see
+[magic.lambda.io](/plugins/magic.lambda.io/).
 
 #### How to use [execute]
 

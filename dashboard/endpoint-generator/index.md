@@ -1,6 +1,6 @@
 ---
 title: Endpoint Generator
-description: The Endpoint Generator reads your database's metadata and automatically generates a secured CRUD API wrapping it, wraps your own SQL into endpoints, safely executes caller-supplied code inside a role-based sandbox, and imports third party APIs from their OpenAPI specifications - with no manual coding required.
+description: The Endpoint Generator reads your database's metadata and automatically generates a secured CRUD API wrapping it, wraps your own SQL into endpoints, safely executes caller-supplied code inside a role-based sandbox, searches a machine learning type, and imports third party APIs from their OpenAPI specifications - with no manual coding required.
 header:
   image: /assets/images/hero/endpoint-generator.webp
   og_image: /assets/images/hero/endpoint-generator-og.png
@@ -32,10 +32,22 @@ faq:
     a: "It generates one endpoint that safely executes code its own callers supply - Hyperlambda, or plain English turned into Hyperlambda - inside a whitelist you define per role. Callers can only reach the functions you granted, a function you did not grant does not exist as far as their code is concerned, and a hallucinated function is refused before anything runs."
   - q: "How do I limit what a Sandbox API caller can do?"
     a: "You build a policy from an 'everybody' base vocabulary plus per-role rules that add functions on top. A caller runs with the union of the functions their roles grant, so you can, for example, give one role access to a specific database while another role cannot reach it. The rate limit and the execution timeout are set per role too, and root is trusted completely - never sandboxed, throttled, or timed out."
+  - q: "How can a role run complex business logic without access to the raw resources behind it?"
+    a: "Put the logic in a Hyperlambda file, and grant the role that one file with the Execute files wizard instead of the functions the file uses. The file runs fully trusted, so it can read a database or call an API the role itself can never touch - the caller can only run exactly what the file does, with the arguments it accepts. You review the file once, and the role never gets raw access."
   - q: "Can the Sandbox API run a natural-language instruction?"
     a: "Yes. Choose the natural-language or 'both' input mode, and the endpoint sends the instruction to the Hyperlambda Generator, verifies every function the generated code references actually exists, and runs it inside the same whitelist. The response says whether it executed, and why not when it was refused."
   - q: "Does the Sandbox API endpoint work as an MCP tool?"
-    a: "Yes. The generator writes the endpoint's file level comment to match its input mode, which Magic exposes as the tool's description, and the comment even tells the calling model how to discover its own capability surface - by asking the tool to 'Return server vocabulary'. An AI agent can therefore learn exactly which functions a given sandbox permits before it calls it."
+    a: "Yes. The generator writes the endpoint's file level comment to match its input mode, which Magic exposes as the tool's description, and the comment even tells the calling model how to discover its own capability surface - by calling the tool with describe set to true. Each role's one-line description is added to the comment too. An AI agent can therefore learn exactly which functions a given sandbox permits before it calls it."
+  - q: "How does a caller find out what a Sandbox API permits?"
+    a: "It calls the endpoint with describe set to true instead of sending code. The endpoint answers with the functions that particular caller may use - each with its pinned value, if it has one - plus the rate limit and timeout that apply to it. Nothing is executed, and the call does not count against the rate limit."
+  - q: "Can I discover Sandbox API endpoints without MCP?"
+    a: "Yes. Every time the generator saves a Sandbox API endpoint, it lists the endpoint in /.well-known/hyperlambda-agent on your cloudlet - a JSON document an agent can fetch without any prior setup, then call each listed endpoint with describe set to true."
+  - q: "How do I check what a particular role can really do?"
+    a: "Open the endpoint in the Endpoints component, pick the role in the Run as dropdown, and invoke it with describe set to true. Magic mints a short lived token for that role and calls the endpoint with it, so you see exactly what a caller in that role would see."
+  - q: "What is the Search endpoint tab?"
+    a: "It generates one endpoint that searches the training snippets of a single machine learning type, by keyword (BM25), by meaning (vectors), or both. The type, the search mode and what comes back are fixed in the endpoint, so callers send only a query. It is retrieval only - no AI model is invoked."
+  - q: "Does a search endpoint cost anything per call?"
+    a: "Not when it searches by keyword - that needs no OpenAI key and no vectors. Searching by meaning, or by both, spends one OpenAI embedding on every call, which is why the tab applies a rate limit by default and can let the caller cache answers."
 ---
 
 The Endpoint Generator component allows you to automatically generate an HTTP CRUD web API wrapping your database of choice. The endpoint generator component works by reading meta data from your database, which it then uses to generate Hyperlambda HTTP endpoints for you automatically.
@@ -157,7 +169,7 @@ Every request goes through the same pipeline.
 2. **Execute** - the code runs inside a **[whitelist]** whose vocabulary is chosen from the caller's roles. A function that is not in the vocabulary does not resolve, and an argument that is pinned - such as a database name - must match exactly.
 3. **Return** - the response always carries a **[state]** saying what happened, the **[result]** the code produced, and a **[reason]** when the runtime refused the code or it failed.
 
-The possible states are `executed`, `rejected` (a function or a pinned argument was not allowed), `unknown-slot` (a referenced function does not exist), `error` (the code threw), `timeout` (execution exceeded the configured limit), and `generator-failed` (no code came back from the generator).
+The possible states are `described` (a call that asked what is permitted), `executed`, `rejected` (a function or a pinned argument was not allowed), `unknown-slot` (a referenced function does not exist), `error` (the code threw), `timeout` (execution exceeded the configured limit), and `generator-failed` (no code came back from the generator).
 
 ### The policy - base vocabulary plus per-role grants
 
@@ -168,11 +180,93 @@ What the sandbox can reach is defined by a policy you build in the component, ma
 
 The vocabulary a given caller runs with is the _union_ of every rule they match, so capabilities compose. The rate limit and the timeout are resolved _independently_ - each is taken from the first matching rule, top to bottom, that declares it, so you order your rules most-privileged first and never have to calculate a maximum. The base rule sits last as the fallback for both.
 
-Functions are written one per line. A bare name such as `data.read` grants the function; a name with a value such as `data.connect:northwind` pins its primary argument - here restricting database access to exactly the `northwind` database. File and folder functions pin their path the same way, so `io.file.load:/etc/reports/` grants loading exactly that path.
+Functions are written one per line. A bare name such as `data.read` grants the function; a name with a value such as `data.connect:northwind` pins its primary argument - here restricting database access to exactly the `northwind` database. File and folder functions pin their path the same way. A function that takes a _file_ takes a filename, so `io.file.load:/etc/reports/*.csv` grants loading the CSV files directly in that folder, while `io.file.load:/etc/reports/summary.csv` grants exactly one file. A folder function takes a folder, which ends with a slash, such as `io.folder.list:/etc/reports/`.
+
+Each role rule also has a one-line description field - _"What can this role do?"_ - which you can leave empty. Everything you write there is added to the generated endpoint's file level comment as a list of roles, which is what an AI agent reads as the tool's description. It should say what the role can accomplish, in plain words, such as _"Can run the pre-approved reporting logic on the chinook data, but never touches the database directly"_.
+
+<img src="/images/sandbox-api-roles.webp" alt="Screenshot of a role rule in the Sandbox API tab, with a description and a pinned execute-file and io.file.load grant" loading="lazy" width="1512" height="801">
+
+The editor warns you when a grant is wider than you probably intended. A function whose argument is what confines it - **[data.connect]**, every file and folder function, **[execute]**, **[signal]**, **[try-signal]**, **[execute-file]** and **[io.file.execute]** - reaches _anything_ on the server when it has no pinned argument, so a bare line for any of them shows a warning telling you to pin it.
+
+<img src="/images/sandbox-api-lint.webp" alt="Screenshot of the warning shown when data.connect is granted without a pinned database" loading="lazy" width="1512" height="801">
 
 ### Capability wizards
 
-Typing function names by hand is error-prone, so each role rule carries a row of wizards that write the correct lines for you. The _"Add capability"_ buttons cover Database, HTTP, Files, Email, Images, Logging, Tasks, Cache, Sockets, Identity, Crypto, AI, and a headless Browser. The Database wizard lets you pick a database and tick Read, Create, Update and Delete, and writes the pinned **[data.connect]** line plus a function per operation. The Files wizard grants Read, Write and/or Delete and can pin them all to a path. Deliberately omitted are configuration - which would expose secrets - and ticket minting, which is the one escalation the sandbox exists to prevent, so the Identity wizard is read-only.
+Typing function names by hand is error-prone, so each role rule carries a row of wizards that write the correct lines for you. The _"Add capability"_ buttons cover Database, HTTP, Files, Email, Images, Logging, Dynamic slots, Execute files, Tasks, Cache, Sockets, Identity, Crypto, Misc, Templating, AI, and a headless Browser. The Database wizard lets you pick a database and tick Read, Create, Update and Delete, and writes the pinned **[data.connect]** line plus a function per operation. The Files wizard grants Read, Write and/or Delete and can pin them all to a folder, and to an extension. Deliberately omitted are configuration - which would expose secrets - and ticket minting, which is the one escalation the sandbox exists to prevent, so the Identity wizard is read-only.
+
+Two of the wizards work differently from the rest, because they grant _code you wrote_ rather than functions - which is the subject of the next section.
+
+### Business logic without raw access
+
+A whitelist answers _"which functions may this role call?"_ Often the better question is _"which results may this role get?"_ A role that should be able to see your top customers does not need **[data.connect]**, **[data.read]**, and the freedom to write SQL. It needs one piece of code that you wrote and reviewed, which returns exactly what it should and nothing else.
+
+That piece of code is an ordinary Hyperlambda file. You write it the way you would write any other Hyperlambda - in [Hyper IDE](/dashboard/hyper-ide/), or by letting an AI agent create it over [MCP](/tutorials/how-to-connect-the-mcp-server/) - and it can be as complex as the job requires. A file in a module, such as the following, validates its own arguments and then talks to the database.
+
+```
+/*
+ * Returns the customers who have spent the most.
+ */
+.arguments
+
+   // Optional number of customers to return, between 1 and 100. Defaults to 10.
+   limit:int
+
+validators.default:x:@.arguments
+   limit:int:10
+validators.integer:x:@.arguments/*/limit
+   min:int:1
+   max:int:100
+
+data.connect:chinook
+   data.select:@"
+select c.FirstName || ' ' || c.LastName as name, sum(i.Total) as total
+   from Customer c
+   inner join Invoice i on i.CustomerId = c.CustomerId
+   group by c.CustomerId
+   order by total desc
+   limit @max_rows"
+      max_rows:x:@.arguments/*/limit
+   return-nodes:x:@data.select/*
+```
+
+Save it as `/modules/reports/top-customers.hl`. A file name without an HTTP verb in it, such as this one, is not an endpoint, so nobody can invoke it over HTTP - it can only be reached by code that executes it.
+
+#### Granting the file instead of its functions
+
+Open a role rule and click _"Execute files"_. The wizard lists every Hyperlambda file under `/modules/`, filterable, with a _"?"_ button next to each showing the file's description and its arguments. Tick the files this role may run - the _"Select all filtered"_ checkbox ticks everything the filter currently shows - and click _"Add"_.
+
+<img src="/images/sandbox-api-execute-files.webp" alt="Screenshot of the Execute files wizard filtered to the Artist endpoints with Select all filtered ticked" loading="lazy" width="1512" height="801">
+
+For every file you tick, the wizard writes three lines, each pinned to exactly that path.
+
+```
+execute-file:/modules/reports/top-customers.hl
+io.file.execute:/modules/reports/top-customers.hl
+io.file.load:/modules/reports/top-customers.hl
+```
+
+The first two let the role run the file, and **[execute-file]** and **[io.file.execute]** are the same operation under two names, so both are granted. The third lets the role read the file's source, so a caller - typically an AI agent - can learn what arguments it takes and how it behaves before running it. The role is granted _nothing else_. It has no **[data.connect]**, no **[data.read]**, and cannot run SQL of its own.
+
+A caller in that role can now do this.
+
+```
+execute-file:/modules/reports/top-customers.hl
+   limit:int:5
+return-nodes:x:@execute-file/*
+```
+
+The file runs, queries the database, and returns the five biggest spenders. If the same caller tries to reach the database directly - `data.connect:chinook` - the sandbox answers with the state `rejected`.
+
+#### What makes this safe, and what you must still do
+
+The whitelist stops applying to the code _inside_ a file it admitted, exactly as it already does inside a dynamic slot. Without that, the file's own **[data.connect]** would be refused, and the whole idea would be pointless. This is deliberate, and it moves the responsibility into the file, so a few rules matter.
+
+* **Review the file, and its source.** Whatever you grant runs with the server's full vocabulary, and the role can read the source through **[io.file.load]**, so keep credentials and anything secret out of it. The wizard says so, too.
+* **Validate arguments inside the file.** The caller chooses the arguments. Use validators as the example does, pass values to SQL as parameters, and never build SQL, file paths or URLs by concatenating what the caller sent.
+* **Never run caller supplied code inside the file.** A file that evaluates a lambda it was given would hand the caller the full vocabulary again.
+* **Pin the path.** Prefer an exact path to a wildcard, so that a new file dropped in the folder later does not silently become part of the role.
+
+The _"Dynamic slots"_ wizard is the same idea for logic held in a dynamic slot, created at runtime with **[slots.create]**, which is kept in memory only. It grants **[execute]**, **[signal]** and **[try-signal]**, each pinned to the slot name. Files are the better choice for anything that has to survive a restart.
 
 ### Root, throttling and the timeout
 
@@ -183,15 +277,94 @@ Two settings sit above the policy.
 
 Rate limiting is per role, keyed by the caller's IP address, and the timeout cancels execution after the configured number of milliseconds - a caller's own code can shorten it, but never extend it.
 
-### Who may call, and self-description
+### Who may call
 
 The _"Who may call"_ row gates the endpoint itself, exactly as for the other generators - leave it empty for a public endpoint, or name the roles allowed to invoke it. A caller who gets past that gate is then further constrained by the policy.
 
-Because the generated endpoint is an ordinary Hyperlambda endpoint, it is also an MCP tool. Its file level comment - which the generator writes to match the input mode - becomes the tool's description, and it even tells the calling model how to discover its own capability surface: sending the instruction _"Return server vocabulary"_, or Hyperlambda invoking **[vocabulary]**, lists exactly the functions that particular sandbox permits.
+When the endpoint is saved, the generator offers _"Open in Endpoints"_ and _"Open in Hyper IDE"_ next to the preview of what it wrote.
+
+### Asking what is permitted - describe
+
+Every generated endpoint accepts a **[describe]** argument. Set it to true instead of sending code, and the endpoint tells the caller what it may do, without executing anything and without counting against its rate limit.
+
+```
+{
+  "state": "described",
+  "vocabulary": [
+    { "name": "add", "value": null },
+    { "name": "execute-file", "value": "/modules/reports/top-customers.hl" },
+    { "name": "io.file.load", "value": "/modules/reports/top-customers.hl" }
+  ],
+  "limit": 10,
+  "window": 60,
+  "timeout": 20000
+}
+```
+
+The **[vocabulary]** is a list with one entry per granted function, carrying its **[name]** and its pinned **[value]**, which is null when the function is not pinned. It is a list, and not an object keyed by name, because the same function can be granted several times with different pinned values. The **[limit]**, **[window]** and **[timeout]** tell the caller how many calls it may make per window of seconds, and how many milliseconds a call may run. They are left out for root, which has neither. When _"Root bypasses the sandbox"_ is on, root is told the server's full vocabulary, together with `root-bypass: true`.
+
+<img src="/images/sandbox-describe-as-admin.webp" alt="Screenshot of the response to calling a Sandbox API endpoint with describe set to true as the admin role" loading="lazy" width="1512" height="801">
+
+### As an MCP tool, and discovery without MCP
+
+Because the generated endpoint is an ordinary Hyperlambda endpoint, it is also an MCP tool. Its file level comment becomes the tool's description. The generator writes it to match the input mode, lists every role's description as a markdown list, and tells the calling model to call the tool with **[describe]** set to true to learn its capability surface.
+
+```
+ * Accepts caller-supplied Hyperlambda in [hyperlambda], or a natural-language
+ * [instruction] the Hyperlambda Generator turns into code.
+ *
+ * Roles:
+ *
+ * - **admin**: Can run the pre-approved reporting logic on the chinook data
+```
+
+An agent that is not connected over MCP can still find these endpoints. The first time the generator saves a Sandbox API endpoint, it creates `/etc/www/.well-known/` if it is missing, together with a pair of files - `hyperlambda-agent.html` and its code-behind `hyperlambda-agent.hl`, created from templates and never overwritten afterwards. Every endpoint the generator saves is then added to the code-behind, replacing its earlier entry when you regenerate it. Fetching `/.well-known/hyperlambda-agent` on your cloudlet returns JSON an agent can read without any setup.
+
+```
+{
+  "about": "Sandboxed Hyperlambda endpoints on this server. ...",
+  "base": "https://your-cloudlet.example.com",
+  "endpoints": [
+    {
+      "path": "magic/modules/foo/run",
+      "verb": "post",
+      "description": "Sandboxed Hyperlambda endpoint, generated by ...",
+      "auth": "admin"
+    }
+  ]
+}
+```
+
+Each entry has the endpoint's **[path]** relative to **[base]**, its **[verb]**, its **[description]**, and **[auth]** only when you restricted who may call it. The code-behind is a plain, readable file, so you can prune or edit the list by hand.
+
+### Testing an endpoint as a role
+
+The Endpoints component and Hyper IDE both have a _"Run as"_ dropdown next to _"Invoke"_ - see [Endpoints](/dashboard/endpoints/). Choose a role, invoke with **[describe]** set to true, and you see exactly what a caller in that role is permitted, without creating a user for it.
+
+## Search endpoint - searching a machine learning type
+
+The _"Search endpoint"_ tab generates a single HTTP endpoint that searches the training snippets of one [machine learning](/dashboard/machine-learning/) type and returns the best matches. It is retrieval only - no AI model is invoked - which makes it a cheap and fast way to put your own knowledge behind an API, a website's search box, or an AI agent.
+
+<img src="/images/search-endpoint-tab.webp" alt="Screenshot of the Search endpoint tab with a type, a search mode and a cache duration chosen" loading="lazy" width="1512" height="801">
+
+Everything except the query is fixed in the generated endpoint, so a caller cannot choose the type, the search mode or how much comes back. The endpoint takes one argument, **[query]**, and you choose the rest when you generate it.
+
+* **Type** - the machine learning type whose training snippets are searched.
+* **Search by** - the type's own setting, or _Keyword_ (BM25), _Keyword and meaning_, or _Meaning_. A search by meaning is always widened with keywords, unless the query has no words to match.
+* **Returns** - _Prompt and URI_, or _Prompt, completion, URI and meta_. The snippet's internal id never leaves the endpoint.
+* **Limit** and **Threshold** - how many matches come back, and how similar a match must be. Leave the threshold empty to use the type's own.
+* **URI** and **Meta** - optionally restrict the endpoint to snippets belonging to one URL, or whose meta fits a pattern in which `%` matches any text, such as `FACT ==> %`. Snippets that declare functions and widgets are never returned.
+* **Who may call** - exactly as for the other generators. Leave it empty for a public endpoint.
+* **Rate limit** and **Window** - how many calls an IP may make per window of seconds. It defaults to 20 per 60 seconds, root is exempt, and 0 means no limit.
+* **Cache** - a number of seconds the caller may cache an answer, sent as a **Cache-Control** header, and marked private when the endpoint is restricted to roles.
+
+Searching by keyword needs no OpenAI key and costs nothing per call. Searching by meaning, or by both, spends one OpenAI embedding on every uncached call, so the tab reminds you to keep a rate limit on a public endpoint.
+
+The generator writes a file level comment saying what the endpoint searches and returns, so it works as an [MCP](/tutorials/how-to-connect-the-mcp-server/) tool without any further work. Use _"GET"_ for an endpoint a website can call directly, and _"POST"_ if you prefer a body. Unlike the built-in public search endpoint, which takes the type as an argument, a generated endpoint has the type built in, its own URL, its own authorisation and its own response shape.
 
 ## Import API - wrapping a third party API
 
-The fourth tab in the Endpoint Generator, _"Import API"_, works the other way around from the other three. Instead of generating endpoints from your own database or your own SQL, it reads an [OpenAPI](https://www.openapis.org/) specification belonging to somebody else's API - Stripe, GitHub, Slack, or any other API that publishes one - and generates Hyperlambda endpoints in your cloudlet wrapping the operations you choose.
+The fifth tab in the Endpoint Generator, _"Import API"_, works the other way around from the other four. Instead of generating endpoints from your own database or your own SQL, it reads an [OpenAPI](https://www.openapis.org/) specification belonging to somebody else's API - Stripe, GitHub, Slack, or any other API that publishes one - and generates Hyperlambda endpoints in your cloudlet wrapping the operations you choose.
 
 <img src="/images/import-api.webp" alt="Screenshot of the Import API tab reading an OpenAPI specification and selecting which operations to wrap" loading="lazy" width="3004" height="1696">
 
@@ -224,7 +397,7 @@ By default the importer refuses to replace an endpoint that already exists, tell
 
 ## HTTP verbs
 
-The CRUD endpoint generator creates endpoints wrapping the POST, GET, PUT, and DELETE verbs, while the SQL and Sandbox API generators can additionally wrap PATCH.
+The CRUD endpoint generator creates endpoints wrapping the POST, GET, PUT, and DELETE verbs, while the SQL and Sandbox API generators can additionally wrap PATCH, and the Search endpoint generator wraps GET or POST.
 
 * POST - Typically used for creating or inserting new items
 * GET - Typically used for retrieving or counting records

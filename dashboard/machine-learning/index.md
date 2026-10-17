@@ -14,6 +14,8 @@ faq:
     a: "Create a model, click Import, provide your website's URL, and Magic crawls and scrapes the site, turning every page into training data. For an even faster start, the Chatbot Wizard on the dashboard's landing page does all of this with one click."
   - q: "What is a training snippet?"
     a: "One atomic piece of information, consisting of a prompt and a completion. When answering a question, Magic picks the most relevant snippets - potentially from many different sources - and transmits them as context to OpenAI, which answers using only that context."
+  - q: "Can an AI agent remember things between sessions?"
+    a: "Yes. Connected over MCP, an agent can save anything worth keeping - a fact, a preference, a decision, or reusable Hyperlambda - as a training snippet with create-memory, and find it again later with search-memory, which combines keyword search and search by meaning. Memories go into the default type unless you name another one, and every connected tool sees the same ones."
   - q: "What does Vectorize do, and why do I need it?"
     a: "Vectorising creates embeddings for your training snippets, enabling VSS (Vector Similarity Search) to find the most relevant snippets for each question. You must click Vectorize on your model after importing training data, before the model can be used."
   - q: "Does my chatbot hallucinate?"
@@ -239,6 +241,23 @@ Notice, the `{` and `}` characters have spaces between them. Remove these in you
 > The last 14 days I have answered 123 questions from happy users.
 
 This will then be transmitted to OpenAI as context data, allowing it to use this to answer your question. This allows your chatbot to work with real time data, and connect itself to any additional data source, to dynamically create context data it sends to OpenAI.
+
+## Memory - what AI agents remember
+
+A training snippet is just a prompt and a completion, which makes it a good place for an AI agent to keep what it learns. Connected over [MCP](/tutorials/how-to-connect-the-mcp-server/), or working inside [Chat Ops](/dashboard/chat-ops/), an agent has four functions for treating your training snippets as its _memory_.
+
+* **create-memory** - saves a memory, and makes it searchable straight away. It returns the memory's `id`.
+* **search-memory** - finds the best matches for a question, best first, each with its `id`, prompt, completion, URI and meta.
+* **update-memory** - changes a memory by `id`, and vectorises it again when what it is found by has changed.
+* **delete-memory** - deletes a memory by `id`.
+
+A memory has a **prompt**, which is a single line saying what the memory is about and is what it is found by, a **completion**, which is the content and is stored exactly as given, an optional **uri** for the URL or reference it belongs to, and an optional **meta** label for its kind. They live in the `default` type unless you name another one - the same type your Chat Ops assistant uses, which keeps memories apart from the models that answer your chatbot's visitors. Naming a new type creates it, as a keyword and meaning collection that only root can use. Saving as `meta: FACT ==> some-name` marks a fact, and rows labelled `WORKFLOW ==> name` are the [workflows](/workflows/) saved in the same type, so leave those alone. Snippets that declare functions and widgets are never returned as memories.
+
+Searching combines the two kinds of retrieval described above. Keyword (BM25) matching finds exact names, URLs and identifiers, and search by meaning finds paraphrases, and the two rankings are fused into one. A type set to keyword only is searched by keyword alone, and needs no OpenAI key at all. Everything else costs one OpenAI embedding, spent when a memory is saved or changed and when a search is made. Because the text of a memory is sent to be embedded, never save secrets as memories.
+
+Hyperlambda is a good thing to remember. An agent that has written a working piece of Hyperlambda for an endpoint can save it with the endpoint's URL as the `uri`, and next time search for it by describing the task - sending the recalled code to the endpoint again instead of generating it from scratch. Anything the endpoint does not permit is still refused, because the endpoint checks every call against the caller's allowed functions each time. The same four functions work for notes, decisions, preferences, API quirks and other code, and a memory is never added to your Chat Ops assistant's context by itself - that only happens if you turn on embeddings for the `default` type.
+
+Your connected agent can read the `persist-memory` guide, available through the MCP server's `list-guides` and `read-guide` tools, for how it should use memories.
 
 ## History tab
 

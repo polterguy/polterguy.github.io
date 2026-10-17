@@ -18,6 +18,10 @@ faq:
     a: "Yes. Every endpoint has an OpenAPI button giving you its OpenAPI specification. You can copy both the URL and the specification itself, and paste it into another orchestrator LLM or AI agent, allowing the other party to understand your backend."
   - q: "Can I test file uploads and downloads?"
     a: "Yes. You can upload files to endpoints that accept file uploads, and download the files an endpoint returns, directly from the component."
+  - q: "Can I invoke an endpoint as a specific role?"
+    a: "Yes. Next to Invoke there is a Run as dropdown listing every role on your cloudlet. Choose one, and Magic mints a short lived token for that role and calls the endpoint with it, so the endpoint's own authorisation and role checks apply exactly as they would for a user holding only that role. The response dialog shows which role the call ran as."
+  - q: "Does Copy as cURL include a token?"
+    a: "Normally it writes $TOKEN as a placeholder, so the command is safe to paste into scripts and share. When a role is chosen in Run as, it instead embeds a freshly minted token for that role, valid for five minutes, so the copied command really runs as that role."
   - q: "What does the response dialog show?"
     a: "The HTTP status code, how many milliseconds the invocation took, the response headers, and the response body with syntax highlighting - plus a button to copy the response."
 ---
@@ -35,6 +39,22 @@ When you expand an endpoint, every argument the endpoint accepts becomes an inpu
 When you click _"Invoke"_, the component shows you the response; its HTTP status code, how many milliseconds the invocation took, the response headers, and the response body itself with syntax highlighting. A _"Copy response"_ button lets you bring the result into your own code or documentation.
 
 <img src="/assets/images/endpoints-invocation-response.webp" alt="Screenshot of the response dialog showing status code, timing, and the JSON response body" loading="lazy" width="2400" height="1500">
+
+## Run as - invoking an endpoint as a role
+
+Endpoints are invoked as _you_ by default, and you are usually root, who is allowed to do anything. That tells you little about what a real user will experience. The _"Run as"_ dropdown next to _"Invoke"_ lists every role on your cloudlet, and choosing one makes the invocation behave as if a caller holding only that role had made it.
+
+<img src="/images/endpoints-run-as.webp" alt="Screenshot of the Run as dropdown next to Invoke, listing the roles of the cloudlet" loading="lazy" width="1512" height="801">
+
+When you invoke with a role chosen, Magic mints a token for that role, valid for five minutes, and sends the request with it instead of yours. The endpoint's authorisation requirements, and anything inside it that checks the caller's roles, apply exactly as they do for a real caller - an endpoint restricted to `admin` refuses you when you run as `guest`, and answers when you run as `admin`. The response dialog carries a badge saying which role the call ran as, so you never mistake the result for a root invocation.
+
+A few details are worth knowing.
+
+* **The choice is remembered** for the rest of your browser session, and follows you from endpoint to endpoint, as well as into [Hyper IDE](/dashboard/hyper-ide/), which uses the same invocation panel. Set it back to _"me"_ when you are done.
+* **Copy as cURL** writes `$TOKEN` as a placeholder as usual. With a role chosen it embeds the minted token instead, so the copied command runs as that role. The token is real and expires after five minutes, so treat it like any credential.
+* **Debug always runs as you.** Debugging executes the file's code through the evaluator, which only root may use, so it cannot impersonate a role.
+
+This is particularly useful together with the [Sandbox API](/dashboard/endpoint-generator/) generator, where choosing a role and invoking with **[describe]** set to true shows you exactly what a caller in that role is permitted.
 
 ## OpenAPI specifications
 

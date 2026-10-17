@@ -10,6 +10,8 @@ faq:
     a: "Hyper IDE is Magic's integrated development environment, running in your browser. It lets you browse and edit every file on your cloudlet, with syntax highlighting and autocomplete for Hyperlambda."
   - q: "Can I debug Hyperlambda in Hyper IDE?"
     a: "Yes. Click Debug instead of Invoke in the execution dialog, and Magic records every slot the file invokes, letting you step through the execution afterwards and see the entire lambda object as it looked after each step."
+  - q: "Can I execute an endpoint as a particular role?"
+    a: "Yes. The execution dialog has the same Run as dropdown as the Endpoints component. Choose a role and Invoke calls the endpoint with a short lived token minted for that role, so its authorisation and role checks apply as they would to a real caller. Debug always runs as you."
   - q: "Does debugging slow down my cloudlet?"
     a: "No. Recording is opt-in per execution and lives only in memory - code you run normally is completely unaffected, and nothing is written to disk."
   - q: "Can I see what happened when my code throws an exception?"
@@ -112,6 +114,8 @@ Hyper IDE also remembers which files you had open, per cloudlet - sign out, come
 ## Executing Hyperlambda from Hyper IDE
 
 Hyper IDE allows you to execute Hyperlambda without ever leaving your IDE by clicking the _"Execute"_ button. This makes it easy for you to test your code as you are creating it. When executing an API endpoint file, you can parametrise the invocation, and the result is shown with its HTTP status code, execution time, and response body. The same dialog also lets you _debug_ the file instead of simply invoking it, which is described below.
+
+The dialog also has a _"Run as"_ dropdown, listing every role on your cloudlet. Choose a role and _"Invoke"_ calls the endpoint with a short lived token minted for that role, so you can see what a caller holding only that role would be allowed to do, and what they would get back - without creating a user for it. Its [description in the Endpoints component](/dashboard/endpoints/) applies here too, since both use the same panel. Notice that _"Debug"_ always runs as you, because debugging goes through the evaluator, which only root may use.
 
 <img src="/assets/images/hyper-ide-execute-endpoint.webp" alt="Screenshot of executing an API endpoint from Hyper IDE, showing the response" loading="lazy" width="2400" height="1500">
 

@@ -235,6 +235,38 @@ execute-file:/whatever-file.hl
 
 Inside your above _"/whatever-file.hl"_ file you will now have access to the entire **[.args]** node by reference.
 
+#### Executing files from whitelisted code
+
+Both slots obey the rules of **[whitelist]** invocations from magic.lambda, which lets you decide exactly which
+files some partially untrusted code may execute, by pinning the path in the whitelist's **[vocabulary]**.
+
+```
+whitelist
+
+   vocabulary
+      execute-file:/modules/reports/top-customers.hl
+      io.file.load:/modules/reports/top-customers.hl
+
+   .lambda
+
+      // Allowed, since the path is pinned in the vocabulary.
+      execute-file:/modules/reports/top-customers.hl
+
+      // Throws, since no other file is pinned.
+      execute-file:/modules/reports/payroll.hl
+```
+
+Once a file has been admitted this way, the whitelist no longer applies to the statements _inside_ that file,
+exactly as it does inside a dynamic slot created with **[slots.create]**. The file can therefore use slots such
+as **[data.connect]**, which the code that executed it was never allowed to invoke. This is how you give
+untrusted code access to complex business logic, without giving it raw access to the databases, files and
+APIs the logic uses - you write and review the file, and you grant the file, not the slots it invokes. The
+code inside the file is trusted, so it must validate its own arguments, and it must never execute code that
+its caller supplied. Notice that **[io.file.load]** is a separate slot with a separate pin, which you add
+if the caller should be allowed to read the file's source, for instance to learn which arguments it takes.
+See the [Sandbox API generator](/dashboard/endpoint-generator/#business-logic-without-raw-access) for a
+complete example, with a wizard that writes these lines for you.
+
 ### How to use [io.file.list]
 
 Lists all files inside of the specified folder. By default hidden files will not be shown, unless
