@@ -2,7 +2,7 @@
 title: "[date.format]"
 description: "date.format is a slot in the date namespace of Magic Cloud. Formats a DateTime using a .NET format string (e.g. yyyy-MM-dd HH:mm) for display or logging."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/date/date.format/slot.json"
 ---
 
@@ -19,7 +19,17 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | `[format]` | string | yes | Format string. |
 
-Guide: [How to use [date.format]](/plugins/magic.lambda.dates/#how-to-use-dateformat)
+### Guide
+
+<!-- guide -->
+This slot formats a date and time object as a string. Patterns are the same as patterns for C#. Below is
+example usage.
+
+```
+date.format:date:"2023-01-19T12:49:44.000Z"
+   format:dd. MMMM yyyy
+```
+<!-- /guide -->
 
 ### JSON declaration
 

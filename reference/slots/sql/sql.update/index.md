@@ -2,7 +2,7 @@
 title: "[sql.update]"
 description: "sql.update is a slot in the sql namespace of Magic Cloud. Builds a parameterized UPDATE SQL statement; use [where] to constrain affected rows."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/sql/sql.update/slot.json"
 ---
 
@@ -35,7 +35,32 @@ Required arguments come first, then the optional ones in the order they are decl
 
 _Nodes nested deeper than 6 levels, and nodes that repeat one of their own ancestors, are not listed. The JSON declaration below has all of them._
 
-Guide: [How to use [sql.update]](/plugins/magic.data.common/#how-to-use-sqlupdate)
+### Guide
+
+<!-- guide -->
+This slot allows you to update one or more records, in a specified **[table]**. Just like create, it requires
+one mandatory argument, being **[values]**, implying columns/values you wish to update. This slot also takes
+an optional **[where]** argument, which is described further down in this document. Its simplest version can be
+imagined as follows.
+
+```
+sql.update
+   table:table1
+   values
+      field1:howdy
+```
+
+The above of course will result in the following.
+
+```sql
+sql.update:update 'table1' set 'field1' = @v0
+   @v0:howdy
+```
+
+**Notice**, if you don't apply a **[where]** argument, then *all* records in your table will
+be updated - Which is highly unlikely what your intentions are. Hence, make sure you apply a
+**[where]** argument as you invoke this slot.
+<!-- /guide -->
 
 ### JSON declaration
 

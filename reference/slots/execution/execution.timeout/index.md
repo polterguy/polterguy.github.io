@@ -2,7 +2,7 @@
 title: "[execution.timeout]"
 description: "execution.timeout is a slot in the execution namespace of Magic Cloud. Sets a timeout in milliseconds for the current execution."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/execution/execution.timeout/slot.json"
 ---
 
@@ -11,7 +11,23 @@ slot_json: "/reference/slots/execution/execution.timeout/slot.json"
 * **Value** (`timeout-ms,integer,number`), required: Timeout in milliseconds for the current execution
 * **Returns**: Returns true if the timeout was applied
 
-Guide: [How to use [execution.timeout]](/plugins/magic.lambda.threading/#how-to-use-executiontimeout)
+### Guide
+
+<!-- guide -->
+Configures a timeout for the **current** execution context. The value must be a positive number of
+milliseconds and is interpreted relative to _now_.
+
+```
+execution.timeout:30000
+```
+
+The above means the current execution may continue for at most 30 more seconds. The slot returns a
+boolean value indicating whether or not the timeout actually tightened the current deadline.
+
+If multiple timeouts are applied to the same execution, the earliest deadline wins. Any child work
+created through **[fork]** inherits the same execution context, implying the timeout applies to
+forked work too.
+<!-- /guide -->
 
 ### JSON declaration
 

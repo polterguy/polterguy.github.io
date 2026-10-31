@@ -2,7 +2,7 @@
 title: "[cache.count]"
 description: "cache.count is a slot in the cache namespace of Magic Cloud. Counts cached items matching the optional filter."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/cache/cache.count/slot.json"
 ---
 
@@ -11,7 +11,20 @@ slot_json: "/reference/slots/cache/cache.count/slot.json"
 * **Value** (`cache-key`), optional: Optional filter for cache keys
 * **Returns**: Resolves to the number of cached items matching the optional filter
 
-Guide: [How to use [cache.count]](/plugins/magic.lambda.caching/#how-to-use-cachecount)
+### Guide
+
+<!-- guide -->
+This slot works similarly to the **[cache.list]** slot, except it only returns the number of items.
+Below is an example of creating a new cache entry, for then to count how many cache items exists
+in your cache.
+
+```
+cache.set:cache-item-key
+   expiration:5
+   value:Howdy world
+cache.count
+```
+<!-- /guide -->
 
 ### JSON declaration
 

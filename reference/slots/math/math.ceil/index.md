@@ -2,7 +2,7 @@
 title: "[math.ceil]"
 description: "math.ceil is a slot in the math namespace of Magic Cloud. Rounds a number up."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/math/math.ceil/slot.json"
 ---
 
@@ -11,7 +11,12 @@ slot_json: "/reference/slots/math/math.ceil/slot.json"
 * **Value** (`number`), required: Numeric value to round
 * **Returns**: Resolves to the rounded-up value
 
-Guide: [How to use [math.ceil]](/plugins/magic.lambda.math/#how-to-use-mathceil)
+### Guide
+
+<!-- guide -->
+This slot rounds its input up to the nearest whole number. The slot takes a numeric value, which can be a
+constant or an expression, and replaces its value with the rounded result.
+<!-- /guide -->
 
 ### JSON declaration
 

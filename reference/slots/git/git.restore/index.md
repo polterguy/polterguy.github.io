@@ -2,7 +2,7 @@
 title: "[git.restore]"
 description: "git.restore is a slot in the git namespace of Magic Cloud. Discards uncommitted changes by restoring one file from HEAD, or resets the whole working tree to HEAD including removal of untracked files."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/git/git.restore/slot.json"
 ---
 
@@ -19,7 +19,22 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | `[file]` | string | no | Repository-relative path of one file to restore from HEAD; omitted resets the whole working tree to HEAD and removes untracked files. |
 
-Guide: [How to use [git.restore]](/plugins/magic.lambda.git/#how-to-use-gitrestore)
+### Guide
+
+<!-- guide -->
+Discards uncommitted changes. The repo path is the node value. With a repo-relative `file`, that one file is
+restored from HEAD in both index and working tree. Without `file`, the whole working tree is reset to HEAD
+**and untracked files and folders are removed**, leaving the folder identical to the last commit.
+
+```
+git.restore:/modules/stripe/
+   file:README.md
+```
+
+```
+git.restore:/modules/stripe/
+```
+<!-- /guide -->
 
 ### JSON declaration
 

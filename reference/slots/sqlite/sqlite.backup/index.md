@@ -2,7 +2,7 @@
 title: "[sqlite.backup]"
 description: "sqlite.backup is a slot in the sqlite namespace of Magic Cloud. Creates a backup of the current SQLite connection."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/sqlite/sqlite.backup/slot.json"
 ---
 
@@ -11,7 +11,19 @@ slot_json: "/reference/slots/sqlite/sqlite.backup/slot.json"
 * **Value** (`file-path`), required: Target SQLite database filename under files/data/
 * **Scope**: requires `sqlite.connection` - Requires an open SQLite connection created by [sqlite.connect]
 
-Guide: [How to use [sqlite.backup]](/plugins/magic.lambda.sqlite/#how-to-use-sqlitebackup)
+### Guide
+
+<!-- guide -->
+To create a backup of the database called for instance _"foo"_, you would use code resembling the following.
+
+```
+sqlite.connect:[generic|foo]
+   sqlite.backup:foo.backup
+```
+
+The above will create a backup of your foo database and store it at _"/data/foo.backup"_, allowing you to restore it if
+it for some reasons becomes invalid.
+<!-- /guide -->
 
 ### JSON declaration
 

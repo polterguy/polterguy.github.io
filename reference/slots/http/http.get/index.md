@@ -2,7 +2,7 @@
 title: "[http.get]"
 description: "http.get is a slot in the http namespace of Magic Cloud. Issues an HTTP GET to the specified URL and returns the response body, status code, and headers."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/http/http.get/slot.json"
 ---
 
@@ -36,7 +36,19 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[headers]` | lambda | no | HTTP response headers returned by the server. |
 | `[headers]` / _any node name_ | string | no | HTTP response header value; child name is the header name. Can be repeated. |
 
-Guide: [How to use [http.get]](/plugins/magic.lambda.http/#how-to-use-httpget)
+### Guide
+
+<!-- guide -->
+This slot accepts a URL as its value, and optionally HTTP headers as a **[headers]** argument. In its simplest version
+it would resemble something such as the following.
+
+```
+http.get:"https://docs.ainiro.io"
+```
+
+The slot returns the result of the specified HTTP GET invocation, including the HTTP headers returned from the endpoint,
+and status code, in addition to the response object itself.
+<!-- /guide -->
 
 ### JSON declaration
 

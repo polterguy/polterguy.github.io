@@ -2,7 +2,7 @@
 title: "[time.total-milliseconds]"
 description: "time.total-milliseconds is a slot in the time namespace of Magic Cloud. Returns the total milliseconds for a TimeSpan value."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/time/time.total-milliseconds/slot.json"
 ---
 
@@ -11,7 +11,13 @@ slot_json: "/reference/slots/time/time.total-milliseconds/slot.json"
 * **Value** (`timespan`), required: Time span to measure
 * **Returns**: Resolves to the total number of milliseconds in the supplied time span
 
-Guide: [How to use [time.total-milliseconds]](/plugins/magic.lambda.dates/#how-to-use-timetotal-milliseconds)
+### Guide
+
+<!-- guide -->
+This slot takes a time span as its value, such as one returned from **[time]**, and returns the total number
+of milliseconds the time span represents. Its value is mandatory, and it can be given either as a constant
+or as an expression.
+<!-- /guide -->
 
 ### JSON declaration
 

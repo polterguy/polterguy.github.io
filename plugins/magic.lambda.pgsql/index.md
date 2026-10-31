@@ -8,17 +8,17 @@ types of CRUD SQL statements. In addition, it provides slots to open a PostgreSQ
 such allows you to declare your own SQL statements to be executed towards a PostgreSQL database. Slots
 this project contains are as follows.
 
-* __[pgsql.connect]__ - Connects to a database
-* __[pgsql.create]__ - Creates a single record in the specified table
-* __[pgsql.read]__ - Reads multiple records from the specified table
-* __[pgsql.update]__ - Updates a single record in the specified table
-* __[pgsql.delete]__ - Deletes a single record in the specified table
-* __[pgsql.select]__ - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
-* __[pgsql.scalar]__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
-* __[pgsql.execute]__ - Executes an arbitrary SQL statement
-* __[pgsql.transaction.create]__ - Creates a new transaction
-* __[pgsql.transaction.commit]__ - Explicitly commits an open transaction
-* __[pgsql.transaction.rollback]__ - Explicitly rolls back an open transaction
+* __[\[pgsql.connect\]](/reference/slots/pgsql/pgsql.connect/)__ - Connects to a database
+* __[\[pgsql.create\]](/reference/slots/pgsql/pgsql.create/)__ - Creates a single record in the specified table
+* __[\[pgsql.read\]](/reference/slots/pgsql/pgsql.read/)__ - Reads multiple records from the specified table
+* __[\[pgsql.update\]](/reference/slots/pgsql/pgsql.update/)__ - Updates a single record in the specified table
+* __[\[pgsql.delete\]](/reference/slots/pgsql/pgsql.delete/)__ - Deletes a single record in the specified table
+* __[\[pgsql.select\]](/reference/slots/pgsql/pgsql.select/)__ - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
+* __[\[pgsql.scalar\]](/reference/slots/pgsql/pgsql.scalar/)__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
+* __[\[pgsql.execute\]](/reference/slots/pgsql/pgsql.execute/)__ - Executes an arbitrary SQL statement
+* __[\[pgsql.transaction.create\]](/reference/slots/pgsql/pgsql.transaction.create/)__ - Creates a new transaction
+* __[\[pgsql.transaction.commit\]](/reference/slots/pgsql/pgsql.transaction.commit/)__ - Explicitly commits an open transaction
+* __[\[pgsql.transaction.rollback\]](/reference/slots/pgsql/pgsql.transaction.rollback/)__ - Explicitly rolls back an open transaction
 * __[.db-factory.connection.pgsql]__ - Creates a PostgreSQL connection factory (private C# slot)
 
 **Notice** - If you use any of the CRUD slots from above, the whole idea is that you can polymorphistically
@@ -33,4 +33,3 @@ slots, instead of the generic, and/or polymorphistic slots.
 Hence, please refer to the documentation for _"magic.data.common"_ to see the complete documentation for this
 project. If you need for instance documentation about the **[pgsql.connect]** slot you should look for the
 documentation for **[data.connect]**, since it's more or less the exact same documentation.
-

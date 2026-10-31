@@ -2,7 +2,7 @@
 title: "[try-signal]"
 description: "try-signal is a core slot of Magic Cloud. Invokes a dynamic slot if it exists and ignores missing slots."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/core/try-signal/slot.json"
 ---
 
@@ -25,7 +25,17 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | lambda | no | Returned child node produced by the invoked dynamic slot. Can be repeated. |
 
-Guide: [How to use [try-signal]](/plugins/magic.lambda.slots/#how-to-use-try-signal)
+### Guide
+
+<!-- guide -->
+Invokes a previously created dynamic slot. This slot works exactly the same as **[signal]** except it does
+not throw an exception if the slot does not exist. Assuming you have created the foo slot from the create slot example,
+you can invoke the slot using the following Hyperlambda.
+
+```
+try-signal:foo
+```
+<!-- /guide -->
 
 ### JSON declaration
 

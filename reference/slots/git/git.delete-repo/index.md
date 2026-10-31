@@ -2,7 +2,7 @@
 title: "[git.delete-repo]"
 description: "git.delete-repo is a slot in the git namespace of Magic Cloud. Deletes a local Git repository."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/git/git.delete-repo/slot.json"
 ---
 
@@ -10,7 +10,15 @@ slot_json: "/reference/slots/git/git.delete-repo/slot.json"
 
 * **Value** (`git-repo-path`), required: Repository path to delete
 
-Guide: [How to use [git.delete-repo]](/plugins/magic.lambda.git/#how-to-use-gitdelete-repo)
+### Guide
+
+<!-- guide -->
+Deletes the repository folder. The folder path is the node value.
+
+```
+git.delete-repo:/modules/old-repo/
+```
+<!-- /guide -->
 
 ### JSON declaration
 

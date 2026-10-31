@@ -2,7 +2,7 @@
 title: "[puppeteer.url]"
 description: "puppeteer.url is a slot in the puppeteer namespace of Magic Cloud. Returns the current page URL."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/puppeteer/puppeteer.url/slot.json"
 ---
 
@@ -12,7 +12,21 @@ slot_json: "/reference/slots/puppeteer/puppeteer.url/slot.json"
 * **Returns**: Resolves to the current page URL
 * **Scope**: requires `puppeteer-session`
 
-Guide: [How to use [puppeteer.url]](/plugins/magic.lambda.puppeteer/#puppeteerurl)
+### Guide
+
+<!-- guide -->
+Returns current URL.
+
+Arguments:
+
+* Slot value - Session identifier.
+
+Examples:
+
+```
+puppeteer.url:SESSION_ID
+```
+<!-- /guide -->
 
 ### JSON declaration
 

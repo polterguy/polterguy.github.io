@@ -2,7 +2,7 @@
 title: "[lambda2csv]"
 description: "lambda2csv is a core slot of Magic Cloud. Transforms a lambda hierarchy into CSV."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/core/lambda2csv/slot.json"
 ---
 
@@ -19,7 +19,25 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | `[null-value]` | string | no | String used to represent null values. Default: `[NULL]`. |
 
-Guide: [How to use [lambda2csv]](/plugins/magic.lambda.csv/#how-to-use-lambda2csv)
+### Guide
+
+<!-- guide -->
+This slot converts the specified lambda object to a CSV string. Below is an example of usage.
+
+```
+.data
+   .
+      name:Thomas Hansen
+      age:int:47
+   .
+      name:John Doe
+      age:int:67
+
+lambda2csv:x:-/*
+```
+
+The slot will return type information as children of your **[lambda2csv]** invocation.
+<!-- /guide -->
 
 ### JSON declaration
 

@@ -1,18 +1,19 @@
 ---
 title: magic.lambda.dates
+moved_anchors: {"how-to-use-dateformat": "/reference/slots/date/date.format/#guide", "how-to-use-datefrom-unix": "/reference/slots/date/date.from-unix/#guide", "how-to-use-datemax": "/reference/slots/date/date.max/#guide", "how-to-use-datemin": "/reference/slots/date/date.min/#guide", "how-to-use-datenow": "/reference/slots/date/date.now/#guide", "how-to-use-dateunix": "/reference/slots/date/date.unix/#guide", "how-to-use-time": "/reference/slots/core/time/#guide", "how-to-use-timeformat": "/reference/slots/time/time.format/#guide", "how-to-use-timetotal-milliseconds": "/reference/slots/time/time.total-milliseconds/#guide"}
 ---
 
 This project contains date manipulation slots for Magic. More specifically, this project contains the following slots.
 
-* __[date.now]__ - Returns the now date, equivalent of `DateTime.Now`.
-* __[date.from-unix]__ - Converts the specified Unix timestamp to a `DateTime` object.
-* __[date.min]__ - Returns the minimum date value, equivalent of `DateTime.MinValue`.
-* __[date.max]__ - Returns the maximum date value, equivalent of `DateTime.MaxValue`.
-* __[date.unix]__ - Returns the current UTC time as a Unix timestamp.
-* __[date.format]__ - Returns a string representation of some date, formatted according to the specified **[format]** argument.
-* __[time.total-milliseconds]__ - Returns the total number of milliseconds in a time span.
-* __[time.format]__ - Formats a time span as a string, according to the specified **[format]** argument.
-* __[time]__ - Creates a time span, useful for adding and subtracting offsets to date objects. Pass in **[days]**, **[hours]**, **[minutes]**, **[seconds]** or **[milliseconds]** to declare how large your offset is. All arguments are optional, but (of course) at least one argument should be passed in.
+* __[\[date.now\]](/reference/slots/date/date.now/)__ - Returns the now date, equivalent of `DateTime.Now`.
+* __[\[date.from-unix\]](/reference/slots/date/date.from-unix/)__ - Converts the specified Unix timestamp to a `DateTime` object.
+* __[\[date.min\]](/reference/slots/date/date.min/)__ - Returns the minimum date value, equivalent of `DateTime.MinValue`.
+* __[\[date.max\]](/reference/slots/date/date.max/)__ - Returns the maximum date value, equivalent of `DateTime.MaxValue`.
+* __[\[date.unix\]](/reference/slots/date/date.unix/)__ - Returns the current UTC time as a Unix timestamp.
+* __[\[date.format\]](/reference/slots/date/date.format/)__ - Returns a string representation of some date, formatted according to the specified **[format]** argument.
+* __[\[time.total-milliseconds\]](/reference/slots/time/time.total-milliseconds/)__ - Returns the total number of milliseconds in a time span.
+* __[\[time.format\]](/reference/slots/time/time.format/)__ - Formats a time span as a string, according to the specified **[format]** argument.
+* __[\[time\]](/reference/slots/core/time/)__ - Creates a time span, useful for adding and subtracting offsets to date objects. Pass in **[days]**, **[hours]**, **[minutes]**, **[seconds]** or **[milliseconds]** to declare how large your offset is. All arguments are optional, but (of course) at least one argument should be passed in.
 
 **Notice** - Internally in Magic, everything is UTC Universal timezone, implying if you want to render it in user's
 timezone, you'll have to convert it explicitly in your client/frontend. All dates and times internally in  Magic,
@@ -32,88 +33,3 @@ math.add
 date.format:x:-
    format:"yyyy-MM-dd HH:mm:ss"
 ```
-
-## How to use [date.now]
-
-This slot takes no arguments and simply returns the current date and time. Basic usage can be found below.
-
-```
-date.now
-```
-
-## How to use [date.from-unix]
-
-This slot takes a Unix date and time stamp, and returns a typed date object as its result. Below is an example.
-
-```
-date.from-unix:1674132584
-```
-
-## How to use [date.min]
-
-This slot simply returns the minimum value a date and time object can hold. Usage can be found below.
-
-```
-date.min
-```
-
-## How to use [date.max]
-
-This slot simply returns the maximum value a date and time object can hold. Usage can be found below.
-
-```
-date.max
-```
-
-## How to use [date.unix]
-
-This slot takes no arguments, and returns the current UTC time as a Unix timestamp. Notice that the
-value it returns is the number of _milliseconds_ since the Unix epoch, and not the number of seconds.
-
-```
-date.unix
-```
-
-## How to use [date.format]
-
-This slot formats a date and time object as a string. Patterns are the same as patterns for C#. Below is
-example usage.
-
-```
-date.format:date:"2023-01-19T12:49:44.000Z"
-   format:dd. MMMM yyyy
-```
-
-## How to use [time]
-
-This slot returns a time object, which is useful for doing math operations with a date and time object,
-allowing you to for instance subtract 5 days from the current date and time. Below is an example.
-
-```
-time
-   days:5
-```
-
-This slot can be given the following arguments;
-
-- **[days]** - Number of days
-- **[hours]** - Number of hours
-- **[minutes]** - Number of minutes
-- **[seconds]** - Number of seconds
-- **[milliseconds]** - Number of milliseconds
-
-## How to use [time.total-milliseconds]
-
-This slot takes a time span as its value, such as one returned from **[time]**, and returns the total number
-of milliseconds the time span represents. Its value is mandatory, and it can be given either as a constant
-or as an expression.
-
-## How to use [time.format]
-
-This slot formats a time span as a string, using the same format patterns as `TimeSpan.ToString` in C#,
-and is invoked with the time span as its value. It requires the following argument.
-
-- **[format]** - Format pattern to use. This argument is mandatory, and the slot throws an exception if it is missing.
-
-The time span is typically a value returned from **[time]**, and the result of the slot is the formatted
-string.

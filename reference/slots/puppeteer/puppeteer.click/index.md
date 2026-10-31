@@ -2,7 +2,7 @@
 title: "[puppeteer.click]"
 description: "puppeteer.click is a slot in the puppeteer namespace of Magic Cloud. Clicks an element on the page."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/puppeteer/puppeteer.click/slot.json"
 ---
 
@@ -22,7 +22,32 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[click-count]` | int | no | Number of clicks. |
 | `[delay]` | int | no | Delay in milliseconds between mouse down and up. |
 
-Guide: [How to use [puppeteer.click]](/plugins/magic.lambda.puppeteer/#puppeteerclick)
+### Guide
+
+<!-- guide -->
+Clicks a selector.
+
+Arguments:
+
+* Slot value - Session identifier.
+* `selector` - CSS selector to click.
+* `button` - Mouse button: `left`, `middle`, or `right`.
+* `click-count` - Number of clicks.
+* `delay` - Delay between down and up in milliseconds.
+
+Examples:
+
+```
+puppeteer.click:SESSION_ID
+   selector:"#submit_contact_form_button"
+```
+
+```
+puppeteer.click:SESSION_ID
+   selector:"#submit_contact_form_button"
+   click-count:2
+```
+<!-- /guide -->
 
 ### JSON declaration
 

@@ -27,6 +27,9 @@ import sys
 import urllib.error
 import urllib.request
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import docsplit  # noqa: E402
+
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ENDPOINT_URL = 'https://hyperlambda.dev/magic/modules/docs/slots'
 PLAYGROUND_URL = 'https://hyperlambda.dev/magic/modules/docs/playground'
@@ -201,7 +204,7 @@ def render_contract(entry, anchors, depth):
 
 
 def slug(heading):
-    return re.sub(r'\s+', '-', re.sub(r'[^a-z0-9 _-]', '', heading.lower()).strip())
+    return docsplit.slug(heading)
 
 
 def guide_anchors():
@@ -214,6 +217,19 @@ def guide_anchors():
                     rel = os.path.relpath(os.path.dirname(path), ROOT).replace(os.sep, '/')
                     anchors.setdefault(name, '/%s/#%s' % (rel, slug(h.group(1))))
     return anchors
+
+
+def collect_guides(magic, names):
+    """The "How to use [slot]" sections of the plugin READMEs, by slot, as docsplit sees them."""
+    guides = {}
+    for readme in sorted(glob.glob(os.path.join(magic, 'plugins', '*', 'README.md'))):
+        plugin = os.path.basename(os.path.dirname(readme))
+        with open(readme, encoding='utf-8-sig') as f:
+            result = docsplit.plan(f.read(), plugin, names, docsplit.load_manifest(plugin))
+        for slot_name, g in result['guides'].items():
+            md = re.sub(r'https://docs\.ainiro\.io(/[^\s)\]]*)', r'\1', g['md'])
+            guides.setdefault(slot_name, {'md': md, 'also': g['also'], 'heading': g['heading']})
+    return guides
 
 
 def group_entries(records):
@@ -326,18 +342,25 @@ def declaration(entry, text):
             '</details>', '']
 
 
-def render_slot_page(entry, record, prev, nxt, anchors):
+def render_slot_page(entry, record, prev, nxt, anchors, guide=None):
     name = entry['names'][0]
     ns = ns_of(name)
     where = 'a core slot, one of the keywords of the Hyperlambda language' if ns == 'core' else 'a slot in the `%s` namespace' % ns
     text = json.dumps(record, indent=2, ensure_ascii=False)
-    lines = front_matter(title='[%s]' % name,
-                         description='%s is %s of Magic Cloud. %s' % (name, 'a core slot' if ns == 'core' else 'a slot in the %s namespace' % ns, sentence(entry['description'])),
-                         generated=True, llms=False, slot_json=slot_url(name) + 'slot.json')
-    lines += ['`%s` is %s, in Hyperlambda, the language of Magic Cloud. %s' % (name, where, sentence(entry['description'])), '']
+    fm = front_matter(title='[%s]' % name,
+                      description='%s is %s of Magic Cloud. %s' % (name, 'a core slot' if ns == 'core' else 'a slot in the %s namespace' % ns, sentence(entry['description'])),
+                      generated=True, llms='guide' if guide else False, slot_json=slot_url(name) + 'slot.json')
+    lines = ['`%s` is %s, in Hyperlambda, the language of Magic Cloud. %s' % (name, where, sentence(entry['description'])), '']
     if len(entry['names']) > 1:
         lines += ['Also known as: ' + ', '.join('[`%s`](%s)' % (n, slot_url(n)) for n in entry['names'][1:]) + '.', '']
     lines += render_contract(entry, anchors, PAGE_DEPTH)
+    if guide:
+        # The guide that the plugin's README gives the slot, placed next to its contract. The markers let the
+        # llms-full.txt builder take just this part of the page.
+        lines += ['### Guide', '', '<!-- guide -->']
+        if guide['also']:
+            lines += ['This guide covers %s together.' % ', '.join('[`%s`](%s)' % (a, slot_url(a)) for a in [name] + guide['also']), '']
+        lines += [guide['md'], '<!-- /guide -->', '']
     lines += ['### JSON declaration', '',
               'This is the complete declaration of `%s`, as the running system describes it. It is also published as [slot.json](slot.json).' % name, '']
     lines += declaration(entry, text)
@@ -348,7 +371,7 @@ def render_slot_page(entry, record, prev, nxt, anchors):
     if nxt:
         nav.append('[`%s` &rarr;](%s)' % (nxt, slot_url(nxt)))
     lines += ['---', '', ' | '.join(nav), '']
-    return raw('\n'.join(lines)) + '\n', text + '\n'
+    return '\n'.join(fm) + '\n' + raw('\n'.join(lines)) + '\n', text + '\n'
 
 
 def render_alias_page(alias, entry):
@@ -369,14 +392,14 @@ def render_namespace_index(ns, group):
         name = e['names'][0]
         extra = (' Also known as %s.' % ', '.join('`%s`' % n for n in e['names'][1:])) if len(e['names']) > 1 else ''
         rows.append('| [`%s`](%s) | %s |' % (name, slot_url(name), cell(sentence(e['description']) + extra)))
-    lines = front_matter(
+    fm = front_matter(
         title=title,
         description='The %d slots %s in Magic Cloud and Hyperlambda, each with its own page.' % (
             len(group), 'that make up the core keywords' if ns == 'core' else 'named %s.*' % ns),
         generated=True)
-    lines += ['%d slots, each with its own page and JSON declaration. See [how this reference is built](/reference/slots/).' % len(group), '']
+    lines = ['%d slots, each with its own page and JSON declaration. See [how this reference is built](/reference/slots/).' % len(group), '']
     lines += table(['Slot', 'Description'], rows) + ['']
-    return raw('\n'.join(lines)) + '\n'
+    return '\n'.join(fm) + '\n' + raw('\n'.join(lines)) + '\n'
 
 
 def render_reference_home():
@@ -427,7 +450,7 @@ def faq(p):
         ('Does every slot have its own page?',
          'Yes. Each slot has a page of its own, at /reference/slots/ followed by its namespace and its name, for example /reference/slots/strings/strings.concat/. '
          'It is small enough to read or index on its own, '
-         'with its value, arguments, constraints, return value and complete JSON declaration. The namespace pages are indexes that link to them.'),
+         'with its value, arguments, constraints, return value, the guide to using it where there is one, and its complete JSON declaration. The namespace pages are indexes that link to them.'),
         ('Where do I find the JSON declaration of a single slot?',
          'At the bottom of the slot\'s page, in an expandable section with a copy button, and as a file next to the page called slot.json. '
          'For strings.concat that is /reference/slots/strings/strings.concat/slot.json.'),
@@ -613,6 +636,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--input')
     ap.add_argument('--min-slots', type=int, default=300)
+    ap.add_argument('--magic', required=True, help='a checkout of the Magic repository, read for the guides in the plugin READMEs')
+    ap.add_argument('--slots-names', help=argparse.SUPPRESS)
     args = ap.parse_args()
 
     data = json.loads(read(args.input)) if args.input else fetch()
@@ -623,6 +648,7 @@ def main():
 
     entries = group_entries(records)
     anchors = guide_anchors()
+    guides = collect_guides(args.magic, {r['name'] for r in records})
     by_record = {r['name']: r for r in records}
     by_ns = {}
     for e in entries:
@@ -647,7 +673,8 @@ def main():
             name = e['names'][0]
             prev = group[i - 1]['names'][0] if i > 0 else None
             nxt = group[i + 1]['names'][0] if i + 1 < len(group) else None
-            page, declaration_json = render_slot_page(e, by_record[name], prev, nxt, anchors)
+            guide = next((guides[n] for n in e['names'] if n in guides), None)
+            page, declaration_json = render_slot_page(e, by_record[name], prev, nxt, anchors, guide)
             put('reference/slots/%s/%s/index.md' % (ns, name), page)
             put('reference/slots/%s/%s/slot.json' % (ns, name), declaration_json)
             for alias in e['names'][1:]:

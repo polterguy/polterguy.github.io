@@ -2,7 +2,7 @@
 title: "[data.execute]"
 description: "data.execute is a slot in the data namespace of Magic Cloud. Executes SQL against the current database connection."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/data/data.execute/slot.json"
 ---
 
@@ -21,7 +21,22 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[database-type]` | string | no | Database adapter to use instead of the configured default. |
 | _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 
-Guide: [How to use [data.execute]](/plugins/magic.data.common/#how-to-use-dataexecute)
+### Guide
+
+<!-- guide -->
+This slot should be used if you don't expect any type of result at all, such as in for instance
+delete or update invocations, where you don't care about the result of the operation. You can
+find an example below.
+
+```
+data.connect:sakila
+
+   // Notice, will throw! (hopefully!)
+   data.execute:delete from non_existing_table
+```
+
+Yet again, prefer **[data.delete]** if you can.
+<!-- /guide -->
 
 ### JSON declaration
 

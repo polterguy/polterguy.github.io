@@ -2,7 +2,7 @@
 title: "[math.abs]"
 description: "math.abs is a slot in the math namespace of Magic Cloud. Returns the absolute value."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/math/math.abs/slot.json"
 ---
 
@@ -11,7 +11,15 @@ slot_json: "/reference/slots/math/math.abs/slot.json"
 * **Value** (`number`), required: Numeric value to transform
 * **Returns**: Resolves to the absolute value
 
-Guide: [How to use [math.abs]](/plugins/magic.lambda.math/#how-to-use-mathabs)
+### Guide
+
+<!-- guide -->
+This slot returns the absolute value of its input, implying its positive counterpart if the value is negative, or unchanged if it's already positive.
+
+```
+math.abs:x:@.arguments/*/number
+```
+<!-- /guide -->
 
 ### JSON declaration
 

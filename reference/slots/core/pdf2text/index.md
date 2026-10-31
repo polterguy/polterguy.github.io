@@ -2,7 +2,7 @@
 title: "[pdf2text]"
 description: "pdf2text is a core slot of Magic Cloud. Extracts text from a PDF file or stream."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/core/pdf2text/slot.json"
 ---
 
@@ -19,7 +19,21 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | `[preserve-pages]` | bool | no | Whether to return one child node per page instead of one combined value. Default: `false`. |
 
-Guide: [How to use [pdf2text]](/plugins/magic.lambda.pdf/#how-to-use-pdf2text)
+### Guide
+
+<!-- guide -->
+This slot allows you to retrieve only the text parts of a PDF document.
+
+```
+pdf2text:/foo/bar.pdf
+```
+
+Notice, the slot can also accept a stream, such as for instance supplied as an uploaded
+document, and react directly on the stream, avoiding having to save the stream to a file first.
+It can also accept a string as its input, at which point it assumes the string is the
+relative path to a file. Finally, the slot can accept raw bytes, which it then assumes
+is the raw content from a PDF document.
+<!-- /guide -->
 
 ### JSON declaration
 

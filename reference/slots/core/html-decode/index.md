@@ -2,7 +2,7 @@
 title: "[html-decode]"
 description: "html-decode is a core slot of Magic Cloud. HTML decodes the specified string."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/core/html-decode/slot.json"
 ---
 
@@ -11,7 +11,13 @@ slot_json: "/reference/slots/core/html-decode/slot.json"
 * **Value** (`html-encoded`), required: HTML encoded text to decode
 * **Returns**: Resolves to the decoded text
 
-Guide: [How to use [html-decode]](/plugins/magic.lambda.html/#how-to-use-html-decode)
+### Guide
+
+<!-- guide -->
+This slot HTML decodes its value, equivalent of `HttpUtility.HtmlDecode` in C#, turning entities such as
+`&amp;` and `&lt;` back into the characters they represent. The value is mandatory, and can be given as a
+constant or as an expression pointing to a single node. The slot returns the decoded string as its value.
+<!-- /guide -->
 
 ### JSON declaration
 

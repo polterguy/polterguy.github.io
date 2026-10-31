@@ -2,7 +2,7 @@
 title: "[github.repo.list]"
 description: "github.repo.list is a slot in the github namespace of Magic Cloud. Lists GitHub repositories using child-node filters."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/github/github.repo.list/slot.json"
 ---
 
@@ -22,7 +22,33 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[per-page]` | int | no | Number of repositories per page. |
 | `[page]` | int | no | Page number. |
 
-Guide: [How to use [github.repo.list]](/plugins/magic.lambda.git/#how-to-use-githubrepolist)
+### Guide
+
+<!-- guide -->
+Lists GitHub repositories. If `owner` is omitted, it will list repositories visible to the
+authenticated user. If `owner` is provided, it will list repositories for the organization (not a user).
+
+**Notice** - For the authenticated user endpoint, GitHub does not allow combining `visibility` and `type`.
+Provide only one of them.
+
+The result is returned as a list, each containing the following fields:
+
+* `name`
+* `full_name`
+* `private`
+* `html_url`
+* `description`
+* `default_branch`
+
+```
+github.repo.list
+   owner:my-org
+   visibility:all
+   type:all
+   per-page:100
+   page:1
+```
+<!-- /guide -->
 
 ### JSON declaration
 

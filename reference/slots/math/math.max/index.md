@@ -2,7 +2,7 @@
 title: "[math.max]"
 description: "math.max is a slot in the math namespace of Magic Cloud. Returns the largest value from the supplied inputs."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/math/math.max/slot.json"
 ---
 
@@ -18,7 +18,17 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | number | yes | Numeric operand evaluated before calculating the result. |
 
-Guide: [How to use [math.max]](/plugins/magic.lambda.math/#how-to-use-mathmax)
+### Guide
+
+<!-- guide -->
+This slot returns the max value of its input.
+
+```
+math.max
+   .:int:11
+   .:int:12
+```
+<!-- /guide -->
 
 ### JSON declaration
 

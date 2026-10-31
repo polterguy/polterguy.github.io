@@ -2,7 +2,7 @@
 title: "[execution.kill]"
 description: "execution.kill is a slot in the execution namespace of Magic Cloud. Cancels a running execution by execution ID."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/execution/execution.kill/slot.json"
 ---
 
@@ -11,7 +11,19 @@ slot_json: "/reference/slots/execution/execution.kill/slot.json"
 * **Value** (`execution-id`), required: Execution ID to cancel
 * **Returns**: Returns true if the execution was cancelled
 
-Guide: [How to use [execution.kill]](/plugins/magic.lambda.threading/#how-to-use-executionkill)
+### Guide
+
+<!-- guide -->
+Cancels another running execution by its execution id. This is useful when you have previously returned
+an execution id to a caller and later want to stop that execution from another request or thread.
+
+```
+execution.kill:6c5a0bd3f7d64d6382d6cf3e7df5dc7c
+```
+
+The slot returns a boolean value indicating whether or not a matching live execution was found and
+cancelled.
+<!-- /guide -->
 
 ### JSON declaration
 

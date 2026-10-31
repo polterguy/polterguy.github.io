@@ -2,7 +2,7 @@
 title: "[git.create-repo]"
 description: "git.create-repo is a slot in the git namespace of Magic Cloud. Initializes a Git repository."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/git/git.create-repo/slot.json"
 ---
 
@@ -20,7 +20,26 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[branch]` | string | no | Initial branch name. |
 | `[bare]` | bool | no | Create a bare repository. Default: `false`. |
 
-Guide: [How to use [git.create-repo]](/plugins/magic.lambda.git/#how-to-use-gitcreate-repo)
+### Guide
+
+<!-- guide -->
+Initializes a folder as a repository. The folder path is the node value.
+
+```
+git.create-repo:/modules/new-repo/
+```
+
+Optional arguments:
+
+* __[branch]__ - Initial branch name
+* __[bare]__ - Boolean, creates a bare repo
+
+```
+git.create-repo:/modules/new-repo/
+   branch:main
+   bare:false
+```
+<!-- /guide -->
 
 ### JSON declaration
 

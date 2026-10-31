@@ -2,7 +2,7 @@
 title: "[strings.matches]"
 description: "strings.matches is a slot in the strings namespace of Magic Cloud. Returns regular expression matches, bounded by the execution deadline when set."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/strings/strings.matches/slot.json"
 ---
 
@@ -19,7 +19,25 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _unnamed child node_ | string | yes | Regular expression pattern to match against the source string. |
 
-Guide: [How to use [strings.matches]](/plugins/magic.lambda.strings/#how-to-use-stringsmatches)
+### Guide
+
+<!-- guide -->
+Returns all regular expression matches from specified source string.
+
+```
+.input:Foo Bar Howdy World {match1} and {match2} and that was it
+strings.matches:x:-
+   .:"\\{.+?\\}"
+```
+
+The above will result in the following.
+
+```
+strings.matches
+   .:{match1}
+   .:{match2}
+```
+<!-- /guide -->
 
 ### JSON declaration
 

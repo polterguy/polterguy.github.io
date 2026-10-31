@@ -2,7 +2,7 @@
 title: "[system.plugin.list]"
 description: "system.plugin.list is a slot in the system namespace of Magic Cloud. Lists dynamically loaded plugins."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/system/system.plugin.list/slot.json"
 ---
 
@@ -10,7 +10,15 @@ slot_json: "/reference/slots/system/system.plugin.list/slot.json"
 
 * **Returns**: Returns one child node per dynamically loaded plugin name
 
-Guide: [How to use [system.plugin.list]](/plugins/magic.lambda.system/#systempluginlist)
+### Guide
+
+<!-- guide -->
+This slot returns a list of all dynamically loaded plugins allowing you to traverse these as you see fit. Below is an example of usage.
+
+```
+system.plugin.list
+```
+<!-- /guide -->
 
 ### JSON declaration
 

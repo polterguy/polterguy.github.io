@@ -2,7 +2,7 @@
 title: "[puppeteer.content]"
 description: "puppeteer.content is a slot in the puppeteer namespace of Magic Cloud. Returns the current page HTML content."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/puppeteer/puppeteer.content/slot.json"
 ---
 
@@ -12,7 +12,21 @@ slot_json: "/reference/slots/puppeteer/puppeteer.content/slot.json"
 * **Returns**: Resolves to the current page HTML content
 * **Scope**: requires `puppeteer-session`
 
-Guide: [How to use [puppeteer.content]](/plugins/magic.lambda.puppeteer/#puppeteercontent)
+### Guide
+
+<!-- guide -->
+Returns page HTML.
+
+Arguments:
+
+* Slot value - Session identifier.
+
+Examples:
+
+```
+puppeteer.content:SESSION_ID
+```
+<!-- /guide -->
 
 ### JSON declaration
 

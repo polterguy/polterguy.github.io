@@ -2,7 +2,7 @@
 title: "[time.format]"
 description: "time.format is a slot in the time namespace of Magic Cloud. Formats a TimeSpan value."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/time/time.format/slot.json"
 ---
 
@@ -19,7 +19,17 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | `[format]` | string | yes | Format string. |
 
-Guide: [How to use [time.format]](/plugins/magic.lambda.dates/#how-to-use-timeformat)
+### Guide
+
+<!-- guide -->
+This slot formats a time span as a string, using the same format patterns as `TimeSpan.ToString` in C#,
+and is invoked with the time span as its value. It requires the following argument.
+
+- **[format]** - Format pattern to use. This argument is mandatory, and the slot throws an exception if it is missing.
+
+The time span is typically a value returned from **[time]**, and the result of the slot is the formatted
+string.
+<!-- /guide -->
 
 ### JSON declaration
 

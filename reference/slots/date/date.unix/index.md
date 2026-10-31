@@ -2,7 +2,7 @@
 title: "[date.unix]"
 description: "date.unix is a slot in the date namespace of Magic Cloud. Returns the current UTC time as a Unix timestamp."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/date/date.unix/slot.json"
 ---
 
@@ -10,7 +10,16 @@ slot_json: "/reference/slots/date/date.unix/slot.json"
 
 * **Returns**: Resolves to the current UTC Unix timestamp in milliseconds
 
-Guide: [How to use [date.unix]](/plugins/magic.lambda.dates/#how-to-use-dateunix)
+### Guide
+
+<!-- guide -->
+This slot takes no arguments, and returns the current UTC time as a Unix timestamp. Notice that the
+value it returns is the number of _milliseconds_ since the Unix epoch, and not the number of seconds.
+
+```
+date.unix
+```
+<!-- /guide -->
 
 ### JSON declaration
 

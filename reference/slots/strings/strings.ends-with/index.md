@@ -2,7 +2,7 @@
 title: "[strings.ends-with]"
 description: "strings.ends-with is a slot in the strings namespace of Magic Cloud. Returns true if a string ends with the specified text."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/strings/strings.ends-with/slot.json"
 ---
 
@@ -19,7 +19,21 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _unnamed child node_ | string | yes | String argument. |
 
-Guide: [How to use [strings.ends-with]](/plugins/magic.lambda.strings/#how-to-use-stringsends-with)
+### Guide
+
+<!-- guide -->
+Returns true if the specified string ends with some sequence of characters.
+
+```
+// Returns true
+strings.ends-with:Thomas Hansen Is Cool
+   .:Cool
+
+// Returns false
+strings.ends-with:Thomas Hansen Is Coolio
+   .:Cool
+```
+<!-- /guide -->
 
 ### JSON declaration
 

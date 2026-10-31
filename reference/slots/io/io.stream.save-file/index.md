@@ -2,7 +2,7 @@
 title: "[io.stream.save-file]"
 description: "io.stream.save-file is a slot in the io namespace of Magic Cloud. Writes a stream's contents to disk under the given path; commonly used after uploads or [http.get] downloads."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/io/io.stream.save-file/slot.json"
 ---
 
@@ -19,7 +19,30 @@ Required arguments come first, then the optional ones in the order they are decl
 | _any node name_ | Stream | yes | Child node yielding the stream to save. |
 | `[overwrite]` | bool | no | Whether an existing file should be overwritten. Default: `true`. |
 
-Guide: [How to use [io.stream.save-file]](/plugins/magic.lambda.io/#how-to-use-iostreamsave-file)
+### Guide
+
+<!-- guide -->
+Works similarly to **[io.file.save]** but instead of taking source content of some kind,
+it assumes the source is an open `Stream` of some sort.
+
+```
+/*
+ * [.stream] here is an open stream, from for instance the HTTP
+ * request object, or something similar that somehow is able to open
+ * a stream and pass around in Hyperlambda.
+ */
+.stream
+io.stream.save-file:/foo/bar.txt
+   get-value:x:@.stream
+```
+
+After invoking the above, assuming the **[.stream]** node contains a valid `Stream`
+object, the file above will contain the content from the stream.
+
+**Notice** - If the file exists from before the existing file will be deleted, unless you
+pass in an **[overwrite]** argument and set its value to false, at which point an exception
+will be thrown if the file exists from before.
+<!-- /guide -->
 
 ### JSON declaration
 

@@ -1,0 +1,22 @@
+{
+  "pages": [
+    {
+      "slug": "rsa",
+      "title": "RSA cryptography with Hyperlambda",
+      "sections": [
+        "Creating an RSA keypair",
+        "Cryptographically signing and verifying the signature of a message",
+        "Encrypting and decrypting a message using RSA"
+      ],
+      "description": "Creating RSA keypairs, signing and verifying the signature of a message, and encrypting and decrypting with RSA, using the cryptography slots of Hyperlambda."
+    },
+    {
+      "slug": "aes",
+      "title": "Symmetric cryptography using AES",
+      "sections": [
+        "Symmetric cryptography using AES"
+      ],
+      "description": "Encrypting and decrypting a message with a shared secret using AES, with the cryptography slots of Hyperlambda."
+    }
+  ]
+}

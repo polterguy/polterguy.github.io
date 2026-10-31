@@ -2,7 +2,7 @@
 title: "[git.fetch]"
 description: "git.fetch is a slot in the git namespace of Magic Cloud. Fetches updates from a Git remote."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/git/git.fetch/slot.json"
 ---
 
@@ -20,7 +20,21 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[remote]` | string | no | Remote to fetch from. Default: `origin`. |
 | `[refspec]` | string | no | Optional refspec to fetch. |
 
-Guide: [How to use [git.fetch]](/plugins/magic.lambda.git/#how-to-use-gitfetch)
+### Guide
+
+<!-- guide -->
+Fetches updates from a remote. The repo path is the node value. The `remote` child node defaults to `origin`.
+
+```
+git.fetch:/modules/stripe/
+```
+
+```
+git.fetch:/modules/stripe/
+   remote:origin
+   refspec:main
+```
+<!-- /guide -->
 
 ### JSON declaration
 

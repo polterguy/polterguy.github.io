@@ -2,7 +2,7 @@
 title: "[puppeteer.wait-for-url]"
 description: "puppeteer.wait-for-url is a slot in the puppeteer namespace of Magic Cloud. Waits for the page URL to match a condition."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/puppeteer/puppeteer.wait-for-url/slot.json"
 ---
 
@@ -20,7 +20,24 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[url]` | string | yes | URL pattern to wait for. |
 | `[timeout]` | int | no | Wait timeout in milliseconds. |
 
-Guide: [How to use [puppeteer.wait-for-url]](/plugins/magic.lambda.puppeteer/#puppeteerwait-for-url)
+### Guide
+
+<!-- guide -->
+Waits until the page URL matches.
+
+Arguments:
+
+* Slot value - Session identifier.
+* `url` - URL string to wait for.
+* `timeout` - Timeout in milliseconds.
+
+Examples:
+
+```
+puppeteer.wait-for-url:SESSION_ID
+   url:"https://ainiro.io/contact-us"
+```
+<!-- /guide -->
 
 ### JSON declaration
 

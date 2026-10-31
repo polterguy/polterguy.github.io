@@ -1,17 +1,8 @@
 ---
 title: magic.lambda.guid
+moved_anchors: {"how-to-use-guidnew": "/reference/slots/guid/guid.new/#guide"}
 ---
 
 This project allows you to generate a new (random) Guid, and contains the following slot.
 
-* __[guid.new]__ - Returns a new Guid to you
-
-## How to use [guid.new]
-
-This slot creates a new random GUID for you, or a globally unique identifier. Example of usage
-can be found below.
-
-```
-guid.new
-```
-
+* __[\[guid.new\]](/reference/slots/guid/guid.new/)__ - Returns a new Guid to you

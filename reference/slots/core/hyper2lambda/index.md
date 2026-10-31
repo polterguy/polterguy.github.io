@@ -2,7 +2,7 @@
 title: "[hyper2lambda]"
 description: "hyper2lambda is a core slot of Magic Cloud. Transforms Hyperlambda into a lambda hierarchy."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/core/hyper2lambda/slot.json"
 ---
 
@@ -19,7 +19,19 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | `[comments]` | bool | no | Whether parser comment nodes should be preserved as [..] nodes with the comment text as value. Default: `false`. |
 
-Guide: [How to use [hyper2lambda]](/plugins/magic.lambda.hyperlambda/#how-to-use-hyper2lambda)
+### Guide
+
+<!-- guide -->
+This slot creates a semantic lambda object (graph object) from the specified text. Below is an example
+of usage.
+
+```
+.hl:@"log.info:""This was logged from a piece of text"""
+hyper2lambda:x:-
+```
+
+The above of course produces an executable lambda object from your specified Hyperlambda text.
+<!-- /guide -->
 
 ### JSON declaration
 

@@ -2,7 +2,7 @@
 title: "[strings.contains]"
 description: "strings.contains is a slot in the strings namespace of Magic Cloud. Returns true if a string contains the specified text."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/strings/strings.contains/slot.json"
 ---
 
@@ -19,7 +19,17 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _unnamed child node_ | string | yes | String argument. |
 
-Guide: [How to use [strings.contains]](/plugins/magic.lambda.strings/#how-to-use-stringscontains)
+### Guide
+
+<!-- guide -->
+Returns true if the specified string contains some sequence of characters.
+
+```
+// Returns true
+strings.contains:Thomas Hansen Is Cool
+   .:Hansen
+```
+<!-- /guide -->
 
 ### JSON declaration
 

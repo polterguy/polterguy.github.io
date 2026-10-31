@@ -2,7 +2,7 @@
 title: "[puppeteer.goto]"
 description: "puppeteer.goto is a slot in the puppeteer namespace of Magic Cloud. Navigates the current page to a URL."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/puppeteer/puppeteer.goto/slot.json"
 ---
 
@@ -22,7 +22,32 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[timeout]` | int | no | Navigation timeout in milliseconds. |
 | `[wait-until]` | string | no | Navigation completion condition: load, domcontentloaded, networkidle0, or networkidle2. |
 
-Guide: [How to use [puppeteer.goto]](/plugins/magic.lambda.puppeteer/#puppeteergoto)
+### Guide
+
+<!-- guide -->
+Navigates to a URL.
+
+Arguments:
+
+* Slot value - Session identifier.
+* `url` - URL to navigate to.
+* `timeout` - Navigation timeout in milliseconds.
+* `wait-until` - One of `load`, `domcontentloaded`, `networkidle0`, `networkidle2`.
+
+Examples:
+
+```
+puppeteer.goto:SESSION_ID
+   url:"https://ainiro.io"
+```
+
+```
+puppeteer.goto:SESSION_ID
+   url:"https://ainiro.io"
+   timeout:30000
+   wait-until:networkidle2
+```
+<!-- /guide -->
 
 ### JSON declaration
 

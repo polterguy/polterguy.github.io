@@ -2,7 +2,7 @@
 title: "[tasks.list]"
 description: "tasks.list is a slot in the tasks namespace of Magic Cloud. Returns all stored tasks; supports an optional ID filter and pagination via [limit] and [offset]."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/tasks/tasks.list/slot.json"
 ---
 
@@ -29,7 +29,21 @@ Required arguments come first, then the optional ones in the order they are decl
 | _unnamed child node_ / `[created]` | date | no | Task creation timestamp. |
 | _unnamed child node_ / `[description]` | string | no | Optional task description. |
 
-Guide: [How to use [tasks.list]](/plugins/magic.lambda.scheduler/#how-to-use-taskslist)
+### Guide
+
+<!-- guide -->
+To list tasks, you can use the **[tasks.list]** signal. This slot optionally
+handles an **[offset]** and a **[limit]** argument, allowing you to page, which might be
+useful if you have a lot of tasks in your system. If no **[limit]** is specified, this signal
+will only return the first 10 tasks, including the task's Hyperlambda, but not its repetition
+pattern(s), or due date(s). Below is an example.
+
+```
+tasks.list
+   offset:20
+   limit:10
+```
+<!-- /guide -->
 
 ### JSON declaration
 

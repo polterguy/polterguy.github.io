@@ -2,7 +2,7 @@
 title: "[strings.length]"
 description: "strings.length is a slot in the strings namespace of Magic Cloud. Returns the length of a string."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/strings/strings.length/slot.json"
 ---
 
@@ -11,7 +11,16 @@ slot_json: "/reference/slots/strings/strings.length/slot.json"
 * **Value** (`text`), required: Text to measure
 * **Returns**: Resolves to the number of characters in the string
 
-Guide: [How to use [strings.length]](/plugins/magic.lambda.strings/#how-to-use-stringslength)
+### Guide
+
+<!-- guide -->
+Returns the length of a string as an integer number.
+
+```
+// Returns 6
+strings.length:thomas
+```
+<!-- /guide -->
 
 ### JSON declaration
 

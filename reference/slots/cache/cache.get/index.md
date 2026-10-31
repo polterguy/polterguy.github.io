@@ -2,7 +2,7 @@
 title: "[cache.get]"
 description: "cache.get is a slot in the cache namespace of Magic Cloud. Returns a cached value by key."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/cache/cache.get/slot.json"
 ---
 
@@ -11,7 +11,16 @@ slot_json: "/reference/slots/cache/cache.get/slot.json"
 * **Value** (`cache-key`), required: Cache key to retrieve
 * **Returns**: Resolves to the cached value, or null if the key does not exist
 
-Guide: [How to use [cache.get]](/plugins/magic.lambda.caching/#how-to-use-cacheget)
+### Guide
+
+<!-- guide -->
+Returns an item from your cache, or null if there are no items matching the specified key. Below is an
+example of retrieving the item we saved to the cache above.
+
+```
+cache.get:cache-item-key
+```
+<!-- /guide -->
 
 ### JSON declaration
 

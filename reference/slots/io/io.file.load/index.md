@@ -2,7 +2,7 @@
 title: "[io.file.load]"
 description: "io.file.load is a slot in the io namespace of Magic Cloud. Loads a text file from the server."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/io/io.file.load/slot.json"
 ---
 
@@ -13,7 +13,19 @@ Also known as: [`load-file`](/reference/slots/core/load-file/).
 * **Value** (`file-path`), required: File path to load
 * **Returns**: Resolves to the loaded file content
 
-Guide: [How to use [io.file.load]](/plugins/magic.lambda.io/#how-to-use-iofileload)
+### Guide
+
+<!-- guide -->
+Loads the specified text file from disc. This slot can _only load text files_. Or to be specific,
+there are no ways you can change binary files, hence loading a binary file is for the most parts
+not something you should do. Although there _might_ exist exceptions to this.
+
+```
+io.file.load:/misc/README.md
+```
+
+**Notice** - If you want to load binary content you should use the **[io.file.load.binary]** override.
+<!-- /guide -->
 
 ### JSON declaration
 

@@ -2,7 +2,7 @@
 title: "[puppeteer.select]"
 description: "puppeteer.select is a slot in the puppeteer namespace of Magic Cloud. Selects an option in a select element."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/puppeteer/puppeteer.select/slot.json"
 ---
 
@@ -21,7 +21,27 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[values]` | string\|lambda | no | Option values to select. |
 | `[values]` / _unnamed child node_ | string | no | Argument value. Can be repeated. |
 
-Guide: [How to use [puppeteer.select]](/plugins/magic.lambda.puppeteer/#puppeteerselect)
+### Guide
+
+<!-- guide -->
+Selects option values from a selector.
+
+Arguments:
+
+* Slot value - Session identifier.
+* `selector` - CSS selector for a `<select>` element.
+* `values` - Values to select. Provide as children or a comma-separated string.
+
+Examples:
+
+```
+puppeteer.select:SESSION_ID
+   selector:"#plan"
+   values
+      .:basic
+      .:pro
+```
+<!-- /guide -->
 
 ### JSON declaration
 

@@ -2,7 +2,7 @@
 title: "[image.crop]"
 description: "image.crop is a slot in the image namespace of Magic Cloud. Cuts a rectangular region out of an image at the given x, y, width, and height."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/image/image.crop/slot.json"
 ---
 
@@ -24,7 +24,25 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[right]` | int | no | Pixels to crop from the right edge. Default: `0`. |
 | `[bottom]` | int | no | Pixels to crop from the bottom edge. Default: `0`. |
 
-Guide: [How to use [image.crop]](/plugins/magic.lambda.image/#how-to-use-imagecrop)
+### Guide
+
+<!-- guide -->
+To crop an image you specify the following arguments.
+
+* __[left]__ - Pixels to remove from the left parts of image
+* __[top]__ - Pixels to remove from the top parts of image
+* __[right]__ - Pixels to remove from the right parts of image
+* __[bottom]__ - Pixels to remove from the bottom parts of image
+
+Notice, left + right must be smaller than the total width of the image, and top + bottom must be smaller
+than the total height of the image. All arguments are optional, allowing you to only crop an image at one
+side, such as for instance illustrated below.
+
+```
+image.crop:/modules/test/qr.png
+   right:50
+```
+<!-- /guide -->
 
 ### JSON declaration
 

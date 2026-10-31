@@ -2,7 +2,7 @@
 title: "[execute]"
 description: "execute is a core slot of Magic Cloud. Invokes a dynamic slot after unwrapping descendant expressions."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/core/execute/slot.json"
 ---
 
@@ -25,7 +25,51 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | lambda | no | Returned child node produced by the invoked dynamic slot after descendant expressions are unwrapped. Can be repeated. |
 
-Guide: [How to use [execute]](/plugins/magic.lambda.slots/#how-to-use-execute)
+### Guide
+
+<!-- guide -->
+The **[execute]** slot is an alias for **[signal]**, but it will **[unwrap]** all children nodes, automatically
+transform any expressions to their static value equivalents, allowing you to combine **[unwrap]** and **[signal]**
+into one invocation. This makes usage slightly less verbose for cases such as the following.
+
+```
+.args
+   foo1:bar1
+   foo2:bar2
+execute:whatever-slot
+   arg1:x:@.args/*/foo1
+   arg2:x:@.args/*/foo2
+```
+
+In the above example both arguments to our _"whatever-slot"_ invocation will be evaluated before the slot is invoked,
+resulting in **[arg1]** and **[args2]** having the values of _"bar1"_ and _"bar2"_ respectively.
+
+If you pass in a node named **[node_reference]** using the above syntax, this node will be especially handled, and
+passed in by reference instead of evaluated as a single expression value. Consider the following alternative to
+the above.
+
+```
+.args
+   foo1:bar1
+   foo2:bar2
+execute:whatever-slot
+   node_reference:x:@.args
+```
+
+Inside your above _"whatever-slot"_ you will now have access to the entire **[.args]** node by reference.
+It might help to execute the following to understand.
+
+```
+.args
+   foo1:howdy
+   foo2:world
+slots.create:foo
+   lambda2hyper:x:../*
+   return:x:-
+execute:foo
+   node_reference:x:@.args/*
+```
+<!-- /guide -->
 
 ### JSON declaration
 

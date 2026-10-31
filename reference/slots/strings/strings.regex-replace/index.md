@@ -2,7 +2,7 @@
 title: "[strings.regex-replace]"
 description: "strings.regex-replace is a slot in the strings namespace of Magic Cloud. Replaces text using a regular expression, bounded by the execution deadline when set."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/strings/strings.regex-replace/slot.json"
 ---
 
@@ -20,7 +20,21 @@ Required arguments come first, then the optional ones in the order they are decl
 | _unnamed child node_ | string | yes | Regular expression pattern to match. |
 | _unnamed child node_ | string | yes | Replacement text. |
 
-Guide: [How to use [strings.regex-replace]](/plugins/magic.lambda.strings/#how-to-use-stringsregex-replace)
+### Guide
+
+<!-- guide -->
+Replaces matches of the given regular expression with some static sequence of characters.
+
+```
+// Results in "FOO bar hansen"
+strings.regex-replace:foo bar hansen
+   .:fo+
+   .:FOO
+```
+
+The first argument is what regular expression to match, the second argument is what to replace
+all matches with.
+<!-- /guide -->
 
 ### JSON declaration
 

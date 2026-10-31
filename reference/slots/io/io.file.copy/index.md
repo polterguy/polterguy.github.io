@@ -2,7 +2,7 @@
 title: "[io.file.copy]"
 description: "io.file.copy is a slot in the io namespace of Magic Cloud. Copies a file on the server."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/io/io.file.copy/slot.json"
 ---
 
@@ -18,7 +18,24 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | string | yes | Destination path. |
 
-Guide: [How to use [io.file.copy]](/plugins/magic.lambda.io/#how-to-use-iofilecopy)
+### Guide
+
+<!-- guide -->
+Copies the specified file to the specified destination folder and file.
+Notice, requires the destination folder to exist from before, and the source
+file to exist from before. This slot will delete any previously existing destination
+file, before starting the copying process. Just like the save slot, this will evaluate
+the lambda children before it executes the copying of your file, allowing you to use
+the results of slots as the destination path for your file.
+
+```
+io.file.copy:/misc/README.md
+   .:/misc/backup/README-backup.md
+```
+
+Notice, the folder parts of the destination folder is _optional_, and if you don't supply a folder
+as a part of the path, the source folder will be used by default.
+<!-- /guide -->
 
 ### JSON declaration
 

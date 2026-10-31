@@ -2,7 +2,7 @@
 title: "[request.verb]"
 description: "request.verb is a slot in the request namespace of Magic Cloud. Returns the HTTP verb (get, post, put, delete, etc.) of the current incoming request."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/request/request.verb/slot.json"
 ---
 
@@ -10,7 +10,12 @@ slot_json: "/reference/slots/request/request.verb/slot.json"
 
 * **Returns**: Resolves to the HTTP verb of the current request
 
-Guide: [How to use [request.verb]](/plugins/magic.endpoint/#how-to-use-requestverb)
+### Guide
+
+<!-- guide -->
+This slot returns the HTTP verb (e.g. _"get"_ or _"post"_) of the current incoming request as the value of the slot's node.
+It takes no arguments, and is only meaningful when invoked from within an HTTP request, such as inside of a Hyperlambda endpoint.
+<!-- /guide -->
 
 ### JSON declaration
 

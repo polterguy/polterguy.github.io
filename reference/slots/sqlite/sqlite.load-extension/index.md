@@ -2,7 +2,7 @@
 title: "[sqlite.load-extension]"
 description: "sqlite.load-extension is a slot in the sqlite namespace of Magic Cloud. Loads a SQLite extension into the current connection from child-node arguments."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/sqlite/sqlite.load-extension/slot.json"
 ---
 
@@ -20,7 +20,15 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[proc]` | string | no | Optional extension entry point. |
 | `[append-platform]` | bool | no | Whether to append the current platform suffix. Default: `true`. |
 
-Guide: [How to use [sqlite.load-extension]](/plugins/magic.lambda.sqlite/#how-to-use-sqliteload-extension)
+### Guide
+
+<!-- guide -->
+Loads a SQLite extension into the connection opened by **[sqlite.connect]**. The slot takes its arguments as children.
+
+* __[file]__ - Filename of the extension to load. Mandatory, the slot throws an exception if it is missing.
+* __[proc]__ - Optional entry point of the extension.
+* __[append-platform]__ - Boolean, defaults to `true`. If true, the slot appends `-arm64` or `-arm` to the filename when running on an ARM64 or ARM processor.
+<!-- /guide -->
 
 ### JSON declaration
 

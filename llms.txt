@@ -68,7 +68,13 @@ Key facts for agents and their humans:
 - [magic.node](https://docs.ainiro.io/plugins/magic.node/): the name/value/children graph object, the Hyperlambda parser, and lambda expressions
 - [magic.signals](https://docs.ainiro.io/plugins/magic.signals/): the Active Events (slots and signals) dispatcher Hyperlambda is built on
 
-## Plugin reference — the slots available to Hyperlambda
+## Slot reference — live and machine readable
+
+- [Slots endpoint](https://hyperlambda.dev/magic/modules/docs/slots): `GET` returns every slot's name, description and signature as JSON, generated at runtime by Hyperlambda introspecting itself. Fetch this instead of crawling per-slot pages
+- [Sandbox endpoint](https://hyperlambda.dev/magic/modules/docs/playground): `POST` Hyperlambda to execute it in a public, throttled, whitelisted sandbox
+- [Slot reference](https://docs.ainiro.io/reference/slots/): human readable reference, one page per slot, generated from the same data
+
+## Plugin reference — the plugins and their concepts
 
 - [Plugins index](https://docs.ainiro.io/plugins/): the reference documentation for every plugin and for Hyperlambda itself
 - [magic.lambda.io](https://docs.ainiro.io/plugins/magic.lambda.io/): file and folder slots, sandboxed to the cloudlet's own file system

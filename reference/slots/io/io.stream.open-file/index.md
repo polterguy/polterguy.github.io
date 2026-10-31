@@ -2,7 +2,7 @@
 title: "[io.stream.open-file]"
 description: "io.stream.open-file is a slot in the io namespace of Magic Cloud. Opens a file as a read-only stream so large files can be processed without loading them into memory; close with [io.stream.close]."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/io/io.stream.open-file/slot.json"
 ---
 
@@ -11,7 +11,19 @@ slot_json: "/reference/slots/io/io.stream.open-file/slot.json"
 * **Value** (`file-path`), required: File path to open as a stream
 * **Returns**: Resolves to an open file stream
 
-Guide: [How to use [io.stream.open-file]](/plugins/magic.lambda.io/#how-to-use-iostreamopen-file)
+### Guide
+
+<!-- guide -->
+Works similarly to **[io.file.load]** but instead of returning the file's content,
+it returns the raw stream back to caller.
+
+```
+io.stream.open-file:/foo/bar.txt
+```
+
+After invoking the above, assuming the file exists, a raw `Stream` object can be
+found as the value of the **[io.stream.open-file]** node.
+<!-- /guide -->
 
 ### JSON declaration
 

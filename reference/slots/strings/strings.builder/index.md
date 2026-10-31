@@ -2,7 +2,7 @@
 title: "[strings.builder]"
 description: "strings.builder is a slot in the strings namespace of Magic Cloud. Creates a string builder scope for [strings.builder.append]."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/strings/strings.builder/slot.json"
 ---
 
@@ -19,7 +19,22 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | lambda | no | Executable child slot evaluated while the StringBuilder is scoped; use [strings.builder.append] to append text. Can be repeated. |
 
-Guide: [How to use [strings.builder]](/plugins/magic.lambda.strings/#how-to-use-stringsbuilder)
+### Guide
+
+<!-- guide -->
+Creates a string builder scope. Every **[strings.builder.append]** invocation found inside it appends its value
+to the builder, and when the scope ends the value of **[strings.builder]** becomes the concatenated text.
+Its children are evaluated as a lambda object, and the slot has no arguments of its own.
+
+```
+strings.builder
+   strings.builder.append:"howdy"
+   strings.builder.append:" world"
+get-value:x:@strings.builder
+```
+
+The above will result in the value of the last node being _"howdy world"_.
+<!-- /guide -->
 
 ### JSON declaration
 

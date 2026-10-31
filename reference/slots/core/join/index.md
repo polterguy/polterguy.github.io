@@ -2,7 +2,7 @@
 title: "[join]"
 description: "join is a core slot of Magic Cloud. Waits for one or more child [fork] operations to finish before proceeding."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/core/join/slot.json"
 ---
 
@@ -19,7 +19,24 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | `[fork]` | lambda | yes | Fork body to start and wait for; evaluated body node values and children are preserved in the completed fork node. Can be repeated. |
 
-Guide: [How to use [join]](/plugins/magic.data.common/#differences-between-join-and-where)
+### Guide
+
+<!-- guide -->
+Joins all child **[fork]** invocations, implying the slot will wait until all forks directly below it
+has finished executing, and automatically copy the result of the **[fork]** into the original node.
+
+```
+join
+   fork
+      http.get:"https://servergardens.com"
+   fork
+      http.get:"https://gaiasoul.com"
+```
+
+As an analogy for what occurs above, imagine the two rivers from our above **[fork]** analogy
+that forked from one larger river into two smaller rivers, for then again to join up and becoming one
+large river again further down.
+<!-- /guide -->
 
 ### JSON declaration
 

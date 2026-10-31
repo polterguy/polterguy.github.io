@@ -1,15 +1,16 @@
 ---
 title: magic.lambda.http
+moved_anchors: {"automatic-conversion": "/plugins/magic.lambda.http/automatic-conversion/", "how-to-use-httpdelete": "/reference/slots/http/http.delete/#guide", "how-to-use-httpget": "/reference/slots/http/http.get/#guide", "how-to-use-httppatch": "/reference/slots/http/http.patch/#guide", "how-to-use-httppost": "/reference/slots/http/http.post/#guide", "how-to-use-httpput": "/reference/slots/http/http.put/#guide"}
 ---
 
 The magic.lambda.http project provides HTTP invocation capabilities for Magic and Hyperlambda. More specifically the
 project contains the following 5 slots.
 
-* __[http.get]__ - Returns some resource using the HTTP GET verb towards the specified URL
-* __[http.delete]__ - Deletes some resource using the HTTP DELETE verb
-* __[http.post]__ - Posts some resources to some URL using the HTTP POST verb
-* __[http.put]__ - Puts some resources to some URL using the HTTP PUT verb
-* __[http.patch]__ - Patches some resources to some URL using the HTTP PATCH verb
+* __[\[http.get\]](/reference/slots/http/http.get/)__ - Returns some resource using the HTTP GET verb towards the specified URL
+* __[\[http.delete\]](/reference/slots/http/http.delete/)__ - Deletes some resource using the HTTP DELETE verb
+* __[\[http.post\]](/reference/slots/http/http.post/)__ - Posts some resources to some URL using the HTTP POST verb
+* __[\[http.put\]](/reference/slots/http/http.put/)__ - Puts some resources to some URL using the HTTP PUT verb
+* __[\[http.patch\]](/reference/slots/http/http.patch/)__ - Patches some resources to some URL using the HTTP PATCH verb
 
 The __[http.put]__, __[http.post]__ and __[http.patch]__ slots requires you to provide a __[payload]__
 or __[filename]__ argument that will be transferred to the endpoint as is. All 5 endpoints can (optionally)
@@ -43,6 +44,7 @@ with whatever integer value you provide. The timeout is specified as an integer 
 to allow for the invocation, before the request is aborted and given up on. If the timeout period elapses, an
 exception will be thrown.
 
+
 ## HTTP headers
 
 If you want to have more control over your HTTP request, you can also explicitly add your own
@@ -58,6 +60,7 @@ http.get:"https://google.com"
 If you don't add an explicit **[headers]** collection the invocation will assume your request payload and
 accepted response is JSON. If you want to change this you'll have to add at least one header to your request,
 at which point the default headers will _not_ be applied.
+
 
 ## QUERY parameters
 
@@ -80,6 +83,7 @@ http.get:"https://foo.com"
       foo2:bar2
 ```
 
+
 ## URL parameters
 
 URL parameters are dynamically substituting parts of your URL to make it easier to create REST invocations. Below is an example.
@@ -95,6 +99,7 @@ http.put:"https://api.example.com/v1/contacts/{id}"
 ```
 
 The point being that the above `{id}` will be dynamically replaced with the integer `5`. You can also use expressions here, allowing you to easily build your URL dynamically. URL parameters can be used for all verbs.
+
 
 ## POSTing, PUTting, and PATCHing data
 
@@ -117,94 +122,6 @@ http.post:"https://some-url.com"
    filename:/README.md
 ```
 
-## Automatic conversion
-
-You can also automatically convert the resulting response object to a lambda object if you have a registered
-conversion function, and you provide a **[convert]** argument, and set its value to boolean `true`. Below is an
-example.
-
-```
-http.get:"https://jsonplaceholder.typicode.com/posts"
-   convert:bool:true
-```
-
-The above will result in something resembling the following.
-
-```
-http.get:int:200
-   headers
-      Date:"Mon, 29 Nov 2021 06:19:29 GMT"
-      Transfer-Encoding:chunked
-      Connection:keep-alive
-      // ... etc ...
-   content
-      .
-         userId:long:1
-         id:long:1
-         title:sunt aut facere repellat provident occaecati excepturi optio reprehenderit
-         body:qwerty1
-      .
-         userId:long:1
-         id:long:2
-         title:qui est esse
-         body:qwerty2
-      // ... etc ...
-```
-
-The project contains automatic conversions for the following types out of the box, but you can easily register
-your own C# based conversion types for specific _"Content-Type"_ values.
-
-* `application/json`
-* `application/x-json`
-* `application/hyperlambda`
-* `application/x-hyperlambda`
-* `application/www-form-urlencoded`
-* `application/x-www-form-urlencoded`
-* `multipart/form-data`
-
-You can also convert a semantic lambda object to the correct _request_ content in a similar fashion, by instead
-of providing a value to your **[payload]** node provide a lambda object such as illustrated below.
-
-```
-.userId:int:1
-http.post:"https://jsonplaceholder.typicode.com/posts"
-   payload
-      id:int:1
-      userId:x:@.userId
-```
-
-The above will transform your payload to a JSON object automatically for you, and also unwrap any expressions
-found in your lambda object before JSON transformation is applied. Automatic transformation will only be applied
-if you've got a transformation function registered. If you want to extend the list of supported
-content types to automatically transform back and forth to, you can use either `Magic.Http.AddRequestHandler` or
-`MagicHttp.AddResponseHandler` to add support for your own automatic transformation for both the request
-payload and/or the response content.
-
-**Notice** - The **[payload]** node above must have a _null_ value, otherwise the slot will prioritise the value,
-and not attempt to transform from a semantic lambda object in any ways. Values in your **[payload]** will be
-transferred as is, and you can provide `byte[]` arrays, streams or strings as the value of your **[payload]**
-node.
-
-**Notice** - Both the URL encoded request transformer and the JSON request transformer will automatically
-evaluate expressions in your semantic **[payload]** object, but this is _not_ true for the Hyperlambda request
-transformer, since in Hyperlambda it might make sense to actually pass in expressions to the endpoint. Below
-is an example of how to semantically pass in a Hyperlambda object to some URL.
-
-```
-http.post:"https://foo.com/hyperlambda-endpoint"
-   headers
-      Content-Type:application/hyperlambda
-   payload
-      .foo
-         .:Thomas
-         .:John
-      for-each:x:@.foo
-         // ... etc ...
-```
-
-The above will automatically serialize your lambda object as Hyperlambda, since the `Content-Type` is of
-a type supported by the automatic conversion functions, and transfer the request as a string to the endpoint,
-preserving expressions as is _without_ unwrapping them before transmitting your **[payload]**.
 
 ## Passing in multipart/form-data payloads with your HTTP requests
 
@@ -236,92 +153,6 @@ lambda2hyper:x:../*
 log.info:x:-
 ```
 
-## How to use [http.get]
-
-This slot accepts a URL as its value, and optionally HTTP headers as a **[headers]** argument. In its simplest version
-it would resemble something such as the following.
-
-```
-http.get:"https://docs.ainiro.io"
-```
-
-The slot returns the result of the specified HTTP GET invocation, including the HTTP headers returned from the endpoint,
-and status code, in addition to the response object itself.
-
-## How to use [http.put]
-
-This slot accepts a URL as its value, and optionally HTTP headers as a **[headers]** argument, and a mandatory
-**[payload]** argument, being whatever payload you want to transfer to the endpoint. In its simplest version
-it would resemble something such as the following.
-
-```
-http.put:"https://some_website.com/your-put-endpoint"
-   payload:@"{""foo"": ""bar""}"
-```
-
-The slot returns the result of the specified HTTP PUT invocation, including the HTTP headers returned from the endpoint,
-and status code, in addition to the response object itself. To automatically convert the response object to whatever
-type of response your URL returns, provide a **[convert]** argument, and set its value to true, such as follows.
-
-```
-http.put:"https://some_website.com/your-put-endpoint"
-   payload:@"{""foo"": ""bar""}"
-   convert:true
-```
-
-## How to use [http.post]
-
-This slot accepts a URL as its value, and optionally HTTP headers as a **[headers]** argument, and a mandatory
-**[payload]** argument, being whatever payload you want to transfer to the endpoint. In its simplest version
-it would resemble something such as the following.
-
-```
-http.post:"https://some_website.com/your-post-endpoint"
-   payload:@"{""foo"": ""bar""}"
-```
-
-The slot returns the result of the specified HTTP POST invocation, including the HTTP headers returned from the endpoint,
-and status code, in addition to the response object itself. To automatically convert the response object to whatever
-type of response your URL returns, provide a **[convert]** argument, and set its value to true, such as follows.
-
-```
-http.post:"https://some_website.com/your-post-endpoint"
-   payload:@"{""foo"": ""bar""}"
-   convert:true
-```
-
-## How to use [http.patch]
-
-This slot accepts a URL as its value, and optionally HTTP headers as a **[headers]** argument, and a mandatory
-**[payload]** argument, being whatever payload you want to transfer to the endpoint. In its simplest version
-it would resemble something such as the following.
-
-```
-http.patch:"https://some_website.com/your-patch-endpoint"
-   payload:@"{""foo"": ""bar""}"
-```
-
-The slot returns the result of the specified HTTP PATCH invocation, including the HTTP headers returned from the endpoint,
-and status code, in addition to the response object itself. To automatically convert the response object to whatever
-type of response your URL returns, provide a **[convert]** argument, and set its value to true, such as follows.
-
-```
-http.patch:"https://some_website.com/your-patch-endpoint"
-   payload:@"{""foo"": ""bar""}"
-   convert:true
-```
-
-## How to use [http.delete]
-
-This slot accepts a URL as its value, and optionally HTTP headers as a **[headers]** argument. In its simplest version
-it would resemble something such as the following.
-
-```
-http.delete:"https://your_website.com/your-delete-endpoint"
-```
-
-The slot returns the result of the specified HTTP DELETE invocation, including the HTTP headers returned from the endpoint,
-and status code, in addition to the response object itself.
 
 ## SSE or Server-Side Events
 
@@ -329,3 +160,8 @@ All slots also support SSE by adding an **[.sse]** lambda object, which will be 
 server. Your lambda object will be invoked with a **[message]** argument containing the raw message published by the server.
 You are responsible to convert the message to the correct type, since it's passed in as a UTF8 encoded raw string.
 
+
+
+## Topics
+
+* [Automatic conversion](/plugins/magic.lambda.http/automatic-conversion/) - You can also automatically convert the resulting response object to a lambda object if you have a registered conversion function, and you provide a [convert] argument, and set its value to boolean tru

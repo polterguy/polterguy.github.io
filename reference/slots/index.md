@@ -24,7 +24,7 @@ faq:
   - q: "How do I get only the descriptions, or only the arguments, of some slots?"
     a: "Use [vocabulary] with a prefix to pick slots by name, [slot.description] for one description, and [slot.signature] for the input, arguments and output of one slot. The examples on this page show each of them, and all of them run in the public sandbox."
   - q: "Does every slot have its own page?"
-    a: "Yes. Each slot has a page of its own, at /reference/slots/ followed by its namespace and its name, for example /reference/slots/strings/strings.concat/. It is small enough to read or index on its own, with its value, arguments, constraints, return value and complete JSON declaration. The namespace pages are indexes that link to them."
+    a: "Yes. Each slot has a page of its own, at /reference/slots/ followed by its namespace and its name, for example /reference/slots/strings/strings.concat/. It is small enough to read or index on its own, with its value, arguments, constraints, return value, the guide to using it where there is one, and its complete JSON declaration. The namespace pages are indexes that link to them."
   - q: "Where do I find the JSON declaration of a single slot?"
     a: "At the bottom of the slot's page, in an expandable section with a copy button, and as a file next to the page called slot.json. For strings.concat that is /reference/slots/strings/strings.concat/slot.json."
   - q: "How do I fix a missing or wrong description?"
@@ -831,7 +831,8 @@ This is the complete GitHub Actions workflow. It needs no credentials, since the
 #   https://github.com/polterguy/magic, to plugins/<plugin>/index.md, adapted for Jekyll.
 #   The README is the source of truth.
 # * build-slot-reference.py asks a read-only Hyperlambda endpoint on hyperlambda.dev for
-#   every compiled slot and renders reference/slots/ from the answer. The endpoint is
+#   every compiled slot and renders reference/slots/ from the answer, with each slot's
+#   "How to use" guide from the README placed on the slot's own page. The endpoint is
 #   public and throttled, so no credentials are needed. Nothing is built, and no source
 #   code is parsed.
 #
@@ -874,7 +875,11 @@ jobs:
 
       # Fails, and writes nothing, when the endpoint answers with too few slots.
       - name: Generate slot reference
-        run: python3 .github/scripts/build-slot-reference.py
+        run: python3 .github/scripts/build-slot-reference.py --magic magic
+
+      # Fails when a link or anchor is broken, a page is oversized, or README text got lost.
+      - name: Lint docs
+        run: python3 .github/scripts/lint-docs.py --magic magic
 
       # Only commit when something actually changed.
       - name: Commit if changed

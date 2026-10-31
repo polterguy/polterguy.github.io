@@ -1,11 +1,13 @@
 ---
 title: magic.lambda.csv
+moved_anchors: {"how-to-use-csv2lambda": "/reference/slots/core/csv2lambda/#guide", "how-to-use-lambda2csv": "/reference/slots/core/lambda2csv/#guide"}
 ---
 
 This project provides CSV helper slots for Magic. More specifically, it provides the following slots.
 
-* __[lambda2csv]__ - Creates a CSV string from a lambda object
-* __[csv2lambda]__ - Creates a lambda object from a CSV string
+* __[\[lambda2csv\]](/reference/slots/core/lambda2csv/)__ - Creates a CSV string from a lambda object
+* __[\[csv2lambda\]](/reference/slots/core/csv2lambda/)__ - Creates a lambda object from a CSV string
+
 
 ## Convert from lambda to CSV and back again
 
@@ -40,37 +42,3 @@ This allows you to preserve null values, which isn't really possible with CSV no
 cases you might want to use  _different_ null value, at which point you can supply this as **[null-value]** argument
 to both slots. If you supply a **[null-value]** argument, but set its value to _null_ - Null values will be ignored,
 and no null values will be persisted in any direction.
-
-## How to use [csv2lambda]
-
-This slot converts a CSV string into a lambda object. In its simplest form it would resemble the following.
-
-```
-.csv:@"name,age
-Thomas Hansen,47
-John Doe,67"
-
-csv2lambda:x:@.csv
-```
-
-It can optionally take a type declaration through a **[types]** argument, which allows you to add typing support
-to the slot.
-
-## How to use [lambda2csv]
-
-This slot converts the specified lambda object to a CSV string. Below is an example of usage.
-
-```
-.data
-   .
-      name:Thomas Hansen
-      age:int:47
-   .
-      name:John Doe
-      age:int:67
-
-lambda2csv:x:-/*
-```
-
-The slot will return type information as children of your **[lambda2csv]** invocation.
-

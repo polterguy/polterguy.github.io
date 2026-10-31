@@ -2,7 +2,7 @@
 title: "[io.stream.read]"
 description: "io.stream.read is a slot in the io namespace of Magic Cloud. Reads from an open stream."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/io/io.stream.read/slot.json"
 ---
 
@@ -11,7 +11,21 @@ slot_json: "/reference/slots/io/io.stream.read/slot.json"
 * **Value** (`stream`), required: Stream instance to read from
 * **Returns**: Resolves to the bytes read from the stream
 
-Guide: [How to use [io.stream.read]](/plugins/magic.lambda.io/#how-to-use-iostreamread)
+### Guide
+
+<!-- guide -->
+Works similarly to **[io.file.load]** but instead of taking a source filename of some kind,
+it assumes the source is an open `Stream` of some sort.
+
+```
+/*
+ * [.stream] here is an open stream, from for instance the HTTP
+ * request object, or something similar.
+ */
+.stream
+io.stream.read:x:@.stream
+```
+<!-- /guide -->
 
 ### JSON declaration
 

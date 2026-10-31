@@ -2,7 +2,7 @@
 title: "[mime.add]"
 description: "mime.add is a slot in the mime namespace of Magic Cloud. Associates a file extension with a MIME content-type so the server returns the correct Content-Type header for matching responses."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/mime/mime.add/slot.json"
 ---
 
@@ -18,7 +18,20 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _unnamed child node_ | string | yes | MIME type value for the extension/key. |
 
-Guide: [How to use [mime.add]](/plugins/magic.endpoint/#how-to-use-mimeadd)
+### Guide
+
+<!-- guide -->
+This slot associates a file extension with a MIME type. Notice, it will override previous associations if existing.
+Example usage can be found below.
+
+```
+mime.add:py
+   .:application/python
+```
+
+Then later when the endpoint resolver is returning files ending with _".py"_, it will return these with
+a `Content-Type` of _"application/python"_.
+<!-- /guide -->
 
 ### JSON declaration
 

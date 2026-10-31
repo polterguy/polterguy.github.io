@@ -2,7 +2,7 @@
 title: "[strings.url-decode]"
 description: "strings.url-decode is a slot in the strings namespace of Magic Cloud. URL decodes the specified string."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/strings/strings.url-decode/slot.json"
 ---
 
@@ -11,7 +11,23 @@ slot_json: "/reference/slots/strings/strings.url-decode/slot.json"
 * **Value** (`url-encoded`), required: Text to decode
 * **Returns**: Resolves to the URL-decoded string
 
-Guide: [How to use [strings.url-decode]](/plugins/magic.lambda.strings/#how-to-use-stringsurl-decode)
+### Guide
+
+<!-- guide -->
+URL decodes a string, the opposite of **[strings.url-encode]**. Example can be found below.
+
+```
+strings.url-encode:thomas@ainiro.io
+strings.url-decode:x:-
+```
+
+Resulting in the following after execution.
+
+```
+strings.url-encode:thomas%40ainiro.io
+strings.url-decode:thomas@ainiro.io
+```
+<!-- /guide -->
 
 ### JSON declaration
 

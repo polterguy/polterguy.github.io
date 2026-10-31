@@ -2,7 +2,7 @@
 title: "[cache.list]"
 description: "cache.list is a slot in the cache namespace of Magic Cloud. Lists cached keys matching the optional filter."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/cache/cache.list/slot.json"
 ---
 
@@ -28,7 +28,24 @@ Required arguments come first, then the optional ones in the order they are decl
 | _unnamed child node_ / `[key]` | string | no | Cached item key. |
 | _unnamed child node_ / `[value]` | string | no | Cached item value. |
 
-Guide: [How to use [cache.list]](/plugins/magic.lambda.caching/#how-to-use-cachelist)
+### Guide
+
+<!-- guide -->
+Lists all items in cache, and returns to caller.
+
+```
+cache.set:cache-item-key
+   expiration:5
+   value:Howdy world
+cache.list
+```
+
+This slot also supports the following optional arguments.
+
+* __[limit]__ - Maximum number of items to return.
+* __[offset]__ - Offset of where to start returning items.
+* Filter as value of node being the filter condition declaring which items to return. See the __[cache.clear]__ slot to understand how it works, since this argument works in the exact same way, assuming your filter is a _"namespace"_.
+<!-- /guide -->
 
 ### JSON declaration
 

@@ -1,5 +1,6 @@
 ---
 title: magic.lambda.sqlite
+moved_anchors: {"how-to-use-sqlitebackup": "/reference/slots/sqlite/sqlite.backup/#guide", "how-to-use-sqliteload-extension": "/reference/slots/sqlite/sqlite.load-extension/#guide"}
 ---
 
 This is the SQLite data adapter for Magic. This project allows you to provide a semantic lambda structure
@@ -8,20 +9,20 @@ types of CRUD SQL statements. In addition, it provides slots to open a SQLite da
 such allows you to declare your own SQL statements to be executed towards a SQLite database. Slots
 this project contains are as follows.
 
-* __[sqlite.connect]__ - Connects to a database
-* __[sqlite.create]__ - Creates a single record in the specified table
-* __[sqlite.read]__ - Reads multiple records from the specified table
-* __[sqlite.update]__ - Updates a single record in the specified table
-* __[sqlite.delete]__ - Deletes a single record in the specified table
-* __[sqlite.select]__ - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
-* __[sqlite.scalar]__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
-* __[sqlite.execute]__ - Executes an arbitrary SQL statement
-* __[sqlite.transaction.create]__ - Creates a new transaction
-* __[sqlite.transaction.commit]__ - Explicitly commits an open transaction
-* __[sqlite.transaction.rollback]__ - Explicitly rolls back an open transaction
-* __[sqlite.connections.flush]__ - Flushed cached schemas and connection pools
-* __[sqlite.backup]__ - Creates a backup of the currently active database
-* __[sqlite.load-extension]__ - Loads a SQLite extension into the current connection from child-node arguments
+* __[\[sqlite.connect\]](/reference/slots/sqlite/sqlite.connect/)__ - Connects to a database
+* __[\[sqlite.create\]](/reference/slots/sqlite/sqlite.create/)__ - Creates a single record in the specified table
+* __[\[sqlite.read\]](/reference/slots/sqlite/sqlite.read/)__ - Reads multiple records from the specified table
+* __[\[sqlite.update\]](/reference/slots/sqlite/sqlite.update/)__ - Updates a single record in the specified table
+* __[\[sqlite.delete\]](/reference/slots/sqlite/sqlite.delete/)__ - Deletes a single record in the specified table
+* __[\[sqlite.select\]](/reference/slots/sqlite/sqlite.select/)__ - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
+* __[\[sqlite.scalar\]](/reference/slots/sqlite/sqlite.scalar/)__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
+* __[\[sqlite.execute\]](/reference/slots/sqlite/sqlite.execute/)__ - Executes an arbitrary SQL statement
+* __[\[sqlite.transaction.create\]](/reference/slots/sqlite/sqlite.transaction.create/)__ - Creates a new transaction
+* __[\[sqlite.transaction.commit\]](/reference/slots/sqlite/sqlite.transaction.commit/)__ - Explicitly commits an open transaction
+* __[\[sqlite.transaction.rollback\]](/reference/slots/sqlite/sqlite.transaction.rollback/)__ - Explicitly rolls back an open transaction
+* __[\[sqlite.connections.flush\]](/reference/slots/sqlite/sqlite.connections.flush/)__ - Flushed cached schemas and connection pools
+* __[\[sqlite.backup\]](/reference/slots/sqlite/sqlite.backup/)__ - Creates a backup of the currently active database
+* __[\[sqlite.load-extension\]](/reference/slots/sqlite/sqlite.load-extension/)__ - Loads a SQLite extension into the current connection from child-node arguments
 * __[.db-factory.connection.sqlite]__ - Creates a SQLite connection factory (private C# slot)
 
 **Notice** - If you use any of the CRUD slots from above, the whole idea is that you can polymorphistically
@@ -36,23 +37,3 @@ slots, instead of the generic, and/or polymorphistic slots.
 Hence, please refer to the documentation for _"magic.data.common"_ to see the complete documentation for this
 project. If you need for instance documentation about the **[sqlite.connect]** slot you should look for the
 documentation for **[data.connect]**, since it's more or less the exact same documentation.
-
-## How to use [sqlite.backup]
-
-To create a backup of the database called for instance _"foo"_, you would use code resembling the following.
-
-```
-sqlite.connect:[generic|foo]
-   sqlite.backup:foo.backup
-```
-
-The above will create a backup of your foo database and store it at _"/data/foo.backup"_, allowing you to restore it if
-it for some reasons becomes invalid.
-
-## How to use [sqlite.load-extension]
-
-Loads a SQLite extension into the connection opened by **[sqlite.connect]**. The slot takes its arguments as children.
-
-* __[file]__ - Filename of the extension to load. Mandatory, the slot throws an exception if it is missing.
-* __[proc]__ - Optional entry point of the extension.
-* __[append-platform]__ - Boolean, defaults to `true`. If true, the slot appends `-arm64` or `-arm` to the filename when running on an ARM64 or ARM processor.

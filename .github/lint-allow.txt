@@ -1,0 +1,7 @@
+# Pages that are still over the size the lint check allows, one path per line.
+#
+# The home page is a landing page, and each of its sections links out to a page of its own, so it
+# is meant to be long. The others wait for their split, and each one is removed from here the
+# day it has been split.
+index.md
+plugins/magic.lambda/types/index.md

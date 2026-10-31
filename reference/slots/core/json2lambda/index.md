@@ -2,7 +2,7 @@
 title: "[json2lambda]"
 description: "json2lambda is a core slot of Magic Cloud. Transforms JSON into a lambda hierarchy."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/core/json2lambda/slot.json"
 ---
 
@@ -11,7 +11,24 @@ slot_json: "/reference/slots/core/json2lambda/slot.json"
 * **Value** (`json`), required: JSON text to transform
 * **Returns**: Resolves to the parsed lambda hierarchy as child nodes
 
-Guide: [How to use [json2lambda]](/plugins/magic.lambda.json/#how-to-use-json2lambda-and-lambda2json)
+### Guide
+
+<!-- guide -->
+This guide covers [`json2lambda`](/reference/slots/core/json2lambda/), [`lambda2json`](/reference/slots/core/lambda2json/) together.
+
+```
+.json:@"{""property"": ""value""}"
+json2lambda:x:-
+lambda2json:x:-/*
+```
+
+The **[lambda2json]** slot can optionally take a **[format]** argument, with a boolean _"true"_ value, which implies the
+resulting JSON will be indented and nicely formated, making it more readable.
+
+**Notice** - Although all JSON can be transformed into lambda, the opposite is not necessarily true. This is because
+lambda allows for having multiple nodes with the same name for instance, which would result in a JSON object with
+multiple properties having the same key. Hence, have this in mind as you persist your lambda objects into JSON.
+<!-- /guide -->
 
 ### JSON declaration
 

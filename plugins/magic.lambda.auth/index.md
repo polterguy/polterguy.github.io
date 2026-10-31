@@ -1,16 +1,17 @@
 ---
 title: magic.lambda.auth
+moved_anchors: {"how-to-use-authticketcreate": "/reference/slots/auth/auth.ticket.create/#guide", "how-to-use-authticketget": "/reference/slots/auth/auth.ticket.get/#guide", "how-to-use-authticketin-role": "/reference/slots/auth/auth.ticket.in-role/#guide", "how-to-use-authticketrefresh": "/reference/slots/auth/auth.ticket.refresh/#guide", "how-to-use-authticketverify": "/reference/slots/auth/auth.ticket.verify/#guide", "rs256-signing-and-authjwks": "/plugins/magic.lambda.auth/rs256-signing-and-auth-jwks/"}
 ---
 
 The magic.lambda.auth project contains authentication and authorization helper slots for Magic. The project allows you
 to create and consume JWT tokens, to secure your Magic cloudlet. The project contains the following slots.
 
-* __[auth.ticket.get]__ - Returns the JWT token's payload as a lambda structure, and also verifies the token in the process
-* __[auth.ticket.create]__ - Creates a new JWT token, that you can return to your client, any ways you see fit
-* __[auth.ticket.refresh]__ - Refreshes a JWT token. Useful for refreshing a token before it expires, which would require the user to login again
-* __[auth.ticket.verify]__ - Verifies a JWT token, and that the user is logged in, in addition to (optionally) that he belongs to one of the roles supplied as a comma separated list of roles
-* __[auth.ticket.in-role]__ - The same as **[auth.ticket.verify]**, but returns true or false, depending upon whether or not user is in any of the roles provided or not
-* __[auth.token.verify]__ - This slot accepts an external OpenID Connect token, for then to verify its authenticity and returning its email claim.
+* __[\[auth.ticket.get\]](/reference/slots/auth/auth.ticket.get/)__ - Returns the JWT token's payload as a lambda structure, and also verifies the token in the process
+* __[\[auth.ticket.create\]](/reference/slots/auth/auth.ticket.create/)__ - Creates a new JWT token, that you can return to your client, any ways you see fit
+* __[\[auth.ticket.refresh\]](/reference/slots/auth/auth.ticket.refresh/)__ - Refreshes a JWT token. Useful for refreshing a token before it expires, which would require the user to login again
+* __[\[auth.ticket.verify\]](/reference/slots/auth/auth.ticket.verify/)__ - Verifies a JWT token, and that the user is logged in, in addition to (optionally) that he belongs to one of the roles supplied as a comma separated list of roles
+* __[\[auth.ticket.in-role\]](/reference/slots/auth/auth.ticket.in-role/)__ - The same as **[auth.ticket.verify]**, but returns true or false, depending upon whether or not user is in any of the roles provided or not
+* __[\[auth.token.verify\]](/reference/slots/auth/auth.token.verify/)__ - This slot accepts an external OpenID Connect token, for then to verify its authenticity and returning its email claim.
 * __[auth.jwks]__ - Returns a public JSON Web Key Set for the RSA public key(s) you supply, allowing other systems to verify RS256 tokens created by Magic
 
 Notice, you will have to modify your `auth:secret` configuration setting, to provide a unique salt for your installation.
@@ -76,6 +77,7 @@ or an array of strings before associating your user with a role in your client l
 
 When you invoke **[auth.ticket.create]** or **[auth.ticket.refresh]** you can choose to either provide an **[expires]** which is a future date for when the ticket expires, or a **[duration]** which is a positive integer informing the slot of how many minutes the token should last before it's no longer valid.
 
+
 ## JWT tokens internals
 
 A JWT token is actually just 3 JSON objects, that have been base64 encoded, and afterwards each entity is separated
@@ -88,6 +90,7 @@ A JWT token has 3 parts.
 
 Unless an adversary knows your auth secret, it becomes impossible to create a valid JWT token. However, your token
 is still vulnerable for being stolen, so make sure you only return it over a secure HTTP connection.
+
 
 ## Using your JWT token
 
@@ -102,6 +105,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.xyz.qwerty
 You can see how Magic does this internally by inspecting what the Magic dashboard transmits to the backend
 after having authenticated using e.g. Chrome Developer Tools.
 
+
 ## Refreshing your JWT token
 
 JWT tokens have an expiration date. This is typically configured in your _"appsettings.json"_ file in your Magic
@@ -115,6 +119,7 @@ expiration date is reached, and replace your existing token with the new token r
 Magic contains a `refresh` token endpoint to achieve this. Internally this endpoint will use
 the **[auth.ticket.refresh]** slot to create a new token, where the only difference between your old and your
 new token is that it has a new expiration date.
+
 
 ## Securing your endpoints
 
@@ -132,6 +137,7 @@ this out, by pasting the following into your Hyperlambda evaluator in your dashb
 ```
 auth.ticket.verify:non-existing-role
 ```
+
 
 ## Inspecting your JWT token's payload
 
@@ -156,74 +162,6 @@ resulting in that an unauthorized user gains access to invoke an endpoint he sho
 The **[auth.ticket.get]** slot will also return any custom claims you have associated with your JWT token
 as it was created.
 
-## How to use [auth.ticket.get]
-
-This slot returns the currently authenticated user, its roles, and what claims the user has. Below is example
-usage. The slot returns the username as the value of its invocation and the roles as a **[roles]** list.
-
-```
-auth.ticket.get
-```
-
-Like all auth related slots, it only makes sense to invoke from within a context of having an authorised
-user, such as an HTTP endpoint intended to be invoked by an authenticated user.
-
-## How to use [auth.ticket.create]
-
-This slot creates a new JWT token for you, and accepts a username and optionally a list of roles. Below
-is some example usage.
-
-```
-auth.ticket.create
-   username:foo
-   roles
-      .:howdy
-      .:world
-```
-
-Like all auth related slots, it only makes sense to invoke from within a context of having an authorised
-user, such as an HTTP endpoint intended to be invoked by an authenticated user.
-
-## How to use [auth.ticket.refresh]
-
-This slot returns a new JWT token from an old existing (and valid) token. However, the new token will
-have a new expiration date, further into the future, allowing you to create a timer that occasionally
-invokes the server to create a new token, preventing the user from being logged out due to having his
-or her JWT token becoming expired.
-
-```
-auth.ticket.refresh
-```
-
-Like all auth related slots, it only makes sense to invoke from within a context of having an authorised
-user, such as an HTTP endpoint intended to be invoked by an authenticated user.
-
-## How to use [auth.ticket.verify]
-
-This slot verifies that the currently authenticated user belongs to one or more roles provided as
-a comma separated list of names. If the user does not belong to any of the specified roles, the
-slot will throw an exception. Below is example usage.
-
-```
-auth.ticket.verify:root,admin,guest
-```
-
-Like all auth related slots, it only makes sense to invoke from within a context of having an authorised
-user, such as an HTTP endpoint intended to be invoked by an authenticated user.
-
-## How to use [auth.ticket.in-role]
-
-This slot verifies that the currently authenticated user belongs to one or more roles provided as
-a comma separated list of names. Contrary to the **[auth.ticket.verify]** slot this slot will _not_
-throw an exception if the user does not belong to one or more roles, but simply return false.
-Below is example usage.
-
-```
-auth.ticket.in-role:root,admin,guest
-```
-
-Like all auth related slots, it only makes sense to invoke from within a context of having an authorised
-user, such as an HTTP endpoint intended to be invoked by an authenticated user.
 
 ## OpenID Connect [auth.token.verify]
 
@@ -240,55 +178,7 @@ auth.token.verify
 
 The slot will download well known configurations automatically, in addition to signing keys, which it will use to verify the token. Notice, the slot will accept all issuers by default, but it will return the issuer as **[issuer]** allowing you to check in your code if you trust the issuer or not after having invoked the slot before you generate an application specific token to return to the client.
 
-## RS256 signing and [auth.jwks]
 
-By default Magic signs JWT tokens with HS256, using the `magic:auth:secret` setting. This means anybody who can verify
-a token can also create one. If other systems need to verify your tokens, or you need different keys for different
-apps, you can sign tokens with RS256 by passing an RSA private key of at least 2048 bits into **[auth.ticket.create]**.
-Keys can be PEM encoded, or DER encoded as base64 or `byte[]`, which is what **[crypto.rsa.create-key]** returns.
+## Topics
 
-Magic never reads these keys from configuration. You load them yourself, using whatever logic you want to, from a file,
-a database, an environment variable, etc. This allows you to have any number of keys in one cloudlet, for instance one
-per app.
-
-```
-// Your own logic loading the private key belonging to the app.
-.private-key
-set-value:x:-
-   io.file.load:/etc/keys/my-app.private.pem
-
-auth.ticket.create
-   username:foo
-   roles
-      .:admin
-   private-key:x:@.private-key
-```
-
-The token is signed with RS256, and its `kid` header is the RFC 7638 thumbprint of the public key. To verify such a
-token you pass the public key into **[auth.token.read]**, at which point it ONLY accepts RS256 tokens signed by that
-key pair, and refuses tokens signed with the auth secret, with another key, or with any other algorithm.
-
-```
-auth.token.read:x:@.token
-   roles:admin
-   public-key:x:@.public-key
-```
-
-To allow other systems to verify your tokens, you can return a standard JWKS document from an endpoint of your own,
-by passing one or more public keys into **[auth.jwks]**.
-
-```
-auth.jwks
-   public-key:x:@.public-key-app-1
-   public-key:x:@.public-key-app-2
-```
-
-The above returns a **[keys]** node with one child per unique key, having **[kty]**, **[use]**, **[alg]**, **[kid]**,
-**[n]** and **[e]**. If you pass in a private key, only its public half is returned. Notice the following.
-
-* Without a **[private-key]** or **[public-key]** everything works exactly as before, using HS256 and the auth secret
-* If you pass in **[private-key]** or **[public-key]** and it has no value, for instance because your expression found no key, the slot throws instead of falling back to the auth secret
-* The JWT bearer middleware that authenticates HTTP requests is NOT changed, and only accepts HS256 tokens signed with the auth secret. An RS256 token is verified explicitly using **[auth.token.read]**
-* **[auth.ticket.refresh]** refreshes HS256 tokens only, and **[auth.token.read]** only checks roles, it does not return the token's claims. RS256 tokens are intended to be verified by other systems using your JWKS
-* Tokens carry no issuer or audience by default. If several apps share one key, add your own claims and check them
-* Rotating a key is up to you. Publish both the old and the new public key in your JWKS while tokens signed by the old key are still valid
+* [RS256 signing and [auth.jwks]](/plugins/magic.lambda.auth/rs256-signing-and-auth-jwks/) - By default Magic signs JWT tokens with HS256, using the magic:auth:secret setting.

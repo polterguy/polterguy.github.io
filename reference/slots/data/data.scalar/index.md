@@ -2,7 +2,7 @@
 title: "[data.scalar]"
 description: "data.scalar is a slot in the data namespace of Magic Cloud. Executes SQL and returns a scalar value from the current database connection."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/data/data.scalar/slot.json"
 ---
 
@@ -21,7 +21,27 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[database-type]` | string | no | Database adapter to use instead of the configured default. |
 | _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 
-Guide: [How to use [data.scalar]](/plugins/magic.data.common/#how-to-use-datascalar)
+### Guide
+
+<!-- guide -->
+This slot is similar to the **[data.select]** slot, but will only return one value as the
+value of its node after execution. This slot is typically used for aggregate results. You can see
+an example below.
+
+```
+data.connect:sakila
+   data.scalar:select count(*) from actor
+```
+
+After execution, your result will resemble the following.
+
+```
+data.connect
+   data.scalar:long:200
+```
+
+Yet again you should prefer the **[data.\*]** slots if you can.
+<!-- /guide -->
 
 ### JSON declaration
 

@@ -2,7 +2,7 @@
 title: "[math.subtract]"
 description: "math.subtract is a slot in the math namespace of Magic Cloud. Subtracts numeric values."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/math/math.subtract/slot.json"
 ---
 
@@ -18,7 +18,22 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | number | yes | Numeric operand evaluated before calculating the result. |
 
-Guide: [How to use [math.subtract]](/plugins/magic.lambda.math/#how-to-use-mathsubtract)
+### Guide
+
+<!-- guide -->
+This slot subtracts two or more values with each other, and can be given as many arguments as you wish,
+such as the following illustrates.
+
+```
+.arg:int:5
+math.subtract
+   get-value:x:@.arg
+   .:int:2
+```
+
+It accepts both slot invocations, retrieving some value by invoking a slot, in addition to static values such as
+illustrated above where we provide the number 2 as one of its values.
+<!-- /guide -->
 
 ### JSON declaration
 

@@ -2,7 +2,7 @@
 title: "[validators.default]"
 description: "validators.default is a slot in the validators namespace of Magic Cloud. Adds default child nodes to the nodes selected by the input expression."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/validators/validators.default/slot.json"
 ---
 
@@ -18,7 +18,20 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | object | yes | Default child node cloned into each selected node when missing. Can be repeated. |
 
-Guide: [How to use [validators.default]](/plugins/magic.lambda.validators/#how-to-use-validatorsdefault)
+### Guide
+
+<!-- guide -->
+This validator takes one or more arguments with any name and any value, and if this node does not exist as
+a child of the node collection specified as its expression value, it appends the node to it.
+If the node exists but has a null value, it sets its value to the value of the argument.
+
+
+```
+.arguments
+validators.default:x:@.arguments
+   foo1:bar1
+```
+<!-- /guide -->
 
 ### JSON declaration
 

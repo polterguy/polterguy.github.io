@@ -2,7 +2,7 @@
 title: "[strings.replace-not-of]"
 description: "strings.replace-not-of is a slot in the strings namespace of Magic Cloud. Replaces characters not found in the supplied allow-list."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/strings/strings.replace-not-of/slot.json"
 ---
 
@@ -20,7 +20,25 @@ Required arguments come first, then the optional ones in the order they are decl
 | _unnamed child node_ | string | yes | Allowed characters; any character not in this set is replaced. |
 | _unnamed child node_ | string | yes | Replacement text for non-matching characters. |
 
-Guide: [How to use [strings.replace-not-of]](/plugins/magic.lambda.strings/#how-to-use-stringsreplace-not-of)
+### Guide
+
+<!-- guide -->
+This slot will replace every single character in your original string, that cannot be found in its first
+argument, with the value of its second argument. This slot is useful if you want to remove all characters
+that cannot be found in another character set, such as the following illustrates.
+
+```
+strings.replace-not-of:foo bar1howdy
+   .:abcdefghijklmnopqrstuvwxyz
+   .:-
+```
+
+The above will result in the following result 
+
+```
+strings.replace-not-of:foo-bar-howdy
+```
+<!-- /guide -->
 
 ### JSON declaration
 

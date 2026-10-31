@@ -31,7 +31,7 @@ for-each:x:@.data/*
    log.info:x:@.dp/#
 ```
 
-The above code _"declares"_ a `for-each` loop, that iterates through each of our **[.data]** node's children, and creates a log entry with its value as it iterates. The above invocation to **[for-each]** is referred to as a _"slot invocation"_, and the **[for-each]** slot is implemented in C#, specifically in the [magic.lambda](/plugins/magic.lambda/#how-to-use-for-each) project. Typically we refer to such slots in Magic's documentation using square brackets and bold text.
+The above code _"declares"_ a `for-each` loop, that iterates through each of our **[.data]** node's children, and creates a log entry with its value as it iterates. The above invocation to **[for-each]** is referred to as a _"slot invocation"_, and the **[for-each]** slot is implemented in C#, specifically in the [magic.lambda](/reference/slots/core/for-each/) project. Typically we refer to such slots in Magic's documentation using square brackets and bold text.
 
 Hyperlambda contains slots for all the most important programming constructs, such as **[if]**, **[while]**, **[slots.create]**, **[execute-file]**, etc - Allowing you to use it as if it was a programming language, even though technically it's not. Most of these slots are declared in the project called _"magic.lambda"_ - But Magic actually contains almost 40 satellite projects, most of which contain separate slots, that are somehow extending Magic with things such as database functions, file functions, etc.
 
@@ -122,7 +122,7 @@ Technically Hyperlambda doesn't have variables. This is because _everything_ is 
 
 Without the dot character in our above example, the Hyperlambda execution engine would attempt to invoke **[data]** as a _"slot"_. Since there's no slot named **[data]**, this would result in a runtime error or an exception.
 
-* [Read more about lambda expressions](/plugins/magic.node/#lambda-expressions)
+* [Read more about lambda expressions](/plugins/magic.node/lambda-expressions/)
 
 ## Hyperlambda types
 
@@ -136,13 +136,13 @@ Hyperlambda is a functional programming language and does not allow for declarin
 
 String is the default type unless another type is explicitly declared, and strings only need `"` or `'` if they contain colons (`:`) or quoting characters as a part of their values. Strings are treated the same way as in C#, except Hyperlambda doesn't support extrapolated strings, only `@"` and `"` types of strings.
 
-* [Read more about Hyperlambda types](/plugins/magic.node/#hyperlambda-types)
+* [Read more about Hyperlambda types](/plugins/magic.node/hyperlambda-types/)
 
 ## Hyperlambda execution
 
 You can use the [Hyperlambda Playground](/dashboard/hyperlambda-playground/) to play with Hyperlambda, and execute snippets of Hyperlambda code in _"immediate"_ mode.
 
-The Hyperlambda execution engine, or the **[eval]** slot from [magic.lambda](/plugins/magic.lambda/#how-to-use-eval), executes nodes sequentially from top to bottom, assuming everything is a slot, unless it starts with a `.` character. Most slots require arguments, which sometimes are given in the form of lambda objects, such as illustrated below.
+The Hyperlambda execution engine, or the **[eval]** slot from [magic.lambda](/reference/slots/core/eval/), executes nodes sequentially from top to bottom, assuming everything is a slot, unless it starts with a `.` character. Most slots require arguments, which sometimes are given in the form of lambda objects, such as illustrated below.
 
 ```
 .source
@@ -167,7 +167,7 @@ add:x:@.destination
 
 As you can see we created a copy of each child node of our **[.source]** node, and appended these into our **[.destination]** node.
 
-* [Read more about eval](/plugins/magic.lambda/#how-to-use-eval)
+* [Read more about eval](/reference/slots/core/eval/)
 
 ## Reference documentation
 

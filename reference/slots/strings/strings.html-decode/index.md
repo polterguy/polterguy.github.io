@@ -2,7 +2,7 @@
 title: "[strings.html-decode]"
 description: "strings.html-decode is a slot in the strings namespace of Magic Cloud. HTML decodes the specified string."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/strings/strings.html-decode/slot.json"
 ---
 
@@ -11,7 +11,12 @@ slot_json: "/reference/slots/strings/strings.html-decode/slot.json"
 * **Value** (`html-encoded`), required: HTML encoded text to decode
 * **Returns**: Resolves to the decoded HTML markup
 
-Guide: [How to use [strings.html-decode]](/plugins/magic.lambda.strings/#how-to-use-stringshtml-decode)
+### Guide
+
+<!-- guide -->
+HTML decodes a string, the opposite of **[strings.html-encode]**. The slot requires a value, which can be a
+constant or an expression, and replaces its value with the decoded string.
+<!-- /guide -->
 
 ### JSON declaration
 

@@ -2,7 +2,7 @@
 title: "[date.from-unix]"
 description: "date.from-unix is a slot in the date namespace of Magic Cloud. Converts a Unix timestamp into a DateTime value."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/date/date.from-unix/slot.json"
 ---
 
@@ -11,7 +11,15 @@ slot_json: "/reference/slots/date/date.from-unix/slot.json"
 * **Value** (`unix-timestamp,integer,number`), required: Unix timestamp to convert
 * **Returns**: Resolves to the date represented by the supplied Unix timestamp
 
-Guide: [How to use [date.from-unix]](/plugins/magic.lambda.dates/#how-to-use-datefrom-unix)
+### Guide
+
+<!-- guide -->
+This slot takes a Unix date and time stamp, and returns a typed date object as its result. Below is an example.
+
+```
+date.from-unix:1674132584
+```
+<!-- /guide -->
 
 ### JSON declaration
 

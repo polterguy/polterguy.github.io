@@ -6,7 +6,8 @@
 #   https://github.com/polterguy/magic, to plugins/<plugin>/index.md, adapted for Jekyll.
 #   The README is the source of truth.
 # * build-slot-reference.py asks a read-only Hyperlambda endpoint on hyperlambda.dev for
-#   every compiled slot and renders reference/slots/ from the answer. The endpoint is
+#   every compiled slot and renders reference/slots/ from the answer, with each slot's
+#   "How to use" guide from the README placed on the slot's own page. The endpoint is
 #   public and throttled, so no credentials are needed. Nothing is built, and no source
 #   code is parsed.
 #
@@ -49,7 +50,11 @@ jobs:
 
       # Fails, and writes nothing, when the endpoint answers with too few slots.
       - name: Generate slot reference
-        run: python3 .github/scripts/build-slot-reference.py
+        run: python3 .github/scripts/build-slot-reference.py --magic magic
+
+      # Fails when a link or anchor is broken, a page is oversized, or README text got lost.
+      - name: Lint docs
+        run: python3 .github/scripts/lint-docs.py --magic magic
 
       # Only commit when something actually changed.
       - name: Commit if changed

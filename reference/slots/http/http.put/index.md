@@ -2,7 +2,7 @@
 title: "[http.put]"
 description: "http.put is a slot in the http namespace of Magic Cloud. Issues an HTTP PUT to the specified URL with a payload; commonly used to replace a remote resource in full."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/http/http.put/slot.json"
 ---
 
@@ -42,7 +42,28 @@ Required arguments come first, then the optional ones in the order they are decl
 
 * **ExactlyOneOf**: Provide exactly one of [payload] or [filename] as the request body source (`[payload]`, `[filename]`)
 
-Guide: [How to use [http.put]](/plugins/magic.lambda.http/#how-to-use-httpput)
+### Guide
+
+<!-- guide -->
+This slot accepts a URL as its value, and optionally HTTP headers as a **[headers]** argument, and a mandatory
+**[payload]** argument, being whatever payload you want to transfer to the endpoint. In its simplest version
+it would resemble something such as the following.
+
+```
+http.put:"https://some_website.com/your-put-endpoint"
+   payload:@"{""foo"": ""bar""}"
+```
+
+The slot returns the result of the specified HTTP PUT invocation, including the HTTP headers returned from the endpoint,
+and status code, in addition to the response object itself. To automatically convert the response object to whatever
+type of response your URL returns, provide a **[convert]** argument, and set its value to true, such as follows.
+
+```
+http.put:"https://some_website.com/your-put-endpoint"
+   payload:@"{""foo"": ""bar""}"
+   convert:true
+```
+<!-- /guide -->
 
 ### JSON declaration
 

@@ -2,7 +2,7 @@
 title: "[mime.list]"
 description: "mime.list is a slot in the mime namespace of Magic Cloud. Lists registered MIME type mappings."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/mime/mime.list/slot.json"
 ---
 
@@ -10,7 +10,13 @@ slot_json: "/reference/slots/mime/mime.list/slot.json"
 
 * **Returns**: Resolves to one named child node per registered MIME type mapping, where the child name is the file extension and the value is the MIME type
 
-Guide: [How to use [mime.list]](/plugins/magic.endpoint/#how-to-use-mimelist)
+### Guide
+
+<!-- guide -->
+This slot lists all MIME type mappings registered in the current installation, including those added with **[mime.add]**.
+It returns one child node for each mapping, where the name of the child node is the file extension and its value is the MIME type.
+It takes no arguments.
+<!-- /guide -->
 
 ### JSON declaration
 

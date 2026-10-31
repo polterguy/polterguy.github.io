@@ -1,23 +1,24 @@
 ---
 title: magic.lambda.logging
+moved_anchors: {"how-to-use-logtimeshift": "/reference/slots/log/log.timeshift/#guide", "querying-your-log": "/plugins/magic.lambda.logging/querying-your-log/"}
 ---
 
 This project contains logging wrapper slots for Magic. More specifically, this project provides the following
 slots allowing you to create log entries.
 
-* __[log.info]__ - Information log entries, typically smaller pieces of information
-* __[log.debug]__ - Debug log entries, typically additional debugging information not enabled in production
-* __[log.error]__ - Error log entries, typically exceptions
-* __[log.fatal]__ - Fatal log entries, from which the application cannot recover from
+* __[\[log.info\]](/reference/slots/log/log.info/)__ - Information log entries, typically smaller pieces of information
+* __[\[log.debug\]](/reference/slots/log/log.debug/)__ - Debug log entries, typically additional debugging information not enabled in production
+* __[\[log.error\]](/reference/slots/log/log.error/)__ - Error log entries, typically exceptions
+* __[\[log.fatal\]](/reference/slots/log/log.fatal/)__ - Fatal log entries, from which the application cannot recover from
 
 In addition to the above slots there are also slots that allows you to retrieve log items, and/or some
 basic statistics from your log. These can be found below.
 
-* __[log.count]__ - Counts number of log items, optionally matching the specified filter condition
-* __[log.get]__ - Returns the log item with the specified id
-* __[log.query]__ - Returns a list of log items according to its arguments
-* __[log.capabilities]__ - Returns the capabilities of the log implementation
-* __[log.timeshift]__ - Aggregates log entries into time buckets, one per day for the last two weeks
+* __[\[log.count\]](/reference/slots/log/log.count/)__ - Counts number of log items, optionally matching the specified filter condition
+* __[\[log.get\]](/reference/slots/log/log.get/)__ - Returns the log item with the specified id
+* __[\[log.query\]](/reference/slots/log/log.query/)__ - Returns a list of log items according to its arguments
+* __[\[log.capabilities\]](/reference/slots/log/log.capabilities/)__ - Returns the capabilities of the log implementation
+* __[\[log.timeshift\]](/reference/slots/log/log.timeshift/)__ - Aggregates log entries into time buckets, one per day for the last two weeks
 
 By default, this project will log into your `magic.log_entries` database/table, using either MySQL, PostgreSQL,
 Microsoft SQL Server or SQLite. This allows you to use SQL to generate statistics on top of your logs.
@@ -47,12 +48,14 @@ to each log entry. Notice, if you don't provide a value to your log invocation, 
 log entry, but all arguments will rather be concatenated as a single string and end up in the _"content"_ parts of
 your log entry after having been evaluated.
 
+
 ## Exception logging
 
 The **[log.error]** and **[log.fatal]** slots give you the option of logging an exception stack trace, by parametrising
 your invocation with an **[exception]** argument, which will _not_ be assumed to be meta information, but rather end up
 in the _"exception"_ column as you create the log item. All other parameters will still be evaluated or used as meta
 information.
+
 
 ## Log level configuration
 
@@ -83,49 +86,7 @@ least _"info"_.
 
 The above value will for instance log everything except invocations to **[log.debug]**.
 
-## Querying your log
 
-**Notice** - To see the capabilities of your particular log implementation please invoke **[log.capabilities]** and verify
-your particular log implementation can actually do what you need for it to do, since not all implementations have the
-same capabilities - Implying things such as filtering log items according to content, and/or timeshifting log items, etc,
-might not be implemented for your particular implementation.
+## Topics
 
-To retrieve log items sequentially you can use **[log.query]**. This slot can optionally take a **[from]** argument
-being the id of an existing log item from where to start retrieving items, and a **[max]** argument being the maximum
-number of records to return. If no **[max]** argument is specified, the default value of this is 10. In addition the
-invocation can be fiven a string as its value, which if given must match the content of your log items for an item
-to be returned. Below is an example of usage.
-
-```
-log.query:"We successfully authenticated user 'root'"
-   from:555
-   max:20
-```
-
-The above will return log items starting from id 554 and down, and return only 20 records, and all returned records
-will have a content value of _"We successfully authenticated user 'root'"_. To return a single log item you can use
-**[log.get]**  and pass in the id of the log item you want to retrieve as its value.
-
-**Notice** - If your particular log implementation does not support querying you _cannot_ query items
-according to content as illustrated above, but rather only page items. Invoke **[log.capabilities]** to see if
-your implementation supports querying before relying upon its existence.
-
-## How to use [log.timeshift]
-
-This slot counts the log items matching a search string per day, for the last two weeks, and is useful for
-creating a time series of how often something is logged. The value of the slot is mandatory, and must be a
-string a log item's content is matched against, or a log entry type. As with filtering, you should invoke
-**[log.capabilities]** to verify that your log implementation has `can-timeshift` set to true before relying upon it.
-
-```
-log.timeshift:tick
-```
-
-The slot returns one unnamed child node per day, starting with today (UTC) and moving backwards in time, and
-each child has the following two arguments.
-
-* __[when]__ - The date of the bucket, formatted as `yyyy-MM-dd`
-* __[count]__ - Number of matching log items for that day, which is 0 for days without matches
-
-If `tick` was logged twice today, the first returned node would have today's date as its **[when]** and 2 as its
-**[count]**, while the second node, representing yesterday, would have a **[count]** of 0.
+* [Querying your log](/plugins/magic.lambda.logging/querying-your-log/) - your particular log implementation can actually do what you need for it to do, since not all implementations have the same capabilities - Implying things such as filtering log items according to conte

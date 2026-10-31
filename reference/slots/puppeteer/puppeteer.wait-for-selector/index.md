@@ -2,7 +2,7 @@
 title: "[puppeteer.wait-for-selector]"
 description: "puppeteer.wait-for-selector is a slot in the puppeteer namespace of Magic Cloud. Waits for a selector to appear."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/puppeteer/puppeteer.wait-for-selector/slot.json"
 ---
 
@@ -22,7 +22,27 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[visible]` | bool | no | Wait until selector is visible. |
 | `[hidden]` | bool | no | Wait until selector is hidden. |
 
-Guide: [How to use [puppeteer.wait-for-selector]](/plugins/magic.lambda.puppeteer/#puppeteerwait-for-selector)
+### Guide
+
+<!-- guide -->
+Waits until a selector appears in the DOM.
+
+Arguments:
+
+* Slot value - Session identifier.
+* `selector` - CSS selector to wait for.
+* `timeout` - Timeout in milliseconds.
+* `visible` - Boolean. Require element to be visible.
+* `hidden` - Boolean. Require element to be hidden.
+
+Examples:
+
+```
+puppeteer.wait-for-selector:SESSION_ID
+   selector:"#name"
+   visible:true
+```
+<!-- /guide -->
 
 ### JSON declaration
 

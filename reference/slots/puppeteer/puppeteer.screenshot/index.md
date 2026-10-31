@@ -2,7 +2,7 @@
 title: "[puppeteer.screenshot]"
 description: "puppeteer.screenshot is a slot in the puppeteer namespace of Magic Cloud. Captures a screenshot of the page."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/puppeteer/puppeteer.screenshot/slot.json"
 ---
 
@@ -23,7 +23,34 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[type]` | string | no | Image type. |
 | `[quality]` | int | no | JPEG/WebP image quality. |
 
-Guide: [How to use [puppeteer.screenshot]](/plugins/magic.lambda.puppeteer/#puppeteerscreenshot)
+### Guide
+
+<!-- guide -->
+Saves a screenshot to disk.
+
+Arguments:
+
+* Slot value - Session identifier.
+* `filename` - Output file path.
+* `full-page` - Boolean. Capture full scrollable page.
+* `type` - `png` or `jpeg`.
+* `quality` - JPEG quality 0-100 (only for `jpeg`).
+
+Examples:
+
+```
+puppeteer.screenshot:SESSION_ID
+   filename:"/etc/tmp/example.png"
+   full-page:true
+```
+
+```
+puppeteer.screenshot:SESSION_ID
+   filename:"/etc/tmp/example.jpg"
+   type:jpeg
+   quality:85
+```
+<!-- /guide -->
 
 ### JSON declaration
 

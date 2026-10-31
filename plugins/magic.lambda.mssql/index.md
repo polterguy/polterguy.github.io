@@ -1,5 +1,6 @@
 ---
 title: magic.lambda.mssql
+moved_anchors: {"how-to-use-mssqlexecute-batch": "/reference/slots/mssql/mssql.execute-batch/#guide"}
 ---
 
 This is the Microsoft SQL Server data adapter for Magic. This project allows you to provide a semantic
@@ -8,18 +9,18 @@ for you, for all basic types of CRUD SQL statements. In addition, it provides sl
 database connection, and such allows you to declare your own SQL statements, to be executed towards a
 SQL Server database. Slots this project contains are as follows.
 
-* __[mssql.connect]__ - Connects to a database
-* __[mssql.create]__ - Creates a single record in the specified table
-* __[mssql.read]__ - Reads multiple records from the specified table
-* __[mssql.update]__ - Updates a single record in the specified table
-* __[mssql.delete]__ - Deletes a single record in the specified table
-* __[mssql.select]__ - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
-* __[mssql.scalar]__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
-* __[mssql.execute]__ - Executes an arbitrary SQL statement
-* __[mssql.execute-batch]__ - Executes a batch SQL script on the current SQL Server connection
-* __[mssql.transaction.create]__ - Creates a new transaction
-* __[mssql.transaction.commit]__ - Explicitly commits an open transaction
-* __[mssql.transaction.rollback]__ - Explicitly rolls back an open transaction
+* __[\[mssql.connect\]](/reference/slots/mssql/mssql.connect/)__ - Connects to a database
+* __[\[mssql.create\]](/reference/slots/mssql/mssql.create/)__ - Creates a single record in the specified table
+* __[\[mssql.read\]](/reference/slots/mssql/mssql.read/)__ - Reads multiple records from the specified table
+* __[\[mssql.update\]](/reference/slots/mssql/mssql.update/)__ - Updates a single record in the specified table
+* __[\[mssql.delete\]](/reference/slots/mssql/mssql.delete/)__ - Deletes a single record in the specified table
+* __[\[mssql.select\]](/reference/slots/mssql/mssql.select/)__ - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
+* __[\[mssql.scalar\]](/reference/slots/mssql/mssql.scalar/)__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
+* __[\[mssql.execute\]](/reference/slots/mssql/mssql.execute/)__ - Executes an arbitrary SQL statement
+* __[\[mssql.execute-batch\]](/reference/slots/mssql/mssql.execute-batch/)__ - Executes a batch SQL script on the current SQL Server connection
+* __[\[mssql.transaction.create\]](/reference/slots/mssql/mssql.transaction.create/)__ - Creates a new transaction
+* __[\[mssql.transaction.commit\]](/reference/slots/mssql/mssql.transaction.commit/)__ - Explicitly commits an open transaction
+* __[\[mssql.transaction.rollback\]](/reference/slots/mssql/mssql.transaction.rollback/)__ - Explicitly rolls back an open transaction
 * __[.db-factory.connection.mssql]__ - Creates a SQL Server connection factory (private C# slot)
 
 **Notice** - If you use any of the CRUD slots from above, the whole idea is that you can polymorphistically
@@ -34,15 +35,3 @@ specific slots, instead of the generic, and/or polymorphistic slots.
 Hence, please refer to the documentation for [_"magic.data.common"_](/plugins/magic.data.common/) to see the complete documentation for this
 project. If you need for instance documentation about the **[mssql.connect]** slot you should look for the
 documentation for **[data.connect]**, since it's more or less the exact same documentation.
-
-## How to use [mssql.execute-batch]
-
-Executes a batch SQL script, such as a schema creation script, on the SQL Server connection opened by **[mssql.connect]**.
-SQL Server cannot execute scripts containing `GO` separators as one single command, so this slot splits the script
-on every line consisting only of `GO` (case insensitive), and executes each part as its own command. This is the
-difference between this slot and **[mssql.execute]**, which executes its SQL as one single command.
-
-* __[value]__ - The batch SQL script to execute. Can be a constant or an expression.
-
-After execution the slot's value is `null`, and it has one child per executed batch, each containing a
-**[Records affected]** node.

@@ -2,7 +2,7 @@
 title: "[html2lambda]"
 description: "html2lambda is a core slot of Magic Cloud. Transforms HTML into a lambda hierarchy."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/core/html2lambda/slot.json"
 ---
 
@@ -11,7 +11,48 @@ slot_json: "/reference/slots/core/html2lambda/slot.json"
 * **Value** (`html`), required: HTML markup to transform
 * **Returns**: Resolves to the parsed HTML hierarchy as child nodes
 
-Guide: [How to use [html2lambda]](/plugins/magic.lambda.html/#how-to-use-html2lambda)
+### Guide
+
+<!-- guide -->
+```
+.html:@"<html>
+  <head>
+    <title>Howdy</title>
+  </head>
+  <body>
+    <p class=""foo"">Howdy <strong>world</strong> - This is cool!</p>
+  </body>
+</html>"
+
+html2lambda:x:-
+```
+
+The above results in something resembling the following.
+
+```
+html2lambda
+   html
+      head
+         title
+            #text:Howdy
+      body
+         p
+            @class:foo
+            #text:"Howdy "
+            strong
+               #text:world
+            #text:" - This is cool!"
+```
+
+Attributes starts out with the `@` character, children nodes does not - While text content inside of elements will
+have the name of `#text`. This implies you'll need to use escaped expression iterators when traversing the resulting node
+lambda object. For instance, to retrieve the above `title` element's inner text, you could use something such as the
+following.
+
+```
+get-value:x:-/**/title/*\#text
+```
+<!-- /guide -->
 
 ### JSON declaration
 

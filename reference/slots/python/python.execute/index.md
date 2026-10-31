@@ -2,7 +2,7 @@
 title: "[python.execute]"
 description: "python.execute is a slot in the python namespace of Magic Cloud. Runs a Python script or file in a subprocess and captures stdout, stderr, and exit code."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/python/python.execute/slot.json"
 ---
 
@@ -28,7 +28,38 @@ Required arguments come first, then the optional ones in the order they are decl
 
 * **ExactlyOneOf**: Exactly one code source must be supplied (`[code]`, `[file]`)
 
-Guide: [How to use [python.execute]](/plugins/magic.lambda.python/#how-to-use-pythonexecute)
+### Guide
+
+<!-- guide -->
+You must provide either `code` or `file`.
+
+```
+python.execute
+   code:@"
+print('hello from python')
+"
+```
+
+```
+python.execute
+   file:/modules/scripts/hello.py
+   args
+      .:--name
+      .:Magic
+```
+
+Optional arguments:
+
+* __[args]__ - Either a string of arguments or child nodes (each child is one argument)
+* __[stdin]__ - String passed to stdin
+* __[working-directory]__ - Working directory (must be under `/files/`)
+* __[timeout]__ - Timeout in seconds (default 30)
+
+Notes:
+
+* File paths are resolved under `/files/` using `IRootResolver`.
+* Non-zero exit codes throw a Hyperlambda exception with stderr/stdout.
+<!-- /guide -->
 
 ### JSON declaration
 

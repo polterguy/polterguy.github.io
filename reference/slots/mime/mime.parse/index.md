@@ -2,7 +2,7 @@
 title: "[mime.parse]"
 description: "mime.parse is a slot in the mime namespace of Magic Cloud. Parses a raw MIME message into a lambda tree of headers and body parts; commonly used for email or multipart payloads."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/mime/mime.parse/slot.json"
 ---
 
@@ -25,7 +25,35 @@ slot_json: "/reference/slots/mime/mime.parse/slot.json"
 
 _Nodes nested deeper than 6 levels, and nodes that repeat one of their own ancestors, are not listed. The JSON declaration below has all of them._
 
-Guide: [How to use [mime.parse]](/plugins/magic.lambda.mime/#how-to-use-mimeparse)
+### Guide
+
+<!-- guide -->
+Below is an example of how parsing a MIME message might look like using **[mime.parse]**.
+
+```
+// Actual message
+.msg:"Content-Type: multipart/mixed; boundary=\"=-3O9TzEjuVDwt7d5uGDkV/Q==\"\n\n--=-3O9TzEjuVDwt7d5uGDkV/Q==\nContent-Type: text/plain\nContent-Disposition: attachment; filename=README.md\n\n# Your dynamic files folder\n\nSome README.md file\n\n--=-3O9TzEjuVDwt7d5uGDkV/Q==\nContent-Type: text/plain\n\nBar\n--=-3O9TzEjuVDwt7d5uGDkV/Q==--\n"
+
+// Parsing the above message
+mime.parse:x:@.msg
+```
+
+After evaluating the above, you'll end up with something resembling the following.
+
+```
+mime.parse:multipart/mixed
+   entity:text/plain
+      headers
+         Content-Disposition:attachment; filename=README.md
+      content:"# Your dynamic files folder\n\nSome README.md file\n"
+   entity:text/plain
+      content:Bar
+```
+
+Notice how the slot creates a tree structure, perfectly resembling your original MIME message. It will also take care of
+MIME headers for you, adding these into a **[headers]** collection, on a per MIME entity basis, depending upon whether or not
+your message actually contains headers or not.
+<!-- /guide -->
 
 ### JSON declaration
 

@@ -2,7 +2,7 @@
 title: "[strings.url-encode]"
 description: "strings.url-encode is a slot in the strings namespace of Magic Cloud. URL encodes the specified string."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/strings/strings.url-encode/slot.json"
 ---
 
@@ -11,7 +11,21 @@ slot_json: "/reference/slots/strings/strings.url-encode/slot.json"
 * **Value** (`url-component,text`), required: Text to encode
 * **Returns**: Resolves to the URL-encoded string
 
-Guide: [How to use [strings.url-encode]](/plugins/magic.lambda.strings/#how-to-use-stringsurl-encode)
+### Guide
+
+<!-- guide -->
+URL encodes a string. Example can be found below.
+
+```
+strings.url-encode:thomas@ainiro.io
+```
+
+Resulting in the following after execution.
+
+```
+strings.url-encode:thomas%40ainiro.io
+```
+<!-- /guide -->
 
 ### JSON declaration
 

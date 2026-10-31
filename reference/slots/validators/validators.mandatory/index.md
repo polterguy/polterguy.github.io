@@ -2,7 +2,7 @@
 title: "[validators.mandatory]"
 description: "validators.mandatory is a slot in the validators namespace of Magic Cloud. Validates that the input value or resolved expression result is present, throwing if validation fails."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/validators/validators.mandatory/slot.json"
 ---
 
@@ -10,7 +10,16 @@ slot_json: "/reference/slots/validators/validators.mandatory/slot.json"
 
 * **Value** (`validated-value`), required: Literal value or expression to validate as mandatory
 
-Guide: [How to use [validators.mandatory]](/plugins/magic.lambda.validators/#how-to-use-validatorsmandatory)
+### Guide
+
+<!-- guide -->
+This slot simply throws an exception if the specified argument is not supplied. Below is example
+usage.
+
+```
+validators.mandatory:x:@.arguments/*/mandatory_arg
+```
+<!-- /guide -->
 
 ### JSON declaration
 

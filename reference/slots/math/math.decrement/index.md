@@ -2,7 +2,7 @@
 title: "[math.decrement]"
 description: "math.decrement is a slot in the math namespace of Magic Cloud. Decrements the numeric nodes selected by the input expression."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/math/math.decrement/slot.json"
 ---
 
@@ -18,7 +18,25 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | `[step]` | number | no | Amount to add to or subtract from each selected node. Default: `1`. |
 
-Guide: [How to use [math.decrement]](/plugins/magic.lambda.math/#how-to-use-mathdecrement)
+### Guide
+
+<!-- guide -->
+This slot decrements the value of some expression in place, by mutating the value of the node its expression is
+leading to.
+
+```
+.arg:int:5
+math.decrement:x:@.arg
+```
+
+It can optionally be given a **[step]** argument, such as illustrated below.
+
+```
+.arg:int:5
+math.decrement:x:@.arg
+   .:int:2
+```
+<!-- /guide -->
 
 ### JSON declaration
 

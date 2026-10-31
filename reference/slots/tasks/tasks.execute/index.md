@@ -2,7 +2,7 @@
 title: "[tasks.execute]"
 description: "tasks.execute is a slot in the tasks namespace of Magic Cloud. Runs a stored task synchronously right now, ignoring its schedule; handy for ad-hoc invocations or testing."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/tasks/tasks.execute/slot.json"
 ---
 
@@ -10,7 +10,19 @@ slot_json: "/reference/slots/tasks/tasks.execute/slot.json"
 
 * **Value** (`task-id`), required: Task ID to execute
 
-Guide: [How to use [tasks.execute]](/plugins/magic.lambda.scheduler/#how-to-use-tasksexecute)
+### Guide
+
+<!-- guide -->
+You can explicitly execute a persisted task by invoking **[tasks.execute]** and pass
+in the ID of your task. Below is an example, that assumes you have created the above _"foo-bar-task-4"_ task
+first.
+
+```
+tasks.execute:foo-bar-task-4
+```
+
+Notice, if you try to execute a non-existing task, an exception will be thrown.
+<!-- /guide -->
 
 ### JSON declaration
 

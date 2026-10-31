@@ -2,7 +2,7 @@
 title: "[slots.vocabulary]"
 description: "slots.vocabulary is a slot in the slots namespace of Magic Cloud. Lists dynamically created slots."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/slots/slots.vocabulary/slot.json"
 ---
 
@@ -11,7 +11,16 @@ slot_json: "/reference/slots/slots/slots.vocabulary/slot.json"
 * **Value** (`dynamic-slot-name`), optional: Optional filter for dynamic slot names
 * **Returns**: Resolves to available dynamic slot names as child nodes
 
-Guide: [How to use [slots.vocabulary]](/plugins/magic.lambda.slots/#how-to-use-slotsvocabulary)
+### Guide
+
+<!-- guide -->
+Returns the names of all dynamically created slots to caller. Example can be
+found below.
+
+```
+slots.vocabulary
+```
+<!-- /guide -->
 
 ### JSON declaration
 

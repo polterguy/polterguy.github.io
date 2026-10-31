@@ -2,7 +2,7 @@
 title: "[math.sqrt]"
 description: "math.sqrt is a slot in the math namespace of Magic Cloud. Calculates the square root of the specified value."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/math/math.sqrt/slot.json"
 ---
 
@@ -11,7 +11,15 @@ slot_json: "/reference/slots/math/math.sqrt/slot.json"
 * **Value** (`number`), required: Numeric value to transform
 * **Returns**: Resolves to the square root of the supplied value
 
-Guide: [How to use [math.sqrt]](/plugins/magic.lambda.math/#how-to-use-mathsqrt)
+### Guide
+
+<!-- guide -->
+This slot returns the square root of its input.
+
+```
+math.sqrt:x:@.arguments/*/number
+```
+<!-- /guide -->
 
 ### JSON declaration
 

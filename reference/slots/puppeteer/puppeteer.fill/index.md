@@ -2,7 +2,7 @@
 title: "[puppeteer.fill]"
 description: "puppeteer.fill is a slot in the puppeteer namespace of Magic Cloud. Fills an input element with text."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/puppeteer/puppeteer.fill/slot.json"
 ---
 
@@ -26,7 +26,35 @@ Required arguments come first, then the optional ones in the order they are decl
 
 * **ExactlyOneOf**: Provide either [text] or [config-key] (`[text]`, `[config-key]`)
 
-Guide: [How to use [puppeteer.fill]](/plugins/magic.lambda.puppeteer/#puppeteerfill)
+### Guide
+
+<!-- guide -->
+Clears and types text into a selector.
+
+Arguments:
+
+* Slot value - Session identifier.
+* `selector` - CSS selector to fill.
+* `text` - Text to type after clearing.
+* `config-key` - Configuration key resolving the text value.
+* `delay` - Delay between key presses in milliseconds.
+
+Supply exactly one of `text` or `config-key`.
+
+Examples:
+
+```
+puppeteer.fill:SESSION_ID
+   selector:"#email"
+   text:"thomas@gaiasoul.com"
+```
+
+```
+puppeteer.fill:SESSION_ID
+   selector:"#password"
+   config-key:"magic:secrets:example-password"
+```
+<!-- /guide -->
 
 ### JSON declaration
 

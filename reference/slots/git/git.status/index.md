@@ -2,7 +2,7 @@
 title: "[git.status]"
 description: "git.status is a slot in the git namespace of Magic Cloud. Returns Git repository status."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/git/git.status/slot.json"
 ---
 
@@ -21,7 +21,23 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[branch]` | bool | no | Include branch information. Default: `false`. |
 | `[structured]` | bool | no | Return status lines as child nodes. Default: `false`. |
 
-Guide: [How to use [git.status]](/plugins/magic.lambda.git/#how-to-use-gitstatus)
+### Guide
+
+<!-- guide -->
+Shows repo status. The repo path is the node value. By default this returns the raw `git status` output.
+If you provide `structured:true`, each line is returned as a `.` node.
+
+```
+git.status:/modules/stripe/
+```
+
+```
+git.status:/modules/stripe/
+   porcelain:true
+   branch:true
+   structured:true
+```
+<!-- /guide -->
 
 ### JSON declaration
 

@@ -2,7 +2,7 @@
 title: "[math.min]"
 description: "math.min is a slot in the math namespace of Magic Cloud. Returns the smallest value from the supplied inputs."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/math/math.min/slot.json"
 ---
 
@@ -18,7 +18,17 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | number | yes | Numeric operand evaluated before calculating the result. |
 
-Guide: [How to use [math.min]](/plugins/magic.lambda.math/#how-to-use-mathmin)
+### Guide
+
+<!-- guide -->
+This slot returns the min value of its input.
+
+```
+math.min
+   .:int:5
+   .:int:7
+```
+<!-- /guide -->
 
 ### JSON declaration
 

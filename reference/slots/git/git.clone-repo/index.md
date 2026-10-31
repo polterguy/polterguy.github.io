@@ -2,7 +2,7 @@
 title: "[git.clone-repo]"
 description: "git.clone-repo is a slot in the git namespace of Magic Cloud. Clones a Git repository."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/git/git.clone-repo/slot.json"
 ---
 
@@ -21,7 +21,23 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[branch]` | string | no | Branch to clone. |
 | `[depth]` | int | no | Shallow clone depth. |
 
-Guide: [How to use [git.clone-repo]](/plugins/magic.lambda.git/#how-to-use-gitclone-repo)
+### Guide
+
+<!-- guide -->
+Clones the specified URL. The URL is the node value. Optionally provide `path`, `branch`, and `depth`.
+
+```
+git.clone-repo:"https://github.com/polterguy/stripe.git"
+   path:/modules/stripe/
+```
+
+```
+git.clone-repo:"https://github.com/polterguy/stripe.git"
+   path:/modules/stripe/
+   branch:main
+   depth:1
+```
+<!-- /guide -->
 
 ### JSON declaration
 

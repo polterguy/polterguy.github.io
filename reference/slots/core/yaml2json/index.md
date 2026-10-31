@@ -2,7 +2,7 @@
 title: "[yaml2json]"
 description: "yaml2json is a core slot of Magic Cloud. Transforms YAML into JSON."
 generated: true
-llms: false
+llms: "guide"
 slot_json: "/reference/slots/core/yaml2json/slot.json"
 ---
 
@@ -11,7 +11,41 @@ slot_json: "/reference/slots/core/yaml2json/slot.json"
 * **Value** (`yaml`), required: YAML text to transform
 * **Returns**: Resolves to the generated JSON string
 
-Guide: [How to use [yaml2json]](/plugins/magic.lambda.json/#how-to-use-yaml2json-and-json2yaml)
+### Guide
+
+<!-- guide -->
+This guide covers [`yaml2json`](/reference/slots/core/yaml2json/), [`json2yaml`](/reference/slots/core/json2yaml/) together.
+
+The **[yaml2json]** slot converts the specified YAML input string to a JSON string. Basic usage is as follows.
+
+```
+.yaml:@"foo: howdy
+bar: jo
+howdy: !!bool true
+children:
+- howdy
+- some
+"
+yaml2json:x:@.yaml
+json2yaml:x:-
+```
+
+The above results in the following.
+
+```
+{
+  "foo": "howdy",
+  "bar": "jo",
+  "howdy": true,
+  "children": [
+    "howdy", "some"
+  ]
+}
+```
+
+Notice, the above have been formatted for brevity. The actual JSON result will _not_ be formatted, or having indentation to ensure
+result is as compact as possible.
+<!-- /guide -->
 
 ### JSON declaration
 
