@@ -2,7 +2,7 @@
 title: "[math.sin]"
 description: "math.sin is a slot in the math namespace of Magic Cloud. Calculates the sine of the specified value."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/math/math.sin/slot.json"
 ---
 
@@ -13,17 +13,7 @@ slot_json: "/reference/slots/math/math.sin/slot.json"
 
 ### Guide
 
-<!-- guide -->
-This slot returns the sin value of its input.
-
-```
-math.sin:x:@.arguments/*/number
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.math](/plugins/magic.lambda.math/) plugin, which documents every slot it contains.
+[How to use `math.sin`](/plugins/magic.lambda.math/math.sin/)
 
 ### JSON declaration
 

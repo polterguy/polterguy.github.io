@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.validators
-moved_anchors: {"how-to-use-validatorsdate": "/reference/slots/validators/validators.date/#guide", "how-to-use-validatorsdefault": "/reference/slots/validators/validators.default/#guide", "how-to-use-validatorsemail": "/reference/slots/validators/validators.email/#guide", "how-to-use-validatorsenum": "/reference/slots/validators/validators.enum/#guide", "how-to-use-validatorsinteger": "/reference/slots/validators/validators.integer/#guide", "how-to-use-validatorsmandatory": "/reference/slots/validators/validators.mandatory/#guide", "how-to-use-validatorsrecaptcha": "/reference/slots/validators/validators.recaptcha/#guide", "how-to-use-validatorsregex": "/reference/slots/validators/validators.regex/#guide", "how-to-use-validatorsstring": "/reference/slots/validators/validators.string/#guide", "how-to-use-validatorsurl": "/reference/slots/validators/validators.url/#guide"}
+moved_anchors: {"how-to-use-validatorsdate": "/plugins/magic.lambda.validators/validators.date/", "how-to-use-validatorsdefault": "/plugins/magic.lambda.validators/validators.default/", "how-to-use-validatorsemail": "/plugins/magic.lambda.validators/validators.email/", "how-to-use-validatorsenum": "/plugins/magic.lambda.validators/validators.enum/", "how-to-use-validatorsinteger": "/plugins/magic.lambda.validators/validators.integer/", "how-to-use-validatorsmandatory": "/plugins/magic.lambda.validators/validators.mandatory/", "how-to-use-validatorsrecaptcha": "/plugins/magic.lambda.validators/validators.recaptcha/", "how-to-use-validatorsregex": "/plugins/magic.lambda.validators/validators.regex/", "how-to-use-validatorsstring": "/plugins/magic.lambda.validators/validators.string/", "how-to-use-validatorsurl": "/plugins/magic.lambda.validators/validators.url/"}
 ---
 
 This project contains argument validators for Hyperlambda. More specifically it contains the following slots.
@@ -32,10 +32,10 @@ validators.email:x:@.foo/*/email
 
 Most Hyperlambda validators requires some sort of argument(s) - However, some of
 these validators does not require arguments, such as the email validator, that simply verifies the input is a valid email address.
-To use the **[\[validators.regex\]](/reference/slots/validators/validators.regex/)** validator, you should probably [learn regular expression](https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285). However, this is beyond the scope of this article.
+To use the **[validators.regex]** validator, you should probably [learn regular expression](https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285). However, this is beyond the scope of this article.
 
 **Notice** - No attempt to invoke the type validator logic will be done unless the value is a _non null_ value. If you want
-to enforce such logic, you'll have to combine the specific type validators with the **[\[validators.mandatory\]](/reference/slots/validators/validators.mandatory/)** validator,
+to enforce such logic, you'll have to combine the specific type validators with the **[validators.mandatory]** validator,
 that enforces that a value must be specified and not have a null value.
 
 

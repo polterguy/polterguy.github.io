@@ -2,7 +2,7 @@
 title: "[git.push]"
 description: "git.push is a slot in the git namespace of Magic Cloud. Pushes changes to a Git remote."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/git/git.push/slot.json"
 ---
 
@@ -23,30 +23,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Pushes to a remote. The repo path is the node value.
-
-```
-git.push:/modules/stripe/
-   remote:origin
-   branch:main
-```
-
-Optional arguments:
-
-* __[set-upstream]__ - Boolean, adds `-u` to the push
-
-```
-git.push:/modules/stripe/
-   remote:origin
-   branch:main
-   set-upstream:true
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.git](/plugins/magic.lambda.git/) plugin, which documents every slot it contains.
+[How to use `git.push`](/plugins/magic.lambda.git/git.push/)
 
 ### JSON declaration
 

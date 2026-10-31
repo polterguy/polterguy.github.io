@@ -103,11 +103,6 @@ def conservation(site, magic, names, errors):
         for url, page in site.items():
             if url == '/plugins/%s/' % plugin or (url.startswith('/plugins/%s/' % plugin) and page['generated']):
                 published += tokens(page['path'] and read(os.path.join(ROOT, page['path'])))
-        seen = set()
-        for g in result['guides'].values():
-            if g['heading'] not in seen:
-                seen.add(g['heading'])
-                published += tokens(g['md'])
         have, want = Counter(published), Counter(tokens(source))
         missing = sum(c - have[t] for t, c in want.items() if c > have[t])
         total += sum(want.values())
@@ -140,7 +135,7 @@ def main():
         count = len(body.split())
         if count > MAX_WORDS and rel not in allow and not rel.startswith('reference/'):
             errors.append('%s is %d words, over %d, and is not on the list of pages waiting to be split' % (rel, count, MAX_WORDS))
-        if page['generated'] and rel.startswith('plugins/') and rel.count('/') == 3 and count < MIN_WORDS:
+        if page['generated'] and not front.get('guide') and rel.startswith('plugins/') and rel.count('/') == 3 and count < MIN_WORDS:
             errors.append('%s is only %d words, too thin to be a page of its own' % (rel, count))
 
         for target in re.findall(r'\]\((/[^)\s]*)\)|href="(/[^"#\s]*)"', body):

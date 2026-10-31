@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.sockets
-moved_anchors: {"how-to-use-socketssignal": "/reference/slots/sockets/sockets.signal/#guide"}
+moved_anchors: {"how-to-use-socketssignal": "/plugins/magic.lambda.sockets/sockets.signal/"}
 ---
 
 This project provides web sockets slots for Hyperlambda.
@@ -53,8 +53,8 @@ the above arguments are optional.
 
 You can associate a user with one or more groups. This is done with the following slots.
 
-* __[\[sockets.user.add-to-group\]](/reference/slots/sockets/sockets.user.add-to-group/)__ - Adds the specified user to the specified group
-* __[\[sockets.user.remove-from-group\]](/reference/slots/sockets/sockets.user.remove-from-group/)__ - Removes the specified user from the specified group
+* __[sockets.user.add-to-group]__ - Adds the specified user to the specified group
+* __[sockets.user.remove-from-group]__ - Removes the specified user from the specified group
 
 Below you can find an example of how to add a user to a group, for then to later de-associate
 the user with the group.
@@ -84,7 +84,7 @@ above example, irrelevant of whether the user belongs to the group or not.
 ## Sockets meta data
 
 Hyperlambda also allows you to retrieve meta data about currently connected users, through for instance
-the **[\[sockets.users\]](/reference/slots/sockets/sockets.users/)** slot and the **[\[sockets.users.count\]](/reference/slots/sockets/sockets.users.count/)** slot, that will return the username of
+the **[sockets.users]** slot and the **[sockets.users.count]** slot, that will return the username of
 all currently connected users, and the count matching your specified filter condition. An example
 of using it can be found below.
 
@@ -121,8 +121,8 @@ This might sometimes be useful, especially if you want to dynamically add only _
 for instance. To add the currently active connection explicitly to a group for instance, you can use the 
 following slots.
 
-* __[\[sockets.connection.enter-group\]](/reference/slots/sockets/sockets.connection.enter-group/)__ - Associates the current connection _only_ with the specified group
-* __[\[sockets.connection.leave-group\]](/reference/slots/sockets/sockets.connection.leave-group/)__ - De-associates the current connection with the specified group
+* __[sockets.connection.enter-group]__ - Associates the current connection _only_ with the specified group
+* __[sockets.connection.leave-group]__ - De-associates the current connection with the specified group
 
 If the user has additional connections, none of the other connections will be modified in any ways. Also
 realise that both of these slots can _only_ be used from within a Hyperlambda file executed through a

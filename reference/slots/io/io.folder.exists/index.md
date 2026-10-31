@@ -2,7 +2,7 @@
 title: "[io.folder.exists]"
 description: "io.folder.exists is a slot in the io namespace of Magic Cloud. Returns true if a folder exists."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/io/io.folder.exists/slot.json"
 ---
 
@@ -13,17 +13,7 @@ slot_json: "/reference/slots/io/io.folder.exists/slot.json"
 
 ### Guide
 
-<!-- guide -->
-Returns true if specified folder exists on disc.
-
-```
-io.folder.exists:/misc/foo/
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+[How to use `io.folder.exists`](/plugins/magic.lambda.io/io.folder.exists/)
 
 ### JSON declaration
 

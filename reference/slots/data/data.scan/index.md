@@ -2,7 +2,7 @@
 title: "[data.scan]"
 description: "data.scan is a slot in the data namespace of Magic Cloud. Scans rows from the current open database connection; returns all columns unless [columns] is supplied and limits to 25 rows unless [limit] is supplied."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/data/data.scan/slot.json"
 ---
 
@@ -62,27 +62,7 @@ _Nodes nested deeper than 6 levels, and nodes that repeat one of their own ances
 
 ### Guide
 
-<!-- guide -->
-This slot scans rows from your database, using the current open connection created by **[\[data.connect\]](/reference/slots/data/data.connect/)**.
-It takes the same arguments as **[\[data.read\]](/reference/slots/data/data.read/)** and **[\[sql.read\]](/reference/slots/sql/sql.read/)**, and returns the matching rows as children nodes.
-It returns all columns unless you supply **[columns]**, and limits the result to 25 rows unless you supply **[limit]**.
-
-* __[table]__ - Name of the table to scan. Mandatory, the slot throws if it is missing
-* __[columns]__ - Columns to select
-* __[where]__ - Where condition
-* __[order]__ - Which column(s) to order the results by
-* __[limit]__ - How many records to return, default is 25. Set this value to -1 to avoid having the parser inject its default value
-* __[offset]__ - Offset of where to start returning records
-* __[group]__ - Group by declaration
-* __[distinct]__ - Removes duplicate rows from the result when true
-* __[database-type]__ - Database adapter to use instead of your default database type
-* __[generate]__ - If true, only generates the SQL and its parameters instead of executing it, default is false
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.data.common](/plugins/magic.data.common/) plugin, which documents every slot it contains.
-* Discussed in [How to use [data.*]](/plugins/magic.data.common/how-to-use-data/).
+[How to use `data.scan`](/plugins/magic.data.common/data.scan/)
 
 ### JSON declaration
 

@@ -2,7 +2,7 @@
 title: "[slots.get]"
 description: "slots.get is a slot in the slots namespace of Magic Cloud. Returns a dynamic slot by name."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/slots/slots.get/slot.json"
 ---
 
@@ -13,20 +13,7 @@ slot_json: "/reference/slots/slots/slots.get/slot.json"
 
 ### Guide
 
-<!-- guide -->
-Returns the entire lambda code for a previously created dynamic slot. Example can be found below.
-
-```
-slots.create:foo
-   return-value:int:57
-
-slots.get:foo
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.slots](/plugins/magic.lambda.slots/) plugin, which documents every slot it contains.
+[How to use `slots.get`](/plugins/magic.lambda.slots/slots.get/)
 
 ### JSON declaration
 

@@ -2,7 +2,7 @@
 title: "[image.convert]"
 description: "image.convert is a slot in the image namespace of Magic Cloud. Re-encodes an image into a different format (e.g. PNG to JPEG) preserving its pixel content."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/image/image.convert/slot.json"
 ---
 
@@ -22,20 +22,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-To convert an image from for instance png to jpeg, you can use something such as follows.
-
-```
-image.convert:/some-image.png
-   type:jpeg
-```
-
-The above keeps the image as is, except converts it from its existing format to a jpeg image.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.image](/plugins/magic.lambda.image/) plugin, which documents every slot it contains.
+[How to use `image.convert`](/plugins/magic.lambda.image/image.convert/)
 
 ### JSON declaration
 

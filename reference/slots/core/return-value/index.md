@@ -2,7 +2,7 @@
 title: "[return-value]"
 description: "return-value is a core slot of Magic Cloud. Returns a value to the caller."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/core/return-value/slot.json"
 ---
 
@@ -13,22 +13,7 @@ slot_json: "/reference/slots/core/return-value/slot.json"
 
 ### Guide
 
-<!-- guide -->
-Returns a single value from your slot. Can only be invoked from the inside of
-a dynamically created slot, and other slots explicitly creating a return context. An example can be
-found below.
-
-```
-slots.create:foo
-   return-value:This becomes the returned value from your slot
-
-signal:foo
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.slots](/plugins/magic.lambda.slots/) plugin, which documents every slot it contains.
+[How to use `return-value`](/plugins/magic.lambda.slots/return-value/)
 
 ### JSON declaration
 

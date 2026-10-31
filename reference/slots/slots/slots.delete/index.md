@@ -2,7 +2,7 @@
 title: "[slots.delete]"
 description: "slots.delete is a slot in the slots namespace of Magic Cloud. Deletes a dynamic slot."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/slots/slots.delete/slot.json"
 ---
 
@@ -12,23 +12,7 @@ slot_json: "/reference/slots/slots/slots.delete/slot.json"
 
 ### Guide
 
-<!-- guide -->
-Deletes a previously created dynamic slot. The following example _will throw an exception_.
-
-```
-slots.create:foo
-   return-value:int:57
-
-slots.delete:foo
-
-// Throws exception, since [foo] no longer exists.
-slots.get:foo
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.slots](/plugins/magic.lambda.slots/) plugin, which documents every slot it contains.
+[How to use `slots.delete`](/plugins/magic.lambda.slots/slots.delete/)
 
 ### JSON declaration
 

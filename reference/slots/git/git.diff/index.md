@@ -2,7 +2,7 @@
 title: "[git.diff]"
 description: "git.diff is a slot in the git namespace of Magic Cloud. Returns the unified diff between the working tree and HEAD, for the whole repository or one file."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/git/git.diff/slot.json"
 ---
 
@@ -21,24 +21,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Shows the unified diff between the working tree and HEAD. The repo path is the node value. By default the
-whole repository is diffed, while providing a repo-relative `file` restricts the diff to that one file.
-Untracked files have no diff, since git knows nothing about them yet.
-
-```
-git.diff:/modules/stripe/
-```
-
-```
-git.diff:/modules/stripe/
-   file:README.md
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.git](/plugins/magic.lambda.git/) plugin, which documents every slot it contains.
+[How to use `git.diff`](/plugins/magic.lambda.git/git.diff/)
 
 ### JSON declaration
 

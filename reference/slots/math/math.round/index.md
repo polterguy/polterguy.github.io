@@ -2,7 +2,7 @@
 title: "[math.round]"
 description: "math.round is a slot in the math namespace of Magic Cloud. Rounds a number."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/math/math.round/slot.json"
 ---
 
@@ -13,14 +13,7 @@ slot_json: "/reference/slots/math/math.round/slot.json"
 
 ### Guide
 
-<!-- guide -->
-This slot rounds its input to the nearest whole number, using .NET's `Math.Round`, which rounds halfway values to the nearest even number. The slot takes a numeric value, which can be a
-constant or an expression, and replaces its value with the rounded result.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.math](/plugins/magic.lambda.math/) plugin, which documents every slot it contains.
+[How to use `math.round`](/plugins/magic.lambda.math/math.round/)
 
 ### JSON declaration
 

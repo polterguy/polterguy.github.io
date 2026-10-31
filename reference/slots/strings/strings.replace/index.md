@@ -2,7 +2,7 @@
 title: "[strings.replace]"
 description: "strings.replace is a slot in the strings namespace of Magic Cloud. Returns the text with every occurrence of [what] swapped for [with]; pass an empty [with] to strip matches."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/strings/strings.replace/slot.json"
 ---
 
@@ -22,44 +22,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This slot replaces occurrences of a string inside a string, with some other string. The simplest version is like
-follows.
-
-```
-.foo:thomas hansen
-
-strings.replace:x:-
-   .:hansen
-   .:tjobing hansen
-```
-
-You can also reference slots and dynamic slots for that matter, assuming your slots somehow returns strings,
-or something that can be converted into a string, such as the following illustrates. Notice, this code will
-throw an exception, since there are probably no slots called _"some-slot-returning-string"_ in your installation.
-
-```
-.what:hansen
-.foo:thomas hansen
-
-strings.replace:x:-
-
-   get-value:x:@.what
-
-   signal:some-slot-returning-string
-      arg1-to-slot:foo
-      arg2-to-slot:foo
-```
-
-Above the first argument is _"what to look for"_, and the second argument is _"what to substitute it with"_.
-The above is a general pattern for most of these slots, where the node arguments supplied to the slot will be
-evaluated as a lambda object, before the arguments are consumed, allowing you to use arguments that are the
-result of invoking other slots as arguments to your original outer most slot.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.strings](/plugins/magic.lambda.strings/) plugin, which documents every slot it contains.
+[How to use `strings.replace`](/plugins/magic.lambda.strings/strings.replace/)
 
 ### JSON declaration
 

@@ -11,10 +11,6 @@ slot_json: "/reference/slots/crypto/crypto.password.hash/slot.json"
 * **Value** (`password,text`), required: Password to hash
 * **Returns**: Resolves to the password hash
 
-### Related documentation
-
-* Part of the [magic.lambda.crypto](/plugins/magic.lambda.crypto/) plugin, which documents every slot it contains.
-
 ### JSON declaration
 
 This is the complete declaration of `crypto.password.hash`, as the running system describes it. It is also published as [slot.json](slot.json).

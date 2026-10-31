@@ -2,7 +2,7 @@
 title: "[io.file.move]"
 description: "io.file.move is a slot in the io namespace of Magic Cloud. Moves a file on the server."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/io/io.file.move/slot.json"
 ---
 
@@ -20,18 +20,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Similar to **[\[io.file.copy\]](/reference/slots/io/io.file.copy/)** but deletes the source file after evaluating.
-
-```
-io.file.move:/misc/README.md
-   .:/misc/backup/README-backup.md
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+[How to use `io.file.move`](/plugins/magic.lambda.io/io.file.move/)
 
 ### JSON declaration
 

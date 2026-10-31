@@ -2,7 +2,7 @@
 title: "[math.increment]"
 description: "math.increment is a slot in the math namespace of Magic Cloud. Increments the numeric nodes selected by the input expression."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/math/math.increment/slot.json"
 ---
 
@@ -20,27 +20,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This slot increments the value of some expression in place, by mutating the value of the node its expression is
-leading to.
-
-```
-.arg:int:5
-math.increment:x:@.arg
-```
-
-It can optionally be given a **[step]** argument, such as illustrated below.
-
-```
-.arg:int:5
-math.increment:x:@.arg
-   .:int:2
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.math](/plugins/magic.lambda.math/) plugin, which documents every slot it contains.
+[How to use `math.increment`](/plugins/magic.lambda.math/math.increment/)
 
 ### JSON declaration
 

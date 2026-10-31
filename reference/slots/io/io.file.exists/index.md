@@ -2,7 +2,7 @@
 title: "[io.file.exists]"
 description: "io.file.exists is a slot in the io namespace of Magic Cloud. Returns true if a file exists."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/io/io.file.exists/slot.json"
 ---
 
@@ -13,17 +13,7 @@ slot_json: "/reference/slots/io/io.file.exists/slot.json"
 
 ### Guide
 
-<!-- guide -->
-Returns true if specified file exists from before.
-
-```
-io.file.exists:/misc/README.md
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+[How to use `io.file.exists`](/plugins/magic.lambda.io/io.file.exists/)
 
 ### JSON declaration
 

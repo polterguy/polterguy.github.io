@@ -22,11 +22,6 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [format]](/plugins/magic.lambda/types/#how-to-use-format)
 
-### Related documentation
-
-* Part of the [magic.lambda](/plugins/magic.lambda/) plugin, which documents every slot it contains.
-* Discussed in [Types and conversion](/plugins/magic.lambda/types/).
-
 ### JSON declaration
 
 This is the complete declaration of `format`, as the running system describes it. It is also published as [slot.json](slot.json).

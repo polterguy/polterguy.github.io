@@ -2,7 +2,7 @@
 title: "[strings.trim-start]"
 description: "strings.trim-start is a slot in the strings namespace of Magic Cloud. Trims characters from the start of the specified string."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/strings/strings.trim-start/slot.json"
 ---
 
@@ -21,23 +21,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This guide covers [`strings.trim-start`](/reference/slots/strings/strings.trim-start/), [`strings.trim`](/reference/slots/strings/strings.trim/), [`strings.trim-end`](/reference/slots/strings/strings.trim-end/) together.
-
-Trims a string, either both sides, only the start of it, or only the end of it, for
-occurrences of characters found in the sequence of characters provided as its argument.
-
-```
-strings.trim:09thomas12
-   .:1234567890
-
-// Results in "thomas"
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.strings](/plugins/magic.lambda.strings/) plugin, which documents every slot it contains.
+[How to use `strings.trim-start`](/plugins/magic.lambda.strings/strings.trim/)
 
 ### JSON declaration
 

@@ -2,7 +2,7 @@
 title: "[strings.html-encode]"
 description: "strings.html-encode is a slot in the strings namespace of Magic Cloud. HTML encodes the specified string."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/strings/strings.html-encode/slot.json"
 ---
 
@@ -13,14 +13,7 @@ slot_json: "/reference/slots/strings/strings.html-encode/slot.json"
 
 ### Guide
 
-<!-- guide -->
-HTML encodes a string, replacing characters such as `<`, `>`, `&` and `"` with their HTML entities. The slot
-takes a value, which can be a constant or an expression, and replaces its value with the encoded string.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.strings](/plugins/magic.lambda.strings/) plugin, which documents every slot it contains.
+[How to use `strings.html-encode`](/plugins/magic.lambda.strings/strings.html-encode/)
 
 ### JSON declaration
 

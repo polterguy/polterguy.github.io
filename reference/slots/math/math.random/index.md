@@ -2,7 +2,7 @@
 title: "[math.random]"
 description: "math.random is a slot in the math namespace of Magic Cloud. Returns a random number from optional child-node bounds."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/math/math.random/slot.json"
 ---
 
@@ -25,19 +25,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This slot returns a random number. Its behavior depends on how many child nodes you give it.
-
-* No children - Returns a random `double` between 0.0 and 1.0.
-* One child - Returns a random integer between 0 and the child's value, where the upper bound is exclusive.
-* Two children - Returns a random integer between the first child's value, inclusive, and the second child's value, exclusive. The children are documented as **[min]** and **[max]**, but the slot uses the first and second child regardless of their names.
-
-Child values are converted to `int`.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.math](/plugins/magic.lambda.math/) plugin, which documents every slot it contains.
+[How to use `math.random`](/plugins/magic.lambda.math/math.random/)
 
 ### JSON declaration
 

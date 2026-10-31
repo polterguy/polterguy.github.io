@@ -2,7 +2,7 @@
 title: "[io.file.unzip]"
 description: "io.file.unzip is a slot in the io namespace of Magic Cloud. Extracts a zip archive on the server."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/io/io.file.unzip/slot.json"
 ---
 
@@ -21,23 +21,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Unzips a ZIP file. Notice, the **[folder]** argument is optional, and the current folder
-of the ZIP file you're unzipping will be used if no **[folder]** argument is given.
-
-```
-io.file.unzip:/misc/foo.zip
-   folder:/misc/backup/
-```
-
-Optionally provide **[overwrite]** argument and set its value to boolean true if you want the operation to
-overwrite any existing files in the destination folder. Otherwise the operation will throw an exception
-if any of the files exists from before.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+[How to use `io.file.unzip`](/plugins/magic.lambda.io/io.file.unzip/)
 
 ### JSON declaration
 

@@ -22,11 +22,6 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [throw]](/plugins/magic.lambda/exceptions/#how-to-use-throw)
 
-### Related documentation
-
-* Part of the [magic.lambda](/plugins/magic.lambda/) plugin, which documents every slot it contains.
-* Discussed in [Hyperlambda exceptions](/plugins/magic.lambda/exceptions/).
-
 ### JSON declaration
 
 This is the complete declaration of `throw`, as the running system describes it. It is also published as [slot.json](slot.json).

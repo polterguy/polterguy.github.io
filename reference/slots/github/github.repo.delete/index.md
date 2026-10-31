@@ -2,7 +2,7 @@
 title: "[github.repo.delete]"
 description: "github.repo.delete is a slot in the github namespace of Magic Cloud. Deletes a GitHub repository."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/github/github.repo.delete/slot.json"
 ---
 
@@ -21,23 +21,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Deletes a GitHub repository. The repository name is the node value. The `owner` argument is optional,
-and defaults to the configured `magic:git:github:username`.
-
-```
-github.repo.delete:my-old-repo
-```
-
-```
-github.repo.delete:my-old-repo
-   owner:my-org
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.git](/plugins/magic.lambda.git/) plugin, which documents every slot it contains.
+[How to use `github.repo.delete`](/plugins/magic.lambda.git/github.repo.delete/)
 
 ### JSON declaration
 

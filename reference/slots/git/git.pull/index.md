@@ -2,7 +2,7 @@
 title: "[git.pull]"
 description: "git.pull is a slot in the git namespace of Magic Cloud. Pulls updates from a Git remote."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/git/git.pull/slot.json"
 ---
 
@@ -24,25 +24,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Pulls updates from a remote. The repo path is the node value. The `remote` child node defaults to `origin`.
-
-```
-git.pull:/modules/stripe/
-```
-
-```
-git.pull:/modules/stripe/
-   remote:origin
-   branch:main
-   rebase:false
-   ff-only:false
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.git](/plugins/magic.lambda.git/) plugin, which documents every slot it contains.
+[How to use `git.pull`](/plugins/magic.lambda.git/git.pull/)
 
 ### JSON declaration
 

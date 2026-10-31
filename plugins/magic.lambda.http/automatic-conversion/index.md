@@ -7,7 +7,7 @@ generated: true
 This page is part of the [magic.lambda.http](/plugins/magic.lambda.http/) documentation.
 
 You can also automatically convert the resulting response object to a lambda object if you have a registered
-conversion function, and you provide a **[\[convert\]](/reference/slots/core/convert/)** argument, and set its value to boolean `true`. Below is an
+conversion function, and you provide a **[convert]** argument, and set its value to boolean `true`. Below is an
 example.
 
 ```

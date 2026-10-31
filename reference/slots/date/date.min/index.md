@@ -2,7 +2,7 @@
 title: "[date.min]"
 description: "date.min is a slot in the date namespace of Magic Cloud. Returns the minimum DateTime value."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/date/date.min/slot.json"
 ---
 
@@ -12,17 +12,7 @@ slot_json: "/reference/slots/date/date.min/slot.json"
 
 ### Guide
 
-<!-- guide -->
-This slot simply returns the minimum value a date and time object can hold. Usage can be found below.
-
-```
-date.min
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.dates](/plugins/magic.lambda.dates/) plugin, which documents every slot it contains.
+[How to use `date.min`](/plugins/magic.lambda.dates/date.min/)
 
 ### JSON declaration
 

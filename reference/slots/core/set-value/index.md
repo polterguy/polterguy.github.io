@@ -20,16 +20,6 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [set-value]](/plugins/magic.lambda/nodes/#how-to-use-set-value)
 
-### Related documentation
-
-* Part of the [magic.lambda](/plugins/magic.lambda/) plugin, which documents every slot it contains.
-* Discussed in [Branching and conditional execution](/plugins/magic.lambda/branching/).
-* Discussed in [Comparison and boolean logic](/plugins/magic.lambda/conditions/).
-* Discussed in [Executing lambda objects](/plugins/magic.lambda/executing/).
-* Discussed in [Hyperlambda loops](/plugins/magic.lambda/loops/).
-* Discussed in [Modifying your lambda object](/plugins/magic.lambda/nodes/).
-* Discussed in [Types and conversion](/plugins/magic.lambda/types/).
-
 ### JSON declaration
 
 This is the complete declaration of `set-value`, as the running system describes it. It is also published as [slot.json](slot.json).

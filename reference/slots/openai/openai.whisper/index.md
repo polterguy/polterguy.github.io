@@ -2,7 +2,7 @@
 title: "[openai.whisper]"
 description: "openai.whisper is a slot in the openai namespace of Magic Cloud. Transcribes audio content using OpenAI Whisper."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/openai/openai.whisper/slot.json"
 ---
 
@@ -23,20 +23,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This slot transcribes audio by sending it to OpenAI's audio transcription endpoint, using the `whisper-1` model,
-and returns the transcribed text as its value. It takes the following arguments as children, and throws an
-exception if any of the three mandatory ones is missing, or if OpenAI responds with an error.
-
-* __[key]__ - OpenAI API key. Mandatory.
-* __[content]__ - The audio as raw bytes. Mandatory.
-* __[\[type\]](/reference/slots/core/type/)__ - MIME type of the audio, such as `audio/mpeg`. Mandatory.
-* __[language]__ - Optional language hint.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.openai](/plugins/magic.lambda.openai/) plugin, which documents every slot it contains.
+[How to use `openai.whisper`](/plugins/magic.lambda.openai/openai.whisper/)
 
 ### JSON declaration
 

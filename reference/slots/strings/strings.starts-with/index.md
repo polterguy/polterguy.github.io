@@ -2,7 +2,7 @@
 title: "[strings.starts-with]"
 description: "strings.starts-with is a slot in the strings namespace of Magic Cloud. Returns true if a string starts with the specified text."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/strings/strings.starts-with/slot.json"
 ---
 
@@ -21,23 +21,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Returns true if the specified string starts with some sequence of characters.
-
-```
-// Returns true
-strings.starts-with:Thomas Hansen Is Cool
-   .:Thomas
-
-// Returns false
-strings.starts-with:Thomas Hansen Is Cool
-   .:Hansen
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.strings](/plugins/magic.lambda.strings/) plugin, which documents every slot it contains.
+[How to use `strings.starts-with`](/plugins/magic.lambda.strings/strings.starts-with/)
 
 ### JSON declaration
 

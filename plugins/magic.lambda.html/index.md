@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.html
-moved_anchors: {"how-to-use-html-decode": "/reference/slots/core/html-decode/#guide", "how-to-use-html2lambda": "/reference/slots/core/html2lambda/#guide", "how-to-use-html2markdown": "/reference/slots/core/html2markdown/#guide", "how-to-use-lambda2html": "/reference/slots/core/lambda2html/#guide", "how-to-use-markdown2html": "/reference/slots/core/markdown2html/#guide"}
+moved_anchors: {"how-to-use-html-decode": "/plugins/magic.lambda.html/html-decode/", "how-to-use-html2lambda": "/plugins/magic.lambda.html/html2lambda/", "how-to-use-html2markdown": "/plugins/magic.lambda.html/html2markdown/", "how-to-use-lambda2html": "/plugins/magic.lambda.html/lambda2html/", "how-to-use-markdown2html": "/plugins/magic.lambda.html/markdown2html/"}
 ---
 
 This project provides HTML helper slots for Magic. More specifically, it provides the following slots.

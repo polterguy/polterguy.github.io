@@ -2,7 +2,7 @@
 title: "[strings.split]"
 description: "strings.split is a slot in the strings namespace of Magic Cloud. Splits a string at every occurrence of the separator and returns each segment as an unnamed child node."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/strings/strings.split/slot.json"
 ---
 
@@ -21,30 +21,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Splits a string into multiple strings, where a sequence of characters can be found, removing the original
-sequence of characters from the resulting node set.
-
-```
-.foo:some input string
-strings.split:x:-
-   .:' '
-```
-
-The above will result in the following result.
-
-```
-.foo:some input string
-strings.split:x:-
-   .:some
-   .:input
-   .:string
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.strings](/plugins/magic.lambda.strings/) plugin, which documents every slot it contains.
+[How to use `strings.split`](/plugins/magic.lambda.strings/strings.split/)
 
 ### JSON declaration
 

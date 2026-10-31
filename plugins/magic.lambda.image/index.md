@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.image
-moved_anchors: {"how-to-use-imagechart": "/reference/slots/image/image.chart/#guide", "how-to-use-imageconvert": "/reference/slots/image/image.convert/#guide", "how-to-use-imagecrop": "/reference/slots/image/image.crop/#guide", "how-to-use-imagegenerate-qr": "/reference/slots/image/image.generate-qr/#guide", "how-to-use-imageresize": "/reference/slots/image/image.resize/#guide"}
+moved_anchors: {"how-to-use-imagechart": "/plugins/magic.lambda.image/image.chart/", "how-to-use-imageconvert": "/plugins/magic.lambda.image/image.convert/", "how-to-use-imagecrop": "/plugins/magic.lambda.image/image.crop/", "how-to-use-imagegenerate-qr": "/plugins/magic.lambda.image/image.generate-qr/", "how-to-use-imageresize": "/plugins/magic.lambda.image/image.resize/"}
 ---
 
 The magic.lambda.image project contains image manipulation functions for Hyperlambda, allowing you to do basic
@@ -18,7 +18,7 @@ manipulation of images, in addition to generating QR codes. More specifically th
 
 All image transformation slots works similarly. They can either be given a string being the relative filename
 of the image you want to transform, or a stream from where to load the image. All transformation slots can
-also be given a **[\[type\]](/reference/slots/core/type/)** argument, which is how to return the image after the transformation is done. Supported
+also be given a **[type]** argument, which is how to return the image after the transformation is done. Supported
 types are as follows.
 
 * png

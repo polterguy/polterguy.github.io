@@ -11,10 +11,6 @@ slot_json: "/reference/slots/crypto/crypto.fingerprint/slot.json"
 * **Value** (`fingerprint-source`), required: Base64 encoded content or raw byte[] content to fingerprint
 * **Returns**: Resolves to the SHA256 hash of the supplied content formatted as a fingerprint
 
-### Related documentation
-
-* Part of the [magic.lambda.crypto](/plugins/magic.lambda.crypto/) plugin, which documents every slot it contains.
-
 ### JSON declaration
 
 This is the complete declaration of `crypto.fingerprint`, as the running system describes it. It is also published as [slot.json](slot.json).

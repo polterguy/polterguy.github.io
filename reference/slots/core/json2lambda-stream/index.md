@@ -2,7 +2,7 @@
 title: "[json2lambda-stream]"
 description: "json2lambda-stream is a core slot of Magic Cloud. Transforms JSON stream content into a lambda hierarchy."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/core/json2lambda-stream/slot.json"
 ---
 
@@ -21,21 +21,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This slot does the same as **[\[json2lambda\]](/reference/slots/core/json2lambda/)**, except it reads the JSON from a stream instead of from a string,
-such as a stream opened with **[\[io.stream.open-file\]](/reference/slots/io/io.stream.open-file/)**, which you can read about in the _"magic.lambda.io"_ project.
-The value of the slot must be an expression leading to the stream, and the slot throws an exception if
-no stream is found. The resulting lambda hierarchy is returned as children of the slot node, and both JSON objects
-and JSON arrays are supported.
-
-The slot accepts the following argument.
-
-* __[encoding]__ - Text encoding used to read the stream, defaults to `utf-8`. Streams using another encoding, such as `utf-16` or `iso-8859-1`, are converted to UTF-8 before they are parsed
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.json](/plugins/magic.lambda.json/) plugin, which documents every slot it contains.
+[How to use `json2lambda-stream`](/plugins/magic.lambda.json/json2lambda-stream/)
 
 ### JSON declaration
 

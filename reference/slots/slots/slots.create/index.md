@@ -2,7 +2,7 @@
 title: "[slots.create]"
 description: "slots.create is a slot in the slots namespace of Magic Cloud. Creates a dynamic slot that can be invoked with [signal]."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/slots/slots.create/slot.json"
 ---
 
@@ -22,24 +22,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Creates a dynamic slot that can be invoked using **[\[signal\]](/reference/slots/core/signal/)**. Below is an example.
-
-```
-slots.create:foo
-   return-value:int:57
-```
-
-Notice, the above slot aren't persisted in any ways, implying if your web server restarts its process, your
-slot is removed. If you want to make sure your slots become a permanent part of your application, you need to
-make sure you are somehow creating it during server startup, which can normally be done on a per module basis, by putting
-a Hyperlambda file into your module's _"magic.startup"_ folder, which makes sure the code is executed during startup
-of your web app.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.slots](/plugins/magic.lambda.slots/) plugin, which documents every slot it contains.
+[How to use `slots.create`](/plugins/magic.lambda.slots/slots.create/)
 
 ### JSON declaration
 

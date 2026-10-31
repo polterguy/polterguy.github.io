@@ -2,7 +2,7 @@
 title: "[execute-file]"
 description: "execute-file is a core slot of Magic Cloud. Loads a Hyperlambda file and evaluates it as if it were inlined; child nodes become its [.arguments]."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/core/execute-file/slot.json"
 ---
 
@@ -27,41 +27,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-The **[execute-file]** slot is an alias for **[\[io.file.execute\]](/reference/slots/io/io.file.execute/)**, but it will **[\[unwrap\]](/reference/slots/core/unwrap/)** all children nodes,
-automatically transform any expressions to their static value equivalents, allowing you to combine **[\[unwrap\]](/reference/slots/core/unwrap/)**
-and **[\[io.file.execute\]](/reference/slots/io/io.file.execute/)** into one invocation. This makes usage slightly less verbose for cases such as the following.
-
-```
-.args
-   foo1:bar1
-   foo2:bar2
-execute-file:/whatever-file.hl
-   arg1:x:@.args/*/foo1
-   arg2:x:@.args/*/foo2
-```
-
-In the above example both arguments to our _"/whatever-file.hl"_ file will be evaluated before the file is executed,
-resulting in **[arg1]** and **[args2]** having the values of _"bar1"_ and _"bar2"_ respectively.
-
-If you pass in a node named **[node_reference]** using the above syntax, this node will be especially handled, and
-passed in by reference instead of evaluated as a single expression value. Consider the following alternative to
-the above.
-
-```
-.args
-   foo1:bar1
-   foo2:bar2
-execute-file:/whatever-file.hl
-   node_reference:x:@.args
-```
-
-Inside your above _"/whatever-file.hl"_ file you will now have access to the entire **[.args]** node by reference.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+[How to use `execute-file`](/plugins/magic.lambda.io/execute-file/)
 
 ### JSON declaration
 

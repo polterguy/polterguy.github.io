@@ -2,7 +2,7 @@
 title: "[date.max]"
 description: "date.max is a slot in the date namespace of Magic Cloud. Returns the maximum DateTime value."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/date/date.max/slot.json"
 ---
 
@@ -12,17 +12,7 @@ slot_json: "/reference/slots/date/date.max/slot.json"
 
 ### Guide
 
-<!-- guide -->
-This slot simply returns the maximum value a date and time object can hold. Usage can be found below.
-
-```
-date.max
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.dates](/plugins/magic.lambda.dates/) plugin, which documents every slot it contains.
+[How to use `date.max`](/plugins/magic.lambda.dates/date.max/)
 
 ### JSON declaration
 

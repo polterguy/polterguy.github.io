@@ -2,7 +2,7 @@
 title: "[validators.email]"
 description: "validators.email is a slot in the validators namespace of Magic Cloud. Validates that a value or resolved expression result is an email address, throwing if validation fails."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/validators/validators.email/slot.json"
 ---
 
@@ -12,19 +12,7 @@ slot_json: "/reference/slots/validators/validators.email/slot.json"
 
 ### Guide
 
-<!-- guide -->
-This slot takes no arguments besides an expression, and will throw an exception unless the value of the node
-the expression is leading to is a valid email address. Below is example usage.
-
-```
-.arg:foo@bar.com
-validators.email:x:@.arg
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.validators](/plugins/magic.lambda.validators/) plugin, which documents every slot it contains.
+[How to use `validators.email`](/plugins/magic.lambda.validators/validators.email/)
 
 ### JSON declaration
 

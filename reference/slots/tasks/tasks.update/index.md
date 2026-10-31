@@ -21,10 +21,6 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[due]` | DateTime | no | Optional one-time due date. |
 | `[repeats]` | string | no | Optional repeat pattern. |
 
-### Related documentation
-
-* Part of the [magic.lambda.scheduler](/plugins/magic.lambda.scheduler/) plugin, which documents every slot it contains.
-
 ### JSON declaration
 
 This is the complete declaration of `tasks.update`, as the running system describes it. It is also published as [slot.json](slot.json).

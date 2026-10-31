@@ -112,13 +112,6 @@ def main():
         # Pages with one small, generated entry each (one per slot) opt out, or the file would double.
         if front.get("llms") is False:
             continue
-        # A slot page contributes only its guide, which sits between two markers. Its contract is not
-        # repeated here, since llms.txt points at the endpoint that serves it.
-        if front.get("llms") == "guide":
-            m = re.search(r"<!-- guide -->(.*?)<!-- /guide -->", body, re.S)
-            if not m:
-                continue
-            body = m.group(1)
         pages.append((url_for(path), front, clean(body, front, path), path))
     pages.sort(key=lambda p: p[0])
 

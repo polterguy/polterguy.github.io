@@ -2,7 +2,7 @@
 title: "[auth.ticket.refresh]"
 description: "auth.ticket.refresh is a slot in the auth namespace of Magic Cloud. Issues a new JWT with an extended expiration based on the current ticket, so active users don't get logged out."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/auth/auth.ticket.refresh/slot.json"
 ---
 
@@ -25,24 +25,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This slot returns a new JWT token from an old existing (and valid) token. However, the new token will
-have a new expiration date, further into the future, allowing you to create a timer that occasionally
-invokes the server to create a new token, preventing the user from being logged out due to having his
-or her JWT token becoming expired.
-
-```
-auth.ticket.refresh
-```
-
-Like all auth related slots, it only makes sense to invoke from within a context of having an authorised
-user, such as an HTTP endpoint intended to be invoked by an authenticated user.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.auth](/plugins/magic.lambda.auth/) plugin, which documents every slot it contains.
-* Discussed in [RS256 signing and [auth.jwks]](/plugins/magic.lambda.auth/rs256-signing-and-auth-jwks/).
+[How to use `auth.ticket.refresh`](/plugins/magic.lambda.auth/auth.ticket.refresh/)
 
 ### JSON declaration
 

@@ -2,7 +2,7 @@
 title: "[data.update]"
 description: "data.update is a slot in the data namespace of Magic Cloud. Updates rows in the current open database connection; use [where] to constrain affected rows."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/data/data.update/slot.json"
 ---
 
@@ -40,23 +40,7 @@ _Nodes nested deeper than 6 levels, and nodes that repeat one of their own ances
 
 ### Guide
 
-<!-- guide -->
-This slot updates rows in your database, using the current open connection created by **[\[data.connect\]](/reference/slots/data/data.connect/)**.
-It takes the same arguments as **[\[sql.update\]](/reference/slots/sql/sql.update/)**, and its value resolves to the number of rows affected.
-Always supply a **[where]** argument to constrain which rows are updated, since the SQL generated does not
-constrain the update to any specific row if you leave it out.
-
-* __[table]__ - Name of the table to update. Mandatory, the slot throws if it is missing
-* __[values]__ - Column names and their new values, as children nodes. Mandatory, the slot throws if it is missing
-* __[where]__ - Condition constraining which rows to update, see the **[where]** documentation below
-* __[database-type]__ - Database adapter to use instead of your default database type
-* __[generate]__ - If true, only generates the SQL and its parameters instead of executing it, default is false
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.data.common](/plugins/magic.data.common/) plugin, which documents every slot it contains.
-* Discussed in [How to use [data.*]](/plugins/magic.data.common/how-to-use-data/).
+[How to use `data.update`](/plugins/magic.data.common/data.update/)
 
 ### JSON declaration
 

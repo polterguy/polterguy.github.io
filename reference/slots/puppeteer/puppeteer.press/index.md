@@ -2,7 +2,7 @@
 title: "[puppeteer.press]"
 description: "puppeteer.press is a slot in the puppeteer namespace of Magic Cloud. Sends a key press to the page."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/puppeteer/puppeteer.press/slot.json"
 ---
 
@@ -23,28 +23,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Presses a key on a selector.
-
-Arguments:
-
-* Slot value - Session identifier.
-* `selector` - CSS selector to focus.
-* `key` - Key name (for example `Enter`).
-* `delay` - Delay in milliseconds.
-
-Examples:
-
-```
-puppeteer.press:SESSION_ID
-   selector:"#submit_contact_form_button"
-   key:Enter
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.puppeteer](/plugins/magic.lambda.puppeteer/) plugin, which documents every slot it contains.
+[How to use `puppeteer.press`](/plugins/magic.lambda.puppeteer/puppeteer.press/)
 
 ### JSON declaration
 

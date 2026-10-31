@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.mail
-moved_anchors: {"how-to-use-mailpop3fetch": "/reference/slots/mail/mail.pop3.fetch/#guide", "how-to-use-mailsmtpsend": "/reference/slots/mail/mail.smtp.send/#guide"}
+moved_anchors: {"how-to-use-mailpop3fetch": "/plugins/magic.lambda.mail/mail.pop3.fetch/", "how-to-use-mailsmtpsend": "/plugins/magic.lambda.mail/mail.smtp.send/"}
 ---
 
 This project contains SMTP and POP3 helpers for Magic. More specifically, this project contains the following slots.

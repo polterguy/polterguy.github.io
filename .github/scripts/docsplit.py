@@ -265,18 +265,22 @@ def plan(readme, plugin, names, manifest=None):
         seen[base] = seen.get(base, 0) + 1
         p['slug'] = base if seen[base] == 1 else '%s-%d' % (base, seen[base])
 
-    # 4. Guides as markdown ready for a slot page: the heading goes, and the rest sits under "Guide".
-    guide_out = {}
-    for g in guides:
-        inner = [lines[i] for i in range(g['start'] + 1, g['end']) if owner[i] == guides.index(g)]
-        text = '\n'.join(shift_headings(trim(inner), 3 - g['level'])).strip()
-        for s in g['slots']:
-            guide_out[s] = {'md': text, 'heading': g['heading'], 'also': [x for x in g['slots'] if x != s]}
+    # 4. Each guide becomes a page of its own, named after its first slot. The page and the reference page
+    # of that slot link to each other, once.
+    guide_out, guide_pages = {}, []
+    for gid, g in enumerate(guides):
+        inner = [lines[i] for i in range(g['start'] + 1, g['end']) if owner[i] == gid]
+        text = '\n'.join(shift_headings(trim(inner), 1 - g['level'])).strip()
+        primary = g['slots'][0]
+        url = '/plugins/%s/%s/' % (plugin, primary)
+        guide_pages.append({'slot': primary, 'slots': g['slots'], 'heading': g['heading'], 'md': text, 'url': url})
+        for s_ in g['slots']:
+            guide_out[s_] = {'url': url, 'heading': g['heading']}
 
     # 5. Where an old anchor went, so a link to it can still find it.
     moved = {}
     for g in guides:
-        moved[slug(g['heading'])] = slot_url(g['slots'][0]) + '#guide'
+        moved[slug(g['heading'])] = '/plugins/%s/%s/' % (plugin, g['slots'][0])
     for p in pages:
         url = '/plugins/%s/%s/' % (plugin, p['slug'])
         moved.setdefault(slug(p['title']), url)
@@ -284,11 +288,11 @@ def plan(readme, plugin, names, manifest=None):
             moved.setdefault(slug(text), url + '#' + slug(text))
     kept = {slug(t) for (_, _, t) in headings_of(intro + [l for u in hub_sections for l in u['lines']])}
     moved = {a: b for a, b in moved.items() if a not in kept}
-    for g in guide_out.values():
+    for g in guide_pages:
         g['md'] = relink(g['md'], moved)
 
     return {'front': front, 'intro': intro, 'hub_sections': hub_sections, 'pages': pages,
-            'guides': guide_out, 'moved': moved, 'plugin': plugin}
+            'guides': guide_out, 'guide_pages': guide_pages, 'moved': moved, 'plugin': plugin}
 
 
 def describe(page):
@@ -316,26 +320,6 @@ def linkify_slots(lines, names):
     return out
 
 
-def link_mentions(text, names, skip=()):
-    """Mentions such as **[crypto.hash.sha1]** link to the reference page of the slot. Code is left alone."""
-    out, fence = [], False
-    pattern = re.compile(r'(__|\*\*)\[([^\]\\\s]+)\]\1(?!\()')
-
-    def link(m):
-        name = m.group(2)
-        if name not in names or name in skip:
-            return m.group(0)
-        return '%s[\\[%s\\]](%s)%s' % (m.group(1), name, slot_url(name), m.group(1))
-
-    for line in text.split('\n'):
-        if line.startswith('```'):
-            fence = not fence
-        elif not fence and not line.startswith('#'):
-            line = '`'.join(part if i % 2 else pattern.sub(link, part) for i, part in enumerate(line.split('`')))
-        out.append(line)
-    return '\n'.join(out)
-
-
 def hub_markdown(result, names):
     """The hub page body, without front matter."""
     lines = linkify_slots(result['intro'], names)
@@ -345,10 +329,10 @@ def hub_markdown(result, names):
         lines += ['', '## Topics', '']
         for p in result['pages']:
             lines.append('* [%s](/plugins/%s/%s/) - %s' % (p['title'], result['plugin'], p['slug'], p.get('description') or first_sentence(p['lines'])))
-    return link_mentions(relink('\n'.join(trim(lines)) + '\n', result['moved']), names)
+    return relink('\n'.join(trim(lines)) + '\n', result['moved'])
 
 
-def page_markdown(result, page, index, names=()):
+def page_markdown(result, page, index):
     """A concept page body, with its place in the series."""
     plugin, pages = result['plugin'], result['pages']
     lead = 'This page is part of the [%s](/plugins/%s/) documentation.' % (plugin, plugin)
@@ -360,7 +344,7 @@ def page_markdown(result, page, index, names=()):
     if index + 1 < len(pages):
         nav.append('[%s &rarr;](/plugins/%s/%s/)' % (pages[index + 1]['title'], plugin, pages[index + 1]['slug']))
     body += ['', '---', '', ' | '.join(nav)]
-    return link_mentions(relink('\n'.join(body) + '\n', result['moved']), names)
+    return relink('\n'.join(body) + '\n', result['moved'])
 
 
 # ------------------------------------------------------------------------------------

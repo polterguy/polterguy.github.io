@@ -2,7 +2,7 @@
 title: "[git.checkout]"
 description: "git.checkout is a slot in the git namespace of Magic Cloud. Checks out a Git branch."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/git/git.checkout/slot.json"
 ---
 
@@ -22,28 +22,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Switches branches in a repo. The repo path is the node value. The `branch` child node is required.
-
-```
-git.checkout:/modules/stripe/
-   branch:feature-x
-```
-
-Optional argument:
-
-* __[create]__ - Boolean, creates the branch
-
-```
-git.checkout:/modules/stripe/
-   branch:feature-x
-   create:true
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.git](/plugins/magic.lambda.git/) plugin, which documents every slot it contains.
+[How to use `git.checkout`](/plugins/magic.lambda.git/git.checkout/)
 
 ### JSON declaration
 

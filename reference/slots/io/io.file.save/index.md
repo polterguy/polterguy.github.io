@@ -2,7 +2,7 @@
 title: "[io.file.save]"
 description: "io.file.save is a slot in the io namespace of Magic Cloud. Saves a text file to the server."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/io/io.file.save/slot.json"
 ---
 
@@ -22,25 +22,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Saves the specified content to the specified file on disc, overwriting any previous content if the
-file exists from before, creating a new file if no such file already exists. The value of the first
-argument will be considered the content of the file.
-
-Notice, the node itself will be evaluated, allowing you to have other slots evaluated before slot saves
-the file, to return dynamically the content of your file.
-
-```
-io.file.save:/misc/README2.md
-   .:This is new content for file
-```
-
-**Notice** - If you want to save binary content you should use the **[\[io.file.save.binary\]](/reference/slots/io/io.file.save.binary/)** override.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+[How to use `io.file.save`](/plugins/magic.lambda.io/io.file.save/)
 
 ### JSON declaration
 

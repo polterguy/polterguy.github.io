@@ -2,7 +2,7 @@
 title: "[strings.capitalize]"
 description: "strings.capitalize is a slot in the strings namespace of Magic Cloud. Returns the input with its first character upper-cased; remainder is left untouched."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/strings/strings.capitalize/slot.json"
 ---
 
@@ -13,21 +13,7 @@ slot_json: "/reference/slots/strings/strings.capitalize/slot.json"
 
 ### Guide
 
-<!-- guide -->
-Turns the first character of your string into a CAPS character.
-
-```
-strings.capitalize:thomas
-
-/*
- * Resulting in "Thomas" after invocation.
- */
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.strings](/plugins/magic.lambda.strings/) plugin, which documents every slot it contains.
+[How to use `strings.capitalize`](/plugins/magic.lambda.strings/strings.capitalize/)
 
 ### JSON declaration
 

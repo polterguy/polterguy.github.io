@@ -2,7 +2,7 @@
 title: "[lambda2xml]"
 description: "lambda2xml is a core slot of Magic Cloud. Converts a lambda object to an XML fragment or document."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/core/lambda2xml/slot.json"
 ---
 
@@ -13,32 +13,7 @@ slot_json: "/reference/slots/core/lambda2xml/slot.json"
 
 ### Guide
 
-<!-- guide -->
-To convert from a lambda object to an XML object you can use something such as follows.
-
-```
-.xml
-   CATALOG
-      PLANT
-         COMMON
-            #text:Bloodroot
-         BOTANICAL
-            #text:Sanguinaria canadensis
-         ZONE
-            #text:4
-         LIGHT
-            #text:Mostly Shady
-         PRICE
-            #text:$2.44
-         AVAILABILITY
-            #text:031599
-lambda2xml:x:@.xml/*
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.xml](/plugins/magic.lambda.xml/) plugin, which documents every slot it contains.
+[How to use `lambda2xml`](/plugins/magic.lambda.xml/lambda2xml/)
 
 ### JSON declaration
 

@@ -20,11 +20,6 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[max]` | int | no | Maximum number of log entries to return. Default: `10`. |
 | `[from]` | object | no | Cursor or timestamp to query from. |
 
-### Related documentation
-
-* Part of the [magic.lambda.logging](/plugins/magic.lambda.logging/) plugin, which documents every slot it contains.
-* Discussed in [Querying your log](/plugins/magic.lambda.logging/querying-your-log/).
-
 ### JSON declaration
 
 This is the complete declaration of `log.query`, as the running system describes it. It is also published as [slot.json](slot.json).

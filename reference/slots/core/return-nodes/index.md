@@ -2,7 +2,7 @@
 title: "[return-nodes]"
 description: "return-nodes is a core slot of Magic Cloud. Returns child nodes or evaluated nodes to the nearest caller."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/core/return-nodes/slot.json"
 ---
 
@@ -21,24 +21,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Returns a bunch of nodes (lambda) from your slot. Can only be invoked from the inside of
-a dynamically created slot, and other slots explicitly creating a return context. An example can be
-found below.
-
-```
-slots.create:foo
-   return-nodes
-      integer-value:int:57
-      string-value:Foo bar
-
-signal:foo
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.slots](/plugins/magic.lambda.slots/) plugin, which documents every slot it contains.
+[How to use `return-nodes`](/plugins/magic.lambda.slots/return-nodes/)
 
 ### JSON declaration
 

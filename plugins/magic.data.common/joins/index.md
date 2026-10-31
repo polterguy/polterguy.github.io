@@ -6,8 +6,8 @@ generated: true
 
 This page is part of the [magic.data.common](/plugins/magic.data.common/) documentation.
 
-The project supports joins by parametrizing your **[\[sql.read\]](/reference/slots/sql/sql.read/)** invocation with **[\[join\]](/reference/slots/core/join/)** arguments, beneath your
-**[table]** argument(s). You can _only_ add **[\[join\]](/reference/slots/core/join/)** beneath **[table]** for **[\[sql.read\]](/reference/slots/sql/sql.read/)** invocations though.
+The project supports joins by parametrizing your **[sql.read]** invocation with **[join]** arguments, beneath your
+**[table]** argument(s). You can _only_ add **[join]** beneath **[table]** for **[sql.read]** invocations though.
 If you have created the Sakila example database from Oracle, and you're using MySQL as your default database type,
 you can execute the following MySQL join SQL statement to see a fairly complex recursive join.
 
@@ -76,11 +76,11 @@ select * from 'table1'
 
 Joining tables works _almost_ the exact same way as using a **[where]** argument, allowing you
 to supply an operator for your join, such as we illustrate below, where we're using the `!=` operator,
-instead of the (default) equality comparison. However, when you create your **[\[join\]](/reference/slots/core/join/)** segments
+instead of the (default) equality comparison. However, when you create your **[join]** segments
 you can _only_ have columns from tables reference columns from tables, and not add static arguments
 to your join. If you need static arguments you have to add these into your **[where]** parts.
 See the **[where]** criteria for details about comparison operators.
-You can also explicitly choose a **[\[type\]](/reference/slots/core/type/)** of join, such as we illustrate below.
+You can also explicitly choose a **[type]** of join, such as we illustrate below.
 
 ```
 sql.read
@@ -100,7 +100,7 @@ The above results in the following SQL.
 select * from 'table1' inner join 'table2' on 'table1'.'fk1' != 'table2'.'pk1'
 ```
 
-The **[\[type\]](/reference/slots/core/type/)** argument to your **[\[join\]](/reference/slots/core/join/)** arguments, can be _"inner"_, _"full"_, _"left"_ or _"right"_,
+The **[type]** argument to your **[join]** arguments, can be _"inner"_, _"full"_, _"left"_ or _"right"_,
 resulting in the equivalent type of join for your SQL.
 
 ---

@@ -2,7 +2,7 @@
 title: "[puppeteer.type]"
 description: "puppeteer.type is a slot in the puppeteer namespace of Magic Cloud. Types text into an element."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/puppeteer/puppeteer.type/slot.json"
 ---
 
@@ -28,44 +28,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Types text into a selector.
-
-Arguments:
-
-* Slot value - Session identifier.
-* `selector` - CSS selector to type into.
-* `text` - Text to type.
-* `config-key` - Configuration key resolving the text value.
-* `delay` - Delay between key presses in milliseconds.
-
-Supply exactly one of `text` or `config-key`.
-
-Examples:
-
-```
-puppeteer.type:SESSION_ID
-   selector:"#name"
-   text:"Thomas Hansen"
-```
-
-```
-puppeteer.type:SESSION_ID
-   selector:"#info"
-   text:"Hello from AI agent"
-   delay:25
-```
-
-```
-puppeteer.type:SESSION_ID
-   selector:"#password"
-   config-key:"magic:secrets:example-password"
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.puppeteer](/plugins/magic.lambda.puppeteer/) plugin, which documents every slot it contains.
+[How to use `puppeteer.type`](/plugins/magic.lambda.puppeteer/puppeteer.type/)
 
 ### JSON declaration
 

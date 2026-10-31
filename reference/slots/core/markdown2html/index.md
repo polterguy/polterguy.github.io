@@ -2,7 +2,7 @@
 title: "[markdown2html]"
 description: "markdown2html is a core slot of Magic Cloud. Transforms Markdown into HTML."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/core/markdown2html/slot.json"
 ---
 
@@ -19,36 +19,11 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | `[media]` | bool | no | Whether media link extensions should be enabled. |
 
+Guide: [How to use [markdown2html]](/plugins/magic.lambda.html/html2markdown/#front-matter-and-markdown2html)
+
 ### Guide
 
-<!-- guide -->
-This library can also handle Markdown, since Markdown is arguably just another representation of HTML.
-The **[markdown2html]** slot converts the specified Markdown content to HTML. Basic usage is as follows.
-
-```
-.yaml:@"
-Howdy world
-
-* Foo
-* Bar
-"
-markdown2html:x:@.yaml
-```
-
-The above will produce the following result.
-
-```html
-markdown2html:@"<p>Howdy world</p>
-<ul>
-<li>Foo</li>
-<li>Bar</li>
-</ul>
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.html](/plugins/magic.lambda.html/) plugin, which documents every slot it contains.
+[How to use `markdown2html`](/plugins/magic.lambda.html/markdown2html/)
 
 ### JSON declaration
 

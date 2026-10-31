@@ -2,7 +2,7 @@
 title: "[git.branch.list]"
 description: "git.branch.list is a slot in the git namespace of Magic Cloud. Returns every branch in the local repository, marking which one is currently checked out."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/git/git.branch.list/slot.json"
 ---
 
@@ -22,27 +22,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Lists branches. The repo path is the node value. Each branch is returned as a `.` node.
-
-```
-git.branch.list:/modules/stripe/
-```
-
-```
-git.branch.list:/modules/stripe/
-   remote:true
-```
-
-```
-git.branch.list:/modules/stripe/
-   all:true
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.git](/plugins/magic.lambda.git/) plugin, which documents every slot it contains.
+[How to use `git.branch.list`](/plugins/magic.lambda.git/git.branch.list/)
 
 ### JSON declaration
 

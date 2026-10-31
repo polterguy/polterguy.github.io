@@ -2,7 +2,7 @@
 title: "[html2pdf]"
 description: "html2pdf is a core slot of Magic Cloud. Converts HTML into a PDF document."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/core/html2pdf/slot.json"
 ---
 
@@ -13,16 +13,7 @@ slot_json: "/reference/slots/core/html2pdf/slot.json"
 
 ### Guide
 
-<!-- guide -->
-This slot converts the HTML markup given as its value into a PDF document, and returns the PDF as raw bytes in
-its value. The value can be a constant or an expression. Any images, stylesheets and fonts the HTML references
-are loaded through Hyperlambda's **[\[io.file.load.binary\]](/reference/slots/io/io.file.load.binary/)** and **[\[http.get\]](/reference/slots/http/http.get/)** slots, instead of directly by the
-PDF library.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.pdf](/plugins/magic.lambda.pdf/) plugin, which documents every slot it contains.
+[How to use `html2pdf`](/plugins/magic.lambda.pdf/html2pdf/)
 
 ### JSON declaration
 

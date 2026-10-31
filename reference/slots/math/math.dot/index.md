@@ -2,7 +2,7 @@
 title: "[math.dot]"
 description: "math.dot is a slot in the math namespace of Magic Cloud. Calculates the dot product of two vectors from child nodes."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/math/math.dot/slot.json"
 ---
 
@@ -20,30 +20,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This slot returns the dot product of two lists.
-
-```
-.list1
-   .:double:0.5
-   .:double:0.7
-   .:double:0.1
-.list2
-   .:double:0.56
-   .:double:0.89
-   .:double:0.33
-math.dot
-   get-nodes:x:@.list1/*
-   get-nodes:x:@.list2/*
-```
-
-This slot is useful for calculating similarities between two different objects in Machine Learning, where
-each list is an _"embedding"_ or a vector.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.math](/plugins/magic.lambda.math/) plugin, which documents every slot it contains.
+[How to use `math.dot`](/plugins/magic.lambda.math/math.dot/)
 
 ### JSON declaration
 

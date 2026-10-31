@@ -2,7 +2,7 @@
 title: "[puppeteer.close]"
 description: "puppeteer.close is a slot in the puppeteer namespace of Magic Cloud. Closes a Puppeteer session."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/puppeteer/puppeteer.close/slot.json"
 ---
 
@@ -13,23 +13,7 @@ slot_json: "/reference/slots/puppeteer/puppeteer.close/slot.json"
 
 ### Guide
 
-<!-- guide -->
-Closes the browser and page associated with a session.
-
-Arguments:
-
-* Slot value - Session identifier returned by **[\[puppeteer.connect\]](/reference/slots/puppeteer/puppeteer.connect/)**.
-
-Examples:
-
-```
-puppeteer.close:SESSION_ID
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.puppeteer](/plugins/magic.lambda.puppeteer/) plugin, which documents every slot it contains.
+[How to use `puppeteer.close`](/plugins/magic.lambda.puppeteer/puppeteer.close/)
 
 ### JSON declaration
 

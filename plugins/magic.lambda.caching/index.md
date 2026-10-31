@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.caching
-moved_anchors: {"how-to-use-cacheclear": "/reference/slots/cache/cache.clear/#guide", "how-to-use-cachecount": "/reference/slots/cache/cache.count/#guide", "how-to-use-cacheget": "/reference/slots/cache/cache.get/#guide", "how-to-use-cachelist": "/reference/slots/cache/cache.list/#guide", "how-to-use-cacheset": "/reference/slots/cache/cache.set/#guide", "how-to-use-cachetry-get": "/reference/slots/cache/cache.try-get/#guide", "hyperlambda-caching-internals": "/plugins/magic.lambda.caching/hyperlambda-caching-internals/"}
+moved_anchors: {"how-to-use-cacheclear": "/plugins/magic.lambda.caching/cache.clear/", "how-to-use-cachecount": "/plugins/magic.lambda.caching/cache.count/", "how-to-use-cacheget": "/plugins/magic.lambda.caching/cache.get/", "how-to-use-cachelist": "/plugins/magic.lambda.caching/cache.list/", "how-to-use-cacheset": "/plugins/magic.lambda.caching/cache.set/", "how-to-use-cachetry-get": "/plugins/magic.lambda.caching/cache.try-get/", "hyperlambda-caching-internals": "/plugins/magic.lambda.caching/hyperlambda-caching-internals/"}
 ---
 
 This project contains caching helper slots for Hyperlambda. More specifically this project provides the following slots.

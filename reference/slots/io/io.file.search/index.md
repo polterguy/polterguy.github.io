@@ -2,7 +2,7 @@
 title: "[io.file.search]"
 description: "io.file.search is a slot in the io namespace of Magic Cloud. Searches for files on the server."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/io/io.file.search/slot.json"
 ---
 
@@ -33,45 +33,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Searches all files recursively inside the specified folder and returns filenames with line numbers
-containing the specified pattern.
-
-```
-io.file.search:/modules/
-   pattern:"TODO"
-```
-
-Optional arguments:
-
-* __[regex]__ - Treats pattern as regular expression
-* __[case-sensitive]__ - Enables case sensitive search
-* __[extensions]__ - Comma-separated list of extensions (e.g. .cs,.hl)
-
-Example with regex + extensions:
-
-```
-io.file.search:/modules/
-   pattern:"class\\s+Git"
-   regex:true
-   extensions:.cs,.hl
-```
-
-Return value example:
-
-```
-io.file.search
-   .
-      file:/modules/foo/bar.cs
-      lines
-         .:12
-         .:48
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+[How to use `io.file.search`](/plugins/magic.lambda.io/io.file.search/)
 
 ### JSON declaration
 

@@ -2,7 +2,7 @@
 title: "[puppeteer.evaluate]"
 description: "puppeteer.evaluate is a slot in the puppeteer namespace of Magic Cloud. Evaluates JavaScript in the page context."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/puppeteer/puppeteer.evaluate/slot.json"
 ---
 
@@ -24,31 +24,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Evaluates a JavaScript expression in the page.
-
-Arguments:
-
-* Slot value - Session identifier.
-* `expression` - JavaScript expression string.
-* `args` - Optional arguments for JS function invocation. Each child value is one argument.
-
-Examples:
-
-```
-puppeteer.evaluate:SESSION_ID
-   expression:"document.title"
-```
-
-```
-puppeteer.evaluate:SESSION_ID
-   expression:"typeof window.mcaptcha"
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.puppeteer](/plugins/magic.lambda.puppeteer/) plugin, which documents every slot it contains.
+[How to use `puppeteer.evaluate`](/plugins/magic.lambda.puppeteer/puppeteer.evaluate/)
 
 ### JSON declaration
 

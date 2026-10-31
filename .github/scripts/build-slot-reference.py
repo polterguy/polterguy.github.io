@@ -220,65 +220,15 @@ def guide_anchors():
 
 
 def collect_guides(magic, names):
-    """The "How to use [slot]" sections of the plugin READMEs, by slot, as docsplit sees them."""
+    """The slots that have a guide page, with the address of that page."""
     guides = {}
     for readme in sorted(glob.glob(os.path.join(magic, 'plugins', '*', 'README.md'))):
         plugin = os.path.basename(os.path.dirname(readme))
         with open(readme, encoding='utf-8-sig') as f:
             result = docsplit.plan(f.read(), plugin, names, docsplit.load_manifest(plugin))
         for slot_name, g in result['guides'].items():
-            md = re.sub(r'https://docs\.ainiro\.io(/[^\s)\]]*)', r'\1', g['md'])
-            guides.setdefault(slot_name, {'md': md, 'also': g['also'], 'heading': g['heading']})
+            guides.setdefault(slot_name, g)
     return guides
-
-
-ALL_NAMES = set()
-
-
-def mentioned(text, names):
-    """Slots a page talks about: written in [brackets], or, when the name is distinctive, used in a code sample."""
-    found = set(re.findall(r'\[([^\]\s]+)\]', text)) & names
-    for name in names:
-        if ('.' in name or '-' in name) and name not in found and re.search(r'(?<![\w.\-])%s(?![\w\-]|\.\w)' % re.escape(name), text):
-            found.add(name)
-    return found
-
-
-def collect_homes(magic, names):
-    """Which plugin documents each slot, and the concept pages of that plugin that talk about it."""
-    results = []
-    for readme in sorted(glob.glob(os.path.join(magic, 'plugins', '*', 'README.md'))):
-        plugin = os.path.basename(os.path.dirname(readme))
-        with open(readme, encoding='utf-8-sig') as f:
-            results.append((plugin, docsplit.plan(f.read(), plugin, names, docsplit.load_manifest(plugin))))
-
-    # A plugin owns the slots it lists, or gives a guide to. Only then do pages mentioning a slot count.
-    homes = {}
-    for plugin, result in results:
-        for line in result['intro']:
-            m = re.match(r'\*\s+(?:__|\*\*)?\\?\[+([^\]\\]+)', line)
-            if m and m.group(1) in names:
-                homes.setdefault(m.group(1), {'plugin': plugin, 'pages': []})
-        for name in result['guides']:
-            homes.setdefault(name, {'plugin': plugin, 'pages': []})
-    for plugin, result in results:
-        for page in result['pages']:
-            for name in mentioned('\n'.join(page['lines']), names):
-                if name in homes and homes[name]['plugin'] == plugin:
-                    homes[name]['pages'].append((page['title'], '/plugins/%s/%s/' % (plugin, page['slug'])))
-
-    # magic.lambda has no README of its own for these, only the hand written pages of this site.
-    for path in sorted(glob.glob(os.path.join(ROOT, 'plugins', 'magic.lambda', '*', 'index.md'))):
-        text = read(path)
-        if 'generated: true' in text:
-            continue
-        title = re.search(r'^title:\s*"?(.*?)"?\s*$', text, re.M).group(1)
-        url = '/' + os.path.relpath(os.path.dirname(path), ROOT).replace(os.sep, '/') + '/'
-        for name in mentioned(text, names):
-            home = homes.setdefault(name, {'plugin': 'magic.lambda', 'pages': []})
-            if home['plugin'] == 'magic.lambda':
-                home['pages'].append((title, url))
-    return homes
 
 
 def group_entries(records):
@@ -391,30 +341,20 @@ def declaration(entry, text):
             '</details>', '']
 
 
-def render_slot_page(entry, record, prev, nxt, anchors, guide=None, home=None):
+def render_slot_page(entry, record, prev, nxt, anchors, guide=None):
     name = entry['names'][0]
     ns = ns_of(name)
     where = 'a core slot, one of the keywords of the Hyperlambda language' if ns == 'core' else 'a slot in the `%s` namespace' % ns
     text = json.dumps(record, indent=2, ensure_ascii=False)
     fm = front_matter(title='[%s]' % name,
                       description='%s is %s of Magic Cloud. %s' % (name, 'a core slot' if ns == 'core' else 'a slot in the %s namespace' % ns, sentence(entry['description'])),
-                      generated=True, llms='guide' if guide else False, slot_json=slot_url(name) + 'slot.json')
+                      generated=True, llms=False, slot_json=slot_url(name) + 'slot.json')
     lines = ['`%s` is %s, in Hyperlambda, the language of Magic Cloud. %s' % (name, where, sentence(entry['description'])), '']
     if len(entry['names']) > 1:
         lines += ['Also known as: ' + ', '.join('[`%s`](%s)' % (n, slot_url(n)) for n in entry['names'][1:]) + '.', '']
     lines += render_contract(entry, anchors, PAGE_DEPTH)
     if guide:
-        # The guide that the plugin's README gives the slot, placed next to its contract. The markers let the
-        # llms-full.txt builder take just this part of the page.
-        lines += ['### Guide', '', '<!-- guide -->']
-        if guide['also']:
-            lines += ['This guide covers %s together.' % ', '.join('[`%s`](%s)' % (a, slot_url(a)) for a in [name] + guide['also']), '']
-        lines += [docsplit.link_mentions(guide['md'], ALL_NAMES, set(entry['names'])), '<!-- /guide -->', '']
-    if home:
-        lines += ['### Related documentation', '',
-                  '* Part of the [%s](/plugins/%s/) plugin, which documents every slot it contains.' % (home['plugin'], home['plugin'])]
-        lines += ['* Discussed in [%s](%s).' % page for page in sorted(set(home['pages']))]
-        lines += ['']
+        lines += ['### Guide', '', '[How to use `%s`](%s)' % (name, guide['url']), '']
     lines += ['### JSON declaration', '',
               'This is the complete declaration of `%s`, as the running system describes it. It is also published as [slot.json](slot.json).' % name, '']
     lines += declaration(entry, text)
@@ -703,8 +643,6 @@ def main():
     entries = group_entries(records)
     anchors = guide_anchors()
     guides = collect_guides(args.magic, {r['name'] for r in records})
-    homes = collect_homes(args.magic, {r['name'] for r in records})
-    ALL_NAMES.update(r['name'] for r in records)
     by_record = {r['name']: r for r in records}
     by_ns = {}
     for e in entries:
@@ -730,8 +668,7 @@ def main():
             prev = group[i - 1]['names'][0] if i > 0 else None
             nxt = group[i + 1]['names'][0] if i + 1 < len(group) else None
             guide = next((guides[n] for n in e['names'] if n in guides), None)
-            home = next((homes[n] for n in e['names'] if n in homes), None)
-            page, declaration_json = render_slot_page(e, by_record[name], prev, nxt, anchors, guide, home)
+            page, declaration_json = render_slot_page(e, by_record[name], prev, nxt, anchors, guide)
             put('reference/slots/%s/%s/index.md' % (ns, name), page)
             put('reference/slots/%s/%s/slot.json' % (ns, name), declaration_json)
             for alias in e['names'][1:]:

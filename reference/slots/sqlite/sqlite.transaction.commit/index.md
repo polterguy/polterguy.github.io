@@ -10,10 +10,6 @@ slot_json: "/reference/slots/sqlite/sqlite.transaction.commit/slot.json"
 
 * **Scope**: requires `sqlite.transaction` - Requires an active SQLite transaction created by [sqlite.transaction.create]
 
-### Related documentation
-
-* Part of the [magic.lambda.sqlite](/plugins/magic.lambda.sqlite/) plugin, which documents every slot it contains.
-
 ### JSON declaration
 
 This is the complete declaration of `sqlite.transaction.commit`, as the running system describes it. It is also published as [slot.json](slot.json).

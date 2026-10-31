@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.guid
-moved_anchors: {"how-to-use-guidnew": "/reference/slots/guid/guid.new/#guide"}
+moved_anchors: {"how-to-use-guidnew": "/plugins/magic.lambda.guid/guid.new/"}
 ---
 
 This project allows you to generate a new (random) Guid, and contains the following slot.

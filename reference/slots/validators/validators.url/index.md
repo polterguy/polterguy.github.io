@@ -2,7 +2,7 @@
 title: "[validators.url]"
 description: "validators.url is a slot in the validators namespace of Magic Cloud. Validates that a value or resolved expression result is a URL, throwing if validation fails."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/validators/validators.url/slot.json"
 ---
 
@@ -12,18 +12,7 @@ slot_json: "/reference/slots/validators/validators.url/slot.json"
 
 ### Guide
 
-<!-- guide -->
-This is similar to the **[\[validators.email\]](/reference/slots/validators/validators.email/)** slot, except it requires the argument to be a valid
-URL instead of a valid email. Below is example usage.
-
-```
-validators.url:x:@.some-url
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.validators](/plugins/magic.lambda.validators/) plugin, which documents every slot it contains.
+[How to use `validators.url`](/plugins/magic.lambda.validators/validators.url/)
 
 ### JSON declaration
 

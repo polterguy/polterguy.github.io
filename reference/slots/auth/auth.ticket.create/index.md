@@ -2,7 +2,7 @@
 title: "[auth.ticket.create]"
 description: "auth.ticket.create is a slot in the auth namespace of Magic Cloud. Issues a signed JWT carrying the supplied username, roles, and claims; typically returned after a successful login."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/auth/auth.ticket.create/slot.json"
 ---
 
@@ -30,26 +30,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This slot creates a new JWT token for you, and accepts a username and optionally a list of roles. Below
-is some example usage.
-
-```
-auth.ticket.create
-   username:foo
-   roles
-      .:howdy
-      .:world
-```
-
-Like all auth related slots, it only makes sense to invoke from within a context of having an authorised
-user, such as an HTTP endpoint intended to be invoked by an authenticated user.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.auth](/plugins/magic.lambda.auth/) plugin, which documents every slot it contains.
-* Discussed in [RS256 signing and [auth.jwks]](/plugins/magic.lambda.auth/rs256-signing-and-auth-jwks/).
+[How to use `auth.ticket.create`](/plugins/magic.lambda.auth/auth.ticket.create/)
 
 ### JSON declaration
 

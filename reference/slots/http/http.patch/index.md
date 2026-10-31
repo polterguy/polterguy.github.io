@@ -2,7 +2,7 @@
 title: "[http.patch]"
 description: "http.patch is a slot in the http namespace of Magic Cloud. Issues an HTTP PATCH to the specified URL with a payload; used to apply partial updates to a remote resource."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/http/http.patch/slot.json"
 ---
 
@@ -44,30 +44,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This slot accepts a URL as its value, and optionally HTTP headers as a **[headers]** argument, and a mandatory
-**[payload]** argument, being whatever payload you want to transfer to the endpoint. In its simplest version
-it would resemble something such as the following.
-
-```
-http.patch:"https://some_website.com/your-patch-endpoint"
-   payload:@"{""foo"": ""bar""}"
-```
-
-The slot returns the result of the specified HTTP PATCH invocation, including the HTTP headers returned from the endpoint,
-and status code, in addition to the response object itself. To automatically convert the response object to whatever
-type of response your URL returns, provide a **[\[convert\]](/reference/slots/core/convert/)** argument, and set its value to true, such as follows.
-
-```
-http.patch:"https://some_website.com/your-patch-endpoint"
-   payload:@"{""foo"": ""bar""}"
-   convert:true
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.http](/plugins/magic.lambda.http/) plugin, which documents every slot it contains.
+[How to use `http.patch`](/plugins/magic.lambda.http/http.patch/)
 
 ### JSON declaration
 

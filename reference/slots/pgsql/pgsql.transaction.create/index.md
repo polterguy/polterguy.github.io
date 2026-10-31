@@ -10,10 +10,6 @@ slot_json: "/reference/slots/pgsql/pgsql.transaction.create/slot.json"
 
 * **Scope**: requires `pgsql.connection`; provides `pgsql.transaction` - Requires an open PostgreSQL connection created by [pgsql.connect]
 
-### Related documentation
-
-* Part of the [magic.lambda.pgsql](/plugins/magic.lambda.pgsql/) plugin, which documents every slot it contains.
-
 ### JSON declaration
 
 This is the complete declaration of `pgsql.transaction.create`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -2,7 +2,7 @@
 title: "[github.repo.create]"
 description: "github.repo.create is a slot in the github namespace of Magic Cloud. Creates a GitHub repository."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/github/github.repo.create/slot.json"
 ---
 
@@ -28,39 +28,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Creates a GitHub repository. The repository name is the node value. Optionally provide an
-organization owner and additional settings.
-
-```
-github.repo.create:my-new-repo
-```
-
-```
-github.repo.create:my-new-repo
-   owner:my-org
-   private:true
-   description:"Example repo"
-   homepage:"https://example.com"
-   auto-init:true
-   default-branch:main
-```
-
-Optional arguments:
-
-* __[owner]__ - Organization name to create repo within (omit to create under authenticated user)
-* __[private]__ - Boolean
-* __[description]__ - String
-* __[homepage]__ - String
-* __[auto-init]__ - Boolean
-* __[default-branch]__ - String
-* __[gitignore-template]__ - String
-* __[license-template]__ - String
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.git](/plugins/magic.lambda.git/) plugin, which documents every slot it contains.
+[How to use `github.repo.create`](/plugins/magic.lambda.git/github.repo.create/)
 
 ### JSON declaration
 

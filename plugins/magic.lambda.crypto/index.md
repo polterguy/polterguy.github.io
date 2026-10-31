@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.crypto
-moved_anchors: {"combining-rsa-and-aes-cryptography": "/plugins/magic.lambda.crypto/combining-rsa-and-aes-cryptography/", "creating-an-rsa-keypair": "/plugins/magic.lambda.crypto/rsa/#creating-an-rsa-keypair", "cryptographically-signing-and-verifying-the-signature-of-a-message": "/plugins/magic.lambda.crypto/rsa/#cryptographically-signing-and-verifying-the-signature-of-a-message", "encrypting-and-decrypting-a-message-using-rsa": "/plugins/magic.lambda.crypto/rsa/#encrypting-and-decrypting-a-message-using-rsa", "how-to-use-cryptohash-and-cryptohashxxx": "/reference/slots/crypto/crypto.hash/#guide", "how-to-use-cryptorandom": "/reference/slots/crypto/crypto.random/#guide", "how-to-use-cryptorandomint": "/reference/slots/crypto/crypto.random.int/#guide", "how-to-use-cryptoseed": "/reference/slots/crypto/crypto.seed/#guide", "hyperlambda-and-cryptography": "/plugins/magic.lambda.crypto/hyperlambda-and-cryptography/", "rsa-cryptography-with-hyperlambda": "/plugins/magic.lambda.crypto/rsa/", "symmetric-cryptography-using-aes": "/plugins/magic.lambda.crypto/aes/", "the-encryption-format": "/plugins/magic.lambda.crypto/combining-rsa-and-aes-cryptography/#the-encryption-format"}
+moved_anchors: {"combining-rsa-and-aes-cryptography": "/plugins/magic.lambda.crypto/combining-rsa-and-aes-cryptography/", "creating-an-rsa-keypair": "/plugins/magic.lambda.crypto/rsa/#creating-an-rsa-keypair", "cryptographically-signing-and-verifying-the-signature-of-a-message": "/plugins/magic.lambda.crypto/rsa/#cryptographically-signing-and-verifying-the-signature-of-a-message", "encrypting-and-decrypting-a-message-using-rsa": "/plugins/magic.lambda.crypto/rsa/#encrypting-and-decrypting-a-message-using-rsa", "how-to-use-cryptohash-and-cryptohashxxx": "/plugins/magic.lambda.crypto/crypto.hash/", "how-to-use-cryptorandom": "/plugins/magic.lambda.crypto/crypto.random/", "how-to-use-cryptorandomint": "/plugins/magic.lambda.crypto/crypto.random.int/", "how-to-use-cryptoseed": "/plugins/magic.lambda.crypto/crypto.seed/", "hyperlambda-and-cryptography": "/plugins/magic.lambda.crypto/hyperlambda-and-cryptography/", "rsa-cryptography-with-hyperlambda": "/plugins/magic.lambda.crypto/rsa/", "symmetric-cryptography-using-aes": "/plugins/magic.lambda.crypto/aes/", "the-encryption-format": "/plugins/magic.lambda.crypto/combining-rsa-and-aes-cryptography/#the-encryption-format"}
 ---
 
 The magic.lambda.crypto project provides cryptography helper slots for Magic, allowing you to use both symmetric
@@ -43,8 +43,8 @@ instance a database as _"slowly hashed values with per record based salts"_. Thi
 security issues, such as having adversaries creating Rainbow Dictionary attacks on your passwords. This
 project contains two slots to implement this, and these are as follows.
 
-* __[\[crypto.password.hash\]](/reference/slots/crypto/crypto.password.hash/)__ - Creates a password hash
-* __[\[crypto.password.verify\]](/reference/slots/crypto/crypto.password.verify/)__ - Verifies a hashed password
+* __[crypto.password.hash]__ - Creates a password hash
+* __[crypto.password.verify]__ - Verifies a hashed password
 
 Example usage can be found below.
 
@@ -57,7 +57,7 @@ crypto.password.verify:SomePasswordHere
 
 The first slot invocation creates a Blowfish hash, while the second slot invocation verifies a previously
 created Blowfish hash, given the password as its main argument. If you exchange the second password given
-to **[\[crypto.password.verify\]](/reference/slots/crypto/crypto.password.verify/)** by for instance adding one random character to it, the result will be
+to **[crypto.password.verify]** by for instance adding one random character to it, the result will be
 `false` from the second invocation.
 Internally these are the slots Magic uses when it creates its JWT authentication database, and stores
 passswords into your Magic database.

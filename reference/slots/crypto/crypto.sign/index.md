@@ -21,11 +21,6 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[signing-key-fingerprint]` | string\|byte[] | yes | Fingerprint for the signing key. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 
-### Related documentation
-
-* Part of the [magic.lambda.crypto](/plugins/magic.lambda.crypto/) plugin, which documents every slot it contains.
-* Discussed in [Combining RSA and AES cryptography](/plugins/magic.lambda.crypto/combining-rsa-and-aes-cryptography/).
-
 ### JSON declaration
 
 This is the complete declaration of `crypto.sign`, as the running system describes it. It is also published as [slot.json](slot.json).

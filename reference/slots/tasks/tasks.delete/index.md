@@ -2,7 +2,7 @@
 title: "[tasks.delete]"
 description: "tasks.delete is a slot in the tasks namespace of Magic Cloud. Removes a stored task by ID along with any of its scheduled future runs."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/tasks/tasks.delete/slot.json"
 ---
 
@@ -12,20 +12,7 @@ slot_json: "/reference/slots/tasks/tasks.delete/slot.json"
 
 ### Guide
 
-<!-- guide -->
-Use the **[tasks.delete]** signal to delete a task. This will also delete all future schedules for your task and
-automatically dispose any timers associated with the task. An example can be found below.
-
-```
-tasks.delete:task-id
-```
-
-Besides from the task ID, the delete task signal doesn't take any arguments.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.scheduler](/plugins/magic.lambda.scheduler/) plugin, which documents every slot it contains.
+[How to use `tasks.delete`](/plugins/magic.lambda.scheduler/tasks.delete/)
 
 ### JSON declaration
 

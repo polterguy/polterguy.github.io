@@ -2,7 +2,7 @@
 title: "[io.folder.delete]"
 description: "io.folder.delete is a slot in the io namespace of Magic Cloud. Deletes a folder on the server."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/io/io.folder.delete/slot.json"
 ---
 
@@ -12,17 +12,7 @@ slot_json: "/reference/slots/io/io.folder.delete/slot.json"
 
 ### Guide
 
-<!-- guide -->
-Deletes the specified folder on disc. Notice, will throw an exception if the folder doesn't exists.
-
-```
-io.folder.delete:/misc/foo/
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+[How to use `io.folder.delete`](/plugins/magic.lambda.io/io.folder.delete/)
 
 ### JSON declaration
 

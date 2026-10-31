@@ -2,7 +2,7 @@
 title: "[io.file.delete]"
 description: "io.file.delete is a slot in the io namespace of Magic Cloud. Deletes a file on the server."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/io/io.file.delete/slot.json"
 ---
 
@@ -12,17 +12,7 @@ slot_json: "/reference/slots/io/io.file.delete/slot.json"
 
 ### Guide
 
-<!-- guide -->
-Deletes the specified file. Will throw an exception if the file doesn't exist.
-
-```
-io.file.delete:/misc/README2.md
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+[How to use `io.file.delete`](/plugins/magic.lambda.io/io.file.delete/)
 
 ### JSON declaration
 

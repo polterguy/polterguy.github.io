@@ -2,7 +2,7 @@
 title: "[guid.new]"
 description: "guid.new is a slot in the guid namespace of Magic Cloud. Generates a random version-4 GUID for use as a unique identifier."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/guid/guid.new/slot.json"
 ---
 
@@ -12,18 +12,7 @@ slot_json: "/reference/slots/guid/guid.new/slot.json"
 
 ### Guide
 
-<!-- guide -->
-This slot creates a new random GUID for you, or a globally unique identifier. Example of usage
-can be found below.
-
-```
-guid.new
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.guid](/plugins/magic.lambda.guid/) plugin, which documents every slot it contains.
+[How to use `guid.new`](/plugins/magic.lambda.guid/guid.new/)
 
 ### JSON declaration
 

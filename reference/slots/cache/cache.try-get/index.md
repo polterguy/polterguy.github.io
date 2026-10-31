@@ -2,7 +2,7 @@
 title: "[cache.try-get]"
 description: "cache.try-get is a slot in the cache namespace of Magic Cloud. Returns a cached value by key if it exists, or creates a new cached item and returning it."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/cache/cache.try-get/slot.json"
 ---
 
@@ -22,30 +22,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This slot checks your cache to look for an item matching your specified key, and if not found, it will
-invoke its **[.lambda]** argument, and save its returned value to the cache with the specified key,
-before returning the created item to caller.
-
-```
-cache.try-get:cache-key
-   expiration:5
-   .lambda
-      return:Howdy world
-```
-
-If you are using the default memory based cache, then this slot is implemented in such a way that
-only the first invocation towards the specified key will actually execute your **[.lambda]** object,
-allowing you to have very expensive executions to create your items, that you want to store into
-the cache, without experiencing race conditions, or having more than one thread actually create the
-item and store into the cache. Notice, this is _not_ true if you are using an out of process cache
-implementation, such as the one found in the _"magic.data.cql"_ project. This should in general be
-your _"goto slot"_ whenever you want to use the cache slots in this project.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.caching](/plugins/magic.lambda.caching/) plugin, which documents every slot it contains.
+[How to use `cache.try-get`](/plugins/magic.lambda.caching/cache.try-get/)
 
 ### JSON declaration
 

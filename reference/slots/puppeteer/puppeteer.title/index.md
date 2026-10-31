@@ -2,7 +2,7 @@
 title: "[puppeteer.title]"
 description: "puppeteer.title is a slot in the puppeteer namespace of Magic Cloud. Returns the current page title."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/puppeteer/puppeteer.title/slot.json"
 ---
 
@@ -14,23 +14,7 @@ slot_json: "/reference/slots/puppeteer/puppeteer.title/slot.json"
 
 ### Guide
 
-<!-- guide -->
-Returns page title.
-
-Arguments:
-
-* Slot value - Session identifier.
-
-Examples:
-
-```
-puppeteer.title:SESSION_ID
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.puppeteer](/plugins/magic.lambda.puppeteer/) plugin, which documents every slot it contains.
+[How to use `puppeteer.title`](/plugins/magic.lambda.puppeteer/puppeteer.title/)
 
 ### JSON declaration
 

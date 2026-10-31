@@ -13,11 +13,6 @@ slot_json: "/reference/slots/core/null/slot.json"
 
 Guide: [How to use [null]](/plugins/magic.lambda/nodes/#how-to-use-null)
 
-### Related documentation
-
-* Part of the [magic.lambda](/plugins/magic.lambda/) plugin, which documents every slot it contains.
-* Discussed in [Modifying your lambda object](/plugins/magic.lambda/nodes/).
-
 ### JSON declaration
 
 This is the complete declaration of `null`, as the running system describes it. It is also published as [slot.json](slot.json).

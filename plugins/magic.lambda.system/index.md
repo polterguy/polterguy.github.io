@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.system
-moved_anchors: {"how-to-use-systemcompile": "/reference/slots/system/system.compile/#guide", "how-to-use-systemdebug": "/reference/slots/system/system.debug/#guide", "how-to-use-systemexecute": "/reference/slots/system/system.execute/#guide", "how-to-use-systempluginload-and-systempluginunload": "/reference/slots/system/system.plugin.load/#guide", "systempluginexecute": "/reference/slots/system/system.plugin.execute/#guide", "systempluginlist": "/reference/slots/system/system.plugin.list/#guide"}
+moved_anchors: {"how-to-use-systemcompile": "/plugins/magic.lambda.system/system.compile/", "how-to-use-systemdebug": "/plugins/magic.lambda.system/system.debug/", "how-to-use-systemexecute": "/plugins/magic.lambda.system/system.execute/", "how-to-use-systempluginload-and-systempluginunload": "/plugins/magic.lambda.system/system.plugin.load/", "systempluginexecute": "/plugins/magic.lambda.system/system.plugin.execute/", "systempluginlist": "/plugins/magic.lambda.system/system.plugin.list/"}
 ---
 
 This project contains _"system slots"_ to be able to invoke system commands, and/or dynamically compile and load plugins, etc. More specifically the project contains the following slots.
@@ -22,8 +22,8 @@ The most important feature of this project is probably that it gives you the abi
 
 In addition to the above slots this project also contains the following slots.
 
-* __[\[system.os\]](/reference/slots/system/system.os/)__ - Returns description of your operating system
-* __[\[system.is-os\]](/reference/slots/system/system.is-os/)__ - Returns true if your underlying operating system is of the specified type
+* __[system.os]__ - Returns description of your operating system
+* __[system.is-os]__ - Returns true if your underlying operating system is of the specified type
 
 The last slot above takes an argument such as _"Windows"_, _"OSX_, _"Linux"_, etc, and will return true
 of the operating system you are currently running on belongs to the specified family of operating systems.

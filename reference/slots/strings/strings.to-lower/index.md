@@ -2,7 +2,7 @@
 title: "[strings.to-lower]"
 description: "strings.to-lower is a slot in the strings namespace of Magic Cloud. Transforms input text to lowercase."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/strings/strings.to-lower/slot.json"
 ---
 
@@ -13,19 +13,7 @@ slot_json: "/reference/slots/strings/strings.to-lower/slot.json"
 
 ### Guide
 
-<!-- guide -->
-Turns every single character in your input string into a lowercase character.
-
-```
-strings.to-lower:Thomas Hansen Is Cool
-
-// Results in "thomas hansen is cool"
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.strings](/plugins/magic.lambda.strings/) plugin, which documents every slot it contains.
+[How to use `strings.to-lower`](/plugins/magic.lambda.strings/strings.to-lower/)
 
 ### JSON declaration
 

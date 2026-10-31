@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.json
-moved_anchors: {"how-to-use-json2lambda-and-lambda2json": "/reference/slots/core/json2lambda/#guide", "how-to-use-json2lambda-stream": "/reference/slots/core/json2lambda-stream/#guide", "how-to-use-yaml2json-and-json2yaml": "/reference/slots/core/yaml2json/#guide", "how-to-use-yaml2lambda-and-lambda2yaml": "/reference/slots/core/yaml2lambda/#guide"}
+moved_anchors: {"how-to-use-json2lambda-and-lambda2json": "/plugins/magic.lambda.json/json2lambda/", "how-to-use-json2lambda-stream": "/plugins/magic.lambda.json/json2lambda-stream/", "how-to-use-yaml2json-and-json2yaml": "/plugins/magic.lambda.json/yaml2json/", "how-to-use-yaml2lambda-and-lambda2yaml": "/plugins/magic.lambda.json/yaml2lambda/"}
 ---
 
 This project provides JSON helper slots for Magic. More specifically, it provides the following slots.

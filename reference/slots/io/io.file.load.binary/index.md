@@ -11,10 +11,6 @@ slot_json: "/reference/slots/io/io.file.load.binary/slot.json"
 * **Value** (`binary-file`), required: File path to load
 * **Returns**: Resolves to the loaded binary file bytes
 
-### Related documentation
-
-* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
-
 ### JSON declaration
 
 This is the complete declaration of `io.file.load.binary`, as the running system describes it. It is also published as [slot.json](slot.json).

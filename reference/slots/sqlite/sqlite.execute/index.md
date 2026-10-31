@@ -20,10 +20,6 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 
-### Related documentation
-
-* Part of the [magic.lambda.sqlite](/plugins/magic.lambda.sqlite/) plugin, which documents every slot it contains.
-
 ### JSON declaration
 
 This is the complete declaration of `sqlite.execute`, as the running system describes it. It is also published as [slot.json](slot.json).

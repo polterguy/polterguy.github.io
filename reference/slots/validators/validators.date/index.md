@@ -2,7 +2,7 @@
 title: "[validators.date]"
 description: "validators.date is a slot in the validators namespace of Magic Cloud. Validates that a date value or resolved expression result is within the allowed range, throwing if validation fails."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/validators/validators.date/slot.json"
 ---
 
@@ -21,21 +21,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This slot works similarly to the **[validator.integer]** validator, except instead of providing a min/max
-integer value, you're expected to provide a min/max _date_ value. Below is an example of how you could use
-it.
-
-```
-validators.date:x:@.arguments/*/date
-   min:date:"2005-01-21T23:59:47"
-   max:date:"2023-01-21T23:59:47"
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.validators](/plugins/magic.lambda.validators/) plugin, which documents every slot it contains.
+[How to use `validators.date`](/plugins/magic.lambda.validators/validators.date/)
 
 ### JSON declaration
 

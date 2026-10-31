@@ -2,7 +2,7 @@
 title: "[validators.recaptcha]"
 description: "validators.recaptcha is a slot in the validators namespace of Magic Cloud. Validates a reCAPTCHA response token, throwing if validation fails."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/validators/validators.recaptcha/slot.json"
 ---
 
@@ -22,27 +22,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This is probably the most complex validator, and requires 3 arguments.
-
-* __[site-key]__ - Site key as provided to you by Google's reCAPTCHA admin panel
-* __[secret]__ - Secret as provided to you by Google's reCAPTCHA admin panel
-* __[min]__ - Minimum value, a decimal value between 0 and 1. A good value here is typically 0.3
-
-To use this validator you will need a Google reCAPTCHA account, version 3, at which point you can use it as
-follows.
-
-```
-validators.recaptcha:x:@.arguments/*/recaptcha_value
-   site-key:xyz
-   secret:qwerty
-   min:decimal:0.3
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.validators](/plugins/magic.lambda.validators/) plugin, which documents every slot it contains.
+[How to use `validators.recaptcha`](/plugins/magic.lambda.validators/validators.recaptcha/)
 
 ### JSON declaration
 

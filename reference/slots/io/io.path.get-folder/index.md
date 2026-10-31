@@ -2,7 +2,7 @@
 title: "[io.path.get-folder]"
 description: "io.path.get-folder is a slot in the io namespace of Magic Cloud. Strips the filename from a path and returns just its folder portion (e.g. '/foo/bar/baz.txt' becomes '/foo/bar/')."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/io/io.path.get-folder/slot.json"
 ---
 
@@ -13,20 +13,7 @@ slot_json: "/reference/slots/io/io.path.get-folder/slot.json"
 
 ### Guide
 
-<!-- guide -->
-Strips the filename from a path and returns the folder part of it, always ending with a `/`. If the path already
-ends with a `/` it is returned as it is. Below is an example.
-
-```
-io.path.get-folder:/foo/howdy/file.hl
-```
-
-The above returns `/foo/howdy/`, and the same is returned if you pass in `/foo/howdy/` instead.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+[How to use `io.path.get-folder`](/plugins/magic.lambda.io/io.path.get-folder/)
 
 ### JSON declaration
 

@@ -2,7 +2,7 @@
 title: "[lambda2html]"
 description: "lambda2html is a core slot of Magic Cloud. Transforms a lambda hierarchy into HTML."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/core/lambda2html/slot.json"
 ---
 
@@ -13,40 +13,7 @@ slot_json: "/reference/slots/core/lambda2html/slot.json"
 
 ### Guide
 
-<!-- guide -->
-This is the reverse of **[\[html2lambda\]](/reference/slots/core/html2lambda/)** and returns HTML resulting from the specified lambda object. Below
-is example usage.
-
-```
-.html:@"<html>
-  <head>
-    <title>Howdy</title>
-  </head>
-  <body>
-    <p class=""foo"">Howdy <strong>world</strong> - This is cool!</p>
-  </body>
-</html>"
-html2lambda:x:-
-lambda2html:x:-/*
-```
-
-The above will result in the following HTML, formatted for brevity.
-
-```html
-<html>
-  <head>
-    <title>Howdy</title>
-  </head>
-  <body>
-    <p class="foo">Howdy <strong>world</strong> - This is cool!</p>
-  </body>
-</html>
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.html](/plugins/magic.lambda.html/) plugin, which documents every slot it contains.
+[How to use `lambda2html`](/plugins/magic.lambda.html/lambda2html/)
 
 ### JSON declaration
 

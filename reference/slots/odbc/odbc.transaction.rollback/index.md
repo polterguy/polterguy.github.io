@@ -10,10 +10,6 @@ slot_json: "/reference/slots/odbc/odbc.transaction.rollback/slot.json"
 
 * **Scope**: requires `odbc.transaction` - Requires an active ODBC transaction created by [odbc.transaction.create]
 
-### Related documentation
-
-* Part of the [magic.lambda.odbc](/plugins/magic.lambda.odbc/) plugin, which documents every slot it contains.
-
 ### JSON declaration
 
 This is the complete declaration of `odbc.transaction.rollback`, as the running system describes it. It is also published as [slot.json](slot.json).

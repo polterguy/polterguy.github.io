@@ -2,7 +2,7 @@
 title: "[io.folder.move]"
 description: "io.folder.move is a slot in the io namespace of Magic Cloud. Moves a folder on the server."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/io/io.folder.move/slot.json"
 ---
 
@@ -20,18 +20,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Moves the specified source folder to its specified destination folder.
-
-```
-io.folder.move:/misc/source-folder/
-   .:/misc/destination-folder/
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+[How to use `io.folder.move`](/plugins/magic.lambda.io/io.folder.move/)
 
 ### JSON declaration
 

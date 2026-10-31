@@ -2,7 +2,7 @@
 title: "[io.folder.list-recursively]"
 description: "io.folder.list-recursively is a slot in the io namespace of Magic Cloud. Lists folders recursively in the specified folder."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/io/io.folder.list-recursively/slot.json"
 ---
 
@@ -22,18 +22,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This slot works like **[\[io.folder.list\]](/reference/slots/io/io.folder.list/)**, except it also returns all folders nested inside of the specified folder,
-at any depth, and not only its direct sub folders. It returns one unnamed child node per folder, with the folder's
-path relative to the root folder of your backend, and accepts the following optional arguments.
-
-* **[display-hidden]** - Boolean, defaults to false, which hides folders starting with a `.`
-* **[display-system]** - Boolean, defaults to true, and if false hides folders inside of _"/system/"_, _"/misc/"_, _"/data/"_ and _"/config/"_
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+[How to use `io.folder.list-recursively`](/plugins/magic.lambda.io/io.folder.list-recursively/)
 
 ### JSON declaration
 

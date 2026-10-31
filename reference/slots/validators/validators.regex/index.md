@@ -2,7 +2,7 @@
 title: "[validators.regex]"
 description: "validators.regex is a slot in the validators namespace of Magic Cloud. Validates that a value or resolved expression result matches a regular expression, bounded by the execution deadline when set, throwing if validation fails."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/validators/validators.regex/slot.json"
 ---
 
@@ -20,23 +20,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This validator requires a **[regex]** argument, that is a regular expression that must match the argument
-specified. Usage can be found below.
-
-```
-.arguments
-   foo:howdy world
-validators.regex:x:@.arguments/*/foo
-   regex:howdy
-```
-
-If you remove the _"howdy"_ parts of your above argument, an exception will be thrown.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.validators](/plugins/magic.lambda.validators/) plugin, which documents every slot it contains.
+[How to use `validators.regex`](/plugins/magic.lambda.validators/validators.regex/)
 
 ### JSON declaration
 

@@ -9,7 +9,7 @@ This page is part of the [magic.endpoint](/plugins/magic.endpoint/) documentatio
 The `HttpFileExecutorAsync` resolver will resolve everything _not_ starting out with `magic/` as a file,
 optionally applied as a mixin file having a Hyperlambda code behind file for mixing in dynamic content
 with _".html"_ files. This allows you to render HTML, CSS, JavaScript and _"whatever"_, with the ability
-to dynamically render parts of your HTML files using Hyperlambda. This logic relies upon the **[\[io.file.mixin\]](/reference/slots/io/io.file.mixin/)**
+to dynamically render parts of your HTML files using Hyperlambda. This logic relies upon the **[io.file.mixin]**
 slot from the _"magic.lambda.io"_ project. If you create two files such as follows, and put both of these
 files in your _"/etc/www/"_ folder, you can see this logic in action.
 
@@ -43,7 +43,7 @@ files in your _"/etc/www/"_ folder, you can see this logic in action.
 ```
 
 The above will substitute your {% raw %}`{{*/.calculate}}`{% endraw %} parts with the result of invoking your **[.calculate]** lambda
-object, resulting in 4. To understand how this works, you need to read about the **[\[io.file.mixin\]](/reference/slots/io/io.file.mixin/)** slot in
+object, resulting in 4. To understand how this works, you need to read about the **[io.file.mixin]** slot in
 the _"magic.lambda.io"_ project, and realise that the above will actually transform to the following as the
 mixin logic is executed.
 
@@ -72,7 +72,7 @@ The resolver will also rewrite and redirect automatically every URL ending with 
 
 If you've got a file called _"default.html"_, and the client is requesting a URL that does not have an associated physical file existing for the absolute path specified - Then your _"default.html"_ file will resolve the specified URL. Such a _"default.html"_ file can also optionally have a Hyperlambda code behind file, allowing you to serve dynamic content based upon the URL of the request. This allows you to use dynamic URLs, to for instance lookup files from your database and serve back as dynamic content.
 
-If you want to use dynamic pages, you can retrieve the request URL by invoking the **[\[request.url\]](/reference/slots/request/request.url/)** slot to retrieve the request URL.
+If you want to use dynamic pages, you can retrieve the request URL by invoking the **[request.url]** slot to retrieve the request URL.
 
 ## Configuring your code behind resolver
 

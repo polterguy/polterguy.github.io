@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.mime
-moved_anchors: {"how-to-use-mimecreate": "/reference/slots/mime/mime.create/#guide", "how-to-use-mimeparse": "/reference/slots/mime/mime.parse/#guide"}
+moved_anchors: {"how-to-use-mimecreate": "/plugins/magic.lambda.mime/mime.create/", "how-to-use-mimeparse": "/plugins/magic.lambda.mime/mime.parse/"}
 ---
 
 magic.lambda.mime gives you the ability to parse and create MIME messages from Hyperlambda.

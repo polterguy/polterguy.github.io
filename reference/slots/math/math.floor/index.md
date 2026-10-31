@@ -2,7 +2,7 @@
 title: "[math.floor]"
 description: "math.floor is a slot in the math namespace of Magic Cloud. Rounds a number down."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/math/math.floor/slot.json"
 ---
 
@@ -13,14 +13,7 @@ slot_json: "/reference/slots/math/math.floor/slot.json"
 
 ### Guide
 
-<!-- guide -->
-This slot rounds its input down to the nearest whole number. The slot takes a numeric value, which can be a
-constant or an expression, and replaces its value with the rounded result.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.math](/plugins/magic.lambda.math/) plugin, which documents every slot it contains.
+[How to use `math.floor`](/plugins/magic.lambda.math/math.floor/)
 
 ### JSON declaration
 

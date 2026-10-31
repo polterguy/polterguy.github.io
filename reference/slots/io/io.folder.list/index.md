@@ -2,7 +2,7 @@
 title: "[io.folder.list]"
 description: "io.folder.list is a slot in the io namespace of Magic Cloud. Lists folders in the specified folder."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/io/io.folder.list/slot.json"
 ---
 
@@ -22,18 +22,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Lists all folders inside of the specified folder. By default hidden folders will not be shown, unless
-you pass in **[display-hidden]** and set its value to boolean _"true"_.
-
-```
-io.folder.list:/misc/
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+[How to use `io.folder.list`](/plugins/magic.lambda.io/io.folder.list/)
 
 ### JSON declaration
 

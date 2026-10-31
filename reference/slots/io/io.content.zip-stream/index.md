@@ -2,7 +2,7 @@
 title: "[io.content.zip-stream]"
 description: "io.content.zip-stream is a slot in the io namespace of Magic Cloud. Builds an in-memory zip stream from child entries; useful for returning an archive over HTTP without writing to disk."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/io/io.content.zip-stream/slot.json"
 ---
 
@@ -21,25 +21,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Creates a memory based ZIP stream you can return over the HTTP response object. Notice,
-this doesn't create a zip file, but rather a zip stream, which you can manipulate using other
-slots. This slot is useful if you need to return zipped content as your HTTP response for instance.
-
-Notice, both the root arguments (lambda children) of this slot will be evaluated, in addition to
-its content nodes, evaluated once for each file declaration node. Notice also that the stream is
-a memory based stream, and hence closing it, even in case of an exception, is not necessary.
-
-```
-io.content.zip-stream
-   .:/foo/x.txt
-      .:content of file
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+[How to use `io.content.zip-stream`](/plugins/magic.lambda.io/io.content.zip-stream/)
 
 ### JSON declaration
 

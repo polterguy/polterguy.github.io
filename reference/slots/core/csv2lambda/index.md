@@ -2,7 +2,7 @@
 title: "[csv2lambda]"
 description: "csv2lambda is a core slot of Magic Cloud. Transforms CSV into a lambda hierarchy."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/core/csv2lambda/slot.json"
 ---
 
@@ -30,24 +30,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This slot converts a CSV string into a lambda object. In its simplest form it would resemble the following.
-
-```
-.csv:@"name,age
-Thomas Hansen,47
-John Doe,67"
-
-csv2lambda:x:@.csv
-```
-
-It can optionally take a type declaration through a **[\[types\]](/reference/slots/core/types/)** argument, which allows you to add typing support
-to the slot.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.csv](/plugins/magic.lambda.csv/) plugin, which documents every slot it contains.
+[How to use `csv2lambda`](/plugins/magic.lambda.csv/csv2lambda/)
 
 ### JSON declaration
 

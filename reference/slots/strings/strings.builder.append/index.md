@@ -2,7 +2,7 @@
 title: "[strings.builder.append]"
 description: "strings.builder.append is a slot in the strings namespace of Magic Cloud. Appends text to the current [strings.builder] scope."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/strings/strings.builder.append/slot.json"
 ---
 
@@ -13,15 +13,7 @@ slot_json: "/reference/slots/strings/strings.builder.append/slot.json"
 
 ### Guide
 
-<!-- guide -->
-Appends its value to the closest **[\[strings.builder\]](/reference/slots/strings/strings.builder/)** scope. The slot requires a value, which can be a constant
-or an expression, and can only be used inside a **[\[strings.builder\]](/reference/slots/strings/strings.builder/)** invocation. See the example in the
-documentation for **[\[strings.builder\]](/reference/slots/strings/strings.builder/)** above.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.strings](/plugins/magic.lambda.strings/) plugin, which documents every slot it contains.
+[How to use `strings.builder.append`](/plugins/magic.lambda.strings/strings.builder.append/)
 
 ### JSON declaration
 

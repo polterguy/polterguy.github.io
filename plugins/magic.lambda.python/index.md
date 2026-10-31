@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.python
-moved_anchors: {"how-to-use-pythonexecute": "/reference/slots/python/python.execute/#guide"}
+moved_anchors: {"how-to-use-pythonexecute": "/plugins/magic.lambda.python/python.execute/"}
 ---
 
 This project provides Python execution capabilities for Magic and Hyperlambda.

@@ -2,7 +2,7 @@
 title: "[io.file.load-recursively]"
 description: "io.file.load-recursively is a slot in the io namespace of Magic Cloud. Loads files recursively from the specified folder."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/io/io.file.load-recursively/slot.json"
 ---
 
@@ -21,20 +21,7 @@ slot_json: "/reference/slots/io/io.file.load-recursively/slot.json"
 
 ### Guide
 
-<!-- guide -->
-This slot loads the content of all files inside of the specified folder, including all nested folders, as text, and
-takes no arguments besides the folder as its value. It returns one unnamed child node per file, and each of these nodes
-has the following two children.
-
-* **[name]** - Path of the file relative to the root folder of your backend
-* **[content]** - Content of the file as a string, decoded as UTF-8
-
-As with **[\[io.file.load\]](/reference/slots/io/io.file.load/)**, you should not use this slot on binary files.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+[How to use `io.file.load-recursively`](/plugins/magic.lambda.io/io.file.load-recursively/)
 
 ### JSON declaration
 

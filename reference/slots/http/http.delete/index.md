@@ -2,7 +2,7 @@
 title: "[http.delete]"
 description: "http.delete is a slot in the http namespace of Magic Cloud. Issues an HTTP DELETE to the specified URL; used to remove a remote resource."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/http/http.delete/slot.json"
 ---
 
@@ -38,21 +38,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This slot accepts a URL as its value, and optionally HTTP headers as a **[headers]** argument. In its simplest version
-it would resemble something such as the following.
-
-```
-http.delete:"https://your_website.com/your-delete-endpoint"
-```
-
-The slot returns the result of the specified HTTP DELETE invocation, including the HTTP headers returned from the endpoint,
-and status code, in addition to the response object itself.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.http](/plugins/magic.lambda.http/) plugin, which documents every slot it contains.
+[How to use `http.delete`](/plugins/magic.lambda.http/http.delete/)
 
 ### JSON declaration
 

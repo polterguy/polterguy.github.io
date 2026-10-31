@@ -2,7 +2,7 @@
 title: "[auth.ticket.verify]"
 description: "auth.ticket.verify is a slot in the auth namespace of Magic Cloud. Verifies that the current user is authenticated and optionally in one of the specified roles."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/auth/auth.ticket.verify/slot.json"
 ---
 
@@ -12,22 +12,7 @@ slot_json: "/reference/slots/auth/auth.ticket.verify/slot.json"
 
 ### Guide
 
-<!-- guide -->
-This slot verifies that the currently authenticated user belongs to one or more roles provided as
-a comma separated list of names. If the user does not belong to any of the specified roles, the
-slot will throw an exception. Below is example usage.
-
-```
-auth.ticket.verify:root,admin,guest
-```
-
-Like all auth related slots, it only makes sense to invoke from within a context of having an authorised
-user, such as an HTTP endpoint intended to be invoked by an authenticated user.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.auth](/plugins/magic.lambda.auth/) plugin, which documents every slot it contains.
+[How to use `auth.ticket.verify`](/plugins/magic.lambda.auth/auth.ticket.verify/)
 
 ### JSON declaration
 

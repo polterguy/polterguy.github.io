@@ -2,7 +2,7 @@
 title: "[strings.join]"
 description: "strings.join is a slot in the strings namespace of Magic Cloud. Concatenates the values yielded by the expression, inserting the separator between adjacent items."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/strings/strings.join/slot.json"
 ---
 
@@ -21,26 +21,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Similar to **[\[strings.concat\]](/reference/slots/strings/strings.concat/)**, except it also takes an optional separating character, allowing you to
-concatenate a bunch of strings, and making sure each original string is separated by some sequence of strings.
-
-```
-.src
-   .:foo
-   .:bar
-strings.join:x:@.src/*
-   .:,
-
-/*
- * Results in "foo,bar"
- */
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.strings](/plugins/magic.lambda.strings/) plugin, which documents every slot it contains.
+[How to use `strings.join`](/plugins/magic.lambda.strings/strings.join/)
 
 ### JSON declaration
 

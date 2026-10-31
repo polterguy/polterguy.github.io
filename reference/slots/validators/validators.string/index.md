@@ -2,7 +2,7 @@
 title: "[validators.string]"
 description: "validators.string is a slot in the validators namespace of Magic Cloud. Validates that a string value or resolved expression result is within the allowed length range, throwing if validation fails."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/validators/validators.string/slot.json"
 ---
 
@@ -21,22 +21,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This works the same way as the **[\[validators.integer\]](/reference/slots/validators/validators.integer/)** validator, except instead of being a min/max
-_value_ the min/max arguments declares the minimum and maximum _length_ of the string, allowing you
-to restrict string length of arguments to a min/max value for your Hyperlambda. Below is example
-usage that will throw an exception unless the argument is between 5 and 15 characters in length.
-
-```
-validators.string:x:@.some-arg
-   min:5
-   max:15
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.validators](/plugins/magic.lambda.validators/) plugin, which documents every slot it contains.
+[How to use `validators.string`](/plugins/magic.lambda.validators/validators.string/)
 
 ### JSON declaration
 

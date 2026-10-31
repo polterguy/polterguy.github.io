@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.openai
-moved_anchors: {"how-to-use-openaiwhisper": "/reference/slots/openai/openai.whisper/#guide"}
+moved_anchors: {"how-to-use-openaiwhisper": "/plugins/magic.lambda.openai/openai.whisper/"}
 ---
 
 This project provides OpenAI related slots for Magic. More specifically, it provides the following slots.

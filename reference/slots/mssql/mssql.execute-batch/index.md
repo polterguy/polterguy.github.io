@@ -2,7 +2,7 @@
 title: "[mssql.execute-batch]"
 description: "mssql.execute-batch is a slot in the mssql namespace of Magic Cloud. Executes a batch SQL script on the current SQL Server connection."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/mssql/mssql.execute-batch/slot.json"
 ---
 
@@ -14,21 +14,7 @@ slot_json: "/reference/slots/mssql/mssql.execute-batch/slot.json"
 
 ### Guide
 
-<!-- guide -->
-Executes a batch SQL script, such as a schema creation script, on the SQL Server connection opened by **[\[mssql.connect\]](/reference/slots/mssql/mssql.connect/)**.
-SQL Server cannot execute scripts containing `GO` separators as one single command, so this slot splits the script
-on every line consisting only of `GO` (case insensitive), and executes each part as its own command. This is the
-difference between this slot and **[\[mssql.execute\]](/reference/slots/mssql/mssql.execute/)**, which executes its SQL as one single command.
-
-* __[value]__ - The batch SQL script to execute. Can be a constant or an expression.
-
-After execution the slot's value is `null`, and it has one child per executed batch, each containing a
-**[Records affected]** node.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.mssql](/plugins/magic.lambda.mssql/) plugin, which documents every slot it contains.
+[How to use `mssql.execute-batch`](/plugins/magic.lambda.mssql/mssql.execute-batch/)
 
 ### JSON declaration
 

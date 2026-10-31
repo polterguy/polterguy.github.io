@@ -2,7 +2,7 @@
 title: "[sql.delete]"
 description: "sql.delete is a slot in the sql namespace of Magic Cloud. Builds a parameterized DELETE SQL statement; include a [where] child unless intentionally deleting every row in the table."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/sql/sql.delete/slot.json"
 ---
 
@@ -35,33 +35,7 @@ _Nodes nested deeper than 6 levels, and nodes that repeat one of their own ances
 
 ### Guide
 
-<!-- guide -->
-This slot is for deleting records. Its **[where]** argument is applied in a similar fashion as the where
-argument to **[\[sql.read\]](/reference/slots/sql/sql.read/)** and **[\[sql.update\]](/reference/slots/sql/sql.update/)**. You can find an example further down in this document of
-how to use **[where]**.
-
-```
-sql.delete
-   table:table1
-   where
-      and
-         field1:value1
-         field2:value2
-```
-
-The above will produce the following results.
-
-```
-sql.delete:delete from 'table1' where 'field1' = @0 and 'field2' = @1
-   @0:value1
-   @1:value2
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.data.common](/plugins/magic.data.common/) plugin, which documents every slot it contains.
-* Discussed in [The [where] argument](/plugins/magic.data.common/the-where-argument/).
+[How to use `sql.delete`](/plugins/magic.data.common/sql.delete/)
 
 ### JSON declaration
 

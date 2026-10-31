@@ -2,7 +2,7 @@
 title: "[slots.exists]"
 description: "slots.exists is a slot in the slots namespace of Magic Cloud. Returns true if a dynamic slot exists."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/slots/slots.exists/slot.json"
 ---
 
@@ -13,21 +13,7 @@ slot_json: "/reference/slots/slots/slots.exists/slot.json"
 
 ### Guide
 
-<!-- guide -->
-Returns true if the specified slot exists. Example can be found below.
-
-```
-slots.create:foo
-   return-value:Blah, blah, blah ...
-
-slots.exists:foo
-slots.exists:DOES-NOT-EXISTS
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.slots](/plugins/magic.lambda.slots/) plugin, which documents every slot it contains.
+[How to use `slots.exists`](/plugins/magic.lambda.slots/slots.exists/)
 
 ### JSON declaration
 

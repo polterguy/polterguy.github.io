@@ -2,7 +2,7 @@
 title: "[validators.enum]"
 description: "validators.enum is a slot in the validators namespace of Magic Cloud. Validates that a value or resolved expression result is one of the allowed options, throwing if validation fails."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/validators/validators.enum/slot.json"
 ---
 
@@ -20,22 +20,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This validator will throw an exception unless the specified string argument is one of the legal values. Usage
-could be as follows.
-
-```
-validators.enum:x:@.arguments/*/enum_value
-   .:val1
-   .:val2
-```
-
-If the above **[enum_value]** is not either `val1` or `val2` the validator will throw an exception.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.validators](/plugins/magic.lambda.validators/) plugin, which documents every slot it contains.
+[How to use `validators.enum`](/plugins/magic.lambda.validators/validators.enum/)
 
 ### JSON declaration
 

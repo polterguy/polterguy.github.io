@@ -2,7 +2,7 @@
 title: "[xml2lambda]"
 description: "xml2lambda is a core slot of Magic Cloud. Transforms XML into a lambda hierarchy."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/core/xml2lambda/slot.json"
 ---
 
@@ -13,55 +13,7 @@ slot_json: "/reference/slots/core/xml2lambda/slot.json"
 
 ### Guide
 
-<!-- guide -->
-```
-.xml:@"<CATALOG>
-  <PLANT>
-    <COMMON>Bloodroot</COMMON>
-    <BOTANICAL>Sanguinaria canadensis</BOTANICAL>
-    <ZONE>4</ZONE>
-    <LIGHT>Mostly Shady</LIGHT>
-    <PRICE>$2.44</PRICE>
-    <AVAILABILITY>031599</AVAILABILITY>
-  </PLANT>
-</CATALOG>
-"
-xml2lambda:x:@.xml
-```
-
-The above results in something resembling the following.
-
-```
-xml2lambda
-   CATALOG
-      PLANT
-         COMMON
-            #text:Bloodroot
-         BOTANICAL
-            #text:Sanguinaria canadensis
-         ZONE
-            #text:4
-         LIGHT
-            #text:Mostly Shady
-         PRICE
-            #text:$2.44
-         AVAILABILITY
-            #text:031599
-```
-
-Attributes starts out with the `@` character, children nodes does not - While text content inside of elements will
-be named `#text`. This implies you'll need to use escaped expression iterators when traversing the resulting node
-lambda object. For instance, to retrieve the above `PRICE` element's inner text, you could use something such as the
-following.
-
-```
-get-value:x:@xml2lambda/**/PRICE/*/\#text
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.xml](/plugins/magic.lambda.xml/) plugin, which documents every slot it contains.
+[How to use `xml2lambda`](/plugins/magic.lambda.xml/xml2lambda/)
 
 ### JSON declaration
 

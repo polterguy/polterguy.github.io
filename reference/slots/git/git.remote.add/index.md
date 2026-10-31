@@ -2,7 +2,7 @@
 title: "[git.remote.add]"
 description: "git.remote.add is a slot in the git namespace of Magic Cloud. Adds a Git remote."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/git/git.remote.add/slot.json"
 ---
 
@@ -22,25 +22,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Adds a remote to a repository. The repo path is the node value. The `url` child node is required.
-The `name` child node defaults to `origin` if omitted.
-
-```
-git.remote.add:/modules/stripe/
-   url:"https://github.com/polterguy/stripe.git"
-```
-
-```
-git.remote.add:/modules/stripe/
-   name:origin
-   url:"https://github.com/polterguy/stripe.git"
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.git](/plugins/magic.lambda.git/) plugin, which documents every slot it contains.
+[How to use `git.remote.add`](/plugins/magic.lambda.git/git.remote.add/)
 
 ### JSON declaration
 

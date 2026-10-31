@@ -2,7 +2,7 @@
 title: "[time]"
 description: "time is a core slot of Magic Cloud. Constructs a TimeSpan value from child nodes."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/core/time/slot.json"
 ---
 
@@ -24,27 +24,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This slot returns a time object, which is useful for doing math operations with a date and time object,
-allowing you to for instance subtract 5 days from the current date and time. Below is an example.
-
-```
-time
-   days:5
-```
-
-This slot can be given the following arguments;
-
-- **[days]** - Number of days
-- **[hours]** - Number of hours
-- **[minutes]** - Number of minutes
-- **[seconds]** - Number of seconds
-- **[milliseconds]** - Number of milliseconds
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.dates](/plugins/magic.lambda.dates/) plugin, which documents every slot it contains.
+[How to use `time`](/plugins/magic.lambda.dates/time/)
 
 ### JSON declaration
 

@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.http
-moved_anchors: {"automatic-conversion": "/plugins/magic.lambda.http/automatic-conversion/", "how-to-use-httpdelete": "/reference/slots/http/http.delete/#guide", "how-to-use-httpget": "/reference/slots/http/http.get/#guide", "how-to-use-httppatch": "/reference/slots/http/http.patch/#guide", "how-to-use-httppost": "/reference/slots/http/http.post/#guide", "how-to-use-httpput": "/reference/slots/http/http.put/#guide"}
+moved_anchors: {"automatic-conversion": "/plugins/magic.lambda.http/automatic-conversion/", "how-to-use-httpdelete": "/plugins/magic.lambda.http/http.delete/", "how-to-use-httpget": "/plugins/magic.lambda.http/http.get/", "how-to-use-httppatch": "/plugins/magic.lambda.http/http.patch/", "how-to-use-httppost": "/plugins/magic.lambda.http/http.post/", "how-to-use-httpput": "/plugins/magic.lambda.http/http.put/"}
 ---
 
 The magic.lambda.http project provides HTTP invocation capabilities for Magic and Hyperlambda. More specifically the
@@ -12,7 +12,7 @@ project contains the following 5 slots.
 * __[\[http.put\]](/reference/slots/http/http.put/)__ - Puts some resources to some URL using the HTTP PUT verb
 * __[\[http.patch\]](/reference/slots/http/http.patch/)__ - Patches some resources to some URL using the HTTP PATCH verb
 
-The __[\[http.put\]](/reference/slots/http/http.put/)__, __[\[http.post\]](/reference/slots/http/http.post/)__ and __[\[http.patch\]](/reference/slots/http/http.patch/)__ slots requires you to provide a __[payload]__
+The __[http.put]__, __[http.post]__ and __[http.patch]__ slots requires you to provide a __[payload]__
 or __[filename]__ argument that will be transferred to the endpoint as is. All 5 endpoints can (optionally)
 take a __[token]__ argument, which will be transferred as a `Bearer Authorization` token to the endpoint
 in the `Authorization` header of your request. If you provide a __[filename]__ argument, this is assumed

@@ -83,7 +83,15 @@ def build(readme, plugin, names):
         description = docsplit.describe(page)
         head = '---\ntitle: %s\ndescription: %s\ngenerated: true\n---\n\n' % (
             json.dumps(page['title'], ensure_ascii=False), json.dumps(description, ensure_ascii=False))
-        files['plugins/%s/%s/index.md' % (plugin, page['slug'])] = head + to_index(docsplit.page_markdown(result, page, index, names))
+        files['plugins/%s/%s/index.md' % (plugin, page['slug'])] = head + to_index(docsplit.page_markdown(result, page, index))
+
+    for g in result['guide_pages']:
+        title = 'How to use [%s]' % g['slot']
+        description = '%s - %s' % (title, docsplit.first_sentence(g['md'].split('\n')))
+        head = '---\ntitle: %s\ndescription: %s\ngenerated: true\nguide: true\n---\n\n' % (
+            json.dumps(title, ensure_ascii=False), json.dumps(description[:217] + ('...' if len(description) > 220 else ''), ensure_ascii=False))
+        link = 'This is the guide to [`%s`](%s), whose reference page has its arguments, constraints and declaration.' % (g['slot'], docsplit.slot_url(g['slot']))
+        files['plugins/%s/%s/index.md' % (plugin, g['slot'])] = head + to_index(link + '\n\n' + g['md'] + '\n')
     return files
 
 

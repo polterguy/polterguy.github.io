@@ -2,7 +2,7 @@
 title: "[crypto.random.int]"
 description: "crypto.random.int is a slot in the crypto namespace of Magic Cloud. Returns a cryptographically secure random integer; use the optional [max] to cap the upper bound."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/crypto/crypto.random.int/slot.json"
 ---
 
@@ -21,22 +21,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This slot create a random integer value for you using a CSRNG generator.
-The slot can optionally take a **[max]** argument, which defines the maximum value it will return.
-This slot is useful for creating random integers where you need cryptographically
-secured random values. An example of generating a cryptographically secure random string integer
-with a maximum value of 1024 can be found below.
-
-```
-crypto.random.int
-   max:1024
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.crypto](/plugins/magic.lambda.crypto/) plugin, which documents every slot it contains.
+[How to use `crypto.random.int`](/plugins/magic.lambda.crypto/crypto.random.int/)
 
 ### JSON declaration
 

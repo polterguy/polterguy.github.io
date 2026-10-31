@@ -2,7 +2,7 @@
 title: "[strings.byte-count]"
 description: "strings.byte-count is a slot in the strings namespace of Magic Cloud. Returns the UTF-8 byte length of a string; useful for size checks where multi-byte characters matter."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/strings/strings.byte-count/slot.json"
 ---
 
@@ -13,15 +13,7 @@ slot_json: "/reference/slots/strings/strings.byte-count/slot.json"
 
 ### Guide
 
-<!-- guide -->
-Returns the number of bytes the specified string occupies when UTF-8 encoded, as an integer. This differs from
-**[\[strings.length\]](/reference/slots/strings/strings.length/)**, which counts characters, since characters outside the ASCII range occupy more than
-one byte. The slot takes a value, which can be a constant or an expression.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.strings](/plugins/magic.lambda.strings/) plugin, which documents every slot it contains.
+[How to use `strings.byte-count`](/plugins/magic.lambda.strings/strings.byte-count/)
 
 ### JSON declaration
 

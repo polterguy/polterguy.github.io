@@ -11,11 +11,6 @@ slot_json: "/reference/slots/log/log.get/slot.json"
 * **Value** (`log-entry-id,integer,number`), required: ID of the log entry to retrieve
 * **Returns**: Resolves to the log entry as child nodes
 
-### Related documentation
-
-* Part of the [magic.lambda.logging](/plugins/magic.lambda.logging/) plugin, which documents every slot it contains.
-* Discussed in [Querying your log](/plugins/magic.lambda.logging/querying-your-log/).
-
 ### JSON declaration
 
 This is the complete declaration of `log.get`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -2,7 +2,7 @@
 title: "[math.cos]"
 description: "math.cos is a slot in the math namespace of Magic Cloud. Calculates the cosine of the specified value."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/math/math.cos/slot.json"
 ---
 
@@ -13,17 +13,7 @@ slot_json: "/reference/slots/math/math.cos/slot.json"
 
 ### Guide
 
-<!-- guide -->
-This slot returns the cos value of its input.
-
-```
-math.cos:x:@.arguments/*/number
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.math](/plugins/magic.lambda.math/) plugin, which documents every slot it contains.
+[How to use `math.cos`](/plugins/magic.lambda.math/math.cos/)
 
 ### JSON declaration
 

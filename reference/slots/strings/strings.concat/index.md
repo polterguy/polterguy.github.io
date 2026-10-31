@@ -2,7 +2,7 @@
 title: "[strings.concat]"
 description: "strings.concat is a slot in the strings namespace of Magic Cloud. Concatenates strings."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/strings/strings.concat/slot.json"
 ---
 
@@ -25,30 +25,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Concatenates a list of strings into one string. Similar to **[\[strings.join\]](/reference/slots/strings/strings.join/)**, except it doesn't take a
-separating character.
-
-```
-.bar:Bar
-strings.concat
-   .:Thomas
-   .:" "
-   .:Hansen
-   .:" "
-   .:Foo
-   .:" "
-   get-value:x:@.bar
-
-/*
- * Resulting in "Thomas Hansen Foo Bar" after invocation.
- */
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.strings](/plugins/magic.lambda.strings/) plugin, which documents every slot it contains.
+[How to use `strings.concat`](/plugins/magic.lambda.strings/strings.concat/)
 
 ### JSON declaration
 

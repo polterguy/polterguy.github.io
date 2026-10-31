@@ -2,7 +2,7 @@
 title: "[execute]"
 description: "execute is a core slot of Magic Cloud. Invokes a dynamic slot after unwrapping descendant expressions."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/core/execute/slot.json"
 ---
 
@@ -27,53 +27,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-The **[execute]** slot is an alias for **[\[signal\]](/reference/slots/core/signal/)**, but it will **[\[unwrap\]](/reference/slots/core/unwrap/)** all children nodes, automatically
-transform any expressions to their static value equivalents, allowing you to combine **[\[unwrap\]](/reference/slots/core/unwrap/)** and **[\[signal\]](/reference/slots/core/signal/)**
-into one invocation. This makes usage slightly less verbose for cases such as the following.
-
-```
-.args
-   foo1:bar1
-   foo2:bar2
-execute:whatever-slot
-   arg1:x:@.args/*/foo1
-   arg2:x:@.args/*/foo2
-```
-
-In the above example both arguments to our _"whatever-slot"_ invocation will be evaluated before the slot is invoked,
-resulting in **[arg1]** and **[args2]** having the values of _"bar1"_ and _"bar2"_ respectively.
-
-If you pass in a node named **[node_reference]** using the above syntax, this node will be especially handled, and
-passed in by reference instead of evaluated as a single expression value. Consider the following alternative to
-the above.
-
-```
-.args
-   foo1:bar1
-   foo2:bar2
-execute:whatever-slot
-   node_reference:x:@.args
-```
-
-Inside your above _"whatever-slot"_ you will now have access to the entire **[.args]** node by reference.
-It might help to execute the following to understand.
-
-```
-.args
-   foo1:howdy
-   foo2:world
-slots.create:foo
-   lambda2hyper:x:../*
-   return:x:-
-execute:foo
-   node_reference:x:@.args/*
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.slots](/plugins/magic.lambda.slots/) plugin, which documents every slot it contains.
+[How to use `execute`](/plugins/magic.lambda.slots/execute/)
 
 ### JSON declaration
 

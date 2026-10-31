@@ -2,7 +2,7 @@
 title: "[lambda2hyper]"
 description: "lambda2hyper is a core slot of Magic Cloud. Transforms a lambda hierarchy into Hyperlambda."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/core/lambda2hyper/slot.json"
 ---
 
@@ -21,21 +21,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This slot creates a Hyperlambda string from your specified lambda object. This allows you to
-transfer your Hyperlambda to some other server, and/or persist it to disc. Below is example
-usage.
-
-```
-.hl
-   log.info:This is some example logging invocation
-lambda2hyper:x:-/*
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.hyperlambda](/plugins/magic.lambda.hyperlambda/) plugin, which documents every slot it contains.
+[How to use `lambda2hyper`](/plugins/magic.lambda.hyperlambda/lambda2hyper/)
 
 ### JSON declaration
 

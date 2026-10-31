@@ -2,7 +2,7 @@
 title: "[strings.substring]"
 description: "strings.substring is a slot in the strings namespace of Magic Cloud. Extracts a portion of a string starting at the given offset and optional length; out-of-range bounds throw."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/strings/strings.substring/slot.json"
 ---
 
@@ -22,29 +22,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-Returns a substring of the specified string.
-
-```
-.input:Foo Bar Howdy World
-strings.substring:x:-
-   .:5
-   .:7
-```
-
-The above will result in the following.
-
-```
-strings.substring:ar Howd
-```
-
-Notice, the second argument is the _number of characters to return_ and not the offset into the string
-of where to stop returning. In such a regard, it works the same way as the C# `Substring` method.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.strings](/plugins/magic.lambda.strings/) plugin, which documents every slot it contains.
+[How to use `strings.substring`](/plugins/magic.lambda.strings/strings.substring/)
 
 ### JSON declaration
 

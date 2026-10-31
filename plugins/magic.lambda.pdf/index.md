@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.pdf
-moved_anchors: {"how-to-use-html2pdf": "/reference/slots/core/html2pdf/#guide", "how-to-use-pdf2text": "/reference/slots/core/pdf2text/#guide"}
+moved_anchors: {"how-to-use-html2pdf": "/plugins/magic.lambda.pdf/html2pdf/", "how-to-use-pdf2text": "/plugins/magic.lambda.pdf/pdf2text/"}
 ---
 
 This project provides PDF slots for Magic. The project provides the following

@@ -2,7 +2,7 @@
 title: "[validators.integer]"
 description: "validators.integer is a slot in the validators namespace of Magic Cloud. Validates that an integer value or resolved expression result is within the allowed range, throwing if validation fails."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/validators/validators.integer/slot.json"
 ---
 
@@ -21,22 +21,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-This value takes a **[min]** and **[max]** value, both of which are optional, and declares the minimum, and/or
-maximum value of the integer input. Usage could be as follows.
-
-```
-validators.integer:x:@.arguments/*/some-integer-argument
-   min:50
-   max:100
-```
-
-If the specified integer value is not within the range of the min and max value, an exception will be thrown.
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.validators](/plugins/magic.lambda.validators/) plugin, which documents every slot it contains.
+[How to use `validators.integer`](/plugins/magic.lambda.validators/validators.integer/)
 
 ### JSON declaration
 

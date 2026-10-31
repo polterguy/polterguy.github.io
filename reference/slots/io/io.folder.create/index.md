@@ -2,7 +2,7 @@
 title: "[io.folder.create]"
 description: "io.folder.create is a slot in the io namespace of Magic Cloud. Creates a folder on the server."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/io/io.folder.create/slot.json"
 ---
 
@@ -12,18 +12,7 @@ slot_json: "/reference/slots/io/io.folder.create/slot.json"
 
 ### Guide
 
-<!-- guide -->
-Creates a new folder on disc. The example below will create a folder named _"foo"_ inside of the _"misc"_ folder.
-Notice, will throw an exception if the folder already exists.
-
-```
-io.folder.create:/misc/foo/
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+[How to use `io.folder.create`](/plugins/magic.lambda.io/io.folder.create/)
 
 ### JSON declaration
 

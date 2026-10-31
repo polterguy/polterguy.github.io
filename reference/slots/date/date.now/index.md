@@ -2,7 +2,7 @@
 title: "[date.now]"
 description: "date.now is a slot in the date namespace of Magic Cloud. Returns the current server time in UTC."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/date/date.now/slot.json"
 ---
 
@@ -12,17 +12,7 @@ slot_json: "/reference/slots/date/date.now/slot.json"
 
 ### Guide
 
-<!-- guide -->
-This slot takes no arguments and simply returns the current date and time. Basic usage can be found below.
-
-```
-date.now
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.dates](/plugins/magic.lambda.dates/) plugin, which documents every slot it contains.
+[How to use `date.now`](/plugins/magic.lambda.dates/date.now/)
 
 ### JSON declaration
 

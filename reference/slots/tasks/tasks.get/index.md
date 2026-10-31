@@ -2,7 +2,7 @@
 title: "[tasks.get]"
 description: "tasks.get is a slot in the tasks namespace of Magic Cloud. Looks up a single stored task by ID and returns its body, description, and next due date."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/tasks/tasks.get/slot.json"
 ---
 
@@ -21,26 +21,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 ### Guide
 
-<!-- guide -->
-To inspect a task you can use the following.
-
-```
-tasks.get:task-id
-```
-
-The above will return the Hyperlambda for your task, in addition to your task's description. If you add
-a **[schedules]** argument and set its value to boolean `true`, this slot will also return all schedules
-associated with the task.
-
-```
-tasks.get:task-id
-   schedules:true
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.scheduler](/plugins/magic.lambda.scheduler/) plugin, which documents every slot it contains.
+[How to use `tasks.get`](/plugins/magic.lambda.scheduler/tasks.get/)
 
 ### JSON declaration
 

@@ -2,7 +2,7 @@
 title: "[strings.to-upper]"
 description: "strings.to-upper is a slot in the strings namespace of Magic Cloud. Transforms input text to uppercase."
 generated: true
-llms: "guide"
+llms: false
 slot_json: "/reference/slots/strings/strings.to-upper/slot.json"
 ---
 
@@ -13,19 +13,7 @@ slot_json: "/reference/slots/strings/strings.to-upper/slot.json"
 
 ### Guide
 
-<!-- guide -->
-Turns every single character in your input string into a UPPER case character.
-
-```
-strings.to-upper:Thomas Hansen Is Cool
-
-// Results in "THOMAS HANSEN IS COOL"
-```
-<!-- /guide -->
-
-### Related documentation
-
-* Part of the [magic.lambda.strings](/plugins/magic.lambda.strings/) plugin, which documents every slot it contains.
+[How to use `strings.to-upper`](/plugins/magic.lambda.strings/strings.to-upper/)
 
 ### JSON declaration
 
