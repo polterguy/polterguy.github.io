@@ -44,6 +44,10 @@ time. Such shared resources might be for instance files, or other things shared 
 where it's crucial that only one thread is allowed to access the shared resource at the same time.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.threading](/plugins/magic.lambda.threading/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `semaphore`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -19,6 +19,10 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | `[model]` | string | no | OpenAI model whose encoding to count with - defaults to o200k_base when omitted or unknown. |
 
+### Related documentation
+
+* Part of the [magic.lambda.openai](/plugins/magic.lambda.openai/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `openai.tokenize`, as the running system describes it. It is also published as [slot.json](slot.json).

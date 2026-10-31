@@ -33,6 +33,10 @@ The slot accepts the following argument.
 * __[encoding]__ - Text encoding used to read the stream, defaults to `utf-8`. Streams using another encoding, such as `utf-16` or `iso-8859-1`, are converted to UTF-8 before they are parsed
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.json](/plugins/magic.lambda.json/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `json2lambda-stream`, as the running system describes it. It is also published as [slot.json](slot.json).

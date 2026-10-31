@@ -25,6 +25,10 @@ The slot returns a boolean value indicating whether or not a matching live execu
 cancelled.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.threading](/plugins/magic.lambda.threading/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `execution.kill`, as the running system describes it. It is also published as [slot.json](slot.json).

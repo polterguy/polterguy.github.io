@@ -44,6 +44,10 @@ cache.set:cache-item-key
 ```
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.caching](/plugins/magic.lambda.caching/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `cache.set`, as the running system describes it. It is also published as [slot.json](slot.json).

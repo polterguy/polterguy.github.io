@@ -20,6 +20,12 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [for-each]](/plugins/magic.lambda/loops/#how-to-use-for-each)
 
+### Related documentation
+
+* Part of the [magic.lambda](/plugins/magic.lambda/) plugin, which documents every slot it contains.
+* Discussed in [Hyperlambda loops](/plugins/magic.lambda/loops/).
+* Discussed in [Modifying your lambda object](/plugins/magic.lambda/nodes/).
+
 ### JSON declaration
 
 This is the complete declaration of `for-each`, as the running system describes it. It is also published as [slot.json](slot.json).

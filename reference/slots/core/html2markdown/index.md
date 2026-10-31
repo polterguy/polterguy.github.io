@@ -85,6 +85,10 @@ the specified YAML front matter parts, implying for details about how this part 
 the _"magic.lambda.json"_ project.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.html](/plugins/magic.lambda.html/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `html2markdown`, as the running system describes it. It is also published as [slot.json](slot.json).

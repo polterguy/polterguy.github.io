@@ -85,6 +85,10 @@ A fingerprint is actually just a cryptographic hash of your data, such as for in
 payload, etc.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.crypto](/plugins/magic.lambda.crypto/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `crypto.hash`, as the running system describes it. It is also published as [slot.json](slot.json).

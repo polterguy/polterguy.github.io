@@ -50,6 +50,10 @@ Internally the **[yaml2lambda]** slot first converts the input YAML to JSON, for
 logic, ensuring the exact same result, regardless of whether or not you start out with JSON or YAML.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.json](/plugins/magic.lambda.json/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `lambda2yaml`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -18,6 +18,10 @@ HTML decodes a string, the opposite of **[strings.html-encode]**. The slot requi
 constant or an expression, and replaces its value with the decoded string.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.strings](/plugins/magic.lambda.strings/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `strings.html-decode`, as the running system describes it. It is also published as [slot.json](slot.json).

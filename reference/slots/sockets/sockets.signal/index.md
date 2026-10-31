@@ -82,6 +82,10 @@ The above will only signal the two specified client connections.
 you do.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.sockets](/plugins/magic.lambda.sockets/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `sockets.signal`, as the running system describes it. It is also published as [slot.json](slot.json).

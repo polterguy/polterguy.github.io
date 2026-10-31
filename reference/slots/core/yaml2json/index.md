@@ -47,6 +47,10 @@ Notice, the above have been formatted for brevity. The actual JSON result will _
 result is as compact as possible.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.json](/plugins/magic.lambda.json/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `yaml2json`, as the running system describes it. It is also published as [slot.json](slot.json).

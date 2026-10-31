@@ -20,6 +20,11 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[public-key]` | string\|byte[] | yes | Public key used to verify the signature. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 
+### Related documentation
+
+* Part of the [magic.lambda.crypto](/plugins/magic.lambda.crypto/) plugin, which documents every slot it contains.
+* Discussed in [RSA cryptography with Hyperlambda](/plugins/magic.lambda.crypto/rsa/).
+
 ### JSON declaration
 
 This is the complete declaration of `crypto.rsa.verify`, as the running system describes it. It is also published as [slot.json](slot.json).

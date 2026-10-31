@@ -45,6 +45,10 @@ It can optionally take a type declaration through a **[types]** argument, which 
 to the slot.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.csv](/plugins/magic.lambda.csv/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `csv2lambda`, as the running system describes it. It is also published as [slot.json](slot.json).

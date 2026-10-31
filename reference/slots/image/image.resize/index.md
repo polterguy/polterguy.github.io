@@ -46,6 +46,10 @@ above. Notice, the image might be stretched in one direction if you change the e
 during the transformation.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.image](/plugins/magic.lambda.image/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `image.resize`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -47,6 +47,10 @@ This slot also supports the following optional arguments.
 * Filter as value of node being the filter condition declaring which items to return. See the __[cache.clear]__ slot to understand how it works, since this argument works in the exact same way, assuming your filter is a _"namespace"_.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.caching](/plugins/magic.lambda.caching/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `cache.list`, as the running system describes it. It is also published as [slot.json](slot.json).

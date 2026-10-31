@@ -44,6 +44,10 @@ image.crop:/modules/test/qr.png
 ```
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.image](/plugins/magic.lambda.image/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `image.crop`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -63,6 +63,10 @@ Some things to be aware of.
 * The recording contains a copy of the entire lambda object for every single step, so debugging a lambda that loops thousands of times produces a very large result. Recording therefore stops after 10,000 steps, and the recording's last step becomes a **[truncated]** node declaring this, rather than the recording silently ending.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.system](/plugins/magic.lambda.system/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `system.debug`, as the running system describes it. It is also published as [slot.json](slot.json).

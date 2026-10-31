@@ -30,6 +30,10 @@ Loads a SQLite extension into the connection opened by **[sqlite.connect]**. The
 * __[append-platform]__ - Boolean, defaults to `true`. If true, the slot appends `-arm64` or `-arm` to the filename when running on an ARM64 or ARM processor.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.sqlite](/plugins/magic.lambda.sqlite/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `sqlite.load-extension`, as the running system describes it. It is also published as [slot.json](slot.json).

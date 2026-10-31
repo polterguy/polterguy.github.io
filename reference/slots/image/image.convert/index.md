@@ -33,6 +33,10 @@ image.convert:/some-image.png
 The above keeps the image as is, except converts it from its existing format to a jpeg image.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.image](/plugins/magic.lambda.image/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `image.convert`, as the running system describes it. It is also published as [slot.json](slot.json).

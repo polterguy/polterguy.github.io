@@ -36,6 +36,10 @@ get-value:x:@strings.builder
 The above will result in the value of the last node being _"howdy world"_.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.strings](/plugins/magic.lambda.strings/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `strings.builder`, as the running system describes it. It is also published as [slot.json](slot.json).

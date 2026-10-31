@@ -17,6 +17,11 @@ This slot returns the HTTP verb (e.g. _"get"_ or _"post"_) of the current incomi
 It takes no arguments, and is only meaningful when invoked from within an HTTP request, such as inside of a Hyperlambda endpoint.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.endpoint](/plugins/magic.endpoint/) plugin, which documents every slot it contains.
+* Discussed in [Slots related to endpoints and the HTTP context](/plugins/magic.endpoint/slots-related-to-endpoints-and-the-http-context/).
+
 ### JSON declaration
 
 This is the complete declaration of `request.verb`, as the running system describes it. It is also published as [slot.json](slot.json).

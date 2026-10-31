@@ -42,6 +42,10 @@ puppeteer.press:SESSION_ID
 ```
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.puppeteer](/plugins/magic.lambda.puppeteer/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `puppeteer.press`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -59,6 +59,10 @@ execute-file:/whatever-file.hl
 Inside your above _"/whatever-file.hl"_ file you will now have access to the entire **[.args]** node by reference.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `execute-file`, as the running system describes it. It is also published as [slot.json](slot.json).

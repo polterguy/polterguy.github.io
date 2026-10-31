@@ -37,6 +37,10 @@ io.content.zip-stream
 ```
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `io.content.zip-stream`, as the running system describes it. It is also published as [slot.json](slot.json).

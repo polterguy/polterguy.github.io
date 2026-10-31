@@ -24,6 +24,10 @@ Required arguments come first, then the optional ones in the order they are decl
 
 * **ExactlyOneOf**: Provide either input content or [filename] (`[input]`, `[filename]`)
 
+### Related documentation
+
+* Part of the [magic.lambda.crypto](/plugins/magic.lambda.crypto/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `crypto.hash.sha512`, as the running system describes it. It is also published as [slot.json](slot.json).

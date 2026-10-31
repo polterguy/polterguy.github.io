@@ -44,6 +44,10 @@ The above will result in the following HTML, formatted for brevity.
 ```
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.html](/plugins/magic.lambda.html/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `lambda2html`, as the running system describes it. It is also published as [slot.json](slot.json).

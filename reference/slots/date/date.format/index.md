@@ -31,6 +31,10 @@ date.format:date:"2023-01-19T12:49:44.000Z"
 ```
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.dates](/plugins/magic.lambda.dates/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `date.format`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -23,6 +23,10 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[generate]` | bool | no | Whether to only generate SQL and parameter nodes instead of executing it. Default: `false`. |
 | `[return-id]` | bool | no | Whether to return the created row ID. Default: `true`. |
 
+### Related documentation
+
+* Part of the [magic.lambda.pgsql](/plugins/magic.lambda.pgsql/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `pgsql.create`, as the running system describes it. It is also published as [slot.json](slot.json).

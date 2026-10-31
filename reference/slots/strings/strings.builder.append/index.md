@@ -19,6 +19,10 @@ or an expression, and can only be used inside a **[strings.builder]** invocation
 documentation for **[strings.builder]** above.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.strings](/plugins/magic.lambda.strings/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `strings.builder.append`, as the running system describes it. It is also published as [slot.json](slot.json).

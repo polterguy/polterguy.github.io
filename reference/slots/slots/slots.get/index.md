@@ -24,6 +24,10 @@ slots.get:foo
 ```
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.slots](/plugins/magic.lambda.slots/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `slots.get`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -39,6 +39,10 @@ lambda2csv:x:-/*
 The slot will return type information as children of your **[lambda2csv]** invocation.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.csv](/plugins/magic.lambda.csv/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `lambda2csv`, as the running system describes it. It is also published as [slot.json](slot.json).

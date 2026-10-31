@@ -1,0 +1,11 @@
+{
+  "name": "log.capabilities",
+  "description": "Returns capabilities of the current log provider",
+  "signature": {
+    "output": {
+      "mode": "Lambda",
+      "kind": "log-capabilities,lambda-tree",
+      "description": "Returns [can-filter] and [can-timeshift] capability nodes for the current log provider"
+    }
+  }
+}

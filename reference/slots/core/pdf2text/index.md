@@ -35,6 +35,10 @@ relative path to a file. Finally, the slot can accept raw bytes, which it then a
 is the raw content from a PDF document.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.pdf](/plugins/magic.lambda.pdf/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `pdf2text`, as the running system describes it. It is also published as [slot.json](slot.json).

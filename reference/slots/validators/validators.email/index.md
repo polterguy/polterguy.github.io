@@ -22,6 +22,10 @@ validators.email:x:@.arg
 ```
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.validators](/plugins/magic.lambda.validators/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `validators.email`, as the running system describes it. It is also published as [slot.json](slot.json).

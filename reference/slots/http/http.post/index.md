@@ -65,6 +65,11 @@ http.post:"https://some_website.com/your-post-endpoint"
 ```
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.http](/plugins/magic.lambda.http/) plugin, which documents every slot it contains.
+* Discussed in [Automatic conversion](/plugins/magic.lambda.http/automatic-conversion/).
+
 ### JSON declaration
 
 This is the complete declaration of `http.post`, as the running system describes it. It is also published as [slot.json](slot.json).

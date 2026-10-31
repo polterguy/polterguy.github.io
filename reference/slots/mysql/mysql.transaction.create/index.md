@@ -10,6 +10,10 @@ slot_json: "/reference/slots/mysql/mysql.transaction.create/slot.json"
 
 * **Scope**: requires `mysql.connection`; provides `mysql.transaction` - Requires an open MySQL connection created by [mysql.connect]
 
+### Related documentation
+
+* Part of the [magic.lambda.mysql](/plugins/magic.lambda.mysql/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `mysql.transaction.create`, as the running system describes it. It is also published as [slot.json](slot.json).

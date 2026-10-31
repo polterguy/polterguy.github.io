@@ -18,6 +18,10 @@ This slot rounds its input up to the nearest whole number. The slot takes a nume
 constant or an expression, and replaces its value with the rounded result.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.math](/plugins/magic.lambda.math/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `math.ceil`, as the running system describes it. It is also published as [slot.json](slot.json).

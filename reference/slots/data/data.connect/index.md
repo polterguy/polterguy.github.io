@@ -63,6 +63,13 @@ a connection string configuration setting.
 ```
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.data.common](/plugins/magic.data.common/) plugin, which documents every slot it contains.
+* Discussed in ['Namespacing' columns](/plugins/magic.data.common/namespacing-columns/).
+* Discussed in [How to use [data.*]](/plugins/magic.data.common/how-to-use-data/).
+* Discussed in [Joins](/plugins/magic.data.common/joins/).
+
 ### JSON declaration
 
 This is the complete declaration of `data.connect`, as the running system describes it. It is also published as [slot.json](slot.json).

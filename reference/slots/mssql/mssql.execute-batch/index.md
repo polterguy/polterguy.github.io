@@ -26,6 +26,10 @@ After execution the slot's value is `null`, and it has one child per executed ba
 **[Records affected]** node.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.mssql](/plugins/magic.lambda.mssql/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `mssql.execute-batch`, as the running system describes it. It is also published as [slot.json](slot.json).

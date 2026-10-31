@@ -37,6 +37,10 @@ After invoking the above, assuming the file exists, the stream previously opened
 by **[io.stream.open-file]** will be explicitly closed.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `io.stream.close`, as the running system describes it. It is also published as [slot.json](slot.json).

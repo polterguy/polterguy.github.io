@@ -19,6 +19,10 @@ of milliseconds the time span represents. Its value is mandatory, and it can be 
 or as an expression.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.dates](/plugins/magic.lambda.dates/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `time.total-milliseconds`, as the running system describes it. It is also published as [slot.json](slot.json).

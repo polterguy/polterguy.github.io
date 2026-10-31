@@ -39,6 +39,11 @@ otherwise to null. It also accepts the following arguments.
 * __[return-id]__ - Whether or not to return the ID of the created row, default is true
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.data.common](/plugins/magic.data.common/) plugin, which documents every slot it contains.
+* Discussed in [How to use [data.*]](/plugins/magic.data.common/how-to-use-data/).
+
 ### JSON declaration
 
 This is the complete declaration of `data.create`, as the running system describes it. It is also published as [slot.json](slot.json).

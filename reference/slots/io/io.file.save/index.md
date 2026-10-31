@@ -38,6 +38,10 @@ io.file.save:/misc/README2.md
 **Notice** - If you want to save binary content you should use the **[io.file.save.binary]** override.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `io.file.save`, as the running system describes it. It is also published as [slot.json](slot.json).

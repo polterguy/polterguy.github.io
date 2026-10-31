@@ -23,6 +23,11 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 | `[seed]` | string\|byte[] | no | Optional encryption seed. |
 
+### Related documentation
+
+* Part of the [magic.lambda.crypto](/plugins/magic.lambda.crypto/) plugin, which documents every slot it contains.
+* Discussed in [Combining RSA and AES cryptography](/plugins/magic.lambda.crypto/combining-rsa-and-aes-cryptography/).
+
 ### JSON declaration
 
 This is the complete declaration of `crypto.encrypt`, as the running system describes it. It is also published as [slot.json](slot.json).

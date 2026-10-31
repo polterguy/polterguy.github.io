@@ -152,6 +152,10 @@ The above will produce the following chart.
 This slot can also accept decimal, float, or double values for its individual values.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.image](/plugins/magic.lambda.image/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `image.chart`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -79,6 +79,11 @@ It returns all columns unless you supply **[columns]**, and limits the result to
 * __[generate]__ - If true, only generates the SQL and its parameters instead of executing it, default is false
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.data.common](/plugins/magic.data.common/) plugin, which documents every slot it contains.
+* Discussed in [How to use [data.*]](/plugins/magic.data.common/how-to-use-data/).
+
 ### JSON declaration
 
 This is the complete declaration of `data.scan`, as the running system describes it. It is also published as [slot.json](slot.json).

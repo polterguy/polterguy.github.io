@@ -82,6 +82,10 @@ the raw MIME message as text. If you choose this path, and you later want to act
 to make it become a structured lambda object - You can use the **[mime.parse]** slot from magic.lambda.mime.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.mail](/plugins/magic.lambda.mail/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `mail.pop3.fetch`, as the running system describes it. It is also published as [slot.json](slot.json).

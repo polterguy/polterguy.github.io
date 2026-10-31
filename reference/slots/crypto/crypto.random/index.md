@@ -44,6 +44,11 @@ larger amount of entropy than simply using alphanumeric characters for the same 
 important as you start creating keys for AES cryptography operations etc.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.crypto](/plugins/magic.lambda.crypto/) plugin, which documents every slot it contains.
+* Discussed in [Symmetric cryptography using AES](/plugins/magic.lambda.crypto/aes/).
+
 ### JSON declaration
 
 This is the complete declaration of `crypto.random`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -1,0 +1,39 @@
+{
+  "name": "log.query",
+  "description": "Returns recent log entries with most-recent-first ordering; supports optional content-type filtering and pagination",
+  "signature": {
+    "input": {
+      "kind": "content-type",
+      "description": "Optional content type filter",
+      "required": false,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "max": {
+        "type": "int",
+        "description": "Maximum number of log entries to return",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "10",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "from": {
+        "type": "object",
+        "description": "Cursor or timestamp to query from",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "log-entry-list,node-list",
+      "element-kind": "log-entry,lambda-tree",
+      "description": "Returns matching log entries as child nodes"
+    }
+  }
+}

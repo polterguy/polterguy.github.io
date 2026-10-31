@@ -85,6 +85,10 @@ that has not been declared also throws an exception, since this implies your end
 rate limit that does not exist.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.threading](/plugins/magic.lambda.threading/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `execution.throttle`, as the running system describes it. It is also published as [slot.json](slot.json).

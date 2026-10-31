@@ -1,0 +1,30 @@
+{
+  "name": "log.debug",
+  "description": "Writes a debug-level log entry; useful during development for high-volume diagnostic detail",
+  "signature": {
+    "input": {
+      "kind": "log-message,text",
+      "description": "Log message to write",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "*": {
+        "type": "string",
+        "kind": "log-metadata",
+        "description": "Metadata entry stored with the log item when the slot has an input value; otherwise evaluated content fragment",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrMore",
+        "role": "DynamicMap",
+        "evaluation": "EvalSelf",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "log-entry-id",
+      "description": "Id of the log entry created, or null if the configured log level filtered it out"
+    }
+  }
+}

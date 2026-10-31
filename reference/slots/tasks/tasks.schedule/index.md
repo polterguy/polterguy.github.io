@@ -260,6 +260,10 @@ are executed exactly every 5 seconds, depending upon how much time your task req
 pattern declares how many units to count to before executing the task again, from when the task _finished_ executing.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.scheduler](/plugins/magic.lambda.scheduler/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `tasks.schedule`, as the running system describes it. It is also published as [slot.json](slot.json).

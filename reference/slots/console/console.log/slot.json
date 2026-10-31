@@ -1,0 +1,12 @@
+{
+  "name": "console.log",
+  "description": "Writes a message to the server console",
+  "signature": {
+    "input": {
+      "kind": "log-message,text",
+      "description": "Message to write to the server console",
+      "required": true,
+      "mode": "ValueOrExpression"
+    }
+  }
+}

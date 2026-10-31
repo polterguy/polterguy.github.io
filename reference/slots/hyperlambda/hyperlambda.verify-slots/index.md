@@ -45,6 +45,10 @@ In addition to missing slots, the slot also reports the following as **[invalid-
 * A child argument that the slot's signature doesn't declare.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.hyperlambda](/plugins/magic.lambda.hyperlambda/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `hyperlambda.verify-slots`, as the running system describes it. It is also published as [slot.json](slot.json).

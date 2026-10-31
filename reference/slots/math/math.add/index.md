@@ -32,6 +32,10 @@ math.add
 ```
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.math](/plugins/magic.lambda.math/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `math.add`, as the running system describes it. It is also published as [slot.json](slot.json).

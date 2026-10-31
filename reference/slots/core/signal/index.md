@@ -77,6 +77,10 @@ slots that executes lambda objects supplied to them. The same is true for Hyperl
 [magic.lambda.io](/plugins/magic.lambda.io/).
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.slots](/plugins/magic.lambda.slots/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `signal`, as the running system describes it. It is also published as [slot.json](slot.json).

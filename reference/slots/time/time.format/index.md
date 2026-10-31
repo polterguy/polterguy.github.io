@@ -31,6 +31,10 @@ The time span is typically a value returned from **[time]**, and the result of t
 string.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.dates](/plugins/magic.lambda.dates/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `time.format`, as the running system describes it. It is also published as [slot.json](slot.json).

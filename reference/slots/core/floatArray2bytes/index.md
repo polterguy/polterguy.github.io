@@ -13,6 +13,11 @@ slot_json: "/reference/slots/core/floatArray2bytes/slot.json"
 
 Guide: [How to use [floatArray2bytes]](/plugins/magic.lambda/types/#how-to-use-floatarray2bytes)
 
+### Related documentation
+
+* Part of the [magic.lambda](/plugins/magic.lambda/) plugin, which documents every slot it contains.
+* Discussed in [Types and conversion](/plugins/magic.lambda/types/).
+
 ### JSON declaration
 
 This is the complete declaration of `floatArray2bytes`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -43,6 +43,10 @@ implementation, such as the one found in the _"magic.data.cql"_ project. This sh
 your _"goto slot"_ whenever you want to use the cache slots in this project.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.caching](/plugins/magic.lambda.caching/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `cache.try-get`, as the running system describes it. It is also published as [slot.json](slot.json).

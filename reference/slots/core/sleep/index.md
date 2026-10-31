@@ -26,6 +26,10 @@ the current thread is _"sleeping"_, it will not be a blocking call, and require 
 system threads while it is sleeping. This is true because of Hyperlambda's 100% perfectly `async` nature.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.threading](/plugins/magic.lambda.threading/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `sleep`, as the running system describes it. It is also published as [slot.json](slot.json).

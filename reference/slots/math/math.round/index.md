@@ -18,6 +18,10 @@ This slot rounds its input to the nearest whole number, using .NET's `Math.Round
 constant or an expression, and replaces its value with the rounded result.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.math](/plugins/magic.lambda.math/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `math.round`, as the running system describes it. It is also published as [slot.json](slot.json).

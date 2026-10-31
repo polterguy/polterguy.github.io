@@ -20,6 +20,11 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [neq]](/plugins/magic.lambda/conditions/#how-to-use-neq)
 
+### Related documentation
+
+* Part of the [magic.lambda](/plugins/magic.lambda/) plugin, which documents every slot it contains.
+* Discussed in [Comparison and boolean logic](/plugins/magic.lambda/conditions/).
+
 ### JSON declaration
 
 This is the complete declaration of `neq`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -1,0 +1,18 @@
+{
+  "name": "log.timeshift",
+  "description": "Aggregates log entries into time buckets",
+  "signature": {
+    "input": {
+      "kind": "log-search",
+      "description": "Search string or log entry type to aggregate over the last two weeks",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "log-timeshift-list,node-list",
+      "element-kind": "log-timeshift-bucket",
+      "description": "Returns one child node per day with [when] and [count] values for the time bucket"
+    }
+  }
+}

@@ -39,6 +39,11 @@ Like all auth related slots, it only makes sense to invoke from within a context
 user, such as an HTTP endpoint intended to be invoked by an authenticated user.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.auth](/plugins/magic.lambda.auth/) plugin, which documents every slot it contains.
+* Discussed in [RS256 signing and [auth.jwks]](/plugins/magic.lambda.auth/rs256-signing-and-auth-jwks/).
+
 ### JSON declaration
 
 This is the complete declaration of `auth.ticket.refresh`, as the running system describes it. It is also published as [slot.json](slot.json).

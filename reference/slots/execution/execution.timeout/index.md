@@ -29,6 +29,10 @@ created through **[fork]** inherits the same execution context, implying the tim
 forked work too.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.threading](/plugins/magic.lambda.threading/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `execution.timeout`, as the running system describes it. It is also published as [slot.json](slot.json).

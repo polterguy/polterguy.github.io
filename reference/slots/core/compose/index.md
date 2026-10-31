@@ -20,6 +20,11 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [compose]](/plugins/magic.lambda/executing/#how-to-use-compose)
 
+### Related documentation
+
+* Part of the [magic.lambda](/plugins/magic.lambda/) plugin, which documents every slot it contains.
+* Discussed in [Executing lambda objects](/plugins/magic.lambda/executing/).
+
 ### JSON declaration
 
 This is the complete declaration of `compose`, as the running system describes it. It is also published as [slot.json](slot.json).

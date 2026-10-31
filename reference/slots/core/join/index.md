@@ -38,6 +38,10 @@ that forked from one larger river into two smaller rivers, for then again to joi
 large river again further down.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.threading](/plugins/magic.lambda.threading/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `join`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -74,6 +74,10 @@ Markdown, where two trailing spaces denote a hard line break. A hunk located thi
 the file's own trailing whitespace untouched.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `io.file.patch`, as the running system describes it. It is also published as [slot.json](slot.json).

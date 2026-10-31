@@ -180,6 +180,10 @@ The above will construct a plain text email with a Markdown file attachment. The
 You can add any MIME header like the above code illustrates, including custom headers.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.mail](/plugins/magic.lambda.mail/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `mail.smtp.send`, as the running system describes it. It is also published as [slot.json](slot.json).

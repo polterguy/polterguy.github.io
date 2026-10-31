@@ -79,6 +79,10 @@ Also notice that the name of the assembly is not necessary the path of the assem
 Implying the assembly's name and its filename might differ.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.system](/plugins/magic.lambda.system/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `system.plugin.load`, as the running system describes it. It is also published as [slot.json](slot.json).

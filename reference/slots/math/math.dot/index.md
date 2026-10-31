@@ -41,6 +41,10 @@ This slot is useful for calculating similarities between two different objects i
 each list is an _"embedding"_ or a vector.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.math](/plugins/magic.lambda.math/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `math.dot`, as the running system describes it. It is also published as [slot.json](slot.json).

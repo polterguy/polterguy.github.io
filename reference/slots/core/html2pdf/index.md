@@ -20,6 +20,10 @@ are loaded through Hyperlambda's **[io.file.load.binary]** and **[http.get]** sl
 PDF library.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.pdf](/plugins/magic.lambda.pdf/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `html2pdf`, as the running system describes it. It is also published as [slot.json](slot.json).

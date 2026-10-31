@@ -1,0 +1,17 @@
+{
+  "name": "log.get",
+  "description": "Returns a log entry by ID",
+  "signature": {
+    "input": {
+      "kind": "log-entry-id,integer,number",
+      "description": "ID of the log entry to retrieve",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "log-entry,lambda-tree",
+      "description": "Resolves to the log entry as child nodes"
+    }
+  }
+}

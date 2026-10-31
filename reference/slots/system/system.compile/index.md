@@ -129,6 +129,10 @@ io.file.save.binary:/etc/foo.dll
 ```
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.system](/plugins/magic.lambda.system/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `system.compile`, as the running system describes it. It is also published as [slot.json](slot.json).

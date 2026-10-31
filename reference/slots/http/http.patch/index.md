@@ -65,6 +65,10 @@ http.patch:"https://some_website.com/your-patch-endpoint"
 ```
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.http](/plugins/magic.lambda.http/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `http.patch`, as the running system describes it. It is also published as [slot.json](slot.json).

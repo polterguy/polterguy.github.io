@@ -33,6 +33,11 @@ Then later when the endpoint resolver is returning files ending with _".py"_, it
 a `Content-Type` of _"application/python"_.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.endpoint](/plugins/magic.endpoint/) plugin, which documents every slot it contains.
+* Discussed in [Slots related to endpoints and the HTTP context](/plugins/magic.endpoint/slots-related-to-endpoints-and-the-http-context/).
+
 ### JSON declaration
 
 This is the complete declaration of `mime.add`, as the running system describes it. It is also published as [slot.json](slot.json).

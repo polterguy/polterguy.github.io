@@ -55,6 +55,10 @@ system.execute:ls
 stderr if present.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.system](/plugins/magic.lambda.system/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `system.execute`, as the running system describes it. It is also published as [slot.json](slot.json).

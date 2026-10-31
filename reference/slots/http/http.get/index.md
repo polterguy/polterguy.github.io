@@ -50,6 +50,11 @@ The slot returns the result of the specified HTTP GET invocation, including the 
 and status code, in addition to the response object itself.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.http](/plugins/magic.lambda.http/) plugin, which documents every slot it contains.
+* Discussed in [Automatic conversion](/plugins/magic.lambda.http/automatic-conversion/).
+
 ### JSON declaration
 
 This is the complete declaration of `http.get`, as the running system describes it. It is also published as [slot.json](slot.json).

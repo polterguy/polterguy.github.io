@@ -52,6 +52,10 @@ unless you explicitly parametrize it with a **[return-id]** argument and set its
 `false`.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.data.common](/plugins/magic.data.common/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `sql.create`, as the running system describes it. It is also published as [slot.json](slot.json).

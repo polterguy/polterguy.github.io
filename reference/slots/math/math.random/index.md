@@ -35,6 +35,10 @@ This slot returns a random number. Its behavior depends on how many child nodes 
 Child values are converted to `int`.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.math](/plugins/magic.lambda.math/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `math.random`, as the running system describes it. It is also published as [slot.json](slot.json).

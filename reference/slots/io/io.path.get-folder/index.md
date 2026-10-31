@@ -24,6 +24,10 @@ io.path.get-folder:/foo/howdy/file.hl
 The above returns `/foo/howdy/`, and the same is returned if you pass in `/foo/howdy/` instead.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `io.path.get-folder`, as the running system describes it. It is also published as [slot.json](slot.json).

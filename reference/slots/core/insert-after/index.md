@@ -20,6 +20,11 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [insert-after]](/plugins/magic.lambda/nodes/#how-to-use-insert-after)
 
+### Related documentation
+
+* Part of the [magic.lambda](/plugins/magic.lambda/) plugin, which documents every slot it contains.
+* Discussed in [Modifying your lambda object](/plugins/magic.lambda/nodes/).
+
 ### JSON declaration
 
 This is the complete declaration of `insert-after`, as the running system describes it. It is also published as [slot.json](slot.json).

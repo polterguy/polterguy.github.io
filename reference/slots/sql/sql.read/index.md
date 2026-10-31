@@ -141,6 +141,16 @@ sql.read
 If you do, the ordering is sequentially applied.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.data.common](/plugins/magic.data.common/) plugin, which documents every slot it contains.
+* Discussed in ['Namespacing' columns](/plugins/magic.data.common/namespacing-columns/).
+* Discussed in [Aggregate results](/plugins/magic.data.common/aggregate-results/).
+* Discussed in [Comparison operators](/plugins/magic.data.common/comparison-operators/).
+* Discussed in [Differences between [join] and [where]](/plugins/magic.data.common/differences-between-join-and-where/).
+* Discussed in [Joins](/plugins/magic.data.common/joins/).
+* Discussed in [The [where] argument](/plugins/magic.data.common/the-where-argument/).
+
 ### JSON declaration
 
 This is the complete declaration of `sql.read`, as the running system describes it. It is also published as [slot.json](slot.json).

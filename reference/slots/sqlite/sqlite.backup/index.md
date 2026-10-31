@@ -25,6 +25,10 @@ The above will create a backup of your foo database and store it at _"/data/foo.
 it for some reasons becomes invalid.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.sqlite](/plugins/magic.lambda.sqlite/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `sqlite.backup`, as the running system describes it. It is also published as [slot.json](slot.json).

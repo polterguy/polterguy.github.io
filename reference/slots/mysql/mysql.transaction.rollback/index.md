@@ -10,6 +10,10 @@ slot_json: "/reference/slots/mysql/mysql.transaction.rollback/slot.json"
 
 * **Scope**: requires `mysql.transaction` - Requires an active MySQL transaction created by [mysql.transaction.create]
 
+### Related documentation
+
+* Part of the [magic.lambda.mysql](/plugins/magic.lambda.mysql/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `mysql.transaction.rollback`, as the running system describes it. It is also published as [slot.json](slot.json).

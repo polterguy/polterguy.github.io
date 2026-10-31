@@ -75,6 +75,10 @@ This slot is probably the closest you come to being able to using C# as a dynami
 This slot accepts either a string or a byte array. If you give it a string, it assumes your string is a relative path to an assembly on disc. If you provide it with a byte array, it assumes it's your raw assembly content. In such a regard it works similarly to **[system.plugin.load]**.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.system](/plugins/magic.lambda.system/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `system.plugin.execute`, as the running system describes it. It is also published as [slot.json](slot.json).

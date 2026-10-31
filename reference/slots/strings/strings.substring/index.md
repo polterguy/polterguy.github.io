@@ -42,6 +42,10 @@ Notice, the second argument is the _number of characters to return_ and not the 
 of where to stop returning. In such a regard, it works the same way as the C# `Substring` method.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.strings](/plugins/magic.lambda.strings/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `strings.substring`, as the running system describes it. It is also published as [slot.json](slot.json).

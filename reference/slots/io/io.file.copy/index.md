@@ -37,6 +37,10 @@ Notice, the folder parts of the destination folder is _optional_, and if you don
 as a part of the path, the source folder will be used by default.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `io.file.copy`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -33,6 +33,10 @@ lambda2hyper:x:-/*
 ```
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.hyperlambda](/plugins/magic.lambda.hyperlambda/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `lambda2hyper`, as the running system describes it. It is also published as [slot.json](slot.json).

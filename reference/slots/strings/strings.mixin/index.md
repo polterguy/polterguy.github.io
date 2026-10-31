@@ -53,6 +53,10 @@ return:x:-
 ```
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.strings](/plugins/magic.lambda.strings/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `strings.mixin`, as the running system describes it. It is also published as [slot.json](slot.json).

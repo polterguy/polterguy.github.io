@@ -59,6 +59,10 @@ get-value:x:@xml2lambda/**/PRICE/*/\#text
 ```
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.xml](/plugins/magic.lambda.xml/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `xml2lambda`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -62,6 +62,11 @@ be updated - Which is highly unlikely what your intentions are. Hence, make sure
 **[where]** argument as you invoke this slot.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.data.common](/plugins/magic.data.common/) plugin, which documents every slot it contains.
+* Discussed in [The [where] argument](/plugins/magic.data.common/the-where-argument/).
+
 ### JSON declaration
 
 This is the complete declaration of `sql.update`, as the running system describes it. It is also published as [slot.json](slot.json).

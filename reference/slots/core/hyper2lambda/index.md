@@ -33,6 +33,10 @@ hyper2lambda:x:-
 The above of course produces an executable lambda object from your specified Hyperlambda text.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.hyperlambda](/plugins/magic.lambda.hyperlambda/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `hyper2lambda`, as the running system describes it. It is also published as [slot.json](slot.json).

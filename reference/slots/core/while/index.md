@@ -21,6 +21,12 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [while]](/plugins/magic.lambda/loops/#how-to-use-while)
 
+### Related documentation
+
+* Part of the [magic.lambda](/plugins/magic.lambda/) plugin, which documents every slot it contains.
+* Discussed in [Comparison and boolean logic](/plugins/magic.lambda/conditions/).
+* Discussed in [Hyperlambda loops](/plugins/magic.lambda/loops/).
+
 ### JSON declaration
 
 This is the complete declaration of `while`, as the running system describes it. It is also published as [slot.json](slot.json).

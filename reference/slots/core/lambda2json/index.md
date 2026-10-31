@@ -38,6 +38,10 @@ lambda allows for having multiple nodes with the same name for instance, which w
 multiple properties having the same key. Hence, have this in mind as you persist your lambda objects into JSON.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.json](/plugins/magic.lambda.json/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `lambda2json`, as the running system describes it. It is also published as [slot.json](slot.json).

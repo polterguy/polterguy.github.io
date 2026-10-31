@@ -18,6 +18,11 @@ It returns one child node for each mapping, where the name of the child node is 
 It takes no arguments.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.endpoint](/plugins/magic.endpoint/) plugin, which documents every slot it contains.
+* Discussed in [Slots related to endpoints and the HTTP context](/plugins/magic.endpoint/slots-related-to-endpoints-and-the-http-context/).
+
 ### JSON declaration
 
 This is the complete declaration of `mime.list`, as the running system describes it. It is also published as [slot.json](slot.json).

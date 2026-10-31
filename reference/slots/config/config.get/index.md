@@ -64,6 +64,10 @@ return the value _"foo"_ being the result of the invocation to the **[get-value]
 to create default values your code resorts to if the specified configuration setting doesn't exist.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.config](/plugins/magic.lambda.config/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `config.get`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -61,6 +61,10 @@ Notes:
 * Non-zero exit codes throw a Hyperlambda exception with stderr/stdout.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.python](/plugins/magic.lambda.python/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `python.execute`, as the running system describes it. It is also published as [slot.json](slot.json).

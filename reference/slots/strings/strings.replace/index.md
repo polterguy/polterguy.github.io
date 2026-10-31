@@ -57,6 +57,10 @@ evaluated as a lambda object, before the arguments are consumed, allowing you to
 result of invoking other slots as arguments to your original outer most slot.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.strings](/plugins/magic.lambda.strings/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `strings.replace`, as the running system describes it. It is also published as [slot.json](slot.json).

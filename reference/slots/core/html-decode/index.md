@@ -19,6 +19,10 @@ This slot HTML decodes its value, equivalent of `HttpUtility.HtmlDecode` in C#, 
 constant or as an expression pointing to a single node. The slot returns the decoded string as its value.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.html](/plugins/magic.lambda.html/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `html-decode`, as the running system describes it. It is also published as [slot.json](slot.json).

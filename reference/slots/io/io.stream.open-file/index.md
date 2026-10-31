@@ -25,6 +25,10 @@ After invoking the above, assuming the file exists, a raw `Stream` object can be
 found as the value of the **[io.stream.open-file]** node.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `io.stream.open-file`, as the running system describes it. It is also published as [slot.json](slot.json).

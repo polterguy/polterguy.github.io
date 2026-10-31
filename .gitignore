@@ -340,3 +340,5 @@ _site/**
 # never gets published.
 !/dashboard/log/
 !/endpoints/log/
+!/reference/slots/log/
+!/reference/slots/console/console.log/

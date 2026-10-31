@@ -19,6 +19,10 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | lambda | no | Executable child slot evaluated while the database connection is open. Can be repeated. |
 
+### Related documentation
+
+* Part of the [magic.lambda.mssql](/plugins/magic.lambda.mssql/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `mssql.connect`, as the running system describes it. It is also published as [slot.json](slot.json).

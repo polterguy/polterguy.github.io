@@ -34,6 +34,10 @@ exception if any of the three mandatory ones is missing, or if OpenAI responds w
 * __[language]__ - Optional language hint.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.openai](/plugins/magic.lambda.openai/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `openai.whisper`, as the running system describes it. It is also published as [slot.json](slot.json).

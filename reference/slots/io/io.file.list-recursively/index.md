@@ -31,6 +31,10 @@ file's path relative to the root folder of your backend, and accepts the followi
 * **[display-system]** - Boolean, defaults to true, and if false hides files inside of _"/system/"_, _"/misc/"_, _"/data/"_ and _"/config/"_
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.io](/plugins/magic.lambda.io/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `io.file.list-recursively`, as the running system describes it. It is also published as [slot.json](slot.json).

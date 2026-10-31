@@ -1,0 +1,17 @@
+{
+  "name": "log.count",
+  "description": "Returns the total number of log entries, optionally restricted to a single content type",
+  "signature": {
+    "input": {
+      "kind": "content-type",
+      "description": "Optional content type filter",
+      "required": false,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "integer,number",
+      "description": "Resolves to the number of log entries matching the optional query"
+    }
+  }
+}

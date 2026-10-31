@@ -11,6 +11,10 @@ slot_json: "/reference/slots/tasks/tasks.count/slot.json"
 * **Value** (`task-id`), optional: Optional filter for task IDs
 * **Returns**: Resolves to the number of scheduled tasks matching the optional filter
 
+### Related documentation
+
+* Part of the [magic.lambda.scheduler](/plugins/magic.lambda.scheduler/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `tasks.count`, as the running system describes it. It is also published as [slot.json](slot.json).

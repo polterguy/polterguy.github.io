@@ -58,6 +58,11 @@ sql.delete:delete from 'table1' where 'field1' = @0 and 'field2' = @1
 ```
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.data.common](/plugins/magic.data.common/) plugin, which documents every slot it contains.
+* Discussed in [The [where] argument](/plugins/magic.data.common/the-where-argument/).
+
 ### JSON declaration
 
 This is the complete declaration of `sql.delete`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -40,6 +40,10 @@ git.pull:/modules/stripe/
 ```
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.git](/plugins/magic.lambda.git/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `git.pull`, as the running system describes it. It is also published as [slot.json](slot.json).

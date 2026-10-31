@@ -35,11 +35,13 @@ def read(path):
         return f.read().replace('\r\n', '\n')
 
 
-def pages():
-    """Every markdown page that is published, as {url: {path, front, body, generated}}."""
+def pages(skip=None):
+    """Every markdown page that is published, as {url: {path, front, body, generated}}.
+    skip is a checkout of another repository inside this one, which is not part of the site."""
     found = {}
     for dp, dn, fn in os.walk(ROOT):
-        dn[:] = [d for d in dn if not d.startswith(('.', '_'))]
+        dn[:] = [d for d in dn if not d.startswith(('.', '_'))
+                 and not (skip and os.path.realpath(os.path.join(dp, d)) == os.path.realpath(skip))]
         for name in fn:
             if not name.endswith('.md'):
                 continue
@@ -121,7 +123,7 @@ def main():
     ap.add_argument('--slots')
     args = ap.parse_args()
 
-    site = pages()
+    site = pages(args.magic)
     allow = set()
     allow_file = os.path.join(ROOT, '.github', 'lint-allow.txt')
     if os.path.exists(allow_file):

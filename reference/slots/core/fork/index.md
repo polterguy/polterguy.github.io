@@ -43,6 +43,10 @@ since it can make multiple requests for IO simultaneously, and have other machin
 processes working in parallel.
 <!-- /guide -->
 
+### Related documentation
+
+* Part of the [magic.lambda.threading](/plugins/magic.lambda.threading/) plugin, which documents every slot it contains.
+
 ### JSON declaration
 
 This is the complete declaration of `fork`, as the running system describes it. It is also published as [slot.json](slot.json).
