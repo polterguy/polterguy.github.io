@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`auth.ticket.verify`](/reference/slots/auth/auth.ticket.verify/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`auth.ticket.verify`](/reference/slots/auth/auth.ticket.verify/) has its arguments, constraints and declaration.
 
 This slot verifies that the currently authenticated user belongs to one or more roles provided as
 a comma separated list of names. If the user does not belong to any of the specified roles, the

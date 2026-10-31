@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`crypto.seed`](/reference/slots/crypto/crypto.seed/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`crypto.seed`](/reference/slots/crypto/crypto.seed/) has its arguments, constraints and declaration.
 
 No cryptography operation is more secure than the CSRNG instance used to generate random numbers and characters.
 This project accommodates for that, by explicitly allowing you to add to its CSRNG seed with something resembling

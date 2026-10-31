@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`system.compile`](/reference/slots/system/system.compile/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`system.compile`](/reference/slots/system/system.compile/) has its arguments, constraints and declaration.
 
 This method allows you to compile a piece of C# code and returns the assembly as a raw array of bytes. Example usage can be found below.
 

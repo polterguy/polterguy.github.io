@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`math.cos`](/reference/slots/math/math.cos/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`math.cos`](/reference/slots/math/math.cos/) has its arguments, constraints and declaration.
 
 This slot returns the cos value of its input.
 

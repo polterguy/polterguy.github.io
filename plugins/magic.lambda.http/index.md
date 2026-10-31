@@ -6,11 +6,11 @@ moved_anchors: {"automatic-conversion": "/plugins/magic.lambda.http/automatic-co
 The magic.lambda.http project provides HTTP invocation capabilities for Magic and Hyperlambda. More specifically the
 project contains the following 5 slots.
 
-* __[\[http.get\]](/reference/slots/http/http.get/)__ - Returns some resource using the HTTP GET verb towards the specified URL
-* __[\[http.delete\]](/reference/slots/http/http.delete/)__ - Deletes some resource using the HTTP DELETE verb
-* __[\[http.post\]](/reference/slots/http/http.post/)__ - Posts some resources to some URL using the HTTP POST verb
-* __[\[http.put\]](/reference/slots/http/http.put/)__ - Puts some resources to some URL using the HTTP PUT verb
-* __[\[http.patch\]](/reference/slots/http/http.patch/)__ - Patches some resources to some URL using the HTTP PATCH verb
+* __[\[http.get\]](/plugins/magic.lambda.http/http.get/)__ - Returns some resource using the HTTP GET verb towards the specified URL
+* __[\[http.delete\]](/plugins/magic.lambda.http/http.delete/)__ - Deletes some resource using the HTTP DELETE verb
+* __[\[http.post\]](/plugins/magic.lambda.http/http.post/)__ - Posts some resources to some URL using the HTTP POST verb
+* __[\[http.put\]](/plugins/magic.lambda.http/http.put/)__ - Puts some resources to some URL using the HTTP PUT verb
+* __[\[http.patch\]](/plugins/magic.lambda.http/http.patch/)__ - Patches some resources to some URL using the HTTP PATCH verb
 
 The __[http.put]__, __[http.post]__ and __[http.patch]__ slots requires you to provide a __[payload]__
 or __[filename]__ argument that will be transferred to the endpoint as is. All 5 endpoints can (optionally)

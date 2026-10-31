@@ -10,6 +10,10 @@ slot_json: "/reference/slots/response/response.status.set/slot.json"
 
 * **Value** (`http-status-code,integer,number`), required: HTTP status code to set
 
+### Guide
+
+[How to use `response.status.set`](/plugins/magic.endpoint/response.status.set/)
+
 ### JSON declaration
 
 This is the complete declaration of `response.status.set`, as the running system describes it. It is also published as [slot.json](slot.json).

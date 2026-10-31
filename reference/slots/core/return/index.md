@@ -19,6 +19,10 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | object | no | Child node forwarded to the nearest caller without evaluation; when children exist, all children are returned as-is. Can be repeated. |
 
+### Guide
+
+[How to use `return`](/plugins/magic.lambda.slots/return/)
+
 ### JSON declaration
 
 This is the complete declaration of `return`, as the running system describes it. It is also published as [slot.json](slot.json).

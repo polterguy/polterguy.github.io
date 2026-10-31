@@ -18,6 +18,10 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | `[version]` | string | no | IP version to return, either ipv4 or ipv6. |
 
+### Guide
+
+[How to use `server.ip`](/plugins/magic.endpoint/server.ip/)
+
 ### JSON declaration
 
 This is the complete declaration of `server.ip`, as the running system describes it. It is also published as [slot.json](slot.json).

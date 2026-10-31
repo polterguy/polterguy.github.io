@@ -21,6 +21,10 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [convert]](/plugins/magic.lambda/types/#how-to-use-convert)
 
+### Guide
+
+[How to use `convert`](/plugins/magic.lambda/convert/)
+
 ### JSON declaration
 
 This is the complete declaration of `convert`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`puppeteer.evaluate`](/reference/slots/puppeteer/puppeteer.evaluate/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`puppeteer.evaluate`](/reference/slots/puppeteer/puppeteer.evaluate/) has its arguments, constraints and declaration.
 
 Evaluates a JavaScript expression in the page.
 

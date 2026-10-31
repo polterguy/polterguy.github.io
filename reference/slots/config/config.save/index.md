@@ -10,6 +10,10 @@ slot_json: "/reference/slots/config/config.save/slot.json"
 
 * **Value** (`json`), required: Valid JSON object content to save to appsettings.json
 
+### Guide
+
+[How to use `config.save`](/plugins/magic.lambda.config/config.save/)
+
 ### JSON declaration
 
 This is the complete declaration of `config.save`, as the running system describes it. It is also published as [slot.json](slot.json).

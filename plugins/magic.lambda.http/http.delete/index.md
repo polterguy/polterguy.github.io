@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`http.delete`](/reference/slots/http/http.delete/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`http.delete`](/reference/slots/http/http.delete/) has its arguments, constraints and declaration.
 
 This slot accepts a URL as its value, and optionally HTTP headers as a **[headers]** argument. In its simplest version
 it would resemble something such as the following.

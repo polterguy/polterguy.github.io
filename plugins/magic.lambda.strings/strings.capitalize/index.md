@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`strings.capitalize`](/reference/slots/strings/strings.capitalize/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`strings.capitalize`](/reference/slots/strings/strings.capitalize/) has its arguments, constraints and declaration.
 
 Turns the first character of your string into a CAPS character.
 

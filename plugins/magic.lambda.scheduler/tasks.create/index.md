@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`tasks.create`](/reference/slots/tasks/tasks.create/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`tasks.create`](/reference/slots/tasks/tasks.create/) has its arguments, constraints and declaration.
 
 To create and persist a task you can use something such as the following.
 

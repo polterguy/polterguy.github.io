@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`puppeteer.press`](/reference/slots/puppeteer/puppeteer.press/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`puppeteer.press`](/reference/slots/puppeteer/puppeteer.press/) has its arguments, constraints and declaration.
 
 Presses a key on a selector.
 

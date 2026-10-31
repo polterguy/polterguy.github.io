@@ -20,6 +20,10 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [set-value]](/plugins/magic.lambda/nodes/#how-to-use-set-value)
 
+### Guide
+
+[How to use `set-value`](/plugins/magic.lambda/set-value/)
+
 ### JSON declaration
 
 This is the complete declaration of `set-value`, as the running system describes it. It is also published as [slot.json](slot.json).

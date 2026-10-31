@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`io.folder.list-recursively`](/reference/slots/io/io.folder.list-recursively/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`io.folder.list-recursively`](/reference/slots/io/io.folder.list-recursively/) has its arguments, constraints and declaration.
 
 This slot works like **[io.folder.list]**, except it also returns all folders nested inside of the specified folder,
 at any depth, and not only its direct sub folders. It returns one unnamed child node per folder, with the folder's

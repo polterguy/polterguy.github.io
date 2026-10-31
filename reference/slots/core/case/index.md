@@ -22,6 +22,10 @@ Required arguments come first, then the optional ones in the order they are decl
 
 * **ParentMustBe**: Parent node must have the listed slot name (`[switch]`)
 
+### Guide
+
+[How to use `case`](/plugins/magic.lambda/case/)
+
 ### JSON declaration
 
 This is the complete declaration of `case`, as the running system describes it. It is also published as [slot.json](slot.json).

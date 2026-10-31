@@ -11,6 +11,10 @@ slot_json: "/reference/slots/log/log.count/slot.json"
 * **Value** (`content-type`), optional: Optional content type filter
 * **Returns**: Resolves to the number of log entries matching the optional query
 
+### Guide
+
+[How to use `log.count`](/plugins/magic.lambda.logging/log.count/)
+
 ### JSON declaration
 
 This is the complete declaration of `log.count`, as the running system describes it. It is also published as [slot.json](slot.json).

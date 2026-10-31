@@ -10,6 +10,10 @@ slot_json: "/reference/slots/odbc/odbc.transaction.create/slot.json"
 
 * **Scope**: requires `odbc.connection`; provides `odbc.transaction` - Requires an open ODBC connection created by [odbc.connect]
 
+### Guide
+
+[How to use `odbc.transaction.create`](/plugins/magic.lambda.odbc/odbc.transaction.create/)
+
 ### JSON declaration
 
 This is the complete declaration of `odbc.transaction.create`, as the running system describes it. It is also published as [slot.json](slot.json).

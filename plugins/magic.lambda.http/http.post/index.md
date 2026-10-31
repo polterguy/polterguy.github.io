@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`http.post`](/reference/slots/http/http.post/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`http.post`](/reference/slots/http/http.post/) has its arguments, constraints and declaration.
 
 This slot accepts a URL as its value, and optionally HTTP headers as a **[headers]** argument, and a mandatory
 **[payload]** argument, being whatever payload you want to transfer to the endpoint. In its simplest version

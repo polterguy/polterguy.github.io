@@ -10,30 +10,30 @@ project also contains combination slots, combining RSA and AES, allowing you to 
 using a single signal invocation. This project also allows you to create RSA key pairs, in addition to
 cryptographically hashing files and payloads, etc. More specifically this project contains the following slots.
 
-* __[\[crypto.rsa.create-key\]](/reference/slots/crypto/crypto.rsa.create-key/)__ - Creates a new RSA keypair
-* __[\[crypto.rsa.encrypt\]](/reference/slots/crypto/crypto.rsa.encrypt/)__ - RSA encrypts a message
-* __[\[crypto.rsa.decrypt\]](/reference/slots/crypto/crypto.rsa.decrypt/)__ - RSA decrypts a message
-* __[\[crypto.rsa.sign\]](/reference/slots/crypto/crypto.rsa.sign/)__ - Cryptographically signs a message
-* __[\[crypto.rsa.verify\]](/reference/slots/crypto/crypto.rsa.verify/)__ - Verifies a cryptographic signature of some message
-* __[\[crypto.aes.encrypt\]](/reference/slots/crypto/crypto.aes.encrypt/)__ - AES encrypts a message
-* __[\[crypto.aes.decrypt\]](/reference/slots/crypto/crypto.aes.decrypt/)__ - AES decrypts a message
-* __[\[crypto.fingerprint\]](/reference/slots/crypto/crypto.fingerprint/)__ - Creates a fingerprint of something
-* __[\[crypto.get-key\]](/reference/slots/crypto/crypto.get-key/)__ - Returns the fingerprint of the public key associated with message
-* __[\[crypto.random\]](/reference/slots/crypto/crypto.random/)__ - CSRNG creating random seeds for you
-* __[\[crypto.random.int\]](/reference/slots/crypto/crypto.random.int/)__ - CSRNG creating random integer value for you
-* __[\[crypto.hash\]](/reference/slots/crypto/crypto.hash/)__ - Hash some message or payload using the specified **[algo]** or **[algorithm]**
-* __[\[crypto.hash.md5\]](/reference/slots/crypto/crypto.hash.md5/)__ - MD5 hash some message or payload
-* __[\[crypto.hash.sha1\]](/reference/slots/crypto/crypto.hash.sha1/)__ - SHA1 hash some message or payload
-* __[\[crypto.hash.sha256\]](/reference/slots/crypto/crypto.hash.sha256/)__ - SHA256 hash some message or payload
-* __[\[crypto.hash.sha384\]](/reference/slots/crypto/crypto.hash.sha384/)__ - SHA384 hash some message or payload
-* __[\[crypto.hash.sha512\]](/reference/slots/crypto/crypto.hash.sha512/)__ - SHA512 hash some message or payload
-* __[\[crypto.password.hash\]](/reference/slots/crypto/crypto.password.hash/)__ - Creates a Blowfish uniquely salted hash
-* __[\[crypto.password.verify\]](/reference/slots/crypto/crypto.password.verify/)__ - Verifies a Blowfish uniquely salted hash
-* __[\[crypto.encrypt\]](/reference/slots/crypto/crypto.encrypt/)__ - High level slot combining RSA and AES to encrypt some message
-* __[\[crypto.decrypt\]](/reference/slots/crypto/crypto.decrypt/)__ - High level slot combining RSA and AES to decrypt some message
-* __[\[crypto.sign\]](/reference/slots/crypto/crypto.sign/)__ - High level slot to sign some message
-* __[\[crypto.verify\]](/reference/slots/crypto/crypto.verify/)__ - High level slot to verify a signature of some message
-* __[\[crypto.seed\]](/reference/slots/crypto/crypto.seed/)__ - Allows you to explicitly seed the CSRNG instance using for instance a manually provided seed
+* __[\[crypto.rsa.create-key\]](/plugins/magic.lambda.crypto/crypto.rsa.create-key/)__ - Creates a new RSA keypair
+* __[\[crypto.rsa.encrypt\]](/plugins/magic.lambda.crypto/crypto.rsa.encrypt/)__ - RSA encrypts a message
+* __[\[crypto.rsa.decrypt\]](/plugins/magic.lambda.crypto/crypto.rsa.decrypt/)__ - RSA decrypts a message
+* __[\[crypto.rsa.sign\]](/plugins/magic.lambda.crypto/crypto.rsa.sign/)__ - Cryptographically signs a message
+* __[\[crypto.rsa.verify\]](/plugins/magic.lambda.crypto/crypto.rsa.verify/)__ - Verifies a cryptographic signature of some message
+* __[\[crypto.aes.encrypt\]](/plugins/magic.lambda.crypto/crypto.aes.encrypt/)__ - AES encrypts a message
+* __[\[crypto.aes.decrypt\]](/plugins/magic.lambda.crypto/crypto.aes.decrypt/)__ - AES decrypts a message
+* __[\[crypto.fingerprint\]](/plugins/magic.lambda.crypto/crypto.fingerprint/)__ - Creates a fingerprint of something
+* __[\[crypto.get-key\]](/plugins/magic.lambda.crypto/crypto.get-key/)__ - Returns the fingerprint of the public key associated with message
+* __[\[crypto.random\]](/plugins/magic.lambda.crypto/crypto.random/)__ - CSRNG creating random seeds for you
+* __[\[crypto.random.int\]](/plugins/magic.lambda.crypto/crypto.random.int/)__ - CSRNG creating random integer value for you
+* __[\[crypto.hash\]](/plugins/magic.lambda.crypto/crypto.hash/)__ - Hash some message or payload using the specified **[algo]** or **[algorithm]**
+* __[\[crypto.hash.md5\]](/plugins/magic.lambda.crypto/crypto.hash.md5/)__ - MD5 hash some message or payload
+* __[\[crypto.hash.sha1\]](/plugins/magic.lambda.crypto/crypto.hash.sha1/)__ - SHA1 hash some message or payload
+* __[\[crypto.hash.sha256\]](/plugins/magic.lambda.crypto/crypto.hash.sha256/)__ - SHA256 hash some message or payload
+* __[\[crypto.hash.sha384\]](/plugins/magic.lambda.crypto/crypto.hash.sha384/)__ - SHA384 hash some message or payload
+* __[\[crypto.hash.sha512\]](/plugins/magic.lambda.crypto/crypto.hash.sha512/)__ - SHA512 hash some message or payload
+* __[\[crypto.password.hash\]](/plugins/magic.lambda.crypto/crypto.password.hash/)__ - Creates a Blowfish uniquely salted hash
+* __[\[crypto.password.verify\]](/plugins/magic.lambda.crypto/crypto.password.verify/)__ - Verifies a Blowfish uniquely salted hash
+* __[\[crypto.encrypt\]](/plugins/magic.lambda.crypto/crypto.encrypt/)__ - High level slot combining RSA and AES to encrypt some message
+* __[\[crypto.decrypt\]](/plugins/magic.lambda.crypto/crypto.decrypt/)__ - High level slot combining RSA and AES to decrypt some message
+* __[\[crypto.sign\]](/plugins/magic.lambda.crypto/crypto.sign/)__ - High level slot to sign some message
+* __[\[crypto.verify\]](/plugins/magic.lambda.crypto/crypto.verify/)__ - High level slot to verify a signature of some message
+* __[\[crypto.seed\]](/plugins/magic.lambda.crypto/crypto.seed/)__ - Allows you to explicitly seed the CSRNG instance using for instance a manually provided seed
 
 
 ## Blowfish password hashing
@@ -43,8 +43,8 @@ instance a database as _"slowly hashed values with per record based salts"_. Thi
 security issues, such as having adversaries creating Rainbow Dictionary attacks on your passwords. This
 project contains two slots to implement this, and these are as follows.
 
-* __[crypto.password.hash]__ - Creates a password hash
-* __[crypto.password.verify]__ - Verifies a hashed password
+* __[\[crypto.password.hash\]](/plugins/magic.lambda.crypto/crypto.password.hash/)__ - Creates a password hash
+* __[\[crypto.password.verify\]](/plugins/magic.lambda.crypto/crypto.password.verify/)__ - Verifies a hashed password
 
 Example usage can be found below.
 

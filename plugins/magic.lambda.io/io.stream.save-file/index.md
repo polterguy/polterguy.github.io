@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`io.stream.save-file`](/reference/slots/io/io.stream.save-file/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`io.stream.save-file`](/reference/slots/io/io.stream.save-file/) has its arguments, constraints and declaration.
 
 Works similarly to **[io.file.save]** but instead of taking source content of some kind,
 it assumes the source is an open `Stream` of some sort.

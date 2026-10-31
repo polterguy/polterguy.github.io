@@ -10,6 +10,10 @@ slot_json: "/reference/slots/request/request.cookies.list/slot.json"
 
 * **Returns**: Resolves to one child node per request cookie, with the cookie name as the node name and its value as the node value
 
+### Guide
+
+[How to use `request.cookies.list`](/plugins/magic.endpoint/request.cookies.list/)
+
 ### JSON declaration
 
 This is the complete declaration of `request.cookies.list`, as the running system describes it. It is also published as [slot.json](slot.json).

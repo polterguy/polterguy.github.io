@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`io.path.get-folder`](/reference/slots/io/io.path.get-folder/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`io.path.get-folder`](/reference/slots/io/io.path.get-folder/) has its arguments, constraints and declaration.
 
 Strips the filename from a path and returns the folder part of it, always ending with a `/`. If the path already
 ends with a `/` it is returned as it is. Below is an example.

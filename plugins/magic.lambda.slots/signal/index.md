@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`signal`](/reference/slots/core/signal/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`signal`](/reference/slots/core/signal/) has its arguments, constraints and declaration.
 
 Invokes a previously created dynamic slot. Assuming you have created the foo slot from the create slot example,
 you can invoke the slot using the following Hyperlambda.

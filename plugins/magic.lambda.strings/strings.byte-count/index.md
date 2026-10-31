@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`strings.byte-count`](/reference/slots/strings/strings.byte-count/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`strings.byte-count`](/reference/slots/strings/strings.byte-count/) has its arguments, constraints and declaration.
 
 Returns the number of bytes the specified string occupies when UTF-8 encoded, as an integer. This differs from
 **[strings.length]**, which counts characters, since characters outside the ASCII range occupy more than

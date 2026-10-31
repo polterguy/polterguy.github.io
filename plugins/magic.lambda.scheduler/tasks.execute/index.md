@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`tasks.execute`](/reference/slots/tasks/tasks.execute/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`tasks.execute`](/reference/slots/tasks/tasks.execute/) has its arguments, constraints and declaration.
 
 You can explicitly execute a persisted task by invoking **[tasks.execute]** and pass
 in the ID of your task. Below is an example, that assumes you have created the above _"foo-bar-task-4"_ task

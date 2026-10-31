@@ -1,11 +1,11 @@
 ---
 title: "How to use [execute]"
-description: "How to use [execute] - The [execute] slot is an alias for [signal], but it will [unwrap] all children nodes, automatically transform any expressions to their static value equivalents, allowing you to combine [unwrap] ..."
+description: "How to use [execute] - The [execute] slot is an alias for [signal], but it will [unwrap] all children nodes, automatically transform any expressions to their static value equivalents, allowing you to combine [unwrap]..."
 generated: true
 guide: true
 ---
 
-This is the guide to [`execute`](/reference/slots/core/execute/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`execute`](/reference/slots/core/execute/) has its arguments, constraints and declaration.
 
 The **[execute]** slot is an alias for **[signal]**, but it will **[unwrap]** all children nodes, automatically
 transform any expressions to their static value equivalents, allowing you to combine **[unwrap]** and **[signal]**

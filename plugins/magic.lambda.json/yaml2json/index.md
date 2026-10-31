@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`yaml2json`](/reference/slots/core/yaml2json/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`yaml2json`](/reference/slots/core/yaml2json/) has its arguments, constraints and declaration.
 
 The **[yaml2json]** slot converts the specified YAML input string to a JSON string. Basic usage is as follows.
 

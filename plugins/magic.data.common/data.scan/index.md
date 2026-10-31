@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`data.scan`](/reference/slots/data/data.scan/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`data.scan`](/reference/slots/data/data.scan/) has its arguments, constraints and declaration.
 
 This slot scans rows from your database, using the current open connection created by **[data.connect]**.
 It takes the same arguments as **[data.read]** and **[sql.read]**, and returns the matching rows as children nodes.

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`slots.delete`](/reference/slots/slots/slots.delete/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`slots.delete`](/reference/slots/slots/slots.delete/) has its arguments, constraints and declaration.
 
 Deletes a previously created dynamic slot. The following example _will throw an exception_.
 

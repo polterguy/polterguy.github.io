@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`json2lambda-stream`](/reference/slots/core/json2lambda-stream/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`json2lambda-stream`](/reference/slots/core/json2lambda-stream/) has its arguments, constraints and declaration.
 
 This slot does the same as **[json2lambda]**, except it reads the JSON from a stream instead of from a string,
 such as a stream opened with **[io.stream.open-file]**, which you can read about in the _"magic.lambda.io"_ project.

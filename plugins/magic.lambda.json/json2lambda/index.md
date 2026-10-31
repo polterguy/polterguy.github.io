@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`json2lambda`](/reference/slots/core/json2lambda/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`json2lambda`](/reference/slots/core/json2lambda/) has its arguments, constraints and declaration.
 
 ```
 .json:@"{""property"": ""value""}"

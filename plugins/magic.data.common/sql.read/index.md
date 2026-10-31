@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`sql.read`](/reference/slots/sql/sql.read/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`sql.read`](/reference/slots/sql/sql.read/) has its arguments, constraints and declaration.
 
 This slot requires only one mandatory argument, being your table name. The slot creates a select
 SQL statement for you. An example can be found below.

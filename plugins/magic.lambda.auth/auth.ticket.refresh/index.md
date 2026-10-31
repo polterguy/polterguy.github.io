@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`auth.ticket.refresh`](/reference/slots/auth/auth.ticket.refresh/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`auth.ticket.refresh`](/reference/slots/auth/auth.ticket.refresh/) has its arguments, constraints and declaration.
 
 This slot returns a new JWT token from an old existing (and valid) token. However, the new token will
 have a new expiration date, further into the future, allowing you to create a timer that occasionally

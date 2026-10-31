@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`strings.url-encode`](/reference/slots/strings/strings.url-encode/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`strings.url-encode`](/reference/slots/strings/strings.url-encode/) has its arguments, constraints and declaration.
 
 URL encodes a string. Example can be found below.
 

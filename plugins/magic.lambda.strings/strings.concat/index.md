@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`strings.concat`](/reference/slots/strings/strings.concat/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`strings.concat`](/reference/slots/strings/strings.concat/) has its arguments, constraints and declaration.
 
 Concatenates a list of strings into one string. Similar to **[strings.join]**, except it doesn't take a
 separating character.

@@ -23,6 +23,10 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [whitelist]](/plugins/magic.lambda.io/#restricting-file-access-with-whitelist)
 
+### Guide
+
+[How to use `whitelist`](/plugins/magic.lambda/whitelist/)
+
 ### JSON declaration
 
 This is the complete declaration of `whitelist`, as the running system describes it. It is also published as [slot.json](slot.json).

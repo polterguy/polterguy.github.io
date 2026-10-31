@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`lambda2html`](/reference/slots/core/lambda2html/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`lambda2html`](/reference/slots/core/lambda2html/) has its arguments, constraints and declaration.
 
 This is the reverse of **[html2lambda]** and returns HTML resulting from the specified lambda object. Below
 is example usage.

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`puppeteer.screenshot`](/reference/slots/puppeteer/puppeteer.screenshot/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`puppeteer.screenshot`](/reference/slots/puppeteer/puppeteer.screenshot/) has its arguments, constraints and declaration.
 
 Saves a screenshot to disk.
 

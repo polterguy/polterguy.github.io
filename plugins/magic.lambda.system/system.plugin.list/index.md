@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`system.plugin.list`](/reference/slots/system/system.plugin.list/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`system.plugin.list`](/reference/slots/system/system.plugin.list/) has its arguments, constraints and declaration.
 
 This slot returns a list of all dynamically loaded plugins allowing you to traverse these as you see fit. Below is an example of usage.
 

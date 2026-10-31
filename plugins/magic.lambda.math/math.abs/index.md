@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`math.abs`](/reference/slots/math/math.abs/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`math.abs`](/reference/slots/math/math.abs/) has its arguments, constraints and declaration.
 
 This slot returns the absolute value of its input, implying its positive counterpart if the value is negative, or unchanged if it's already positive.
 

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`git.checkout`](/reference/slots/git/git.checkout/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`git.checkout`](/reference/slots/git/git.checkout/) has its arguments, constraints and declaration.
 
 Switches branches in a repo. The repo path is the node value. The `branch` child node is required.
 

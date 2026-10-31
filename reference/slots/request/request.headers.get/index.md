@@ -11,6 +11,10 @@ slot_json: "/reference/slots/request/request.headers.get/slot.json"
 * **Value** (`http-header-name`), required: Header name to retrieve
 * **Returns**: Resolves to the value of the named request header, or null if it does not exist
 
+### Guide
+
+[How to use `request.headers.get`](/plugins/magic.endpoint/request.headers.get/)
+
 ### JSON declaration
 
 This is the complete declaration of `request.headers.get`, as the running system describes it. It is also published as [slot.json](slot.json).

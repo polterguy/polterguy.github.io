@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`data.create`](/reference/slots/data/data.create/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`data.create`](/reference/slots/data/data.create/) has its arguments, constraints and declaration.
 
 This slot inserts a new row into your database, using the current open connection created by **[data.connect]**.
 It generates the SQL for your database type, and takes the same **[table]** and **[values]** arguments as

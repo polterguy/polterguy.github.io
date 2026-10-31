@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`strings.substring`](/reference/slots/strings/strings.substring/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`strings.substring`](/reference/slots/strings/strings.substring/) has its arguments, constraints and declaration.
 
 Returns a substring of the specified string.
 

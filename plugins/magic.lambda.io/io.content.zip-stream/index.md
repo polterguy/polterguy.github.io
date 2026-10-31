@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`io.content.zip-stream`](/reference/slots/io/io.content.zip-stream/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`io.content.zip-stream`](/reference/slots/io/io.content.zip-stream/) has its arguments, constraints and declaration.
 
 Creates a memory based ZIP stream you can return over the HTTP response object. Notice,
 this doesn't create a zip file, but rather a zip stream, which you can manipulate using other

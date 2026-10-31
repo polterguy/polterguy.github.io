@@ -1,11 +1,11 @@
 ---
 title: "How to use [system.plugin.execute]"
-description: "How to use [system.plugin.execute] - This is a short hand slot for dynamically loading a plugin and executing a lambda object with the plugin loaded, for then to automatically unload the plugin at the end of the scope"
+description: "How to use [system.plugin.execute] - This is a short hand slot for dynamically loading a plugin and executing a lambda object with the plugin loaded, for then to automatically unload the plugin at the end of the scope."
 generated: true
 guide: true
 ---
 
-This is the guide to [`system.plugin.execute`](/reference/slots/system/system.plugin.execute/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`system.plugin.execute`](/reference/slots/system/system.plugin.execute/) has its arguments, constraints and declaration.
 
 This is a short hand slot for dynamically loading a plugin and executing a lambda object with the plugin loaded, for then to automatically unload the plugin at the end of the scope. Below is an example of usage that dynamically compiles some C# code that creates a slot, for then to executing a lambda object having access to this slot, and finish the execution with automatically cleaning up and unloading the dynamically added plugin.
 

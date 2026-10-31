@@ -11,6 +11,10 @@ slot_json: "/reference/slots/image/image.size/slot.json"
 * **Value** (`image-file`), required: Image filename to inspect
 * **Returns**: Returns [width:int] and [height:int] child nodes for the image dimensions
 
+### Guide
+
+[How to use `image.size`](/plugins/magic.lambda.image/image.size/)
+
 ### JSON declaration
 
 This is the complete declaration of `image.size`, as the running system describes it. It is also published as [slot.json](slot.json).

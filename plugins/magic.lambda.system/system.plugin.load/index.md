@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`system.plugin.load`](/reference/slots/system/system.plugin.load/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`system.plugin.load`](/reference/slots/system/system.plugin.load/) has its arguments, constraints and declaration.
 
 These slots allow you to load and unload assemblies and instantiate any slots found in it, and such dynamically during runtime changes your available slots. If you imagine you saved the above resulting compiled assembly as _"/etc/foo.dll"_, and you want to load it as a plugin, you could use code resembling the following.
 

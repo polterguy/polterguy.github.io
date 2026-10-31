@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`math.subtract`](/reference/slots/math/math.subtract/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`math.subtract`](/reference/slots/math/math.subtract/) has its arguments, constraints and declaration.
 
 This slot subtracts two or more values with each other, and can be given as many arguments as you wish,
 such as the following illustrates.

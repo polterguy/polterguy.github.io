@@ -13,6 +13,10 @@ slot_json: "/reference/slots/core/exists/slot.json"
 
 Guide: [How to use [exists]](/plugins/magic.lambda/nodes/#how-to-use-exists)
 
+### Guide
+
+[How to use `exists`](/plugins/magic.lambda/exists/)
+
 ### JSON declaration
 
 This is the complete declaration of `exists`, as the running system describes it. It is also published as [slot.json](slot.json).

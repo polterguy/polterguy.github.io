@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`math.increment`](/reference/slots/math/math.increment/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`math.increment`](/reference/slots/math/math.increment/) has its arguments, constraints and declaration.
 
 This slot increments the value of some expression in place, by mutating the value of the node its expression is
 leading to.

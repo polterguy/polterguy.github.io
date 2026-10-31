@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`strings.trim`](/reference/slots/strings/strings.trim/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`strings.trim`](/reference/slots/strings/strings.trim/) has its arguments, constraints and declaration.
 
 Trims a string, either both sides, only the start of it, or only the end of it, for
 occurrences of characters found in the sequence of characters provided as its argument.

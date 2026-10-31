@@ -21,6 +21,10 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [filter]](/plugins/magic.lambda/nodes/#how-to-use-filter)
 
+### Guide
+
+[How to use `filter`](/plugins/magic.lambda/filter/)
+
 ### JSON declaration
 
 This is the complete declaration of `filter`, as the running system describes it. It is also published as [slot.json](slot.json).

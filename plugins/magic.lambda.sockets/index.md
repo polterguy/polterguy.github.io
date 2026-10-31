@@ -53,8 +53,8 @@ the above arguments are optional.
 
 You can associate a user with one or more groups. This is done with the following slots.
 
-* __[sockets.user.add-to-group]__ - Adds the specified user to the specified group
-* __[sockets.user.remove-from-group]__ - Removes the specified user from the specified group
+* __[\[sockets.user.add-to-group\]](/plugins/magic.lambda.sockets/sockets.user.add-to-group/)__ - Adds the specified user to the specified group
+* __[\[sockets.user.remove-from-group\]](/plugins/magic.lambda.sockets/sockets.user.remove-from-group/)__ - Removes the specified user from the specified group
 
 Below you can find an example of how to add a user to a group, for then to later de-associate
 the user with the group.
@@ -121,8 +121,8 @@ This might sometimes be useful, especially if you want to dynamically add only _
 for instance. To add the currently active connection explicitly to a group for instance, you can use the 
 following slots.
 
-* __[sockets.connection.enter-group]__ - Associates the current connection _only_ with the specified group
-* __[sockets.connection.leave-group]__ - De-associates the current connection with the specified group
+* __[\[sockets.connection.enter-group\]](/plugins/magic.lambda.sockets/sockets.connection.enter-group/)__ - Associates the current connection _only_ with the specified group
+* __[\[sockets.connection.leave-group\]](/plugins/magic.lambda.sockets/sockets.connection.leave-group/)__ - De-associates the current connection with the specified group
 
 If the user has additional connections, none of the other connections will be modified in any ways. Also
 realise that both of these slots can _only_ be used from within a Hyperlambda file executed through a

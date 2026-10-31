@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`mail.smtp.send`](/reference/slots/mail/mail.smtp.send/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`mail.smtp.send`](/reference/slots/mail/mail.smtp.send/) has its arguments, constraints and declaration.
 
 ```
 mail.smtp.send

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`mssql.execute-batch`](/reference/slots/mssql/mssql.execute-batch/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`mssql.execute-batch`](/reference/slots/mssql/mssql.execute-batch/) has its arguments, constraints and declaration.
 
 Executes a batch SQL script, such as a schema creation script, on the SQL Server connection opened by **[mssql.connect]**.
 SQL Server cannot execute scripts containing `GO` separators as one single command, so this slot splits the script

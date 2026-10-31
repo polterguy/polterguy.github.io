@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`data.select`](/reference/slots/data/data.select/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`data.select`](/reference/slots/data/data.select/) has its arguments, constraints and declaration.
 
 This slot allows you to pass in any arbitrary SQL you wish, and evaluate it to a `DataReader`, and return
 all records as a lambda object. You can find an example below.

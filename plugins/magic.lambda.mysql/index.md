@@ -8,17 +8,17 @@ all basic types of CRUD SQL statements. In addition, it provides slots to open a
 such allows you to declare your own SQL statements to be executed towards a MySQL database. Slots
 this project contains are as follows.
 
-* __[\[mysql.connect\]](/reference/slots/mysql/mysql.connect/)__ - Connects to a database
-* __[\[mysql.create\]](/reference/slots/mysql/mysql.create/)__ - Creates a single record in the specified table
-* __[\[mysql.read\]](/reference/slots/mysql/mysql.read/)__ - Reads multiple records from the specified table
-* __[\[mysql.update\]](/reference/slots/mysql/mysql.update/)__ - Updates a single record in the specified table
-* __[\[mysql.delete\]](/reference/slots/mysql/mysql.delete/)__ - Deletes a single record in the specified table
-* __[\[mysql.select\]](/reference/slots/mysql/mysql.select/)__ - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
-* __[\[mysql.scalar\]](/reference/slots/mysql/mysql.scalar/)__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
-* __[\[mysql.execute\]](/reference/slots/mysql/mysql.execute/)__ - Executes an arbitrary SQL statement
-* __[\[mysql.transaction.create\]](/reference/slots/mysql/mysql.transaction.create/)__ - Creates a new transaction
-* __[\[mysql.transaction.commit\]](/reference/slots/mysql/mysql.transaction.commit/)__ - Explicitly commits an open transaction
-* __[\[mysql.transaction.rollback\]](/reference/slots/mysql/mysql.transaction.rollback/)__ - Explicitly rolls back an open transaction
+* __[\[mysql.connect\]](/plugins/magic.lambda.mysql/mysql.connect/)__ - Connects to a database
+* __[\[mysql.create\]](/plugins/magic.lambda.mysql/mysql.create/)__ - Creates a single record in the specified table
+* __[\[mysql.read\]](/plugins/magic.lambda.mysql/mysql.read/)__ - Reads multiple records from the specified table
+* __[\[mysql.update\]](/plugins/magic.lambda.mysql/mysql.update/)__ - Updates a single record in the specified table
+* __[\[mysql.delete\]](/plugins/magic.lambda.mysql/mysql.delete/)__ - Deletes a single record in the specified table
+* __[\[mysql.select\]](/plugins/magic.lambda.mysql/mysql.select/)__ - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
+* __[\[mysql.scalar\]](/plugins/magic.lambda.mysql/mysql.scalar/)__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
+* __[\[mysql.execute\]](/plugins/magic.lambda.mysql/mysql.execute/)__ - Executes an arbitrary SQL statement
+* __[\[mysql.transaction.create\]](/plugins/magic.lambda.mysql/mysql.transaction.create/)__ - Creates a new transaction
+* __[\[mysql.transaction.commit\]](/plugins/magic.lambda.mysql/mysql.transaction.commit/)__ - Explicitly commits an open transaction
+* __[\[mysql.transaction.rollback\]](/plugins/magic.lambda.mysql/mysql.transaction.rollback/)__ - Explicitly rolls back an open transaction
 * __[.db-factory.connection.mysql]__ - Creates a MySQL connection factory (private C# slot)
 
 **Notice** - If you use any of the CRUD slots from above, the whole idea is that you can polymorphistically

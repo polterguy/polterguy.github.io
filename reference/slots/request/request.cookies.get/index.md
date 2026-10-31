@@ -11,6 +11,10 @@ slot_json: "/reference/slots/request/request.cookies.get/slot.json"
 * **Value** (`cookie-name`), required: Cookie name to retrieve
 * **Returns**: Resolves to the value of the named request cookie, or null if it does not exist
 
+### Guide
+
+[How to use `request.cookies.get`](/plugins/magic.endpoint/request.cookies.get/)
+
 ### JSON declaration
 
 This is the complete declaration of `request.cookies.get`, as the running system describes it. It is also published as [slot.json](slot.json).

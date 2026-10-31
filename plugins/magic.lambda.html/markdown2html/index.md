@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`markdown2html`](/reference/slots/core/markdown2html/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`markdown2html`](/reference/slots/core/markdown2html/) has its arguments, constraints and declaration.
 
 This library can also handle Markdown, since Markdown is arguably just another representation of HTML.
 The **[markdown2html]** slot converts the specified Markdown content to HTML. Basic usage is as follows.

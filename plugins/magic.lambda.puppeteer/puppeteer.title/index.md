@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`puppeteer.title`](/reference/slots/puppeteer/puppeteer.title/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`puppeteer.title`](/reference/slots/puppeteer/puppeteer.title/) has its arguments, constraints and declaration.
 
 Returns page title.
 

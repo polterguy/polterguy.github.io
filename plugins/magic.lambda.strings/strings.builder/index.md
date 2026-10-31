@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`strings.builder`](/reference/slots/strings/strings.builder/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`strings.builder`](/reference/slots/strings/strings.builder/) has its arguments, constraints and declaration.
 
 Creates a string builder scope. Every **[strings.builder.append]** invocation found inside it appends its value
 to the builder, and when the scope ends the value of **[strings.builder]** becomes the concatenated text.

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`semaphore`](/reference/slots/core/semaphore/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`semaphore`](/reference/slots/core/semaphore/) has its arguments, constraints and declaration.
 
 Creates a named semaphore, where only one thread will be allowed to evaluate the same semaphore at
 the same time. Notice, the semaphore to use is defined through its value, implying you can use the same

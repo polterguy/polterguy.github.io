@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`validators.mandatory`](/reference/slots/validators/validators.mandatory/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`validators.mandatory`](/reference/slots/validators/validators.mandatory/) has its arguments, constraints and declaration.
 
 This slot simply throws an exception if the specified argument is not supplied. Below is example
 usage.

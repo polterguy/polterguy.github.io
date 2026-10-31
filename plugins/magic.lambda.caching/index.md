@@ -5,12 +5,12 @@ moved_anchors: {"how-to-use-cacheclear": "/plugins/magic.lambda.caching/cache.cl
 
 This project contains caching helper slots for Hyperlambda. More specifically this project provides the following slots.
 
-* __[\[cache.set\]](/reference/slots/cache/cache.set/)__ - Adds the specified item to the cache
-* __[\[cache.get\]](/reference/slots/cache/cache.get/)__ - Returns a previously cached item, if existing, if not returns nothing
-* __[\[cache.try-get\]](/reference/slots/cache/cache.try-get/)__ - Attempts to retrieve an item from cache, and if not existing, invokes __[.lambda]__ to create item, saves the resulting item to the cache, before returning the item to caller
-* __[\[cache.clear\]](/reference/slots/cache/cache.clear/)__ - Completely empties cache, optionally taking a filter condition
-* __[\[cache.list\]](/reference/slots/cache/cache.list/)__ - Lists all items in cache, optionally taking a filter condition
-* __[\[cache.count\]](/reference/slots/cache/cache.count/)__ - Returns the number of cache items in total, optionally taking a filter condition
+* __[\[cache.set\]](/plugins/magic.lambda.caching/cache.set/)__ - Adds the specified item to the cache
+* __[\[cache.get\]](/plugins/magic.lambda.caching/cache.get/)__ - Returns a previously cached item, if existing, if not returns nothing
+* __[\[cache.try-get\]](/plugins/magic.lambda.caching/cache.try-get/)__ - Attempts to retrieve an item from cache, and if not existing, invokes __[.lambda]__ to create item, saves the resulting item to the cache, before returning the item to caller
+* __[\[cache.clear\]](/plugins/magic.lambda.caching/cache.clear/)__ - Completely empties cache, optionally taking a filter condition
+* __[\[cache.list\]](/plugins/magic.lambda.caching/cache.list/)__ - Lists all items in cache, optionally taking a filter condition
+* __[\[cache.count\]](/plugins/magic.lambda.caching/cache.count/)__ - Returns the number of cache items in total, optionally taking a filter condition
 
 All of the above slots requires a key as its value, and/or a filter argument, as the value of the identity node
 for the invocation of the slot. Notice, the cache can _only_ persist string values, implying if you want to store

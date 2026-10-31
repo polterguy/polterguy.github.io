@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`data.connect`](/reference/slots/data/data.connect/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`data.connect`](/reference/slots/data/data.connect/) has its arguments, constraints and declaration.
 
 This slot will open a database connection for you. You can pass in a complete connection string (not recommended),
 or only the database name if you wish. If you pass in only the database name, the generic connection string for your

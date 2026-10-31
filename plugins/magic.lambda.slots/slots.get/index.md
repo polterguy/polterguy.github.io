@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`slots.get`](/reference/slots/slots/slots.get/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`slots.get`](/reference/slots/slots/slots.get/) has its arguments, constraints and declaration.
 
 Returns the entire lambda code for a previously created dynamic slot. Example can be found below.
 

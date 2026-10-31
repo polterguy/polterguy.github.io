@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`lambda2xml`](/reference/slots/core/lambda2xml/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`lambda2xml`](/reference/slots/core/lambda2xml/) has its arguments, constraints and declaration.
 
 To convert from a lambda object to an XML object you can use something such as follows.
 

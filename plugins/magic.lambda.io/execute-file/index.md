@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`execute-file`](/reference/slots/core/execute-file/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`execute-file`](/reference/slots/core/execute-file/) has its arguments, constraints and declaration.
 
 The **[execute-file]** slot is an alias for **[io.file.execute]**, but it will **[unwrap]** all children nodes,
 automatically transform any expressions to their static value equivalents, allowing you to combine **[unwrap]**

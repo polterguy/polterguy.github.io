@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`puppeteer.content`](/reference/slots/puppeteer/puppeteer.content/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`puppeteer.content`](/reference/slots/puppeteer/puppeteer.content/) has its arguments, constraints and declaration.
 
 Returns page HTML.
 

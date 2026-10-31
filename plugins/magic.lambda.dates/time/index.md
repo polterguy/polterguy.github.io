@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`time`](/reference/slots/core/time/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`time`](/reference/slots/core/time/) has its arguments, constraints and declaration.
 
 This slot returns a time object, which is useful for doing math operations with a date and time object,
 allowing you to for instance subtract 5 days from the current date and time. Below is an example.

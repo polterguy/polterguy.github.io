@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`math.modulo`](/reference/slots/math/math.modulo/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`math.modulo`](/reference/slots/math/math.modulo/) has its arguments, constraints and declaration.
 
 This slot calculates the modulo of two or more values with each other, and can be given as many arguments as you wish,
 such as the following illustrates.

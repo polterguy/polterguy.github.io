@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`io.folder.copy`](/reference/slots/io/io.folder.copy/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`io.folder.copy`](/reference/slots/io/io.folder.copy/) has its arguments, constraints and declaration.
 
 Copies the specified source folder to its specified destination folder. Notice, this slot doesn't copy
 the folder itself, but rather the folder's content. Below is an example.

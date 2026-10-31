@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`github.repo.list`](/reference/slots/github/github.repo.list/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`github.repo.list`](/reference/slots/github/github.repo.list/) has its arguments, constraints and declaration.
 
 Lists GitHub repositories. If `owner` is omitted, it will list repositories visible to the
 authenticated user. If `owner` is provided, it will list repositories for the organization (not a user).

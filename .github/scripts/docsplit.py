@@ -308,23 +308,23 @@ def relink(text, moved):
     return re.sub(r'\]\(#([^)\s]+)\)', lambda m: '](%s)' % moved[m.group(1)] if m.group(1) in moved else m.group(0), text)
 
 
-def linkify_slots(lines, names):
+def linkify_slots(lines, names, urls=None):
     """Bullets such as "* __[io.file.load]__ - ..." link to the page of the slot."""
     out = []
     for line in lines:
         m = re.match(r'(\*\s+)(__|\*\*)\[([^\]]+)\]\2(.*)', line)
         if m and m.group(3) in names:
-            out.append('%s%s[\\[%s\\]](%s)%s%s' % (m.group(1), m.group(2), m.group(3), slot_url(m.group(3)), m.group(2), m.group(4)))
+            out.append('%s%s[\\[%s\\]](%s)%s%s' % (m.group(1), m.group(2), m.group(3), (urls or {}).get(m.group(3)) or slot_url(m.group(3)), m.group(2), m.group(4)))
         else:
             out.append(line)
     return out
 
 
-def hub_markdown(result, names):
+def hub_markdown(result, names, urls=None):
     """The hub page body, without front matter."""
-    lines = linkify_slots(result['intro'], names)
+    lines = linkify_slots(result['intro'], names, urls)
     for u in result['hub_sections']:
-        lines += [''] + u['lines']
+        lines += [''] + linkify_slots(u['lines'], names, urls)
     if result['pages']:
         lines += ['', '## Topics', '']
         for p in result['pages']:
@@ -345,6 +345,109 @@ def page_markdown(result, page, index):
         nav.append('[%s &rarr;](/plugins/%s/%s/)' % (pages[index + 1]['title'], plugin, pages[index + 1]['slug']))
     body += ['', '---', '', ' | '.join(nav)]
     return relink('\n'.join(body) + '\n', result['moved'])
+
+
+# ------------------------------------------------------------------------------------
+# Guide pages: one for every slot.
+# ------------------------------------------------------------------------------------
+
+def token_in(name, text):
+    return re.search(r'(?<![\w.\-])%s(?![\w\-]|\.\w)' % re.escape(name), text)
+
+
+def section_showing(sources, name):
+    """The smallest section, in the given line lists, that shows the slot in a code sample, else one that names it."""
+    for want_code in (True, False):
+        for lines in sources:
+            fence, marks = False, []
+            for i, line in enumerate(lines):
+                if line.startswith('```'):
+                    fence = not fence
+                elif not fence:
+                    h = re.match(r'(#{2,6}) ', line)
+                    if h:
+                        marks.append((i, len(h.group(1))))
+            spans = []
+            for k, (i, lvl) in enumerate(marks):
+                e = next((j for (j, l) in marks[k + 1:] if l <= lvl), len(lines))
+                spans.append((i, e, lvl))
+            best = None
+            for (i, e, lvl) in spans:
+                body = lines[i + 1:e]
+                text = '\n'.join(body)
+                if want_code:
+                    blocks = re.findall(r'```.*?```', text, re.S)
+                    hit = any(token_in(name, b) for b in blocks)
+                else:
+                    hit = ('[%s]' % name) in text
+                if hit and (best is None or e - i < best[1] - best[0]):
+                    best = (i, e, lvl)
+            if best:
+                i, e, lvl = best
+                return shift_headings(trim(lines[i + 1:e]), 1 - lvl)
+    return None
+
+
+def collect(magic, names):
+    """
+    The plan of every README, plus the guide page of every slot: its own "How to use" section when the README has
+    one, else the section of the plugin's documentation that shows it. Returns {'results', 'guides', 'urls'},
+    where guides is {plugin: [page]} and urls is {slot: address of its guide page}.
+    """
+    results = {}
+    for readme in sorted(glob.glob(os.path.join(magic, 'plugins', '*', 'README.md'))):
+        plugin = os.path.basename(os.path.dirname(readme))
+        with open(readme, encoding='utf-8-sig') as f:
+            results[plugin] = plan(f.read(), plugin, names, load_manifest(plugin))
+
+    guides = {p: list(r['guide_pages']) for p, r in results.items()}
+    urls = {s_: g['url'] for p in guides for g in guides[p] for s_ in g['slots']}
+
+    owned, described = {}, {}
+    for plugin, r in results.items():
+        for line in r['intro'] + [l for u in r['hub_sections'] for l in u['lines']] + [l for pg in r['pages'] for l in pg['lines']]:
+            m = re.match(r'\*\s+(?:__|\*\*)?\\?\[+([^\]\\]+)\]?(?:__|\*\*)?\s*-\s*(.*)', line)
+            if m and m.group(1) in names:
+                owned.setdefault(m.group(1), plugin)
+                described.setdefault(m.group(1), m.group(2).strip())
+
+    # The hand written pages of magic.lambda document the core keywords, which no README lists.
+    hand = []
+    for path in sorted(glob.glob(os.path.join(ROOT, 'plugins', 'magic.lambda', '*', 'index.md'))):
+        with open(path, encoding='utf-8') as f:
+            text = f.read()
+        if 'generated: true' not in text:
+            hand.append(split_front_matter(text)[1].split('\n'))
+    for lines in hand:
+        text = '\n'.join(lines)
+        for name in names:
+            if name not in owned and name not in urls and (('[%s]' % name) in text or (('.' in name or '-' in name) and token_in(name, text))):
+                owned[name] = 'magic.lambda'
+
+    for name in sorted(owned):
+        if name in urls:
+            continue
+        plugin = owned[name]
+        r = results.get(plugin)
+        sources = ([r['intro']] if r else []) + ([u['lines'] for u in r['hub_sections']] if r else []) + ([p['lines'] for p in r['pages']] if r else [])
+        if plugin == 'magic.lambda':
+            sources += hand
+        body = section_showing(sources, name)
+        md = '\n'.join(body) if body else ''
+        if not md:
+            md = described.get(name, '')
+        if not md:
+            continue
+        # A slot can be named like a topic page of the plugin, whose address must stay.
+        taken = {pg['slug'] for pg in r['pages']} if r else set()
+        for h in glob.glob(os.path.join(ROOT, 'plugins', plugin, '*', 'index.md')):
+            with open(h, encoding='utf-8') as f:
+                if 'guide: true' not in f.read():
+                    taken.add(os.path.basename(os.path.dirname(h)))
+        url = '/plugins/%s/%s/' % (plugin, name + '-slot' if name in taken else name)
+        guides.setdefault(plugin, []).append({'slot': name, 'slots': [name], 'heading': name, 'md': md, 'url': url})
+        urls[name] = url
+    return {'results': results, 'guides': guides, 'urls': urls}
 
 
 # ------------------------------------------------------------------------------------

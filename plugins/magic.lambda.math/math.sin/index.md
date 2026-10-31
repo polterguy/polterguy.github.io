@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`math.sin`](/reference/slots/math/math.sin/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`math.sin`](/reference/slots/math/math.sin/) has its arguments, constraints and declaration.
 
 This slot returns the sin value of its input.
 

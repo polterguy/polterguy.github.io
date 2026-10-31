@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`github.repo.create`](/reference/slots/github/github.repo.create/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`github.repo.create`](/reference/slots/github/github.repo.create/) has its arguments, constraints and declaration.
 
 Creates a GitHub repository. The repository name is the node value. Optionally provide an
 organization owner and additional settings.

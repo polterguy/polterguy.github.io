@@ -5,15 +5,15 @@ moved_anchors: {"how-to-use-dateformat": "/plugins/magic.lambda.dates/date.forma
 
 This project contains date manipulation slots for Magic. More specifically, this project contains the following slots.
 
-* __[\[date.now\]](/reference/slots/date/date.now/)__ - Returns the now date, equivalent of `DateTime.Now`.
-* __[\[date.from-unix\]](/reference/slots/date/date.from-unix/)__ - Converts the specified Unix timestamp to a `DateTime` object.
-* __[\[date.min\]](/reference/slots/date/date.min/)__ - Returns the minimum date value, equivalent of `DateTime.MinValue`.
-* __[\[date.max\]](/reference/slots/date/date.max/)__ - Returns the maximum date value, equivalent of `DateTime.MaxValue`.
-* __[\[date.unix\]](/reference/slots/date/date.unix/)__ - Returns the current UTC time as a Unix timestamp.
-* __[\[date.format\]](/reference/slots/date/date.format/)__ - Returns a string representation of some date, formatted according to the specified **[format]** argument.
-* __[\[time.total-milliseconds\]](/reference/slots/time/time.total-milliseconds/)__ - Returns the total number of milliseconds in a time span.
-* __[\[time.format\]](/reference/slots/time/time.format/)__ - Formats a time span as a string, according to the specified **[format]** argument.
-* __[\[time\]](/reference/slots/core/time/)__ - Creates a time span, useful for adding and subtracting offsets to date objects. Pass in **[days]**, **[hours]**, **[minutes]**, **[seconds]** or **[milliseconds]** to declare how large your offset is. All arguments are optional, but (of course) at least one argument should be passed in.
+* __[\[date.now\]](/plugins/magic.lambda.dates/date.now/)__ - Returns the now date, equivalent of `DateTime.Now`.
+* __[\[date.from-unix\]](/plugins/magic.lambda.dates/date.from-unix/)__ - Converts the specified Unix timestamp to a `DateTime` object.
+* __[\[date.min\]](/plugins/magic.lambda.dates/date.min/)__ - Returns the minimum date value, equivalent of `DateTime.MinValue`.
+* __[\[date.max\]](/plugins/magic.lambda.dates/date.max/)__ - Returns the maximum date value, equivalent of `DateTime.MaxValue`.
+* __[\[date.unix\]](/plugins/magic.lambda.dates/date.unix/)__ - Returns the current UTC time as a Unix timestamp.
+* __[\[date.format\]](/plugins/magic.lambda.dates/date.format/)__ - Returns a string representation of some date, formatted according to the specified **[format]** argument.
+* __[\[time.total-milliseconds\]](/plugins/magic.lambda.dates/time.total-milliseconds/)__ - Returns the total number of milliseconds in a time span.
+* __[\[time.format\]](/plugins/magic.lambda.dates/time.format/)__ - Formats a time span as a string, according to the specified **[format]** argument.
+* __[\[time\]](/plugins/magic.lambda.dates/time/)__ - Creates a time span, useful for adding and subtracting offsets to date objects. Pass in **[days]**, **[hours]**, **[minutes]**, **[seconds]** or **[milliseconds]** to declare how large your offset is. All arguments are optional, but (of course) at least one argument should be passed in.
 
 **Notice** - Internally in Magic, everything is UTC Universal timezone, implying if you want to render it in user's
 timezone, you'll have to convert it explicitly in your client/frontend. All dates and times internally in  Magic,

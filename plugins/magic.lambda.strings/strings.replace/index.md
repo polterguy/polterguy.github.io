@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`strings.replace`](/reference/slots/strings/strings.replace/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`strings.replace`](/reference/slots/strings/strings.replace/) has its arguments, constraints and declaration.
 
 This slot replaces occurrences of a string inside a string, with some other string. The simplest version is like
 follows.

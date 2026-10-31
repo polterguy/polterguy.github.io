@@ -18,6 +18,10 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | lambda | no | Returned child node after descendant expressions are unwrapped. Can be repeated. |
 
+### Guide
+
+[How to use `yield`](/plugins/magic.lambda.slots/yield/)
+
 ### JSON declaration
 
 This is the complete declaration of `yield`, as the running system describes it. It is also published as [slot.json](slot.json).

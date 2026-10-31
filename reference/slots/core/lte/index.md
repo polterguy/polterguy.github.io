@@ -20,6 +20,10 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [lte]](/plugins/magic.lambda/conditions/#how-to-use-lte)
 
+### Guide
+
+[How to use `lte`](/plugins/magic.lambda/lte/)
+
 ### JSON declaration
 
 This is the complete declaration of `lte`, as the running system describes it. It is also published as [slot.json](slot.json).

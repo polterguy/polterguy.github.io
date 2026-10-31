@@ -13,6 +13,10 @@ slot_json: "/reference/slots/slot/slot.signature/slot.json"
 
 Guide: [How to use [slot.signature]](/plugins/magic.lambda/types/#how-to-use-slotsignature)
 
+### Guide
+
+[How to use `slot.signature`](/plugins/magic.lambda/slot.signature/)
+
 ### JSON declaration
 
 This is the complete declaration of `slot.signature`, as the running system describes it. It is also published as [slot.json](slot.json).

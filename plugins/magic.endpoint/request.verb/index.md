@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`request.verb`](/reference/slots/request/request.verb/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`request.verb`](/reference/slots/request/request.verb/) has its arguments, constraints and declaration.
 
 This slot returns the HTTP verb (e.g. _"get"_ or _"post"_) of the current incoming request as the value of the slot's node.
 It takes no arguments, and is only meaningful when invoked from within an HTTP request, such as inside of a Hyperlambda endpoint.

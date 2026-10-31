@@ -6,24 +6,24 @@ moved_anchors: {"how-to-use-gitbranchlist": "/plugins/magic.lambda.git/git.branc
 The magic.lambda.git project provides Git and GitHub invocation capabilities for Magic and Hyperlambda. More specifically the
 project contains the following 16 slots.
 
-* __[\[git.clone-repo\]](/reference/slots/git/git.clone-repo/)__ - Clones a repository into a folder
-* __[\[git.create-repo\]](/reference/slots/git/git.create-repo/)__ - Initializes a folder as a Git repository
-* __[\[git.delete-repo\]](/reference/slots/git/git.delete-repo/)__ - Deletes an existing repository folder
-* __[\[git.commit\]](/reference/slots/git/git.commit/)__ - Adds files and creates a commit
-* __[\[git.push\]](/reference/slots/git/git.push/)__ - Pushes commits to a remote
-* __[\[git.checkout\]](/reference/slots/git/git.checkout/)__ - Switches branches (optionally creating a new branch)
+* __[\[git.clone-repo\]](/plugins/magic.lambda.git/git.clone-repo/)__ - Clones a repository into a folder
+* __[\[git.create-repo\]](/plugins/magic.lambda.git/git.create-repo/)__ - Initializes a folder as a Git repository
+* __[\[git.delete-repo\]](/plugins/magic.lambda.git/git.delete-repo/)__ - Deletes an existing repository folder
+* __[\[git.commit\]](/plugins/magic.lambda.git/git.commit/)__ - Adds files and creates a commit
+* __[\[git.push\]](/plugins/magic.lambda.git/git.push/)__ - Pushes commits to a remote
+* __[\[git.checkout\]](/plugins/magic.lambda.git/git.checkout/)__ - Switches branches (optionally creating a new branch)
 * __[git.merge]__ - Merges a branch into the current branch, or aborts a merge that stalled
-* __[\[git.remote.add\]](/reference/slots/git/git.remote.add/)__ - Adds a Git remote
-* __[\[git.fetch\]](/reference/slots/git/git.fetch/)__ - Fetches updates from a remote
-* __[\[git.pull\]](/reference/slots/git/git.pull/)__ - Pulls updates from a remote
-* __[\[git.status\]](/reference/slots/git/git.status/)__ - Shows repository status
-* __[\[git.diff\]](/reference/slots/git/git.diff/)__ - Shows working tree changes relative to HEAD
+* __[\[git.remote.add\]](/plugins/magic.lambda.git/git.remote.add/)__ - Adds a Git remote
+* __[\[git.fetch\]](/plugins/magic.lambda.git/git.fetch/)__ - Fetches updates from a remote
+* __[\[git.pull\]](/plugins/magic.lambda.git/git.pull/)__ - Pulls updates from a remote
+* __[\[git.status\]](/plugins/magic.lambda.git/git.status/)__ - Shows repository status
+* __[\[git.diff\]](/plugins/magic.lambda.git/git.diff/)__ - Shows working tree changes relative to HEAD
 * __[git.log]__ - Lists commits, one per line
-* __[\[git.restore\]](/reference/slots/git/git.restore/)__ - Discards uncommitted changes for one file or the whole repository
-* __[\[git.branch.list\]](/reference/slots/git/git.branch.list/)__ - Lists branches
-* __[\[github.repo.create\]](/reference/slots/github/github.repo.create/)__ - Creates a GitHub repository
-* __[\[github.repo.delete\]](/reference/slots/github/github.repo.delete/)__ - Deletes a GitHub repository
-* __[\[github.repo.list\]](/reference/slots/github/github.repo.list/)__ - Lists GitHub repositories
+* __[\[git.restore\]](/plugins/magic.lambda.git/git.restore/)__ - Discards uncommitted changes for one file or the whole repository
+* __[\[git.branch.list\]](/plugins/magic.lambda.git/git.branch.list/)__ - Lists branches
+* __[\[github.repo.create\]](/plugins/magic.lambda.git/github.repo.create/)__ - Creates a GitHub repository
+* __[\[github.repo.delete\]](/plugins/magic.lambda.git/github.repo.delete/)__ - Deletes a GitHub repository
+* __[\[github.repo.list\]](/plugins/magic.lambda.git/github.repo.list/)__ - Lists GitHub repositories
 
 All slots use the Git CLI under the hood. Paths are always resolved **inside** your _"/files/"_ folder using
 `IRootResolver`, and folder paths **must** start with `/` and end with `/`.

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`csv2lambda`](/reference/slots/core/csv2lambda/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`csv2lambda`](/reference/slots/core/csv2lambda/) has its arguments, constraints and declaration.
 
 This slot converts a CSV string into a lambda object. In its simplest form it would resemble the following.
 

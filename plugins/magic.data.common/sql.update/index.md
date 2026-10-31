@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`sql.update`](/reference/slots/sql/sql.update/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`sql.update`](/reference/slots/sql/sql.update/) has its arguments, constraints and declaration.
 
 This slot allows you to update one or more records, in a specified **[table]**. Just like create, it requires
 one mandatory argument, being **[values]**, implying columns/values you wish to update. This slot also takes

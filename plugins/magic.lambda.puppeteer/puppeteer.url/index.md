@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`puppeteer.url`](/reference/slots/puppeteer/puppeteer.url/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`puppeteer.url`](/reference/slots/puppeteer/puppeteer.url/) has its arguments, constraints and declaration.
 
 Returns current URL.
 

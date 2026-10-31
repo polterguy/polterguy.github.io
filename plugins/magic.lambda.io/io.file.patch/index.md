@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`io.file.patch`](/reference/slots/io/io.file.patch/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`io.file.patch`](/reference/slots/io/io.file.patch/) has its arguments, constraints and declaration.
 
 Applies a unified diff patch to the specified file on disc. The patch is provided as the first child argument.
 This slot evaluates its children before applying the patch, which allows you to dynamically create the patch

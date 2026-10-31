@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`join`](/reference/slots/core/join/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`join`](/reference/slots/core/join/) has its arguments, constraints and declaration.
 
 Joins all child **[fork]** invocations, implying the slot will wait until all forks directly below it
 has finished executing, and automatically copy the result of the **[fork]** into the original node.

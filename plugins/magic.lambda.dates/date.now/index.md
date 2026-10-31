@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`date.now`](/reference/slots/date/date.now/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`date.now`](/reference/slots/date/date.now/) has its arguments, constraints and declaration.
 
 This slot takes no arguments and simply returns the current date and time. Basic usage can be found below.
 

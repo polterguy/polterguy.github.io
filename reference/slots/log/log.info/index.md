@@ -19,6 +19,10 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | string | no | Metadata entry stored with the log item when the slot has an input value; otherwise evaluated content fragment. Can be repeated. |
 
+### Guide
+
+[How to use `log.info`](/plugins/magic.lambda.logging/log.info/)
+
 ### JSON declaration
 
 This is the complete declaration of `log.info`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`strings.to-lower`](/reference/slots/strings/strings.to-lower/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`strings.to-lower`](/reference/slots/strings/strings.to-lower/) has its arguments, constraints and declaration.
 
 Turns every single character in your input string into a lowercase character.
 

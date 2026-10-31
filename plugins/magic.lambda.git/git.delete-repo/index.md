@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`git.delete-repo`](/reference/slots/git/git.delete-repo/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`git.delete-repo`](/reference/slots/git/git.delete-repo/) has its arguments, constraints and declaration.
 
 Deletes the repository folder. The folder path is the node value.
 

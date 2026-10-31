@@ -11,6 +11,10 @@ slot_json: "/reference/slots/config/config.section/slot.json"
 * **Value** (`config-key`), required: Configuration section to retrieve
 * **Returns**: Returns one child node per key/value entry in the requested configuration section
 
+### Guide
+
+[How to use `config.section`](/plugins/magic.lambda.config/config.section/)
+
 ### JSON declaration
 
 This is the complete declaration of `config.section`, as the running system describes it. It is also published as [slot.json](slot.json).

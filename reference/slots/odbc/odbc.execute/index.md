@@ -20,6 +20,10 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 
+### Guide
+
+[How to use `odbc.execute`](/plugins/magic.lambda.odbc/odbc.execute/)
+
 ### JSON declaration
 
 This is the complete declaration of `odbc.execute`, as the running system describes it. It is also published as [slot.json](slot.json).

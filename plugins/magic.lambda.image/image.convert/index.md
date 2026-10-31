@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`image.convert`](/reference/slots/image/image.convert/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`image.convert`](/reference/slots/image/image.convert/) has its arguments, constraints and declaration.
 
 To convert an image from for instance png to jpeg, you can use something such as follows.
 

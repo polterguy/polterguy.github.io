@@ -10,6 +10,10 @@ slot_json: "/reference/slots/log/log.capabilities/slot.json"
 
 * **Returns**: Returns [can-filter] and [can-timeshift] capability nodes for the current log provider
 
+### Guide
+
+[How to use `log.capabilities`](/plugins/magic.lambda.logging/log.capabilities/)
+
 ### JSON declaration
 
 This is the complete declaration of `log.capabilities`, as the running system describes it. It is also published as [slot.json](slot.json).

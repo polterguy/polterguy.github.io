@@ -6,13 +6,13 @@ This is the ODBC data adapter for Magic. This project provides slots to open an 
 connection, and allows you to execute your own SQL statements towards an open ODBC connection. Slots
 this project contains are as follows.
 
-* __[\[odbc.connect\]](/reference/slots/odbc/odbc.connect/)__ - Connects to a database
-* __[\[odbc.select\]](/reference/slots/odbc/odbc.select/)__ - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
-* __[\[odbc.scalar\]](/reference/slots/odbc/odbc.scalar/)__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
-* __[\[odbc.execute\]](/reference/slots/odbc/odbc.execute/)__ - Executes an arbitrary SQL statement
-* __[\[odbc.transaction.create\]](/reference/slots/odbc/odbc.transaction.create/)__ - Creates a new transaction
-* __[\[odbc.transaction.commit\]](/reference/slots/odbc/odbc.transaction.commit/)__ - Explicitly commits an open transaction
-* __[\[odbc.transaction.rollback\]](/reference/slots/odbc/odbc.transaction.rollback/)__ - Explicitly rolls back an open transaction
+* __[\[odbc.connect\]](/plugins/magic.lambda.odbc/odbc.connect/)__ - Connects to a database
+* __[\[odbc.select\]](/plugins/magic.lambda.odbc/odbc.select/)__ - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
+* __[\[odbc.scalar\]](/plugins/magic.lambda.odbc/odbc.scalar/)__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
+* __[\[odbc.execute\]](/plugins/magic.lambda.odbc/odbc.execute/)__ - Executes an arbitrary SQL statement
+* __[\[odbc.transaction.create\]](/plugins/magic.lambda.odbc/odbc.transaction.create/)__ - Creates a new transaction
+* __[\[odbc.transaction.commit\]](/plugins/magic.lambda.odbc/odbc.transaction.commit/)__ - Explicitly commits an open transaction
+* __[\[odbc.transaction.rollback\]](/plugins/magic.lambda.odbc/odbc.transaction.rollback/)__ - Explicitly rolls back an open transaction
 
 All of the slots in this project are documented in the documentation for the _"magic.data.common"_ project.
 If you replace the **[data.xxx]** or **[sql.xxx]** slots with **[odbc.xxx]**, you will use the ODBC specific

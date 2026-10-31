@@ -20,6 +20,10 @@ Required arguments come first, then the optional ones in the order they are decl
 | _any node name_ | string | no | Metadata entry stored with the log item when the slot has an input value; otherwise evaluated content fragment. Can be repeated. |
 | `[exception]` | string | no | Exception text attached to error and fatal log entries. |
 
+### Guide
+
+[How to use `log.fatal`](/plugins/magic.lambda.logging/log.fatal/)
+
 ### JSON declaration
 
 This is the complete declaration of `log.fatal`, as the running system describes it. It is also published as [slot.json](slot.json).

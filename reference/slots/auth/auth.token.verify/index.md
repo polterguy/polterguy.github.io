@@ -23,6 +23,10 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [auth.token.verify]](/plugins/magic.lambda.auth/#openid-connect-authtokenverify)
 
+### Guide
+
+[How to use `auth.token.verify`](/plugins/magic.lambda.auth/auth.token.verify/)
+
 ### JSON declaration
 
 This is the complete declaration of `auth.token.verify`, as the running system describes it. It is also published as [slot.json](slot.json).

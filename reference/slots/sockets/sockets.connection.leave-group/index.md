@@ -16,6 +16,10 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | `[group]` | string | yes | Socket group name. |
 
+### Guide
+
+[How to use `sockets.connection.leave-group`](/plugins/magic.lambda.sockets/sockets.connection.leave-group/)
+
 ### JSON declaration
 
 This is the complete declaration of `sockets.connection.leave-group`, as the running system describes it. It is also published as [slot.json](slot.json).

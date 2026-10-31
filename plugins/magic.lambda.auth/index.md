@@ -6,12 +6,12 @@ moved_anchors: {"how-to-use-authticketcreate": "/plugins/magic.lambda.auth/auth.
 The magic.lambda.auth project contains authentication and authorization helper slots for Magic. The project allows you
 to create and consume JWT tokens, to secure your Magic cloudlet. The project contains the following slots.
 
-* __[\[auth.ticket.get\]](/reference/slots/auth/auth.ticket.get/)__ - Returns the JWT token's payload as a lambda structure, and also verifies the token in the process
-* __[\[auth.ticket.create\]](/reference/slots/auth/auth.ticket.create/)__ - Creates a new JWT token, that you can return to your client, any ways you see fit
-* __[\[auth.ticket.refresh\]](/reference/slots/auth/auth.ticket.refresh/)__ - Refreshes a JWT token. Useful for refreshing a token before it expires, which would require the user to login again
-* __[\[auth.ticket.verify\]](/reference/slots/auth/auth.ticket.verify/)__ - Verifies a JWT token, and that the user is logged in, in addition to (optionally) that he belongs to one of the roles supplied as a comma separated list of roles
-* __[\[auth.ticket.in-role\]](/reference/slots/auth/auth.ticket.in-role/)__ - The same as **[auth.ticket.verify]**, but returns true or false, depending upon whether or not user is in any of the roles provided or not
-* __[\[auth.token.verify\]](/reference/slots/auth/auth.token.verify/)__ - This slot accepts an external OpenID Connect token, for then to verify its authenticity and returning its email claim.
+* __[\[auth.ticket.get\]](/plugins/magic.lambda.auth/auth.ticket.get/)__ - Returns the JWT token's payload as a lambda structure, and also verifies the token in the process
+* __[\[auth.ticket.create\]](/plugins/magic.lambda.auth/auth.ticket.create/)__ - Creates a new JWT token, that you can return to your client, any ways you see fit
+* __[\[auth.ticket.refresh\]](/plugins/magic.lambda.auth/auth.ticket.refresh/)__ - Refreshes a JWT token. Useful for refreshing a token before it expires, which would require the user to login again
+* __[\[auth.ticket.verify\]](/plugins/magic.lambda.auth/auth.ticket.verify/)__ - Verifies a JWT token, and that the user is logged in, in addition to (optionally) that he belongs to one of the roles supplied as a comma separated list of roles
+* __[\[auth.ticket.in-role\]](/plugins/magic.lambda.auth/auth.ticket.in-role/)__ - The same as **[auth.ticket.verify]**, but returns true or false, depending upon whether or not user is in any of the roles provided or not
+* __[\[auth.token.verify\]](/plugins/magic.lambda.auth/auth.token.verify/)__ - This slot accepts an external OpenID Connect token, for then to verify its authenticity and returning its email claim.
 * __[auth.jwks]__ - Returns a public JSON Web Key Set for the RSA public key(s) you supply, allowing other systems to verify RS256 tokens created by Magic
 
 Notice, you will have to modify your `auth:secret` configuration setting, to provide a unique salt for your installation.
@@ -144,8 +144,8 @@ auth.ticket.verify:non-existing-role
 The following slots allow you to inspect the token's payload, implying get the username and roles
 the current HTTP request originates from.
 
-* __[auth.ticket.get]__ - Returns the username and the roles the user belongs to
-* __[auth.ticket.in-role]__ - Convenience slot returning true if user belongs to the specified role(s)
+* __[\[auth.ticket.get\]](/plugins/magic.lambda.auth/auth.ticket.get/)__ - Returns the username and the roles the user belongs to
+* __[\[auth.ticket.in-role\]](/plugins/magic.lambda.auth/auth.ticket.in-role/)__ - Convenience slot returning true if user belongs to the specified role(s)
 
 Below is an example of how these are used.
 

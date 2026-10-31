@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`io.folder.list`](/reference/slots/io/io.folder.list/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`io.folder.list`](/reference/slots/io/io.folder.list/) has its arguments, constraints and declaration.
 
 Lists all folders inside of the specified folder. By default hidden folders will not be shown, unless
 you pass in **[display-hidden]** and set its value to boolean _"true"_.

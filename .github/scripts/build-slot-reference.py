@@ -220,15 +220,8 @@ def guide_anchors():
 
 
 def collect_guides(magic, names):
-    """The slots that have a guide page, with the address of that page."""
-    guides = {}
-    for readme in sorted(glob.glob(os.path.join(magic, 'plugins', '*', 'README.md'))):
-        plugin = os.path.basename(os.path.dirname(readme))
-        with open(readme, encoding='utf-8-sig') as f:
-            result = docsplit.plan(f.read(), plugin, names, docsplit.load_manifest(plugin))
-        for slot_name, g in result['guides'].items():
-            guides.setdefault(slot_name, g)
-    return guides
+    """The address of the guide page of every slot that has one."""
+    return {name: {'url': url} for name, url in docsplit.collect(magic, names)['urls'].items()}
 
 
 def group_entries(records):

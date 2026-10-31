@@ -24,6 +24,10 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[path]` | string | no | Cookie path. |
 | `[same-site]` | string | no | Cookie SameSite mode: Strict, Lax, None, or Unspecified. |
 
+### Guide
+
+[How to use `response.cookies.set`](/plugins/magic.endpoint/response.cookies.set/)
+
 ### JSON declaration
 
 This is the complete declaration of `response.cookies.set`, as the running system describes it. It is also published as [slot.json](slot.json).

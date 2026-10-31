@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`time.format`](/reference/slots/time/time.format/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`time.format`](/reference/slots/time/time.format/) has its arguments, constraints and declaration.
 
 This slot formats a time span as a string, using the same format patterns as `TimeSpan.ToString` in C#,
 and is invoked with the time span as its value. It requires the following argument.

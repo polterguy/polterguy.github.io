@@ -21,6 +21,10 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [map]](/plugins/magic.lambda/loops/#how-to-use-map)
 
+### Guide
+
+[How to use `map`](/plugins/magic.lambda/map/)
+
 ### JSON declaration
 
 This is the complete declaration of `map`, as the running system describes it. It is also published as [slot.json](slot.json).

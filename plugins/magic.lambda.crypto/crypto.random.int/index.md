@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`crypto.random.int`](/reference/slots/crypto/crypto.random.int/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`crypto.random.int`](/reference/slots/crypto/crypto.random.int/) has its arguments, constraints and declaration.
 
 This slot create a random integer value for you using a CSRNG generator.
 The slot can optionally take a **[max]** argument, which defines the maximum value it will return.

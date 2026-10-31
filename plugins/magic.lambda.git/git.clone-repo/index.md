@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`git.clone-repo`](/reference/slots/git/git.clone-repo/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`git.clone-repo`](/reference/slots/git/git.clone-repo/) has its arguments, constraints and declaration.
 
 Clones the specified URL. The URL is the node value. Optionally provide `path`, `branch`, and `depth`.
 

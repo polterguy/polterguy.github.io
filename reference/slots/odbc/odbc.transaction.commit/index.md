@@ -10,6 +10,10 @@ slot_json: "/reference/slots/odbc/odbc.transaction.commit/slot.json"
 
 * **Scope**: requires `odbc.transaction` - Requires an active ODBC transaction created by [odbc.transaction.create]
 
+### Guide
+
+[How to use `odbc.transaction.commit`](/plugins/magic.lambda.odbc/odbc.transaction.commit/)
+
 ### JSON declaration
 
 This is the complete declaration of `odbc.transaction.commit`, as the running system describes it. It is also published as [slot.json](slot.json).

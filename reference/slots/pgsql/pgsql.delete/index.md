@@ -35,6 +35,10 @@ Required arguments come first, then the optional ones in the order they are decl
 
 _Nodes nested deeper than 6 levels, and nodes that repeat one of their own ancestors, are not listed. The JSON declaration below has all of them._
 
+### Guide
+
+[How to use `pgsql.delete`](/plugins/magic.lambda.pgsql/pgsql.delete/)
+
 ### JSON declaration
 
 This is the complete declaration of `pgsql.delete`, as the running system describes it. It is also published as [slot.json](slot.json).

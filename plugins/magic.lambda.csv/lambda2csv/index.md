@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`lambda2csv`](/reference/slots/core/lambda2csv/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`lambda2csv`](/reference/slots/core/lambda2csv/) has its arguments, constraints and declaration.
 
 This slot converts the specified lambda object to a CSV string. Below is an example of usage.
 

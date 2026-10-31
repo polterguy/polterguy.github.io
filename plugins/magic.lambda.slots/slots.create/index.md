@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`slots.create`](/reference/slots/slots/slots.create/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`slots.create`](/reference/slots/slots/slots.create/) has its arguments, constraints and declaration.
 
 Creates a dynamic slot that can be invoked using **[signal]**. Below is an example.
 

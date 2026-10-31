@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`python.execute`](/reference/slots/python/python.execute/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`python.execute`](/reference/slots/python/python.execute/) has its arguments, constraints and declaration.
 
 You must provide either `code` or `file`.
 

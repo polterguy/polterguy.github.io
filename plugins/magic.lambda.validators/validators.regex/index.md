@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`validators.regex`](/reference/slots/validators/validators.regex/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`validators.regex`](/reference/slots/validators/validators.regex/) has its arguments, constraints and declaration.
 
 This validator requires a **[regex]** argument, that is a regular expression that must match the argument
 specified. Usage can be found below.

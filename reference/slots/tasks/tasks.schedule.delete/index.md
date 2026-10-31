@@ -10,6 +10,10 @@ slot_json: "/reference/slots/tasks/tasks.schedule.delete/slot.json"
 
 * **Value** (`schedule-id,integer,number`), required: Schedule ID to delete
 
+### Guide
+
+[How to use `tasks.schedule.delete`](/plugins/magic.lambda.scheduler/tasks.schedule.delete/)
+
 ### JSON declaration
 
 This is the complete declaration of `tasks.schedule.delete`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`mail.pop3.fetch`](/reference/slots/mail/mail.pop3.fetch/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`mail.pop3.fetch`](/reference/slots/mail/mail.pop3.fetch/) has its arguments, constraints and declaration.
 
 To retrieve emails from a POP3 server is equally easy. Below is an example.
 

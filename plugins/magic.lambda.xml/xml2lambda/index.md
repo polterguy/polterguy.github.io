@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`xml2lambda`](/reference/slots/core/xml2lambda/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`xml2lambda`](/reference/slots/core/xml2lambda/) has its arguments, constraints and declaration.
 
 ```
 .xml:@"<CATALOG>

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`openai.whisper`](/reference/slots/openai/openai.whisper/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`openai.whisper`](/reference/slots/openai/openai.whisper/) has its arguments, constraints and declaration.
 
 This slot transcribes audio by sending it to OpenAI's audio transcription endpoint, using the `whisper-1` model,
 and returns the transcribed text as its value. It takes the following arguments as children, and throws an

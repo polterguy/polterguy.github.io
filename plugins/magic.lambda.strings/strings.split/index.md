@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`strings.split`](/reference/slots/strings/strings.split/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`strings.split`](/reference/slots/strings/strings.split/) has its arguments, constraints and declaration.
 
 Splits a string into multiple strings, where a sequence of characters can be found, removing the original
 sequence of characters from the resulting node set.

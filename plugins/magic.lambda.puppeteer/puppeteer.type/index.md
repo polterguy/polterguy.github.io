@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`puppeteer.type`](/reference/slots/puppeteer/puppeteer.type/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`puppeteer.type`](/reference/slots/puppeteer/puppeteer.type/) has its arguments, constraints and declaration.
 
 Types text into a selector.
 

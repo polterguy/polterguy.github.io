@@ -10,6 +10,10 @@ slot_json: "/reference/slots/pgsql/pgsql.transaction.rollback/slot.json"
 
 * **Scope**: requires `pgsql.transaction` - Requires an active PostgreSQL transaction created by [pgsql.transaction.create]
 
+### Guide
+
+[How to use `pgsql.transaction.rollback`](/plugins/magic.lambda.pgsql/pgsql.transaction.rollback/)
+
 ### JSON declaration
 
 This is the complete declaration of `pgsql.transaction.rollback`, as the running system describes it. It is also published as [slot.json](slot.json).

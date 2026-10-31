@@ -10,6 +10,10 @@ slot_json: "/reference/slots/mysql/mysql.transaction.commit/slot.json"
 
 * **Scope**: requires `mysql.transaction` - Requires an active MySQL transaction created by [mysql.transaction.create]
 
+### Guide
+
+[How to use `mysql.transaction.commit`](/plugins/magic.lambda.mysql/mysql.transaction.commit/)
+
 ### JSON declaration
 
 This is the complete declaration of `mysql.transaction.commit`, as the running system describes it. It is also published as [slot.json](slot.json).

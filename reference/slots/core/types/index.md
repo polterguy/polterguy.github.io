@@ -12,6 +12,10 @@ slot_json: "/reference/slots/core/types/slot.json"
 
 Guide: [How to use [types]](/plugins/magic.lambda/types/#how-to-use-types)
 
+### Guide
+
+[How to use `types`](/plugins/magic.lambda/types-slot/)
+
 ### JSON declaration
 
 This is the complete declaration of `types`, as the running system describes it. It is also published as [slot.json](slot.json).

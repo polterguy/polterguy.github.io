@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`mime.parse`](/reference/slots/mime/mime.parse/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`mime.parse`](/reference/slots/mime/mime.parse/) has its arguments, constraints and declaration.
 
 Below is an example of how parsing a MIME message might look like using **[mime.parse]**.
 

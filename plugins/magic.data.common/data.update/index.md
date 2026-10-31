@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`data.update`](/reference/slots/data/data.update/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`data.update`](/reference/slots/data/data.update/) has its arguments, constraints and declaration.
 
 This slot updates rows in your database, using the current open connection created by **[data.connect]**.
 It takes the same arguments as **[sql.update]**, and its value resolves to the number of rows affected.

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`validators.email`](/reference/slots/validators/validators.email/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`validators.email`](/reference/slots/validators/validators.email/) has its arguments, constraints and declaration.
 
 This slot takes no arguments besides an expression, and will throw an exception unless the value of the node
 the expression is leading to is a valid email address. Below is example usage.

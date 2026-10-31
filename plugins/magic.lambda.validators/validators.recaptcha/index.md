@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`validators.recaptcha`](/reference/slots/validators/validators.recaptcha/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`validators.recaptcha`](/reference/slots/validators/validators.recaptcha/) has its arguments, constraints and declaration.
 
 This is probably the most complex validator, and requires 3 arguments.
 

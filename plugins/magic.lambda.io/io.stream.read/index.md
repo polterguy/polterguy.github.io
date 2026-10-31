@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`io.stream.read`](/reference/slots/io/io.stream.read/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`io.stream.read`](/reference/slots/io/io.stream.read/) has its arguments, constraints and declaration.
 
 Works similarly to **[io.file.load]** but instead of taking a source filename of some kind,
 it assumes the source is an open `Stream` of some sort.

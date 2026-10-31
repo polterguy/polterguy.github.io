@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`image.resize`](/reference/slots/image/image.resize/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`image.resize`](/reference/slots/image/image.resize/) has its arguments, constraints and declaration.
 
 Resizing an image can be done as follows.
 

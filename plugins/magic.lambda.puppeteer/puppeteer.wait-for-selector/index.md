@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`puppeteer.wait-for-selector`](/reference/slots/puppeteer/puppeteer.wait-for-selector/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`puppeteer.wait-for-selector`](/reference/slots/puppeteer/puppeteer.wait-for-selector/) has its arguments, constraints and declaration.
 
 Waits until a selector appears in the DOM.
 

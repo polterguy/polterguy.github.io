@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`sql.create`](/reference/slots/sql/sql.create/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`sql.create`](/reference/slots/sql/sql.create/) has its arguments, constraints and declaration.
 
 This slot will generate the SQL necessary to insert a record into a database for you. Besides the table
 argument, this slot can only be given one argument, which is __[values]__. Below is an example of usage.

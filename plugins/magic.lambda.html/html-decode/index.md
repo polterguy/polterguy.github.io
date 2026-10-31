@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`html-decode`](/reference/slots/core/html-decode/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`html-decode`](/reference/slots/core/html-decode/) has its arguments, constraints and declaration.
 
 This slot HTML decodes its value, equivalent of `HttpUtility.HtmlDecode` in C#, turning entities such as
 `&amp;` and `&lt;` back into the characters they represent. The value is mandatory, and can be given as a

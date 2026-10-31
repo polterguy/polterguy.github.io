@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`io.file.save`](/reference/slots/io/io.file.save/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`io.file.save`](/reference/slots/io/io.file.save/) has its arguments, constraints and declaration.
 
 Saves the specified content to the specified file on disc, overwriting any previous content if the
 file exists from before, creating a new file if no such file already exists. The value of the first

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`git.diff`](/reference/slots/git/git.diff/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`git.diff`](/reference/slots/git/git.diff/) has its arguments, constraints and declaration.
 
 Shows the unified diff between the working tree and HEAD. The repo path is the node value. By default the
 whole repository is diffed, while providing a repo-relative `file` restricts the diff to that one file.

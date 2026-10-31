@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`crypto.random`](/reference/slots/crypto/crypto.random/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`crypto.random`](/reference/slots/crypto/crypto.random/) has its arguments, constraints and declaration.
 
 This slot create a bunch of random characters, or bytes for you.
 The slot can optionally take a **[min]** and **[max]** argument, which defines the min/max length of the

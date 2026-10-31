@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`sqlite.load-extension`](/reference/slots/sqlite/sqlite.load-extension/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`sqlite.load-extension`](/reference/slots/sqlite/sqlite.load-extension/) has its arguments, constraints and declaration.
 
 Loads a SQLite extension into the connection opened by **[sqlite.connect]**. The slot takes its arguments as children.
 

@@ -13,6 +13,10 @@ slot_json: "/reference/slots/core/get-nodes/slot.json"
 
 Guide: [How to use [get-nodes]](/plugins/magic.lambda/nodes/#how-to-use-get-nodes)
 
+### Guide
+
+[How to use `get-nodes`](/plugins/magic.lambda/get-nodes/)
+
 ### JSON declaration
 
 This is the complete declaration of `get-nodes`, as the running system describes it. It is also published as [slot.json](slot.json).

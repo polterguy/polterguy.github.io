@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`io.file.unzip`](/reference/slots/io/io.file.unzip/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`io.file.unzip`](/reference/slots/io/io.file.unzip/) has its arguments, constraints and declaration.
 
 Unzips a ZIP file. Notice, the **[folder]** argument is optional, and the current folder
 of the ZIP file you're unzipping will be used if no **[folder]** argument is given.

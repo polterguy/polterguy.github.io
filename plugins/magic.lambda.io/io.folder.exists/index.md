@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`io.folder.exists`](/reference/slots/io/io.folder.exists/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`io.folder.exists`](/reference/slots/io/io.folder.exists/) has its arguments, constraints and declaration.
 
 Returns true if specified folder exists on disc.
 

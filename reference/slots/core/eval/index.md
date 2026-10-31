@@ -20,6 +20,10 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [eval]](/plugins/magic.lambda/executing/#how-to-use-eval)
 
+### Guide
+
+[How to use `eval`](/plugins/magic.lambda/eval/)
+
 ### JSON declaration
 
 This is the complete declaration of `eval`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`git.pull`](/reference/slots/git/git.pull/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`git.pull`](/reference/slots/git/git.pull/) has its arguments, constraints and declaration.
 
 Pulls updates from a remote. The repo path is the node value. The `remote` child node defaults to `origin`.
 

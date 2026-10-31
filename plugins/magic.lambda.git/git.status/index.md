@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`git.status`](/reference/slots/git/git.status/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`git.status`](/reference/slots/git/git.status/) has its arguments, constraints and declaration.
 
 Shows repo status. The repo path is the node value. By default this returns the raw `git status` output.
 If you provide `structured:true`, each line is returned as a `.` node.

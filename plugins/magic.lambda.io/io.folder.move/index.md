@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`io.folder.move`](/reference/slots/io/io.folder.move/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`io.folder.move`](/reference/slots/io/io.folder.move/) has its arguments, constraints and declaration.
 
 Moves the specified source folder to its specified destination folder.
 

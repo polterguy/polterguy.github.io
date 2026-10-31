@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`data.execute`](/reference/slots/data/data.execute/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`data.execute`](/reference/slots/data/data.execute/) has its arguments, constraints and declaration.
 
 This slot should be used if you don't expect any type of result at all, such as in for instance
 delete or update invocations, where you don't care about the result of the operation. You can

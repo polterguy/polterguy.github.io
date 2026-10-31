@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`tasks.schedule`](/reference/slots/tasks/tasks.schedule/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`tasks.schedule`](/reference/slots/tasks/tasks.schedule/) has its arguments, constraints and declaration.
 
 If you want to create a _scheduled_ task, you can choose to have the task executed once in the future, at a specified
 date and time, by invoking **[tasks.schedule]**, and reference your task after it's been created, passing in

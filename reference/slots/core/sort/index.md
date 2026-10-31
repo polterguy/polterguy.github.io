@@ -21,6 +21,10 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [sort]](/plugins/magic.lambda/types/#how-to-use-sort)
 
+### Guide
+
+[How to use `sort`](/plugins/magic.lambda/sort/)
+
 ### JSON declaration
 
 This is the complete declaration of `sort`, as the running system describes it. It is also published as [slot.json](slot.json).

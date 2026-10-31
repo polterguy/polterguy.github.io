@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`tasks.get`](/reference/slots/tasks/tasks.get/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`tasks.get`](/reference/slots/tasks/tasks.get/) has its arguments, constraints and declaration.
 
 To inspect a task you can use the following.
 

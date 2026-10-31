@@ -6,9 +6,9 @@ moved_anchors: {"how-to-use-hyper2lambda": "/plugins/magic.lambda.hyperlambda/hy
 This is the Hyperlambda parser and generator in Magic, and allows you to parse Hyperlambda, in addition
 to generate Hyperlambda. More specifically, this project provides you with the following slots.
 
-* __[\[hyper2lambda\]](/reference/slots/core/hyper2lambda/)__ - Transforms a piece of Hyperlambda (text) to a lambda hierarchy
-* __[\[lambda2hyper\]](/reference/slots/core/lambda2hyper/)__ - Transforms a lambda hierarchy to Hyperlambda (text)
-* __[\[hyperlambda.verify-slots\]](/reference/slots/hyperlambda/hyperlambda.verify-slots/)__ - Verifies that all slots referenced in executable statement position of a Hyperlambda snippet exist
+* __[\[hyper2lambda\]](/plugins/magic.lambda.hyperlambda/hyper2lambda/)__ - Transforms a piece of Hyperlambda (text) to a lambda hierarchy
+* __[\[lambda2hyper\]](/plugins/magic.lambda.hyperlambda/lambda2hyper/)__ - Transforms a lambda hierarchy to Hyperlambda (text)
+* __[\[hyperlambda.verify-slots\]](/plugins/magic.lambda.hyperlambda/hyperlambda.verify-slots/)__ - Verifies that all slots referenced in executable statement position of a Hyperlambda snippet exist
 
 Using these slots, you can both easily create, serialize, and parse Hyperlambda to lambda, and vice versa.
 Below is an example of parsing a piece of text as Hyperlambda, for then to dynamically execute it afterwards.

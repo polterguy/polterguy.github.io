@@ -10,6 +10,10 @@ slot_json: "/reference/slots/request/request.host/slot.json"
 
 * **Returns**: Resolves to the host name from the current request
 
+### Guide
+
+[How to use `request.host`](/plugins/magic.endpoint/request.host/)
+
 ### JSON declaration
 
 This is the complete declaration of `request.host`, as the running system describes it. It is also published as [slot.json](slot.json).

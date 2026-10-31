@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`data.scalar`](/reference/slots/data/data.scalar/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`data.scalar`](/reference/slots/data/data.scalar/) has its arguments, constraints and declaration.
 
 This slot is similar to the **[data.select]** slot, but will only return one value as the
 value of its node after execution. This slot is typically used for aggregate results. You can see

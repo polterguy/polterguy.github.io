@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`math.random`](/reference/slots/math/math.random/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`math.random`](/reference/slots/math/math.random/) has its arguments, constraints and declaration.
 
 This slot returns a random number. Its behavior depends on how many child nodes you give it.
 

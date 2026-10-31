@@ -20,6 +20,10 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [set-name]](/plugins/magic.lambda/nodes/#how-to-use-set-name)
 
+### Guide
+
+[How to use `set-name`](/plugins/magic.lambda/set-name/)
+
 ### JSON declaration
 
 This is the complete declaration of `set-name`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`puppeteer.select`](/reference/slots/puppeteer/puppeteer.select/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`puppeteer.select`](/reference/slots/puppeteer/puppeteer.select/) has its arguments, constraints and declaration.
 
 Selects option values from a selector.
 

@@ -18,6 +18,10 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | `[database-type]` | string | no | Database adapter to use instead of the configured default. |
 
+### Guide
+
+[How to use `data.transaction.commit`](/plugins/magic.data.common/data.transaction.commit/)
+
 ### JSON declaration
 
 This is the complete declaration of `data.transaction.commit`, as the running system describes it. It is also published as [slot.json](slot.json).

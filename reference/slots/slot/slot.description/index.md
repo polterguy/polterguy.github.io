@@ -13,6 +13,10 @@ slot_json: "/reference/slots/slot/slot.description/slot.json"
 
 Guide: [How to use [slot.description]](/plugins/magic.lambda/types/#how-to-use-slotdescription)
 
+### Guide
+
+[How to use `slot.description`](/plugins/magic.lambda/slot.description/)
+
 ### JSON declaration
 
 This is the complete declaration of `slot.description`, as the running system describes it. It is also published as [slot.json](slot.json).

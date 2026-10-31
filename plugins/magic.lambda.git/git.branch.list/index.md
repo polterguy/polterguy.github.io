@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`git.branch.list`](/reference/slots/git/git.branch.list/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`git.branch.list`](/reference/slots/git/git.branch.list/) has its arguments, constraints and declaration.
 
 Lists branches. The repo path is the node value. Each branch is returned as a `.` node.
 

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`cache.set`](/reference/slots/cache/cache.set/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`cache.set`](/reference/slots/cache/cache.set/) has its arguments, constraints and declaration.
 
 Invoke this slot to save an item to the cache. The slot takes 3 properties, which are as follows.
 

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`cache.clear`](/reference/slots/cache/cache.clear/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`cache.clear`](/reference/slots/cache/cache.clear/) has its arguments, constraints and declaration.
 
 This is a shorthand slot to completely clear cache, removing all items.
 

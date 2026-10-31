@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`puppeteer.click`](/reference/slots/puppeteer/puppeteer.click/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`puppeteer.click`](/reference/slots/puppeteer/puppeteer.click/) has its arguments, constraints and declaration.
 
 Clicks a selector.
 

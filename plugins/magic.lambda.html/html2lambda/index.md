@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`html2lambda`](/reference/slots/core/html2lambda/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`html2lambda`](/reference/slots/core/html2lambda/) has its arguments, constraints and declaration.
 
 ```
 .html:@"<html>

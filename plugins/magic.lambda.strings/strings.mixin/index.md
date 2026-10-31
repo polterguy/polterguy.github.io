@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`strings.mixin`](/reference/slots/strings/strings.mixin/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`strings.mixin`](/reference/slots/strings/strings.mixin/) has its arguments, constraints and declaration.
 
 Combines the result of the specified Hyperlambda and concatenates inline into its surrounding string.
 

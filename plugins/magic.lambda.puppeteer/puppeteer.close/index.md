@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`puppeteer.close`](/reference/slots/puppeteer/puppeteer.close/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`puppeteer.close`](/reference/slots/puppeteer/puppeteer.close/) has its arguments, constraints and declaration.
 
 Closes the browser and page associated with a session.
 

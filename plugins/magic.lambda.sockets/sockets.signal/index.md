@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`sockets.signal`](/reference/slots/sockets/sockets.signal/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`sockets.signal`](/reference/slots/sockets/sockets.signal/) has its arguments, constraints and declaration.
 
 In addition to the above, you can explicitly publish SignalR events by signaling the **[sockets.signal]** slot,
 which will automatically transform the specified children **[args]** nodes to JSON, and invoke the specified

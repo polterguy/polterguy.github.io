@@ -10,6 +10,10 @@ slot_json: "/reference/slots/mssql/mssql.transaction.rollback/slot.json"
 
 * **Scope**: requires `mssql.transaction` - Requires an active SQL Server transaction created by [mssql.transaction.create]
 
+### Guide
+
+[How to use `mssql.transaction.rollback`](/plugins/magic.lambda.mssql/mssql.transaction.rollback/)
+
 ### JSON declaration
 
 This is the complete declaration of `mssql.transaction.rollback`, as the running system describes it. It is also published as [slot.json](slot.json).

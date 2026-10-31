@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`git.create-repo`](/reference/slots/git/git.create-repo/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`git.create-repo`](/reference/slots/git/git.create-repo/) has its arguments, constraints and declaration.
 
 Initializes a folder as a repository. The folder path is the node value.
 

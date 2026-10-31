@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`hyperlambda.verify-slots`](/reference/slots/hyperlambda/hyperlambda.verify-slots/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`hyperlambda.verify-slots`](/reference/slots/hyperlambda/hyperlambda.verify-slots/) has its arguments, constraints and declaration.
 
 This slot statically verifies a piece of Hyperlambda without executing it, and is useful for checking generated
 Hyperlambda before you run it. A slot name that doesn't exist is silently treated as an inert data node by the

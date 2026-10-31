@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`html2markdown`](/reference/slots/core/html2markdown/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`html2markdown`](/reference/slots/core/html2markdown/) has its arguments, constraints and declaration.
 
 ```
 .html:@"<html>

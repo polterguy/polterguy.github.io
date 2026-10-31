@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`math.dot`](/reference/slots/math/math.dot/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`math.dot`](/reference/slots/math/math.dot/) has its arguments, constraints and declaration.
 
 This slot returns the dot product of two lists.
 

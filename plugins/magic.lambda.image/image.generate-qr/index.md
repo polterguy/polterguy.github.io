@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`image.generate-qr`](/reference/slots/image/image.generate-qr/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`image.generate-qr`](/reference/slots/image/image.generate-qr/) has its arguments, constraints and declaration.
 
 You can use the **[image.generate-qr]** slot to create a QR code. This slot returns the QR code as a `MemoryStream`, which
 allows you to return its output directly over the HTTP response object, which again will persist the QR code

@@ -24,6 +24,10 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [try]](/plugins/magic.lambda/exceptions/#how-to-use-try)
 
+### Guide
+
+[How to use `try`](/plugins/magic.lambda/try/)
+
 ### JSON declaration
 
 This is the complete declaration of `try`, as the running system describes it. It is also published as [slot.json](slot.json).

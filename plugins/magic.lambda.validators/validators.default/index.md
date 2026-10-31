@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`validators.default`](/reference/slots/validators/validators.default/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`validators.default`](/reference/slots/validators/validators.default/) has its arguments, constraints and declaration.
 
 This validator takes one or more arguments with any name and any value, and if this node does not exist as
 a child of the node collection specified as its expression value, it appends the node to it.

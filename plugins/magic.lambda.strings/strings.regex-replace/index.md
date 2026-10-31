@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`strings.regex-replace`](/reference/slots/strings/strings.regex-replace/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`strings.regex-replace`](/reference/slots/strings/strings.regex-replace/) has its arguments, constraints and declaration.
 
 Replaces matches of the given regular expression with some static sequence of characters.
 

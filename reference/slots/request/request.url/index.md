@@ -10,6 +10,10 @@ slot_json: "/reference/slots/request/request.url/slot.json"
 
 * **Returns**: Resolves to the full request URL in value and the parsed query string parameters as child nodes
 
+### Guide
+
+[How to use `request.url`](/plugins/magic.endpoint/request.url/)
+
 ### JSON declaration
 
 This is the complete declaration of `request.url`, as the running system describes it. It is also published as [slot.json](slot.json).

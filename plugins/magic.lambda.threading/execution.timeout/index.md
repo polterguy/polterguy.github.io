@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`execution.timeout`](/reference/slots/execution/execution.timeout/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`execution.timeout`](/reference/slots/execution/execution.timeout/) has its arguments, constraints and declaration.
 
 Configures a timeout for the **current** execution context. The value must be a positive number of
 milliseconds and is interpreted relative to _now_.

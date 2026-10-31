@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`config.get`](/reference/slots/config/config.get/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`config.get`](/reference/slots/config/config.get/) has its arguments, constraints and declaration.
 
 This slot allows you to retrieve configuration settings. To retrieve settings you can supply a
 _"path"_ such as _"foo:bar"_ to for instance an invocation to **[config.get]**. This will traverse into

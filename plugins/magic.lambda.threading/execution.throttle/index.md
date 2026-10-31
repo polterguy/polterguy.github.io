@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`execution.throttle`](/reference/slots/execution/execution.throttle/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`execution.throttle`](/reference/slots/execution/execution.throttle/) has its arguments, constraints and declaration.
 
 Rate limiting is split into two slots; **[execution.throttle.create]** _declares_ a named throttle,
 being the single source of truth for its configuration, while **[execution.throttle]** _enforces_ it,

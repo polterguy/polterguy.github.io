@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`return-value`](/reference/slots/core/return-value/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`return-value`](/reference/slots/core/return-value/) has its arguments, constraints and declaration.
 
 Returns a single value from your slot. Can only be invoked from the inside of
 a dynamically created slot, and other slots explicitly creating a return context. An example can be

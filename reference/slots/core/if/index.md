@@ -21,6 +21,10 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [if]](/plugins/magic.lambda/branching/#how-to-use-if)
 
+### Guide
+
+[How to use `if`](/plugins/magic.lambda/if/)
+
 ### JSON declaration
 
 This is the complete declaration of `if`, as the running system describes it. It is also published as [slot.json](slot.json).

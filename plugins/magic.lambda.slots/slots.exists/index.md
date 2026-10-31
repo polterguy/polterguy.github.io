@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`slots.exists`](/reference/slots/slots/slots.exists/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`slots.exists`](/reference/slots/slots/slots.exists/) has its arguments, constraints and declaration.
 
 Returns true if the specified slot exists. Example can be found below.
 

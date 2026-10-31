@@ -5,16 +5,16 @@ moved_anchors: {"how-to-use-validatorsdate": "/plugins/magic.lambda.validators/v
 
 This project contains argument validators for Hyperlambda. More specifically it contains the following slots.
 
-* __[\[validators.date\]](/reference/slots/validators/validators.date/)__ - Verifies that some date input is a date, and optionally between __[min]__ and __[max]__ value
-* __[\[validators.email\]](/reference/slots/validators/validators.email/)__ - Verifies that some input is a legal email address
-* __[\[validators.enum\]](/reference/slots/validators/validators.enum/)__ - Verifies that some input is one of a set of predefined legal values, found as values of children
-* __[\[validators.integer\]](/reference/slots/validators/validators.integer/)__ - Verifies that some integer input (long, int, etc) is between some specified __[min]__ and __[max]__ range
-* __[\[validators.mandatory\]](/reference/slots/validators/validators.mandatory/)__ - Verifies that some input valus is given (_at all_)
-* __[\[validators.regex\]](/reference/slots/validators/validators.regex/)__ - Verifies that some input is matching some given __[regex]__ pattern
-* __[\[validators.string\]](/reference/slots/validators/validators.string/)__ - Verifies that some string input is between __[min]__ and __[max]__ in length
-* __[\[validators.url\]](/reference/slots/validators/validators.url/)__ - Verifies that some string input is a legal URL, either HTTP or HTTPS type of scheme
-* __[\[validators.recaptcha\]](/reference/slots/validators/validators.recaptcha/)__ - reCAPTCHA validator, to avoid bots from invoking your APIs
-* __[\[validators.default\]](/reference/slots/validators/validators.default/)__ - Default validator, adding default argument if not specified
+* __[\[validators.date\]](/plugins/magic.lambda.validators/validators.date/)__ - Verifies that some date input is a date, and optionally between __[min]__ and __[max]__ value
+* __[\[validators.email\]](/plugins/magic.lambda.validators/validators.email/)__ - Verifies that some input is a legal email address
+* __[\[validators.enum\]](/plugins/magic.lambda.validators/validators.enum/)__ - Verifies that some input is one of a set of predefined legal values, found as values of children
+* __[\[validators.integer\]](/plugins/magic.lambda.validators/validators.integer/)__ - Verifies that some integer input (long, int, etc) is between some specified __[min]__ and __[max]__ range
+* __[\[validators.mandatory\]](/plugins/magic.lambda.validators/validators.mandatory/)__ - Verifies that some input valus is given (_at all_)
+* __[\[validators.regex\]](/plugins/magic.lambda.validators/validators.regex/)__ - Verifies that some input is matching some given __[regex]__ pattern
+* __[\[validators.string\]](/plugins/magic.lambda.validators/validators.string/)__ - Verifies that some string input is between __[min]__ and __[max]__ in length
+* __[\[validators.url\]](/plugins/magic.lambda.validators/validators.url/)__ - Verifies that some string input is a legal URL, either HTTP or HTTPS type of scheme
+* __[\[validators.recaptcha\]](/plugins/magic.lambda.validators/validators.recaptcha/)__ - reCAPTCHA validator, to avoid bots from invoking your APIs
+* __[\[validators.default\]](/plugins/magic.lambda.validators/validators.default/)__ - Default validator, adding default argument if not specified
 
 All of the above slots takes an expression, or values, as its main input, and will throw exceptions if their input expression's
 value(s), or its value, does not follow the rules specified by the validator. Some of the above slots takes additional arguments.

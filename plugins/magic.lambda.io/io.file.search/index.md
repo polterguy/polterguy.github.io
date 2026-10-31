@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`io.file.search`](/reference/slots/io/io.file.search/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`io.file.search`](/reference/slots/io/io.file.search/) has its arguments, constraints and declaration.
 
 Searches all files recursively inside the specified folder and returns filenames with line numbers
 containing the specified pattern.

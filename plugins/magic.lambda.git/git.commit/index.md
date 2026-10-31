@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`git.commit`](/reference/slots/git/git.commit/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`git.commit`](/reference/slots/git/git.commit/) has its arguments, constraints and declaration.
 
 Creates a commit. The repo path is the node value. The `message` child node is required.
 

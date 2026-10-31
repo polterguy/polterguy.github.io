@@ -5,20 +5,20 @@ moved_anchors: {"how-to-use-mathabs": "/plugins/magic.lambda.math/math.abs/", "h
 
 This project provides math functions to Magic. More specifically, it provides the following slots.
 
-* __[\[math.multiply\]](/reference/slots/math/math.multiply/)__ - Multiplication
-* __[\[math.divide\]](/reference/slots/math/math.divide/)__ - Division
-* __[\[math.add\]](/reference/slots/math/math.add/)__ - Addition
-* __[\[math.subtract\]](/reference/slots/math/math.subtract/)__ - Subtraction
-* __[\[math.modulo\]](/reference/slots/math/math.modulo/)__ - Modulo
-* __[\[math.decrement\]](/reference/slots/math/math.decrement/)__ - Decrements a node's value, optionally by **[step]**, defaulting to 1
-* __[\[math.increment\]](/reference/slots/math/math.increment/)__ - Increments a node's value, optionally by **[step]**, defaulting to 1
-* __[\[math.dot\]](/reference/slots/math/math.dot/)__ - Returns the dot product of two lists, where each list must be a `double` value
-* __[\[math.max\]](/reference/slots/math/math.max/)__ - Returns the max value
-* __[\[math.min\]](/reference/slots/math/math.min/)__ - Returns the min value
-* __[\[math.floor\]](/reference/slots/math/math.floor/)__ - Rounds a number down
-* __[\[math.ceil\]](/reference/slots/math/math.ceil/)__ - Rounds a number up
-* __[\[math.round\]](/reference/slots/math/math.round/)__ - Rounds a number
-* __[\[math.random\]](/reference/slots/math/math.random/)__ - Returns a random number from optional child-node bounds
+* __[\[math.multiply\]](/plugins/magic.lambda.math/math.multiply/)__ - Multiplication
+* __[\[math.divide\]](/plugins/magic.lambda.math/math.divide/)__ - Division
+* __[\[math.add\]](/plugins/magic.lambda.math/math.add/)__ - Addition
+* __[\[math.subtract\]](/plugins/magic.lambda.math/math.subtract/)__ - Subtraction
+* __[\[math.modulo\]](/plugins/magic.lambda.math/math.modulo/)__ - Modulo
+* __[\[math.decrement\]](/plugins/magic.lambda.math/math.decrement/)__ - Decrements a node's value, optionally by **[step]**, defaulting to 1
+* __[\[math.increment\]](/plugins/magic.lambda.math/math.increment/)__ - Increments a node's value, optionally by **[step]**, defaulting to 1
+* __[\[math.dot\]](/plugins/magic.lambda.math/math.dot/)__ - Returns the dot product of two lists, where each list must be a `double` value
+* __[\[math.max\]](/plugins/magic.lambda.math/math.max/)__ - Returns the max value
+* __[\[math.min\]](/plugins/magic.lambda.math/math.min/)__ - Returns the min value
+* __[\[math.floor\]](/plugins/magic.lambda.math/math.floor/)__ - Rounds a number down
+* __[\[math.ceil\]](/plugins/magic.lambda.math/math.ceil/)__ - Rounds a number up
+* __[\[math.round\]](/plugins/magic.lambda.math/math.round/)__ - Rounds a number
+* __[\[math.random\]](/plugins/magic.lambda.math/math.random/)__ - Returns a random number from optional child-node bounds
 
 All of the above besides the two last slots can be given any number of arguments, including as its value,
 and will treat the first argument as the _"base"_, and performing the rest of the arguments self assigning

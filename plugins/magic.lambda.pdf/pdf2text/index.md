@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`pdf2text`](/reference/slots/core/pdf2text/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`pdf2text`](/reference/slots/core/pdf2text/) has its arguments, constraints and declaration.
 
 This slot allows you to retrieve only the text parts of a PDF document.
 

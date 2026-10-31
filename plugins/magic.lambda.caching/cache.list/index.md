@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`cache.list`](/reference/slots/cache/cache.list/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`cache.list`](/reference/slots/cache/cache.list/) has its arguments, constraints and declaration.
 
 Lists all items in cache, and returns to caller.
 

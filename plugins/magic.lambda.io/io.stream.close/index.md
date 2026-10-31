@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`io.stream.close`](/reference/slots/io/io.stream.close/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`io.stream.close`](/reference/slots/io/io.stream.close/) has its arguments, constraints and declaration.
 
 Closes a previously opened stream.
 

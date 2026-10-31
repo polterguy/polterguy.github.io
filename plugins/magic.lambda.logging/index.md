@@ -6,19 +6,19 @@ moved_anchors: {"how-to-use-logtimeshift": "/plugins/magic.lambda.logging/log.ti
 This project contains logging wrapper slots for Magic. More specifically, this project provides the following
 slots allowing you to create log entries.
 
-* __[\[log.info\]](/reference/slots/log/log.info/)__ - Information log entries, typically smaller pieces of information
-* __[\[log.debug\]](/reference/slots/log/log.debug/)__ - Debug log entries, typically additional debugging information not enabled in production
-* __[\[log.error\]](/reference/slots/log/log.error/)__ - Error log entries, typically exceptions
-* __[\[log.fatal\]](/reference/slots/log/log.fatal/)__ - Fatal log entries, from which the application cannot recover from
+* __[\[log.info\]](/plugins/magic.lambda.logging/log.info/)__ - Information log entries, typically smaller pieces of information
+* __[\[log.debug\]](/plugins/magic.lambda.logging/log.debug/)__ - Debug log entries, typically additional debugging information not enabled in production
+* __[\[log.error\]](/plugins/magic.lambda.logging/log.error/)__ - Error log entries, typically exceptions
+* __[\[log.fatal\]](/plugins/magic.lambda.logging/log.fatal/)__ - Fatal log entries, from which the application cannot recover from
 
 In addition to the above slots there are also slots that allows you to retrieve log items, and/or some
 basic statistics from your log. These can be found below.
 
-* __[\[log.count\]](/reference/slots/log/log.count/)__ - Counts number of log items, optionally matching the specified filter condition
-* __[\[log.get\]](/reference/slots/log/log.get/)__ - Returns the log item with the specified id
-* __[\[log.query\]](/reference/slots/log/log.query/)__ - Returns a list of log items according to its arguments
-* __[\[log.capabilities\]](/reference/slots/log/log.capabilities/)__ - Returns the capabilities of the log implementation
-* __[\[log.timeshift\]](/reference/slots/log/log.timeshift/)__ - Aggregates log entries into time buckets, one per day for the last two weeks
+* __[\[log.count\]](/plugins/magic.lambda.logging/log.count/)__ - Counts number of log items, optionally matching the specified filter condition
+* __[\[log.get\]](/plugins/magic.lambda.logging/log.get/)__ - Returns the log item with the specified id
+* __[\[log.query\]](/plugins/magic.lambda.logging/log.query/)__ - Returns a list of log items according to its arguments
+* __[\[log.capabilities\]](/plugins/magic.lambda.logging/log.capabilities/)__ - Returns the capabilities of the log implementation
+* __[\[log.timeshift\]](/plugins/magic.lambda.logging/log.timeshift/)__ - Aggregates log entries into time buckets, one per day for the last two weeks
 
 By default, this project will log into your `magic.log_entries` database/table, using either MySQL, PostgreSQL,
 Microsoft SQL Server or SQLite. This allows you to use SQL to generate statistics on top of your logs.

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`log.timeshift`](/reference/slots/log/log.timeshift/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`log.timeshift`](/reference/slots/log/log.timeshift/) has its arguments, constraints and declaration.
 
 This slot counts the log items matching a search string per day, for the last two weeks, and is useful for
 creating a time series of how often something is logged. The value of the slot is mandatory, and must be a

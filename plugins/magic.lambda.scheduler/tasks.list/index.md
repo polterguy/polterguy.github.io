@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`tasks.list`](/reference/slots/tasks/tasks.list/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`tasks.list`](/reference/slots/tasks/tasks.list/) has its arguments, constraints and declaration.
 
 To list tasks, you can use the **[tasks.list]** signal. This slot optionally
 handles an **[offset]** and a **[limit]** argument, allowing you to page, which might be

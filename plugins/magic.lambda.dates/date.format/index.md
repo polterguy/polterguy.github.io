@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`date.format`](/reference/slots/date/date.format/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`date.format`](/reference/slots/date/date.format/) has its arguments, constraints and declaration.
 
 This slot formats a date and time object as a string. Patterns are the same as patterns for C#. Below is
 example usage.

@@ -10,6 +10,10 @@ slot_json: "/reference/slots/config/config.load/slot.json"
 
 * **Returns**: Resolves to the raw appsettings.json content
 
+### Guide
+
+[How to use `config.load`](/plugins/magic.lambda.config/config.load/)
+
 ### JSON declaration
 
 This is the complete declaration of `config.load`, as the running system describes it. It is also published as [slot.json](slot.json).

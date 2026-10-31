@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`crypto.hash`](/reference/slots/crypto/crypto.hash/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`crypto.hash`](/reference/slots/crypto/crypto.hash/) has its arguments, constraints and declaration.
 
 The **[crypto.hash]** slot can be used to generate hash values. When you invoke it, you can choose
 between having the hash returned as raw a `byte[]`, as a _"fingerprint"_ or as its bit encoded hex

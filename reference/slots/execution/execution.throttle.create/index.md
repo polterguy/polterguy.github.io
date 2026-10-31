@@ -20,6 +20,10 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[window]` | int | no | Window length in seconds. Default: `60`. |
 | `[per]` | string | no | How to partition the limit; 'user' partitions per authenticated username, 'ip' per client IP address, and 'global' shares one limit between all callers. Default: `user when authenticated, otherwise ip`. |
 
+### Guide
+
+[How to use `execution.throttle.create`](/plugins/magic.lambda.threading/execution.throttle.create/)
+
 ### JSON declaration
 
 This is the complete declaration of `execution.throttle.create`, as the running system describes it. It is also published as [slot.json](slot.json).

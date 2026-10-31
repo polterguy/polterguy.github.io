@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`strings.matches`](/reference/slots/strings/strings.matches/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`strings.matches`](/reference/slots/strings/strings.matches/) has its arguments, constraints and declaration.
 
 Returns all regular expression matches from specified source string.
 

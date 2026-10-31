@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`execution.kill`](/reference/slots/execution/execution.kill/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`execution.kill`](/reference/slots/execution/execution.kill/) has its arguments, constraints and declaration.
 
 Cancels another running execution by its execution id. This is useful when you have previously returned
 an execution id to a caller and later want to stop that execution from another request or thread.

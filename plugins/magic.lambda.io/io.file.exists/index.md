@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`io.file.exists`](/reference/slots/io/io.file.exists/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`io.file.exists`](/reference/slots/io/io.file.exists/) has its arguments, constraints and declaration.
 
 Returns true if specified file exists from before.
 

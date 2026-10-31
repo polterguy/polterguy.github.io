@@ -20,6 +20,10 @@ Required arguments come first, then the optional ones in the order they are decl
 
 Guide: [How to use [add]](/plugins/magic.lambda/nodes/#how-to-use-add)
 
+### Guide
+
+[How to use `add`](/plugins/magic.lambda/add/)
+
 ### JSON declaration
 
 This is the complete declaration of `add`, as the running system describes it. It is also published as [slot.json](slot.json).

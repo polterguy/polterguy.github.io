@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`io.file.execute`](/reference/slots/io/io.file.execute/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`io.file.execute`](/reference/slots/io/io.file.execute/) has its arguments, constraints and declaration.
 
 Executes the specified Hyperlambda file. Just like when evaluating a dynamic slot, you can
 pass in an **[.arguments]** node to the file, which will be considered arguments to your file.

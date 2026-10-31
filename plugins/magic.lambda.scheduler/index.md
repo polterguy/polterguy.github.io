@@ -6,15 +6,15 @@ moved_anchors: {"how-to-use-taskscreate": "/plugins/magic.lambda.scheduler/tasks
 This project gives you the ability to create persisted and scheduled Hyperlambda tasks
 for Magic. More specifically it provides the following slots.
 
-* __[\[tasks.create\]](/reference/slots/tasks/tasks.create/)__ - Creates a new task
-* __[\[tasks.get\]](/reference/slots/tasks/tasks.get/)__ - Returns an existing task
-* __[\[tasks.list\]](/reference/slots/tasks/tasks.list/)__ - Lists all tasks
-* __[\[tasks.update\]](/reference/slots/tasks/tasks.update/)__ - Updates an existing task
-* __[\[tasks.count\]](/reference/slots/tasks/tasks.count/)__ - Counts tasks in system
-* __[\[tasks.execute\]](/reference/slots/tasks/tasks.execute/)__ - Executes an existing task
-* __[\[tasks.delete\]](/reference/slots/tasks/tasks.delete/)__ - Deletes a task
-* __[\[tasks.schedule\]](/reference/slots/tasks/tasks.schedule/)__ - Schedules an existing task
-* __[\[tasks.schedule.delete\]](/reference/slots/tasks/tasks.schedule.delete/)__ - Deletes an existing schedule
+* __[\[tasks.create\]](/plugins/magic.lambda.scheduler/tasks.create/)__ - Creates a new task
+* __[\[tasks.get\]](/plugins/magic.lambda.scheduler/tasks.get/)__ - Returns an existing task
+* __[\[tasks.list\]](/plugins/magic.lambda.scheduler/tasks.list/)__ - Lists all tasks
+* __[\[tasks.update\]](/plugins/magic.lambda.scheduler/tasks.update/)__ - Updates an existing task
+* __[\[tasks.count\]](/plugins/magic.lambda.scheduler/tasks.count/)__ - Counts tasks in system
+* __[\[tasks.execute\]](/plugins/magic.lambda.scheduler/tasks.execute/)__ - Executes an existing task
+* __[\[tasks.delete\]](/plugins/magic.lambda.scheduler/tasks.delete/)__ - Deletes a task
+* __[\[tasks.schedule\]](/plugins/magic.lambda.scheduler/tasks.schedule/)__ - Schedules an existing task
+* __[\[tasks.schedule.delete\]](/plugins/magic.lambda.scheduler/tasks.schedule.delete/)__ - Deletes an existing schedule
 * __[tasks.scheduler.start]__ - Starts the task scheduler
 
 

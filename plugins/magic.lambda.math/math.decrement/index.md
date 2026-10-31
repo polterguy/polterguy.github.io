@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`math.decrement`](/reference/slots/math/math.decrement/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`math.decrement`](/reference/slots/math/math.decrement/) has its arguments, constraints and declaration.
 
 This slot decrements the value of some expression in place, by mutating the value of the node its expression is
 leading to.

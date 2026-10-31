@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`sleep`](/reference/slots/core/sleep/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`sleep`](/reference/slots/core/sleep/) has its arguments, constraints and declaration.
 
 This slot will sleep the current thread for x number of milliseconds, where x is an integer value, expected
 to be passed in as its main value.

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`image.crop`](/reference/slots/image/image.crop/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`image.crop`](/reference/slots/image/image.crop/) has its arguments, constraints and declaration.
 
 To crop an image you specify the following arguments.
 

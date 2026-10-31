@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`git.push`](/reference/slots/git/git.push/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`git.push`](/reference/slots/git/git.push/) has its arguments, constraints and declaration.
 
 Pushes to a remote. The repo path is the node value.
 

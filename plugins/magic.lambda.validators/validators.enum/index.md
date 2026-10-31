@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`validators.enum`](/reference/slots/validators/validators.enum/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`validators.enum`](/reference/slots/validators/validators.enum/) has its arguments, constraints and declaration.
 
 This validator will throw an exception unless the specified string argument is one of the legal values. Usage
 could be as follows.

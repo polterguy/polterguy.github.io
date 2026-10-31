@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`system.debug`](/reference/slots/system/system.debug/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`system.debug`](/reference/slots/system/system.debug/) has its arguments, constraints and declaration.
 
 This slot evaluates its children the same way **[eval]** does, but records every single slot invocation
 as it happens, and returns the recording instead of leaving the lambda in place. This is what powers

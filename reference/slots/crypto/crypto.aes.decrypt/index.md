@@ -20,6 +20,10 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[password]` | string\|byte[] | yes | Password or raw AES key. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 
+### Guide
+
+[How to use `crypto.aes.decrypt`](/plugins/magic.lambda.crypto/crypto.aes.decrypt/)
+
 ### JSON declaration
 
 This is the complete declaration of `crypto.aes.decrypt`, as the running system describes it. It is also published as [slot.json](slot.json).

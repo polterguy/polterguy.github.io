@@ -20,6 +20,10 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[verification-key]` | string\|byte[] | yes | Public key used to verify the signature. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 
+### Guide
+
+[How to use `crypto.verify`](/plugins/magic.lambda.crypto/crypto.verify/)
+
 ### JSON declaration
 
 This is the complete declaration of `crypto.verify`, as the running system describes it. It is also published as [slot.json](slot.json).

@@ -20,6 +20,10 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[public-key]` | string\|byte[] | yes | Public key for the RSA operation. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 
+### Guide
+
+[How to use `crypto.rsa.encrypt`](/plugins/magic.lambda.crypto/crypto.rsa.encrypt/)
+
 ### JSON declaration
 
 This is the complete declaration of `crypto.rsa.encrypt`, as the running system describes it. It is also published as [slot.json](slot.json).

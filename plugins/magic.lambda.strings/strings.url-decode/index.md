@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`strings.url-decode`](/reference/slots/strings/strings.url-decode/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`strings.url-decode`](/reference/slots/strings/strings.url-decode/) has its arguments, constraints and declaration.
 
 URL decodes a string, the opposite of **[strings.url-encode]**. Example can be found below.
 

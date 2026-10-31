@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`strings.to-upper`](/reference/slots/strings/strings.to-upper/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`strings.to-upper`](/reference/slots/strings/strings.to-upper/) has its arguments, constraints and declaration.
 
 Turns every single character in your input string into a UPPER case character.
 

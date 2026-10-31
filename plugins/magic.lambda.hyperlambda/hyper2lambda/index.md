@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`hyper2lambda`](/reference/slots/core/hyper2lambda/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`hyper2lambda`](/reference/slots/core/hyper2lambda/) has its arguments, constraints and declaration.
 
 This slot creates a semantic lambda object (graph object) from the specified text. Below is an example
 of usage.

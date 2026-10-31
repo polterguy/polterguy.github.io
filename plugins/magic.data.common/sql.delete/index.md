@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`sql.delete`](/reference/slots/sql/sql.delete/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`sql.delete`](/reference/slots/sql/sql.delete/) has its arguments, constraints and declaration.
 
 This slot is for deleting records. Its **[where]** argument is applied in a similar fashion as the where
 argument to **[sql.read]** and **[sql.update]**. You can find an example further down in this document of

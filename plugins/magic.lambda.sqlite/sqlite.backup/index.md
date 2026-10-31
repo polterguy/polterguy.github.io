@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`sqlite.backup`](/reference/slots/sqlite/sqlite.backup/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`sqlite.backup`](/reference/slots/sqlite/sqlite.backup/) has its arguments, constraints and declaration.
 
 To create a backup of the database called for instance _"foo"_, you would use code resembling the following.
 

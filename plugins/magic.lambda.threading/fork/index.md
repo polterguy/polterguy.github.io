@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`fork`](/reference/slots/core/fork/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`fork`](/reference/slots/core/fork/) has its arguments, constraints and declaration.
 
 Forks the given lambda into a new thread of execution, using a thread from the thread pool. This
 slot is useful for creating _"fire and forget"_ lambda objects, where you don't need to wait

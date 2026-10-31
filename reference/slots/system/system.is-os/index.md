@@ -11,6 +11,10 @@ slot_json: "/reference/slots/system/system.is-os/slot.json"
 * **Value** (`os-name`), required: Operating system platform name to compare against, typically WINDOWS, LINUX, OSX, or FREEBSD
 * **Returns**: Returns true if the current operating system matches the supplied platform name
 
+### Guide
+
+[How to use `system.is-os`](/plugins/magic.lambda.system/system.is-os/)
+
 ### JSON declaration
 
 This is the complete declaration of `system.is-os`, as the running system describes it. It is also published as [slot.json](slot.json).

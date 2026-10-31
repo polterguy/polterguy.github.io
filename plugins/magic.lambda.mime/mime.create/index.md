@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`mime.create`](/reference/slots/mime/mime.create/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`mime.create`](/reference/slots/mime/mime.create/) has its arguments, constraints and declaration.
 
 The **[mime.create]** slot is logically the exact opposite of the **[mime.parse]** slot, and can take (almost) the exact
 same input as its sibling produces as output. Below is an example.

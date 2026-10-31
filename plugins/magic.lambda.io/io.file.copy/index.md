@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`io.file.copy`](/reference/slots/io/io.file.copy/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`io.file.copy`](/reference/slots/io/io.file.copy/) has its arguments, constraints and declaration.
 
 Copies the specified file to the specified destination folder and file.
 Notice, requires the destination folder to exist from before, and the source

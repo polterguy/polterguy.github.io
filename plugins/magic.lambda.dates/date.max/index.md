@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`date.max`](/reference/slots/date/date.max/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`date.max`](/reference/slots/date/date.max/) has its arguments, constraints and declaration.
 
 This slot simply returns the maximum value a date and time object can hold. Usage can be found below.
 

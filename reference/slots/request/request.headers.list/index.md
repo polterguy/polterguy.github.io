@@ -10,6 +10,10 @@ slot_json: "/reference/slots/request/request.headers.list/slot.json"
 
 * **Returns**: Resolves to one child node per request header, with the header name as the node name and its value as the node value
 
+### Guide
+
+[How to use `request.headers.list`](/plugins/magic.endpoint/request.headers.list/)
+
 ### JSON declaration
 
 This is the complete declaration of `request.headers.list`, as the running system describes it. It is also published as [slot.json](slot.json).

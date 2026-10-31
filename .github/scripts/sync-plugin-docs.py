@@ -69,15 +69,14 @@ def raw_front_matter(readme):
     return m.group(1) if m else ''
 
 
-def build(readme, plugin, names):
+def build(readme, plugin, names, result, guides, urls):
     """The pages of one plugin, as {relative path: text}."""
-    result = docsplit.plan(readme, plugin, names, docsplit.load_manifest(plugin))
     files = {}
 
     front = raw_front_matter(readme)
     if result['moved']:
         front += '\nmoved_anchors: ' + json.dumps(result['moved'], ensure_ascii=False, sort_keys=True)
-    files['plugins/%s/index.md' % plugin] = '---\n%s\n---\n\n%s' % (front, to_index(docsplit.hub_markdown(result, names)))
+    files['plugins/%s/index.md' % plugin] = '---\n%s\n---\n\n%s' % (front, to_index(docsplit.hub_markdown(result, names, urls)))
 
     for index, page in enumerate(result['pages']):
         description = docsplit.describe(page)
@@ -85,14 +84,21 @@ def build(readme, plugin, names):
             json.dumps(page['title'], ensure_ascii=False), json.dumps(description, ensure_ascii=False))
         files['plugins/%s/%s/index.md' % (plugin, page['slug'])] = head + to_index(docsplit.page_markdown(result, page, index))
 
-    for g in result['guide_pages']:
-        title = 'How to use [%s]' % g['slot']
-        description = '%s - %s' % (title, docsplit.first_sentence(g['md'].split('\n')))
-        head = '---\ntitle: %s\ndescription: %s\ngenerated: true\nguide: true\n---\n\n' % (
-            json.dumps(title, ensure_ascii=False), json.dumps(description[:217] + ('...' if len(description) > 220 else ''), ensure_ascii=False))
-        link = 'This is the guide to [`%s`](%s), whose reference page has its arguments, constraints and declaration.' % (g['slot'], docsplit.slot_url(g['slot']))
-        files['plugins/%s/%s/index.md' % (plugin, g['slot'])] = head + to_index(link + '\n\n' + g['md'] + '\n')
+    for g in guides:
+        files.update(guide_file(plugin, g))
     return files
+
+
+def guide_file(plugin, g):
+    """The page of one slot's guide, as {relative path: text}."""
+    title = 'How to use [%s]' % g['slot']
+    description = '%s - %s' % (title, docsplit.first_sentence(g['md'].split('\n')))
+    if len(description) > 220:
+        description = description[:217].rstrip() + '...'
+    head = '---\ntitle: %s\ndescription: %s\ngenerated: true\nguide: true\n---\n\n' % (
+        json.dumps(title, ensure_ascii=False), json.dumps(description, ensure_ascii=False))
+    link = 'The reference page of [`%s`](%s) has its arguments, constraints and declaration.' % (g['slot'], docsplit.slot_url(g['slot']))
+    return {g['url'].strip('/') + '/index.md': head + to_index(link + '\n\n' + g['md'] + '\n')}
 
 
 def main():
@@ -104,10 +110,16 @@ def main():
 
     names = docsplit.load_slot_names(args.slots)
     wanted = {}
+    found = docsplit.collect(args.magic, names)
     for readme in sorted(glob.glob(os.path.join(args.magic, 'plugins', '*', 'README.md'))):
         plugin = os.path.basename(os.path.dirname(readme))
         with open(readme, encoding='utf-8-sig') as f:
-            wanted.update(build(f.read(), plugin, names))
+            wanted.update(build(f.read(), plugin, names, found['results'][plugin], found['guides'].get(plugin, []), found['urls']))
+
+    for plugin, pages in found['guides'].items():
+        if plugin not in found['results']:
+            for g in pages:
+                wanted.update(guide_file(plugin, g))
 
     # A topic page must never replace a page that somebody wrote by hand.
     for rel in wanted:

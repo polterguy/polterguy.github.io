@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`validators.date`](/reference/slots/validators/validators.date/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`validators.date`](/reference/slots/validators/validators.date/) has its arguments, constraints and declaration.
 
 This slot works similarly to the **[validator.integer]** validator, except instead of providing a min/max
 integer value, you're expected to provide a min/max _date_ value. Below is an example of how you could use

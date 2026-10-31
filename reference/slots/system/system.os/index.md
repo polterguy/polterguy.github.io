@@ -10,6 +10,10 @@ slot_json: "/reference/slots/system/system.os/slot.json"
 
 * **Returns**: Resolves to the current operating system name
 
+### Guide
+
+[How to use `system.os`](/plugins/magic.lambda.system/system.os/)
+
 ### JSON declaration
 
 This is the complete declaration of `system.os`, as the running system describes it. It is also published as [slot.json](slot.json).

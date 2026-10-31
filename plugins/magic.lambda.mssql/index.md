@@ -9,18 +9,18 @@ for you, for all basic types of CRUD SQL statements. In addition, it provides sl
 database connection, and such allows you to declare your own SQL statements, to be executed towards a
 SQL Server database. Slots this project contains are as follows.
 
-* __[\[mssql.connect\]](/reference/slots/mssql/mssql.connect/)__ - Connects to a database
-* __[\[mssql.create\]](/reference/slots/mssql/mssql.create/)__ - Creates a single record in the specified table
-* __[\[mssql.read\]](/reference/slots/mssql/mssql.read/)__ - Reads multiple records from the specified table
-* __[\[mssql.update\]](/reference/slots/mssql/mssql.update/)__ - Updates a single record in the specified table
-* __[\[mssql.delete\]](/reference/slots/mssql/mssql.delete/)__ - Deletes a single record in the specified table
-* __[\[mssql.select\]](/reference/slots/mssql/mssql.select/)__ - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
-* __[\[mssql.scalar\]](/reference/slots/mssql/mssql.scalar/)__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
-* __[\[mssql.execute\]](/reference/slots/mssql/mssql.execute/)__ - Executes an arbitrary SQL statement
-* __[\[mssql.execute-batch\]](/reference/slots/mssql/mssql.execute-batch/)__ - Executes a batch SQL script on the current SQL Server connection
-* __[\[mssql.transaction.create\]](/reference/slots/mssql/mssql.transaction.create/)__ - Creates a new transaction
-* __[\[mssql.transaction.commit\]](/reference/slots/mssql/mssql.transaction.commit/)__ - Explicitly commits an open transaction
-* __[\[mssql.transaction.rollback\]](/reference/slots/mssql/mssql.transaction.rollback/)__ - Explicitly rolls back an open transaction
+* __[\[mssql.connect\]](/plugins/magic.lambda.mssql/mssql.connect/)__ - Connects to a database
+* __[\[mssql.create\]](/plugins/magic.lambda.mssql/mssql.create/)__ - Creates a single record in the specified table
+* __[\[mssql.read\]](/plugins/magic.lambda.mssql/mssql.read/)__ - Reads multiple records from the specified table
+* __[\[mssql.update\]](/plugins/magic.lambda.mssql/mssql.update/)__ - Updates a single record in the specified table
+* __[\[mssql.delete\]](/plugins/magic.lambda.mssql/mssql.delete/)__ - Deletes a single record in the specified table
+* __[\[mssql.select\]](/plugins/magic.lambda.mssql/mssql.select/)__ - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
+* __[\[mssql.scalar\]](/plugins/magic.lambda.mssql/mssql.scalar/)__ - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
+* __[\[mssql.execute\]](/plugins/magic.lambda.mssql/mssql.execute/)__ - Executes an arbitrary SQL statement
+* __[\[mssql.execute-batch\]](/plugins/magic.lambda.mssql/mssql.execute-batch/)__ - Executes a batch SQL script on the current SQL Server connection
+* __[\[mssql.transaction.create\]](/plugins/magic.lambda.mssql/mssql.transaction.create/)__ - Creates a new transaction
+* __[\[mssql.transaction.commit\]](/plugins/magic.lambda.mssql/mssql.transaction.commit/)__ - Explicitly commits an open transaction
+* __[\[mssql.transaction.rollback\]](/plugins/magic.lambda.mssql/mssql.transaction.rollback/)__ - Explicitly rolls back an open transaction
 * __[.db-factory.connection.mssql]__ - Creates a SQL Server connection factory (private C# slot)
 
 **Notice** - If you use any of the CRUD slots from above, the whole idea is that you can polymorphistically

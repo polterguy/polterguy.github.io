@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`cache.try-get`](/reference/slots/cache/cache.try-get/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`cache.try-get`](/reference/slots/cache/cache.try-get/) has its arguments, constraints and declaration.
 
 This slot checks your cache to look for an item matching your specified key, and if not found, it will
 invoke its **[.lambda]** argument, and save its returned value to the cache with the specified key,

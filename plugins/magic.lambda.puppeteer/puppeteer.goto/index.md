@@ -1,11 +1,11 @@
 ---
 title: "How to use [puppeteer.goto]"
-description: "How to use [puppeteer.goto] - Navigates to a URL. Arguments: Examples: puppeteer.goto:SESSIONID    url:\"https://ainiro.io\" puppeteer.goto:SESSIONID    url:\"https://ainiro.io\"    timeout:30000    wait-until:networkidle"
+description: "How to use [puppeteer.goto] - Navigates to a URL. Arguments: Examples: puppeteer.goto:SESSIONID    url:\"https://ainiro.io\" puppeteer.goto:SESSIONID    url:\"https://ainiro.io\"    timeout:30000    wait-until:networkidle2"
 generated: true
 guide: true
 ---
 
-This is the guide to [`puppeteer.goto`](/reference/slots/puppeteer/puppeteer.goto/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`puppeteer.goto`](/reference/slots/puppeteer/puppeteer.goto/) has its arguments, constraints and declaration.
 
 Navigates to a URL.
 

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`math.add`](/reference/slots/math/math.add/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`math.add`](/reference/slots/math/math.add/) has its arguments, constraints and declaration.
 
 This slot adds two or more values with each other, and can be given as many arguments as you wish,
 such as the following illustrates.

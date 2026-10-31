@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`math.sqrt`](/reference/slots/math/math.sqrt/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`math.sqrt`](/reference/slots/math/math.sqrt/) has its arguments, constraints and declaration.
 
 This slot returns the square root of its input.
 

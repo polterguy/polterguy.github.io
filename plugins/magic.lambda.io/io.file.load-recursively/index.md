@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`io.file.load-recursively`](/reference/slots/io/io.file.load-recursively/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`io.file.load-recursively`](/reference/slots/io/io.file.load-recursively/) has its arguments, constraints and declaration.
 
 This slot loads the content of all files inside of the specified folder, including all nested folders, as text, and
 takes no arguments besides the folder as its value. It returns one unnamed child node per file, and each of these nodes

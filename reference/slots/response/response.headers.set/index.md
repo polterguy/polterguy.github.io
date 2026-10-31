@@ -16,6 +16,10 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | string | yes | Response header name and value. Can be repeated. |
 
+### Guide
+
+[How to use `response.headers.set`](/plugins/magic.endpoint/response.headers.set/)
+
 ### JSON declaration
 
 This is the complete declaration of `response.headers.set`, as the running system describes it. It is also published as [slot.json](slot.json).

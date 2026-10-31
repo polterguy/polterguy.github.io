@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`puppeteer.wait-for-url`](/reference/slots/puppeteer/puppeteer.wait-for-url/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`puppeteer.wait-for-url`](/reference/slots/puppeteer/puppeteer.wait-for-url/) has its arguments, constraints and declaration.
 
 Waits until the page URL matches.
 

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`return-nodes`](/reference/slots/core/return-nodes/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`return-nodes`](/reference/slots/core/return-nodes/) has its arguments, constraints and declaration.
 
 Returns a bunch of nodes (lambda) from your slot. Can only be invoked from the inside of
 a dynamically created slot, and other slots explicitly creating a return context. An example can be

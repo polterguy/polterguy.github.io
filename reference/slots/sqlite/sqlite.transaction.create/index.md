@@ -10,6 +10,10 @@ slot_json: "/reference/slots/sqlite/sqlite.transaction.create/slot.json"
 
 * **Scope**: requires `sqlite.connection`; provides `sqlite.transaction` - Requires an open SQLite connection created by [sqlite.connect]
 
+### Guide
+
+[How to use `sqlite.transaction.create`](/plugins/magic.lambda.sqlite/sqlite.transaction.create/)
+
 ### JSON declaration
 
 This is the complete declaration of `sqlite.transaction.create`, as the running system describes it. It is also published as [slot.json](slot.json).

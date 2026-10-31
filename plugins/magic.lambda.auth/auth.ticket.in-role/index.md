@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`auth.ticket.in-role`](/reference/slots/auth/auth.ticket.in-role/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`auth.ticket.in-role`](/reference/slots/auth/auth.ticket.in-role/) has its arguments, constraints and declaration.
 
 This slot verifies that the currently authenticated user belongs to one or more roles provided as
 a comma separated list of names. Contrary to the **[auth.ticket.verify]** slot this slot will _not_

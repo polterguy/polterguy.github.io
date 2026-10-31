@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`io.file.mixin`](/reference/slots/io/io.file.mixin/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`io.file.mixin`](/reference/slots/io/io.file.mixin/) has its arguments, constraints and declaration.
 
 This slot takes a filename as its primary argument, and optionally any amount of lambda children objects.
 It allows for dynamically substituting for instance {% raw %}`{{*/.name}}`{% endraw %} segments in your original source file,

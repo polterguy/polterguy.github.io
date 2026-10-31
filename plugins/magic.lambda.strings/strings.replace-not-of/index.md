@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`strings.replace-not-of`](/reference/slots/strings/strings.replace-not-of/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`strings.replace-not-of`](/reference/slots/strings/strings.replace-not-of/) has its arguments, constraints and declaration.
 
 This slot will replace every single character in your original string, that cannot be found in its first
 argument, with the value of its second argument. This slot is useful if you want to remove all characters

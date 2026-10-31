@@ -5,8 +5,8 @@ moved_anchors: {"how-to-use-csv2lambda": "/plugins/magic.lambda.csv/csv2lambda/"
 
 This project provides CSV helper slots for Magic. More specifically, it provides the following slots.
 
-* __[\[lambda2csv\]](/reference/slots/core/lambda2csv/)__ - Creates a CSV string from a lambda object
-* __[\[csv2lambda\]](/reference/slots/core/csv2lambda/)__ - Creates a lambda object from a CSV string
+* __[\[lambda2csv\]](/plugins/magic.lambda.csv/lambda2csv/)__ - Creates a CSV string from a lambda object
+* __[\[csv2lambda\]](/plugins/magic.lambda.csv/csv2lambda/)__ - Creates a lambda object from a CSV string
 
 
 ## Convert from lambda to CSV and back again

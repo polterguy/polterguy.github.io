@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`validators.string`](/reference/slots/validators/validators.string/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`validators.string`](/reference/slots/validators/validators.string/) has its arguments, constraints and declaration.
 
 This works the same way as the **[validators.integer]** validator, except instead of being a min/max
 _value_ the min/max arguments declares the minimum and maximum _length_ of the string, allowing you

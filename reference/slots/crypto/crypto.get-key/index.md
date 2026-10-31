@@ -19,6 +19,10 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 
+### Guide
+
+[How to use `crypto.get-key`](/plugins/magic.lambda.crypto/crypto.get-key/)
+
 ### JSON declaration
 
 This is the complete declaration of `crypto.get-key`, as the running system describes it. It is also published as [slot.json](slot.json).

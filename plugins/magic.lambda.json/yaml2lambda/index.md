@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`yaml2lambda`](/reference/slots/core/yaml2lambda/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`yaml2lambda`](/reference/slots/core/yaml2lambda/) has its arguments, constraints and declaration.
 
 The **[yaml2lambda]** slot converts a YAML input string to a lambda object. Since YAML arguably is just another representation of
 JSON, these slot have been added to this project. Notice, the same constraints applies for YAML as does for JSON, implying

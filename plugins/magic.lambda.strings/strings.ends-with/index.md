@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`strings.ends-with`](/reference/slots/strings/strings.ends-with/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`strings.ends-with`](/reference/slots/strings/strings.ends-with/) has its arguments, constraints and declaration.
 
 Returns true if the specified string ends with some sequence of characters.
 

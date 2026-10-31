@@ -59,6 +59,10 @@ _Nodes nested deeper than 6 levels, and nodes that repeat one of their own ances
 | _unnamed child node_ | lambda | no | One row returned by the read; child nodes carry the selected column values, with each child's name being the column name or alias from the SELECT statement. Can be repeated. |
 | _unnamed child node_ / _any node name_ | string | no | Column value; child name is the column name (or alias) declared in the read. Can be repeated. |
 
+### Guide
+
+[How to use `sqlite.read`](/plugins/magic.lambda.sqlite/sqlite.read/)
+
 ### JSON declaration
 
 This is the complete declaration of `sqlite.read`, as the running system describes it. It is also published as [slot.json](slot.json).

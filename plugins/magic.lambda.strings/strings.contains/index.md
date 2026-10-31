@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`strings.contains`](/reference/slots/strings/strings.contains/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`strings.contains`](/reference/slots/strings/strings.contains/) has its arguments, constraints and declaration.
 
 Returns true if the specified string contains some sequence of characters.
 

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`image.chart`](/reference/slots/image/image.chart/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`image.chart`](/reference/slots/image/image.chart/) has its arguments, constraints and declaration.
 
 This slot allows you to dynamically generate charts, and either save these to disc or return them directly as a stream. There exists 3 different types of charts, which are as follows:
 

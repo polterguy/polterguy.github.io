@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`math.min`](/reference/slots/math/math.min/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`math.min`](/reference/slots/math/math.min/) has its arguments, constraints and declaration.
 
 This slot returns the min value of its input.
 

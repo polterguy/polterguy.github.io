@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`cache.count`](/reference/slots/cache/cache.count/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`cache.count`](/reference/slots/cache/cache.count/) has its arguments, constraints and declaration.
 
 This slot works similarly to the **[cache.list]** slot, except it only returns the number of items.
 Below is an example of creating a new cache entry, for then to count how many cache items exists

@@ -5,7 +5,7 @@ generated: true
 guide: true
 ---
 
-This is the guide to [`puppeteer.connect`](/reference/slots/puppeteer/puppeteer.connect/), whose reference page has its arguments, constraints and declaration.
+The reference page of [`puppeteer.connect`](/reference/slots/puppeteer/puppeteer.connect/) has its arguments, constraints and declaration.
 
 Launches Chromium, opens a page, and returns a `session_id`.
 
