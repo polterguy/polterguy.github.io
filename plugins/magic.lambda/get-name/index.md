@@ -1,8 +1,8 @@
 ---
 title: "How to use [get-name]"
 description: "How to use [get-name] - Returns the name of the node referenced in its expression."
-generated: true
 guide: true
+slots: ["get-name"]
 ---
 
 The reference page of [`get-name`](/reference/slots/core/get-name/) has its arguments, constraints and declaration.

@@ -11,8 +11,6 @@ slot_json: "/reference/slots/core/exists/slot.json"
 * **Value** (`node-list,single-object`), required: Expression selecting the nodes to test for
 * **Returns**: Returns true if the expression resolves to one or more nodes
 
-Guide: [How to use [exists]](/plugins/magic.lambda/nodes/#how-to-use-exists)
-
 ### Guide
 
 [How to use `exists`](/plugins/magic.lambda/exists/)

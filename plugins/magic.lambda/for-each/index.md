@@ -1,40 +1,25 @@
 ---
 title: "How to use [for-each]"
-description: "How to use [for-each] - Hyperlambda accepts comments the exact same way C# does, and you can use either multiline comments or single line comments, like the following example illustrates."
-generated: true
+description: "How to use [for-each] - [for-each] iterates through each node being the result of an expression, and evaluates its lambda object, passing in the currently iterated node as a [.dp] argument, containing the node current..."
 guide: true
+slots: ["for-each"]
 ---
 
 The reference page of [`for-each`](/reference/slots/core/for-each/) has its arguments, constraints and declaration.
 
-Hyperlambda accepts comments the exact same way C# does, and you can use either multiline comments
-or single line comments, like the following example illustrates.
-
-```
-/*
- * Multiline comment.
- */
-
-// Single line comment.
-```
-
-You _cannot_ put comments on lines containing nodes, and comments must be indented the same
-amount of indentations as the nodes they are commenting, implying the nodes below them. Below is
-an example.
+**[for-each]** iterates through each node being the result of an expression, and evaluates its lambda object,
+passing in the currently iterated node as a **[.dp]** argument, containing the node currently
+iterated by _reference_.
 
 ```
 .data
-   foo1:bar1
-   foo2:bar2
+   foo1
+   foo2
 
-for-each:x:@.data/*
+for-each:x:-/*
 
-   // This is correct indentation.
    set-value:x:@.dp/#
-      .:Loop was here ...
+      .:hello
 ```
 
-Since Hyperlambda is using spaces (SP characters) to denote scope, indentation _is important_,
-also for comments. If you de-indent the above comment, you might get unpredictable results, in particular
-if you're serializing and de-serializing your Hyperlambda preserving comments. Comments should as a general
-rule of thumb be applied with the same amount of indentation as the node below them.
+See the documentation for the **[reference]** slot to understand how reference nodes works.

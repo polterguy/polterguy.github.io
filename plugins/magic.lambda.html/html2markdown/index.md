@@ -1,6 +1,6 @@
 ---
 title: "How to use [html2markdown]"
-description: "How to use [html2markdown] - .html:@\"<html>   <head>     <title>Howdy</title>   </head>   <body>     <h1>Header here</h1>     <p class=\"\"foo\"\">Howdy <strong>world</strong> - This is cool!</p>   </body> html2markdown:x..."
+description: "How to use [html2markdown] - The above results in something resembling the following."
 generated: true
 guide: true
 ---

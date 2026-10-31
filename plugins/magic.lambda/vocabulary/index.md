@@ -1,8 +1,8 @@
 ---
 title: "How to use [vocabulary]"
 description: "How to use [vocabulary] - Returns the name of every static slot in your system, optionally passing in a string, or an expression leading to a string, which is a filtering condition, where the slot must start with the..."
-generated: true
 guide: true
+slots: ["vocabulary"]
 ---
 
 The reference page of [`vocabulary`](/reference/slots/core/vocabulary/) has its arguments, constraints and declaration.

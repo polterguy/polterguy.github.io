@@ -19,8 +19,6 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | lambda | yes | Predicate body evaluated once per selected node; the selected node is kept when the body returns true. Can be repeated. |
 
-Guide: [How to use [filter]](/plugins/magic.lambda/nodes/#how-to-use-filter)
-
 ### Guide
 
 [How to use `filter`](/plugins/magic.lambda/filter/)

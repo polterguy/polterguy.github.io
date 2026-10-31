@@ -1,8 +1,8 @@
 ---
 title: "How to use [insert-before]"
 description: "How to use [insert-before] - This slot works the exact same way as the [add] node, except it will insert the nodes before the node(s) referenced in its main/destination argument."
-generated: true
 guide: true
+slots: ["insert-before"]
 ---
 
 The reference page of [`insert-before`](/reference/slots/core/insert-before/) has its arguments, constraints and declaration.

@@ -11,7 +11,7 @@ slot_json: "/reference/slots/core/vocabulary/slot.json"
 * **Value** (`slot-name`), optional: Optional prefix filter for slot names
 * **Returns**: Resolves to available slot names as child nodes
 
-Guide: [How to use [vocabulary]](/plugins/magic.lambda/types/#how-to-use-vocabulary)
+Guide: [How to use [vocabulary]](/plugins/magic.lambda/types/#pinning-arguments-in-your-vocabulary)
 
 ### Guide
 

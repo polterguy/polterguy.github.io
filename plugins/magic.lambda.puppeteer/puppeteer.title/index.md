@@ -1,6 +1,6 @@
 ---
 title: "How to use [puppeteer.title]"
-description: "How to use [puppeteer.title] - Returns page title. Arguments: Examples: puppeteer.title:SESSIONID"
+description: "How to use [puppeteer.title] - Returns page title. Arguments: Examples:"
 generated: true
 guide: true
 ---

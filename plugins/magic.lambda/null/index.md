@@ -1,8 +1,8 @@
 ---
 title: "How to use [null]"
-description: "How to use [null] - If not, it will return false."
-generated: true
+description: "How to use [null] - [null] will evaluate to true if its specified expression yields null, or the expression returns no nodes."
 guide: true
+slots: ["null"]
 ---
 
 The reference page of [`null`](/reference/slots/core/null/) has its arguments, constraints and declaration.

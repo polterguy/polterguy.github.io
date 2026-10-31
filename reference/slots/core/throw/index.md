@@ -20,8 +20,6 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[status]` | int | no | HTTP status code associated with the exception. Default: `500`. |
 | `[field]` | string | no | Optional form field or control ID associated with the exception. |
 
-Guide: [How to use [throw]](/plugins/magic.lambda/exceptions/#how-to-use-throw)
-
 ### Guide
 
 [How to use `throw`](/plugins/magic.lambda/throw/)

@@ -11,8 +11,6 @@ slot_json: "/reference/slots/core/not-exists/slot.json"
 * **Value** (`node-list,single-object`), required: Expression selecting the nodes to test for
 * **Returns**: Returns true if the expression resolves to no nodes
 
-Guide: [How to use [not-exists]](/plugins/magic.lambda/nodes/#how-to-use-not-exists)
-
 ### Guide
 
 [How to use `not-exists`](/plugins/magic.lambda/not-exists/)

@@ -1,8 +1,8 @@
 ---
 title: "How to use [sort]"
 description: "How to use [sort] - Sort takes an expression leading to a list of nodes, in addition to a lambda object."
-generated: true
 guide: true
+slots: ["sort"]
 ---
 
 The reference page of [`sort`](/reference/slots/core/sort/) has its arguments, constraints and declaration.

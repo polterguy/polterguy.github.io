@@ -1,8 +1,8 @@
 ---
 title: "How to use [compose]"
 description: "How to use [compose] - Compose allows you to dynamically create expressions by supplying it with a list of iterators."
-generated: true
 guide: true
+slots: ["compose"]
 ---
 
 The reference page of [`compose`](/reference/slots/core/compose/) has its arguments, constraints and declaration.

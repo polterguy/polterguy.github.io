@@ -19,8 +19,6 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | lambda | no | Comparer body evaluated with [.lhs], [.rhs], and [.result] injected. Can be repeated. |
 
-Guide: [How to use [sort]](/plugins/magic.lambda/types/#how-to-use-sort)
-
 ### Guide
 
 [How to use `sort`](/plugins/magic.lambda/sort/)

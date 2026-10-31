@@ -10,8 +10,6 @@ slot_json: "/reference/slots/core/remove-nodes/slot.json"
 
 * **Value** (`node-list,single-object`), required: Expression selecting the node or nodes to remove
 
-Guide: [How to use [remove-nodes]](/plugins/magic.lambda/nodes/#how-to-use-remove-nodes)
-
 ### Guide
 
 [How to use `remove-nodes`](/plugins/magic.lambda/remove-nodes/)

@@ -1,6 +1,6 @@
 ---
 title: "How to use [mail.smtp.send]"
-description: "How to use [mail.smtp.send] - mail.smtp.send    server       host:foo.com       port:123       secure:true       username:xxx       password:yyy    message       to          John Doe:john@doe.com       from          J..."
+description: "How to use [mail.smtp.send] - You can send multiple [message] objects at the same time, using the same SMTP connection and credentials."
 generated: true
 guide: true
 ---

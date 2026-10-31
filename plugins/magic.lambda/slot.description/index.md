@@ -1,8 +1,8 @@
 ---
 title: "How to use [slot.description]"
 description: "How to use [slot.description] - Returns the description of a single compiled slot, given its name as the value of the slot, or an expression leading to its name."
-generated: true
 guide: true
+slots: ["slot.description"]
 ---
 
 The reference page of [`slot.description`](/reference/slots/slot/slot.description/) has its arguments, constraints and declaration.

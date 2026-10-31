@@ -1,8 +1,8 @@
 ---
 title: "How to use [lte]"
-description: "How to use [lte] - to its second argument."
-generated: true
+description: "How to use [lte] - [lte] will do a comparison between its two arguments, and only return true if its first argument is \"less than or equal\" to its second argument."
 guide: true
+slots: ["lte"]
 ---
 
 The reference page of [`lte`](/reference/slots/core/lte/) has its arguments, constraints and declaration.

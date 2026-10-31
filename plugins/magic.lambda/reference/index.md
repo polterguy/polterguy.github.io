@@ -1,8 +1,8 @@
 ---
 title: "How to use [reference]"
 description: "How to use [reference] - This slot will evaluate its expression, and add the entire node the expression is pointing to, as a referenced node into its value."
-generated: true
 guide: true
+slots: ["reference"]
 ---
 
 The reference page of [`reference`](/reference/slots/core/reference/) has its arguments, constraints and declaration.

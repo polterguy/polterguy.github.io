@@ -18,8 +18,6 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | object | no | Single source child evaluated before its value is consumed; omit to set the destination to null. |
 
-Guide: [How to use [set-x]](/plugins/magic.lambda/nodes/#how-to-use-set-x)
-
 ### Guide
 
 [How to use `set-x`](/plugins/magic.lambda/set-x/)

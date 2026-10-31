@@ -19,8 +19,6 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | object | no | Template replacement node matched by name; its value and children replace placeholders named {name}. Can be repeated. |
 
-Guide: [How to use [apply]](/plugins/magic.lambda/types/#how-to-use-apply)
-
 ### Guide
 
 [How to use `apply`](/plugins/magic.lambda/apply/)

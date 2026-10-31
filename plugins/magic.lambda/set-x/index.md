@@ -1,8 +1,8 @@
 ---
 title: "How to use [set-x]"
 description: "How to use [set-x] - Similar to [set-value], but does not evaluate expressions found in its source."
-generated: true
 guide: true
+slots: ["set-x"]
 ---
 
 The reference page of [`set-x`](/reference/slots/core/set-x/) has its arguments, constraints and declaration.

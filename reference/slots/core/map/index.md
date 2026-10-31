@@ -19,8 +19,6 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | lambda | yes | Mapper body evaluated once per selected node; each returned value becomes a [.] node and returned child nodes are added to the mapped result. Can be repeated. |
 
-Guide: [How to use [map]](/plugins/magic.lambda/loops/#how-to-use-map)
-
 ### Guide
 
 [How to use `map`](/plugins/magic.lambda/map/)

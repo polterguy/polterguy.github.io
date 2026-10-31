@@ -1,8 +1,8 @@
 ---
 title: "How to use [get-first-value]"
 description: "How to use [get-first-value] - Returns the first non-null value resulting from evaluating its expression, and/or its children nodes."
-generated: true
 guide: true
+slots: ["get-first-value"]
 ---
 
 The reference page of [`get-first-value`](/reference/slots/core/get-first-value/) has its arguments, constraints and declaration.

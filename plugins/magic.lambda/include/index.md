@@ -1,8 +1,8 @@
 ---
 title: "How to use [include]"
 description: "How to use [include] - This slot is logically the combination of a [for-each], [add] and [eval/invoke]."
-generated: true
 guide: true
+slots: ["include"]
 ---
 
 The reference page of [`include`](/reference/slots/core/include/) has its arguments, constraints and declaration.

@@ -11,8 +11,6 @@ slot_json: "/reference/slots/core/get-count/slot.json"
 * **Value** (`node-list`), required: Expression selecting the nodes to count
 * **Returns**: Resolves to the number of nodes matched by the expression
 
-Guide: [How to use [get-count]](/plugins/magic.lambda/nodes/#how-to-use-get-count)
-
 ### Guide
 
 [How to use `get-count`](/plugins/magic.lambda/get-count/)

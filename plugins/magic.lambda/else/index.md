@@ -1,8 +1,8 @@
 ---
 title: "How to use [else]"
-description: "How to use [else] - elder \"siblings\" evaluates to true."
-generated: true
+description: "How to use [else] - [else] is the last of the \"conditional siblings\" that will only be evaluated as a last resort, only if none of its elder \"siblings\" evaluates to true."
 guide: true
+slots: ["else"]
 ---
 
 The reference page of [`else`](/reference/slots/core/else/) has its arguments, constraints and declaration.

@@ -18,8 +18,6 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | lambda | yes | Executable operand returning a boolean value. |
 
-Guide: [How to use [or]](/plugins/magic.lambda/conditions/#how-to-use-or)
-
 ### Guide
 
 [How to use `or`](/plugins/magic.lambda/or/)

@@ -18,8 +18,6 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | lambda | yes | Loop body evaluated once per selected node. Can be repeated. |
 
-Guide: [How to use [for-each]](/plugins/magic.lambda/loops/#how-to-use-for-each)
-
 ### Guide
 
 [How to use `for-each`](/plugins/magic.lambda/for-each/)

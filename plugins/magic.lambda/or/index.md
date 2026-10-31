@@ -1,8 +1,8 @@
 ---
 title: "How to use [or]"
-description: "How to use [or] - as the following illustrates."
-generated: true
+description: "How to use [or] - [or] is similar to [and], except it will evaluate to true if any of its arguments evaluates to true, such as the following illustrates."
 guide: true
+slots: ["or"]
 ---
 
 The reference page of [`or`](/reference/slots/core/or/) has its arguments, constraints and declaration.

@@ -1,8 +1,8 @@
 ---
 title: "How to use [type]"
 description: "How to use [type] - This slot returns the Hyperlambda type name of some value."
-generated: true
 guide: true
+slots: ["type"]
 ---
 
 The reference page of [`type`](/reference/slots/core/type/) has its arguments, constraints and declaration.

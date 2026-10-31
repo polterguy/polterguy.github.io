@@ -1,6 +1,6 @@
 ---
 title: "How to use [json2lambda]"
-description: "How to use [json2lambda] - .json:@\"{\"\"property\"\": \"\"value\"\"}\" json2lambda:x:- lambda2json:x:-/ The [lambda2json] slot can optionally take a [format] argument, with a boolean \"true\" value, which implies the resulting J..."
+description: "How to use [json2lambda] - The [lambda2json] slot can optionally take a [format] argument, with a boolean \"true\" value, which implies the resulting JSON will be indented and nicely formated, making it more readable."
 generated: true
 guide: true
 ---

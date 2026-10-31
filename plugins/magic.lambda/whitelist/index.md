@@ -1,8 +1,8 @@
 ---
 title: "How to use [whitelist]"
 description: "How to use [whitelist] - This slot temporarily within the given scope changes the available slots, allowing you to declare a block of lambda, where only a sub-set of your vocabulary is available for some piece of code..."
-generated: true
 guide: true
+slots: ["whitelist"]
 ---
 
 The reference page of [`whitelist`](/reference/slots/core/whitelist/) has its arguments, constraints and declaration.

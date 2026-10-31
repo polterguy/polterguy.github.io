@@ -1,8 +1,8 @@
 ---
 title: "How to use [invoke]"
 description: "How to use [invoke] - This slot works similarly to [eval], except it treats the invocation similarly to an invocation to a dynamic slot, allowing you to pass in arguments, and return nodes from the invocation."
-generated: true
 guide: true
+slots: ["invoke"]
 ---
 
 The reference page of [`invoke`](/reference/slots/core/invoke/) has its arguments, constraints and declaration.

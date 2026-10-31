@@ -20,8 +20,6 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[value]` | object | yes | Value stored in the named stack context. |
 | `[.lambda]` | lambda | yes | Body evaluated while the context value is scoped. |
 
-Guide: [How to use [context]](/plugins/magic.lambda/types/#how-to-use-context)
-
 ### Guide
 
 [How to use `context`](/plugins/magic.lambda/context/)

@@ -22,8 +22,6 @@ Required arguments come first, then the optional ones in the order they are decl
 
 * **PreviousSiblingMustBeOneOf**: Previous sibling must be one of the listed slot names (`[if]`, `[else-if]`)
 
-Guide: [How to use [else]](/plugins/magic.lambda/branching/#how-to-use-else)
-
 ### Guide
 
 [How to use `else`](/plugins/magic.lambda/else/)

@@ -1,8 +1,8 @@
 ---
 title: "How to use [format]"
 description: "How to use [format] - This slot converts some expression or value according to some specified String.Format pattern."
-generated: true
 guide: true
+slots: ["format"]
 ---
 
 The reference page of [`format`](/reference/slots/core/format/) has its arguments, constraints and declaration.

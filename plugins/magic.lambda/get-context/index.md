@@ -1,8 +1,8 @@
 ---
 title: "How to use [get-context]"
 description: "How to use [get-context] - This slot returns a context stack object, which is an object added to the stack using [context]."
-generated: true
 guide: true
+slots: ["get-context"]
 ---
 
 The reference page of [`get-context`](/reference/slots/core/get-context/) has its arguments, constraints and declaration.

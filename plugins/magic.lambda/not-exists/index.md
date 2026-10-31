@@ -1,8 +1,8 @@
 ---
 title: "How to use [not-exists]"
-description: "How to use [not-exists] - return false. It's the logical opposite of [exists]."
-generated: true
+description: "How to use [not-exists] - [not-exists] will evaluate to true if its specified expression yields zero results."
 guide: true
+slots: ["not-exists"]
 ---
 
 The reference page of [`not-exists`](/reference/slots/core/not-exists/) has its arguments, constraints and declaration.

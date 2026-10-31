@@ -1,8 +1,8 @@
 ---
 title: "How to use [set-name]"
 description: "How to use [set-name] - Changes the name of all nodes referenced as its main expression to whatever its single source happens to be."
-generated: true
 guide: true
+slots: ["set-name"]
 ---
 
 The reference page of [`set-name`](/reference/slots/core/set-name/) has its arguments, constraints and declaration.

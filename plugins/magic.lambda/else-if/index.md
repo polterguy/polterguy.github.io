@@ -1,8 +1,8 @@
 ---
 title: "How to use [else-if]"
-description: "How to use [else-if] - and will only be evaluated if all of its previous conditional slots evaluates to false - At which point [else-if] is allowed to test its condition - And only if its condition evaluates to true,..."
-generated: true
+description: "How to use [else-if] - [else-if] is the younger sibling of [if], and must be preceded by its older sibling, or other [else-if] nodes, and will only be evaluated if all of its previous conditional slots evaluates to fa..."
 guide: true
+slots: ["else-if"]
 ---
 
 The reference page of [`else-if`](/reference/slots/core/else-if/) has its arguments, constraints and declaration.

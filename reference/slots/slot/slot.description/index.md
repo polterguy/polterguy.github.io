@@ -11,8 +11,6 @@ slot_json: "/reference/slots/slot/slot.description/slot.json"
 * **Value** (`slot-name`), required: Name of the compiled slot to inspect
 * **Returns**: Resolves to the description of the requested slot
 
-Guide: [How to use [slot.description]](/plugins/magic.lambda/types/#how-to-use-slotdescription)
-
 ### Guide
 
 [How to use `slot.description`](/plugins/magic.lambda/slot.description/)

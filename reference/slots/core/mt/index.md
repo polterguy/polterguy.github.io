@@ -18,8 +18,6 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | object | yes | Operand evaluated before comparison. |
 
-Guide: [How to use [mt]](/plugins/magic.lambda/conditions/#how-to-use-mt)
-
 ### Guide
 
 [How to use `mt`](/plugins/magic.lambda/mt/)

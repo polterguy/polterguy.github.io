@@ -1,8 +1,8 @@
 ---
 title: "How to use [int2words]"
 description: "How to use [int2words] - This slot takes a signed 64 bit integer and converts it to its word representation, such as for instance 1200050 becoming \"one million two hundred thousand and fifty\"."
-generated: true
 guide: true
+slots: ["int2words"]
 ---
 
 The reference page of [`int2words`](/reference/slots/core/int2words/) has its arguments, constraints and declaration.

@@ -1,8 +1,8 @@
 ---
 title: "How to use [eval]"
 description: "How to use [eval] - This is the by far most important slot in Hyperlambda, since it's arguably \"the heart\" of Hyperlambda, allowing Hyperlambda to execute."
-generated: true
 guide: true
+slots: ["eval"]
 ---
 
 The reference page of [`eval`](/reference/slots/core/eval/) has its arguments, constraints and declaration.

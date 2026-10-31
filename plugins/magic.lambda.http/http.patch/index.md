@@ -1,6 +1,6 @@
 ---
 title: "How to use [http.patch]"
-description: "How to use [http.patch] - This slot accepts a URL as its value, and optionally HTTP headers as a [headers] argument, and a mandatory it would resemble something such as the following."
+description: "How to use [http.patch] - This slot accepts a URL as its value, and optionally HTTP headers as a [headers] argument, and a mandatory [payload] argument, being whatever payload you want to transfer to the endpoint."
 generated: true
 guide: true
 ---

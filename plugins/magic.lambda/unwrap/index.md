@@ -1,32 +1,47 @@
 ---
 title: "How to use [unwrap]"
-description: "How to use [unwrap] - evaluates its lambda object once for each node, passing in the currently iterated node as a [.dp] argument."
-generated: true
+description: "How to use [unwrap] - This slot is useful if you want to evaluate some expression before the node where it's referenced is reached."
 guide: true
+slots: ["unwrap"]
 ---
 
 The reference page of [`unwrap`](/reference/slots/core/unwrap/) has its arguments, constraints and declaration.
 
-**[map]** iterates through each node being the result of its expression, the same way **[for-each]** does, and
-evaluates its lambda object once for each node, passing in the currently iterated node as a **[.dp]** argument.
-The value or nodes returned by the lambda object for each iteration, becomes the result of the slot. Each returned
-value becomes a `.` node, and any returned child nodes are added as they are. After evaluation, the children of
-**[map]** are replaced with the mapped result.
+This slot is useful if you want to evaluate some expression before the node where it's referenced is reached.
+Imagine the following.
 
-* __[map]__ - Expression selecting the nodes to map
-* Children - Lambda object evaluated once per selected node, and expected to return a value or nodes, for instance using **[return]** or **[yield]**
+```
+.src:Hello World
+unwrap:x:+
+.dest:x:@.src
+```
+
+In the above example, before the **[.dest]** node is reached by the Hyperlambda instruction pointer, the value
+of the **[.dest]** node will have been _"unwrapped"_ (evaluated), and its value will be _"Hello World"_.
+This slot becomes very handy when you invoke lambda objects with expressions, since
+it allows you to _"forward evaluate"_ said expressions inside your lambda object, _before_ the lambda object
+is actually executed.
+
+The **[unwrap]** slot can also optionally be supplied with a **[apply-lists]** argument as boolean true. By default the **[unwrap]** slot will throw an exception if you unwrap a node leading to multiple nodes. If you apply lists, it will instead add all the source nodes as destination nodes into the unwrapped node. Consider the following.
 
 ```
 .src
-   .:int:1
-   .:int:2
-   .:int:3
-map:x:@.src/*
-   math.increment:x:@.dp/#
-   unwrap:x:+/*
-   yield
-      .:x:@math.increment
+   foo1:bar1
+   foo2:bar2
+unwrap:x:+
+   apply-lists:bool:true
+.dest:x:@.src/*
 ```
 
-After execution, **[map]** has 3 children, with the values 2, 3 and 4. If an iteration returns neither a value nor
-any nodes, the slot throws an exception.
+If you remove the above **[apply-lists]** argument or set its value to false, the above code will throw an exception. If you keep the above **[apply-lists]** argument as is it will result in the following.
+
+```
+.src
+   foo1:bar1
+   foo2:bar2
+unwrap:x:+
+   apply-lists:bool:true
+.dest
+   foo1:bar1
+   foo2:bar2
+```

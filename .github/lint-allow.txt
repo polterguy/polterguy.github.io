@@ -4,4 +4,3 @@
 # is meant to be long. The others wait for their split, and each one is removed from here the
 # day it has been split.
 index.md
-plugins/magic.lambda/types/index.md

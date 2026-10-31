@@ -10,8 +10,6 @@ slot_json: "/reference/slots/core/types/slot.json"
 
 * **Returns**: Resolves to one child node per known CLR type name
 
-Guide: [How to use [types]](/plugins/magic.lambda/types/#how-to-use-types)
-
 ### Guide
 
 [How to use `types`](/plugins/magic.lambda/types-slot/)

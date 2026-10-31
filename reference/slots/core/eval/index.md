@@ -18,8 +18,6 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | lambda | no | Executable child slot evaluated in order. Can be repeated. |
 
-Guide: [How to use [eval]](/plugins/magic.lambda/executing/#how-to-use-eval)
-
 ### Guide
 
 [How to use `eval`](/plugins/magic.lambda/eval/)

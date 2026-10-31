@@ -19,8 +19,6 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | `[type]` | string | yes | Target Hyperlambda type name. |
 
-Guide: [How to use [convert]](/plugins/magic.lambda/types/#how-to-use-convert)
-
 ### Guide
 
 [How to use `convert`](/plugins/magic.lambda/convert/)

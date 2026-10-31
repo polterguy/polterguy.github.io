@@ -1,6 +1,6 @@
 ---
 title: "How to use [puppeteer.url]"
-description: "How to use [puppeteer.url] - Returns current URL. Arguments: Examples: puppeteer.url:SESSIONID"
+description: "How to use [puppeteer.url] - Returns current URL. Arguments: Examples:"
 generated: true
 guide: true
 ---

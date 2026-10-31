@@ -1,8 +1,8 @@
 ---
 title: "How to use [switch]"
-description: "How to use [switch] - first [case] node with a value matching the evaluated value of the [switch] node, and execute that .val:foo .result switch:x:@.val    case:bar       set-value:x:@.result          .:Oops    case:foo"
-generated: true
+description: "How to use [switch] - [switch] works similarly to a switch/case block in a traditional programming language, and will find the first [case] node with a value matching the evaluated value of the [switch] node, and exec..."
 guide: true
+slots: ["switch"]
 ---
 
 The reference page of [`switch`](/reference/slots/core/switch/) has its arguments, constraints and declaration.

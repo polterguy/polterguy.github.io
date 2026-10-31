@@ -11,8 +11,6 @@ slot_json: "/reference/slots/core/get-nodes/slot.json"
 * **Value** (`node-list`), required: Expression selecting the nodes to retrieve
 * **Returns**: Resolves to the nodes matched by the expression as child nodes
 
-Guide: [How to use [get-nodes]](/plugins/magic.lambda/nodes/#how-to-use-get-nodes)
-
 ### Guide
 
 [How to use `get-nodes`](/plugins/magic.lambda/get-nodes/)

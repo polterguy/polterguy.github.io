@@ -1,8 +1,8 @@
 ---
 title: "How to use [filter]"
 description: "How to use [filter] - Filter allows you to filter using a predicate."
-generated: true
 guide: true
+slots: ["filter"]
 ---
 
 The reference page of [`filter`](/reference/slots/core/filter/) has its arguments, constraints and declaration.

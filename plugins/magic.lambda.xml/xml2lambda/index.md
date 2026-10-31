@@ -1,6 +1,6 @@
 ---
 title: "How to use [xml2lambda]"
-description: "How to use [xml2lambda] - .xml:@\"<CATALOG>   <PLANT>     <COMMON>Bloodroot</COMMON>     <BOTANICAL>Sanguinaria canadensis</BOTANICAL>     <ZONE>4</ZONE>     <LIGHT>Mostly Shady</LIGHT>     <PRICE>$2.44</PRICE>     <AV..."
+description: "How to use [xml2lambda] - The above results in something resembling the following."
 generated: true
 guide: true
 ---

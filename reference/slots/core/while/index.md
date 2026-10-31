@@ -19,8 +19,6 @@ Required arguments come first, then the optional ones in the order they are decl
 | _any node name_ | lambda | yes | Condition node evaluated for truthiness. |
 | `[.lambda]` | lambda | yes | Executable lambda block. |
 
-Guide: [How to use [while]](/plugins/magic.lambda/loops/#how-to-use-while)
-
 ### Guide
 
 [How to use `while`](/plugins/magic.lambda/while/)

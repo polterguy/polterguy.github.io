@@ -22,8 +22,6 @@ Required arguments come first, then the optional ones in the order they are decl
 
 * **NextSiblingMustBeOneOf**: Must be followed by [.catch] and/or [.finally]; a bare [try] is a no-op because uncaught exceptions re-throw and [.finally] alone would run regardless (`[.catch]`, `[.finally]`)
 
-Guide: [How to use [try]](/plugins/magic.lambda/exceptions/#how-to-use-try)
-
 ### Guide
 
 [How to use `try`](/plugins/magic.lambda/try/)

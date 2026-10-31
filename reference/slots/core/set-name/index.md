@@ -18,8 +18,6 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | string | no | Single source child evaluated to a string; the resolved value becomes the new node name. Omit to set the name to null. |
 
-Guide: [How to use [set-name]](/plugins/magic.lambda/nodes/#how-to-use-set-name)
-
 ### Guide
 
 [How to use `set-name`](/plugins/magic.lambda/set-name/)

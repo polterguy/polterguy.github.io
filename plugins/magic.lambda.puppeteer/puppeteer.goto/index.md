@@ -1,6 +1,6 @@
 ---
 title: "How to use [puppeteer.goto]"
-description: "How to use [puppeteer.goto] - Navigates to a URL. Arguments: Examples: puppeteer.goto:SESSIONID    url:\"https://ainiro.io\" puppeteer.goto:SESSIONID    url:\"https://ainiro.io\"    timeout:30000    wait-until:networkidle2"
+description: "How to use [puppeteer.goto] - Navigates to a URL. Arguments: Examples:"
 generated: true
 guide: true
 ---

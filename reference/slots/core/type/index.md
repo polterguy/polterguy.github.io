@@ -11,8 +11,6 @@ slot_json: "/reference/slots/core/type/slot.json"
 * **Value** (`single-object`), required: Expression selecting the value whose CLR type should be inspected
 * **Returns**: Resolves to the runtime type name of the first matching value
 
-Guide: [How to use [type]](/plugins/magic.lambda/types/#how-to-use-type)
-
 ### Guide
 
 [How to use `type`](/plugins/magic.lambda/type/)

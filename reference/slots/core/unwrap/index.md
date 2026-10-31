@@ -18,8 +18,6 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | `[apply-lists]` | bool | no | Whether list results should be applied while unwrapping. Default: `false`. |
 
-Guide: [How to use [unwrap]](/plugins/magic.lambda/nodes/#how-to-use-unwrap)
-
 ### Guide
 
 [How to use `unwrap`](/plugins/magic.lambda/unwrap/)

@@ -1,11 +1,9 @@
 ---
-title: "How to use [types]"
-description: "How to use [types] - This slot returns all Hyperlambda types your current installation supports."
-generated: true
+title: "How to use [types-slot]"
+description: "How to use [types-slot] - This slot returns all Hyperlambda types your current installation supports."
 guide: true
+slots: ["types"]
 ---
-
-The reference page of [`types`](/reference/slots/core/types/) has its arguments, constraints and declaration.
 
 This slot returns all Hyperlambda types your current installation supports.
 

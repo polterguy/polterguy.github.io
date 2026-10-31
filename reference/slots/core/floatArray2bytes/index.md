@@ -11,8 +11,6 @@ slot_json: "/reference/slots/core/floatArray2bytes/slot.json"
 * **Value** (`float-list`), required: Float values to convert to bytes
 * **Returns**: Resolves to the float array converted to bytes
 
-Guide: [How to use [floatArray2bytes]](/plugins/magic.lambda/types/#how-to-use-floatarray2bytes)
-
 ### Guide
 
 [How to use `floatArray2bytes`](/plugins/magic.lambda/floatArray2bytes/)

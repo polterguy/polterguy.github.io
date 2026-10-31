@@ -11,8 +11,6 @@ slot_json: "/reference/slots/slot/slot.signature/slot.json"
 * **Value** (`slot-name`), required: Name of the compiled slot to inspect
 * **Returns**: Resolves to input and output contract metadata for the requested slot
 
-Guide: [How to use [slot.signature]](/plugins/magic.lambda/types/#how-to-use-slotsignature)
-
 ### Guide
 
 [How to use `slot.signature`](/plugins/magic.lambda/slot.signature/)

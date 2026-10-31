@@ -1,8 +1,8 @@
 ---
 title: "How to use [apply]"
 description: "How to use [apply] - This slot takes an expression in addition to a list of arguments, and \"applies\" the arguments unto the expression's result node set, allowing you to perform dynamic substitutions on lambda hierarc..."
-generated: true
 guide: true
+slots: ["apply"]
 ---
 
 The reference page of [`apply`](/reference/slots/core/apply/) has its arguments, constraints and declaration.

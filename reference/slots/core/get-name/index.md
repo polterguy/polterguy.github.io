@@ -11,8 +11,6 @@ slot_json: "/reference/slots/core/get-name/slot.json"
 * **Value** (`single-object`), required: Expression selecting the node whose name should be retrieved
 * **Returns**: Resolves to the name of the first matching node
 
-Guide: [How to use [get-name]](/plugins/magic.lambda/nodes/#how-to-use-get-name)
-
 ### Guide
 
 [How to use `get-name`](/plugins/magic.lambda/get-name/)

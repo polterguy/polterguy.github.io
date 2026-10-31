@@ -12,8 +12,6 @@ slot_json: "/reference/slots/core/get-context/slot.json"
 * **Returns**: Resolves to the requested stack value or context object
 * **Scope**: requires `context` - Requires a named context created by [context] using the same input value
 
-Guide: [How to use [get-context]](/plugins/magic.lambda/nodes/#how-to-use-get-context)
-
 ### Guide
 
 [How to use `get-context`](/plugins/magic.lambda/get-context/)

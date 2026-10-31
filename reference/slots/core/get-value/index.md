@@ -11,8 +11,6 @@ slot_json: "/reference/slots/core/get-value/slot.json"
 * **Value** (`single-object`), required: Expression selecting the node whose value should be retrieved
 * **Returns**: Resolves to the value of the first matching node
 
-Guide: [How to use [get-value]](/plugins/magic.lambda/nodes/#how-to-use-get-value)
-
 ### Guide
 
 [How to use `get-value`](/plugins/magic.lambda/get-value/)

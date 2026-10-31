@@ -1,6 +1,6 @@
 ---
 title: "How to use [puppeteer.click]"
-description: "How to use [puppeteer.click] - Clicks a selector. Arguments: Examples: puppeteer.click:SESSIONID    selector:\"#submitcontactformbutton\" puppeteer.click:SESSIONID    selector:\"#submitcontactformbutton\"    click-count:2"
+description: "How to use [puppeteer.click] - Clicks a selector. Arguments: Examples:"
 generated: true
 guide: true
 ---

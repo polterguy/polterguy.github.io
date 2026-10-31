@@ -11,8 +11,6 @@ slot_json: "/reference/slots/core/int2words/slot.json"
 * **Value** (`integer,number`), required: Integer value to convert to words
 * **Returns**: Resolves to the supplied integer written as words
 
-Guide: [How to use [int2words]](/plugins/magic.lambda/types/#how-to-use-int2words)
-
 ### Guide
 
 [How to use `int2words`](/plugins/magic.lambda/int2words/)

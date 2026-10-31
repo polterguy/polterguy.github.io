@@ -1,6 +1,6 @@
 ---
 title: "Joins"
-description: "Joins - The project supports joins by parametrizing your [sql.read] invocation with [join] arguments, beneath your If you have created the Sakila example database from Oracle, and you're using MySQL as your d"
+description: "Joins - The project supports joins by parametrizing your [sql.read] invocation with [join] arguments, beneath your [table] argument(s)."
 generated: true
 ---
 

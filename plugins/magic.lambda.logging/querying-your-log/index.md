@@ -1,6 +1,6 @@
 ---
 title: "Querying your log"
-description: "Querying your log - your particular log implementation can actually do what you need for it to do, since not all implementations have the same capabilities - Implying things such as filtering log items according to conte"
+description: "Querying your log - Notice - To see the capabilities of your particular log implementation please invoke [log.capabilities] and verify your particular log implementation can actually do what you need for it to do, since"
 generated: true
 ---
 

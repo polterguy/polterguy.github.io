@@ -1,8 +1,8 @@
 ---
 title: "How to use [convert]"
 description: "How to use [convert] - This slot converts the value of an expression from its original type, to whatever [type] declaration you supply as its argument."
-generated: true
 guide: true
+slots: ["convert"]
 ---
 
 The reference page of [`convert`](/reference/slots/core/convert/) has its arguments, constraints and declaration.

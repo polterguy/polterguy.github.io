@@ -11,8 +11,6 @@ slot_json: "/reference/slots/core/not-null/slot.json"
 * **Value** (`node-list,single-object`), required: Expression selecting the value to test for null
 * **Returns**: Returns true if the expression resolves to a non-null value
 
-Guide: [How to use [not-null]](/plugins/magic.lambda/nodes/#how-to-use-not-null)
-
 ### Guide
 
 [How to use `not-null`](/plugins/magic.lambda/not-null/)

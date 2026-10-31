@@ -1,8 +1,8 @@
 ---
 title: "How to use [mt]"
-description: "How to use [mt] - its second argument. Consider the following."
-generated: true
+description: "How to use [mt] - [mt] will do a comparison between its two arguments, and only return true if its first argument is \"more than\" its second argument."
 guide: true
+slots: ["mt"]
 ---
 
 The reference page of [`mt`](/reference/slots/core/mt/) has its arguments, constraints and declaration.

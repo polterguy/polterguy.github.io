@@ -1,8 +1,8 @@
 ---
 title: "How to use [not]"
-description: "How to use [not] - not    .:bool:true not    .:bool:false with both [or] and [and]."
-generated: true
+description: "How to use [not] - [not] expects exactly one argument, and will negate its boolean value, whatever it is, such as the following illustrates."
 guide: true
+slots: ["not"]
 ---
 
 The reference page of [`not`](/reference/slots/core/not/) has its arguments, constraints and declaration.

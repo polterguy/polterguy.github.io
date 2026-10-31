@@ -19,8 +19,6 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | object | no | Argument passed to the invoked lambda through its [.arguments] node. Can be repeated. |
 
-Guide: [How to use [invoke]](/plugins/magic.lambda/executing/#how-to-use-invoke)
-
 ### Guide
 
 [How to use `invoke`](/plugins/magic.lambda/invoke/)

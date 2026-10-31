@@ -122,7 +122,14 @@ def trim(lines):
 
 
 def first_sentence(lines, limit=200):
-    text = ' '.join(l for l in lines if l.strip() and not l.startswith(('#', '```', '*', '|', '<', '-', '>')))
+    skip = re.compile(r'(#|```|\||<|>|[*-]\s)')
+    fence, kept = False, []
+    for l in lines:
+        if l.startswith('```'):
+            fence = not fence
+        elif l.strip() and not fence and not skip.match(l):
+            kept.append(l)
+    text = ' '.join(kept)
     text = re.sub(r'\[([^\]]*)\]\([^)]*\)', r'\1', text)
     text = re.sub(r'[*_`]', '', text).strip()
     m = re.match(r'(.{20,%d}?[.!?])(\s|$)' % limit, text)
@@ -434,6 +441,16 @@ def collect(magic, names):
 
     guides = {p: list(r['guide_pages']) for p, r in results.items()}
     urls = {s_: g['url'] for p in guides for g in guides[p] for s_ in g['slots']}
+
+    # A guide somebody wrote as a page of its own, "guide: true" without "generated: true", is used as it is.
+    for path in glob.glob(os.path.join(ROOT, 'plugins', '*', '*', 'index.md')):
+        with open(path, encoding='utf-8') as f:
+            text = f.read()
+        if 'guide: true' in text and 'generated: true' not in text:
+            front = split_front_matter(text)[0]
+            url = '/' + os.path.relpath(os.path.dirname(path), ROOT).replace(os.sep, '/') + '/'
+            for s_ in json.loads(front.get('slots', '[]')):
+                urls[s_] = url
 
     def sources_of(plugin, hand_pages=()):
         r = results.get(plugin)

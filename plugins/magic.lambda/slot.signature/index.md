@@ -1,8 +1,8 @@
 ---
 title: "How to use [slot.signature]"
 description: "How to use [slot.signature] - Returns the documented input and output contract of a single compiled slot, given its name as the value of the slot, or an expression leading to its name."
-generated: true
 guide: true
+slots: ["slot.signature"]
 ---
 
 The reference page of [`slot.signature`](/reference/slots/slot/slot.signature/) has its arguments, constraints and declaration.

@@ -1,8 +1,8 @@
 ---
 title: "How to use [get-count]"
 description: "How to use [get-count] - This slot returns the number of nodes its expression is pointing to."
-generated: true
 guide: true
+slots: ["get-count"]
 ---
 
 The reference page of [`get-count`](/reference/slots/core/get-count/) has its arguments, constraints and declaration.

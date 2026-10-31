@@ -1,6 +1,6 @@
 ---
 title: "How to use [html2lambda]"
-description: "How to use [html2lambda] - .html:@\"<html>   <head>     <title>Howdy</title>   </head>   <body>     <p class=\"\"foo\"\">Howdy <strong>world</strong> - This is cool!</p>   </body> html2lambda:x:- The above results in somet..."
+description: "How to use [html2lambda] - The above results in something resembling the following."
 generated: true
 guide: true
 ---

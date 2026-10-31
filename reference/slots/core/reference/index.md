@@ -11,8 +11,6 @@ slot_json: "/reference/slots/core/reference/slot.json"
 * **Value** (`single-object`), required: Expression selecting the node to reference
 * **Returns**: Resolves to a reference to the first matching node value
 
-Guide: [How to use [reference]](/plugins/magic.lambda/nodes/#how-to-use-reference)
-
 ### Guide
 
 [How to use `reference`](/plugins/magic.lambda/reference/)

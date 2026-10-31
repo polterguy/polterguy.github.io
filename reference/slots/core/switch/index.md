@@ -25,8 +25,6 @@ Required arguments come first, then the optional ones in the order they are decl
 
 * **OnlyChildren**: Only the listed child names are accepted (`[case]`, `[default]`)
 
-Guide: [How to use [switch]](/plugins/magic.lambda/branching/#how-to-use-switch)
-
 ### Guide
 
 [How to use `switch`](/plugins/magic.lambda/switch/)

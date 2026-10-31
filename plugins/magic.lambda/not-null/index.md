@@ -1,8 +1,8 @@
 ---
 title: "How to use [not-null]"
-description: "How to use [not-null] - If not, it will return false."
-generated: true
+description: "How to use [not-null] - [not-null] will evaluate to true if its specified expression returns nodes and at least one of those nodes has a value."
 guide: true
+slots: ["not-null"]
 ---
 
 The reference page of [`not-null`](/reference/slots/core/not-null/) has its arguments, constraints and declaration.

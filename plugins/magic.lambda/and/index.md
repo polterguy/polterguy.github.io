@@ -1,8 +1,8 @@
 ---
 title: "How to use [and]"
-description: "How to use [and] - the following. // Evaluates to false."
-generated: true
+description: "How to use [and] - [and] requires two or more arguments, and will only evaluate to true, if all of its arguments evaluates to true."
 guide: true
+slots: ["and"]
 ---
 
 The reference page of [`and`](/reference/slots/core/and/) has its arguments, constraints and declaration.

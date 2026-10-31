@@ -1,8 +1,8 @@
 ---
 title: "How to use [map]"
-description: "How to use [map] - evaluates its lambda object once for each node, passing in the currently iterated node as a [.dp] argument."
-generated: true
+description: "How to use [map] - [map] iterates through each node being the result of its expression, the same way [for-each] does, and evaluates its lambda object once for each node, passing in the currently iterated node as a [.dp]"
 guide: true
+slots: ["map"]
 ---
 
 The reference page of [`map`](/reference/slots/core/map/) has its arguments, constraints and declaration.

@@ -1,8 +1,8 @@
 ---
 title: "How to use [try]"
 description: "How to use [try] - This slot allows you to create a try/catch/finally block in Hyperlambda, from where exceptions are caught, and optionally handled in a [.catch] lambda, and/or a [.finally] lambda."
-generated: true
 guide: true
+slots: ["try"]
 ---
 
 The reference page of [`try`](/reference/slots/core/try/) has its arguments, constraints and declaration.

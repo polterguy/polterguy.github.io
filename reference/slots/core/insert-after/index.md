@@ -18,8 +18,6 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | _any node name_ | lambda | yes | Source container or node-producing slot evaluated before its child nodes are applied to the selected target location. Can be repeated. |
 
-Guide: [How to use [insert-after]](/plugins/magic.lambda/nodes/#how-to-use-insert-after)
-
 ### Guide
 
 [How to use `insert-after`](/plugins/magic.lambda/insert-after/)
