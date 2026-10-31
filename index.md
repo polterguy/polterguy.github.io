@@ -28,6 +28,14 @@ faq:
     a: "Yes. Point the Endpoint Generator at any MySQL, PostgreSQL, SQL Server, MariaDB or SQLite database, and it generates a complete, secured CRUD API from your existing schema in seconds."
   - q: "Can I wrap my database into a CRUD AI agent?"
     a: "Yes, in seconds. The CRUD generator wraps your database in secured endpoints, which become tools an AI agent can invoke over MCP - letting it read and write your data through natural language. And when the agent needs more than plain CRUD, the Hyperlambda Generator lets you add custom business logic on top, described in plain English."
+  - q: "Can I wrap a third party API in Magic?"
+    a: "Yes. The Import API tab of the Endpoint Generator reads an OpenAPI specification, OpenAPI 3.x or Swagger 2.0 in JSON or YAML, and generates Hyperlambda endpoints wrapping the operations you select. They are documented from the specification, required arguments are validated before the upstream API is contacted, and the credential is read from your configuration, never written into a file. Imported endpoints are self describing MCP tools."
+  - q: "Can I let other people or AI agents run code on my cloudlet safely?"
+    a: "Yes. The Sandbox API tab generates one endpoint that accepts Hyperlambda, or plain English turned into Hyperlambda, and runs it inside a whitelist you define per role. Every function the code uses is checked against your cloudlet before anything runs, a function you did not grant does not exist as far as the caller is concerned, and the rate limit and timeout are set per role."
+  - q: "Can I put my own knowledge behind an API?"
+    a: "Yes. The Search endpoint tab generates an endpoint that searches the training snippets of one machine learning type, by keyword, by meaning, or both, and returns the best matches. It invokes no AI model, and a keyword search costs nothing per call."
+  - q: "Why does Magic generate code instead of interpreting configuration?"
+    a: "Because generated code is ordinary Hyperlambda that you can read, edit, version control and extend, instead of settings hidden inside a platform. It works because Hyperlambda is homoiconic: a program is a tree of nodes, the same structure the generators build and inspect, which is also how Magic verifies generated code and sandboxes code sent by callers."
   - q: "Is Magic secure?"
     a: "Magic is built on JWT authentication and role based access control, with every endpoint declaring which roles may invoke it. It also acts as an OAuth server, and supports OIDC for federated sign-in through providers such as Google and Microsoft."
   - q: "Is Magic open source, and where can I run it?"
@@ -58,16 +66,16 @@ Magic is a general purpose backend platform, but some things it is _particularly
 * **Custom AI chatbots** - crawl your website, and get an embeddable chatbot trained on your own content, with widgets and AI functions
 * **Wrapping legacy databases** - point Magic at an existing MySQL, PostgreSQL, SQL Server or MariaDB database, and get a secured, modern web API in seconds
 * **Managing your databases** - design schemas visually, execute SQL from the browser, or let an AI agent administer your database through natural language
+* **Web APIs without code** - CRUD endpoints, custom SQL endpoints, safe code-executing sandboxes, search endpoints and wrappers around third party APIs - generated, not written
+* **Background jobs and automation** - scheduled tasks written in Hyperlambda, or generated from plain English descriptions
+* **Hosting static websites and SPAs** - your cloudlet serves files from /etc/www/, turning it into a web server for landing pages and single-page apps, right next to the APIs powering them
+* **Email, workflows and integrations** - SMTP, Stripe, Shopify, WordPress, HubSpot, NetSuite and more, through installable plugins
 
 ## The dashboard is an agent too
 
 You don't need an external AI client to get the benefits above. Magic's dashboard ships with **[Chat Ops](/dashboard/chat-ops/)** - press CTRL+. anywhere, describe what you want in plain English, and the dashboard operates your cloudlet for you, generating endpoints, running SQL, reading your log to diagnose a failure, and showing every function it invoked. It is the MCP capability turned inwards, running as the user you signed in as, and it needs nothing beyond an OpenAI API key.
 
 Getting around is just as quick. The **command palette** - CTRL+K, or COMMAND+K on a Mac - is one search box that jumps you to any page, file, endpoint, task or machine learning model in your cloudlet, with fuzzy matching, and opens tasks and models straight in their editor. CTRL+/ lists every [keyboard shortcut](/dashboard/hyper-ide/#keyboard-shortcuts) the dashboard supports.
-* **Web APIs without code** - CRUD endpoints, custom SQL endpoints, aggregations and keyword search - generated, not written
-* **Background jobs and automation** - scheduled tasks written in Hyperlambda, or generated from plain English descriptions
-* **Hosting static websites and SPAs** - your cloudlet serves files from /etc/www/, turning it into a web server for landing pages and single-page apps, right next to the APIs powering them
-* **Email, workflows and integrations** - SMTP, Stripe, Shopify, WordPress, HubSpot, NetSuite and more, through installable plugins
 
 ## AI Generated Code - "Vibe Coding"
 
@@ -134,6 +142,8 @@ additional features simplifying your life as a software developer.
 
 By combining the Endpoint Generator with the [Hyperlambda Generator](/dashboard/hyperlambda-generator/) and an AI agent connected over MCP, you can create entire backends straight from natural language.
 
+The Endpoint Generator has five tabs, and each one is meta programming in practice: you describe what you want, and Magic writes the Hyperlambda source for it - ordinary files you can open, read, edit and version control afterwards. CRUD endpoints wrapping a database, [SQL](#the-sql-endpoint-generator) wrapped into endpoints, a [Sandbox API](#the-sandbox-api-generator) that safely runs the code its callers send, a [Search API](#the-search-api-generator) putting your own knowledge behind an endpoint, and an [API Import](#the-api-import-generator) wrapping somebody else's API. It works because Hyperlambda is homoiconic - a program is a tree of nodes, the very structure the generators build and inspect. [The slot reference](/reference/slots/) is the proof: it was not written either. Hyperlambda wrote it, by asking the running system about itself.
+
 ## The SQL Endpoint Generator
 
 Magic allows you to create HTTP endpoints using SQL. This allows you to compose some SQL statement,
@@ -146,6 +156,32 @@ reference in your SQL, and click the _"Generate"_ button.
 The SQL endpoint generator allows you to secure your endpoints, declare what arguments your endpoints can handle,
 use all 5 most common HTTP verbs for your endpoints, etc. You can use it with SQL Server, MySQL, MariaDB,
 PostgreSQL, or SQLite - And if you don't know SQL, then SQL Studio even has integrated support for generating SQL from natural language.
+
+## The Sandbox API Generator
+
+The CRUD and SQL generators turn _your_ data and _your_ SQL into fixed endpoints. The _"Sandbox API"_ tab does something more unusual: it publishes one endpoint that accepts **code** - Hyperlambda, or a plain English instruction that the [Hyperlambda Generator](/dashboard/hyperlambda-generator/) turns into Hyperlambda - from whoever calls it, and runs it inside a whitelist that you define, function by function.
+
+This is where meta programming and homoiconicity earn their keep. Hyperlambda code is a tree of nodes, so before anything runs, Magic can parse the caller's code, check that every function it mentions actually exists on your server, and refuse it when a function is not in the caller's vocabulary. A function you did not grant simply does not exist as far as the caller's code is concerned. You build the policy in the dashboard - a base vocabulary for everybody plus per-role grants, with pinned arguments such as one single database or one single folder, a rate limit and a timeout per role - and root is trusted completely.
+
+<img src="/images/sandbox-api-overview.webp" alt="The Sandbox API tab, with a base vocabulary for everybody and a role rule for admin that can only read the chinook database" loading="lazy" width="800" height="756">
+
+Every sandbox endpoint answers a `describe` call, listing exactly what the caller may do without executing anything. It is also an MCP tool with its own description, and it is listed in `/.well-known/hyperlambda-agent`, so AI agents can find it without any setup. You can try one yourself, since the [public sandbox behind the slot reference](/reference/slots/#the-public-sandbox) is a generated Sandbox API endpoint, open to everybody. Read more about [the Sandbox API generator](/dashboard/endpoint-generator/#the-sandbox-api-generator).
+
+## The Search API Generator
+
+Magic can put your own knowledge behind an HTTP endpoint. The _"Search endpoint"_ tab generates one endpoint that searches the training snippets of a single [machine learning](/dashboard/machine-learning/) type, and returns the best matches - by keyword (BM25), by meaning (vectors), or both. Everything except the query is fixed inside the generated file; the type, the search mode, what comes back and how many matches, so a caller can only send a search string.
+
+<img src="/images/search-api-overview.webp" alt="The Search endpoint tab, set up to search the docs_ainiro_io machine learning type by keyword with a 300 second cache" loading="lazy" width="800" height="341">
+
+It is retrieval only, no AI model is invoked, which makes it cheap and fast. A keyword search needs no OpenAI key and costs nothing per call, while a search by meaning spends one OpenAI embedding per uncached call, which is why the tab applies a rate limit by default and lets callers cache an answer. It is a good fit behind a website's search box, or as a tool for an AI agent over MCP - the generator writes the file level comment Magic exposes as the tool's description. Read more about [the Search endpoint generator](/dashboard/endpoint-generator/#search-endpoint---searching-a-machine-learning-type).
+
+## The API Import Generator
+
+The _"Import API"_ tab works the other way around from the rest. Instead of reading your database, it reads somebody else's [OpenAPI](https://www.openapis.org/) specification - Stripe, GitHub, Slack, or any API that publishes one, OpenAPI 3.x or Swagger 2.0, JSON or YAML - and generates Hyperlambda endpoints in your cloudlet wrapping the operations you tick. A specification can hold more than a thousand operations, so you filter and select, give the module a name, and click _"Import"_.
+
+<img src="/images/import-api-overview.webp" alt="The Import API tab having read the Swagger Petstore specification, with the eight operations of its pet group selected" loading="lazy" width="800" height="727">
+
+The generated endpoints are documented from the specification. Every parameter becomes a typed argument with a comment, required arguments are validated before the upstream API is ever contacted, and the credential is read from your configuration when the endpoint is invoked, never written into a file. That documentation is also exactly what an MCP client reads when deciding how to call a tool, so an imported API arrives as a set of self describing tools an AI agent can use without further work. Read more about [the Import API generator](/dashboard/endpoint-generator/#import-api---wrapping-a-third-party-api).
 
 ## SQL Studio
 
