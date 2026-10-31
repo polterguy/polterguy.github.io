@@ -14820,6 +14820,50 @@ pass in an **[overwrite]** argument and set its value to false, at which point a
 will be thrown if the file exists from before.
 
 
+# log.* slots
+
+URL: https://docs.ainiro.io/reference/slots/log/
+Description: The 9 slots named log.* in Magic Cloud and Hyperlambda, each with its own page.
+
+9 slots, each with its own page and JSON declaration. See [how this reference is built](https://docs.ainiro.io/reference/slots/).
+
+| Slot | Description |
+|---|---|
+| [`log.capabilities`](https://docs.ainiro.io/reference/slots/log/log.capabilities/) | Returns capabilities of the current log provider. |
+| [`log.count`](https://docs.ainiro.io/reference/slots/log/log.count/) | Returns the total number of log entries, optionally restricted to a single content type. |
+| [`log.debug`](https://docs.ainiro.io/reference/slots/log/log.debug/) | Writes a debug-level log entry; useful during development for high-volume diagnostic detail. |
+| [`log.error`](https://docs.ainiro.io/reference/slots/log/log.error/) | Writes an error-level log entry; use for caught exceptions or failed operations that need follow-up. |
+| [`log.fatal`](https://docs.ainiro.io/reference/slots/log/log.fatal/) | Writes a fatal-level log entry; reserve for unrecoverable failures that warrant immediate attention. |
+| [`log.get`](https://docs.ainiro.io/reference/slots/log/log.get/) | Returns a log entry by ID. |
+| [`log.info`](https://docs.ainiro.io/reference/slots/log/log.info/) | Writes an informational log entry capturing routine, non-error events of interest. |
+| [`log.query`](https://docs.ainiro.io/reference/slots/log/log.query/) | Returns recent log entries with most-recent-first ordering; supports optional content-type filtering and pagination. |
+| [`log.timeshift`](https://docs.ainiro.io/reference/slots/log/log.timeshift/) | Aggregates log entries into time buckets. |
+
+
+# [log.timeshift]
+
+URL: https://docs.ainiro.io/reference/slots/log/log.timeshift/
+Description: log.timeshift is a slot in the log namespace of Magic Cloud. Aggregates log entries into time buckets.
+
+This slot counts the log items matching a search string per day, for the last two weeks, and is useful for
+creating a time series of how often something is logged. The value of the slot is mandatory, and must be a
+string a log item's content is matched against, or a log entry type. As with filtering, you should invoke
+**[log.capabilities]** to verify that your log implementation has `can-timeshift` set to true before relying upon it.
+
+```
+log.timeshift:tick
+```
+
+The slot returns one unnamed child node per day, starting with today (UTC) and moving backwards in time, and
+each child has the following two arguments.
+
+* __[when]__ - The date of the bucket, formatted as `yyyy-MM-dd`
+* __[count]__ - Number of matching log items for that day, which is 0 for days without matches
+
+If `tick` was logged twice today, the first returned node would have today's date as its **[when]** and 2 as its
+**[count]**, while the second node, representing yesterday, would have a **[count]** of 0.
+
+
 # mail.* slots
 
 URL: https://docs.ainiro.io/reference/slots/mail/
