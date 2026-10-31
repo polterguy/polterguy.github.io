@@ -1,300 +1,533 @@
 #!/usr/bin/env python3
 """
-Builds the generated slot reference: one markdown page per plugin, from the [Slot(...)]
-attributes and signature classes in the C# source of the Magic repository.
+Builds the generated slot reference under reference/slots/, from the running system.
 
-Usage: build-slot-reference.py <magic-checkout> [--out <docs-root>] [--plugin <name>]
+Nothing here reads source code. A read-only Hyperlambda endpoint on hyperlambda.dev lists
+every compiled slot with the slots [vocabulary], [slot.description] and
+[slot.signature], and this script renders what comes back. The endpoint is restricted to
+a service account, whose token is read from HYPERLAMBDA_DOCS_TOKEN.
 
-The source is read, never built, so this runs anywhere with python and a checkout of
-https://github.com/polterguy/magic. Each [Slot] attribute stack on one class is one
-slot: the first attribute is the primary name, the others are listed as aliases.
-Arguments come from the signature class named by SignatureType; the forms understood
-are `new SlotChild { ... }` initialisers, the Option/List/Map helpers, and signature
-classes forwarding to a base constructor. A slot whose signature uses another form is
-still listed, just without an arguments table.
+Usage: build-slot-reference.py [--input slots.json] [--min-slots 300]
 
-Hand-written guides stay where they are. Each entry links to the guide section for the
-slot when a heading such as "How to use [io.file.load]" exists in the plugin's page.
+With --input the endpoint is not called, which is how to run this offline. The file is
+the endpoint's response, a list of objects with [name], [description] and [signature].
+
+The script refuses to write anything when fewer than --min-slots slots come back, since
+a truncated answer must never replace the reference. Hand-written guides are untouched,
+and each entry links to the section of a guide that names its slot.
 """
 
 import argparse
 import glob
+import json
 import os
 import re
+import shutil
+import sys
+import urllib.error
+import urllib.request
 
-STR = r'"((?:[^"\\]|\\.)*)"'
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+OUT = os.path.join(ROOT, 'reference', 'slots')
+ENDPOINT_URL = 'https://hyperlambda.dev/magic/modules/docs/slots'
+PLAYGROUND_URL = 'https://hyperlambda.dev/magic/modules/docs/playground'
 
-
-def unescape(s):
-    return s.replace('\\"', '"').replace('\\\\', '\\').replace('\\n', ' ')
+# Cloudflare in front of the server refuses the default user agent of most http libraries.
+USER_AGENT = 'magic-docs-sync/1.0 (+https://docs.ainiro.io/reference/slots/)'
 
 
 def read(path):
-    with open(path, encoding='utf-8-sig', errors='ignore') as f:
-        return f.read()
+    with open(path, encoding='utf-8-sig') as f:
+        return f.read().replace('\r\n', '\n')
 
 
-def attribute_spans(text):
-    """Yields (start, end) of every [Slot(...)] attribute, honouring strings and parentheses."""
-    for m in re.finditer(r'\[Slot\(', text):
-        i, depth, in_str = m.end(), 1, False
-        while i < len(text) and depth:
-            c = text[i]
-            if in_str:
-                if c == '\\':
-                    i += 1
-                elif c == '"':
-                    in_str = False
-            elif c == '"':
-                in_str = True
-            elif c == '(':
-                depth += 1
-            elif c == ')':
-                depth -= 1
-            i += 1
-        yield m.start(), i + 1  # include the closing ]
+# ------------------------------------------------------------------------------------
+# Fetching.
+# ------------------------------------------------------------------------------------
+
+def fetch():
+    token = os.environ.get('HYPERLAMBDA_DOCS_TOKEN')
+    if not token:
+        sys.exit('HYPERLAMBDA_DOCS_TOKEN is not set, and no --input file was given.')
+    request = urllib.request.Request(ENDPOINT_URL, headers={
+        'Authorization': 'Bearer ' + token,
+        'User-Agent': USER_AGENT,
+    })
+    try:
+        with urllib.request.urlopen(request, timeout=120) as response:
+            return json.load(response)
+    except urllib.error.HTTPError as e:
+        sys.exit('The slot endpoint answered %d: %s' % (e.code, e.read().decode()[:300]))
 
 
-def field(body, name):
-    m = re.search(r'\b%s\s*=\s*%s' % (name, STR), body)
-    return unescape(m.group(1)) if m else None
+# ------------------------------------------------------------------------------------
+# Parsing the Hyperlambda text that [lambda2hyper] writes for a signature.
+# ------------------------------------------------------------------------------------
+
+def unquote(value):
+    if len(value) >= 2 and value[0] == '"' and value[-1] == '"':
+        return (value[1:-1].replace('\\n', '\n').replace('\\t', '\t')
+                .replace('\\r', '').replace('\\"', '"').replace('\\\\', '\\'))
+    return value
 
 
-def parse_slots(text):
-    """Returns a list of slots found in one C# file, aliases grouped by class."""
-    spans = list(attribute_spans(text))
-    groups, current = [], []
-    for start, end in spans:
-        if current and text[current[-1][1]:start].strip() == '':
-            current.append((start, end))
+def convert(value):
+    typed = re.match(r'(bool|int|long|decimal|double):(.*)$', value, re.S)
+    if not typed:
+        return unquote(value)
+    kind, raw_value = typed.groups()
+    if kind == 'bool':
+        return raw_value == 'true'
+    try:
+        return float(raw_value) if kind in ('decimal', 'double') else int(raw_value)
+    except ValueError:
+        return raw_value
+
+
+def verbatim(first, lines, i):
+    """Reads an @"..." string that continues over several lines, returns (text, next index)."""
+    text = first
+    while True:
+        m = re.search(r'"(?!")', text.replace('""', '\0\0'))
+        if m:
+            return text[:m.start()].replace('""', '"'), i
+        if i >= len(lines):
+            return text, i
+        text += '\n' + lines[i]
+        i += 1
+
+
+def parse_hl(text):
+    """Parses Hyperlambda text into nodes of the form {name, value, children}."""
+    root = {'name': '', 'value': None, 'children': []}
+    stack = [(-1, root)]
+    lines = text.replace('\r\n', '\n').split('\n')
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        i += 1
+        if not line.strip():
+            continue
+        depth = (len(line) - len(line.lstrip(' '))) // 3
+        name, sep, val = line.strip().partition(':')
+        if sep and val.startswith('@"'):
+            val, i = verbatim(val[2:], lines, i)
+        elif sep:
+            val = convert(val)
         else:
-            if current:
-                groups.append(current)
-            current = [(start, end)]
-    if current:
-        groups.append(current)
+            val = None
+        node = {'name': name, 'value': val, 'children': []}
+        while stack[-1][0] >= depth:
+            stack.pop()
+        stack[-1][1]['children'].append(node)
+        stack.append((depth, node))
+    return root
 
-    slots = []
-    for group in groups:
-        tail = text[group[-1][1]:]
-        cls = re.match(r'\s*(?:public|internal)\s+(?:sealed\s+|static\s+)?class\s+(\w+)', tail)
-        # One entry per [Slot] attribute, except attributes saying exactly the same thing,
-        # which are aliases of the first one (such as [load-file] and [io.file.load]).
-        entries = []
-        for start, end in group:
-            body = text[start:end]
-            name = field(body, 'Name')
-            if not name:
-                continue
-            sig = re.search(r'SignatureType\s*=\s*typeof\(([\w.:]+)\)', body)
-            entry = {
-                'names': [name],
-                'class': cls.group(1) if cls else None,
-                'description': field(body, 'Description') or '',
-                'value_kind': field(body, 'ValueKind'),
-                'value_description': field(body, 'ValueDescription'),
-                'value_required': bool(re.search(r'ValueRequired\s*=\s*true', body)),
-                'returns': field(body, 'ReturnsDescription'),
-                'signature': re.split(r'[.:]', sig.group(1))[-1] if sig else None,
-            }
-            same = next((e for e in entries if all(
-                e[k] == entry[k] for k in ('description', 'value_kind', 'value_description',
-                                           'value_required', 'returns', 'signature'))), None)
-            if same:
-                same['names'].append(name)
+
+def child(node, name):
+    return next((c for c in node['children'] if c['name'] == name), None) if node else None
+
+
+def value(node, name, default=None):
+    c = child(node, name)
+    return c['value'] if c and c['value'] is not None else default
+
+
+# ------------------------------------------------------------------------------------
+# Rendering.
+# ------------------------------------------------------------------------------------
+
+def has_liquid(text):
+    return '{{' in text or '{%' in text
+
+
+def raw(text):
+    return '{% raw %}' + text + '{% endraw %}' if has_liquid(text) else text
+
+
+def cell(text):
+    return str(text if text is not None else '').replace('|', '\\|').replace('\n', ' ').strip()
+
+
+def label(name):
+    return {'.': '_unnamed child node_', '*': '_any node name_'}.get(name, '`[%s]`' % name)
+
+
+MAX_DEPTH = 3
+
+
+def argument_rows(nodes, cut, path=()):
+    """
+    One row per argument. A node that repeats one of its own ancestors is recursion in the
+    contract and is skipped, and nesting stops at MAX_DEPTH, both recorded in [cut].
+    """
+    rows = []
+    for n in nodes:
+        name = n['name']
+        if name in path and name not in ('*', '.'):
+            cut.append(name)
+            continue
+        description = value(n, 'description', '')
+        parts = [description.rstrip('.') + '.' if description else '']
+        if value(n, 'default') is not None:
+            parts.append('Default: `%s`.' % value(n, 'default'))
+        if value(n, 'cardinality') in ('ZeroOrMore', 'OneOrMore'):
+            parts.append('Can be repeated.')
+        if value(n, 'exclusive-with'):
+            parts.append('Exclusive with `[%s]`.' % value(n, 'exclusive-with'))
+        shown = ' / '.join(label(p) for p in path + (name,))
+        rows.append('| %s | %s | %s | %s |' % (
+            shown, cell(value(n, 'type', '')), 'yes' if value(n, 'required') is True else 'no',
+            cell(' '.join(p for p in parts if p))))
+        nested = child(n, 'children')
+        if nested:
+            if len(path) + 1 >= MAX_DEPTH:
+                cut.append(name)
             else:
-                entries.append(entry)
-        slots += entries
-    return slots
+                rows += argument_rows(nested['children'], cut, path + (name,))
+    return rows
 
 
-def parse_children(body):
-    """Parses SlotChild declarations of one section, ignoring children nested inside others."""
-    args = []
-    # Helper calls: Option("name", "type", "description", required?)
-    for h in re.finditer(r'\b(Option|List|Map)\(\s*' + STR + r'\s*,\s*' + STR + r'\s*,\s*' + STR + r'(?:\s*,\s*(true|false))?', body):
-        kind = h.group(1)
-        args.append({
-            'name': unescape(h.group(2)),
-            'type': 'list' if kind == 'List' else 'map' if kind == 'Map' else unescape(h.group(3)),
-            'description': unescape(h.group(4)),
-            'required': h.group(5) == 'true',
-        })
-    # Initialisers, keeping only those at the shallowest indentation.
-    decls = list(re.finditer(r'^([ \t]*)new\s+SlotChild\s*\n\1\{(.*?)\n\1\}', body, re.S | re.M))
-    if decls:
-        shallow = min(len(d.group(1)) for d in decls)
-        for d in decls:
-            if len(d.group(1)) != shallow:
-                continue
-            block = d.group(2)
-            name = field(block.split('Children')[0], 'Name') or field(block, 'Name')
-            if name:
-                args.append({
-                    'name': name,
-                    'type': field(block, 'Type') or '',
-                    'description': field(block, 'Description') or '',
-                    'required': bool(re.search(r'Required\s*=\s*true', block)),
-                })
-    else:
-        for h in re.finditer(r'new\s+SlotChild\s*\{(.*?)\}', body, re.S):
-            name = field(h.group(1), 'Name')
-            if name:
-                args.append({
-                    'name': name,
-                    'type': field(h.group(1), 'Type') or '',
-                    'description': field(h.group(1), 'Description') or '',
-                    'required': bool(re.search(r'Required\s*=\s*true', h.group(1))),
-                })
-    return args
+def table(head, rows):
+    return ['| ' + ' | '.join(head) + ' |', '|' + '---|' * len(head)] + rows
 
 
-def parse_signatures(text):
-    """Maps signature class name -> {'args': [...], 'out': [...]}, for the forms we understand."""
-    result = {}
-    classes = list(re.finditer(r'class\s+(\w+)\s*(?::\s*([\w.<>, ]+?))?\s*\{', text))
-    for idx, m in enumerate(classes):
-        end = classes[idx + 1].start() if idx + 1 < len(classes) else len(text)
-        body = text[m.end():end]
-        inputs, _, outputs = body.partition('OutputChildren')
-        args = parse_children(inputs)
-        # Forwarding to a base constructor: : base("type", "kind", "description")
-        b = re.search(r':\s*base\(\s*' + STR + r'\s*,\s*' + STR + r'\s*,\s*' + STR, body)
-        if b and not args:
-            args.append({'name': '*', 'type': unescape(b.group(1)),
-                         'description': unescape(b.group(3)), 'required': True})
-        result[m.group(1)] = {'args': args, 'out': parse_children(outputs) if outputs else [],
-                              'base': (m.group(2) or '').strip()}
-    # Inherit from a base class when a signature declares nothing of its own.
-    for name, sig in result.items():
-        if not sig['args'] and sig['base'] in result:
-            sig['args'] = result[sig['base']]['args']
-        if not sig['out'] and sig['base'] in result:
-            sig['out'] = result[sig['base']]['out']
-    return result
+def render_entry(entry, anchors):
+    tree = entry['tree']
+    out = ['## [%s]' % entry['names'][0], '']
+    out.append((entry['description'].rstrip('.') + '.') if entry['description'] else '_No description yet._')
+    out.append('')
+    if len(entry['names']) > 1:
+        out += ['Aliases: ' + ', '.join('**[%s]**' % n for n in entry['names'][1:]), '']
+
+    facts = []
+    inp = child(tree, 'input')
+    if inp:
+        kind = ' (`%s`)' % value(inp, 'kind') if value(inp, 'kind') else ''
+        facts.append('* **Value**%s, %s: %s' % (
+            kind, 'required' if value(inp, 'required') is True else 'optional', value(inp, 'description', '')))
+    outp = child(tree, 'output')
+    if outp and value(outp, 'description'):
+        facts.append('* **Returns**: %s' % value(outp, 'description'))
+    scope = child(tree, 'scope')
+    if scope:
+        bits = []
+        if value(scope, 'requires'):
+            bits.append('requires `%s`' % value(scope, 'requires'))
+        if value(scope, 'provides'):
+            bits.append('provides `%s`' % value(scope, 'provides'))
+        facts.append('* **Scope**: %s%s' % ('; '.join(bits), (' - ' + value(scope, 'description')) if value(scope, 'description') else ''))
+    out += facts + ([''] if facts else [])
+
+    NOTE = '_Nodes nested deeper than %d levels, and nodes that repeat one of their own ancestors, are not listed._' % MAX_DEPTH
+    children = child(tree, 'children')
+    if children and children['children']:
+        cut = []
+        out += table(['Argument', 'Type', 'Required', 'Description'], argument_rows(children['children'], cut)) + ['']
+        if cut:
+            out += [NOTE, '']
+
+    returned = child(outp, 'children') if outp else None
+    if returned and returned['children']:
+        cut = []
+        out += ['Returned nodes:', ''] + table(['Node', 'Type', 'Required', 'Description'],
+                                              argument_rows(returned['children'], cut)) + ['']
+        if cut:
+            out += [NOTE, '']
+
+    constraints = child(tree, 'constraints')
+    if constraints:
+        for c in constraints['children']:
+            values = child(c, 'values')
+            listed = ', '.join('`[%s]`' % v['value'] for v in values['children']) if values else ''
+            out.append('* **Constraint** (%s): %s%s' % (
+                c['name'], value(c, 'description', ''), (' (%s)' % listed) if listed else ''))
+        out.append('')
+
+    guide = next((anchors[n] for n in entry['names'] if n in anchors), None)
+    if guide:
+        out += ['Guide: [How to use [%s]](%s)' % (entry['names'][0], guide), '']
+    return out
 
 
 def slug(heading):
-    s = heading.lower()
-    s = re.sub(r'[^a-z0-9 _-]', '', s)
-    return re.sub(r'\s+', '-', s.strip())
+    return re.sub(r'\s+', '-', re.sub(r'[^a-z0-9 _-]', '', heading.lower()).strip())
 
 
-def guide_anchors(docs_root, plugin):
-    """Maps slot name -> anchor of the first heading in the plugin's guide naming it."""
+def guide_anchors():
     anchors = {}
-    for path in sorted(glob.glob(os.path.join(docs_root, 'plugins', plugin, '**', '*.md'), recursive=True)):
+    for path in sorted(glob.glob(os.path.join(ROOT, 'plugins', '**', '*.md'), recursive=True)):
         for line in read(path).splitlines():
             h = re.match(r'#{2,4}\s+(.*)', line)
-            if not h:
-                continue
-            for name in re.findall(r'\[([^\]]+)\]', h.group(1)):
-                rel = os.path.relpath(os.path.dirname(path), docs_root).replace(os.sep, '/')
-                anchors.setdefault(name, '/%s/#%s' % (rel, slug(h.group(1))))
+            if h:
+                for name in re.findall(r'\[([^\]]+)\]', h.group(1)):
+                    rel = os.path.relpath(os.path.dirname(path), ROOT).replace(os.sep, '/')
+                    anchors.setdefault(name, '/%s/#%s' % (rel, slug(h.group(1))))
     return anchors
 
 
-def md_cell(s):
-    return (s or '').replace('|', '\\|').replace('\n', ' ')
+def group_entries(records):
+    """One entry per distinct contract; slots saying exactly the same thing are aliases."""
+    groups = {}
+    for r in records:
+        groups.setdefault((r.get('description') or '', r.get('signature') or ''), []).append(r['name'])
+    entries = []
+    for (description, signature), names in groups.items():
+        names.sort(key=lambda n: ('.' not in n, n))
+        entries.append({'names': names, 'description': description, 'tree': parse_hl(signature)})
+    return entries
 
 
-def render_plugin(plugin, slots, sigs, anchors):
-    out = ['---',
-           'title: %s slot reference' % plugin,
-           'description: Every slot in %s with its value, arguments and return value, generated from the source code.' % plugin,
-           'generated: true',
-           '---', '',
-           '_This page is generated from the `[Slot]` attributes in the source code of '
-           '[%s](https://github.com/polterguy/magic/tree/master/plugins/%s). '
-           'Do not edit it; improve the attribute instead. The hand-written guide is at '
-           '[%s](/plugins/%s/)._' % (plugin, plugin, plugin, plugin), '']
-    for slot in sorted(slots, key=lambda s: s['names'][0]):
-        name = slot['names'][0]
-        out.append('## [%s]' % name)
-        out.append('')
-        out.append(slot['description'].rstrip('.') + '.' if slot['description'] else '_No description yet._')
-        out.append('')
-        if len(slot['names']) > 1:
-            out.append('Aliases: %s' % ', '.join('**[%s]**' % n for n in slot['names'][1:]))
-            out.append('')
-        if slot['value_description'] or slot['value_kind']:
-            req = 'required' if slot['value_required'] else 'optional'
-            kind = ' (`%s`)' % slot['value_kind'] if slot['value_kind'] else ''
-            out.append('* **Value**%s, %s: %s' % (kind, req, slot['value_description'] or ''))
-        if slot['returns']:
-            out.append('* **Returns**: %s' % slot['returns'])
-        sig = sigs.get(slot['signature'], {}) if slot['signature'] else {}
-        args, out_nodes = sig.get('args', []), sig.get('out', [])
-        if args:
-            out.append('')
-            out.append('| Argument | Type | Required | Description |')
-            out.append('|---|---|---|---|')
-            for a in args:
-                out.append('| `[%s]` | %s | %s | %s |' % (a['name'], md_cell(a['type']),
-                           'yes' if a['required'] else 'no', md_cell(a['description'])))
-        if out_nodes:
-            out.append('')
-            out.append('| Returned node | Type | Description |')
-            out.append('|---|---|---|')
-            for a in out_nodes:
-                out.append('| `[%s]` | %s | %s |' % (a['name'], md_cell(a['type']), md_cell(a['description'])))
-        guide = next((anchors[n] for n in slot['names'] if n in anchors), None)
-        if guide:
-            out.append('')
-            out.append('Guide: [How to use [%s]](%s)' % (name, guide))
-        out.append('')
-    return '\n'.join(out)
+def namespace(entry):
+    primary = entry['names'][0]
+    return primary.split('.')[0] if '.' in primary else 'core'
+
+
+def code_block(text, lang):
+    return '\n'.join(['```' + lang, raw(text.strip('\n')), '```'])
+
+
+def policy_numbers(sandbox):
+    def number(key):
+        m = re.search(r'^\s*%s:int:(\d+)' % re.escape(key), sandbox, re.M)
+        return int(m.group(1)) if m else None
+    slots = re.search(r'^\s{9}slots\n((?:\s{12}\S.*\n)+)', sandbox, re.M)
+    return {
+        'limit': number('limit'), 'window': number('window'), 'timeout': number('timeout') // 1000,
+        'max': number('max-hyperlambda'),
+        'slots': len(slots.group(1).splitlines()) if slots else 0,
+    }
+
+
+# ------------------------------------------------------------------------------------
+# The reference page itself, which is also the story of how it is built.
+# ------------------------------------------------------------------------------------
+
+EXAMPLES = [
+    ('List the slot names',
+     '[vocabulary] returns the slots you are allowed to see. With a prefix it filters, so `vocabulary:strings.` returns only the string slots.',
+     'vocabulary:strings.\nreturn-nodes:x:@vocabulary/*\n', None),
+    ('Get one description',
+     None,
+     'slot.description:strings.concat\nreturn-value:x:@slot.description\n', 'Concatenates strings'),
+    ('Get every description',
+     'The same loop the full reference uses, without the signature.',
+     'vocabulary\n.result\nfor-each:x:@vocabulary/*\n   slot.description:x:@.dp/#\n   .entry\n      .\n'
+     '         name:x:@.dp/#\n         description:x:@slot.description\n   unwrap:x:@.entry/*/*\n'
+     '   add:x:@.result\n      get-nodes:x:@.entry/*\nreturn-nodes:x:@.result/*\n', None),
+    ('Get one signature as Hyperlambda',
+     '[slot.signature] returns a tree, and [lambda2hyper] writes any tree back as Hyperlambda text. [lambda2json] would give you JSON instead.',
+     'slot.signature:convert\nlambda2hyper:x:@slot.signature/*\nreturn-value:x:@lambda2hyper\n', None),
+    ('Get only the arguments of a slot',
+     None,
+     'slot.signature:convert\n.result\nfor-each:x:@slot.signature/*/children/*\n   get-name:x:@.dp/#\n'
+     '   .entry\n      .\n         name:x:@get-name\n         type:x:@.dp/#/*/type\n'
+     '         required:x:@.dp/#/*/required\n         description:x:@.dp/#/*/description\n'
+     '   unwrap:x:@.entry/*/*\n   add:x:@.result\n      get-nodes:x:@.entry/*\nreturn-nodes:x:@.result/*\n',
+     '[{"name": "type", "type": "string", "required": true, "description": "Target Hyperlambda type name"}]'),
+    ('Get only the required arguments',
+     None,
+     'slot.signature:convert\n.result\nfor-each:x:@slot.signature/*/children/*\n   if\n      eq:x:@.dp/#/*/required\n'
+     '         .:bool:true\n      .lambda\n         get-name:x:@.dp/#\n         unwrap:x:+/*/*\n'
+     '         add:x:@.result\n            .\n               .:x:@get-name\nreturn-nodes:x:@.result/*\n',
+     '["type"]'),
+]
+
+
+def faq(p):
+    return [
+        ('How is this slot reference generated?',
+         'Automatically, from the running system. A GitHub Actions workflow asks a Hyperlambda endpoint on hyperlambda.dev for every compiled slot. '
+         'The endpoint runs a short Hyperlambda program that lists the slots with [vocabulary] and reads each slot\'s description and signature '
+         'with [slot.description] and [slot.signature]. A Python script renders the answer as the pages in this section.'),
+        ('Why is it generated instead of written by hand?',
+         'A slot describes itself in the same place its code lives, so the reference cannot drift away from the implementation. '
+         'If an entry is thin or wrong, the fix is to improve the slot\'s own metadata, and the next run publishes it.'),
+        ('What is homoiconicity?',
+         'A language is homoiconic when its programs are stored in a data structure the language itself can read and change. '
+         'In Hyperlambda a program is a tree of nodes, and so is the metadata that describes every slot, so a program can ask the system about itself '
+         'and process the answer with the same tools it uses for any other data.'),
+        ('What is meta programming, and where is it here?',
+         'Meta programming is code that reads, generates or transforms code. This reference is a Hyperlambda program whose input is the definition of Hyperlambda itself: '
+         'it lists the language\'s own slots, reads their contracts, and the result becomes the documentation.'),
+        ('Can I run my own Hyperlambda against the public sandbox?',
+         'Yes. POST your code as JSON to %s, with no account or key. It is rate limited to %d requests per %d seconds per IP address, '
+         'runs for at most %d seconds, and accepts at most %d characters of code.' % (PLAYGROUND_URL, p['limit'], p['window'], p['timeout'], p['max'])),
+        ('Is it safe to let anybody run code on that server?',
+         'The sandbox only runs code whose every slot is on a whitelist of %d slots: introspection, tree handling, strings and arithmetic. '
+         'Code that touches files, databases, the network, configuration or anything else is rejected before it runs, and every call is rate limited and time limited.' % p['slots']),
+        ('Why can\'t I get the same output as this reference from the sandbox?',
+         'The sandbox can only describe the slots it is itself allowed to call, because listing a slot would otherwise suggest that it can be used. '
+         'The reference lists the whole language, and comes from a separate read-only endpoint that runs no caller code and is restricted to a service account held by the documentation pipeline. '
+         'Its code is shown on this page, and it is the same Hyperlambda you can run in the sandbox, which sees fewer slots.'),
+        ('How do I get only the descriptions, or only the arguments, of some slots?',
+         'Use [vocabulary] with a prefix to pick slots by name, [slot.description] for one description, and [slot.signature] for the input, arguments and output of one slot. '
+         'The examples on this page show each of them, and all of them run in the public sandbox.'),
+        ('How do I fix a missing or wrong description?',
+         'Change the metadata on the slot in the source code of Magic Cloud, its description or its signature. The next run of the pipeline publishes it here.'),
+        ('How often is the reference updated?',
+         'Once a week, and on demand from the Actions tab of the documentation repository.'),
+        ('What is Hyperlambda?',
+         'Hyperlambda is a declarative programming language where the source code is a tree of nodes rather than free-form text. '
+         'It runs on Magic Cloud, an open source, MIT licensed platform that builds and runs an entire backend.'),
+        ('Is Hyperlambda Turing complete?',
+         'Yes. Slots such as [if], [for-each] and [while] give it branching and loops, which is what makes it Turing complete.'),
+        ('Why do I get error code 1010 when I call the endpoint from a script?',
+         'The server sits behind Cloudflare, which rejects requests that carry no User-Agent header, or the default one of an http library such as Python\'s urllib. '
+         'Send any descriptive User-Agent and the request goes through.'),
+    ]
+
+
+def render_index(counts, total, endpoint, sandbox, workflow, p):
+    lines = [
+        '---',
+        'title: Slot reference',
+        'description: Every slot in Magic Cloud and Hyperlambda with its arguments and return value, generated by asking the running system about itself.',
+        'generated: true',
+        'faq:',
+    ]
+    for q, a in faq(p):
+        lines += ['  - q: ' + json.dumps(q, ensure_ascii=False), '    a: ' + json.dumps(a, ensure_ascii=False)]
+    lines += ['---', '']
+
+    lines += [
+        '## This reference was not written. It was asked for.',
+        '',
+        'Every page in this section is generated, and what it is generated from is not the source code but the **running system**. '
+        'Each slot in Magic Cloud carries its own name, description, arguments and return value as metadata, and Hyperlambda can read that metadata at runtime. '
+        'Once a week a GitHub Actions workflow asks for it, receives **%d slots**, and renders the pages you are reading. '
+        'Nobody parses source files, scrapes anything or keeps a second copy that can go stale.' % total,
+        '',
+        '### Why this is possible: homoiconicity',
+        '',
+        'Hyperlambda is homoiconic. A program is a tree of nodes, and a tree of nodes is also the data structure the program works on. '
+        'A slot is an ordinary node, and asking about slots is an ordinary function call: **[vocabulary]** lists their names, '
+        '**[slot.description]** returns what one of them does, **[slot.signature]** returns its contract as a tree, and **[lambda2hyper]** writes any tree back as Hyperlambda text. '
+        'Meta programming is not a library you import here, it is what the language does by default. This documentation is a Hyperlambda program '
+        'whose input is the definition of Hyperlambda itself.',
+        '',
+        '### The code that produced this reference',
+        '',
+        'This is the complete Hyperlambda file behind the endpoint the pipeline calls. This is dogfooding in its purest form: the language documents itself with its own code.',
+        '',
+        code_block(endpoint, 'hyperlambda'),
+        '',
+        'The first lines say who may call it: a service account, a role that exists for this one purpose. Everything after that is slots, and nothing else. '
+        'It lists the compiled slots, and for each one it reads the description and the signature, turns the signature tree into Hyperlambda text with **[lambda2hyper]**, '
+        'and returns one object per slot. A Python script then parses that text, since Hyperlambda is a tree and the text is its serialisation, and writes markdown.',
+        '',
+        '### You can run the same code, but you will not get the same result',
+        '',
+        'The documentation code above needs to see the whole language, and that is exactly what a public sandbox must not allow. A slot can only be described by '
+        'code that is allowed to call it, so a sandbox that could describe everything could also run everything. The public sandbox below therefore knows only '
+        '**%d slots**: introspection, tree handling, strings and arithmetic. Run the very same Hyperlambda there and it returns what it can see, which is its own vocabulary. '
+        'The whole language is only visible to the service account that the pipeline uses.' % p['slots'],
+        '',
+        '### The public sandbox',
+        '',
+        'Anybody can send Hyperlambda to **`POST %s`**, with no account and no key. It is rate limited to **%d requests per %d seconds** per IP address, '
+        'stops after **%d seconds**, and accepts up to **%d characters**. Every slot your code uses is checked against the whitelist before anything runs, '
+        'so code that touches files, databases, the network or configuration is rejected rather than executed. '
+        'Send `{"describe": true}` to get the exact vocabulary, limits and timeout without running anything. '
+        'AI agents can find it in [/.well-known/hyperlambda-agent](https://hyperlambda.dev/.well-known/hyperlambda-agent), and it is yours to experiment with.' % (PLAYGROUND_URL, p['limit'], p['window'], p['timeout'], p['max']),
+        '',
+        'Save any example below as `example.hl` and send it like this.',
+        '',
+        '```bash',
+        'jq -Rs \'{hyperlambda: .}\' example.hl | curl -s %s \\' % PLAYGROUND_URL,
+        '  -H "Content-Type: application/json" -d @-',
+        '```',
+        '',
+    ]
+    for title, text, code, result in EXAMPLES:
+        lines += ['#### ' + title, '']
+        if text:
+            lines += [text, '']
+        lines += [code_block(code, 'hyperlambda'), '']
+        if result:
+            lines += ['Returns `%s`.' % result, '']
+
+    lines += [
+        'This is the complete source of the sandbox endpoint, generated by the Sandbox API generator in Magic Cloud. The policy near the top is the whole whitelist.',
+        '',
+        '<details markdown="1">',
+        '<summary>Show the entire sandbox endpoint</summary>',
+        '',
+        code_block(sandbox, 'hyperlambda'),
+        '',
+        '</details>',
+        '',
+        '### The pipeline',
+        '',
+        'This is the complete GitHub Actions workflow. The token it uses belongs to the service account, and is stored as an encrypted repository secret.',
+        '',
+        '<details markdown="1">',
+        '<summary>Show the entire workflow</summary>',
+        '',
+        code_block(workflow, 'yaml'),
+        '',
+        '</details>',
+        '',
+        '### Slots by namespace',
+        '',
+    ]
+    for ns, n in counts:
+        lines.append('* [%s](/reference/slots/%s/) - %d %s' % ('core keywords' if ns == 'core' else ns + '.*', ns, n, 'slot' if n == 1 else 'slots'))
+    lines += ['', '{% include faq.html %}', '']
+    return '\n'.join(lines)
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('magic')
-    ap.add_argument('--out', default=ROOT)
-    ap.add_argument('--plugin')
+    ap.add_argument('--input')
+    ap.add_argument('--min-slots', type=int, default=300)
     args = ap.parse_args()
 
-    plugins_dir = os.path.join(args.magic, 'plugins')
-    names = sorted(d for d in os.listdir(plugins_dir)
-                   if os.path.isdir(os.path.join(plugins_dir, d)) and d.startswith('magic.')
-                   and not d.endswith('.tests'))
-    if args.plugin:
-        names = [args.plugin]
-    index = []
-    gaps = []
-    for plugin in names:
-        slots, sigs = [], {}
-        for path in glob.glob(os.path.join(plugins_dir, plugin, '**', '*.cs'), recursive=True):
-            if '/obj/' in path or '/bin/' in path or '.tests' in path:
-                continue
-            text = read(path)
-            slots += parse_slots(text)
-            if 'ISlotSignature' in text or 'SlotChild' in text:
-                sigs.update(parse_signatures(text))
-        if not slots:
-            continue
-        for s in slots:
-            if not s['description']:
-                gaps.append('%s: [%s] has no description' % (plugin, s['names'][0]))
-        folder = os.path.join(args.out, 'reference', 'slots', plugin)
-        os.makedirs(folder, exist_ok=True)
-        anchors = guide_anchors(args.out if os.path.isdir(os.path.join(args.out, 'plugins')) else ROOT, plugin)
-        with open(os.path.join(folder, 'index.md'), 'w', encoding='utf-8') as f:
-            f.write(render_plugin(plugin, slots, sigs, anchors) + '\n')
-        index.append((plugin, len(slots)))
-    if not args.plugin:
-        os.makedirs(os.path.join(args.out, 'reference', 'slots'), exist_ok=True)
-        with open(os.path.join(args.out, 'reference', 'slots', 'index.md'), 'w', encoding='utf-8') as f:
-            f.write('---\ntitle: Slot reference\n'
-                    'description: Every C# slot in Magic Cloud with its value, arguments and return value, generated from the source code.\n'
-                    'generated: true\n---\n\n'
-                    '_Generated from the `[Slot]` attributes in the source code. '
-                    'Guides and examples live in the [plugin documentation](/plugins/)._\n\n')
-            for plugin, count in index:
-                f.write('* [%s](/reference/slots/%s/) - %d slots\n' % (plugin, plugin, count))
-    for g in gaps:
-        print('gap:', g)
-    print('generated %d plugin pages' % len(index))
+    data = json.loads(read(args.input)) if args.input else fetch()
+    records = data.get('result', data) if isinstance(data, dict) else data
+    if not isinstance(records, list) or len(records) < args.min_slots:
+        sys.exit('Only %d slots came back and at least %d are expected, so nothing was written.'
+                 % (len(records) if isinstance(records, list) else 0, args.min_slots))
+
+    entries = group_entries(records)
+    anchors = guide_anchors()
+    by_ns = {}
+    for e in entries:
+        by_ns.setdefault(namespace(e), []).append(e)
+
+    # Only generated pages are removed, never anything written by hand.
+    if os.path.isdir(OUT):
+        for name in os.listdir(OUT):
+            path = os.path.join(OUT, name)
+            index = os.path.join(path, 'index.md')
+            if os.path.isdir(path) and os.path.exists(index) and 'generated: true' in read(index):
+                shutil.rmtree(path)
+    os.makedirs(OUT, exist_ok=True)
+
+    counts = []
+    for ns in sorted(by_ns, key=lambda n: (n != 'core', n)):
+        group = sorted(by_ns[ns], key=lambda e: e['names'][0])
+        title = 'Core keywords' if ns == 'core' else '%s.* slots' % ns
+        body = ['---', 'title: %s' % title,
+                'description: The %d slots %s in Magic Cloud and Hyperlambda, with their arguments and return values, generated from the running system.'
+                % (len(group), 'that make up the core keywords' if ns == 'core' else 'named %s.*' % ns),
+                'generated: true', '---', '',
+                '_Generated from the running system, see [how this reference is built](/reference/slots/). Do not edit this page._', '']
+        for e in group:
+            body += render_entry(e, anchors)
+        text = '\n'.join(body)
+        os.makedirs(os.path.join(OUT, ns), exist_ok=True)
+        with open(os.path.join(OUT, ns, 'index.md'), 'w', encoding='utf-8') as f:
+            f.write(raw(text) + '\n')
+        counts.append((ns, len(group)))
+
+    endpoint = read(os.path.join(ROOT, '.github', 'endpoint', 'slots.get.hl'))
+    sandbox = read(os.path.join(ROOT, '.github', 'endpoint', 'playground.post.hl'))
+    workflow = read(os.path.join(ROOT, '.github', 'workflows', 'slot-reference.yml'))
+    page = render_index(counts, len(entries), endpoint, sandbox, workflow, policy_numbers(sandbox))
+    with open(os.path.join(OUT, 'index.md'), 'w', encoding='utf-8') as f:
+        f.write(page)
+    print('wrote %d entries in %d namespaces' % (len(entries), len(counts)))
 
 
 if __name__ == '__main__':

@@ -1,0 +1,19 @@
+
+// Executable Hyperlambda file that lists every slot registered in the system and, for each slot, returns its name, its description and its signature. Returns a JSON array of objects, each with fields name (string), description (string) and signature (string, being the slot's signature converted to Hyperlambda text). Requires the caller to be in the role service, docs-sync or root, so only the documentation pipeline can read it.
+.arguments
+auth.ticket.verify:service,docs-sync,root
+vocabulary
+.result
+for-each:x:@vocabulary/*
+   slot.description:x:@.dp/#
+   slot.signature:x:@.dp/#
+   lambda2hyper:x:@slot.signature/*
+   .entry
+      .
+         name:x:@.dp/#
+         description:x:@slot.description
+         signature:x:@lambda2hyper
+   unwrap:x:@.entry/*/*
+   add:x:@.result
+      get-nodes:x:@.entry/*
+return-nodes:x:@.result/*

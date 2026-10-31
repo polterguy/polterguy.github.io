@@ -7,8 +7,10 @@ plugins/<plugin>/index.md, adapting it for Jekyll:
 * Liquid is escaped with {% raw %} around every code block and inline code span that
   contains "{{" or "{%", since an unescaped "{{" breaks the page.
 
-The README is the source of truth. Plugins listed in SITE_STRUCTURED are skipped, since
-this site documents them as a landing page plus sub-pages instead of one long page.
+The README is the source of truth. Plugins listed in SITE_STRUCTURED are skipped; use it
+for a plugin this site documents by hand. Notice, magic.lambda's README is the landing page
+of plugins/magic.lambda/, whose sub-pages (branching, loops, ...) are written in this
+repository only, and linked from that landing page.
 
 Usage: sync-plugin-docs.py <magic-checkout> [--check]
 With --check nothing is written and the exit status is 1 if any page would change.
@@ -20,7 +22,7 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-SITE_STRUCTURED = {'magic.lambda'}
+SITE_STRUCTURED = set()
 
 
 def has_liquid(s):
