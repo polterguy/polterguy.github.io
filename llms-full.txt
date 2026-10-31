@@ -4324,7 +4324,7 @@ and/or web server, by selecting all records from a table with millions of record
 
 ## Paging
 
-To page your **[sql.read]** results, use **[limit]** and **[offset]**, such as the following illustrates.
+To page your **[\[sql.read\]](https://docs.ainiro.io/reference/slots/sql/sql.read/)** results, use **[limit]** and **[offset]**, such as the following illustrates.
 Even though we use _"limit"_ and _"offset"_, the correct syntax will be applied for your database type,
 depending upon which database type you're using - Implying for Microsoft SQL Server, it will inject MS SQL dialect,
 and not MySQL dialect. But the syntax for your lambda object still remains the same, making it simpler to create
@@ -4393,7 +4393,7 @@ The project supports the following comparison operators.
 * `like` - Like comparison, equivalent to SQL's `like` comparison
 * `in` - Special comparison operator, since it requires a _list_ of values, generating an _"in"_ SQL condition
 
-Everywhere you need to compare one field with another, such as in **[where]** or **[join]**
+Everywhere you need to compare one field with another, such as in **[where]** or **[\[join\]](https://docs.ainiro.io/reference/slots/core/join/)**
 arguments, you can append a comparison operator to your left hand side column, such as the following
 illustrates.
 
@@ -4522,14 +4522,14 @@ Description: Differences between [join] and [where] - There is one crucial seman
 
 This page is part of the [magic.data.common](https://docs.ainiro.io/plugins/magic.data.common/) documentation.
 
-There is one crucial semantic difference between a **[join]** condition and a **[where]** condition, which is
+There is one crucial semantic difference between a **[\[join\]](https://docs.ainiro.io/reference/slots/core/join/)** condition and a **[where]** condition, which is
 that the library assumes a join is _always_ between two columns, while a where always assume you're _always_
 comparing against a static value. This implies that you _cannot_ add static values into your SQL as a part of
-your **[join]** condition, while the opposite is true for a **[where]**.
+your **[\[join\]](https://docs.ainiro.io/reference/slots/core/join/)** condition, while the opposite is true for a **[where]**.
 
 Although this technically doesn't allow you to create any SQL you want to create, it is still more
 in _"the spirit"_ of SQL as a standard - And you can always add your static conditions into your **[where]**
-parts, while adding your table comparisons into your **[join]** conditions. This allows you to create
+parts, while adding your table comparisons into your **[\[join\]](https://docs.ainiro.io/reference/slots/core/join/)** conditions. This allows you to create
 any _result_ you want to achieve, although technically not any _SQL_ you want to have.
 
 ## Explicit arguments declarations for joins
@@ -4563,10 +4563,10 @@ As you can see in the above result, the `@static-value` becomes a *statically* d
 and not assumed to be a reference to a field in your right hand side joined table. This is one of those edge cases
 you normally rarely need, but might be useful on rare occasions. The reasons why this works is because the RHS side
 of your join condition starts with an `@` character, which assumes you are referencing an argument and not a field
-in your joined table. This only has effects on your **[join]** parts, implying **[xxx.read]** slot invocations,
+in your joined table. This only has effects on your **[\[join\]](https://docs.ainiro.io/reference/slots/core/join/)** parts, implying **[xxx.read]** slot invocations,
 since these are the only slots supporting joins.
 The above is the only exception that allows you to join on static values and not column names. However, as a general
-rule of thumb, we encourage users to **[join]** on table columns and add static values into your **[where]** conditions.
+rule of thumb, we encourage users to **[\[join\]](https://docs.ainiro.io/reference/slots/core/join/)** on table columns and add static values into your **[where]** conditions.
 
 ---
 
@@ -4581,7 +4581,7 @@ Description: How to use [data.*] - All of the [data.xxx] slots are actually just
 This page is part of the [magic.data.common](https://docs.ainiro.io/plugins/magic.data.common/) documentation.
 
 All of the **[data.xxx]** slots are actually just polymorphistically evaluating your specialised adapter's
-slots, such as for instance **[data.connect]**, that will invoke **[mysql.connect]** if this is your default
+slots, such as for instance **[\[data.connect\]](https://docs.ainiro.io/reference/slots/data/data.connect/)**, that will invoke **[\[mysql.connect\]](https://docs.ainiro.io/reference/slots/mysql/mysql.connect/)** if this is your default
 database. However, all of these slots can also be given an explicit **[database-type]** argument, being for
 instance _"mssql"_, allowing you to choose a database type explicitly as you invoke it.
 
@@ -4589,24 +4589,24 @@ If you don't provide an explicit **[database-type]** argument to these slots, th
 type will be retrieved from your _"appsettings.json"_ file, from the `magic:databases:default` value,
 and substitute the _"data"_ parts with the value found from your configuration setting, to invoke
 your specialised implementation. For instance, if you're using MySQL as your default database type,
-and you invoke for instance **[data.connect]**, this will transform into an invocation to **[mysql.connect]**,
+and you invoke for instance **[\[data.connect\]](https://docs.ainiro.io/reference/slots/data/data.connect/)**, this will transform into an invocation to **[\[mysql.connect\]](https://docs.ainiro.io/reference/slots/mysql/mysql.connect/)**,
 allowing you to use generic database slot invocations, ignoring your database type, creating the correct
 SQL dialect for you automagically.
 
 The following CRUD slots are documented in their own sections below.
 
-* __[data.create]__ - Inserts a new row into the current open database connection
-* __[data.update]__ - Updates rows in the current open database connection, use **[where]** to constrain which rows are affected
-* __[data.scan]__ - Scans rows from the current open database connection
+* __[\[data.create\]](https://docs.ainiro.io/reference/slots/data/data.create/)__ - Inserts a new row into the current open database connection
+* __[\[data.update\]](https://docs.ainiro.io/reference/slots/data/data.update/)__ - Updates rows in the current open database connection, use **[where]** to constrain which rows are affected
+* __[\[data.scan\]](https://docs.ainiro.io/reference/slots/data/data.scan/)__ - Scans rows from the current open database connection
 
 ## Database transactions
 
 Although you should be careful with database transactions, sometimes you _really_ need them. For those cases you
 can use the following 3 slots to create, rollback, and/or commit transactions towards your underlying database.
 
-* __[data.transaction.create]__ - Creates a new database transaction
-* __[data.transaction.commit]__ - Commits an existing open transaction
-* __[data.transaction.rollback]__ - Roll back an existing open transaction
+* __[\[data.transaction.create\]](https://docs.ainiro.io/reference/slots/data/data.transaction.create/)__ - Creates a new database transaction
+* __[\[data.transaction.commit\]](https://docs.ainiro.io/reference/slots/data/data.transaction.commit/)__ - Commits an existing open transaction
+* __[\[data.transaction.rollback\]](https://docs.ainiro.io/reference/slots/data/data.transaction.rollback/)__ - Roll back an existing open transaction
 
 **Notice** - The default logic for a database transaction, is that unless it's _explicitly committed_
 before leaving scope, it will roll back by default. Below is an example of a transaction that will
@@ -4650,8 +4650,8 @@ Description: Joins - The project supports joins by parametrizing your [sql.read]
 
 This page is part of the [magic.data.common](https://docs.ainiro.io/plugins/magic.data.common/) documentation.
 
-The project supports joins by parametrizing your **[sql.read]** invocation with **[join]** arguments, beneath your
-**[table]** argument(s). You can _only_ add **[join]** beneath **[table]** for **[sql.read]** invocations though.
+The project supports joins by parametrizing your **[\[sql.read\]](https://docs.ainiro.io/reference/slots/sql/sql.read/)** invocation with **[\[join\]](https://docs.ainiro.io/reference/slots/core/join/)** arguments, beneath your
+**[table]** argument(s). You can _only_ add **[\[join\]](https://docs.ainiro.io/reference/slots/core/join/)** beneath **[table]** for **[\[sql.read\]](https://docs.ainiro.io/reference/slots/sql/sql.read/)** invocations though.
 If you have created the Sakila example database from Oracle, and you're using MySQL as your default database type,
 you can execute the following MySQL join SQL statement to see a fairly complex recursive join.
 
@@ -4720,11 +4720,11 @@ select * from 'table1'
 
 Joining tables works _almost_ the exact same way as using a **[where]** argument, allowing you
 to supply an operator for your join, such as we illustrate below, where we're using the `!=` operator,
-instead of the (default) equality comparison. However, when you create your **[join]** segments
+instead of the (default) equality comparison. However, when you create your **[\[join\]](https://docs.ainiro.io/reference/slots/core/join/)** segments
 you can _only_ have columns from tables reference columns from tables, and not add static arguments
 to your join. If you need static arguments you have to add these into your **[where]** parts.
 See the **[where]** criteria for details about comparison operators.
-You can also explicitly choose a **[type]** of join, such as we illustrate below.
+You can also explicitly choose a **[\[type\]](https://docs.ainiro.io/reference/slots/core/type/)** of join, such as we illustrate below.
 
 ```
 sql.read
@@ -4744,7 +4744,7 @@ The above results in the following SQL.
 select * from 'table1' inner join 'table2' on 'table1'.'fk1' != 'table2'.'pk1'
 ```
 
-The **[type]** argument to your **[join]** arguments, can be _"inner"_, _"full"_, _"left"_ or _"right"_,
+The **[\[type\]](https://docs.ainiro.io/reference/slots/core/type/)** argument to your **[\[join\]](https://docs.ainiro.io/reference/slots/core/join/)** arguments, can be _"inner"_, _"full"_, _"left"_ or _"right"_,
 resulting in the equivalent type of join for your SQL.
 
 ---
@@ -4857,7 +4857,7 @@ The above of course results in the following SQL.
 select count(*) from 'table1' group by 'table1'.'foo1','table1'.'foo2'
 ```
 
-You can of course combine your **[group]** arguments with **[where]** arguments, and **[join]** arguments,
+You can of course combine your **[group]** arguments with **[where]** arguments, and **[\[join\]](https://docs.ainiro.io/reference/slots/core/join/)** arguments,
 allowing you to create complex aggregate results, statistics, joining multiple tables, etc.
 
 ---
@@ -4872,8 +4872,8 @@ Description: The [where] argument - This argument is common for [sql.update], [s
 
 This page is part of the [magic.data.common](https://docs.ainiro.io/plugins/magic.data.common/) documentation.
 
-This argument is common for **[sql.update]**, **[sql.delete]**, and **[sql.read]**, in addition
-to that a **[join]** will also be logically parsed much the same way as a **[where]** argument. The where
+This argument is common for **[\[sql.update\]](https://docs.ainiro.io/reference/slots/sql/sql.update/)**, **[\[sql.delete\]](https://docs.ainiro.io/reference/slots/sql/sql.delete/)**, and **[\[sql.read\]](https://docs.ainiro.io/reference/slots/sql/sql.read/)**, in addition
+to that a **[\[join\]](https://docs.ainiro.io/reference/slots/core/join/)** will also be logically parsed much the same way as a **[where]** argument. The where
 argument follows a recursive structure, allowing you to supply multiple layers of `where` criteria,
 being applied recursively, using some sort of comparison operator, applied to all conditions in the
 same level. Its most basic usage is as follows.
@@ -4895,7 +4895,7 @@ sql.read:select * from 'table1' where 'field1' = @0
    @0:howdy
 ```
 
-To apply multiple **[and]** criteria, you can simply add them consecutively as follows.
+To apply multiple **[\[and\]](https://docs.ainiro.io/reference/slots/core/and/)** criteria, you can simply add them consecutively as follows.
 
 ```
 sql.read
@@ -4916,7 +4916,7 @@ sql.read:select * from 'table1' where 'field1' = @0 and 'field2' = @1
    @1:world
 ```
 
-If you exchange the above **[and]** with **[or]**, the system will use the `or` operator to
+If you exchange the above **[\[and\]](https://docs.ainiro.io/reference/slots/core/and/)** with **[\[or\]](https://docs.ainiro.io/reference/slots/core/or/)**, the system will use the `or` operator to
 separate your arguments, such as the following illustrates.
 
 ```
@@ -5215,7 +5215,7 @@ This page is part of the [magic.endpoint](https://docs.ainiro.io/plugins/magic.e
 The `HttpFileExecutorAsync` resolver will resolve everything _not_ starting out with `magic/` as a file,
 optionally applied as a mixin file having a Hyperlambda code behind file for mixing in dynamic content
 with _".html"_ files. This allows you to render HTML, CSS, JavaScript and _"whatever"_, with the ability
-to dynamically render parts of your HTML files using Hyperlambda. This logic relies upon the **[io.file.mixin]**
+to dynamically render parts of your HTML files using Hyperlambda. This logic relies upon the **[\[io.file.mixin\]](https://docs.ainiro.io/reference/slots/io/io.file.mixin/)**
 slot from the _"magic.lambda.io"_ project. If you create two files such as follows, and put both of these
 files in your _"/etc/www/"_ folder, you can see this logic in action.
 
@@ -5247,7 +5247,7 @@ files in your _"/etc/www/"_ folder, you can see this logic in action.
 ```
 
 The above will substitute your `{{*/.calculate}}`parts with the result of invoking your **[.calculate]** lambda
-object, resulting in 4. To understand how this works, you need to read about the **[io.file.mixin]** slot in
+object, resulting in 4. To understand how this works, you need to read about the **[\[io.file.mixin\]](https://docs.ainiro.io/reference/slots/io/io.file.mixin/)** slot in
 the _"magic.lambda.io"_ project, and realise that the above will actually transform to the following as the
 mixin logic is executed.
 
@@ -5276,7 +5276,7 @@ The resolver will also rewrite and redirect automatically every URL ending with 
 
 If you've got a file called _"default.html"_, and the client is requesting a URL that does not have an associated physical file existing for the absolute path specified - Then your _"default.html"_ file will resolve the specified URL. Such a _"default.html"_ file can also optionally have a Hyperlambda code behind file, allowing you to serve dynamic content based upon the URL of the request. This allows you to use dynamic URLs, to for instance lookup files from your database and serve back as dynamic content.
 
-If you want to use dynamic pages, you can retrieve the request URL by invoking the **[request.url]** slot to retrieve the request URL.
+If you want to use dynamic pages, you can retrieve the request URL by invoking the **[\[request.url\]](https://docs.ainiro.io/reference/slots/request/request.url/)** slot to retrieve the request URL.
 
 ## Configuring your code behind resolver
 
@@ -5416,7 +5416,7 @@ This page is part of the [magic.endpoint](https://docs.ainiro.io/plugins/magic.e
 ## Hyperlambda endpoints and meta information
 
 Due to the semantic structure of Hyperlambda, retrieving meta information from your HTTP endpoints
-using this module is very easy. The project has one slot called **[endpoints.list]** that returns
+using this module is very easy. The project has one slot called **[\[endpoints.list\]](https://docs.ainiro.io/reference/slots/endpoints/endpoints.list/)** that returns
 meta information about _all_ your endpoints. This slot again can be invoked using the following URL.
 
 ```
@@ -5459,7 +5459,7 @@ amount of time, not clogging the server or HTTP endpoint meta generating process
 ## Changing your Hyperlambda endpoint's response type
 
 Unless you explicitly change the `Content-Type` of your response object, by using
-the **[response.headers.set]** slot, a Content-Type of `application/json` will be assumed,
+the **[\[response.headers.set\]](https://docs.ainiro.io/reference/slots/response/response.headers.set/)** slot, a Content-Type of `application/json` will be assumed,
 and this header will be added to the resulting HTTP response object. If you wish to override
 this behavious and return plain text for instance, you could create an endpoint containing
 the following.
@@ -5473,7 +5473,7 @@ return:Hello from Magic Backend
 If you intend to return anything but JSON, you _must_ set the `Content-Type` header, because
 the resolver will by default try to serialize your content as JSON, and obviously fail unless it is
 valid JSON.
-You can also return stream objects using for instance the **[return-value]** slot, at which point
+You can also return stream objects using for instance the **[\[return-value\]](https://docs.ainiro.io/reference/slots/core/return-value/)** slot, at which point
 ASP.NET Core will automatically stream your content back over the response object, and `Dispose`
 your stream automatically for you afterwards. This allows you to for instance return large files back
 to the client without loading them into memory first. If you do this, you'll have to change
@@ -5494,25 +5494,25 @@ This page is part of the [magic.endpoint](https://docs.ainiro.io/plugins/magic.e
 In addition to the meta retrieval endpoint described above, the module contains the following
 slots.
 
-* __[server.ip]__ - Returns the IP address of the server itself
-* __[response.status.set]__ - Sets the status code (e.g. 404) on the response object
-* __[request.cookies.list]__ - Lists all HTTP request cookies
-* __[request.cookies.get]__ - Returns the value of a cookie sent by the request
-* __[response.cookies.set]__ - Creates a cookie that will be returned to the client over the response
-* __[request.headers.list]__ - Lists all HTTP request headers sent by the request
-* __[request.headers.get]__ - Returns a single HTTP header associated with the request
-* __[request.ip]__ - Returns the IP address of the HTTP request
-* __[request.url]__ - Returns the relative URL associated with the request, without its magic/ prefix, and query parameters as children nodes as a key/value list
-* __[request.host]__ - Returns the host name associated with the request
-* __[request.scheme]__ - Returns the scheme associated with the request
-* __[response.headers.set]__ - Adds an HTTP header to the response object
-* __[mime.add]__ - Associates a file extension with a MIME type, only relevant for the `HttpFileExecutorAsync` resolver
-* __[mime.list]__ - Lists registered MIME type mappings
-* __[request.verb]__ - Returns the HTTP verb of the current invocation
+* __[\[server.ip\]](https://docs.ainiro.io/reference/slots/server/server.ip/)__ - Returns the IP address of the server itself
+* __[\[response.status.set\]](https://docs.ainiro.io/reference/slots/response/response.status.set/)__ - Sets the status code (e.g. 404) on the response object
+* __[\[request.cookies.list\]](https://docs.ainiro.io/reference/slots/request/request.cookies.list/)__ - Lists all HTTP request cookies
+* __[\[request.cookies.get\]](https://docs.ainiro.io/reference/slots/request/request.cookies.get/)__ - Returns the value of a cookie sent by the request
+* __[\[response.cookies.set\]](https://docs.ainiro.io/reference/slots/response/response.cookies.set/)__ - Creates a cookie that will be returned to the client over the response
+* __[\[request.headers.list\]](https://docs.ainiro.io/reference/slots/request/request.headers.list/)__ - Lists all HTTP request headers sent by the request
+* __[\[request.headers.get\]](https://docs.ainiro.io/reference/slots/request/request.headers.get/)__ - Returns a single HTTP header associated with the request
+* __[\[request.ip\]](https://docs.ainiro.io/reference/slots/request/request.ip/)__ - Returns the IP address of the HTTP request
+* __[\[request.url\]](https://docs.ainiro.io/reference/slots/request/request.url/)__ - Returns the relative URL associated with the request, without its magic/ prefix, and query parameters as children nodes as a key/value list
+* __[\[request.host\]](https://docs.ainiro.io/reference/slots/request/request.host/)__ - Returns the host name associated with the request
+* __[\[request.scheme\]](https://docs.ainiro.io/reference/slots/request/request.scheme/)__ - Returns the scheme associated with the request
+* __[\[response.headers.set\]](https://docs.ainiro.io/reference/slots/response/response.headers.set/)__ - Adds an HTTP header to the response object
+* __[\[mime.add\]](https://docs.ainiro.io/reference/slots/mime/mime.add/)__ - Associates a file extension with a MIME type, only relevant for the `HttpFileExecutorAsync` resolver
+* __[\[mime.list\]](https://docs.ainiro.io/reference/slots/mime/mime.list/)__ - Lists registered MIME type mappings
+* __[\[request.verb\]](https://docs.ainiro.io/reference/slots/request/request.verb/)__ - Returns the HTTP verb of the current invocation
 
 ## Hyperlambda and cookies
 
-Since cookies have more parameters than just a simple key/value declaration, the **[response.cookies.set]**
+Since cookies have more parameters than just a simple key/value declaration, the **[\[response.cookies.set\]](https://docs.ainiro.io/reference/slots/response/response.cookies.set/)**
 slot takes the following arguments.
 
 * __[value]__ - The string content of your cookie
@@ -5542,7 +5542,7 @@ to create and consume JWT tokens, to secure your Magic cloudlet. The project con
 * __[\[auth.ticket.create\]](https://docs.ainiro.io/reference/slots/auth/auth.ticket.create/)__ - Creates a new JWT token, that you can return to your client, any ways you see fit
 * __[\[auth.ticket.refresh\]](https://docs.ainiro.io/reference/slots/auth/auth.ticket.refresh/)__ - Refreshes a JWT token. Useful for refreshing a token before it expires, which would require the user to login again
 * __[\[auth.ticket.verify\]](https://docs.ainiro.io/reference/slots/auth/auth.ticket.verify/)__ - Verifies a JWT token, and that the user is logged in, in addition to (optionally) that he belongs to one of the roles supplied as a comma separated list of roles
-* __[\[auth.ticket.in-role\]](https://docs.ainiro.io/reference/slots/auth/auth.ticket.in-role/)__ - The same as **[auth.ticket.verify]**, but returns true or false, depending upon whether or not user is in any of the roles provided or not
+* __[\[auth.ticket.in-role\]](https://docs.ainiro.io/reference/slots/auth/auth.ticket.in-role/)__ - The same as **[\[auth.ticket.verify\]](https://docs.ainiro.io/reference/slots/auth/auth.ticket.verify/)**, but returns true or false, depending upon whether or not user is in any of the roles provided or not
 * __[\[auth.token.verify\]](https://docs.ainiro.io/reference/slots/auth/auth.token.verify/)__ - This slot accepts an external OpenID Connect token, for then to verify its authenticity and returning its email claim.
 * __[auth.jwks]__ - Returns a public JSON Web Key Set for the RSA public key(s) you supply, allowing other systems to verify RS256 tokens created by Magic
 
@@ -5607,7 +5607,7 @@ will _not_ be an array, but simply a string. Yet again, this is simply how .Net 
 about this. Hence, remember to check in your frontend as you retrieve your roles if the roles claims is a string
 or an array of strings before associating your user with a role in your client logic.
 
-When you invoke **[auth.ticket.create]** or **[auth.ticket.refresh]** you can choose to either provide an **[expires]** which is a future date for when the ticket expires, or a **[duration]** which is a positive integer informing the slot of how many minutes the token should last before it's no longer valid.
+When you invoke **[\[auth.ticket.create\]](https://docs.ainiro.io/reference/slots/auth/auth.ticket.create/)** or **[\[auth.ticket.refresh\]](https://docs.ainiro.io/reference/slots/auth/auth.ticket.refresh/)** you can choose to either provide an **[expires]** which is a future date for when the ticket expires, or a **[duration]** which is a positive integer informing the slot of how many minutes the token should last before it's no longer valid.
 
 
 ## JWT tokens internals
@@ -5649,7 +5649,7 @@ JWT token in your frontend, calculate the expiration date, and make sure you ref
 expiration date is reached, and replace your existing token with the new token returned by Magic.
 
 Magic contains a `refresh` token endpoint to achieve this. Internally this endpoint will use
-the **[auth.ticket.refresh]** slot to create a new token, where the only difference between your old and your
+the **[\[auth.ticket.refresh\]](https://docs.ainiro.io/reference/slots/auth/auth.ticket.refresh/)** slot to create a new token, where the only difference between your old and your
 new token is that it has a new expiration date.
 
 
@@ -5676,8 +5676,8 @@ auth.ticket.verify:non-existing-role
 The following slots allow you to inspect the token's payload, implying get the username and roles
 the current HTTP request originates from.
 
-* __[auth.ticket.get]__ - Returns the username and the roles the user belongs to
-* __[auth.ticket.in-role]__ - Convenience slot returning true if user belongs to the specified role(s)
+* __[\[auth.ticket.get\]](https://docs.ainiro.io/reference/slots/auth/auth.ticket.get/)__ - Returns the username and the roles the user belongs to
+* __[\[auth.ticket.in-role\]](https://docs.ainiro.io/reference/slots/auth/auth.ticket.in-role/)__ - Convenience slot returning true if user belongs to the specified role(s)
 
 Below is an example of how these are used.
 
@@ -5691,7 +5691,7 @@ a comma separated list of roles. The second slot above returns the username, and
 belongs to as a structured lambda object. As a general rule of thumb though, you'd not want to secure your
 endpoints using the above slots, but rather the _verify_ slot above, to avoid having errors in your code
 resulting in that an unauthorized user gains access to invoke an endpoint he should not be allowed to invoke.
-The **[auth.ticket.get]** slot will also return any custom claims you have associated with your JWT token
+The **[\[auth.ticket.get\]](https://docs.ainiro.io/reference/slots/auth/auth.ticket.get/)** slot will also return any custom claims you have associated with your JWT token
 as it was created.
 
 
@@ -5725,8 +5725,8 @@ This page is part of the [magic.lambda.auth](https://docs.ainiro.io/plugins/magi
 
 By default Magic signs JWT tokens with HS256, using the `magic:auth:secret` setting. This means anybody who can verify
 a token can also create one. If other systems need to verify your tokens, or you need different keys for different
-apps, you can sign tokens with RS256 by passing an RSA private key of at least 2048 bits into **[auth.ticket.create]**.
-Keys can be PEM encoded, or DER encoded as base64 or `byte[]`, which is what **[crypto.rsa.create-key]** returns.
+apps, you can sign tokens with RS256 by passing an RSA private key of at least 2048 bits into **[\[auth.ticket.create\]](https://docs.ainiro.io/reference/slots/auth/auth.ticket.create/)**.
+Keys can be PEM encoded, or DER encoded as base64 or `byte[]`, which is what **[\[crypto.rsa.create-key\]](https://docs.ainiro.io/reference/slots/crypto/crypto.rsa.create-key/)** returns.
 
 Magic never reads these keys from configuration. You load them yourself, using whatever logic you want to, from a file,
 a database, an environment variable, etc. This allows you to have any number of keys in one cloudlet, for instance one
@@ -5746,7 +5746,7 @@ auth.ticket.create
 ```
 
 The token is signed with RS256, and its `kid` header is the RFC 7638 thumbprint of the public key. To verify such a
-token you pass the public key into **[auth.token.read]**, at which point it ONLY accepts RS256 tokens signed by that
+token you pass the public key into **[\[auth.token.read\]](https://docs.ainiro.io/reference/slots/auth/auth.token.read/)**, at which point it ONLY accepts RS256 tokens signed by that
 key pair, and refuses tokens signed with the auth secret, with another key, or with any other algorithm.
 
 ```
@@ -5769,8 +5769,8 @@ The above returns a **[keys]** node with one child per unique key, having **[kty
 
 * Without a **[private-key]** or **[public-key]** everything works exactly as before, using HS256 and the auth secret
 * If you pass in **[private-key]** or **[public-key]** and it has no value, for instance because your expression found no key, the slot throws instead of falling back to the auth secret
-* The JWT bearer middleware that authenticates HTTP requests is NOT changed, and only accepts HS256 tokens signed with the auth secret. An RS256 token is verified explicitly using **[auth.token.read]**
-* **[auth.ticket.refresh]** refreshes HS256 tokens only, and **[auth.token.read]** only checks roles, it does not return the token's claims. RS256 tokens are intended to be verified by other systems using your JWKS
+* The JWT bearer middleware that authenticates HTTP requests is NOT changed, and only accepts HS256 tokens signed with the auth secret. An RS256 token is verified explicitly using **[\[auth.token.read\]](https://docs.ainiro.io/reference/slots/auth/auth.token.read/)**
+* **[\[auth.ticket.refresh\]](https://docs.ainiro.io/reference/slots/auth/auth.ticket.refresh/)** refreshes HS256 tokens only, and **[\[auth.token.read\]](https://docs.ainiro.io/reference/slots/auth/auth.token.read/)** only checks roles, it does not return the token's claims. RS256 tokens are intended to be verified by other systems using your JWKS
 * Tokens carry no issuer or audience by default. If several apps share one key, add your own claims and check them
 * Rotating a key is up to you. Publish both the old and the new public key in your JWKS while tokens signed by the old key are still valid
 
@@ -5897,8 +5897,8 @@ instance a database as _"slowly hashed values with per record based salts"_. Thi
 security issues, such as having adversaries creating Rainbow Dictionary attacks on your passwords. This
 project contains two slots to implement this, and these are as follows.
 
-* __[crypto.password.hash]__ - Creates a password hash
-* __[crypto.password.verify]__ - Verifies a hashed password
+* __[\[crypto.password.hash\]](https://docs.ainiro.io/reference/slots/crypto/crypto.password.hash/)__ - Creates a password hash
+* __[\[crypto.password.verify\]](https://docs.ainiro.io/reference/slots/crypto/crypto.password.verify/)__ - Verifies a hashed password
 
 Example usage can be found below.
 
@@ -5911,7 +5911,7 @@ crypto.password.verify:SomePasswordHere
 
 The first slot invocation creates a Blowfish hash, while the second slot invocation verifies a previously
 created Blowfish hash, given the password as its main argument. If you exchange the second password given
-to **[crypto.password.verify]** by for instance adding one random character to it, the result will be
+to **[\[crypto.password.verify\]](https://docs.ainiro.io/reference/slots/crypto/crypto.password.verify/)** by for instance adding one random character to it, the result will be
 `false` from the second invocation.
 Internally these are the slots Magic uses when it creates its JWT authentication database, and stores
 passswords into your Magic database.
@@ -5980,7 +5980,7 @@ and/or making adversaries also get a hold of it, is practically *very difficult*
 unless you can asymmetrically encrypt the symmetric key.
 
 If you only need a random array of 32 bytes, to use as your passphrase, in combination with for
-instance RSA asymmetric cryptography - You can use the **[crypto.random]** slot as follows.
+instance RSA asymmetric cryptography - You can use the **[\[crypto.random\]](https://docs.ainiro.io/reference/slots/crypto/crypto.random/)** slot as follows.
 
 ```
 crypto.random
@@ -6010,13 +6010,13 @@ This page is part of the [magic.lambda.crypto](https://docs.ainiro.io/plugins/ma
 AES and RSA are more useful when combined together. Hence, this project contains the following convenience slots, that combines
 these two cryptography functions together.
 
-* __[crypto.encrypt]__ - Encrypts some message using AES + RSA, and signs the message in the process
-* __[crypto.decrypt]__ - Decrypts some message using AES + RSA, optionally verifying a signature in the process
-* __[crypto.sign]__ - Cryptographically signs a message using RSA and creates a package containing both signature, signing key's fingerprint, and the content that was signed
-* __[crypto.verify]__ - The opposite of the above, that verifies the integrity of a package created with **[crypto.sign]**
-* __[crypto.get-key]__ - Returns the fingerprint of the RSA key that was used to encrypt some message using **[crypto.encrypt]** or sign some message using **[crypto.sign]**
+* __[\[crypto.encrypt\]](https://docs.ainiro.io/reference/slots/crypto/crypto.encrypt/)__ - Encrypts some message using AES + RSA, and signs the message in the process
+* __[\[crypto.decrypt\]](https://docs.ainiro.io/reference/slots/crypto/crypto.decrypt/)__ - Decrypts some message using AES + RSA, optionally verifying a signature in the process
+* __[\[crypto.sign\]](https://docs.ainiro.io/reference/slots/crypto/crypto.sign/)__ - Cryptographically signs a message using RSA and creates a package containing both signature, signing key's fingerprint, and the content that was signed
+* __[\[crypto.verify\]](https://docs.ainiro.io/reference/slots/crypto/crypto.verify/)__ - The opposite of the above, that verifies the integrity of a package created with **[\[crypto.sign\]](https://docs.ainiro.io/reference/slots/crypto/crypto.sign/)**
+* __[\[crypto.get-key\]](https://docs.ainiro.io/reference/slots/crypto/crypto.get-key/)__ - Returns the fingerprint of the RSA key that was used to encrypt some message using **[\[crypto.encrypt\]](https://docs.ainiro.io/reference/slots/crypto/crypto.encrypt/)** or sign some message using **[\[crypto.sign\]](https://docs.ainiro.io/reference/slots/crypto/crypto.sign/)**
 
-The **[crypto.encrypt]** slot requires some message/content, a signing key, an encryption key, and your signing
+The **[\[crypto.encrypt\]](https://docs.ainiro.io/reference/slots/crypto/crypto.encrypt/)** slot requires some message/content, a signing key, an encryption key, and your signing
 key's fingerprint. This slot will first cryptographically sign your message using the private key. Then it
 will use the public key supplied to encrypt the message, while injecting the fingerprint for the signing key
 and the cryptography key into the package. Below is an example.
@@ -6043,24 +6043,24 @@ crypto.decrypt:x:-
 ```
 
 **Notice** - We're using only 512 bit strength in the above example. Make sure you (at least) use
-2048, preferably 4096 in real world usage. The **[crypto.encrypt]** slot can also optionally handle
+2048, preferably 4096 in real world usage. The **[\[crypto.encrypt\]](https://docs.ainiro.io/reference/slots/crypto/crypto.encrypt/)** slot can also optionally handle
 a **[seed]** argument, which will seed the CSRNG that's used to generate a symmetric AES encryption
 key. To understand what occurs in the above Hyperlambda example, let's walk through it step by step,
-starting from the **[crypto.encrypt]** invocation.
+starting from the **[\[crypto.encrypt\]](https://docs.ainiro.io/reference/slots/crypto/crypto.encrypt/)** invocation.
 
 1. The message _"Some super secret message"_ is first cryptographically signed using the private **[signing-key]**
 2. The signed message is then AES encrypted using a CSRNG generated random key
 3. The AES key from the above is then encrypted using the **[encryption-key]**, that's assumed to be the recipient's public key
 4. The signing key's fingerprint is stored inside of the encrypted content, such that when the message is decrypted, the other party can verify that the signature originated from some trusted party
-5. The encryption key's fingerprint is stored as bytes, prepended before the encrypted message, which allows the other party to retrieve the correct decryption key, according to what encryption key the caller encrypted the message with. To retrieve a cryptography operation key fingerprint, you can use **[crypto.get-key]**
+5. The encryption key's fingerprint is stored as bytes, prepended before the encrypted message, which allows the other party to retrieve the correct decryption key, according to what encryption key the caller encrypted the message with. To retrieve a cryptography operation key fingerprint, you can use **[\[crypto.get-key\]](https://docs.ainiro.io/reference/slots/crypto/crypto.get-key/)**
 
 Hence, the *only* thing that is in plain sight in the above encrypted message, is the fingerprint of the public
 key that was used to encrypt the message. Only after the message is decrypted, the signature for the message
 can be retrieved, together with the fingerprint of the key that was used to sign the message. Hence, what would
 normally be a more complete process, is that after the receiver decrypts the message, he should also verify that
 the signature originates from some trusted party. This can be done by simply *omitting* the **[verify-key]** argument
-as you invoke **[crypto.decrypt]**, and then invoke **[crypto.get-key]** on the result of the decryption process,
-for then to use the result of **[crypto.get-key]** to lookup the public key used to *verify* the signature of the
+as you invoke **[\[crypto.decrypt\]](https://docs.ainiro.io/reference/slots/crypto/crypto.decrypt/)**, and then invoke **[\[crypto.get-key\]](https://docs.ainiro.io/reference/slots/crypto/crypto.get-key/)** on the result of the decryption process,
+for then to use the result of **[\[crypto.get-key\]](https://docs.ainiro.io/reference/slots/crypto/crypto.get-key/)** to lookup the public key used to *verify* the signature of the
 package.
 
 ```
@@ -6093,10 +6093,10 @@ crypto.verify:x:@crypto.decrypt
 ```
 
 Only after the message is verified, the actual content of the message is possible to read, as the
-value of the **[crypto.verify]** slot - Unless you pass in a **[verify-key]** during the invocation
-to **[crypto.decrypt]**, at which point that key will be used to verify the signature of the message,
+value of the **[\[crypto.verify\]](https://docs.ainiro.io/reference/slots/crypto/crypto.verify/)** slot - Unless you pass in a **[verify-key]** during the invocation
+to **[\[crypto.decrypt\]](https://docs.ainiro.io/reference/slots/crypto/crypto.decrypt/)**, at which point that key will be used to verify the signature of the message,
 after the package has been decrypted.
-If the above invocation to **[crypto.verify]** does not throw an exception, we know for a fact that
+If the above invocation to **[\[crypto.verify\]](https://docs.ainiro.io/reference/slots/crypto/crypto.verify/)** does not throw an exception, we know for a fact that
 the message was cryptographically signed with the private key that matches its **[public-key]** argument.
 Normally the fingerprint of the sender's key is asssociated with some sort of _"authorization object"_
 to elevate the rights of the user, only *after* having verified the message originated from a trusted
@@ -6132,17 +6132,17 @@ Hence, only when *both* of the above lists are done, you have a final encryption
 to some recipient.
 
 The other party can retrieve the encryption key used for encrypting the package, using for instance
-the **[crypto.get-key]** slot on the package. Then the receiver can use his private RSA key to decrypt
+the **[\[crypto.get-key\]](https://docs.ainiro.io/reference/slots/crypto/crypto.get-key/)** slot on the package. Then the receiver can use his private RSA key to decrypt
 the AES key, and use the decrypted AES key to decrypt the rest of the package - Which will result in getting the
 fingerprint of the RSA key used to sign the package, then the signature, and only *then* the content of
-the message. However, all of these steps are done automatically if you use the **[crypto.decrypt]** slot,
+the message. However, all of these steps are done automatically if you use the **[\[crypto.decrypt\]](https://docs.ainiro.io/reference/slots/crypto/crypto.decrypt/)** slot,
 except the signature verification process, unless you provide a **[verify-key]** argument to the decryption
 process.
 
 The AES key is generated using Bouncy Castle's `SecureRandom` implementation, resulting in a 256 bit
 cryptography key. This key again is encrypted using whatever bit strength you selected as you created
 your RSA key pair. Hence, the message as a whole, is not stronger than whatever key strength you use
-as you supply a **[strength]** argument to the **[crypto.rsa.create-key]**.
+as you supply a **[strength]** argument to the **[\[crypto.rsa.create-key\]](https://docs.ainiro.io/reference/slots/crypto/crypto.rsa.create-key/)**.
 
 The above format results in that the only _"meta information"_ an adversary can possibly pick up, is
 the fingerprint of the public RSA key used to encrypt the AES key, in addition to also the bit strength
@@ -6286,9 +6286,9 @@ crypto.rsa.verify:x:@.message
 ```
 
 If somebody tampers with the content between the signing process and the verify process, an exception will
-be thrown during the verify stage. Something you can verify yourself by uncommenting the above **[set-value]**
+be thrown during the verify stage. Something you can verify yourself by uncommenting the above **[\[set-value\]](https://docs.ainiro.io/reference/slots/core/set-value/)**
 invocation. Throwing an exception is a conscious choice, due to the potential security breaches an error
-in your code might have, creating a false positive if you erroneously invert an **[if]** statement. Even though
+in your code might have, creating a false positive if you erroneously invert an **[\[if\]](https://docs.ainiro.io/reference/slots/core/if/)** statement. Even though
 this is technically _"using exceptions for control flow"_, it has been a conscious design choice
 as the library was created, to avoid false positives during the verification process of a signature.
 
@@ -6319,7 +6319,7 @@ will internally base64 encode the encrypted data for simplicity reasons, allowin
 since encryption will result in a byte array, which is often inconvenient to handle.
 You can override this by passing in a **[raw]** argument, and set its value to true, at which point a `byte[]` will be
 returned.
-You can also supply **[raw]** as you invoke **[crypto.rsa.decrypt]** if you know the content in the message is
+You can also supply **[raw]** as you invoke **[\[crypto.rsa.decrypt\]](https://docs.ainiro.io/reference/slots/crypto/crypto.rsa.decrypt/)** if you know the content in the message is
 not a string, but rather an array of `byte[]`. Base64 encoding a byte array normally makes it larger in size,
 and also require CPU resources in both ends of the communication, implying it is sometimes important to have the
 raw byte array, instead of its base64 encoded equivalent.
@@ -6359,15 +6359,15 @@ csv2lambda:x:@lambda2csv
    types
 ```
 
-Notice, the **[lambda2csv]** slot will return type information, and the **[csv2lambda]** slot can optionally be
-given type information in its **[types]** argument, allowing you to convert correctly back to the correct type(s)
-as you convert a CSV string to its lambda objects. The **[lambda2csv]** slot will also create headers for your
-CSV string, and the **[csv2lambda]** slot will use the first line to retrieve these headers, to rebuild the lambda
+Notice, the **[\[lambda2csv\]](https://docs.ainiro.io/reference/slots/core/lambda2csv/)** slot will return type information, and the **[\[csv2lambda\]](https://docs.ainiro.io/reference/slots/core/csv2lambda/)** slot can optionally be
+given type information in its **[\[types\]](https://docs.ainiro.io/reference/slots/core/types/)** argument, allowing you to convert correctly back to the correct type(s)
+as you convert a CSV string to its lambda objects. The **[\[lambda2csv\]](https://docs.ainiro.io/reference/slots/core/lambda2csv/)** slot will also create headers for your
+CSV string, and the **[\[csv2lambda\]](https://docs.ainiro.io/reference/slots/core/csv2lambda/)** slot will use the first line to retrieve these headers, to rebuild the lambda
 object correctly.
 
 This allows you to roundtrip from a lambda object, to CSV format, and back to lambda again, without loosing
 type information or names of your nodes. This is necessary since CSV doesn't preserve types in any ways. By
-default the **[lambda2csv]** will also treat null values correctly, by adding these into the CSV file as _"[NULL]"_.
+default the **[\[lambda2csv\]](https://docs.ainiro.io/reference/slots/core/lambda2csv/)** will also treat null values correctly, by adding these into the CSV file as _"[NULL]"_.
 This allows you to preserve null values, which isn't really possible with CSV normally - However, for some edge
 cases you might want to use  _different_ null value, at which point you can supply this as **[null-value]** argument
 to both slots. If you supply a **[null-value]** argument, but set its value to _null_ - Null values will be ignored,
@@ -6385,9 +6385,9 @@ This project contains date manipulation slots for Magic. More specifically, this
 * __[\[date.min\]](https://docs.ainiro.io/reference/slots/date/date.min/)__ - Returns the minimum date value, equivalent of `DateTime.MinValue`.
 * __[\[date.max\]](https://docs.ainiro.io/reference/slots/date/date.max/)__ - Returns the maximum date value, equivalent of `DateTime.MaxValue`.
 * __[\[date.unix\]](https://docs.ainiro.io/reference/slots/date/date.unix/)__ - Returns the current UTC time as a Unix timestamp.
-* __[\[date.format\]](https://docs.ainiro.io/reference/slots/date/date.format/)__ - Returns a string representation of some date, formatted according to the specified **[format]** argument.
+* __[\[date.format\]](https://docs.ainiro.io/reference/slots/date/date.format/)__ - Returns a string representation of some date, formatted according to the specified **[\[format\]](https://docs.ainiro.io/reference/slots/core/format/)** argument.
 * __[\[time.total-milliseconds\]](https://docs.ainiro.io/reference/slots/time/time.total-milliseconds/)__ - Returns the total number of milliseconds in a time span.
-* __[\[time.format\]](https://docs.ainiro.io/reference/slots/time/time.format/)__ - Formats a time span as a string, according to the specified **[format]** argument.
+* __[\[time.format\]](https://docs.ainiro.io/reference/slots/time/time.format/)__ - Formats a time span as a string, according to the specified **[\[format\]](https://docs.ainiro.io/reference/slots/core/format/)** argument.
 * __[\[time\]](https://docs.ainiro.io/reference/slots/core/time/)__ - Creates a time span, useful for adding and subtracting offsets to date objects. Pass in **[days]**, **[hours]**, **[minutes]**, **[seconds]** or **[milliseconds]** to declare how large your offset is. All arguments are optional, but (of course) at least one argument should be passed in.
 
 **Notice** - Internally in Magic, everything is UTC Universal timezone, implying if you want to render it in user's
@@ -6522,7 +6522,7 @@ project contains the following 5 slots.
 * __[\[http.put\]](https://docs.ainiro.io/reference/slots/http/http.put/)__ - Puts some resources to some URL using the HTTP PUT verb
 * __[\[http.patch\]](https://docs.ainiro.io/reference/slots/http/http.patch/)__ - Patches some resources to some URL using the HTTP PATCH verb
 
-The __[http.put]__, __[http.post]__ and __[http.patch]__ slots requires you to provide a __[payload]__
+The __[\[http.put\]](https://docs.ainiro.io/reference/slots/http/http.put/)__, __[\[http.post\]](https://docs.ainiro.io/reference/slots/http/http.post/)__ and __[\[http.patch\]](https://docs.ainiro.io/reference/slots/http/http.patch/)__ slots requires you to provide a __[payload]__
 or __[filename]__ argument that will be transferred to the endpoint as is. All 5 endpoints can (optionally)
 take a __[token]__ argument, which will be transferred as a `Bearer Authorization` token to the endpoint
 in the `Authorization` header of your request. If you provide a __[filename]__ argument, this is assumed
@@ -6685,7 +6685,7 @@ Description: Automatic conversion - You can also automatically convert the resul
 This page is part of the [magic.lambda.http](https://docs.ainiro.io/plugins/magic.lambda.http/) documentation.
 
 You can also automatically convert the resulting response object to a lambda object if you have a registered
-conversion function, and you provide a **[convert]** argument, and set its value to boolean `true`. Below is an
+conversion function, and you provide a **[\[convert\]](https://docs.ainiro.io/reference/slots/core/convert/)** argument, and set its value to boolean `true`. Below is an
 example.
 
 ```
@@ -6822,7 +6822,7 @@ eval:x:-
 ```
 
 **Notice** - Both of these slots can optionally be given a **[comments]** argument with a value of `true`,
-at which point both **[lambda2hyper]** and **[hyper2lambda]** will preserve comments, and persist these as
+at which point both **[\[lambda2hyper\]](https://docs.ainiro.io/reference/slots/core/lambda2hyper/)** and **[\[hyper2lambda\]](https://docs.ainiro.io/reference/slots/core/hyper2lambda/)** will preserve comments, and persist these as
 **[..]** nodes into your lambda, and reverse the process for the other direction. This allows you to keep the
 comments of your Hyperlambda parts as semantic nodes, as you handle your Hyperlambda and node hierarchy.
 
@@ -6846,7 +6846,7 @@ manipulation of images, in addition to generating QR codes. More specifically th
 
 All image transformation slots works similarly. They can either be given a string being the relative filename
 of the image you want to transform, or a stream from where to load the image. All transformation slots can
-also be given a **[type]** argument, which is how to return the image after the transformation is done. Supported
+also be given a **[\[type\]](https://docs.ainiro.io/reference/slots/core/type/)** argument, which is how to return the image after the transformation is done. Supported
 types are as follows.
 
 * png
@@ -6877,18 +6877,18 @@ This project provides file/folder slots for Magic. More specifically, it provide
 * __[\[io.folder.move\]](https://docs.ainiro.io/reference/slots/io/io.folder.move/)__ - Moves a folder to its specified destination
 * __[\[io.folder.copy\]](https://docs.ainiro.io/reference/slots/io/io.folder.copy/)__ - Copies a folder to its specified destination
 * __[\[io.file.load\]](https://docs.ainiro.io/reference/slots/io/io.file.load/)__ - Loads a file from disc on your server
-* __[\[load-file\]](https://docs.ainiro.io/reference/slots/core/load-file/)__ - Alias for **[io.file.load]**
+* __[\[load-file\]](https://docs.ainiro.io/reference/slots/core/load-file/)__ - Alias for **[\[io.file.load\]](https://docs.ainiro.io/reference/slots/io/io.file.load/)**
 * __[\[io.file.load-recursively\]](https://docs.ainiro.io/reference/slots/io/io.file.load-recursively/)__ - Loads all files in a folder, including all nested folders, returning each file's name and content
 * __[\[io.file.load.binary\]](https://docs.ainiro.io/reference/slots/io/io.file.load.binary/)__ - Loads a file from disc on your server as a byte array
 * __[\[io.file.save\]](https://docs.ainiro.io/reference/slots/io/io.file.save/)__ - Saves a file on disc on your server
-* __[\[save-file\]](https://docs.ainiro.io/reference/slots/core/save-file/)__ - Alias for **[io.file.save]**
+* __[\[save-file\]](https://docs.ainiro.io/reference/slots/core/save-file/)__ - Alias for **[\[io.file.save\]](https://docs.ainiro.io/reference/slots/io/io.file.save/)**
 * __[\[io.file.save.binary\]](https://docs.ainiro.io/reference/slots/io/io.file.save.binary/)__ - Saves a file on disc on your server but contrary to the above assumes content to save is binary
 * __[\[io.file.patch\]](https://docs.ainiro.io/reference/slots/io/io.file.patch/)__ - Applies a unified diff patch to a file on disc on your server
 * __[\[io.file.exists\]](https://docs.ainiro.io/reference/slots/io/io.file.exists/)__ - Returns true if file exists, otherwise false.
 * __[\[io.file.delete\]](https://docs.ainiro.io/reference/slots/io/io.file.delete/)__ - Deletes a file on your server.
 * __[\[io.file.copy\]](https://docs.ainiro.io/reference/slots/io/io.file.copy/)__ - Copies a file on your server.
 * __[\[io.file.execute\]](https://docs.ainiro.io/reference/slots/io/io.file.execute/)__ - Executes a Hyperlambda file on your server.
-* __[\[execute-file\]](https://docs.ainiro.io/reference/slots/core/execute-file/)__ - Alias for **[io.file.execute]** except it will forward evaluate all descendant nodes using **[unwrap]**
+* __[\[execute-file\]](https://docs.ainiro.io/reference/slots/core/execute-file/)__ - Alias for **[\[io.file.execute\]](https://docs.ainiro.io/reference/slots/io/io.file.execute/)** except it will forward evaluate all descendant nodes using **[\[unwrap\]](https://docs.ainiro.io/reference/slots/core/unwrap/)**
 * __[\[io.file.list\]](https://docs.ainiro.io/reference/slots/io/io.file.list/)__ - List files in the specified folder on your server.
 * __[\[io.file.list-recursively\]](https://docs.ainiro.io/reference/slots/io/io.file.list-recursively/)__ - List files in the specified folder on your server, including all nested folders.
 * __[\[io.file.move\]](https://docs.ainiro.io/reference/slots/io/io.file.move/)__ - Moves a file on your server.
@@ -6933,7 +6933,7 @@ var rootFolder = node.Get<string>();
 
 ## Restricting file access with [whitelist]
 
-Every slot in this project verifies its path against the **[whitelist]** vocabulary in scope, if any,
+Every slot in this project verifies its path against the **[\[whitelist\]](https://docs.ainiro.io/reference/slots/core/whitelist/)** vocabulary in scope, if any,
 comparing it segment by segment such that a wildcard is confined to the segment it occurs in.
 
 ```
@@ -6954,12 +6954,12 @@ and a folder has no extension - so a pattern such as `/etc/*.md/` throws for a f
 the same wildcard is legal as a filename. An asterisk must be either an entire segment or the start of
 the filename, and anything else throws rather than silently matching something unintended.
 
-Notice, the paths a slot touches _besides_ its own value are verified too. **[io.file.copy]** and
-**[io.file.move]** verify their destination, which the vocabulary never sees otherwise. **[io.file.unzip]**
+Notice, the paths a slot touches _besides_ its own value are verified too. **[\[io.file.copy\]](https://docs.ainiro.io/reference/slots/io/io.file.copy/)** and
+**[\[io.file.move\]](https://docs.ainiro.io/reference/slots/io/io.file.move/)** verify their destination, which the vocabulary never sees otherwise. **[\[io.file.unzip\]](https://docs.ainiro.io/reference/slots/io/io.file.unzip/)**
 verifies its destination folder once, and then confines every entry the archive writes to that folder,
 which is what stops an archive escaping it with a `../` in an entry's name.
 
-Read more about **[whitelist]** in the magic.lambda project.
+Read more about **[\[whitelist\]](https://docs.ainiro.io/reference/slots/core/whitelist/)** in the magic.lambda project.
 
 
 # magic.lambda.json
@@ -7007,9 +7007,9 @@ An example of creating a log entry can be found below.
 log.info:Howdy world from magic.lambda.logging
 ```
 
-You can of course exchange the above **[log.info]** with **[log.error]**, **[log.debug]** or **[log.fatal]**.
+You can of course exchange the above **[\[log.info\]](https://docs.ainiro.io/reference/slots/log/log.info/)** with **[\[log.error\]](https://docs.ainiro.io/reference/slots/log/log.error/)**, **[\[log.debug\]](https://docs.ainiro.io/reference/slots/log/log.debug/)** or **[\[log.fatal\]](https://docs.ainiro.io/reference/slots/log/log.fatal/)**.
 
-All four slots return the id of the log entry they created as their value, allowing you to reference the entry later - for instance passing it to **[log.get]**, or returning it to a client such that an error can be correlated with the exact log entry describing it. If the configured log level filtered the invocation out, such that no entry was created, the returned value is null.
+All four slots return the id of the log entry they created as their value, allowing you to reference the entry later - for instance passing it to **[\[log.get\]](https://docs.ainiro.io/reference/slots/log/log.get/)**, or returning it to a client such that an error can be correlated with the exact log entry describing it. If the configured log level filtered the invocation out, such that no entry was created, the returned value is null.
 
 Children nodes will be assumed to be _"meta information"_ associated with the invocation, allowing you to
 log data such as follows.
@@ -7030,7 +7030,7 @@ your log entry after having been evaluated.
 
 ## Exception logging
 
-The **[log.error]** and **[log.fatal]** slots give you the option of logging an exception stack trace, by parametrising
+The **[\[log.error\]](https://docs.ainiro.io/reference/slots/log/log.error/)** and **[\[log.fatal\]](https://docs.ainiro.io/reference/slots/log/log.fatal/)** slots give you the option of logging an exception stack trace, by parametrising
 your invocation with an **[exception]** argument, which will _not_ be assumed to be meta information, but rather end up
 in the _"exception"_ column as you create the log item. All other parameters will still be evaluated or used as meta
 information.
@@ -7038,7 +7038,7 @@ information.
 
 ## Log level configuration
 
-The slots **[log.debug]**, **[log.info]**, **[log.error]**, and **[log.fatal]** are actually logging with their
+The slots **[\[log.debug\]](https://docs.ainiro.io/reference/slots/log/log.debug/)**, **[\[log.info\]](https://docs.ainiro.io/reference/slots/log/log.info/)**, **[\[log.error\]](https://docs.ainiro.io/reference/slots/log/log.error/)**, and **[\[log.fatal\]](https://docs.ainiro.io/reference/slots/log/log.fatal/)** are actually logging with their
 last parts becoming the _"type"_ of log item. This is similar to how Log4Net and Log4J works, and can be turned on
 and off as you see fit. The level is an increasing leverage type of value, applied in the following order.
 
@@ -7047,7 +7047,7 @@ and off as you see fit. The level is an increasing leverage type of value, appli
 * error
 * fatal
 
-This implies that if you set the level to for instance _"error"_ no invocations to **[log.debug]** or **[log.info]**
+This implies that if you set the level to for instance _"error"_ no invocations to **[\[log.debug\]](https://docs.ainiro.io/reference/slots/log/log.debug/)** or **[\[log.info\]](https://docs.ainiro.io/reference/slots/log/log.info/)**
 will log anything into your log, allowing you to _"turn up and down"_ the level of logging you need as a configuration
 setting through your _"appsetting.json"_ file. Below is an example configuration setting the level to _"info"_. The
 default value for log level is _"debug"_. In a production environment you might want to increase this to at
@@ -7063,7 +7063,7 @@ least _"info"_.
 }
 ```
 
-The above value will for instance log everything except invocations to **[log.debug]**.
+The above value will for instance log everything except invocations to **[\[log.debug\]](https://docs.ainiro.io/reference/slots/log/log.debug/)**.
 
 
 ## Topics
@@ -7078,12 +7078,12 @@ Description: Querying your log - your particular log implementation can actually
 
 This page is part of the [magic.lambda.logging](https://docs.ainiro.io/plugins/magic.lambda.logging/) documentation.
 
-**Notice** - To see the capabilities of your particular log implementation please invoke **[log.capabilities]** and verify
+**Notice** - To see the capabilities of your particular log implementation please invoke **[\[log.capabilities\]](https://docs.ainiro.io/reference/slots/log/log.capabilities/)** and verify
 your particular log implementation can actually do what you need for it to do, since not all implementations have the
 same capabilities - Implying things such as filtering log items according to content, and/or timeshifting log items, etc,
 might not be implemented for your particular implementation.
 
-To retrieve log items sequentially you can use **[log.query]**. This slot can optionally take a **[from]** argument
+To retrieve log items sequentially you can use **[\[log.query\]](https://docs.ainiro.io/reference/slots/log/log.query/)**. This slot can optionally take a **[from]** argument
 being the id of an existing log item from where to start retrieving items, and a **[max]** argument being the maximum
 number of records to return. If no **[max]** argument is specified, the default value of this is 10. In addition the
 invocation can be fiven a string as its value, which if given must match the content of your log items for an item
@@ -7097,10 +7097,10 @@ log.query:"We successfully authenticated user 'root'"
 
 The above will return log items starting from id 554 and down, and return only 20 records, and all returned records
 will have a content value of _"We successfully authenticated user 'root'"_. To return a single log item you can use
-**[log.get]**  and pass in the id of the log item you want to retrieve as its value.
+**[\[log.get\]](https://docs.ainiro.io/reference/slots/log/log.get/)**  and pass in the id of the log item you want to retrieve as its value.
 
 **Notice** - If your particular log implementation does not support querying you _cannot_ query items
-according to content as illustrated above, but rather only page items. Invoke **[log.capabilities]** to see if
+according to content as illustrated above, but rather only page items. Invoke **[\[log.capabilities\]](https://docs.ainiro.io/reference/slots/log/log.capabilities/)** to see if
 your implementation supports querying before relying upon its existence.
 
 ---
@@ -7150,7 +7150,7 @@ math.divide:int:100
    :int:5
 ```
 
-The value of the above __[math.divide]__ node after evaluating the above Hyperlambda will be 5.
+The value of the above __[\[math.divide\]](https://docs.ainiro.io/reference/slots/math/math.divide/)__ node after evaluating the above Hyperlambda will be 5.
 All of the above slots will also evaluate the children collection as a lambda, before starting the actual math function,
 allowing you to recursively raise signals to retrieve values that are supposed to be mathematically handled somehow.
 This allows you to recursively nest math operations, such as for instance.
@@ -7171,7 +7171,7 @@ The above of course will first add 5 and 2, then multiply the result of that wit
 
 ## Incrementing and decrementing values
 
-The above **[math.increment]** and **[math.decrement]** slots, will instead of yielding a result, inline modify the
+The above **[\[math.increment\]](https://docs.ainiro.io/reference/slots/math/math.increment/)** and **[\[math.decrement\]](https://docs.ainiro.io/reference/slots/math/math.decrement/)** slots, will instead of yielding a result, inline modify the
 value of the node(s) it is pointing to, assuming its value is an expression. In addition these two slots can take an
 _optional_ _"step"_ argument, allowing you to declare how much the incrementation/decrementation process should add/reduce
 the original node's value by. Below is an example that decrements the value found in its expression by 2.
@@ -7193,7 +7193,7 @@ math.increment:x:-
 ```
 
 **Notice** - You can use any slot invocation to retrieve the step value for the increment/decrement slots, including
-for instance an invocation to **[get-value]**, or your custom slots. This is due to the fact that the first argument supplied
+for instance an invocation to **[\[get-value\]](https://docs.ainiro.io/reference/slots/core/get-value/)**, or your custom slots. This is due to the fact that the first argument supplied
 to these slots will be assumed to be the _"step"_ value you want.
 
 
@@ -7244,8 +7244,8 @@ All of the slots in this project are documented in the documentation for the _"m
 If you replace the **[data.xxx]** or **[sql.xxx]** slots with **[mssql.xxx]**, you will use the SQL Server
 specific slots, instead of the generic, and/or polymorphistic slots.
 Hence, please refer to the documentation for [_"magic.data.common"_](https://docs.ainiro.io/plugins/magic.data.common/) to see the complete documentation for this
-project. If you need for instance documentation about the **[mssql.connect]** slot you should look for the
-documentation for **[data.connect]**, since it's more or less the exact same documentation.
+project. If you need for instance documentation about the **[\[mssql.connect\]](https://docs.ainiro.io/reference/slots/mssql/mssql.connect/)** slot you should look for the
+documentation for **[\[data.connect\]](https://docs.ainiro.io/reference/slots/data/data.connect/)**, since it's more or less the exact same documentation.
 
 
 # magic.lambda.mysql
@@ -7281,8 +7281,8 @@ All of the slots in this project are documented in the documentation for the _"m
 If you replace the **[data.xxx]** or **[sql.xxx]** slots with **[mysql.xxx]**, you will use the MySQL specific
 slots, instead of the generic, and/or polymorphistic slots.
 Hence, please refer to the documentation for _"magic.data.common"_ to see the complete documentation for this
-project. If you need for instance documentation about the **[mysql.connect]** slot you should look for the
-documentation for **[data.connect]**, since it's more or less the exact same documentation.
+project. If you need for instance documentation about the **[\[mysql.connect\]](https://docs.ainiro.io/reference/slots/mysql/mysql.connect/)** slot you should look for the
+documentation for **[\[data.connect\]](https://docs.ainiro.io/reference/slots/data/data.connect/)**, since it's more or less the exact same documentation.
 
 
 # magic.lambda.odbc
@@ -7305,8 +7305,8 @@ All of the slots in this project are documented in the documentation for the _"m
 If you replace the **[data.xxx]** or **[sql.xxx]** slots with **[odbc.xxx]**, you will use the ODBC specific
 slots, instead of the generic, and/or polymorphistic slots.
 Hence, please refer to the documentation for _"magic.data.common"_ to see the complete documentation for this
-project. If you need for instance documentation about the **[odbc.connect]** slot you should look for the
-documentation for **[data.connect]**, since it's more or less the exact same documentation.
+project. If you need for instance documentation about the **[\[odbc.connect\]](https://docs.ainiro.io/reference/slots/odbc/odbc.connect/)** slot you should look for the
+documentation for **[\[data.connect\]](https://docs.ainiro.io/reference/slots/data/data.connect/)**, since it's more or less the exact same documentation.
 
 
 ## ODBC data adapter drivers
@@ -7384,8 +7384,8 @@ All of the slots in this project are documented in the documentation for the _"m
 If you replace the **[data.xxx]** or **[sql.xxx]** slots with **[pgsql.xxx]**, you will use the PgSQL specific
 slots, instead of the generic, and/or polymorphistic slots.
 Hence, please refer to the documentation for _"magic.data.common"_ to see the complete documentation for this
-project. If you need for instance documentation about the **[pgsql.connect]** slot you should look for the
-documentation for **[data.connect]**, since it's more or less the exact same documentation.
+project. If you need for instance documentation about the **[\[pgsql.connect\]](https://docs.ainiro.io/reference/slots/pgsql/pgsql.connect/)** slot you should look for the
+documentation for **[\[data.connect\]](https://docs.ainiro.io/reference/slots/data/data.connect/)**, since it's more or less the exact same documentation.
 
 
 # magic.lambda.puppeteer
@@ -7393,7 +7393,7 @@ documentation for **[data.connect]**, since it's more or less the exact same doc
 URL: https://docs.ainiro.io/plugins/magic.lambda.puppeteer/
 
 The magic.lambda.puppeteer project provides headless Chromium automation slots for Magic using PuppeteerSharp.
-It uses an explicit session model: **[puppeteer.connect]** returns a `session_id`, and every other slot requires
+It uses an explicit session model: **[\[puppeteer.connect\]](https://docs.ainiro.io/reference/slots/puppeteer/puppeteer.connect/)** returns a `session_id`, and every other slot requires
 that `session_id`. There is no scoped context or `.lambda` usage.
 
 **Thread safety**: This library is **not thread safe**. Do not use the same `session_id` concurrently across threads.
@@ -7494,19 +7494,19 @@ URL: https://docs.ainiro.io/plugins/magic.lambda.slots/
 The magic.lambda.slots project provides the ability to create, invoke (signal), modify, inspect, and delete
 dynamic slots in Hyperlambda. More specifically, this project provides the following slots.
 
-* __[\[signal\]](https://docs.ainiro.io/reference/slots/core/signal/)__ - Invokes a dynamically create slot that has been created with the __[slots.create]__ slot
-* __[\[execute\]](https://docs.ainiro.io/reference/slots/core/execute/)__ - Alias for **[signal]** except it will **[unwrap]** all descendant nodes explicitly
-* __[\[try-signal\]](https://docs.ainiro.io/reference/slots/core/try-signal/)__ - Invokes a dynamically create slot that has been created with the __[slots.create]__ slot, but will _not_ throw exceptions if the slot doesn't exist
-* __[\[slots.create\]](https://docs.ainiro.io/reference/slots/slots/slots.create/)__ - Creates a dynamic slot, that can be invoked with the __[signal]__ slot
-* __[\[function\]](https://docs.ainiro.io/reference/slots/core/function/)__ - Alias for **[slots.create]**
-* __[\[slots.get\]](https://docs.ainiro.io/reference/slots/slots/slots.get/)__ - Returns the entire lambda object for a slot that has been previously created with the __[slots.create]__ slot
-* __[\[slots.delete\]](https://docs.ainiro.io/reference/slots/slots/slots.delete/)__ - Deletes a slot that has been previously created with the __[slots.create]__ slot
+* __[\[signal\]](https://docs.ainiro.io/reference/slots/core/signal/)__ - Invokes a dynamically create slot that has been created with the __[\[slots.create\]](https://docs.ainiro.io/reference/slots/slots/slots.create/)__ slot
+* __[\[execute\]](https://docs.ainiro.io/reference/slots/core/execute/)__ - Alias for **[\[signal\]](https://docs.ainiro.io/reference/slots/core/signal/)** except it will **[\[unwrap\]](https://docs.ainiro.io/reference/slots/core/unwrap/)** all descendant nodes explicitly
+* __[\[try-signal\]](https://docs.ainiro.io/reference/slots/core/try-signal/)__ - Invokes a dynamically create slot that has been created with the __[\[slots.create\]](https://docs.ainiro.io/reference/slots/slots/slots.create/)__ slot, but will _not_ throw exceptions if the slot doesn't exist
+* __[\[slots.create\]](https://docs.ainiro.io/reference/slots/slots/slots.create/)__ - Creates a dynamic slot, that can be invoked with the __[\[signal\]](https://docs.ainiro.io/reference/slots/core/signal/)__ slot
+* __[\[function\]](https://docs.ainiro.io/reference/slots/core/function/)__ - Alias for **[\[slots.create\]](https://docs.ainiro.io/reference/slots/slots/slots.create/)**
+* __[\[slots.get\]](https://docs.ainiro.io/reference/slots/slots/slots.get/)__ - Returns the entire lambda object for a slot that has been previously created with the __[\[slots.create\]](https://docs.ainiro.io/reference/slots/slots/slots.create/)__ slot
+* __[\[slots.delete\]](https://docs.ainiro.io/reference/slots/slots/slots.delete/)__ - Deletes a slot that has been previously created with the __[\[slots.create\]](https://docs.ainiro.io/reference/slots/slots/slots.create/)__ slot
 * __[\[slots.exists\]](https://docs.ainiro.io/reference/slots/slots/slots.exists/)__ - Returns true of the given slot exists
 * __[\[return-nodes\]](https://docs.ainiro.io/reference/slots/core/return-nodes/)__ - Returns a bunch of nodes to caller from inside of your slot
 * __[\[return-value\]](https://docs.ainiro.io/reference/slots/core/return-value/)__ - Returns a single value to caller from inside of your slot
 * __[\[return\]](https://docs.ainiro.io/reference/slots/core/return/)__ - Returns either a list of nodes, or a single value, or both, depending upon the results of its expression,
 or whether or not it has a static value, or a list of nodes
-* __[\[yield\]](https://docs.ainiro.io/reference/slots/core/yield/)__ - Alias for **[return-nodes]** but similarly to **[execute]** it will **[unwrap]** all descendant nodes explicitly
+* __[\[yield\]](https://docs.ainiro.io/reference/slots/core/yield/)__ - Alias for **[\[return-nodes\]](https://docs.ainiro.io/reference/slots/core/return-nodes/)** but similarly to **[\[execute\]](https://docs.ainiro.io/reference/slots/core/execute/)** it will **[\[unwrap\]](https://docs.ainiro.io/reference/slots/core/unwrap/)** all descendant nodes explicitly
 * __[\[slots.vocabulary\]](https://docs.ainiro.io/reference/slots/slots/slots.vocabulary/)__ - Returns the names of all dynamically created slots
 
 ```
@@ -7522,8 +7522,8 @@ slots.create:foo
 signal:foo
 ```
 
-After evaluation of the above Hyperlambda, the value of the __[signal]__ node will be 57. Notice, if you
-invoke __[slots.create]__ for a slot that has already been created, the old slot will be overwritten with the
+After evaluation of the above Hyperlambda, the value of the __[\[signal\]](https://docs.ainiro.io/reference/slots/core/signal/)__ node will be 57. Notice, if you
+invoke __[\[slots.create\]](https://docs.ainiro.io/reference/slots/slots/slots.create/)__ for a slot that has already been created, the old slot will be overwritten with the
 new lambda object you pass into it. Also notice that if you try to invoke a slot that doesn't exist, or you try
 to get its content, an exception will be thrown.
 
@@ -7588,8 +7588,8 @@ the above arguments are optional.
 
 You can associate a user with one or more groups. This is done with the following slots.
 
-* __[sockets.user.add-to-group]__ - Adds the specified user to the specified group
-* __[sockets.user.remove-from-group]__ - Removes the specified user from the specified group
+* __[\[sockets.user.add-to-group\]](https://docs.ainiro.io/reference/slots/sockets/sockets.user.add-to-group/)__ - Adds the specified user to the specified group
+* __[\[sockets.user.remove-from-group\]](https://docs.ainiro.io/reference/slots/sockets/sockets.user.remove-from-group/)__ - Removes the specified user from the specified group
 
 Below you can find an example of how to add a user to a group, for then to later de-associate
 the user with the group.
@@ -7619,7 +7619,7 @@ above example, irrelevant of whether the user belongs to the group or not.
 ## Sockets meta data
 
 Hyperlambda also allows you to retrieve meta data about currently connected users, through for instance
-the **[sockets.users]** slot and the **[sockets.users.count]** slot, that will return the username of
+the **[\[sockets.users\]](https://docs.ainiro.io/reference/slots/sockets/sockets.users/)** slot and the **[\[sockets.users.count\]](https://docs.ainiro.io/reference/slots/sockets/sockets.users.count/)** slot, that will return the username of
 all currently connected users, and the count matching your specified filter condition. An example
 of using it can be found below.
 
@@ -7656,8 +7656,8 @@ This might sometimes be useful, especially if you want to dynamically add only _
 for instance. To add the currently active connection explicitly to a group for instance, you can use the 
 following slots.
 
-* __[sockets.connection.enter-group]__ - Associates the current connection _only_ with the specified group
-* __[sockets.connection.leave-group]__ - De-associates the current connection with the specified group
+* __[\[sockets.connection.enter-group\]](https://docs.ainiro.io/reference/slots/sockets/sockets.connection.enter-group/)__ - Associates the current connection _only_ with the specified group
+* __[\[sockets.connection.leave-group\]](https://docs.ainiro.io/reference/slots/sockets/sockets.connection.leave-group/)__ - De-associates the current connection with the specified group
 
 If the user has additional connections, none of the other connections will be modified in any ways. Also
 realise that both of these slots can _only_ be used from within a Hyperlambda file executed through a
@@ -7715,8 +7715,8 @@ All of the slots in this project are documented in the documentation for the _"m
 If you replace the **[data.xxx]** or **[sql.xxx]** slots with **[sqlite.xxx]**, you will use the sqlite specific
 slots, instead of the generic, and/or polymorphistic slots.
 Hence, please refer to the documentation for _"magic.data.common"_ to see the complete documentation for this
-project. If you need for instance documentation about the **[sqlite.connect]** slot you should look for the
-documentation for **[data.connect]**, since it's more or less the exact same documentation.
+project. If you need for instance documentation about the **[\[sqlite.connect\]](https://docs.ainiro.io/reference/slots/sqlite/sqlite.connect/)** slot you should look for the
+documentation for **[\[data.connect\]](https://docs.ainiro.io/reference/slots/data/data.connect/)**, since it's more or less the exact same documentation.
 
 
 # magic.lambda.strings
@@ -7749,8 +7749,8 @@ This project contains string manipulation slots for Magic. More specifically, it
 * __[\[strings.substring\]](https://docs.ainiro.io/reference/slots/strings/strings.substring/)__ - Returns the sub-string of the specified string
 * __[\[strings.matches\]](https://docs.ainiro.io/reference/slots/strings/strings.matches/)__ - Returns the regular expression matches found from specified source
 * __[\[strings.mixin\]](https://docs.ainiro.io/reference/slots/strings/strings.mixin/)__ - Allows for mixin logic of strings and Hyperlambda
-* __[\[strings.builder\]](https://docs.ainiro.io/reference/slots/strings/strings.builder/)__ - Creates a string builder scope for **[strings.builder.append]**
-* __[\[strings.builder.append\]](https://docs.ainiro.io/reference/slots/strings/strings.builder.append/)__ - Appends text to the current **[strings.builder]** scope
+* __[\[strings.builder\]](https://docs.ainiro.io/reference/slots/strings/strings.builder/)__ - Creates a string builder scope for **[\[strings.builder.append\]](https://docs.ainiro.io/reference/slots/strings/strings.builder.append/)**
+* __[\[strings.builder.append\]](https://docs.ainiro.io/reference/slots/strings/strings.builder.append/)__ - Appends text to the current **[\[strings.builder\]](https://docs.ainiro.io/reference/slots/strings/strings.builder/)** scope
 
 
 ## Usage
@@ -7791,8 +7791,8 @@ The most important feature of this project is probably that it gives you the abi
 
 In addition to the above slots this project also contains the following slots.
 
-* __[system.os]__ - Returns description of your operating system
-* __[system.is-os]__ - Returns true if your underlying operating system is of the specified type
+* __[\[system.os\]](https://docs.ainiro.io/reference/slots/system/system.os/)__ - Returns description of your operating system
+* __[\[system.is-os\]](https://docs.ainiro.io/reference/slots/system/system.is-os/)__ - Returns true if your underlying operating system is of the specified type
 
 The last slot above takes an argument such as _"Windows"_, _"OSX_, _"Linux"_, etc, and will return true
 of the operating system you are currently running on belongs to the specified family of operating systems.
@@ -7857,10 +7857,10 @@ validators.email:x:@.foo/*/email
 
 Most Hyperlambda validators requires some sort of argument(s) - However, some of
 these validators does not require arguments, such as the email validator, that simply verifies the input is a valid email address.
-To use the **[validators.regex]** validator, you should probably [learn regular expression](https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285). However, this is beyond the scope of this article.
+To use the **[\[validators.regex\]](https://docs.ainiro.io/reference/slots/validators/validators.regex/)** validator, you should probably [learn regular expression](https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285). However, this is beyond the scope of this article.
 
 **Notice** - No attempt to invoke the type validator logic will be done unless the value is a _non null_ value. If you want
-to enforce such logic, you'll have to combine the specific type validators with the **[validators.mandatory]** validator,
+to enforce such logic, you'll have to combine the specific type validators with the **[\[validators.mandatory\]](https://docs.ainiro.io/reference/slots/validators/validators.mandatory/)** validator,
 that enforces that a value must be specified and not have a null value.
 
 
@@ -7907,8 +7907,8 @@ URL: https://docs.ainiro.io/plugins/magic.lambda/
 Description: The programming language keywords of Hyperlambda - branching, loops, comparisons, exception handling, and the slots that modify your lambda object.
 
 magic.lambda is where you will find the _"programming language keywords"_ of Hyperlambda.
-It is what makes Hyperlambda Turing complete, and contains slots such as **[for-each]**,
-**[if]**, and **[while]**. If you want to learn more, this is probably where you should start.
+It is what makes Hyperlambda Turing complete, and contains slots such as **[\[for-each\]](https://docs.ainiro.io/reference/slots/core/for-each/)**,
+**[\[if\]](https://docs.ainiro.io/reference/slots/core/if/)**, and **[\[while\]](https://docs.ainiro.io/reference/slots/core/while/)**. If you want to learn more, this is probably where you should start.
 
 Notice, you do _not_ need to master these slots to use Magic - the
 [Hyperlambda Generator](https://docs.ainiro.io/dashboard/hyperlambda-generator/) writes the code for you from plain
@@ -7920,26 +7920,26 @@ machine created.
 
 The slot reference is organised by concept, with one page per concept.
 
-* [Executing lambda objects](https://docs.ainiro.io/plugins/magic.lambda/executing/) - **[compose]**, **[eval]** and **[invoke]**
-* [Branching and conditional execution](https://docs.ainiro.io/plugins/magic.lambda/branching/) - **[if]**, **[else-if]**, **[else]** and **[switch]**
-* [Comparison and boolean logic](https://docs.ainiro.io/plugins/magic.lambda/conditions/) - **[eq]**, **[neq]**, **[lt]**, **[lte]**, **[mt]**, **[mte]**, **[and]**, **[or]** and **[not]**
-* [Modifying your lambda object](https://docs.ainiro.io/plugins/magic.lambda/nodes/) - **[add]**, **[insert-before]**, **[set-value]**, **[set-x]**, **[unwrap]**, **[get-value]**, **[exists]**, **[reference]** and more
-* [Hyperlambda exceptions](https://docs.ainiro.io/plugins/magic.lambda/exceptions/) - **[try]** and **[throw]**
-* [Hyperlambda loops](https://docs.ainiro.io/plugins/magic.lambda/loops/) - **[for-each]**, **[map]** and **[while]**
-* [Types and conversion](https://docs.ainiro.io/plugins/magic.lambda/types/) - **[types]**, **[type]**, **[convert]**, **[floatArray2bytes]**, **[format]**, **[int2words]**, **[vocabulary]**, **[slot.signature]** and **[slot.description]**
+* [Executing lambda objects](https://docs.ainiro.io/plugins/magic.lambda/executing/) - **[\[compose\]](https://docs.ainiro.io/reference/slots/core/compose/)**, **[\[eval\]](https://docs.ainiro.io/reference/slots/core/eval/)** and **[\[invoke\]](https://docs.ainiro.io/reference/slots/core/invoke/)**
+* [Branching and conditional execution](https://docs.ainiro.io/plugins/magic.lambda/branching/) - **[\[if\]](https://docs.ainiro.io/reference/slots/core/if/)**, **[\[else-if\]](https://docs.ainiro.io/reference/slots/core/else-if/)**, **[\[else\]](https://docs.ainiro.io/reference/slots/core/else/)** and **[\[switch\]](https://docs.ainiro.io/reference/slots/core/switch/)**
+* [Comparison and boolean logic](https://docs.ainiro.io/plugins/magic.lambda/conditions/) - **[\[eq\]](https://docs.ainiro.io/reference/slots/core/eq/)**, **[\[neq\]](https://docs.ainiro.io/reference/slots/core/neq/)**, **[\[lt\]](https://docs.ainiro.io/reference/slots/core/lt/)**, **[\[lte\]](https://docs.ainiro.io/reference/slots/core/lte/)**, **[\[mt\]](https://docs.ainiro.io/reference/slots/core/mt/)**, **[\[mte\]](https://docs.ainiro.io/reference/slots/core/mte/)**, **[\[and\]](https://docs.ainiro.io/reference/slots/core/and/)**, **[\[or\]](https://docs.ainiro.io/reference/slots/core/or/)** and **[\[not\]](https://docs.ainiro.io/reference/slots/core/not/)**
+* [Modifying your lambda object](https://docs.ainiro.io/plugins/magic.lambda/nodes/) - **[\[add\]](https://docs.ainiro.io/reference/slots/core/add/)**, **[\[insert-before\]](https://docs.ainiro.io/reference/slots/core/insert-before/)**, **[\[set-value\]](https://docs.ainiro.io/reference/slots/core/set-value/)**, **[\[set-x\]](https://docs.ainiro.io/reference/slots/core/set-x/)**, **[\[unwrap\]](https://docs.ainiro.io/reference/slots/core/unwrap/)**, **[\[get-value\]](https://docs.ainiro.io/reference/slots/core/get-value/)**, **[\[exists\]](https://docs.ainiro.io/reference/slots/core/exists/)**, **[\[reference\]](https://docs.ainiro.io/reference/slots/core/reference/)** and more
+* [Hyperlambda exceptions](https://docs.ainiro.io/plugins/magic.lambda/exceptions/) - **[\[try\]](https://docs.ainiro.io/reference/slots/core/try/)** and **[\[throw\]](https://docs.ainiro.io/reference/slots/core/throw/)**
+* [Hyperlambda loops](https://docs.ainiro.io/plugins/magic.lambda/loops/) - **[\[for-each\]](https://docs.ainiro.io/reference/slots/core/for-each/)**, **[\[map\]](https://docs.ainiro.io/reference/slots/core/map/)** and **[\[while\]](https://docs.ainiro.io/reference/slots/core/while/)**
+* [Types and conversion](https://docs.ainiro.io/plugins/magic.lambda/types/) - **[\[types\]](https://docs.ainiro.io/reference/slots/core/types/)**, **[\[type\]](https://docs.ainiro.io/reference/slots/core/type/)**, **[\[convert\]](https://docs.ainiro.io/reference/slots/core/convert/)**, **[\[floatArray2bytes\]](https://docs.ainiro.io/reference/slots/core/floatArray2bytes/)**, **[\[format\]](https://docs.ainiro.io/reference/slots/core/format/)**, **[\[int2words\]](https://docs.ainiro.io/reference/slots/core/int2words/)**, **[\[vocabulary\]](https://docs.ainiro.io/reference/slots/core/vocabulary/)**, **[\[slot.signature\]](https://docs.ainiro.io/reference/slots/slot/slot.signature/)** and **[\[slot.description\]](https://docs.ainiro.io/reference/slots/slot/slot.description/)**
 
 
 ## How Hyperlambda invokes slots
 
-At the heart of Hyperlambda is the **[eval]** slot. This slot is responsible for executing your lambda object
-and follows a couple of simple rules. All nodes starting with a _"."_ will be ignored, and **[eval]** will not
+At the heart of Hyperlambda is the **[\[eval\]](https://docs.ainiro.io/reference/slots/core/eval/)** slot. This slot is responsible for executing your lambda object
+and follows a couple of simple rules. All nodes starting with a _"."_ will be ignored, and **[\[eval\]](https://docs.ainiro.io/reference/slots/core/eval/)** will not
 try to raise these nodes as signals. This has two benefits.
 
 1. You can create _"hidden"_ slots, that are only accessible from C#.
 2. You can use nodes starting with _"."_ as data nodes, separating function invocations from data.
 
-**[eval]** makes Hyperlambda _"super functional"_ in nature. Below is an example of a Hyperlambda
-piece of code, that illustrates this, by adding a _"callback"_ lambda object to its **[while]** invocation
+**[\[eval\]](https://docs.ainiro.io/reference/slots/core/eval/)** makes Hyperlambda _"super functional"_ in nature. Below is an example of a Hyperlambda
+piece of code, that illustrates this, by adding a _"callback"_ lambda object to its **[\[while\]](https://docs.ainiro.io/reference/slots/core/while/)** invocation
 as a **[.lambda]** node, that will be invoked once for every iteration of your while loop.
 
 ```
@@ -8022,7 +8022,7 @@ traverse it and execute it. But this creates another problem for you, which is t
 a mechanism to store data. This is accomplished by prefixing a node's name with a `.` character, at which point
 the Hyperlambda evaluator will ignore it, as it is traversing your tree, and _not_ attempt to signal
 that particular node as a slot. Think of all nodes starting with a `.` character as _"data segments"_,
-or variables for that matter. Below is an example where **[eval]** will simply ignore the **[.src]** node
+or variables for that matter. Below is an example where **[\[eval\]](https://docs.ainiro.io/reference/slots/core/eval/)** will simply ignore the **[.src]** node
 and the **[.dest]** node, not attempting to invoke these as slots, but treat these as _"data nodes"_.
 
 ```
@@ -10095,7 +10095,7 @@ sub-sections of graph objects.
 
 Each iterator ends with a _"/"_ or a CR/LF
 sequence, and before its end, its value defines what it does. For instance the above iterator in
-the __[get-value]__ invocation, starts out with a _"@"_. This implies that the iterator will find the
+the __[\[get-value\]](https://docs.ainiro.io/reference/slots/core/get-value/)__ invocation, starts out with a _"@"_. This implies that the iterator will find the
 first node having a name of whatever follows its _"@"_. For the above this implies looking for the first
 node who's name is _".foo"_. To see a slightly more advanced example, imagine the following.
 
@@ -10309,7 +10309,7 @@ state safely.
 
 Hyperlambda does not receive the raw execution object. Instead, higher layers may expose selected
 values such as the execution id through ordinary context values such as `dynamic.execution-id`,
-allowing code to use existing helpers such as **[get-context]** without exposing internal runtime
+allowing code to use existing helpers such as **[\[get-context\]](https://docs.ainiro.io/reference/slots/core/get-context/)** without exposing internal runtime
 objects.
 
 
@@ -11481,7 +11481,7 @@ URL: https://docs.ainiro.io/reference/slots/auth/auth.ticket.in-role/
 Description: auth.ticket.in-role is a slot in the auth namespace of Magic Cloud. Returns true if the current ticket belongs to one of the specified roles.
 
 This slot verifies that the currently authenticated user belongs to one or more roles provided as
-a comma separated list of names. Contrary to the **[auth.ticket.verify]** slot this slot will _not_
+a comma separated list of names. Contrary to the **[\[auth.ticket.verify\]](https://docs.ainiro.io/reference/slots/auth/auth.ticket.verify/)** slot this slot will _not_
 throw an exception if the user does not belong to one or more roles, but simply return false.
 Below is example usage.
 
@@ -11561,7 +11561,7 @@ cache.clear
 cache.get:cache-item-key
 ```
 
-Notice, the above Hyperlambda should not return any item in its last invocation to **[cache.get]**
+Notice, the above Hyperlambda should not return any item in its last invocation to **[\[cache.get\]](https://docs.ainiro.io/reference/slots/cache/cache.get/)**
 since the cache was cleared before invoking it. The slot also optionally takes a filter argument
 as its value, which if provided, will _only_ delete items starting out with the specified filter.
 Usage example can be found below.
@@ -11587,7 +11587,7 @@ in one invocation.
 URL: https://docs.ainiro.io/reference/slots/cache/cache.count/
 Description: cache.count is a slot in the cache namespace of Magic Cloud. Counts cached items matching the optional filter.
 
-This slot works similarly to the **[cache.list]** slot, except it only returns the number of items.
+This slot works similarly to the **[\[cache.list\]](https://docs.ainiro.io/reference/slots/cache/cache.list/)** slot, except it only returns the number of items.
 Below is an example of creating a new cache entry, for then to count how many cache items exists
 in your cache.
 
@@ -11630,7 +11630,7 @@ This slot also supports the following optional arguments.
 
 * __[limit]__ - Maximum number of items to return.
 * __[offset]__ - Offset of where to start returning items.
-* Filter as value of node being the filter condition declaring which items to return. See the __[cache.clear]__ slot to understand how it works, since this argument works in the exact same way, assuming your filter is a _"namespace"_.
+* Filter as value of node being the filter condition declaring which items to return. See the __[\[cache.clear\]](https://docs.ainiro.io/reference/slots/cache/cache.clear/)__ slot to understand how it works, since this argument works in the exact same way, assuming your filter is a _"namespace"_.
 
 
 # [cache.set]
@@ -11732,7 +11732,7 @@ config.get:42
 
 **Notice** - Due to implementation details of .Net and its `IConfiguration` specifically, values
 returned will _always_ be strings, and you'll have to manually convert these to other types, using for
-instance the **[convert]** slot from magic.lambda. This _might_ change in a future release though.
+instance the **[\[convert\]](https://docs.ainiro.io/reference/slots/core/convert/)** slot from magic.lambda. This _might_ change in a future release though.
 You can also provide a default value that will be returned if no configuration value is found, such
 as the following illustrates.
 
@@ -11743,7 +11743,7 @@ config.get:"magic:foo:non-existing-key"
 ```
 
 Since the above _"non-existing-key"_ doesn't exist in your configuration file, the above Hyperlambda will
-return the value _"foo"_ being the result of the invocation to the **[get-value]** slot. This allows you
+return the value _"foo"_ being the result of the invocation to the **[\[get-value\]](https://docs.ainiro.io/reference/slots/core/get-value/)** slot. This allows you
 to create default values your code resorts to if the specified configuration setting doesn't exist.
 
 
@@ -11874,7 +11874,7 @@ John Doe,67"
 csv2lambda:x:@.csv
 ```
 
-It can optionally take a type declaration through a **[types]** argument, which allows you to add typing support
+It can optionally take a type declaration through a **[\[types\]](https://docs.ainiro.io/reference/slots/core/types/)** argument, which allows you to add typing support
 to the slot.
 
 
@@ -11883,9 +11883,9 @@ to the slot.
 URL: https://docs.ainiro.io/reference/slots/core/execute-file/
 Description: execute-file is a core slot of Magic Cloud. Loads a Hyperlambda file and evaluates it as if it were inlined; child nodes become its [.arguments].
 
-The **[execute-file]** slot is an alias for **[io.file.execute]**, but it will **[unwrap]** all children nodes,
-automatically transform any expressions to their static value equivalents, allowing you to combine **[unwrap]**
-and **[io.file.execute]** into one invocation. This makes usage slightly less verbose for cases such as the following.
+The **[execute-file]** slot is an alias for **[\[io.file.execute\]](https://docs.ainiro.io/reference/slots/io/io.file.execute/)**, but it will **[\[unwrap\]](https://docs.ainiro.io/reference/slots/core/unwrap/)** all children nodes,
+automatically transform any expressions to their static value equivalents, allowing you to combine **[\[unwrap\]](https://docs.ainiro.io/reference/slots/core/unwrap/)**
+and **[\[io.file.execute\]](https://docs.ainiro.io/reference/slots/io/io.file.execute/)** into one invocation. This makes usage slightly less verbose for cases such as the following.
 
 ```
 .args
@@ -11919,8 +11919,8 @@ Inside your above _"/whatever-file.hl"_ file you will now have access to the ent
 URL: https://docs.ainiro.io/reference/slots/core/execute/
 Description: execute is a core slot of Magic Cloud. Invokes a dynamic slot after unwrapping descendant expressions.
 
-The **[execute]** slot is an alias for **[signal]**, but it will **[unwrap]** all children nodes, automatically
-transform any expressions to their static value equivalents, allowing you to combine **[unwrap]** and **[signal]**
+The **[execute]** slot is an alias for **[\[signal\]](https://docs.ainiro.io/reference/slots/core/signal/)**, but it will **[\[unwrap\]](https://docs.ainiro.io/reference/slots/core/unwrap/)** all children nodes, automatically
+transform any expressions to their static value equivalents, allowing you to combine **[\[unwrap\]](https://docs.ainiro.io/reference/slots/core/unwrap/)** and **[\[signal\]](https://docs.ainiro.io/reference/slots/core/signal/)**
 into one invocation. This makes usage slightly less verbose for cases such as the following.
 
 ```
@@ -12087,7 +12087,7 @@ You can also optionally supply the following arguments, which all defaults to bo
 
 #### Front matter and [markdown2html]
 
-The **[markdown2html]** slot can also handle _"front matter"_, which allows you to inject YAML at the front
+The **[\[markdown2html\]](https://docs.ainiro.io/reference/slots/core/markdown2html/)** slot can also handle _"front matter"_, which allows you to inject YAML at the front
 of your Markdown. Front matter again is just a YAML declaration injected at the front of your Markdown,
 separated by `---` to separate your YAML from your Markdown. This allows you to add structured data to
 associate with your Markdown content.
@@ -12104,7 +12104,7 @@ Howdy world
 markdown2html:x:@.yaml
 ```
 
-Internally, the library will invoke **[yaml2lambda]** for any front matter declarations to actually parse
+Internally, the library will invoke **[\[yaml2lambda\]](https://docs.ainiro.io/reference/slots/core/yaml2lambda/)** for any front matter declarations to actually parse
 the specified YAML front matter parts, implying for details about how this part works, please refer to
 the _"magic.lambda.json"_ project.
 
@@ -12116,7 +12116,7 @@ Description: html2pdf is a core slot of Magic Cloud. Converts HTML into a PDF do
 
 This slot converts the HTML markup given as its value into a PDF document, and returns the PDF as raw bytes in
 its value. The value can be a constant or an expression. Any images, stylesheets and fonts the HTML references
-are loaded through Hyperlambda's **[io.file.load.binary]** and **[http.get]** slots, instead of directly by the
+are loaded through Hyperlambda's **[\[io.file.load.binary\]](https://docs.ainiro.io/reference/slots/io/io.file.load.binary/)** and **[\[http.get\]](https://docs.ainiro.io/reference/slots/http/http.get/)** slots, instead of directly by the
 PDF library.
 
 
@@ -12141,8 +12141,8 @@ The above of course produces an executable lambda object from your specified Hyp
 URL: https://docs.ainiro.io/reference/slots/core/join/
 Description: join is a core slot of Magic Cloud. Waits for one or more child [fork] operations to finish before proceeding.
 
-Joins all child **[fork]** invocations, implying the slot will wait until all forks directly below it
-has finished executing, and automatically copy the result of the **[fork]** into the original node.
+Joins all child **[\[fork\]](https://docs.ainiro.io/reference/slots/core/fork/)** invocations, implying the slot will wait until all forks directly below it
+has finished executing, and automatically copy the result of the **[\[fork\]](https://docs.ainiro.io/reference/slots/core/fork/)** into the original node.
 
 ```
 join
@@ -12152,7 +12152,7 @@ join
       http.get:"https://gaiasoul.com"
 ```
 
-As an analogy for what occurs above, imagine the two rivers from our above **[fork]** analogy
+As an analogy for what occurs above, imagine the two rivers from our above **[\[fork\]](https://docs.ainiro.io/reference/slots/core/fork/)** analogy
 that forked from one larger river into two smaller rivers, for then again to join up and becoming one
 large river again further down.
 
@@ -12162,8 +12162,8 @@ large river again further down.
 URL: https://docs.ainiro.io/reference/slots/core/json2lambda-stream/
 Description: json2lambda-stream is a core slot of Magic Cloud. Transforms JSON stream content into a lambda hierarchy.
 
-This slot does the same as **[json2lambda]**, except it reads the JSON from a stream instead of from a string,
-such as a stream opened with **[io.stream.open-file]**, which you can read about in the _"magic.lambda.io"_ project.
+This slot does the same as **[\[json2lambda\]](https://docs.ainiro.io/reference/slots/core/json2lambda/)**, except it reads the JSON from a stream instead of from a string,
+such as a stream opened with **[\[io.stream.open-file\]](https://docs.ainiro.io/reference/slots/io/io.stream.open-file/)**, which you can read about in the _"magic.lambda.io"_ project.
 The value of the slot must be an expression leading to the stream, and the slot throws an exception if
 no stream is found. The resulting lambda hierarchy is returned as children of the slot node, and both JSON objects
 and JSON arrays are supported.
@@ -12186,7 +12186,7 @@ json2lambda:x:-
 lambda2json:x:-/*
 ```
 
-The **[lambda2json]** slot can optionally take a **[format]** argument, with a boolean _"true"_ value, which implies the
+The **[\[lambda2json\]](https://docs.ainiro.io/reference/slots/core/lambda2json/)** slot can optionally take a **[\[format\]](https://docs.ainiro.io/reference/slots/core/format/)** argument, with a boolean _"true"_ value, which implies the
 resulting JSON will be indented and nicely formated, making it more readable.
 
 **Notice** - Although all JSON can be transformed into lambda, the opposite is not necessarily true. This is because
@@ -12201,7 +12201,7 @@ Description: json2yaml is a core slot of Magic Cloud. Transforms JSON into YAML.
 
 This guide covers [`json2yaml`](https://docs.ainiro.io/reference/slots/core/json2yaml/), [`yaml2json`](https://docs.ainiro.io/reference/slots/core/yaml2json/) together.
 
-The **[yaml2json]** slot converts the specified YAML input string to a JSON string. Basic usage is as follows.
+The **[\[yaml2json\]](https://docs.ainiro.io/reference/slots/core/yaml2json/)** slot converts the specified YAML input string to a JSON string. Basic usage is as follows.
 
 ```
 .yaml:@"foo: howdy
@@ -12259,7 +12259,7 @@ The slot will return type information as children of your **[lambda2csv]** invoc
 URL: https://docs.ainiro.io/reference/slots/core/lambda2html/
 Description: lambda2html is a core slot of Magic Cloud. Transforms a lambda hierarchy into HTML.
 
-This is the reverse of **[html2lambda]** and returns HTML resulting from the specified lambda object. Below
+This is the reverse of **[\[html2lambda\]](https://docs.ainiro.io/reference/slots/core/html2lambda/)** and returns HTML resulting from the specified lambda object. Below
 is example usage.
 
 ```
@@ -12318,7 +12318,7 @@ json2lambda:x:-
 lambda2json:x:-/*
 ```
 
-The **[lambda2json]** slot can optionally take a **[format]** argument, with a boolean _"true"_ value, which implies the
+The **[lambda2json]** slot can optionally take a **[\[format\]](https://docs.ainiro.io/reference/slots/core/format/)** argument, with a boolean _"true"_ value, which implies the
 resulting JSON will be indented and nicely formated, making it more readable.
 
 **Notice** - Although all JSON can be transformed into lambda, the opposite is not necessarily true. This is because
@@ -12360,7 +12360,7 @@ Description: lambda2yaml is a core slot of Magic Cloud. Transforms a lambda hier
 
 This guide covers [`lambda2yaml`](https://docs.ainiro.io/reference/slots/core/lambda2yaml/), [`yaml2lambda`](https://docs.ainiro.io/reference/slots/core/yaml2lambda/) together.
 
-The **[yaml2lambda]** slot converts a YAML input string to a lambda object. Since YAML arguably is just another representation of
+The **[\[yaml2lambda\]](https://docs.ainiro.io/reference/slots/core/yaml2lambda/)** slot converts a YAML input string to a lambda object. Since YAML arguably is just another representation of
 JSON, these slot have been added to this project. Notice, the same constraints applies for YAML as does for JSON, implying
 a YAML string can always be converted to a lambda object, but the opposite is not necessary true. Basic usage is as follows.
 
@@ -12390,7 +12390,7 @@ yaml2lambda
 lambda2yaml: /* ... YAML content ... */
 ```
 
-Internally the **[yaml2lambda]** slot first converts the input YAML to JSON, for then to use the **[json2lambda]**
+Internally the **[\[yaml2lambda\]](https://docs.ainiro.io/reference/slots/core/yaml2lambda/)** slot first converts the input YAML to JSON, for then to use the **[\[json2lambda\]](https://docs.ainiro.io/reference/slots/core/json2lambda/)**
 logic, ensuring the exact same result, regardless of whether or not you start out with JSON or YAML.
 
 
@@ -12518,7 +12518,7 @@ signal:foo
 
 After evaluating the above Hyperlambda, the **[signal]** node will end up having a value of _"57"_.
 
-**Notice** - This slot obeys by the rules of **[whitelist]** invocations from magic.lambda, allowing you to
+**Notice** - This slot obeys by the rules of **[\[whitelist\]](https://docs.ainiro.io/reference/slots/core/whitelist/)** invocations from magic.lambda, allowing you to
 declare a list of dynamic slots, which are exclusively allowed to be invoked temporarily inside of an
 invocation to whitelist, allowing you to restrict some piece of potentially unsafe code to *only* signal
 a pre-defined list of dynamically created slots. Below is an example.
@@ -12545,16 +12545,16 @@ whitelist
       signal:foo2
 ```
 
-Basically, _only_ the slots declared in the above **[vocabulary]** will be allowed to be invoked inside
+Basically, _only_ the slots declared in the above **[\[vocabulary\]](https://docs.ainiro.io/reference/slots/core/vocabulary/)** will be allowed to be invoked inside
 of the above **[.lambda]** object. You must have your dynamic slots declared as **signal:slot-name**,
 such as the above illustrates. And in order to signal dynamic slots *at all*, you'll need to (obviously)
-whitelist **[signal]** itself, as illustrated in the above code. Read more about **[whitelist]** in 
-the magic.lambda project. Inside your slots though any **[whitelist]** invocations will simply be ignored,
+whitelist **[signal]** itself, as illustrated in the above code. Read more about **[\[whitelist\]](https://docs.ainiro.io/reference/slots/core/whitelist/)** in 
+the magic.lambda project. Inside your slots though any **[\[whitelist\]](https://docs.ainiro.io/reference/slots/core/whitelist/)** invocations will simply be ignored,
 allowing you to whitelist a single dynamic slot, for then to ignore what the slot itself is doing internally.
 This _might_ create security issues for you if you have dynamically created slots that for some reasons
 execute lambda object supplied to them. Hence as a general rule of thumb, you should _avoid_ whitelisting
 slots that executes lambda objects supplied to them. The same is true for Hyperlambda files executed with
-**[execute-file]** or **[io.file.execute]**, which you can pin in a whitelist by path - see
+**[\[execute-file\]](https://docs.ainiro.io/reference/slots/core/execute-file/)** or **[\[io.file.execute\]](https://docs.ainiro.io/reference/slots/io/io.file.execute/)**, which you can pin in a whitelist by path - see
 [magic.lambda.io](https://docs.ainiro.io/plugins/magic.lambda.io/).
 
 
@@ -12603,7 +12603,7 @@ This slot can be given the following arguments;
 URL: https://docs.ainiro.io/reference/slots/core/try-signal/
 Description: try-signal is a core slot of Magic Cloud. Invokes a dynamic slot if it exists and ignores missing slots.
 
-Invokes a previously created dynamic slot. This slot works exactly the same as **[signal]** except it does
+Invokes a previously created dynamic slot. This slot works exactly the same as **[\[signal\]](https://docs.ainiro.io/reference/slots/core/signal/)** except it does
 not throw an exception if the slot does not exist. Assuming you have created the foo slot from the create slot example,
 you can invoke the slot using the following Hyperlambda.
 
@@ -12737,7 +12737,7 @@ yaml2lambda
 lambda2yaml: /* ... YAML content ... */
 ```
 
-Internally the **[yaml2lambda]** slot first converts the input YAML to JSON, for then to use the **[json2lambda]**
+Internally the **[yaml2lambda]** slot first converts the input YAML to JSON, for then to use the **[\[json2lambda\]](https://docs.ainiro.io/reference/slots/core/json2lambda/)**
 logic, ensuring the exact same result, regardless of whether or not you start out with JSON or YAML.
 
 
@@ -12814,11 +12814,11 @@ of that they can result in what's commonly referred to as _"hash collision"_.
 This project also contains convenience overloads with the hashing algorithm being a part of the name of the
 invocation, such as illustrated below.
 
-* __[crypto.hash.sha1]__
-* __[crypto.hash.md5]__
-* __[crypto.hash.sha256]__
-* __[crypto.hash.sha384]__
-* __[crypto.hash.sha512]__
+* __[\[crypto.hash.sha1\]](https://docs.ainiro.io/reference/slots/crypto/crypto.hash.sha1/)__
+* __[\[crypto.hash.md5\]](https://docs.ainiro.io/reference/slots/crypto/crypto.hash.md5/)__
+* __[\[crypto.hash.sha256\]](https://docs.ainiro.io/reference/slots/crypto/crypto.hash.sha256/)__
+* __[\[crypto.hash.sha384\]](https://docs.ainiro.io/reference/slots/crypto/crypto.hash.sha384/)__
+* __[\[crypto.hash.sha512\]](https://docs.ainiro.io/reference/slots/crypto/crypto.hash.sha512/)__
 
 In addition you can hash a file directly, without having to load it first, by providing a **[filename]** argument
 to it, such as illustrated below.
@@ -12936,7 +12936,7 @@ This slot will open a database connection for you. You can pass in a complete co
 or only the database name if you wish. If you pass in only the database name, the generic connection string for your
 database type of choice from your _"appsettings.json"_ file will be used, substituting its `{database}` parts
 with the database of your choice.
-Inside of this slot, which actually is a lambda **[eval]** invocation, you can use any of the other slots, requiring
+Inside of this slot, which actually is a lambda **[\[eval\]](https://docs.ainiro.io/reference/slots/core/eval/)** invocation, you can use any of the other slots, requiring
 an existing and open database connection to function. You can see an example below.
 
 ```
@@ -12948,8 +12948,8 @@ data.connect:sakila
 Since the **[data.connect]** slot actually takes a lambda object, you can also add any amount
 of other lambda invocations inside of the lambda object supplied to the slot, allowing you to for instance
 create loops, conditional executions, etc, _inside_ of your invocation to **[data.connect]**. This is also
-true for all other slots taking a lambda object, such as for instance **[data.transaction.create]**.
-Inside your lambda object, an invocation towards your database such as e.g. **[data.read]**, will be
+true for all other slots taking a lambda object, such as for instance **[\[data.transaction.create\]](https://docs.ainiro.io/reference/slots/data/data.transaction.create/)**.
+Inside your lambda object, an invocation towards your database such as e.g. **[\[data.read\]](https://docs.ainiro.io/reference/slots/data/data.read/)**, will be
 using this database connection, as long as the type of database is matching. The database connection will
 be kept open, and implicitly used, for the entirety of the lambda object. If you need another database
 connection inside of your lambda object, you'll need to nest **[data.connect]** invocations.
@@ -12977,9 +12977,9 @@ a connection string configuration setting.
 URL: https://docs.ainiro.io/reference/slots/data/data.create/
 Description: data.create is a slot in the data namespace of Magic Cloud. Inserts a new row into the current open database connection.
 
-This slot inserts a new row into your database, using the current open connection created by **[data.connect]**.
+This slot inserts a new row into your database, using the current open connection created by **[\[data.connect\]](https://docs.ainiro.io/reference/slots/data/data.connect/)**.
 It generates the SQL for your database type, and takes the same **[table]** and **[values]** arguments as
-**[sql.create]**. Its value resolves to the ID of the created row if **[return-id]** is true, which is the default,
+**[\[sql.create\]](https://docs.ainiro.io/reference/slots/sql/sql.create/)**. Its value resolves to the ID of the created row if **[return-id]** is true, which is the default,
 otherwise to null. It also accepts the following arguments.
 
 * __[table]__ - Name of the table to insert into. Mandatory, the slot throws if it is missing
@@ -13005,7 +13005,7 @@ data.connect:sakila
    data.execute:delete from non_existing_table
 ```
 
-Yet again, prefer **[data.delete]** if you can.
+Yet again, prefer **[\[data.delete\]](https://docs.ainiro.io/reference/slots/data/data.delete/)** if you can.
 
 
 # [data.scalar]
@@ -13013,7 +13013,7 @@ Yet again, prefer **[data.delete]** if you can.
 URL: https://docs.ainiro.io/reference/slots/data/data.scalar/
 Description: data.scalar is a slot in the data namespace of Magic Cloud. Executes SQL and returns a scalar value from the current database connection.
 
-This slot is similar to the **[data.select]** slot, but will only return one value as the
+This slot is similar to the **[\[data.select\]](https://docs.ainiro.io/reference/slots/data/data.select/)** slot, but will only return one value as the
 value of its node after execution. This slot is typically used for aggregate results. You can see
 an example below.
 
@@ -13037,8 +13037,8 @@ Yet again you should prefer the **[data.\*]** slots if you can.
 URL: https://docs.ainiro.io/reference/slots/data/data.scan/
 Description: data.scan is a slot in the data namespace of Magic Cloud. Scans rows from the current open database connection; returns all columns unless [columns] is supplied and limits to 25 rows unless [limit] is supplied.
 
-This slot scans rows from your database, using the current open connection created by **[data.connect]**.
-It takes the same arguments as **[data.read]** and **[sql.read]**, and returns the matching rows as children nodes.
+This slot scans rows from your database, using the current open connection created by **[\[data.connect\]](https://docs.ainiro.io/reference/slots/data/data.connect/)**.
+It takes the same arguments as **[\[data.read\]](https://docs.ainiro.io/reference/slots/data/data.read/)** and **[\[sql.read\]](https://docs.ainiro.io/reference/slots/sql/sql.read/)**, and returns the matching rows as children nodes.
 It returns all columns unless you supply **[columns]**, and limits the result to 25 rows unless you supply **[limit]**.
 
 * __[table]__ - Name of the table to scan. Mandatory, the slot throws if it is missing
@@ -13091,7 +13091,7 @@ data.connect
 
 This slot requires SQL resembling your specialised database type of dialect, and will
 not in any ways transpile the SQL towards your specific underlying database type's SQL dialect.
-If you can, you should rather use **[data.read]**, to avoid lockin towards a specific database
+If you can, you should rather use **[\[data.read\]](https://docs.ainiro.io/reference/slots/data/data.read/)**, to avoid lockin towards a specific database
 vendor's SQL dialect.
 You can also select multiple result sets if you have batch type of SQL statements, containing
 multiple SQL statements, and you want to return the result of all SQL statements you're executing.
@@ -13130,8 +13130,8 @@ Which would result in something resembling the following.
 URL: https://docs.ainiro.io/reference/slots/data/data.update/
 Description: data.update is a slot in the data namespace of Magic Cloud. Updates rows in the current open database connection; use [where] to constrain affected rows.
 
-This slot updates rows in your database, using the current open connection created by **[data.connect]**.
-It takes the same arguments as **[sql.update]**, and its value resolves to the number of rows affected.
+This slot updates rows in your database, using the current open connection created by **[\[data.connect\]](https://docs.ainiro.io/reference/slots/data/data.connect/)**.
+It takes the same arguments as **[\[sql.update\]](https://docs.ainiro.io/reference/slots/sql/sql.update/)**, and its value resolves to the number of rows affected.
 Always supply a **[where]** argument to constrain which rows are updated, since the SQL generated does not
 constrain the update to any specific row if you leave it out.
 
@@ -13282,7 +13282,7 @@ cancelled.
 URL: https://docs.ainiro.io/reference/slots/execution/execution.throttle/
 Description: execution.throttle is a slot in the execution namespace of Magic Cloud. Enforces a named throttle previously declared with [execution.throttle.create], throwing a 429 exception once the limit is exceeded.
 
-Rate limiting is split into two slots; **[execution.throttle.create]** _declares_ a named throttle,
+Rate limiting is split into two slots; **[\[execution.throttle.create\]](https://docs.ainiro.io/reference/slots/execution/execution.throttle.create/)** _declares_ a named throttle,
 being the single source of truth for its configuration, while **[execution.throttle]** _enforces_ it,
 throwing an exception with a 429 status code once the limit is exceeded. Declaring a throttle whose
 configuration is unchanged is a no-op that keeps the existing counters, implying you can safely
@@ -13312,14 +13312,14 @@ execution.throttle.create:openai-budget
 execution.throttle:openai-budget
 ```
 
-The name is the identity of your throttle, and works the same way as the name of a **[semaphore]** -
+The name is the identity of your throttle, and works the same way as the name of a **[\[semaphore\]](https://docs.ainiro.io/reference/slots/core/semaphore/)** -
 all **[execution.throttle]** invocations using the same name share _one_ rate limit, allowing you to
 enforce the same throttle in multiple endpoints to give a group of endpoints a shared budget, or use
 a unique name per endpoint to rate limit each endpoint individually.
 
 Psst, to create a unique name you can copy the endpoint filename and use it as name.
 
-**[execution.throttle.create]** takes the following arguments.
+**[\[execution.throttle.create\]](https://docs.ainiro.io/reference/slots/execution/execution.throttle.create/)** takes the following arguments.
 
 * __[limit]__ - Maximum number of invocations allowed per window, mandatory when creating
 * __[window]__ - Window length in seconds, defaults to 60
@@ -13337,11 +13337,11 @@ The limit is a _fixed window_, implying `limit:50` with `window:60` allows exact
 per minute, with the counter resetting when the window expires. Rejected invocations are told how
 many seconds remain before the window resets as part of the exception message.
 
-Invoking **[execution.throttle.create]** with the name of an already existing throttle but a
-_different_ configuration _replaces_ the throttle, the same way **[slots.create]** replaces an
+Invoking **[\[execution.throttle.create\]](https://docs.ainiro.io/reference/slots/execution/execution.throttle.create/)** with the name of an already existing throttle but a
+_different_ configuration _replaces_ the throttle, the same way **[\[slots.create\]](https://docs.ainiro.io/reference/slots/slots/slots.create/)** replaces an
 already existing dynamic slot, also resetting its counters - while an _identical_ configuration
 leaves the existing throttle untouched. Invoking it _without_ any arguments _deletes_ the throttle
-instead, the same way **[cache.set]** without a value deletes the cached item.
+instead, the same way **[\[cache.set\]](https://docs.ainiro.io/reference/slots/cache/cache.set/)** without a value deletes the cached item.
 
 ```
 // Deletes the throttle entirely.
@@ -13349,7 +13349,7 @@ execution.throttle.create:openai-budget
 ```
 
 **[execution.throttle]** accepts _only_ a name - passing it any arguments throws an exception,
-since configuration belongs exclusively to **[execution.throttle.create]**. Enforcing a throttle
+since configuration belongs exclusively to **[\[execution.throttle.create\]](https://docs.ainiro.io/reference/slots/execution/execution.throttle.create/)**. Enforcing a throttle
 that has not been declared also throws an exception, since this implies your endpoint expects a
 rate limit that does not exist.
 
@@ -13370,7 +13370,7 @@ The above means the current execution may continue for at most 30 more seconds. 
 boolean value indicating whether or not the timeout actually tightened the current deadline.
 
 If multiple timeouts are applied to the same execution, the earliest deadline wins. Any child work
-created through **[fork]** inherits the same execution context, implying the timeout applies to
+created through **[\[fork\]](https://docs.ainiro.io/reference/slots/core/fork/)** inherits the same execution context, implying the timeout applies to
 forked work too.
 
 
@@ -13859,7 +13859,7 @@ http.patch:"https://some_website.com/your-patch-endpoint"
 
 The slot returns the result of the specified HTTP PATCH invocation, including the HTTP headers returned from the endpoint,
 and status code, in addition to the response object itself. To automatically convert the response object to whatever
-type of response your URL returns, provide a **[convert]** argument, and set its value to true, such as follows.
+type of response your URL returns, provide a **[\[convert\]](https://docs.ainiro.io/reference/slots/core/convert/)** argument, and set its value to true, such as follows.
 
 ```
 http.patch:"https://some_website.com/your-patch-endpoint"
@@ -13884,7 +13884,7 @@ http.post:"https://some_website.com/your-post-endpoint"
 
 The slot returns the result of the specified HTTP POST invocation, including the HTTP headers returned from the endpoint,
 and status code, in addition to the response object itself. To automatically convert the response object to whatever
-type of response your URL returns, provide a **[convert]** argument, and set its value to true, such as follows.
+type of response your URL returns, provide a **[\[convert\]](https://docs.ainiro.io/reference/slots/core/convert/)** argument, and set its value to true, such as follows.
 
 ```
 http.post:"https://some_website.com/your-post-endpoint"
@@ -13909,7 +13909,7 @@ http.put:"https://some_website.com/your-put-endpoint"
 
 The slot returns the result of the specified HTTP PUT invocation, including the HTTP headers returned from the endpoint,
 and status code, in addition to the response object itself. To automatically convert the response object to whatever
-type of response your URL returns, provide a **[convert]** argument, and set its value to true, such as follows.
+type of response your URL returns, provide a **[\[convert\]](https://docs.ainiro.io/reference/slots/core/convert/)** argument, and set its value to true, such as follows.
 
 ```
 http.put:"https://some_website.com/your-put-endpoint"
@@ -13954,10 +13954,10 @@ The slot returns `false` if the Hyperlambda is invalid, and `true` if it is vali
 When it returns `false`, every missing slot name is returned as an unnamed child node, and the example above
 returns `missing.try` this way.
 
-The slot verifies the root level of the Hyperlambda, in addition to the bodies of slots such as **[try]**,
-**[.catch]**, **[.finally]**, **[switch]**, **[case]**, **[default]** and **[eval]**, to any depth. Nodes whose
+The slot verifies the root level of the Hyperlambda, in addition to the bodies of slots such as **[\[try\]](https://docs.ainiro.io/reference/slots/core/try/)**,
+**[.catch]**, **[.finally]**, **[\[switch\]](https://docs.ainiro.io/reference/slots/core/switch/)**, **[\[case\]](https://docs.ainiro.io/reference/slots/core/case/)**, **[\[default\]](https://docs.ainiro.io/reference/slots/core/default/)** and **[\[eval\]](https://docs.ainiro.io/reference/slots/core/eval/)**, to any depth. Nodes whose
 names start with a `.`, such as variables, comments and **[.arguments]**, are not treated as slot invocations, and
-arguments such as the **[table]** and **[where]** nodes of **[data.read]** are not checked as slots.
+arguments such as the **[table]** and **[where]** nodes of **[\[data.read\]](https://docs.ainiro.io/reference/slots/data/data.read/)** are not checked as slots.
 
 In addition to missing slots, the slot also reports the following as **[invalid-invocation]** child nodes.
 
@@ -14194,7 +14194,7 @@ aspect ratio by calculating the new height automatically. You can provide either
 * __[height]__ - New height
 
 You can provide both of the above, but at least one of the above _must_ be specified. If one of the values are
-omitted, it will be calculated by keeping the aspect ratio of the image as is. The **[type]** argument is how
+omitted, it will be calculated by keeping the aspect ratio of the image as is. The **[\[type\]](https://docs.ainiro.io/reference/slots/core/type/)** argument is how
 to return the image after the transformation has been applied, and can be any of the supported types as specified
 above. Notice, the image might be stretched in one direction if you change the existing width and height ratio
 during the transformation.
@@ -14301,7 +14301,7 @@ Description: io.file.execute is a slot in the io namespace of Magic Cloud. Loads
 Executes the specified Hyperlambda file. Just like when evaluating a dynamic slot, you can
 pass in an **[.arguments]** node to the file, which will be considered arguments to your file.
 Hence, this slot allows you to invoke a file, as if it was a dynamically created slot, and there
-is no semantic difference really between this slot and **[signal]** from the _magic.lambda.slots_
+is no semantic difference really between this slot and **[\[signal\]](https://docs.ainiro.io/reference/slots/core/signal/)** from the _magic.lambda.slots_
 project.
 
 ```
@@ -14310,8 +14310,8 @@ io.file.execute:/misc/some-hyperlambda-file.hl
 
 #### Executing files from whitelisted code
 
-Both slots obey the rules of **[whitelist]** invocations from magic.lambda, which lets you decide exactly which
-files some partially untrusted code may execute, by pinning the path in the whitelist's **[vocabulary]**.
+Both slots obey the rules of **[\[whitelist\]](https://docs.ainiro.io/reference/slots/core/whitelist/)** invocations from magic.lambda, which lets you decide exactly which
+files some partially untrusted code may execute, by pinning the path in the whitelist's **[\[vocabulary\]](https://docs.ainiro.io/reference/slots/core/vocabulary/)**.
 
 ```
 whitelist
@@ -14330,12 +14330,12 @@ whitelist
 ```
 
 Once a file has been admitted this way, the whitelist no longer applies to the statements _inside_ that file,
-exactly as it does inside a dynamic slot created with **[slots.create]**. The file can therefore use slots such
-as **[data.connect]**, which the code that executed it was never allowed to invoke. This is how you give
+exactly as it does inside a dynamic slot created with **[\[slots.create\]](https://docs.ainiro.io/reference/slots/slots/slots.create/)**. The file can therefore use slots such
+as **[\[data.connect\]](https://docs.ainiro.io/reference/slots/data/data.connect/)**, which the code that executed it was never allowed to invoke. This is how you give
 untrusted code access to complex business logic, without giving it raw access to the databases, files and
 APIs the logic uses - you write and review the file, and you grant the file, not the slots it invokes. The
 code inside the file is trusted, so it must validate its own arguments, and it must never execute code that
-its caller supplied. Notice that **[io.file.load]** is a separate slot with a separate pin, which you add
+its caller supplied. Notice that **[\[io.file.load\]](https://docs.ainiro.io/reference/slots/io/io.file.load/)** is a separate slot with a separate pin, which you add
 if the caller should be allowed to read the file's source, for instance to learn which arguments it takes.
 See the [Sandbox API generator](https://docs.ainiro.io/dashboard/endpoint-generator/#business-logic-without-raw-access) for a
 complete example, with a wizard that writes these lines for you.
@@ -14358,7 +14358,7 @@ io.file.exists:/misc/README.md
 URL: https://docs.ainiro.io/reference/slots/io/io.file.list-recursively/
 Description: io.file.list-recursively is a slot in the io namespace of Magic Cloud. Lists files recursively in the specified folder.
 
-This slot works like **[io.file.list]**, except it also returns all files inside of nested folders, at any depth, and
+This slot works like **[\[io.file.list\]](https://docs.ainiro.io/reference/slots/io/io.file.list/)**, except it also returns all files inside of nested folders, at any depth, and
 not only the files directly inside of the specified folder. It returns one unnamed child node per file, with the
 file's path relative to the root folder of your backend, and accepts the following optional arguments.
 
@@ -14391,7 +14391,7 @@ has the following two children.
 * **[name]** - Path of the file relative to the root folder of your backend
 * **[content]** - Content of the file as a string, decoded as UTF-8
 
-As with **[io.file.load]**, you should not use this slot on binary files.
+As with **[\[io.file.load\]](https://docs.ainiro.io/reference/slots/io/io.file.load/)**, you should not use this slot on binary files.
 
 
 # [io.file.load]
@@ -14407,7 +14407,7 @@ not something you should do. Although there _might_ exist exceptions to this.
 io.file.load:/misc/README.md
 ```
 
-**Notice** - If you want to load binary content you should use the **[io.file.load.binary]** override.
+**Notice** - If you want to load binary content you should use the **[\[io.file.load.binary\]](https://docs.ainiro.io/reference/slots/io/io.file.load.binary/)** override.
 
 
 # [io.file.mixin]
@@ -14478,7 +14478,7 @@ in multiple mixin expressions.
 URL: https://docs.ainiro.io/reference/slots/io/io.file.move/
 Description: io.file.move is a slot in the io namespace of Magic Cloud. Moves a file on the server.
 
-Similar to **[io.file.copy]** but deletes the source file after evaluating.
+Similar to **[\[io.file.copy\]](https://docs.ainiro.io/reference/slots/io/io.file.copy/)** but deletes the source file after evaluating.
 
 ```
 io.file.move:/misc/README.md
@@ -14561,7 +14561,7 @@ io.file.save:/misc/README2.md
    .:This is new content for file
 ```
 
-**Notice** - If you want to save binary content you should use the **[io.file.save.binary]** override.
+**Notice** - If you want to save binary content you should use the **[\[io.file.save.binary\]](https://docs.ainiro.io/reference/slots/io/io.file.save.binary/)** override.
 
 
 # [io.file.search]
@@ -14681,7 +14681,7 @@ io.folder.exists:/misc/foo/
 URL: https://docs.ainiro.io/reference/slots/io/io.folder.list-recursively/
 Description: io.folder.list-recursively is a slot in the io namespace of Magic Cloud. Lists folders recursively in the specified folder.
 
-This slot works like **[io.folder.list]**, except it also returns all folders nested inside of the specified folder,
+This slot works like **[\[io.folder.list\]](https://docs.ainiro.io/reference/slots/io/io.folder.list/)**, except it also returns all folders nested inside of the specified folder,
 at any depth, and not only its direct sub folders. It returns one unnamed child node per folder, with the folder's
 path relative to the root folder of your backend, and accepts the following optional arguments.
 
@@ -14738,7 +14738,7 @@ Description: io.stream.close is a slot in the io namespace of Magic Cloud. Close
 Closes a previously opened stream.
 
 **Notice** - You would rarely directly use streams from Hyperlambda, and not manipulate them
-in any ways, but rather use for instance **[io.file.load]** and similar _"high level"_ slots -
+in any ways, but rather use for instance **[\[io.file.load\]](https://docs.ainiro.io/reference/slots/io/io.file.load/)** and similar _"high level"_ slots -
 And only use streams when you need to directly access the HTTP request stream, to persist a file
 uploaded by a user, or return a file over the HTTP response object. Hence, directly opening
 a stream for any other purpose but to return it over the HTTP response object is something you'd
@@ -14756,7 +14756,7 @@ io.stream.close:x:-
 ```
 
 After invoking the above, assuming the file exists, the stream previously opened
-by **[io.stream.open-file]** will be explicitly closed.
+by **[\[io.stream.open-file\]](https://docs.ainiro.io/reference/slots/io/io.stream.open-file/)** will be explicitly closed.
 
 
 # [io.stream.open-file]
@@ -14764,7 +14764,7 @@ by **[io.stream.open-file]** will be explicitly closed.
 URL: https://docs.ainiro.io/reference/slots/io/io.stream.open-file/
 Description: io.stream.open-file is a slot in the io namespace of Magic Cloud. Opens a file as a read-only stream so large files can be processed without loading them into memory; close with [io.stream.close].
 
-Works similarly to **[io.file.load]** but instead of returning the file's content,
+Works similarly to **[\[io.file.load\]](https://docs.ainiro.io/reference/slots/io/io.file.load/)** but instead of returning the file's content,
 it returns the raw stream back to caller.
 
 ```
@@ -14780,7 +14780,7 @@ found as the value of the **[io.stream.open-file]** node.
 URL: https://docs.ainiro.io/reference/slots/io/io.stream.read/
 Description: io.stream.read is a slot in the io namespace of Magic Cloud. Reads from an open stream.
 
-Works similarly to **[io.file.load]** but instead of taking a source filename of some kind,
+Works similarly to **[\[io.file.load\]](https://docs.ainiro.io/reference/slots/io/io.file.load/)** but instead of taking a source filename of some kind,
 it assumes the source is an open `Stream` of some sort.
 
 ```
@@ -14798,7 +14798,7 @@ io.stream.read:x:@.stream
 URL: https://docs.ainiro.io/reference/slots/io/io.stream.save-file/
 Description: io.stream.save-file is a slot in the io namespace of Magic Cloud. Writes a stream's contents to disk under the given path; commonly used after uploads or [http.get] downloads.
 
-Works similarly to **[io.file.save]** but instead of taking source content of some kind,
+Works similarly to **[\[io.file.save\]](https://docs.ainiro.io/reference/slots/io/io.file.save/)** but instead of taking source content of some kind,
 it assumes the source is an open `Stream` of some sort.
 
 ```
@@ -14848,7 +14848,7 @@ Description: log.timeshift is a slot in the log namespace of Magic Cloud. Aggreg
 This slot counts the log items matching a search string per day, for the last two weeks, and is useful for
 creating a time series of how often something is logged. The value of the slot is mandatory, and must be a
 string a log item's content is matched against, or a log entry type. As with filtering, you should invoke
-**[log.capabilities]** to verify that your log implementation has `can-timeshift` set to true before relying upon it.
+**[\[log.capabilities\]](https://docs.ainiro.io/reference/slots/log/log.capabilities/)** to verify that your log implementation has `can-timeshift` set to true before relying upon it.
 
 ```
 log.timeshift:tick
@@ -14940,7 +14940,7 @@ structured/raw version of the MIME message wrapping the actual email message. Re
 the magic.lambda.mime project's documentation for details to understand this
 structure. If you choose to retrieve messages in **[raw]** format, the message node's value will contain
 the raw MIME message as text. If you choose this path, and you later want to actually parse the message,
-to make it become a structured lambda object - You can use the **[mime.parse]** slot from magic.lambda.mime.
+to make it become a structured lambda object - You can use the **[\[mime.parse\]](https://docs.ainiro.io/reference/slots/mime/mime.parse/)** slot from magic.lambda.mime.
 
 
 # [mail.smtp.send]
@@ -15053,7 +15053,7 @@ mail.smtp.send
             email:jane@doe.com
 ```
 
-This makes it easier to dynamically **[unwrap]** arguments to the slot.
+This makes it easier to dynamically **[\[unwrap\]](https://docs.ainiro.io/reference/slots/core/unwrap/)** arguments to the slot.
 
 #### Creating MIME messages
 
@@ -15425,7 +15425,7 @@ a `Content-Type` of _"application/python"_.
 URL: https://docs.ainiro.io/reference/slots/mime/mime.create/
 Description: mime.create is a slot in the mime namespace of Magic Cloud. Builds a MIME message from headers and child [entity] nodes; useful for sending email or composing multipart payloads.
 
-The **[mime.create]** slot is logically the exact opposite of the **[mime.parse]** slot, and can take (almost) the exact
+The **[mime.create]** slot is logically the exact opposite of the **[\[mime.parse\]](https://docs.ainiro.io/reference/slots/mime/mime.parse/)** slot, and can take (almost) the exact
 same input as its sibling produces as output. Below is an example.
 
 ```
@@ -15471,7 +15471,7 @@ mime.create:multipart/mixed
       content:Some Markdown content here
 ```
 
-The above will create one multipart MIME entity with two children, where one of its children are declaring itself as an attachment, with the filename of _"README.md"_ due to its `Content-Disposition` header. If you parse the resulting MIME message using **[mime.parse]**, you will end up with roughly what you started with.
+The above will create one multipart MIME entity with two children, where one of its children are declaring itself as an attachment, with the filename of _"README.md"_ due to its `Content-Disposition` header. If you parse the resulting MIME message using **[\[mime.parse\]](https://docs.ainiro.io/reference/slots/mime/mime.parse/)**, you will end up with roughly what you started with.
 
 You can add any headers you wish into individual MIME entities using the above syntax. The `Content-Type` header will be ignored though, since it's assumed to be the value of your **[entity]** node.
 
@@ -15497,7 +15497,7 @@ Notice, if you supply a **[filename]** argument, then the library will automatic
 URL: https://docs.ainiro.io/reference/slots/mime/mime.list/
 Description: mime.list is a slot in the mime namespace of Magic Cloud. Lists registered MIME type mappings.
 
-This slot lists all MIME type mappings registered in the current installation, including those added with **[mime.add]**.
+This slot lists all MIME type mappings registered in the current installation, including those added with **[\[mime.add\]](https://docs.ainiro.io/reference/slots/mime/mime.add/)**.
 It returns one child node for each mapping, where the name of the child node is the file extension and its value is the MIME type.
 It takes no arguments.
 
@@ -15562,10 +15562,10 @@ Description: The 12 slots named mssql.* in Magic Cloud and Hyperlambda, each wit
 URL: https://docs.ainiro.io/reference/slots/mssql/mssql.execute-batch/
 Description: mssql.execute-batch is a slot in the mssql namespace of Magic Cloud. Executes a batch SQL script on the current SQL Server connection.
 
-Executes a batch SQL script, such as a schema creation script, on the SQL Server connection opened by **[mssql.connect]**.
+Executes a batch SQL script, such as a schema creation script, on the SQL Server connection opened by **[\[mssql.connect\]](https://docs.ainiro.io/reference/slots/mssql/mssql.connect/)**.
 SQL Server cannot execute scripts containing `GO` separators as one single command, so this slot splits the script
 on every line consisting only of `GO` (case insensitive), and executes each part as its own command. This is the
-difference between this slot and **[mssql.execute]**, which executes its SQL as one single command.
+difference between this slot and **[\[mssql.execute\]](https://docs.ainiro.io/reference/slots/mssql/mssql.execute/)**, which executes its SQL as one single command.
 
 * __[value]__ - The batch SQL script to execute. Can be a constant or an expression.
 
@@ -15637,7 +15637,7 @@ exception if any of the three mandatory ones is missing, or if OpenAI responds w
 
 * __[key]__ - OpenAI API key. Mandatory.
 * __[content]__ - The audio as raw bytes. Mandatory.
-* __[type]__ - MIME type of the audio, such as `audio/mpeg`. Mandatory.
+* __[\[type\]](https://docs.ainiro.io/reference/slots/core/type/)__ - MIME type of the audio, such as `audio/mpeg`. Mandatory.
 * __[language]__ - Optional language hint.
 
 
@@ -15727,7 +15727,7 @@ Closes the browser and page associated with a session.
 
 Arguments:
 
-* Slot value - Session identifier returned by **[puppeteer.connect]**.
+* Slot value - Session identifier returned by **[\[puppeteer.connect\]](https://docs.ainiro.io/reference/slots/puppeteer/puppeteer.connect/)**.
 
 Examples:
 
@@ -16212,7 +16212,7 @@ Description: The 5 slots named slots.* in Magic Cloud and Hyperlambda, each with
 URL: https://docs.ainiro.io/reference/slots/slots/slots.create/
 Description: slots.create is a slot in the slots namespace of Magic Cloud. Creates a dynamic slot that can be invoked with [signal].
 
-Creates a dynamic slot that can be invoked using **[signal]**. Below is an example.
+Creates a dynamic slot that can be invoked using **[\[signal\]](https://docs.ainiro.io/reference/slots/core/signal/)**. Below is an example.
 
 ```
 slots.create:foo
@@ -16421,7 +16421,7 @@ URL: https://docs.ainiro.io/reference/slots/sql/sql.delete/
 Description: sql.delete is a slot in the sql namespace of Magic Cloud. Builds a parameterized DELETE SQL statement; include a [where] child unless intentionally deleting every row in the table.
 
 This slot is for deleting records. Its **[where]** argument is applied in a similar fashion as the where
-argument to **[sql.read]** and **[sql.update]**. You can find an example further down in this document of
+argument to **[\[sql.read\]](https://docs.ainiro.io/reference/slots/sql/sql.read/)** and **[\[sql.update\]](https://docs.ainiro.io/reference/slots/sql/sql.update/)**. You can find an example further down in this document of
 how to use **[where]**.
 
 ```
@@ -16456,7 +16456,7 @@ sql.read
 ```
 
 The above will result in the following SQL returned to you. If you're using the special implementations,
-such as e.g. **[data.read]**, and/or **[mssql.read]** - The returned SQL might vary according to your dialect.
+such as e.g. **[\[data.read\]](https://docs.ainiro.io/reference/slots/data/data.read/)**, and/or **[\[mssql.read\]](https://docs.ainiro.io/reference/slots/mssql/mssql.read/)** - The returned SQL might vary according to your dialect.
 But the results of executing the SQL will be the same.
 
 ```
@@ -16473,7 +16473,7 @@ supply the following arguments to this slot.
 * __[limit]__ - How many records to return, default is 25. Set this value to -1 to avoid having the parser inject its default value
 * __[offset]__ - Offset of where to start returning records
 * __[where]__ - Where condition
-* __[join]__ - Join condition
+* __[\[join\]](https://docs.ainiro.io/reference/slots/core/join/)__ - Join condition
 * __[group]__ - Group by declaration
 
 For instance, to select only the _"field1"_ column and the _"field2"_ column from _"table1"_,
@@ -16603,7 +16603,7 @@ it for some reasons becomes invalid.
 URL: https://docs.ainiro.io/reference/slots/sqlite/sqlite.load-extension/
 Description: sqlite.load-extension is a slot in the sqlite namespace of Magic Cloud. Loads a SQLite extension into the current connection from child-node arguments.
 
-Loads a SQLite extension into the connection opened by **[sqlite.connect]**. The slot takes its arguments as children.
+Loads a SQLite extension into the connection opened by **[\[sqlite.connect\]](https://docs.ainiro.io/reference/slots/sqlite/sqlite.connect/)**. The slot takes its arguments as children.
 
 * __[file]__ - Filename of the extension to load. Mandatory, the slot throws an exception if it is missing.
 * __[proc]__ - Optional entry point of the extension.
@@ -16652,9 +16652,9 @@ Description: The 26 slots named strings.* in Magic Cloud and Hyperlambda, each w
 URL: https://docs.ainiro.io/reference/slots/strings/strings.builder.append/
 Description: strings.builder.append is a slot in the strings namespace of Magic Cloud. Appends text to the current [strings.builder] scope.
 
-Appends its value to the closest **[strings.builder]** scope. The slot requires a value, which can be a constant
-or an expression, and can only be used inside a **[strings.builder]** invocation. See the example in the
-documentation for **[strings.builder]** above.
+Appends its value to the closest **[\[strings.builder\]](https://docs.ainiro.io/reference/slots/strings/strings.builder/)** scope. The slot requires a value, which can be a constant
+or an expression, and can only be used inside a **[\[strings.builder\]](https://docs.ainiro.io/reference/slots/strings/strings.builder/)** invocation. See the example in the
+documentation for **[\[strings.builder\]](https://docs.ainiro.io/reference/slots/strings/strings.builder/)** above.
 
 
 # [strings.builder]
@@ -16662,7 +16662,7 @@ documentation for **[strings.builder]** above.
 URL: https://docs.ainiro.io/reference/slots/strings/strings.builder/
 Description: strings.builder is a slot in the strings namespace of Magic Cloud. Creates a string builder scope for [strings.builder.append].
 
-Creates a string builder scope. Every **[strings.builder.append]** invocation found inside it appends its value
+Creates a string builder scope. Every **[\[strings.builder.append\]](https://docs.ainiro.io/reference/slots/strings/strings.builder.append/)** invocation found inside it appends its value
 to the builder, and when the scope ends the value of **[strings.builder]** becomes the concatenated text.
 Its children are evaluated as a lambda object, and the slot has no arguments of its own.
 
@@ -16682,7 +16682,7 @@ URL: https://docs.ainiro.io/reference/slots/strings/strings.byte-count/
 Description: strings.byte-count is a slot in the strings namespace of Magic Cloud. Returns the UTF-8 byte length of a string; useful for size checks where multi-byte characters matter.
 
 Returns the number of bytes the specified string occupies when UTF-8 encoded, as an integer. This differs from
-**[strings.length]**, which counts characters, since characters outside the ASCII range occupy more than
+**[\[strings.length\]](https://docs.ainiro.io/reference/slots/strings/strings.length/)**, which counts characters, since characters outside the ASCII range occupy more than
 one byte. The slot takes a value, which can be a constant or an expression.
 
 
@@ -16707,7 +16707,7 @@ strings.capitalize:thomas
 URL: https://docs.ainiro.io/reference/slots/strings/strings.concat/
 Description: strings.concat is a slot in the strings namespace of Magic Cloud. Concatenates strings.
 
-Concatenates a list of strings into one string. Similar to **[strings.join]**, except it doesn't take a
+Concatenates a list of strings into one string. Similar to **[\[strings.join\]](https://docs.ainiro.io/reference/slots/strings/strings.join/)**, except it doesn't take a
 separating character.
 
 ```
@@ -16764,7 +16764,7 @@ strings.ends-with:Thomas Hansen Is Coolio
 URL: https://docs.ainiro.io/reference/slots/strings/strings.html-decode/
 Description: strings.html-decode is a slot in the strings namespace of Magic Cloud. HTML decodes the specified string.
 
-HTML decodes a string, the opposite of **[strings.html-encode]**. The slot requires a value, which can be a
+HTML decodes a string, the opposite of **[\[strings.html-encode\]](https://docs.ainiro.io/reference/slots/strings/strings.html-encode/)**. The slot requires a value, which can be a
 constant or an expression, and replaces its value with the decoded string.
 
 
@@ -16782,7 +16782,7 @@ takes a value, which can be a constant or an expression, and replaces its value 
 URL: https://docs.ainiro.io/reference/slots/strings/strings.join/
 Description: strings.join is a slot in the strings namespace of Magic Cloud. Concatenates the values yielded by the expression, inserting the separator between adjacent items.
 
-Similar to **[strings.concat]**, except it also takes an optional separating character, allowing you to
+Similar to **[\[strings.concat\]](https://docs.ainiro.io/reference/slots/strings/strings.concat/)**, except it also takes an optional separating character, allowing you to
 concatenate a bunch of strings, and making sure each original string is separated by some sequence of strings.
 
 ```
@@ -16855,7 +16855,7 @@ The above will result in the following.
 strings.mixin:2+2 equals 4
 ```
 
-Notice, any inline Hyperlambda is added by adding two braces around your Hyperlambda, at which point the inline Hyperlambda will be executed, and whatever it returns is _"mixed into the surrounding string inline"_. This slot can be used similarly to **[invoke]**, allowing you to pass in parameters to it by simply adding nodes as children when invoking it. To understand the last point consider the following code.
+Notice, any inline Hyperlambda is added by adding two braces around your Hyperlambda, at which point the inline Hyperlambda will be executed, and whatever it returns is _"mixed into the surrounding string inline"_. This slot can be used similarly to **[\[invoke\]](https://docs.ainiro.io/reference/slots/core/invoke/)**, allowing you to pass in parameters to it by simply adding nodes as children when invoking it. To understand the last point consider the following code.
 
 ```
 strings.mixin:@"2 + val equals {{
@@ -17101,7 +17101,7 @@ strings.trim:09thomas12
 URL: https://docs.ainiro.io/reference/slots/strings/strings.url-decode/
 Description: strings.url-decode is a slot in the strings namespace of Magic Cloud. URL decodes the specified string.
 
-URL decodes a string, the opposite of **[strings.url-encode]**. Example can be found below.
+URL decodes a string, the opposite of **[\[strings.url-encode\]](https://docs.ainiro.io/reference/slots/strings/strings.url-encode/)**. Example can be found below.
 
 ```
 strings.url-encode:thomas@ainiro.io
@@ -17194,10 +17194,10 @@ public class Foo : ISlot
 The slot takes three arguments being as follows;
 
 * __[assembly-name]__ - The name of your assembly
-* __[references]__ - Being what references your code requires to compile. Notice, these are taken from the current AppDomain's assemblies, and assumes you've already got the assembly somehow loaded into your AppDomain. If you need to add assemblies that doesn't exist in your AppDomain you can use **[system.plugin.load]** before you compile your code.
+* __[references]__ - Being what references your code requires to compile. Notice, these are taken from the current AppDomain's assemblies, and assumes you've already got the assembly somehow loaded into your AppDomain. If you need to add assemblies that doesn't exist in your AppDomain you can use **[\[system.plugin.load\]](https://docs.ainiro.io/reference/slots/system/system.plugin.load/)** before you compile your code.
 * __[code]__ - Your actual C# code
 
-If you want to persist the created assembly to disc you can use the **[io.file.save.binary]** slot from the _"magic.lambda.io"_ project.
+If you want to persist the created assembly to disc you can use the **[\[io.file.save.binary\]](https://docs.ainiro.io/reference/slots/io/io.file.save.binary/)** slot from the _"magic.lambda.io"_ project.
 
 #### Dependency Injection and your IoC container
 
@@ -17269,7 +17269,7 @@ io.file.save.binary:/etc/foo.dll
 URL: https://docs.ainiro.io/reference/slots/system/system.debug/
 Description: system.debug is a slot in the system namespace of Magic Cloud. Evaluates the child lambda while recording every slot invocation, returning the recording.
 
-This slot evaluates its children the same way **[eval]** does, but records every single slot invocation
+This slot evaluates its children the same way **[\[eval\]](https://docs.ainiro.io/reference/slots/core/eval/)** does, but records every single slot invocation
 as it happens, and returns the recording instead of leaving the lambda in place. This is what powers
 [Rewind](https://docs.ainiro.io/dashboard/hyper-ide/#rewind---stepping-through-an-execution) in Hyper IDE, allowing you
 to step through an execution after it has already finished.
@@ -17296,7 +17296,7 @@ just the node that ran, moving from one step to the next is watching the program
 which is a very different thing from reading a stack trace and guessing what the values were.
 
 If the lambda returned something, the recording ends with a **[returned]** node. If the lambda threw,
-it ends with an **[error]** node having the exception message as its value and a **[type]** child with
+it ends with an **[error]** node having the exception message as its value and a **[\[type\]](https://docs.ainiro.io/reference/slots/core/type/)** child with
 the CLR type of the exception. An execution that throws is precisely the one you want to look at, so
 the exception is caught and returned as a part of the recording rather than being allowed to discard
 everything leading up to it.
@@ -17313,8 +17313,8 @@ system.debug
 Some things to be aware of.
 
 * The lambda is cloned into a detached root before it is evaluated, such that expressions navigating upwards resolve the same way they would if the lambda was executed normally. This implies the slot cannot see nodes outside of itself.
-* A **[return]** inside the lambda terminates the lambda being debugged, and not whoever invoked **[system.debug]**.
-* Slots executed on another thread through **[fork]** are not recorded, since a fork creates its own signaler. **[join]** is recorded, but its children are not.
+* A **[\[return\]](https://docs.ainiro.io/reference/slots/core/return/)** inside the lambda terminates the lambda being debugged, and not whoever invoked **[system.debug]**.
+* Slots executed on another thread through **[\[fork\]](https://docs.ainiro.io/reference/slots/core/fork/)** are not recorded, since a fork creates its own signaler. **[\[join\]](https://docs.ainiro.io/reference/slots/core/join/)** is recorded, but its children are not.
 * Recording is turned on for the lambda passed into this slot only, and adds nothing to the execution speed of the language elsewhere.
 * The recording contains a copy of the entire lambda object for every single step, so debugging a lambda that loops thousands of times produces a very large result. Recording therefore stops after 10,000 steps, and the recording's last step becomes a **[truncated]** node declaring this, rather than the recording silently ending.
 
@@ -17411,7 +17411,7 @@ system.plugin.list
 
 This slot is probably the closest you come to being able to using C# as a dynamic _"scripting language"_, allowing you to use it more like an interpreted language than a compiled language - Even though internally it's actually compiled to IL code and executed as such - Only the loading of the assembly resulting from the compilation process is 100% dynamic and automatic, including the cleaning up and unloading of the assembly from the AppDomain once the code has been executed.
 
-This slot accepts either a string or a byte array. If you give it a string, it assumes your string is a relative path to an assembly on disc. If you provide it with a byte array, it assumes it's your raw assembly content. In such a regard it works similarly to **[system.plugin.load]**.
+This slot accepts either a string or a byte array. If you give it a string, it assumes your string is a relative path to an assembly on disc. If you provide it with a byte array, it assumes it's your raw assembly content. In such a regard it works similarly to **[\[system.plugin.load\]](https://docs.ainiro.io/reference/slots/system/system.plugin.load/)**.
 
 
 # [system.plugin.list]
@@ -17441,7 +17441,7 @@ system.plugin.load:/etc/foo.dll
 
 Once the above code has executed you will have a native C# Hyperlambda slot called **[foo]** that you can use. Plugins loaded this way will stay in memory as a part of your AppDomain until either the process restarts, and/or you explicitly unload the plugin - Implying if your process restarts you'll need to ensure the plugin is reloaded again if you wish to continue using it. Dynamically loaded plugins will _not_ be automatically reloaded in any ways.
 
-To unload the plugin after having used the assembly and it is no longer required, you should use **[system.plugin.unload]** to unload the assembly. If you recompile some C# code using the same assembly name this will be automatically done for you by consecutive invocations to **[system.plugin.load]** as long as the **[assembly-name]** argument is the same (case sensitive).
+To unload the plugin after having used the assembly and it is no longer required, you should use **[\[system.plugin.unload\]](https://docs.ainiro.io/reference/slots/system/system.plugin.unload/)** to unload the assembly. If you recompile some C# code using the same assembly name this will be automatically done for you by consecutive invocations to **[system.plugin.load]** as long as the **[assembly-name]** argument is the same (case sensitive).
 
 If you unload an assembly previously loaded it will be collected by the garbage collector automatically as long as you don't have references to it from another native assembly.
 
@@ -17490,7 +17490,7 @@ foo:x:@.name
 system.plugin.unload:foo.dll
 ```
 
-Notice that in the last example above, we never actually save the assembly, but load it as a plugin from the raw `byte[]` returned from the **[system.compile]** invocation allowing you to dynamically compile and execute C# code without ever having to actually save the compiled result as a dll on disc. You still have to unload the assembly from your AppDomain using **[system.plugin.unload]**.
+Notice that in the last example above, we never actually save the assembly, but load it as a plugin from the raw `byte[]` returned from the **[\[system.compile\]](https://docs.ainiro.io/reference/slots/system/system.compile/)** invocation allowing you to dynamically compile and execute C# code without ever having to actually save the compiled result as a dll on disc. You still have to unload the assembly from your AppDomain using **[\[system.plugin.unload\]](https://docs.ainiro.io/reference/slots/system/system.plugin.unload/)**.
 
 Also notice that the name of the assembly is not necessary the path of the assembly, but determined from **[assembly-name]**, allowing you to at least in theory have an assembly with _"/foo.dll"_ as its path, but _"bar.dll"_ being its name - Implying to unload the assembly you'll need to unload it as _"bar.dll"_, and listing it will return _"bar.dll"_ - While the physical location on disc of your assembly is _"/foo.dll"_.
 
@@ -17512,7 +17512,7 @@ system.plugin.load:/etc/foo.dll
 
 Once the above code has executed you will have a native C# Hyperlambda slot called **[foo]** that you can use. Plugins loaded this way will stay in memory as a part of your AppDomain until either the process restarts, and/or you explicitly unload the plugin - Implying if your process restarts you'll need to ensure the plugin is reloaded again if you wish to continue using it. Dynamically loaded plugins will _not_ be automatically reloaded in any ways.
 
-To unload the plugin after having used the assembly and it is no longer required, you should use **[system.plugin.unload]** to unload the assembly. If you recompile some C# code using the same assembly name this will be automatically done for you by consecutive invocations to **[system.plugin.load]** as long as the **[assembly-name]** argument is the same (case sensitive).
+To unload the plugin after having used the assembly and it is no longer required, you should use **[system.plugin.unload]** to unload the assembly. If you recompile some C# code using the same assembly name this will be automatically done for you by consecutive invocations to **[\[system.plugin.load\]](https://docs.ainiro.io/reference/slots/system/system.plugin.load/)** as long as the **[assembly-name]** argument is the same (case sensitive).
 
 If you unload an assembly previously loaded it will be collected by the garbage collector automatically as long as you don't have references to it from another native assembly.
 
@@ -17561,7 +17561,7 @@ foo:x:@.name
 system.plugin.unload:foo.dll
 ```
 
-Notice that in the last example above, we never actually save the assembly, but load it as a plugin from the raw `byte[]` returned from the **[system.compile]** invocation allowing you to dynamically compile and execute C# code without ever having to actually save the compiled result as a dll on disc. You still have to unload the assembly from your AppDomain using **[system.plugin.unload]**.
+Notice that in the last example above, we never actually save the assembly, but load it as a plugin from the raw `byte[]` returned from the **[\[system.compile\]](https://docs.ainiro.io/reference/slots/system/system.compile/)** invocation allowing you to dynamically compile and execute C# code without ever having to actually save the compiled result as a dll on disc. You still have to unload the assembly from your AppDomain using **[system.plugin.unload]**.
 
 Also notice that the name of the assembly is not necessary the path of the assembly, but determined from **[assembly-name]**, allowing you to at least in theory have an assembly with _"/foo.dll"_ as its path, but _"bar.dll"_ being its name - Implying to unload the assembly you'll need to unload it as _"bar.dll"_, and listing it will return _"bar.dll"_ - While the physical location on disc of your assembly is _"/foo.dll"_.
 
@@ -17636,10 +17636,10 @@ The above schedules your task for being executed once in the year of 2025, anoth
 in addition to once every 3 hours and once every 5 seconds. This document will describe in details how schedules
 works further down.
 
-You can also _update_ an existing task by using the **[tasks.update]** slot. This slot allows you to update
+You can also _update_ an existing task by using the **[\[tasks.update\]](https://docs.ainiro.io/reference/slots/tasks/tasks.update/)** slot. This slot allows you to update
 a task's description and its Hyperlambda, but you _cannot_ associate schedules with your task using this
 slot. If you've already created your task and you need to (re) schedule it, you'll need to combine the
-slots **[tasks.schedule]** and **[tasks.schedule.delete]** together. Below is an example of first creating
+slots **[\[tasks.schedule\]](https://docs.ainiro.io/reference/slots/tasks/tasks.schedule/)** and **[\[tasks.schedule.delete\]](https://docs.ainiro.io/reference/slots/tasks/tasks.schedule.delete/)** together. Below is an example of first creating
 a task for then to update it. Any existing schedules you've already associated with your task as you update
 it will not be changed.
 
@@ -17751,8 +17751,8 @@ or invoke **[tasks.schedule]** again.
 
 **Notice** - You _cannot_ create a task with a due date being in the past, and all dates are assumed to be in
 the UTC timezone. The unique ID of the schedule created is returned when you explicitly schedule a task using
-the **[tasks.schedule]** slot. If you add schedules during invocations to **[tasks.create]** though, no schedule
-IDs are returned, but you can still retrieve all schedules by invoking **[tasks.get]** and passing in **[schedules]**
+the **[tasks.schedule]** slot. If you add schedules during invocations to **[\[tasks.create\]](https://docs.ainiro.io/reference/slots/tasks/tasks.create/)** though, no schedule
+IDs are returned, but you can still retrieve all schedules by invoking **[\[tasks.get\]](https://docs.ainiro.io/reference/slots/tasks/tasks.get/)** and passing in **[schedules]**
 to have the slot return all schedules for a specific task.
 
 #### How to repeatedly execute a task
@@ -17986,9 +17986,9 @@ Description: time.format is a slot in the time namespace of Magic Cloud. Formats
 This slot formats a time span as a string, using the same format patterns as `TimeSpan.ToString` in C#,
 and is invoked with the time span as its value. It requires the following argument.
 
-- **[format]** - Format pattern to use. This argument is mandatory, and the slot throws an exception if it is missing.
+- **[\[format\]](https://docs.ainiro.io/reference/slots/core/format/)** - Format pattern to use. This argument is mandatory, and the slot throws an exception if it is missing.
 
-The time span is typically a value returned from **[time]**, and the result of the slot is the formatted
+The time span is typically a value returned from **[\[time\]](https://docs.ainiro.io/reference/slots/core/time/)**, and the result of the slot is the formatted
 string.
 
 
@@ -17997,7 +17997,7 @@ string.
 URL: https://docs.ainiro.io/reference/slots/time/time.total-milliseconds/
 Description: time.total-milliseconds is a slot in the time namespace of Magic Cloud. Returns the total milliseconds for a TimeSpan value.
 
-This slot takes a time span as its value, such as one returned from **[time]**, and returns the total number
+This slot takes a time span as its value, such as one returned from **[\[time\]](https://docs.ainiro.io/reference/slots/core/time/)**, and returns the total number
 of milliseconds the time span represents. Its value is mandatory, and it can be given either as a constant
 or as an expression.
 
@@ -18174,7 +18174,7 @@ If you remove the _"howdy"_ parts of your above argument, an exception will be t
 URL: https://docs.ainiro.io/reference/slots/validators/validators.string/
 Description: validators.string is a slot in the validators namespace of Magic Cloud. Validates that a string value or resolved expression result is within the allowed length range, throwing if validation fails.
 
-This works the same way as the **[validators.integer]** validator, except instead of being a min/max
+This works the same way as the **[\[validators.integer\]](https://docs.ainiro.io/reference/slots/validators/validators.integer/)** validator, except instead of being a min/max
 _value_ the min/max arguments declares the minimum and maximum _length_ of the string, allowing you
 to restrict string length of arguments to a min/max value for your Hyperlambda. Below is example
 usage that will throw an exception unless the argument is between 5 and 15 characters in length.
@@ -18191,7 +18191,7 @@ validators.string:x:@.some-arg
 URL: https://docs.ainiro.io/reference/slots/validators/validators.url/
 Description: validators.url is a slot in the validators namespace of Magic Cloud. Validates that a value or resolved expression result is a URL, throwing if validation fails.
 
-This is similar to the **[validators.email]** slot, except it requires the argument to be a valid
+This is similar to the **[\[validators.email\]](https://docs.ainiro.io/reference/slots/validators/validators.email/)** slot, except it requires the argument to be a valid
 URL instead of a valid email. Below is example usage.
 
 ```
