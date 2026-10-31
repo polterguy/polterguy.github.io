@@ -8,20 +8,24 @@ This project provides file/folder slots for Magic. More specifically, it provide
 * __[io.folder.exists]__ - Returns true if folder exists, otherwise false
 * __[io.folder.delete]__ - Deletes a folder on disc on your server
 * __[io.folder.list]__ - Lists all folders within another source folder
+* __[io.folder.list-recursively]__ - Lists all folders within another source folder, including all nested folders
 * __[io.folder.move]__ - Moves a folder to its specified destination
 * __[io.folder.copy]__ - Copies a folder to its specified destination
 * __[io.file.load]__ - Loads a file from disc on your server
 * __[load-file]__ - Alias for **[io.file.load]**
+* __[io.file.load-recursively]__ - Loads all files in a folder, including all nested folders, returning each file's name and content
 * __[io.file.load.binary]__ - Loads a file from disc on your server as a byte array
 * __[io.file.save]__ - Saves a file on disc on your server
 * __[save-file]__ - Alias for **[io.file.save]**
 * __[io.file.save.binary]__ - Saves a file on disc on your server but contrary to the above assumes content to save is binary
+* __[io.file.patch]__ - Applies a unified diff patch to a file on disc on your server
 * __[io.file.exists]__ - Returns true if file exists, otherwise false.
 * __[io.file.delete]__ - Deletes a file on your server.
 * __[io.file.copy]__ - Copies a file on your server.
 * __[io.file.execute]__ - Executes a Hyperlambda file on your server.
 * __[execute-file]__ - Alias for **[io.file.execute]** except it will forward evaluate all descendant nodes using **[unwrap]**
 * __[io.file.list]__ - List files in the specified folder on your server.
+* __[io.file.list-recursively]__ - List files in the specified folder on your server, including all nested folders.
 * __[io.file.move]__ - Moves a file on your server.
 * __[io.file.unzip]__ - Unzips a file on your server.
 * __[io.stream.open-file]__ - Opens the specified filename and returns it as a stream
@@ -29,6 +33,7 @@ This project provides file/folder slots for Magic. More specifically, it provide
 * __[io.stream.read]__ - Reads all content from the specified stream as a byte array
 * __[io.stream.close]__ - Closes a previously opened stream
 * __[io.content.zip-stream]__ - Creates a ZipStream for you, without touching the file system
+* __[io.path.get-folder]__ - Returns the folder part of the specified path
 * __[.io.folder.root]__ - Returns the root folder of your system. (private C# slot)
 * __[io.file.mixin]__ - Allows you to invoke lambda objects from a file and substitute content dynamically in your original file
 * __[io.file.search]__ - Searches file content and returns filename + line numbers
@@ -80,6 +85,15 @@ you pass in **[display-hidden]** and set its value to boolean _"true"_.
 io.folder.list:/misc/
 ```
 
+### How to use [io.folder.list-recursively]
+
+This slot works like **[io.folder.list]**, except it also returns all folders nested inside of the specified folder,
+at any depth, and not only its direct sub folders. It returns one unnamed child node per folder, with the folder's
+path relative to the root folder of your backend, and accepts the following optional arguments.
+
+* **[display-hidden]** - Boolean, defaults to false, which hides folders starting with a `.`
+* **[display-system]** - Boolean, defaults to true, and if false hides folders inside of _"/system/"_, _"/misc/"_, _"/data/"_ and _"/config/"_
+
 ### How to use [io.folder.move]
 
 Moves the specified source folder to its specified destination folder.
@@ -114,6 +128,17 @@ io.file.load:/misc/README.md
 
 **Notice** - If you want to load binary content you should use the **[io.file.load.binary]** override.
 
+### How to use [io.file.load-recursively]
+
+This slot loads the content of all files inside of the specified folder, including all nested folders, as text, and
+takes no arguments besides the folder as its value. It returns one unnamed child node per file, and each of these nodes
+has the following two children.
+
+* **[name]** - Path of the file relative to the root folder of your backend
+* **[content]** - Content of the file as a string, decoded as UTF-8
+
+As with **[io.file.load]**, you should not use this slot on binary files.
+
 ### How to use [io.file.save]
 
 Saves the specified content to the specified file on disc, overwriting any previous content if the
@@ -138,9 +163,13 @@ using other slots.
 
 ```
 io.file.patch:/misc/README2.md
-   .:@"@@ -5,1 +5,1 @@
--Old line here
-+New line here"
+   .:@"
+@@ -1,3 +1,4 @@
+ This is line 1
+ This is line 2
+ This is line 3
++This is line 4
+"
 ```
 
 #### Patch format rules
@@ -155,8 +184,30 @@ The patch parser accepts standard unified diff format, but still enforces some r
   * `+` for additions
   * `\` for the `\ No newline at end of file` marker
 * Empty lines inside a hunk are allowed and treated as context lines.
-* Context lines must match the file content **exactly**, otherwise the patch will fail.
-* Hunk line counts are not enforced, but the starting line number must match.
+* Hunks must appear in the same order as the parts of the file they change.
+* Hunk line counts are not enforced, and a hunk carrying no context lines at all is legal.
+
+#### How a hunk is located
+
+A hunk's header says where the hunk belonged in the file the patch was created against, and that
+position is used as a starting point rather than as a requirement. Since the file may have drifted
+since the patch was created, the parser begins at the position the header declares and widens
+outwards, applying the hunk at the nearest position whose content matches. The search reaches at
+most 250 lines in either direction, and never backwards past a hunk that was already applied.
+
+Two things follow from this. The context does **not** have to be unique within the file, so repeated
+lines such as a closing brace, a blank line or a bare `return` are perfectly fine. And the header's
+line numbers are allowed to be stale.
+
+What still has to hold is that the context lines and the deleted lines match the file at the
+position the parser settles on, which is verified before anything is written. Locating a hunk is
+forgiving; applying one is not.
+
+Lines are first compared exactly. Only if nowhere in the file matches that way is the search
+repeated comparing lines while ignoring trailing whitespace. This lets a patch apply to formats
+where trailing whitespace is significant but invisible to whoever wrote the patch, most notably
+Markdown, where two trailing spaces denote a hard line break. A hunk located this way still leaves
+the file's own trailing whitespace untouched.
 
 ### How to use [io.file.exists]
 
@@ -276,6 +327,15 @@ you pass in **[display-hidden]** and set its value to boolean _"true"_.
 io.file.list:/misc/
 ```
 
+### How to use [io.file.list-recursively]
+
+This slot works like **[io.file.list]**, except it also returns all files inside of nested folders, at any depth, and
+not only the files directly inside of the specified folder. It returns one unnamed child node per file, with the
+file's path relative to the root folder of your backend, and accepts the following optional arguments.
+
+* **[display-hidden]** - Boolean, defaults to false, which hides files starting with a `.`
+* **[display-system]** - Boolean, defaults to true, and if false hides files inside of _"/system/"_, _"/misc/"_, _"/data/"_ and _"/config/"_
+
 ### How to use [io.file.search]
 
 Searches all files recursively inside the specified folder and returns filenames with line numbers
@@ -337,15 +397,15 @@ if any of the files exists from before.
 
 ### How to use [io.file.mixin]
 
-{% raw %}
 This slot takes a filename as its primary argument, and optionally any amount of lambda children objects.
-It allows for dynamically substituting for instance `{{*/.name}}` segments in your original source file,
-by invoking lambda objects it can find by evaluating your `{{xyz}}` segment as an expression
+It allows for dynamically substituting for instance {% raw %}`{{*/.name}}`{% endraw %} segments in your original source file,
+by invoking lambda objects it can find by evaluating your {% raw %}`{{xyz}}`{% endraw %} segment as an expression
 leading to some lambda object you want to execute. Below is an example of usage that assumes you've got a
 file named _"foo.html"_ at the root folder of your installation resembling the following.
 
 **/foo.html**
 
+{% raw %}
 ```
 <html>
     <head>
@@ -373,7 +433,7 @@ io.file.mixin:/foo.html
       return:x:-
 ```
 
-The above will substitute all your {% raw %}`{{xyz}}`{% endraw %} segments and give you a result resembling the following.
+The above will substitute all your {% raw %}`{{xyz}}`{% endraw %}segments and give you a result resembling the following.
 
 ```
 <html>
@@ -498,6 +558,17 @@ signaler.Signal(".io.folder.root", node);
 // Retrieving root folder after evaluating slot.
 var rootFolder = node.Get<string>();
 ```
+
+### How to use [io.path.get-folder]
+
+Strips the filename from a path and returns the folder part of it, always ending with a `/`. If the path already
+ends with a `/` it is returned as it is. Below is an example.
+
+```
+io.path.get-folder:/foo/howdy/file.hl
+```
+
+The above returns `/foo/howdy/`, and the same is returned if you pass in `/foo/howdy/` instead.
 
 ## Restricting file access with [whitelist]
 

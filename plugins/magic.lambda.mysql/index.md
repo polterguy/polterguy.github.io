@@ -19,6 +19,7 @@ this project contains are as follows.
 * __[mysql.transaction.create]__ - Creates a new transaction
 * __[mysql.transaction.commit]__ - Explicitly commits an open transaction
 * __[mysql.transaction.rollback]__ - Explicitly rolls back an open transaction
+* __[.db-factory.connection.mysql]__ - Creates a MySQL connection factory (private C# slot)
 
 **Notice** - If you use any of the CRUD slots from above, the whole idea is that you can polymorphistically
 use the same lambda object, towards any of the underlying database types, and the correct specific syntax

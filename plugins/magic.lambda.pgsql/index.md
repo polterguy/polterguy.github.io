@@ -19,6 +19,7 @@ this project contains are as follows.
 * __[pgsql.transaction.create]__ - Creates a new transaction
 * __[pgsql.transaction.commit]__ - Explicitly commits an open transaction
 * __[pgsql.transaction.rollback]__ - Explicitly rolls back an open transaction
+* __[.db-factory.connection.pgsql]__ - Creates a PostgreSQL connection factory (private C# slot)
 
 **Notice** - If you use any of the CRUD slots from above, the whole idea is that you can polymorphistically
 use the same lambda object, towards any of the underlying database types, and the correct specific syntax

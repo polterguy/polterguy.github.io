@@ -11,11 +11,13 @@ project contains the following 16 slots.
 * __[git.commit]__ - Adds files and creates a commit
 * __[git.push]__ - Pushes commits to a remote
 * __[git.checkout]__ - Switches branches (optionally creating a new branch)
+* __[git.merge]__ - Merges a branch into the current branch, or aborts a merge that stalled
 * __[git.remote.add]__ - Adds a Git remote
 * __[git.fetch]__ - Fetches updates from a remote
 * __[git.pull]__ - Pulls updates from a remote
 * __[git.status]__ - Shows repository status
 * __[git.diff]__ - Shows working tree changes relative to HEAD
+* __[git.log]__ - Lists commits, one per line
 * __[git.restore]__ - Discards uncommitted changes for one file or the whole repository
 * __[git.branch.list]__ - Lists branches
 * __[github.repo.create]__ - Creates a GitHub repository
@@ -162,6 +164,17 @@ git.checkout:/modules/stripe/
    create:true
 ```
 
+## How to use [git.merge]
+
+Merges a branch into the current branch, or aborts a merge that stopped on conflicts. The repo path is the node
+value, and the slot returns the output of the underlying `git merge` command. The merge is created without
+opening a commit message editor.
+
+* __[branch]__ - Branch to merge into the current branch. Mandatory unless **[abort]** is true, and the slot throws an exception if it is missing
+* __[abort]__ - Boolean, default false, aborts a merge that stopped on conflicts instead of merging
+* __[name]__ - Author name for the merge commit
+* __[email]__ - Author email for the merge commit
+
 ## How to use [git.remote.add]
 
 Adds a remote to a repository. The repo path is the node value. The `url` child node is required.
@@ -238,6 +251,16 @@ git.diff:/modules/stripe/
 git.diff:/modules/stripe/
    file:README.md
 ```
+
+## How to use [git.log]
+
+Lists commits, one per line. The repo path is the node value, and the slot returns the lines as a single string.
+Each line contains the side, the abbreviated hash, the author, the age and the subject of a commit, separated by
+tab characters. The side is `<` for a commit only found on the left side of a range, and `>` for a commit only found
+on the right side of a range.
+
+* __[range]__ - Revision range, such as `HEAD...@{u}` to list the commits that differ from the upstream. If omitted, the commits of the current branch are listed
+* __[limit]__ - Integer, default 30, maximum number of commits to return
 
 ## How to use [git.restore]
 

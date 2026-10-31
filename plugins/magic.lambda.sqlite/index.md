@@ -21,6 +21,8 @@ this project contains are as follows.
 * __[sqlite.transaction.rollback]__ - Explicitly rolls back an open transaction
 * __[sqlite.connections.flush]__ - Flushed cached schemas and connection pools
 * __[sqlite.backup]__ - Creates a backup of the currently active database
+* __[sqlite.load-extension]__ - Loads a SQLite extension into the current connection from child-node arguments
+* __[.db-factory.connection.sqlite]__ - Creates a SQLite connection factory (private C# slot)
 
 **Notice** - If you use any of the CRUD slots from above, the whole idea is that you can polymorphistically
 use the same lambda object, towards any of the underlying database types, and the correct specific syntax
@@ -47,3 +49,10 @@ sqlite.connect:[generic|foo]
 The above will create a backup of your foo database and store it at _"/data/foo.backup"_, allowing you to restore it if
 it for some reasons becomes invalid.
 
+## How to use [sqlite.load-extension]
+
+Loads a SQLite extension into the connection opened by **[sqlite.connect]**. The slot takes its arguments as children.
+
+* __[file]__ - Filename of the extension to load. Mandatory, the slot throws an exception if it is missing.
+* __[proc]__ - Optional entry point of the extension.
+* __[append-platform]__ - Boolean, defaults to `true`. If true, the slot appends `-arm64` or `-arm` to the filename when running on an ARM64 or ARM processor.

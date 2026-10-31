@@ -13,6 +13,7 @@ This project contains string manipulation slots for Magic. More specifically, it
 * __[strings.starts-with]__ - Returns true if the specified string starts with its argument
 * __[strings.join]__ - Joins multiple strings together, with a separating string between each string joined
 * __[strings.length]__ - Returns the length in characters of the given string
+* __[strings.byte-count]__ - Returns the UTF-8 byte length of the given string
 * __[strings.regex-replace]__ - Replaces occurrences matching the given regular expression with its argument
 * __[strings.split]__ - Splits a string into multiple strings on every match of its given argument
 * __[strings.to-lower]__ - Returns the lower caps version of its given argument
@@ -22,9 +23,13 @@ This project contains string manipulation slots for Magic. More specifically, it
 * __[strings.trim-end]__ - Trims a string only to its right, optionally for all characters found in its argument
 * __[strings.url-encode]__ - URL encodes the specified string
 * __[strings.url-decode]__ - URL decodes the specified string
+* __[strings.html-encode]__ - HTML encodes the specified string
+* __[strings.html-decode]__ - HTML decodes the specified string
 * __[strings.substring]__ - Returns the sub-string of the specified string
 * __[strings.matches]__ - Returns the regular expression matches found from specified source
 * __[strings.mixin]__ - Allows for mixin logic of strings and Hyperlambda
+* __[strings.builder]__ - Creates a string builder scope for **[strings.builder.append]**
+* __[strings.builder.append]__ - Appends text to the current **[strings.builder]** scope
 
 ## Usage
 
@@ -190,6 +195,12 @@ Returns the length of a string as an integer number.
 strings.length:thomas
 ```
 
+### How to use [strings.byte-count]
+
+Returns the number of bytes the specified string occupies when UTF-8 encoded, as an integer. This differs from
+**[strings.length]**, which counts characters, since characters outside the ASCII range occupy more than
+one byte. The slot takes a value, which can be a constant or an expression.
+
 ### How to use [strings.regex-replace]
 
 Replaces matches of the given regular expression with some static sequence of characters.
@@ -287,6 +298,16 @@ strings.url-encode:thomas%40ainiro.io
 strings.url-decode:thomas@ainiro.io
 ```
 
+### How to use [strings.html-encode]
+
+HTML encodes a string, replacing characters such as `<`, `>`, `&` and `"` with their HTML entities. The slot
+takes a value, which can be a constant or an expression, and replaces its value with the encoded string.
+
+### How to use [strings.html-decode]
+
+HTML decodes a string, the opposite of **[strings.html-encode]**. The slot requires a value, which can be a
+constant or an expression, and replaces its value with the decoded string.
+
 ### How to use [strings.substring]
 
 Returns a substring of the specified string.
@@ -360,3 +381,23 @@ return:x:-
 ```
 {% endraw %}
 
+### How to use [strings.builder]
+
+Creates a string builder scope. Every **[strings.builder.append]** invocation found inside it appends its value
+to the builder, and when the scope ends the value of **[strings.builder]** becomes the concatenated text.
+Its children are evaluated as a lambda object, and the slot has no arguments of its own.
+
+```
+strings.builder
+   strings.builder.append:"howdy"
+   strings.builder.append:" world"
+get-value:x:@strings.builder
+```
+
+The above will result in the value of the last node being _"howdy world"_.
+
+### How to use [strings.builder.append]
+
+Appends its value to the closest **[strings.builder]** scope. The slot requires a value, which can be a constant
+or an expression, and can only be used inside a **[strings.builder]** invocation. See the example in the
+documentation for **[strings.builder]** above.

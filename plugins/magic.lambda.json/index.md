@@ -5,11 +5,13 @@ title: magic.lambda.json
 This project provides JSON helper slots for Magic. More specifically, it provides the following slots.
 
 * __[json2lambda]__ - Creates a lambda object out of a JSON input string.
+* __[json2lambda-stream]__ - Creates a lambda object out of JSON read from a stream.
 * __[json2yaml]__ - Converts a JSON string to its YAML equivalent.
 * __[yaml2lambda]__ - Creates a lambda object out of a YAML input string.
 * __[yaml2json]__ - Creates a JSON string out of a YAML input string.
 * __[lambda2json]__ - Creates JSON out of a lambda object.
 * __[lambda2yaml]__ - Converts a lambda object to its YAML equivalent.
+* __[.lambda2json-raw]__ - Transforms a lambda object to a compact JSON string, used internally by the endpoint executor and the exception handler. (private C# slot)
 
 ## How to use [json2lambda] and [lambda2json]
 
@@ -25,6 +27,18 @@ resulting JSON will be indented and nicely formated, making it more readable.
 **Notice** - Although all JSON can be transformed into lambda, the opposite is not necessarily true. This is because
 lambda allows for having multiple nodes with the same name for instance, which would result in a JSON object with
 multiple properties having the same key. Hence, have this in mind as you persist your lambda objects into JSON.
+
+## How to use [json2lambda-stream]
+
+This slot does the same as **[json2lambda]**, except it reads the JSON from a stream instead of from a string,
+such as a stream opened with **[io.stream.open-file]**, which you can read about in the _"magic.lambda.io"_ project.
+The value of the slot must be an expression leading to the stream, and the slot throws an exception if
+no stream is found. The resulting lambda hierarchy is returned as children of the slot node, and both JSON objects
+and JSON arrays are supported.
+
+The slot accepts the following argument.
+
+* __[encoding]__ - Text encoding used to read the stream, defaults to `utf-8`. Streams using another encoding, such as `utf-16` or `iso-8859-1`, are converted to UTF-8 before they are parsed
 
 ## How to use [yaml2lambda] and [lambda2yaml]
 

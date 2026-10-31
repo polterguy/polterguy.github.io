@@ -1,0 +1,61 @@
+# Keeps the plugin pages and the generated slot reference in sync with the Magic
+# repository, https://github.com/polterguy/magic.
+#
+# Two jobs in one run, both reading the source of that repository without building it:
+#
+# * sync-plugin-docs.py copies each plugin's README.md to plugins/<plugin>/index.md,
+#   adapted for Jekyll. The README is the source of truth.
+# * build-slot-reference.py generates reference/slots/ from the [Slot] attributes.
+#
+# It runs weekly and on demand, since the Magic repository is a separate project that
+# cannot trigger this one without a token. Run it from the Actions tab after a release.
+# The commit touches no markdown outside plugins/ and reference/, and llms-full.yml
+# rebuilds llms-full.txt afterwards because markdown changed.
+
+name: Sync plugin docs and slot reference
+
+on:
+  schedule:
+    - cron: '0 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: slot-reference
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
+        with:
+          repository: polterguy/magic
+          path: magic
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Copy plugin READMEs
+        run: python3 .github/scripts/sync-plugin-docs.py magic
+
+      - name: Generate slot reference
+        run: python3 .github/scripts/build-slot-reference.py magic
+
+      # Only commit when something actually changed.
+      - name: Commit if changed
+        run: |
+          git add plugins reference
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Sync plugin docs and slot reference from polterguy/magic"
+          git push

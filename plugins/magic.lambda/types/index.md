@@ -6,7 +6,7 @@ description: The [types], [type], [convert], [format] and [int2words] slots for 
 ## Types and conversion
 
 These slots allow you to inspect and convert between Hyperlambda types, in addition to
-returning the vocabulary of slots your cloudlet understands.
+returning the vocabulary of slots your cloudlet understands, and the signature and description of each slot.
 
 ### How to use [types]
 
@@ -42,6 +42,13 @@ convert:x:-
 _"from-base64"_ as your **[type]** argument. The value of the object you want to convert must obviously support
 conversion to the specified type, and will throw an exception if no conversion is possible, such as if you
 for instance try to convert the string of _"foo-bar"_ to an integer.
+
+### How to use [floatArray2bytes]
+
+This slot serializes a sequence of float values into raw bytes, which is useful when you need to feed vectors, such as
+embeddings, into binary APIs. Its value is an expression selecting the nodes containing the float values, each of which
+must be convertible to a float. After invocation, the value of the node is a `byte[]` containing 4 bytes for each float
+value.
 
 ### How to use [format]
 
@@ -104,6 +111,37 @@ vocabulary:io.file
 Notice, inside a **[whitelist]** invocation this slot only returns the slots the whitelist allows, so it
 tells the code running inside what it can actually invoke. A whitelisted slot that is pinned to an argument
 is returned once by name, regardless of how many different arguments it is pinned to.
+
+### How to use [slot.signature]
+
+Returns the documented input and output contract of a single compiled slot, given its name as the value of the slot,
+or an expression leading to its name. The result is returned as child nodes, and may contain the following.
+
+* __[input]__ - The value contract of the slot, with its `kind`, `description`, `required` and `mode`
+* __[children]__ - The child nodes the slot accepts
+* __[constraints]__ - Constraints between the child nodes
+* __[scope]__ - Scopes the slot provides or requires
+* __[output]__ - What the slot returns, with its `mode`, `kind` and `description`
+
+```
+slot.signature:slot.description
+```
+
+Invoking the above returns an **[input]** node declaring `kind` as _"slot-name"_ and `required` as true, in addition to an
+**[output]** node declaring `kind` as _"slot-description,text"_. The slot throws an exception if no slot name is supplied, or if
+the slot does not exist. Inside a **[whitelist]** invocation, it will also throw for slots the whitelist does not allow.
+
+### How to use [slot.description]
+
+Returns the description of a single compiled slot, given its name as the value of the slot, or an expression
+leading to its name.
+
+```
+slot.description:while
+```
+
+The above returns the value _"Repeats execution while a condition is true"_. The slot throws an exception if no slot name is
+supplied, or if the slot does not exist. Inside a **[whitelist]** invocation, it will also throw for slots the whitelist does not allow.
 
 ### How to use [whitelist]
 

@@ -14,6 +14,10 @@ This project provides math functions to Magic. More specifically, it provides th
 * __[math.dot]__ - Returns the dot product of two lists, where each list must be a `double` value
 * __[math.max]__ - Returns the max value
 * __[math.min]__ - Returns the min value
+* __[math.floor]__ - Rounds a number down
+* __[math.ceil]__ - Rounds a number up
+* __[math.round]__ - Rounds a number
+* __[math.random]__ - Returns a random number from optional child-node bounds
 
 All of the above besides the two last slots can be given any number of arguments, including as its value,
 and will treat the first argument as the _"base"_, and performing the rest of the arguments self assigning
@@ -255,3 +259,32 @@ This slot returns the cos value of its input.
 ```
 math.cos:x:@.arguments/*/number
 ```
+
+
+## How to use [math.floor]
+
+This slot rounds its input down to the nearest whole number. The slot takes a numeric value, which can be a
+constant or an expression, and replaces its value with the rounded result.
+
+
+## How to use [math.ceil]
+
+This slot rounds its input up to the nearest whole number. The slot takes a numeric value, which can be a
+constant or an expression, and replaces its value with the rounded result.
+
+
+## How to use [math.round]
+
+This slot rounds its input to the nearest whole number, using .NET's `Math.Round`, which rounds halfway values to the nearest even number. The slot takes a numeric value, which can be a
+constant or an expression, and replaces its value with the rounded result.
+
+
+## How to use [math.random]
+
+This slot returns a random number. Its behavior depends on how many child nodes you give it.
+
+* No children - Returns a random `double` between 0.0 and 1.0.
+* One child - Returns a random integer between 0 and the child's value, where the upper bound is exclusive.
+* Two children - Returns a random integer between the first child's value, inclusive, and the second child's value, exclusive. The children are documented as **[min]** and **[max]**, but the slot uses the first and second child regardless of their names.
+
+Child values are converted to `int`.

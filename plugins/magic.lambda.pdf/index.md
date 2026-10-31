@@ -6,6 +6,7 @@ This project provides PDF slots for Magic. The project provides the following
 slots, allowing you to convert a PDF file, stream or raw bytes to its text representation.
 
 * __[pdf2text]__ - Converts the specified PDF file or stream to text
+* __[html2pdf]__ - Converts HTML into a PDF document
 
 ## How to use [pdf2text]
 
@@ -21,3 +22,9 @@ It can also accept a string as its input, at which point it assumes the string i
 relative path to a file. Finally, the slot can accept raw bytes, which it then assumes
 is the raw content from a PDF document.
 
+## How to use [html2pdf]
+
+This slot converts the HTML markup given as its value into a PDF document, and returns the PDF as raw bytes in
+its value. The value can be a constant or an expression. Any images, stylesheets and fonts the HTML references
+are loaded through Hyperlambda's **[io.file.load.binary]** and **[http.get]** slots, instead of directly by the
+PDF library.

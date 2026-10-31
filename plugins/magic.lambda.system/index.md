@@ -253,12 +253,22 @@ system.plugin.list
 ## How to use [system.execute]
 
 If you only want to execute a specific program in your system you can use **[system.execute]**, and pass in
-the name of the command as a value, with any arguments as a single **[args]** child node. You can also
+the name of the command as a value. Arguments can be passed either as a single **[args]** string node,
+or as children of **[args]**, one argument per child node. You can also
 optionally specify **[working-directory]**.
 
 ```
 system.execute:ls
    args:"-l"
+```
+
+Passing arguments as a list.
+
+```
+system.execute:python3
+   args
+      .:-c
+      .:"print('hello')"
 ```
 
 To specify a working directory.

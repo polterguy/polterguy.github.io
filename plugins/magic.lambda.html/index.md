@@ -8,6 +8,7 @@ This project provides HTML helper slots for Magic. More specifically, it provide
 * __[lambda2html]__ - Creates an HTML string out of the specified lambda object.
 * __[markdown2html]__ - Creates HTML out of the specified Markdown input string.
 * __[html2markdown]__ - Creates Markdown out of the specified HTML input string.
+* __[html-decode]__ - HTML decodes the specified string.
 
 ## How to use [html2lambda]
 
@@ -167,3 +168,8 @@ Internally, the library will invoke **[yaml2lambda]** for any front matter decla
 the specified YAML front matter parts, implying for details about how this part works, please refer to
 the _"magic.lambda.json"_ project.
 
+## How to use [html-decode]
+
+This slot HTML decodes its value, equivalent of `HttpUtility.HtmlDecode` in C#, turning entities such as
+`&amp;` and `&lt;` back into the characters they represent. The value is mandatory, and can be given as a
+constant or as an expression pointing to a single node. The slot returns the decoded string as its value.

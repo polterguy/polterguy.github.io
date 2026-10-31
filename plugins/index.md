@@ -51,3 +51,7 @@ endpoints, etc.
 * [magic.lambda.git](/plugins/magic.lambda.git/) - Git specific slots
 * [magic.lambda.system](/plugins/magic.lambda.system/) - System specific slots
 * [magic.lambda.puppeteer](/plugins/magic.lambda.puppeteer/) - PuppeteerSharp, a headless browser allowing you to browse the web using automation
+* [magic.lambda.python](/plugins/magic.lambda.python/) - Python execution from Hyperlambda
+
+The complete [slot reference](/reference/slots/), generated from the source code, lists every slot in every one of these projects
+with its value, arguments and return value.
