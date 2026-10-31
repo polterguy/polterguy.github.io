@@ -31,6 +31,53 @@ faq:
     a: "The server sits behind Cloudflare, which rejects requests that carry no User-Agent header, or the default one of an http library such as Python's urllib. Send any descriptive User-Agent and the request goes through."
 ---
 
+Every slot in Magic Cloud and Hyperlambda, **406 in total**, with its arguments and return value. Start with the **core keywords**, such as [if] and [for-each], or pick a namespace. [How this reference is built](#this-reference-was-not-written-it-was-asked-for) is explained further down.
+
+## Slots by namespace
+
+* [core keywords](/reference/slots/core/) - 89 slots
+* [auth.*](/reference/slots/auth/) - 7 slots
+* [cache.*](/reference/slots/cache/) - 6 slots
+* [config.*](/reference/slots/config/) - 4 slots
+* [console.*](/reference/slots/console/) - 1 slot
+* [crypto.*](/reference/slots/crypto/) - 24 slots
+* [data.*](/reference/slots/data/) - 12 slots
+* [date.*](/reference/slots/date/) - 6 slots
+* [endpoints.*](/reference/slots/endpoints/) - 1 slot
+* [execution.*](/reference/slots/execution/) - 4 slots
+* [git.*](/reference/slots/git/) - 13 slots
+* [github.*](/reference/slots/github/) - 3 slots
+* [guid.*](/reference/slots/guid/) - 1 slot
+* [http.*](/reference/slots/http/) - 5 slots
+* [hyperlambda.*](/reference/slots/hyperlambda/) - 1 slot
+* [image.*](/reference/slots/image/) - 6 slots
+* [io.*](/reference/slots/io/) - 29 slots
+* [log.*](/reference/slots/log/) - 9 slots
+* [mail.*](/reference/slots/mail/) - 2 slots
+* [math.*](/reference/slots/math/) - 18 slots
+* [mime.*](/reference/slots/mime/) - 4 slots
+* [mssql.*](/reference/slots/mssql/) - 12 slots
+* [mysql.*](/reference/slots/mysql/) - 11 slots
+* [odbc.*](/reference/slots/odbc/) - 7 slots
+* [openai.*](/reference/slots/openai/) - 2 slots
+* [pgsql.*](/reference/slots/pgsql/) - 11 slots
+* [puppeteer.*](/reference/slots/puppeteer/) - 15 slots
+* [python.*](/reference/slots/python/) - 1 slot
+* [request.*](/reference/slots/request/) - 9 slots
+* [response.*](/reference/slots/response/) - 3 slots
+* [server.*](/reference/slots/server/) - 1 slot
+* [slot.*](/reference/slots/slot/) - 2 slots
+* [slots.*](/reference/slots/slots/) - 5 slots
+* [sockets.*](/reference/slots/sockets/) - 7 slots
+* [sql.*](/reference/slots/sql/) - 4 slots
+* [sqlite.*](/reference/slots/sqlite/) - 14 slots
+* [strings.*](/reference/slots/strings/) - 26 slots
+* [system.*](/reference/slots/system/) - 9 slots
+* [tasks.*](/reference/slots/tasks/) - 9 slots
+* [time.*](/reference/slots/time/) - 2 slots
+* [timezone.*](/reference/slots/timezone/) - 1 slot
+* [validators.*](/reference/slots/validators/) - 10 slots
+
 ## This reference was not written. It was asked for.
 
 Every page in this section is generated, and what it is generated from is not the source code but the **running system**. Each slot in Magic Cloud carries its own name, description, arguments and return value as metadata, and Hyperlambda can read that metadata at runtime. Once a week a GitHub Actions workflow asks for it, receives **406 slots**, and renders the pages you are reading. Nobody parses source files, scrapes anything or keeps a second copy that can go stale.
@@ -771,50 +818,5 @@ jobs:
 ```
 
 </details>
-
-### Slots by namespace
-
-* [core keywords](/reference/slots/core/) - 89 slots
-* [auth.*](/reference/slots/auth/) - 7 slots
-* [cache.*](/reference/slots/cache/) - 6 slots
-* [config.*](/reference/slots/config/) - 4 slots
-* [console.*](/reference/slots/console/) - 1 slot
-* [crypto.*](/reference/slots/crypto/) - 24 slots
-* [data.*](/reference/slots/data/) - 12 slots
-* [date.*](/reference/slots/date/) - 6 slots
-* [endpoints.*](/reference/slots/endpoints/) - 1 slot
-* [execution.*](/reference/slots/execution/) - 4 slots
-* [git.*](/reference/slots/git/) - 13 slots
-* [github.*](/reference/slots/github/) - 3 slots
-* [guid.*](/reference/slots/guid/) - 1 slot
-* [http.*](/reference/slots/http/) - 5 slots
-* [hyperlambda.*](/reference/slots/hyperlambda/) - 1 slot
-* [image.*](/reference/slots/image/) - 6 slots
-* [io.*](/reference/slots/io/) - 29 slots
-* [log.*](/reference/slots/log/) - 9 slots
-* [mail.*](/reference/slots/mail/) - 2 slots
-* [math.*](/reference/slots/math/) - 18 slots
-* [mime.*](/reference/slots/mime/) - 4 slots
-* [mssql.*](/reference/slots/mssql/) - 12 slots
-* [mysql.*](/reference/slots/mysql/) - 11 slots
-* [odbc.*](/reference/slots/odbc/) - 7 slots
-* [openai.*](/reference/slots/openai/) - 2 slots
-* [pgsql.*](/reference/slots/pgsql/) - 11 slots
-* [puppeteer.*](/reference/slots/puppeteer/) - 15 slots
-* [python.*](/reference/slots/python/) - 1 slot
-* [request.*](/reference/slots/request/) - 9 slots
-* [response.*](/reference/slots/response/) - 3 slots
-* [server.*](/reference/slots/server/) - 1 slot
-* [slot.*](/reference/slots/slot/) - 2 slots
-* [slots.*](/reference/slots/slots/) - 5 slots
-* [sockets.*](/reference/slots/sockets/) - 7 slots
-* [sql.*](/reference/slots/sql/) - 4 slots
-* [sqlite.*](/reference/slots/sqlite/) - 14 slots
-* [strings.*](/reference/slots/strings/) - 26 slots
-* [system.*](/reference/slots/system/) - 9 slots
-* [tasks.*](/reference/slots/tasks/) - 9 slots
-* [time.*](/reference/slots/time/) - 2 slots
-* [timezone.*](/reference/slots/timezone/) - 1 slot
-* [validators.*](/reference/slots/validators/) - 10 slots
 
 {% include faq.html %}

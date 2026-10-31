@@ -117,6 +117,10 @@ figure.highlight {
 .highlight .m, .highlight .mi, .highlight .mf { color: #c9a86f !important; }
 .highlight .n, .highlight .p, .highlight .o { color: #ece6da !important; }
 
+/* Hyperlambda, tokenised by assets/js/highlight-hyperlambda.js: expressions and type prefixes. */
+.highlight .hl-x { color: #e0a96d !important; }
+.highlight .hl-t { color: #9db3a2 !important; }
+
 /* Icon-only "copy code" button, top/right of every code segment. */
 .code-copy-btn {
   position: absolute;

@@ -46,7 +46,8 @@ def read(path):
 # ------------------------------------------------------------------------------------
 
 def fetch():
-    token = os.environ.get('HYPERLAMBDA_DOCS_TOKEN')
+    # Stripped, since a secret pasted from a file keeps its trailing newline, which is not a legal header value.
+    token = os.environ.get('HYPERLAMBDA_DOCS_TOKEN', '').strip()
     if not token:
         sys.exit('HYPERLAMBDA_DOCS_TOKEN is not set, and no --input file was given.')
     request = urllib.request.Request(ENDPOINT_URL, headers={
@@ -391,6 +392,19 @@ def render_index(counts, total, endpoint, sandbox, workflow, p):
     lines += ['---', '']
 
     lines += [
+        'Every slot in Magic Cloud and Hyperlambda, **%d in total**, with its arguments and return value. '
+        'Start with the **core keywords**, such as [if] and [for-each], or pick a namespace. '
+        '[How this reference is built](#this-reference-was-not-written-it-was-asked-for) is explained further down.' % total,
+        '',
+        '## Slots by namespace',
+        '',
+    ]
+    for ns, n in counts:
+        lines.append('* [%s](/reference/slots/%s/) - %d %s' % (
+            'core keywords' if ns == 'core' else ns + '.*', ns, n, 'slot' if n == 1 else 'slots'))
+    lines += ['']
+
+    lines += [
         '## This reference was not written. It was asked for.',
         '',
         'Every page in this section is generated, and what it is generated from is not the source code but the **running system**. '
@@ -468,12 +482,9 @@ def render_index(counts, total, endpoint, sandbox, workflow, p):
         '',
         '</details>',
         '',
-        '### Slots by namespace',
+        '{% include faq.html %}',
         '',
     ]
-    for ns, n in counts:
-        lines.append('* [%s](/reference/slots/%s/) - %d %s' % ('core keywords' if ns == 'core' else ns + '.*', ns, n, 'slot' if n == 1 else 'slots'))
-    lines += ['', '{% include faq.html %}', '']
     return '\n'.join(lines)
 
 
