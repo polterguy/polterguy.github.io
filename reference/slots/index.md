@@ -24,7 +24,7 @@ faq:
   - q: "How do I get only the descriptions, or only the arguments, of some slots?"
     a: "Use [vocabulary] with a prefix to pick slots by name, [slot.description] for one description, and [slot.signature] for the input, arguments and output of one slot. The examples on this page show each of them, and all of them run in the public sandbox."
   - q: "Does every slot have its own page?"
-    a: "Yes. Each slot has a page of its own at /reference/slots/<namespace>/<slot>/, small enough to read or index on its own, with its value, arguments, constraints, return value and complete JSON declaration. The namespace pages are indexes that link to them."
+    a: "Yes. Each slot has a page of its own, at /reference/slots/ followed by its namespace and its name, for example /reference/slots/strings/strings.concat/. It is small enough to read or index on its own, with its value, arguments, constraints, return value and complete JSON declaration. The namespace pages are indexes that link to them."
   - q: "Where do I find the JSON declaration of a single slot?"
     a: "At the bottom of the slot's page, in an expandable section with a copy button, and as a file next to the page called slot.json. For strings.concat that is /reference/slots/strings/strings.concat/slot.json."
   - q: "How do I fix a missing or wrong description?"

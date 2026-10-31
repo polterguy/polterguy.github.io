@@ -417,7 +417,8 @@ def faq(p):
          'Use [vocabulary] with a prefix to pick slots by name, [slot.description] for one description, and [slot.signature] for the input, arguments and output of one slot. '
          'The examples on this page show each of them, and all of them run in the public sandbox.'),
         ('Does every slot have its own page?',
-         'Yes. Each slot has a page of its own at /reference/slots/<namespace>/<slot>/, small enough to read or index on its own, '
+         'Yes. Each slot has a page of its own, at /reference/slots/ followed by its namespace and its name, for example /reference/slots/strings/strings.concat/. '
+         'It is small enough to read or index on its own, '
          'with its value, arguments, constraints, return value and complete JSON declaration. The namespace pages are indexes that link to them.'),
         ('Where do I find the JSON declaration of a single slot?',
          'At the bottom of the slot\'s page, in an expandable section with a copy button, and as a file next to the page called slot.json. '
@@ -446,6 +447,9 @@ def render_index(counts, total, endpoint, sandbox, workflow, p):
         'faq:',
     ]
     for q, a in faq(p):
+        # The faq include prints these as raw HTML, so a placeholder such as <slot> would be swallowed as a tag.
+        if re.search(r'[<>]', q + a):
+            sys.exit('FAQ text must not contain angle brackets, the page would render them as HTML: ' + q)
         lines += ['  - q: ' + json.dumps(q, ensure_ascii=False), '    a: ' + json.dumps(a, ensure_ascii=False)]
     lines += ['---', '']
 
