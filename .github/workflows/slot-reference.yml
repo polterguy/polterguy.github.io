@@ -7,8 +7,8 @@
 #   The README is the source of truth.
 # * build-slot-reference.py asks a read-only Hyperlambda endpoint on hyperlambda.dev for
 #   every compiled slot and renders reference/slots/ from the answer. The endpoint is
-#   restricted to a service account, whose token is the repository secret
-#   HYPERLAMBDA_DOCS_TOKEN. Nothing is built, and no source code is parsed.
+#   public and throttled, so no credentials are needed. Nothing is built, and no source
+#   code is parsed.
 #
 # It runs weekly and on demand, since the Magic repository is a separate project that
 # cannot trigger this one without a token. Run it from the Actions tab after a release.
@@ -49,8 +49,6 @@ jobs:
 
       # Fails, and writes nothing, when the endpoint answers with too few slots.
       - name: Generate slot reference
-        env:
-          HYPERLAMBDA_DOCS_TOKEN: ${{ secrets.HYPERLAMBDA_DOCS_TOKEN }}
         run: python3 .github/scripts/build-slot-reference.py
 
       # Only commit when something actually changed.

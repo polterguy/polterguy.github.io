@@ -1,7 +1,16 @@
 
-// Executable Hyperlambda file that lists every slot registered in the system and, for each slot, returns its name, its description and its signature. Returns a JSON array of objects, each with fields name (string), description (string) and signature (string, being the slot's signature converted to Hyperlambda text). Requires the caller to be in the role service, docs-sync or root, so only the documentation pipeline can read it.
+// Executable Hyperlambda file that lists every slot registered in the system and, for each slot, returns its name, its description and its signature. Returns a JSON array of objects, each with fields name (string), description (string) and signature (string, being the slot's signature converted to Hyperlambda text). Open to everybody, since it only reads metadata that is public in the open source code and runs no code supplied by the caller. Callers are throttled to 10 requests per 60 seconds per IP address, and everybody together to 60 requests per 60 seconds.
 .arguments
-auth.ticket.verify:service,docs-sync,root
+execution.throttle.create:docs-slots.ip
+   limit:int:10
+   window:int:60
+   per:ip
+execution.throttle.create:docs-slots.global
+   limit:int:60
+   window:int:60
+   per:global
+execution.throttle:docs-slots.ip
+execution.throttle:docs-slots.global
 vocabulary
 .result
 for-each:x:@vocabulary/*

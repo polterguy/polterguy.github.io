@@ -4,8 +4,9 @@ Builds the generated slot reference under reference/slots/, from the running sys
 
 Nothing here reads source code. A read-only Hyperlambda endpoint on hyperlambda.dev lists
 every compiled slot with the slots [vocabulary], [slot.description] and
-[slot.signature], and this script renders what comes back. The endpoint is restricted to
-a service account, whose token is read from HYPERLAMBDA_DOCS_TOKEN.
+[slot.signature], and this script renders what comes back. The endpoint is public, since
+it reads metadata that is public in the open source code and runs nothing a caller sends,
+and is throttled per IP address and overall, so no credentials are needed.
 
 Usage: build-slot-reference.py [--input slots.json] [--min-slots 300]
 
@@ -46,14 +47,7 @@ def read(path):
 # ------------------------------------------------------------------------------------
 
 def fetch():
-    # Stripped, since a secret pasted from a file keeps its trailing newline, which is not a legal header value.
-    token = os.environ.get('HYPERLAMBDA_DOCS_TOKEN', '').strip()
-    if not token:
-        sys.exit('HYPERLAMBDA_DOCS_TOKEN is not set, and no --input file was given.')
-    request = urllib.request.Request(ENDPOINT_URL, headers={
-        'Authorization': 'Bearer ' + token,
-        'User-Agent': USER_AGENT,
-    })
+    request = urllib.request.Request(ENDPOINT_URL, headers={'User-Agent': USER_AGENT})
     try:
         with urllib.request.urlopen(request, timeout=120) as response:
             return json.load(response)
@@ -288,6 +282,15 @@ def code_block(text, lang):
     return '\n'.join(['```' + lang, raw(text.strip('\n')), '```'])
 
 
+def endpoint_numbers(endpoint):
+    """The throttles declared by the slot endpoint itself, as (limit, window) per kind."""
+    found = {}
+    for limit, window, per in re.findall(r'limit:int:(\d+)\s+window:int:(\d+)\s+per:(\w+)', endpoint):
+        found[per] = (int(limit), int(window))
+    return {'ip_limit': found['ip'][0], 'ip_window': found['ip'][1],
+            'all_limit': found['global'][0], 'all_window': found['global'][1]}
+
+
 def policy_numbers(sandbox):
     def number(key):
         m = re.search(r'^\s*%s:int:(\d+)' % re.escape(key), sandbox, re.M)
@@ -357,10 +360,17 @@ def faq(p):
         ('Is it safe to let anybody run code on that server?',
          'The sandbox only runs code whose every slot is on a whitelist of %d slots: introspection, tree handling, strings and arithmetic. '
          'Code that touches files, databases, the network, configuration or anything else is rejected before it runs, and every call is rate limited and time limited.' % p['slots']),
-        ('Why can\'t I get the same output as this reference from the sandbox?',
-         'The sandbox can only describe the slots it is itself allowed to call, because listing a slot would otherwise suggest that it can be used. '
-         'The reference lists the whole language, and comes from a separate read-only endpoint that runs no caller code and is restricted to a service account held by the documentation pipeline. '
-         'Its code is shown on this page, and it is the same Hyperlambda you can run in the sandbox, which sees fewer slots.'),
+        ('Can I get the whole reference as data?',
+         'Yes. GET %s returns every compiled slot as a JSON array of objects with the fields name, description and signature, where the signature is the slot\'s contract written as Hyperlambda text. '
+         'It needs no account or key. The answer is about 640 KB, so keep a copy rather than asking again.' % ENDPOINT_URL),
+        ('Is it safe to leave that endpoint open?',
+         'It only reads metadata that is already public in the open source code, and it runs nothing that the caller sends. '
+         'It is throttled to %d requests per %d seconds per IP address and %d per %d seconds for everybody together, and answers 429 beyond that.'
+         % (p['ip_limit'], p['ip_window'], p['all_limit'], p['all_window'])),
+        ('Why does the sandbox show fewer slots than this reference?',
+         'The sandbox runs your code, so it can only describe the %d slots it is itself allowed to call. A slot can only be described by code that is allowed to call it, '
+         'so a sandbox that described everything could also run everything. Use the slot endpoint for the whole language and the sandbox to experiment.' % p['slots']),
+
         ('How do I get only the descriptions, or only the arguments, of some slots?',
          'Use [vocabulary] with a prefix to pick slots by name, [slot.description] for one description, and [slot.signature] for the input, arguments and output of one slot. '
          'The examples on this page show each of them, and all of them run in the public sandbox.'),
@@ -426,16 +436,51 @@ def render_index(counts, total, endpoint, sandbox, workflow, p):
         '',
         code_block(endpoint, 'hyperlambda'),
         '',
-        'The first lines say who may call it: a service account, a role that exists for this one purpose. Everything after that is slots, and nothing else. '
+        'It begins with two throttles, one per IP address and one for everybody together, and has no authentication, since there is nothing to protect: it reads metadata that is '
+        'public in the open source code and runs nothing a caller sends. Everything after that is slots, and nothing else. '
         'It lists the compiled slots, and for each one it reads the description and the signature, turns the signature tree into Hyperlambda text with **[lambda2hyper]**, '
         'and returns one object per slot. A Python script then parses that text, since Hyperlambda is a tree and the text is its serialisation, and writes markdown.',
         '',
-        '### You can run the same code, but you will not get the same result',
+        '### Get the whole reference yourself',
         '',
-        'The documentation code above needs to see the whole language, and that is exactly what a public sandbox must not allow. A slot can only be described by '
-        'code that is allowed to call it, so a sandbox that could describe everything could also run everything. The public sandbox below therefore knows only '
-        '**%d slots**: introspection, tree handling, strings and arithmetic. Run the very same Hyperlambda there and it returns what it can see, which is its own vocabulary. '
-        'The whole language is only visible to the service account that the pipeline uses.' % p['slots'],
+        'The endpoint above is public. There is no account, no key and no secret. To protect the server it is throttled to **%d requests per %d seconds per IP address**, '
+        'and to **%d per %d seconds** for everybody together, and beyond that it answers `429`. The answer is about 640 KB, so keep a copy rather than asking again.'
+        % (p['ip_limit'], p['ip_window'], p['all_limit'], p['all_window']),
+        '',
+        '```bash',
+        'curl -s %s' % ENDPOINT_URL,
+        '```',
+        '',
+        'It returns a JSON array with one object per slot, with the fields `name`, `description` and `signature`. The signature is the contract of the slot written as Hyperlambda text by **[lambda2hyper]**, '
+        'which parses straight back into a tree with **[hyper2lambda]**. With `jq` you can ask it questions.',
+        '',
+        '#### List every slot name',
+        '',
+        '```bash',
+        "curl -s %s | jq -r '.[].name'" % ENDPOINT_URL,
+        '```',
+        '',
+        '#### Get the description of one slot',
+        '',
+        '```bash',
+        "curl -s %s | jq -r '.[] | select(.name == \"strings.concat\") | .description'" % ENDPOINT_URL,
+        '```',
+        '',
+        '#### Get the full signature of one slot',
+        '',
+        '```bash',
+        "curl -s %s | jq -r '.[] | select(.name == \"data.read\") | .signature'" % ENDPOINT_URL,
+        '```',
+        '',
+        '#### Find the slots whose description mentions something',
+        '',
+        '```bash',
+        "curl -s %s | jq -r '.[] | select((.description // \"\") | test(\"rows\")) | .name'" % ENDPOINT_URL,
+        '```',
+        '',
+        'The public sandbox below sees fewer slots than this endpoint. It runs **your** code, so it can only describe the **%d slots** it is itself allowed to call. '
+        'A slot can only be described by code that is allowed to call it, so a sandbox that described everything could also run everything. '
+        'Use the endpoint for the whole language, and the sandbox to experiment.' % p['slots'],
         '',
         '### The public sandbox',
         '',
@@ -473,7 +518,7 @@ def render_index(counts, total, endpoint, sandbox, workflow, p):
         '',
         '### The pipeline',
         '',
-        'This is the complete GitHub Actions workflow. The token it uses belongs to the service account, and is stored as an encrypted repository secret.',
+        'This is the complete GitHub Actions workflow. It needs no credentials, since the endpoint is public.',
         '',
         '<details markdown="1">',
         '<summary>Show the entire workflow</summary>',
@@ -535,7 +580,8 @@ def main():
     endpoint = read(os.path.join(ROOT, '.github', 'endpoint', 'slots.get.hl'))
     sandbox = read(os.path.join(ROOT, '.github', 'endpoint', 'playground.post.hl'))
     workflow = read(os.path.join(ROOT, '.github', 'workflows', 'slot-reference.yml'))
-    page = render_index(counts, len(entries), endpoint, sandbox, workflow, policy_numbers(sandbox))
+    numbers = dict(policy_numbers(sandbox), **endpoint_numbers(endpoint))
+    page = render_index(counts, len(entries), endpoint, sandbox, workflow, numbers)
     with open(os.path.join(OUT, 'index.md'), 'w', encoding='utf-8') as f:
         f.write(page)
     print('wrote %d entries in %d namespaces' % (len(entries), len(counts)))
