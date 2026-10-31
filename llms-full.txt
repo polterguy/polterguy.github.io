@@ -14790,7 +14790,7 @@ Hyperlambda is homoiconic. A program is a tree of nodes, and a tree of nodes is 
 This is the complete Hyperlambda file behind the endpoint the pipeline calls. This is dogfooding in its purest form: the language documents itself with its own code.
 
 ```hyperlambda
-// Executable Hyperlambda file that lists every slot registered in the system and, for each slot, returns its name, its description and its signature. Returns a JSON array of objects, each with fields name (string), description (string) and signature (string, being the slot's signature converted to Hyperlambda text). Open to everybody, since it only reads metadata that is public in the open source code and runs no code supplied by the caller. Callers are throttled to 10 requests per 60 seconds per IP address, and everybody together to 60 requests per 60 seconds.
+// Executable Hyperlambda file that lists every slot registered in the system and, for each slot, returns its name, its description and its signature. Returns a JSON array of objects, each with fields name (string), description (string) and signature (the slot's signature as nodes, so it converts to nested JSON). Open to everybody, since it only reads metadata that is public in the open source code and runs no code supplied by the caller. Callers are throttled to 10 requests per 60 seconds per IP address, and everybody together to 60 requests per 60 seconds.
 .arguments
 execution.throttle.create:docs-slots.ip
    limit:int:10
@@ -14807,52 +14807,78 @@ vocabulary
 for-each:x:@vocabulary/*
    slot.description:x:@.dp/#
    slot.signature:x:@.dp/#
-   lambda2hyper:x:@slot.signature/*
+   /*
+    * The signature is returned as nodes, which Magic converts to nested JSON. A constraint is
+    * named after its kind and can occur more than once, which JSON cannot hold as a key, so each
+    * constraint, at any depth, becomes an unnamed node carrying its kind as a child.
+    */
+   for-each:x:@slot.signature/**/constraints/*
+      get-name:x:@.dp/#
+      unwrap:x:+/*/*
+      add:x:@.dp/#
+         .
+            kind:x:@get-name
+      set-name:x:@.dp/#
+         .:.
    .entry
       .
          name:x:@.dp/#
          description:x:@slot.description
-         signature:x:@lambda2hyper
+         signature
    unwrap:x:@.entry/*/*
+   add:x:@.entry/*/*/signature
+      get-nodes:x:@slot.signature/*
    add:x:@.result
       get-nodes:x:@.entry/*
 return-nodes:x:@.result/*
 ```
 
-It begins with two throttles, one per IP address and one for everybody together, and has no authentication, since there is nothing to protect: it reads metadata that is public in the open source code and runs nothing a caller sends. Everything after that is slots, and nothing else. It lists the compiled slots, and for each one it reads the description and the signature, turns the signature tree into Hyperlambda text with **[lambda2hyper]**, and returns one object per slot. A Python script then parses that text, since Hyperlambda is a tree and the text is its serialisation, and writes markdown.
+It begins with two throttles, one per IP address and one for everybody together, and has no authentication, since there is nothing to protect: it reads metadata that is public in the open source code and runs nothing a caller sends. Everything after that is slots, and nothing else. It lists the compiled slots, reads the description and the signature of each, and returns the signature as **nodes**. Magic turns nodes into JSON by itself, since a tree of nodes already is a tree of JSON objects, so there is no serialising step, no text format to agree on and nothing to parse. One detail shows how it works. A constraint is named after its kind and can occur more than once, which a JSON object cannot hold as a key, so the loop in the middle renames every constraint, at any depth, to an unnamed node with its kind as a child, using the `**` selector to reach them all in one expression. Magic then writes them as a list. A Python script renders the result as markdown.
 
 ### Get the whole reference yourself
 
 The endpoint above is public. There is no account, no key and no secret. To protect the server it is throttled to **10 requests per 60 seconds per IP address**, and to **60 per 60 seconds** for everybody together, and beyond that it answers `429`. The answer is about 640 KB, so keep a copy rather than asking again.
 
 ```bash
-curl -s https://hyperlambda.dev/magic/modules/docs/slots
+curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes
 ```
 
-It returns a JSON array with one object per slot, with the fields `name`, `description` and `signature`. The signature is the contract of the slot written as Hyperlambda text by **[lambda2hyper]**, which parses straight back into a tree with **[hyper2lambda]**. With `jq` you can ask it questions.
+It returns a JSON array with one object per slot, with the fields `name`, `description` and `signature`. The signature is the contract of the slot as nested JSON: `input` is the value the slot takes, `children` are its arguments, `constraints` are the rules between them, `scope` says where it can be used, and `output` is what it returns. Arguments without a name, because they are positional, come as a list. With `jq` you can ask it questions.
 
 #### List every slot name
 
 ```bash
-curl -s https://hyperlambda.dev/magic/modules/docs/slots | jq -r '.[].name'
+curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes | jq -r '.[].name'
 ```
 
 #### Get the description of one slot
 
 ```bash
-curl -s https://hyperlambda.dev/magic/modules/docs/slots | jq -r '.[] | select(.name == "strings.concat") | .description'
+curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes | jq -r '.[] | select(.name == "strings.concat") | .description'
 ```
 
 #### Get the full signature of one slot
 
 ```bash
-curl -s https://hyperlambda.dev/magic/modules/docs/slots | jq -r '.[] | select(.name == "data.read") | .signature'
+curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes | jq '.[] | select(.name == "data.read") | .signature'
+```
+
+#### List the arguments of a slot
+
+```bash
+curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes | jq -r '.[] | select(.name == "data.create") | .signature.children | keys[]'
+```
+
+#### List only the required arguments of a slot
+
+```bash
+curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes | jq -r '.[] | select(.name == "data.create") | .signature.children | to_entries[] | select(.value.required == true) | .key'
 ```
 
 #### Find the slots whose description mentions something
 
 ```bash
-curl -s https://hyperlambda.dev/magic/modules/docs/slots | jq -r '.[] | select((.description // "") | test("rows")) | .name'
+curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes | jq -r '.[] | select((.description // "") | test("rows")) | .name'
 ```
 
 The public sandbox below sees fewer slots than this endpoint. It runs **your** code, so it can only describe the **53 slots** it is itself allowed to call. A slot can only be described by code that is allowed to call it, so a sandbox that described everything could also run everything. Use the endpoint for the whole language, and the sandbox to experiment.
@@ -15585,7 +15611,7 @@ The sandbox only runs code whose every slot is on a whitelist of 53 slots: intro
 
 **Can I get the whole reference as data?**
 
-Yes. GET https://hyperlambda.dev/magic/modules/docs/slots returns every compiled slot as a JSON array of objects with the fields name, description and signature, where the signature is the slot's contract written as Hyperlambda text. It needs no account or key. The answer is about 640 KB, so keep a copy rather than asking again.
+Yes. GET https://hyperlambda.dev/magic/modules/docs/slots-nodes returns every compiled slot as a JSON array of objects with the fields name, description and signature, where the signature is the slot's contract as nested JSON. It needs no account or key. The answer is about 640 KB, so keep a copy rather than asking again.
 
 **Is it safe to leave that endpoint open?**
 
@@ -15635,13 +15661,13 @@ Issues a signed JWT carrying the supplied username, roles, and claims; typically
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[username]` | string | yes | Username to put in the ticket. |
-| `[roles]` | lambda | no | Roles to put in the ticket. |
-| `[roles]` / _any node name_ | string | no | List item. Can be repeated. |
 | `[claims]` | lambda | no | Claims to put in the ticket. |
 | `[claims]` / _any node name_ | string | no | Named map entry. Can be repeated. |
-| `[expires]` | DateTime | no | Absolute UTC expiration time. |
 | `[duration]` | long | no | Relative expiration duration in minutes. |
+| `[expires]` | DateTime | no | Absolute UTC expiration time. |
+| `[roles]` | lambda | no | Roles to put in the ticket. |
+| `[roles]` / _any node name_ | string | no | List item. Can be repeated. |
+| `[username]` | string | yes | Username to put in the ticket. |
 
 * **Constraint** (AtMostOneOf): Use either absolute [expires] or relative [duration] (`[expires]`, `[duration]`)
 
@@ -15672,8 +15698,8 @@ Issues a new JWT with an extended expiration based on the current ticket, so act
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[expires]` | DateTime | no | Absolute UTC expiration time. |
 | `[duration]` | long | no | Relative expiration duration in minutes. |
+| `[expires]` | DateTime | no | Absolute UTC expiration time. |
 
 * **Constraint** (AtMostOneOf): Use either absolute [expires] or relative [duration] (`[expires]`, `[duration]`)
 
@@ -15705,10 +15731,10 @@ Verifies an externally created JWT token from the required [token] child node, a
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[token]` | string | yes | External JWT token to verify. |
 | `[issuer]` | string | no | Trusted issuer the token's issuer must equal; meta data is never fetched from issuers not supplied by the caller. |
 | `[issuers]` | lambda | no | Trusted issuers, the token's issuer must equal one of them; meta data is never fetched from issuers not supplied by the caller. |
 | `[issuers]` / _any node name_ | string | no | List item. Can be repeated. |
+| `[token]` | string | yes | External JWT token to verify. |
 
 Guide: [How to use [auth.token.verify]](https://docs.ainiro.io/plugins/magic.lambda.auth/#openid-connect-authtokenverify)
 
@@ -15755,8 +15781,8 @@ Lists cached keys matching the optional filter.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[offset]` | int | no | Result offset. Default: `0`. |
 | `[limit]` | int | no | Maximum number of items to return. Default: `10`. |
+| `[offset]` | int | no | Result offset. Default: `0`. |
 
 Returned nodes:
 
@@ -15776,8 +15802,8 @@ Stores a value in the in-memory cache under a key, with an optional sliding expi
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[value]` | string | no | Value to store; omitted or null removes the cached item. |
 | `[expiration]` | long | no | Expiration in seconds. Default: `5`. |
+| `[value]` | string | no | Value to store; omitted or null removes the cached item. |
 
 Guide: [How to use [cache.set]](https://docs.ainiro.io/plugins/magic.lambda.caching/#how-to-use-cacheset)
 
@@ -15790,8 +15816,8 @@ Returns a cached value by key if it exists, or creates a new cached item and ret
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[expiration]` | long | no | Expiration in seconds for newly created value. Default: `5`. |
 | `[.lambda]` | lambda | yes | Callback executed to create the cached value when the key is missing. |
+| `[expiration]` | long | no | Expiration in seconds for newly created value. Default: `5`. |
 
 Guide: [How to use [cache.try-get]](https://docs.ainiro.io/plugins/magic.lambda.caching/#how-to-use-cachetry-get)
 
@@ -15927,8 +15953,8 @@ Creates a named stack context object retrievable with [get-context] while evalua
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[value]` | object | yes | Value stored in the named stack context. |
 | `[.lambda]` | lambda | yes | Body evaluated while the context value is scoped. |
+| `[value]` | object | yes | Value stored in the named stack context. |
 
 Guide: [How to use [context]](https://docs.ainiro.io/plugins/magic.lambda/types/#how-to-use-context)
 
@@ -15954,9 +15980,9 @@ Transforms CSV into a lambda hierarchy.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[null-value]` | string | no | String used to represent null values. Default: `[NULL]`. |
 | `[types]` | lambda | no | Column type conversions keyed by column name. |
 | `[types]` / _any node name_ | string | yes | Type name for the column. Can be repeated. |
-| `[null-value]` | string | no | String used to represent null values. Default: `[NULL]`. |
 
 Returned nodes:
 
@@ -16130,8 +16156,8 @@ Formats a value using a .NET format string and optional culture; useful for curr
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[pattern]` | string | yes | Composite format string. |
 | `[culture]` | string | no | Optional culture name used when formatting. |
+| `[pattern]` | string | yes | Composite format string. |
 
 Guide: [How to use [format]](https://docs.ainiro.io/plugins/magic.lambda/types/#how-to-use-format)
 
@@ -16220,10 +16246,10 @@ Transforms HTML into Markdown.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[url]` | string | no | Base URL used when resolving links. |
-| `[images]` | bool | no | Whether images should be emitted. Default: `true`. |
 | `[code]` | bool | no | Whether code blocks should be emitted. Default: `true`. |
+| `[images]` | bool | no | Whether images should be emitted. Default: `true`. |
 | `[lists]` | bool | no | Whether lists should be emitted. Default: `true`. |
+| `[url]` | string | no | Base URL used when resolving links. |
 
 Guide: [How to use [html2markdown]](https://docs.ainiro.io/plugins/magic.lambda.html/#how-to-use-html2markdown)
 
@@ -16745,9 +16771,9 @@ Aborts execution by throwing an exception with the given message; optionally att
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[field]` | string | no | Optional form field or control ID associated with the exception. |
 | `[public]` | bool | no | Whether the exception message may be returned to clients. Default: `false`. |
 | `[status]` | int | no | HTTP status code associated with the exception. Default: `500`. |
-| `[field]` | string | no | Optional form field or control ID associated with the exception. |
 
 Guide: [How to use [throw]](https://docs.ainiro.io/plugins/magic.lambda/exceptions/#how-to-use-throw)
 
@@ -16761,9 +16787,9 @@ Constructs a TimeSpan value from child nodes.
 |---|---|---|---|
 | `[days]` | int | no | Number of days. Default: `0`. |
 | `[hours]` | int | no | Number of hours. Default: `0`. |
+| `[milliseconds]` | int | no | Number of milliseconds. Default: `0`. |
 | `[minutes]` | int | no | Number of minutes. Default: `0`. |
 | `[seconds]` | int | no | Number of seconds. Default: `0`. |
-| `[milliseconds]` | int | no | Number of milliseconds. Default: `0`. |
 
 Guide: [How to use [time]](https://docs.ainiro.io/plugins/magic.lambda.dates/#how-to-use-time)
 
@@ -16866,9 +16892,9 @@ Evaluates a lambda with a restricted whitelist of allowed slots.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[.lambda]` | lambda | yes | Executable lambda block. |
 | `[vocabulary]` | lambda | yes | Allowed slot names for the restricted evaluation scope. |
 | `[vocabulary]` / _any node name_ | string | yes | Allowed native slot name (e.g. add, set-value, if) that the body is permitted to invoke. Can be repeated. |
-| `[.lambda]` | lambda | yes | Executable lambda block. |
 
 Guide: [How to use [whitelist]](https://docs.ainiro.io/plugins/magic.lambda.io/#restricting-file-access-with-whitelist)
 
@@ -16951,8 +16977,8 @@ Decrypts data using the configured combination algorithm.
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[decryption-key]` | string\|byte[] | yes | Private decryption key. |
-| `[verification-key]` | string\|byte[] | yes | Public key used to verify the signature. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
+| `[verification-key]` | string\|byte[] | yes | Public key used to verify the signature. |
 
 ## [crypto.encrypt]
 
@@ -16963,11 +16989,11 @@ Encrypts data using the configured combination algorithm.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[signing-key]` | string\|byte[] | yes | Private signing key. |
 | `[encryption-key]` | string\|byte[] | yes | Public encryption key. |
-| `[signing-key-fingerprint]` | string\|byte[] | yes | Fingerprint for the signing key. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 | `[seed]` | string\|byte[] | no | Optional encryption seed. |
+| `[signing-key]` | string\|byte[] | yes | Private signing key. |
+| `[signing-key-fingerprint]` | string\|byte[] | yes | Fingerprint for the signing key. |
 
 ## [crypto.fingerprint]
 
@@ -17100,8 +17126,8 @@ Returns a cryptographically secure random string or random bytes.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[min]` | int | no | Minimum random length. Default: `10`. |
 | `[max]` | int | no | Maximum random length. |
+| `[min]` | int | no | Minimum random length. Default: `10`. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 | `[seed]` | string | no | Optional deterministic seed. |
 
@@ -17128,9 +17154,9 @@ Generates a fresh RSA key pair; returns the public key and private key as separa
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[strength]` | int | no | RSA key strength in bits. Default: `2048`. |
-| `[seed]` | string\|byte[] | no | Optional deterministic seed. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
+| `[seed]` | string\|byte[] | no | Optional deterministic seed. |
+| `[strength]` | int | no | RSA key strength in bits. Default: `2048`. |
 
 ## [crypto.rsa.decrypt]
 
@@ -17176,9 +17202,9 @@ Verifies an RSA signature.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[signature]` | string\|byte[] | yes | RSA signature to verify. |
 | `[public-key]` | string\|byte[] | yes | Public key used to verify the signature. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
+| `[signature]` | string\|byte[] | yes | RSA signature to verify. |
 
 ## [crypto.seed]
 
@@ -17197,9 +17223,9 @@ Signs data using the configured combination algorithm.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 | `[signing-key]` | string\|byte[] | yes | Private signing key. |
 | `[signing-key-fingerprint]` | string\|byte[] | yes | Fingerprint for the signing key. |
-| `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 
 ## [crypto.verify]
 
@@ -17210,8 +17236,8 @@ Verifies a signature using the configured combination algorithm.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[verification-key]` | string\|byte[] | yes | Public key used to verify the signature. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
+| `[verification-key]` | string\|byte[] | yes | Public key used to verify the signature. |
 
 
 # data.* slots
@@ -17230,8 +17256,8 @@ Opens a database connection using the configured provider.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[database-type]` | string | no | Database adapter to use instead of the configured default. |
 | _any node name_ | lambda | no | Executable child slot evaluated while the database connection is open. Can be repeated. |
+| `[database-type]` | string | no | Database adapter to use instead of the configured default. |
 
 Guide: [How to use [data.connect]](https://docs.ainiro.io/plugins/magic.data.common/#how-to-use-dataconnect)
 
@@ -17285,8 +17311,8 @@ Executes SQL against the current database connection.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[database-type]` | string | no | Database adapter to use instead of the configured default. |
 | _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
+| `[database-type]` | string | no | Database adapter to use instead of the configured default. |
 
 Guide: [How to use [data.execute]](https://docs.ainiro.io/plugins/magic.data.common/#how-to-use-dataexecute)
 
@@ -17299,18 +17325,24 @@ Selects rows from the current open database connection; returns all columns unle
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[database-type]` | string | no | Database adapter to use instead of the configured default. |
-| `[generate]` | bool | no | Whether to only generate SQL and parameter nodes instead of executing it. Default: `false`. |
-| `[table]` | string | yes | Table name to use in the SQL statement. |
-| `[table]` / `[as]` | string | no | Optional table alias. |
-| `[table]` / `[join]` | string | no | Joined table name. Can be repeated. |
-| `[table]` / `[join]` / `[type]` | string | no | Join type: inner, left, right, or full. Default: `inner`. |
-| `[table]` / `[join]` / `[as]` | string | no | Optional joined table alias. |
-| `[table]` / `[join]` / `[on]` | lambda | yes | Join predicate tree comparing columns (AND-only at the schema level; the SQL builder still accepts hand-written [or] for legacy code). |
-| `[distinct]` | bool | no | Removes duplicate rows from the result set when true. Default: `false`. |
 | `[columns]` | lambda | no | Columns or aggregate expressions to select; omitted or empty means all columns. |
 | `[columns]` / _any node name_ | string | no | Column name or aggregate expression; optional [as] child declares an alias. Can be repeated. |
 | `[columns]` / _any node name_ / `[as]` | string | no | Column alias. |
+| `[database-type]` | string | no | Database adapter to use instead of the configured default. |
+| `[distinct]` | bool | no | Removes duplicate rows from the result set when true. Default: `false`. |
+| `[generate]` | bool | no | Whether to only generate SQL and parameter nodes instead of executing it. Default: `false`. |
+| `[group]` | lambda | no | Columns or aggregate expressions to group by. |
+| `[group]` / _any node name_ | string | no | Column name or aggregate expression. Can be repeated. |
+| `[limit]` | long | no | Maximum number of rows to return; omitted defaults to 25 and -1 suppresses the generated limit clause. Default: `25`. |
+| `[offset]` | long | no | Number of rows to skip. Default: `0`. |
+| `[order]` | string | no | Column, comma-separated columns, or aggregate expression to order by. Can be repeated. |
+| `[order]` / `[direction]` | string | no | Order direction for this specific order node. Default: `asc`. |
+| `[table]` | string | yes | Table name to use in the SQL statement. |
+| `[table]` / `[as]` | string | no | Optional table alias. |
+| `[table]` / `[join]` | string | no | Joined table name. Can be repeated. |
+| `[table]` / `[join]` / `[as]` | string | no | Optional joined table alias. |
+| `[table]` / `[join]` / `[on]` | lambda | yes | Join predicate tree comparing columns (AND-only at the schema level; the SQL builder still accepts hand-written [or] for legacy code). |
+| `[table]` / `[join]` / `[type]` | string | no | Join type: inner, left, right, or full. Default: `inner`. |
 | `[where]` | lambda | no | Optional boolean predicate tree. |
 | `[where]` / `[and]` | lambda | no | Boolean AND group. |
 | `[where]` / `[and]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
@@ -17318,12 +17350,6 @@ Selects rows from the current open database connection; returns all columns unle
 | `[where]` / `[or]` | lambda | no | Boolean OR group. |
 | `[where]` / `[or]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
 | `[where]` / `[or]` / `[and]` | lambda | no | Boolean AND group. Can be repeated. |
-| `[group]` | lambda | no | Columns or aggregate expressions to group by. |
-| `[group]` / _any node name_ | string | no | Column name or aggregate expression. Can be repeated. |
-| `[order]` | string | no | Column, comma-separated columns, or aggregate expression to order by. Can be repeated. |
-| `[order]` / `[direction]` | string | no | Order direction for this specific order node. Default: `asc`. |
-| `[limit]` | long | no | Maximum number of rows to return; omitted defaults to 25 and -1 suppresses the generated limit clause. Default: `25`. |
-| `[offset]` | long | no | Number of rows to skip. Default: `0`. |
 
 _Nodes nested deeper than 3 levels, and nodes that repeat one of their own ancestors, are not listed._
 
@@ -17344,8 +17370,8 @@ Executes SQL and returns a scalar value from the current database connection.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[database-type]` | string | no | Database adapter to use instead of the configured default. |
 | _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
+| `[database-type]` | string | no | Database adapter to use instead of the configured default. |
 
 Guide: [How to use [data.scalar]](https://docs.ainiro.io/plugins/magic.data.common/#how-to-use-datascalar)
 
@@ -17358,18 +17384,24 @@ Scans rows from the current open database connection; returns all columns unless
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[database-type]` | string | no | Database adapter to use instead of the configured default. |
-| `[generate]` | bool | no | Whether to only generate SQL and parameter nodes instead of executing it. Default: `false`. |
-| `[table]` | string | yes | Table name to use in the SQL statement. |
-| `[table]` / `[as]` | string | no | Optional table alias. |
-| `[table]` / `[join]` | string | no | Joined table name. Can be repeated. |
-| `[table]` / `[join]` / `[type]` | string | no | Join type: inner, left, right, or full. Default: `inner`. |
-| `[table]` / `[join]` / `[as]` | string | no | Optional joined table alias. |
-| `[table]` / `[join]` / `[on]` | lambda | yes | Join predicate tree comparing columns (AND-only at the schema level; the SQL builder still accepts hand-written [or] for legacy code). |
-| `[distinct]` | bool | no | Removes duplicate rows from the result set when true. Default: `false`. |
 | `[columns]` | lambda | no | Columns or aggregate expressions to select; omitted or empty means all columns. |
 | `[columns]` / _any node name_ | string | no | Column name or aggregate expression; optional [as] child declares an alias. Can be repeated. |
 | `[columns]` / _any node name_ / `[as]` | string | no | Column alias. |
+| `[database-type]` | string | no | Database adapter to use instead of the configured default. |
+| `[distinct]` | bool | no | Removes duplicate rows from the result set when true. Default: `false`. |
+| `[generate]` | bool | no | Whether to only generate SQL and parameter nodes instead of executing it. Default: `false`. |
+| `[group]` | lambda | no | Columns or aggregate expressions to group by. |
+| `[group]` / _any node name_ | string | no | Column name or aggregate expression. Can be repeated. |
+| `[limit]` | long | no | Maximum number of rows to return; omitted defaults to 25 and -1 suppresses the generated limit clause. Default: `25`. |
+| `[offset]` | long | no | Number of rows to skip. Default: `0`. |
+| `[order]` | string | no | Column, comma-separated columns, or aggregate expression to order by. Can be repeated. |
+| `[order]` / `[direction]` | string | no | Order direction for this specific order node. Default: `asc`. |
+| `[table]` | string | yes | Table name to use in the SQL statement. |
+| `[table]` / `[as]` | string | no | Optional table alias. |
+| `[table]` / `[join]` | string | no | Joined table name. Can be repeated. |
+| `[table]` / `[join]` / `[as]` | string | no | Optional joined table alias. |
+| `[table]` / `[join]` / `[on]` | lambda | yes | Join predicate tree comparing columns (AND-only at the schema level; the SQL builder still accepts hand-written [or] for legacy code). |
+| `[table]` / `[join]` / `[type]` | string | no | Join type: inner, left, right, or full. Default: `inner`. |
 | `[where]` | lambda | no | Optional boolean predicate tree. |
 | `[where]` / `[and]` | lambda | no | Boolean AND group. |
 | `[where]` / `[and]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
@@ -17377,12 +17409,6 @@ Scans rows from the current open database connection; returns all columns unless
 | `[where]` / `[or]` | lambda | no | Boolean OR group. |
 | `[where]` / `[or]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
 | `[where]` / `[or]` / `[and]` | lambda | no | Boolean AND group. Can be repeated. |
-| `[group]` | lambda | no | Columns or aggregate expressions to group by. |
-| `[group]` / _any node name_ | string | no | Column name or aggregate expression. Can be repeated. |
-| `[order]` | string | no | Column, comma-separated columns, or aggregate expression to order by. Can be repeated. |
-| `[order]` / `[direction]` | string | no | Order direction for this specific order node. Default: `asc`. |
-| `[limit]` | long | no | Maximum number of rows to return; omitted defaults to 25 and -1 suppresses the generated limit clause. Default: `25`. |
-| `[offset]` | long | no | Number of rows to skip. Default: `0`. |
 
 _Nodes nested deeper than 3 levels, and nodes that repeat one of their own ancestors, are not listed._
 
@@ -17405,10 +17431,10 @@ Executes a query and returns rows from the current database connection.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 | `[database-type]` | string | no | Database adapter to use instead of the configured default. |
 | `[max]` | long | no | Maximum number of rows to return; omitted or -1 returns all rows. Default: `-1`. |
 | `[multiple-result-sets]` | bool | no | Whether multiple SELECT statements in the SQL input should be returned as separate child result containers. Default: `false`. |
-| _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 
 Returned nodes:
 
@@ -17585,8 +17611,8 @@ Creates or replaces a named throttle enforced by [execution.throttle]; declaring
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[limit]` | int | no | Maximum number of invocations allowed per window; mandatory when creating a throttle, while invoking the slot without any arguments deletes the throttle instead. |
-| `[window]` | int | no | Window length in seconds. Default: `60`. |
 | `[per]` | string | no | How to partition the limit; 'user' partitions per authenticated username, 'ip' per client IP address, and 'global' shares one limit between all callers. Default: `user when authenticated, otherwise ip`. |
+| `[window]` | int | no | Window length in seconds. Default: `60`. |
 
 ## [execution.timeout]
 
@@ -17614,8 +17640,8 @@ Returns every branch in the local repository, marking which one is currently che
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[remote]` | bool | no | List remote branches. Default: `false`. |
 | `[all]` | bool | no | List all branches. Default: `false`. |
+| `[remote]` | bool | no | List remote branches. Default: `false`. |
 
 Guide: [How to use [git.branch.list]](https://docs.ainiro.io/plugins/magic.lambda.git/#how-to-use-gitbranchlist)
 
@@ -17642,9 +17668,9 @@ Clones a Git repository.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[path]` | string | no | Destination repository folder. |
 | `[branch]` | string | no | Branch to clone. |
 | `[depth]` | int | no | Shallow clone depth. |
+| `[path]` | string | no | Destination repository folder. |
 
 Guide: [How to use [git.clone-repo]](https://docs.ainiro.io/plugins/magic.lambda.git/#how-to-use-gitclone-repo)
 
@@ -17657,11 +17683,11 @@ Stages all changes in the repo and creates a new commit with the supplied messag
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[message]` | string | yes | Commit message. |
 | `[all]` | bool | no | Stage all changed files before committing. Default: `true`. |
 | `[amend]` | bool | no | Amend the previous commit. Default: `false`. |
-| `[name]` | string | no | Author name for the commit; omitted falls back to git's configured identity. |
 | `[email]` | string | no | Author email for the commit; omitted falls back to git's configured identity. |
+| `[message]` | string | yes | Commit message. |
+| `[name]` | string | no | Author name for the commit; omitted falls back to git's configured identity. |
 
 Guide: [How to use [git.commit]](https://docs.ainiro.io/plugins/magic.lambda.git/#how-to-use-gitcommit)
 
@@ -17674,8 +17700,8 @@ Initializes a Git repository.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[branch]` | string | no | Initial branch name. |
 | `[bare]` | bool | no | Create a bare repository. Default: `false`. |
+| `[branch]` | string | no | Initial branch name. |
 
 Guide: [How to use [git.create-repo]](https://docs.ainiro.io/plugins/magic.lambda.git/#how-to-use-gitcreate-repo)
 
@@ -17709,8 +17735,8 @@ Fetches updates from a Git remote.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[remote]` | string | no | Remote to fetch from. Default: `origin`. |
 | `[refspec]` | string | no | Optional refspec to fetch. |
+| `[remote]` | string | no | Remote to fetch from. Default: `origin`. |
 
 Guide: [How to use [git.fetch]](https://docs.ainiro.io/plugins/magic.lambda.git/#how-to-use-gitfetch)
 
@@ -17723,10 +17749,10 @@ Pulls updates from a Git remote.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[remote]` | string | no | Remote to pull from. Default: `origin`. |
 | `[branch]` | string | no | Branch to pull. |
-| `[rebase]` | bool | no | Use rebase while pulling. Default: `false`. |
 | `[ff-only]` | bool | no | Only allow fast-forward pulls. Default: `false`. |
+| `[rebase]` | bool | no | Use rebase while pulling. Default: `false`. |
+| `[remote]` | string | no | Remote to pull from. Default: `origin`. |
 
 Guide: [How to use [git.pull]](https://docs.ainiro.io/plugins/magic.lambda.git/#how-to-use-gitpull)
 
@@ -17739,8 +17765,8 @@ Pushes changes to a Git remote.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[remote]` | string | no | Remote to push to. Default: `origin`. |
 | `[branch]` | string | no | Branch to push. |
+| `[remote]` | string | no | Remote to push to. Default: `origin`. |
 | `[set-upstream]` | bool | no | Set upstream while pushing. Default: `false`. |
 
 Guide: [How to use [git.push]](https://docs.ainiro.io/plugins/magic.lambda.git/#how-to-use-gitpush)
@@ -17781,8 +17807,8 @@ Returns Git repository status.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[porcelain]` | bool | no | Use porcelain status output. Default: `false`. |
 | `[branch]` | bool | no | Include branch information. Default: `false`. |
+| `[porcelain]` | bool | no | Use porcelain status output. Default: `false`. |
 | `[structured]` | bool | no | Return status lines as child nodes. Default: `false`. |
 
 Guide: [How to use [git.status]](https://docs.ainiro.io/plugins/magic.lambda.git/#how-to-use-gitstatus)
@@ -17804,14 +17830,14 @@ Creates a GitHub repository.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[owner]` | string | no | Organization owner; omit to create under the authenticated user. |
-| `[private]` | bool | no | Whether the repository is private. Default: `false`. |
-| `[description]` | string | no | Repository description. |
-| `[homepage]` | string | no | Repository homepage URL. |
 | `[auto-init]` | bool | no | Initialize the repository. Default: `false`. |
 | `[default-branch]` | string | no | Default branch name. |
+| `[description]` | string | no | Repository description. |
 | `[gitignore-template]` | string | no | GitHub gitignore template. |
+| `[homepage]` | string | no | Repository homepage URL. |
 | `[license-template]` | string | no | GitHub license template. |
+| `[owner]` | string | no | Organization owner; omit to create under the authenticated user. |
+| `[private]` | bool | no | Whether the repository is private. Default: `false`. |
 
 Guide: [How to use [github.repo.create]](https://docs.ainiro.io/plugins/magic.lambda.git/#how-to-use-githubrepocreate)
 
@@ -17837,10 +17863,10 @@ Lists GitHub repositories using child-node filters.
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[owner]` | string | no | Organization owner; omit to list authenticated user repositories. |
-| `[visibility]` | string | no | Repository visibility filter. |
-| `[type]` | string | no | Repository type filter. |
-| `[per-page]` | int | no | Number of repositories per page. |
 | `[page]` | int | no | Page number. |
+| `[per-page]` | int | no | Number of repositories per page. |
+| `[type]` | string | no | Repository type filter. |
+| `[visibility]` | string | no | Repository visibility filter. |
 
 Guide: [How to use [github.repo.list]](https://docs.ainiro.io/plugins/magic.lambda.git/#how-to-use-githubrepolist)
 
@@ -17877,16 +17903,16 @@ Issues an HTTP DELETE to the specified URL; used to remove a remote resource.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[query]` | lambda | no | Query string parameters. |
-| `[query]` / _any node name_ | string | no | Query parameter value. Can be repeated. |
-| `[url-params]` | lambda | no | Named replacements for {placeholders} in the URL. |
-| `[url-params]` / _any node name_ | string | no | URL placeholder replacement value. Can be repeated. |
+| `[.sse]` | lambda | no | Callback executed once per server-sent event line; receives the line in [.arguments/message]. |
+| `[convert]` | bool | no | Whether to convert known response content types to lambda. Default: `false`. |
 | `[headers]` | lambda | no | HTTP request headers. |
 | `[headers]` / _any node name_ | string | no | HTTP header value. Can be repeated. |
-| `[token]` | string | no | Bearer token to add as Authorization header. |
+| `[query]` | lambda | no | Query string parameters. |
+| `[query]` / _any node name_ | string | no | Query parameter value. Can be repeated. |
 | `[timeout]` | int | no | Request timeout in seconds. |
-| `[convert]` | bool | no | Whether to convert known response content types to lambda. Default: `false`. |
-| `[.sse]` | lambda | no | Callback executed once per server-sent event line; receives the line in [.arguments/message]. |
+| `[token]` | string | no | Bearer token to add as Authorization header. |
+| `[url-params]` | lambda | no | Named replacements for {placeholders} in the URL. |
+| `[url-params]` / _any node name_ | string | no | URL placeholder replacement value. Can be repeated. |
 
 Returned nodes:
 
@@ -17907,16 +17933,16 @@ Issues an HTTP GET to the specified URL and returns the response body, status co
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[query]` | lambda | no | Query string parameters. |
-| `[query]` / _any node name_ | string | no | Query parameter value. Can be repeated. |
-| `[url-params]` | lambda | no | Named replacements for {placeholders} in the URL. |
-| `[url-params]` / _any node name_ | string | no | URL placeholder replacement value. Can be repeated. |
+| `[.sse]` | lambda | no | Callback executed once per server-sent event line; receives the line in [.arguments/message]. |
+| `[convert]` | bool | no | Whether to convert known response content types to lambda. Default: `false`. |
 | `[headers]` | lambda | no | HTTP request headers. |
 | `[headers]` / _any node name_ | string | no | HTTP header value. Can be repeated. |
-| `[token]` | string | no | Bearer token to add as Authorization header. |
+| `[query]` | lambda | no | Query string parameters. |
+| `[query]` / _any node name_ | string | no | Query parameter value. Can be repeated. |
 | `[timeout]` | int | no | Request timeout in seconds. |
-| `[convert]` | bool | no | Whether to convert known response content types to lambda. Default: `false`. |
-| `[.sse]` | lambda | no | Callback executed once per server-sent event line; receives the line in [.arguments/message]. |
+| `[token]` | string | no | Bearer token to add as Authorization header. |
+| `[url-params]` | lambda | no | Named replacements for {placeholders} in the URL. |
+| `[url-params]` / _any node name_ | string | no | URL placeholder replacement value. Can be repeated. |
 
 Returned nodes:
 
@@ -17937,18 +17963,18 @@ Issues an HTTP PATCH to the specified URL with a payload; used to apply partial 
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[query]` | lambda | no | Query string parameters. |
-| `[query]` / _any node name_ | string | no | Query parameter value. Can be repeated. |
-| `[url-params]` | lambda | no | Named replacements for {placeholders} in the URL. |
-| `[url-params]` / _any node name_ | string | no | URL placeholder replacement value. Can be repeated. |
+| `[.sse]` | lambda | no | Callback executed once per server-sent event line; receives the line in [.arguments/message]. |
+| `[convert]` | bool | no | Whether to convert known response content types to lambda. Default: `false`. |
+| `[filename]` | string | no | File path to stream as the request payload. |
 | `[headers]` | lambda | no | HTTP request headers. |
 | `[headers]` / _any node name_ | string | no | HTTP header value. Can be repeated. |
-| `[token]` | string | no | Bearer token to add as Authorization header. |
-| `[timeout]` | int | no | Request timeout in seconds. |
-| `[convert]` | bool | no | Whether to convert known response content types to lambda. Default: `false`. |
-| `[.sse]` | lambda | no | Callback executed once per server-sent event line; receives the line in [.arguments/message]. |
 | `[payload]` | object\|lambda | no | Request payload value or structured payload transformed according to Content-Type. |
-| `[filename]` | string | no | File path to stream as the request payload. |
+| `[query]` | lambda | no | Query string parameters. |
+| `[query]` / _any node name_ | string | no | Query parameter value. Can be repeated. |
+| `[timeout]` | int | no | Request timeout in seconds. |
+| `[token]` | string | no | Bearer token to add as Authorization header. |
+| `[url-params]` | lambda | no | Named replacements for {placeholders} in the URL. |
+| `[url-params]` / _any node name_ | string | no | URL placeholder replacement value. Can be repeated. |
 
 Returned nodes:
 
@@ -17971,18 +17997,18 @@ Issues an HTTP POST to the specified URL with payload from [payload] or [filenam
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[query]` | lambda | no | Query string parameters. |
-| `[query]` / _any node name_ | string | no | Query parameter value. Can be repeated. |
-| `[url-params]` | lambda | no | Named replacements for {placeholders} in the URL. |
-| `[url-params]` / _any node name_ | string | no | URL placeholder replacement value. Can be repeated. |
+| `[.sse]` | lambda | no | Callback executed once per server-sent event line; receives the line in [.arguments/message]. |
+| `[convert]` | bool | no | Whether to convert known response content types to lambda. Default: `false`. |
+| `[filename]` | string | no | File path to stream as the request payload. |
 | `[headers]` | lambda | no | HTTP request headers. |
 | `[headers]` / _any node name_ | string | no | HTTP header value. Can be repeated. |
-| `[token]` | string | no | Bearer token to add as Authorization header. |
-| `[timeout]` | int | no | Request timeout in seconds. |
-| `[convert]` | bool | no | Whether to convert known response content types to lambda. Default: `false`. |
-| `[.sse]` | lambda | no | Callback executed once per server-sent event line; receives the line in [.arguments/message]. |
 | `[payload]` | object\|lambda | no | Request payload value or structured payload transformed according to Content-Type. |
-| `[filename]` | string | no | File path to stream as the request payload. |
+| `[query]` | lambda | no | Query string parameters. |
+| `[query]` / _any node name_ | string | no | Query parameter value. Can be repeated. |
+| `[timeout]` | int | no | Request timeout in seconds. |
+| `[token]` | string | no | Bearer token to add as Authorization header. |
+| `[url-params]` | lambda | no | Named replacements for {placeholders} in the URL. |
+| `[url-params]` / _any node name_ | string | no | URL placeholder replacement value. Can be repeated. |
 
 Returned nodes:
 
@@ -18005,18 +18031,18 @@ Issues an HTTP PUT to the specified URL with a payload; commonly used to replace
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[query]` | lambda | no | Query string parameters. |
-| `[query]` / _any node name_ | string | no | Query parameter value. Can be repeated. |
-| `[url-params]` | lambda | no | Named replacements for {placeholders} in the URL. |
-| `[url-params]` / _any node name_ | string | no | URL placeholder replacement value. Can be repeated. |
+| `[.sse]` | lambda | no | Callback executed once per server-sent event line; receives the line in [.arguments/message]. |
+| `[convert]` | bool | no | Whether to convert known response content types to lambda. Default: `false`. |
+| `[filename]` | string | no | File path to stream as the request payload. |
 | `[headers]` | lambda | no | HTTP request headers. |
 | `[headers]` / _any node name_ | string | no | HTTP header value. Can be repeated. |
-| `[token]` | string | no | Bearer token to add as Authorization header. |
-| `[timeout]` | int | no | Request timeout in seconds. |
-| `[convert]` | bool | no | Whether to convert known response content types to lambda. Default: `false`. |
-| `[.sse]` | lambda | no | Callback executed once per server-sent event line; receives the line in [.arguments/message]. |
 | `[payload]` | object\|lambda | no | Request payload value or structured payload transformed according to Content-Type. |
-| `[filename]` | string | no | File path to stream as the request payload. |
+| `[query]` | lambda | no | Query string parameters. |
+| `[query]` / _any node name_ | string | no | Query parameter value. Can be repeated. |
+| `[timeout]` | int | no | Request timeout in seconds. |
+| `[token]` | string | no | Bearer token to add as Authorization header. |
+| `[url-params]` | lambda | no | Named replacements for {placeholders} in the URL. |
+| `[url-params]` / _any node name_ | string | no | URL placeholder replacement value. Can be repeated. |
 
 Returned nodes:
 
@@ -18064,13 +18090,13 @@ Renders a bar, stacked, or grouped chart from the supplied series data as a PNG 
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[width]` | int | yes | Chart width in pixels. |
-| `[height]` | int | yes | Chart height in pixels. |
-| `[filename]` | string | no | Optional destination filename. |
 | `[bars]` | lambda | yes | Chart values keyed by label; grouped and stacked charts use nested numeric values. |
 | `[bars]` / _any node name_ | double\|lambda | yes | Bar value or grouped/stacked bar value collection. Can be repeated. |
+| `[filename]` | string | no | Optional destination filename. |
+| `[height]` | int | yes | Chart height in pixels. |
 | `[legend]` | lambda | no | Legend labels required by grouped and stacked charts. |
 | `[legend]` / _unnamed child node_ | string | no | Legend label. Can be repeated. |
+| `[width]` | int | yes | Chart width in pixels. |
 
 Guide: [How to use [image.chart]](https://docs.ainiro.io/plugins/magic.lambda.image/#how-to-use-imagechart)
 
@@ -18083,8 +18109,8 @@ Re-encodes an image into a different format (e.g. PNG to JPEG) preserving its pi
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[type]` | string | yes | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
 | `[dest]` | string | no | Optional destination filename; when supplied, the image is saved to disk instead of returned as a stream. |
+| `[type]` | string | yes | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
 
 Guide: [How to use [image.convert]](https://docs.ainiro.io/plugins/magic.lambda.image/#how-to-use-imageconvert)
 
@@ -18097,12 +18123,12 @@ Cuts a rectangular region out of an image at the given x, y, width, and height.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[type]` | string | no | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
+| `[bottom]` | int | no | Pixels to crop from the bottom edge. Default: `0`. |
 | `[dest]` | string | no | Optional destination filename; when supplied, the image is saved to disk instead of returned as a stream. |
 | `[left]` | int | no | Pixels to crop from the left edge. Default: `0`. |
-| `[top]` | int | no | Pixels to crop from the top edge. Default: `0`. |
 | `[right]` | int | no | Pixels to crop from the right edge. Default: `0`. |
-| `[bottom]` | int | no | Pixels to crop from the bottom edge. Default: `0`. |
+| `[top]` | int | no | Pixels to crop from the top edge. Default: `0`. |
+| `[type]` | string | no | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
 
 Guide: [How to use [image.crop]](https://docs.ainiro.io/plugins/magic.lambda.image/#how-to-use-imagecrop)
 
@@ -18128,10 +18154,10 @@ Resizes an image to the specified width and height; useful for generating thumbn
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[type]` | string | no | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
 | `[dest]` | string | no | Optional destination filename; when supplied, the image is saved to disk instead of returned as a stream. |
-| `[width]` | int | no | Target width in pixels. |
 | `[height]` | int | no | Target height in pixels. |
+| `[type]` | string | no | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
+| `[width]` | int | no | Target width in pixels. |
 
 Guide: [How to use [image.resize]](https://docs.ainiro.io/plugins/magic.lambda.image/#how-to-use-imageresize)
 
@@ -18262,8 +18288,8 @@ Returned nodes:
 | Node | Type | Required | Description |
 |---|---|---|---|
 | _unnamed child node_ | lambda | no | One loaded file entry; access fields via the [name] and [content] children. Can be repeated. |
-| _unnamed child node_ / `[name]` | string | yes | Relative file path of the loaded file. |
 | _unnamed child node_ / `[content]` | string | yes | Loaded file content as text. |
+| _unnamed child node_ / `[name]` | string | yes | Relative file path of the loaded file. |
 
 Guide: [How to use [io.file.load-recursively]](https://docs.ainiro.io/plugins/magic.lambda.io/#how-to-use-iofileload-recursively)
 
@@ -18344,10 +18370,10 @@ Searches for files on the server.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[pattern]` | string | yes | Text or regular expression pattern to search for. |
-| `[regex]` | bool | no | Whether [pattern] should be interpreted as a regular expression. Default: `false`. |
 | `[case-sensitive]` | bool | no | Whether matching should be case-sensitive. Default: `false`. |
 | `[extensions]` | string | no | Optional comma-separated file extensions to include. |
+| `[pattern]` | string | yes | Text or regular expression pattern to search for. |
+| `[regex]` | bool | no | Whether [pattern] should be interpreted as a regular expression. Default: `false`. |
 
 Returned nodes:
 
@@ -18493,8 +18519,8 @@ Writes a stream's contents to disk under the given path; commonly used after upl
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[overwrite]` | bool | no | Whether an existing file should be overwritten. Default: `true`. |
 | _any node name_ | Stream | yes | Child node yielding the stream to save. |
+| `[overwrite]` | bool | no | Whether an existing file should be overwritten. Default: `true`. |
 
 Guide: [How to use [io.stream.save-file]](https://docs.ainiro.io/plugins/magic.lambda.io/#how-to-use-iostreamsave-file)
 
@@ -18512,9 +18538,9 @@ Fetches messages from a POP3 mailbox using child-node options and a required [.l
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[raw]` | bool | no | Whether to pass raw MIME text to the callback. |
-| `[max]` | int | no | Maximum number of messages to fetch. |
 | `[.lambda]` | lambda | yes | Callback evaluated once per fetched message with [.message] injected. |
+| `[max]` | int | no | Maximum number of messages to fetch. |
+| `[raw]` | bool | no | Whether to pass raw MIME text to the callback. |
 
 Guide: [How to use [mail.pop3.fetch]](https://docs.ainiro.io/plugins/magic.lambda.mail/#how-to-use-mailpop3fetch)
 
@@ -18525,21 +18551,21 @@ Sends one or more email messages through SMTP from child [message] nodes.
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[message]` | lambda | yes | Email message to send. Can be repeated. |
+| `[message]` / `[bcc]` | lambda | no | Email address collection. |
+| `[message]` / `[bcc]` / _unnamed child node_ | lambda | no | Structured address containing [email] and optional [name]. Can be repeated. |
+| `[message]` / `[cc]` | lambda | no | Email address collection. |
+| `[message]` / `[cc]` / _unnamed child node_ | lambda | no | Structured address containing [email] and optional [name]. Can be repeated. |
+| `[message]` / `[entity]` | string | yes | MIME entity declaration for the message body; node value is the MIME content type. |
+| `[message]` / `[entity]` / `[content]` | string | no | Inline MIME part content. |
+| `[message]` / `[entity]` / `[filename]` | string | no | File path to use as MIME part content. |
+| `[message]` / `[entity]` / `[headers]` | lambda | no | MIME headers. |
+| `[message]` / `[from]` | lambda | no | Email address collection. |
+| `[message]` / `[from]` / _unnamed child node_ | lambda | no | Structured address containing [email] and optional [name]. Can be repeated. |
+| `[message]` / `[reply-to]` | lambda | no | Email address collection. |
+| `[message]` / `[reply-to]` / _unnamed child node_ | lambda | no | Structured address containing [email] and optional [name]. Can be repeated. |
 | `[message]` / `[subject]` | string | no | Message subject. |
 | `[message]` / `[to]` | lambda | yes | Email address collection. |
 | `[message]` / `[to]` / _unnamed child node_ | lambda | yes | Structured address containing [email] and optional [name]. Can be repeated. |
-| `[message]` / `[from]` | lambda | no | Email address collection. |
-| `[message]` / `[from]` / _unnamed child node_ | lambda | no | Structured address containing [email] and optional [name]. Can be repeated. |
-| `[message]` / `[cc]` | lambda | no | Email address collection. |
-| `[message]` / `[cc]` / _unnamed child node_ | lambda | no | Structured address containing [email] and optional [name]. Can be repeated. |
-| `[message]` / `[bcc]` | lambda | no | Email address collection. |
-| `[message]` / `[bcc]` / _unnamed child node_ | lambda | no | Structured address containing [email] and optional [name]. Can be repeated. |
-| `[message]` / `[reply-to]` | lambda | no | Email address collection. |
-| `[message]` / `[reply-to]` / _unnamed child node_ | lambda | no | Structured address containing [email] and optional [name]. Can be repeated. |
-| `[message]` / `[entity]` | string | yes | MIME entity declaration for the message body; node value is the MIME content type. |
-| `[message]` / `[entity]` / `[headers]` | lambda | no | MIME headers. |
-| `[message]` / `[entity]` / `[content]` | string | no | Inline MIME part content. |
-| `[message]` / `[entity]` / `[filename]` | string | no | File path to use as MIME part content. |
 
 _Nodes nested deeper than 3 levels, and nodes that repeat one of their own ancestors, are not listed._
 
@@ -18705,8 +18731,8 @@ Returns a random number from optional child-node bounds.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[min]` | int | no | Inclusive lower bound; requires [max] and must appear before it. |
 | `[max]` | int | no | Exclusive upper bound; when supplied without [min], the lower bound is 0. |
+| `[min]` | int | no | Inclusive lower bound; requires [max] and must appear before it. |
 
 * **Constraint** (Requires): [min] requires [max] (`[max]`)
 
@@ -18780,16 +18806,16 @@ Builds a MIME message from headers and child [entity] nodes; useful for sending 
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[structured]` | bool | no | When true returns the MIME tree as [headers] and [content] children; when false (default) returns the serialized MIME message text in the slot value. Default: `false`. |
-| `[headers]` | lambda | no | MIME headers. |
-| `[headers]` / _any node name_ | string | no | Header name and value. Can be repeated. |
 | `[content]` | string | no | Inline MIME part content. |
-| `[filename]` | string | no | File path to use as MIME part content. |
 | `[entity]` | string | yes | Nested MIME entity content type; same leaf-vs-multipart shape as the parent [mime.create] value. |
-| `[entity]` / `[headers]` | lambda | no | MIME headers. |
-| `[entity]` / `[headers]` / _any node name_ | string | no | Header name and value. Can be repeated. |
 | `[entity]` / `[content]` | string | no | Inline MIME part content. |
 | `[entity]` / `[filename]` | string | no | File path to use as MIME part content. |
+| `[entity]` / `[headers]` | lambda | no | MIME headers. |
+| `[entity]` / `[headers]` / _any node name_ | string | no | Header name and value. Can be repeated. |
+| `[filename]` | string | no | File path to use as MIME part content. |
+| `[headers]` | lambda | no | MIME headers. |
+| `[headers]` / _any node name_ | string | no | Header name and value. Can be repeated. |
+| `[structured]` | bool | no | When true returns the MIME tree as [headers] and [content] children; when false (default) returns the serialized MIME message text in the slot value. Default: `false`. |
 
 _Nodes nested deeper than 3 levels, and nodes that repeat one of their own ancestors, are not listed._
 
@@ -18797,13 +18823,13 @@ Returned nodes:
 
 | Node | Type | Required | Description |
 |---|---|---|---|
-| `[headers]` | lambda | no | MIME headers from the parsed entity, excluding Content-Type because the entity content type is returned as the node value. |
-| `[headers]` / _any node name_ | string | no | Parsed MIME header value; child name is the header name. Can be repeated. |
 | `[content]` | string\|byte[] | no | Decoded MIME part content; text parts return string content and binary parts return byte[] content. |
 | `[entity]` | string | no | Nested parsed MIME entity; node value is the nested entity content type, and children carry headers, content, and any deeper entities. Can be repeated. |
+| `[entity]` / `[content]` | string\|byte[] | no | Decoded MIME part content; text parts return string content and binary parts return byte[] content. |
 | `[entity]` / `[headers]` | lambda | no | MIME headers from the parsed entity, excluding Content-Type because the entity content type is returned as the node value. |
 | `[entity]` / `[headers]` / _any node name_ | string | no | Parsed MIME header value; child name is the header name. Can be repeated. |
-| `[entity]` / `[content]` | string\|byte[] | no | Decoded MIME part content; text parts return string content and binary parts return byte[] content. |
+| `[headers]` | lambda | no | MIME headers from the parsed entity, excluding Content-Type because the entity content type is returned as the node value. |
+| `[headers]` / _any node name_ | string | no | Parsed MIME header value; child name is the header name. Can be repeated. |
 
 _Nodes nested deeper than 3 levels, and nodes that repeat one of their own ancestors, are not listed._
 
@@ -18834,13 +18860,13 @@ Returned nodes:
 
 | Node | Type | Required | Description |
 |---|---|---|---|
-| `[headers]` | lambda | no | MIME headers from the parsed entity, excluding Content-Type because the entity content type is returned as the node value. |
-| `[headers]` / _any node name_ | string | no | Parsed MIME header value; child name is the header name. Can be repeated. |
 | `[content]` | string\|byte[] | no | Decoded MIME part content; text parts return string content and binary parts return byte[] content. |
 | `[entity]` | string | no | Nested parsed MIME entity; node value is the nested entity content type, and children carry headers, content, and any deeper entities. Can be repeated. |
+| `[entity]` / `[content]` | string\|byte[] | no | Decoded MIME part content; text parts return string content and binary parts return byte[] content. |
 | `[entity]` / `[headers]` | lambda | no | MIME headers from the parsed entity, excluding Content-Type because the entity content type is returned as the node value. |
 | `[entity]` / `[headers]` / _any node name_ | string | no | Parsed MIME header value; child name is the header name. Can be repeated. |
-| `[entity]` / `[content]` | string\|byte[] | no | Decoded MIME part content; text parts return string content and binary parts return byte[] content. |
+| `[headers]` | lambda | no | MIME headers from the parsed entity, excluding Content-Type because the entity content type is returned as the node value. |
+| `[headers]` / _any node name_ | string | no | Parsed MIME header value; child name is the header name. Can be repeated. |
 
 _Nodes nested deeper than 3 levels, and nodes that repeat one of their own ancestors, are not listed._
 
@@ -18932,17 +18958,23 @@ Reads rows through the current SQL Server connection.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[generate]` | bool | no | Whether to only generate SQL and parameter nodes instead of executing it. Default: `false`. |
-| `[table]` | string | yes | Table name to use in the SQL statement. |
-| `[table]` / `[as]` | string | no | Optional table alias. |
-| `[table]` / `[join]` | string | no | Joined table name. Can be repeated. |
-| `[table]` / `[join]` / `[type]` | string | no | Join type: inner, left, right, or full. Default: `inner`. |
-| `[table]` / `[join]` / `[as]` | string | no | Optional joined table alias. |
-| `[table]` / `[join]` / `[on]` | lambda | yes | Join predicate tree comparing columns (AND-only at the schema level; the SQL builder still accepts hand-written [or] for legacy code). |
-| `[distinct]` | bool | no | Removes duplicate rows from the result set when true. Default: `false`. |
 | `[columns]` | lambda | no | Columns or aggregate expressions to select; omitted or empty means all columns. |
 | `[columns]` / _any node name_ | string | no | Column name or aggregate expression; optional [as] child declares an alias. Can be repeated. |
 | `[columns]` / _any node name_ / `[as]` | string | no | Column alias. |
+| `[distinct]` | bool | no | Removes duplicate rows from the result set when true. Default: `false`. |
+| `[generate]` | bool | no | Whether to only generate SQL and parameter nodes instead of executing it. Default: `false`. |
+| `[group]` | lambda | no | Columns or aggregate expressions to group by. |
+| `[group]` / _any node name_ | string | no | Column name or aggregate expression. Can be repeated. |
+| `[limit]` | long | no | Maximum number of rows to return; omitted defaults to 25 and -1 suppresses the generated limit clause. Default: `25`. |
+| `[offset]` | long | no | Number of rows to skip. Default: `0`. |
+| `[order]` | string | no | Column, comma-separated columns, or aggregate expression to order by. Can be repeated. |
+| `[order]` / `[direction]` | string | no | Order direction for this specific order node. Default: `asc`. |
+| `[table]` | string | yes | Table name to use in the SQL statement. |
+| `[table]` / `[as]` | string | no | Optional table alias. |
+| `[table]` / `[join]` | string | no | Joined table name. Can be repeated. |
+| `[table]` / `[join]` / `[as]` | string | no | Optional joined table alias. |
+| `[table]` / `[join]` / `[on]` | lambda | yes | Join predicate tree comparing columns (AND-only at the schema level; the SQL builder still accepts hand-written [or] for legacy code). |
+| `[table]` / `[join]` / `[type]` | string | no | Join type: inner, left, right, or full. Default: `inner`. |
 | `[where]` | lambda | no | Optional boolean predicate tree. |
 | `[where]` / `[and]` | lambda | no | Boolean AND group. |
 | `[where]` / `[and]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
@@ -18950,12 +18982,6 @@ Reads rows through the current SQL Server connection.
 | `[where]` / `[or]` | lambda | no | Boolean OR group. |
 | `[where]` / `[or]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
 | `[where]` / `[or]` / `[and]` | lambda | no | Boolean AND group. Can be repeated. |
-| `[group]` | lambda | no | Columns or aggregate expressions to group by. |
-| `[group]` / _any node name_ | string | no | Column name or aggregate expression. Can be repeated. |
-| `[order]` | string | no | Column, comma-separated columns, or aggregate expression to order by. Can be repeated. |
-| `[order]` / `[direction]` | string | no | Order direction for this specific order node. Default: `asc`. |
-| `[limit]` | long | no | Maximum number of rows to return; omitted defaults to 25 and -1 suppresses the generated limit clause. Default: `25`. |
-| `[offset]` | long | no | Number of rows to skip. Default: `0`. |
 
 _Nodes nested deeper than 3 levels, and nodes that repeat one of their own ancestors, are not listed._
 
@@ -18988,9 +19014,9 @@ Executes a SELECT query on the current SQL Server connection.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 | `[max]` | long | no | Maximum number of rows to return; omitted or -1 returns all rows. Default: `-1`. |
 | `[multiple-result-sets]` | bool | no | Whether multiple SELECT statements in the SQL input should be returned as separate child result containers. Default: `false`. |
-| _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 
 Returned nodes:
 
@@ -19116,17 +19142,23 @@ Reads rows through the current MySQL connection.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[generate]` | bool | no | Whether to only generate SQL and parameter nodes instead of executing it. Default: `false`. |
-| `[table]` | string | yes | Table name to use in the SQL statement. |
-| `[table]` / `[as]` | string | no | Optional table alias. |
-| `[table]` / `[join]` | string | no | Joined table name. Can be repeated. |
-| `[table]` / `[join]` / `[type]` | string | no | Join type: inner, left, right, or full. Default: `inner`. |
-| `[table]` / `[join]` / `[as]` | string | no | Optional joined table alias. |
-| `[table]` / `[join]` / `[on]` | lambda | yes | Join predicate tree comparing columns (AND-only at the schema level; the SQL builder still accepts hand-written [or] for legacy code). |
-| `[distinct]` | bool | no | Removes duplicate rows from the result set when true. Default: `false`. |
 | `[columns]` | lambda | no | Columns or aggregate expressions to select; omitted or empty means all columns. |
 | `[columns]` / _any node name_ | string | no | Column name or aggregate expression; optional [as] child declares an alias. Can be repeated. |
 | `[columns]` / _any node name_ / `[as]` | string | no | Column alias. |
+| `[distinct]` | bool | no | Removes duplicate rows from the result set when true. Default: `false`. |
+| `[generate]` | bool | no | Whether to only generate SQL and parameter nodes instead of executing it. Default: `false`. |
+| `[group]` | lambda | no | Columns or aggregate expressions to group by. |
+| `[group]` / _any node name_ | string | no | Column name or aggregate expression. Can be repeated. |
+| `[limit]` | long | no | Maximum number of rows to return; omitted defaults to 25 and -1 suppresses the generated limit clause. Default: `25`. |
+| `[offset]` | long | no | Number of rows to skip. Default: `0`. |
+| `[order]` | string | no | Column, comma-separated columns, or aggregate expression to order by. Can be repeated. |
+| `[order]` / `[direction]` | string | no | Order direction for this specific order node. Default: `asc`. |
+| `[table]` | string | yes | Table name to use in the SQL statement. |
+| `[table]` / `[as]` | string | no | Optional table alias. |
+| `[table]` / `[join]` | string | no | Joined table name. Can be repeated. |
+| `[table]` / `[join]` / `[as]` | string | no | Optional joined table alias. |
+| `[table]` / `[join]` / `[on]` | lambda | yes | Join predicate tree comparing columns (AND-only at the schema level; the SQL builder still accepts hand-written [or] for legacy code). |
+| `[table]` / `[join]` / `[type]` | string | no | Join type: inner, left, right, or full. Default: `inner`. |
 | `[where]` | lambda | no | Optional boolean predicate tree. |
 | `[where]` / `[and]` | lambda | no | Boolean AND group. |
 | `[where]` / `[and]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
@@ -19134,12 +19166,6 @@ Reads rows through the current MySQL connection.
 | `[where]` / `[or]` | lambda | no | Boolean OR group. |
 | `[where]` / `[or]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
 | `[where]` / `[or]` / `[and]` | lambda | no | Boolean AND group. Can be repeated. |
-| `[group]` | lambda | no | Columns or aggregate expressions to group by. |
-| `[group]` / _any node name_ | string | no | Column name or aggregate expression. Can be repeated. |
-| `[order]` | string | no | Column, comma-separated columns, or aggregate expression to order by. Can be repeated. |
-| `[order]` / `[direction]` | string | no | Order direction for this specific order node. Default: `asc`. |
-| `[limit]` | long | no | Maximum number of rows to return; omitted defaults to 25 and -1 suppresses the generated limit clause. Default: `25`. |
-| `[offset]` | long | no | Number of rows to skip. Default: `0`. |
 
 _Nodes nested deeper than 3 levels, and nodes that repeat one of their own ancestors, are not listed._
 
@@ -19172,9 +19198,9 @@ Executes a SELECT query on the current MySQL connection.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 | `[max]` | long | no | Maximum number of rows to return; omitted or -1 returns all rows. Default: `-1`. |
 | `[multiple-result-sets]` | bool | no | Whether multiple SELECT statements in the SQL input should be returned as separate child result containers. Default: `false`. |
-| _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 
 Returned nodes:
 
@@ -19277,9 +19303,9 @@ Executes a SELECT query on the current ODBC connection.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 | `[max]` | long | no | Maximum number of rows to return; omitted or -1 returns all rows. Default: `-1`. |
 | `[multiple-result-sets]` | bool | no | Whether multiple SELECT statements in the SQL input should be returned as separate child result containers. Default: `false`. |
-| _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 
 Returned nodes:
 
@@ -19333,10 +19359,10 @@ Transcribes audio content using OpenAI Whisper.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[key]` | string | yes | OpenAI API key. |
 | `[content]` | byte[] | yes | Audio content bytes. |
-| `[type]` | string | yes | Audio MIME type. |
+| `[key]` | string | yes | OpenAI API key. |
 | `[language]` | string | no | Optional language hint. |
+| `[type]` | string | yes | Audio MIME type. |
 
 Guide: [How to use [openai.whisper]](https://docs.ainiro.io/plugins/magic.lambda.openai/#how-to-use-openaiwhisper)
 
@@ -19416,17 +19442,23 @@ Reads rows through the current PostgreSQL connection.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[generate]` | bool | no | Whether to only generate SQL and parameter nodes instead of executing it. Default: `false`. |
-| `[table]` | string | yes | Table name to use in the SQL statement. |
-| `[table]` / `[as]` | string | no | Optional table alias. |
-| `[table]` / `[join]` | string | no | Joined table name. Can be repeated. |
-| `[table]` / `[join]` / `[type]` | string | no | Join type: inner, left, right, or full. Default: `inner`. |
-| `[table]` / `[join]` / `[as]` | string | no | Optional joined table alias. |
-| `[table]` / `[join]` / `[on]` | lambda | yes | Join predicate tree comparing columns (AND-only at the schema level; the SQL builder still accepts hand-written [or] for legacy code). |
-| `[distinct]` | bool | no | Removes duplicate rows from the result set when true. Default: `false`. |
 | `[columns]` | lambda | no | Columns or aggregate expressions to select; omitted or empty means all columns. |
 | `[columns]` / _any node name_ | string | no | Column name or aggregate expression; optional [as] child declares an alias. Can be repeated. |
 | `[columns]` / _any node name_ / `[as]` | string | no | Column alias. |
+| `[distinct]` | bool | no | Removes duplicate rows from the result set when true. Default: `false`. |
+| `[generate]` | bool | no | Whether to only generate SQL and parameter nodes instead of executing it. Default: `false`. |
+| `[group]` | lambda | no | Columns or aggregate expressions to group by. |
+| `[group]` / _any node name_ | string | no | Column name or aggregate expression. Can be repeated. |
+| `[limit]` | long | no | Maximum number of rows to return; omitted defaults to 25 and -1 suppresses the generated limit clause. Default: `25`. |
+| `[offset]` | long | no | Number of rows to skip. Default: `0`. |
+| `[order]` | string | no | Column, comma-separated columns, or aggregate expression to order by. Can be repeated. |
+| `[order]` / `[direction]` | string | no | Order direction for this specific order node. Default: `asc`. |
+| `[table]` | string | yes | Table name to use in the SQL statement. |
+| `[table]` / `[as]` | string | no | Optional table alias. |
+| `[table]` / `[join]` | string | no | Joined table name. Can be repeated. |
+| `[table]` / `[join]` / `[as]` | string | no | Optional joined table alias. |
+| `[table]` / `[join]` / `[on]` | lambda | yes | Join predicate tree comparing columns (AND-only at the schema level; the SQL builder still accepts hand-written [or] for legacy code). |
+| `[table]` / `[join]` / `[type]` | string | no | Join type: inner, left, right, or full. Default: `inner`. |
 | `[where]` | lambda | no | Optional boolean predicate tree. |
 | `[where]` / `[and]` | lambda | no | Boolean AND group. |
 | `[where]` / `[and]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
@@ -19434,12 +19466,6 @@ Reads rows through the current PostgreSQL connection.
 | `[where]` / `[or]` | lambda | no | Boolean OR group. |
 | `[where]` / `[or]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
 | `[where]` / `[or]` / `[and]` | lambda | no | Boolean AND group. Can be repeated. |
-| `[group]` | lambda | no | Columns or aggregate expressions to group by. |
-| `[group]` / _any node name_ | string | no | Column name or aggregate expression. Can be repeated. |
-| `[order]` | string | no | Column, comma-separated columns, or aggregate expression to order by. Can be repeated. |
-| `[order]` / `[direction]` | string | no | Order direction for this specific order node. Default: `asc`. |
-| `[limit]` | long | no | Maximum number of rows to return; omitted defaults to 25 and -1 suppresses the generated limit clause. Default: `25`. |
-| `[offset]` | long | no | Number of rows to skip. Default: `0`. |
 
 _Nodes nested deeper than 3 levels, and nodes that repeat one of their own ancestors, are not listed._
 
@@ -19472,9 +19498,9 @@ Executes a SELECT query on the current PostgreSQL connection.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 | `[max]` | long | no | Maximum number of rows to return; omitted or -1 returns all rows. Default: `-1`. |
 | `[multiple-result-sets]` | bool | no | Whether multiple SELECT statements in the SQL input should be returned as separate child result containers. Default: `false`. |
-| _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 
 Returned nodes:
 
@@ -19541,10 +19567,10 @@ Clicks an element on the page.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[selector]` | string | yes | CSS selector. |
 | `[button]` | string | no | Mouse button to click. Default: `left`. |
 | `[click-count]` | int | no | Number of clicks. |
 | `[delay]` | int | no | Delay in milliseconds between mouse down and up. |
+| `[selector]` | string | yes | CSS selector. |
 
 Guide: [How to use [puppeteer.click]](https://docs.ainiro.io/plugins/magic.lambda.puppeteer/#puppeteerclick)
 
@@ -19566,15 +19592,15 @@ Creates or reuses a Puppeteer browser session.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[timeout-minutes]` | int | no | Idle timeout in minutes. |
-| `[max-lifetime-minutes]` | int | no | Maximum session lifetime in minutes. |
-| `[headless]` | bool | no | Whether the browser should run headless. Default: `true`. |
-| `[timeout]` | int | no | Browser launch timeout in milliseconds. |
 | `[args]` | string\|lambda | no | Browser launch arguments. |
 | `[args]` / _unnamed child node_ | string | no | Argument value. Can be repeated. |
-| `[user-data-dir]` | string | no | Browser user data directory. |
 | `[executable]` | string | no | Browser executable path. |
 | `[executable-path]` | string | no | Browser executable path. |
+| `[headless]` | bool | no | Whether the browser should run headless. Default: `true`. |
+| `[max-lifetime-minutes]` | int | no | Maximum session lifetime in minutes. |
+| `[timeout]` | int | no | Browser launch timeout in milliseconds. |
+| `[timeout-minutes]` | int | no | Idle timeout in minutes. |
+| `[user-data-dir]` | string | no | Browser user data directory. |
 
 * **Constraint** (AtMostOneOf): [executable] and [executable-path] are aliases; supply at most one (`[executable]`, `[executable-path]`)
 
@@ -19600,9 +19626,9 @@ Evaluates JavaScript in the page context.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[expression]` | string | yes | JavaScript expression or function. |
 | `[args]` | string\|lambda | no | Arguments passed to the JavaScript function. |
 | `[args]` / _unnamed child node_ | string | no | Argument value. Can be repeated. |
+| `[expression]` | string | yes | JavaScript expression or function. |
 
 Guide: [How to use [puppeteer.evaluate]](https://docs.ainiro.io/plugins/magic.lambda.puppeteer/#puppeteerevaluate)
 
@@ -19615,10 +19641,10 @@ Fills an input element with text.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[selector]` | string | yes | CSS selector. |
-| `[text]` | string | no | Text to send. |
 | `[config-key]` | string | no | Configuration key resolving the text to send. |
 | `[delay]` | int | no | Delay in milliseconds between key presses. |
+| `[selector]` | string | yes | CSS selector. |
+| `[text]` | string | no | Text to send. |
 
 * **Constraint** (ExactlyOneOf): Provide either [text] or [config-key] (`[text]`, `[config-key]`)
 
@@ -19634,8 +19660,8 @@ Navigates the current page to a URL.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[url]` | string | yes | URL to navigate to. |
 | `[timeout]` | int | no | Navigation timeout in milliseconds. |
+| `[url]` | string | yes | URL to navigate to. |
 | `[wait-until]` | string | no | Navigation completion condition: load, domcontentloaded, networkidle0, or networkidle2. |
 
 Guide: [How to use [puppeteer.goto]](https://docs.ainiro.io/plugins/magic.lambda.puppeteer/#puppeteergoto)
@@ -19649,9 +19675,9 @@ Sends a key press to the page.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[selector]` | string | yes | CSS selector. |
-| `[key]` | string | no | Key to press. |
 | `[delay]` | int | no | Delay in milliseconds between key down and up. |
+| `[key]` | string | no | Key to press. |
+| `[selector]` | string | yes | CSS selector. |
 
 Guide: [How to use [puppeteer.press]](https://docs.ainiro.io/plugins/magic.lambda.puppeteer/#puppeteerpress)
 
@@ -19667,8 +19693,8 @@ Captures a screenshot of the page.
 |---|---|---|---|
 | `[filename]` | string | yes | Destination filename. |
 | `[full-page]` | bool | no | Whether to capture the full page. Default: `false`. |
-| `[type]` | string | no | Image type. |
 | `[quality]` | int | no | JPEG/WebP image quality. |
+| `[type]` | string | no | Image type. |
 
 Guide: [How to use [puppeteer.screenshot]](https://docs.ainiro.io/plugins/magic.lambda.puppeteer/#puppeteerscreenshot)
 
@@ -19706,10 +19732,10 @@ Types text into an element.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[selector]` | string | yes | CSS selector. |
-| `[text]` | string | no | Text to send. |
 | `[config-key]` | string | no | Configuration key resolving the text to send. |
 | `[delay]` | int | no | Delay in milliseconds between key presses. |
+| `[selector]` | string | yes | CSS selector. |
+| `[text]` | string | no | Text to send. |
 
 * **Constraint** (ExactlyOneOf): Provide either [text] or [config-key] (`[text]`, `[config-key]`)
 
@@ -19734,10 +19760,10 @@ Waits for a selector to appear.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[hidden]` | bool | no | Wait until selector is hidden. |
 | `[selector]` | string | yes | CSS selector. |
 | `[timeout]` | int | no | Wait timeout in milliseconds. |
 | `[visible]` | bool | no | Wait until selector is visible. |
-| `[hidden]` | bool | no | Wait until selector is hidden. |
 
 Guide: [How to use [puppeteer.wait-for-selector]](https://docs.ainiro.io/plugins/magic.lambda.puppeteer/#puppeteerwait-for-selector)
 
@@ -19750,8 +19776,8 @@ Waits for the page URL to match a condition.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[url]` | string | yes | URL pattern to wait for. |
 | `[timeout]` | int | no | Wait timeout in milliseconds. |
+| `[url]` | string | yes | URL pattern to wait for. |
 
 Guide: [How to use [puppeteer.wait-for-url]](https://docs.ainiro.io/plugins/magic.lambda.puppeteer/#puppeteerwait-for-url)
 
@@ -19771,13 +19797,13 @@ Runs a Python script or file in a subprocess and captures stdout, stderr, and ex
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[code]` | string | no | Inline Python code to execute. |
-| `[file]` | string | no | Python file to execute. |
 | `[args]` | string\|lambda | no | Command-line arguments as a shell-like string or child values. |
 | `[args]` / _any node name_ | string | no | Single command-line argument. Can be repeated. |
+| `[code]` | string | no | Inline Python code to execute. |
+| `[file]` | string | no | Python file to execute. |
 | `[stdin]` | string | no | Text written to standard input. |
-| `[working-directory]` | string | no | Working directory for the Python process. |
 | `[timeout]` | int | no | Execution timeout in seconds. Default: `30`. |
+| `[working-directory]` | string | no | Working directory for the Python process. |
 
 * **Constraint** (ExactlyOneOf): Exactly one code source must be supplied (`[code]`, `[file]`)
 
@@ -19869,13 +19895,13 @@ Sets a response cookie.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[value]` | string | yes | Cookie value. |
+| `[domain]` | string | no | Cookie domain. |
 | `[expires]` | DateTime | no | Cookie expiration. |
 | `[http-only]` | bool | no | Whether the cookie is HTTP-only. |
-| `[secure]` | bool | no | Whether the cookie is secure. |
-| `[domain]` | string | no | Cookie domain. |
 | `[path]` | string | no | Cookie path. |
 | `[same-site]` | string | no | Cookie SameSite mode: Strict, Lax, None, or Unspecified. |
+| `[secure]` | bool | no | Whether the cookie is secure. |
+| `[value]` | string | yes | Cookie value. |
 
 ## [response.headers.set]
 
@@ -20025,10 +20051,10 @@ Pushes a SignalR message to clients subscribed to the channel; use to broadcast 
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[args]` | lambda | yes | Payload serialized to JSON and sent with the socket message. |
+| `[clients]` | string | no | Comma-separated connection IDs receiving the message. |
+| `[groups]` | string | no | Comma-separated groups receiving the message. |
 | `[roles]` | string | no | Comma-separated roles receiving the message. |
 | `[users]` | string | no | Comma-separated users receiving the message. |
-| `[groups]` | string | no | Comma-separated groups receiving the message. |
-| `[clients]` | string | no | Comma-separated connection IDs receiving the message. |
 
 Guide: [How to use [sockets.signal]](https://docs.ainiro.io/plugins/magic.lambda.sockets/#how-to-use-socketssignal)
 
@@ -20061,8 +20087,8 @@ Lists connected socket users, optionally filtered by username.
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[filter]` | string | no | Username filter. |
-| `[offset]` | int | no | Number of matching users to skip. Default: `0`. |
 | `[limit]` | int | no | Maximum number of users to return. Default: `10`. |
+| `[offset]` | int | no | Number of matching users to skip. Default: `0`. |
 
 ## [sockets.users.count]
 
@@ -20125,16 +20151,22 @@ Builds a parameterized SELECT SQL statement.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[table]` | string | yes | Table name to use in the SQL statement. |
-| `[table]` / `[as]` | string | no | Optional table alias. |
-| `[table]` / `[join]` | string | no | Joined table name. Can be repeated. |
-| `[table]` / `[join]` / `[type]` | string | no | Join type: inner, left, right, or full. Default: `inner`. |
-| `[table]` / `[join]` / `[as]` | string | no | Optional joined table alias. |
-| `[table]` / `[join]` / `[on]` | lambda | yes | Join predicate tree comparing columns (AND-only at the schema level; the SQL builder still accepts hand-written [or] for legacy code). |
-| `[distinct]` | bool | no | Removes duplicate rows from the result set when true. Default: `false`. |
 | `[columns]` | lambda | no | Columns or aggregate expressions to select; omitted or empty means all columns. |
 | `[columns]` / _any node name_ | string | no | Column name or aggregate expression; optional [as] child declares an alias. Can be repeated. |
 | `[columns]` / _any node name_ / `[as]` | string | no | Column alias. |
+| `[distinct]` | bool | no | Removes duplicate rows from the result set when true. Default: `false`. |
+| `[group]` | lambda | no | Columns or aggregate expressions to group by. |
+| `[group]` / _any node name_ | string | no | Column name or aggregate expression. Can be repeated. |
+| `[limit]` | long | no | Maximum number of rows to return; omitted defaults to 25 and -1 suppresses the generated limit clause. Default: `25`. |
+| `[offset]` | long | no | Number of rows to skip. Default: `0`. |
+| `[order]` | string | no | Column, comma-separated columns, or aggregate expression to order by. Can be repeated. |
+| `[order]` / `[direction]` | string | no | Order direction for this specific order node. Default: `asc`. |
+| `[table]` | string | yes | Table name to use in the SQL statement. |
+| `[table]` / `[as]` | string | no | Optional table alias. |
+| `[table]` / `[join]` | string | no | Joined table name. Can be repeated. |
+| `[table]` / `[join]` / `[as]` | string | no | Optional joined table alias. |
+| `[table]` / `[join]` / `[on]` | lambda | yes | Join predicate tree comparing columns (AND-only at the schema level; the SQL builder still accepts hand-written [or] for legacy code). |
+| `[table]` / `[join]` / `[type]` | string | no | Join type: inner, left, right, or full. Default: `inner`. |
 | `[where]` | lambda | no | Optional boolean predicate tree. |
 | `[where]` / `[and]` | lambda | no | Boolean AND group. |
 | `[where]` / `[and]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
@@ -20142,12 +20174,6 @@ Builds a parameterized SELECT SQL statement.
 | `[where]` / `[or]` | lambda | no | Boolean OR group. |
 | `[where]` / `[or]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
 | `[where]` / `[or]` / `[and]` | lambda | no | Boolean AND group. Can be repeated. |
-| `[group]` | lambda | no | Columns or aggregate expressions to group by. |
-| `[group]` / _any node name_ | string | no | Column name or aggregate expression. Can be repeated. |
-| `[order]` | string | no | Column, comma-separated columns, or aggregate expression to order by. Can be repeated. |
-| `[order]` / `[direction]` | string | no | Order direction for this specific order node. Default: `asc`. |
-| `[limit]` | long | no | Maximum number of rows to return; omitted defaults to 25 and -1 suppresses the generated limit clause. Default: `25`. |
-| `[offset]` | long | no | Number of rows to skip. Default: `0`. |
 
 _Nodes nested deeper than 3 levels, and nodes that repeat one of their own ancestors, are not listed._
 
@@ -20271,9 +20297,9 @@ Loads a SQLite extension into the current connection from child-node arguments.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[append-platform]` | bool | no | Whether to append the current platform suffix. Default: `true`. |
 | `[file]` | string | yes | SQLite extension filename. |
 | `[proc]` | string | no | Optional extension entry point. |
-| `[append-platform]` | bool | no | Whether to append the current platform suffix. Default: `true`. |
 
 Guide: [How to use [sqlite.load-extension]](https://docs.ainiro.io/plugins/magic.lambda.sqlite/#how-to-use-sqliteload-extension)
 
@@ -20286,17 +20312,23 @@ Reads rows through the current SQLite connection.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[generate]` | bool | no | Whether to only generate SQL and parameter nodes instead of executing it. Default: `false`. |
-| `[table]` | string | yes | Table name to use in the SQL statement. |
-| `[table]` / `[as]` | string | no | Optional table alias. |
-| `[table]` / `[join]` | string | no | Joined table name. Can be repeated. |
-| `[table]` / `[join]` / `[type]` | string | no | Join type: inner, left, right, or full. Default: `inner`. |
-| `[table]` / `[join]` / `[as]` | string | no | Optional joined table alias. |
-| `[table]` / `[join]` / `[on]` | lambda | yes | Join predicate tree comparing columns (AND-only at the schema level; the SQL builder still accepts hand-written [or] for legacy code). |
-| `[distinct]` | bool | no | Removes duplicate rows from the result set when true. Default: `false`. |
 | `[columns]` | lambda | no | Columns or aggregate expressions to select; omitted or empty means all columns. |
 | `[columns]` / _any node name_ | string | no | Column name or aggregate expression; optional [as] child declares an alias. Can be repeated. |
 | `[columns]` / _any node name_ / `[as]` | string | no | Column alias. |
+| `[distinct]` | bool | no | Removes duplicate rows from the result set when true. Default: `false`. |
+| `[generate]` | bool | no | Whether to only generate SQL and parameter nodes instead of executing it. Default: `false`. |
+| `[group]` | lambda | no | Columns or aggregate expressions to group by. |
+| `[group]` / _any node name_ | string | no | Column name or aggregate expression. Can be repeated. |
+| `[limit]` | long | no | Maximum number of rows to return; omitted defaults to 25 and -1 suppresses the generated limit clause. Default: `25`. |
+| `[offset]` | long | no | Number of rows to skip. Default: `0`. |
+| `[order]` | string | no | Column, comma-separated columns, or aggregate expression to order by. Can be repeated. |
+| `[order]` / `[direction]` | string | no | Order direction for this specific order node. Default: `asc`. |
+| `[table]` | string | yes | Table name to use in the SQL statement. |
+| `[table]` / `[as]` | string | no | Optional table alias. |
+| `[table]` / `[join]` | string | no | Joined table name. Can be repeated. |
+| `[table]` / `[join]` / `[as]` | string | no | Optional joined table alias. |
+| `[table]` / `[join]` / `[on]` | lambda | yes | Join predicate tree comparing columns (AND-only at the schema level; the SQL builder still accepts hand-written [or] for legacy code). |
+| `[table]` / `[join]` / `[type]` | string | no | Join type: inner, left, right, or full. Default: `inner`. |
 | `[where]` | lambda | no | Optional boolean predicate tree. |
 | `[where]` / `[and]` | lambda | no | Boolean AND group. |
 | `[where]` / `[and]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
@@ -20304,12 +20336,6 @@ Reads rows through the current SQLite connection.
 | `[where]` / `[or]` | lambda | no | Boolean OR group. |
 | `[where]` / `[or]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
 | `[where]` / `[or]` / `[and]` | lambda | no | Boolean AND group. Can be repeated. |
-| `[group]` | lambda | no | Columns or aggregate expressions to group by. |
-| `[group]` / _any node name_ | string | no | Column name or aggregate expression. Can be repeated. |
-| `[order]` | string | no | Column, comma-separated columns, or aggregate expression to order by. Can be repeated. |
-| `[order]` / `[direction]` | string | no | Order direction for this specific order node. Default: `asc`. |
-| `[limit]` | long | no | Maximum number of rows to return; omitted defaults to 25 and -1 suppresses the generated limit clause. Default: `25`. |
-| `[offset]` | long | no | Number of rows to skip. Default: `0`. |
 
 _Nodes nested deeper than 3 levels, and nodes that repeat one of their own ancestors, are not listed._
 
@@ -20342,9 +20368,9 @@ Executes a SELECT query on the current SQLite connection.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 | `[max]` | long | no | Maximum number of rows to return; omitted or -1 returns all rows. Default: `-1`. |
 | `[multiple-result-sets]` | bool | no | Whether multiple SELECT statements in the SQL input should be returned as separate child result containers. Default: `false`. |
-| _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 
 Returned nodes:
 
@@ -20545,8 +20571,8 @@ Applies string interpolation from child expressions.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[strip]` | bool | no | Whether to strip embedded Hyperlambda instead of executing it. Default: `false`. |
 | _any node name_ | string | no | Argument passed to embedded Hyperlambda snippets invoked from the template. Can be repeated. |
+| `[strip]` | bool | no | Whether to strip embedded Hyperlambda instead of executing it. Default: `false`. |
 
 Guide: [How to use [strings.mixin]](https://docs.ainiro.io/plugins/magic.lambda.strings/#how-to-use-stringsmixin)
 
@@ -20723,8 +20749,8 @@ Compiles C# code from child nodes into an assembly.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[code]` | string | yes | C# source code to compile. |
 | `[assembly-name]` | string | yes | Name of the generated assembly. |
+| `[code]` | string | yes | C# source code to compile. |
 | `[references]` | lambda | yes | Assembly references required by the compilation. |
 | `[references]` / _unnamed child node_ | string | yes | Assembly reference. Can be repeated. |
 
@@ -20825,10 +20851,10 @@ Saves a named task containing a Hyperlambda body that can later be scheduled or 
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[.lambda]` | lambda | yes | Task body serialized and executed later. |
 | `[description]` | string | no | Optional task description. |
 | `[due]` | DateTime | no | Optional one-time due date. |
 | `[repeats]` | string | no | Optional repeat pattern. |
-| `[.lambda]` | lambda | yes | Task body serialized and executed later. |
 
 Guide: [How to use [tasks.create]](https://docs.ainiro.io/plugins/magic.lambda.scheduler/#how-to-use-taskscreate)
 
@@ -20870,17 +20896,17 @@ Returns all stored tasks; supports an optional ID filter and pagination via [lim
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[offset]` | long | no | Number of tasks to skip. |
 | `[limit]` | long | no | Maximum number of tasks to return. |
+| `[offset]` | long | no | Number of tasks to skip. |
 
 Returned nodes:
 
 | Node | Type | Required | Description |
 |---|---|---|---|
 | _unnamed child node_ | lambda | no | One task record returned by [tasks.list]. Can be repeated. |
-| _unnamed child node_ / `[id]` | string | no | Task identifier. |
 | _unnamed child node_ / `[created]` | date | no | Task creation timestamp. |
 | _unnamed child node_ / `[description]` | string | no | Optional task description. |
+| _unnamed child node_ / `[id]` | string | no | Task identifier. |
 
 Guide: [How to use [tasks.list]](https://docs.ainiro.io/plugins/magic.lambda.scheduler/#how-to-use-taskslist)
 
@@ -20914,10 +20940,10 @@ Overwrites a stored task's body or description without altering its existing sch
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[.lambda]` | lambda | yes | Task body serialized and executed later. |
 | `[description]` | string | no | Optional task description. |
 | `[due]` | DateTime | no | Optional one-time due date. |
 | `[repeats]` | string | no | Optional repeat pattern. |
-| `[.lambda]` | lambda | yes | Task body serialized and executed later. |
 
 
 # time.* slots
@@ -20977,8 +21003,8 @@ Validates that a date value or resolved expression result is within the allowed 
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[min]` | date | no | Earliest accepted date. |
 | `[max]` | date | no | Latest accepted date. |
+| `[min]` | date | no | Earliest accepted date. |
 
 Guide: [How to use [validators.date]](https://docs.ainiro.io/plugins/magic.lambda.validators/#how-to-use-validatorsdate)
 
@@ -21022,8 +21048,8 @@ Validates that an integer value or resolved expression result is within the allo
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[min]` | long | no | Minimum accepted value. |
 | `[max]` | long | no | Maximum accepted value. |
+| `[min]` | long | no | Minimum accepted value. |
 
 Guide: [How to use [validators.integer]](https://docs.ainiro.io/plugins/magic.lambda.validators/#how-to-use-validatorsinteger)
 
@@ -21043,9 +21069,9 @@ Validates a reCAPTCHA response token, throwing if validation fails.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[site-key]` | string | yes | reCAPTCHA site key. |
-| `[secret]` | string | yes | reCAPTCHA secret key. |
 | `[min]` | decimal | yes | Minimum acceptable reCAPTCHA score. |
+| `[secret]` | string | yes | reCAPTCHA secret key. |
+| `[site-key]` | string | yes | reCAPTCHA site key. |
 
 Guide: [How to use [validators.recaptcha]](https://docs.ainiro.io/plugins/magic.lambda.validators/#how-to-use-validatorsrecaptcha)
 
@@ -21069,8 +21095,8 @@ Validates that a string value or resolved expression result is within the allowe
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[min]` | int | no | Minimum accepted length. Default: `0`. |
 | `[max]` | int | no | Maximum accepted length. Default: `int.MaxValue`. |
+| `[min]` | int | no | Minimum accepted length. Default: `0`. |
 
 Guide: [How to use [validators.string]](https://docs.ainiro.io/plugins/magic.lambda.validators/#how-to-use-validatorsstring)
 
