@@ -2,6 +2,11 @@
 
 > Magic Cloud is an MIT-licensed, self-hosted platform that builds and runs an entire backend — database, secured REST API, business logic, background jobs, authentication and role-based access control — and exposes all of it to AI agents over MCP. It runs Hyperlambda, a declarative language whose source is a tree structure rather than free-form text, which is what allows natural language to compile into deterministic, inspectable backend code. This site is the complete product and language reference.
 
+Agents, start here:
+
+- Agent entry point: https://hyperlambda.dev/.well-known/hyperlambda-agent - one JSON document listing everything machine readable, the public sandbox included
+- Every slot of Hyperlambda in one file, https://docs.ainiro.io/reference/slots.json, or choose first from the slim https://docs.ainiro.io/reference/slots-index.json, which links each slot to its reference page and its guide
+
 Key facts for agents and their humans:
 
 - Install and run locally with one command, then sign in at http://localhost:5555 with root/root:
@@ -70,9 +75,11 @@ Key facts for agents and their humans:
 
 ## Slot reference — live and machine readable
 
-- [Slots endpoint](https://hyperlambda.dev/magic/modules/docs/slots): `GET` returns every slot's name, description and signature as JSON, generated at runtime by Hyperlambda introspecting itself. Fetch this instead of crawling per-slot pages
+- [Slots index](https://docs.ainiro.io/reference/slots-index.json): every slot with its description, and the addresses of its reference page and its guide. Start here, it is small
+- [All slots](https://docs.ainiro.io/reference/slots.json): every slot with its complete signature, a static copy that is not throttled. One JSON file per slot is at `https://docs.ainiro.io/reference/slots/{namespace}/{slot}/slot.json`
+- [Slots endpoint](https://hyperlambda.dev/magic/modules/docs/slots): `GET` returns the same data live, generated at runtime by Hyperlambda introspecting itself. Public and throttled per IP address
 - [Sandbox endpoint](https://hyperlambda.dev/magic/modules/docs/playground): `POST` Hyperlambda to execute it in a public, throttled, whitelisted sandbox
-- [Slot reference](https://docs.ainiro.io/reference/slots/): human readable reference, one page per slot, generated from the same data
+- [Slot reference](https://docs.ainiro.io/reference/slots/): human readable reference, one page per slot, generated from the same data. Each slot's page links to its guide, which has the examples
 
 ## Plugin reference — the plugins and their concepts
 

@@ -263,6 +263,14 @@ It works by scraping your website, generating training data in the process, for 
 
 {% include faq.html %}
 
+## For AI agents
+
+Everything in this documentation is available in a form made for agents, without scraping.
+
+* [llms.txt](/llms.txt) and [llms-full.txt](/llms-full.txt) are the curated index and the whole documentation in one file.
+* [slots-index.json](/reference/slots-index.json) lists every slot of Hyperlambda, with links to its reference page and its guide, and [slots.json](/reference/slots.json) has every slot with its complete signature. Each slot also has its own `slot.json`, next to its [reference page](/reference/slots/).
+* The [agent entry point](https://hyperlambda.dev/.well-known/hyperlambda-agent) lists the live endpoints, the public sandbox where an agent can run Hyperlambda, and the MCP server.
+
 ## The goal of the project
 
 The goal of the project is to make it easier to produce high quality and scalable code, much faster, without security holes, in an extremely scalable runtime. AKA ...

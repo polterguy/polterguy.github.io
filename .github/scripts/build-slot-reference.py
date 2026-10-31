@@ -669,6 +669,25 @@ def main():
         counts.append((ns, len(group)))
     put('reference/index.md', render_reference_home())
 
+    # The same data as static files on a CDN, without the throttle of the live endpoint: every slot with its
+    # complete signature in one file, and a slim index to choose from before fetching any detail.
+    site = 'https://docs.ainiro.io'
+    put('reference/slots.json', json.dumps(records, ensure_ascii=False, separators=(',', ':')) + '\n')
+    index = []
+    for e in entries:
+        primary = e['names'][0]
+        guide = next((guides[n]['url'] for n in e['names'] if n in guides), None)
+        for n in e['names']:
+            item = {'name': n, 'namespace': ns_of(n), 'description': e['description'],
+                    'reference': site + slot_url(primary)}
+            if guide:
+                item['guide'] = site + guide
+            if n != primary:
+                item['alias-of'] = primary
+            index.append(item)
+    index.sort(key=lambda i: i['name'])
+    put('reference/slots-index.json', json.dumps(index, ensure_ascii=False, separators=(',', ':')) + '\n')
+
     endpoint = read(os.path.join(ROOT, '.github', 'endpoint', 'slots.get.hl'))
     sandbox = read(os.path.join(ROOT, '.github', 'endpoint', 'playground.post.hl'))
     workflow = read(os.path.join(ROOT, '.github', 'workflows', 'slot-reference.yml'))

@@ -1,0 +1,7 @@
+# Everything here is MIT licensed documentation, written to be read by agents too.
+# Start with https://docs.ainiro.io/llms.txt, or the agent entry point at
+# https://hyperlambda.dev/.well-known/hyperlambda-agent
+User-agent: *
+Allow: /
+
+Sitemap: https://docs.ainiro.io/sitemap.xml
