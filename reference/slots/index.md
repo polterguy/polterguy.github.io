@@ -15,8 +15,12 @@ faq:
     a: "Yes. POST your code as JSON to https://hyperlambda.dev/magic/modules/docs/playground, with no account or key. It is rate limited to 30 requests per 60 seconds per IP address, runs for at most 20 seconds, and accepts at most 4000 characters of code."
   - q: "Is it safe to let anybody run code on that server?"
     a: "The sandbox only runs code whose every slot is on a whitelist of 53 slots: introspection, tree handling, strings and arithmetic. Code that touches files, databases, the network, configuration or anything else is rejected before it runs, and every call is rate limited and time limited."
-  - q: "Why can't I get the same output as this reference from the sandbox?"
-    a: "The sandbox can only describe the slots it is itself allowed to call, because listing a slot would otherwise suggest that it can be used. The reference lists the whole language, and comes from a separate read-only endpoint that runs no caller code and is restricted to a service account held by the documentation pipeline. Its code is shown on this page, and it is the same Hyperlambda you can run in the sandbox, which sees fewer slots."
+  - q: "Can I get the whole reference as data?"
+    a: "Yes. GET https://hyperlambda.dev/magic/modules/docs/slots returns every compiled slot as a JSON array of objects with the fields name, description and signature, where the signature is the slot's contract written as Hyperlambda text. It needs no account or key. The answer is about 640 KB, so keep a copy rather than asking again."
+  - q: "Is it safe to leave that endpoint open?"
+    a: "It only reads metadata that is already public in the open source code, and it runs nothing that the caller sends. It is throttled to 10 requests per 60 seconds per IP address and 60 per 60 seconds for everybody together, and answers 429 beyond that."
+  - q: "Why does the sandbox show fewer slots than this reference?"
+    a: "The sandbox runs your code, so it can only describe the 53 slots it is itself allowed to call. A slot can only be described by code that is allowed to call it, so a sandbox that described everything could also run everything. Use the slot endpoint for the whole language and the sandbox to experiment."
   - q: "How do I get only the descriptions, or only the arguments, of some slots?"
     a: "Use [vocabulary] with a prefix to pick slots by name, [slot.description] for one description, and [slot.signature] for the input, arguments and output of one slot. The examples on this page show each of them, and all of them run in the public sandbox."
   - q: "How do I fix a missing or wrong description?"
@@ -91,9 +95,18 @@ Hyperlambda is homoiconic. A program is a tree of nodes, and a tree of nodes is 
 This is the complete Hyperlambda file behind the endpoint the pipeline calls. This is dogfooding in its purest form: the language documents itself with its own code.
 
 ```hyperlambda
-// Executable Hyperlambda file that lists every slot registered in the system and, for each slot, returns its name, its description and its signature. Returns a JSON array of objects, each with fields name (string), description (string) and signature (string, being the slot's signature converted to Hyperlambda text). Requires the caller to be in the role service, docs-sync or root, so only the documentation pipeline can read it.
+// Executable Hyperlambda file that lists every slot registered in the system and, for each slot, returns its name, its description and its signature. Returns a JSON array of objects, each with fields name (string), description (string) and signature (string, being the slot's signature converted to Hyperlambda text). Open to everybody, since it only reads metadata that is public in the open source code and runs no code supplied by the caller. Callers are throttled to 10 requests per 60 seconds per IP address, and everybody together to 60 requests per 60 seconds.
 .arguments
-auth.ticket.verify:service,docs-sync,root
+execution.throttle.create:docs-slots.ip
+   limit:int:10
+   window:int:60
+   per:ip
+execution.throttle.create:docs-slots.global
+   limit:int:60
+   window:int:60
+   per:global
+execution.throttle:docs-slots.ip
+execution.throttle:docs-slots.global
 vocabulary
 .result
 for-each:x:@vocabulary/*
@@ -111,11 +124,43 @@ for-each:x:@vocabulary/*
 return-nodes:x:@.result/*
 ```
 
-The first lines say who may call it: a service account, a role that exists for this one purpose. Everything after that is slots, and nothing else. It lists the compiled slots, and for each one it reads the description and the signature, turns the signature tree into Hyperlambda text with **[lambda2hyper]**, and returns one object per slot. A Python script then parses that text, since Hyperlambda is a tree and the text is its serialisation, and writes markdown.
+It begins with two throttles, one per IP address and one for everybody together, and has no authentication, since there is nothing to protect: it reads metadata that is public in the open source code and runs nothing a caller sends. Everything after that is slots, and nothing else. It lists the compiled slots, and for each one it reads the description and the signature, turns the signature tree into Hyperlambda text with **[lambda2hyper]**, and returns one object per slot. A Python script then parses that text, since Hyperlambda is a tree and the text is its serialisation, and writes markdown.
 
-### You can run the same code, but you will not get the same result
+### Get the whole reference yourself
 
-The documentation code above needs to see the whole language, and that is exactly what a public sandbox must not allow. A slot can only be described by code that is allowed to call it, so a sandbox that could describe everything could also run everything. The public sandbox below therefore knows only **53 slots**: introspection, tree handling, strings and arithmetic. Run the very same Hyperlambda there and it returns what it can see, which is its own vocabulary. The whole language is only visible to the service account that the pipeline uses.
+The endpoint above is public. There is no account, no key and no secret. To protect the server it is throttled to **10 requests per 60 seconds per IP address**, and to **60 per 60 seconds** for everybody together, and beyond that it answers `429`. The answer is about 640 KB, so keep a copy rather than asking again.
+
+```bash
+curl -s https://hyperlambda.dev/magic/modules/docs/slots
+```
+
+It returns a JSON array with one object per slot, with the fields `name`, `description` and `signature`. The signature is the contract of the slot written as Hyperlambda text by **[lambda2hyper]**, which parses straight back into a tree with **[hyper2lambda]**. With `jq` you can ask it questions.
+
+#### List every slot name
+
+```bash
+curl -s https://hyperlambda.dev/magic/modules/docs/slots | jq -r '.[].name'
+```
+
+#### Get the description of one slot
+
+```bash
+curl -s https://hyperlambda.dev/magic/modules/docs/slots | jq -r '.[] | select(.name == "strings.concat") | .description'
+```
+
+#### Get the full signature of one slot
+
+```bash
+curl -s https://hyperlambda.dev/magic/modules/docs/slots | jq -r '.[] | select(.name == "data.read") | .signature'
+```
+
+#### Find the slots whose description mentions something
+
+```bash
+curl -s https://hyperlambda.dev/magic/modules/docs/slots | jq -r '.[] | select((.description // "") | test("rows")) | .name'
+```
+
+The public sandbox below sees fewer slots than this endpoint. It runs **your** code, so it can only describe the **53 slots** it is itself allowed to call. A slot can only be described by code that is allowed to call it, so a sandbox that described everything could also run everything. Use the endpoint for the whole language, and the sandbox to experiment.
 
 ### The public sandbox
 
@@ -742,13 +787,13 @@ return-nodes:x:@.response/*
 
 ### The pipeline
 
-This is the complete GitHub Actions workflow. The token it uses belongs to the service account, and is stored as an encrypted repository secret.
+This is the complete GitHub Actions workflow. It needs no credentials, since the endpoint is public.
 
 <details markdown="1">
 <summary>Show the entire workflow</summary>
 
 ```yaml
-{% raw %}# Keeps the plugin pages and the generated slot reference in sync with Magic Cloud.
+# Keeps the plugin pages and the generated slot reference in sync with Magic Cloud.
 #
 # Two jobs in one run:
 #
@@ -757,8 +802,8 @@ This is the complete GitHub Actions workflow. The token it uses belongs to the s
 #   The README is the source of truth.
 # * build-slot-reference.py asks a read-only Hyperlambda endpoint on hyperlambda.dev for
 #   every compiled slot and renders reference/slots/ from the answer. The endpoint is
-#   restricted to a service account, whose token is the repository secret
-#   HYPERLAMBDA_DOCS_TOKEN. Nothing is built, and no source code is parsed.
+#   public and throttled, so no credentials are needed. Nothing is built, and no source
+#   code is parsed.
 #
 # It runs weekly and on demand, since the Magic repository is a separate project that
 # cannot trigger this one without a token. Run it from the Actions tab after a release.
@@ -799,8 +844,6 @@ jobs:
 
       # Fails, and writes nothing, when the endpoint answers with too few slots.
       - name: Generate slot reference
-        env:
-          HYPERLAMBDA_DOCS_TOKEN: ${{ secrets.HYPERLAMBDA_DOCS_TOKEN }}
         run: python3 .github/scripts/build-slot-reference.py
 
       # Only commit when something actually changed.
@@ -814,7 +857,7 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Sync plugin docs and slot reference"
-          git push{% endraw %}
+          git push
 ```
 
 </details>
