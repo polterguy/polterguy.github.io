@@ -15635,7 +15635,7 @@ Use [vocabulary] with a prefix to pick slots by name, [slot.description] for one
 
 **Does every slot have its own page?**
 
-Yes. Each slot has a page of its own at /reference/slots/<namespace>/<slot>/, small enough to read or index on its own, with its value, arguments, constraints, return value and complete JSON declaration. The namespace pages are indexes that link to them.
+Yes. Each slot has a page of its own, at /reference/slots/ followed by its namespace and its name, for example /reference/slots/strings/strings.concat/. It is small enough to read or index on its own, with its value, arguments, constraints, return value and complete JSON declaration. The namespace pages are indexes that link to them.
 
 **Where do I find the JSON declaration of a single slot?**
 
