@@ -6117,11 +6117,11 @@ mime.list
 # How to use [request.cookies.get]
 
 URL: https://docs.ainiro.io/plugins/magic.endpoint/request.cookies.get/
-Description: How to use [request.cookies.get] - This slot returns the value of a cookie sent with the current request.
+Description: How to use [request.cookies.get] - This slot returns the value of a cookie sent with the current request, or null if the request has no such cookie.
 
 The reference page of [`request.cookies.get`](https://docs.ainiro.io/reference/slots/request/request.cookies.get/) has its arguments, constraints and declaration.
 
-This slot returns the value of a cookie sent with the current request. Below is an example, to use inside of an endpoint.
+This slot returns the value of a cookie sent with the current request, or null if the request has no such cookie. Below is an example, to use inside of an endpoint.
 
 ```
 request.cookies.get:my-cookie
@@ -6218,11 +6218,11 @@ request.scheme
 # How to use [request.url]
 
 URL: https://docs.ainiro.io/plugins/magic.endpoint/request.url/
-Description: How to use [request.url] - This slot returns the URL path of the current request as its value, and each query string parameter as a child node.
+Description: How to use [request.url] - This slot returns the URL of the current request as its value, and each query string parameter as a child node.
 
 The reference page of [`request.url`](https://docs.ainiro.io/reference/slots/request/request.url/) has its arguments, constraints and declaration.
 
-This slot returns the URL path of the current request as its value, and each query string parameter as a child node. Below is an example, to use inside of an endpoint.
+This slot returns the URL of the current request as its value, and each query string parameter as a child node. Below is an example, to use inside of an endpoint.
 
 ```
 request.url
@@ -7062,14 +7062,14 @@ config.save:x:@config.load
 # How to use [config.section]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.config/config.section/
-Description: How to use [config.section] - This slot reads one section of your "appsettings.json" file, and returns its keys and nested values as child nodes.
+Description: How to use [config.section] - This slot reads one section of your "appsettings.json" file, and returns each of its keys as a child node holding the value.
 
 The reference page of [`config.section`](https://docs.ainiro.io/reference/slots/config/config.section/) has its arguments, constraints and declaration.
 
-This slot reads one section of your _"appsettings.json"_ file, and returns its keys and nested values as child nodes. Below is an example.
+This slot reads one section of your _"appsettings.json"_ file, and returns each of its keys as a child node holding the value. A key that is a section of its own has no value, so you read it by asking for it with the section names separated by `:`, such as in the example below.
 
 ```
-config.section:magic
+config.section:magic:culture
 ```
 
 
@@ -10381,7 +10381,7 @@ file's path relative to the root folder of your backend, and accepts the followi
 * **[display-hidden]** - Boolean, defaults to false, which hides files starting with a `.`
 * **[display-system]** - Boolean, defaults to true, and if false hides files inside of _"/system/"_, _"/misc/"_, _"/data/"_ and _"/config/"_
 
-This slot lists every file in a folder and in all of its subfolders, as child nodes holding the path of each file. Hidden files and system folders are left out unless you set **[display-hidden]** or **[display-system]**. Below is an example.
+This slot lists every file in a folder and in all of its subfolders, as child nodes holding the path of each file. Files whose names start with a dot are left out unless you set **[display-hidden]** to true, and you can leave out the files in the _"/system/"_, _"/misc/"_, _"/data/"_ and _"/config/"_ folders by setting **[display-system]** to false. Below is an example.
 
 ```
 io.file.list-recursively:/misc/
@@ -10419,7 +10419,7 @@ has the following two children.
 
 As with **[io.file.load]**, you should not use this slot on binary files.
 
-This slot loads every file in a folder and its subfolders, and returns one child node per file, holding its path and content. Below is an example.
+This slot loads every file in a folder and its subfolders, and returns one child node per file, holding the path of the file as **[name]**, and its content as text in **[content]**. Below is an example.
 
 ```
 io.file.load-recursively:/misc/snippets/
@@ -10774,7 +10774,7 @@ path relative to the root folder of your backend, and accepts the following opti
 * **[display-hidden]** - Boolean, defaults to false, which hides folders starting with a `.`
 * **[display-system]** - Boolean, defaults to true, and if false hides folders inside of _"/system/"_, _"/misc/"_, _"/data/"_ and _"/config/"_
 
-This slot lists every folder below a folder, at any depth, as child nodes holding the path of each folder. Hidden folders and system folders are left out unless you set **[display-hidden]** or **[display-system]**. Below is an example.
+This slot lists every folder below a folder, at any depth, as child nodes holding the path of each folder. Folders whose names start with a dot are left out unless you set **[display-hidden]** to true, and you can leave out the _"/system/"_, _"/misc/"_, _"/data/"_ and _"/config/"_ folders by setting **[display-system]** to false. Below is an example.
 
 ```
 io.folder.list-recursively:/misc/
