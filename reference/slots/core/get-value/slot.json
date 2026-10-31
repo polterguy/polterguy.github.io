@@ -1,0 +1,16 @@
+{
+  "name": "get-value",
+  "description": "Returns the value of the first matching node",
+  "signature": {
+    "input": {
+      "kind": "single-object",
+      "description": "Expression selecting the node whose value should be retrieved",
+      "required": true,
+      "mode": "Expression"
+    },
+    "output": {
+      "mode": "Value",
+      "description": "Resolves to the value of the first matching node"
+    }
+  }
+}

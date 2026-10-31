@@ -1,0 +1,18 @@
+{
+  "name": "response.headers.set",
+  "description": "Sets one or more response headers from key/value child nodes",
+  "signature": {
+    "children": {
+      "*": {
+        "type": "string",
+        "kind": "http-response-header-value",
+        "description": "Response header name and value",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "OneOrMore",
+        "role": "DynamicMap",
+        "projection": "Value"
+      }
+    }
+  }
+}

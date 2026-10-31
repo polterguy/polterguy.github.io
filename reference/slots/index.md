@@ -23,6 +23,10 @@ faq:
     a: "The sandbox runs your code, so it can only describe the 53 slots it is itself allowed to call. A slot can only be described by code that is allowed to call it, so a sandbox that described everything could also run everything. Use the slot endpoint for the whole language and the sandbox to experiment."
   - q: "How do I get only the descriptions, or only the arguments, of some slots?"
     a: "Use [vocabulary] with a prefix to pick slots by name, [slot.description] for one description, and [slot.signature] for the input, arguments and output of one slot. The examples on this page show each of them, and all of them run in the public sandbox."
+  - q: "Does every slot have its own page?"
+    a: "Yes. Each slot has a page of its own at /reference/slots/<namespace>/<slot>/, small enough to read or index on its own, with its value, arguments, constraints, return value and complete JSON declaration. The namespace pages are indexes that link to them."
+  - q: "Where do I find the JSON declaration of a single slot?"
+    a: "At the bottom of the slot's page, in an expandable section with a copy button, and as a file next to the page called slot.json. For strings.concat that is /reference/slots/strings/strings.concat/slot.json."
   - q: "How do I fix a missing or wrong description?"
     a: "Change the metadata on the slot in the source code of Magic Cloud, its description or its signature. The next run of the pipeline publishes it here."
   - q: "How often is the reference updated?"
@@ -35,7 +39,7 @@ faq:
     a: "The server sits behind Cloudflare, which rejects requests that carry no User-Agent header, or the default one of an http library such as Python's urllib. Send any descriptive User-Agent and the request goes through."
 ---
 
-Every slot in Magic Cloud and Hyperlambda, **406 in total**, with its arguments and return value. Start with the **core keywords**, such as [if] and [for-each], or pick a namespace. [How this reference is built](#this-reference-was-not-written-it-was-asked-for) is explained further down.
+Every slot in Magic Cloud and Hyperlambda, **406 in total**, with its arguments and return value. Start with the **core keywords**, such as [if] and [for-each], or pick a namespace. Every slot has a page of its own, with its complete JSON declaration. [How this reference is built](#this-reference-was-not-written-it-was-asked-for) is explained further down.
 
 ## Slots by namespace
 

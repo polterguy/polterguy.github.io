@@ -1,0 +1,17 @@
+{
+  "name": "floatArray2bytes",
+  "description": "Serializes a sequence of float values into raw bytes; useful for embedding vectors or feeding binary APIs",
+  "signature": {
+    "input": {
+      "kind": "float-list",
+      "description": "Float values to convert to bytes",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "binary-content",
+      "description": "Resolves to the float array converted to bytes"
+    }
+  }
+}

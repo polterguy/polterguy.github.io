@@ -1,0 +1,32 @@
+{
+  "name": "pgsql.scalar",
+  "description": "Executes SQL and returns a scalar value from the current PostgreSQL connection",
+  "signature": {
+    "input": {
+      "kind": "sql-scalar",
+      "description": "SQL statement to execute",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "*": {
+        "type": "object",
+        "kind": "sql-parameter-value,text,number,boolean,date,guid,content,value",
+        "description": "SQL parameter value; child name is used as the parameter name referenced by the SQL statement",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrMore",
+        "role": "Arguments",
+        "projection": "Value"
+      }
+    },
+    "scope": {
+      "requires": "pgsql.connection",
+      "description": "Requires an open PostgreSQL connection created by [pgsql.connect]"
+    },
+    "output": {
+      "mode": "Value",
+      "description": "Resolves to the scalar result of the SQL statement"
+    }
+  }
+}

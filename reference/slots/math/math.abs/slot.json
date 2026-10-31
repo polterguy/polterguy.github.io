@@ -1,0 +1,17 @@
+{
+  "name": "math.abs",
+  "description": "Returns the absolute value",
+  "signature": {
+    "input": {
+      "kind": "number",
+      "description": "Numeric value to transform",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "number",
+      "description": "Resolves to the absolute value"
+    }
+  }
+}

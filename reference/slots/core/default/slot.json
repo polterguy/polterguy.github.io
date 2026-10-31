@@ -1,0 +1,27 @@
+{
+  "name": "default",
+  "description": "Evaluates the default branch inside [switch]",
+  "signature": {
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Default branch body executed by the parent [switch]",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "OneOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    },
+    "constraints": [
+      {
+        "description": "Parent node must have the listed slot name",
+        "values": [
+          "switch"
+        ],
+        "kind": "ParentMustBe"
+      }
+    ]
+  }
+}

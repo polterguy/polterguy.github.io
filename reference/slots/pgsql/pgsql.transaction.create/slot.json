@@ -1,0 +1,11 @@
+{
+  "name": "pgsql.transaction.create",
+  "description": "Creates a PostgreSQL transaction",
+  "signature": {
+    "scope": {
+      "provides": "pgsql.transaction",
+      "requires": "pgsql.connection",
+      "description": "Requires an open PostgreSQL connection created by [pgsql.connect]"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "get-context",
+  "description": "Returns a stack value or context object from the current execution context",
+  "signature": {
+    "input": {
+      "kind": "context-name",
+      "description": "Context name to retrieve",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "scope": {
+      "requires": "context",
+      "description": "Requires a named context created by [context] using the same input value"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "context-value",
+      "description": "Resolves to the requested stack value or context object"
+    }
+  }
+}

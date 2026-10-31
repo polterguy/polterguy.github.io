@@ -1,0 +1,95 @@
+{
+  "name": "python.execute",
+  "description": "Runs a Python script or file in a subprocess and captures stdout, stderr, and exit code",
+  "signature": {
+    "children": {
+      "code": {
+        "type": "string",
+        "kind": "python-code",
+        "description": "Inline Python code to execute",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "file": {
+        "type": "string",
+        "kind": "python-file",
+        "description": "Python file to execute",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "args": {
+        "type": "string|lambda",
+        "kind": "terminal-arguments",
+        "description": "Command-line arguments as a shell-like string or child values",
+        "required": false,
+        "mode": "StructuredArguments",
+        "cardinality": "ZeroOrOne",
+        "role": "Arguments",
+        "projection": "ArgumentBag",
+        "children": {
+          "*": {
+            "type": "string",
+            "kind": "terminal-argument",
+            "description": "Single command-line argument",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrMore",
+            "role": "Arguments",
+            "projection": "Value"
+          }
+        }
+      },
+      "stdin": {
+        "type": "string",
+        "kind": "stdin-text",
+        "description": "Text written to standard input",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "working-directory": {
+        "type": "string",
+        "kind": "folder-path",
+        "description": "Working directory for the Python process",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "timeout": {
+        "type": "int",
+        "description": "Execution timeout in seconds",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "30",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "constraints": [
+      {
+        "description": "Exactly one code source must be supplied",
+        "values": [
+          "code",
+          "file"
+        ],
+        "kind": "ExactlyOneOf"
+      }
+    ],
+    "output": {
+      "mode": "Both",
+      "kind": "terminal-response,text",
+      "description": "Returns stdout in value and stderr and exit code as child nodes"
+    }
+  }
+}

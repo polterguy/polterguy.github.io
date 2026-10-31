@@ -1,0 +1,24 @@
+{
+  "name": "math.multiply",
+  "description": "Multiplies numeric values",
+  "signature": {
+    "children": {
+      "*": {
+        "type": "number",
+        "kind": "number",
+        "description": "Numeric operand evaluated before calculating the result",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "TwoOrMore",
+        "role": "OperandPaired",
+        "evaluation": "EvalSelf",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "number",
+      "description": "Resolves to the product of the supplied operands"
+    }
+  }
+}

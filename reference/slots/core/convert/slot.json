@@ -1,0 +1,28 @@
+{
+  "name": "convert",
+  "description": "Coerces a value to a different CLR type; useful for parsing strings into numbers, dates, booleans, or other strongly-typed values",
+  "signature": {
+    "input": {
+      "kind": "single-object",
+      "description": "Expression selecting the value to convert",
+      "required": true,
+      "mode": "Expression"
+    },
+    "children": {
+      "type": {
+        "type": "string",
+        "kind": "type-name",
+        "description": "Target Hyperlambda type name",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "description": "Resolves to the value converted to the requested type"
+    }
+  }
+}

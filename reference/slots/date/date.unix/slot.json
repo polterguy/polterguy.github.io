@@ -1,0 +1,11 @@
+{
+  "name": "date.unix",
+  "description": "Returns the current UTC time as a Unix timestamp",
+  "signature": {
+    "output": {
+      "mode": "Value",
+      "kind": "unix-timestamp,integer,number",
+      "description": "Resolves to the current UTC Unix timestamp in milliseconds"
+    }
+  }
+}

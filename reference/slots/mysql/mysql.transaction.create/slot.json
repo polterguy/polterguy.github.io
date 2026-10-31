@@ -1,0 +1,11 @@
+{
+  "name": "mysql.transaction.create",
+  "description": "Creates a MySQL transaction",
+  "signature": {
+    "scope": {
+      "provides": "mysql.transaction",
+      "requires": "mysql.connection",
+      "description": "Requires an open MySQL connection created by [mysql.connect]"
+    }
+  }
+}

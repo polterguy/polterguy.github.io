@@ -1,0 +1,33 @@
+{
+  "name": "mysql.execute",
+  "description": "Executes SQL on the current MySQL connection",
+  "signature": {
+    "input": {
+      "kind": "sql-execute",
+      "description": "SQL statement to execute",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "*": {
+        "type": "object",
+        "kind": "sql-parameter-value,text,number,boolean,date,guid,content,value",
+        "description": "SQL parameter value; child name is used as the parameter name referenced by the SQL statement",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrMore",
+        "role": "Arguments",
+        "projection": "Value"
+      }
+    },
+    "scope": {
+      "requires": "mysql.connection",
+      "description": "Requires an open MySQL connection created by [mysql.connect]"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "integer,number",
+      "description": "Resolves to the number of rows affected by the SQL statement"
+    }
+  }
+}

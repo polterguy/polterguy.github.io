@@ -1,0 +1,18 @@
+{
+  "name": "sockets.connection.enter-group",
+  "description": "Adds the current connection to a socket group",
+  "signature": {
+    "children": {
+      "group": {
+        "type": "string",
+        "kind": "socket-group",
+        "description": "Socket group name",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    }
+  }
+}

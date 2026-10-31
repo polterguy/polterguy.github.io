@@ -1,0 +1,39 @@
+{
+  "name": "else-if",
+  "description": "Evaluates the child lambda when its condition is true and no preceding [if]/[else-if] branch matched",
+  "signature": {
+    "children": {
+      "*": {
+        "type": "lambda",
+        "kind": "boolean",
+        "description": "Condition node evaluated for truthiness",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne",
+        "role": "Condition",
+        "evaluation": "EvalSelf",
+        "projection": "Value"
+      },
+      ".lambda": {
+        "type": "lambda",
+        "description": "Executable lambda block",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne",
+        "role": "LambdaBlock",
+        "evaluation": "EvalBlock",
+        "projection": "Self"
+      }
+    },
+    "constraints": [
+      {
+        "description": "Previous sibling must be one of the listed slot names",
+        "values": [
+          "if",
+          "else-if"
+        ],
+        "kind": "PreviousSiblingMustBeOneOf"
+      }
+    ]
+  }
+}

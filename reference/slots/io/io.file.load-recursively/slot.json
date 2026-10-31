@@ -1,0 +1,52 @@
+{
+  "name": "io.file.load-recursively",
+  "description": "Loads files recursively from the specified folder",
+  "signature": {
+    "input": {
+      "kind": "folder-path",
+      "description": "Folder path to load from",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "loaded-file-list,node-list",
+      "element-kind": "loaded-file,lambda-tree",
+      "description": "Returns one unnamed child node per loaded file; each entry has a [name] child (relative file path) and a [content] child (file content as string)",
+      "children": [
+        {
+          "type": "lambda",
+          "kind": "loaded-file",
+          "description": "One loaded file entry; access fields via the [name] and [content] children",
+          "required": false,
+          "mode": "Value",
+          "cardinality": "ZeroOrMore",
+          "role": "StructuredObject",
+          "projection": "StructuredTree",
+          "children": {
+            "name": {
+              "type": "string",
+              "kind": "file-path",
+              "description": "Relative file path of the loaded file",
+              "required": true,
+              "mode": "Value",
+              "cardinality": "ExactlyOne",
+              "role": "Option",
+              "projection": "Value"
+            },
+            "content": {
+              "type": "string",
+              "kind": "text-file-content",
+              "description": "Loaded file content as text",
+              "required": true,
+              "mode": "Value",
+              "cardinality": "ExactlyOne",
+              "role": "Payload",
+              "projection": "Value"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

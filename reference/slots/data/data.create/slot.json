@@ -1,0 +1,65 @@
+{
+  "name": "data.create",
+  "description": "Inserts a new row into the current open database connection",
+  "signature": {
+    "children": {
+      "database-type": {
+        "type": "string",
+        "kind": "database-type",
+        "description": "Database adapter to use instead of the configured default",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne"
+      },
+      "generate": {
+        "type": "bool",
+        "description": "Whether to only generate SQL and parameter nodes instead of executing it",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false"
+      },
+      "return-id": {
+        "type": "bool",
+        "description": "Whether to return the created row ID",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "true"
+      },
+      "table": {
+        "type": "string",
+        "kind": "table-name",
+        "description": "Table name to use in the SQL statement",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne"
+      },
+      "values": {
+        "type": "lambda",
+        "description": "Column values to insert or update",
+        "required": true,
+        "mode": "DynamicNamedValues",
+        "cardinality": "ExactlyOne",
+        "children": {
+          "*": {
+            "type": "object",
+            "kind": "sql-column-value,text,number,boolean,date,guid,content,value",
+            "description": "Column name and value",
+            "required": true,
+            "mode": "ValueOrExpression",
+            "cardinality": "OneOrMore"
+          }
+        }
+      }
+    },
+    "scope": {
+      "requires": "data.connection",
+      "description": "Requires an open database connection created by [data.connect]"
+    },
+    "output": {
+      "mode": "Value",
+      "description": "Resolves to the created row ID when [return-id] is true, otherwise null"
+    }
+  }
+}

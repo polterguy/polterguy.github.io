@@ -1,0 +1,40 @@
+{
+  "name": "git.branch.list",
+  "description": "Returns every branch in the local repository, marking which one is currently checked out",
+  "signature": {
+    "input": {
+      "kind": "git-repo-path",
+      "description": "Repository path",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "remote": {
+        "type": "bool",
+        "description": "List remote branches",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "all": {
+        "type": "bool",
+        "description": "List all branches",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "git-branch-list,string-list",
+      "element-kind": "git-branch,text",
+      "description": "Returns one unnamed child node per git branch name"
+    }
+  }
+}

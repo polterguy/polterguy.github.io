@@ -1,0 +1,94 @@
+{
+  "name": "auth.ticket.create",
+  "description": "Issues a signed JWT carrying the supplied username, roles, and claims; typically returned after a successful login",
+  "signature": {
+    "children": {
+      "username": {
+        "type": "string",
+        "kind": "username",
+        "description": "Username to put in the ticket",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "roles": {
+        "type": "lambda",
+        "kind": "role-list",
+        "description": "Roles to put in the ticket",
+        "required": false,
+        "mode": "StructuredArguments",
+        "cardinality": "ZeroOrOne",
+        "role": "StructuredObject",
+        "projection": "Children",
+        "children": {
+          "*": {
+            "type": "string",
+            "kind": "role",
+            "description": "List item",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrMore",
+            "role": "Option",
+            "projection": "Value"
+          }
+        }
+      },
+      "claims": {
+        "type": "lambda",
+        "description": "Claims to put in the ticket",
+        "required": false,
+        "mode": "StructuredArguments",
+        "cardinality": "ZeroOrOne",
+        "role": "DynamicMap",
+        "projection": "Children",
+        "children": {
+          "*": {
+            "type": "string",
+            "kind": "jwt-claim",
+            "description": "Named map entry",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrMore",
+            "role": "Option",
+            "projection": "Value"
+          }
+        }
+      },
+      "expires": {
+        "type": "DateTime",
+        "description": "Absolute UTC expiration time",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "duration": {
+        "type": "long",
+        "description": "Relative expiration duration in minutes",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "constraints": [
+      {
+        "description": "Use either absolute [expires] or relative [duration]",
+        "values": [
+          "expires",
+          "duration"
+        ],
+        "kind": "AtMostOneOf"
+      }
+    ],
+    "output": {
+      "mode": "Value",
+      "kind": "jwt,text",
+      "description": "Resolves to the created JWT ticket string"
+    }
+  }
+}

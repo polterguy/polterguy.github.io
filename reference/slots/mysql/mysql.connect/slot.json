@@ -1,0 +1,28 @@
+{
+  "name": "mysql.connect",
+  "description": "Opens a MySQL connection",
+  "signature": {
+    "input": {
+      "kind": "database-name,connection-string",
+      "description": "Optional DATABASE_NAME or [CONNECTION_STRING|DATABASE_NAME] override",
+      "required": false,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Executable child slot evaluated while the database connection is open",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    },
+    "scope": {
+      "provides": "mysql.connection",
+      "description": "Creates an open MySQL connection scope for mysql.* slots"
+    }
+  }
+}

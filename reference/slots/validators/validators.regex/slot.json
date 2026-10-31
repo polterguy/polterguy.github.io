@@ -1,0 +1,24 @@
+{
+  "name": "validators.regex",
+  "description": "Validates that a value or resolved expression result matches a regular expression, bounded by the execution deadline when set, throwing if validation fails",
+  "signature": {
+    "input": {
+      "kind": "text",
+      "description": "Value or expression selecting the node or nodes to validate",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "regex": {
+        "type": "string",
+        "kind": "regex",
+        "description": "Regular expression pattern the value must match",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    }
+  }
+}

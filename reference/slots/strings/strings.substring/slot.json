@@ -1,0 +1,41 @@
+{
+  "name": "strings.substring",
+  "description": "Extracts a portion of a string starting at the given offset and optional length; out-of-range bounds throw",
+  "signature": {
+    "input": {
+      "kind": "text",
+      "description": "Text to transform",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": [
+      {
+        "type": "int",
+        "kind": "substring-arg",
+        "description": "Start index",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne",
+        "role": "SourceExpression",
+        "evaluation": "EvalSelf",
+        "projection": "Value"
+      },
+      {
+        "type": "int",
+        "kind": "substring-arg",
+        "description": "Optional length",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrOne",
+        "role": "SourceExpression",
+        "evaluation": "EvalSelf",
+        "projection": "Value"
+      }
+    ],
+    "output": {
+      "mode": "Value",
+      "kind": "text",
+      "description": "Resolves to the extracted substring"
+    }
+  }
+}

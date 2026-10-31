@@ -1,0 +1,33 @@
+{
+  "name": "sqlite.execute",
+  "description": "Executes SQL on the current SQLite connection",
+  "signature": {
+    "input": {
+      "kind": "sql-execute",
+      "description": "SQL statement to execute",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "*": {
+        "type": "object",
+        "kind": "sql-parameter-value,text,number,boolean,date,guid,content,value",
+        "description": "SQL parameter value; child name is used as the parameter name referenced by the SQL statement",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrMore",
+        "role": "Arguments",
+        "projection": "Value"
+      }
+    },
+    "scope": {
+      "requires": "sqlite.connection",
+      "description": "Requires an open SQLite connection created by [sqlite.connect]"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "integer,number",
+      "description": "Resolves to the number of rows affected by the SQL statement"
+    }
+  }
+}

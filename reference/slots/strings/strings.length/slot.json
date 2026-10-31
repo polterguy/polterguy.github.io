@@ -1,0 +1,17 @@
+{
+  "name": "strings.length",
+  "description": "Returns the length of a string",
+  "signature": {
+    "input": {
+      "kind": "text",
+      "description": "Text to measure",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "integer,number",
+      "description": "Resolves to the number of characters in the string"
+    }
+  }
+}

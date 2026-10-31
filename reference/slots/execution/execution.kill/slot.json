@@ -1,0 +1,17 @@
+{
+  "name": "execution.kill",
+  "description": "Cancels a running execution by execution ID",
+  "signature": {
+    "input": {
+      "kind": "execution-id",
+      "description": "Execution ID to cancel",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "boolean",
+      "description": "Returns true if the execution was cancelled"
+    }
+  }
+}

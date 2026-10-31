@@ -1,0 +1,17 @@
+{
+  "name": "system.is-os",
+  "description": "Returns true if the current operating system matches the specified platform",
+  "signature": {
+    "input": {
+      "kind": "os-name",
+      "description": "Operating system platform name to compare against, typically WINDOWS, LINUX, OSX, or FREEBSD",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "boolean",
+      "description": "Returns true if the current operating system matches the supplied platform name"
+    }
+  }
+}

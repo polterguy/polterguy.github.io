@@ -1,0 +1,12 @@
+{
+  "name": "tasks.execute",
+  "description": "Runs a stored task synchronously right now, ignoring its schedule; handy for ad-hoc invocations or testing",
+  "signature": {
+    "input": {
+      "kind": "task-id",
+      "description": "Task ID to execute",
+      "required": true,
+      "mode": "ValueOrExpression"
+    }
+  }
+}

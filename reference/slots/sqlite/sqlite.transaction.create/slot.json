@@ -1,0 +1,11 @@
+{
+  "name": "sqlite.transaction.create",
+  "description": "Creates a SQLite transaction",
+  "signature": {
+    "scope": {
+      "provides": "sqlite.transaction",
+      "requires": "sqlite.connection",
+      "description": "Requires an open SQLite connection created by [sqlite.connect]"
+    }
+  }
+}

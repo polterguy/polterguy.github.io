@@ -1,0 +1,12 @@
+{
+  "name": "validators.email",
+  "description": "Validates that a value or resolved expression result is an email address, throwing if validation fails",
+  "signature": {
+    "input": {
+      "kind": "email",
+      "description": "Email value or expression selecting the node or nodes to validate",
+      "required": true,
+      "mode": "ValueOrExpression"
+    }
+  }
+}

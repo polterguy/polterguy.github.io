@@ -1,0 +1,39 @@
+{
+  "name": "strings.mixin",
+  "description": "Applies string interpolation from child expressions",
+  "signature": {
+    "input": {
+      "kind": "mixin-template,text",
+      "description": "Template text to interpolate",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "strip": {
+        "type": "bool",
+        "description": "Whether to strip embedded Hyperlambda instead of executing it",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "*": {
+        "type": "string",
+        "kind": "string-values",
+        "description": "Argument passed to embedded Hyperlambda snippets invoked from the template",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrMore",
+        "role": "Arguments",
+        "projection": "ArgumentBag"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "text",
+      "description": "Resolves to the rendered string after applying codebehind and expressions"
+    }
+  }
+}

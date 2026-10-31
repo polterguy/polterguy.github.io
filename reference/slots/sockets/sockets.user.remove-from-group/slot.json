@@ -1,0 +1,24 @@
+{
+  "name": "sockets.user.remove-from-group",
+  "description": "Removes a user from a socket group",
+  "signature": {
+    "input": {
+      "kind": "username",
+      "description": "Username to remove from the socket group",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "group": {
+        "type": "string",
+        "kind": "socket-group",
+        "description": "Socket group name",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    }
+  }
+}

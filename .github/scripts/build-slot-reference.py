@@ -23,13 +23,11 @@ import glob
 import json
 import os
 import re
-import shutil
 import sys
 import urllib.error
 import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-OUT = os.path.join(ROOT, 'reference', 'slots')
 ENDPOINT_URL = 'https://hyperlambda.dev/magic/modules/docs/slots'
 PLAYGROUND_URL = 'https://hyperlambda.dev/magic/modules/docs/playground'
 
@@ -100,10 +98,12 @@ def label(name):
     return {'.': '_unnamed child node_', '*': '_any node name_'}.get(name, '`[%s]`' % name)
 
 
-MAX_DEPTH = 3
+MAX_DEPTH = 3          # on pages listing many slots
+PAGE_DEPTH = 6         # on the page of a single slot, where there is room for the whole contract
+INLINE_JSON_LIMIT = 3000  # bytes; larger declarations are fetched when the reader opens them
 
 
-def argument_rows(nodes, cut, path=()):
+def argument_rows(nodes, cut, path=(), depth=MAX_DEPTH):
     """
     One row per argument. A node that repeats one of its own ancestors is recursion in the
     contract and is skipped, and nesting stops at MAX_DEPTH, both recorded in [cut].
@@ -128,10 +128,10 @@ def argument_rows(nodes, cut, path=()):
             cell(' '.join(p for p in parts if p))))
         nested = child(n, 'children')
         if nested:
-            if len(path) + 1 >= MAX_DEPTH:
+            if len(path) + 1 >= depth:
                 cut.append(name)
             else:
-                rows += argument_rows(nested['children'], cut, path + (name,))
+                rows += argument_rows(nested['children'], cut, path + (name,), depth)
     return rows
 
 
@@ -139,14 +139,10 @@ def table(head, rows):
     return ['| ' + ' | '.join(head) + ' |', '|' + '---|' * len(head)] + rows
 
 
-def render_entry(entry, anchors):
+def render_contract(entry, anchors, depth):
+    """The facts, tables and constraints of one slot, as markdown lines."""
     tree = entry['tree']
-    out = ['## [%s]' % entry['names'][0], '']
-    out.append((entry['description'].rstrip('.') + '.') if entry['description'] else '_No description yet._')
-    out.append('')
-    if len(entry['names']) > 1:
-        out += ['Aliases: ' + ', '.join('**[%s]**' % n for n in entry['names'][1:]), '']
-
+    out = []
     facts = []
     inp = child(tree, 'input')
     if inp:
@@ -166,28 +162,30 @@ def render_entry(entry, anchors):
         facts.append('* **Scope**: %s%s' % ('; '.join(bits), (' - ' + value(scope, 'description')) if value(scope, 'description') else ''))
     out += facts + ([''] if facts else [])
 
-    NOTE = '_Nodes nested deeper than %d levels, and nodes that repeat one of their own ancestors, are not listed._' % MAX_DEPTH
+    note = '_Nodes nested deeper than %d levels, and nodes that repeat one of their own ancestors, are not listed. The JSON declaration below has all of them._' % depth
     children = child(tree, 'children')
     if children and children['children']:
         cut = []
-        out += table(['Argument', 'Type', 'Required', 'Description'], argument_rows(children['children'], cut)) + ['']
+        out += ['### Arguments', ''] + table(['Argument', 'Type', 'Required', 'Description'],
+                                              argument_rows(children['children'], cut, (), depth)) + ['']
         if cut:
-            out += [NOTE, '']
+            out += [note, '']
 
     returned = child(outp, 'children') if outp else None
     if returned and returned['children']:
         cut = []
-        out += ['Returned nodes:', ''] + table(['Node', 'Type', 'Required', 'Description'],
-                                              argument_rows(returned['children'], cut)) + ['']
+        out += ['### Returned nodes', ''] + table(['Node', 'Type', 'Required', 'Description'],
+                                                 argument_rows(returned['children'], cut, (), depth)) + ['']
         if cut:
-            out += [NOTE, '']
+            out += [note, '']
 
     constraints = child(tree, 'constraints')
-    if constraints:
+    if constraints and constraints['children']:
+        out += ['### Constraints', '']
         for c in constraints['children']:
             values = child(c, 'values')
             listed = ', '.join('`[%s]`' % v['value'] for v in values['children']) if values else ''
-            out.append('* **Constraint** (%s): %s%s' % (
+            out.append('* **%s**: %s%s' % (
                 value(c, 'kind', c['name']), value(c, 'description', ''), (' (%s)' % listed) if listed else ''))
         out.append('')
 
@@ -223,11 +221,6 @@ def group_entries(records):
         names.sort(key=lambda n: ('.' not in n, n))
         entries.append({'names': names, 'description': description, 'tree': from_json(json.loads(signature))})
     return entries
-
-
-def namespace(entry):
-    primary = entry['names'][0]
-    return primary.split('.')[0] if '.' in primary else 'core'
 
 
 def code_block(text, lang):
@@ -290,6 +283,103 @@ EXAMPLES = [
 ]
 
 
+def ns_of(name):
+    return name.split('.')[0] if '.' in name else 'core'
+
+
+def slot_url(name):
+    return '/reference/slots/%s/%s/' % (ns_of(name), name)
+
+
+def ns_url(ns):
+    return '/reference/slots/%s/' % ns
+
+
+def front_matter(**fields):
+    lines = ['---']
+    for key, val in fields.items():
+        lines.append('%s: %s' % (key, json.dumps(val, ensure_ascii=False) if isinstance(val, str) else str(val).lower()))
+    return lines + ['---', '']
+
+
+def sentence(text):
+    text = (text or '').strip()
+    return (text.rstrip('.') + '.') if text else ''
+
+
+def declaration(entry, text):
+    """The expandable JSON declaration. Small ones are inline, large ones are fetched when opened."""
+    if len(text.encode('utf-8')) <= INLINE_JSON_LIMIT:
+        return ['<details markdown="1" class="slot-declaration">', '<summary>JSON declaration</summary>', '',
+                code_block(text, 'json'), '', '</details>', '']
+    return ['<details class="slot-declaration slot-json" data-src="slot.json">',
+            '<summary>JSON declaration (loads when opened)</summary>',
+            '<noscript><p><a href="slot.json">Open the JSON declaration</a>.</p></noscript>',
+            '</details>', '']
+
+
+def render_slot_page(entry, record, prev, nxt, anchors):
+    name = entry['names'][0]
+    ns = ns_of(name)
+    where = 'a core slot, one of the keywords of the Hyperlambda language' if ns == 'core' else 'a slot in the `%s` namespace' % ns
+    text = json.dumps(record, indent=2, ensure_ascii=False)
+    lines = front_matter(title='[%s]' % name,
+                         description='%s is %s of Magic Cloud. %s' % (name, 'a core slot' if ns == 'core' else 'a slot in the %s namespace' % ns, sentence(entry['description'])),
+                         generated=True, llms=False, slot_json=slot_url(name) + 'slot.json')
+    lines += ['`%s` is %s, in Hyperlambda, the language of Magic Cloud. %s' % (name, where, sentence(entry['description'])), '']
+    if len(entry['names']) > 1:
+        lines += ['Also known as: ' + ', '.join('[`%s`](%s)' % (n, slot_url(n)) for n in entry['names'][1:]) + '.', '']
+    lines += render_contract(entry, anchors, PAGE_DEPTH)
+    lines += ['### JSON declaration', '',
+              'This is the complete declaration of `%s`, as the running system describes it. It is also published as [slot.json](slot.json).' % name, '']
+    lines += declaration(entry, text)
+    nav = []
+    if prev:
+        nav.append('[&larr; `%s`](%s)' % (prev, slot_url(prev)))
+    nav.append('[all %s slots](%s)' % ('core' if ns == 'core' else '`%s.*`' % ns, ns_url(ns)))
+    if nxt:
+        nav.append('[`%s` &rarr;](%s)' % (nxt, slot_url(nxt)))
+    lines += ['---', '', ' | '.join(nav), '']
+    return raw('\n'.join(lines)) + '\n', text + '\n'
+
+
+def render_alias_page(alias, entry):
+    primary = entry['names'][0]
+    return '\n'.join(front_matter(
+        title='[%s]' % alias,
+        description='%s is an alias of %s, with exactly the same contract. %s' % (alias, primary, sentence(entry['description'])),
+        canonical_url='https://docs.ainiro.io' + slot_url(primary), generated=True, llms=False) + [
+        '`%s` is an alias of [`%s`](%s) in Hyperlambda, the language of Magic Cloud, with exactly the same contract. %s' % (
+            alias, primary, slot_url(primary), sentence(entry['description'])), '',
+        'See [`%s`](%s) for its value, arguments, constraints and return value.' % (primary, slot_url(primary)), '']) + '\n'
+
+
+def render_namespace_index(ns, group):
+    title = 'Core keywords' if ns == 'core' else '%s.* slots' % ns
+    rows = []
+    for e in group:
+        name = e['names'][0]
+        extra = (' Also known as %s.' % ', '.join('`%s`' % n for n in e['names'][1:])) if len(e['names']) > 1 else ''
+        rows.append('| [`%s`](%s) | %s |' % (name, slot_url(name), cell(sentence(e['description']) + extra)))
+    lines = front_matter(
+        title=title,
+        description='The %d slots %s in Magic Cloud and Hyperlambda, each with its own page.' % (
+            len(group), 'that make up the core keywords' if ns == 'core' else 'named %s.*' % ns),
+        generated=True)
+    lines += ['%d slots, each with its own page and JSON declaration. See [how this reference is built](/reference/slots/).' % len(group), '']
+    lines += table(['Slot', 'Description'], rows) + ['']
+    return raw('\n'.join(lines)) + '\n'
+
+
+def render_reference_home():
+    return '\n'.join(front_matter(
+        title='Reference',
+        description='Reference documentation for Magic Cloud and Hyperlambda, generated from the running system.',
+        generated=True) + [
+        '* [Slot reference](/reference/slots/) - every slot in Hyperlambda with its arguments, constraints and return value, '
+        'one page and one JSON declaration per slot.', '']) + '\n'
+
+
 def faq(p):
     return [
         ('How is this slot reference generated?',
@@ -326,6 +416,12 @@ def faq(p):
         ('How do I get only the descriptions, or only the arguments, of some slots?',
          'Use [vocabulary] with a prefix to pick slots by name, [slot.description] for one description, and [slot.signature] for the input, arguments and output of one slot. '
          'The examples on this page show each of them, and all of them run in the public sandbox.'),
+        ('Does every slot have its own page?',
+         'Yes. Each slot has a page of its own at /reference/slots/<namespace>/<slot>/, small enough to read or index on its own, '
+         'with its value, arguments, constraints, return value and complete JSON declaration. The namespace pages are indexes that link to them.'),
+        ('Where do I find the JSON declaration of a single slot?',
+         'At the bottom of the slot\'s page, in an expandable section with a copy button, and as a file next to the page called slot.json. '
+         'For strings.concat that is /reference/slots/strings/strings.concat/slot.json.'),
         ('How do I fix a missing or wrong description?',
          'Change the metadata on the slot in the source code of Magic Cloud, its description or its signature. The next run of the pipeline publishes it here.'),
         ('How often is the reference updated?',
@@ -355,7 +451,7 @@ def render_index(counts, total, endpoint, sandbox, workflow, p):
 
     lines += [
         'Every slot in Magic Cloud and Hyperlambda, **%d in total**, with its arguments and return value. '
-        'Start with the **core keywords**, such as [if] and [for-each], or pick a namespace. '
+        'Start with the **core keywords**, such as [if] and [for-each], or pick a namespace. Every slot has a page of its own, with its complete JSON declaration. '
         '[How this reference is built](#this-reference-was-not-written-it-was-asked-for) is explained further down.' % total,
         '',
         '## Slots by namespace',
@@ -515,35 +611,37 @@ def main():
 
     entries = group_entries(records)
     anchors = guide_anchors()
+    by_record = {r['name']: r for r in records}
     by_ns = {}
     for e in entries:
-        by_ns.setdefault(namespace(e), []).append(e)
+        by_ns.setdefault(ns_of(e['names'][0]), []).append(e)
 
-    # Only generated pages are removed, never anything written by hand.
-    if os.path.isdir(OUT):
-        for name in os.listdir(OUT):
-            path = os.path.join(OUT, name)
-            index = os.path.join(path, 'index.md')
-            if os.path.isdir(path) and os.path.exists(index) and 'generated: true' in read(index):
-                shutil.rmtree(path)
-    os.makedirs(OUT, exist_ok=True)
+    written = set()
+
+    def put(rel, text):
+        path = os.path.join(ROOT, rel)
+        written.add(path)
+        if os.path.exists(path) and read(path) == text:
+            return
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(text)
 
     counts = []
     for ns in sorted(by_ns, key=lambda n: (n != 'core', n)):
         group = sorted(by_ns[ns], key=lambda e: e['names'][0])
-        title = 'Core keywords' if ns == 'core' else '%s.* slots' % ns
-        body = ['---', 'title: %s' % title,
-                'description: The %d slots %s in Magic Cloud and Hyperlambda, with their arguments and return values, generated from the running system.'
-                % (len(group), 'that make up the core keywords' if ns == 'core' else 'named %s.*' % ns),
-                'generated: true', '---', '',
-                '_Generated from the running system, see [how this reference is built](/reference/slots/). Do not edit this page._', '']
-        for e in group:
-            body += render_entry(e, anchors)
-        text = '\n'.join(body)
-        os.makedirs(os.path.join(OUT, ns), exist_ok=True)
-        with open(os.path.join(OUT, ns, 'index.md'), 'w', encoding='utf-8') as f:
-            f.write(raw(text) + '\n')
+        put('reference/slots/%s/index.md' % ns, render_namespace_index(ns, group))
+        for i, e in enumerate(group):
+            name = e['names'][0]
+            prev = group[i - 1]['names'][0] if i > 0 else None
+            nxt = group[i + 1]['names'][0] if i + 1 < len(group) else None
+            page, declaration_json = render_slot_page(e, by_record[name], prev, nxt, anchors)
+            put('reference/slots/%s/%s/index.md' % (ns, name), page)
+            put('reference/slots/%s/%s/slot.json' % (ns, name), declaration_json)
+            for alias in e['names'][1:]:
+                put('reference/slots/%s/%s/index.md' % (ns_of(alias), alias), render_alias_page(alias, e))
         counts.append((ns, len(group)))
+    put('reference/index.md', render_reference_home())
 
     endpoint = read(os.path.join(ROOT, '.github', 'endpoint', 'slots.get.hl'))
     sandbox = read(os.path.join(ROOT, '.github', 'endpoint', 'playground.post.hl'))
@@ -551,9 +649,21 @@ def main():
     size = len(json.dumps(records, ensure_ascii=False, separators=(',', ':')).encode('utf-8'))
     numbers = dict(policy_numbers(sandbox), **endpoint_numbers(endpoint), kb=round(size / 10240) * 10)
     page = render_index(counts, len(entries), endpoint, sandbox, workflow, numbers)
-    with open(os.path.join(OUT, 'index.md'), 'w', encoding='utf-8') as f:
-        f.write(page)
-    print('wrote %d entries in %d namespaces' % (len(entries), len(counts)))
+    put('reference/slots/index.md', page)
+
+    # Generated files that were not written this time are stale, a renamed or removed slot for instance.
+    removed = 0
+    for dirpath, dirnames, filenames in os.walk(os.path.join(ROOT, 'reference'), topdown=False):
+        for name in filenames:
+            path = os.path.join(dirpath, name)
+            if path in written:
+                continue
+            if name == 'slot.json' or (name.endswith('.md') and 'generated: true' in read(path)):
+                os.remove(path)
+                removed += 1
+        if not os.listdir(dirpath):
+            os.rmdir(dirpath)
+    print('wrote %d slots in %d namespaces, %d files, %d stale removed' % (len(entries), len(counts), len(written), removed))
 
 
 if __name__ == '__main__':

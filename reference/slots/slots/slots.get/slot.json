@@ -1,0 +1,17 @@
+{
+  "name": "slots.get",
+  "description": "Returns a dynamic slot by name",
+  "signature": {
+    "input": {
+      "kind": "dynamic-slot-name",
+      "description": "Name of the dynamic slot to retrieve",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "dynamic-slot-lambda,lambda-object,lambda-tree",
+      "description": "Resolves to the dynamic slot lambda body as child nodes"
+    }
+  }
+}

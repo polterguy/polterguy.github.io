@@ -1,0 +1,115 @@
+{
+  "name": "puppeteer.connect",
+  "description": "Creates or reuses a Puppeteer browser session",
+  "signature": {
+    "children": {
+      "timeout-minutes": {
+        "type": "int",
+        "description": "Idle timeout in minutes",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "max-lifetime-minutes": {
+        "type": "int",
+        "description": "Maximum session lifetime in minutes",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "headless": {
+        "type": "bool",
+        "description": "Whether the browser should run headless",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "true",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "timeout": {
+        "type": "int",
+        "description": "Browser launch timeout in milliseconds",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "args": {
+        "type": "string|lambda",
+        "description": "Browser launch arguments",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Arguments",
+        "projection": "ArgumentBag",
+        "children": [
+          {
+            "type": "string",
+            "kind": "browser-arg",
+            "description": "Argument value",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrMore",
+            "role": "Option",
+            "projection": "Value"
+          }
+        ]
+      },
+      "user-data-dir": {
+        "type": "string",
+        "kind": "folder-path",
+        "description": "Browser user data directory",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "executable": {
+        "type": "string",
+        "kind": "executable-path",
+        "description": "Browser executable path",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "executable-path": {
+        "type": "string",
+        "kind": "executable-path",
+        "description": "Browser executable path",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "constraints": [
+      {
+        "description": "[executable] and [executable-path] are aliases; supply at most one",
+        "values": [
+          "executable",
+          "executable-path"
+        ],
+        "kind": "AtMostOneOf"
+      }
+    ],
+    "scope": {
+      "provides": "puppeteer-session",
+      "description": "Creates an open Puppeteer browser session scope for puppeteer.* slots"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "puppeteer-session",
+      "description": "Resolves to the created Puppeteer session ID"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "neq",
+  "description": "Returns true if two operands are not equal",
+  "signature": {
+    "children": {
+      "*": {
+        "type": "object",
+        "description": "Operand evaluated before comparison",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyTwo",
+        "role": "OperandPaired",
+        "evaluation": "EvalSelf",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "boolean",
+      "description": "Resolves to true if the operands are not equal"
+    }
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "name": "http.patch",
+  "description": "Issues an HTTP PATCH to the specified URL with a payload; used to apply partial updates to a remote resource",
+  "signature": {
+    "input": {
+      "kind": "url-template",
+      "description": "URL to send the request to; supports {placeholder} segments substituted from [url-params]",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "query": {
+        "type": "lambda",
+        "kind": "query-parameter-list",
+        "description": "Query string parameters",
+        "required": false,
+        "mode": "DynamicNamedValues",
+        "cardinality": "ZeroOrOne",
+        "role": "DynamicMap",
+        "projection": "StructuredTree",
+        "children": {
+          "*": {
+            "type": "string",
+            "kind": "query-parameter-value",
+            "description": "Query parameter value",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrMore",
+            "role": "Option",
+            "projection": "Value"
+          }
+        }
+      },
+      "url-params": {
+        "type": "lambda",
+        "kind": "url-parameter-list",
+        "description": "Named replacements for {placeholders} in the URL",
+        "required": false,
+        "mode": "DynamicNamedValues",
+        "cardinality": "ZeroOrOne",
+        "role": "DynamicMap",
+        "projection": "StructuredTree",
+        "children": {
+          "*": {
+            "type": "string",
+            "kind": "url-parameter-value",
+            "description": "URL placeholder replacement value",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrMore",
+            "role": "Option",
+            "projection": "Value"
+          }
+        }
+      },
+      "headers": {
+        "type": "lambda",
+        "kind": "http-header-list",
+        "description": "HTTP request headers",
+        "required": false,
+        "mode": "DynamicNamedValues",
+        "cardinality": "ZeroOrOne",
+        "role": "DynamicMap",
+        "projection": "StructuredTree",
+        "children": {
+          "*": {
+            "type": "string",
+            "kind": "http-header-value",
+            "description": "HTTP header value",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrMore",
+            "role": "Option",
+            "projection": "Value"
+          }
+        }
+      },
+      "token": {
+        "type": "string",
+        "kind": "bearer-token",
+        "description": "Bearer token to add as Authorization header",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "timeout": {
+        "type": "int",
+        "kind": "timeout-seconds",
+        "description": "Request timeout in seconds",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "convert": {
+        "type": "bool",
+        "kind": "boolean",
+        "description": "Whether to convert known response content types to lambda",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      },
+      ".sse": {
+        "type": "lambda",
+        "kind": "sse-callback",
+        "description": "Callback executed once per server-sent event line; receives the line in [.arguments/message]",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrOne",
+        "role": "Callback",
+        "evaluation": "EvalBlock",
+        "projection": "Self"
+      },
+      "payload": {
+        "type": "object|lambda",
+        "kind": "http-request-payload,text",
+        "description": "Request payload value or structured payload transformed according to Content-Type",
+        "required": false,
+        "mode": "SourceLambda",
+        "cardinality": "ZeroOrOne",
+        "role": "Payload",
+        "evaluation": "UnwrapDescendants",
+        "projection": "StructuredTree"
+      },
+      "filename": {
+        "type": "string",
+        "kind": "file-path",
+        "description": "File path to stream as the request payload",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "constraints": [
+      {
+        "description": "Provide exactly one of [payload] or [filename] as the request body source",
+        "values": [
+          "payload",
+          "filename"
+        ],
+        "kind": "ExactlyOneOf"
+      }
+    ],
+    "output": {
+      "mode": "Both",
+      "kind": "http-response",
+      "description": "Resolves to the HTTP status code in value and response headers and content as child nodes",
+      "children": {
+        "content": {
+          "type": "string|byte[]|lambda",
+          "kind": "http-response-content,lambda-tree,text",
+          "description": "HTTP response body; text responses are returned as string, binary responses as byte[], and converted known content types as child nodes when [convert] is true",
+          "required": false,
+          "mode": "Value",
+          "cardinality": "ZeroOrOne",
+          "role": "Payload",
+          "projection": "Self"
+        },
+        "headers": {
+          "type": "lambda",
+          "kind": "http-header-list",
+          "description": "HTTP response headers returned by the server",
+          "required": false,
+          "mode": "Value",
+          "cardinality": "ZeroOrOne",
+          "role": "StructuredObject",
+          "projection": "StructuredTree",
+          "children": {
+            "*": {
+              "type": "string",
+              "kind": "http-header-value",
+              "description": "HTTP response header value; child name is the header name",
+              "required": false,
+              "mode": "Value",
+              "cardinality": "ZeroOrMore",
+              "role": "Option",
+              "projection": "Value"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "validators.string",
+  "description": "Validates that a string value or resolved expression result is within the allowed length range, throwing if validation fails",
+  "signature": {
+    "input": {
+      "kind": "text",
+      "description": "String value or expression selecting the node or nodes to validate",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "min": {
+        "type": "int",
+        "kind": "validator-min-length",
+        "description": "Minimum accepted length",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "0",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "max": {
+        "type": "int",
+        "kind": "validator-max-length",
+        "description": "Maximum accepted length",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "int.MaxValue",
+        "role": "Option",
+        "projection": "Value"
+      }
+    }
+  }
+}

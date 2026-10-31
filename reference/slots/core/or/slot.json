@@ -1,0 +1,24 @@
+{
+  "name": "or",
+  "description": "Returns true if any child expression evaluates to true",
+  "signature": {
+    "children": {
+      "*": {
+        "type": "lambda",
+        "kind": "boolean",
+        "description": "Executable operand returning a boolean value",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "TwoOrMore",
+        "role": "Operand",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "boolean",
+      "description": "Resolves to true if any operand evaluates to true"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "name": "crypto.random",
+  "description": "Returns a cryptographically secure random string or random bytes",
+  "signature": {
+    "children": {
+      "min": {
+        "type": "int",
+        "description": "Minimum random length",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "10",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "max": {
+        "type": "int",
+        "description": "Maximum random length",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "raw": {
+        "type": "bool",
+        "description": "Whether to return raw bytes instead of encoded text",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "seed": {
+        "type": "string",
+        "kind": "crypto-seed",
+        "description": "Optional deterministic seed",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "random-content,binary-content",
+      "description": "Resolves to a random string, or random bytes when [raw] is true"
+    }
+  }
+}

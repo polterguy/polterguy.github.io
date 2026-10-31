@@ -1,0 +1,17 @@
+{
+  "name": "io.stream.open-file",
+  "description": "Opens a file as a read-only stream so large files can be processed without loading them into memory; close with [io.stream.close]",
+  "signature": {
+    "input": {
+      "kind": "file-path",
+      "description": "File path to open as a stream",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "stream",
+      "description": "Resolves to an open file stream"
+    }
+  }
+}

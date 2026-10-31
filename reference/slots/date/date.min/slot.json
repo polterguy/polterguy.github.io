@@ -1,0 +1,11 @@
+{
+  "name": "date.min",
+  "description": "Returns the minimum DateTime value",
+  "signature": {
+    "output": {
+      "mode": "Value",
+      "kind": "date",
+      "description": "Resolves to the minimum supported DateTime value"
+    }
+  }
+}

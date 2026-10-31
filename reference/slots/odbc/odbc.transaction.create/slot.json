@@ -1,0 +1,11 @@
+{
+  "name": "odbc.transaction.create",
+  "description": "Creates a ODBC transaction",
+  "signature": {
+    "scope": {
+      "provides": "odbc.transaction",
+      "requires": "odbc.connection",
+      "description": "Requires an open ODBC connection created by [odbc.connect]"
+    }
+  }
+}

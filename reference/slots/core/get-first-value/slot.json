@@ -1,0 +1,22 @@
+{
+  "name": "get-first-value",
+  "description": "Returns the first non-null value produced by candidate child nodes",
+  "signature": {
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Candidate value source evaluated until the first non-null value is produced",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "OneOrMore",
+        "role": "Operand",
+        "evaluation": "EvalSelf",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "description": "Resolves to the first non-null value produced by the candidate child nodes"
+    }
+  }
+}

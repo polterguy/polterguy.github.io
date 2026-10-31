@@ -1,0 +1,61 @@
+{
+  "name": "puppeteer.screenshot",
+  "description": "Captures a screenshot of the page",
+  "signature": {
+    "input": {
+      "kind": "puppeteer-session",
+      "description": "Puppeteer session ID",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "filename": {
+        "type": "string",
+        "kind": "image-file",
+        "description": "Destination filename",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "full-page": {
+        "type": "bool",
+        "description": "Whether to capture the full page",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "type": {
+        "type": "string",
+        "kind": "image-format",
+        "description": "Image type",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "quality": {
+        "type": "int",
+        "description": "JPEG/WebP image quality",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "scope": {
+      "requires": "puppeteer-session"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "image,binary-content",
+      "description": "Resolves to the screenshot image bytes"
+    }
+  }
+}

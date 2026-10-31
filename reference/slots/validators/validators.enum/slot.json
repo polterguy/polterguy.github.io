@@ -1,0 +1,24 @@
+{
+  "name": "validators.enum",
+  "description": "Validates that a value or resolved expression result is one of the allowed options, throwing if validation fails",
+  "signature": {
+    "input": {
+      "kind": "enum-value",
+      "description": "Value or expression selecting the node or nodes to validate",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": [
+      {
+        "type": "string",
+        "kind": "enum-value",
+        "description": "Accepted enum value",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "OneOrMore",
+        "role": "Option",
+        "projection": "Value"
+      }
+    ]
+  }
+}

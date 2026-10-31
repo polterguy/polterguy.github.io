@@ -1,0 +1,17 @@
+{
+  "name": "strings.capitalize",
+  "description": "Returns the input with its first character upper-cased; remainder is left untouched",
+  "signature": {
+    "input": {
+      "kind": "text",
+      "description": "Text to capitalize",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "text",
+      "description": "Resolves to the capitalized string"
+    }
+  }
+}

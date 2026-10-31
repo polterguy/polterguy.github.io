@@ -1,0 +1,53 @@
+{
+  "name": "puppeteer.evaluate",
+  "description": "Evaluates JavaScript in the page context",
+  "signature": {
+    "input": {
+      "kind": "puppeteer-session",
+      "description": "Puppeteer session ID",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "expression": {
+        "type": "string",
+        "kind": "javascript",
+        "description": "JavaScript expression or function",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "args": {
+        "type": "string|lambda",
+        "description": "Arguments passed to the JavaScript function",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Arguments",
+        "projection": "ArgumentBag",
+        "children": [
+          {
+            "type": "string",
+            "kind": "javascript-argument",
+            "description": "Argument value",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrMore",
+            "role": "Option",
+            "projection": "Value"
+          }
+        ]
+      }
+    },
+    "scope": {
+      "requires": "puppeteer-session"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "javascript-result",
+      "description": "Resolves to the result of the evaluated JavaScript expression"
+    }
+  }
+}

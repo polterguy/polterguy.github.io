@@ -1,0 +1,12 @@
+{
+  "name": "crypto.seed",
+  "description": "Adds entropy to the secure random number generator; useful when supplying additional out-of-band randomness",
+  "signature": {
+    "input": {
+      "kind": "crypto-seed,text",
+      "description": "Seed value for the random generator",
+      "required": true,
+      "mode": "ValueOrExpression"
+    }
+  }
+}

@@ -34,6 +34,9 @@
     block.appendChild(btn);
   }
 
+  // For blocks added after load, such as a JSON declaration fetched when its section is opened.
+  window.magicCopyCode = attach;
+
   function init() {
     document
       .querySelectorAll('div.highlighter-rouge, figure.highlight')

@@ -1,95 +1,17 @@
 ---
-title: image.* slots
-description: The 6 slots named image.* in Magic Cloud and Hyperlambda, with their arguments and return values, generated from the running system.
+title: "image.* slots"
+description: "The 6 slots named image.* in Magic Cloud and Hyperlambda, each with its own page."
 generated: true
 ---
 
-_Generated from the running system, see [how this reference is built](/reference/slots/). Do not edit this page._
+6 slots, each with its own page and JSON declaration. See [how this reference is built](/reference/slots/).
 
-## [image.chart]
-
-Renders a bar, stacked, or grouped chart from the supplied series data as a PNG image.
-
-* **Value** (`chart-type`), required: Chart type to create, such as bars, stacked, or grouped
-* **Returns**: Resolves to the generated chart image bytes
-
-| Argument | Type | Required | Description |
-|---|---|---|---|
-| `[bars]` | lambda | yes | Chart values keyed by label; grouped and stacked charts use nested numeric values. |
-| `[bars]` / _any node name_ | double\|lambda | yes | Bar value or grouped/stacked bar value collection. Can be repeated. |
-| `[filename]` | string | no | Optional destination filename. |
-| `[height]` | int | yes | Chart height in pixels. |
-| `[legend]` | lambda | no | Legend labels required by grouped and stacked charts. |
-| `[legend]` / _unnamed child node_ | string | no | Legend label. Can be repeated. |
-| `[width]` | int | yes | Chart width in pixels. |
-
-Guide: [How to use [image.chart]](/plugins/magic.lambda.image/#how-to-use-imagechart)
-
-## [image.convert]
-
-Re-encodes an image into a different format (e.g. PNG to JPEG) preserving its pixel content.
-
-* **Value** (`image-file`), required: Source image filename or stream to convert
-* **Returns**: Resolves to the converted image stream unless [dest] is supplied, in which case the converted image is saved to disk and nothing is returned
-
-| Argument | Type | Required | Description |
-|---|---|---|---|
-| `[dest]` | string | no | Optional destination filename; when supplied, the image is saved to disk instead of returned as a stream. |
-| `[type]` | string | yes | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
-
-Guide: [How to use [image.convert]](/plugins/magic.lambda.image/#how-to-use-imageconvert)
-
-## [image.crop]
-
-Cuts a rectangular region out of an image at the given x, y, width, and height.
-
-* **Value** (`image-file`), required: Source image filename or stream to crop
-* **Returns**: Resolves to the cropped image stream unless [dest] is supplied, in which case the cropped image is saved to disk and nothing is returned
-
-| Argument | Type | Required | Description |
-|---|---|---|---|
-| `[bottom]` | int | no | Pixels to crop from the bottom edge. Default: `0`. |
-| `[dest]` | string | no | Optional destination filename; when supplied, the image is saved to disk instead of returned as a stream. |
-| `[left]` | int | no | Pixels to crop from the left edge. Default: `0`. |
-| `[right]` | int | no | Pixels to crop from the right edge. Default: `0`. |
-| `[top]` | int | no | Pixels to crop from the top edge. Default: `0`. |
-| `[type]` | string | no | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
-
-Guide: [How to use [image.crop]](/plugins/magic.lambda.image/#how-to-use-imagecrop)
-
-## [image.generate-qr]
-
-Renders the supplied text or URL into a PNG QR code; commonly used for links and payment codes.
-
-* **Value** (`qr-content,url,text`), required: Text or URL to encode in the QR code
-* **Returns**: Resolves to the generated QR code image bytes
-
-| Argument | Type | Required | Description |
-|---|---|---|---|
-| `[size]` | int | no | QR module size. Default: `4`. |
-
-Guide: [How to use [image.generate-qr]](/plugins/magic.lambda.image/#how-to-use-imagegenerate-qr)
-
-## [image.resize]
-
-Resizes an image to the specified width and height; useful for generating thumbnails or fitting screen sizes.
-
-* **Value** (`image-file`), required: Source image filename or stream to resize
-* **Returns**: Resolves to the resized image stream unless [dest] is supplied, in which case the resized image is saved to disk and nothing is returned
-
-| Argument | Type | Required | Description |
-|---|---|---|---|
-| `[dest]` | string | no | Optional destination filename; when supplied, the image is saved to disk instead of returned as a stream. |
-| `[height]` | int | no | Target height in pixels. |
-| `[type]` | string | no | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
-| `[width]` | int | no | Target width in pixels. |
-
-Guide: [How to use [image.resize]](/plugins/magic.lambda.image/#how-to-use-imageresize)
-
-## [image.size]
-
-Returns the width and height of an image.
-
-* **Value** (`image-file`), required: Image filename to inspect
-* **Returns**: Returns [width:int] and [height:int] child nodes for the image dimensions
+| Slot | Description |
+|---|---|
+| [`image.chart`](/reference/slots/image/image.chart/) | Renders a bar, stacked, or grouped chart from the supplied series data as a PNG image. |
+| [`image.convert`](/reference/slots/image/image.convert/) | Re-encodes an image into a different format (e.g. PNG to JPEG) preserving its pixel content. |
+| [`image.crop`](/reference/slots/image/image.crop/) | Cuts a rectangular region out of an image at the given x, y, width, and height. |
+| [`image.generate-qr`](/reference/slots/image/image.generate-qr/) | Renders the supplied text or URL into a PNG QR code; commonly used for links and payment codes. |
+| [`image.resize`](/reference/slots/image/image.resize/) | Resizes an image to the specified width and height; useful for generating thumbnails or fitting screen sizes. |
+| [`image.size`](/reference/slots/image/image.size/) | Returns the width and height of an image. |
 

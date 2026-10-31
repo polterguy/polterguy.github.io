@@ -1,0 +1,12 @@
+{
+  "name": "response.status.set",
+  "description": "Overrides the HTTP status code returned to the caller (e.g. 201 Created, 404 Not Found, 500 Internal Error)",
+  "signature": {
+    "input": {
+      "kind": "http-status-code,integer,number",
+      "description": "HTTP status code to set",
+      "required": true,
+      "mode": "ValueOrExpression"
+    }
+  }
+}

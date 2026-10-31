@@ -1,0 +1,25 @@
+{
+  "name": "add",
+  "description": "Appends source nodes to selected destination containers",
+  "signature": {
+    "input": {
+      "kind": "node-list,single-object",
+      "description": "Expression selecting destination container node or nodes whose children should receive the source nodes",
+      "required": true,
+      "mode": "Expression"
+    },
+    "children": {
+      "*": {
+        "type": "lambda",
+        "kind": "node-list",
+        "description": "Source container or node-producing slot evaluated before its child nodes are applied to the selected target location",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "OneOrMore",
+        "role": "SourceContainer",
+        "evaluation": "EvalSelf",
+        "projection": "ChildrenOfChildren"
+      }
+    }
+  }
+}

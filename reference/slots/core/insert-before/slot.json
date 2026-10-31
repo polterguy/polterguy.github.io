@@ -1,0 +1,25 @@
+{
+  "name": "insert-before",
+  "description": "Inserts nodes before the specified target node",
+  "signature": {
+    "input": {
+      "kind": "node-list,single-object",
+      "description": "Expression selecting the target node or nodes to insert before",
+      "required": true,
+      "mode": "Expression"
+    },
+    "children": {
+      "*": {
+        "type": "lambda",
+        "kind": "node-list",
+        "description": "Source container or node-producing slot evaluated before its child nodes are applied to the selected target location",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "OneOrMore",
+        "role": "SourceContainer",
+        "evaluation": "EvalSelf",
+        "projection": "ChildrenOfChildren"
+      }
+    }
+  }
+}

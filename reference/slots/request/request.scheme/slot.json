@@ -1,0 +1,11 @@
+{
+  "name": "request.scheme",
+  "description": "Returns the scheme (http or https) of the current incoming request",
+  "signature": {
+    "output": {
+      "mode": "Value",
+      "kind": "http-scheme,text",
+      "description": "Resolves to the scheme of the current request, such as http or https"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "odbc.connect",
+  "description": "Opens a ODBC connection",
+  "signature": {
+    "input": {
+      "kind": "connection-string",
+      "description": "Optional ODBC connection string override; ODBC does not use the database-name shorthand supported by other database providers",
+      "required": false,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Executable child slot evaluated while the database connection is open",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    },
+    "scope": {
+      "provides": "odbc.connection",
+      "description": "Creates an open ODBC connection scope for odbc.* slots"
+    }
+  }
+}

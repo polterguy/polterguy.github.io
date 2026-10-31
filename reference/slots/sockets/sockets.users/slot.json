@@ -1,0 +1,44 @@
+{
+  "name": "sockets.users",
+  "description": "Lists connected socket users, optionally filtered by username",
+  "signature": {
+    "children": {
+      "filter": {
+        "type": "string",
+        "kind": "username",
+        "description": "Username filter",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "offset": {
+        "type": "int",
+        "description": "Number of matching users to skip",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "0",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "limit": {
+        "type": "int",
+        "description": "Maximum number of users to return",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "10",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "socket-user-list,node-list",
+      "element-kind": "socket-user,lambda-tree",
+      "description": "Returns one child node per connected socket user matching the optional filter"
+    }
+  }
+}

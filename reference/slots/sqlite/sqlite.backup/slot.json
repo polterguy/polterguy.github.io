@@ -1,0 +1,16 @@
+{
+  "name": "sqlite.backup",
+  "description": "Creates a backup of the current SQLite connection",
+  "signature": {
+    "input": {
+      "kind": "file-path",
+      "description": "Target SQLite database filename under files/data/",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "scope": {
+      "requires": "sqlite.connection",
+      "description": "Requires an open SQLite connection created by [sqlite.connect]"
+    }
+  }
+}

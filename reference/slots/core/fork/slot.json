@@ -1,0 +1,21 @@
+{
+  "name": "fork",
+  "description": "Spawns a fire-and-forget background thread that evaluates the child lambda; the parent continues immediately",
+  "signature": {
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Executable child slot evaluated on the forked thread",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "OneOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    },
+    "scope": {
+      "provides": "fork"
+    }
+  }
+}

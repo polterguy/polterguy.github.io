@@ -1,0 +1,24 @@
+{
+  "name": "system.plugin.execute",
+  "description": "Loads, executes, and unloads a plugin in a single scope",
+  "signature": {
+    "input": {
+      "kind": "plugin-assembly,binary-content",
+      "description": "Plugin assembly filename or assembly bytes",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Executable body evaluated while the plugin is loaded",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    }
+  }
+}

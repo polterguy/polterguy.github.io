@@ -1,0 +1,12 @@
+{
+  "name": "tasks.schedule.delete",
+  "description": "Cancels a previously-created schedule by ID, leaving the task itself intact",
+  "signature": {
+    "input": {
+      "kind": "schedule-id,integer,number",
+      "description": "Schedule ID to delete",
+      "required": true,
+      "mode": "ValueOrExpression"
+    }
+  }
+}

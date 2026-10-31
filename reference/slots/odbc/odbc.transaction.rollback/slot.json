@@ -1,0 +1,10 @@
+{
+  "name": "odbc.transaction.rollback",
+  "description": "Rolls back the current ODBC transaction",
+  "signature": {
+    "scope": {
+      "requires": "odbc.transaction",
+      "description": "Requires an active ODBC transaction created by [odbc.transaction.create]"
+    }
+  }
+}

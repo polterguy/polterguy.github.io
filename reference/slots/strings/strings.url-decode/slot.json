@@ -1,0 +1,17 @@
+{
+  "name": "strings.url-decode",
+  "description": "URL decodes the specified string",
+  "signature": {
+    "input": {
+      "kind": "url-encoded",
+      "description": "Text to decode",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "url-component,text",
+      "description": "Resolves to the URL-decoded string"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "io.file.exists",
+  "description": "Returns true if a file exists",
+  "signature": {
+    "input": {
+      "kind": "file-path",
+      "description": "File path to test",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "boolean",
+      "description": "Returns true if the file exists"
+    }
+  }
+}

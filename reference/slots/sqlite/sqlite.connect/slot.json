@@ -1,0 +1,28 @@
+{
+  "name": "sqlite.connect",
+  "description": "Opens a SQLite connection",
+  "signature": {
+    "input": {
+      "kind": "database-name,connection-string",
+      "description": "Optional DATABASE_NAME or [CONNECTION_STRING|DATABASE_NAME] override",
+      "required": false,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Executable child slot evaluated while the database connection is open",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    },
+    "scope": {
+      "provides": "sqlite.connection",
+      "description": "Creates an open SQLite connection scope for sqlite.* slots"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "io.stream.close",
+  "description": "Closes and disposes a stream previously opened by [io.stream.open-file] or similar; always call to release the file handle",
+  "signature": {
+    "input": {
+      "kind": "stream",
+      "description": "Stream instance to close",
+      "required": true,
+      "mode": "Expression"
+    }
+  }
+}

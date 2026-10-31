@@ -1,0 +1,15 @@
+{
+  "name": "puppeteer.close",
+  "description": "Closes a Puppeteer session",
+  "signature": {
+    "input": {
+      "kind": "puppeteer-session",
+      "description": "Puppeteer session ID",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "scope": {
+      "requires": "puppeteer-session"
+    }
+  }
+}

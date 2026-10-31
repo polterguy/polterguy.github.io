@@ -1,0 +1,22 @@
+{
+  "name": "io.file.save.binary",
+  "description": "Saves a binary file to the server",
+  "signature": {
+    "input": {
+      "kind": "binary-file",
+      "description": "File path to save",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "*": {
+        "type": "byte[]",
+        "kind": "binary-file-content",
+        "description": "Child node yielding the binary content to save",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne"
+      }
+    }
+  }
+}

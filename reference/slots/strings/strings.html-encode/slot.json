@@ -1,0 +1,17 @@
+{
+  "name": "strings.html-encode",
+  "description": "HTML encodes the specified string",
+  "signature": {
+    "input": {
+      "kind": "html-unencoded,text",
+      "description": "Non-encoded HTML text to encode",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "html-encoded,text",
+      "description": "Resolves to the HTML-encoded string"
+    }
+  }
+}

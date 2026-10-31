@@ -1,0 +1,23 @@
+{
+  "name": "math.dot",
+  "description": "Calculates the dot product of two vectors from child nodes",
+  "signature": {
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Vector operand evaluated before calculating the dot product",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyTwo",
+        "role": "OperandPaired",
+        "evaluation": "EvalSelf",
+        "projection": "Children"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "number",
+      "description": "Resolves to the dot product of the two supplied vectors"
+    }
+  }
+}

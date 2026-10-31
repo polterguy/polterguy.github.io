@@ -1,0 +1,39 @@
+{
+  "name": "format",
+  "description": "Formats a value using a .NET format string and optional culture; useful for currencies, dates, and number rendering",
+  "signature": {
+    "input": {
+      "kind": "scalar",
+      "description": "Value to format",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "pattern": {
+        "type": "string",
+        "kind": "format-pattern",
+        "description": "Composite format string",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "culture": {
+        "type": "string",
+        "kind": "culture-name",
+        "description": "Optional culture name used when formatting",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "text",
+      "description": "Resolves to the formatted string"
+    }
+  }
+}

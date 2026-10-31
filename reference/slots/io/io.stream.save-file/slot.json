@@ -1,0 +1,31 @@
+{
+  "name": "io.stream.save-file",
+  "description": "Writes a stream's contents to disk under the given path; commonly used after uploads or [http.get] downloads",
+  "signature": {
+    "input": {
+      "kind": "file-path",
+      "description": "File path to save the stream to",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "overwrite": {
+        "type": "bool",
+        "kind": "boolean",
+        "description": "Whether an existing file should be overwritten",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "true"
+      },
+      "*": {
+        "type": "Stream",
+        "kind": "stream",
+        "description": "Child node yielding the stream to save",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne"
+      }
+    }
+  }
+}

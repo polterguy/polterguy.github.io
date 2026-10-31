@@ -1,0 +1,31 @@
+{
+  "name": "else",
+  "description": "Evaluates its child lambda when every preceding [if] and [else-if] condition was false",
+  "signature": {
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Fallback branch body evaluated when previous conditions fail",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "OneOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    },
+    "constraints": [
+      {
+        "description": "Previous sibling must be one of the listed slot names",
+        "values": [
+          "if",
+          "else-if"
+        ],
+        "kind": "PreviousSiblingMustBeOneOf"
+      }
+    ],
+    "scope": {
+      "provides": "if"
+    }
+  }
+}

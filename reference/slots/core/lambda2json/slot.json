@@ -1,0 +1,29 @@
+{
+  "name": "lambda2json",
+  "description": "Transforms a lambda hierarchy into JSON",
+  "signature": {
+    "input": {
+      "kind": "node-list,lambda-tree",
+      "description": "Expression selecting the lambda hierarchy to transform",
+      "required": true,
+      "mode": "Expression"
+    },
+    "children": {
+      "format": {
+        "type": "bool",
+        "description": "Whether to pretty-print the JSON output",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "json,text",
+      "description": "Resolves to the generated JSON string"
+    }
+  }
+}

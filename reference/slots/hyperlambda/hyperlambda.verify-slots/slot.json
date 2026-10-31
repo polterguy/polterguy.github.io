@@ -1,0 +1,18 @@
+{
+  "name": "hyperlambda.verify-slots",
+  "description": "Verifies that all slots referenced in executable statement position of the specified Hyperlambda exist",
+  "signature": {
+    "input": {
+      "kind": "hyperlambda",
+      "description": "Hyperlambda text to verify; alternatively supply an already parsed lambda as children",
+      "required": false,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Both",
+      "kind": "boolean",
+      "element-kind": "text",
+      "description": "Resolves to true when every invocation is statically valid; otherwise lists missing slot names and invalid-invocation diagnostics as child nodes"
+    }
+  }
+}

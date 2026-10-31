@@ -1,12 +1,12 @@
 ---
-title: timezone.* slots
-description: The 1 slots named timezone.* in Magic Cloud and Hyperlambda, with their arguments and return values, generated from the running system.
+title: "timezone.* slots"
+description: "The 1 slots named timezone.* in Magic Cloud and Hyperlambda, each with its own page."
 generated: true
 ---
 
-_Generated from the running system, see [how this reference is built](/reference/slots/). Do not edit this page._
+1 slots, each with its own page and JSON declaration. See [how this reference is built](/reference/slots/).
 
-## [timezone.init]
-
-_No description yet._
+| Slot | Description |
+|---|---|
+| [`timezone.init`](/reference/slots/timezone/timezone.init/) |  |
 

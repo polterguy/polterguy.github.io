@@ -1,0 +1,5 @@
+{
+  "name": "sqlite.connections.flush",
+  "description": "Flushes cached SQLite connections",
+  "signature": null
+}

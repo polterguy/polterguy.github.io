@@ -1,0 +1,11 @@
+{
+  "name": "request.verb",
+  "description": "Returns the HTTP verb (get, post, put, delete, etc.) of the current incoming request",
+  "signature": {
+    "output": {
+      "mode": "Value",
+      "kind": "http-method,text",
+      "description": "Resolves to the HTTP verb of the current request"
+    }
+  }
+}

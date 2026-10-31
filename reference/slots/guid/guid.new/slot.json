@@ -1,0 +1,11 @@
+{
+  "name": "guid.new",
+  "description": "Generates a random version-4 GUID for use as a unique identifier",
+  "signature": {
+    "output": {
+      "mode": "Value",
+      "kind": "guid,text",
+      "description": "Resolves to a new GUID string"
+    }
+  }
+}

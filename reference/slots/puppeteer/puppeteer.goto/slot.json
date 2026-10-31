@@ -1,0 +1,51 @@
+{
+  "name": "puppeteer.goto",
+  "description": "Navigates the current page to a URL",
+  "signature": {
+    "input": {
+      "kind": "puppeteer-session",
+      "description": "Puppeteer session ID",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "url": {
+        "type": "string",
+        "kind": "url",
+        "description": "URL to navigate to",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "timeout": {
+        "type": "int",
+        "description": "Navigation timeout in milliseconds",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "wait-until": {
+        "type": "string",
+        "kind": "puppeteer-wait-until",
+        "description": "Navigation completion condition: load, domcontentloaded, networkidle0, or networkidle2",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "scope": {
+      "requires": "puppeteer-session"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "url,puppeteer-page-loaded,text",
+      "description": "Resolves to the resolved page URL after navigation"
+    }
+  }
+}

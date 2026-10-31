@@ -1,0 +1,25 @@
+{
+  "name": "set-name",
+  "description": "Sets the name of matching nodes",
+  "signature": {
+    "input": {
+      "kind": "node-list,single-object",
+      "description": "Expression selecting the node or nodes whose name should be changed",
+      "required": true,
+      "mode": "Expression"
+    },
+    "children": {
+      "*": {
+        "type": "string",
+        "kind": "text",
+        "description": "Single source child evaluated to a string; the resolved value becomes the new node name. Omit to set the name to null.",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrOne",
+        "role": "SourceExpression",
+        "evaluation": "EvalSelf",
+        "projection": "Value"
+      }
+    }
+  }
+}

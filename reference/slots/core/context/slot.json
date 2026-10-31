@@ -1,0 +1,37 @@
+{
+  "name": "context",
+  "description": "Creates a named stack context object retrievable with [get-context] while evaluating a lambda block",
+  "signature": {
+    "input": {
+      "kind": "context-name",
+      "description": "Context name to create on the stack while evaluating the lambda block",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "value": {
+        "type": "object",
+        "description": "Value stored in the named stack context",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      ".lambda": {
+        "type": "lambda",
+        "description": "Body evaluated while the context value is scoped",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne",
+        "role": "LambdaBlock",
+        "evaluation": "EvalBlock",
+        "projection": "Self"
+      }
+    },
+    "scope": {
+      "provides": "context",
+      "description": "Creates a named context scope retrievable by [get-context] using the same input value"
+    }
+  }
+}

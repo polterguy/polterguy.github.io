@@ -1,0 +1,12 @@
+{
+  "name": "auth.ticket.verify",
+  "description": "Verifies that the current user is authenticated and optionally in one of the specified roles",
+  "signature": {
+    "input": {
+      "kind": "role-list",
+      "description": "Optional comma-separated roles to require",
+      "required": false,
+      "mode": "ValueOrExpression"
+    }
+  }
+}

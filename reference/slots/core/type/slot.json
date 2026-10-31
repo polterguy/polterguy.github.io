@@ -1,0 +1,17 @@
+{
+  "name": "type",
+  "description": "Returns the CLR type name of a value",
+  "signature": {
+    "input": {
+      "kind": "single-object",
+      "description": "Expression selecting the value whose CLR type should be inspected",
+      "required": true,
+      "mode": "Expression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "type-name,text",
+      "description": "Resolves to the runtime type name of the first matching value"
+    }
+  }
+}

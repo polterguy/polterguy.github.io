@@ -1,0 +1,11 @@
+{
+  "name": "date.now",
+  "description": "Returns the current server time in UTC",
+  "signature": {
+    "output": {
+      "mode": "Value",
+      "kind": "date",
+      "description": "Resolves to the current UTC date and time"
+    }
+  }
+}

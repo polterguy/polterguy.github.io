@@ -1,0 +1,17 @@
+{
+  "name": "execution.timeout",
+  "description": "Sets a timeout in milliseconds for the current execution",
+  "signature": {
+    "input": {
+      "kind": "timeout-ms,integer,number",
+      "description": "Timeout in milliseconds for the current execution",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "boolean",
+      "description": "Returns true if the timeout was applied"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "mysql.transaction.rollback",
+  "description": "Rolls back the current MySQL transaction",
+  "signature": {
+    "scope": {
+      "requires": "mysql.transaction",
+      "description": "Requires an active MySQL transaction created by [mysql.transaction.create]"
+    }
+  }
+}

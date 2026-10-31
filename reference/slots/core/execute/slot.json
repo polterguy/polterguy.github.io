@@ -1,0 +1,42 @@
+{
+  "name": "execute",
+  "description": "Invokes a dynamic slot after unwrapping descendant expressions",
+  "signature": {
+    "input": {
+      "kind": "dynamic-slot-name",
+      "description": "Name of the dynamic slot to invoke",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "*": {
+        "type": "object",
+        "kind": "value",
+        "description": "Named argument passed to the dynamic slot as a child of [.arguments]",
+        "required": false,
+        "mode": "Arguments",
+        "cardinality": "ZeroOrMore",
+        "preprocess": "UnwrapExpressions",
+        "role": "Arguments",
+        "projection": "ArgumentBag"
+      }
+    },
+    "output": {
+      "mode": "Both",
+      "kind": "lambda-result",
+      "description": "Resolves to the invoked slot's value result and any returned child nodes",
+      "children": {
+        "*": {
+          "type": "lambda",
+          "kind": "dynamic-slot-result-node",
+          "description": "Returned child node produced by the invoked dynamic slot after descendant expressions are unwrapped",
+          "required": false,
+          "mode": "Value",
+          "cardinality": "ZeroOrMore",
+          "role": "Payload",
+          "projection": "Self"
+        }
+      }
+    }
+  }
+}

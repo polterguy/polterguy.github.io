@@ -1,0 +1,10 @@
+{
+  "name": "mssql.transaction.rollback",
+  "description": "Rolls back the current SQL Server transaction",
+  "signature": {
+    "scope": {
+      "requires": "mssql.transaction",
+      "description": "Requires an active SQL Server transaction created by [mssql.transaction.create]"
+    }
+  }
+}

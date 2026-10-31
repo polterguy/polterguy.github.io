@@ -1,0 +1,22 @@
+{
+  "name": "io.file.save",
+  "description": "Saves a text file to the server",
+  "signature": {
+    "input": {
+      "kind": "file-path",
+      "description": "File path to save",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "*": {
+        "type": "string",
+        "kind": "text-file-content,text",
+        "description": "Child node yielding the text content to save",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne"
+      }
+    }
+  }
+}

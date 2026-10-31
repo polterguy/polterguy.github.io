@@ -1,0 +1,12 @@
+{
+  "name": "endpoints.list",
+  "description": "Lists dynamic Hyperlambda endpoints with metadata",
+  "signature": {
+    "output": {
+      "mode": "Lambda",
+      "kind": "endpoint-list,node-list",
+      "element-kind": "endpoint,lambda-tree",
+      "description": "Resolves to one child node per discovered endpoint, including its endpoint metadata"
+    }
+  }
+}

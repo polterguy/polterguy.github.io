@@ -1,0 +1,17 @@
+{
+  "name": "exists",
+  "description": "Returns true if the specified node or expression exists",
+  "signature": {
+    "input": {
+      "kind": "node-list,single-object",
+      "description": "Expression selecting the nodes to test for",
+      "required": true,
+      "mode": "Expression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "boolean",
+      "description": "Returns true if the expression resolves to one or more nodes"
+    }
+  }
+}

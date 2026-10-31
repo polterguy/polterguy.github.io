@@ -164,3 +164,12 @@ figure.highlight:hover .code-copy-btn,
 .faq__item summary::marker { color: var(--warm-gold); }
 .faq__item[open] summary { border-bottom: 1px solid rgba(216, 185, 138, 0.15); }
 .faq__item p { margin: 0; padding: 0.9em 1.1em; color: #cfc6b8; }
+
+/* Expandable JSON declaration on every slot page. */
+.slot-declaration > summary {
+  cursor: pointer;
+  color: var(--warm-gold);
+  font-weight: 600;
+  margin: 0.6em 0;
+}
+.slot-declaration[open] > summary { margin-bottom: 0.8em; }

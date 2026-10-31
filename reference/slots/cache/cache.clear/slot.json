@@ -1,0 +1,12 @@
+{
+  "name": "cache.clear",
+  "description": "Clears cached items matching the optional filter",
+  "signature": {
+    "input": {
+      "kind": "cache-key",
+      "description": "Optional filter for cache keys",
+      "required": false,
+      "mode": "ValueOrExpression"
+    }
+  }
+}

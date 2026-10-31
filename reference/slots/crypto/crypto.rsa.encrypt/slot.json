@@ -1,0 +1,39 @@
+{
+  "name": "crypto.rsa.encrypt",
+  "description": "Encrypts data using RSA",
+  "signature": {
+    "input": {
+      "kind": "text,binary-content",
+      "description": "Content to encrypt",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "public-key": {
+        "type": "string|byte[]",
+        "kind": "rsa-public-key",
+        "description": "Public key for the RSA operation",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "raw": {
+        "type": "bool",
+        "description": "Whether to return raw bytes instead of encoded text",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "rsa-encrypted-package,fingerprint-source",
+      "description": "Resolves to the encrypted package as base64 text or raw bytes when [raw] is true"
+    }
+  }
+}

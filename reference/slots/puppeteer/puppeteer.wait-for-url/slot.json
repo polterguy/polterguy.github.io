@@ -1,0 +1,36 @@
+{
+  "name": "puppeteer.wait-for-url",
+  "description": "Waits for the page URL to match a condition",
+  "signature": {
+    "input": {
+      "kind": "puppeteer-session",
+      "description": "Puppeteer session ID",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "url": {
+        "type": "string",
+        "kind": "url-pattern",
+        "description": "URL pattern to wait for",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "timeout": {
+        "type": "int",
+        "description": "Wait timeout in milliseconds",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "scope": {
+      "requires": "puppeteer-session"
+    }
+  }
+}

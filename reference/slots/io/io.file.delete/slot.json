@@ -1,0 +1,12 @@
+{
+  "name": "io.file.delete",
+  "description": "Deletes a file on the server",
+  "signature": {
+    "input": {
+      "kind": "file-path",
+      "description": "File path to delete",
+      "required": true,
+      "mode": "ValueOrExpression"
+    }
+  }
+}

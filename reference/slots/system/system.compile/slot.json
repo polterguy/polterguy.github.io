@@ -1,0 +1,54 @@
+{
+  "name": "system.compile",
+  "description": "Compiles C# code from child nodes into an assembly",
+  "signature": {
+    "children": {
+      "code": {
+        "type": "string",
+        "kind": "csharp-code",
+        "description": "C# source code to compile",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "assembly-name": {
+        "type": "string",
+        "kind": "plugin-assembly-name",
+        "description": "Name of the generated assembly",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "references": {
+        "type": "lambda",
+        "description": "Assembly references required by the compilation",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "StructuredObject",
+        "projection": "Children",
+        "children": [
+          {
+            "type": "string",
+            "kind": "assembly-reference",
+            "description": "Assembly reference",
+            "required": true,
+            "mode": "ValueOrExpression",
+            "cardinality": "OneOrMore",
+            "role": "Option",
+            "projection": "Value"
+          }
+        ]
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "plugin-assembly-bytes,binary-content",
+      "description": "Resolves to the compiled assembly bytes"
+    }
+  }
+}

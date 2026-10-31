@@ -1,0 +1,54 @@
+{
+  "name": "tasks.update",
+  "description": "Overwrites a stored task's body or description without altering its existing schedules",
+  "signature": {
+    "input": {
+      "kind": "task-id",
+      "description": "Task ID to update",
+      "required": false,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "description": {
+        "type": "string",
+        "kind": "task-description",
+        "description": "Optional task description",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "due": {
+        "type": "DateTime",
+        "kind": "date",
+        "description": "Optional one-time due date",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "repeats": {
+        "type": "string",
+        "kind": "task-repeat-pattern",
+        "description": "Optional repeat pattern",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      ".lambda": {
+        "type": "lambda",
+        "description": "Task body serialized and executed later",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne",
+        "role": "LambdaBlock",
+        "evaluation": "SerializeLambda",
+        "projection": "Children"
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "data.transaction.commit",
+  "description": "Commits the current database transaction using the configured provider",
+  "signature": {
+    "children": {
+      "database-type": {
+        "type": "string",
+        "kind": "database-type",
+        "description": "Database adapter to use instead of the configured default",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne"
+      }
+    },
+    "scope": {
+      "requires": "data.transaction",
+      "description": "Requires an active database transaction created by [data.transaction.create]"
+    }
+  }
+}

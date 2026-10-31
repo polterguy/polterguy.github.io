@@ -1,0 +1,99 @@
+{
+  "name": "github.repo.create",
+  "description": "Creates a GitHub repository",
+  "signature": {
+    "input": {
+      "kind": "github-repo-name",
+      "description": "GitHub repository name",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "owner": {
+        "type": "string",
+        "kind": "github-owner",
+        "description": "Organization owner; omit to create under the authenticated user",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "private": {
+        "type": "bool",
+        "description": "Whether the repository is private",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "description": {
+        "type": "string",
+        "kind": "git-repo-description",
+        "description": "Repository description",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "homepage": {
+        "type": "string",
+        "kind": "url",
+        "description": "Repository homepage URL",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "auto-init": {
+        "type": "bool",
+        "description": "Initialize the repository",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "default-branch": {
+        "type": "string",
+        "kind": "git-branch",
+        "description": "Default branch name",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "gitignore-template": {
+        "type": "string",
+        "kind": "gitignore-template",
+        "description": "GitHub gitignore template",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "license-template": {
+        "type": "string",
+        "kind": "license-template",
+        "description": "GitHub license template",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "github-repository,lambda-tree",
+      "description": "Resolves to the created GitHub repository as child nodes projected from the API response"
+    }
+  }
+}

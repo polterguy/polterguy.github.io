@@ -1,0 +1,31 @@
+{
+  "name": "try",
+  "description": "Evaluates the protected body; pair with [.catch] to handle exceptions and/or [.finally] to always run cleanup",
+  "signature": {
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Protected body evaluated by [try]",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    },
+    "constraints": [
+      {
+        "description": "Must be followed by [.catch] and/or [.finally]; a bare [try] is a no-op because uncaught exceptions re-throw and [.finally] alone would run regardless",
+        "values": [
+          ".catch",
+          ".finally"
+        ],
+        "kind": "NextSiblingMustBeOneOf"
+      }
+    ],
+    "scope": {
+      "provides": "try"
+    }
+  }
+}

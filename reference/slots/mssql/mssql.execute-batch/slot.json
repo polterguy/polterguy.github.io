@@ -1,0 +1,22 @@
+{
+  "name": "mssql.execute-batch",
+  "description": "Executes a batch SQL script on the current SQL Server connection",
+  "signature": {
+    "input": {
+      "kind": "sql-batch",
+      "description": "Batch SQL script to execute",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "scope": {
+      "requires": "mssql.connection",
+      "description": "Requires an open SQL Server connection created by [mssql.connect]"
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "sql-batch-result-list,node-list",
+      "element-kind": "row",
+      "description": "Returns one child node per batch execution result"
+    }
+  }
+}

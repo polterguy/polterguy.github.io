@@ -1,0 +1,20 @@
+{
+  "name": "puppeteer.title",
+  "description": "Returns the current page title",
+  "signature": {
+    "input": {
+      "kind": "puppeteer-session",
+      "description": "Puppeteer session ID",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "scope": {
+      "requires": "puppeteer-session"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "page-title,text",
+      "description": "Resolves to the current page title"
+    }
+  }
+}

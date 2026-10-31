@@ -1,0 +1,29 @@
+{
+  "name": "map",
+  "description": "Maps selected nodes into a new result set using the child lambda",
+  "signature": {
+    "input": {
+      "kind": "node-list",
+      "description": "Expression selecting the nodes to map",
+      "required": true,
+      "mode": "Expression"
+    },
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Mapper body evaluated once per selected node; each returned value becomes a [.] node and returned child nodes are added to the mapped result",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "OneOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "ReturnedResult"
+      }
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "node-list",
+      "description": "Resolves to one mapped output item per selected node, using the value or nodes returned by the child lambda"
+    }
+  }
+}

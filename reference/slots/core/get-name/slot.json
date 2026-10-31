@@ -1,0 +1,17 @@
+{
+  "name": "get-name",
+  "description": "Returns the name of the first matching node",
+  "signature": {
+    "input": {
+      "kind": "single-object",
+      "description": "Expression selecting the node whose name should be retrieved",
+      "required": true,
+      "mode": "Expression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "node-name,text",
+      "description": "Resolves to the name of the first matching node"
+    }
+  }
+}

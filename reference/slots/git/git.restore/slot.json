@@ -1,0 +1,29 @@
+{
+  "name": "git.restore",
+  "description": "Discards uncommitted changes by restoring one file from HEAD, or resets the whole working tree to HEAD including removal of untracked files",
+  "signature": {
+    "input": {
+      "kind": "git-repo-path",
+      "description": "Repository path",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "file": {
+        "type": "string",
+        "kind": "git-file-path",
+        "description": "Repository-relative path of one file to restore from HEAD; omitted resets the whole working tree to HEAD and removes untracked files",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "git-response,text",
+      "description": "Resolves to the git command output"
+    }
+  }
+}

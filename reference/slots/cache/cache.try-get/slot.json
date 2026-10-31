@@ -1,0 +1,40 @@
+{
+  "name": "cache.try-get",
+  "description": "Returns a cached value by key if it exists, or creates a new cached item and returning it",
+  "signature": {
+    "input": {
+      "kind": "cache-key",
+      "description": "Cache key to retrieve",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "expiration": {
+        "type": "long",
+        "kind": "duration-seconds",
+        "description": "Expiration in seconds for newly created value",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "5",
+        "role": "Option",
+        "projection": "Value"
+      },
+      ".lambda": {
+        "type": "lambda",
+        "description": "Callback executed to create the cached value when the key is missing",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne",
+        "role": "Callback",
+        "evaluation": "EvalBlock",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "cache-value,text",
+      "description": "Resolves to the cached value, or the newly created value when the key is missing"
+    }
+  }
+}

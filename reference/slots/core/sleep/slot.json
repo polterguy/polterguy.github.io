@@ -1,0 +1,12 @@
+{
+  "name": "sleep",
+  "description": "Delays execution for the specified number of milliseconds",
+  "signature": {
+    "input": {
+      "kind": "timeout-ms,integer,number",
+      "description": "Delay in milliseconds",
+      "required": true,
+      "mode": "ValueOrExpression"
+    }
+  }
+}

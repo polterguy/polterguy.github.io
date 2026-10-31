@@ -1,0 +1,54 @@
+{
+  "name": "puppeteer.wait-for-selector",
+  "description": "Waits for a selector to appear",
+  "signature": {
+    "input": {
+      "kind": "puppeteer-session",
+      "description": "Puppeteer session ID",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "selector": {
+        "type": "string",
+        "kind": "css-selector",
+        "description": "CSS selector",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "timeout": {
+        "type": "int",
+        "description": "Wait timeout in milliseconds",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "visible": {
+        "type": "bool",
+        "description": "Wait until selector is visible",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "hidden": {
+        "type": "bool",
+        "description": "Wait until selector is hidden",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "scope": {
+      "requires": "puppeteer-session"
+    }
+  }
+}

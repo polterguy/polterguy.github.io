@@ -1,0 +1,17 @@
+{
+  "name": "slots.exists",
+  "description": "Returns true if a dynamic slot exists",
+  "signature": {
+    "input": {
+      "kind": "dynamic-slot-name",
+      "description": "Name of the dynamic slot to test for",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "boolean",
+      "description": "Returns true if the slot exists"
+    }
+  }
+}

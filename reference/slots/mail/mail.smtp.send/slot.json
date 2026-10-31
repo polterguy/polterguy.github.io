@@ -1,0 +1,545 @@
+{
+  "name": "mail.smtp.send",
+  "description": "Sends one or more email messages through SMTP from child [message] nodes",
+  "signature": {
+    "children": {
+      "message": {
+        "type": "lambda",
+        "kind": "mail-message",
+        "description": "Email message to send",
+        "required": true,
+        "mode": "StructuredArguments",
+        "cardinality": "OneOrMore",
+        "role": "StructuredObject",
+        "projection": "StructuredTree",
+        "children": {
+          "subject": {
+            "type": "string",
+            "kind": "mail-subject,text",
+            "description": "Message subject",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrOne",
+            "role": "Option",
+            "projection": "Value"
+          },
+          "to": {
+            "type": "lambda",
+            "kind": "mail-address-list",
+            "description": "Email address collection",
+            "required": true,
+            "mode": "StructuredArguments",
+            "cardinality": "ExactlyOne",
+            "role": "StructuredObject",
+            "projection": "Children",
+            "children": [
+              {
+                "type": "lambda",
+                "kind": "mail-address",
+                "description": "Structured address containing [email] and optional [name]",
+                "required": true,
+                "mode": "StructuredArguments",
+                "cardinality": "OneOrMore",
+                "role": "StructuredObject",
+                "projection": "StructuredTree",
+                "children": {
+                  "name": {
+                    "type": "string",
+                    "kind": "display-name,text",
+                    "description": "Display name",
+                    "required": false,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "ZeroOrOne",
+                    "role": "Option",
+                    "projection": "Value"
+                  },
+                  "email": {
+                    "type": "string",
+                    "kind": "email",
+                    "description": "Email address",
+                    "required": true,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "ExactlyOne",
+                    "role": "Option",
+                    "projection": "Value"
+                  }
+                }
+              }
+            ]
+          },
+          "from": {
+            "type": "lambda",
+            "kind": "mail-address-list",
+            "description": "Email address collection",
+            "required": false,
+            "mode": "StructuredArguments",
+            "cardinality": "ZeroOrOne",
+            "role": "StructuredObject",
+            "projection": "Children",
+            "children": [
+              {
+                "type": "lambda",
+                "kind": "mail-address",
+                "description": "Structured address containing [email] and optional [name]",
+                "required": false,
+                "mode": "StructuredArguments",
+                "cardinality": "ZeroOrMore",
+                "role": "StructuredObject",
+                "projection": "StructuredTree",
+                "children": {
+                  "name": {
+                    "type": "string",
+                    "kind": "display-name,text",
+                    "description": "Display name",
+                    "required": false,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "ZeroOrOne",
+                    "role": "Option",
+                    "projection": "Value"
+                  },
+                  "email": {
+                    "type": "string",
+                    "kind": "email",
+                    "description": "Email address",
+                    "required": true,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "ExactlyOne",
+                    "role": "Option",
+                    "projection": "Value"
+                  }
+                }
+              }
+            ]
+          },
+          "cc": {
+            "type": "lambda",
+            "kind": "mail-address-list",
+            "description": "Email address collection",
+            "required": false,
+            "mode": "StructuredArguments",
+            "cardinality": "ZeroOrOne",
+            "role": "StructuredObject",
+            "projection": "Children",
+            "children": [
+              {
+                "type": "lambda",
+                "kind": "mail-address",
+                "description": "Structured address containing [email] and optional [name]",
+                "required": false,
+                "mode": "StructuredArguments",
+                "cardinality": "ZeroOrMore",
+                "role": "StructuredObject",
+                "projection": "StructuredTree",
+                "children": {
+                  "name": {
+                    "type": "string",
+                    "kind": "display-name,text",
+                    "description": "Display name",
+                    "required": false,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "ZeroOrOne",
+                    "role": "Option",
+                    "projection": "Value"
+                  },
+                  "email": {
+                    "type": "string",
+                    "kind": "email",
+                    "description": "Email address",
+                    "required": true,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "ExactlyOne",
+                    "role": "Option",
+                    "projection": "Value"
+                  }
+                }
+              }
+            ]
+          },
+          "bcc": {
+            "type": "lambda",
+            "kind": "mail-address-list",
+            "description": "Email address collection",
+            "required": false,
+            "mode": "StructuredArguments",
+            "cardinality": "ZeroOrOne",
+            "role": "StructuredObject",
+            "projection": "Children",
+            "children": [
+              {
+                "type": "lambda",
+                "kind": "mail-address",
+                "description": "Structured address containing [email] and optional [name]",
+                "required": false,
+                "mode": "StructuredArguments",
+                "cardinality": "ZeroOrMore",
+                "role": "StructuredObject",
+                "projection": "StructuredTree",
+                "children": {
+                  "name": {
+                    "type": "string",
+                    "kind": "display-name,text",
+                    "description": "Display name",
+                    "required": false,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "ZeroOrOne",
+                    "role": "Option",
+                    "projection": "Value"
+                  },
+                  "email": {
+                    "type": "string",
+                    "kind": "email",
+                    "description": "Email address",
+                    "required": true,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "ExactlyOne",
+                    "role": "Option",
+                    "projection": "Value"
+                  }
+                }
+              }
+            ]
+          },
+          "reply-to": {
+            "type": "lambda",
+            "kind": "mail-address-list",
+            "description": "Email address collection",
+            "required": false,
+            "mode": "StructuredArguments",
+            "cardinality": "ZeroOrOne",
+            "role": "StructuredObject",
+            "projection": "Children",
+            "children": [
+              {
+                "type": "lambda",
+                "kind": "mail-address",
+                "description": "Structured address containing [email] and optional [name]",
+                "required": false,
+                "mode": "StructuredArguments",
+                "cardinality": "ZeroOrMore",
+                "role": "StructuredObject",
+                "projection": "StructuredTree",
+                "children": {
+                  "name": {
+                    "type": "string",
+                    "kind": "display-name,text",
+                    "description": "Display name",
+                    "required": false,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "ZeroOrOne",
+                    "role": "Option",
+                    "projection": "Value"
+                  },
+                  "email": {
+                    "type": "string",
+                    "kind": "email",
+                    "description": "Email address",
+                    "required": true,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "ExactlyOne",
+                    "role": "Option",
+                    "projection": "Value"
+                  }
+                }
+              }
+            ]
+          },
+          "entity": {
+            "type": "string",
+            "kind": "content-type",
+            "description": "MIME entity declaration for the message body; node value is the MIME content type",
+            "required": true,
+            "mode": "Value",
+            "cardinality": "ExactlyOne",
+            "role": "Payload",
+            "evaluation": "UnwrapDescendants",
+            "projection": "StructuredTree",
+            "constraints": [
+              {
+                "description": "Binary MIME parts cannot carry inline [content] — reference the bytes via [filename]",
+                "value-pattern": "^(image/|video/|audio/|application/(octet-stream|pdf|zip|gzip|x-tar|x-bzip2|x-7z-compressed|vnd\\.ms-excel|vnd\\.openxmlformats-officedocument))",
+                "values": [
+                  "content"
+                ],
+                "kind": "Excludes"
+              },
+              {
+                "description": "Leaf MIME parts must not contain nested [entity] children",
+                "value-pattern": "^(?!multipart/).+/.+$",
+                "values": [
+                  "entity"
+                ],
+                "kind": "Excludes"
+              },
+              {
+                "description": "Leaf MIME parts require either [content] or [filename]",
+                "value-pattern": "^(?!multipart/).+/.+$",
+                "values": [
+                  "content",
+                  "filename"
+                ],
+                "kind": "ExactlyOneOf"
+              },
+              {
+                "description": "Multipart MIME parts must not contain [content] or [filename]",
+                "value-pattern": "^multipart/.+$",
+                "values": [
+                  "content",
+                  "filename"
+                ],
+                "kind": "Excludes"
+              },
+              {
+                "description": "Multipart MIME parts require two or more [entity] children",
+                "value-pattern": "^multipart/.+$",
+                "values": [
+                  "entity"
+                ],
+                "kind": "AtLeastOneOf"
+              }
+            ],
+            "children": {
+              "headers": {
+                "type": "lambda",
+                "kind": "mime-header-list",
+                "description": "MIME headers",
+                "required": false,
+                "mode": "DynamicNamedValues",
+                "cardinality": "ZeroOrOne",
+                "role": "DynamicMap",
+                "projection": "StructuredTree",
+                "children": {
+                  "*": {
+                    "type": "string",
+                    "kind": "mime-header-value",
+                    "description": "Header name and value",
+                    "required": false,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "ZeroOrMore",
+                    "role": "Option",
+                    "projection": "Value"
+                  }
+                }
+              },
+              "content": {
+                "type": "string",
+                "kind": "mime-content,mime-entity-source,text",
+                "description": "Inline MIME part content",
+                "required": false,
+                "mode": "ValueOrExpression",
+                "cardinality": "ZeroOrOne",
+                "role": "Option",
+                "projection": "Value"
+              },
+              "filename": {
+                "type": "string",
+                "kind": "file-path,mime-entity-source,mime-entity-filename-source",
+                "description": "File path to use as MIME part content",
+                "required": false,
+                "mode": "ValueOrExpression",
+                "cardinality": "ZeroOrOne",
+                "role": "Option",
+                "projection": "Value"
+              },
+              "entity": {
+                "type": "string",
+                "kind": "content-type",
+                "description": "Nested MIME entity content type; same leaf-vs-multipart shape as the parent [mime.create] value",
+                "required": true,
+                "mode": "Value",
+                "cardinality": "TwoOrMore",
+                "role": "StructuredObject",
+                "projection": "StructuredTree",
+                "constraints": [
+                  {
+                    "description": "Binary MIME parts cannot carry inline [content] — reference the bytes via [filename]",
+                    "value-pattern": "^(image/|video/|audio/|application/(octet-stream|pdf|zip|gzip|x-tar|x-bzip2|x-7z-compressed|vnd\\.ms-excel|vnd\\.openxmlformats-officedocument))",
+                    "values": [
+                      "content"
+                    ],
+                    "kind": "Excludes"
+                  },
+                  {
+                    "description": "Leaf MIME parts must not contain nested [entity] children",
+                    "value-pattern": "^(?!multipart/).+/.+$",
+                    "values": [
+                      "entity"
+                    ],
+                    "kind": "Excludes"
+                  },
+                  {
+                    "description": "Leaf MIME parts require either [content] or [filename]",
+                    "value-pattern": "^(?!multipart/).+/.+$",
+                    "values": [
+                      "content",
+                      "filename"
+                    ],
+                    "kind": "ExactlyOneOf"
+                  },
+                  {
+                    "description": "Multipart MIME parts must not contain [content] or [filename]",
+                    "value-pattern": "^multipart/.+$",
+                    "values": [
+                      "content",
+                      "filename"
+                    ],
+                    "kind": "Excludes"
+                  },
+                  {
+                    "description": "Multipart MIME parts require two or more [entity] children",
+                    "value-pattern": "^multipart/.+$",
+                    "values": [
+                      "entity"
+                    ],
+                    "kind": "AtLeastOneOf"
+                  }
+                ],
+                "children": {
+                  "headers": {
+                    "type": "lambda",
+                    "kind": "mime-header-list",
+                    "description": "MIME headers",
+                    "required": false,
+                    "mode": "DynamicNamedValues",
+                    "cardinality": "ZeroOrOne",
+                    "role": "DynamicMap",
+                    "projection": "StructuredTree",
+                    "children": {
+                      "*": {
+                        "type": "string",
+                        "kind": "mime-header-value",
+                        "description": "Header name and value",
+                        "required": false,
+                        "mode": "ValueOrExpression",
+                        "cardinality": "ZeroOrMore",
+                        "role": "Option",
+                        "projection": "Value"
+                      }
+                    }
+                  },
+                  "content": {
+                    "type": "string",
+                    "kind": "mime-content,mime-entity-source,text",
+                    "description": "Inline MIME part content",
+                    "required": false,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "ZeroOrOne",
+                    "role": "Option",
+                    "projection": "Value"
+                  },
+                  "filename": {
+                    "type": "string",
+                    "kind": "file-path,mime-entity-source,mime-entity-filename-source",
+                    "description": "File path to use as MIME part content",
+                    "required": false,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "ZeroOrOne",
+                    "role": "Option",
+                    "projection": "Value"
+                  },
+                  "entity": {
+                    "type": "string",
+                    "kind": "mime-content-types-leaf",
+                    "description": "Innermost MIME leaf entity content type; must be a leaf type because no further [entity] nesting is permitted here",
+                    "required": true,
+                    "mode": "Value",
+                    "cardinality": "TwoOrMore",
+                    "role": "StructuredObject",
+                    "projection": "StructuredTree",
+                    "constraints": [
+                      {
+                        "description": "Binary MIME parts cannot carry inline [content] — reference the bytes via [filename]",
+                        "value-pattern": "^(image/|video/|audio/|application/(octet-stream|pdf|zip|gzip|x-tar|x-bzip2|x-7z-compressed|vnd\\.ms-excel|vnd\\.openxmlformats-officedocument))",
+                        "values": [
+                          "content"
+                        ],
+                        "kind": "Excludes"
+                      },
+                      {
+                        "description": "Leaf MIME parts must not contain nested [entity] children",
+                        "value-pattern": "^(?!multipart/).+/.+$",
+                        "values": [
+                          "entity"
+                        ],
+                        "kind": "Excludes"
+                      },
+                      {
+                        "description": "Leaf MIME parts require either [content] or [filename]",
+                        "value-pattern": "^(?!multipart/).+/.+$",
+                        "values": [
+                          "content",
+                          "filename"
+                        ],
+                        "kind": "ExactlyOneOf"
+                      },
+                      {
+                        "description": "Multipart MIME parts must not contain [content] or [filename]",
+                        "value-pattern": "^multipart/.+$",
+                        "values": [
+                          "content",
+                          "filename"
+                        ],
+                        "kind": "Excludes"
+                      },
+                      {
+                        "description": "Multipart MIME parts require two or more [entity] children",
+                        "value-pattern": "^multipart/.+$",
+                        "values": [
+                          "entity"
+                        ],
+                        "kind": "AtLeastOneOf"
+                      }
+                    ],
+                    "children": {
+                      "headers": {
+                        "type": "lambda",
+                        "kind": "mime-header-list",
+                        "description": "MIME headers",
+                        "required": false,
+                        "mode": "DynamicNamedValues",
+                        "cardinality": "ZeroOrOne",
+                        "role": "DynamicMap",
+                        "projection": "StructuredTree",
+                        "children": {
+                          "*": {
+                            "type": "string",
+                            "kind": "mime-header-value",
+                            "description": "Header name and value",
+                            "required": false,
+                            "mode": "ValueOrExpression",
+                            "cardinality": "ZeroOrMore",
+                            "role": "Option",
+                            "projection": "Value"
+                          }
+                        }
+                      },
+                      "content": {
+                        "type": "string",
+                        "kind": "mime-content,mime-entity-source,text",
+                        "description": "Inline MIME part content",
+                        "required": false,
+                        "mode": "ValueOrExpression",
+                        "cardinality": "ZeroOrOne",
+                        "role": "Option",
+                        "projection": "Value"
+                      },
+                      "filename": {
+                        "type": "string",
+                        "kind": "file-path,mime-entity-source,mime-entity-filename-source",
+                        "description": "File path to use as MIME part content",
+                        "required": false,
+                        "mode": "ValueOrExpression",
+                        "cardinality": "ZeroOrOne",
+                        "role": "Option",
+                        "projection": "Value"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

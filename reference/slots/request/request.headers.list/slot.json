@@ -1,0 +1,12 @@
+{
+  "name": "request.headers.list",
+  "description": "Lists request headers",
+  "signature": {
+    "output": {
+      "mode": "Lambda",
+      "kind": "http-header-map,lambda-tree",
+      "element-kind": "http-header-value,text",
+      "description": "Resolves to one child node per request header, with the header name as the node name and its value as the node value"
+    }
+  }
+}

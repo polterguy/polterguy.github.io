@@ -1,0 +1,12 @@
+{
+  "name": "execution.throttle",
+  "description": "Enforces a named throttle previously declared with [execution.throttle.create], throwing a 429 exception once the limit is exceeded",
+  "signature": {
+    "input": {
+      "kind": "throttle-name",
+      "description": "Name of the throttle to enforce, as previously declared with [execution.throttle.create]",
+      "required": true,
+      "mode": "ValueOrExpression"
+    }
+  }
+}

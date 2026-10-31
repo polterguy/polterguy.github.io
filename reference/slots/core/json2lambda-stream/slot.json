@@ -1,0 +1,30 @@
+{
+  "name": "json2lambda-stream",
+  "description": "Transforms JSON stream content into a lambda hierarchy",
+  "signature": {
+    "input": {
+      "kind": "stream",
+      "description": "JSON stream to transform",
+      "required": true,
+      "mode": "Expression"
+    },
+    "children": {
+      "encoding": {
+        "type": "string",
+        "kind": "text-encoding",
+        "description": "Text encoding used to read the JSON stream",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "utf-8",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "lambda-tree",
+      "description": "Resolves to the parsed lambda hierarchy as child nodes"
+    }
+  }
+}

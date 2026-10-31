@@ -1,0 +1,34 @@
+{
+  "name": "validators.integer",
+  "description": "Validates that an integer value or resolved expression result is within the allowed range, throwing if validation fails",
+  "signature": {
+    "input": {
+      "kind": "integer,number",
+      "description": "Integer value or expression selecting the node or nodes to validate",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "min": {
+        "type": "long",
+        "kind": "validator-min-integer",
+        "description": "Minimum accepted value",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "max": {
+        "type": "long",
+        "kind": "validator-max-integer",
+        "description": "Maximum accepted value",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    }
+  }
+}

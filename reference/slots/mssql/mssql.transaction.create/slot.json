@@ -1,0 +1,11 @@
+{
+  "name": "mssql.transaction.create",
+  "description": "Creates a SQL Server transaction",
+  "signature": {
+    "scope": {
+      "provides": "mssql.transaction",
+      "requires": "mssql.connection",
+      "description": "Requires an open SQL Server connection created by [mssql.connect]"
+    }
+  }
+}

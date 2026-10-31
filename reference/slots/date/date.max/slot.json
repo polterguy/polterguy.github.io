@@ -1,0 +1,11 @@
+{
+  "name": "date.max",
+  "description": "Returns the maximum DateTime value",
+  "signature": {
+    "output": {
+      "mode": "Value",
+      "kind": "date",
+      "description": "Resolves to the maximum supported DateTime value"
+    }
+  }
+}

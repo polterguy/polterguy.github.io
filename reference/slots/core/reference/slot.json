@@ -1,0 +1,17 @@
+{
+  "name": "reference",
+  "description": "Returns the first matched node as a live reference so callers can mutate it in place rather than copy its value",
+  "signature": {
+    "input": {
+      "kind": "single-object",
+      "description": "Expression selecting the node to reference",
+      "required": true,
+      "mode": "Expression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "node-reference",
+      "description": "Resolves to a reference to the first matching node value"
+    }
+  }
+}

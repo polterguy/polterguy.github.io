@@ -1,0 +1,17 @@
+{
+  "name": "strings.byte-count",
+  "description": "Returns the UTF-8 byte length of a string; useful for size checks where multi-byte characters matter",
+  "signature": {
+    "input": {
+      "kind": "text",
+      "description": "Text to measure",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "integer,number",
+      "description": "Resolves to the number of bytes in the string"
+    }
+  }
+}

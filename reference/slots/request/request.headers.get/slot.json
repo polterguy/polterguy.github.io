@@ -1,0 +1,17 @@
+{
+  "name": "request.headers.get",
+  "description": "Returns a request header by name",
+  "signature": {
+    "input": {
+      "kind": "http-header-name",
+      "description": "Header name to retrieve",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "http-header-value,text",
+      "description": "Resolves to the value of the named request header, or null if it does not exist"
+    }
+  }
+}

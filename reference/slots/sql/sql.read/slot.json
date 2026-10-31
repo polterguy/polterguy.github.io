@@ -1,0 +1,571 @@
+{
+  "name": "sql.read",
+  "description": "Builds a parameterized SELECT SQL statement",
+  "signature": {
+    "children": {
+      "table": {
+        "type": "string",
+        "kind": "table-name",
+        "description": "Table name to use in the SQL statement",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "children": {
+          "as": {
+            "type": "string",
+            "kind": "table-alias",
+            "description": "Optional table alias",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrOne"
+          },
+          "join": {
+            "type": "string",
+            "kind": "table-name",
+            "description": "Joined table name",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrMore",
+            "children": {
+              "type": {
+                "type": "string",
+                "kind": "join-type",
+                "description": "Join type: inner, left, right, or full",
+                "required": false,
+                "mode": "ValueOrExpression",
+                "cardinality": "ZeroOrOne",
+                "default": "inner"
+              },
+              "as": {
+                "type": "string",
+                "kind": "table-alias",
+                "description": "Optional joined table alias",
+                "required": false,
+                "mode": "ValueOrExpression",
+                "cardinality": "ZeroOrOne"
+              },
+              "on": {
+                "type": "lambda",
+                "kind": "sql-predicate-root",
+                "description": "Join predicate tree comparing columns (AND-only at the schema level; the SQL builder still accepts hand-written [or] for legacy code)",
+                "required": true,
+                "mode": "StructuredArguments",
+                "cardinality": "ExactlyOne",
+                "children": {
+                  "and": {
+                    "type": "lambda",
+                    "kind": "sql-predicate-group",
+                    "description": "Boolean AND group",
+                    "required": true,
+                    "mode": "StructuredArguments",
+                    "cardinality": "ExactlyOne",
+                    "children": {
+                      "*": {
+                        "type": "object",
+                        "kind": "sql-column-condition,sql-qualified-column,text,number,boolean,date,guid,content,value",
+                        "description": "Join predicate: LHS is a column-with-operator suffix, RHS is the joined-side column reference (leaf-only — value-list children are a WHERE-clause feature, not meaningful in JOIN ON)",
+                        "required": true,
+                        "mode": "ValueOrExpression",
+                        "cardinality": "ExactlyOne"
+                      },
+                      "and": {
+                        "type": "lambda",
+                        "kind": "sql-predicate-group",
+                        "description": "Boolean AND group",
+                        "required": false,
+                        "mode": "StructuredArguments",
+                        "cardinality": "ZeroOrMore",
+                        "children": {
+                          "*": {
+                            "type": "object",
+                            "kind": "sql-column-condition,sql-qualified-column,text,number,boolean,date,guid,content,value",
+                            "description": "Join predicate: LHS is a column-with-operator suffix, RHS is the joined-side column reference (leaf-only — value-list children are a WHERE-clause feature, not meaningful in JOIN ON)",
+                            "required": true,
+                            "mode": "ValueOrExpression",
+                            "cardinality": "ExactlyOne"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "join": {
+                "type": "string",
+                "kind": "table-name",
+                "description": "Joined table name",
+                "required": false,
+                "mode": "ValueOrExpression",
+                "cardinality": "ZeroOrMore",
+                "children": {
+                  "type": {
+                    "type": "string",
+                    "kind": "join-type",
+                    "description": "Join type: inner, left, right, or full",
+                    "required": false,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "ZeroOrOne",
+                    "default": "inner"
+                  },
+                  "as": {
+                    "type": "string",
+                    "kind": "table-alias",
+                    "description": "Optional joined table alias",
+                    "required": false,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "ZeroOrOne"
+                  },
+                  "on": {
+                    "type": "lambda",
+                    "kind": "sql-predicate-root",
+                    "description": "Join predicate tree comparing columns (AND-only at the schema level; the SQL builder still accepts hand-written [or] for legacy code)",
+                    "required": true,
+                    "mode": "StructuredArguments",
+                    "cardinality": "ExactlyOne",
+                    "children": {
+                      "and": {
+                        "type": "lambda",
+                        "kind": "sql-predicate-group",
+                        "description": "Boolean AND group",
+                        "required": true,
+                        "mode": "StructuredArguments",
+                        "cardinality": "ExactlyOne",
+                        "children": {
+                          "*": {
+                            "type": "object",
+                            "kind": "sql-column-condition,sql-qualified-column,text,number,boolean,date,guid,content,value",
+                            "description": "Join predicate: LHS is a column-with-operator suffix, RHS is the joined-side column reference (leaf-only — value-list children are a WHERE-clause feature, not meaningful in JOIN ON)",
+                            "required": true,
+                            "mode": "ValueOrExpression",
+                            "cardinality": "ExactlyOne"
+                          },
+                          "and": {
+                            "type": "lambda",
+                            "kind": "sql-predicate-group",
+                            "description": "Boolean AND group",
+                            "required": false,
+                            "mode": "StructuredArguments",
+                            "cardinality": "ZeroOrMore",
+                            "children": {
+                              "*": {
+                                "type": "object",
+                                "kind": "sql-column-condition,sql-qualified-column,text,number,boolean,date,guid,content,value",
+                                "description": "Join predicate: LHS is a column-with-operator suffix, RHS is the joined-side column reference (leaf-only — value-list children are a WHERE-clause feature, not meaningful in JOIN ON)",
+                                "required": true,
+                                "mode": "ValueOrExpression",
+                                "cardinality": "ExactlyOne"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "distinct": {
+        "type": "bool",
+        "description": "Removes duplicate rows from the result set when true",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false"
+      },
+      "columns": {
+        "type": "lambda",
+        "description": "Columns or aggregate expressions to select; omitted or empty means all columns",
+        "required": false,
+        "mode": "DynamicNamedValues",
+        "cardinality": "ZeroOrOne",
+        "children": {
+          "*": {
+            "type": "string",
+            "kind": "column-name,aggregate-expression",
+            "description": "Column name or aggregate expression; optional [as] child declares an alias",
+            "required": false,
+            "mode": "Value",
+            "cardinality": "OneOrMore",
+            "children": {
+              "as": {
+                "type": "string",
+                "kind": "column-alias",
+                "description": "Column alias",
+                "required": false,
+                "mode": "ValueOrExpression",
+                "cardinality": "ZeroOrOne"
+              }
+            }
+          }
+        }
+      },
+      "where": {
+        "type": "lambda",
+        "kind": "sql-predicate-root",
+        "description": "Optional boolean predicate tree",
+        "required": false,
+        "mode": "StructuredArguments",
+        "cardinality": "ZeroOrOne",
+        "constraints": [
+          {
+            "description": "Where clause renders one top-level boolean group",
+            "values": [
+              "and",
+              "or"
+            ],
+            "kind": "ExactlyOneOf"
+          }
+        ],
+        "children": {
+          "and": {
+            "type": "lambda",
+            "kind": "sql-predicate-group",
+            "description": "Boolean AND group",
+            "required": false,
+            "mode": "StructuredArguments",
+            "cardinality": "ZeroOrOne",
+            "children": {
+              "*": {
+                "type": "object",
+                "kind": "sql-column-condition,text,number,boolean,date,guid,content,value",
+                "description": "Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator",
+                "required": true,
+                "mode": "ValueOrExpression",
+                "cardinality": "OneOrMore",
+                "constraints": [
+                  {
+                    "description": "Value-list children apply only to the .in operator; other operators take a single-value RHS",
+                    "values": [
+                      "."
+                    ],
+                    "kind": "Excludes"
+                  },
+                  {
+                    "description": "The .in operator is a valueless container; its admissible values live entirely in the `.:` child list",
+                    "values": [
+                      "input"
+                    ],
+                    "kind": "Excludes"
+                  }
+                ],
+                "children": [
+                  {
+                    "type": "object",
+                    "kind": "text,number,boolean,date,guid,content,value",
+                    "description": "Value item used by operators such as .in",
+                    "required": false,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "TwoOrMore"
+                  }
+                ]
+              },
+              "and": {
+                "type": "lambda",
+                "kind": "sql-predicate-group",
+                "description": "Boolean AND group",
+                "required": false,
+                "mode": "StructuredArguments",
+                "cardinality": "ZeroOrMore",
+                "children": {
+                  "*": {
+                    "type": "object",
+                    "kind": "sql-column-condition,text,number,boolean,date,guid,content,value",
+                    "description": "Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator",
+                    "required": true,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "OneOrMore",
+                    "constraints": [
+                      {
+                        "description": "Value-list children apply only to the .in operator; other operators take a single-value RHS",
+                        "values": [
+                          "."
+                        ],
+                        "kind": "Excludes"
+                      },
+                      {
+                        "description": "The .in operator is a valueless container; its admissible values live entirely in the `.:` child list",
+                        "values": [
+                          "input"
+                        ],
+                        "kind": "Excludes"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "type": "object",
+                        "kind": "text,number,boolean,date,guid,content,value",
+                        "description": "Value item used by operators such as .in",
+                        "required": false,
+                        "mode": "ValueOrExpression",
+                        "cardinality": "TwoOrMore"
+                      }
+                    ]
+                  }
+                }
+              },
+              "or": {
+                "type": "lambda",
+                "kind": "sql-predicate-group",
+                "description": "Boolean OR group",
+                "required": false,
+                "mode": "StructuredArguments",
+                "cardinality": "ZeroOrMore",
+                "children": {
+                  "*": {
+                    "type": "object",
+                    "kind": "sql-column-condition,text,number,boolean,date,guid,content,value",
+                    "description": "Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator",
+                    "required": true,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "OneOrMore",
+                    "constraints": [
+                      {
+                        "description": "Value-list children apply only to the .in operator; other operators take a single-value RHS",
+                        "values": [
+                          "."
+                        ],
+                        "kind": "Excludes"
+                      },
+                      {
+                        "description": "The .in operator is a valueless container; its admissible values live entirely in the `.:` child list",
+                        "values": [
+                          "input"
+                        ],
+                        "kind": "Excludes"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "type": "object",
+                        "kind": "text,number,boolean,date,guid,content,value",
+                        "description": "Value item used by operators such as .in",
+                        "required": false,
+                        "mode": "ValueOrExpression",
+                        "cardinality": "TwoOrMore"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "or": {
+            "type": "lambda",
+            "kind": "sql-predicate-group",
+            "description": "Boolean OR group",
+            "required": false,
+            "mode": "StructuredArguments",
+            "cardinality": "ZeroOrOne",
+            "children": {
+              "*": {
+                "type": "object",
+                "kind": "sql-column-condition,text,number,boolean,date,guid,content,value",
+                "description": "Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator",
+                "required": true,
+                "mode": "ValueOrExpression",
+                "cardinality": "OneOrMore",
+                "constraints": [
+                  {
+                    "description": "Value-list children apply only to the .in operator; other operators take a single-value RHS",
+                    "values": [
+                      "."
+                    ],
+                    "kind": "Excludes"
+                  },
+                  {
+                    "description": "The .in operator is a valueless container; its admissible values live entirely in the `.:` child list",
+                    "values": [
+                      "input"
+                    ],
+                    "kind": "Excludes"
+                  }
+                ],
+                "children": [
+                  {
+                    "type": "object",
+                    "kind": "text,number,boolean,date,guid,content,value",
+                    "description": "Value item used by operators such as .in",
+                    "required": false,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "TwoOrMore"
+                  }
+                ]
+              },
+              "and": {
+                "type": "lambda",
+                "kind": "sql-predicate-group",
+                "description": "Boolean AND group",
+                "required": false,
+                "mode": "StructuredArguments",
+                "cardinality": "ZeroOrMore",
+                "children": {
+                  "*": {
+                    "type": "object",
+                    "kind": "sql-column-condition,text,number,boolean,date,guid,content,value",
+                    "description": "Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator",
+                    "required": true,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "OneOrMore",
+                    "constraints": [
+                      {
+                        "description": "Value-list children apply only to the .in operator; other operators take a single-value RHS",
+                        "values": [
+                          "."
+                        ],
+                        "kind": "Excludes"
+                      },
+                      {
+                        "description": "The .in operator is a valueless container; its admissible values live entirely in the `.:` child list",
+                        "values": [
+                          "input"
+                        ],
+                        "kind": "Excludes"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "type": "object",
+                        "kind": "text,number,boolean,date,guid,content,value",
+                        "description": "Value item used by operators such as .in",
+                        "required": false,
+                        "mode": "ValueOrExpression",
+                        "cardinality": "TwoOrMore"
+                      }
+                    ]
+                  }
+                }
+              },
+              "or": {
+                "type": "lambda",
+                "kind": "sql-predicate-group",
+                "description": "Boolean OR group",
+                "required": false,
+                "mode": "StructuredArguments",
+                "cardinality": "ZeroOrMore",
+                "children": {
+                  "*": {
+                    "type": "object",
+                    "kind": "sql-column-condition,text,number,boolean,date,guid,content,value",
+                    "description": "Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator",
+                    "required": true,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "OneOrMore",
+                    "constraints": [
+                      {
+                        "description": "Value-list children apply only to the .in operator; other operators take a single-value RHS",
+                        "values": [
+                          "."
+                        ],
+                        "kind": "Excludes"
+                      },
+                      {
+                        "description": "The .in operator is a valueless container; its admissible values live entirely in the `.:` child list",
+                        "values": [
+                          "input"
+                        ],
+                        "kind": "Excludes"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "type": "object",
+                        "kind": "text,number,boolean,date,guid,content,value",
+                        "description": "Value item used by operators such as .in",
+                        "required": false,
+                        "mode": "ValueOrExpression",
+                        "cardinality": "TwoOrMore"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "group": {
+        "type": "lambda",
+        "description": "Columns or aggregate expressions to group by",
+        "required": false,
+        "mode": "DynamicNamedValues",
+        "cardinality": "ZeroOrOne",
+        "children": {
+          "*": {
+            "type": "string",
+            "kind": "column-name,aggregate-expression",
+            "description": "Column name or aggregate expression",
+            "required": false,
+            "mode": "Value",
+            "cardinality": "ZeroOrMore"
+          }
+        }
+      },
+      "order": {
+        "type": "string",
+        "kind": "column-name,aggregate-expression",
+        "description": "Column, comma-separated columns, or aggregate expression to order by",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrMore",
+        "children": {
+          "direction": {
+            "type": "string",
+            "kind": "sort-direction",
+            "description": "Order direction for this specific order node",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrOne",
+            "default": "asc"
+          }
+        }
+      },
+      "limit": {
+        "type": "long",
+        "description": "Maximum number of rows to return; omitted defaults to 25 and -1 suppresses the generated limit clause",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "25"
+      },
+      "offset": {
+        "type": "long",
+        "description": "Number of rows to skip",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "0"
+      }
+    },
+    "output": {
+      "mode": "Both",
+      "description": "Resolves to the generated SQL string in value and the generated parameter nodes as children",
+      "children": [
+        {
+          "type": "lambda",
+          "kind": "row",
+          "description": "One row returned by the read; child nodes carry the selected column values, with each child's name being the column name or alias from the SELECT statement",
+          "required": false,
+          "mode": "Value",
+          "cardinality": "ZeroOrMore",
+          "role": "StructuredObject",
+          "projection": "StructuredTree",
+          "children": {
+            "*": {
+              "type": "string",
+              "kind": "column-value",
+              "description": "Column value; child name is the column name (or alias) declared in the read",
+              "required": false,
+              "mode": "Value",
+              "cardinality": "ZeroOrMore",
+              "role": "Option",
+              "projection": "Value"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

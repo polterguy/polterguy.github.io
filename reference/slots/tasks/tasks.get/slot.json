@@ -1,0 +1,28 @@
+{
+  "name": "tasks.get",
+  "description": "Looks up a single stored task by ID and returns its body, description, and next due date",
+  "signature": {
+    "input": {
+      "kind": "task-id",
+      "description": "Task ID to retrieve",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "schedules": {
+        "type": "bool",
+        "description": "Whether to include schedules for the task",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "task,lambda-tree",
+      "description": "Resolves to the task fields as child nodes, optionally including a [schedules] node"
+    }
+  }
+}

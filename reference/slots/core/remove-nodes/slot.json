@@ -1,0 +1,12 @@
+{
+  "name": "remove-nodes",
+  "description": "Removes nodes from the lambda graph",
+  "signature": {
+    "input": {
+      "kind": "node-list,single-object",
+      "description": "Expression selecting the node or nodes to remove",
+      "required": true,
+      "mode": "Expression"
+    }
+  }
+}

@@ -1,14 +1,12 @@
 ---
-title: endpoints.* slots
-description: The 1 slots named endpoints.* in Magic Cloud and Hyperlambda, with their arguments and return values, generated from the running system.
+title: "endpoints.* slots"
+description: "The 1 slots named endpoints.* in Magic Cloud and Hyperlambda, each with its own page."
 generated: true
 ---
 
-_Generated from the running system, see [how this reference is built](/reference/slots/). Do not edit this page._
+1 slots, each with its own page and JSON declaration. See [how this reference is built](/reference/slots/).
 
-## [endpoints.list]
-
-Lists dynamic Hyperlambda endpoints with metadata.
-
-* **Returns**: Resolves to one child node per discovered endpoint, including its endpoint metadata
+| Slot | Description |
+|---|---|
+| [`endpoints.list`](/reference/slots/endpoints/endpoints.list/) | Lists dynamic Hyperlambda endpoints with metadata. |
 

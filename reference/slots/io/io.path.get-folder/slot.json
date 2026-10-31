@@ -1,0 +1,17 @@
+{
+  "name": "io.path.get-folder",
+  "description": "Strips the filename from a path and returns just its folder portion (e.g. '/foo/bar/baz.txt' becomes '/foo/bar/')",
+  "signature": {
+    "input": {
+      "kind": "file-path",
+      "description": "Path to inspect",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "folder-path,text",
+      "description": "Resolves to the folder portion of the supplied path"
+    }
+  }
+}

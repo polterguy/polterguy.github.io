@@ -1,0 +1,49 @@
+{
+  "name": "tasks.schedule",
+  "description": "Schedules a stored task for future execution; use [due] for a one-shot run or [repeats] for a recurring pattern",
+  "signature": {
+    "input": {
+      "kind": "task-id",
+      "description": "Task ID to schedule",
+      "required": false,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "due": {
+        "type": "DateTime",
+        "kind": "date",
+        "description": "One-time due date",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "repeats": {
+        "type": "string",
+        "kind": "task-repeat-pattern",
+        "description": "Repeat pattern",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "constraints": [
+      {
+        "description": "At least one schedule source must be supplied",
+        "values": [
+          "due",
+          "repeats"
+        ],
+        "kind": "AtLeastOneOf"
+      }
+    ],
+    "output": {
+      "mode": "Value",
+      "kind": "schedule-id,text",
+      "description": "Resolves to the created schedule ID"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "slots.delete",
+  "description": "Deletes a dynamic slot",
+  "signature": {
+    "input": {
+      "kind": "dynamic-slot-name",
+      "description": "Name of the dynamic slot to delete",
+      "required": true,
+      "mode": "ValueOrExpression"
+    }
+  }
+}

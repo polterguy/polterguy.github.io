@@ -1,0 +1,531 @@
+{
+  "name": "mime.create",
+  "description": "Builds a MIME message from headers and child [entity] nodes; useful for sending email or composing multipart payloads",
+  "signature": {
+    "input": {
+      "kind": "content-type",
+      "description": "Primary MIME content type",
+      "required": true,
+      "mode": "Value"
+    },
+    "children": {
+      "structured": {
+        "type": "bool",
+        "description": "When true returns the MIME tree as [headers] and [content] children; when false (default) returns the serialized MIME message text in the slot value",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "headers": {
+        "type": "lambda",
+        "kind": "mime-header-list",
+        "description": "MIME headers",
+        "required": false,
+        "mode": "DynamicNamedValues",
+        "cardinality": "ZeroOrOne",
+        "role": "DynamicMap",
+        "projection": "StructuredTree",
+        "children": {
+          "*": {
+            "type": "string",
+            "kind": "mime-header-value",
+            "description": "Header name and value",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrMore",
+            "role": "Option",
+            "projection": "Value"
+          }
+        }
+      },
+      "content": {
+        "type": "string",
+        "kind": "mime-content,mime-entity-source,text",
+        "description": "Inline MIME part content",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "filename": {
+        "type": "string",
+        "kind": "file-path,mime-entity-source,mime-entity-filename-source",
+        "description": "File path to use as MIME part content",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "entity": {
+        "type": "string",
+        "kind": "content-type",
+        "description": "Nested MIME entity content type; same leaf-vs-multipart shape as the parent [mime.create] value",
+        "required": true,
+        "mode": "Value",
+        "cardinality": "TwoOrMore",
+        "role": "StructuredObject",
+        "projection": "StructuredTree",
+        "constraints": [
+          {
+            "description": "Binary MIME parts cannot carry inline [content] — reference the bytes via [filename]",
+            "value-pattern": "^(image/|video/|audio/|application/(octet-stream|pdf|zip|gzip|x-tar|x-bzip2|x-7z-compressed|vnd\\.ms-excel|vnd\\.openxmlformats-officedocument))",
+            "values": [
+              "content"
+            ],
+            "kind": "Excludes"
+          },
+          {
+            "description": "Leaf MIME parts must not contain nested [entity] children",
+            "value-pattern": "^(?!multipart/).+/.+$",
+            "values": [
+              "entity"
+            ],
+            "kind": "Excludes"
+          },
+          {
+            "description": "Leaf MIME parts require either [content] or [filename]",
+            "value-pattern": "^(?!multipart/).+/.+$",
+            "values": [
+              "content",
+              "filename"
+            ],
+            "kind": "ExactlyOneOf"
+          },
+          {
+            "description": "Multipart MIME parts must not contain [content] or [filename]",
+            "value-pattern": "^multipart/.+$",
+            "values": [
+              "content",
+              "filename"
+            ],
+            "kind": "Excludes"
+          },
+          {
+            "description": "Multipart MIME parts require two or more [entity] children",
+            "value-pattern": "^multipart/.+$",
+            "values": [
+              "entity"
+            ],
+            "kind": "AtLeastOneOf"
+          }
+        ],
+        "children": {
+          "headers": {
+            "type": "lambda",
+            "kind": "mime-header-list",
+            "description": "MIME headers",
+            "required": false,
+            "mode": "DynamicNamedValues",
+            "cardinality": "ZeroOrOne",
+            "role": "DynamicMap",
+            "projection": "StructuredTree",
+            "children": {
+              "*": {
+                "type": "string",
+                "kind": "mime-header-value",
+                "description": "Header name and value",
+                "required": false,
+                "mode": "ValueOrExpression",
+                "cardinality": "ZeroOrMore",
+                "role": "Option",
+                "projection": "Value"
+              }
+            }
+          },
+          "content": {
+            "type": "string",
+            "kind": "mime-content,mime-entity-source,text",
+            "description": "Inline MIME part content",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrOne",
+            "role": "Option",
+            "projection": "Value"
+          },
+          "filename": {
+            "type": "string",
+            "kind": "file-path,mime-entity-source,mime-entity-filename-source",
+            "description": "File path to use as MIME part content",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrOne",
+            "role": "Option",
+            "projection": "Value"
+          },
+          "entity": {
+            "type": "string",
+            "kind": "content-type",
+            "description": "Nested MIME entity content type; same leaf-vs-multipart shape as the parent [mime.create] value",
+            "required": true,
+            "mode": "Value",
+            "cardinality": "TwoOrMore",
+            "role": "StructuredObject",
+            "projection": "StructuredTree",
+            "constraints": [
+              {
+                "description": "Binary MIME parts cannot carry inline [content] — reference the bytes via [filename]",
+                "value-pattern": "^(image/|video/|audio/|application/(octet-stream|pdf|zip|gzip|x-tar|x-bzip2|x-7z-compressed|vnd\\.ms-excel|vnd\\.openxmlformats-officedocument))",
+                "values": [
+                  "content"
+                ],
+                "kind": "Excludes"
+              },
+              {
+                "description": "Leaf MIME parts must not contain nested [entity] children",
+                "value-pattern": "^(?!multipart/).+/.+$",
+                "values": [
+                  "entity"
+                ],
+                "kind": "Excludes"
+              },
+              {
+                "description": "Leaf MIME parts require either [content] or [filename]",
+                "value-pattern": "^(?!multipart/).+/.+$",
+                "values": [
+                  "content",
+                  "filename"
+                ],
+                "kind": "ExactlyOneOf"
+              },
+              {
+                "description": "Multipart MIME parts must not contain [content] or [filename]",
+                "value-pattern": "^multipart/.+$",
+                "values": [
+                  "content",
+                  "filename"
+                ],
+                "kind": "Excludes"
+              },
+              {
+                "description": "Multipart MIME parts require two or more [entity] children",
+                "value-pattern": "^multipart/.+$",
+                "values": [
+                  "entity"
+                ],
+                "kind": "AtLeastOneOf"
+              }
+            ],
+            "children": {
+              "headers": {
+                "type": "lambda",
+                "kind": "mime-header-list",
+                "description": "MIME headers",
+                "required": false,
+                "mode": "DynamicNamedValues",
+                "cardinality": "ZeroOrOne",
+                "role": "DynamicMap",
+                "projection": "StructuredTree",
+                "children": {
+                  "*": {
+                    "type": "string",
+                    "kind": "mime-header-value",
+                    "description": "Header name and value",
+                    "required": false,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "ZeroOrMore",
+                    "role": "Option",
+                    "projection": "Value"
+                  }
+                }
+              },
+              "content": {
+                "type": "string",
+                "kind": "mime-content,mime-entity-source,text",
+                "description": "Inline MIME part content",
+                "required": false,
+                "mode": "ValueOrExpression",
+                "cardinality": "ZeroOrOne",
+                "role": "Option",
+                "projection": "Value"
+              },
+              "filename": {
+                "type": "string",
+                "kind": "file-path,mime-entity-source,mime-entity-filename-source",
+                "description": "File path to use as MIME part content",
+                "required": false,
+                "mode": "ValueOrExpression",
+                "cardinality": "ZeroOrOne",
+                "role": "Option",
+                "projection": "Value"
+              },
+              "entity": {
+                "type": "string",
+                "kind": "mime-content-types-leaf",
+                "description": "Innermost MIME leaf entity content type; must be a leaf type because no further [entity] nesting is permitted here",
+                "required": true,
+                "mode": "Value",
+                "cardinality": "TwoOrMore",
+                "role": "StructuredObject",
+                "projection": "StructuredTree",
+                "constraints": [
+                  {
+                    "description": "Binary MIME parts cannot carry inline [content] — reference the bytes via [filename]",
+                    "value-pattern": "^(image/|video/|audio/|application/(octet-stream|pdf|zip|gzip|x-tar|x-bzip2|x-7z-compressed|vnd\\.ms-excel|vnd\\.openxmlformats-officedocument))",
+                    "values": [
+                      "content"
+                    ],
+                    "kind": "Excludes"
+                  },
+                  {
+                    "description": "Leaf MIME parts must not contain nested [entity] children",
+                    "value-pattern": "^(?!multipart/).+/.+$",
+                    "values": [
+                      "entity"
+                    ],
+                    "kind": "Excludes"
+                  },
+                  {
+                    "description": "Leaf MIME parts require either [content] or [filename]",
+                    "value-pattern": "^(?!multipart/).+/.+$",
+                    "values": [
+                      "content",
+                      "filename"
+                    ],
+                    "kind": "ExactlyOneOf"
+                  },
+                  {
+                    "description": "Multipart MIME parts must not contain [content] or [filename]",
+                    "value-pattern": "^multipart/.+$",
+                    "values": [
+                      "content",
+                      "filename"
+                    ],
+                    "kind": "Excludes"
+                  },
+                  {
+                    "description": "Multipart MIME parts require two or more [entity] children",
+                    "value-pattern": "^multipart/.+$",
+                    "values": [
+                      "entity"
+                    ],
+                    "kind": "AtLeastOneOf"
+                  }
+                ],
+                "children": {
+                  "headers": {
+                    "type": "lambda",
+                    "kind": "mime-header-list",
+                    "description": "MIME headers",
+                    "required": false,
+                    "mode": "DynamicNamedValues",
+                    "cardinality": "ZeroOrOne",
+                    "role": "DynamicMap",
+                    "projection": "StructuredTree",
+                    "children": {
+                      "*": {
+                        "type": "string",
+                        "kind": "mime-header-value",
+                        "description": "Header name and value",
+                        "required": false,
+                        "mode": "ValueOrExpression",
+                        "cardinality": "ZeroOrMore",
+                        "role": "Option",
+                        "projection": "Value"
+                      }
+                    }
+                  },
+                  "content": {
+                    "type": "string",
+                    "kind": "mime-content,mime-entity-source,text",
+                    "description": "Inline MIME part content",
+                    "required": false,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "ZeroOrOne",
+                    "role": "Option",
+                    "projection": "Value"
+                  },
+                  "filename": {
+                    "type": "string",
+                    "kind": "file-path,mime-entity-source,mime-entity-filename-source",
+                    "description": "File path to use as MIME part content",
+                    "required": false,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "ZeroOrOne",
+                    "role": "Option",
+                    "projection": "Value"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "constraints": [
+      {
+        "description": "Binary MIME parts cannot carry inline [content] — reference the bytes via [filename]",
+        "value-pattern": "^(image/|video/|audio/|application/(octet-stream|pdf|zip|gzip|x-tar|x-bzip2|x-7z-compressed|vnd\\.ms-excel|vnd\\.openxmlformats-officedocument))",
+        "values": [
+          "content"
+        ],
+        "kind": "Excludes"
+      },
+      {
+        "description": "Leaf MIME parts must not contain nested [entity] children",
+        "value-pattern": "^(?!multipart/).+/.+$",
+        "values": [
+          "entity"
+        ],
+        "kind": "Excludes"
+      },
+      {
+        "description": "Leaf MIME parts require either [content] or [filename]",
+        "value-pattern": "^(?!multipart/).+/.+$",
+        "values": [
+          "content",
+          "filename"
+        ],
+        "kind": "ExactlyOneOf"
+      },
+      {
+        "description": "Multipart MIME parts must not contain [content] or [filename]",
+        "value-pattern": "^multipart/.+$",
+        "values": [
+          "content",
+          "filename"
+        ],
+        "kind": "Excludes"
+      },
+      {
+        "description": "Multipart MIME parts require two or more [entity] children",
+        "value-pattern": "^multipart/.+$",
+        "values": [
+          "entity"
+        ],
+        "kind": "AtLeastOneOf"
+      }
+    ],
+    "output": {
+      "mode": "Both",
+      "kind": "mime-message,text",
+      "description": "Resolves to the MIME message text in value or, when structured, MIME header and content nodes as children",
+      "children": {
+        "headers": {
+          "type": "lambda",
+          "kind": "mime-header-list",
+          "description": "MIME headers from the parsed entity, excluding Content-Type because the entity content type is returned as the node value",
+          "required": false,
+          "mode": "Value",
+          "cardinality": "ZeroOrOne",
+          "role": "StructuredObject",
+          "projection": "StructuredTree",
+          "children": {
+            "*": {
+              "type": "string",
+              "kind": "mime-header-value",
+              "description": "Parsed MIME header value; child name is the header name",
+              "required": false,
+              "mode": "Value",
+              "cardinality": "ZeroOrMore",
+              "role": "Option",
+              "projection": "Value"
+            }
+          }
+        },
+        "content": {
+          "type": "string|byte[]",
+          "kind": "mime-content,binary-content",
+          "description": "Decoded MIME part content; text parts return string content and binary parts return byte[] content",
+          "required": false,
+          "mode": "Value",
+          "cardinality": "ZeroOrOne",
+          "role": "Payload",
+          "projection": "Value"
+        },
+        "entity": {
+          "type": "string",
+          "kind": "content-type",
+          "description": "Nested parsed MIME entity; node value is the nested entity content type, and children carry headers, content, and any deeper entities",
+          "required": false,
+          "mode": "Value",
+          "cardinality": "ZeroOrMore",
+          "role": "StructuredObject",
+          "projection": "StructuredTree",
+          "children": {
+            "headers": {
+              "type": "lambda",
+              "kind": "mime-header-list",
+              "description": "MIME headers from the parsed entity, excluding Content-Type because the entity content type is returned as the node value",
+              "required": false,
+              "mode": "Value",
+              "cardinality": "ZeroOrOne",
+              "role": "StructuredObject",
+              "projection": "StructuredTree",
+              "children": {
+                "*": {
+                  "type": "string",
+                  "kind": "mime-header-value",
+                  "description": "Parsed MIME header value; child name is the header name",
+                  "required": false,
+                  "mode": "Value",
+                  "cardinality": "ZeroOrMore",
+                  "role": "Option",
+                  "projection": "Value"
+                }
+              }
+            },
+            "content": {
+              "type": "string|byte[]",
+              "kind": "mime-content,binary-content",
+              "description": "Decoded MIME part content; text parts return string content and binary parts return byte[] content",
+              "required": false,
+              "mode": "Value",
+              "cardinality": "ZeroOrOne",
+              "role": "Payload",
+              "projection": "Value"
+            },
+            "entity": {
+              "type": "string",
+              "kind": "content-type",
+              "description": "Nested parsed MIME entity; node value is the nested entity content type, and children carry headers, content, and any deeper entities",
+              "required": false,
+              "mode": "Value",
+              "cardinality": "ZeroOrMore",
+              "role": "StructuredObject",
+              "projection": "StructuredTree",
+              "children": {
+                "headers": {
+                  "type": "lambda",
+                  "kind": "mime-header-list",
+                  "description": "MIME headers from the parsed entity, excluding Content-Type because the entity content type is returned as the node value",
+                  "required": false,
+                  "mode": "Value",
+                  "cardinality": "ZeroOrOne",
+                  "role": "StructuredObject",
+                  "projection": "StructuredTree",
+                  "children": {
+                    "*": {
+                      "type": "string",
+                      "kind": "mime-header-value",
+                      "description": "Parsed MIME header value; child name is the header name",
+                      "required": false,
+                      "mode": "Value",
+                      "cardinality": "ZeroOrMore",
+                      "role": "Option",
+                      "projection": "Value"
+                    }
+                  }
+                },
+                "content": {
+                  "type": "string|byte[]",
+                  "kind": "mime-content,binary-content",
+                  "description": "Decoded MIME part content; text parts return string content and binary parts return byte[] content",
+                  "required": false,
+                  "mode": "Value",
+                  "cardinality": "ZeroOrOne",
+                  "role": "Payload",
+                  "projection": "Value"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

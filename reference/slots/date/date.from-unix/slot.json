@@ -1,0 +1,17 @@
+{
+  "name": "date.from-unix",
+  "description": "Converts a Unix timestamp into a DateTime value",
+  "signature": {
+    "input": {
+      "kind": "unix-timestamp,integer,number",
+      "description": "Unix timestamp to convert",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "date",
+      "description": "Resolves to the date represented by the supplied Unix timestamp"
+    }
+  }
+}

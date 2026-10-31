@@ -1,0 +1,28 @@
+{
+  "name": "return",
+  "description": "Returns a value, expression result, or child nodes to the nearest caller",
+  "signature": {
+    "input": {
+      "kind": "return-value,node-list",
+      "description": "Value or expression to return when no child nodes are supplied; one expression match returns its value, multiple matches return cloned nodes",
+      "required": false,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "*": {
+        "type": "object",
+        "description": "Child node forwarded to the nearest caller without evaluation; when children exist, all children are returned as-is",
+        "required": false,
+        "mode": "SourceLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "Payload",
+        "projection": "Self"
+      }
+    },
+    "output": {
+      "mode": "Both",
+      "kind": "return-value,node-list",
+      "description": "Resolves to the supplied value and/or returned child nodes captured by the nearest caller"
+    }
+  }
+}

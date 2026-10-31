@@ -1,0 +1,12 @@
+{
+  "name": "validators.url",
+  "description": "Validates that a value or resolved expression result is a URL, throwing if validation fails",
+  "signature": {
+    "input": {
+      "kind": "url",
+      "description": "URL value or expression selecting the node or nodes to validate",
+      "required": true,
+      "mode": "ValueOrExpression"
+    }
+  }
+}

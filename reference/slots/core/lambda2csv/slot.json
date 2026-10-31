@@ -1,0 +1,30 @@
+{
+  "name": "lambda2csv",
+  "description": "Transforms a lambda hierarchy into CSV",
+  "signature": {
+    "input": {
+      "kind": "node-list",
+      "description": "Expression selecting the nodes (rows) to transform",
+      "required": true,
+      "mode": "Expression"
+    },
+    "children": {
+      "null-value": {
+        "type": "string",
+        "kind": "null-value",
+        "description": "String used to represent null values",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "[NULL]",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Both",
+      "kind": "csv,text",
+      "description": "Resolves to the CSV content in value and column type nodes as children"
+    }
+  }
+}

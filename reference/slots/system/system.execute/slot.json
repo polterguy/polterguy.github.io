@@ -1,0 +1,51 @@
+{
+  "name": "system.execute",
+  "description": "Spawns a shell process with the given command and arguments and returns its captured output",
+  "signature": {
+    "input": {
+      "kind": "terminal-command",
+      "description": "Command to execute",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "args": {
+        "type": "string|lambda",
+        "kind": "terminal-arguments",
+        "description": "Process arguments as a shell-like string or child values",
+        "required": false,
+        "mode": "StructuredArguments",
+        "cardinality": "ZeroOrOne",
+        "role": "Arguments",
+        "projection": "ArgumentBag",
+        "children": {
+          "*": {
+            "type": "string",
+            "kind": "terminal-argument",
+            "description": "Single process argument",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrMore",
+            "role": "Arguments",
+            "projection": "Value"
+          }
+        }
+      },
+      "working-directory": {
+        "type": "string",
+        "kind": "folder-path",
+        "description": "Working directory for the process",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "terminal-response,text",
+      "description": "Resolves to the standard output from the executed command"
+    }
+  }
+}

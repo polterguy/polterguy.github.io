@@ -1,0 +1,24 @@
+{
+  "name": "eval",
+  "description": "Executes a lambda block; use it to run a node tree dynamically or to scope a group of statements",
+  "signature": {
+    "input": {
+      "kind": "lambda-object,lambda-tree",
+      "description": "Expression selecting the Hyperlambda nodes to evaluate; alternatively supply literal executable children",
+      "required": false,
+      "mode": "Expression"
+    },
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Executable child slot evaluated in order",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    }
+  }
+}

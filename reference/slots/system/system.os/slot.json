@@ -1,0 +1,11 @@
+{
+  "name": "system.os",
+  "description": "Returns a description of the current operating system",
+  "signature": {
+    "output": {
+      "mode": "Value",
+      "kind": "current-os-name,text",
+      "description": "Resolves to the current operating system name"
+    }
+  }
+}

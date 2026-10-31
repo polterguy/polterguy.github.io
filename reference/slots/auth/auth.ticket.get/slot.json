@@ -1,0 +1,11 @@
+{
+  "name": "auth.ticket.get",
+  "description": "Returns the current ticket username, roles, and claims",
+  "signature": {
+    "output": {
+      "mode": "Both",
+      "kind": "username,text",
+      "description": "Resolves to the username in value and roles and claims as child nodes"
+    }
+  }
+}

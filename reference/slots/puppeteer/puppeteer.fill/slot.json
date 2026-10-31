@@ -1,0 +1,66 @@
+{
+  "name": "puppeteer.fill",
+  "description": "Fills an input element with text",
+  "signature": {
+    "input": {
+      "kind": "puppeteer-session",
+      "description": "Puppeteer session ID",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "selector": {
+        "type": "string",
+        "kind": "css-selector",
+        "description": "CSS selector",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "text": {
+        "type": "string",
+        "kind": "form-text,text",
+        "description": "Text to send",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "config-key": {
+        "type": "string",
+        "kind": "config-key",
+        "description": "Configuration key resolving the text to send",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "delay": {
+        "type": "int",
+        "description": "Delay in milliseconds between key presses",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "constraints": [
+      {
+        "description": "Provide either [text] or [config-key]",
+        "values": [
+          "text",
+          "config-key"
+        ],
+        "kind": "ExactlyOneOf"
+      }
+    ],
+    "scope": {
+      "requires": "puppeteer-session"
+    }
+  }
+}

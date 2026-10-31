@@ -1,0 +1,17 @@
+{
+  "name": "strings.url-encode",
+  "description": "URL encodes the specified string",
+  "signature": {
+    "input": {
+      "kind": "url-component,text",
+      "description": "Text to encode",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "url-encoded,text",
+      "description": "Resolves to the URL-encoded string"
+    }
+  }
+}

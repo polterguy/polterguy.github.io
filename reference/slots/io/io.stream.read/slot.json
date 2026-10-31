@@ -1,0 +1,17 @@
+{
+  "name": "io.stream.read",
+  "description": "Reads from an open stream",
+  "signature": {
+    "input": {
+      "kind": "stream",
+      "description": "Stream instance to read from",
+      "required": true,
+      "mode": "Expression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "binary-content,fingerprint-source",
+      "description": "Resolves to the bytes read from the stream"
+    }
+  }
+}

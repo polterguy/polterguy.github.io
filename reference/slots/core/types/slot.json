@@ -1,0 +1,12 @@
+{
+  "name": "types",
+  "description": "Lists every CLR type name recognized by Hyperlambda; useful when [convert] or [type] needs a valid target",
+  "signature": {
+    "output": {
+      "mode": "Lambda",
+      "kind": "type-name-list,string-list",
+      "element-kind": "type-name,text",
+      "description": "Resolves to one child node per known CLR type name"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "include",
+  "description": "Evaluates child slots and includes all returned nodes into each selected node",
+  "signature": {
+    "input": {
+      "kind": "node-list",
+      "description": "Expression selecting the destination node or nodes to include into",
+      "required": true,
+      "mode": "Expression"
+    },
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Executable body evaluated once per selected node; all returned child nodes are included into that selected node",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "OneOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "ReturnedResult"
+      }
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "node-list",
+      "description": "Resolves to the matched destination nodes after all returned child nodes have been included"
+    }
+  }
+}

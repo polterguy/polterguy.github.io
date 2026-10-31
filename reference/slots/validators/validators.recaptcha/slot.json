@@ -1,0 +1,43 @@
+{
+  "name": "validators.recaptcha",
+  "description": "Validates a reCAPTCHA response token, throwing if validation fails",
+  "signature": {
+    "input": {
+      "kind": "recaptcha-token",
+      "description": "reCAPTCHA response token to validate",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "site-key": {
+        "type": "string",
+        "kind": "recaptcha-site-key",
+        "description": "reCAPTCHA site key",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "secret": {
+        "type": "string",
+        "kind": "recaptcha-secret",
+        "description": "reCAPTCHA secret key",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "min": {
+        "type": "decimal",
+        "description": "Minimum acceptable reCAPTCHA score",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    }
+  }
+}

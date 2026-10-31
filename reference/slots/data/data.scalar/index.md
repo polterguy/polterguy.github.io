@@ -1,0 +1,79 @@
+---
+title: "[data.scalar]"
+description: "data.scalar is a slot in the data namespace of Magic Cloud. Executes SQL and returns a scalar value from the current database connection."
+generated: true
+llms: false
+slot_json: "/reference/slots/data/data.scalar/slot.json"
+---
+
+`data.scalar` is a slot in the `data` namespace, in Hyperlambda, the language of Magic Cloud. Executes SQL and returns a scalar value from the current database connection.
+
+* **Value** (`sql-scalar`), required: SQL statement to execute
+* **Returns**: Resolves to a scalar value from the current database connection
+* **Scope**: requires `data.connection` - Requires an open database connection created by [data.connect]
+
+### Arguments
+
+| Argument | Type | Required | Description |
+|---|---|---|---|
+| _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
+| `[database-type]` | string | no | Database adapter to use instead of the configured default. |
+
+Guide: [How to use [data.scalar]](/plugins/magic.data.common/#how-to-use-datascalar)
+
+### JSON declaration
+
+This is the complete declaration of `data.scalar`, as the running system describes it. It is also published as [slot.json](slot.json).
+
+<details markdown="1" class="slot-declaration">
+<summary>JSON declaration</summary>
+
+```json
+{
+  "name": "data.scalar",
+  "description": "Executes SQL and returns a scalar value from the current database connection",
+  "signature": {
+    "input": {
+      "kind": "sql-scalar",
+      "description": "SQL statement to execute",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "database-type": {
+        "type": "string",
+        "kind": "database-type",
+        "description": "Database adapter to use instead of the configured default",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne"
+      },
+      "*": {
+        "type": "object",
+        "kind": "sql-parameter-value,text,number,boolean,date,guid,content,value",
+        "description": "SQL parameter value; child name is used as the parameter name referenced by the SQL statement",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrMore",
+        "role": "Arguments",
+        "projection": "Value"
+      }
+    },
+    "scope": {
+      "requires": "data.connection",
+      "description": "Requires an open database connection created by [data.connect]"
+    },
+    "output": {
+      "mode": "Value",
+      "description": "Resolves to a scalar value from the current database connection"
+    }
+  }
+}
+```
+
+</details>
+
+---
+
+[&larr; `data.read`](/reference/slots/data/data.read/) | [all `data.*` slots](/reference/slots/data/) | [`data.scan` &rarr;](/reference/slots/data/data.scan/)
+

@@ -1,0 +1,28 @@
+{
+  "name": "return-nodes",
+  "description": "Returns child nodes or evaluated nodes to the nearest caller",
+  "signature": {
+    "input": {
+      "kind": "node-list",
+      "description": "Expression evaluating to the nodes to return; omit to return the literal child nodes instead",
+      "required": false,
+      "mode": "Expression"
+    },
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Returned child node",
+        "required": false,
+        "mode": "SourceLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "Payload",
+        "projection": "Self"
+      }
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "node-list",
+      "description": "Returns child nodes to the nearest caller"
+    }
+  }
+}

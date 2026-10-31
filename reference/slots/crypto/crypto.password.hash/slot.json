@@ -1,0 +1,17 @@
+{
+  "name": "crypto.password.hash",
+  "description": "Hashes a plaintext password with bcrypt and a per-user salt; check candidates later with [crypto.password.verify]",
+  "signature": {
+    "input": {
+      "kind": "password,text",
+      "description": "Password to hash",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "password-hash,text",
+      "description": "Resolves to the password hash"
+    }
+  }
+}

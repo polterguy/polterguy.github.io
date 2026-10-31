@@ -1,0 +1,24 @@
+{
+  "name": "auth.token.read",
+  "description": "Validates a JWT token and verifies that it contains one of the required roles",
+  "signature": {
+    "input": {
+      "kind": "jwt",
+      "description": "JWT token to validate",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "roles": {
+        "type": "string",
+        "kind": "role",
+        "description": "Comma-separated roles required by the token",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    }
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "name": "mime.parse",
+  "description": "Parses a raw MIME message into a lambda tree of headers and body parts; commonly used for email or multipart payloads",
+  "signature": {
+    "input": {
+      "kind": "mime-message",
+      "description": "Raw MIME message to parse",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Both",
+      "kind": "content-type,text",
+      "element-kind": "mime-tree-node",
+      "description": "Resolves to the parsed MIME entity content type as the node value, and headers, content, and nested entities as child nodes",
+      "children": {
+        "headers": {
+          "type": "lambda",
+          "kind": "mime-header-list",
+          "description": "MIME headers from the parsed entity, excluding Content-Type because the entity content type is returned as the node value",
+          "required": false,
+          "mode": "Value",
+          "cardinality": "ZeroOrOne",
+          "role": "StructuredObject",
+          "projection": "StructuredTree",
+          "children": {
+            "*": {
+              "type": "string",
+              "kind": "mime-header-value",
+              "description": "Parsed MIME header value; child name is the header name",
+              "required": false,
+              "mode": "Value",
+              "cardinality": "ZeroOrMore",
+              "role": "Option",
+              "projection": "Value"
+            }
+          }
+        },
+        "content": {
+          "type": "string|byte[]",
+          "kind": "mime-content,binary-content",
+          "description": "Decoded MIME part content; text parts return string content and binary parts return byte[] content",
+          "required": false,
+          "mode": "Value",
+          "cardinality": "ZeroOrOne",
+          "role": "Payload",
+          "projection": "Value"
+        },
+        "entity": {
+          "type": "string",
+          "kind": "content-type",
+          "description": "Nested parsed MIME entity; node value is the nested entity content type, and children carry headers, content, and any deeper entities",
+          "required": false,
+          "mode": "Value",
+          "cardinality": "ZeroOrMore",
+          "role": "StructuredObject",
+          "projection": "StructuredTree",
+          "children": {
+            "headers": {
+              "type": "lambda",
+              "kind": "mime-header-list",
+              "description": "MIME headers from the parsed entity, excluding Content-Type because the entity content type is returned as the node value",
+              "required": false,
+              "mode": "Value",
+              "cardinality": "ZeroOrOne",
+              "role": "StructuredObject",
+              "projection": "StructuredTree",
+              "children": {
+                "*": {
+                  "type": "string",
+                  "kind": "mime-header-value",
+                  "description": "Parsed MIME header value; child name is the header name",
+                  "required": false,
+                  "mode": "Value",
+                  "cardinality": "ZeroOrMore",
+                  "role": "Option",
+                  "projection": "Value"
+                }
+              }
+            },
+            "content": {
+              "type": "string|byte[]",
+              "kind": "mime-content,binary-content",
+              "description": "Decoded MIME part content; text parts return string content and binary parts return byte[] content",
+              "required": false,
+              "mode": "Value",
+              "cardinality": "ZeroOrOne",
+              "role": "Payload",
+              "projection": "Value"
+            },
+            "entity": {
+              "type": "string",
+              "kind": "content-type",
+              "description": "Nested parsed MIME entity; node value is the nested entity content type, and children carry headers, content, and any deeper entities",
+              "required": false,
+              "mode": "Value",
+              "cardinality": "ZeroOrMore",
+              "role": "StructuredObject",
+              "projection": "StructuredTree",
+              "children": {
+                "headers": {
+                  "type": "lambda",
+                  "kind": "mime-header-list",
+                  "description": "MIME headers from the parsed entity, excluding Content-Type because the entity content type is returned as the node value",
+                  "required": false,
+                  "mode": "Value",
+                  "cardinality": "ZeroOrOne",
+                  "role": "StructuredObject",
+                  "projection": "StructuredTree",
+                  "children": {
+                    "*": {
+                      "type": "string",
+                      "kind": "mime-header-value",
+                      "description": "Parsed MIME header value; child name is the header name",
+                      "required": false,
+                      "mode": "Value",
+                      "cardinality": "ZeroOrMore",
+                      "role": "Option",
+                      "projection": "Value"
+                    }
+                  }
+                },
+                "content": {
+                  "type": "string|byte[]",
+                  "kind": "mime-content,binary-content",
+                  "description": "Decoded MIME part content; text parts return string content and binary parts return byte[] content",
+                  "required": false,
+                  "mode": "Value",
+                  "cardinality": "ZeroOrOne",
+                  "role": "Payload",
+                  "projection": "Value"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

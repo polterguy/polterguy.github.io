@@ -1,0 +1,30 @@
+{
+  "name": "strings.trim",
+  "description": "Trims characters from both ends of the specified string",
+  "signature": {
+    "input": {
+      "kind": "text",
+      "description": "Text to trim",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": [
+      {
+        "type": "string",
+        "kind": "trim-characters",
+        "description": "Optional characters to trim",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrOne",
+        "role": "SourceExpression",
+        "evaluation": "EvalSelf",
+        "projection": "Value"
+      }
+    ],
+    "output": {
+      "mode": "Value",
+      "kind": "text",
+      "description": "Resolves to the trimmed string"
+    }
+  }
+}

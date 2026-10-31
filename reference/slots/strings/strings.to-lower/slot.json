@@ -1,0 +1,17 @@
+{
+  "name": "strings.to-lower",
+  "description": "Transforms input text to lowercase",
+  "signature": {
+    "input": {
+      "kind": "text",
+      "description": "Text to transform",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "text",
+      "description": "Resolves to the lowercased string"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "lambda2xml",
+  "description": "Converts a lambda object to an XML fragment or document",
+  "signature": {
+    "input": {
+      "kind": "xml-tree",
+      "description": "Expression selecting a SINGLE lambda root to transform (XML has exactly one document root)",
+      "required": true,
+      "mode": "Expression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "xml,text",
+      "description": "Resolves to the generated XML string"
+    }
+  }
+}

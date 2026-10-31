@@ -1,0 +1,17 @@
+{
+  "name": "image.size",
+  "description": "Returns the width and height of an image",
+  "signature": {
+    "input": {
+      "kind": "image-file",
+      "description": "Image filename to inspect",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "image-dimensions,lambda-tree",
+      "description": "Returns [width:int] and [height:int] child nodes for the image dimensions"
+    }
+  }
+}

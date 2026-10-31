@@ -1,0 +1,38 @@
+{
+  "name": "data.connect",
+  "description": "Opens a database connection using the configured provider",
+  "signature": {
+    "input": {
+      "kind": "database-name,connection-string",
+      "description": "Optional DATABASE_NAME or [CONNECTION_STRING|DATABASE_NAME] override",
+      "required": false,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "database-type": {
+        "type": "string",
+        "kind": "database-type",
+        "description": "Database adapter to use instead of the configured default",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "*": {
+        "type": "lambda",
+        "description": "Executable child slot evaluated while the database connection is open",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    },
+    "scope": {
+      "provides": "data.connection",
+      "description": "Creates an open database connection scope for data.* slots"
+    }
+  }
+}

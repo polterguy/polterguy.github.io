@@ -1,0 +1,17 @@
+{
+  "name": "math.round",
+  "description": "Rounds a number",
+  "signature": {
+    "input": {
+      "kind": "number",
+      "description": "Numeric value to round",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "number",
+      "description": "Resolves to the rounded value"
+    }
+  }
+}

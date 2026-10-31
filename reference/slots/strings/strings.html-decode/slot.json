@@ -1,0 +1,17 @@
+{
+  "name": "strings.html-decode",
+  "description": "HTML decodes the specified string",
+  "signature": {
+    "input": {
+      "kind": "html-encoded",
+      "description": "HTML encoded text to decode",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "html-unencoded,text",
+      "description": "Resolves to the decoded HTML markup"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "name": "puppeteer.click",
+  "description": "Clicks an element on the page",
+  "signature": {
+    "input": {
+      "kind": "puppeteer-session",
+      "description": "Puppeteer session ID",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "selector": {
+        "type": "string",
+        "kind": "css-selector",
+        "description": "CSS selector",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "button": {
+        "type": "string",
+        "kind": "mouse-button",
+        "description": "Mouse button to click",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "left",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "click-count": {
+        "type": "int",
+        "kind": "click-count",
+        "description": "Number of clicks",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "delay": {
+        "type": "int",
+        "description": "Delay in milliseconds between mouse down and up",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "scope": {
+      "requires": "puppeteer-session"
+    }
+  }
+}

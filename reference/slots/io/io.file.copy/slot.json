@@ -1,0 +1,22 @@
+{
+  "name": "io.file.copy",
+  "description": "Copies a file on the server",
+  "signature": {
+    "input": {
+      "kind": "file-path",
+      "description": "Source file path",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "*": {
+        "type": "string",
+        "kind": "file-path",
+        "description": "Destination path",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne"
+      }
+    }
+  }
+}

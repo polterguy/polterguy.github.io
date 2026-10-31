@@ -1,0 +1,27 @@
+{
+  "name": "semaphore",
+  "description": "Serializes access to a critical section by name; only one thread at a time can enter a given semaphore",
+  "signature": {
+    "input": {
+      "kind": "semaphore-name",
+      "description": "Semaphore name used to serialize access",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Executable child lambda object evaluated while the named semaphore is held",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "OneOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    },
+    "scope": {
+      "provides": "semaphore"
+    }
+  }
+}

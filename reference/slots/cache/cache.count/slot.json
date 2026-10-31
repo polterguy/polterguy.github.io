@@ -1,0 +1,17 @@
+{
+  "name": "cache.count",
+  "description": "Counts cached items matching the optional filter",
+  "signature": {
+    "input": {
+      "kind": "cache-key",
+      "description": "Optional filter for cache keys",
+      "required": false,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "integer,number",
+      "description": "Resolves to the number of cached items matching the optional filter"
+    }
+  }
+}

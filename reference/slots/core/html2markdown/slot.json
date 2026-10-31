@@ -1,0 +1,59 @@
+{
+  "name": "html2markdown",
+  "description": "Transforms HTML into Markdown",
+  "signature": {
+    "input": {
+      "kind": "html",
+      "description": "HTML markup to transform",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "url": {
+        "type": "string",
+        "kind": "url",
+        "description": "Base URL used when resolving links",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "images": {
+        "type": "bool",
+        "description": "Whether images should be emitted",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "true",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "code": {
+        "type": "bool",
+        "description": "Whether code blocks should be emitted",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "true",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "lists": {
+        "type": "bool",
+        "description": "Whether lists should be emitted",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "true",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "markdown,text",
+      "description": "Resolves to the generated Markdown"
+    }
+  }
+}

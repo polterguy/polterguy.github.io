@@ -1,0 +1,22 @@
+{
+  "name": "io.file.patch",
+  "description": "Applies a unified-diff patch to a file on disk; useful for surgical edits or replaying generated diffs",
+  "signature": {
+    "input": {
+      "kind": "file-path",
+      "description": "File path to patch",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "*": {
+        "type": "string",
+        "kind": "unified-diff",
+        "description": "Unified diff patch content to apply",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne"
+      }
+    }
+  }
+}

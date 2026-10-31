@@ -1,0 +1,32 @@
+{
+  "name": "mysql.scalar",
+  "description": "Executes SQL and returns a scalar value from the current MySQL connection",
+  "signature": {
+    "input": {
+      "kind": "sql-scalar",
+      "description": "SQL statement to execute",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "*": {
+        "type": "object",
+        "kind": "sql-parameter-value,text,number,boolean,date,guid,content,value",
+        "description": "SQL parameter value; child name is used as the parameter name referenced by the SQL statement",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrMore",
+        "role": "Arguments",
+        "projection": "Value"
+      }
+    },
+    "scope": {
+      "requires": "mysql.connection",
+      "description": "Requires an open MySQL connection created by [mysql.connect]"
+    },
+    "output": {
+      "mode": "Value",
+      "description": "Resolves to the scalar result of the SQL statement"
+    }
+  }
+}

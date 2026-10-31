@@ -1,0 +1,11 @@
+{
+  "name": "version",
+  "description": "Returns the Magic Cloud version to the caller",
+  "signature": {
+    "output": {
+      "mode": "Value",
+      "kind": "version,text",
+      "description": "Resolves to the Magic Cloud version"
+    }
+  }
+}

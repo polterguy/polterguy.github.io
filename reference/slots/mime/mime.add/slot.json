@@ -1,0 +1,25 @@
+{
+  "name": "mime.add",
+  "description": "Associates a file extension with a MIME content-type so the server returns the correct Content-Type header for matching responses",
+  "signature": {
+    "input": {
+      "kind": "content-type",
+      "description": "File extension or MIME type key to register",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": [
+      {
+        "type": "string",
+        "kind": "mime-type",
+        "description": "MIME type value for the extension/key",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne",
+        "role": "SourceExpression",
+        "evaluation": "EvalSelf",
+        "projection": "Value"
+      }
+    ]
+  }
+}

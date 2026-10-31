@@ -1,0 +1,60 @@
+---
+title: "[math.multiply]"
+description: "math.multiply is a slot in the math namespace of Magic Cloud. Multiplies numeric values."
+generated: true
+llms: false
+slot_json: "/reference/slots/math/math.multiply/slot.json"
+---
+
+`math.multiply` is a slot in the `math` namespace, in Hyperlambda, the language of Magic Cloud. Multiplies numeric values.
+
+* **Returns**: Resolves to the product of the supplied operands
+
+### Arguments
+
+| Argument | Type | Required | Description |
+|---|---|---|---|
+| _any node name_ | number | yes | Numeric operand evaluated before calculating the result. |
+
+Guide: [How to use [math.multiply]](/plugins/magic.lambda.math/#how-to-use-mathmultiply)
+
+### JSON declaration
+
+This is the complete declaration of `math.multiply`, as the running system describes it. It is also published as [slot.json](slot.json).
+
+<details markdown="1" class="slot-declaration">
+<summary>JSON declaration</summary>
+
+```json
+{
+  "name": "math.multiply",
+  "description": "Multiplies numeric values",
+  "signature": {
+    "children": {
+      "*": {
+        "type": "number",
+        "kind": "number",
+        "description": "Numeric operand evaluated before calculating the result",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "TwoOrMore",
+        "role": "OperandPaired",
+        "evaluation": "EvalSelf",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "number",
+      "description": "Resolves to the product of the supplied operands"
+    }
+  }
+}
+```
+
+</details>
+
+---
+
+[&larr; `math.modulo`](/reference/slots/math/math.modulo/) | [all `math.*` slots](/reference/slots/math/) | [`math.random` &rarr;](/reference/slots/math/math.random/)
+

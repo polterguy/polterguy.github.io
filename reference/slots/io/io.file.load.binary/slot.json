@@ -1,0 +1,17 @@
+{
+  "name": "io.file.load.binary",
+  "description": "Loads a binary file from the server",
+  "signature": {
+    "input": {
+      "kind": "binary-file",
+      "description": "File path to load",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "binary-file-content,binary-content,fingerprint-source",
+      "description": "Resolves to the loaded binary file bytes"
+    }
+  }
+}

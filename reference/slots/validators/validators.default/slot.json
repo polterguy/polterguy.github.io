@@ -1,0 +1,23 @@
+{
+  "name": "validators.default",
+  "description": "Adds default child nodes to the nodes selected by the input expression",
+  "signature": {
+    "input": {
+      "kind": "lambda-object",
+      "description": "Expression selecting the node or nodes to apply defaults to",
+      "required": true,
+      "mode": "Expression"
+    },
+    "children": {
+      "*": {
+        "type": "object",
+        "description": "Default child node cloned into each selected node when missing",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "OneOrMore",
+        "role": "DynamicMap",
+        "projection": "StructuredTree"
+      }
+    }
+  }
+}

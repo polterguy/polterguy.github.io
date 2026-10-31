@@ -1,0 +1,12 @@
+{
+  "name": "system.plugin.load",
+  "description": "Loads a plugin assembly",
+  "signature": {
+    "input": {
+      "kind": "plugin-assembly,binary-content",
+      "description": "Plugin assembly filename or assembly bytes",
+      "required": true,
+      "mode": "ValueOrExpression"
+    }
+  }
+}

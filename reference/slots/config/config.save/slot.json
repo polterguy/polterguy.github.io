@@ -1,0 +1,12 @@
+{
+  "name": "config.save",
+  "description": "Saves JSON configuration values to appsettings.json",
+  "signature": {
+    "input": {
+      "kind": "json",
+      "description": "Valid JSON object content to save to appsettings.json",
+      "required": true,
+      "mode": "ValueOrExpression"
+    }
+  }
+}

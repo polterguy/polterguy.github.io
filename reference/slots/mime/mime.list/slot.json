@@ -1,0 +1,12 @@
+{
+  "name": "mime.list",
+  "description": "Lists registered MIME type mappings",
+  "signature": {
+    "output": {
+      "mode": "Lambda",
+      "kind": "mime-type-list,string-list",
+      "element-kind": "mime-type-mapping,text",
+      "description": "Resolves to one named child node per registered MIME type mapping, where the child name is the file extension and the value is the MIME type"
+    }
+  }
+}

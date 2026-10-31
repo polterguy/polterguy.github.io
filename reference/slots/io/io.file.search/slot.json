@@ -1,0 +1,100 @@
+{
+  "name": "io.file.search",
+  "description": "Searches for files on the server",
+  "signature": {
+    "input": {
+      "kind": "folder-path",
+      "description": "Folder path to search from",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "pattern": {
+        "type": "string",
+        "kind": "search-pattern",
+        "description": "Text or regular expression pattern to search for",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne"
+      },
+      "regex": {
+        "type": "bool",
+        "kind": "search-regex-mode",
+        "description": "Whether [pattern] should be interpreted as a regular expression",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false"
+      },
+      "case-sensitive": {
+        "type": "bool",
+        "kind": "boolean",
+        "description": "Whether matching should be case-sensitive",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false"
+      },
+      "extensions": {
+        "type": "string",
+        "kind": "text-file-extension-list",
+        "description": "Optional comma-separated file extensions to include",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne"
+      }
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "file-search-result-list,node-list",
+      "element-kind": "file-search-result,lambda-tree",
+      "description": "Returns one child node per matching file, each containing [file] with the relative file path and [lines] with matching line numbers",
+      "children": [
+        {
+          "type": "lambda",
+          "kind": "file-search-result",
+          "description": "Search result object for one matching file",
+          "required": false,
+          "mode": "None",
+          "cardinality": "ZeroOrMore",
+          "role": "StructuredObject",
+          "projection": "StructuredTree",
+          "children": {
+            "file": {
+              "type": "string",
+              "kind": "file-path",
+              "description": "Relative path to the matching file",
+              "required": true,
+              "mode": "Value",
+              "cardinality": "ExactlyOne",
+              "role": "Option",
+              "projection": "Value"
+            },
+            "lines": {
+              "type": "lambda",
+              "kind": "line-number-list",
+              "description": "Line numbers containing matches in the file",
+              "required": true,
+              "mode": "None",
+              "cardinality": "ExactlyOne",
+              "role": "StructuredObject",
+              "projection": "Children",
+              "children": [
+                {
+                  "type": "int",
+                  "kind": "line-number",
+                  "description": "One matching line number",
+                  "required": false,
+                  "mode": "Value",
+                  "cardinality": "ZeroOrMore",
+                  "role": "Option",
+                  "projection": "Value"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

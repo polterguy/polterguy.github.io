@@ -1,0 +1,40 @@
+{
+  "name": "image.convert",
+  "description": "Re-encodes an image into a different format (e.g. PNG to JPEG) preserving its pixel content",
+  "signature": {
+    "input": {
+      "kind": "image-file",
+      "description": "Source image filename or stream to convert",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "type": {
+        "type": "string",
+        "kind": "image-format",
+        "description": "Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "default": "png",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "dest": {
+        "type": "string",
+        "kind": "image-file",
+        "description": "Optional destination filename; when supplied, the image is saved to disk instead of returned as a stream",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Both",
+      "kind": "image",
+      "description": "Resolves to the converted image stream unless [dest] is supplied, in which case the converted image is saved to disk and nothing is returned"
+    }
+  }
+}

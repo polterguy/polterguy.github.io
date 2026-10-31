@@ -1,0 +1,17 @@
+{
+  "name": "auth.ticket.in-role",
+  "description": "Returns true if the current ticket belongs to one of the specified roles",
+  "signature": {
+    "input": {
+      "kind": "role",
+      "description": "Comma-separated roles to test for",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "boolean",
+      "description": "Returns true if the current ticket belongs to at least one of the comma-separated roles"
+    }
+  }
+}

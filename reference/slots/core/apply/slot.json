@@ -1,0 +1,28 @@
+{
+  "name": "apply",
+  "description": "Stamps a template lambda with values from child argument nodes, producing one fully-substituted output per [.dp]",
+  "signature": {
+    "input": {
+      "kind": "template,lambda-tree",
+      "description": "Expression selecting the template node or nodes to transform",
+      "required": true,
+      "mode": "Expression"
+    },
+    "children": {
+      "*": {
+        "type": "object",
+        "description": "Template replacement node matched by name; its value and children replace placeholders named {name}",
+        "required": false,
+        "mode": "Value",
+        "cardinality": "ZeroOrMore",
+        "role": "Arguments",
+        "projection": "ArgumentBag"
+      }
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "applied-template,lambda-object,lambda-tree",
+      "description": "Resolves to the transformed template nodes after applying the supplied arguments"
+    }
+  }
+}

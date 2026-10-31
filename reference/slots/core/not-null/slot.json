@@ -1,0 +1,17 @@
+{
+  "name": "not-null",
+  "description": "Returns true if the specified node or expression is not null",
+  "signature": {
+    "input": {
+      "kind": "node-list,single-object",
+      "description": "Expression selecting the value to test for null",
+      "required": true,
+      "mode": "Expression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "boolean",
+      "description": "Returns true if the expression resolves to a non-null value"
+    }
+  }
+}

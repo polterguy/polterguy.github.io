@@ -1,0 +1,17 @@
+{
+  "name": "return-value",
+  "description": "Returns a value to the caller",
+  "signature": {
+    "input": {
+      "kind": "return-value",
+      "description": "Value to return to the nearest caller",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "return-value",
+      "description": "Resolves to a value to the caller"
+    }
+  }
+}

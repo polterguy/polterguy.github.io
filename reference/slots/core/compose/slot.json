@@ -1,0 +1,24 @@
+{
+  "name": "compose",
+  "description": "Builds an expression at runtime by concatenating the evaluated child node values; useful for dynamic node selection",
+  "signature": {
+    "children": {
+      "*": {
+        "type": "string",
+        "kind": "expression-segment",
+        "description": "Expression segment evaluated and joined into the resulting expression",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "OneOrMore",
+        "role": "SourceExpression",
+        "evaluation": "EvalSelf",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "expression",
+      "description": "Resolves to the composed expression"
+    }
+  }
+}

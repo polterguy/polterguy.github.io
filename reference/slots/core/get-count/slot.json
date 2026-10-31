@@ -1,0 +1,17 @@
+{
+  "name": "get-count",
+  "description": "Returns the number of matching nodes",
+  "signature": {
+    "input": {
+      "kind": "node-list",
+      "description": "Expression selecting the nodes to count",
+      "required": true,
+      "mode": "Expression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "number",
+      "description": "Resolves to the number of nodes matched by the expression"
+    }
+  }
+}

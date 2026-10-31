@@ -1,0 +1,12 @@
+{
+  "name": "system.plugin.list",
+  "description": "Lists dynamically loaded plugins",
+  "signature": {
+    "output": {
+      "mode": "Lambda",
+      "kind": "plugin-assembly-list,string-list",
+      "element-kind": "plugin-assembly-name,text",
+      "description": "Returns one child node per dynamically loaded plugin name"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "request.host",
+  "description": "Returns the host header (domain and optional port) of the current incoming request",
+  "signature": {
+    "output": {
+      "mode": "Value",
+      "kind": "host-name,text",
+      "description": "Resolves to the host name from the current request"
+    }
+  }
+}

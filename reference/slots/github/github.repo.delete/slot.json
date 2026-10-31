@@ -1,0 +1,29 @@
+{
+  "name": "github.repo.delete",
+  "description": "Deletes a GitHub repository",
+  "signature": {
+    "input": {
+      "kind": "github-repo-name",
+      "description": "GitHub repository name",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "owner": {
+        "type": "string",
+        "kind": "github-owner",
+        "description": "Repository owner; omit to delete from the authenticated user",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "boolean",
+      "description": "Returns true after the repository has been deleted"
+    }
+  }
+}

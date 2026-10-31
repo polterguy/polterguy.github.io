@@ -1,0 +1,32 @@
+{
+  "name": "if",
+  "description": "Evaluates the child lambda only if the condition is true; chain with [else-if] and [else] for additional branches",
+  "signature": {
+    "children": {
+      "*": {
+        "type": "lambda",
+        "kind": "boolean",
+        "description": "Condition node evaluated for truthiness",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne",
+        "role": "Condition",
+        "evaluation": "EvalSelf",
+        "projection": "Value"
+      },
+      ".lambda": {
+        "type": "lambda",
+        "description": "Executable lambda block",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne",
+        "role": "LambdaBlock",
+        "evaluation": "EvalBlock",
+        "projection": "Self"
+      }
+    },
+    "scope": {
+      "provides": "if"
+    }
+  }
+}

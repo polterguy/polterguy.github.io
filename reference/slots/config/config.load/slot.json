@@ -1,0 +1,11 @@
+{
+  "name": "config.load",
+  "description": "Returns the raw contents of appsettings.json; pair with [config.save] for round-trip config editing",
+  "signature": {
+    "output": {
+      "mode": "Value",
+      "kind": "json,text",
+      "description": "Resolves to the raw appsettings.json content"
+    }
+  }
+}

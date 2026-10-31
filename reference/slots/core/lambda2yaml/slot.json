@@ -1,0 +1,17 @@
+{
+  "name": "lambda2yaml",
+  "description": "Transforms a lambda hierarchy into YAML",
+  "signature": {
+    "input": {
+      "kind": "node-list,lambda-tree",
+      "description": "Expression selecting the nodes (rows) to transform",
+      "required": true,
+      "mode": "Expression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "yaml,text",
+      "description": "Resolves to the generated YAML string"
+    }
+  }
+}

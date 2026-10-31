@@ -1,0 +1,37 @@
+{
+  "name": "sql.create",
+  "description": "Builds a parameterized INSERT SQL statement",
+  "signature": {
+    "children": {
+      "table": {
+        "type": "string",
+        "kind": "table-name",
+        "description": "Table name to use in the SQL statement",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne"
+      },
+      "values": {
+        "type": "lambda",
+        "description": "Column values to insert or update",
+        "required": true,
+        "mode": "DynamicNamedValues",
+        "cardinality": "ExactlyOne",
+        "children": {
+          "*": {
+            "type": "object",
+            "kind": "sql-column-value,text,number,boolean,date,guid,content,value",
+            "description": "Column name and value",
+            "required": true,
+            "mode": "ValueOrExpression",
+            "cardinality": "OneOrMore"
+          }
+        }
+      }
+    },
+    "output": {
+      "mode": "Both",
+      "description": "Resolves to the generated SQL string in value and the generated parameter nodes as children"
+    }
+  }
+}

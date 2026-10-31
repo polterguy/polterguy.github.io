@@ -1,30 +1,13 @@
 ---
-title: time.* slots
-description: The 2 slots named time.* in Magic Cloud and Hyperlambda, with their arguments and return values, generated from the running system.
+title: "time.* slots"
+description: "The 2 slots named time.* in Magic Cloud and Hyperlambda, each with its own page."
 generated: true
 ---
 
-_Generated from the running system, see [how this reference is built](/reference/slots/). Do not edit this page._
+2 slots, each with its own page and JSON declaration. See [how this reference is built](/reference/slots/).
 
-## [time.format]
-
-Formats a TimeSpan value.
-
-* **Value** (`timespan`), required: Time span to format
-* **Returns**: Resolves to the formatted time string
-
-| Argument | Type | Required | Description |
-|---|---|---|---|
-| `[format]` | string | yes | Format string. |
-
-Guide: [How to use [time.format]](/plugins/magic.lambda.dates/#how-to-use-timeformat)
-
-## [time.total-milliseconds]
-
-Returns the total milliseconds for a TimeSpan value.
-
-* **Value** (`timespan`), required: Time span to measure
-* **Returns**: Resolves to the total number of milliseconds in the supplied time span
-
-Guide: [How to use [time.total-milliseconds]](/plugins/magic.lambda.dates/#how-to-use-timetotal-milliseconds)
+| Slot | Description |
+|---|---|
+| [`time.format`](/reference/slots/time/time.format/) | Formats a TimeSpan value. |
+| [`time.total-milliseconds`](/reference/slots/time/time.total-milliseconds/) | Returns the total milliseconds for a TimeSpan value. |
 

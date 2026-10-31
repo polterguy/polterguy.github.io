@@ -1,0 +1,30 @@
+{
+  "name": "strings.ends-with",
+  "description": "Returns true if a string ends with the specified text",
+  "signature": {
+    "input": {
+      "kind": "text",
+      "description": "Text to inspect",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": [
+      {
+        "type": "string",
+        "kind": "text",
+        "description": "String argument",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne",
+        "role": "SourceExpression",
+        "evaluation": "EvalSelf",
+        "projection": "Value"
+      }
+    ],
+    "output": {
+      "mode": "Value",
+      "kind": "boolean",
+      "description": "Returns true if the string ends with the supplied text"
+    }
+  }
+}

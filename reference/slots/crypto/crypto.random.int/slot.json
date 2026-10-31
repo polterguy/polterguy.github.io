@@ -1,0 +1,33 @@
+{
+  "name": "crypto.random.int",
+  "description": "Returns a cryptographically secure random integer; use the optional [max] to cap the upper bound",
+  "signature": {
+    "children": {
+      "max": {
+        "type": "int",
+        "description": "Exclusive maximum integer",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "int.MaxValue",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "seed": {
+        "type": "string",
+        "kind": "crypto-seed",
+        "description": "Optional deterministic seed",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "random-number,integer,number",
+      "description": "Resolves to a random integer less than the optional [max] value"
+    }
+  }
+}

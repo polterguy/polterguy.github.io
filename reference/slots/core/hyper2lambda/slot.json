@@ -1,0 +1,29 @@
+{
+  "name": "hyper2lambda",
+  "description": "Transforms Hyperlambda into a lambda hierarchy",
+  "signature": {
+    "input": {
+      "kind": "hyperlambda",
+      "description": "Hyperlambda text to transform",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "comments": {
+        "type": "bool",
+        "description": "Whether parser comment nodes should be preserved as [..] nodes with the comment text as value",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "lambda-tree",
+      "description": "Resolves to the parsed lambda hierarchy as child nodes"
+    }
+  }
+}

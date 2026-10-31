@@ -1,0 +1,17 @@
+{
+  "name": "time.total-milliseconds",
+  "description": "Returns the total milliseconds for a TimeSpan value",
+  "signature": {
+    "input": {
+      "kind": "timespan",
+      "description": "Time span to measure",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "duration-ms,number",
+      "description": "Resolves to the total number of milliseconds in the supplied time span"
+    }
+  }
+}

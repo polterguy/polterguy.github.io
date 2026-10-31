@@ -1,0 +1,36 @@
+{
+  "name": "mail.pop3.fetch",
+  "description": "Fetches messages from a POP3 mailbox using child-node options and a required [.lambda] callback",
+  "signature": {
+    "children": {
+      "raw": {
+        "type": "bool",
+        "description": "Whether to pass raw MIME text to the callback",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "max": {
+        "type": "int",
+        "description": "Maximum number of messages to fetch",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      ".lambda": {
+        "type": "lambda",
+        "description": "Callback evaluated once per fetched message with [.message] injected",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne",
+        "role": "Callback",
+        "evaluation": "EvalBlock",
+        "projection": "Self"
+      }
+    }
+  }
+}

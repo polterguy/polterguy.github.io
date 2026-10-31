@@ -1,0 +1,12 @@
+{
+  "name": "io.folder.create",
+  "description": "Creates a folder on the server",
+  "signature": {
+    "input": {
+      "kind": "folder-path",
+      "description": "Folder path to create",
+      "required": true,
+      "mode": "ValueOrExpression"
+    }
+  }
+}

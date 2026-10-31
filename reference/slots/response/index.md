@@ -1,38 +1,14 @@
 ---
-title: response.* slots
-description: The 3 slots named response.* in Magic Cloud and Hyperlambda, with their arguments and return values, generated from the running system.
+title: "response.* slots"
+description: "The 3 slots named response.* in Magic Cloud and Hyperlambda, each with its own page."
 generated: true
 ---
 
-_Generated from the running system, see [how this reference is built](/reference/slots/). Do not edit this page._
+3 slots, each with its own page and JSON declaration. See [how this reference is built](/reference/slots/).
 
-## [response.cookies.set]
-
-Sets a response cookie.
-
-* **Value** (`cookie-name`), required: Cookie name to set
-
-| Argument | Type | Required | Description |
-|---|---|---|---|
-| `[domain]` | string | no | Cookie domain. |
-| `[expires]` | DateTime | no | Cookie expiration. |
-| `[http-only]` | bool | no | Whether the cookie is HTTP-only. |
-| `[path]` | string | no | Cookie path. |
-| `[same-site]` | string | no | Cookie SameSite mode: Strict, Lax, None, or Unspecified. |
-| `[secure]` | bool | no | Whether the cookie is secure. |
-| `[value]` | string | yes | Cookie value. |
-
-## [response.headers.set]
-
-Sets one or more response headers from key/value child nodes.
-
-| Argument | Type | Required | Description |
-|---|---|---|---|
-| _any node name_ | string | yes | Response header name and value. Can be repeated. |
-
-## [response.status.set]
-
-Overrides the HTTP status code returned to the caller (e.g. 201 Created, 404 Not Found, 500 Internal Error).
-
-* **Value** (`http-status-code,integer,number`), required: HTTP status code to set
+| Slot | Description |
+|---|---|
+| [`response.cookies.set`](/reference/slots/response/response.cookies.set/) | Sets a response cookie. |
+| [`response.headers.set`](/reference/slots/response/response.headers.set/) | Sets one or more response headers from key/value child nodes. |
+| [`response.status.set`](/reference/slots/response/response.status.set/) | Overrides the HTTP status code returned to the caller (e.g. 201 Created, 404 Not Found, 500 Internal Error). |
 

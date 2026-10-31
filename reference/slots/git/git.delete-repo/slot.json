@@ -1,0 +1,12 @@
+{
+  "name": "git.delete-repo",
+  "description": "Deletes a local Git repository",
+  "signature": {
+    "input": {
+      "kind": "git-repo-path",
+      "description": "Repository path to delete",
+      "required": true,
+      "mode": "ValueOrExpression"
+    }
+  }
+}

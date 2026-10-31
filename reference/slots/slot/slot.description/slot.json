@@ -1,0 +1,17 @@
+{
+  "name": "slot.description",
+  "description": "Returns the description for a single compiled slot",
+  "signature": {
+    "input": {
+      "kind": "slot-name",
+      "description": "Name of the compiled slot to inspect",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "slot-description,text",
+      "description": "Resolves to the description of the requested slot"
+    }
+  }
+}

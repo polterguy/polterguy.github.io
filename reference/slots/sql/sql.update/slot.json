@@ -1,0 +1,321 @@
+{
+  "name": "sql.update",
+  "description": "Builds a parameterized UPDATE SQL statement; use [where] to constrain affected rows",
+  "signature": {
+    "children": {
+      "table": {
+        "type": "string",
+        "kind": "table-name",
+        "description": "Table name to use in the SQL statement",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne"
+      },
+      "values": {
+        "type": "lambda",
+        "description": "Column values to insert or update",
+        "required": true,
+        "mode": "DynamicNamedValues",
+        "cardinality": "ExactlyOne",
+        "children": {
+          "*": {
+            "type": "object",
+            "kind": "sql-column-value,text,number,boolean,date,guid,content,value",
+            "description": "Column name and value",
+            "required": true,
+            "mode": "ValueOrExpression",
+            "cardinality": "OneOrMore"
+          }
+        }
+      },
+      "where": {
+        "type": "lambda",
+        "kind": "sql-predicate-root",
+        "description": "Optional boolean predicate tree",
+        "required": false,
+        "mode": "StructuredArguments",
+        "cardinality": "ZeroOrOne",
+        "constraints": [
+          {
+            "description": "Where clause renders one top-level boolean group",
+            "values": [
+              "and",
+              "or"
+            ],
+            "kind": "ExactlyOneOf"
+          }
+        ],
+        "children": {
+          "and": {
+            "type": "lambda",
+            "kind": "sql-predicate-group",
+            "description": "Boolean AND group",
+            "required": false,
+            "mode": "StructuredArguments",
+            "cardinality": "ZeroOrOne",
+            "children": {
+              "*": {
+                "type": "object",
+                "kind": "sql-column-condition,text,number,boolean,date,guid,content,value",
+                "description": "Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator",
+                "required": true,
+                "mode": "ValueOrExpression",
+                "cardinality": "OneOrMore",
+                "constraints": [
+                  {
+                    "description": "Value-list children apply only to the .in operator; other operators take a single-value RHS",
+                    "values": [
+                      "."
+                    ],
+                    "kind": "Excludes"
+                  },
+                  {
+                    "description": "The .in operator is a valueless container; its admissible values live entirely in the `.:` child list",
+                    "values": [
+                      "input"
+                    ],
+                    "kind": "Excludes"
+                  }
+                ],
+                "children": [
+                  {
+                    "type": "object",
+                    "kind": "text,number,boolean,date,guid,content,value",
+                    "description": "Value item used by operators such as .in",
+                    "required": false,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "TwoOrMore"
+                  }
+                ]
+              },
+              "and": {
+                "type": "lambda",
+                "kind": "sql-predicate-group",
+                "description": "Boolean AND group",
+                "required": false,
+                "mode": "StructuredArguments",
+                "cardinality": "ZeroOrMore",
+                "children": {
+                  "*": {
+                    "type": "object",
+                    "kind": "sql-column-condition,text,number,boolean,date,guid,content,value",
+                    "description": "Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator",
+                    "required": true,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "OneOrMore",
+                    "constraints": [
+                      {
+                        "description": "Value-list children apply only to the .in operator; other operators take a single-value RHS",
+                        "values": [
+                          "."
+                        ],
+                        "kind": "Excludes"
+                      },
+                      {
+                        "description": "The .in operator is a valueless container; its admissible values live entirely in the `.:` child list",
+                        "values": [
+                          "input"
+                        ],
+                        "kind": "Excludes"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "type": "object",
+                        "kind": "text,number,boolean,date,guid,content,value",
+                        "description": "Value item used by operators such as .in",
+                        "required": false,
+                        "mode": "ValueOrExpression",
+                        "cardinality": "TwoOrMore"
+                      }
+                    ]
+                  }
+                }
+              },
+              "or": {
+                "type": "lambda",
+                "kind": "sql-predicate-group",
+                "description": "Boolean OR group",
+                "required": false,
+                "mode": "StructuredArguments",
+                "cardinality": "ZeroOrMore",
+                "children": {
+                  "*": {
+                    "type": "object",
+                    "kind": "sql-column-condition,text,number,boolean,date,guid,content,value",
+                    "description": "Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator",
+                    "required": true,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "OneOrMore",
+                    "constraints": [
+                      {
+                        "description": "Value-list children apply only to the .in operator; other operators take a single-value RHS",
+                        "values": [
+                          "."
+                        ],
+                        "kind": "Excludes"
+                      },
+                      {
+                        "description": "The .in operator is a valueless container; its admissible values live entirely in the `.:` child list",
+                        "values": [
+                          "input"
+                        ],
+                        "kind": "Excludes"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "type": "object",
+                        "kind": "text,number,boolean,date,guid,content,value",
+                        "description": "Value item used by operators such as .in",
+                        "required": false,
+                        "mode": "ValueOrExpression",
+                        "cardinality": "TwoOrMore"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "or": {
+            "type": "lambda",
+            "kind": "sql-predicate-group",
+            "description": "Boolean OR group",
+            "required": false,
+            "mode": "StructuredArguments",
+            "cardinality": "ZeroOrOne",
+            "children": {
+              "*": {
+                "type": "object",
+                "kind": "sql-column-condition,text,number,boolean,date,guid,content,value",
+                "description": "Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator",
+                "required": true,
+                "mode": "ValueOrExpression",
+                "cardinality": "OneOrMore",
+                "constraints": [
+                  {
+                    "description": "Value-list children apply only to the .in operator; other operators take a single-value RHS",
+                    "values": [
+                      "."
+                    ],
+                    "kind": "Excludes"
+                  },
+                  {
+                    "description": "The .in operator is a valueless container; its admissible values live entirely in the `.:` child list",
+                    "values": [
+                      "input"
+                    ],
+                    "kind": "Excludes"
+                  }
+                ],
+                "children": [
+                  {
+                    "type": "object",
+                    "kind": "text,number,boolean,date,guid,content,value",
+                    "description": "Value item used by operators such as .in",
+                    "required": false,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "TwoOrMore"
+                  }
+                ]
+              },
+              "and": {
+                "type": "lambda",
+                "kind": "sql-predicate-group",
+                "description": "Boolean AND group",
+                "required": false,
+                "mode": "StructuredArguments",
+                "cardinality": "ZeroOrMore",
+                "children": {
+                  "*": {
+                    "type": "object",
+                    "kind": "sql-column-condition,text,number,boolean,date,guid,content,value",
+                    "description": "Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator",
+                    "required": true,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "OneOrMore",
+                    "constraints": [
+                      {
+                        "description": "Value-list children apply only to the .in operator; other operators take a single-value RHS",
+                        "values": [
+                          "."
+                        ],
+                        "kind": "Excludes"
+                      },
+                      {
+                        "description": "The .in operator is a valueless container; its admissible values live entirely in the `.:` child list",
+                        "values": [
+                          "input"
+                        ],
+                        "kind": "Excludes"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "type": "object",
+                        "kind": "text,number,boolean,date,guid,content,value",
+                        "description": "Value item used by operators such as .in",
+                        "required": false,
+                        "mode": "ValueOrExpression",
+                        "cardinality": "TwoOrMore"
+                      }
+                    ]
+                  }
+                }
+              },
+              "or": {
+                "type": "lambda",
+                "kind": "sql-predicate-group",
+                "description": "Boolean OR group",
+                "required": false,
+                "mode": "StructuredArguments",
+                "cardinality": "ZeroOrMore",
+                "children": {
+                  "*": {
+                    "type": "object",
+                    "kind": "sql-column-condition,text,number,boolean,date,guid,content,value",
+                    "description": "Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator",
+                    "required": true,
+                    "mode": "ValueOrExpression",
+                    "cardinality": "OneOrMore",
+                    "constraints": [
+                      {
+                        "description": "Value-list children apply only to the .in operator; other operators take a single-value RHS",
+                        "values": [
+                          "."
+                        ],
+                        "kind": "Excludes"
+                      },
+                      {
+                        "description": "The .in operator is a valueless container; its admissible values live entirely in the `.:` child list",
+                        "values": [
+                          "input"
+                        ],
+                        "kind": "Excludes"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "type": "object",
+                        "kind": "text,number,boolean,date,guid,content,value",
+                        "description": "Value item used by operators such as .in",
+                        "required": false,
+                        "mode": "ValueOrExpression",
+                        "cardinality": "TwoOrMore"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "output": {
+      "mode": "Both",
+      "description": "Resolves to the generated SQL string in value and the generated parameter nodes as children"
+    }
+  }
+}

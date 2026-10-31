@@ -1,0 +1,35 @@
+{
+  "name": "cache.set",
+  "description": "Stores a value in the in-memory cache under a key, with an optional sliding expiration",
+  "signature": {
+    "input": {
+      "kind": "cache-key",
+      "description": "Cache key to store",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "value": {
+        "type": "string",
+        "kind": "cache-value,text",
+        "description": "Value to store; omitted or null removes the cached item",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "expiration": {
+        "type": "long",
+        "kind": "duration-seconds",
+        "description": "Expiration in seconds",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "5",
+        "role": "Option",
+        "projection": "Value"
+      }
+    }
+  }
+}

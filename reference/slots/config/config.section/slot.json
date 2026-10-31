@@ -1,0 +1,17 @@
+{
+  "name": "config.section",
+  "description": "Reads an entire appsettings.json section by key, returning its keys and nested values as child nodes",
+  "signature": {
+    "input": {
+      "kind": "config-key",
+      "description": "Configuration section to retrieve",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "config-section,text,lambda-tree",
+      "description": "Returns one child node per key/value entry in the requested configuration section"
+    }
+  }
+}

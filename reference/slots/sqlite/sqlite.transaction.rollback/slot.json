@@ -1,0 +1,10 @@
+{
+  "name": "sqlite.transaction.rollback",
+  "description": "Rolls back the current SQLite transaction",
+  "signature": {
+    "scope": {
+      "requires": "sqlite.transaction",
+      "description": "Requires an active SQLite transaction created by [sqlite.transaction.create]"
+    }
+  }
+}

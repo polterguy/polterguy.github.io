@@ -1,0 +1,77 @@
+---
+title: "[strings.mixin]"
+description: "strings.mixin is a slot in the strings namespace of Magic Cloud. Applies string interpolation from child expressions."
+generated: true
+llms: false
+slot_json: "/reference/slots/strings/strings.mixin/slot.json"
+---
+
+`strings.mixin` is a slot in the `strings` namespace, in Hyperlambda, the language of Magic Cloud. Applies string interpolation from child expressions.
+
+* **Value** (`mixin-template,text`), required: Template text to interpolate
+* **Returns**: Resolves to the rendered string after applying codebehind and expressions
+
+### Arguments
+
+| Argument | Type | Required | Description |
+|---|---|---|---|
+| _any node name_ | string | no | Argument passed to embedded Hyperlambda snippets invoked from the template. Can be repeated. |
+| `[strip]` | bool | no | Whether to strip embedded Hyperlambda instead of executing it. Default: `false`. |
+
+Guide: [How to use [strings.mixin]](/plugins/magic.lambda.strings/#how-to-use-stringsmixin)
+
+### JSON declaration
+
+This is the complete declaration of `strings.mixin`, as the running system describes it. It is also published as [slot.json](slot.json).
+
+<details markdown="1" class="slot-declaration">
+<summary>JSON declaration</summary>
+
+```json
+{
+  "name": "strings.mixin",
+  "description": "Applies string interpolation from child expressions",
+  "signature": {
+    "input": {
+      "kind": "mixin-template,text",
+      "description": "Template text to interpolate",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "strip": {
+        "type": "bool",
+        "description": "Whether to strip embedded Hyperlambda instead of executing it",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "*": {
+        "type": "string",
+        "kind": "string-values",
+        "description": "Argument passed to embedded Hyperlambda snippets invoked from the template",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrMore",
+        "role": "Arguments",
+        "projection": "ArgumentBag"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "text",
+      "description": "Resolves to the rendered string after applying codebehind and expressions"
+    }
+  }
+}
+```
+
+</details>
+
+---
+
+[&larr; `strings.matches`](/reference/slots/strings/strings.matches/) | [all `strings.*` slots](/reference/slots/strings/) | [`strings.regex-replace` &rarr;](/reference/slots/strings/strings.regex-replace/)
+

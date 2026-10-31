@@ -1,0 +1,49 @@
+---
+title: "[data.delete]"
+description: "data.delete is a slot in the data namespace of Magic Cloud. Deletes rows in the current open database connection; include a [where] child unless intentionally deleting every row in the table."
+generated: true
+llms: false
+slot_json: "/reference/slots/data/data.delete/slot.json"
+---
+
+`data.delete` is a slot in the `data` namespace, in Hyperlambda, the language of Magic Cloud. Deletes rows in the current open database connection; include a [where] child unless intentionally deleting every row in the table.
+
+* **Returns**: Resolves to the number of rows affected
+* **Scope**: requires `data.connection` - Requires an open database connection created by [data.connect]
+
+### Arguments
+
+| Argument | Type | Required | Description |
+|---|---|---|---|
+| `[database-type]` | string | no | Database adapter to use instead of the configured default. |
+| `[generate]` | bool | no | Whether to only generate SQL and parameter nodes instead of executing it. Default: `false`. |
+| `[table]` | string | yes | Table name to use in the SQL statement. |
+| `[where]` | lambda | yes | Required boolean predicate tree — destructive SQL must constrain affected rows. |
+| `[where]` / `[and]` | lambda | no | Boolean AND group. |
+| `[where]` / `[and]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
+| `[where]` / `[and]` / _any node name_ / _unnamed child node_ | object | no | Value item used by operators such as .in. |
+| `[where]` / `[and]` / `[or]` | lambda | no | Boolean OR group. Can be repeated. |
+| `[where]` / `[and]` / `[or]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
+| `[where]` / `[and]` / `[or]` / _any node name_ / _unnamed child node_ | object | no | Value item used by operators such as .in. |
+| `[where]` / `[or]` | lambda | no | Boolean OR group. |
+| `[where]` / `[or]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
+| `[where]` / `[or]` / _any node name_ / _unnamed child node_ | object | no | Value item used by operators such as .in. |
+| `[where]` / `[or]` / `[and]` | lambda | no | Boolean AND group. Can be repeated. |
+| `[where]` / `[or]` / `[and]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
+| `[where]` / `[or]` / `[and]` / _any node name_ / _unnamed child node_ | object | no | Value item used by operators such as .in. |
+
+_Nodes nested deeper than 6 levels, and nodes that repeat one of their own ancestors, are not listed. The JSON declaration below has all of them._
+
+### JSON declaration
+
+This is the complete declaration of `data.delete`, as the running system describes it. It is also published as [slot.json](slot.json).
+
+<details class="slot-declaration slot-json" data-src="slot.json">
+<summary>JSON declaration (loads when opened)</summary>
+<noscript><p><a href="slot.json">Open the JSON declaration</a>.</p></noscript>
+</details>
+
+---
+
+[&larr; `data.create`](/reference/slots/data/data.create/) | [all `data.*` slots](/reference/slots/data/) | [`data.execute` &rarr;](/reference/slots/data/data.execute/)
+

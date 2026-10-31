@@ -1,0 +1,17 @@
+{
+  "name": "request.cookies.get",
+  "description": "Returns a request cookie by name",
+  "signature": {
+    "input": {
+      "kind": "cookie-name",
+      "description": "Cookie name to retrieve",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "cookie-value,text",
+      "description": "Resolves to the value of the named request cookie, or null if it does not exist"
+    }
+  }
+}

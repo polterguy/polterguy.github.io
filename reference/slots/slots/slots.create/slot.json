@@ -1,0 +1,24 @@
+{
+  "name": "slots.create",
+  "description": "Creates a dynamic slot that can be invoked with [signal]",
+  "signature": {
+    "input": {
+      "kind": "dynamic-slot-name",
+      "description": "Name of the dynamic slot to create",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Executable child slot stored as the dynamic slot body",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "OneOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "SerializeLambda",
+        "projection": "Self"
+      }
+    }
+  }
+}

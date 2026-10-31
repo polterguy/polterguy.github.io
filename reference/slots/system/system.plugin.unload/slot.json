@@ -1,0 +1,12 @@
+{
+  "name": "system.plugin.unload",
+  "description": "Unloads a plugin assembly",
+  "signature": {
+    "input": {
+      "kind": "plugin-assembly-name",
+      "description": "Assembly name to unload",
+      "required": true,
+      "mode": "ValueOrExpression"
+    }
+  }
+}

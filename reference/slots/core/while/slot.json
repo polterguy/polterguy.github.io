@@ -1,0 +1,32 @@
+{
+  "name": "while",
+  "description": "Repeats execution while a condition is true",
+  "signature": {
+    "children": {
+      "*": {
+        "type": "lambda",
+        "kind": "boolean",
+        "description": "Condition node evaluated for truthiness",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne",
+        "role": "Condition",
+        "evaluation": "EvalSelf",
+        "projection": "Value"
+      },
+      ".lambda": {
+        "type": "lambda",
+        "description": "Executable lambda block",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne",
+        "role": "LambdaBlock",
+        "evaluation": "EvalBlock",
+        "projection": "Self"
+      }
+    },
+    "scope": {
+      "provides": "while"
+    }
+  }
+}

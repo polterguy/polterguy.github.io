@@ -1,0 +1,30 @@
+{
+  "name": "filter",
+  "description": "Filters selected nodes using the child lambda as a predicate",
+  "signature": {
+    "input": {
+      "kind": "node-list",
+      "description": "Expression selecting the nodes to filter",
+      "required": true,
+      "mode": "Expression"
+    },
+    "children": {
+      "*": {
+        "type": "lambda",
+        "kind": "boolean",
+        "description": "Predicate body evaluated once per selected node; the selected node is kept when the body returns true",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "OneOrMore",
+        "role": "Condition",
+        "evaluation": "EvalSelf",
+        "projection": "ReturnedResult"
+      }
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "node-list",
+      "description": "Resolves to clones of the selected nodes whose predicate body returns true"
+    }
+  }
+}

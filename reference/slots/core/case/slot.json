@@ -1,0 +1,33 @@
+{
+  "name": "case",
+  "description": "Evaluates a single case branch inside [switch]",
+  "signature": {
+    "input": {
+      "kind": "switch-value",
+      "description": "Case value to match against the [switch] input value",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Case branch body executed by the parent [switch]",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "OneOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    },
+    "constraints": [
+      {
+        "description": "Parent node must have the listed slot name",
+        "values": [
+          "switch"
+        ],
+        "kind": "ParentMustBe"
+      }
+    ]
+  }
+}

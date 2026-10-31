@@ -1,0 +1,31 @@
+{
+  "name": "io.file.unzip",
+  "description": "Extracts a zip archive on the server",
+  "signature": {
+    "input": {
+      "kind": "zip-file",
+      "description": "Zip archive path to extract",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "folder": {
+        "type": "string",
+        "kind": "folder-path",
+        "description": "Destination folder; defaults to the zip file's folder",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne"
+      },
+      "overwrite": {
+        "type": "bool",
+        "kind": "boolean",
+        "description": "Whether existing extracted files should be overwritten",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false"
+      }
+    }
+  }
+}

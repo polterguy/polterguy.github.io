@@ -1,0 +1,22 @@
+{
+  "name": "io.folder.copy",
+  "description": "Copies a folder on the server",
+  "signature": {
+    "input": {
+      "kind": "folder-path",
+      "description": "Source folder path",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "*": {
+        "type": "string",
+        "kind": "folder-path",
+        "description": "Destination path",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne"
+      }
+    }
+  }
+}

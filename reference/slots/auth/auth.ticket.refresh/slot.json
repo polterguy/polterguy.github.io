@@ -1,0 +1,41 @@
+{
+  "name": "auth.ticket.refresh",
+  "description": "Issues a new JWT with an extended expiration based on the current ticket, so active users don't get logged out",
+  "signature": {
+    "children": {
+      "expires": {
+        "type": "DateTime",
+        "description": "Absolute UTC expiration time",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "duration": {
+        "type": "long",
+        "description": "Relative expiration duration in minutes",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "constraints": [
+      {
+        "description": "Use either absolute [expires] or relative [duration]",
+        "values": [
+          "expires",
+          "duration"
+        ],
+        "kind": "AtMostOneOf"
+      }
+    ],
+    "output": {
+      "mode": "Value",
+      "kind": "jwt,text",
+      "description": "Resolves to the refreshed JWT ticket string"
+    }
+  }
+}

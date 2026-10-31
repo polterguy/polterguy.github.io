@@ -1,0 +1,38 @@
+{
+  "name": "io.file.list-recursively",
+  "description": "Lists files recursively in the specified folder",
+  "signature": {
+    "input": {
+      "kind": "folder-path",
+      "description": "Folder path to list files from",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "display-hidden": {
+        "type": "bool",
+        "kind": "boolean",
+        "description": "Whether hidden files or folders should be included",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false"
+      },
+      "display-system": {
+        "type": "bool",
+        "kind": "boolean",
+        "description": "Whether system folders such as /system/, /misc/, /data/, and /config/ should be included",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "true"
+      }
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "file-path-list,string-list",
+      "element-kind": "file-path,text",
+      "description": "Returns one unnamed child node per relative file path, recursively"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "sockets.user.add-to-group",
+  "description": "Adds a user to a socket group",
+  "signature": {
+    "input": {
+      "kind": "username",
+      "description": "Username to add to the socket group",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "group": {
+        "type": "string",
+        "kind": "socket-group",
+        "description": "Socket group name",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    }
+  }
+}

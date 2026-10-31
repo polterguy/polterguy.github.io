@@ -1,0 +1,24 @@
+{
+  "name": "math.modulo",
+  "description": "Calculates the remainder of a division",
+  "signature": {
+    "children": {
+      "*": {
+        "type": "number",
+        "kind": "number",
+        "description": "Numeric operand evaluated before calculating the result",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "TwoOrMore",
+        "role": "OperandPaired",
+        "evaluation": "EvalSelf",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "number",
+      "description": "Resolves to the remainder of the modulo operation"
+    }
+  }
+}

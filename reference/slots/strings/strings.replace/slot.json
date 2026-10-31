@@ -1,0 +1,41 @@
+{
+  "name": "strings.replace",
+  "description": "Returns the text with every occurrence of [what] swapped for [with]; pass an empty [with] to strip matches",
+  "signature": {
+    "input": {
+      "kind": "text",
+      "description": "Text to transform",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": [
+      {
+        "type": "string",
+        "kind": "text",
+        "description": "Text or pattern to find",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne",
+        "role": "SourceExpression",
+        "evaluation": "EvalSelf",
+        "projection": "Value"
+      },
+      {
+        "type": "string",
+        "kind": "text",
+        "description": "Replacement text",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrOne",
+        "role": "SourceExpression",
+        "evaluation": "EvalSelf",
+        "projection": "Value"
+      }
+    ],
+    "output": {
+      "mode": "Value",
+      "kind": "text",
+      "description": "Resolves to the string after replacing the specified substring"
+    }
+  }
+}

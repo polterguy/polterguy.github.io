@@ -1,0 +1,50 @@
+{
+  "name": "crypto.hash.sha512",
+  "description": "Hashes input using the SHA512 algorithm",
+  "signature": {
+    "input": {
+      "kind": "text,binary-content",
+      "description": "String or byte[] content to hash when [filename] is not supplied",
+      "required": false,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "filename": {
+        "type": "string",
+        "kind": "file-path",
+        "description": "File to hash when no input content is supplied",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "format": {
+        "type": "string",
+        "kind": "hash-format",
+        "description": "Hash output format: text, raw, or fingerprint",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "text",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "constraints": [
+      {
+        "description": "Provide either input content or [filename]",
+        "values": [
+          "input",
+          "filename"
+        ],
+        "kind": "ExactlyOneOf"
+      }
+    ],
+    "output": {
+      "mode": "Value",
+      "kind": "hash,fingerprint,hash-bytes,text",
+      "description": "Resolves to the computed hash as text, raw bytes, or fingerprint according to [format]"
+    }
+  }
+}

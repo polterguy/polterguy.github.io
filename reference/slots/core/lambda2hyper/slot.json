@@ -1,0 +1,29 @@
+{
+  "name": "lambda2hyper",
+  "description": "Transforms a lambda hierarchy into Hyperlambda",
+  "signature": {
+    "input": {
+      "kind": "lambda-tree,node-list",
+      "description": "Expression selecting the lambda hierarchy to transform",
+      "required": true,
+      "mode": "Expression"
+    },
+    "children": {
+      "comments": {
+        "type": "bool",
+        "description": "Whether generated Hyperlambda should include comments",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "hyperlambda,text",
+      "description": "Resolves to the generated Hyperlambda source"
+    }
+  }
+}

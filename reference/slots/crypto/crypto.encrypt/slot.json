@@ -1,0 +1,69 @@
+{
+  "name": "crypto.encrypt",
+  "description": "Encrypts data using the configured combination algorithm",
+  "signature": {
+    "input": {
+      "kind": "text,binary-content",
+      "description": "Content to sign and encrypt",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "signing-key": {
+        "type": "string|byte[]",
+        "kind": "crypto-private-key",
+        "description": "Private signing key",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "encryption-key": {
+        "type": "string|byte[]",
+        "kind": "crypto-public-key",
+        "description": "Public encryption key",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "signing-key-fingerprint": {
+        "type": "string|byte[]",
+        "kind": "crypto-key-fingerprint",
+        "description": "Fingerprint for the signing key",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "raw": {
+        "type": "bool",
+        "description": "Whether to return raw bytes instead of encoded text",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "seed": {
+        "type": "string|byte[]",
+        "kind": "crypto-seed",
+        "description": "Optional encryption seed",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "crypto-encrypted-package,fingerprint-source",
+      "description": "Resolves to the encrypted package as base64 text or raw bytes when [raw] is true"
+    }
+  }
+}

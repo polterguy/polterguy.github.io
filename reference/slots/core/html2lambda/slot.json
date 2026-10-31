@@ -1,0 +1,17 @@
+{
+  "name": "html2lambda",
+  "description": "Transforms HTML into a lambda hierarchy",
+  "signature": {
+    "input": {
+      "kind": "html",
+      "description": "HTML markup to transform",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "html-tree",
+      "description": "Resolves to the parsed HTML hierarchy as child nodes"
+    }
+  }
+}

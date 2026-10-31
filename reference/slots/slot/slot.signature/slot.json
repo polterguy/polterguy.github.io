@@ -1,0 +1,17 @@
+{
+  "name": "slot.signature",
+  "description": "Returns the documented input and output contract for a single compiled slot",
+  "signature": {
+    "input": {
+      "kind": "slot-name",
+      "description": "Name of the compiled slot to inspect",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "slot-signature,lambda-tree",
+      "description": "Resolves to input and output contract metadata for the requested slot"
+    }
+  }
+}

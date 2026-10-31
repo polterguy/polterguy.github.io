@@ -1,0 +1,46 @@
+{
+  "name": "puppeteer.press",
+  "description": "Sends a key press to the page",
+  "signature": {
+    "input": {
+      "kind": "puppeteer-session",
+      "description": "Puppeteer session ID",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "selector": {
+        "type": "string",
+        "kind": "css-selector",
+        "description": "CSS selector",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "key": {
+        "type": "string",
+        "kind": "keyboard-key",
+        "description": "Key to press",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "delay": {
+        "type": "int",
+        "description": "Delay in milliseconds between key down and up",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "scope": {
+      "requires": "puppeteer-session"
+    }
+  }
+}

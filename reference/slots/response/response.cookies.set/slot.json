@@ -1,0 +1,81 @@
+{
+  "name": "response.cookies.set",
+  "description": "Sets a response cookie",
+  "signature": {
+    "input": {
+      "kind": "cookie-name",
+      "description": "Cookie name to set",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "value": {
+        "type": "string",
+        "kind": "cookie-value,text",
+        "description": "Cookie value",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "expires": {
+        "type": "DateTime",
+        "description": "Cookie expiration",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "http-only": {
+        "type": "bool",
+        "description": "Whether the cookie is HTTP-only",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "secure": {
+        "type": "bool",
+        "description": "Whether the cookie is secure",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "domain": {
+        "type": "string",
+        "kind": "cookie-domain",
+        "description": "Cookie domain",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "path": {
+        "type": "string",
+        "kind": "cookie-path",
+        "description": "Cookie path",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "same-site": {
+        "type": "string",
+        "kind": "cookie-same-site",
+        "description": "Cookie SameSite mode: Strict, Lax, None, or Unspecified",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "io.file.load",
+  "description": "Loads a text file from the server",
+  "signature": {
+    "input": {
+      "kind": "file-path",
+      "description": "File path to load",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "text-file-content,text",
+      "description": "Resolves to the loaded file content"
+    }
+  }
+}

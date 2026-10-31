@@ -1,0 +1,31 @@
+{
+  "name": "strings.split",
+  "description": "Splits a string at every occurrence of the separator and returns each segment as an unnamed child node",
+  "signature": {
+    "input": {
+      "kind": "text",
+      "description": "Text to split",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": [
+      {
+        "type": "string",
+        "kind": "string-separator",
+        "description": "Separator to split on",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "ExactlyOne",
+        "role": "SourceExpression",
+        "evaluation": "EvalSelf",
+        "projection": "Value"
+      }
+    ],
+    "output": {
+      "mode": "Lambda",
+      "kind": "string-list",
+      "element-kind": "text",
+      "description": "Returns one child node per split string item"
+    }
+  }
+}

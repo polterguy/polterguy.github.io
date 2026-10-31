@@ -1,0 +1,29 @@
+{
+  "name": "git.diff",
+  "description": "Returns the unified diff between the working tree and HEAD, for the whole repository or one file",
+  "signature": {
+    "input": {
+      "kind": "git-repo-path",
+      "description": "Repository path",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "file": {
+        "type": "string",
+        "kind": "git-file-path",
+        "description": "Repository-relative path of one file to diff; omitted diffs the whole repository",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "git-diff,text",
+      "description": "Returns the unified diff text"
+    }
+  }
+}

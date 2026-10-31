@@ -1,0 +1,10 @@
+{
+  "name": "pgsql.transaction.commit",
+  "description": "Commits the current PostgreSQL transaction",
+  "signature": {
+    "scope": {
+      "requires": "pgsql.transaction",
+      "description": "Requires an active PostgreSQL transaction created by [pgsql.transaction.create]"
+    }
+  }
+}

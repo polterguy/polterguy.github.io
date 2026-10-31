@@ -1,0 +1,23 @@
+{
+  "name": "server.ip",
+  "description": "Returns the server's local IP address (IPv4 by default); useful for logging or building absolute URLs",
+  "signature": {
+    "children": {
+      "version": {
+        "type": "string",
+        "kind": "ip-version",
+        "description": "IP version to return, either ipv4 or ipv6",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "ip-address,text",
+      "description": "Resolves to the server IP address for the requested IP version"
+    }
+  }
+}

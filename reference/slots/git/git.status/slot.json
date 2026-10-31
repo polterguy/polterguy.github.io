@@ -1,0 +1,49 @@
+{
+  "name": "git.status",
+  "description": "Returns Git repository status",
+  "signature": {
+    "input": {
+      "kind": "git-repo-path",
+      "description": "Repository path",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "porcelain": {
+        "type": "bool",
+        "description": "Use porcelain status output",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "branch": {
+        "type": "bool",
+        "description": "Include branch information",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "structured": {
+        "type": "bool",
+        "description": "Return status lines as child nodes",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Both",
+      "kind": "git-status,text",
+      "description": "Returns Git status text in value or, when structured, one child node per status line"
+    }
+  }
+}

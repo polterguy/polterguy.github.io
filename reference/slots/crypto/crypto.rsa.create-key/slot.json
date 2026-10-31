@@ -1,0 +1,44 @@
+{
+  "name": "crypto.rsa.create-key",
+  "description": "Generates a fresh RSA key pair; returns the public key and private key as separate child nodes for storage or distribution",
+  "signature": {
+    "children": {
+      "strength": {
+        "type": "int",
+        "kind": "rsa-key-strength",
+        "description": "RSA key strength in bits",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "2048",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "seed": {
+        "type": "string|byte[]",
+        "kind": "crypto-seed",
+        "description": "Optional deterministic seed",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "raw": {
+        "type": "bool",
+        "description": "Whether to return raw bytes instead of encoded text",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "rsa-key-pair,lambda-tree",
+      "description": "Resolves to the generated RSA key pair as child nodes"
+    }
+  }
+}

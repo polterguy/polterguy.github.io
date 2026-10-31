@@ -1,0 +1,17 @@
+{
+  "name": "tasks.count",
+  "description": "Counts scheduled tasks",
+  "signature": {
+    "input": {
+      "kind": "task-id",
+      "description": "Optional filter for task IDs",
+      "required": false,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "integer,number",
+      "description": "Resolves to the number of scheduled tasks matching the optional filter"
+    }
+  }
+}

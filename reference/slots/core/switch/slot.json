@@ -1,0 +1,69 @@
+{
+  "name": "switch",
+  "description": "Evaluates one of several branches based on the input value",
+  "signature": {
+    "input": {
+      "kind": "switch-value",
+      "description": "Value to compare against the child [case] values",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "case": {
+        "type": "object",
+        "kind": "switch-value",
+        "description": "Case branch matching the switch value",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "OneOrMore",
+        "role": "Branch",
+        "evaluation": "EvalSelf",
+        "projection": "Self",
+        "children": {
+          "*": {
+            "type": "lambda",
+            "description": "Branch body executed when the case matches",
+            "required": true,
+            "mode": "ExecutableLambda",
+            "cardinality": "OneOrMore",
+            "role": "ExecutableBody",
+            "evaluation": "EvalSelf",
+            "projection": "Self"
+          }
+        }
+      },
+      "default": {
+        "type": "lambda",
+        "description": "Fallback branch when no case matches",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrOne",
+        "role": "Branch",
+        "evaluation": "EvalSelf",
+        "projection": "Self",
+        "children": {
+          "*": {
+            "type": "lambda",
+            "description": "Fallback branch body",
+            "required": true,
+            "mode": "ExecutableLambda",
+            "cardinality": "OneOrMore",
+            "role": "ExecutableBody",
+            "evaluation": "EvalSelf",
+            "projection": "Self"
+          }
+        }
+      }
+    },
+    "constraints": [
+      {
+        "description": "Only the listed child names are accepted",
+        "values": [
+          "case",
+          "default"
+        ],
+        "kind": "OnlyChildren"
+      }
+    ]
+  }
+}

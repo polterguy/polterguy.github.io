@@ -1,0 +1,57 @@
+{
+  "name": "sqlite.create",
+  "description": "Inserts rows through the current SQLite connection",
+  "signature": {
+    "children": {
+      "generate": {
+        "type": "bool",
+        "description": "Whether to only generate SQL and parameter nodes instead of executing it",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false"
+      },
+      "return-id": {
+        "type": "bool",
+        "description": "Whether to return the created row ID",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "true"
+      },
+      "table": {
+        "type": "string",
+        "kind": "table-name",
+        "description": "Table name to use in the SQL statement",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne"
+      },
+      "values": {
+        "type": "lambda",
+        "description": "Column values to insert or update",
+        "required": true,
+        "mode": "DynamicNamedValues",
+        "cardinality": "ExactlyOne",
+        "children": {
+          "*": {
+            "type": "object",
+            "kind": "sql-column-value,text,number,boolean,date,guid,content,value",
+            "description": "Column name and value",
+            "required": true,
+            "mode": "ValueOrExpression",
+            "cardinality": "OneOrMore"
+          }
+        }
+      }
+    },
+    "scope": {
+      "requires": "sqlite.connection",
+      "description": "Requires an open SQLite connection created by [sqlite.connect]"
+    },
+    "output": {
+      "mode": "Value",
+      "description": "Resolves to the created row ID when [return-id] is true, otherwise null"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "sort",
+  "description": "Sorts selected nodes using the child lambda as a comparer",
+  "signature": {
+    "input": {
+      "kind": "node-list",
+      "description": "Expression selecting the nodes to sort",
+      "required": true,
+      "mode": "Expression"
+    },
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Comparer body evaluated with [.lhs], [.rhs], and [.result] injected",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "node-list",
+      "description": "Resolves to the sorted nodes selected by the expression as child nodes"
+    }
+  }
+}

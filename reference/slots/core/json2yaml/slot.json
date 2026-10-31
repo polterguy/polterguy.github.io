@@ -1,0 +1,17 @@
+{
+  "name": "json2yaml",
+  "description": "Transforms JSON into YAML",
+  "signature": {
+    "input": {
+      "kind": "json",
+      "description": "JSON text to transform",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "yaml,text",
+      "description": "Resolves to the generated YAML string"
+    }
+  }
+}

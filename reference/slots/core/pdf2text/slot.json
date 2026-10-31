@@ -1,0 +1,29 @@
+{
+  "name": "pdf2text",
+  "description": "Extracts text from a PDF file or stream",
+  "signature": {
+    "input": {
+      "kind": "pdf-file,pdf-content,binary-content",
+      "description": "PDF file path, bytes, or stream to extract text from",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "preserve-pages": {
+        "type": "bool",
+        "description": "Whether to return one child node per page instead of one combined value",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Both",
+      "kind": "text",
+      "description": "Returns extracted text in value or, when preserving pages, one child node per page"
+    }
+  }
+}

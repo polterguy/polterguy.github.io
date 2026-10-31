@@ -1,0 +1,17 @@
+{
+  "name": "json2lambda",
+  "description": "Transforms JSON into a lambda hierarchy",
+  "signature": {
+    "input": {
+      "kind": "json",
+      "description": "JSON text to transform",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "lambda-tree",
+      "description": "Resolves to the parsed lambda hierarchy as child nodes"
+    }
+  }
+}

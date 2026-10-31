@@ -1,0 +1,17 @@
+{
+  "name": "io.folder.exists",
+  "description": "Returns true if a folder exists",
+  "signature": {
+    "input": {
+      "kind": "folder-path",
+      "description": "Folder path to test",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "boolean",
+      "description": "Returns true if the folder exists"
+    }
+  }
+}

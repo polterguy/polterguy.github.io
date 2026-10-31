@@ -1,0 +1,17 @@
+{
+  "name": "yaml2lambda",
+  "description": "Transforms YAML into a lambda hierarchy",
+  "signature": {
+    "input": {
+      "kind": "yaml",
+      "description": "YAML text to transform",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "lambda-tree",
+      "description": "Resolves to the parsed lambda hierarchy as child nodes"
+    }
+  }
+}

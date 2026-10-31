@@ -1,0 +1,17 @@
+{
+  "name": "html2pdf",
+  "description": "Converts HTML into a PDF document",
+  "signature": {
+    "input": {
+      "kind": "html",
+      "description": "HTML markup to convert",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "output": {
+      "mode": "Value",
+      "kind": "pdf-content,binary-content",
+      "description": "Resolves to the generated PDF bytes"
+    }
+  }
+}

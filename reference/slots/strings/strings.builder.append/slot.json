@@ -1,0 +1,16 @@
+{
+  "name": "strings.builder.append",
+  "description": "Appends text to the current [strings.builder] scope",
+  "signature": {
+    "input": {
+      "kind": "text",
+      "description": "Text to append to the current [strings.builder] scope",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "scope": {
+      "requires": "strings.builder",
+      "description": "Requires an active string builder scope created by [strings.builder]"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "system.debug",
+  "description": "Evaluates the child lambda while recording every slot invocation, returning the recording",
+  "signature": {
+    "output": {
+      "mode": "Lambda",
+      "kind": "recording,node-list",
+      "description": "Resolves to one node per executed slot, each with [slot], [path], [elapsed] and [lambda] being the entire lambda object after that slot was invoked"
+    }
+  }
+}

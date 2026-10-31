@@ -109,6 +109,9 @@ def main():
     pages = []
     for path in find_pages():
         front, body = split_front_matter(open(os.path.join(ROOT, path), encoding="utf-8").read())
+        # Pages with one small, generated entry each (one per slot) opt out, or the file would double.
+        if front.get("llms") is False:
+            continue
         pages.append((url_for(path), front, clean(body, front, path), path))
     pages.sort(key=lambda p: p[0])
 

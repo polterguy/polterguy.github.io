@@ -1,0 +1,24 @@
+{
+  "name": "for-each",
+  "description": "Iterates over the nodes matching the expression and evaluates the child lambda once per node as [.dp]",
+  "signature": {
+    "input": {
+      "kind": "node-list",
+      "description": "Expression selecting the nodes to iterate",
+      "required": true,
+      "mode": "Expression"
+    },
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Loop body evaluated once per selected node",
+        "required": true,
+        "mode": "ExecutableLambda",
+        "cardinality": "OneOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    }
+  }
+}

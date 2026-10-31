@@ -1,0 +1,24 @@
+{
+  "name": "unwrap",
+  "description": "Forward-evaluates expression values on the selected nodes, replacing them with their resolved values; commonly used before [signal] or [add]",
+  "signature": {
+    "input": {
+      "kind": "node-list,single-object",
+      "description": "Expression selecting the node or nodes whose expressions should be unwrapped",
+      "required": true,
+      "mode": "Expression"
+    },
+    "children": {
+      "apply-lists": {
+        "type": "bool",
+        "description": "Whether list results should be applied while unwrapping",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      }
+    }
+  }
+}

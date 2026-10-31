@@ -1,0 +1,84 @@
+{
+  "name": "image.crop",
+  "description": "Cuts a rectangular region out of an image at the given x, y, width, and height",
+  "signature": {
+    "input": {
+      "kind": "image-file",
+      "description": "Source image filename or stream to crop",
+      "required": true,
+      "mode": "ValueOrExpression"
+    },
+    "children": {
+      "type": {
+        "type": "string",
+        "kind": "image-format",
+        "description": "Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "png",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "dest": {
+        "type": "string",
+        "kind": "image-file",
+        "description": "Optional destination filename; when supplied, the image is saved to disk instead of returned as a stream",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "left": {
+        "type": "int",
+        "kind": "image-crop-pixels",
+        "description": "Pixels to crop from the left edge",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "0",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "top": {
+        "type": "int",
+        "kind": "image-crop-pixels",
+        "description": "Pixels to crop from the top edge",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "0",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "right": {
+        "type": "int",
+        "kind": "image-crop-pixels",
+        "description": "Pixels to crop from the right edge",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "0",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "bottom": {
+        "type": "int",
+        "kind": "image-crop-pixels",
+        "description": "Pixels to crop from the bottom edge",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "0",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Both",
+      "kind": "image",
+      "description": "Resolves to the cropped image stream unless [dest] is supplied, in which case the cropped image is saved to disk and nothing is returned"
+    }
+  }
+}

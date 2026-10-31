@@ -1,0 +1,52 @@
+{
+  "name": "auth.token.verify",
+  "description": "Verifies an externally created JWT token from the required [token] child node, against one or more trusted [issuer]/[issuers] supplied by the caller",
+  "signature": {
+    "children": {
+      "token": {
+        "type": "string",
+        "kind": "jwt",
+        "description": "External JWT token to verify",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "issuer": {
+        "type": "string",
+        "description": "Trusted issuer the token's issuer must equal; meta data is never fetched from issuers not supplied by the caller",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "issuers": {
+        "type": "lambda",
+        "description": "Trusted issuers, the token's issuer must equal one of them; meta data is never fetched from issuers not supplied by the caller",
+        "required": false,
+        "mode": "StructuredArguments",
+        "cardinality": "ZeroOrOne",
+        "role": "StructuredObject",
+        "projection": "Children",
+        "children": {
+          "*": {
+            "type": "string",
+            "description": "List item",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrMore",
+            "role": "Option",
+            "projection": "Value"
+          }
+        }
+      }
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "jwt-claims,text,lambda-tree",
+      "description": "Returns token claims as child nodes such as [issuer], [email], and optional [name] and [nonce]"
+    }
+  }
+}

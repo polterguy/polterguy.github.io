@@ -1,0 +1,12 @@
+{
+  "name": "validators.mandatory",
+  "description": "Validates that the input value or resolved expression result is present, throwing if validation fails",
+  "signature": {
+    "input": {
+      "kind": "validated-value",
+      "description": "Literal value or expression to validate as mandatory",
+      "required": true,
+      "mode": "ValueOrExpression"
+    }
+  }
+}
