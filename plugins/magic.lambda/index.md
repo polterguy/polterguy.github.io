@@ -5,8 +5,8 @@ moved_anchors: {"extending-hyperlambda-with-c": "/plugins/magic.lambda/extending
 ---
 
 magic.lambda is where you will find the _"programming language keywords"_ of Hyperlambda.
-It is what makes Hyperlambda Turing complete, and contains slots such as **[for-each]**,
-**[if]**, and **[while]**. If you want to learn more, this is probably where you should start.
+It is what makes Hyperlambda Turing complete, and contains slots such as **[\[for-each\]](/reference/slots/core/for-each/)**,
+**[\[if\]](/reference/slots/core/if/)**, and **[\[while\]](/reference/slots/core/while/)**. If you want to learn more, this is probably where you should start.
 
 Notice, you do _not_ need to master these slots to use Magic - the
 [Hyperlambda Generator](/dashboard/hyperlambda-generator/) writes the code for you from plain
@@ -18,26 +18,26 @@ machine created.
 
 The slot reference is organised by concept, with one page per concept.
 
-* [Executing lambda objects](/plugins/magic.lambda/executing/) - **[compose]**, **[eval]** and **[invoke]**
-* [Branching and conditional execution](/plugins/magic.lambda/branching/) - **[if]**, **[else-if]**, **[else]** and **[switch]**
-* [Comparison and boolean logic](/plugins/magic.lambda/conditions/) - **[eq]**, **[neq]**, **[lt]**, **[lte]**, **[mt]**, **[mte]**, **[and]**, **[or]** and **[not]**
-* [Modifying your lambda object](/plugins/magic.lambda/nodes/) - **[add]**, **[insert-before]**, **[set-value]**, **[set-x]**, **[unwrap]**, **[get-value]**, **[exists]**, **[reference]** and more
-* [Hyperlambda exceptions](/plugins/magic.lambda/exceptions/) - **[try]** and **[throw]**
-* [Hyperlambda loops](/plugins/magic.lambda/loops/) - **[for-each]**, **[map]** and **[while]**
-* [Types and conversion](/plugins/magic.lambda/types/) - **[types]**, **[type]**, **[convert]**, **[floatArray2bytes]**, **[format]**, **[int2words]**, **[vocabulary]**, **[slot.signature]** and **[slot.description]**
+* [Executing lambda objects](/plugins/magic.lambda/executing/) - **[\[compose\]](/reference/slots/core/compose/)**, **[\[eval\]](/reference/slots/core/eval/)** and **[\[invoke\]](/reference/slots/core/invoke/)**
+* [Branching and conditional execution](/plugins/magic.lambda/branching/) - **[\[if\]](/reference/slots/core/if/)**, **[\[else-if\]](/reference/slots/core/else-if/)**, **[\[else\]](/reference/slots/core/else/)** and **[\[switch\]](/reference/slots/core/switch/)**
+* [Comparison and boolean logic](/plugins/magic.lambda/conditions/) - **[\[eq\]](/reference/slots/core/eq/)**, **[\[neq\]](/reference/slots/core/neq/)**, **[\[lt\]](/reference/slots/core/lt/)**, **[\[lte\]](/reference/slots/core/lte/)**, **[\[mt\]](/reference/slots/core/mt/)**, **[\[mte\]](/reference/slots/core/mte/)**, **[\[and\]](/reference/slots/core/and/)**, **[\[or\]](/reference/slots/core/or/)** and **[\[not\]](/reference/slots/core/not/)**
+* [Modifying your lambda object](/plugins/magic.lambda/nodes/) - **[\[add\]](/reference/slots/core/add/)**, **[\[insert-before\]](/reference/slots/core/insert-before/)**, **[\[set-value\]](/reference/slots/core/set-value/)**, **[\[set-x\]](/reference/slots/core/set-x/)**, **[\[unwrap\]](/reference/slots/core/unwrap/)**, **[\[get-value\]](/reference/slots/core/get-value/)**, **[\[exists\]](/reference/slots/core/exists/)**, **[\[reference\]](/reference/slots/core/reference/)** and more
+* [Hyperlambda exceptions](/plugins/magic.lambda/exceptions/) - **[\[try\]](/reference/slots/core/try/)** and **[\[throw\]](/reference/slots/core/throw/)**
+* [Hyperlambda loops](/plugins/magic.lambda/loops/) - **[\[for-each\]](/reference/slots/core/for-each/)**, **[\[map\]](/reference/slots/core/map/)** and **[\[while\]](/reference/slots/core/while/)**
+* [Types and conversion](/plugins/magic.lambda/types/) - **[\[types\]](/reference/slots/core/types/)**, **[\[type\]](/reference/slots/core/type/)**, **[\[convert\]](/reference/slots/core/convert/)**, **[\[floatArray2bytes\]](/reference/slots/core/floatArray2bytes/)**, **[\[format\]](/reference/slots/core/format/)**, **[\[int2words\]](/reference/slots/core/int2words/)**, **[\[vocabulary\]](/reference/slots/core/vocabulary/)**, **[\[slot.signature\]](/reference/slots/slot/slot.signature/)** and **[\[slot.description\]](/reference/slots/slot/slot.description/)**
 
 
 ## How Hyperlambda invokes slots
 
-At the heart of Hyperlambda is the **[eval]** slot. This slot is responsible for executing your lambda object
-and follows a couple of simple rules. All nodes starting with a _"."_ will be ignored, and **[eval]** will not
+At the heart of Hyperlambda is the **[\[eval\]](/reference/slots/core/eval/)** slot. This slot is responsible for executing your lambda object
+and follows a couple of simple rules. All nodes starting with a _"."_ will be ignored, and **[\[eval\]](/reference/slots/core/eval/)** will not
 try to raise these nodes as signals. This has two benefits.
 
 1. You can create _"hidden"_ slots, that are only accessible from C#.
 2. You can use nodes starting with _"."_ as data nodes, separating function invocations from data.
 
-**[eval]** makes Hyperlambda _"super functional"_ in nature. Below is an example of a Hyperlambda
-piece of code, that illustrates this, by adding a _"callback"_ lambda object to its **[while]** invocation
+**[\[eval\]](/reference/slots/core/eval/)** makes Hyperlambda _"super functional"_ in nature. Below is an example of a Hyperlambda
+piece of code, that illustrates this, by adding a _"callback"_ lambda object to its **[\[while\]](/reference/slots/core/while/)** invocation
 as a **[.lambda]** node, that will be invoked once for every iteration of your while loop.
 
 ```
@@ -120,7 +120,7 @@ traverse it and execute it. But this creates another problem for you, which is t
 a mechanism to store data. This is accomplished by prefixing a node's name with a `.` character, at which point
 the Hyperlambda evaluator will ignore it, as it is traversing your tree, and _not_ attempt to signal
 that particular node as a slot. Think of all nodes starting with a `.` character as _"data segments"_,
-or variables for that matter. Below is an example where **[eval]** will simply ignore the **[.src]** node
+or variables for that matter. Below is an example where **[\[eval\]](/reference/slots/core/eval/)** will simply ignore the **[.src]** node
 and the **[.dest]** node, not attempting to invoke these as slots, but treat these as _"data nodes"_.
 
 ```

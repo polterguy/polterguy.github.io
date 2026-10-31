@@ -46,8 +46,8 @@ or invoke **[tasks.schedule]** again.
 
 **Notice** - You _cannot_ create a task with a due date being in the past, and all dates are assumed to be in
 the UTC timezone. The unique ID of the schedule created is returned when you explicitly schedule a task using
-the **[tasks.schedule]** slot. If you add schedules during invocations to **[tasks.create]** though, no schedule
-IDs are returned, but you can still retrieve all schedules by invoking **[tasks.get]** and passing in **[schedules]**
+the **[tasks.schedule]** slot. If you add schedules during invocations to **[\[tasks.create\]](/reference/slots/tasks/tasks.create/)** though, no schedule
+IDs are returned, but you can still retrieve all schedules by invoking **[\[tasks.get\]](/reference/slots/tasks/tasks.get/)** and passing in **[schedules]**
 to have the slot return all schedules for a specific task.
 
 #### How to repeatedly execute a task

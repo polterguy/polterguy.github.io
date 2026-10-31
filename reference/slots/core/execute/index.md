@@ -28,8 +28,8 @@ Required arguments come first, then the optional ones in the order they are decl
 ### Guide
 
 <!-- guide -->
-The **[execute]** slot is an alias for **[signal]**, but it will **[unwrap]** all children nodes, automatically
-transform any expressions to their static value equivalents, allowing you to combine **[unwrap]** and **[signal]**
+The **[execute]** slot is an alias for **[\[signal\]](/reference/slots/core/signal/)**, but it will **[\[unwrap\]](/reference/slots/core/unwrap/)** all children nodes, automatically
+transform any expressions to their static value equivalents, allowing you to combine **[\[unwrap\]](/reference/slots/core/unwrap/)** and **[\[signal\]](/reference/slots/core/signal/)**
 into one invocation. This makes usage slightly less verbose for cases such as the following.
 
 ```

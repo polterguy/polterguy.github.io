@@ -23,7 +23,7 @@ Required arguments come first, then the optional ones in the order they are decl
 ### Guide
 
 <!-- guide -->
-This slot works like **[io.folder.list]**, except it also returns all folders nested inside of the specified folder,
+This slot works like **[\[io.folder.list\]](/reference/slots/io/io.folder.list/)**, except it also returns all folders nested inside of the specified folder,
 at any depth, and not only its direct sub folders. It returns one unnamed child node per folder, with the folder's
 path relative to the root folder of your backend, and accepts the following optional arguments.
 

@@ -22,8 +22,8 @@ Required arguments come first, then the optional ones in the order they are decl
 ### Guide
 
 <!-- guide -->
-Joins all child **[fork]** invocations, implying the slot will wait until all forks directly below it
-has finished executing, and automatically copy the result of the **[fork]** into the original node.
+Joins all child **[\[fork\]](/reference/slots/core/fork/)** invocations, implying the slot will wait until all forks directly below it
+has finished executing, and automatically copy the result of the **[\[fork\]](/reference/slots/core/fork/)** into the original node.
 
 ```
 join
@@ -33,7 +33,7 @@ join
       http.get:"https://gaiasoul.com"
 ```
 
-As an analogy for what occurs above, imagine the two rivers from our above **[fork]** analogy
+As an analogy for what occurs above, imagine the two rivers from our above **[\[fork\]](/reference/slots/core/fork/)** analogy
 that forked from one larger river into two smaller rivers, for then again to join up and becoming one
 large river again further down.
 <!-- /guide -->

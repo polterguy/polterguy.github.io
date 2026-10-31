@@ -26,7 +26,7 @@ Required arguments come first, then the optional ones in the order they are decl
 ### Guide
 
 <!-- guide -->
-Concatenates a list of strings into one string. Similar to **[strings.join]**, except it doesn't take a
+Concatenates a list of strings into one string. Similar to **[\[strings.join\]](/reference/slots/strings/strings.join/)**, except it doesn't take a
 separating character.
 
 ```

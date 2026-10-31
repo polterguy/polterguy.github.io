@@ -14,7 +14,7 @@ slot_json: "/reference/slots/time/time.total-milliseconds/slot.json"
 ### Guide
 
 <!-- guide -->
-This slot takes a time span as its value, such as one returned from **[time]**, and returns the total number
+This slot takes a time span as its value, such as one returned from **[\[time\]](/reference/slots/core/time/)**, and returns the total number
 of milliseconds the time span represents. Its value is mandatory, and it can be given either as a constant
 or as an expression.
 <!-- /guide -->

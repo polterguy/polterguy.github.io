@@ -22,7 +22,7 @@ Required arguments come first, then the optional ones in the order they are decl
 ### Guide
 
 <!-- guide -->
-Works similarly to **[io.file.save]** but instead of taking source content of some kind,
+Works similarly to **[\[io.file.save\]](/reference/slots/io/io.file.save/)** but instead of taking source content of some kind,
 it assumes the source is an open `Stream` of some sort.
 
 ```

@@ -10,9 +10,9 @@ This project contains date manipulation slots for Magic. More specifically, this
 * __[\[date.min\]](/reference/slots/date/date.min/)__ - Returns the minimum date value, equivalent of `DateTime.MinValue`.
 * __[\[date.max\]](/reference/slots/date/date.max/)__ - Returns the maximum date value, equivalent of `DateTime.MaxValue`.
 * __[\[date.unix\]](/reference/slots/date/date.unix/)__ - Returns the current UTC time as a Unix timestamp.
-* __[\[date.format\]](/reference/slots/date/date.format/)__ - Returns a string representation of some date, formatted according to the specified **[format]** argument.
+* __[\[date.format\]](/reference/slots/date/date.format/)__ - Returns a string representation of some date, formatted according to the specified **[\[format\]](/reference/slots/core/format/)** argument.
 * __[\[time.total-milliseconds\]](/reference/slots/time/time.total-milliseconds/)__ - Returns the total number of milliseconds in a time span.
-* __[\[time.format\]](/reference/slots/time/time.format/)__ - Formats a time span as a string, according to the specified **[format]** argument.
+* __[\[time.format\]](/reference/slots/time/time.format/)__ - Formats a time span as a string, according to the specified **[\[format\]](/reference/slots/core/format/)** argument.
 * __[\[time\]](/reference/slots/core/time/)__ - Creates a time span, useful for adding and subtracting offsets to date objects. Pass in **[days]**, **[hours]**, **[minutes]**, **[seconds]** or **[milliseconds]** to declare how large your offset is. All arguments are optional, but (of course) at least one argument should be passed in.
 
 **Notice** - Internally in Magic, everything is UTC Universal timezone, implying if you want to render it in user's

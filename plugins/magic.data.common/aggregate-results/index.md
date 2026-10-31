@@ -35,7 +35,7 @@ and/or web server, by selecting all records from a table with millions of record
 
 ## Paging
 
-To page your **[sql.read]** results, use **[limit]** and **[offset]**, such as the following illustrates.
+To page your **[\[sql.read\]](/reference/slots/sql/sql.read/)** results, use **[limit]** and **[offset]**, such as the following illustrates.
 Even though we use _"limit"_ and _"offset"_, the correct syntax will be applied for your database type,
 depending upon which database type you're using - Implying for Microsoft SQL Server, it will inject MS SQL dialect,
 and not MySQL dialect. But the syntax for your lambda object still remains the same, making it simpler to create

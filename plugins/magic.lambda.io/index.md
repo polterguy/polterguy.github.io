@@ -13,18 +13,18 @@ This project provides file/folder slots for Magic. More specifically, it provide
 * __[\[io.folder.move\]](/reference/slots/io/io.folder.move/)__ - Moves a folder to its specified destination
 * __[\[io.folder.copy\]](/reference/slots/io/io.folder.copy/)__ - Copies a folder to its specified destination
 * __[\[io.file.load\]](/reference/slots/io/io.file.load/)__ - Loads a file from disc on your server
-* __[\[load-file\]](/reference/slots/core/load-file/)__ - Alias for **[io.file.load]**
+* __[\[load-file\]](/reference/slots/core/load-file/)__ - Alias for **[\[io.file.load\]](/reference/slots/io/io.file.load/)**
 * __[\[io.file.load-recursively\]](/reference/slots/io/io.file.load-recursively/)__ - Loads all files in a folder, including all nested folders, returning each file's name and content
 * __[\[io.file.load.binary\]](/reference/slots/io/io.file.load.binary/)__ - Loads a file from disc on your server as a byte array
 * __[\[io.file.save\]](/reference/slots/io/io.file.save/)__ - Saves a file on disc on your server
-* __[\[save-file\]](/reference/slots/core/save-file/)__ - Alias for **[io.file.save]**
+* __[\[save-file\]](/reference/slots/core/save-file/)__ - Alias for **[\[io.file.save\]](/reference/slots/io/io.file.save/)**
 * __[\[io.file.save.binary\]](/reference/slots/io/io.file.save.binary/)__ - Saves a file on disc on your server but contrary to the above assumes content to save is binary
 * __[\[io.file.patch\]](/reference/slots/io/io.file.patch/)__ - Applies a unified diff patch to a file on disc on your server
 * __[\[io.file.exists\]](/reference/slots/io/io.file.exists/)__ - Returns true if file exists, otherwise false.
 * __[\[io.file.delete\]](/reference/slots/io/io.file.delete/)__ - Deletes a file on your server.
 * __[\[io.file.copy\]](/reference/slots/io/io.file.copy/)__ - Copies a file on your server.
 * __[\[io.file.execute\]](/reference/slots/io/io.file.execute/)__ - Executes a Hyperlambda file on your server.
-* __[\[execute-file\]](/reference/slots/core/execute-file/)__ - Alias for **[io.file.execute]** except it will forward evaluate all descendant nodes using **[unwrap]**
+* __[\[execute-file\]](/reference/slots/core/execute-file/)__ - Alias for **[\[io.file.execute\]](/reference/slots/io/io.file.execute/)** except it will forward evaluate all descendant nodes using **[\[unwrap\]](/reference/slots/core/unwrap/)**
 * __[\[io.file.list\]](/reference/slots/io/io.file.list/)__ - List files in the specified folder on your server.
 * __[\[io.file.list-recursively\]](/reference/slots/io/io.file.list-recursively/)__ - List files in the specified folder on your server, including all nested folders.
 * __[\[io.file.move\]](/reference/slots/io/io.file.move/)__ - Moves a file on your server.
@@ -69,7 +69,7 @@ var rootFolder = node.Get<string>();
 
 ## Restricting file access with [whitelist]
 
-Every slot in this project verifies its path against the **[whitelist]** vocabulary in scope, if any,
+Every slot in this project verifies its path against the **[\[whitelist\]](/reference/slots/core/whitelist/)** vocabulary in scope, if any,
 comparing it segment by segment such that a wildcard is confined to the segment it occurs in.
 
 ```
@@ -90,9 +90,9 @@ and a folder has no extension - so a pattern such as `/etc/*.md/` throws for a f
 the same wildcard is legal as a filename. An asterisk must be either an entire segment or the start of
 the filename, and anything else throws rather than silently matching something unintended.
 
-Notice, the paths a slot touches _besides_ its own value are verified too. **[io.file.copy]** and
-**[io.file.move]** verify their destination, which the vocabulary never sees otherwise. **[io.file.unzip]**
+Notice, the paths a slot touches _besides_ its own value are verified too. **[\[io.file.copy\]](/reference/slots/io/io.file.copy/)** and
+**[\[io.file.move\]](/reference/slots/io/io.file.move/)** verify their destination, which the vocabulary never sees otherwise. **[\[io.file.unzip\]](/reference/slots/io/io.file.unzip/)**
 verifies its destination folder once, and then confines every entry the archive writes to that folder,
 which is what stops an archive escaping it with a `../` in an entry's name.
 
-Read more about **[whitelist]** in the magic.lambda project.
+Read more about **[\[whitelist\]](/reference/slots/core/whitelist/)** in the magic.lambda project.

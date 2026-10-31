@@ -32,10 +32,10 @@ validators.email:x:@.foo/*/email
 
 Most Hyperlambda validators requires some sort of argument(s) - However, some of
 these validators does not require arguments, such as the email validator, that simply verifies the input is a valid email address.
-To use the **[validators.regex]** validator, you should probably [learn regular expression](https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285). However, this is beyond the scope of this article.
+To use the **[\[validators.regex\]](/reference/slots/validators/validators.regex/)** validator, you should probably [learn regular expression](https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285). However, this is beyond the scope of this article.
 
 **Notice** - No attempt to invoke the type validator logic will be done unless the value is a _non null_ value. If you want
-to enforce such logic, you'll have to combine the specific type validators with the **[validators.mandatory]** validator,
+to enforce such logic, you'll have to combine the specific type validators with the **[\[validators.mandatory\]](/reference/slots/validators/validators.mandatory/)** validator,
 that enforces that a value must be specified and not have a null value.
 
 

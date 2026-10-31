@@ -66,7 +66,7 @@ data.connect
 
 This slot requires SQL resembling your specialised database type of dialect, and will
 not in any ways transpile the SQL towards your specific underlying database type's SQL dialect.
-If you can, you should rather use **[data.read]**, to avoid lockin towards a specific database
+If you can, you should rather use **[\[data.read\]](/reference/slots/data/data.read/)**, to avoid lockin towards a specific database
 vendor's SQL dialect.
 You can also select multiple result sets if you have batch type of SQL statements, containing
 multiple SQL statements, and you want to return the result of all SQL statements you're executing.

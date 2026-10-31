@@ -25,9 +25,9 @@ Required arguments come first, then the optional ones in the order they are decl
 This slot formats a time span as a string, using the same format patterns as `TimeSpan.ToString` in C#,
 and is invoked with the time span as its value. It requires the following argument.
 
-- **[format]** - Format pattern to use. This argument is mandatory, and the slot throws an exception if it is missing.
+- **[\[format\]](/reference/slots/core/format/)** - Format pattern to use. This argument is mandatory, and the slot throws an exception if it is missing.
 
-The time span is typically a value returned from **[time]**, and the result of the slot is the formatted
+The time span is typically a value returned from **[\[time\]](/reference/slots/core/time/)**, and the result of the slot is the formatted
 string.
 <!-- /guide -->
 

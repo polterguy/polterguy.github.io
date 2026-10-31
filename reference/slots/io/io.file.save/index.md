@@ -35,7 +35,7 @@ io.file.save:/misc/README2.md
    .:This is new content for file
 ```
 
-**Notice** - If you want to save binary content you should use the **[io.file.save.binary]** override.
+**Notice** - If you want to save binary content you should use the **[\[io.file.save.binary\]](/reference/slots/io/io.file.save.binary/)** override.
 <!-- /guide -->
 
 ### Related documentation

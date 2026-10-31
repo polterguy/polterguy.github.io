@@ -23,7 +23,7 @@ Required arguments come first, then the optional ones in the order they are decl
 ### Guide
 
 <!-- guide -->
-This slot works like **[io.file.list]**, except it also returns all files inside of nested folders, at any depth, and
+This slot works like **[\[io.file.list\]](/reference/slots/io/io.file.list/)**, except it also returns all files inside of nested folders, at any depth, and
 not only the files directly inside of the specified folder. It returns one unnamed child node per file, with the
 file's path relative to the root folder of your backend, and accepts the following optional arguments.
 

@@ -13,7 +13,7 @@ slot_json: "/reference/slots/mime/mime.list/slot.json"
 ### Guide
 
 <!-- guide -->
-This slot lists all MIME type mappings registered in the current installation, including those added with **[mime.add]**.
+This slot lists all MIME type mappings registered in the current installation, including those added with **[\[mime.add\]](/reference/slots/mime/mime.add/)**.
 It returns one child node for each mapping, where the name of the child node is the file extension and its value is the MIME type.
 It takes no arguments.
 <!-- /guide -->

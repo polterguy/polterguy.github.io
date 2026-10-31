@@ -83,7 +83,7 @@ def build(readme, plugin, names):
         description = docsplit.describe(page)
         head = '---\ntitle: %s\ndescription: %s\ngenerated: true\n---\n\n' % (
             json.dumps(page['title'], ensure_ascii=False), json.dumps(description, ensure_ascii=False))
-        files['plugins/%s/%s/index.md' % (plugin, page['slug'])] = head + to_index(docsplit.page_markdown(result, page, index))
+        files['plugins/%s/%s/index.md' % (plugin, page['slug'])] = head + to_index(docsplit.page_markdown(result, page, index, names))
     return files
 
 

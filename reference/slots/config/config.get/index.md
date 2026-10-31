@@ -49,7 +49,7 @@ config.get:42
 
 **Notice** - Due to implementation details of .Net and its `IConfiguration` specifically, values
 returned will _always_ be strings, and you'll have to manually convert these to other types, using for
-instance the **[convert]** slot from magic.lambda. This _might_ change in a future release though.
+instance the **[\[convert\]](/reference/slots/core/convert/)** slot from magic.lambda. This _might_ change in a future release though.
 You can also provide a default value that will be returned if no configuration value is found, such
 as the following illustrates.
 
@@ -60,7 +60,7 @@ config.get:"magic:foo:non-existing-key"
 ```
 
 Since the above _"non-existing-key"_ doesn't exist in your configuration file, the above Hyperlambda will
-return the value _"foo"_ being the result of the invocation to the **[get-value]** slot. This allows you
+return the value _"foo"_ being the result of the invocation to the **[\[get-value\]](/reference/slots/core/get-value/)** slot. This allows you
 to create default values your code resorts to if the specified configuration setting doesn't exist.
 <!-- /guide -->
 

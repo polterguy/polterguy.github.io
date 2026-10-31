@@ -25,7 +25,7 @@ The above means the current execution may continue for at most 30 more seconds. 
 boolean value indicating whether or not the timeout actually tightened the current deadline.
 
 If multiple timeouts are applied to the same execution, the earliest deadline wins. Any child work
-created through **[fork]** inherits the same execution context, implying the timeout applies to
+created through **[\[fork\]](/reference/slots/core/fork/)** inherits the same execution context, implying the timeout applies to
 forked work too.
 <!-- /guide -->
 

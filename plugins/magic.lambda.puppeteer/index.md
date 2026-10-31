@@ -4,7 +4,7 @@ moved_anchors: {"puppeteerclick": "/reference/slots/puppeteer/puppeteer.click/#g
 ---
 
 The magic.lambda.puppeteer project provides headless Chromium automation slots for Magic using PuppeteerSharp.
-It uses an explicit session model: **[puppeteer.connect]** returns a `session_id`, and every other slot requires
+It uses an explicit session model: **[\[puppeteer.connect\]](/reference/slots/puppeteer/puppeteer.connect/)** returns a `session_id`, and every other slot requires
 that `session_id`. There is no scoped context or `.lambda` usage.
 
 **Thread safety**: This library is **not thread safe**. Do not use the same `session_id` concurrently across threads.

@@ -72,7 +72,7 @@ system.plugin.list
 
 This slot is probably the closest you come to being able to using C# as a dynamic _"scripting language"_, allowing you to use it more like an interpreted language than a compiled language - Even though internally it's actually compiled to IL code and executed as such - Only the loading of the assembly resulting from the compilation process is 100% dynamic and automatic, including the cleaning up and unloading of the assembly from the AppDomain once the code has been executed.
 
-This slot accepts either a string or a byte array. If you give it a string, it assumes your string is a relative path to an assembly on disc. If you provide it with a byte array, it assumes it's your raw assembly content. In such a regard it works similarly to **[system.plugin.load]**.
+This slot accepts either a string or a byte array. If you give it a string, it assumes your string is a relative path to an assembly on disc. If you provide it with a byte array, it assumes it's your raw assembly content. In such a regard it works similarly to **[\[system.plugin.load\]](/reference/slots/system/system.plugin.load/)**.
 <!-- /guide -->
 
 ### Related documentation

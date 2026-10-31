@@ -14,7 +14,7 @@ slot_json: "/reference/slots/io/io.stream.open-file/slot.json"
 ### Guide
 
 <!-- guide -->
-Works similarly to **[io.file.load]** but instead of returning the file's content,
+Works similarly to **[\[io.file.load\]](/reference/slots/io/io.file.load/)** but instead of returning the file's content,
 it returns the raw stream back to caller.
 
 ```

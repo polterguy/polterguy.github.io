@@ -27,7 +27,7 @@ This slot will open a database connection for you. You can pass in a complete co
 or only the database name if you wish. If you pass in only the database name, the generic connection string for your
 database type of choice from your _"appsettings.json"_ file will be used, substituting its `{database}` parts
 with the database of your choice.
-Inside of this slot, which actually is a lambda **[eval]** invocation, you can use any of the other slots, requiring
+Inside of this slot, which actually is a lambda **[\[eval\]](/reference/slots/core/eval/)** invocation, you can use any of the other slots, requiring
 an existing and open database connection to function. You can see an example below.
 
 ```
@@ -39,8 +39,8 @@ data.connect:sakila
 Since the **[data.connect]** slot actually takes a lambda object, you can also add any amount
 of other lambda invocations inside of the lambda object supplied to the slot, allowing you to for instance
 create loops, conditional executions, etc, _inside_ of your invocation to **[data.connect]**. This is also
-true for all other slots taking a lambda object, such as for instance **[data.transaction.create]**.
-Inside your lambda object, an invocation towards your database such as e.g. **[data.read]**, will be
+true for all other slots taking a lambda object, such as for instance **[\[data.transaction.create\]](/reference/slots/data/data.transaction.create/)**.
+Inside your lambda object, an invocation towards your database such as e.g. **[\[data.read\]](/reference/slots/data/data.read/)**, will be
 using this database connection, as long as the type of database is matching. The database connection will
 be kept open, and implicitly used, for the entirety of the lambda object. If you need another database
 connection inside of your lambda object, you'll need to nest **[data.connect]** invocations.

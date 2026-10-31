@@ -53,7 +53,7 @@ and/or making adversaries also get a hold of it, is practically *very difficult*
 unless you can asymmetrically encrypt the symmetric key.
 
 If you only need a random array of 32 bytes, to use as your passphrase, in combination with for
-instance RSA asymmetric cryptography - You can use the **[crypto.random]** slot as follows.
+instance RSA asymmetric cryptography - You can use the **[\[crypto.random\]](/reference/slots/crypto/crypto.random/)** slot as follows.
 
 ```
 crypto.random

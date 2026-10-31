@@ -33,7 +33,7 @@ sub-sections of graph objects.
 
 Each iterator ends with a _"/"_ or a CR/LF
 sequence, and before its end, its value defines what it does. For instance the above iterator in
-the __[get-value]__ invocation, starts out with a _"@"_. This implies that the iterator will find the
+the __[\[get-value\]](/reference/slots/core/get-value/)__ invocation, starts out with a _"@"_. This implies that the iterator will find the
 first node having a name of whatever follows its _"@"_. For the above this implies looking for the first
 node who's name is _".foo"_. To see a slightly more advanced example, imagine the following.
 

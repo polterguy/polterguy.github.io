@@ -31,7 +31,7 @@ math.divide:int:100
    :int:5
 ```
 
-The value of the above __[math.divide]__ node after evaluating the above Hyperlambda will be 5.
+The value of the above __[\[math.divide\]](/reference/slots/math/math.divide/)__ node after evaluating the above Hyperlambda will be 5.
 All of the above slots will also evaluate the children collection as a lambda, before starting the actual math function,
 allowing you to recursively raise signals to retrieve values that are supposed to be mathematically handled somehow.
 This allows you to recursively nest math operations, such as for instance.
@@ -52,7 +52,7 @@ The above of course will first add 5 and 2, then multiply the result of that wit
 
 ## Incrementing and decrementing values
 
-The above **[math.increment]** and **[math.decrement]** slots, will instead of yielding a result, inline modify the
+The above **[\[math.increment\]](/reference/slots/math/math.increment/)** and **[\[math.decrement\]](/reference/slots/math/math.decrement/)** slots, will instead of yielding a result, inline modify the
 value of the node(s) it is pointing to, assuming its value is an expression. In addition these two slots can take an
 _optional_ _"step"_ argument, allowing you to declare how much the incrementation/decrementation process should add/reduce
 the original node's value by. Below is an example that decrements the value found in its expression by 2.
@@ -74,5 +74,5 @@ math.increment:x:-
 ```
 
 **Notice** - You can use any slot invocation to retrieve the step value for the increment/decrement slots, including
-for instance an invocation to **[get-value]**, or your custom slots. This is due to the fact that the first argument supplied
+for instance an invocation to **[\[get-value\]](/reference/slots/core/get-value/)**, or your custom slots. This is due to the fact that the first argument supplied
 to these slots will be assumed to be the _"step"_ value you want.

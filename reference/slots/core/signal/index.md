@@ -37,7 +37,7 @@ signal:foo
 
 After evaluating the above Hyperlambda, the **[signal]** node will end up having a value of _"57"_.
 
-**Notice** - This slot obeys by the rules of **[whitelist]** invocations from magic.lambda, allowing you to
+**Notice** - This slot obeys by the rules of **[\[whitelist\]](/reference/slots/core/whitelist/)** invocations from magic.lambda, allowing you to
 declare a list of dynamic slots, which are exclusively allowed to be invoked temporarily inside of an
 invocation to whitelist, allowing you to restrict some piece of potentially unsafe code to *only* signal
 a pre-defined list of dynamically created slots. Below is an example.
@@ -64,16 +64,16 @@ whitelist
       signal:foo2
 ```
 
-Basically, _only_ the slots declared in the above **[vocabulary]** will be allowed to be invoked inside
+Basically, _only_ the slots declared in the above **[\[vocabulary\]](/reference/slots/core/vocabulary/)** will be allowed to be invoked inside
 of the above **[.lambda]** object. You must have your dynamic slots declared as **signal:slot-name**,
 such as the above illustrates. And in order to signal dynamic slots *at all*, you'll need to (obviously)
-whitelist **[signal]** itself, as illustrated in the above code. Read more about **[whitelist]** in 
-the magic.lambda project. Inside your slots though any **[whitelist]** invocations will simply be ignored,
+whitelist **[signal]** itself, as illustrated in the above code. Read more about **[\[whitelist\]](/reference/slots/core/whitelist/)** in 
+the magic.lambda project. Inside your slots though any **[\[whitelist\]](/reference/slots/core/whitelist/)** invocations will simply be ignored,
 allowing you to whitelist a single dynamic slot, for then to ignore what the slot itself is doing internally.
 This _might_ create security issues for you if you have dynamically created slots that for some reasons
 execute lambda object supplied to them. Hence as a general rule of thumb, you should _avoid_ whitelisting
 slots that executes lambda objects supplied to them. The same is true for Hyperlambda files executed with
-**[execute-file]** or **[io.file.execute]**, which you can pin in a whitelist by path - see
+**[\[execute-file\]](/reference/slots/core/execute-file/)** or **[\[io.file.execute\]](/reference/slots/io/io.file.execute/)**, which you can pin in a whitelist by path - see
 [magic.lambda.io](/plugins/magic.lambda.io/).
 <!-- /guide -->
 

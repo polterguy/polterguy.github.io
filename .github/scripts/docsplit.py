@@ -316,6 +316,26 @@ def linkify_slots(lines, names):
     return out
 
 
+def link_mentions(text, names, skip=()):
+    """Mentions such as **[crypto.hash.sha1]** link to the reference page of the slot. Code is left alone."""
+    out, fence = [], False
+    pattern = re.compile(r'(__|\*\*)\[([^\]\\\s]+)\]\1(?!\()')
+
+    def link(m):
+        name = m.group(2)
+        if name not in names or name in skip:
+            return m.group(0)
+        return '%s[\\[%s\\]](%s)%s' % (m.group(1), name, slot_url(name), m.group(1))
+
+    for line in text.split('\n'):
+        if line.startswith('```'):
+            fence = not fence
+        elif not fence and not line.startswith('#'):
+            line = '`'.join(part if i % 2 else pattern.sub(link, part) for i, part in enumerate(line.split('`')))
+        out.append(line)
+    return '\n'.join(out)
+
+
 def hub_markdown(result, names):
     """The hub page body, without front matter."""
     lines = linkify_slots(result['intro'], names)
@@ -325,10 +345,10 @@ def hub_markdown(result, names):
         lines += ['', '## Topics', '']
         for p in result['pages']:
             lines.append('* [%s](/plugins/%s/%s/) - %s' % (p['title'], result['plugin'], p['slug'], p.get('description') or first_sentence(p['lines'])))
-    return relink('\n'.join(trim(lines)) + '\n', result['moved'])
+    return link_mentions(relink('\n'.join(trim(lines)) + '\n', result['moved']), names)
 
 
-def page_markdown(result, page, index):
+def page_markdown(result, page, index, names=()):
     """A concept page body, with its place in the series."""
     plugin, pages = result['plugin'], result['pages']
     lead = 'This page is part of the [%s](/plugins/%s/) documentation.' % (plugin, plugin)
@@ -340,7 +360,7 @@ def page_markdown(result, page, index):
     if index + 1 < len(pages):
         nav.append('[%s &rarr;](/plugins/%s/%s/)' % (pages[index + 1]['title'], plugin, pages[index + 1]['slug']))
     body += ['', '---', '', ' | '.join(nav)]
-    return relink('\n'.join(body) + '\n', result['moved'])
+    return link_mentions(relink('\n'.join(body) + '\n', result['moved']), names)
 
 
 # ------------------------------------------------------------------------------------

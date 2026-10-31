@@ -27,9 +27,9 @@ Required arguments come first, then the optional ones in the order they are decl
 ### Guide
 
 <!-- guide -->
-This slot inserts a new row into your database, using the current open connection created by **[data.connect]**.
+This slot inserts a new row into your database, using the current open connection created by **[\[data.connect\]](/reference/slots/data/data.connect/)**.
 It generates the SQL for your database type, and takes the same **[table]** and **[values]** arguments as
-**[sql.create]**. Its value resolves to the ID of the created row if **[return-id]** is true, which is the default,
+**[\[sql.create\]](/reference/slots/sql/sql.create/)**. Its value resolves to the ID of the created row if **[return-id]** is true, which is the default,
 otherwise to null. It also accepts the following arguments.
 
 * __[table]__ - Name of the table to insert into. Mandatory, the slot throws if it is missing

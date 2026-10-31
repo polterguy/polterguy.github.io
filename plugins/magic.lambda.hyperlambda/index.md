@@ -45,6 +45,6 @@ eval:x:-
 ```
 
 **Notice** - Both of these slots can optionally be given a **[comments]** argument with a value of `true`,
-at which point both **[lambda2hyper]** and **[hyper2lambda]** will preserve comments, and persist these as
+at which point both **[\[lambda2hyper\]](/reference/slots/core/lambda2hyper/)** and **[\[hyper2lambda\]](/reference/slots/core/hyper2lambda/)** will preserve comments, and persist these as
 **[..]** nodes into your lambda, and reverse the process for the other direction. This allows you to keep the
 comments of your Hyperlambda parts as semantic nodes, as you handle your Hyperlambda and node hierarchy.

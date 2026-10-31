@@ -16,7 +16,7 @@ slot_json: "/reference/slots/io/io.stream.close/slot.json"
 Closes a previously opened stream.
 
 **Notice** - You would rarely directly use streams from Hyperlambda, and not manipulate them
-in any ways, but rather use for instance **[io.file.load]** and similar _"high level"_ slots -
+in any ways, but rather use for instance **[\[io.file.load\]](/reference/slots/io/io.file.load/)** and similar _"high level"_ slots -
 And only use streams when you need to directly access the HTTP request stream, to persist a file
 uploaded by a user, or return a file over the HTTP response object. Hence, directly opening
 a stream for any other purpose but to return it over the HTTP response object is something you'd
@@ -34,7 +34,7 @@ io.stream.close:x:-
 ```
 
 After invoking the above, assuming the file exists, the stream previously opened
-by **[io.stream.open-file]** will be explicitly closed.
+by **[\[io.stream.open-file\]](/reference/slots/io/io.stream.open-file/)** will be explicitly closed.
 <!-- /guide -->
 
 ### Related documentation

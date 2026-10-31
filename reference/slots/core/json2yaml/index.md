@@ -16,7 +16,7 @@ slot_json: "/reference/slots/core/json2yaml/slot.json"
 <!-- guide -->
 This guide covers [`json2yaml`](/reference/slots/core/json2yaml/), [`yaml2json`](/reference/slots/core/yaml2json/) together.
 
-The **[yaml2json]** slot converts the specified YAML input string to a JSON string. Basic usage is as follows.
+The **[\[yaml2json\]](/reference/slots/core/yaml2json/)** slot converts the specified YAML input string to a JSON string. Basic usage is as follows.
 
 ```
 .yaml:@"foo: howdy

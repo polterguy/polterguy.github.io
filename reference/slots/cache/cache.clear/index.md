@@ -24,7 +24,7 @@ cache.clear
 cache.get:cache-item-key
 ```
 
-Notice, the above Hyperlambda should not return any item in its last invocation to **[cache.get]**
+Notice, the above Hyperlambda should not return any item in its last invocation to **[\[cache.get\]](/reference/slots/cache/cache.get/)**
 since the cache was cleared before invoking it. The slot also optionally takes a filter argument
 as its value, which if provided, will _only_ delete items starting out with the specified filter.
 Usage example can be found below.

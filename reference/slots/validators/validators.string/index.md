@@ -22,7 +22,7 @@ Required arguments come first, then the optional ones in the order they are decl
 ### Guide
 
 <!-- guide -->
-This works the same way as the **[validators.integer]** validator, except instead of being a min/max
+This works the same way as the **[\[validators.integer\]](/reference/slots/validators/validators.integer/)** validator, except instead of being a min/max
 _value_ the min/max arguments declares the minimum and maximum _length_ of the string, allowing you
 to restrict string length of arguments to a min/max value for your Hyperlambda. Below is example
 usage that will throw an exception unless the argument is between 5 and 15 characters in length.

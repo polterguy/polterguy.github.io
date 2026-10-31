@@ -55,7 +55,7 @@ _Nodes nested deeper than 6 levels, and nodes that repeat one of their own ances
 ### Guide
 
 <!-- guide -->
-The **[mime.create]** slot is logically the exact opposite of the **[mime.parse]** slot, and can take (almost) the exact
+The **[mime.create]** slot is logically the exact opposite of the **[\[mime.parse\]](/reference/slots/mime/mime.parse/)** slot, and can take (almost) the exact
 same input as its sibling produces as output. Below is an example.
 
 ```
@@ -101,7 +101,7 @@ mime.create:multipart/mixed
       content:Some Markdown content here
 ```
 
-The above will create one multipart MIME entity with two children, where one of its children are declaring itself as an attachment, with the filename of _"README.md"_ due to its `Content-Disposition` header. If you parse the resulting MIME message using **[mime.parse]**, you will end up with roughly what you started with.
+The above will create one multipart MIME entity with two children, where one of its children are declaring itself as an attachment, with the filename of _"README.md"_ due to its `Content-Disposition` header. If you parse the resulting MIME message using **[\[mime.parse\]](/reference/slots/mime/mime.parse/)**, you will end up with roughly what you started with.
 
 You can add any headers you wish into individual MIME entities using the above syntax. The `Content-Type` header will be ignored though, since it's assumed to be the value of your **[entity]** node.
 

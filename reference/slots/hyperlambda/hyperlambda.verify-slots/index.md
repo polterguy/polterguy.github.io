@@ -33,10 +33,10 @@ The slot returns `false` if the Hyperlambda is invalid, and `true` if it is vali
 When it returns `false`, every missing slot name is returned as an unnamed child node, and the example above
 returns `missing.try` this way.
 
-The slot verifies the root level of the Hyperlambda, in addition to the bodies of slots such as **[try]**,
-**[.catch]**, **[.finally]**, **[switch]**, **[case]**, **[default]** and **[eval]**, to any depth. Nodes whose
+The slot verifies the root level of the Hyperlambda, in addition to the bodies of slots such as **[\[try\]](/reference/slots/core/try/)**,
+**[.catch]**, **[.finally]**, **[\[switch\]](/reference/slots/core/switch/)**, **[\[case\]](/reference/slots/core/case/)**, **[\[default\]](/reference/slots/core/default/)** and **[\[eval\]](/reference/slots/core/eval/)**, to any depth. Nodes whose
 names start with a `.`, such as variables, comments and **[.arguments]**, are not treated as slot invocations, and
-arguments such as the **[table]** and **[where]** nodes of **[data.read]** are not checked as slots.
+arguments such as the **[table]** and **[where]** nodes of **[\[data.read\]](/reference/slots/data/data.read/)** are not checked as slots.
 
 In addition to missing slots, the slot also reports the following as **[invalid-invocation]** child nodes.
 

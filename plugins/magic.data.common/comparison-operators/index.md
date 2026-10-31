@@ -19,7 +19,7 @@ The project supports the following comparison operators.
 * `like` - Like comparison, equivalent to SQL's `like` comparison
 * `in` - Special comparison operator, since it requires a _list_ of values, generating an _"in"_ SQL condition
 
-Everywhere you need to compare one field with another, such as in **[where]** or **[join]**
+Everywhere you need to compare one field with another, such as in **[where]** or **[\[join\]](/reference/slots/core/join/)**
 arguments, you can append a comparison operator to your left hand side column, such as the following
 illustrates.
 

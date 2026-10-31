@@ -63,7 +63,7 @@ You can also optionally supply the following arguments, which all defaults to bo
 
 #### Front matter and [markdown2html]
 
-The **[markdown2html]** slot can also handle _"front matter"_, which allows you to inject YAML at the front
+The **[\[markdown2html\]](/reference/slots/core/markdown2html/)** slot can also handle _"front matter"_, which allows you to inject YAML at the front
 of your Markdown. Front matter again is just a YAML declaration injected at the front of your Markdown,
 separated by `---` to separate your YAML from your Markdown. This allows you to add structured data to
 associate with your Markdown content.
@@ -80,7 +80,7 @@ Howdy world
 markdown2html:x:@.yaml
 ```
 
-Internally, the library will invoke **[yaml2lambda]** for any front matter declarations to actually parse
+Internally, the library will invoke **[\[yaml2lambda\]](/reference/slots/core/yaml2lambda/)** for any front matter declarations to actually parse
 the specified YAML front matter parts, implying for details about how this part works, please refer to
 the _"magic.lambda.json"_ project.
 <!-- /guide -->

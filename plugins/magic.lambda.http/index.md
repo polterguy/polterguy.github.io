@@ -12,7 +12,7 @@ project contains the following 5 slots.
 * __[\[http.put\]](/reference/slots/http/http.put/)__ - Puts some resources to some URL using the HTTP PUT verb
 * __[\[http.patch\]](/reference/slots/http/http.patch/)__ - Patches some resources to some URL using the HTTP PATCH verb
 
-The __[http.put]__, __[http.post]__ and __[http.patch]__ slots requires you to provide a __[payload]__
+The __[\[http.put\]](/reference/slots/http/http.put/)__, __[\[http.post\]](/reference/slots/http/http.post/)__ and __[\[http.patch\]](/reference/slots/http/http.patch/)__ slots requires you to provide a __[payload]__
 or __[filename]__ argument that will be transferred to the endpoint as is. All 5 endpoints can (optionally)
 take a __[token]__ argument, which will be transferred as a `Bearer Authorization` token to the endpoint
 in the `Authorization` header of your request. If you provide a __[filename]__ argument, this is assumed

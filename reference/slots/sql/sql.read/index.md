@@ -69,7 +69,7 @@ sql.read
 ```
 
 The above will result in the following SQL returned to you. If you're using the special implementations,
-such as e.g. **[data.read]**, and/or **[mssql.read]** - The returned SQL might vary according to your dialect.
+such as e.g. **[\[data.read\]](/reference/slots/data/data.read/)**, and/or **[\[mssql.read\]](/reference/slots/mssql/mssql.read/)** - The returned SQL might vary according to your dialect.
 But the results of executing the SQL will be the same.
 
 ```
@@ -86,7 +86,7 @@ supply the following arguments to this slot.
 * __[limit]__ - How many records to return, default is 25. Set this value to -1 to avoid having the parser inject its default value
 * __[offset]__ - Offset of where to start returning records
 * __[where]__ - Where condition
-* __[join]__ - Join condition
+* __[\[join\]](/reference/slots/core/join/)__ - Join condition
 * __[group]__ - Group by declaration
 
 For instance, to select only the _"field1"_ column and the _"field2"_ column from _"table1"_,

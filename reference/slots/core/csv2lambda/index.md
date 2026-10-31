@@ -41,7 +41,7 @@ John Doe,67"
 csv2lambda:x:@.csv
 ```
 
-It can optionally take a type declaration through a **[types]** argument, which allows you to add typing support
+It can optionally take a type declaration through a **[\[types\]](/reference/slots/core/types/)** argument, which allows you to add typing support
 to the slot.
 <!-- /guide -->
 

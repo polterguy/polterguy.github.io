@@ -14,7 +14,7 @@ slot_json: "/reference/slots/strings/strings.url-decode/slot.json"
 ### Guide
 
 <!-- guide -->
-URL decodes a string, the opposite of **[strings.url-encode]**. Example can be found below.
+URL decodes a string, the opposite of **[\[strings.url-encode\]](/reference/slots/strings/strings.url-encode/)**. Example can be found below.
 
 ```
 strings.url-encode:thomas@ainiro.io

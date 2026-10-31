@@ -44,7 +44,7 @@ This slot also supports the following optional arguments.
 
 * __[limit]__ - Maximum number of items to return.
 * __[offset]__ - Offset of where to start returning items.
-* Filter as value of node being the filter condition declaring which items to return. See the __[cache.clear]__ slot to understand how it works, since this argument works in the exact same way, assuming your filter is a _"namespace"_.
+* Filter as value of node being the filter condition declaring which items to return. See the __[\[cache.clear\]](/reference/slots/cache/cache.clear/)__ slot to understand how it works, since this argument works in the exact same way, assuming your filter is a _"namespace"_.
 <!-- /guide -->
 
 ### Related documentation

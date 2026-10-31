@@ -28,9 +28,9 @@ Required arguments come first, then the optional ones in the order they are decl
 ### Guide
 
 <!-- guide -->
-The **[execute-file]** slot is an alias for **[io.file.execute]**, but it will **[unwrap]** all children nodes,
-automatically transform any expressions to their static value equivalents, allowing you to combine **[unwrap]**
-and **[io.file.execute]** into one invocation. This makes usage slightly less verbose for cases such as the following.
+The **[execute-file]** slot is an alias for **[\[io.file.execute\]](/reference/slots/io/io.file.execute/)**, but it will **[\[unwrap\]](/reference/slots/core/unwrap/)** all children nodes,
+automatically transform any expressions to their static value equivalents, allowing you to combine **[\[unwrap\]](/reference/slots/core/unwrap/)**
+and **[\[io.file.execute\]](/reference/slots/io/io.file.execute/)** into one invocation. This makes usage slightly less verbose for cases such as the following.
 
 ```
 .args

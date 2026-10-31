@@ -79,7 +79,7 @@ structured/raw version of the MIME message wrapping the actual email message. Re
 the magic.lambda.mime project's documentation for details to understand this
 structure. If you choose to retrieve messages in **[raw]** format, the message node's value will contain
 the raw MIME message as text. If you choose this path, and you later want to actually parse the message,
-to make it become a structured lambda object - You can use the **[mime.parse]** slot from magic.lambda.mime.
+to make it become a structured lambda object - You can use the **[\[mime.parse\]](/reference/slots/mime/mime.parse/)** slot from magic.lambda.mime.
 <!-- /guide -->
 
 ### Related documentation

@@ -18,7 +18,7 @@ Closes the browser and page associated with a session.
 
 Arguments:
 
-* Slot value - Session identifier returned by **[puppeteer.connect]**.
+* Slot value - Session identifier returned by **[\[puppeteer.connect\]](/reference/slots/puppeteer/puppeteer.connect/)**.
 
 Examples:
 

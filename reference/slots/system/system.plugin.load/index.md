@@ -23,7 +23,7 @@ system.plugin.load:/etc/foo.dll
 
 Once the above code has executed you will have a native C# Hyperlambda slot called **[foo]** that you can use. Plugins loaded this way will stay in memory as a part of your AppDomain until either the process restarts, and/or you explicitly unload the plugin - Implying if your process restarts you'll need to ensure the plugin is reloaded again if you wish to continue using it. Dynamically loaded plugins will _not_ be automatically reloaded in any ways.
 
-To unload the plugin after having used the assembly and it is no longer required, you should use **[system.plugin.unload]** to unload the assembly. If you recompile some C# code using the same assembly name this will be automatically done for you by consecutive invocations to **[system.plugin.load]** as long as the **[assembly-name]** argument is the same (case sensitive).
+To unload the plugin after having used the assembly and it is no longer required, you should use **[\[system.plugin.unload\]](/reference/slots/system/system.plugin.unload/)** to unload the assembly. If you recompile some C# code using the same assembly name this will be automatically done for you by consecutive invocations to **[system.plugin.load]** as long as the **[assembly-name]** argument is the same (case sensitive).
 
 If you unload an assembly previously loaded it will be collected by the garbage collector automatically as long as you don't have references to it from another native assembly.
 
@@ -72,7 +72,7 @@ foo:x:@.name
 system.plugin.unload:foo.dll
 ```
 
-Notice that in the last example above, we never actually save the assembly, but load it as a plugin from the raw `byte[]` returned from the **[system.compile]** invocation allowing you to dynamically compile and execute C# code without ever having to actually save the compiled result as a dll on disc. You still have to unload the assembly from your AppDomain using **[system.plugin.unload]**.
+Notice that in the last example above, we never actually save the assembly, but load it as a plugin from the raw `byte[]` returned from the **[\[system.compile\]](/reference/slots/system/system.compile/)** invocation allowing you to dynamically compile and execute C# code without ever having to actually save the compiled result as a dll on disc. You still have to unload the assembly from your AppDomain using **[\[system.plugin.unload\]](/reference/slots/system/system.plugin.unload/)**.
 
 Also notice that the name of the assembly is not necessary the path of the assembly, but determined from **[assembly-name]**, allowing you to at least in theory have an assembly with _"/foo.dll"_ as its path, but _"bar.dll"_ being its name - Implying to unload the assembly you'll need to unload it as _"bar.dll"_, and listing it will return _"bar.dll"_ - While the physical location on disc of your assembly is _"/foo.dll"_.
 

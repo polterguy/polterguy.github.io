@@ -29,7 +29,7 @@ has the following two children.
 * **[name]** - Path of the file relative to the root folder of your backend
 * **[content]** - Content of the file as a string, decoded as UTF-8
 
-As with **[io.file.load]**, you should not use this slot on binary files.
+As with **[\[io.file.load\]](/reference/slots/io/io.file.load/)**, you should not use this slot on binary files.
 <!-- /guide -->
 
 ### Related documentation

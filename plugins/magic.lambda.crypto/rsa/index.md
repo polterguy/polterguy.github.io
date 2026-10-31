@@ -76,9 +76,9 @@ crypto.rsa.verify:x:@.message
 ```
 
 If somebody tampers with the content between the signing process and the verify process, an exception will
-be thrown during the verify stage. Something you can verify yourself by uncommenting the above **[set-value]**
+be thrown during the verify stage. Something you can verify yourself by uncommenting the above **[\[set-value\]](/reference/slots/core/set-value/)**
 invocation. Throwing an exception is a conscious choice, due to the potential security breaches an error
-in your code might have, creating a false positive if you erroneously invert an **[if]** statement. Even though
+in your code might have, creating a false positive if you erroneously invert an **[\[if\]](/reference/slots/core/if/)** statement. Even though
 this is technically _"using exceptions for control flow"_, it has been a conscious design choice
 as the library was created, to avoid false positives during the verification process of a signature.
 
@@ -109,7 +109,7 @@ will internally base64 encode the encrypted data for simplicity reasons, allowin
 since encryption will result in a byte array, which is often inconvenient to handle.
 You can override this by passing in a **[raw]** argument, and set its value to true, at which point a `byte[]` will be
 returned.
-You can also supply **[raw]** as you invoke **[crypto.rsa.decrypt]** if you know the content in the message is
+You can also supply **[raw]** as you invoke **[\[crypto.rsa.decrypt\]](/reference/slots/crypto/crypto.rsa.decrypt/)** if you know the content in the message is
 not a string, but rather an array of `byte[]`. Base64 encoding a byte array normally makes it larger in size,
 and also require CPU resources in both ends of the communication, implying it is sometimes important to have the
 raw byte array, instead of its base64 encoded equivalent.

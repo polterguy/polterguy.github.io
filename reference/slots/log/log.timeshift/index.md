@@ -17,7 +17,7 @@ slot_json: "/reference/slots/log/log.timeshift/slot.json"
 This slot counts the log items matching a search string per day, for the last two weeks, and is useful for
 creating a time series of how often something is logged. The value of the slot is mandatory, and must be a
 string a log item's content is matched against, or a log entry type. As with filtering, you should invoke
-**[log.capabilities]** to verify that your log implementation has `can-timeshift` set to true before relying upon it.
+**[\[log.capabilities\]](/reference/slots/log/log.capabilities/)** to verify that your log implementation has `can-timeshift` set to true before relying upon it.
 
 ```
 log.timeshift:tick

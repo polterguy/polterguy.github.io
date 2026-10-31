@@ -37,7 +37,7 @@ _Nodes nested deeper than 6 levels, and nodes that repeat one of their own ances
 
 <!-- guide -->
 This slot is for deleting records. Its **[where]** argument is applied in a similar fashion as the where
-argument to **[sql.read]** and **[sql.update]**. You can find an example further down in this document of
+argument to **[\[sql.read\]](/reference/slots/sql/sql.read/)** and **[\[sql.update\]](/reference/slots/sql/sql.update/)**. You can find an example further down in this document of
 how to use **[where]**.
 
 ```

@@ -6,8 +6,8 @@ generated: true
 
 This page is part of the [magic.data.common](/plugins/magic.data.common/) documentation.
 
-This argument is common for **[sql.update]**, **[sql.delete]**, and **[sql.read]**, in addition
-to that a **[join]** will also be logically parsed much the same way as a **[where]** argument. The where
+This argument is common for **[\[sql.update\]](/reference/slots/sql/sql.update/)**, **[\[sql.delete\]](/reference/slots/sql/sql.delete/)**, and **[\[sql.read\]](/reference/slots/sql/sql.read/)**, in addition
+to that a **[\[join\]](/reference/slots/core/join/)** will also be logically parsed much the same way as a **[where]** argument. The where
 argument follows a recursive structure, allowing you to supply multiple layers of `where` criteria,
 being applied recursively, using some sort of comparison operator, applied to all conditions in the
 same level. Its most basic usage is as follows.
@@ -29,7 +29,7 @@ sql.read:select * from 'table1' where 'field1' = @0
    @0:howdy
 ```
 
-To apply multiple **[and]** criteria, you can simply add them consecutively as follows.
+To apply multiple **[\[and\]](/reference/slots/core/and/)** criteria, you can simply add them consecutively as follows.
 
 ```
 sql.read
@@ -50,7 +50,7 @@ sql.read:select * from 'table1' where 'field1' = @0 and 'field2' = @1
    @1:world
 ```
 
-If you exchange the above **[and]** with **[or]**, the system will use the `or` operator to
+If you exchange the above **[\[and\]](/reference/slots/core/and/)** with **[\[or\]](/reference/slots/core/or/)**, the system will use the `or` operator to
 separate your arguments, such as the following illustrates.
 
 ```

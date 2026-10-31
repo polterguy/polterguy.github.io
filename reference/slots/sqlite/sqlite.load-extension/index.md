@@ -23,7 +23,7 @@ Required arguments come first, then the optional ones in the order they are decl
 ### Guide
 
 <!-- guide -->
-Loads a SQLite extension into the connection opened by **[sqlite.connect]**. The slot takes its arguments as children.
+Loads a SQLite extension into the connection opened by **[\[sqlite.connect\]](/reference/slots/sqlite/sqlite.connect/)**. The slot takes its arguments as children.
 
 * __[file]__ - Filename of the extension to load. Mandatory, the slot throws an exception if it is missing.
 * __[proc]__ - Optional entry point of the extension.

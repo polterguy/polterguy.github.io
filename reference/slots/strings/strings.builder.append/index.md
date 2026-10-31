@@ -14,9 +14,9 @@ slot_json: "/reference/slots/strings/strings.builder.append/slot.json"
 ### Guide
 
 <!-- guide -->
-Appends its value to the closest **[strings.builder]** scope. The slot requires a value, which can be a constant
-or an expression, and can only be used inside a **[strings.builder]** invocation. See the example in the
-documentation for **[strings.builder]** above.
+Appends its value to the closest **[\[strings.builder\]](/reference/slots/strings/strings.builder/)** scope. The slot requires a value, which can be a constant
+or an expression, and can only be used inside a **[\[strings.builder\]](/reference/slots/strings/strings.builder/)** invocation. See the example in the
+documentation for **[\[strings.builder\]](/reference/slots/strings/strings.builder/)** above.
 <!-- /guide -->
 
 ### Related documentation

@@ -22,7 +22,7 @@ Required arguments come first, then the optional ones in the order they are decl
 ### Guide
 
 <!-- guide -->
-Similar to **[strings.concat]**, except it also takes an optional separating character, allowing you to
+Similar to **[\[strings.concat\]](/reference/slots/strings/strings.concat/)**, except it also takes an optional separating character, allowing you to
 concatenate a bunch of strings, and making sure each original string is separated by some sequence of strings.
 
 ```

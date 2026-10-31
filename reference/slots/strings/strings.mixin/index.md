@@ -40,7 +40,7 @@ The above will result in the following.
 strings.mixin:2+2 equals 4
 ```
 
-Notice, any inline Hyperlambda is added by adding two braces around your Hyperlambda, at which point the inline Hyperlambda will be executed, and whatever it returns is _"mixed into the surrounding string inline"_. This slot can be used similarly to **[invoke]**, allowing you to pass in parameters to it by simply adding nodes as children when invoking it. To understand the last point consider the following code.
+Notice, any inline Hyperlambda is added by adding two braces around your Hyperlambda, at which point the inline Hyperlambda will be executed, and whatever it returns is _"mixed into the surrounding string inline"_. This slot can be used similarly to **[\[invoke\]](/reference/slots/core/invoke/)**, allowing you to pass in parameters to it by simply adding nodes as children when invoking it. To understand the last point consider the following code.
 
 ```
 strings.mixin:@"2 + val equals {{

@@ -13,7 +13,7 @@ slot_json: "/reference/slots/validators/validators.url/slot.json"
 ### Guide
 
 <!-- guide -->
-This is similar to the **[validators.email]** slot, except it requires the argument to be a valid
+This is similar to the **[\[validators.email\]](/reference/slots/validators/validators.email/)** slot, except it requires the argument to be a valid
 URL instead of a valid email. Below is example usage.
 
 ```

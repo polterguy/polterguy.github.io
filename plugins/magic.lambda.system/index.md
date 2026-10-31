@@ -22,8 +22,8 @@ The most important feature of this project is probably that it gives you the abi
 
 In addition to the above slots this project also contains the following slots.
 
-* __[system.os]__ - Returns description of your operating system
-* __[system.is-os]__ - Returns true if your underlying operating system is of the specified type
+* __[\[system.os\]](/reference/slots/system/system.os/)__ - Returns description of your operating system
+* __[\[system.is-os\]](/reference/slots/system/system.is-os/)__ - Returns true if your underlying operating system is of the specified type
 
 The last slot above takes an argument such as _"Windows"_, _"OSX_, _"Linux"_, etc, and will return true
 of the operating system you are currently running on belongs to the specified family of operating systems.

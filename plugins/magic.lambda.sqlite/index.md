@@ -35,5 +35,5 @@ All of the slots in this project are documented in the documentation for the _"m
 If you replace the **[data.xxx]** or **[sql.xxx]** slots with **[sqlite.xxx]**, you will use the sqlite specific
 slots, instead of the generic, and/or polymorphistic slots.
 Hence, please refer to the documentation for _"magic.data.common"_ to see the complete documentation for this
-project. If you need for instance documentation about the **[sqlite.connect]** slot you should look for the
-documentation for **[data.connect]**, since it's more or less the exact same documentation.
+project. If you need for instance documentation about the **[\[sqlite.connect\]](/reference/slots/sqlite/sqlite.connect/)** slot you should look for the
+documentation for **[\[data.connect\]](/reference/slots/data/data.connect/)**, since it's more or less the exact same documentation.

@@ -232,6 +232,9 @@ def collect_guides(magic, names):
     return guides
 
 
+ALL_NAMES = set()
+
+
 def mentioned(text, names):
     """Slots a page talks about: written in [brackets], or, when the name is distinctive, used in a code sample."""
     found = set(re.findall(r'\[([^\]\s]+)\]', text)) & names
@@ -406,7 +409,7 @@ def render_slot_page(entry, record, prev, nxt, anchors, guide=None, home=None):
         lines += ['### Guide', '', '<!-- guide -->']
         if guide['also']:
             lines += ['This guide covers %s together.' % ', '.join('[`%s`](%s)' % (a, slot_url(a)) for a in [name] + guide['also']), '']
-        lines += [guide['md'], '<!-- /guide -->', '']
+        lines += [docsplit.link_mentions(guide['md'], ALL_NAMES, set(entry['names'])), '<!-- /guide -->', '']
     if home:
         lines += ['### Related documentation', '',
                   '* Part of the [%s](/plugins/%s/) plugin, which documents every slot it contains.' % (home['plugin'], home['plugin'])]
@@ -701,6 +704,7 @@ def main():
     anchors = guide_anchors()
     guides = collect_guides(args.magic, {r['name'] for r in records})
     homes = collect_homes(args.magic, {r['name'] for r in records})
+    ALL_NAMES.update(r['name'] for r in records)
     by_record = {r['name']: r for r in records}
     by_ns = {}
     for e in entries:

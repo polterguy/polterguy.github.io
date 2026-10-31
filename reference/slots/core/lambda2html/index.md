@@ -14,7 +14,7 @@ slot_json: "/reference/slots/core/lambda2html/slot.json"
 ### Guide
 
 <!-- guide -->
-This is the reverse of **[html2lambda]** and returns HTML resulting from the specified lambda object. Below
+This is the reverse of **[\[html2lambda\]](/reference/slots/core/html2lambda/)** and returns HTML resulting from the specified lambda object. Below
 is example usage.
 
 ```

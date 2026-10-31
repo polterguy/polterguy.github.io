@@ -14,7 +14,7 @@ slot_json: "/reference/slots/strings/strings.html-decode/slot.json"
 ### Guide
 
 <!-- guide -->
-HTML decodes a string, the opposite of **[strings.html-encode]**. The slot requires a value, which can be a
+HTML decodes a string, the opposite of **[\[strings.html-encode\]](/reference/slots/strings/strings.html-encode/)**. The slot requires a value, which can be a
 constant or an expression, and replaces its value with the decoded string.
 <!-- /guide -->
 

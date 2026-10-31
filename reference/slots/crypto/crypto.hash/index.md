@@ -61,11 +61,11 @@ of that they can result in what's commonly referred to as _"hash collision"_.
 This project also contains convenience overloads with the hashing algorithm being a part of the name of the
 invocation, such as illustrated below.
 
-* __[crypto.hash.sha1]__
-* __[crypto.hash.md5]__
-* __[crypto.hash.sha256]__
-* __[crypto.hash.sha384]__
-* __[crypto.hash.sha512]__
+* __[\[crypto.hash.sha1\]](/reference/slots/crypto/crypto.hash.sha1/)__
+* __[\[crypto.hash.md5\]](/reference/slots/crypto/crypto.hash.md5/)__
+* __[\[crypto.hash.sha256\]](/reference/slots/crypto/crypto.hash.sha256/)__
+* __[\[crypto.hash.sha384\]](/reference/slots/crypto/crypto.hash.sha384/)__
+* __[\[crypto.hash.sha512\]](/reference/slots/crypto/crypto.hash.sha512/)__
 
 In addition you can hash a file directly, without having to load it first, by providing a **[filename]** argument
 to it, such as illustrated below.

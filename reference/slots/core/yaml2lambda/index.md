@@ -46,7 +46,7 @@ yaml2lambda
 lambda2yaml: /* ... YAML content ... */
 ```
 
-Internally the **[yaml2lambda]** slot first converts the input YAML to JSON, for then to use the **[json2lambda]**
+Internally the **[yaml2lambda]** slot first converts the input YAML to JSON, for then to use the **[\[json2lambda\]](/reference/slots/core/json2lambda/)**
 logic, ensuring the exact same result, regardless of whether or not you start out with JSON or YAML.
 <!-- /guide -->
 

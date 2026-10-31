@@ -14,7 +14,7 @@ slot_json: "/reference/slots/cache/cache.count/slot.json"
 ### Guide
 
 <!-- guide -->
-This slot works similarly to the **[cache.list]** slot, except it only returns the number of items.
+This slot works similarly to the **[\[cache.list\]](/reference/slots/cache/cache.list/)** slot, except it only returns the number of items.
 Below is an example of creating a new cache entry, for then to count how many cache items exists
 in your cache.
 

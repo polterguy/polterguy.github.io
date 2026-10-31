@@ -29,8 +29,8 @@ This project contains string manipulation slots for Magic. More specifically, it
 * __[\[strings.substring\]](/reference/slots/strings/strings.substring/)__ - Returns the sub-string of the specified string
 * __[\[strings.matches\]](/reference/slots/strings/strings.matches/)__ - Returns the regular expression matches found from specified source
 * __[\[strings.mixin\]](/reference/slots/strings/strings.mixin/)__ - Allows for mixin logic of strings and Hyperlambda
-* __[\[strings.builder\]](/reference/slots/strings/strings.builder/)__ - Creates a string builder scope for **[strings.builder.append]**
-* __[\[strings.builder.append\]](/reference/slots/strings/strings.builder.append/)__ - Appends text to the current **[strings.builder]** scope
+* __[\[strings.builder\]](/reference/slots/strings/strings.builder/)__ - Creates a string builder scope for **[\[strings.builder.append\]](/reference/slots/strings/strings.builder.append/)**
+* __[\[strings.builder.append\]](/reference/slots/strings/strings.builder.append/)__ - Appends text to the current **[\[strings.builder\]](/reference/slots/strings/strings.builder/)** scope
 
 
 ## Usage

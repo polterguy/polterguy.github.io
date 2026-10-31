@@ -10,7 +10,7 @@ to create and consume JWT tokens, to secure your Magic cloudlet. The project con
 * __[\[auth.ticket.create\]](/reference/slots/auth/auth.ticket.create/)__ - Creates a new JWT token, that you can return to your client, any ways you see fit
 * __[\[auth.ticket.refresh\]](/reference/slots/auth/auth.ticket.refresh/)__ - Refreshes a JWT token. Useful for refreshing a token before it expires, which would require the user to login again
 * __[\[auth.ticket.verify\]](/reference/slots/auth/auth.ticket.verify/)__ - Verifies a JWT token, and that the user is logged in, in addition to (optionally) that he belongs to one of the roles supplied as a comma separated list of roles
-* __[\[auth.ticket.in-role\]](/reference/slots/auth/auth.ticket.in-role/)__ - The same as **[auth.ticket.verify]**, but returns true or false, depending upon whether or not user is in any of the roles provided or not
+* __[\[auth.ticket.in-role\]](/reference/slots/auth/auth.ticket.in-role/)__ - The same as **[\[auth.ticket.verify\]](/reference/slots/auth/auth.ticket.verify/)**, but returns true or false, depending upon whether or not user is in any of the roles provided or not
 * __[\[auth.token.verify\]](/reference/slots/auth/auth.token.verify/)__ - This slot accepts an external OpenID Connect token, for then to verify its authenticity and returning its email claim.
 * __[auth.jwks]__ - Returns a public JSON Web Key Set for the RSA public key(s) you supply, allowing other systems to verify RS256 tokens created by Magic
 
@@ -75,7 +75,7 @@ will _not_ be an array, but simply a string. Yet again, this is simply how .Net 
 about this. Hence, remember to check in your frontend as you retrieve your roles if the roles claims is a string
 or an array of strings before associating your user with a role in your client logic.
 
-When you invoke **[auth.ticket.create]** or **[auth.ticket.refresh]** you can choose to either provide an **[expires]** which is a future date for when the ticket expires, or a **[duration]** which is a positive integer informing the slot of how many minutes the token should last before it's no longer valid.
+When you invoke **[\[auth.ticket.create\]](/reference/slots/auth/auth.ticket.create/)** or **[\[auth.ticket.refresh\]](/reference/slots/auth/auth.ticket.refresh/)** you can choose to either provide an **[expires]** which is a future date for when the ticket expires, or a **[duration]** which is a positive integer informing the slot of how many minutes the token should last before it's no longer valid.
 
 
 ## JWT tokens internals
@@ -117,7 +117,7 @@ JWT token in your frontend, calculate the expiration date, and make sure you ref
 expiration date is reached, and replace your existing token with the new token returned by Magic.
 
 Magic contains a `refresh` token endpoint to achieve this. Internally this endpoint will use
-the **[auth.ticket.refresh]** slot to create a new token, where the only difference between your old and your
+the **[\[auth.ticket.refresh\]](/reference/slots/auth/auth.ticket.refresh/)** slot to create a new token, where the only difference between your old and your
 new token is that it has a new expiration date.
 
 
@@ -144,8 +144,8 @@ auth.ticket.verify:non-existing-role
 The following slots allow you to inspect the token's payload, implying get the username and roles
 the current HTTP request originates from.
 
-* __[auth.ticket.get]__ - Returns the username and the roles the user belongs to
-* __[auth.ticket.in-role]__ - Convenience slot returning true if user belongs to the specified role(s)
+* __[\[auth.ticket.get\]](/reference/slots/auth/auth.ticket.get/)__ - Returns the username and the roles the user belongs to
+* __[\[auth.ticket.in-role\]](/reference/slots/auth/auth.ticket.in-role/)__ - Convenience slot returning true if user belongs to the specified role(s)
 
 Below is an example of how these are used.
 
@@ -159,7 +159,7 @@ a comma separated list of roles. The second slot above returns the username, and
 belongs to as a structured lambda object. As a general rule of thumb though, you'd not want to secure your
 endpoints using the above slots, but rather the _verify_ slot above, to avoid having errors in your code
 resulting in that an unauthorized user gains access to invoke an endpoint he should not be allowed to invoke.
-The **[auth.ticket.get]** slot will also return any custom claims you have associated with your JWT token
+The **[\[auth.ticket.get\]](/reference/slots/auth/auth.ticket.get/)** slot will also return any custom claims you have associated with your JWT token
 as it was created.
 
 

@@ -16,7 +16,7 @@ slot_json: "/reference/slots/core/lambda2yaml/slot.json"
 <!-- guide -->
 This guide covers [`lambda2yaml`](/reference/slots/core/lambda2yaml/), [`yaml2lambda`](/reference/slots/core/yaml2lambda/) together.
 
-The **[yaml2lambda]** slot converts a YAML input string to a lambda object. Since YAML arguably is just another representation of
+The **[\[yaml2lambda\]](/reference/slots/core/yaml2lambda/)** slot converts a YAML input string to a lambda object. Since YAML arguably is just another representation of
 JSON, these slot have been added to this project. Notice, the same constraints applies for YAML as does for JSON, implying
 a YAML string can always be converted to a lambda object, but the opposite is not necessary true. Basic usage is as follows.
 
@@ -46,7 +46,7 @@ yaml2lambda
 lambda2yaml: /* ... YAML content ... */
 ```
 
-Internally the **[yaml2lambda]** slot first converts the input YAML to JSON, for then to use the **[json2lambda]**
+Internally the **[\[yaml2lambda\]](/reference/slots/core/yaml2lambda/)** slot first converts the input YAML to JSON, for then to use the **[\[json2lambda\]](/reference/slots/core/json2lambda/)**
 logic, ensuring the exact same result, regardless of whether or not you start out with JSON or YAML.
 <!-- /guide -->
 

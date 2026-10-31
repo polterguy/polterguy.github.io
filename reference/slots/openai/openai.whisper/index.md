@@ -30,7 +30,7 @@ exception if any of the three mandatory ones is missing, or if OpenAI responds w
 
 * __[key]__ - OpenAI API key. Mandatory.
 * __[content]__ - The audio as raw bytes. Mandatory.
-* __[type]__ - MIME type of the audio, such as `audio/mpeg`. Mandatory.
+* __[\[type\]](/reference/slots/core/type/)__ - MIME type of the audio, such as `audio/mpeg`. Mandatory.
 * __[language]__ - Optional language hint.
 <!-- /guide -->
 

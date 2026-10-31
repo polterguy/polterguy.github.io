@@ -18,7 +18,7 @@ manipulation of images, in addition to generating QR codes. More specifically th
 
 All image transformation slots works similarly. They can either be given a string being the relative filename
 of the image you want to transform, or a stream from where to load the image. All transformation slots can
-also be given a **[type]** argument, which is how to return the image after the transformation is done. Supported
+also be given a **[\[type\]](/reference/slots/core/type/)** argument, which is how to return the image after the transformation is done. Supported
 types are as follows.
 
 * png

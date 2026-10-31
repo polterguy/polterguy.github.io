@@ -22,8 +22,8 @@ Required arguments come first, then the optional ones in the order they are decl
 ### Guide
 
 <!-- guide -->
-This slot does the same as **[json2lambda]**, except it reads the JSON from a stream instead of from a string,
-such as a stream opened with **[io.stream.open-file]**, which you can read about in the _"magic.lambda.io"_ project.
+This slot does the same as **[\[json2lambda\]](/reference/slots/core/json2lambda/)**, except it reads the JSON from a stream instead of from a string,
+such as a stream opened with **[\[io.stream.open-file\]](/reference/slots/io/io.stream.open-file/)**, which you can read about in the _"magic.lambda.io"_ project.
 The value of the slot must be an expression leading to the stream, and the slot throws an exception if
 no stream is found. The resulting lambda hierarchy is returned as children of the slot node, and both JSON objects
 and JSON arrays are supported.

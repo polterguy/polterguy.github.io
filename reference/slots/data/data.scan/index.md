@@ -63,8 +63,8 @@ _Nodes nested deeper than 6 levels, and nodes that repeat one of their own ances
 ### Guide
 
 <!-- guide -->
-This slot scans rows from your database, using the current open connection created by **[data.connect]**.
-It takes the same arguments as **[data.read]** and **[sql.read]**, and returns the matching rows as children nodes.
+This slot scans rows from your database, using the current open connection created by **[\[data.connect\]](/reference/slots/data/data.connect/)**.
+It takes the same arguments as **[\[data.read\]](/reference/slots/data/data.read/)** and **[\[sql.read\]](/reference/slots/sql/sql.read/)**, and returns the matching rows as children nodes.
 It returns all columns unless you supply **[columns]**, and limits the result to 25 rows unless you supply **[limit]**.
 
 * __[table]__ - Name of the table to scan. Mandatory, the slot throws if it is missing

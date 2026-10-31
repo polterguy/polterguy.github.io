@@ -21,7 +21,7 @@ Required arguments come first, then the optional ones in the order they are decl
 ### Guide
 
 <!-- guide -->
-Similar to **[io.file.copy]** but deletes the source file after evaluating.
+Similar to **[\[io.file.copy\]](/reference/slots/io/io.file.copy/)** but deletes the source file after evaluating.
 
 ```
 io.file.move:/misc/README.md

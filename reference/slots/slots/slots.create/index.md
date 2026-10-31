@@ -23,7 +23,7 @@ Required arguments come first, then the optional ones in the order they are decl
 ### Guide
 
 <!-- guide -->
-Creates a dynamic slot that can be invoked using **[signal]**. Below is an example.
+Creates a dynamic slot that can be invoked using **[\[signal\]](/reference/slots/core/signal/)**. Below is an example.
 
 ```
 slots.create:foo

@@ -15,7 +15,7 @@ slot_json: "/reference/slots/strings/strings.byte-count/slot.json"
 
 <!-- guide -->
 Returns the number of bytes the specified string occupies when UTF-8 encoded, as an integer. This differs from
-**[strings.length]**, which counts characters, since characters outside the ASCII range occupy more than
+**[\[strings.length\]](/reference/slots/strings/strings.length/)**, which counts characters, since characters outside the ASCII range occupy more than
 one byte. The slot takes a value, which can be a constant or an expression.
 <!-- /guide -->
 

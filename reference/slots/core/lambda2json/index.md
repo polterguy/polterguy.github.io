@@ -30,7 +30,7 @@ json2lambda:x:-
 lambda2json:x:-/*
 ```
 
-The **[lambda2json]** slot can optionally take a **[format]** argument, with a boolean _"true"_ value, which implies the
+The **[lambda2json]** slot can optionally take a **[\[format\]](/reference/slots/core/format/)** argument, with a boolean _"true"_ value, which implies the
 resulting JSON will be indented and nicely formated, making it more readable.
 
 **Notice** - Although all JSON can be transformed into lambda, the opposite is not necessarily true. This is because

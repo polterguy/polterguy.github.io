@@ -24,7 +24,7 @@ not something you should do. Although there _might_ exist exceptions to this.
 io.file.load:/misc/README.md
 ```
 
-**Notice** - If you want to load binary content you should use the **[io.file.load.binary]** override.
+**Notice** - If you want to load binary content you should use the **[\[io.file.load.binary\]](/reference/slots/io/io.file.load.binary/)** override.
 <!-- /guide -->
 
 ### Related documentation

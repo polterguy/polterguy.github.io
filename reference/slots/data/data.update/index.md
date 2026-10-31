@@ -41,8 +41,8 @@ _Nodes nested deeper than 6 levels, and nodes that repeat one of their own ances
 ### Guide
 
 <!-- guide -->
-This slot updates rows in your database, using the current open connection created by **[data.connect]**.
-It takes the same arguments as **[sql.update]**, and its value resolves to the number of rows affected.
+This slot updates rows in your database, using the current open connection created by **[\[data.connect\]](/reference/slots/data/data.connect/)**.
+It takes the same arguments as **[\[sql.update\]](/reference/slots/sql/sql.update/)**, and its value resolves to the number of rows affected.
 Always supply a **[where]** argument to constrain which rows are updated, since the SQL generated does not
 constrain the update to any specific row if you leave it out.
 

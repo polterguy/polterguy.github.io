@@ -104,7 +104,7 @@ The above of course results in the following SQL.
 select count(*) from 'table1' group by 'table1'.'foo1','table1'.'foo2'
 ```
 
-You can of course combine your **[group]** arguments with **[where]** arguments, and **[join]** arguments,
+You can of course combine your **[group]** arguments with **[where]** arguments, and **[\[join\]](/reference/slots/core/join/)** arguments,
 allowing you to create complex aggregate results, statistics, joining multiple tables, etc.
 
 ---

@@ -29,7 +29,7 @@ state safely.
 
 Hyperlambda does not receive the raw execution object. Instead, higher layers may expose selected
 values such as the execution id through ordinary context values such as `dynamic.execution-id`,
-allowing code to use existing helpers such as **[get-context]** without exposing internal runtime
+allowing code to use existing helpers such as **[\[get-context\]](/reference/slots/core/get-context/)** without exposing internal runtime
 objects.
 
 

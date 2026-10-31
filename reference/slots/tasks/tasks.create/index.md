@@ -67,10 +67,10 @@ The above schedules your task for being executed once in the year of 2025, anoth
 in addition to once every 3 hours and once every 5 seconds. This document will describe in details how schedules
 works further down.
 
-You can also _update_ an existing task by using the **[tasks.update]** slot. This slot allows you to update
+You can also _update_ an existing task by using the **[\[tasks.update\]](/reference/slots/tasks/tasks.update/)** slot. This slot allows you to update
 a task's description and its Hyperlambda, but you _cannot_ associate schedules with your task using this
 slot. If you've already created your task and you need to (re) schedule it, you'll need to combine the
-slots **[tasks.schedule]** and **[tasks.schedule.delete]** together. Below is an example of first creating
+slots **[\[tasks.schedule\]](/reference/slots/tasks/tasks.schedule/)** and **[\[tasks.schedule.delete\]](/reference/slots/tasks/tasks.schedule.delete/)** together. Below is an example of first creating
 a task for then to update it. Any existing schedules you've already associated with your task as you update
 it will not be changed.
 

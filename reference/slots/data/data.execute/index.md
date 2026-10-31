@@ -35,7 +35,7 @@ data.connect:sakila
    data.execute:delete from non_existing_table
 ```
 
-Yet again, prefer **[data.delete]** if you can.
+Yet again, prefer **[\[data.delete\]](/reference/slots/data/data.delete/)** if you can.
 <!-- /guide -->
 
 ### Related documentation

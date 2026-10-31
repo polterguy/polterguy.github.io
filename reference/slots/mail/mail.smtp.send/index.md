@@ -152,7 +152,7 @@ mail.smtp.send
             email:jane@doe.com
 ```
 
-This makes it easier to dynamically **[unwrap]** arguments to the slot.
+This makes it easier to dynamically **[\[unwrap\]](/reference/slots/core/unwrap/)** arguments to the slot.
 
 #### Creating MIME messages
 

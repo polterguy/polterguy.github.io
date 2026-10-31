@@ -59,10 +59,10 @@ public class Foo : ISlot
 The slot takes three arguments being as follows;
 
 * __[assembly-name]__ - The name of your assembly
-* __[references]__ - Being what references your code requires to compile. Notice, these are taken from the current AppDomain's assemblies, and assumes you've already got the assembly somehow loaded into your AppDomain. If you need to add assemblies that doesn't exist in your AppDomain you can use **[system.plugin.load]** before you compile your code.
+* __[references]__ - Being what references your code requires to compile. Notice, these are taken from the current AppDomain's assemblies, and assumes you've already got the assembly somehow loaded into your AppDomain. If you need to add assemblies that doesn't exist in your AppDomain you can use **[\[system.plugin.load\]](/reference/slots/system/system.plugin.load/)** before you compile your code.
 * __[code]__ - Your actual C# code
 
-If you want to persist the created assembly to disc you can use the **[io.file.save.binary]** slot from the _"magic.lambda.io"_ project.
+If you want to persist the created assembly to disc you can use the **[\[io.file.save.binary\]](/reference/slots/io/io.file.save.binary/)** slot from the _"magic.lambda.io"_ project.
 
 #### Dependency Injection and your IoC container
 

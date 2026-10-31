@@ -22,7 +22,7 @@ Required arguments come first, then the optional ones in the order they are decl
 ### Guide
 
 <!-- guide -->
-Creates a string builder scope. Every **[strings.builder.append]** invocation found inside it appends its value
+Creates a string builder scope. Every **[\[strings.builder.append\]](/reference/slots/strings/strings.builder.append/)** invocation found inside it appends its value
 to the builder, and when the scope ends the value of **[strings.builder]** becomes the concatenated text.
 Its children are evaluated as a lambda object, and the slot has no arguments of its own.
 

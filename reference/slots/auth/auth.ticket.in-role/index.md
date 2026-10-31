@@ -15,7 +15,7 @@ slot_json: "/reference/slots/auth/auth.ticket.in-role/slot.json"
 
 <!-- guide -->
 This slot verifies that the currently authenticated user belongs to one or more roles provided as
-a comma separated list of names. Contrary to the **[auth.ticket.verify]** slot this slot will _not_
+a comma separated list of names. Contrary to the **[\[auth.ticket.verify\]](/reference/slots/auth/auth.ticket.verify/)** slot this slot will _not_
 throw an exception if the user does not belong to one or more roles, but simply return false.
 Below is example usage.
 

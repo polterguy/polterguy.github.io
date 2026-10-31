@@ -24,7 +24,7 @@ Required arguments come first, then the optional ones in the order they are decl
 ### Guide
 
 <!-- guide -->
-This slot is similar to the **[data.select]** slot, but will only return one value as the
+This slot is similar to the **[\[data.select\]](/reference/slots/data/data.select/)** slot, but will only return one value as the
 value of its node after execution. This slot is typically used for aggregate results. You can see
 an example below.
 

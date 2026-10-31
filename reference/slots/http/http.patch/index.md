@@ -56,7 +56,7 @@ http.patch:"https://some_website.com/your-patch-endpoint"
 
 The slot returns the result of the specified HTTP PATCH invocation, including the HTTP headers returned from the endpoint,
 and status code, in addition to the response object itself. To automatically convert the response object to whatever
-type of response your URL returns, provide a **[convert]** argument, and set its value to true, such as follows.
+type of response your URL returns, provide a **[\[convert\]](/reference/slots/core/convert/)** argument, and set its value to true, such as follows.
 
 ```
 http.patch:"https://some_website.com/your-patch-endpoint"
