@@ -16,7 +16,7 @@ has the following two children.
 
 As with **[io.file.load]**, you should not use this slot on binary files.
 
-This slot loads every file in a folder and its subfolders, and returns one child node per file, holding its path and content. Below is an example.
+This slot loads every file in a folder and its subfolders, and returns one child node per file, holding the path of the file as **[name]**, and its content as text in **[content]**. Below is an example.
 
 ```
 io.file.load-recursively:/misc/snippets/
