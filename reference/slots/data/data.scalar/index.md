@@ -79,5 +79,5 @@ This is the complete declaration of `data.scalar`, as the running system describ
 
 ---
 
-[&larr; `data.read`](/reference/slots/data/data.read/) | [all `data.*` slots](/reference/slots/data/) | [`data.scan` &rarr;](/reference/slots/data/data.scan/)
+[&larr; `data.read`](/reference/slots/data/data.read/) | [all `data.*` slots](/reference/slots/data/) | [`data.select` &rarr;](/reference/slots/data/data.select/)
 

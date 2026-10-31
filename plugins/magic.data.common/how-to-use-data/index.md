@@ -23,7 +23,6 @@ The following CRUD slots are documented in their own sections below.
 
 * __[data.create]__ - Inserts a new row into the current open database connection
 * __[data.update]__ - Updates rows in the current open database connection, use **[where]** to constrain which rows are affected
-* __[data.scan]__ - Scans rows from the current open database connection
 
 ## Database transactions
 

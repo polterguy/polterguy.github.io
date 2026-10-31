@@ -16,7 +16,7 @@ faq:
   - q: "Is it safe to let anybody run code on that server?"
     a: "The sandbox only runs code whose every slot is on a whitelist of 53 slots: introspection, tree handling, strings and arithmetic. Code that touches files, databases, the network, configuration or anything else is rejected before it runs, and every call is rate limited and time limited."
   - q: "Can I get the whole reference as data?"
-    a: "Yes. GET https://hyperlambda.dev/magic/modules/docs/slots returns every compiled slot as a JSON array of objects with the fields name, description and signature, where the signature is the slot's contract as nested JSON. It needs no account or key. The answer is about 460 KB, so keep a copy rather than asking again."
+    a: "Yes. GET https://hyperlambda.dev/magic/modules/docs/slots returns every compiled slot as a JSON array of objects with the fields name, description and signature, where the signature is the slot's contract as nested JSON. It needs no account or key. The answer is about 450 KB, so keep a copy rather than asking again."
   - q: "Is it safe to leave that endpoint open?"
     a: "It only reads metadata that is already public in the open source code, and it runs nothing that the caller sends. It is throttled to 10 requests per 60 seconds per IP address and 60 per 60 seconds for everybody together, and answers 429 beyond that."
   - q: "Why does the sandbox show fewer slots than this reference?"
@@ -39,7 +39,7 @@ faq:
     a: "The server sits behind Cloudflare, which rejects requests that carry no User-Agent header, or the default one of an http library such as Python's urllib. Send any descriptive User-Agent and the request goes through."
 ---
 
-Every slot in Magic Cloud and Hyperlambda, **406 in total**, with its arguments and return value. Start with the **core keywords**, such as [if] and [for-each], or pick a namespace. Every slot has a page of its own, with its complete JSON declaration. [How this reference is built](#this-reference-was-not-written-it-was-asked-for) is explained further down.
+Every slot in Magic Cloud and Hyperlambda, **405 in total**, with its arguments and return value. Start with the **core keywords**, such as [if] and [for-each], or pick a namespace. Every slot has a page of its own, with its complete JSON declaration. [How this reference is built](#this-reference-was-not-written-it-was-asked-for) is explained further down.
 
 ## Slots by namespace
 
@@ -49,7 +49,7 @@ Every slot in Magic Cloud and Hyperlambda, **406 in total**, with its arguments 
 * [config.*](/reference/slots/config/) - 4 slots
 * [console.*](/reference/slots/console/) - 1 slot
 * [crypto.*](/reference/slots/crypto/) - 24 slots
-* [data.*](/reference/slots/data/) - 12 slots
+* [data.*](/reference/slots/data/) - 11 slots
 * [date.*](/reference/slots/date/) - 6 slots
 * [endpoints.*](/reference/slots/endpoints/) - 1 slot
 * [execution.*](/reference/slots/execution/) - 4 slots
@@ -88,7 +88,7 @@ Every slot in Magic Cloud and Hyperlambda, **406 in total**, with its arguments 
 
 ## This reference was not written. It was asked for.
 
-Every page in this section is generated, and what it is generated from is not the source code but the **running system**. Each slot in Magic Cloud carries its own name, description, arguments and return value as metadata, and Hyperlambda can read that metadata at runtime. Once a week a GitHub Actions workflow asks for it, receives **406 slots**, and renders the pages you are reading. Nobody parses source files, scrapes anything or keeps a second copy that can go stale.
+Every page in this section is generated, and what it is generated from is not the source code but the **running system**. Each slot in Magic Cloud carries its own name, description, arguments and return value as metadata, and Hyperlambda can read that metadata at runtime. Once a week a GitHub Actions workflow asks for it, receives **405 slots**, and renders the pages you are reading. Nobody parses source files, scrapes anything or keeps a second copy that can go stale.
 
 ### Why this is possible: homoiconicity
 
@@ -146,7 +146,7 @@ It begins with two throttles, one per IP address and one for everybody together,
 
 ### Get the whole reference yourself
 
-The endpoint above is public. There is no account, no key and no secret. To protect the server it is throttled to **10 requests per 60 seconds per IP address**, and to **60 per 60 seconds** for everybody together, and beyond that it answers `429`. The answer is about 460 KB, so keep a copy rather than asking again.
+The endpoint above is public. There is no account, no key and no secret. To protect the server it is throttled to **10 requests per 60 seconds per IP address**, and to **60 per 60 seconds** for everybody together, and beyond that it answers `429`. The answer is about 450 KB, so keep a copy rather than asking again.
 
 ```bash
 curl -s https://hyperlambda.dev/magic/modules/docs/slots
