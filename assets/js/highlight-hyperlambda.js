@@ -93,13 +93,38 @@
 
   if (typeof module !== 'undefined') { module.exports = { highlight: highlight }; }
 
-  if (typeof document !== 'undefined') {
-    document.addEventListener('DOMContentLoaded', function () {
-      var blocks = document.querySelectorAll('div.language-hyperlambda pre code, div.language-hl pre code');
-      Array.prototype.forEach.call(blocks, function (code) {
-        // Already tokenised by Rouge or by an earlier run.
-        if (code.children.length === 0) { code.innerHTML = highlight(code.textContent); }
-      });
+  /*
+   * For a language it has no lexer for, kramdown emits a bare <pre><code class="language-x">,
+   * without the div.highlighter-rouge wrapper that overrides.css styles and copy-code.js adds
+   * its button to. So the block is given that wrapper too, which is what makes it look like
+   * every other code block on the site.
+   */
+  function run() {
+    var blocks = document.querySelectorAll('pre > code.language-hyperlambda, pre > code.language-hl');
+    Array.prototype.forEach.call(blocks, function (code) {
+      var pre = code.parentNode;
+      code.innerHTML = highlight(code.textContent);
+      if (pre.parentNode.classList.contains('highlight')) { return; }
+      var outer = document.createElement('div');
+      outer.className = 'language-hyperlambda highlighter-rouge';
+      var inner = document.createElement('div');
+      inner.className = 'highlight';
+      pre.className = 'highlight';
+      pre.parentNode.insertBefore(outer, pre);
+      outer.appendChild(inner);
+      inner.appendChild(pre);
     });
+  }
+
+  /*
+   * Runs at once when the document is already parsed, which it is for a deferred script, so the
+   * wrapper exists before copy-code.js looks for blocks to put its button on.
+   */
+  if (typeof document !== 'undefined') {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', run);
+    } else {
+      run();
+    }
   }
 })();
