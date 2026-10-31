@@ -4281,7 +4281,7 @@ implementations, such as the MySQL, SQL Server or PostgreSQL specific implementa
 
 * [How to use [data.*]](https://docs.ainiro.io/plugins/magic.data.common/how-to-use-data/) - All of the [data.xxx] slots are actually just polymorphistically evaluating your specialised adapter's slots, such as for instance [data.connect], that will invoke [mysql.connect] if this is your defa
 * [Aggregate results](https://docs.ainiro.io/plugins/magic.data.common/aggregate-results/) - You can also create aggregate results, by simply adding your aggregate as your column, such as the following illustrates.
-* [Joins](https://docs.ainiro.io/plugins/magic.data.common/joins/) - The project supports joins by parametrizing your [sql.read] invocation with [join] arguments, beneath your If you have created the Sakila example database from Oracle, and you're using MySQL as your d
+* [Joins](https://docs.ainiro.io/plugins/magic.data.common/joins/) - The project supports joins by parametrizing your [sql.read] invocation with [join] arguments, beneath your [table] argument(s).
 * [Differences between [join] and [where]](https://docs.ainiro.io/plugins/magic.data.common/differences-between-join-and-where/) - There is one crucial semantic difference between a [join] condition and a [where] condition, which is that the library assumes a join is always between two columns, while a where always assume you're
 * ['Namespacing' columns](https://docs.ainiro.io/plugins/magic.data.common/namespacing-columns/) - When you're joining results from multiple tables, it's often required that you specify which table you want some resulting column to be fetched from, to avoid confusing your database as to which colum
 * [The [where] argument](https://docs.ainiro.io/plugins/magic.data.common/the-where-argument/) - This argument is common for [sql.update], [sql.delete], and [sql.read], in addition to that a [join] will also be logically parsed much the same way as a [where] argument.
@@ -5010,7 +5010,7 @@ above example illustrates.
 # Joins
 
 URL: https://docs.ainiro.io/plugins/magic.data.common/joins/
-Description: Joins - The project supports joins by parametrizing your [sql.read] invocation with [join] arguments, beneath your If you have created the Sakila example database from Oracle, and you're using MySQL as your d
+Description: Joins - The project supports joins by parametrizing your [sql.read] invocation with [join] arguments, beneath your [table] argument(s).
 
 This page is part of the [magic.data.common](https://docs.ainiro.io/plugins/magic.data.common/) documentation.
 
@@ -8959,7 +8959,7 @@ constant or as an expression pointing to a single node. The slot returns the dec
 # How to use [html2lambda]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.html/html2lambda/
-Description: How to use [html2lambda] - .html:@"<html>   <head>     <title>Howdy</title>   </head>   <body>     <p class=""foo"">Howdy <strong>world</strong> - This is cool!</p>   </body> html2lambda:x:- The above results in somet...
+Description: How to use [html2lambda] - The above results in something resembling the following.
 
 The reference page of [`html2lambda`](https://docs.ainiro.io/reference/slots/core/html2lambda/) has its arguments, constraints and declaration.
 
@@ -9006,7 +9006,7 @@ get-value:x:-/**/title/*\#text
 # How to use [html2markdown]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.html/html2markdown/
-Description: How to use [html2markdown] - .html:@"<html>   <head>     <title>Howdy</title>   </head>   <body>     <h1>Header here</h1>     <p class=""foo"">Howdy <strong>world</strong> - This is cool!</p>   </body> html2markdown:x...
+Description: How to use [html2markdown] - The above results in something resembling the following.
 
 The reference page of [`html2markdown`](https://docs.ainiro.io/reference/slots/core/html2markdown/) has its arguments, constraints and declaration.
 
@@ -9444,7 +9444,7 @@ and status code, in addition to the response object itself.
 # How to use [http.patch]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.http/http.patch/
-Description: How to use [http.patch] - This slot accepts a URL as its value, and optionally HTTP headers as a [headers] argument, and a mandatory it would resemble something such as the following.
+Description: How to use [http.patch] - This slot accepts a URL as its value, and optionally HTTP headers as a [headers] argument, and a mandatory [payload] argument, being whatever payload you want to transfer to the endpoint.
 
 The reference page of [`http.patch`](https://docs.ainiro.io/reference/slots/http/http.patch/) has its arguments, constraints and declaration.
 
@@ -9471,7 +9471,7 @@ http.patch:"https://some_website.com/your-patch-endpoint"
 # How to use [http.post]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.http/http.post/
-Description: How to use [http.post] - This slot accepts a URL as its value, and optionally HTTP headers as a [headers] argument, and a mandatory it would resemble something such as the following.
+Description: How to use [http.post] - This slot accepts a URL as its value, and optionally HTTP headers as a [headers] argument, and a mandatory [payload] argument, being whatever payload you want to transfer to the endpoint.
 
 The reference page of [`http.post`](https://docs.ainiro.io/reference/slots/http/http.post/) has its arguments, constraints and declaration.
 
@@ -9498,7 +9498,7 @@ http.post:"https://some_website.com/your-post-endpoint"
 # How to use [http.put]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.http/http.put/
-Description: How to use [http.put] - This slot accepts a URL as its value, and optionally HTTP headers as a [headers] argument, and a mandatory it would resemble something such as the following.
+Description: How to use [http.put] - This slot accepts a URL as its value, and optionally HTTP headers as a [headers] argument, and a mandatory [payload] argument, being whatever payload you want to transfer to the endpoint.
 
 The reference page of [`http.put`](https://docs.ainiro.io/reference/slots/http/http.put/) has its arguments, constraints and declaration.
 
@@ -10768,7 +10768,7 @@ The slot accepts the following argument.
 # How to use [json2lambda]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.json/json2lambda/
-Description: How to use [json2lambda] - .json:@"{""property"": ""value""}" json2lambda:x:- lambda2json:x:-/ The [lambda2json] slot can optionally take a [format] argument, with a boolean "true" value, which implies the resulting J...
+Description: How to use [json2lambda] - The [lambda2json] slot can optionally take a [format] argument, with a boolean "true" value, which implies the resulting JSON will be indented and nicely formated, making it more readable.
 
 The reference page of [`json2lambda`](https://docs.ainiro.io/reference/slots/core/json2lambda/) has its arguments, constraints and declaration.
 
@@ -10955,7 +10955,7 @@ The above value will for instance log everything except invocations to **[log.de
 
 ## Topics
 
-* [Querying your log](https://docs.ainiro.io/plugins/magic.lambda.logging/querying-your-log/) - your particular log implementation can actually do what you need for it to do, since not all implementations have the same capabilities - Implying things such as filtering log items according to conte
+* [Querying your log](https://docs.ainiro.io/plugins/magic.lambda.logging/querying-your-log/) - Notice - To see the capabilities of your particular log implementation please invoke [log.capabilities] and verify your particular log implementation can actually do what you need for it to do, since
 
 
 # How to use [log.capabilities]
@@ -11114,7 +11114,7 @@ If `tick` was logged twice today, the first returned node would have today's dat
 # Querying your log
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.logging/querying-your-log/
-Description: Querying your log - your particular log implementation can actually do what you need for it to do, since not all implementations have the same capabilities - Implying things such as filtering log items according to conte
+Description: Querying your log - Notice - To see the capabilities of your particular log implementation please invoke [log.capabilities] and verify your particular log implementation can actually do what you need for it to do, since
 
 This page is part of the [magic.lambda.logging](https://docs.ainiro.io/plugins/magic.lambda.logging/) documentation.
 
@@ -11229,7 +11229,7 @@ to make it become a structured lambda object - You can use the **[mime.parse]** 
 # How to use [mail.smtp.send]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mail/mail.smtp.send/
-Description: How to use [mail.smtp.send] - mail.smtp.send    server       host:foo.com       port:123       secure:true       username:xxx       password:yyy    message       to          John Doe:john@doe.com       from          J...
+Description: How to use [mail.smtp.send] - You can send multiple [message] objects at the same time, using the same SMTP connection and credentials.
 
 The reference page of [`mail.smtp.send`](https://docs.ainiro.io/reference/slots/mail/mail.smtp.send/) has its arguments, constraints and declaration.
 
@@ -12594,7 +12594,7 @@ puppeteer.close:x:@.session_id
 # How to use [puppeteer.click]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.puppeteer/puppeteer.click/
-Description: How to use [puppeteer.click] - Clicks a selector. Arguments: Examples: puppeteer.click:SESSIONID    selector:"#submitcontactformbutton" puppeteer.click:SESSIONID    selector:"#submitcontactformbutton"    click-count:2
+Description: How to use [puppeteer.click] - Clicks a selector. Arguments: Examples:
 
 The reference page of [`puppeteer.click`](https://docs.ainiro.io/reference/slots/puppeteer/puppeteer.click/) has its arguments, constraints and declaration.
 
@@ -12684,7 +12684,7 @@ puppeteer.connect
 # How to use [puppeteer.content]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.puppeteer/puppeteer.content/
-Description: How to use [puppeteer.content] - Returns page HTML. Arguments: Examples: puppeteer.content:SESSIONID
+Description: How to use [puppeteer.content] - Returns page HTML. Arguments: Examples:
 
 The reference page of [`puppeteer.content`](https://docs.ainiro.io/reference/slots/puppeteer/puppeteer.content/) has its arguments, constraints and declaration.
 
@@ -12766,7 +12766,7 @@ puppeteer.fill:SESSION_ID
 # How to use [puppeteer.goto]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.puppeteer/puppeteer.goto/
-Description: How to use [puppeteer.goto] - Navigates to a URL. Arguments: Examples: puppeteer.goto:SESSIONID    url:"https://ainiro.io" puppeteer.goto:SESSIONID    url:"https://ainiro.io"    timeout:30000    wait-until:networkidle2
+Description: How to use [puppeteer.goto] - Navigates to a URL. Arguments: Examples:
 
 The reference page of [`puppeteer.goto`](https://docs.ainiro.io/reference/slots/puppeteer/puppeteer.goto/) has its arguments, constraints and declaration.
 
@@ -12881,7 +12881,7 @@ puppeteer.select:SESSION_ID
 # How to use [puppeteer.title]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.puppeteer/puppeteer.title/
-Description: How to use [puppeteer.title] - Returns page title. Arguments: Examples: puppeteer.title:SESSIONID
+Description: How to use [puppeteer.title] - Returns page title. Arguments: Examples:
 
 The reference page of [`puppeteer.title`](https://docs.ainiro.io/reference/slots/puppeteer/puppeteer.title/) has its arguments, constraints and declaration.
 
@@ -12942,7 +12942,7 @@ puppeteer.type:SESSION_ID
 # How to use [puppeteer.url]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.puppeteer/puppeteer.url/
-Description: How to use [puppeteer.url] - Returns current URL. Arguments: Examples: puppeteer.url:SESSIONID
+Description: How to use [puppeteer.url] - Returns current URL. Arguments: Examples:
 
 The reference page of [`puppeteer.url`](https://docs.ainiro.io/reference/slots/puppeteer/puppeteer.url/) has its arguments, constraints and declaration.
 
@@ -15936,7 +15936,7 @@ lambda2xml:x:@.xml/*
 # How to use [xml2lambda]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.xml/xml2lambda/
-Description: How to use [xml2lambda] - .xml:@"<CATALOG>   <PLANT>     <COMMON>Bloodroot</COMMON>     <BOTANICAL>Sanguinaria canadensis</BOTANICAL>     <ZONE>4</ZONE>     <LIGHT>Mostly Shady</LIGHT>     <PRICE>$2.44</PRICE>     <AV...
+Description: How to use [xml2lambda] - The above results in something resembling the following.
 
 The reference page of [`xml2lambda`](https://docs.ainiro.io/reference/slots/core/xml2lambda/) has its arguments, constraints and declaration.
 
@@ -16147,37 +16147,65 @@ for expressions in the [magic.node](https://docs.ainiro.io/plugins/magic.node/) 
 # How to use [add]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/add/
-Description: How to use [add] - Semantically similar to [if], but instead of evaluating its lambda object once, will iterate it for as long as the condition evaluates to true.
+Description: How to use [add] - This slot allows you to dynamically add nodes into a destination node.
 
 The reference page of [`add`](https://docs.ainiro.io/reference/slots/core/add/) has its arguments, constraints and declaration.
 
-Semantically similar to **[if]**, but instead of evaluating its lambda object once, will iterate it for
-as long as the condition evaluates to true. Requires _exactly_ two arguments, the same way **[if]** does.
+This slot allows you to dynamically add nodes into a destination node. Its primary argument is the destination,
+and it assumes that each children is a collection of nodes it should append to the destination node's children
+collection. The reasons for this additional level of indirection, is because the **[add]** slot might have
+children that are by themselves slot invocations, which it will evaluate before it starts adding the children
+nodes of these arguments to its destination node's children collection. Below is an example.
 
 ```
-.no:int:0
-.res
-
-while
-   lt
-      get-value:x:@.no
-      .:int:5
-   .lambda
-
-      add:x:@.res
-         .
-            foo
-      math.increment:x:@.no
+.dest
+add:x:@.dest
+   .
+      foo1:howdy
+      foo2:world
+   .
+      bar1:hello
+      bar2:world
 ```
 
-The above Hyperlambda snippet basically implies the following if we are to translate it into plain English;
-_"Set .no to 0, then loop while .no is less than 5, where the loop adds a node into .res, before it increments .no by 1"_.
+Notice how all the 4 nodes above (foo1, foo2, bar1, bar2) are appended into the **[.dest]** node's children
+collection. This construct allows you to evaluate slots and add the result of your slot invocations into the destination,
+such as the following illustrates.
+
+```
+.src
+   foo1:foo
+   foo2:bar
+.dest
+add:x:@.dest
+   get-nodes:x:@.src/*
+```
+
+**[add]** can also take an expression leading to multiple destinations as its main argument, allowing you to
+add a copy of your source nodes into multiple destination node collections simultaneously with one invocation. **[add]**
+can also be given multiple _"source"_ node invocations. In the following example we illustrate both of these
+constructs at the same time.
+
+```
+.dest
+.dest
+.src1
+   foo1:bar1
+.src2
+   foo2:bar2
+add:x:../*/.dest
+   get-nodes:x:@.src1/*
+   get-nodes:x:@.src2/*
+```
+
+Notice how _both_ of our **[.dest]** nodes above ends up having _both_ the **[foo1]** and the **[foo2]** nodes in
+its children collection after executing the above Hyperlambda.
 
 
 # How to use [and]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/and/
-Description: How to use [and] - the following. // Evaluates to false.
+Description: How to use [and] - [and] requires two or more arguments, and will only evaluate to true, if all of its arguments evaluates to true.
 
 The reference page of [`and`](https://docs.ainiro.io/reference/slots/core/and/) has its arguments, constraints and declaration.
 
@@ -16341,170 +16369,16 @@ other similar mechanisms that changes the position of your computer's _"executio
 branching implies to changing the position of the execution pointer, according to some condition. Typically
 this implies constructs such as `if`, `else`, `goto` etc in traditional programming languages.
 
-### How to use [if]
-
-This is the Hyperlambda equivalent of `if` from other programming languages. It allows you to test for some condition,
-and evaluate a lambda object, only if the condition evaluates to true. **[if]** must be given two arguments.
-The first argument can be anything, including a slot invocation - But its second argument must be its **[.lambda]**
-argument. The **[.lambda]** node will be evaluated as a lambda object, only if the first argument to **[if]** evaluates
-to boolean true. Below is an example.
-
-```
-.dest
-if
-   .:bool:true
-   .lambda
-      set-value:x:@.dest
-         .:yup!
-```
-
-All conditional slots, including **[if]**, optionally accepts slots as their first condition argument.
-This allows you to invoke slots, treating the return value of the slot as the condition deciding
-whether or not the **[.lambda]** object should be executed or not. Below is an example.
-
-```
-.arguments
-   foo:bool:true
-.dest
-
-if
-   get-value:x:@.arguments/*/foo
-   .lambda
-      set-value:x:@.dest
-         .:yup!
-```
-
-Notice, both the **[if]** slot and the **[else-if]** slot can optionally be directly pointing to an expression,
-that is assumed to evaluate to either boolean `true` or boolean `false`, such as the following illustrates.
-
-```
-.arguments
-   foo:bool:true
-.dest
-
-if:x:@.arguments/*/foo
-   set-value:x:@.dest
-      .:yup!
-```
-
-If you use this shorthand version for the slot(s), its lambda object is assumed to be the entirety of the content
-of the **[if]** or **[else-if]** slot itself, and there are no needs to explicitly declare your lambda objects as
-a **[.lambda]** argument. This only works if the expression leads to a boolean value.
-
-### How to use [else-if]
-
-**[else-if]** is the younger sibling of **[if]**, and must be preceded by its older sibling, or other **[else-if]** nodes,
-and will only be evaluated if all of its previous conditional slots evaluates to false - At which point **[else-if]** is
-allowed to test its condition - And only if its condition evaluates to true, it evaluate its lambda object. Semantically **[else-if]**
-is similar to **[if]**, in that it requires two arguments with the same structure as **[if]**.
-
-```
-.dest
-if
-   .:bool:false
-   .lambda
-      set-value:x:@.dest
-         .:yup!
-else-if
-   .:bool:true
-   .lambda
-      set-value:x:@.dest
-         .:yup2.0!
-```
-
-**[else-if]** can also be given an expression directly the same way **[if]** can. See the example for **[if]**
-to understand how this works.
-
-### How to use [else]
-
-**[else]** is the last of the _"conditional siblings"_ that will only be evaluated as a last resort, only if none of its
-elder _"siblings"_ evaluates to true. Notice, contrary to both **[if]** and **[else-if]**, **[else]** contains its lambda object
-directly as children nodes, and _not_ within a **[.lambda]** node. This is because **[else]** does not require any
-conditional arguments like **[if]** and **[else-if]** does. An example can be found below.
-
-```
-.src:int:3
-.dest
-if
-   eq
-      get-value:x:@.src
-      .:int:1
-   .lambda
-
-      set-value:x:@.dest
-         .:yup!
-
-else-if
-   eq
-      get-value:x:@.src
-      .:int:2
-   .lambda
-
-      set-value:x:@.dest
-         .:yup2.0!
-
-else
-
-   set-value:x:@.dest
-      .:nope
-```
-
-### How to use [switch]
-
-**[switch]** works similarly to a switch/case block in a traditional programming language, and will find the
-first **[case]** node with a value matching the evaluated value of the **[switch]** node, and execute that
-**[case]** node as a lambda object.
-
-```
-.val:foo
-.result
-switch:x:@.val
-
-   case:bar
-      set-value:x:@.result
-         .:Oops
-
-   case:foo
-      set-value:x:@.result
-         .:Success!
-```
-
-**[switch]** can only contain two types of children nodes; **[case]** and **[default]**. The **[default]** node
-will be evaluated if _none_ of the **[case]** node's values are matching the evaluated value of your **[switch]**.
-Try evaluating the following in your _"Eval"_ component to understand this.
-
-```
-.val:fooXX
-.result
-switch:x:@.val
-
-   case:bar
-      set-value:x:@.result
-         .:Oops
-
-   case:foo
-      set-value:x:@.result
-         .:Oops2.0
-
-   default
-      set-value:x:@.result
-         .:Success!
-```
-
-In the above, the expression evaluated in the switch, which is `@.val` will become _"fooXX"_ after evaluating it.
-None of its children **[case]** nodes contains this as an option, hence the **[default]** node will be evaluated,
-and this results in setting the **[.result]** node's value to _"Success!"_.
-
-**[default]** _cannot_ have a value, and all your **[case]** nodes must have a value, either a constant or
-an expression. However, any types can be used as values for your **[case]** nodes. And your **[switch]** node
-must at the very least have minimum one **[case]** node. The **[default]** node is optional though. You can mix
-and match different types as you see fit in your **[case]** nodes.
+* [`if`](https://docs.ainiro.io/plugins/magic.lambda/if/) - This is the Hyperlambda equivalent of if from other programming languages.
+* [`else-if`](https://docs.ainiro.io/plugins/magic.lambda/else-if/) - [else-if] is the younger sibling of [if], and must be preceded by its older sibling, or other [else-if] nodes, and will only be evaluated if all of its previous conditional slots evaluates to false -
+* [`else`](https://docs.ainiro.io/plugins/magic.lambda/else/) - [else] is the last of the "conditional siblings" that will only be evaluated as a last resort, only if none of its elder "siblings" evaluates to true.
+* [`switch`](https://docs.ainiro.io/plugins/magic.lambda/switch/) - [switch] works similarly to a switch/case block in a traditional programming language, and will find the first [case] node with a value matching the evaluated value of the [switch] node, and execute t
 
 
 # How to use [case]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/case/
-Description: How to use [case] - first [case] node with a value matching the evaluated value of the [switch] node, and execute that .val:foo .result switch:x:@.val    case:bar       set-value:x:@.result          .:Oops    case:foo
+Description: How to use [case] - [switch] works similarly to a switch/case block in a traditional programming language, and will find the first [case] node with a value matching the evaluated value of the [switch] node, and execute t
 
 The reference page of [`case`](https://docs.ainiro.io/reference/slots/core/case/) has its arguments, constraints and declaration.
 
@@ -16525,37 +16399,6 @@ switch:x:@.val
       set-value:x:@.result
          .:Success!
 ```
-
-**[switch]** can only contain two types of children nodes; **[case]** and **[default]**. The **[default]** node
-will be evaluated if _none_ of the **[case]** node's values are matching the evaluated value of your **[switch]**.
-Try evaluating the following in your _"Eval"_ component to understand this.
-
-```
-.val:fooXX
-.result
-switch:x:@.val
-
-   case:bar
-      set-value:x:@.result
-         .:Oops
-
-   case:foo
-      set-value:x:@.result
-         .:Oops2.0
-
-   default
-      set-value:x:@.result
-         .:Success!
-```
-
-In the above, the expression evaluated in the switch, which is `@.val` will become _"fooXX"_ after evaluating it.
-None of its children **[case]** nodes contains this as an option, hence the **[default]** node will be evaluated,
-and this results in setting the **[.result]** node's value to _"Success!"_.
-
-**[default]** _cannot_ have a value, and all your **[case]** nodes must have a value, either a constant or
-an expression. However, any types can be used as values for your **[case]** nodes. And your **[switch]** node
-must at the very least have minimum one **[case]** node. The **[default]** node is optional though. You can mix
-and match different types as you see fit in your **[case]** nodes.
 
 
 # How to use [compose]
@@ -16604,77 +16447,12 @@ You can provide the two arguments to these slots either as children nodes, where
 the LHS part, and the second its RHS part - Or you can alternatively supply the LHS part as an expression
 leading to a value, at which point the only child argument assumed for your comparison becomes the RHS argument.
 
-### How to use [eq]
-
-**[eq]** is the equality _"operator"_ in Magic, and it requires two arguments, both of which will be evaluated as potential
-signals - And the result of evaluating **[eq]** will only be true if the values of these two arguments are _exactly the same_.
-
-```
-.src:int:5
-eq
-   get-value:x:@.src
-   .:int:5
-```
-
-### How to use [neq]
-
-**[neq]** is the _not_ equal _"operator"_ in Magic, and it requires two arguments, both of which will be evaluated as potential
-signals - And the result of evaluating **[neq]** will only be true if the values of these two arguments are _not the same_.
-
-```
-.src:int:5
-neq
-   get-value:x:@.src
-   .:int:5
-```
-
-### How to use [lt]
-
-**[lt]** will do a comparison between its two arguments, and only return true if its first argument is _"less than"_
-its second argument. Consider the following.
-
-```
-.src1:int:4
-lt
-   get-value:x:@.src1
-   .:int:5
-```
-
-### How to use [lte]
-
-**[lte]** will do a comparison between its two arguments, and only return true if its first argument is _"less than or equal"_
-to its second argument. Consider the following.
-
-```
-.src1:int:4
-lte
-   get-value:x:@.src1
-   .:int:4
-```
-
-### How to use [mt]
-
-**[mt]** will do a comparison between its two arguments, and only return true if its first argument is _"more than"_
-its second argument. Consider the following.
-
-```
-.src1:int:7
-mt
-   get-value:x:@.src1
-   .:int:5
-```
-
-### How to use [mte]
-
-**[mte]** will do a comparison between its two arguments, and only return true if its first argument is _"more than or equal"_
-to its second argument. Consider the following.
-
-```
-.src1:int:7
-mte
-   get-value:x:@.src1
-   .:int:5
-```
+* [`eq`](https://docs.ainiro.io/plugins/magic.lambda/eq/) - [eq] is the equality "operator" in Magic, and it requires two arguments, both of which will be evaluated as potential signals - And the result of evaluating [eq] will only be true if the values of the
+* [`neq`](https://docs.ainiro.io/plugins/magic.lambda/neq/) - [neq] is the not equal "operator" in Magic, and it requires two arguments, both of which will be evaluated as potential signals - And the result of evaluating [neq] will only be true if the values of
+* [`lt`](https://docs.ainiro.io/plugins/magic.lambda/lt/) - [lt] will do a comparison between its two arguments, and only return true if its first argument is "less than" its second argument.
+* [`lte`](https://docs.ainiro.io/plugins/magic.lambda/lte/) - [lte] will do a comparison between its two arguments, and only return true if its first argument is "less than or equal" to its second argument.
+* [`mt`](https://docs.ainiro.io/plugins/magic.lambda/mt/) - [mt] will do a comparison between its two arguments, and only return true if its first argument is "more than" its second argument.
+* [`mte`](https://docs.ainiro.io/plugins/magic.lambda/mte/) - [mte] will do a comparison between its two arguments, and only return true if its first argument is "more than or equal" to its second argument.
 
 ### Commonalities for all Hyperlambda comparison slots
 
@@ -16727,139 +16505,24 @@ if (arg1 == "foo")
 
 ## Boolean logical conditions
 
-### How to use [and]
-
-**[and]** requires two or more arguments, and will only evaluate to true, if all of its arguments evaluates to true. Consider
-the following.
-
-```
-// Evaluates to false.
-and
-   .:bool:true
-   .:bool:false
-
-// Evaluates to true.
-and
-   .:bool:true
-   .:bool:true
-```
-
-Notice, **[and]** will short circuit itself if it reaches a condition that does _not_ evaluate to true, implying
-none of its conditions afterwards will be considered, since the **[and]** as a whole evaluates to false.
-**[and]** will also evaluate its arguments before checking if they evaluate to true, allowing you
-to use it as a part of richer comparison trees, such as the following illustrates.
-
-```
-.s1:bool:true
-.s2:bool:true
-.res
-
-if
-   and
-      get-value:x:@.s1
-      get-value:x:@.s2
-   .lambda
-
-      set-value:x:@.res
-         .:OK
-```
-
-### How to use [or]
-
-**[or]** is similar to **[and]**, except it will evaluate to true if _any_ of its arguments evaluates to true, such
-as the following illustrates. **[or]** will also evaluate its arguments, allowing you to use it as a part of richer comparison
-trees, the same way **[and]** allows you to. Below is a simple example.
-
-```
-// Evaluates to false.
-or
-   .:bool:false
-   .:bool:false
-
-// Evaluates to true.
-or
-   .:bool:false
-   .:bool:true
-```
-
-**[or]** will also short circuit itself if it reaches a condition that evaluates to true, implying
-none of its conditions afterwards will be considered, since the **[or]** as a whole evaluates to true
-if _any_ of its arguments evaluates to true.
-
-### How to use [not]
-
-**[not]** expects _exactly one argument_, and will negate its boolean value, whatever it is, such as the following illustrates.
-
-```
-not
-   .:bool:true
-
-not
-   .:bool:false
-```
-
-**[not]** will also evaluate its argument, allowing you to use it in richer comparison trees, the same you could do
-with both **[or]** and **[and]**. Below is an example combining these slots together to create more complex types
-of logical comparisons.
-
-```
-.foo1:bar
-.foo2:bool:false
-.foo3:bool:true
-.result
-
-if
-   and
-      eq:x:@.foo1
-         .:bar
-      or
-         get-value:x:@.foo2
-         get-value:x:@.foo3
-   .lambda
-
-      set-value:x:@.result
-         .:Yup!
-```
-
-Notice you can actually follow the path the Hyperlambda executor took during execution of your code if you use the
-_"Eval"_ menu item, since the result it produces for the above code will resemble the following.
-
-```
-.foo1:bar
-.foo2:bool:false
-.foo3:bool:true
-.result:Yup!
-if:bool:true
-   and:bool:true
-      eq:bool:true
-         .:bar
-      or:bool:true
-         get-value:bool:false
-         get-value:bool:true
-   .lambda
-      set-value:x:@.result
-         .:Yup!
-```
-
-In the above code we can see that the first child of our above **[or]** node evaluates to `false`, but since the
-second child of our **[or]** node evaluates to true, the **[or]** as a whole evaluates to `true`. If you change
-its **[.foo2]** data node to boolean `true`, you will see that your second child of **[or]** never even is
-considered, since your **[or]** invocation is _"short circuiting"_. You can nest as many **[or]** and **[and]**
-invocations as you wish, creating any amount of complexity in your Hyperlambda.
+* [`and`](https://docs.ainiro.io/plugins/magic.lambda/and/) - [and] requires two or more arguments, and will only evaluate to true, if all of its arguments evaluates to true.
+* [`or`](https://docs.ainiro.io/plugins/magic.lambda/or/) - [or] is similar to [and], except it will evaluate to true if any of its arguments evaluates to true, such as the following illustrates.
+* [`not`](https://docs.ainiro.io/plugins/magic.lambda/not/) - [not] expects exactly one argument, and will negate its boolean value, whatever it is, such as the following illustrates.
 
 
 # How to use [context]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/context/
-Description: How to use [context] - This slot returns a context stack object, which is an object added to the stack using [context].
+Description: How to use [context] - This slot allows you to add an object unto the stack, such that it can later be retrieved with the [get-context] slot.
 
 The reference page of [`context`](https://docs.ainiro.io/reference/slots/core/context/) has its arguments, constraints and declaration.
 
-This slot returns a context stack object, which is an object added to the stack using **[context]**.
-Below is an example of usage.
+This slot allows you to add an object unto the stack, such that it can later be retrieved with
+the **[get-context]** slot. Below is an example.
 
 ```
 .result
+
 context:foo
    value:bar
    .lambda
@@ -16868,9 +16531,30 @@ context:foo
          get-context:foo
 ```
 
-Notice how **[get-context]** inside your above **[.lambda]** invocation is able to retrieve the context object
-named _"foo"_, having the value of _"bar"_. See the **[context]** slot further down in this document for
-details about how this works.
+The slot requires a name as the value of its slot invocation node, a **[value]** as the value
+you want to put onto the stack, and a **[.lambda]** object being the lambda where the stack object
+exists, and can be retrieved using **[get-context]**. This is quite useful if you have some piece
+of data that needs to be accessible through the entirety of the execution of some Hyperlambda snippet,
+implying also for slots you invoke, where you don't want to pass in the data as an argument to the
+slot itself. Imagine the following to understand how this works.
+
+```
+slots.create:bar
+
+   get-context:foo
+   return:x:-
+
+context:foo
+   value:Context value
+   .lambda
+
+      signal:bar
+```
+
+If you execute the above Hyperlambda you will notice how the slot called **[bar]** actually has access to
+the context value called _"foo"_, and can retrieve this. This feature allows you to declare and create
+_"long lasting arguments"_ that are accessible from within the entirety of a piece of Hyperlambda, including
+each slot it invokes, and/or Hyperlambda files it executes.
 
 
 # How to use [convert]
@@ -16961,27 +16645,9 @@ read the file's source. Read more in the
 # How to use [default]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/default/
-Description: How to use [default] - first [case] node with a value matching the evaluated value of the [switch] node, and execute that .val:foo .result switch:x:@.val    case:bar       set-value:x:@.result          .:Oops    case:foo
+Description: How to use [default] - [switch] can only contain two types of children nodes; [case] and [default].
 
 The reference page of [`default`](https://docs.ainiro.io/reference/slots/core/default/) has its arguments, constraints and declaration.
-
-**[switch]** works similarly to a switch/case block in a traditional programming language, and will find the
-first **[case]** node with a value matching the evaluated value of the **[switch]** node, and execute that
-**[case]** node as a lambda object.
-
-```
-.val:foo
-.result
-switch:x:@.val
-
-   case:bar
-      set-value:x:@.result
-         .:Oops
-
-   case:foo
-      set-value:x:@.result
-         .:Success!
-```
 
 **[switch]** can only contain two types of children nodes; **[case]** and **[default]**. The **[default]** node
 will be evaluated if _none_ of the **[case]** node's values are matching the evaluated value of your **[switch]**.
@@ -17005,20 +16671,11 @@ switch:x:@.val
          .:Success!
 ```
 
-In the above, the expression evaluated in the switch, which is `@.val` will become _"fooXX"_ after evaluating it.
-None of its children **[case]** nodes contains this as an option, hence the **[default]** node will be evaluated,
-and this results in setting the **[.result]** node's value to _"Success!"_.
-
-**[default]** _cannot_ have a value, and all your **[case]** nodes must have a value, either a constant or
-an expression. However, any types can be used as values for your **[case]** nodes. And your **[switch]** node
-must at the very least have minimum one **[case]** node. The **[default]** node is optional though. You can mix
-and match different types as you see fit in your **[case]** nodes.
-
 
 # How to use [else-if]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/else-if/
-Description: How to use [else-if] - and will only be evaluated if all of its previous conditional slots evaluates to false - At which point [else-if] is allowed to test its condition - And only if its condition evaluates to true,...
+Description: How to use [else-if] - [else-if] is the younger sibling of [if], and must be preceded by its older sibling, or other [else-if] nodes, and will only be evaluated if all of its previous conditional slots evaluates to fa...
 
 The reference page of [`else-if`](https://docs.ainiro.io/reference/slots/core/else-if/) has its arguments, constraints and declaration.
 
@@ -17048,7 +16705,7 @@ to understand how this works.
 # How to use [else]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/else/
-Description: How to use [else] - elder "siblings" evaluates to true.
+Description: How to use [else] - [else] is the last of the "conditional siblings" that will only be evaluated as a last resort, only if none of its elder "siblings" evaluates to true.
 
 The reference page of [`else`](https://docs.ainiro.io/reference/slots/core/else/) has its arguments, constraints and declaration.
 
@@ -17088,40 +16745,18 @@ else
 # How to use [eq]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/eq/
-Description: How to use [eq] - elder "siblings" evaluates to true.
+Description: How to use [eq] - [eq] is the equality "operator" in Magic, and it requires two arguments, both of which will be evaluated as potential signals - And the result of evaluating [eq] will only be true if the values of the
 
 The reference page of [`eq`](https://docs.ainiro.io/reference/slots/core/eq/) has its arguments, constraints and declaration.
 
-**[else]** is the last of the _"conditional siblings"_ that will only be evaluated as a last resort, only if none of its
-elder _"siblings"_ evaluates to true. Notice, contrary to both **[if]** and **[else-if]**, **[else]** contains its lambda object
-directly as children nodes, and _not_ within a **[.lambda]** node. This is because **[else]** does not require any
-conditional arguments like **[if]** and **[else-if]** does. An example can be found below.
+**[eq]** is the equality _"operator"_ in Magic, and it requires two arguments, both of which will be evaluated as potential
+signals - And the result of evaluating **[eq]** will only be true if the values of these two arguments are _exactly the same_.
 
 ```
-.src:int:3
-.dest
-if
-   eq
-      get-value:x:@.src
-      .:int:1
-   .lambda
-
-      set-value:x:@.dest
-         .:yup!
-
-else-if
-   eq
-      get-value:x:@.src
-      .:int:2
-   .lambda
-
-      set-value:x:@.dest
-         .:yup2.0!
-
-else
-
-   set-value:x:@.dest
-      .:nope
+.src:int:5
+eq
+   get-value:x:@.src
+   .:int:5
 ```
 
 
@@ -17212,50 +16847,8 @@ try
 Like most modern programming languages, Hyperlambda supports both try, catch and finally. However,
 the catch is referenced as **[.catch]** and the finally block is referenced as **[.finally]**.
 
-### How to use [try]
-
-This slot allows you to create a try/catch/finally block in Hyperlambda, from where exceptions are caught,
-and optionally handled in a **[.catch]** lambda, and/or a **[.finally]** lambda.
-
-```
-try
-   throw:Whatever
-
-.catch
-   log.info:ERROR HAPPENED!! 42, 42, 42!
-
-.finally
-   log.info:Yup, we are finally there!
-```
-
-Semantically this works the exact same way as try/catch/finally in other programming languages, such as
-C# for instance, in that an exception thrown inside of a try/catch block will always end up inside of
-its **[.catch]** block - And regardless of whether or not an exception is thrown, the **[.finally]**
-block will _always_ execute, allowing you to some extent create deterministic execution of Hyperlambda
-code, which has a guarantee of executing, regardless of whether or not an exception is thrown or not.
-
-### How to use [throw]
-
-This slot simply throws an exception, with the exception message taken from its value.
-See the **[try]** slot above for an example. Notice, you can make the exception propagate to the client
-by adding a **[public]** parameter, and set its value to boolean _"true"_ - At which point
-the exception will be returned to the client, even in release builds, if no **[.catch]** block
-handles it before it propagates to the client - Otherwise the exception
-will only be visible in debug builds, and never returned to the client. You can also modify
-the **[status]** HTTP return value that's returned to the client, to become e.g. 404,
-indicating _"not found"_, etc. In addition you can pass in a **[field]** which will be serialised
-back to the client if specified to help the client to semantically figure out which field
-that triggered the exception. Below is an example of all of the above.
-
-```
-throw:Whatever error message here
-   status:398
-   public:true
-   field:whatever-field
-```
-
-If you create an endpoint using for instance _"Hyper IDE"_, and throw the above exception, you can see
-how this propagates to the client without the exception handler.
+* [`try`](https://docs.ainiro.io/plugins/magic.lambda/try/) - This slot allows you to create a try/catch/finally block in Hyperlambda, from where exceptions are caught, and optionally handled in a [.catch] lambda, and/or a [.finally] lambda.
+* [`throw`](https://docs.ainiro.io/plugins/magic.lambda/throw/) - This slot simply throws an exception, with the exception message taken from its value.
 
 
 # Executing lambda objects
@@ -17263,106 +16856,15 @@ how this propagates to the client without the exception handler.
 URL: https://docs.ainiro.io/plugins/magic.lambda/executing/
 Description: The [compose], [eval] and [invoke] slots, allowing you to compose lambda objects and execute them dynamically.
 
-## How to use [compose]
-
-Compose allows you to dynamically create expressions by supplying it with a list of iterators. To understand it
-realise the following invocation.
-
-```
-compose
-   .:..
-   .:*
-   .:.data
-   .:*
-```
-
-Results in the following result.
-
-```
-compose:x:../*/.data/*
-```
-
-Since expressions are for the most parts recursively evaluated, this allows you to dynamically compose
-expressions you de-reference, allowing you to dynamically create expressions you're using in your code.
-
-## How to use [eval]
-
-This is the by far most important slot in Hyperlambda, since it's arguably _"the heart"_ of Hyperlambda,
-allowing Hyperlambda to execute. This slot executes the specified lambda object(s) assumed
-to exist either as a lambda in its children collection, or as an expression leading to one or more nodes,
-where each of these nodes will be executed. The example below illustrates how to use **[eval]** with
-an expression.
-
-```
-.res
-
-.lambda
-   set-value:x:@.res
-      .:OK
-
-eval:x:@.lambda
-```
-
-Notice, you could have multiple **[.lambda]** nodes in the above Hyperlambda, at which point _all_
-of these would be executed consecutively. Below is an example.
-
-```
-.res:
-
-.lambda
-   set-value:x:@.res
-      strings.concat
-         get-value:x:@.res
-         .:" OK 1 "
-
-.lambda
-   set-value:x:@.res
-      strings.concat
-         get-value:x:@.res
-         .:" OK 2 "
-
-eval:x:../*/.lambda
-```
-
-You can also provide the lambda object as children of the **[eval]** node itself, such as the following
-illustrates.
-
-```
-.res
-
-eval
-   set-value:x:@.res
-      .:Yup!
-```
-
-Notice, the **[eval]** slot is _not_ immutable, as in it has access to the outer graph object such as
-illustrated above, where we set the value of a node existing _outside_ of the **[.lambda]** itself.
-Implying **[eval]** cannot return values or nodes the same way for instance **[signal]** can.
-
-## How to use [invoke]
-
-This slot works similarly to **[eval]**, except it treats the invocation similarly to an invocation to
-a dynamic slot, allowing you to pass in arguments, and return nodes from the invocation.
-
-```
-.lambda
-   strings.concat
-      .:"Hello "
-      get-value:x:@.arguments/*/name
-   return:x:-
-invoke:x:@.lambda
-   name:John
-```
-
-Notice, you cannot supply an expression leading to multiple nodes, and the slot invokes the lambda
-object immutable, such that it doesn't change. The invocation also does _not_ have access to anything
-outside of its own lambda object.
+* [`compose`](https://docs.ainiro.io/plugins/magic.lambda/compose/) - Compose allows you to dynamically create expressions by supplying it with a list of iterators.
+* [`eval`](https://docs.ainiro.io/plugins/magic.lambda/eval/) - This is the by far most important slot in Hyperlambda, since it's arguably "the heart" of Hyperlambda, allowing Hyperlambda to execute.
+* [`invoke`](https://docs.ainiro.io/plugins/magic.lambda/invoke/) - This slot works similarly to [eval], except it treats the invocation similarly to an invocation to a dynamic slot, allowing you to pass in arguments, and return nodes from the invocation.
 
 
 # How to use [exists]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/exists/
-Description: How to use [exists] - return false. .src1    foo .src2 exists:x:@.src1/ exists:x:@.src2/
+Description: How to use [exists] - [exists] will evaluate to true if its specified expression yields one or more results.
 
 The reference page of [`exists`](https://docs.ainiro.io/reference/slots/core/exists/) has its arguments, constraints and declaration.
 
@@ -17470,59 +16972,39 @@ The above will return only nodes having a value above integer value _"2"_.
 # How to use [floatArray2bytes]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/floatArray2bytes/
-Description: How to use [floatArray2bytes] - The slot reference is organised by concept, with one page per concept.
+Description: How to use [floatArray2bytes] - This slot serializes a sequence of float values into raw bytes, which is useful when you need to feed vectors, such as embeddings, into binary APIs.
 
 The reference page of [`floatArray2bytes`](https://docs.ainiro.io/reference/slots/core/floatArray2bytes/) has its arguments, constraints and declaration.
 
-The slot reference is organised by concept, with one page per concept.
-
-* [Executing lambda objects](https://docs.ainiro.io/plugins/magic.lambda/executing/) - **[compose]**, **[eval]** and **[invoke]**
-* [Branching and conditional execution](https://docs.ainiro.io/plugins/magic.lambda/branching/) - **[if]**, **[else-if]**, **[else]** and **[switch]**
-* [Comparison and boolean logic](https://docs.ainiro.io/plugins/magic.lambda/conditions/) - **[eq]**, **[neq]**, **[lt]**, **[lte]**, **[mt]**, **[mte]**, **[and]**, **[or]** and **[not]**
-* [Modifying your lambda object](https://docs.ainiro.io/plugins/magic.lambda/nodes/) - **[add]**, **[insert-before]**, **[set-value]**, **[set-x]**, **[unwrap]**, **[get-value]**, **[exists]**, **[reference]** and more
-* [Hyperlambda exceptions](https://docs.ainiro.io/plugins/magic.lambda/exceptions/) - **[try]** and **[throw]**
-* [Hyperlambda loops](https://docs.ainiro.io/plugins/magic.lambda/loops/) - **[for-each]**, **[map]** and **[while]**
-* [Types and conversion](https://docs.ainiro.io/plugins/magic.lambda/types/) - **[types]**, **[type]**, **[convert]**, **[floatArray2bytes]**, **[format]**, **[int2words]**, **[vocabulary]**, **[slot.signature]** and **[slot.description]**
+This slot serializes a sequence of float values into raw bytes, which is useful when you need to feed vectors, such as
+embeddings, into binary APIs. Its value is an expression selecting the nodes containing the float values, each of which
+must be convertible to a float. After invocation, the value of the node is a `byte[]` containing 4 bytes for each float
+value.
 
 
 # How to use [for-each]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/for-each/
-Description: How to use [for-each] - Hyperlambda accepts comments the exact same way C# does, and you can use either multiline comments or single line comments, like the following example illustrates.
+Description: How to use [for-each] - [for-each] iterates through each node being the result of an expression, and evaluates its lambda object, passing in the currently iterated node as a [.dp] argument, containing the node current...
 
 The reference page of [`for-each`](https://docs.ainiro.io/reference/slots/core/for-each/) has its arguments, constraints and declaration.
 
-Hyperlambda accepts comments the exact same way C# does, and you can use either multiline comments
-or single line comments, like the following example illustrates.
-
-```
-/*
- * Multiline comment.
- */
-
-// Single line comment.
-```
-
-You _cannot_ put comments on lines containing nodes, and comments must be indented the same
-amount of indentations as the nodes they are commenting, implying the nodes below them. Below is
-an example.
+**[for-each]** iterates through each node being the result of an expression, and evaluates its lambda object,
+passing in the currently iterated node as a **[.dp]** argument, containing the node currently
+iterated by _reference_.
 
 ```
 .data
-   foo1:bar1
-   foo2:bar2
+   foo1
+   foo2
 
-for-each:x:@.data/*
+for-each:x:-/*
 
-   // This is correct indentation.
    set-value:x:@.dp/#
-      .:Loop was here ...
+      .:hello
 ```
 
-Since Hyperlambda is using spaces (SP characters) to denote scope, indentation _is important_,
-also for comments. If you de-indent the above comment, you might get unpredictable results, in particular
-if you're serializing and de-serializing your Hyperlambda preserving comments. Comments should as a general
-rule of thumb be applied with the same amount of indentation as the node below them.
+See the documentation for the **[reference]** slot to understand how reference nodes works.
 
 
 # How to use [format]
@@ -17659,33 +17141,15 @@ get-nodes:x:-/*
 # How to use [get-value]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/get-value/
-Description: How to use [get-value] - At the heart of Hyperlambda is the [eval] slot.
+Description: How to use [get-value] - Returns the value of the node its expression is pointing to.
 
 The reference page of [`get-value`](https://docs.ainiro.io/reference/slots/core/get-value/) has its arguments, constraints and declaration.
 
-At the heart of Hyperlambda is the **[eval]** slot. This slot is responsible for executing your lambda object
-and follows a couple of simple rules. All nodes starting with a _"."_ will be ignored, and **[eval]** will not
-try to raise these nodes as signals. This has two benefits.
-
-1. You can create _"hidden"_ slots, that are only accessible from C#.
-2. You can use nodes starting with _"."_ as data nodes, separating function invocations from data.
-
-**[eval]** makes Hyperlambda _"super functional"_ in nature. Below is an example of a Hyperlambda
-piece of code, that illustrates this, by adding a _"callback"_ lambda object to its **[while]** invocation
-as a **[.lambda]** node, that will be invoked once for every iteration of your while loop.
+Returns the value of the node its expression is pointing to.
 
 ```
-.no:int:0
-
-while
-   lt
-      get-value:x:@.no
-      .:int:20
-   .lambda
-
-      // Your lambda goes here.
-      log.info:Howdy from while
-      math.increment:x:@.no
+.data:Hello World
+get-value:x:-
 ```
 
 
@@ -17780,31 +17244,57 @@ LISP. In some ways Hyperlambda _is_ Lisp for C#, only with a completely differen
 # How to use [if]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/if/
-Description: How to use [if] - and will only be evaluated if all of its previous conditional slots evaluates to false - At which point [else-if] is allowed to test its condition - And only if its condition evaluates to true, it eva
+Description: How to use [if] - This is the Hyperlambda equivalent of if from other programming languages.
 
 The reference page of [`if`](https://docs.ainiro.io/reference/slots/core/if/) has its arguments, constraints and declaration.
 
-**[else-if]** is the younger sibling of **[if]**, and must be preceded by its older sibling, or other **[else-if]** nodes,
-and will only be evaluated if all of its previous conditional slots evaluates to false - At which point **[else-if]** is
-allowed to test its condition - And only if its condition evaluates to true, it evaluate its lambda object. Semantically **[else-if]**
-is similar to **[if]**, in that it requires two arguments with the same structure as **[if]**.
+This is the Hyperlambda equivalent of `if` from other programming languages. It allows you to test for some condition,
+and evaluate a lambda object, only if the condition evaluates to true. **[if]** must be given two arguments.
+The first argument can be anything, including a slot invocation - But its second argument must be its **[.lambda]**
+argument. The **[.lambda]** node will be evaluated as a lambda object, only if the first argument to **[if]** evaluates
+to boolean true. Below is an example.
 
 ```
 .dest
 if
-   .:bool:false
-   .lambda
-      set-value:x:@.dest
-         .:yup!
-else-if
    .:bool:true
    .lambda
       set-value:x:@.dest
-         .:yup2.0!
+         .:yup!
 ```
 
-**[else-if]** can also be given an expression directly the same way **[if]** can. See the example for **[if]**
-to understand how this works.
+All conditional slots, including **[if]**, optionally accepts slots as their first condition argument.
+This allows you to invoke slots, treating the return value of the slot as the condition deciding
+whether or not the **[.lambda]** object should be executed or not. Below is an example.
+
+```
+.arguments
+   foo:bool:true
+.dest
+
+if
+   get-value:x:@.arguments/*/foo
+   .lambda
+      set-value:x:@.dest
+         .:yup!
+```
+
+Notice, both the **[if]** slot and the **[else-if]** slot can optionally be directly pointing to an expression,
+that is assumed to evaluate to either boolean `true` or boolean `false`, such as the following illustrates.
+
+```
+.arguments
+   foo:bool:true
+.dest
+
+if:x:@.arguments/*/foo
+   set-value:x:@.dest
+      .:yup!
+```
+
+If you use this shorthand version for the slot(s), its lambda object is assumed to be the entirety of the content
+of the **[if]** or **[else-if]** slot itself, and there are no needs to explicitly declare your lambda objects as
+a **[.lambda]** argument. This only works if the expression leads to a boolean value.
 
 
 # How to use [include]
@@ -17934,113 +17424,33 @@ provides two basic slots for looping; **[for-each]** and **[while]**. Notice, th
 in Hyperlambda, since this can always be created using the **[while]** loop. The **[map]** slot also iterates
 a node-set, but collects the result of each iteration into a new result set.
 
-### How to use [for-each]
-
-**[for-each]** iterates through each node being the result of an expression, and evaluates its lambda object,
-passing in the currently iterated node as a **[.dp]** argument, containing the node currently
-iterated by _reference_.
-
-```
-.data
-   foo1
-   foo2
-
-for-each:x:-/*
-
-   set-value:x:@.dp/#
-      .:hello
-```
-
-See the documentation for the **[reference]** slot to understand how reference nodes works.
-
-### How to use [map]
-
-**[map]** iterates through each node being the result of its expression, the same way **[for-each]** does, and
-evaluates its lambda object once for each node, passing in the currently iterated node as a **[.dp]** argument.
-The value or nodes returned by the lambda object for each iteration, becomes the result of the slot. Each returned
-value becomes a `.` node, and any returned child nodes are added as they are. After evaluation, the children of
-**[map]** are replaced with the mapped result.
-
-* __[map]__ - Expression selecting the nodes to map
-* Children - Lambda object evaluated once per selected node, and expected to return a value or nodes, for instance using **[return]** or **[yield]**
-
-```
-.src
-   .:int:1
-   .:int:2
-   .:int:3
-map:x:@.src/*
-   math.increment:x:@.dp/#
-   unwrap:x:+/*
-   yield
-      .:x:@math.increment
-```
-
-After execution, **[map]** has 3 children, with the values 2, 3 and 4. If an iteration returns neither a value nor
-any nodes, the slot throws an exception.
-
-### How to use [while]
-
-Semantically similar to **[if]**, but instead of evaluating its lambda object once, will iterate it for
-as long as the condition evaluates to true. Requires _exactly_ two arguments, the same way **[if]** does.
-
-```
-.no:int:0
-.res
-
-while
-   lt
-      get-value:x:@.no
-      .:int:5
-   .lambda
-
-      add:x:@.res
-         .
-            foo
-      math.increment:x:@.no
-```
-
-The above Hyperlambda snippet basically implies the following if we are to translate it into plain English;
-_"Set .no to 0, then loop while .no is less than 5, where the loop adds a node into .res, before it increments .no by 1"_.
+* [`for-each`](https://docs.ainiro.io/plugins/magic.lambda/for-each/) - [for-each] iterates through each node being the result of an expression, and evaluates its lambda object, passing in the currently iterated node as a [.dp] argument, containing the node currently iter
+* [`map`](https://docs.ainiro.io/plugins/magic.lambda/map/) - [map] iterates through each node being the result of its expression, the same way [for-each] does, and evaluates its lambda object once for each node, passing in the currently iterated node as a [.dp]
+* [`while`](https://docs.ainiro.io/plugins/magic.lambda/while/) - Semantically similar to [if], but instead of evaluating its lambda object once, will iterate it for as long as the condition evaluates to true.
 
 
 # How to use [lt]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/lt/
-Description: How to use [lt] - At the heart of Hyperlambda is the [eval] slot.
+Description: How to use [lt] - [lt] will do a comparison between its two arguments, and only return true if its first argument is "less than" its second argument.
 
 The reference page of [`lt`](https://docs.ainiro.io/reference/slots/core/lt/) has its arguments, constraints and declaration.
 
-At the heart of Hyperlambda is the **[eval]** slot. This slot is responsible for executing your lambda object
-and follows a couple of simple rules. All nodes starting with a _"."_ will be ignored, and **[eval]** will not
-try to raise these nodes as signals. This has two benefits.
-
-1. You can create _"hidden"_ slots, that are only accessible from C#.
-2. You can use nodes starting with _"."_ as data nodes, separating function invocations from data.
-
-**[eval]** makes Hyperlambda _"super functional"_ in nature. Below is an example of a Hyperlambda
-piece of code, that illustrates this, by adding a _"callback"_ lambda object to its **[while]** invocation
-as a **[.lambda]** node, that will be invoked once for every iteration of your while loop.
+**[lt]** will do a comparison between its two arguments, and only return true if its first argument is _"less than"_
+its second argument. Consider the following.
 
 ```
-.no:int:0
-
-while
-   lt
-      get-value:x:@.no
-      .:int:20
-   .lambda
-
-      // Your lambda goes here.
-      log.info:Howdy from while
-      math.increment:x:@.no
+.src1:int:4
+lt
+   get-value:x:@.src1
+   .:int:5
 ```
 
 
 # How to use [lte]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/lte/
-Description: How to use [lte] - to its second argument.
+Description: How to use [lte] - [lte] will do a comparison between its two arguments, and only return true if its first argument is "less than or equal" to its second argument.
 
 The reference page of [`lte`](https://docs.ainiro.io/reference/slots/core/lte/) has its arguments, constraints and declaration.
 
@@ -18058,7 +17468,7 @@ lte
 # How to use [map]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/map/
-Description: How to use [map] - evaluates its lambda object once for each node, passing in the currently iterated node as a [.dp] argument.
+Description: How to use [map] - [map] iterates through each node being the result of its expression, the same way [for-each] does, and evaluates its lambda object once for each node, passing in the currently iterated node as a [.dp]
 
 The reference page of [`map`](https://docs.ainiro.io/reference/slots/core/map/) has its arguments, constraints and declaration.
 
@@ -18090,7 +17500,7 @@ any nodes, the slot throws an exception.
 # How to use [mt]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/mt/
-Description: How to use [mt] - its second argument. Consider the following.
+Description: How to use [mt] - [mt] will do a comparison between its two arguments, and only return true if its first argument is "more than" its second argument.
 
 The reference page of [`mt`](https://docs.ainiro.io/reference/slots/core/mt/) has its arguments, constraints and declaration.
 
@@ -18108,7 +17518,7 @@ mt
 # How to use [mte]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/mte/
-Description: How to use [mte] - to its second argument.
+Description: How to use [mte] - [mte] will do a comparison between its two arguments, and only return true if its first argument is "more than or equal" to its second argument.
 
 The reference page of [`mte`](https://docs.ainiro.io/reference/slots/core/mte/) has its arguments, constraints and declaration.
 
@@ -18126,7 +17536,7 @@ mte
 # How to use [neq]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/neq/
-Description: How to use [neq] - signals - And the result of evaluating [neq] will only be true if the values of these two arguments are not the same.
+Description: How to use [neq] - [neq] is the not equal "operator" in Magic, and it requires two arguments, both of which will be evaluated as potential signals - And the result of evaluating [neq] will only be true if the values of
 
 The reference page of [`neq`](https://docs.ainiro.io/reference/slots/core/neq/) has its arguments, constraints and declaration.
 
@@ -18153,387 +17563,33 @@ the ability to change your nodes as you execute your Hyperlambda. Magic provides
 both to change the names, values, and types of your nodes - In addition to adding a range of nodes into some
 other node, and/or remove nodes from the children collection of your nodes.
 
-### How to use [add]
-
-This slot allows you to dynamically add nodes into a destination node. Its primary argument is the destination,
-and it assumes that each children is a collection of nodes it should append to the destination node's children
-collection. The reasons for this additional level of indirection, is because the **[add]** slot might have
-children that are by themselves slot invocations, which it will evaluate before it starts adding the children
-nodes of these arguments to its destination node's children collection. Below is an example.
-
-```
-.dest
-add:x:@.dest
-   .
-      foo1:howdy
-      foo2:world
-   .
-      bar1:hello
-      bar2:world
-```
-
-Notice how all the 4 nodes above (foo1, foo2, bar1, bar2) are appended into the **[.dest]** node's children
-collection. This construct allows you to evaluate slots and add the result of your slot invocations into the destination,
-such as the following illustrates.
-
-```
-.src
-   foo1:foo
-   foo2:bar
-.dest
-add:x:@.dest
-   get-nodes:x:@.src/*
-```
-
-**[add]** can also take an expression leading to multiple destinations as its main argument, allowing you to
-add a copy of your source nodes into multiple destination node collections simultaneously with one invocation. **[add]**
-can also be given multiple _"source"_ node invocations. In the following example we illustrate both of these
-constructs at the same time.
-
-```
-.dest
-.dest
-.src1
-   foo1:bar1
-.src2
-   foo2:bar2
-add:x:../*/.dest
-   get-nodes:x:@.src1/*
-   get-nodes:x:@.src2/*
-```
-
-Notice how _both_ of our **[.dest]** nodes above ends up having _both_ the **[foo1]** and the **[foo2]** nodes in
-its children collection after executing the above Hyperlambda.
-
-### How to use [insert-before]
-
-This slot works the exact same way as the **[add]** node, except it will insert the nodes _before_ the
-node(s) referenced in its main/destination argument.
-
-```
-.foo
-   foo1
-   foo2
-insert-before:x:@.foo/*/foo1
-   .
-      inserted
-```
-
-### How to use [insert-after]
-
-This slot works the exact same way as the **[add]** and **[insert-before]** slots, except it will insert the
-nodes _after_ the node(s) referenced in its main/destination argument.
-
-```
-.foo
-   foo1
-   foo2
-insert-after:x:@.foo/*/foo1
-   .
-      inserted
-```
-
-### How to use [remove-nodes]
-
-This slot will remove all nodes its expression is pointing to.
-
-```
-.data
-   foo1
-   foo2
-   foo3
-remove-nodes:x:@.data/*/foo2
-```
-
-### How to use [include]
-
-This slot is logically the combination of a **[for-each]**, **[add]** and **[eval/invoke]**. The slot takes a lambda
-object, that will be executed with a **[.dp]** node, for each node resulting from evaluating its expression passed
-in by reference. The returned nodes will then be appended into the currently iterated node, allowing you to _"include"_
-sub trees into a destination tree using a declarative syntax. It is useful for adding nodes dynamically to an existing
-graph object, declaratively, according to the state of its destination nodes.
-
-```
-.data
-   foo1:bar1
-   foo2:bar2
-   foo3:bar3
-include:x:@.data/*
-   strings.concat
-      get-value:x:@.dp/#
-      .:" howdy"
-   unwrap:x:+/*
-   return
-      howdy:x:@strings.concat
-```
-
-### How to use [filter]
-
-Filter allows you to filter using a predicate. If the predicate returns true for the currently iterated list item, it's included, otherwise not. Below is an example.
-
-```
-.src
-   .:int:1
-   .:int:2
-   .:int:3
-   .:int:4
-filter:x:@.src/*
-   mt
-      get-value:x:@.dp/#
-      .:int:2
-   return:x:-
-```
-
-The above will return only nodes having a value above integer value _"2"_.
-
-### How to use [set-value]
-
-Changes the value of all nodes referenced as its main expression to whatever its single source happens to be.
-Notice, when you invoke a slot that tries to change the value, name, or the node itself of some expression,
-and you supply a source expression to your invocation - Then the result of the source expression
-_cannot_ return more than one result. The destination expression however can modify multiple nodes
-simultaneously.
-
-```
-.foo
-.foo
-set-value:x:../*/.foo
-   .:SUCCESS
-```
-
-### How to use [set-x]
-
-Similar to **[set-value]**, but does not evaluate expressions found in its source. Where **[set-value]** replaces a source
-expression with the value it points to, **[set-x]** assigns the expression itself as the new value of its destination
-nodes. It takes the same arguments as **[set-value]**; a main expression selecting the destination nodes, and at most one
-source child. Having more than one child throws an exception.
-
-```
-.foo1:.bar1
-set-x:x:../*/.foo1
-   .:x:../*/.foo1
-```
-
-After execution, the value of **[.foo1]** is the expression `../*/.foo1`, and not the value `.bar1`.
-
-### How to use [set-name]
-
-Changes the name of all nodes referenced as its main expression to whatever its single source happens to be.
-
-```
-.foo
-   old-name
-set-name:x:@.foo/*
-   .:new-name
-```
-
-The **[set-name]** invocation can also be given multiple destinations, but only _one_ source.
-
-### How to use [unwrap]
-
-This slot is useful if you want to evaluate some expression before the node where it's referenced is reached.
-Imagine the following.
-
-```
-.src:Hello World
-unwrap:x:+
-.dest:x:@.src
-```
-
-In the above example, before the **[.dest]** node is reached by the Hyperlambda instruction pointer, the value
-of the **[.dest]** node will have been _"unwrapped"_ (evaluated), and its value will be _"Hello World"_.
-This slot becomes very handy when you invoke lambda objects with expressions, since
-it allows you to _"forward evaluate"_ said expressions inside your lambda object, _before_ the lambda object
-is actually executed.
-
-The **[unwrap]** slot can also optionally be supplied with a **[apply-lists]** argument as boolean true. By default the **[unwrap]** slot will throw an exception if you unwrap a node leading to multiple nodes. If you apply lists, it will instead add all the source nodes as destination nodes into the unwrapped node. Consider the following.
-
-```
-.src
-   foo1:bar1
-   foo2:bar2
-unwrap:x:+
-   apply-lists:bool:true
-.dest:x:@.src/*
-```
-
-If you remove the above **[apply-lists]** argument or set its value to false, the above code will throw an exception. If you keep the above **[apply-lists]** argument as is it will result in the following.
-
-```
-.src
-   foo1:bar1
-   foo2:bar2
-unwrap:x:+
-   apply-lists:bool:true
-.dest
-   foo1:bar1
-   foo2:bar2
-```
-
-### How to use [get-value]
-
-Returns the value of the node its expression is pointing to.
-
-```
-.data:Hello World
-get-value:x:-
-```
-
-### How to use [get-name]
-
-Returns the name of the node referenced in its expression.
-
-```
-.foo
-get-name:x:-
-```
-
-### How to use [get-count]
-
-This slot returns the number of nodes its expression is pointing to.
-
-```
-.data
-   foo1
-   foo2
-get-count:x:@.data/*
-```
-
-### How to use [get-nodes]
-
-Returns the nodes its expression is referencing.
-
-```
-.data
-   foo1
-   foo2
-get-nodes:x:-/*
-```
-
-### How to use [exists]
-
-**[exists]** will evaluate to true if its specified expression yields one or more results. If not, it will
-return false.
-
-```
-.src1
-   foo
-.src2
-exists:x:@.src1/*
-exists:x:@.src2/*
-```
-
-### How to use [not-exists]
-
-**[not-exists]** will evaluate to true if its specified expression yields zero results. If not, it will
-return false. It's the logical opposite of **[exists]**.
-
-```
-.src1
-   foo
-.src2
-not-exists:x:@.src1/*
-not-exists:x:@.src2/*
-```
-
-### How to use [null]
-
-**[null]** will evaluate to true if its specified expression yields null, or the expression returns no nodes.
-If not, it will return false.
-
-```
-.src1
-   foo:foo
-.src2
-   foo
-null:x:@.src1/*
-null:x:@.src2/*
-```
-
-### How to use [not-null]
-
-**[not-null]** will evaluate to true if its specified expression returns nodes and at least one of those nodes has a value.
-If not, it will return false.
-
-```
-.src1
-   foo:foo
-.src2
-   foo
-.src3
-not-null:x:@.src1/*
-not-null:x:@.src2/*
-not-null:x:@.src3/*
-```
-
-### How to use [reference]
-
-This slot will evaluate its expression, and add the entire node the expression is pointing to, as a referenced node into
-its value. This allows you to pass a node _into_ a slot by reference, and have that slot modify the node itself, or
-its children. This might sometimes be useful to have slots modify some original graph object, or parts of a graph -
-Or get access to iterate over parts of your graph object's children.
-
-```
-.foo
-reference:x:@.foo
-set-value:x:-/#
-   .:Yup!
-```
-
-You can think of this slot as the singular version of **[get-nodes]**, except instead of returning multiple
-nodes, it assumes its expression only points to a single node, and instead of returning a copy of the node,
-it returns the actual node by reference.
-
-**Notice** - The `/#` iterator above, will enter into the node referenced as a value of its current
-result - Implying it allows you to deeply traverse nodes passed in as references. This is sometimes
-useful in combination with referenced nodes, passed in as values of other nodes. You should as a general
-rule of thumb be careful with the **[reference]** slot, since it results in side effects for the caller if
-it passes nodes by reference into some slot. Such side effects are as a general rule of thumb considered a _bad thing_,
-since they result in unpredictable results. In theory passing in a node by reference to some slot, might change
-the logic of the calling function, resulting in changing the code that is being executed, which obviously
-makes the code literally impossible to understand. Hence, be careful with the **[reference]** slot!
-
-### How to use [get-first-value]
-
-Returns the _first_ non-null value resulting from evaluating its expression, and/or its children nodes.
-
-```
-.data1
-   foo1:bar1
-   foo2:bar2
-.data2:bar3
-get-first-value:x:@.data1/*
-   get-value:x:@.data2
-```
-
-This node returns only the first non-null value resulting from evaluating its expression, and/or its children
-nodes. This is useful when you for instance have arguments to some lambda object, but want to apply default
-values if the argument is not specified - And or want to have guarantees of that only a single value is returned.
-
-### How to use [get-context]
-
-This slot returns a context stack object, which is an object added to the stack using **[context]**.
-Below is an example of usage.
-
-```
-.result
-context:foo
-   value:bar
-   .lambda
-
-      set-value:x:@.result
-         get-context:foo
-```
-
-Notice how **[get-context]** inside your above **[.lambda]** invocation is able to retrieve the context object
-named _"foo"_, having the value of _"bar"_. See the **[context]** slot further down in this document for
-details about how this works.
+* [`add`](https://docs.ainiro.io/plugins/magic.lambda/add/) - This slot allows you to dynamically add nodes into a destination node.
+* [`insert-before`](https://docs.ainiro.io/plugins/magic.lambda/insert-before/) - This slot works the exact same way as the [add] node, except it will insert the nodes before the node(s) referenced in its main/destination argument.
+* [`insert-after`](https://docs.ainiro.io/plugins/magic.lambda/insert-after/) - This slot works the exact same way as the [add] and [insert-before] slots, except it will insert the nodes after the node(s) referenced in its main/destination argument.
+* [`remove-nodes`](https://docs.ainiro.io/plugins/magic.lambda/remove-nodes/) - This slot will remove all nodes its expression is pointing to.
+* [`include`](https://docs.ainiro.io/plugins/magic.lambda/include/) - This slot is logically the combination of a [for-each], [add] and [eval/invoke].
+* [`filter`](https://docs.ainiro.io/plugins/magic.lambda/filter/) - Filter allows you to filter using a predicate.
+* [`set-value`](https://docs.ainiro.io/plugins/magic.lambda/set-value/) - Changes the value of all nodes referenced as its main expression to whatever its single source happens to be.
+* [`set-x`](https://docs.ainiro.io/plugins/magic.lambda/set-x/) - Similar to [set-value], but does not evaluate expressions found in its source.
+* [`set-name`](https://docs.ainiro.io/plugins/magic.lambda/set-name/) - Changes the name of all nodes referenced as its main expression to whatever its single source happens to be.
+* [`unwrap`](https://docs.ainiro.io/plugins/magic.lambda/unwrap/) - This slot is useful if you want to evaluate some expression before the node where it's referenced is reached.
+* [`get-value`](https://docs.ainiro.io/plugins/magic.lambda/get-value/) - Returns the value of the node its expression is pointing to.
+* [`get-name`](https://docs.ainiro.io/plugins/magic.lambda/get-name/) - Returns the name of the node referenced in its expression.
+* [`get-count`](https://docs.ainiro.io/plugins/magic.lambda/get-count/) - This slot returns the number of nodes its expression is pointing to.
+* [`get-nodes`](https://docs.ainiro.io/plugins/magic.lambda/get-nodes/) - Returns the nodes its expression is referencing.
+* [`exists`](https://docs.ainiro.io/plugins/magic.lambda/exists/) - [exists] will evaluate to true if its specified expression yields one or more results.
+* [`not-exists`](https://docs.ainiro.io/plugins/magic.lambda/not-exists/) - [not-exists] will evaluate to true if its specified expression yields zero results.
+* [`null`](https://docs.ainiro.io/plugins/magic.lambda/null/) - [null] will evaluate to true if its specified expression yields null, or the expression returns no nodes.
+* [`not-null`](https://docs.ainiro.io/plugins/magic.lambda/not-null/) - [not-null] will evaluate to true if its specified expression returns nodes and at least one of those nodes has a value.
+* [`reference`](https://docs.ainiro.io/plugins/magic.lambda/reference/) - This slot will evaluate its expression, and add the entire node the expression is pointing to, as a referenced node into its value.
+* [`get-first-value`](https://docs.ainiro.io/plugins/magic.lambda/get-first-value/) - Returns the first non-null value resulting from evaluating its expression, and/or its children nodes.
+* [`get-context`](https://docs.ainiro.io/plugins/magic.lambda/get-context/) - This slot returns a context stack object, which is an object added to the stack using [context].
 
 
 # How to use [not-exists]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/not-exists/
-Description: How to use [not-exists] - return false. It's the logical opposite of [exists].
+Description: How to use [not-exists] - [not-exists] will evaluate to true if its specified expression yields zero results.
 
 The reference page of [`not-exists`](https://docs.ainiro.io/reference/slots/core/not-exists/) has its arguments, constraints and declaration.
 
@@ -18552,7 +17608,7 @@ not-exists:x:@.src2/*
 # How to use [not-null]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/not-null/
-Description: How to use [not-null] - If not, it will return false.
+Description: How to use [not-null] - [not-null] will evaluate to true if its specified expression returns nodes and at least one of those nodes has a value.
 
 The reference page of [`not-null`](https://docs.ainiro.io/reference/slots/core/not-null/) has its arguments, constraints and declaration.
 
@@ -18574,7 +17630,7 @@ not-null:x:@.src3/*
 # How to use [not]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/not/
-Description: How to use [not] - not    .:bool:true not    .:bool:false with both [or] and [and].
+Description: How to use [not] - [not] expects exactly one argument, and will negate its boolean value, whatever it is, such as the following illustrates.
 
 The reference page of [`not`](https://docs.ainiro.io/reference/slots/core/not/) has its arguments, constraints and declaration.
 
@@ -18641,7 +17697,7 @@ invocations as you wish, creating any amount of complexity in your Hyperlambda.
 # How to use [null]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/null/
-Description: How to use [null] - If not, it will return false.
+Description: How to use [null] - [null] will evaluate to true if its specified expression yields null, or the expression returns no nodes.
 
 The reference page of [`null`](https://docs.ainiro.io/reference/slots/core/null/) has its arguments, constraints and declaration.
 
@@ -18661,7 +17717,7 @@ null:x:@.src2/*
 # How to use [or]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/or/
-Description: How to use [or] - as the following illustrates.
+Description: How to use [or] - [or] is similar to [and], except it will evaluate to true if any of its arguments evaluates to true, such as the following illustrates.
 
 The reference page of [`or`](https://docs.ainiro.io/reference/slots/core/or/) has its arguments, constraints and declaration.
 
@@ -18759,41 +17815,22 @@ The **[set-name]** invocation can also be given multiple destinations, but only 
 # How to use [set-value]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/set-value/
-Description: How to use [set-value] - Hyperlambda accepts comments the exact same way C# does, and you can use either multiline comments or single line comments, like the following example illustrates.
+Description: How to use [set-value] - Changes the value of all nodes referenced as its main expression to whatever its single source happens to be.
 
 The reference page of [`set-value`](https://docs.ainiro.io/reference/slots/core/set-value/) has its arguments, constraints and declaration.
 
-Hyperlambda accepts comments the exact same way C# does, and you can use either multiline comments
-or single line comments, like the following example illustrates.
+Changes the value of all nodes referenced as its main expression to whatever its single source happens to be.
+Notice, when you invoke a slot that tries to change the value, name, or the node itself of some expression,
+and you supply a source expression to your invocation - Then the result of the source expression
+_cannot_ return more than one result. The destination expression however can modify multiple nodes
+simultaneously.
 
 ```
-/*
- * Multiline comment.
- */
-
-// Single line comment.
+.foo
+.foo
+set-value:x:../*/.foo
+   .:SUCCESS
 ```
-
-You _cannot_ put comments on lines containing nodes, and comments must be indented the same
-amount of indentations as the nodes they are commenting, implying the nodes below them. Below is
-an example.
-
-```
-.data
-   foo1:bar1
-   foo2:bar2
-
-for-each:x:@.data/*
-
-   // This is correct indentation.
-   set-value:x:@.dp/#
-      .:Loop was here ...
-```
-
-Since Hyperlambda is using spaces (SP characters) to denote scope, indentation _is important_,
-also for comments. If you de-indent the above comment, you might get unpredictable results, in particular
-if you're serializing and de-serializing your Hyperlambda preserving comments. Comments should as a general
-rule of thumb be applied with the same amount of indentation as the node below them.
 
 
 # How to use [set-x]
@@ -18906,7 +17943,7 @@ Notice, **[sort]** does not modify the original list, but returns a new list of 
 # How to use [switch]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/switch/
-Description: How to use [switch] - first [case] node with a value matching the evaluated value of the [switch] node, and execute that .val:foo .result switch:x:@.val    case:bar       set-value:x:@.result          .:Oops    case:foo
+Description: How to use [switch] - [switch] works similarly to a switch/case block in a traditional programming language, and will find the first [case] node with a value matching the evaluated value of the [switch] node, and exec...
 
 The reference page of [`switch`](https://docs.ainiro.io/reference/slots/core/switch/) has its arguments, constraints and declaration.
 
@@ -18963,29 +18000,30 @@ and match different types as you see fit in your **[case]** nodes.
 # How to use [throw]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/throw/
-Description: How to use [throw] - This slot allows you to create a try/catch/finally block in Hyperlambda, from where exceptions are caught, and optionally handled in a [.catch] lambda, and/or a [.finally] lambda.
+Description: How to use [throw] - This slot simply throws an exception, with the exception message taken from its value.
 
 The reference page of [`throw`](https://docs.ainiro.io/reference/slots/core/throw/) has its arguments, constraints and declaration.
 
-This slot allows you to create a try/catch/finally block in Hyperlambda, from where exceptions are caught,
-and optionally handled in a **[.catch]** lambda, and/or a **[.finally]** lambda.
+This slot simply throws an exception, with the exception message taken from its value.
+See the **[try]** slot above for an example. Notice, you can make the exception propagate to the client
+by adding a **[public]** parameter, and set its value to boolean _"true"_ - At which point
+the exception will be returned to the client, even in release builds, if no **[.catch]** block
+handles it before it propagates to the client - Otherwise the exception
+will only be visible in debug builds, and never returned to the client. You can also modify
+the **[status]** HTTP return value that's returned to the client, to become e.g. 404,
+indicating _"not found"_, etc. In addition you can pass in a **[field]** which will be serialised
+back to the client if specified to help the client to semantically figure out which field
+that triggered the exception. Below is an example of all of the above.
 
 ```
-try
-   throw:Whatever
-
-.catch
-   log.info:ERROR HAPPENED!! 42, 42, 42!
-
-.finally
-   log.info:Yup, we are finally there!
+throw:Whatever error message here
+   status:398
+   public:true
+   field:whatever-field
 ```
 
-Semantically this works the exact same way as try/catch/finally in other programming languages, such as
-C# for instance, in that an exception thrown inside of a try/catch block will always end up inside of
-its **[.catch]** block - And regardless of whether or not an exception is thrown, the **[.finally]**
-block will _always_ execute, allowing you to some extent create deterministic execution of Hyperlambda
-code, which has a guarantee of executing, regardless of whether or not an exception is thrown or not.
+If you create an endpoint using for instance _"Hyper IDE"_, and throw the above exception, you can see
+how this propagates to the client without the exception handler.
 
 
 # How to use [try]
@@ -19033,12 +18071,10 @@ type:x:-
 After invoking the above, the value of **[type]** will be `int`.
 
 
-# How to use [types]
+# How to use [types-slot]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/types-slot/
-Description: How to use [types] - This slot returns all Hyperlambda types your current installation supports.
-
-The reference page of [`types`](https://docs.ainiro.io/reference/slots/core/types/) has its arguments, constraints and declaration.
+Description: How to use [types-slot] - This slot returns all Hyperlambda types your current installation supports.
 
 This slot returns all Hyperlambda types your current installation supports.
 
@@ -19057,185 +18093,16 @@ Description: The [types], [type], [convert], [format] and [int2words] slots for 
 These slots allow you to inspect and convert between Hyperlambda types, in addition to
 returning the vocabulary of slots your cloudlet understands, and the signature and description of each slot.
 
-### How to use [types]
-
-This slot returns all Hyperlambda types your current installation supports.
-
-```
-types
-```
-
-### How to use [type]
-
-This slot returns the Hyperlambda type name of some value.
-
-```
-.foo:int:57
-type:x:-
-```
-
-After invoking the above, the value of **[type]** will be `int`.
-
-### How to use [convert]
-
-This slot converts the value of an expression from its original type, to whatever **[type]** declaration you
-supply as its argument.
-
-```
-.foo:57
-convert:x:-
-   type:int
-```
-
-**Notice** - You can also base64 encode and decode `byte[]` with this slot, by passing in _"base64"_ or
-_"from-base64"_ as your **[type]** argument. The value of the object you want to convert must obviously support
-conversion to the specified type, and will throw an exception if no conversion is possible, such as if you
-for instance try to convert the string of _"foo-bar"_ to an integer.
-
-### How to use [floatArray2bytes]
-
-This slot serializes a sequence of float values into raw bytes, which is useful when you need to feed vectors, such as
-embeddings, into binary APIs. Its value is an expression selecting the nodes containing the float values, each of which
-must be convertible to a float. After invocation, the value of the node is a `byte[]` containing 4 bytes for each float
-value.
-
-### How to use [format]
-
-This slot converts some expression or value according to some specified `String.Format` pattern.
-The following code will string format the number 57 to make sure it's prefixed with leading zeros, always ending
-up having at least 5 digits. See .Net String.Format method for which patterns you can use. The culture used will
-be the invariant one, unless you explicitly override the culture with a **[culture]** argument.
-
-```
-.foo:int:57
-format:x:-
-   pattern:"{0:00000}"
-```
-
-To override the **[culture]** argument used you can use something such as follows.
-
-```
-.foo:decimal:57
-format:x:-
-   pattern:"{0:0.00}"
-   culture:nb-NO
-```
-
-Since the above is using Norwegian Bokmal as its **[culture]** argument, it will return the result with a `,`
-as a decimal separator instead of the default which is `.`. You can use the same **[pattern]** values for
-this slot as you can use in C# and .Net. To see an extensive list of for instance the formatting patterns you
-can use for a date and time object, you can browse the [Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings)
-related to this. If you don't supply a **[culture]** argument the invariant culture will be used.
-
-### How to use [int2words]
-
-This slot takes a signed 64 bit integer and converts it to its word representation, such as for instance 1200050 becoming _"one million two hundred thousand and fifty"_. Below is an example of using the slot.
-
-```
-int2words:1200050
-```
-
-The slot works with signed 64 bit integer values, implying it can work with numbers in the trillions if required. The result of executing the above should resemble the following.
-
-```
-int2words:one million two hundred thousand and fifty
-```
-
-The slot is particularly useful for RAG and VSS databases, where embedding models such as _"text-embedding-ada-002"_ tends to do a much better job at matching numbers if you spell these out instead of simply providing them as numbers.
-
-### How to use [vocabulary]
-
-Returns the name of every static slot in your system, optionally passing in a string, or an expression leading to
-a string, which is a filtering condition, where the slot must _start_ with the filter specified to be considered
-a part of the end result.
-
-```
-// Returns ALL slots in your system.
-vocabulary
-
-// Returns only slots starting with [io.file]
-vocabulary:io.file
-```
-
-Notice, inside a **[whitelist]** invocation this slot only returns the slots the whitelist allows, so it
-tells the code running inside what it can actually invoke. A whitelisted slot that is pinned to an argument
-is returned once by name, regardless of how many different arguments it is pinned to.
-
-### How to use [slot.signature]
-
-Returns the documented input and output contract of a single compiled slot, given its name as the value of the slot,
-or an expression leading to its name. The result is returned as child nodes, and may contain the following.
-
-* __[input]__ - The value contract of the slot, with its `kind`, `description`, `required` and `mode`
-* __[children]__ - The child nodes the slot accepts
-* __[constraints]__ - Constraints between the child nodes
-* __[scope]__ - Scopes the slot provides or requires
-* __[output]__ - What the slot returns, with its `mode`, `kind` and `description`
-
-```
-slot.signature:slot.description
-```
-
-Invoking the above returns an **[input]** node declaring `kind` as _"slot-name"_ and `required` as true, in addition to an
-**[output]** node declaring `kind` as _"slot-description,text"_. The slot throws an exception if no slot name is supplied, or if
-the slot does not exist. Inside a **[whitelist]** invocation, it will also throw for slots the whitelist does not allow.
-
-### How to use [slot.description]
-
-Returns the description of a single compiled slot, given its name as the value of the slot, or an expression
-leading to its name.
-
-```
-slot.description:while
-```
-
-The above returns the value _"Repeats execution while a condition is true"_. The slot throws an exception if no slot name is
-supplied, or if the slot does not exist. Inside a **[whitelist]** invocation, it will also throw for slots the whitelist does not allow.
-
-### How to use [whitelist]
-
-This slot temporarily within the given scope changes the available slots, allowing you to declare a block
-of lambda, where only a sub-set of your vocabulary is available for some piece of code to invoke. This allows
-you to relatively securely allow some partially untrusted source to pass in a piece of Hyperlambda, for then
-to allow it to evaluate its own Hyperlambda. The slot takes two arguments.
-
-* __[vocabulary]__ - Whitelisted slots
-* __[.lambda]__ - Lambda object to evaluate for the given scope
-
-```
-.result
-whitelist
-
-   vocabulary
-      set-value
-      return
-
-   .lambda
-
-      // Inside of this [.lambda] object, we can only invoke [set-value], and no other slots!
-      set-value:x:@.result
-         .:foo
-
-      // Notice, the next line will throw an exception if you remove its "." character,
-      // because [add] is not whitelisted in our above [vocabulary] declaration!
-      .add:x:@.result
-         .
-            foo:bar
-      return
-         result:success
-```
-
-For security reasons the **[whitelist]** invocation's **[.lambda]** object is immutable, and the
-caller _cannot_ access nodes outside of the **[.lambda]** object itself, which prohibits the caller
-to modify, and/or read nodes from outside of its **[whitelist]** invocation. In addition a **[whitelist]**
-invocation creates its own result stack object, allowing the **[whitelist]** invocation to return values
-and nodes to the caller using for instance the **[return]** slot. If you execute the above Hyperlambda
-you can see how this semantically works by realizing how the above **[.result]** node never has its
-value actually changed, because our invocation to **[set-value]** inside our whitelist invocation yields
-a _"null node-set result"_. Hence, semantically the **[whitelist]** slot works the same way signaling
-a dynamic slot works in Hyperlambda, in that the invocation treats its **[.lambda]** object as if
-it was a dynamic slot, isolating it from the rest of our code, allowing the lambda object to return
-values and nodes to the caller.
+* [`types`](https://docs.ainiro.io/plugins/magic.lambda/types-slot/) - This slot returns all Hyperlambda types your current installation supports.
+* [`type`](https://docs.ainiro.io/plugins/magic.lambda/type/) - This slot returns the Hyperlambda type name of some value.
+* [`convert`](https://docs.ainiro.io/plugins/magic.lambda/convert/) - This slot converts the value of an expression from its original type, to whatever [type] declaration you supply as its argument.
+* [`floatArray2bytes`](https://docs.ainiro.io/plugins/magic.lambda/floatArray2bytes/) - This slot serializes a sequence of float values into raw bytes, which is useful when you need to feed vectors, such as embeddings, into binary APIs.
+* [`format`](https://docs.ainiro.io/plugins/magic.lambda/format/) - This slot converts some expression or value according to some specified String.Format pattern.
+* [`int2words`](https://docs.ainiro.io/plugins/magic.lambda/int2words/) - This slot takes a signed 64 bit integer and converts it to its word representation, such as for instance 1200050 becoming "one million two hundred thousand and fifty".
+* [`vocabulary`](https://docs.ainiro.io/plugins/magic.lambda/vocabulary/) - Returns the name of every static slot in your system, optionally passing in a string, or an expression leading to a string, which is a filtering condition, where the slot must start with the filter sp
+* [`slot.signature`](https://docs.ainiro.io/plugins/magic.lambda/slot.signature/) - Returns the documented input and output contract of a single compiled slot, given its name as the value of the slot, or an expression leading to its name.
+* [`slot.description`](https://docs.ainiro.io/plugins/magic.lambda/slot.description/) - Returns the description of a single compiled slot, given its name as the value of the slot, or an expression leading to its name.
+* [`whitelist`](https://docs.ainiro.io/plugins/magic.lambda/whitelist/) - This slot temporarily within the given scope changes the available slots, allowing you to declare a block of lambda, where only a sub-set of your vocabulary is available for some piece of code to invo
 
 ### Pinning arguments in your [vocabulary]
 
@@ -19331,221 +18198,56 @@ subject to the same pins. Attaching a file to an email with **[mail.smtp.send]**
 **[crypto.hash]**, uploading one with **[http.post]**, or resizing an image, all require the relevant
 **[io.stream.open-file]** or **[io.stream.save-file]** pin in addition to the slot itself.
 
-### How to use [context]
-
-This slot allows you to add an object unto the stack, such that it can later be retrieved with
-the **[get-context]** slot. Below is an example.
-
-```
-.result
-
-context:foo
-   value:bar
-   .lambda
-
-      set-value:x:@.result
-         get-context:foo
-```
-
-The slot requires a name as the value of its slot invocation node, a **[value]** as the value
-you want to put onto the stack, and a **[.lambda]** object being the lambda where the stack object
-exists, and can be retrieved using **[get-context]**. This is quite useful if you have some piece
-of data that needs to be accessible through the entirety of the execution of some Hyperlambda snippet,
-implying also for slots you invoke, where you don't want to pass in the data as an argument to the
-slot itself. Imagine the following to understand how this works.
-
-```
-slots.create:bar
-
-   get-context:foo
-   return:x:-
-
-context:foo
-   value:Context value
-   .lambda
-
-      signal:bar
-```
-
-If you execute the above Hyperlambda you will notice how the slot called **[bar]** actually has access to
-the context value called _"foo"_, and can retrieve this. This feature allows you to declare and create
-_"long lasting arguments"_ that are accessible from within the entirety of a piece of Hyperlambda, including
-each slot it invokes, and/or Hyperlambda files it executes.
-
-### How to use [apply]
-
-This slot takes an expression in addition to a list of arguments, and _"applies"_ the arguments unto the expression's
-result node set, allowing you to perform dynamic substitutions on lambda hierarchies such as the following illustrates.
-
-```
-.lambda
-   foo
-      arg1:{some_arg}
-      some-static-node:static-value
-
-apply:x:-
-   some_arg:value of argument
-```
-
-After execution of the above Hyperlambda you will have a result resembling the following.
-
-```
-apply
-   foo
-      arg1:value of argument
-      some-static-node:static-value
-```
-
-Notice how the nodes from your template lambda object have been copied as children into your **[apply]**
-node, while during this _"copying process"_, the arguments you supplied to **[apply]** have been used
-to perform substitutions on all nodes in your template lambda having a value of `{xxx}`, where xxx is
-your argument name. In the above example for instance the `arg1:{some_arg}` template node had its value
-replaced by the value of the **[some_arg]** node passed in as a parameter to **[apply]**. If the name of
-the argument to **[apply]**, matches the value of your template node wrapped inside curly braces - Then
-the value of your argument to apply becomes the _new value_ of your template node after substitution has
-been performed.
-
-Only node values starting out with `{` and ending with `}` will be substituted, and you are expected to provide
-all arguments found in the template lambda object, or the invocation will fail, resulting in an exception. This
-allows you to create _"template lambda objects"_ that you dynamically transform into something else, without
-really caring about its original structure, but rather only its set of dynamic substitution arguments. This
-slot leaves all other nodes as is.
-
-Basically, the way it works, is that it takes your expression, and recursively iterates each node below the
-result of your expression, checks to see if the node's value is an argument such as e.g. `{howdy}` -
-And if so, it substitutes the `{howdy}` parts with the value of the argument you are expected to supply to your
-invocation having the name **[howdy]**.
-
-You can also reference the same argument multiple times in your template, in addition to create arguments that
-are lambda objects instead of simple values. Below is an example of both of these constructs.
-
-```
-.lambda
-   foo
-      foo1:{arg1}
-      foo2:{arg1}
-      foo3:{arg2}
-
-apply:x:-
-   arg1:int:5
-   arg2
-      this:is
-         an:entire
-         lambda:object
-      used_as_an_argument:int:7
-```
-
-The above will result in the following.
-
-```
-apply
-   foo
-      foo1:int:5
-      foo2:int:5
-      foo3
-         this:is
-            an:entire
-            lambda:object
-         used_as_an_argument:int:7
-```
-
-Above you can also see how typing information is not lost, since the **[foo1]** and **[foo2]** nodes
-are both having integer values of 5 after apply is done executing. At the same time you can see how
-the **[foo3]** node instead of having a simple value applied, actually ended up with a copy of all
-children passed in as **[arg2]**. You can also substitute names of nodes, such as the following
-illustrates.
-
-```
-.lambda
-   foo
-      {arg1}:value-is-preserved
-
-apply:x:-
-   arg1:foo1
-```
-
-The above of course results in the following.
-
-```
-apply
-   foo
-      foo1:value-is-preserved
-```
-
-This is a fairly advanced slot, but it's the heart of the generator, allowing us to generate HTTP endpoints,
-starting out with some template file, which is dynamically changed, according to input arguments supplied during
-the crudification process. You can also combine transformations of names, values, and children in the
-same template nodes. The process is also recursive in nature, performing substitutions through the entire
-hierarchy of your template lambda.
-
-### How to use [sort]
-
-Sort takes an expression leading to a list of nodes, in addition to a lambda object. Your lambda
-object will be invoked several times, with an **[.lhs]**, an **[.rhs]** and a **[.result]** argument.
-It is your code's responsibility to set the value of the **[.result]** node according to which of the
-**[.lhs]** and **[.rhs]** node should come first in the sorted result.
-
-```
-.data
-   .
-      name:Thomas
-   .
-      name:John
-   .
-      name:Jane
-   .
-      name:Peter
-sort:x:@.data/*
-   if
-      lt:x:@.lhs/#/*/name
-         get-value:x:@.rhs/#/*/name
-      .lambda
-         set-value:x:@.result
-            .:int:-1
-   else-if
-      mt:x:@.lhs/#/*/name
-         get-value:x:@.rhs/#/*/name
-      .lambda
-         set-value:x:@.result
-            .:int:1
-   else
-      set-value:x:@.result
-         .:int:0
-```
-
-Notice, **[sort]** does not modify the original list, but returns a new list of nodes after having executed.
+* [`context`](https://docs.ainiro.io/plugins/magic.lambda/context/) - This slot allows you to add an object unto the stack, such that it can later be retrieved with the [get-context] slot.
+* [`apply`](https://docs.ainiro.io/plugins/magic.lambda/apply/) - This slot takes an expression in addition to a list of arguments, and "applies" the arguments unto the expression's result node set, allowing you to perform dynamic substitutions on lambda hierarchies
+* [`sort`](https://docs.ainiro.io/plugins/magic.lambda/sort/) - Sort takes an expression leading to a list of nodes, in addition to a lambda object.
 
 
 # How to use [unwrap]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/unwrap/
-Description: How to use [unwrap] - evaluates its lambda object once for each node, passing in the currently iterated node as a [.dp] argument.
+Description: How to use [unwrap] - This slot is useful if you want to evaluate some expression before the node where it's referenced is reached.
 
 The reference page of [`unwrap`](https://docs.ainiro.io/reference/slots/core/unwrap/) has its arguments, constraints and declaration.
 
-**[map]** iterates through each node being the result of its expression, the same way **[for-each]** does, and
-evaluates its lambda object once for each node, passing in the currently iterated node as a **[.dp]** argument.
-The value or nodes returned by the lambda object for each iteration, becomes the result of the slot. Each returned
-value becomes a `.` node, and any returned child nodes are added as they are. After evaluation, the children of
-**[map]** are replaced with the mapped result.
+This slot is useful if you want to evaluate some expression before the node where it's referenced is reached.
+Imagine the following.
 
-* __[map]__ - Expression selecting the nodes to map
-* Children - Lambda object evaluated once per selected node, and expected to return a value or nodes, for instance using **[return]** or **[yield]**
+```
+.src:Hello World
+unwrap:x:+
+.dest:x:@.src
+```
+
+In the above example, before the **[.dest]** node is reached by the Hyperlambda instruction pointer, the value
+of the **[.dest]** node will have been _"unwrapped"_ (evaluated), and its value will be _"Hello World"_.
+This slot becomes very handy when you invoke lambda objects with expressions, since
+it allows you to _"forward evaluate"_ said expressions inside your lambda object, _before_ the lambda object
+is actually executed.
+
+The **[unwrap]** slot can also optionally be supplied with a **[apply-lists]** argument as boolean true. By default the **[unwrap]** slot will throw an exception if you unwrap a node leading to multiple nodes. If you apply lists, it will instead add all the source nodes as destination nodes into the unwrapped node. Consider the following.
 
 ```
 .src
-   .:int:1
-   .:int:2
-   .:int:3
-map:x:@.src/*
-   math.increment:x:@.dp/#
-   unwrap:x:+/*
-   yield
-      .:x:@math.increment
+   foo1:bar1
+   foo2:bar2
+unwrap:x:+
+   apply-lists:bool:true
+.dest:x:@.src/*
 ```
 
-After execution, **[map]** has 3 children, with the values 2, 3 and 4. If an iteration returns neither a value nor
-any nodes, the slot throws an exception.
+If you remove the above **[apply-lists]** argument or set its value to false, the above code will throw an exception. If you keep the above **[apply-lists]** argument as is it will result in the following.
+
+```
+.src
+   foo1:bar1
+   foo2:bar2
+unwrap:x:+
+   apply-lists:bool:true
+.dest
+   foo1:bar1
+   foo2:bar2
+```
 
 
 # How to use [vocabulary]
@@ -19575,34 +18277,31 @@ is returned once by name, regardless of how many different arguments it is pinne
 # How to use [while]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/while/
-Description: How to use [while] - At the heart of Hyperlambda is the [eval] slot.
+Description: How to use [while] - Semantically similar to [if], but instead of evaluating its lambda object once, will iterate it for as long as the condition evaluates to true.
 
 The reference page of [`while`](https://docs.ainiro.io/reference/slots/core/while/) has its arguments, constraints and declaration.
 
-At the heart of Hyperlambda is the **[eval]** slot. This slot is responsible for executing your lambda object
-and follows a couple of simple rules. All nodes starting with a _"."_ will be ignored, and **[eval]** will not
-try to raise these nodes as signals. This has two benefits.
-
-1. You can create _"hidden"_ slots, that are only accessible from C#.
-2. You can use nodes starting with _"."_ as data nodes, separating function invocations from data.
-
-**[eval]** makes Hyperlambda _"super functional"_ in nature. Below is an example of a Hyperlambda
-piece of code, that illustrates this, by adding a _"callback"_ lambda object to its **[while]** invocation
-as a **[.lambda]** node, that will be invoked once for every iteration of your while loop.
+Semantically similar to **[if]**, but instead of evaluating its lambda object once, will iterate it for
+as long as the condition evaluates to true. Requires _exactly_ two arguments, the same way **[if]** does.
 
 ```
 .no:int:0
+.res
 
 while
    lt
       get-value:x:@.no
-      .:int:20
+      .:int:5
    .lambda
 
-      // Your lambda goes here.
-      log.info:Howdy from while
+      add:x:@.res
+         .
+            foo
       math.increment:x:@.no
 ```
+
+The above Hyperlambda snippet basically implies the following if we are to translate it into plain English;
+_"Set .no to 0, then loop while .no is less than 5, where the loop adds a node into .res, before it increments .no by 1"_.
 
 
 # How to use [whitelist]
@@ -22234,7 +20933,16 @@ change password of users, and other things related to the _"auth"_ parts of the 
 rarely if ever use these slots directly, since the system contains several endpoints helping you out with
 the consumption of these slots. However, to be complete, we've chosen to document these none the less.
 
-### [magic.auth.authenticate]
+* [`magic.auth.authenticate`](https://docs.ainiro.io/slots/auth/magic.auth.authenticate/) - This slot authenticates a user towards your specific authentication and authorisation logic, which implies looking up the username in the magic.users database table, and ensuring the password is corre
+* [`magic.auth.change-password`](https://docs.ainiro.io/slots/auth/magic.auth.change-password/) - Allows a user to change his or her password.
+* [`magic.auth.create-user`](https://docs.ainiro.io/slots/auth/magic.auth.create-user/) - This slot allows you to create a new user in Magic, with the specified username/password combination, belonging to the specified role(s).
+* [`magic.auth.ensure-role`](https://docs.ainiro.io/slots/auth/magic.auth.ensure-role/) - This slot allows you to ensure that the specified role exists, and if not, create it.
+
+
+# How to use [magic.auth.authenticate]
+
+URL: https://docs.ainiro.io/slots/auth/magic.auth.authenticate/
+Description: How to use [magic.auth.authenticate] - This slot authenticates a user towards your specific authentication and authorisation logic, which implies looking up the username in the magic.users database table, and ensuring...
 
 This slot authenticates a user towards your specific authentication and authorisation logic, which implies
 looking up the username in the `magic.users` database table, and ensuring the password is correct. If both
@@ -22261,7 +20969,11 @@ signal
    ticket:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.xxx
 ```
 
-### [magic.auth.change-password]
+
+# How to use [magic.auth.change-password]
+
+URL: https://docs.ainiro.io/slots/auth/magic.auth.change-password/
+Description: How to use [magic.auth.change-password] - Allows a user to change his or her password.
 
 Allows a user to change his or her password. This slot requires the user to be already authenticated and having a valid
 JWT token. An example of changing your own password to _"admin2"_ can be found below.
@@ -22279,7 +20991,11 @@ Yet again, Magic contains helper endpoints for these types of operations, and yo
 directly invoke the slots yourself, but rather use the helper endpoints from your own frontend if you wish to
 use this type of functionality. See the [endpoints](https://docs.ainiro.io/endpoints/) section for details.
 
-### [magic.auth.create-user]
+
+# How to use [magic.auth.create-user]
+
+URL: https://docs.ainiro.io/slots/auth/magic.auth.create-user/
+Description: How to use [magic.auth.create-user] - This slot allows you to create a new user in Magic, with the specified username/password combination, belonging to the specified role(s).
 
 This slot allows you to create a new user in Magic, with the specified username/password combination, belonging
 to the specified role(s). Below is an example of usage.
@@ -22301,7 +21017,11 @@ In addition the slot handles the following optional arguments.
 * __[is_hashed]__ - If true, the specified password is assumed to already be hashed
 * __[extra]__ - Extra fields to associate with the user, such as name and email, as a list of type/value nodes
 
-### [magic.auth.ensure-role]
+
+# How to use [magic.auth.ensure-role]
+
+URL: https://docs.ainiro.io/slots/auth/magic.auth.ensure-role/
+Description: How to use [magic.auth.ensure-role] - This slot allows you to ensure that the specified role exists, and if not, create it.
 
 This slot allows you to ensure that the specified role exists, and if not, create it. This is a useful slot when
 you create your own Hyperlambda modules, and your module depends upon some role existing in the system. Typically
@@ -22337,71 +21057,17 @@ the point, since it allows for these slots to be used transparently, or _"polymo
 database type. In the following section, we therefore document their MySQL version, implying you'll have to exchange
 the _"mysql"_ parts to test these towards a different database type.
 
-### [magic.db.mysql.databases]
+* [`magic.db.mysql.databases`](https://docs.ainiro.io/slots/database-meta/magic.db.mysql.databases/) - This slot returns all databases the system has access to within the specified connection string.
+* [`magic.db.mysql.tables`](https://docs.ainiro.io/slots/database-meta/magic.db.mysql.tables/) - This slot returns all tables for the specified [connection-string]/[database] combination.
+* [`magic.db.mysql.columns`](https://docs.ainiro.io/slots/database-meta/magic.db.mysql.columns/) - This slot returns all columns for the specified [connection-string]/[database]/[table] combination.
+* [`magic.db.mysql.foreign_keys`](https://docs.ainiro.io/slots/database-meta/magic.db.mysql.foreign_keys/) - This slot returns all foreign keys for the specified [connection-string]/[database]/[table] combination.
+* [`magic.db.mysql.indexes`](https://docs.ainiro.io/slots/database-meta/magic.db.mysql.indexes/) - This slot returns all indexes for the specified [connection-string]/[database]/[table] combination.
 
-This slot returns all databases the system has access to within the specified connection string. Example
-usage can be found below.
 
-```
-signal:magic.db.mysql.databases
-   connection-string:generic
-```
+# How to use [magic.db.mysql.columns]
 
-The above would result in a list of databases resembling the following.
-
-```
-signal
-   ""
-      db:information_schema
-   ""
-      db:magic
-   ""
-      db:mysql
-   ""
-      db:performance_schema
-   ""
-      db:sys
-```
-
-### [magic.db.mysql.tables]
-
-This slot returns all tables for the specified **[connection-string]**/**[database]** combination. Below
-is example usage.
-
-```
-signal:magic.db.mysql.tables
-   connection-string:generic
-   database:magic
-```
-
-The above would return all tables in your _"magic"_ database, resulting in something resembling the
-following.
-
-```
-signal
-   ""
-      table:crypto_invocations
-   ""
-      table:crypto_keys
-   ""
-      table:log_entries
-   ""
-      table:magic_version
-   ""
-      table:roles
-   ""
-      table:task_due
-   ""
-      table:tasks
-   ""
-      table:users
-   ""
-      table:users_crypto_keys
-   ""
-      table:users_roles
-```
-
-### [magic.db.mysql.columns]
+URL: https://docs.ainiro.io/slots/database-meta/magic.db.mysql.columns/
+Description: How to use [magic.db.mysql.columns] - This slot returns all columns for the specified [connection-string]/[database]/[table] combination.
 
 This slot returns all columns for the specified **[connection-string]**/**[database]**/**[table]** combination. Below
 is example usage.
@@ -22443,7 +21109,41 @@ The fields imply the following.
 * __[automatic]__ - If true column has a default value
 * __[hl]__ - Hyperlambda type mapping for the column
 
-### [magic.db.mysql.foreign_keys]
+
+# How to use [magic.db.mysql.databases]
+
+URL: https://docs.ainiro.io/slots/database-meta/magic.db.mysql.databases/
+Description: How to use [magic.db.mysql.databases] - This slot returns all databases the system has access to within the specified connection string.
+
+This slot returns all databases the system has access to within the specified connection string. Example
+usage can be found below.
+
+```
+signal:magic.db.mysql.databases
+   connection-string:generic
+```
+
+The above would result in a list of databases resembling the following.
+
+```
+signal
+   ""
+      db:information_schema
+   ""
+      db:magic
+   ""
+      db:mysql
+   ""
+      db:performance_schema
+   ""
+      db:sys
+```
+
+
+# How to use [magic.db.mysql.foreign_keys]
+
+URL: https://docs.ainiro.io/slots/database-meta/magic.db.mysql.foreign_keys/
+Description: How to use [magic.db.mysql.foreign_keys] - This slot returns all foreign keys for the specified [connection-string]/[database]/[table] combination.
 
 This slot returns all foreign keys for the specified **[connection-string]**/**[database]**/**[table]** combination.
 Below is example usage.
@@ -22478,7 +21178,11 @@ column pointing towards the _"users"_ table's _"username"_ column. The resulting
 * __[foreign_table]__ - Name of table the column is referencing
 * __[foreign_column]__ - Name of column in _foreign_ table the column is referencing
 
-### [magic.db.mysql.indexes]
+
+# How to use [magic.db.mysql.indexes]
+
+URL: https://docs.ainiro.io/slots/database-meta/magic.db.mysql.indexes/
+Description: How to use [magic.db.mysql.indexes] - This slot returns all indexes for the specified [connection-string]/[database]/[table] combination.
 
 This slot returns all indexes for the specified **[connection-string]**/**[database]**/**[table]** combination.
 Below is example usage.
@@ -22493,6 +21197,48 @@ signal:magic.db.mysql.indexes
 The above would return all indexes in your _"users\_roles"_ table.
 
 
+# How to use [magic.db.mysql.tables]
+
+URL: https://docs.ainiro.io/slots/database-meta/magic.db.mysql.tables/
+Description: How to use [magic.db.mysql.tables] - This slot returns all tables for the specified [connection-string]/[database] combination.
+
+This slot returns all tables for the specified **[connection-string]**/**[database]** combination. Below
+is example usage.
+
+```
+signal:magic.db.mysql.tables
+   connection-string:generic
+   database:magic
+```
+
+The above would return all tables in your _"magic"_ database, resulting in something resembling the
+following.
+
+```
+signal
+   ""
+      table:crypto_invocations
+   ""
+      table:crypto_keys
+   ""
+      table:log_entries
+   ""
+      table:magic_version
+   ""
+      table:roles
+   ""
+      table:task_due
+   ""
+      table:tasks
+   ""
+      table:users
+   ""
+      table:users_crypto_keys
+   ""
+      table:users_roles
+```
+
+
 # Misc slots
 
 URL: https://docs.ainiro.io/slots/misc/
@@ -22502,7 +21248,16 @@ Description: Magic's miscellaneous dynamic slots; loading files recursively, ens
 
 These are slots that don't belong to a specific category solving some problem related to your applications.
 
-### [magic.io.file.load-recursively]
+* [`magic.io.file.load-recursively`](https://docs.ainiro.io/slots/misc/magic.io.file.load-recursively/) - This slot loads all files recursively within the specified folder, and returns their filenames and their content.
+* [`magic.modules.ensure-database`](https://docs.ainiro.io/slots/misc/magic.modules.ensure-database/) - This slot ensures that a module's database exists by invoking its associated create database SQL file.
+* [`magic.modules.install-module`](https://docs.ainiro.io/slots/misc/magic.modules.install-module/) - This slot installs a module that has been previously unzipped into your modules folder by making sure all startup files are executed.
+* [`transformers.hash-password`](https://docs.ainiro.io/slots/misc/transformers.hash-password/) - This slot is a "transformer" and typically used for input payloads originating from HTTP invocations, such as when creating a new user, etc.
+
+
+# How to use [magic.io.file.load-recursively]
+
+URL: https://docs.ainiro.io/slots/misc/magic.io.file.load-recursively/
+Description: How to use [magic.io.file.load-recursively] - This slot loads all files recursively within the specified folder, and returns their filenames and their content.
 
 This slot loads _all_ files recursively within the specified folder, and returns their filenames _and_ their
 content. The following example Hyperlambda illustrates its usage.
@@ -22526,7 +21281,11 @@ As you can see above the result is an array of filenames, where each filename ha
 content of the file. The slot is used when for instance a frontend application is being generated based upon a
 template - In addition when you download a folder or something similar.
 
-### [magic.modules.ensure-database]
+
+# How to use [magic.modules.ensure-database]
+
+URL: https://docs.ainiro.io/slots/misc/magic.modules.ensure-database/
+Description: How to use [magic.modules.ensure-database] - This slot ensures that a module's database exists by invoking its associated create database SQL file.
 
 This slot ensures that a module's database exists by invoking its associated create database SQL file. The
 slot requires the following arguments.
@@ -22541,7 +21300,11 @@ _"yyy"_ is the default database type. The slot will also automatically execute a
 associated with the module. Notice, the _"Ensure database"_ macro in _"Hyper IDE"_ automatically takes
 care of wiring up invocations to this slot, creating the required structure in the process.
 
-### [magic.modules.install-module]
+
+# How to use [magic.modules.install-module]
+
+URL: https://docs.ainiro.io/slots/misc/magic.modules.install-module/
+Description: How to use [magic.modules.install-module] - This slot installs a module that has been previously unzipped into your modules folder by making sure all startup files are executed.
 
 This slot installs a module that has been previously unzipped into your modules folder by making sure
 all startup files are executed. The slot takes the following argument.
@@ -22550,7 +21313,11 @@ all startup files are executed. The slot takes the following argument.
 upon Magic's middleware to invoke the slot. If you unzip a zip file inside of your _"modules"_ folder,
 and/or download a bazar item, this slot will be automatically invoked.
 
-### [transformers.hash-password]
+
+# How to use [transformers.hash-password]
+
+URL: https://docs.ainiro.io/slots/misc/transformers.hash-password/
+Description: How to use [transformers.hash-password] - This slot is a "transformer" and typically used for input payloads originating from HTTP invocations, such as when creating a new user, etc.
 
 This slot is a _"transformer"_ and typically used for input payloads originating from HTTP invocations,
 such as when creating a new user, etc. The following Hyperlambda illustrates its usage.
