@@ -1,0 +1,9 @@
+{%- assign target = site.pages | where: 'url', include.url | first -%}
+{%- if target -%}
+<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+  <a href="{{ include.url | relative_url }}" itemprop="item"><span itemprop="name">{% if target.title %}{{ target.title }}{% else %}{{ include.crumb | replace: '-', ' ' | capitalize }}{% endif %}</span></a>
+  <meta itemprop="position" content="{{ include.position }}" />
+</li>
+{%- else -%}
+<li>{{ include.crumb | replace: '-', ' ' | capitalize }}</li>
+{%- endif -%}

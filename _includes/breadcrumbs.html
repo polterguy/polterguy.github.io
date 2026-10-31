@@ -1,0 +1,35 @@
+{% comment %}
+  Overrides the theme's breadcrumbs, which links every crumb to its own segment from the site
+  root, "/io" for the "io" in "/reference/slots/io/", so any page more than one level deep gets
+  crumbs that lead to the wrong page or to a 404. Here each crumb links to the whole path up to
+  and including it, is labelled with the title of the page it leads to, and is plain text when
+  no page exists there, instead of a link that would fail.
+
+  The look-up of a crumb's page is done in breadcrumb-crumb.html, which is cached by its
+  parameters, since the same few crumbs are looked up for thousands of pages.
+{% endcomment %}
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    {% assign crumbs = page.url | split: '/' %}
+    {% assign crumb_url = '' %}
+    {% assign i = 1 %}
+    {% for crumb in crumbs offset: 1 %}
+      {% if forloop.first %}
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="{{ site.url }}{{ site.baseurl }}/" itemprop="item"><span itemprop="name">{{ site.data.ui-text[site.locale].breadcrumb_home_label | default: "Home" }}</span></a>
+          <meta itemprop="position" content="{{ i }}" />
+        </li>
+        <span class="sep">{{ site.data.ui-text[site.locale].breadcrumb_separator | default: "/" }}</span>
+      {% endif %}
+      {% assign crumb_url = crumb_url | append: '/' | append: crumb %}
+      {% if forloop.last %}
+        <li class="current">{{ page.title }}</li>
+      {% else %}
+        {% assign i = i | plus: 1 %}
+        {% assign target_url = crumb_url | append: '/' %}
+        {% include_cached breadcrumb-crumb.html url=target_url crumb=crumb position=i %}
+        <span class="sep">{{ site.data.ui-text[site.locale].breadcrumb_separator | default: "/" }}</span>
+      {% endif %}
+    {% endfor %}
+  </ol>
+</nav>

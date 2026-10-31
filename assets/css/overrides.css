@@ -173,3 +173,14 @@ figure.highlight:hover .code-copy-btn,
   margin: 0.6em 0;
 }
 .slot-declaration[open] > summary { margin-bottom: 0.8em; }
+
+/*
+ * The theme pins the sidebar and caps its height at the viewport, with a scrollbar of its own,
+ * which gives two scrollbars at once, one for the page and one for the navigation. Letting it
+ * take its natural height means the page is the only thing that scrolls.
+ */
+.sidebar.sticky {
+  position: static !important;
+  max-height: none !important;
+  overflow-y: visible !important;
+}
