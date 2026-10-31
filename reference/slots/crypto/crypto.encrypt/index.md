@@ -13,13 +13,15 @@ slot_json: "/reference/slots/crypto/crypto.encrypt/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[signing-key]` | string\|byte[] | yes | Private signing key. |
 | `[encryption-key]` | string\|byte[] | yes | Public encryption key. |
+| `[signing-key-fingerprint]` | string\|byte[] | yes | Fingerprint for the signing key. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 | `[seed]` | string\|byte[] | no | Optional encryption seed. |
-| `[signing-key]` | string\|byte[] | yes | Private signing key. |
-| `[signing-key-fingerprint]` | string\|byte[] | yes | Fingerprint for the signing key. |
 
 ### JSON declaration
 

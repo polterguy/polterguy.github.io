@@ -12,6 +12,8 @@ slot_json: "/reference/slots/core/compose/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | string | yes | Expression segment evaluated and joined into the resulting expression. Can be repeated. |

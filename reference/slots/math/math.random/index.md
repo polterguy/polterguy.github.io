@@ -12,10 +12,12 @@ slot_json: "/reference/slots/math/math.random/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[max]` | int | no | Exclusive upper bound; when supplied without [min], the lower bound is 0. |
 | `[min]` | int | no | Inclusive lower bound; requires [max] and must appear before it. |
+| `[max]` | int | no | Exclusive upper bound; when supplied without [min], the lower bound is 0. |
 
 ### Constraints
 

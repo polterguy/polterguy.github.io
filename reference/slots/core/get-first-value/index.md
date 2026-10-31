@@ -12,6 +12,8 @@ slot_json: "/reference/slots/core/get-first-value/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | lambda | yes | Candidate value source evaluated until the first non-null value is produced. Can be repeated. |

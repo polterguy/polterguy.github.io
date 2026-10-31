@@ -10,6 +10,8 @@ slot_json: "/reference/slots/response/response.headers.set/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | string | yes | Response header name and value. Can be repeated. |

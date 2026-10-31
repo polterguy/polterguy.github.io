@@ -13,6 +13,8 @@ slot_json: "/reference/slots/strings/strings.replace/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _unnamed child node_ | string | yes | Text or pattern to find. |

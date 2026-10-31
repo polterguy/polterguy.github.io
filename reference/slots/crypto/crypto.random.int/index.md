@@ -12,6 +12,8 @@ slot_json: "/reference/slots/crypto/crypto.random.int/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[max]` | int | no | Exclusive maximum integer. Default: `int.MaxValue`. |

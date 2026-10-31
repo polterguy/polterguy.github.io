@@ -13,14 +13,16 @@ slot_json: "/reference/slots/image/image.crop/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[bottom]` | int | no | Pixels to crop from the bottom edge. Default: `0`. |
+| `[type]` | string | no | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
 | `[dest]` | string | no | Optional destination filename; when supplied, the image is saved to disk instead of returned as a stream. |
 | `[left]` | int | no | Pixels to crop from the left edge. Default: `0`. |
-| `[right]` | int | no | Pixels to crop from the right edge. Default: `0`. |
 | `[top]` | int | no | Pixels to crop from the top edge. Default: `0`. |
-| `[type]` | string | no | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
+| `[right]` | int | no | Pixels to crop from the right edge. Default: `0`. |
+| `[bottom]` | int | no | Pixels to crop from the bottom edge. Default: `0`. |
 
 Guide: [How to use [image.crop]](/plugins/magic.lambda.image/#how-to-use-imagecrop)
 

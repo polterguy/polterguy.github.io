@@ -12,10 +12,12 @@ slot_json: "/reference/slots/cache/cache.set/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[expiration]` | long | no | Expiration in seconds. Default: `5`. |
 | `[value]` | string | no | Value to store; omitted or null removes the cached item. |
+| `[expiration]` | long | no | Expiration in seconds. Default: `5`. |
 
 Guide: [How to use [cache.set]](/plugins/magic.lambda.caching/#how-to-use-cacheset)
 

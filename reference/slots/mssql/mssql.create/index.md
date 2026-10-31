@@ -13,13 +13,15 @@ slot_json: "/reference/slots/mssql/mssql.create/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[generate]` | bool | no | Whether to only generate SQL and parameter nodes instead of executing it. Default: `false`. |
-| `[return-id]` | bool | no | Whether to return the created row ID. Default: `true`. |
 | `[table]` | string | yes | Table name to use in the SQL statement. |
 | `[values]` | lambda | yes | Column values to insert or update. |
 | `[values]` / _any node name_ | object | yes | Column name and value. Can be repeated. |
+| `[generate]` | bool | no | Whether to only generate SQL and parameter nodes instead of executing it. Default: `false`. |
+| `[return-id]` | bool | no | Whether to return the created row ID. Default: `true`. |
 
 ### JSON declaration
 

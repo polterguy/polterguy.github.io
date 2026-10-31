@@ -12,6 +12,8 @@ slot_json: "/reference/slots/io/io.folder.copy/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | string | yes | Destination path. |

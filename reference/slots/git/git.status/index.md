@@ -13,10 +13,12 @@ slot_json: "/reference/slots/git/git.status/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[branch]` | bool | no | Include branch information. Default: `false`. |
 | `[porcelain]` | bool | no | Use porcelain status output. Default: `false`. |
+| `[branch]` | bool | no | Include branch information. Default: `false`. |
 | `[structured]` | bool | no | Return status lines as child nodes. Default: `false`. |
 
 Guide: [How to use [git.status]](/plugins/magic.lambda.git/#how-to-use-gitstatus)

@@ -103,12 +103,16 @@ PAGE_DEPTH = 6         # on the page of a single slot, where there is room for t
 INLINE_JSON_LIMIT = 3000  # bytes; larger declarations are fetched when the reader opens them
 
 
-def argument_rows(nodes, cut, path=(), depth=MAX_DEPTH):
+def argument_rows(nodes, cut, path=(), depth=MAX_DEPTH, required_first=False):
     """
     One row per argument. A node that repeats one of its own ancestors is recursion in the
     contract and is skipped, and nesting stops at MAX_DEPTH, both recorded in [cut].
     """
     rows = []
+    # Required arguments first, the rest in the order they are declared. Arguments without a name
+    # are positional, where the order is the meaning, so those are left exactly as declared.
+    if required_first and not any(n['name'] == '.' for n in nodes):
+        nodes = sorted(nodes, key=lambda n: value(n, 'required') is not True)
     for n in nodes:
         name = n['name']
         if name in path and name not in ('*', '.'):
@@ -131,7 +135,7 @@ def argument_rows(nodes, cut, path=(), depth=MAX_DEPTH):
             if len(path) + 1 >= depth:
                 cut.append(name)
             else:
-                rows += argument_rows(nested['children'], cut, path + (name,), depth)
+                rows += argument_rows(nested['children'], cut, path + (name,), depth, required_first)
     return rows
 
 
@@ -166,8 +170,9 @@ def render_contract(entry, anchors, depth):
     children = child(tree, 'children')
     if children and children['children']:
         cut = []
-        out += ['### Arguments', ''] + table(['Argument', 'Type', 'Required', 'Description'],
-                                              argument_rows(children['children'], cut, (), depth)) + ['']
+        out += ['### Arguments', '', 'Required arguments come first, then the optional ones in the order they are declared.', ''] + table(
+            ['Argument', 'Type', 'Required', 'Description'],
+            argument_rows(children['children'], cut, (), depth, True)) + ['']
         if cut:
             out += [note, '']
 
@@ -215,11 +220,14 @@ def group_entries(records):
     """One entry per distinct contract; slots saying exactly the same thing are aliases."""
     groups = {}
     for r in records:
-        groups.setdefault((r.get('description') or '', json.dumps(r.get('signature'), sort_keys=True)), []).append(r['name'])
+        # Sorted only to compare contracts. The entry keeps the original, whose order is the order
+        # the arguments are declared in, and that is worth keeping on the page.
+        key = (r.get('description') or '', json.dumps(r.get('signature'), sort_keys=True))
+        groups.setdefault(key, {'names': [], 'signature': r.get('signature')})['names'].append(r['name'])
     entries = []
-    for (description, signature), names in groups.items():
-        names.sort(key=lambda n: ('.' not in n, n))
-        entries.append({'names': names, 'description': description, 'tree': from_json(json.loads(signature))})
+    for (description, _), group in groups.items():
+        names = sorted(group['names'], key=lambda n: ('.' not in n, n))
+        entries.append({'names': names, 'description': description, 'tree': from_json(group['signature'])})
     return entries
 
 

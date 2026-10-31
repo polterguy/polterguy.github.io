@@ -13,10 +13,12 @@ slot_json: "/reference/slots/image/image.convert/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[dest]` | string | no | Optional destination filename; when supplied, the image is saved to disk instead of returned as a stream. |
 | `[type]` | string | yes | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
+| `[dest]` | string | no | Optional destination filename; when supplied, the image is saved to disk instead of returned as a stream. |
 
 Guide: [How to use [image.convert]](/plugins/magic.lambda.image/#how-to-use-imageconvert)
 

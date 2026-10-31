@@ -14,6 +14,8 @@ Also known as: [`function`](/reference/slots/core/function/).
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | lambda | yes | Executable child slot stored as the dynamic slot body. Can be repeated. |

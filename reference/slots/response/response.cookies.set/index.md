@@ -12,15 +12,17 @@ slot_json: "/reference/slots/response/response.cookies.set/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[domain]` | string | no | Cookie domain. |
+| `[value]` | string | yes | Cookie value. |
 | `[expires]` | DateTime | no | Cookie expiration. |
 | `[http-only]` | bool | no | Whether the cookie is HTTP-only. |
+| `[secure]` | bool | no | Whether the cookie is secure. |
+| `[domain]` | string | no | Cookie domain. |
 | `[path]` | string | no | Cookie path. |
 | `[same-site]` | string | no | Cookie SameSite mode: Strict, Lax, None, or Unspecified. |
-| `[secure]` | bool | no | Whether the cookie is secure. |
-| `[value]` | string | yes | Cookie value. |
 
 ### JSON declaration
 

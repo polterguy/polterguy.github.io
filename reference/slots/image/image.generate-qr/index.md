@@ -13,6 +13,8 @@ slot_json: "/reference/slots/image/image.generate-qr/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[size]` | int | no | QR module size. Default: `4`. |

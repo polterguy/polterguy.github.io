@@ -12,6 +12,8 @@ slot_json: "/reference/slots/core/unwrap/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[apply-lists]` | bool | no | Whether list results should be applied while unwrapping. Default: `false`. |

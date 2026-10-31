@@ -13,6 +13,8 @@ slot_json: "/reference/slots/crypto/crypto.rsa.encrypt/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[public-key]` | string\|byte[] | yes | Public key for the RSA operation. |

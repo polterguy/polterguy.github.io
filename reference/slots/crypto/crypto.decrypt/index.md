@@ -13,11 +13,13 @@ slot_json: "/reference/slots/crypto/crypto.decrypt/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[decryption-key]` | string\|byte[] | yes | Private decryption key. |
-| `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 | `[verification-key]` | string\|byte[] | yes | Public key used to verify the signature. |
+| `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 
 ### JSON declaration
 

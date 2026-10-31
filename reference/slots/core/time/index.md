@@ -12,13 +12,15 @@ slot_json: "/reference/slots/core/time/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[days]` | int | no | Number of days. Default: `0`. |
 | `[hours]` | int | no | Number of hours. Default: `0`. |
-| `[milliseconds]` | int | no | Number of milliseconds. Default: `0`. |
 | `[minutes]` | int | no | Number of minutes. Default: `0`. |
 | `[seconds]` | int | no | Number of seconds. Default: `0`. |
+| `[milliseconds]` | int | no | Number of milliseconds. Default: `0`. |
 
 Guide: [How to use [time]](/plugins/magic.lambda.dates/#how-to-use-time)
 

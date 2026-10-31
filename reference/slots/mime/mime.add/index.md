@@ -12,6 +12,8 @@ slot_json: "/reference/slots/mime/mime.add/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _unnamed child node_ | string | yes | MIME type value for the extension/key. |

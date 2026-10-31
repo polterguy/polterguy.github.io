@@ -13,17 +13,19 @@ slot_json: "/reference/slots/puppeteer/puppeteer.connect/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[timeout-minutes]` | int | no | Idle timeout in minutes. |
+| `[max-lifetime-minutes]` | int | no | Maximum session lifetime in minutes. |
+| `[headless]` | bool | no | Whether the browser should run headless. Default: `true`. |
+| `[timeout]` | int | no | Browser launch timeout in milliseconds. |
 | `[args]` | string\|lambda | no | Browser launch arguments. |
 | `[args]` / _unnamed child node_ | string | no | Argument value. Can be repeated. |
+| `[user-data-dir]` | string | no | Browser user data directory. |
 | `[executable]` | string | no | Browser executable path. |
 | `[executable-path]` | string | no | Browser executable path. |
-| `[headless]` | bool | no | Whether the browser should run headless. Default: `true`. |
-| `[max-lifetime-minutes]` | int | no | Maximum session lifetime in minutes. |
-| `[timeout]` | int | no | Browser launch timeout in milliseconds. |
-| `[timeout-minutes]` | int | no | Idle timeout in minutes. |
-| `[user-data-dir]` | string | no | Browser user data directory. |
 
 ### Constraints
 

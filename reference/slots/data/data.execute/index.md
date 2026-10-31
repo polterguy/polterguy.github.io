@@ -14,10 +14,12 @@ slot_json: "/reference/slots/data/data.execute/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 | `[database-type]` | string | no | Database adapter to use instead of the configured default. |
+| _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 
 Guide: [How to use [data.execute]](/plugins/magic.data.common/#how-to-use-dataexecute)
 

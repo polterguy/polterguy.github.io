@@ -10,35 +10,37 @@ slot_json: "/reference/slots/mail/mail.smtp.send/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[message]` | lambda | yes | Email message to send. Can be repeated. |
-| `[message]` / `[bcc]` | lambda | no | Email address collection. |
-| `[message]` / `[bcc]` / _unnamed child node_ | lambda | no | Structured address containing [email] and optional [name]. Can be repeated. |
-| `[message]` / `[bcc]` / _unnamed child node_ / `[email]` | string | yes | Email address. |
-| `[message]` / `[bcc]` / _unnamed child node_ / `[name]` | string | no | Display name. |
-| `[message]` / `[cc]` | lambda | no | Email address collection. |
-| `[message]` / `[cc]` / _unnamed child node_ | lambda | no | Structured address containing [email] and optional [name]. Can be repeated. |
-| `[message]` / `[cc]` / _unnamed child node_ / `[email]` | string | yes | Email address. |
-| `[message]` / `[cc]` / _unnamed child node_ / `[name]` | string | no | Display name. |
-| `[message]` / `[entity]` | string | yes | MIME entity declaration for the message body; node value is the MIME content type. |
-| `[message]` / `[entity]` / `[content]` | string | no | Inline MIME part content. |
-| `[message]` / `[entity]` / `[filename]` | string | no | File path to use as MIME part content. |
-| `[message]` / `[entity]` / `[headers]` | lambda | no | MIME headers. |
-| `[message]` / `[entity]` / `[headers]` / _any node name_ | string | no | Header name and value. Can be repeated. |
-| `[message]` / `[from]` | lambda | no | Email address collection. |
-| `[message]` / `[from]` / _unnamed child node_ | lambda | no | Structured address containing [email] and optional [name]. Can be repeated. |
-| `[message]` / `[from]` / _unnamed child node_ / `[email]` | string | yes | Email address. |
-| `[message]` / `[from]` / _unnamed child node_ / `[name]` | string | no | Display name. |
-| `[message]` / `[reply-to]` | lambda | no | Email address collection. |
-| `[message]` / `[reply-to]` / _unnamed child node_ | lambda | no | Structured address containing [email] and optional [name]. Can be repeated. |
-| `[message]` / `[reply-to]` / _unnamed child node_ / `[email]` | string | yes | Email address. |
-| `[message]` / `[reply-to]` / _unnamed child node_ / `[name]` | string | no | Display name. |
-| `[message]` / `[subject]` | string | no | Message subject. |
 | `[message]` / `[to]` | lambda | yes | Email address collection. |
 | `[message]` / `[to]` / _unnamed child node_ | lambda | yes | Structured address containing [email] and optional [name]. Can be repeated. |
 | `[message]` / `[to]` / _unnamed child node_ / `[email]` | string | yes | Email address. |
 | `[message]` / `[to]` / _unnamed child node_ / `[name]` | string | no | Display name. |
+| `[message]` / `[entity]` | string | yes | MIME entity declaration for the message body; node value is the MIME content type. |
+| `[message]` / `[entity]` / `[headers]` | lambda | no | MIME headers. |
+| `[message]` / `[entity]` / `[headers]` / _any node name_ | string | no | Header name and value. Can be repeated. |
+| `[message]` / `[entity]` / `[content]` | string | no | Inline MIME part content. |
+| `[message]` / `[entity]` / `[filename]` | string | no | File path to use as MIME part content. |
+| `[message]` / `[subject]` | string | no | Message subject. |
+| `[message]` / `[from]` | lambda | no | Email address collection. |
+| `[message]` / `[from]` / _unnamed child node_ | lambda | no | Structured address containing [email] and optional [name]. Can be repeated. |
+| `[message]` / `[from]` / _unnamed child node_ / `[email]` | string | yes | Email address. |
+| `[message]` / `[from]` / _unnamed child node_ / `[name]` | string | no | Display name. |
+| `[message]` / `[cc]` | lambda | no | Email address collection. |
+| `[message]` / `[cc]` / _unnamed child node_ | lambda | no | Structured address containing [email] and optional [name]. Can be repeated. |
+| `[message]` / `[cc]` / _unnamed child node_ / `[email]` | string | yes | Email address. |
+| `[message]` / `[cc]` / _unnamed child node_ / `[name]` | string | no | Display name. |
+| `[message]` / `[bcc]` | lambda | no | Email address collection. |
+| `[message]` / `[bcc]` / _unnamed child node_ | lambda | no | Structured address containing [email] and optional [name]. Can be repeated. |
+| `[message]` / `[bcc]` / _unnamed child node_ / `[email]` | string | yes | Email address. |
+| `[message]` / `[bcc]` / _unnamed child node_ / `[name]` | string | no | Display name. |
+| `[message]` / `[reply-to]` | lambda | no | Email address collection. |
+| `[message]` / `[reply-to]` / _unnamed child node_ | lambda | no | Structured address containing [email] and optional [name]. Can be repeated. |
+| `[message]` / `[reply-to]` / _unnamed child node_ / `[email]` | string | yes | Email address. |
+| `[message]` / `[reply-to]` / _unnamed child node_ / `[name]` | string | no | Display name. |
 
 _Nodes nested deeper than 6 levels, and nodes that repeat one of their own ancestors, are not listed. The JSON declaration below has all of them._
 

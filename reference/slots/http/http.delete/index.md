@@ -13,18 +13,20 @@ slot_json: "/reference/slots/http/http.delete/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[.sse]` | lambda | no | Callback executed once per server-sent event line; receives the line in [.arguments/message]. |
-| `[convert]` | bool | no | Whether to convert known response content types to lambda. Default: `false`. |
-| `[headers]` | lambda | no | HTTP request headers. |
-| `[headers]` / _any node name_ | string | no | HTTP header value. Can be repeated. |
 | `[query]` | lambda | no | Query string parameters. |
 | `[query]` / _any node name_ | string | no | Query parameter value. Can be repeated. |
-| `[timeout]` | int | no | Request timeout in seconds. |
-| `[token]` | string | no | Bearer token to add as Authorization header. |
 | `[url-params]` | lambda | no | Named replacements for {placeholders} in the URL. |
 | `[url-params]` / _any node name_ | string | no | URL placeholder replacement value. Can be repeated. |
+| `[headers]` | lambda | no | HTTP request headers. |
+| `[headers]` / _any node name_ | string | no | HTTP header value. Can be repeated. |
+| `[token]` | string | no | Bearer token to add as Authorization header. |
+| `[timeout]` | int | no | Request timeout in seconds. |
+| `[convert]` | bool | no | Whether to convert known response content types to lambda. Default: `false`. |
+| `[.sse]` | lambda | no | Callback executed once per server-sent event line; receives the line in [.arguments/message]. |
 
 ### Returned nodes
 

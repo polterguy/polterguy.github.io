@@ -13,6 +13,8 @@ slot_json: "/reference/slots/core/sort/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | lambda | no | Comparer body evaluated with [.lhs], [.rhs], and [.result] injected. Can be repeated. |

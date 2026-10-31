@@ -12,6 +12,8 @@ slot_json: "/reference/slots/validators/validators.regex/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[regex]` | string | yes | Regular expression pattern the value must match. |

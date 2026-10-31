@@ -12,6 +12,8 @@ slot_json: "/reference/slots/sockets/sockets.users.count/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[filter]` | string | no | Username filter. |

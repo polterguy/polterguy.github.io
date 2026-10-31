@@ -13,6 +13,8 @@ slot_json: "/reference/slots/cache/cache.try-get/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[.lambda]` | lambda | yes | Callback executed to create the cached value when the key is missing. |

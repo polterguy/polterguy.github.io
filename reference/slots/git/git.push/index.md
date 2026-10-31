@@ -13,10 +13,12 @@ slot_json: "/reference/slots/git/git.push/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[branch]` | string | no | Branch to push. |
 | `[remote]` | string | no | Remote to push to. Default: `origin`. |
+| `[branch]` | string | no | Branch to push. |
 | `[set-upstream]` | bool | no | Set upstream while pushing. Default: `false`. |
 
 Guide: [How to use [git.push]](/plugins/magic.lambda.git/#how-to-use-gitpush)

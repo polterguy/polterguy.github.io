@@ -12,6 +12,8 @@ slot_json: "/reference/slots/core/switch/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[case]` | object | yes | Case branch matching the switch value. Can be repeated. |

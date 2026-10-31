@@ -12,15 +12,17 @@ slot_json: "/reference/slots/auth/auth.ticket.create/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[claims]` | lambda | no | Claims to put in the ticket. |
-| `[claims]` / _any node name_ | string | no | Named map entry. Can be repeated. |
-| `[duration]` | long | no | Relative expiration duration in minutes. |
-| `[expires]` | DateTime | no | Absolute UTC expiration time. |
+| `[username]` | string | yes | Username to put in the ticket. |
 | `[roles]` | lambda | no | Roles to put in the ticket. |
 | `[roles]` / _any node name_ | string | no | List item. Can be repeated. |
-| `[username]` | string | yes | Username to put in the ticket. |
+| `[claims]` | lambda | no | Claims to put in the ticket. |
+| `[claims]` / _any node name_ | string | no | Named map entry. Can be repeated. |
+| `[expires]` | DateTime | no | Absolute UTC expiration time. |
+| `[duration]` | long | no | Relative expiration duration in minutes. |
 
 ### Constraints
 

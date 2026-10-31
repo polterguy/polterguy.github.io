@@ -13,6 +13,8 @@ slot_json: "/reference/slots/strings/strings.builder/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | lambda | no | Executable child slot evaluated while the StringBuilder is scoped; use [strings.builder.append] to append text. Can be repeated. |

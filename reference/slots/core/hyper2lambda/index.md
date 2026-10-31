@@ -13,6 +13,8 @@ slot_json: "/reference/slots/core/hyper2lambda/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[comments]` | bool | no | Whether parser comment nodes should be preserved as [..] nodes with the comment text as value. Default: `false`. |

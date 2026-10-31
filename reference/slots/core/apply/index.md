@@ -13,6 +13,8 @@ slot_json: "/reference/slots/core/apply/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | object | no | Template replacement node matched by name; its value and children replace placeholders named {name}. Can be repeated. |

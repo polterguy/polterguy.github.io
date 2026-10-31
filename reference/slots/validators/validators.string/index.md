@@ -12,10 +12,12 @@ slot_json: "/reference/slots/validators/validators.string/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[max]` | int | no | Maximum accepted length. Default: `int.MaxValue`. |
 | `[min]` | int | no | Minimum accepted length. Default: `0`. |
+| `[max]` | int | no | Maximum accepted length. Default: `int.MaxValue`. |
 
 Guide: [How to use [validators.string]](/plugins/magic.lambda.validators/#how-to-use-validatorsstring)
 

@@ -13,6 +13,8 @@ slot_json: "/reference/slots/system/system.execute/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[args]` | string\|lambda | no | Process arguments as a shell-like string or child values. |

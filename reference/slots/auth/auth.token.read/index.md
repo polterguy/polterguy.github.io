@@ -12,6 +12,8 @@ slot_json: "/reference/slots/auth/auth.token.read/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[roles]` | string | yes | Comma-separated roles required by the token. |

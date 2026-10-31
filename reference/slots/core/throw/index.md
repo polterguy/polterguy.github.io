@@ -12,11 +12,13 @@ slot_json: "/reference/slots/core/throw/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[field]` | string | no | Optional form field or control ID associated with the exception. |
 | `[public]` | bool | no | Whether the exception message may be returned to clients. Default: `false`. |
 | `[status]` | int | no | HTTP status code associated with the exception. Default: `500`. |
+| `[field]` | string | no | Optional form field or control ID associated with the exception. |
 
 Guide: [How to use [throw]](/plugins/magic.lambda/exceptions/#how-to-use-throw)
 

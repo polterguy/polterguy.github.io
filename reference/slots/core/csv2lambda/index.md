@@ -13,11 +13,13 @@ slot_json: "/reference/slots/core/csv2lambda/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[null-value]` | string | no | String used to represent null values. Default: `[NULL]`. |
 | `[types]` | lambda | no | Column type conversions keyed by column name. |
 | `[types]` / _any node name_ | string | yes | Type name for the column. Can be repeated. |
+| `[null-value]` | string | no | String used to represent null values. Default: `[NULL]`. |
 
 ### Returned nodes
 

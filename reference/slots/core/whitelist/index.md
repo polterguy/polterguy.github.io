@@ -13,11 +13,13 @@ slot_json: "/reference/slots/core/whitelist/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[.lambda]` | lambda | yes | Executable lambda block. |
 | `[vocabulary]` | lambda | yes | Allowed slot names for the restricted evaluation scope. |
 | `[vocabulary]` / _any node name_ | string | yes | Allowed native slot name (e.g. add, set-value, if) that the body is permitted to invoke. Can be repeated. |
+| `[.lambda]` | lambda | yes | Executable lambda block. |
 
 Guide: [How to use [whitelist]](/plugins/magic.lambda.io/#restricting-file-access-with-whitelist)
 

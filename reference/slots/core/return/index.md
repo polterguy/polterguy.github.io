@@ -13,6 +13,8 @@ slot_json: "/reference/slots/core/return/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | object | no | Child node forwarded to the nearest caller without evaluation; when children exist, all children are returned as-is. Can be repeated. |

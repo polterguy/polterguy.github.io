@@ -12,6 +12,8 @@ slot_json: "/reference/slots/sockets/sockets.user.add-to-group/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[group]` | string | yes | Socket group name. |

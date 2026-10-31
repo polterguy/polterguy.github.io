@@ -13,6 +13,8 @@ slot_json: "/reference/slots/crypto/crypto.rsa.sign/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[private-key]` | string\|byte[] | yes | Private key for the RSA operation. |

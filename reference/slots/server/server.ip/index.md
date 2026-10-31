@@ -12,6 +12,8 @@ slot_json: "/reference/slots/server/server.ip/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[version]` | string | no | IP version to return, either ipv4 or ipv6. |

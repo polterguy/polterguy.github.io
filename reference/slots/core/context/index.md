@@ -13,10 +13,12 @@ slot_json: "/reference/slots/core/context/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[.lambda]` | lambda | yes | Body evaluated while the context value is scoped. |
 | `[value]` | object | yes | Value stored in the named stack context. |
+| `[.lambda]` | lambda | yes | Body evaluated while the context value is scoped. |
 
 Guide: [How to use [context]](/plugins/magic.lambda/types/#how-to-use-context)
 

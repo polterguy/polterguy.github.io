@@ -13,6 +13,8 @@ slot_json: "/reference/slots/core/pdf2text/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[preserve-pages]` | bool | no | Whether to return one child node per page instead of one combined value. Default: `false`. |

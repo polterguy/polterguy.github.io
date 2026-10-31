@@ -13,6 +13,8 @@ slot_json: "/reference/slots/core/lambda2json/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[format]` | bool | no | Whether to pretty-print the JSON output. Default: `false`. |

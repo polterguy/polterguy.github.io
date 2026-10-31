@@ -13,6 +13,8 @@ slot_json: "/reference/slots/time/time.format/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[format]` | string | yes | Format string. |

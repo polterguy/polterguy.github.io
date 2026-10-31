@@ -13,12 +13,14 @@ slot_json: "/reference/slots/puppeteer/puppeteer.wait-for-selector/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[hidden]` | bool | no | Wait until selector is hidden. |
 | `[selector]` | string | yes | CSS selector. |
 | `[timeout]` | int | no | Wait timeout in milliseconds. |
 | `[visible]` | bool | no | Wait until selector is visible. |
+| `[hidden]` | bool | no | Wait until selector is hidden. |
 
 Guide: [How to use [puppeteer.wait-for-selector]](/plugins/magic.lambda.puppeteer/#puppeteerwait-for-selector)
 

@@ -13,20 +13,22 @@ slot_json: "/reference/slots/http/http.post/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[.sse]` | lambda | no | Callback executed once per server-sent event line; receives the line in [.arguments/message]. |
-| `[convert]` | bool | no | Whether to convert known response content types to lambda. Default: `false`. |
-| `[filename]` | string | no | File path to stream as the request payload. |
-| `[headers]` | lambda | no | HTTP request headers. |
-| `[headers]` / _any node name_ | string | no | HTTP header value. Can be repeated. |
-| `[payload]` | object\|lambda | no | Request payload value or structured payload transformed according to Content-Type. |
 | `[query]` | lambda | no | Query string parameters. |
 | `[query]` / _any node name_ | string | no | Query parameter value. Can be repeated. |
-| `[timeout]` | int | no | Request timeout in seconds. |
-| `[token]` | string | no | Bearer token to add as Authorization header. |
 | `[url-params]` | lambda | no | Named replacements for {placeholders} in the URL. |
 | `[url-params]` / _any node name_ | string | no | URL placeholder replacement value. Can be repeated. |
+| `[headers]` | lambda | no | HTTP request headers. |
+| `[headers]` / _any node name_ | string | no | HTTP header value. Can be repeated. |
+| `[token]` | string | no | Bearer token to add as Authorization header. |
+| `[timeout]` | int | no | Request timeout in seconds. |
+| `[convert]` | bool | no | Whether to convert known response content types to lambda. Default: `false`. |
+| `[.sse]` | lambda | no | Callback executed once per server-sent event line; receives the line in [.arguments/message]. |
+| `[payload]` | object\|lambda | no | Request payload value or structured payload transformed according to Content-Type. |
+| `[filename]` | string | no | File path to stream as the request payload. |
 
 ### Returned nodes
 

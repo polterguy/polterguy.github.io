@@ -12,6 +12,8 @@ slot_json: "/reference/slots/core/case/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | lambda | yes | Case branch body executed by the parent [switch]. Can be repeated. |

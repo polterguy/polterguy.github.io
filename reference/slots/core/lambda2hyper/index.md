@@ -13,6 +13,8 @@ slot_json: "/reference/slots/core/lambda2hyper/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[comments]` | bool | no | Whether generated Hyperlambda should include comments. Default: `false`. |

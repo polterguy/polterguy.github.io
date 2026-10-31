@@ -13,16 +13,18 @@ slot_json: "/reference/slots/github/github.repo.create/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[auto-init]` | bool | no | Initialize the repository. Default: `false`. |
-| `[default-branch]` | string | no | Default branch name. |
-| `[description]` | string | no | Repository description. |
-| `[gitignore-template]` | string | no | GitHub gitignore template. |
-| `[homepage]` | string | no | Repository homepage URL. |
-| `[license-template]` | string | no | GitHub license template. |
 | `[owner]` | string | no | Organization owner; omit to create under the authenticated user. |
 | `[private]` | bool | no | Whether the repository is private. Default: `false`. |
+| `[description]` | string | no | Repository description. |
+| `[homepage]` | string | no | Repository homepage URL. |
+| `[auto-init]` | bool | no | Initialize the repository. Default: `false`. |
+| `[default-branch]` | string | no | Default branch name. |
+| `[gitignore-template]` | string | no | GitHub gitignore template. |
+| `[license-template]` | string | no | GitHub license template. |
 
 Guide: [How to use [github.repo.create]](/plugins/magic.lambda.git/#how-to-use-githubrepocreate)
 

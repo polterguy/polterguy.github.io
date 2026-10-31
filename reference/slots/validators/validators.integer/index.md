@@ -12,10 +12,12 @@ slot_json: "/reference/slots/validators/validators.integer/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[max]` | long | no | Maximum accepted value. |
 | `[min]` | long | no | Minimum accepted value. |
+| `[max]` | long | no | Maximum accepted value. |
 
 Guide: [How to use [validators.integer]](/plugins/magic.lambda.validators/#how-to-use-validatorsinteger)
 

@@ -13,11 +13,13 @@ slot_json: "/reference/slots/crypto/crypto.sign/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 | `[signing-key]` | string\|byte[] | yes | Private signing key. |
 | `[signing-key-fingerprint]` | string\|byte[] | yes | Fingerprint for the signing key. |
+| `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 
 ### JSON declaration
 

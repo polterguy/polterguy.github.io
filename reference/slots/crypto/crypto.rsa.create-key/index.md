@@ -12,11 +12,13 @@ slot_json: "/reference/slots/crypto/crypto.rsa.create-key/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
-| `[seed]` | string\|byte[] | no | Optional deterministic seed. |
 | `[strength]` | int | no | RSA key strength in bits. Default: `2048`. |
+| `[seed]` | string\|byte[] | no | Optional deterministic seed. |
+| `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 
 ### JSON declaration
 

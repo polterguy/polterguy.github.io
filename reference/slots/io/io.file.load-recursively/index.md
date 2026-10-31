@@ -16,8 +16,8 @@ slot_json: "/reference/slots/io/io.file.load-recursively/slot.json"
 | Node | Type | Required | Description |
 |---|---|---|---|
 | _unnamed child node_ | lambda | no | One loaded file entry; access fields via the [name] and [content] children. Can be repeated. |
-| _unnamed child node_ / `[content]` | string | yes | Loaded file content as text. |
 | _unnamed child node_ / `[name]` | string | yes | Relative file path of the loaded file. |
+| _unnamed child node_ / `[content]` | string | yes | Loaded file content as text. |
 
 Guide: [How to use [io.file.load-recursively]](/plugins/magic.lambda.io/#how-to-use-iofileload-recursively)
 

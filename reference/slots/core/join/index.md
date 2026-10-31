@@ -13,6 +13,8 @@ slot_json: "/reference/slots/core/join/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[fork]` | lambda | yes | Fork body to start and wait for; evaluated body node values and children are preserved in the completed fork node. Can be repeated. |

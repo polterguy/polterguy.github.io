@@ -13,6 +13,8 @@ slot_json: "/reference/slots/github/github.repo.delete/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[owner]` | string | no | Repository owner; omit to delete from the authenticated user. |

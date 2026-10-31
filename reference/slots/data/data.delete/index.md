@@ -13,10 +13,10 @@ slot_json: "/reference/slots/data/data.delete/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[database-type]` | string | no | Database adapter to use instead of the configured default. |
-| `[generate]` | bool | no | Whether to only generate SQL and parameter nodes instead of executing it. Default: `false`. |
 | `[table]` | string | yes | Table name to use in the SQL statement. |
 | `[where]` | lambda | yes | Required boolean predicate tree — destructive SQL must constrain affected rows. |
 | `[where]` / `[and]` | lambda | no | Boolean AND group. |
@@ -31,6 +31,8 @@ slot_json: "/reference/slots/data/data.delete/slot.json"
 | `[where]` / `[or]` / `[and]` | lambda | no | Boolean AND group. Can be repeated. |
 | `[where]` / `[or]` / `[and]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
 | `[where]` / `[or]` / `[and]` / _any node name_ / _unnamed child node_ | object | no | Value item used by operators such as .in. |
+| `[database-type]` | string | no | Database adapter to use instead of the configured default. |
+| `[generate]` | bool | no | Whether to only generate SQL and parameter nodes instead of executing it. Default: `false`. |
 
 _Nodes nested deeper than 6 levels, and nodes that repeat one of their own ancestors, are not listed. The JSON declaration below has all of them._
 

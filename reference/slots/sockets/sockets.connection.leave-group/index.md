@@ -10,6 +10,8 @@ slot_json: "/reference/slots/sockets/sockets.connection.leave-group/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[group]` | string | yes | Socket group name. |

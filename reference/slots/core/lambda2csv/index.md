@@ -13,6 +13,8 @@ slot_json: "/reference/slots/core/lambda2csv/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[null-value]` | string | no | String used to represent null values. Default: `[NULL]`. |

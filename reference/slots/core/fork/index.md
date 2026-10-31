@@ -12,6 +12,8 @@ slot_json: "/reference/slots/core/fork/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | lambda | yes | Executable child slot evaluated on the forked thread. Can be repeated. |

@@ -14,6 +14,8 @@ Also known as: [`save-file`](/reference/slots/core/save-file/).
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | string | yes | Child node yielding the text content to save. |

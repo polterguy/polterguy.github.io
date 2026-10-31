@@ -13,6 +13,8 @@ slot_json: "/reference/slots/core/convert/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[type]` | string | yes | Target Hyperlambda type name. |

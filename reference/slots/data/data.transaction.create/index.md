@@ -12,6 +12,8 @@ slot_json: "/reference/slots/data/data.transaction.create/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[database-type]` | string | no | Database adapter to use instead of the configured default. |

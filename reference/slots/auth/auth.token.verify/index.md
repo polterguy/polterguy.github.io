@@ -12,12 +12,14 @@ slot_json: "/reference/slots/auth/auth.token.verify/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[token]` | string | yes | External JWT token to verify. |
 | `[issuer]` | string | no | Trusted issuer the token's issuer must equal; meta data is never fetched from issuers not supplied by the caller. |
 | `[issuers]` | lambda | no | Trusted issuers, the token's issuer must equal one of them; meta data is never fetched from issuers not supplied by the caller. |
 | `[issuers]` / _any node name_ | string | no | List item. Can be repeated. |
-| `[token]` | string | yes | External JWT token to verify. |
 
 Guide: [How to use [auth.token.verify]](/plugins/magic.lambda.auth/#openid-connect-authtokenverify)
 

@@ -13,6 +13,8 @@ slot_json: "/reference/slots/puppeteer/puppeteer.select/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[selector]` | string | yes | CSS selector. |

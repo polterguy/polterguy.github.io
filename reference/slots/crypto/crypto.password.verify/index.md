@@ -13,6 +13,8 @@ slot_json: "/reference/slots/crypto/crypto.password.verify/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[hash]` | string | yes | BCrypt password hash produced by [crypto.password.hash]. |

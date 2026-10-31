@@ -13,6 +13,8 @@ slot_json: "/reference/slots/io/io.file.list-recursively/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[display-hidden]` | bool | no | Whether hidden files or folders should be included. Default: `false`. |

@@ -13,6 +13,8 @@ slot_json: "/reference/slots/core/json2lambda-stream/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[encoding]` | string | no | Text encoding used to read the JSON stream. Default: `utf-8`. |

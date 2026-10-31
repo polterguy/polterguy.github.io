@@ -13,11 +13,13 @@ slot_json: "/reference/slots/git/git.clone-repo/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[path]` | string | no | Destination repository folder. |
 | `[branch]` | string | no | Branch to clone. |
 | `[depth]` | int | no | Shallow clone depth. |
-| `[path]` | string | no | Destination repository folder. |
 
 Guide: [How to use [git.clone-repo]](/plugins/magic.lambda.git/#how-to-use-gitclone-repo)
 

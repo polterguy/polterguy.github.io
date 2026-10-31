@@ -13,6 +13,8 @@ slot_json: "/reference/slots/mysql/mysql.connect/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | lambda | no | Executable child slot evaluated while the database connection is open. Can be repeated. |

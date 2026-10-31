@@ -12,6 +12,8 @@ slot_json: "/reference/slots/core/for-each/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | lambda | yes | Loop body evaluated once per selected node. Can be repeated. |

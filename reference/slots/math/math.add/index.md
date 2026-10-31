@@ -12,6 +12,8 @@ slot_json: "/reference/slots/math/math.add/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | number | yes | Numeric operand evaluated before calculating the result. |

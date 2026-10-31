@@ -13,12 +13,14 @@ slot_json: "/reference/slots/puppeteer/puppeteer.click/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[selector]` | string | yes | CSS selector. |
 | `[button]` | string | no | Mouse button to click. Default: `left`. |
 | `[click-count]` | int | no | Number of clicks. |
 | `[delay]` | int | no | Delay in milliseconds between mouse down and up. |
-| `[selector]` | string | yes | CSS selector. |
 
 Guide: [How to use [puppeteer.click]](/plugins/magic.lambda.puppeteer/#puppeteerclick)
 

@@ -13,10 +13,12 @@ slot_json: "/reference/slots/git/git.create-repo/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[bare]` | bool | no | Create a bare repository. Default: `false`. |
 | `[branch]` | string | no | Initial branch name. |
+| `[bare]` | bool | no | Create a bare repository. Default: `false`. |
 
 Guide: [How to use [git.create-repo]](/plugins/magic.lambda.git/#how-to-use-gitcreate-repo)
 

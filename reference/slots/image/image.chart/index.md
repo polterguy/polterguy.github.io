@@ -13,15 +13,17 @@ slot_json: "/reference/slots/image/image.chart/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[width]` | int | yes | Chart width in pixels. |
+| `[height]` | int | yes | Chart height in pixels. |
 | `[bars]` | lambda | yes | Chart values keyed by label; grouped and stacked charts use nested numeric values. |
 | `[bars]` / _any node name_ | double\|lambda | yes | Bar value or grouped/stacked bar value collection. Can be repeated. |
 | `[filename]` | string | no | Optional destination filename. |
-| `[height]` | int | yes | Chart height in pixels. |
 | `[legend]` | lambda | no | Legend labels required by grouped and stacked charts. |
 | `[legend]` / _unnamed child node_ | string | no | Legend label. Can be repeated. |
-| `[width]` | int | yes | Chart width in pixels. |
 
 Guide: [How to use [image.chart]](/plugins/magic.lambda.image/#how-to-use-imagechart)
 

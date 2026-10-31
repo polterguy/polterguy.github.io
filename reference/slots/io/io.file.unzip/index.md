@@ -12,6 +12,8 @@ slot_json: "/reference/slots/io/io.file.unzip/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[folder]` | string | no | Destination folder; defaults to the zip file's folder. |

@@ -14,12 +14,14 @@ slot_json: "/reference/slots/puppeteer/puppeteer.screenshot/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[filename]` | string | yes | Destination filename. |
 | `[full-page]` | bool | no | Whether to capture the full page. Default: `false`. |
-| `[quality]` | int | no | JPEG/WebP image quality. |
 | `[type]` | string | no | Image type. |
+| `[quality]` | int | no | JPEG/WebP image quality. |
 
 Guide: [How to use [puppeteer.screenshot]](/plugins/magic.lambda.puppeteer/#puppeteerscreenshot)
 

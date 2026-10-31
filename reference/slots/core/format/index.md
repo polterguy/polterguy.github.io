@@ -13,10 +13,12 @@ slot_json: "/reference/slots/core/format/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[culture]` | string | no | Optional culture name used when formatting. |
 | `[pattern]` | string | yes | Composite format string. |
+| `[culture]` | string | no | Optional culture name used when formatting. |
 
 Guide: [How to use [format]](/plugins/magic.lambda/types/#how-to-use-format)
 

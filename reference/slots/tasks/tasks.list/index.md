@@ -13,19 +13,21 @@ slot_json: "/reference/slots/tasks/tasks.list/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[limit]` | long | no | Maximum number of tasks to return. |
 | `[offset]` | long | no | Number of tasks to skip. |
+| `[limit]` | long | no | Maximum number of tasks to return. |
 
 ### Returned nodes
 
 | Node | Type | Required | Description |
 |---|---|---|---|
 | _unnamed child node_ | lambda | no | One task record returned by [tasks.list]. Can be repeated. |
+| _unnamed child node_ / `[id]` | string | no | Task identifier. |
 | _unnamed child node_ / `[created]` | date | no | Task creation timestamp. |
 | _unnamed child node_ / `[description]` | string | no | Optional task description. |
-| _unnamed child node_ / `[id]` | string | no | Task identifier. |
 
 Guide: [How to use [tasks.list]](/plugins/magic.lambda.scheduler/#how-to-use-taskslist)
 

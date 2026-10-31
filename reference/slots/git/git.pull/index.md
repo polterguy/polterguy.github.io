@@ -13,12 +13,14 @@ slot_json: "/reference/slots/git/git.pull/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[branch]` | string | no | Branch to pull. |
-| `[ff-only]` | bool | no | Only allow fast-forward pulls. Default: `false`. |
-| `[rebase]` | bool | no | Use rebase while pulling. Default: `false`. |
 | `[remote]` | string | no | Remote to pull from. Default: `origin`. |
+| `[branch]` | string | no | Branch to pull. |
+| `[rebase]` | bool | no | Use rebase while pulling. Default: `false`. |
+| `[ff-only]` | bool | no | Only allow fast-forward pulls. Default: `false`. |
 
 Guide: [How to use [git.pull]](/plugins/magic.lambda.git/#how-to-use-gitpull)
 

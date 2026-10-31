@@ -12,6 +12,8 @@ slot_json: "/reference/slots/validators/validators.default/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | object | yes | Default child node cloned into each selected node when missing. Can be repeated. |

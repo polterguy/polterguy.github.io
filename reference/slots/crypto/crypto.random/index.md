@@ -12,10 +12,12 @@ slot_json: "/reference/slots/crypto/crypto.random/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[max]` | int | no | Maximum random length. |
 | `[min]` | int | no | Minimum random length. Default: `10`. |
+| `[max]` | int | no | Maximum random length. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 | `[seed]` | string | no | Optional deterministic seed. |
 

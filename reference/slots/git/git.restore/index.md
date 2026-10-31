@@ -13,6 +13,8 @@ slot_json: "/reference/slots/git/git.restore/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[file]` | string | no | Repository-relative path of one file to restore from HEAD; omitted resets the whole working tree to HEAD and removes untracked files. |

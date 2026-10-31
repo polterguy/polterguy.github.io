@@ -12,10 +12,12 @@ slot_json: "/reference/slots/system/system.compile/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[assembly-name]` | string | yes | Name of the generated assembly. |
 | `[code]` | string | yes | C# source code to compile. |
+| `[assembly-name]` | string | yes | Name of the generated assembly. |
 | `[references]` | lambda | yes | Assembly references required by the compilation. |
 | `[references]` / _unnamed child node_ | string | yes | Assembly reference. Can be repeated. |
 

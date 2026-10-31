@@ -13,6 +13,8 @@ slot_json: "/reference/slots/io/io.file.mixin/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | object | no | Optional argument available to codebehind lambda loaded for the mixed file. Can be repeated. |

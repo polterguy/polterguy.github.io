@@ -12,6 +12,8 @@ slot_json: "/reference/slots/io/io.stream.save-file/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | Stream | yes | Child node yielding the stream to save. |

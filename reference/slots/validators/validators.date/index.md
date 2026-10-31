@@ -12,10 +12,12 @@ slot_json: "/reference/slots/validators/validators.date/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[max]` | date | no | Latest accepted date. |
 | `[min]` | date | no | Earliest accepted date. |
+| `[max]` | date | no | Latest accepted date. |
 
 Guide: [How to use [validators.date]](/plugins/magic.lambda.validators/#how-to-use-validatorsdate)
 

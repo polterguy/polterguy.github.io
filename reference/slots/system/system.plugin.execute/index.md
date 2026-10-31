@@ -12,6 +12,8 @@ slot_json: "/reference/slots/system/system.plugin.execute/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | lambda | no | Executable body evaluated while the plugin is loaded. Can be repeated. |

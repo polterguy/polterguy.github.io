@@ -13,13 +13,15 @@ slot_json: "/reference/slots/git/git.commit/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[message]` | string | yes | Commit message. |
 | `[all]` | bool | no | Stage all changed files before committing. Default: `true`. |
 | `[amend]` | bool | no | Amend the previous commit. Default: `false`. |
-| `[email]` | string | no | Author email for the commit; omitted falls back to git's configured identity. |
-| `[message]` | string | yes | Commit message. |
 | `[name]` | string | no | Author name for the commit; omitted falls back to git's configured identity. |
+| `[email]` | string | no | Author email for the commit; omitted falls back to git's configured identity. |
 
 Guide: [How to use [git.commit]](/plugins/magic.lambda.git/#how-to-use-gitcommit)
 

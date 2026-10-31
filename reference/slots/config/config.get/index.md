@@ -13,6 +13,8 @@ slot_json: "/reference/slots/config/config.get/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | string | no | Default value source evaluated and returned when the configuration key does not exist. |

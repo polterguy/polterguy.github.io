@@ -13,6 +13,8 @@ slot_json: "/reference/slots/strings/strings.substring/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _unnamed child node_ | int | yes | Start index. |

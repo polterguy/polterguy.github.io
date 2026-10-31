@@ -13,10 +13,12 @@ slot_json: "/reference/slots/puppeteer/puppeteer.wait-for-url/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[timeout]` | int | no | Wait timeout in milliseconds. |
 | `[url]` | string | yes | URL pattern to wait for. |
+| `[timeout]` | int | no | Wait timeout in milliseconds. |
 
 Guide: [How to use [puppeteer.wait-for-url]](/plugins/magic.lambda.puppeteer/#puppeteerwait-for-url)
 

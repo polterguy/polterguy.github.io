@@ -12,6 +12,8 @@ slot_json: "/reference/slots/sql/sql.create/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[table]` | string | yes | Table name to use in the SQL statement. |

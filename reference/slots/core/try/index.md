@@ -12,6 +12,8 @@ slot_json: "/reference/slots/core/try/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | lambda | no | Protected body evaluated by [try]. Can be repeated. |

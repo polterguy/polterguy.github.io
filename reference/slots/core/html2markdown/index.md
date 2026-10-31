@@ -13,12 +13,14 @@ slot_json: "/reference/slots/core/html2markdown/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[code]` | bool | no | Whether code blocks should be emitted. Default: `true`. |
-| `[images]` | bool | no | Whether images should be emitted. Default: `true`. |
-| `[lists]` | bool | no | Whether lists should be emitted. Default: `true`. |
 | `[url]` | string | no | Base URL used when resolving links. |
+| `[images]` | bool | no | Whether images should be emitted. Default: `true`. |
+| `[code]` | bool | no | Whether code blocks should be emitted. Default: `true`. |
+| `[lists]` | bool | no | Whether lists should be emitted. Default: `true`. |
 
 Guide: [How to use [html2markdown]](/plugins/magic.lambda.html/#how-to-use-html2markdown)
 

@@ -12,12 +12,14 @@ slot_json: "/reference/slots/openai/openai.whisper/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[content]` | byte[] | yes | Audio content bytes. |
 | `[key]` | string | yes | OpenAI API key. |
-| `[language]` | string | no | Optional language hint. |
+| `[content]` | byte[] | yes | Audio content bytes. |
 | `[type]` | string | yes | Audio MIME type. |
+| `[language]` | string | no | Optional language hint. |
 
 Guide: [How to use [openai.whisper]](/plugins/magic.lambda.openai/#how-to-use-openaiwhisper)
 

@@ -13,10 +13,12 @@ slot_json: "/reference/slots/cache/cache.list/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[limit]` | int | no | Maximum number of items to return. Default: `10`. |
 | `[offset]` | int | no | Result offset. Default: `0`. |
+| `[limit]` | int | no | Maximum number of items to return. Default: `10`. |
 
 ### Returned nodes
 

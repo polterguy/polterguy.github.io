@@ -13,12 +13,14 @@ slot_json: "/reference/slots/puppeteer/puppeteer.fill/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[config-key]` | string | no | Configuration key resolving the text to send. |
-| `[delay]` | int | no | Delay in milliseconds between key presses. |
 | `[selector]` | string | yes | CSS selector. |
 | `[text]` | string | no | Text to send. |
+| `[config-key]` | string | no | Configuration key resolving the text to send. |
+| `[delay]` | int | no | Delay in milliseconds between key presses. |
 
 ### Constraints
 

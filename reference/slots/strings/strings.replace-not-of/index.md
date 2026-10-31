@@ -13,6 +13,8 @@ slot_json: "/reference/slots/strings/strings.replace-not-of/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _unnamed child node_ | string | yes | Allowed characters; any character not in this set is replaced. |

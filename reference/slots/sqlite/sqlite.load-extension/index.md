@@ -12,11 +12,13 @@ slot_json: "/reference/slots/sqlite/sqlite.load-extension/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[append-platform]` | bool | no | Whether to append the current platform suffix. Default: `true`. |
 | `[file]` | string | yes | SQLite extension filename. |
 | `[proc]` | string | no | Optional extension entry point. |
+| `[append-platform]` | bool | no | Whether to append the current platform suffix. Default: `true`. |
 
 Guide: [How to use [sqlite.load-extension]](/plugins/magic.lambda.sqlite/#how-to-use-sqliteload-extension)
 

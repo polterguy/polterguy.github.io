@@ -12,6 +12,8 @@ slot_json: "/reference/slots/core/insert-after/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | lambda | yes | Source container or node-producing slot evaluated before its child nodes are applied to the selected target location. Can be repeated. |

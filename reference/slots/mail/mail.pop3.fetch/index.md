@@ -10,11 +10,13 @@ slot_json: "/reference/slots/mail/mail.pop3.fetch/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[.lambda]` | lambda | yes | Callback evaluated once per fetched message with [.message] injected. |
-| `[max]` | int | no | Maximum number of messages to fetch. |
 | `[raw]` | bool | no | Whether to pass raw MIME text to the callback. |
+| `[max]` | int | no | Maximum number of messages to fetch. |
 
 Guide: [How to use [mail.pop3.fetch]](/plugins/magic.lambda.mail/#how-to-use-mailpop3fetch)
 

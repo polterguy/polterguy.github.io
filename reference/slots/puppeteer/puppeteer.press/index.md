@@ -13,11 +13,13 @@ slot_json: "/reference/slots/puppeteer/puppeteer.press/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[delay]` | int | no | Delay in milliseconds between key down and up. |
-| `[key]` | string | no | Key to press. |
 | `[selector]` | string | yes | CSS selector. |
+| `[key]` | string | no | Key to press. |
+| `[delay]` | int | no | Delay in milliseconds between key down and up. |
 
 Guide: [How to use [puppeteer.press]](/plugins/magic.lambda.puppeteer/#puppeteerpress)
 

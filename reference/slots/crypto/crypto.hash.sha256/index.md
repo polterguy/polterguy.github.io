@@ -13,6 +13,8 @@ slot_json: "/reference/slots/crypto/crypto.hash.sha256/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[filename]` | string | no | File to hash when no input content is supplied. |

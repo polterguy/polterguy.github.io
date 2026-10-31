@@ -13,6 +13,8 @@ slot_json: "/reference/slots/crypto/crypto.get-key/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |

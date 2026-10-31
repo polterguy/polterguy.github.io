@@ -13,10 +13,12 @@ slot_json: "/reference/slots/git/git.fetch/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[refspec]` | string | no | Optional refspec to fetch. |
 | `[remote]` | string | no | Remote to fetch from. Default: `origin`. |
+| `[refspec]` | string | no | Optional refspec to fetch. |
 
 Guide: [How to use [git.fetch]](/plugins/magic.lambda.git/#how-to-use-gitfetch)
 

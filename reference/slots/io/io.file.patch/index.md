@@ -12,6 +12,8 @@ slot_json: "/reference/slots/io/io.file.patch/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | string | yes | Unified diff patch content to apply. |

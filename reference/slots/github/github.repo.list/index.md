@@ -12,13 +12,15 @@ slot_json: "/reference/slots/github/github.repo.list/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[owner]` | string | no | Organization owner; omit to list authenticated user repositories. |
-| `[page]` | int | no | Page number. |
-| `[per-page]` | int | no | Number of repositories per page. |
-| `[type]` | string | no | Repository type filter. |
 | `[visibility]` | string | no | Repository visibility filter. |
+| `[type]` | string | no | Repository type filter. |
+| `[per-page]` | int | no | Number of repositories per page. |
+| `[page]` | int | no | Page number. |
 
 Guide: [How to use [github.repo.list]](/plugins/magic.lambda.git/#how-to-use-githubrepolist)
 

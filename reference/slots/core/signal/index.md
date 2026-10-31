@@ -13,6 +13,8 @@ slot_json: "/reference/slots/core/signal/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | object | no | Named argument passed to the dynamic slot as a child of [.arguments]. Can be repeated. |

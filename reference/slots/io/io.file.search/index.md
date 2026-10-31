@@ -13,12 +13,14 @@ slot_json: "/reference/slots/io/io.file.search/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[case-sensitive]` | bool | no | Whether matching should be case-sensitive. Default: `false`. |
-| `[extensions]` | string | no | Optional comma-separated file extensions to include. |
 | `[pattern]` | string | yes | Text or regular expression pattern to search for. |
 | `[regex]` | bool | no | Whether [pattern] should be interpreted as a regular expression. Default: `false`. |
+| `[case-sensitive]` | bool | no | Whether matching should be case-sensitive. Default: `false`. |
+| `[extensions]` | string | no | Optional comma-separated file extensions to include. |
 
 ### Returned nodes
 

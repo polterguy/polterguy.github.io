@@ -12,6 +12,8 @@ slot_json: "/reference/slots/math/math.increment/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[step]` | number | no | Amount to add to or subtract from each selected node. Default: `1`. |

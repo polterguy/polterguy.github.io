@@ -12,6 +12,8 @@ slot_json: "/reference/slots/math/math.dot/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | lambda | yes | Vector operand evaluated before calculating the dot product. |

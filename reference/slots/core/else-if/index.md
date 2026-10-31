@@ -10,6 +10,8 @@ slot_json: "/reference/slots/core/else-if/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | lambda | yes | Condition node evaluated for truthiness. |

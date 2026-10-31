@@ -14,11 +14,13 @@ slot_json: "/reference/slots/puppeteer/puppeteer.evaluate/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[expression]` | string | yes | JavaScript expression or function. |
 | `[args]` | string\|lambda | no | Arguments passed to the JavaScript function. |
 | `[args]` / _unnamed child node_ | string | no | Argument value. Can be repeated. |
-| `[expression]` | string | yes | JavaScript expression or function. |
 
 Guide: [How to use [puppeteer.evaluate]](/plugins/magic.lambda.puppeteer/#puppeteerevaluate)
 

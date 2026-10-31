@@ -13,6 +13,8 @@ slot_json: "/reference/slots/tasks/tasks.get/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[schedules]` | bool | no | Whether to include schedules for the task. |

@@ -12,6 +12,8 @@ slot_json: "/reference/slots/core/eval/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | lambda | no | Executable child slot evaluated in order. Can be repeated. |

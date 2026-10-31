@@ -13,6 +13,8 @@ slot_json: "/reference/slots/core/map/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | lambda | yes | Mapper body evaluated once per selected node; each returned value becomes a [.] node and returned child nodes are added to the mapped result. Can be repeated. |

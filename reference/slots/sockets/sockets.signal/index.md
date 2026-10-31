@@ -12,13 +12,15 @@ slot_json: "/reference/slots/sockets/sockets.signal/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[args]` | lambda | yes | Payload serialized to JSON and sent with the socket message. |
-| `[clients]` | string | no | Comma-separated connection IDs receiving the message. |
-| `[groups]` | string | no | Comma-separated groups receiving the message. |
 | `[roles]` | string | no | Comma-separated roles receiving the message. |
 | `[users]` | string | no | Comma-separated users receiving the message. |
+| `[groups]` | string | no | Comma-separated groups receiving the message. |
+| `[clients]` | string | no | Comma-separated connection IDs receiving the message. |
 
 Guide: [How to use [sockets.signal]](/plugins/magic.lambda.sockets/#how-to-use-socketssignal)
 

@@ -13,10 +13,12 @@ slot_json: "/reference/slots/git/git.remote.add/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[name]` | string | no | Remote name. Default: `origin`. |
 | `[url]` | string | yes | Remote URL. |
+| `[name]` | string | no | Remote name. Default: `origin`. |
 
 Guide: [How to use [git.remote.add]](/plugins/magic.lambda.git/#how-to-use-gitremoteadd)
 

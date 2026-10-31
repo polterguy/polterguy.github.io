@@ -13,6 +13,8 @@ slot_json: "/reference/slots/crypto/crypto.hash/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[algorithm]` | string | no | Hash algorithm: md5, sha1, sha256, sha384, or sha512. Default: `sha256`. |

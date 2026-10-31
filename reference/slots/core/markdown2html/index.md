@@ -13,6 +13,8 @@ slot_json: "/reference/slots/core/markdown2html/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[media]` | bool | no | Whether media link extensions should be enabled. |

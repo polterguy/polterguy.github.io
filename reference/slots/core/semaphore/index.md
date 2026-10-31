@@ -13,6 +13,8 @@ slot_json: "/reference/slots/core/semaphore/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | lambda | yes | Executable child lambda object evaluated while the named semaphore is held. Can be repeated. |

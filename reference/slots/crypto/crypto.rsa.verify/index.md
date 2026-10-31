@@ -12,11 +12,13 @@ slot_json: "/reference/slots/crypto/crypto.rsa.verify/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[signature]` | string\|byte[] | yes | RSA signature to verify. |
 | `[public-key]` | string\|byte[] | yes | Public key used to verify the signature. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
-| `[signature]` | string\|byte[] | yes | RSA signature to verify. |
 
 ### JSON declaration
 

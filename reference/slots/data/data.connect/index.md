@@ -13,10 +13,12 @@ slot_json: "/reference/slots/data/data.connect/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| _any node name_ | lambda | no | Executable child slot evaluated while the database connection is open. Can be repeated. |
 | `[database-type]` | string | no | Database adapter to use instead of the configured default. |
+| _any node name_ | lambda | no | Executable child slot evaluated while the database connection is open. Can be repeated. |
 
 Guide: [How to use [data.connect]](/plugins/magic.data.common/#how-to-use-dataconnect)
 

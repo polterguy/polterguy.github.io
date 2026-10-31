@@ -12,11 +12,13 @@ slot_json: "/reference/slots/validators/validators.recaptcha/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[min]` | decimal | yes | Minimum acceptable reCAPTCHA score. |
-| `[secret]` | string | yes | reCAPTCHA secret key. |
 | `[site-key]` | string | yes | reCAPTCHA site key. |
+| `[secret]` | string | yes | reCAPTCHA secret key. |
+| `[min]` | decimal | yes | Minimum acceptable reCAPTCHA score. |
 
 Guide: [How to use [validators.recaptcha]](/plugins/magic.lambda.validators/#how-to-use-validatorsrecaptcha)
 

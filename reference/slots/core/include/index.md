@@ -13,6 +13,8 @@ slot_json: "/reference/slots/core/include/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | lambda | yes | Executable body evaluated once per selected node; all returned child nodes are included into that selected node. Can be repeated. |

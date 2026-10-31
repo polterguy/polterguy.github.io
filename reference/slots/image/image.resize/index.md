@@ -13,12 +13,14 @@ slot_json: "/reference/slots/image/image.resize/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[dest]` | string | no | Optional destination filename; when supplied, the image is saved to disk instead of returned as a stream. |
-| `[height]` | int | no | Target height in pixels. |
 | `[type]` | string | no | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
+| `[dest]` | string | no | Optional destination filename; when supplied, the image is saved to disk instead of returned as a stream. |
 | `[width]` | int | no | Target width in pixels. |
+| `[height]` | int | no | Target height in pixels. |
 
 Guide: [How to use [image.resize]](/plugins/magic.lambda.image/#how-to-use-imageresize)
 

@@ -12,6 +12,8 @@ slot_json: "/reference/slots/core/set-x/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | object | no | Single source child evaluated before its value is consumed; omit to set the destination to null. |

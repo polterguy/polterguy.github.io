@@ -13,18 +13,20 @@ slot_json: "/reference/slots/mime/mime.create/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[content]` | string | no | Inline MIME part content. |
 | `[entity]` | string | yes | Nested MIME entity content type; same leaf-vs-multipart shape as the parent [mime.create] value. |
-| `[entity]` / `[content]` | string | no | Inline MIME part content. |
-| `[entity]` / `[filename]` | string | no | File path to use as MIME part content. |
 | `[entity]` / `[headers]` | lambda | no | MIME headers. |
 | `[entity]` / `[headers]` / _any node name_ | string | no | Header name and value. Can be repeated. |
-| `[filename]` | string | no | File path to use as MIME part content. |
+| `[entity]` / `[content]` | string | no | Inline MIME part content. |
+| `[entity]` / `[filename]` | string | no | File path to use as MIME part content. |
+| `[structured]` | bool | no | When true returns the MIME tree as [headers] and [content] children; when false (default) returns the serialized MIME message text in the slot value. Default: `false`. |
 | `[headers]` | lambda | no | MIME headers. |
 | `[headers]` / _any node name_ | string | no | Header name and value. Can be repeated. |
-| `[structured]` | bool | no | When true returns the MIME tree as [headers] and [content] children; when false (default) returns the serialized MIME message text in the slot value. Default: `false`. |
+| `[content]` | string | no | Inline MIME part content. |
+| `[filename]` | string | no | File path to use as MIME part content. |
 
 _Nodes nested deeper than 6 levels, and nodes that repeat one of their own ancestors, are not listed. The JSON declaration below has all of them._
 
@@ -32,13 +34,13 @@ _Nodes nested deeper than 6 levels, and nodes that repeat one of their own ances
 
 | Node | Type | Required | Description |
 |---|---|---|---|
-| `[content]` | string\|byte[] | no | Decoded MIME part content; text parts return string content and binary parts return byte[] content. |
-| `[entity]` | string | no | Nested parsed MIME entity; node value is the nested entity content type, and children carry headers, content, and any deeper entities. Can be repeated. |
-| `[entity]` / `[content]` | string\|byte[] | no | Decoded MIME part content; text parts return string content and binary parts return byte[] content. |
-| `[entity]` / `[headers]` | lambda | no | MIME headers from the parsed entity, excluding Content-Type because the entity content type is returned as the node value. |
-| `[entity]` / `[headers]` / _any node name_ | string | no | Parsed MIME header value; child name is the header name. Can be repeated. |
 | `[headers]` | lambda | no | MIME headers from the parsed entity, excluding Content-Type because the entity content type is returned as the node value. |
 | `[headers]` / _any node name_ | string | no | Parsed MIME header value; child name is the header name. Can be repeated. |
+| `[content]` | string\|byte[] | no | Decoded MIME part content; text parts return string content and binary parts return byte[] content. |
+| `[entity]` | string | no | Nested parsed MIME entity; node value is the nested entity content type, and children carry headers, content, and any deeper entities. Can be repeated. |
+| `[entity]` / `[headers]` | lambda | no | MIME headers from the parsed entity, excluding Content-Type because the entity content type is returned as the node value. |
+| `[entity]` / `[headers]` / _any node name_ | string | no | Parsed MIME header value; child name is the header name. Can be repeated. |
+| `[entity]` / `[content]` | string\|byte[] | no | Decoded MIME part content; text parts return string content and binary parts return byte[] content. |
 
 _Nodes nested deeper than 6 levels, and nodes that repeat one of their own ancestors, are not listed. The JSON declaration below has all of them._
 

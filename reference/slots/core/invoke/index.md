@@ -13,6 +13,8 @@ slot_json: "/reference/slots/core/invoke/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | _any node name_ | object | no | Argument passed to the invoked lambda through its [.arguments] node. Can be repeated. |

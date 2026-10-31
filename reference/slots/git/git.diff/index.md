@@ -13,6 +13,8 @@ slot_json: "/reference/slots/git/git.diff/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[file]` | string | no | Repository-relative path of one file to diff; omitted diffs the whole repository. |

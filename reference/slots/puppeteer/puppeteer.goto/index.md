@@ -14,10 +14,12 @@ slot_json: "/reference/slots/puppeteer/puppeteer.goto/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[timeout]` | int | no | Navigation timeout in milliseconds. |
 | `[url]` | string | yes | URL to navigate to. |
+| `[timeout]` | int | no | Navigation timeout in milliseconds. |
 | `[wait-until]` | string | no | Navigation completion condition: load, domcontentloaded, networkidle0, or networkidle2. |
 
 Guide: [How to use [puppeteer.goto]](/plugins/magic.lambda.puppeteer/#puppeteergoto)

@@ -13,6 +13,8 @@ slot_json: "/reference/slots/openai/openai.tokenize/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[model]` | string | no | OpenAI model whose encoding to count with - defaults to o200k_base when omitted or unknown. |

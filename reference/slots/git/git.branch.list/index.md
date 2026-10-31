@@ -13,10 +13,12 @@ slot_json: "/reference/slots/git/git.branch.list/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[all]` | bool | no | List all branches. Default: `false`. |
 | `[remote]` | bool | no | List remote branches. Default: `false`. |
+| `[all]` | bool | no | List all branches. Default: `false`. |
 
 Guide: [How to use [git.branch.list]](/plugins/magic.lambda.git/#how-to-use-gitbranchlist)
 

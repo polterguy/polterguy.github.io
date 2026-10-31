@@ -13,6 +13,8 @@ slot_json: "/reference/slots/crypto/crypto.aes.decrypt/slot.json"
 
 ### Arguments
 
+Required arguments come first, then the optional ones in the order they are declared.
+
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[password]` | string\|byte[] | yes | Password or raw AES key. |
