@@ -30,7 +30,7 @@ import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 OUT = os.path.join(ROOT, 'reference', 'slots')
-ENDPOINT_URL = 'https://hyperlambda.dev/magic/modules/docs/slots-nodes'
+ENDPOINT_URL = 'https://hyperlambda.dev/magic/modules/docs/slots'
 PLAYGROUND_URL = 'https://hyperlambda.dev/magic/modules/docs/playground'
 
 # Cloudflare in front of the server refuses the default user agent of most http libraries.
@@ -314,7 +314,7 @@ def faq(p):
          'Code that touches files, databases, the network, configuration or anything else is rejected before it runs, and every call is rate limited and time limited.' % p['slots']),
         ('Can I get the whole reference as data?',
          'Yes. GET %s returns every compiled slot as a JSON array of objects with the fields name, description and signature, where the signature is the slot\'s contract as nested JSON. '
-         'It needs no account or key. The answer is about 640 KB, so keep a copy rather than asking again.' % ENDPOINT_URL),
+         'It needs no account or key. The answer is about %d KB, so keep a copy rather than asking again.' % (ENDPOINT_URL, p['kb'])),
         ('Is it safe to leave that endpoint open?',
          'It only reads metadata that is already public in the open source code, and it runs nothing that the caller sends. '
          'It is throttled to %d requests per %d seconds per IP address and %d per %d seconds for everybody together, and answers 429 beyond that.'
@@ -399,8 +399,8 @@ def render_index(counts, total, endpoint, sandbox, workflow, p):
         '### Get the whole reference yourself',
         '',
         'The endpoint above is public. There is no account, no key and no secret. To protect the server it is throttled to **%d requests per %d seconds per IP address**, '
-        'and to **%d per %d seconds** for everybody together, and beyond that it answers `429`. The answer is about 640 KB, so keep a copy rather than asking again.'
-        % (p['ip_limit'], p['ip_window'], p['all_limit'], p['all_window']),
+        'and to **%d per %d seconds** for everybody together, and beyond that it answers `429`. The answer is about %d KB, so keep a copy rather than asking again.'
+        % (p['ip_limit'], p['ip_window'], p['all_limit'], p['all_window'], p['kb']),
         '',
         '```bash',
         'curl -s %s' % ENDPOINT_URL,
@@ -545,10 +545,11 @@ def main():
             f.write(raw(text) + '\n')
         counts.append((ns, len(group)))
 
-    endpoint = read(os.path.join(ROOT, '.github', 'endpoint', 'slots-nodes.get.hl'))
+    endpoint = read(os.path.join(ROOT, '.github', 'endpoint', 'slots.get.hl'))
     sandbox = read(os.path.join(ROOT, '.github', 'endpoint', 'playground.post.hl'))
     workflow = read(os.path.join(ROOT, '.github', 'workflows', 'slot-reference.yml'))
-    numbers = dict(policy_numbers(sandbox), **endpoint_numbers(endpoint))
+    size = len(json.dumps(records, ensure_ascii=False, separators=(',', ':')).encode('utf-8'))
+    numbers = dict(policy_numbers(sandbox), **endpoint_numbers(endpoint), kb=round(size / 10240) * 10)
     page = render_index(counts, len(entries), endpoint, sandbox, workflow, numbers)
     with open(os.path.join(OUT, 'index.md'), 'w', encoding='utf-8') as f:
         f.write(page)
