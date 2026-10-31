@@ -8,6 +8,10 @@ slot_json: "/reference/slots/timezone/timezone.init/slot.json"
 
 `timezone.init` is a slot in the `timezone` namespace, in Hyperlambda, the language of Magic Cloud. 
 
+### Guide
+
+[How to use `timezone.init`](/plugins/magic.lambda.system/timezone.init/)
+
 ### JSON declaration
 
 This is the complete declaration of `timezone.init`, as the running system describes it. It is also published as [slot.json](slot.json).

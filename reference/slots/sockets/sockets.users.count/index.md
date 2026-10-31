@@ -18,6 +18,10 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | `[filter]` | string | no | Username filter. |
 
+### Guide
+
+[How to use `sockets.users.count`](/plugins/magic.lambda.sockets/sockets.users.count/)
+
 ### JSON declaration
 
 This is the complete declaration of `sockets.users.count`, as the running system describes it. It is also published as [slot.json](slot.json).

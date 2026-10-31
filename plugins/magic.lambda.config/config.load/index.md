@@ -1,10 +1,14 @@
 ---
 title: "How to use [config.load]"
-description: "How to use [config.load] - Loads your \"appsettings.json\" file and returns as a string"
+description: "How to use [config.load] - This slot returns the raw content of your \"appsettings.json\" file as the value of its node."
 generated: true
 guide: true
 ---
 
 The reference page of [`config.load`](/reference/slots/config/config.load/) has its arguments, constraints and declaration.
 
-Loads your _"appsettings.json"_ file and returns as a string
+This slot returns the raw content of your _"appsettings.json"_ file as the value of its node. Below is an example.
+
+```
+config.load
+```

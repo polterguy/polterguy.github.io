@@ -10,6 +10,10 @@ slot_json: "/reference/slots/core/version/slot.json"
 
 * **Returns**: Resolves to the Magic Cloud version
 
+### Guide
+
+[How to use `version`](/plugins/magic.lambda.system/version/)
+
 ### JSON declaration
 
 This is the complete declaration of `version`, as the running system describes it. It is also published as [slot.json](slot.json).

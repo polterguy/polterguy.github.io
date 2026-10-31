@@ -9,3 +9,10 @@ The reference page of [`math.ceil`](/reference/slots/math/math.ceil/) has its ar
 
 This slot rounds its input up to the nearest whole number. The slot takes a numeric value, which can be a
 constant or an expression, and replaces its value with the rounded result.
+
+Below is an example, rounding 2.6 up to 3.
+
+```
+.number:double:2.6
+math.ceil:x:@.number
+```

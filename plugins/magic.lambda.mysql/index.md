@@ -1,5 +1,6 @@
 ---
 title: magic.lambda.mysql
+moved_anchors: {"how-to-use-mysqlconnect": "/plugins/magic.lambda.mysql/mysql.connect/", "how-to-use-mysqlcreate": "/plugins/magic.lambda.mysql/mysql.create/", "how-to-use-mysqldelete": "/plugins/magic.lambda.mysql/mysql.delete/", "how-to-use-mysqlexecute": "/plugins/magic.lambda.mysql/mysql.execute/", "how-to-use-mysqlread": "/plugins/magic.lambda.mysql/mysql.read/", "how-to-use-mysqlscalar": "/plugins/magic.lambda.mysql/mysql.scalar/", "how-to-use-mysqlselect": "/plugins/magic.lambda.mysql/mysql.select/", "how-to-use-mysqltransactioncommit": "/plugins/magic.lambda.mysql/mysql.transaction.commit/", "how-to-use-mysqltransactioncreate": "/plugins/magic.lambda.mysql/mysql.transaction.create/", "how-to-use-mysqltransactionrollback": "/plugins/magic.lambda.mysql/mysql.transaction.rollback/", "how-to-use-mysqlupdate": "/plugins/magic.lambda.mysql/mysql.update/"}
 ---
 
 The magic.lambda.mysql project is Hyperlambda's MySQL data adapter. This project allows you to provide a semantic

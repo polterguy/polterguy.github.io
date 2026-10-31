@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.sqlite
-moved_anchors: {"how-to-use-sqlitebackup": "/plugins/magic.lambda.sqlite/sqlite.backup/", "how-to-use-sqliteload-extension": "/plugins/magic.lambda.sqlite/sqlite.load-extension/"}
+moved_anchors: {"how-to-use-sqlitebackup": "/plugins/magic.lambda.sqlite/sqlite.backup/", "how-to-use-sqliteconnect": "/plugins/magic.lambda.sqlite/sqlite.connect/", "how-to-use-sqliteconnectionsflush": "/plugins/magic.lambda.sqlite/sqlite.connections.flush/", "how-to-use-sqlitecreate": "/plugins/magic.lambda.sqlite/sqlite.create/", "how-to-use-sqlitedelete": "/plugins/magic.lambda.sqlite/sqlite.delete/", "how-to-use-sqliteexecute": "/plugins/magic.lambda.sqlite/sqlite.execute/", "how-to-use-sqliteload-extension": "/plugins/magic.lambda.sqlite/sqlite.load-extension/", "how-to-use-sqliteread": "/plugins/magic.lambda.sqlite/sqlite.read/", "how-to-use-sqlitescalar": "/plugins/magic.lambda.sqlite/sqlite.scalar/", "how-to-use-sqliteselect": "/plugins/magic.lambda.sqlite/sqlite.select/", "how-to-use-sqlitetransactioncommit": "/plugins/magic.lambda.sqlite/sqlite.transaction.commit/", "how-to-use-sqlitetransactioncreate": "/plugins/magic.lambda.sqlite/sqlite.transaction.create/", "how-to-use-sqlitetransactionrollback": "/plugins/magic.lambda.sqlite/sqlite.transaction.rollback/", "how-to-use-sqliteupdate": "/plugins/magic.lambda.sqlite/sqlite.update/"}
 ---
 
 This is the SQLite data adapter for Magic. This project allows you to provide a semantic lambda structure

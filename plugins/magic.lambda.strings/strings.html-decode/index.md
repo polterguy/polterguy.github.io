@@ -9,3 +9,9 @@ The reference page of [`strings.html-decode`](/reference/slots/strings/strings.h
 
 HTML decodes a string, the opposite of **[strings.html-encode]**. The slot requires a value, which can be a
 constant or an expression, and replaces its value with the decoded string.
+
+This slot decodes HTML encoded text, turning for instance `&lt;` back into `<`. Below is an example.
+
+```
+strings.html-decode:"&lt;b&gt;Hello &amp; welcome&lt;/b&gt;"
+```

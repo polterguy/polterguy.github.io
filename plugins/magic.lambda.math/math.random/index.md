@@ -14,3 +14,16 @@ This slot returns a random number. Its behavior depends on how many child nodes 
 * Two children - Returns a random integer between the first child's value, inclusive, and the second child's value, exclusive. The children are documented as **[min]** and **[max]**, but the slot uses the first and second child regardless of their names.
 
 Child values are converted to `int`.
+
+Below are the three ways to invoke the slot. The first returns a random number between 0 and 1, the second a random integer between 0 and 10, and the third a random integer between 5 and 10.
+
+```
+math.random
+
+math.random
+   max:10
+
+math.random
+   min:5
+   max:10
+```

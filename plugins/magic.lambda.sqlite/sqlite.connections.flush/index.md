@@ -1,10 +1,14 @@
 ---
 title: "How to use [sqlite.connections.flush]"
-description: "How to use [sqlite.connections.flush] - Flushed cached schemas and connection pools"
+description: "How to use [sqlite.connections.flush] - This slot flushes the cached SQLite connections and schemas, which you typically need to do after you have replaced or deleted a database file on disc, since the old connection..."
 generated: true
 guide: true
 ---
 
 The reference page of [`sqlite.connections.flush`](/reference/slots/sqlite/sqlite.connections.flush/) has its arguments, constraints and declaration.
 
-Flushed cached schemas and connection pools
+This slot flushes the cached SQLite connections and schemas, which you typically need to do after you have replaced or deleted a database file on disc, since the old connection pool would otherwise keep pointing at the old file. Below is an example.
+
+```
+sqlite.connections.flush
+```

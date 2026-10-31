@@ -20,6 +20,10 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[offset]` | int | no | Number of matching users to skip. Default: `0`. |
 | `[limit]` | int | no | Maximum number of users to return. Default: `10`. |
 
+### Guide
+
+[How to use `sockets.users`](/plugins/magic.lambda.sockets/sockets.users/)
+
 ### JSON declaration
 
 This is the complete declaration of `sockets.users`, as the running system describes it. It is also published as [slot.json](slot.json).

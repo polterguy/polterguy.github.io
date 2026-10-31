@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.mssql
-moved_anchors: {"how-to-use-mssqlexecute-batch": "/plugins/magic.lambda.mssql/mssql.execute-batch/"}
+moved_anchors: {"how-to-use-mssqlconnect": "/plugins/magic.lambda.mssql/mssql.connect/", "how-to-use-mssqlcreate": "/plugins/magic.lambda.mssql/mssql.create/", "how-to-use-mssqldelete": "/plugins/magic.lambda.mssql/mssql.delete/", "how-to-use-mssqlexecute": "/plugins/magic.lambda.mssql/mssql.execute/", "how-to-use-mssqlexecute-batch": "/plugins/magic.lambda.mssql/mssql.execute-batch/", "how-to-use-mssqlread": "/plugins/magic.lambda.mssql/mssql.read/", "how-to-use-mssqlscalar": "/plugins/magic.lambda.mssql/mssql.scalar/", "how-to-use-mssqlselect": "/plugins/magic.lambda.mssql/mssql.select/", "how-to-use-mssqltransactioncommit": "/plugins/magic.lambda.mssql/mssql.transaction.commit/", "how-to-use-mssqltransactioncreate": "/plugins/magic.lambda.mssql/mssql.transaction.create/", "how-to-use-mssqltransactionrollback": "/plugins/magic.lambda.mssql/mssql.transaction.rollback/", "how-to-use-mssqlupdate": "/plugins/magic.lambda.mssql/mssql.update/"}
 ---
 
 This is the Microsoft SQL Server data adapter for Magic. This project allows you to provide a semantic

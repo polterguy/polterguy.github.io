@@ -1,13 +1,15 @@
 ---
 title: "How to use [log.fatal]"
-description: "How to use [log.fatal] - The [log.error] and [log.fatal] slots give you the option of logging an exception stack trace, by parametrising your invocation with an [exception] argument, which will not be assumed to be me..."
+description: "How to use [log.fatal] - This slot writes a fatal level log entry, which you should reserve for failures that cannot be recovered from and need attention at once."
 generated: true
 guide: true
 ---
 
 The reference page of [`log.fatal`](/reference/slots/log/log.fatal/) has its arguments, constraints and declaration.
 
-The **[log.error]** and **[log.fatal]** slots give you the option of logging an exception stack trace, by parametrising
-your invocation with an **[exception]** argument, which will _not_ be assumed to be meta information, but rather end up
-in the _"exception"_ column as you create the log item. All other parameters will still be evaluated or used as meta
-information.
+This slot writes a fatal level log entry, which you should reserve for failures that cannot be recovered from and need attention at once. It works like **[log.error]**. Below is an example.
+
+```
+log.fatal:The database is unreachable
+   exception:Connection refused
+```

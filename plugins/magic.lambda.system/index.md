@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.system
-moved_anchors: {"how-to-use-systemcompile": "/plugins/magic.lambda.system/system.compile/", "how-to-use-systemdebug": "/plugins/magic.lambda.system/system.debug/", "how-to-use-systemexecute": "/plugins/magic.lambda.system/system.execute/", "how-to-use-systempluginload-and-systempluginunload": "/plugins/magic.lambda.system/system.plugin.load/", "systempluginexecute": "/plugins/magic.lambda.system/system.plugin.execute/", "systempluginlist": "/plugins/magic.lambda.system/system.plugin.list/"}
+moved_anchors: {"how-to-use-consolelog": "/plugins/magic.lambda.system/console.log/", "how-to-use-systemcompile": "/plugins/magic.lambda.system/system.compile/", "how-to-use-systemdebug": "/plugins/magic.lambda.system/system.debug/", "how-to-use-systemexecute": "/plugins/magic.lambda.system/system.execute/", "how-to-use-systempluginload-and-systempluginunload": "/plugins/magic.lambda.system/system.plugin.load/", "how-to-use-timezoneinit": "/plugins/magic.lambda.system/timezone.init/", "how-to-use-version": "/plugins/magic.lambda.system/version/", "systempluginexecute": "/plugins/magic.lambda.system/system.plugin.execute/", "systempluginlist": "/plugins/magic.lambda.system/system.plugin.list/"}
 ---
 
 This project contains _"system slots"_ to be able to invoke system commands, and/or dynamically compile and load plugins, etc. More specifically the project contains the following slots.

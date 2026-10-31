@@ -18,6 +18,10 @@ Required arguments come first, then the optional ones in the order they are decl
 |---|---|---|---|
 | `[roles]` | string | yes | Comma-separated roles required by the token. |
 
+### Guide
+
+[How to use `auth.token.read`](/plugins/magic.lambda.auth/auth.token.read/)
+
 ### JSON declaration
 
 This is the complete declaration of `auth.token.read`, as the running system describes it. It is also published as [slot.json](slot.json).

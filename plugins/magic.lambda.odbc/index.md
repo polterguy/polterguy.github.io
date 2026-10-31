@@ -1,5 +1,6 @@
 ---
 title: magic.lambda.odbc
+moved_anchors: {"how-to-use-odbcconnect": "/plugins/magic.lambda.odbc/odbc.connect/", "how-to-use-odbcexecute": "/plugins/magic.lambda.odbc/odbc.execute/", "how-to-use-odbcscalar": "/plugins/magic.lambda.odbc/odbc.scalar/", "how-to-use-odbcselect": "/plugins/magic.lambda.odbc/odbc.select/", "how-to-use-odbctransactioncommit": "/plugins/magic.lambda.odbc/odbc.transaction.commit/", "how-to-use-odbctransactioncreate": "/plugins/magic.lambda.odbc/odbc.transaction.create/", "how-to-use-odbctransactionrollback": "/plugins/magic.lambda.odbc/odbc.transaction.rollback/"}
 ---
 
 This is the ODBC data adapter for Magic. This project provides slots to open an ODBC database

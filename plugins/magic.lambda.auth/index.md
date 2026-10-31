@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.auth
-moved_anchors: {"how-to-use-authticketcreate": "/plugins/magic.lambda.auth/auth.ticket.create/", "how-to-use-authticketget": "/plugins/magic.lambda.auth/auth.ticket.get/", "how-to-use-authticketin-role": "/plugins/magic.lambda.auth/auth.ticket.in-role/", "how-to-use-authticketrefresh": "/plugins/magic.lambda.auth/auth.ticket.refresh/", "how-to-use-authticketverify": "/plugins/magic.lambda.auth/auth.ticket.verify/", "rs256-signing-and-authjwks": "/plugins/magic.lambda.auth/rs256-signing-and-auth-jwks/"}
+moved_anchors: {"how-to-use-authticketcreate": "/plugins/magic.lambda.auth/auth.ticket.create/", "how-to-use-authticketget": "/plugins/magic.lambda.auth/auth.ticket.get/", "how-to-use-authticketin-role": "/plugins/magic.lambda.auth/auth.ticket.in-role/", "how-to-use-authticketrefresh": "/plugins/magic.lambda.auth/auth.ticket.refresh/", "how-to-use-authticketverify": "/plugins/magic.lambda.auth/auth.ticket.verify/", "how-to-use-authtokenread": "/plugins/magic.lambda.auth/auth.token.read/", "rs256-signing-and-authjwks": "/plugins/magic.lambda.auth/rs256-signing-and-auth-jwks/"}
 ---
 
 The magic.lambda.auth project contains authentication and authorization helper slots for Magic. The project allows you

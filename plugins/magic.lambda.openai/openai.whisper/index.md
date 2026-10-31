@@ -15,3 +15,14 @@ exception if any of the three mandatory ones is missing, or if OpenAI responds w
 * __[content]__ - The audio as raw bytes. Mandatory.
 * __[type]__ - MIME type of the audio, such as `audio/mpeg`. Mandatory.
 * __[language]__ - Optional language hint.
+
+This slot transcribes audio to text using OpenAI Whisper, and sets its value to the transcription. It needs your OpenAI **[key]**, the audio as **[content]**, and its MIME **[type]**, and takes an optional **[language]** hint. Below is an example.
+
+```
+.key:YOUR_OPENAI_API_KEY
+io.file.load.binary:/misc/speech.mp3
+openai.whisper
+   key:x:@.key
+   content:x:@io.file.load.binary
+   type:audio/mpeg
+```

@@ -1,5 +1,6 @@
 ---
 title: magic.lambda.pgsql
+moved_anchors: {"how-to-use-pgsqlconnect": "/plugins/magic.lambda.pgsql/pgsql.connect/", "how-to-use-pgsqlcreate": "/plugins/magic.lambda.pgsql/pgsql.create/", "how-to-use-pgsqldelete": "/plugins/magic.lambda.pgsql/pgsql.delete/", "how-to-use-pgsqlexecute": "/plugins/magic.lambda.pgsql/pgsql.execute/", "how-to-use-pgsqlread": "/plugins/magic.lambda.pgsql/pgsql.read/", "how-to-use-pgsqlscalar": "/plugins/magic.lambda.pgsql/pgsql.scalar/", "how-to-use-pgsqlselect": "/plugins/magic.lambda.pgsql/pgsql.select/", "how-to-use-pgsqltransactioncommit": "/plugins/magic.lambda.pgsql/pgsql.transaction.commit/", "how-to-use-pgsqltransactioncreate": "/plugins/magic.lambda.pgsql/pgsql.transaction.create/", "how-to-use-pgsqltransactionrollback": "/plugins/magic.lambda.pgsql/pgsql.transaction.rollback/", "how-to-use-pgsqlupdate": "/plugins/magic.lambda.pgsql/pgsql.update/"}
 ---
 
 This is the PostgreSQL data adapter for Magic. This project allows you to provide a semantic lambda structure

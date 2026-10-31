@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.logging
-moved_anchors: {"how-to-use-logtimeshift": "/plugins/magic.lambda.logging/log.timeshift/", "querying-your-log": "/plugins/magic.lambda.logging/querying-your-log/"}
+moved_anchors: {"how-to-use-logcapabilities": "/plugins/magic.lambda.logging/log.capabilities/", "how-to-use-logcount": "/plugins/magic.lambda.logging/log.count/", "how-to-use-logerror": "/plugins/magic.lambda.logging/log.error/", "how-to-use-logfatal": "/plugins/magic.lambda.logging/log.fatal/", "how-to-use-logget": "/plugins/magic.lambda.logging/log.get/", "how-to-use-logtimeshift": "/plugins/magic.lambda.logging/log.timeshift/", "querying-your-log": "/plugins/magic.lambda.logging/querying-your-log/"}
 ---
 
 This project contains logging wrapper slots for Magic. More specifically, this project provides the following

@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.scheduler
-moved_anchors: {"how-to-use-taskscreate": "/plugins/magic.lambda.scheduler/tasks.create/", "how-to-use-tasksdelete": "/plugins/magic.lambda.scheduler/tasks.delete/", "how-to-use-tasksexecute": "/plugins/magic.lambda.scheduler/tasks.execute/", "how-to-use-tasksget": "/plugins/magic.lambda.scheduler/tasks.get/", "how-to-use-taskslist": "/plugins/magic.lambda.scheduler/tasks.list/", "how-to-use-tasksschedule": "/plugins/magic.lambda.scheduler/tasks.schedule/"}
+moved_anchors: {"how-to-use-taskscount": "/plugins/magic.lambda.scheduler/tasks.count/", "how-to-use-taskscreate": "/plugins/magic.lambda.scheduler/tasks.create/", "how-to-use-tasksdelete": "/plugins/magic.lambda.scheduler/tasks.delete/", "how-to-use-tasksexecute": "/plugins/magic.lambda.scheduler/tasks.execute/", "how-to-use-tasksget": "/plugins/magic.lambda.scheduler/tasks.get/", "how-to-use-taskslist": "/plugins/magic.lambda.scheduler/tasks.list/", "how-to-use-tasksschedule": "/plugins/magic.lambda.scheduler/tasks.schedule/", "how-to-use-tasksscheduledelete": "/plugins/magic.lambda.scheduler/tasks.schedule.delete/", "how-to-use-tasksupdate": "/plugins/magic.lambda.scheduler/tasks.update/"}
 ---
 
 This project gives you the ability to create persisted and scheduled Hyperlambda tasks

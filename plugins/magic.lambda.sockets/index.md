@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.sockets
-moved_anchors: {"how-to-use-socketssignal": "/plugins/magic.lambda.sockets/sockets.signal/"}
+moved_anchors: {"how-to-use-socketssignal": "/plugins/magic.lambda.sockets/sockets.signal/", "how-to-use-socketsusers": "/plugins/magic.lambda.sockets/sockets.users/", "how-to-use-socketsuserscount": "/plugins/magic.lambda.sockets/sockets.users.count/"}
 ---
 
 This project provides web sockets slots for Hyperlambda.

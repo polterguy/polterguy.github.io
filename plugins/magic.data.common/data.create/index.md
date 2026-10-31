@@ -17,3 +17,16 @@ otherwise to null. It also accepts the following arguments.
 * __[database-type]__ - Database adapter to use instead of your default database type
 * __[generate]__ - If true, only generates the SQL and its parameters instead of executing it, default is false
 * __[return-id]__ - Whether or not to return the ID of the created row, default is true
+
+Below is an example, inserting a new record into the _"actor"_ table of the _"sakila"_ database.
+
+```
+data.connect:sakila
+   data.create
+      table:actor
+      values
+         first_name:John
+         last_name:Doe
+
+// The value of [data.create] becomes the ID of the new record.
+```

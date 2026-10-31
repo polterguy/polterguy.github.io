@@ -10,6 +10,10 @@ slot_json: "/reference/slots/endpoints/endpoints.list/slot.json"
 
 * **Returns**: Resolves to one child node per discovered endpoint, including its endpoint metadata
 
+### Guide
+
+[How to use `endpoints.list`](/plugins/magic.endpoint/endpoints.list/)
+
 ### JSON declaration
 
 This is the complete declaration of `endpoints.list`, as the running system describes it. It is also published as [slot.json](slot.json).

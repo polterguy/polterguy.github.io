@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.config
-moved_anchors: {"how-to-use-configget": "/plugins/magic.lambda.config/config.get/"}
+moved_anchors: {"how-to-use-configget": "/plugins/magic.lambda.config/config.get/", "how-to-use-configload": "/plugins/magic.lambda.config/config.load/", "how-to-use-configsave": "/plugins/magic.lambda.config/config.save/", "how-to-use-configsection": "/plugins/magic.lambda.config/config.section/"}
 ---
 
 This project provides configuration settings slots for Magic. The project provides the following

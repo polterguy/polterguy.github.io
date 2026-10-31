@@ -10,3 +10,9 @@ The reference page of [`mime.list`](/reference/slots/mime/mime.list/) has its ar
 This slot lists all MIME type mappings registered in the current installation, including those added with **[mime.add]**.
 It returns one child node for each mapping, where the name of the child node is the file extension and its value is the MIME type.
 It takes no arguments.
+
+This slot lists the MIME types Magic knows about, as a mapping from file extension to MIME type. Below is an example.
+
+```
+mime.list
+```

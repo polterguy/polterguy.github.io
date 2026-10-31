@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.threading
-moved_anchors: {"how-to-use-executionkill": "/plugins/magic.lambda.threading/execution.kill/", "how-to-use-executionthrottle": "/plugins/magic.lambda.threading/execution.throttle/", "how-to-use-executiontimeout": "/plugins/magic.lambda.threading/execution.timeout/", "how-to-use-fork": "/plugins/magic.lambda.threading/fork/", "how-to-use-join": "/plugins/magic.lambda.threading/join/", "how-to-use-semaphore": "/plugins/magic.lambda.threading/semaphore/", "how-to-use-sleep": "/plugins/magic.lambda.threading/sleep/"}
+moved_anchors: {"how-to-use-executionkill": "/plugins/magic.lambda.threading/execution.kill/", "how-to-use-executionthrottle": "/plugins/magic.lambda.threading/execution.throttle/", "how-to-use-executionthrottlecreate": "/plugins/magic.lambda.threading/execution.throttle.create/", "how-to-use-executiontimeout": "/plugins/magic.lambda.threading/execution.timeout/", "how-to-use-fork": "/plugins/magic.lambda.threading/fork/", "how-to-use-join": "/plugins/magic.lambda.threading/join/", "how-to-use-semaphore": "/plugins/magic.lambda.threading/semaphore/", "how-to-use-sleep": "/plugins/magic.lambda.threading/sleep/"}
 ---
 
 This project contains all thread related slots for Hyperlambda. Threading in software development implies

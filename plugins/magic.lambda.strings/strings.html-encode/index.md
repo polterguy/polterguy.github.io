@@ -9,3 +9,9 @@ The reference page of [`strings.html-encode`](/reference/slots/strings/strings.h
 
 HTML encodes a string, replacing characters such as `<`, `>`, `&` and `"` with their HTML entities. The slot
 takes a value, which can be a constant or an expression, and replaces its value with the encoded string.
+
+This slot HTML encodes text, turning for instance `<` into `&lt;`, which makes it safe to render inside HTML. Below is an example.
+
+```
+strings.html-encode:"<b>Hello & welcome</b>"
+```

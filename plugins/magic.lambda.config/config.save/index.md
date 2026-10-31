@@ -1,10 +1,15 @@
 ---
 title: "How to use [config.save]"
-description: "How to use [config.save] - Saves your \"appsettings.json\" file, sanity checking it's valid JSON before persisting your file"
+description: "How to use [config.save] - This slot saves the JSON you give it as your \"appsettings.json\" file."
 generated: true
 guide: true
 ---
 
 The reference page of [`config.save`](/reference/slots/config/config.save/) has its arguments, constraints and declaration.
 
-Saves your _"appsettings.json"_ file, sanity checking it's valid JSON before persisting your file
+This slot saves the JSON you give it as your _"appsettings.json"_ file. The JSON replaces the file entirely, which is why you typically load it with **[config.load]** first, change it, and save the result. Below is an example, saving what was just loaded.
+
+```
+config.load
+config.save:x:@config.load
+```

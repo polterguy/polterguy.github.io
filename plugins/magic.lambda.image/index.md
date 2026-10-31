@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.image
-moved_anchors: {"how-to-use-imagechart": "/plugins/magic.lambda.image/image.chart/", "how-to-use-imageconvert": "/plugins/magic.lambda.image/image.convert/", "how-to-use-imagecrop": "/plugins/magic.lambda.image/image.crop/", "how-to-use-imagegenerate-qr": "/plugins/magic.lambda.image/image.generate-qr/", "how-to-use-imageresize": "/plugins/magic.lambda.image/image.resize/"}
+moved_anchors: {"how-to-use-imagechart": "/plugins/magic.lambda.image/image.chart/", "how-to-use-imageconvert": "/plugins/magic.lambda.image/image.convert/", "how-to-use-imagecrop": "/plugins/magic.lambda.image/image.crop/", "how-to-use-imagegenerate-qr": "/plugins/magic.lambda.image/image.generate-qr/", "how-to-use-imageresize": "/plugins/magic.lambda.image/image.resize/", "how-to-use-imagesize": "/plugins/magic.lambda.image/image.size/"}
 ---
 
 The magic.lambda.image project contains image manipulation functions for Hyperlambda, allowing you to do basic

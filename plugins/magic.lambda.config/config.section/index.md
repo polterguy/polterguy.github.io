@@ -1,10 +1,14 @@
 ---
 title: "How to use [config.section]"
-description: "How to use [config.section] - Returns the specified configuration section from your configuration file with the specified key"
+description: "How to use [config.section] - This slot reads one section of your \"appsettings.json\" file, and returns its keys and nested values as child nodes."
 generated: true
 guide: true
 ---
 
 The reference page of [`config.section`](/reference/slots/config/config.section/) has its arguments, constraints and declaration.
 
-Returns the specified configuration section from your configuration file with the specified key
+This slot reads one section of your _"appsettings.json"_ file, and returns its keys and nested values as child nodes. Below is an example.
+
+```
+config.section:magic
+```

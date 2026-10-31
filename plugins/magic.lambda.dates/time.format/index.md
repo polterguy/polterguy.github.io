@@ -14,3 +14,13 @@ and is invoked with the time span as its value. It requires the following argume
 
 The time span is typically a value returned from **[time]**, and the result of the slot is the formatted
 string.
+
+This slot formats a time span as text, with the **[format]** argument. Below is an example, formatting 2 hours and 30 minutes.
+
+```
+time
+   hours:2
+   minutes:30
+time.format:x:-
+   format:c
+```

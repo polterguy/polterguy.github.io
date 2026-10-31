@@ -17,3 +17,19 @@ constrain the update to any specific row if you leave it out.
 * __[where]__ - Condition constraining which rows to update, see the **[where]** documentation below
 * __[database-type]__ - Database adapter to use instead of your default database type
 * __[generate]__ - If true, only generates the SQL and its parameters instead of executing it, default is false
+
+Below is an example, changing the last name of every actor called John Doe.
+
+```
+data.connect:sakila
+   data.update
+      table:actor
+      values
+         last_name:Smith
+      where
+         and
+            first_name:John
+            last_name:Doe
+
+// The value of [data.update] becomes the number of records affected.
+```

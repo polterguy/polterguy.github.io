@@ -10,6 +10,10 @@ slot_json: "/reference/slots/console/console.log/slot.json"
 
 * **Value** (`log-message,text`), required: Message to write to the server console
 
+### Guide
+
+[How to use `console.log`](/plugins/magic.lambda.system/console.log/)
+
 ### JSON declaration
 
 This is the complete declaration of `console.log`, as the running system describes it. It is also published as [slot.json](slot.json).

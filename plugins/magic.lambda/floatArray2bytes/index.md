@@ -11,3 +11,13 @@ This slot serializes a sequence of float values into raw bytes, which is useful 
 embeddings, into binary APIs. Its value is an expression selecting the nodes containing the float values, each of which
 must be convertible to a float. After invocation, the value of the node is a `byte[]` containing 4 bytes for each float
 value.
+
+Below is an example.
+
+```
+.vector
+   a:float:0.25
+   b:float:0.5
+   c:float:0.75
+floatArray2bytes:x:@.vector/*
+```

@@ -16,3 +16,11 @@ and JSON arrays are supported.
 The slot accepts the following argument.
 
 * __[encoding]__ - Text encoding used to read the stream, defaults to `utf-8`. Streams using another encoding, such as `utf-16` or `iso-8859-1`, are converted to UTF-8 before they are parsed
+
+This slot creates a lambda object from JSON read from a stream, without first loading it into memory as a string. You can pass in an optional **[encoding]**, which defaults to UTF-8. Below is an example, opening a file as a stream.
+
+```
+io.stream.open-file:/misc/data.json
+json2lambda-stream:x:@io.stream.open-file
+io.stream.close:x:@io.stream.open-file
+```

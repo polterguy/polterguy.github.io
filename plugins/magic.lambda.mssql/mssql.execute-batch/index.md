@@ -16,3 +16,19 @@ difference between this slot and **[mssql.execute]**, which executes its SQL as 
 
 After execution the slot's value is `null`, and it has one child per executed batch, each containing a
 **[Records affected]** node.
+
+This slot executes a script made of several batches against the open connection. A line containing only `GO` separates one batch from the next, which is what SQL Server tools do, and each batch is executed on its own. The slot adds one child node per batch, telling how many records the batch affected. Below is an example.
+
+```
+mssql.connect:sakila
+   mssql.execute-batch:@"update actor set last_name = 'Smith' where actor_id = 1
+GO
+update actor set last_name = 'Jones' where actor_id = 2"
+
+// The result of the above looks like the following.
+mssql.execute-batch
+   ""
+      Records affected:int:1
+   ""
+      Records affected:int:1
+```

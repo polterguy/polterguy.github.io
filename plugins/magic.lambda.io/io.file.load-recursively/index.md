@@ -15,3 +15,9 @@ has the following two children.
 * **[content]** - Content of the file as a string, decoded as UTF-8
 
 As with **[io.file.load]**, you should not use this slot on binary files.
+
+This slot loads every file in a folder and its subfolders, and returns one child node per file, holding its path and content. Below is an example.
+
+```
+io.file.load-recursively:/misc/snippets/
+```
