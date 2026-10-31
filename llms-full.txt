@@ -7390,59 +7390,69 @@ crypto.aes.decrypt:x:-
 # How to use [crypto.decrypt]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.crypto/crypto.decrypt/
-Description: How to use [crypto.decrypt] - The encrypted package has the following format.
+Description: How to use [crypto.decrypt] - The [crypto.encrypt] slot requires some message/content, a signing key, an encryption key, and your signing key's fingerprint.
 
 The reference page of [`crypto.decrypt`](https://docs.ainiro.io/reference/slots/crypto/crypto.decrypt/) has its arguments, constraints and declaration.
 
-The encrypted package has the following format.
+The **[crypto.encrypt]** slot requires some message/content, a signing key, an encryption key, and your signing
+key's fingerprint. This slot will first cryptographically sign your message using the private key. Then it
+will use the public key supplied to encrypt the message, while injecting the fingerprint for the signing key
+and the cryptography key into the package. Below is an example.
 
-1. Signing key's fingerprint in SHA256 `byte[]` format, 32 bytes long
-2. The length of the signature as `int`, 4 bytes long
-3. The actual signature of the message
-4. The content of the message in UTF encoded `byte[]` format
+```
+// Recipient's key.
+crypto.rsa.create-key
+   strength:512
 
-Afterwards the result from the above steps is encrypted using AES, with a random generated session key 
-that is 32 bytes long. And another package is created, which is the final package, intended for being sent
-to the recipient. The final encryption package has a structure as follows.
+// Sender's key.
+crypto.rsa.create-key
+   strength:512
 
-1. Encryption key's fingerprint in SHA256 `byte[]` format, 32 bytes long
-2. The length of the encrypted session key as `int`, 4 bytes long
-3. The encrypted session key, encrypted using the recipient's public RSA key
-4. The AES encrypted content from the above signing step
+// Encrypting some message.
+crypto.encrypt:Some super secret message
+   encryption-key:x:././*/crypto.rsa.create-key/[0,1]/*/public
+   signing-key:x:././*/crypto.rsa.create-key/[1,2]/*/private
+   signing-key-fingerprint:x:././*/crypto.rsa.create-key/[1,2]/*/fingerprint
 
-Hence, only when *both* of the above lists are done, you have a final encryption package to send
-to some recipient.
-
-The other party can retrieve the encryption key used for encrypting the package, using for instance
-the **[crypto.get-key]** slot on the package. Then the receiver can use his private RSA key to decrypt
-the AES key, and use the decrypted AES key to decrypt the rest of the package - Which will result in getting the
-fingerprint of the RSA key used to sign the package, then the signature, and only *then* the content of
-the message. However, all of these steps are done automatically if you use the **[crypto.decrypt]** slot,
-except the signature verification process, unless you provide a **[verify-key]** argument to the decryption
-process.
-
-The AES key is generated using Bouncy Castle's `SecureRandom` implementation, resulting in a 256 bit
-cryptography key. This key again is encrypted using whatever bit strength you selected as you created
-your RSA key pair. Hence, the message as a whole, is not stronger than whatever key strength you use
-as you supply a **[strength]** argument to the **[crypto.rsa.create-key]**.
-
-The above format results in that the only _"meta information"_ an adversary can possibly pick up, is
-the fingerprint of the public RSA key used to encrypt the AES key, in addition to also the bit strength
-of this RSA key, since the bit strength of an RSA key will result in differences in the length of the
-encrypted AES key. An adversary will not have access to who encrypted/transmitted the package, he will
-not know who, if any signed the package - Or any other parts of the message - Assuming he is not able
-to somehow crack the AES encryption, and/or somehow retrieve the private RSA key the AES package's
-encryption key was encrypted with.
+// Decrypting the above encrypted message.
+crypto.decrypt:x:-
+   decryption-key:x:././*/crypto.rsa.create-key/[0,1]/*/private
+   verify-key:x:././*/crypto.rsa.create-key/[1,2]/*/public
+```
 
 
 # How to use [crypto.encrypt]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.crypto/crypto.encrypt/
-Description: How to use [crypto.encrypt] - High level slot combining RSA and AES to encrypt some message
+Description: How to use [crypto.encrypt] - The [crypto.encrypt] slot requires some message/content, a signing key, an encryption key, and your signing key's fingerprint.
 
 The reference page of [`crypto.encrypt`](https://docs.ainiro.io/reference/slots/crypto/crypto.encrypt/) has its arguments, constraints and declaration.
 
-High level slot combining RSA and AES to encrypt some message
+The **[crypto.encrypt]** slot requires some message/content, a signing key, an encryption key, and your signing
+key's fingerprint. This slot will first cryptographically sign your message using the private key. Then it
+will use the public key supplied to encrypt the message, while injecting the fingerprint for the signing key
+and the cryptography key into the package. Below is an example.
+
+```
+// Recipient's key.
+crypto.rsa.create-key
+   strength:512
+
+// Sender's key.
+crypto.rsa.create-key
+   strength:512
+
+// Encrypting some message.
+crypto.encrypt:Some super secret message
+   encryption-key:x:././*/crypto.rsa.create-key/[0,1]/*/public
+   signing-key:x:././*/crypto.rsa.create-key/[1,2]/*/private
+   signing-key-fingerprint:x:././*/crypto.rsa.create-key/[1,2]/*/fingerprint
+
+// Decrypting the above encrypted message.
+crypto.decrypt:x:-
+   decryption-key:x:././*/crypto.rsa.create-key/[0,1]/*/private
+   verify-key:x:././*/crypto.rsa.create-key/[1,2]/*/public
+```
 
 
 # How to use [crypto.fingerprint]
@@ -7458,49 +7468,47 @@ Creates a fingerprint of something
 # How to use [crypto.get-key]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.crypto/crypto.get-key/
-Description: How to use [crypto.get-key] - The encrypted package has the following format.
+Description: How to use [crypto.get-key] - Hence, the only thing that is in plain sight in the above encrypted message, is the fingerprint of the public key that was used to encrypt the message.
 
 The reference page of [`crypto.get-key`](https://docs.ainiro.io/reference/slots/crypto/crypto.get-key/) has its arguments, constraints and declaration.
 
-The encrypted package has the following format.
+Hence, the *only* thing that is in plain sight in the above encrypted message, is the fingerprint of the public
+key that was used to encrypt the message. Only after the message is decrypted, the signature for the message
+can be retrieved, together with the fingerprint of the key that was used to sign the message. Hence, what would
+normally be a more complete process, is that after the receiver decrypts the message, he should also verify that
+the signature originates from some trusted party. This can be done by simply *omitting* the **[verify-key]** argument
+as you invoke **[crypto.decrypt]**, and then invoke **[crypto.get-key]** on the result of the decryption process,
+for then to use the result of **[crypto.get-key]** to lookup the public key used to *verify* the signature of the
+package.
 
-1. Signing key's fingerprint in SHA256 `byte[]` format, 32 bytes long
-2. The length of the signature as `int`, 4 bytes long
-3. The actual signature of the message
-4. The content of the message in UTF encoded `byte[]` format
+```
+// Recipient's key.
+crypto.rsa.create-key
+   strength:512
 
-Afterwards the result from the above steps is encrypted using AES, with a random generated session key 
-that is 32 bytes long. And another package is created, which is the final package, intended for being sent
-to the recipient. The final encryption package has a structure as follows.
+// Sender's key.
+crypto.rsa.create-key
+   strength:512
 
-1. Encryption key's fingerprint in SHA256 `byte[]` format, 32 bytes long
-2. The length of the encrypted session key as `int`, 4 bytes long
-3. The encrypted session key, encrypted using the recipient's public RSA key
-4. The AES encrypted content from the above signing step
+// Encrypting some message.
+crypto.encrypt:Some super secret message
+   encryption-key:x:././*/crypto.rsa.create-key/[0,1]/*/public
+   signing-key:x:././*/crypto.rsa.create-key/[1,2]/*/private
+   signing-key-fingerprint:x:././*/crypto.rsa.create-key/[1,2]/*/fingerprint
 
-Hence, only when *both* of the above lists are done, you have a final encryption package to send
-to some recipient.
+// Decrypting the above encrypted message.
+crypto.decrypt:x:-
+   decryption-key:x:././*/crypto.rsa.create-key/[0,1]/*/private
+   
+// Uncomment this line to retrieve signing key's fingerprint
+// That you can use to lookup the public key needed to verify
+// the signature
+// crypto.get-key:x:-
 
-The other party can retrieve the encryption key used for encrypting the package, using for instance
-the **[crypto.get-key]** slot on the package. Then the receiver can use his private RSA key to decrypt
-the AES key, and use the decrypted AES key to decrypt the rest of the package - Which will result in getting the
-fingerprint of the RSA key used to sign the package, then the signature, and only *then* the content of
-the message. However, all of these steps are done automatically if you use the **[crypto.decrypt]** slot,
-except the signature verification process, unless you provide a **[verify-key]** argument to the decryption
-process.
-
-The AES key is generated using Bouncy Castle's `SecureRandom` implementation, resulting in a 256 bit
-cryptography key. This key again is encrypted using whatever bit strength you selected as you created
-your RSA key pair. Hence, the message as a whole, is not stronger than whatever key strength you use
-as you supply a **[strength]** argument to the **[crypto.rsa.create-key]**.
-
-The above format results in that the only _"meta information"_ an adversary can possibly pick up, is
-the fingerprint of the public RSA key used to encrypt the AES key, in addition to also the bit strength
-of this RSA key, since the bit strength of an RSA key will result in differences in the length of the
-encrypted AES key. An adversary will not have access to who encrypted/transmitted the package, he will
-not know who, if any signed the package - Or any other parts of the message - Assuming he is not able
-to somehow crack the AES encryption, and/or somehow retrieve the private RSA key the AES package's
-encryption key was encrypted with.
+// Verifying signature of encrypted message.
+crypto.verify:x:@crypto.decrypt
+   public-key:x:././*/crypto.rsa.create-key/[1,2]/*/public
+```
 
 
 # How to use [crypto.hash.sha1]
@@ -7952,11 +7960,47 @@ High level slot to sign some message
 # How to use [crypto.verify]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.crypto/crypto.verify/
-Description: How to use [crypto.verify] - High level slot to verify a signature of some message
+Description: How to use [crypto.verify] - Hence, the only thing that is in plain sight in the above encrypted message, is the fingerprint of the public key that was used to encrypt the message.
 
 The reference page of [`crypto.verify`](https://docs.ainiro.io/reference/slots/crypto/crypto.verify/) has its arguments, constraints and declaration.
 
-High level slot to verify a signature of some message
+Hence, the *only* thing that is in plain sight in the above encrypted message, is the fingerprint of the public
+key that was used to encrypt the message. Only after the message is decrypted, the signature for the message
+can be retrieved, together with the fingerprint of the key that was used to sign the message. Hence, what would
+normally be a more complete process, is that after the receiver decrypts the message, he should also verify that
+the signature originates from some trusted party. This can be done by simply *omitting* the **[verify-key]** argument
+as you invoke **[crypto.decrypt]**, and then invoke **[crypto.get-key]** on the result of the decryption process,
+for then to use the result of **[crypto.get-key]** to lookup the public key used to *verify* the signature of the
+package.
+
+```
+// Recipient's key.
+crypto.rsa.create-key
+   strength:512
+
+// Sender's key.
+crypto.rsa.create-key
+   strength:512
+
+// Encrypting some message.
+crypto.encrypt:Some super secret message
+   encryption-key:x:././*/crypto.rsa.create-key/[0,1]/*/public
+   signing-key:x:././*/crypto.rsa.create-key/[1,2]/*/private
+   signing-key-fingerprint:x:././*/crypto.rsa.create-key/[1,2]/*/fingerprint
+
+// Decrypting the above encrypted message.
+crypto.decrypt:x:-
+   decryption-key:x:././*/crypto.rsa.create-key/[0,1]/*/private
+   
+// Uncomment this line to retrieve signing key's fingerprint
+// That you can use to lookup the public key needed to verify
+// the signature
+// crypto.get-key:x:-
+
+// Verifying signature of encrypted message.
+crypto.verify:x:@crypto.decrypt
+   public-key:x:././*/crypto.rsa.create-key/[1,2]/*/public
+```
 
 
 # Hyperlambda and cryptography
@@ -11008,46 +11052,37 @@ Returns the log item with the specified id
 # How to use [log.info]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.logging/log.info/
-Description: How to use [log.info] - The slots [log.debug], [log.info], [log.error], and [log.fatal] are actually logging with their last parts becoming the "type" of log item.
+Description: How to use [log.info] - By default, this project will log into your magic.logentries database/table, using either MySQL, PostgreSQL, Microsoft SQL Server or SQLite.
 
 The reference page of [`log.info`](https://docs.ainiro.io/reference/slots/log/log.info/) has its arguments, constraints and declaration.
 
-The slots **[log.debug]**, **[log.info]**, **[log.error]**, and **[log.fatal]** are actually logging with their
-last parts becoming the _"type"_ of log item. This is similar to how Log4Net and Log4J works, and can be turned on
-and off as you see fit. The level is an increasing leverage type of value, applied in the following order.
-
-* debug
-* info
-* error
-* fatal
-
-This implies that if you set the level to for instance _"error"_ no invocations to **[log.debug]** or **[log.info]**
-will log anything into your log, allowing you to _"turn up and down"_ the level of logging you need as a configuration
-setting through your _"appsetting.json"_ file. Below is an example configuration setting the level to _"info"_. The
-default value for log level is _"debug"_. In a production environment you might want to increase this to at
-least _"info"_.
+By default, this project will log into your `magic.log_entries` database/table, using either MySQL, PostgreSQL,
+Microsoft SQL Server or SQLite. This allows you to use SQL to generate statistics on top of your logs.
+An example of creating a log entry can be found below.
 
 ```
-{
-  "magic": {
-    "logging": {
-      "level": "info"
-    }
-  }
-}
+log.info:Howdy world from magic.lambda.logging
 ```
-
-The above value will for instance log everything except invocations to **[log.debug]**.
 
 
 # How to use [log.query]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.logging/log.query/
-Description: How to use [log.query] - Returns a list of log items according to its arguments
+Description: How to use [log.query] - To retrieve log items sequentially you can use [log.query].
 
 The reference page of [`log.query`](https://docs.ainiro.io/reference/slots/log/log.query/) has its arguments, constraints and declaration.
 
-Returns a list of log items according to its arguments
+To retrieve log items sequentially you can use **[log.query]**. This slot can optionally take a **[from]** argument
+being the id of an existing log item from where to start retrieving items, and a **[max]** argument being the maximum
+number of records to return. If no **[max]** argument is specified, the default value of this is 10. In addition the
+invocation can be fiven a string as its value, which if given must match the content of your log items for an item
+to be returned. Below is an example of usage.
+
+```
+log.query:"We successfully authenticated user 'root'"
+   from:555
+   max:20
+```
 
 
 # How to use [log.timeshift]
@@ -12286,11 +12321,15 @@ Thx to Devis Lucato for publishing the original work under CC0 [here](https://gi
 # How to use [openai.tokenize]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.openai/openai.tokenize/
-Description: How to use [openai.tokenize] - Returns how many tokens the specified text will consume from OpenAI
+Description: How to use [openai.tokenize] - The above slot will calculate how many tokens the specified input requires from the OpenAI endpoints.
 
 The reference page of [`openai.tokenize`](https://docs.ainiro.io/reference/slots/openai/openai.tokenize/) has its arguments, constraints and declaration.
 
-Returns how many tokens the specified text will consume from OpenAI
+The above slot will calculate how many tokens the specified input requires from the OpenAI endpoints.
+
+```
+openai.tokenize:This is some query
+```
 
 
 # How to use [openai.whisper]
@@ -14423,6 +14462,17 @@ The reference page of [`strings.builder.append`](https://docs.ainiro.io/referenc
 Appends its value to the closest **[strings.builder]** scope. The slot requires a value, which can be a constant
 or an expression, and can only be used inside a **[strings.builder]** invocation. See the example in the
 documentation for **[strings.builder]** above.
+
+Creates a string builder scope. Every **[strings.builder.append]** invocation found inside it appends its value
+to the builder, and when the scope ends the value of **[strings.builder]** becomes the concatenated text.
+Its children are evaluated as a lambda object, and the slot has no arguments of its own.
+
+```
+strings.builder
+   strings.builder.append:"howdy"
+   strings.builder.append:" world"
+get-value:x:@strings.builder
+```
 
 
 # How to use [strings.builder]
