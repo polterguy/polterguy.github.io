@@ -355,9 +355,9 @@ def token_in(name, text):
     return re.search(r'(?<![\w.\-])%s(?![\w\-]|\.\w)' % re.escape(name), text)
 
 
-def section_showing(sources, name):
+def section_showing(sources, name, modes=(True, False)):
     """The smallest section, in the given line lists, that shows the slot in a code sample, else one that names it."""
-    for want_code in (True, False):
+    for want_code in modes:
         for lines in sources:
             fence, marks = False, []
             for i, line in enumerate(lines):
@@ -388,6 +388,38 @@ def section_showing(sources, name):
     return None
 
 
+def example_in(lines, name):
+    """The paragraph before the first code sample using the slot, and the sample, from text without headings."""
+    i = 0
+    while i < len(lines):
+        if lines[i].startswith('```'):
+            j = i + 1
+            while j < len(lines) and not lines[j].startswith('```'):
+                j += 1
+            if token_in(name, '\n'.join(lines[i:j + 1])):
+                k = i
+                while k > 0 and lines[k - 1].strip():
+                    k -= 1
+                if k == i:
+                    k = i - 1
+                    while k > 0 and not lines[k - 1].strip():
+                        k -= 1
+                    while k > 0 and lines[k - 1].strip():
+                        k -= 1
+                return trim(lines[max(k, 0):j + 1])
+            i = j
+        i += 1
+    return None
+
+
+def show(sources, name):
+    """What the documentation shows of a slot: a section with a code sample, else the sample, else a section naming it."""
+    found = section_showing(sources, name, (True,))
+    for lines in sources:
+        found = found or example_in(lines, name)
+    return found or section_showing(sources, name, (False,))
+
+
 def collect(magic, names):
     """
     The plan of every README, plus the guide page of every slot: its own "How to use" section when the README has
@@ -402,6 +434,11 @@ def collect(magic, names):
 
     guides = {p: list(r['guide_pages']) for p, r in results.items()}
     urls = {s_: g['url'] for p in guides for g in guides[p] for s_ in g['slots']}
+
+    def sources_of(plugin, hand_pages=()):
+        r = results.get(plugin)
+        found = ([r['intro']] + [u['lines'] for u in r['hub_sections']] + [p_['lines'] for p_ in r['pages']]) if r else []
+        return found + (list(hand_pages) if plugin == 'magic.lambda' else [])
 
     owned, described = {}, {}
     for plugin, r in results.items():
@@ -418,6 +455,17 @@ def collect(magic, names):
             text = f.read()
         if 'generated: true' not in text:
             hand.append(split_front_matter(text)[1].split('\n'))
+    # A guide without a code sample gets the section of the plugin's documentation that shows its slot in one.
+    for plugin, pages_ in guides.items():
+        for g in pages_:
+            if '```' not in g['md']:
+                body = show(sources_of(plugin, hand), g['slot'])
+                for other in guides[plugin]:
+                    if not body and other is not g:
+                        body = example_in(other['md'].split('\n'), g['slot'])
+                if body:
+                    g['md'] = g['md'] + '\n\n' + '\n'.join(body)
+
     for lines in hand:
         text = '\n'.join(lines)
         for name in names:
@@ -432,7 +480,7 @@ def collect(magic, names):
         sources = ([r['intro']] if r else []) + ([u['lines'] for u in r['hub_sections']] if r else []) + ([p['lines'] for p in r['pages']] if r else [])
         if plugin == 'magic.lambda':
             sources += hand
-        body = section_showing(sources, name)
+        body = show(sources, name)
         md = '\n'.join(body) if body else ''
         if not md:
             md = described.get(name, '')

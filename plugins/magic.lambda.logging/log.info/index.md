@@ -1,35 +1,16 @@
 ---
 title: "How to use [log.info]"
-description: "How to use [log.info] - The slots [log.debug], [log.info], [log.error], and [log.fatal] are actually logging with their last parts becoming the \"type\" of log item."
+description: "How to use [log.info] - By default, this project will log into your magic.logentries database/table, using either MySQL, PostgreSQL, Microsoft SQL Server or SQLite."
 generated: true
 guide: true
 ---
 
 The reference page of [`log.info`](/reference/slots/log/log.info/) has its arguments, constraints and declaration.
 
-The slots **[log.debug]**, **[log.info]**, **[log.error]**, and **[log.fatal]** are actually logging with their
-last parts becoming the _"type"_ of log item. This is similar to how Log4Net and Log4J works, and can be turned on
-and off as you see fit. The level is an increasing leverage type of value, applied in the following order.
-
-* debug
-* info
-* error
-* fatal
-
-This implies that if you set the level to for instance _"error"_ no invocations to **[log.debug]** or **[log.info]**
-will log anything into your log, allowing you to _"turn up and down"_ the level of logging you need as a configuration
-setting through your _"appsetting.json"_ file. Below is an example configuration setting the level to _"info"_. The
-default value for log level is _"debug"_. In a production environment you might want to increase this to at
-least _"info"_.
+By default, this project will log into your `magic.log_entries` database/table, using either MySQL, PostgreSQL,
+Microsoft SQL Server or SQLite. This allows you to use SQL to generate statistics on top of your logs.
+An example of creating a log entry can be found below.
 
 ```
-{
-  "magic": {
-    "logging": {
-      "level": "info"
-    }
-  }
-}
+log.info:Howdy world from magic.lambda.logging
 ```
-
-The above value will for instance log everything except invocations to **[log.debug]**.
