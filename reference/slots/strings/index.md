@@ -149,8 +149,8 @@ Applies string interpolation from child expressions.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[strip]` | bool | no | Whether to strip embedded Hyperlambda instead of executing it. Default: `false`. |
 | _any node name_ | string | no | Argument passed to embedded Hyperlambda snippets invoked from the template. Can be repeated. |
+| `[strip]` | bool | no | Whether to strip embedded Hyperlambda instead of executing it. Default: `false`. |
 
 Guide: [How to use [strings.mixin]](/plugins/magic.lambda.strings/#how-to-use-stringsmixin)
 

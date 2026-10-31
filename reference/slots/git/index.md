@@ -15,8 +15,8 @@ Returns every branch in the local repository, marking which one is currently che
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[remote]` | bool | no | List remote branches. Default: `false`. |
 | `[all]` | bool | no | List all branches. Default: `false`. |
+| `[remote]` | bool | no | List remote branches. Default: `false`. |
 
 Guide: [How to use [git.branch.list]](/plugins/magic.lambda.git/#how-to-use-gitbranchlist)
 
@@ -43,9 +43,9 @@ Clones a Git repository.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[path]` | string | no | Destination repository folder. |
 | `[branch]` | string | no | Branch to clone. |
 | `[depth]` | int | no | Shallow clone depth. |
+| `[path]` | string | no | Destination repository folder. |
 
 Guide: [How to use [git.clone-repo]](/plugins/magic.lambda.git/#how-to-use-gitclone-repo)
 
@@ -58,11 +58,11 @@ Stages all changes in the repo and creates a new commit with the supplied messag
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[message]` | string | yes | Commit message. |
 | `[all]` | bool | no | Stage all changed files before committing. Default: `true`. |
 | `[amend]` | bool | no | Amend the previous commit. Default: `false`. |
-| `[name]` | string | no | Author name for the commit; omitted falls back to git's configured identity. |
 | `[email]` | string | no | Author email for the commit; omitted falls back to git's configured identity. |
+| `[message]` | string | yes | Commit message. |
+| `[name]` | string | no | Author name for the commit; omitted falls back to git's configured identity. |
 
 Guide: [How to use [git.commit]](/plugins/magic.lambda.git/#how-to-use-gitcommit)
 
@@ -75,8 +75,8 @@ Initializes a Git repository.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[branch]` | string | no | Initial branch name. |
 | `[bare]` | bool | no | Create a bare repository. Default: `false`. |
+| `[branch]` | string | no | Initial branch name. |
 
 Guide: [How to use [git.create-repo]](/plugins/magic.lambda.git/#how-to-use-gitcreate-repo)
 
@@ -110,8 +110,8 @@ Fetches updates from a Git remote.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[remote]` | string | no | Remote to fetch from. Default: `origin`. |
 | `[refspec]` | string | no | Optional refspec to fetch. |
+| `[remote]` | string | no | Remote to fetch from. Default: `origin`. |
 
 Guide: [How to use [git.fetch]](/plugins/magic.lambda.git/#how-to-use-gitfetch)
 
@@ -124,10 +124,10 @@ Pulls updates from a Git remote.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[remote]` | string | no | Remote to pull from. Default: `origin`. |
 | `[branch]` | string | no | Branch to pull. |
-| `[rebase]` | bool | no | Use rebase while pulling. Default: `false`. |
 | `[ff-only]` | bool | no | Only allow fast-forward pulls. Default: `false`. |
+| `[rebase]` | bool | no | Use rebase while pulling. Default: `false`. |
+| `[remote]` | string | no | Remote to pull from. Default: `origin`. |
 
 Guide: [How to use [git.pull]](/plugins/magic.lambda.git/#how-to-use-gitpull)
 
@@ -140,8 +140,8 @@ Pushes changes to a Git remote.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[remote]` | string | no | Remote to push to. Default: `origin`. |
 | `[branch]` | string | no | Branch to push. |
+| `[remote]` | string | no | Remote to push to. Default: `origin`. |
 | `[set-upstream]` | bool | no | Set upstream while pushing. Default: `false`. |
 
 Guide: [How to use [git.push]](/plugins/magic.lambda.git/#how-to-use-gitpush)
@@ -182,8 +182,8 @@ Returns Git repository status.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[porcelain]` | bool | no | Use porcelain status output. Default: `false`. |
 | `[branch]` | bool | no | Include branch information. Default: `false`. |
+| `[porcelain]` | bool | no | Use porcelain status output. Default: `false`. |
 | `[structured]` | bool | no | Return status lines as child nodes. Default: `false`. |
 
 Guide: [How to use [git.status]](/plugins/magic.lambda.git/#how-to-use-gitstatus)

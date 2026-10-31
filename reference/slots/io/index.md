@@ -118,8 +118,8 @@ Returned nodes:
 | Node | Type | Required | Description |
 |---|---|---|---|
 | _unnamed child node_ | lambda | no | One loaded file entry; access fields via the [name] and [content] children. Can be repeated. |
-| _unnamed child node_ / `[name]` | string | yes | Relative file path of the loaded file. |
 | _unnamed child node_ / `[content]` | string | yes | Loaded file content as text. |
+| _unnamed child node_ / `[name]` | string | yes | Relative file path of the loaded file. |
 
 Guide: [How to use [io.file.load-recursively]](/plugins/magic.lambda.io/#how-to-use-iofileload-recursively)
 
@@ -200,10 +200,10 @@ Searches for files on the server.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[pattern]` | string | yes | Text or regular expression pattern to search for. |
-| `[regex]` | bool | no | Whether [pattern] should be interpreted as a regular expression. Default: `false`. |
 | `[case-sensitive]` | bool | no | Whether matching should be case-sensitive. Default: `false`. |
 | `[extensions]` | string | no | Optional comma-separated file extensions to include. |
+| `[pattern]` | string | yes | Text or regular expression pattern to search for. |
+| `[regex]` | bool | no | Whether [pattern] should be interpreted as a regular expression. Default: `false`. |
 
 Returned nodes:
 
@@ -349,8 +349,8 @@ Writes a stream's contents to disk under the given path; commonly used after upl
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[overwrite]` | bool | no | Whether an existing file should be overwritten. Default: `true`. |
 | _any node name_ | Stream | yes | Child node yielding the stream to save. |
+| `[overwrite]` | bool | no | Whether an existing file should be overwritten. Default: `true`. |
 
 Guide: [How to use [io.stream.save-file]](/plugins/magic.lambda.io/#how-to-use-iostreamsave-file)
 

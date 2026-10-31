@@ -25,10 +25,10 @@ Transcribes audio content using OpenAI Whisper.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[key]` | string | yes | OpenAI API key. |
 | `[content]` | byte[] | yes | Audio content bytes. |
-| `[type]` | string | yes | Audio MIME type. |
+| `[key]` | string | yes | OpenAI API key. |
 | `[language]` | string | no | Optional language hint. |
+| `[type]` | string | yes | Audio MIME type. |
 
 Guide: [How to use [openai.whisper]](/plugins/magic.lambda.openai/#how-to-use-openaiwhisper)
 

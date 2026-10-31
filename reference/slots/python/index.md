@@ -14,13 +14,13 @@ Runs a Python script or file in a subprocess and captures stdout, stderr, and ex
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[code]` | string | no | Inline Python code to execute. |
-| `[file]` | string | no | Python file to execute. |
 | `[args]` | string\|lambda | no | Command-line arguments as a shell-like string or child values. |
 | `[args]` / _any node name_ | string | no | Single command-line argument. Can be repeated. |
+| `[code]` | string | no | Inline Python code to execute. |
+| `[file]` | string | no | Python file to execute. |
 | `[stdin]` | string | no | Text written to standard input. |
-| `[working-directory]` | string | no | Working directory for the Python process. |
 | `[timeout]` | int | no | Execution timeout in seconds. Default: `30`. |
+| `[working-directory]` | string | no | Working directory for the Python process. |
 
 * **Constraint** (ExactlyOneOf): Exactly one code source must be supplied (`[code]`, `[file]`)
 

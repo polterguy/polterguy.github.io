@@ -51,9 +51,9 @@ Executes a SELECT query on the current ODBC connection.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 | `[max]` | long | no | Maximum number of rows to return; omitted or -1 returns all rows. Default: `-1`. |
 | `[multiple-result-sets]` | bool | no | Whether multiple SELECT statements in the SQL input should be returned as separate child result containers. Default: `false`. |
-| _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 
 Returned nodes:
 

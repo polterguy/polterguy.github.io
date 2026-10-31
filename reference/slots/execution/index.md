@@ -32,8 +32,8 @@ Creates or replaces a named throttle enforced by [execution.throttle]; declaring
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[limit]` | int | no | Maximum number of invocations allowed per window; mandatory when creating a throttle, while invoking the slot without any arguments deletes the throttle instead. |
-| `[window]` | int | no | Window length in seconds. Default: `60`. |
 | `[per]` | string | no | How to partition the limit; 'user' partitions per authenticated username, 'ip' per client IP address, and 'global' shares one limit between all callers. Default: `user when authenticated, otherwise ip`. |
+| `[window]` | int | no | Window length in seconds. Default: `60`. |
 
 ## [execution.timeout]
 

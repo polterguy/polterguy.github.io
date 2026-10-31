@@ -1,0 +1,42 @@
+
+// Executable Hyperlambda file that lists every slot registered in the system and, for each slot, returns its name, its description and its signature. Returns a JSON array of objects, each with fields name (string), description (string) and signature (the slot's signature as nodes, so it converts to nested JSON). Open to everybody, since it only reads metadata that is public in the open source code and runs no code supplied by the caller. Callers are throttled to 10 requests per 60 seconds per IP address, and everybody together to 60 requests per 60 seconds.
+.arguments
+execution.throttle.create:docs-slots.ip
+   limit:int:10
+   window:int:60
+   per:ip
+execution.throttle.create:docs-slots.global
+   limit:int:60
+   window:int:60
+   per:global
+execution.throttle:docs-slots.ip
+execution.throttle:docs-slots.global
+vocabulary
+.result
+for-each:x:@vocabulary/*
+   slot.description:x:@.dp/#
+   slot.signature:x:@.dp/#
+   /*
+    * The signature is returned as nodes, which Magic converts to nested JSON. A constraint is
+    * named after its kind and can occur more than once, which JSON cannot hold as a key, so each
+    * constraint, at any depth, becomes an unnamed node carrying its kind as a child.
+    */
+   for-each:x:@slot.signature/**/constraints/*
+      get-name:x:@.dp/#
+      unwrap:x:+/*/*
+      add:x:@.dp/#
+         .
+            kind:x:@get-name
+      set-name:x:@.dp/#
+         .:.
+   .entry
+      .
+         name:x:@.dp/#
+         description:x:@slot.description
+         signature
+   unwrap:x:@.entry/*/*
+   add:x:@.entry/*/*/signature
+      get-nodes:x:@slot.signature/*
+   add:x:@.result
+      get-nodes:x:@.entry/*
+return-nodes:x:@.result/*

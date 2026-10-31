@@ -31,10 +31,10 @@ Pushes a SignalR message to clients subscribed to the channel; use to broadcast 
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[args]` | lambda | yes | Payload serialized to JSON and sent with the socket message. |
+| `[clients]` | string | no | Comma-separated connection IDs receiving the message. |
+| `[groups]` | string | no | Comma-separated groups receiving the message. |
 | `[roles]` | string | no | Comma-separated roles receiving the message. |
 | `[users]` | string | no | Comma-separated users receiving the message. |
-| `[groups]` | string | no | Comma-separated groups receiving the message. |
-| `[clients]` | string | no | Comma-separated connection IDs receiving the message. |
 
 Guide: [How to use [sockets.signal]](/plugins/magic.lambda.sockets/#how-to-use-socketssignal)
 
@@ -67,8 +67,8 @@ Lists connected socket users, optionally filtered by username.
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[filter]` | string | no | Username filter. |
-| `[offset]` | int | no | Number of matching users to skip. Default: `0`. |
 | `[limit]` | int | no | Maximum number of users to return. Default: `10`. |
+| `[offset]` | int | no | Number of matching users to skip. Default: `0`. |
 
 ## [sockets.users.count]
 

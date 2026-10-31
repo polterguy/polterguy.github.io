@@ -15,14 +15,14 @@ Creates a GitHub repository.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[owner]` | string | no | Organization owner; omit to create under the authenticated user. |
-| `[private]` | bool | no | Whether the repository is private. Default: `false`. |
-| `[description]` | string | no | Repository description. |
-| `[homepage]` | string | no | Repository homepage URL. |
 | `[auto-init]` | bool | no | Initialize the repository. Default: `false`. |
 | `[default-branch]` | string | no | Default branch name. |
+| `[description]` | string | no | Repository description. |
 | `[gitignore-template]` | string | no | GitHub gitignore template. |
+| `[homepage]` | string | no | Repository homepage URL. |
 | `[license-template]` | string | no | GitHub license template. |
+| `[owner]` | string | no | Organization owner; omit to create under the authenticated user. |
+| `[private]` | bool | no | Whether the repository is private. Default: `false`. |
 
 Guide: [How to use [github.repo.create]](/plugins/magic.lambda.git/#how-to-use-githubrepocreate)
 
@@ -48,10 +48,10 @@ Lists GitHub repositories using child-node filters.
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[owner]` | string | no | Organization owner; omit to list authenticated user repositories. |
-| `[visibility]` | string | no | Repository visibility filter. |
-| `[type]` | string | no | Repository type filter. |
-| `[per-page]` | int | no | Number of repositories per page. |
 | `[page]` | int | no | Page number. |
+| `[per-page]` | int | no | Number of repositories per page. |
+| `[type]` | string | no | Repository type filter. |
+| `[visibility]` | string | no | Repository visibility filter. |
 
 Guide: [How to use [github.repo.list]](/plugins/magic.lambda.git/#how-to-use-githubrepolist)
 

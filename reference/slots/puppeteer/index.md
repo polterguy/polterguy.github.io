@@ -15,10 +15,10 @@ Clicks an element on the page.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[selector]` | string | yes | CSS selector. |
 | `[button]` | string | no | Mouse button to click. Default: `left`. |
 | `[click-count]` | int | no | Number of clicks. |
 | `[delay]` | int | no | Delay in milliseconds between mouse down and up. |
+| `[selector]` | string | yes | CSS selector. |
 
 Guide: [How to use [puppeteer.click]](/plugins/magic.lambda.puppeteer/#puppeteerclick)
 
@@ -40,15 +40,15 @@ Creates or reuses a Puppeteer browser session.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[timeout-minutes]` | int | no | Idle timeout in minutes. |
-| `[max-lifetime-minutes]` | int | no | Maximum session lifetime in minutes. |
-| `[headless]` | bool | no | Whether the browser should run headless. Default: `true`. |
-| `[timeout]` | int | no | Browser launch timeout in milliseconds. |
 | `[args]` | string\|lambda | no | Browser launch arguments. |
 | `[args]` / _unnamed child node_ | string | no | Argument value. Can be repeated. |
-| `[user-data-dir]` | string | no | Browser user data directory. |
 | `[executable]` | string | no | Browser executable path. |
 | `[executable-path]` | string | no | Browser executable path. |
+| `[headless]` | bool | no | Whether the browser should run headless. Default: `true`. |
+| `[max-lifetime-minutes]` | int | no | Maximum session lifetime in minutes. |
+| `[timeout]` | int | no | Browser launch timeout in milliseconds. |
+| `[timeout-minutes]` | int | no | Idle timeout in minutes. |
+| `[user-data-dir]` | string | no | Browser user data directory. |
 
 * **Constraint** (AtMostOneOf): [executable] and [executable-path] are aliases; supply at most one (`[executable]`, `[executable-path]`)
 
@@ -74,9 +74,9 @@ Evaluates JavaScript in the page context.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[expression]` | string | yes | JavaScript expression or function. |
 | `[args]` | string\|lambda | no | Arguments passed to the JavaScript function. |
 | `[args]` / _unnamed child node_ | string | no | Argument value. Can be repeated. |
+| `[expression]` | string | yes | JavaScript expression or function. |
 
 Guide: [How to use [puppeteer.evaluate]](/plugins/magic.lambda.puppeteer/#puppeteerevaluate)
 
@@ -89,10 +89,10 @@ Fills an input element with text.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[selector]` | string | yes | CSS selector. |
-| `[text]` | string | no | Text to send. |
 | `[config-key]` | string | no | Configuration key resolving the text to send. |
 | `[delay]` | int | no | Delay in milliseconds between key presses. |
+| `[selector]` | string | yes | CSS selector. |
+| `[text]` | string | no | Text to send. |
 
 * **Constraint** (ExactlyOneOf): Provide either [text] or [config-key] (`[text]`, `[config-key]`)
 
@@ -108,8 +108,8 @@ Navigates the current page to a URL.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[url]` | string | yes | URL to navigate to. |
 | `[timeout]` | int | no | Navigation timeout in milliseconds. |
+| `[url]` | string | yes | URL to navigate to. |
 | `[wait-until]` | string | no | Navigation completion condition: load, domcontentloaded, networkidle0, or networkidle2. |
 
 Guide: [How to use [puppeteer.goto]](/plugins/magic.lambda.puppeteer/#puppeteergoto)
@@ -123,9 +123,9 @@ Sends a key press to the page.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[selector]` | string | yes | CSS selector. |
-| `[key]` | string | no | Key to press. |
 | `[delay]` | int | no | Delay in milliseconds between key down and up. |
+| `[key]` | string | no | Key to press. |
+| `[selector]` | string | yes | CSS selector. |
 
 Guide: [How to use [puppeteer.press]](/plugins/magic.lambda.puppeteer/#puppeteerpress)
 
@@ -141,8 +141,8 @@ Captures a screenshot of the page.
 |---|---|---|---|
 | `[filename]` | string | yes | Destination filename. |
 | `[full-page]` | bool | no | Whether to capture the full page. Default: `false`. |
-| `[type]` | string | no | Image type. |
 | `[quality]` | int | no | JPEG/WebP image quality. |
+| `[type]` | string | no | Image type. |
 
 Guide: [How to use [puppeteer.screenshot]](/plugins/magic.lambda.puppeteer/#puppeteerscreenshot)
 
@@ -180,10 +180,10 @@ Types text into an element.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[selector]` | string | yes | CSS selector. |
-| `[text]` | string | no | Text to send. |
 | `[config-key]` | string | no | Configuration key resolving the text to send. |
 | `[delay]` | int | no | Delay in milliseconds between key presses. |
+| `[selector]` | string | yes | CSS selector. |
+| `[text]` | string | no | Text to send. |
 
 * **Constraint** (ExactlyOneOf): Provide either [text] or [config-key] (`[text]`, `[config-key]`)
 
@@ -208,10 +208,10 @@ Waits for a selector to appear.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[hidden]` | bool | no | Wait until selector is hidden. |
 | `[selector]` | string | yes | CSS selector. |
 | `[timeout]` | int | no | Wait timeout in milliseconds. |
 | `[visible]` | bool | no | Wait until selector is visible. |
-| `[hidden]` | bool | no | Wait until selector is hidden. |
 
 Guide: [How to use [puppeteer.wait-for-selector]](/plugins/magic.lambda.puppeteer/#puppeteerwait-for-selector)
 
@@ -224,8 +224,8 @@ Waits for the page URL to match a condition.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[url]` | string | yes | URL pattern to wait for. |
 | `[timeout]` | int | no | Wait timeout in milliseconds. |
+| `[url]` | string | yes | URL pattern to wait for. |
 
 Guide: [How to use [puppeteer.wait-for-url]](/plugins/magic.lambda.puppeteer/#puppeteerwait-for-url)
 

@@ -30,7 +30,7 @@ import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 OUT = os.path.join(ROOT, 'reference', 'slots')
-ENDPOINT_URL = 'https://hyperlambda.dev/magic/modules/docs/slots'
+ENDPOINT_URL = 'https://hyperlambda.dev/magic/modules/docs/slots-nodes'
 PLAYGROUND_URL = 'https://hyperlambda.dev/magic/modules/docs/playground'
 
 # Cloudflare in front of the server refuses the default user agent of most http libraries.
@@ -56,67 +56,19 @@ def fetch():
 
 
 # ------------------------------------------------------------------------------------
-# Parsing the Hyperlambda text that [lambda2hyper] writes for a signature.
+# Signatures arrive as nested JSON, and are turned back into nodes for rendering.
 # ------------------------------------------------------------------------------------
 
-def unquote(value):
-    if len(value) >= 2 and value[0] == '"' and value[-1] == '"':
-        return (value[1:-1].replace('\\n', '\n').replace('\\t', '\t')
-                .replace('\\r', '').replace('\\"', '"').replace('\\\\', '\\'))
-    return value
-
-
-def convert(value):
-    typed = re.match(r'(bool|int|long|decimal|double):(.*)$', value, re.S)
-    if not typed:
-        return unquote(value)
-    kind, raw_value = typed.groups()
-    if kind == 'bool':
-        return raw_value == 'true'
-    try:
-        return float(raw_value) if kind in ('decimal', 'double') else int(raw_value)
-    except ValueError:
-        return raw_value
-
-
-def verbatim(first, lines, i):
-    """Reads an @"..." string that continues over several lines, returns (text, next index)."""
-    text = first
-    while True:
-        m = re.search(r'"(?!")', text.replace('""', '\0\0'))
-        if m:
-            return text[:m.start()].replace('""', '"'), i
-        if i >= len(lines):
-            return text, i
-        text += '\n' + lines[i]
-        i += 1
-
-
-def parse_hl(text):
-    """Parses Hyperlambda text into nodes of the form {name, value, children}."""
-    root = {'name': '', 'value': None, 'children': []}
-    stack = [(-1, root)]
-    lines = text.replace('\r\n', '\n').split('\n')
-    i = 0
-    while i < len(lines):
-        line = lines[i]
-        i += 1
-        if not line.strip():
-            continue
-        depth = (len(line) - len(line.lstrip(' '))) // 3
-        name, sep, val = line.strip().partition(':')
-        if sep and val.startswith('@"'):
-            val, i = verbatim(val[2:], lines, i)
-        elif sep:
-            val = convert(val)
-        else:
-            val = None
-        node = {'name': name, 'value': val, 'children': []}
-        while stack[-1][0] >= depth:
-            stack.pop()
-        stack[-1][1]['children'].append(node)
-        stack.append((depth, node))
-    return root
+def from_json(obj, name=''):
+    """Object keys become named nodes, and list items unnamed ones, exactly as Magic wrote them."""
+    node = {'name': name, 'value': None, 'children': []}
+    if isinstance(obj, dict):
+        node['children'] = [from_json(v, k) for k, v in obj.items()]
+    elif isinstance(obj, list):
+        node['children'] = [from_json(v, '.') for v in obj]
+    else:
+        node['value'] = obj
+    return node
 
 
 def child(node, name):
@@ -236,7 +188,7 @@ def render_entry(entry, anchors):
             values = child(c, 'values')
             listed = ', '.join('`[%s]`' % v['value'] for v in values['children']) if values else ''
             out.append('* **Constraint** (%s): %s%s' % (
-                c['name'], value(c, 'description', ''), (' (%s)' % listed) if listed else ''))
+                value(c, 'kind', c['name']), value(c, 'description', ''), (' (%s)' % listed) if listed else ''))
         out.append('')
 
     guide = next((anchors[n] for n in entry['names'] if n in anchors), None)
@@ -265,11 +217,11 @@ def group_entries(records):
     """One entry per distinct contract; slots saying exactly the same thing are aliases."""
     groups = {}
     for r in records:
-        groups.setdefault((r.get('description') or '', r.get('signature') or ''), []).append(r['name'])
+        groups.setdefault((r.get('description') or '', json.dumps(r.get('signature'), sort_keys=True)), []).append(r['name'])
     entries = []
     for (description, signature), names in groups.items():
         names.sort(key=lambda n: ('.' not in n, n))
-        entries.append({'names': names, 'description': description, 'tree': parse_hl(signature)})
+        entries.append({'names': names, 'description': description, 'tree': from_json(json.loads(signature))})
     return entries
 
 
@@ -361,7 +313,7 @@ def faq(p):
          'The sandbox only runs code whose every slot is on a whitelist of %d slots: introspection, tree handling, strings and arithmetic. '
          'Code that touches files, databases, the network, configuration or anything else is rejected before it runs, and every call is rate limited and time limited.' % p['slots']),
         ('Can I get the whole reference as data?',
-         'Yes. GET %s returns every compiled slot as a JSON array of objects with the fields name, description and signature, where the signature is the slot\'s contract written as Hyperlambda text. '
+         'Yes. GET %s returns every compiled slot as a JSON array of objects with the fields name, description and signature, where the signature is the slot\'s contract as nested JSON. '
          'It needs no account or key. The answer is about 640 KB, so keep a copy rather than asking again.' % ENDPOINT_URL),
         ('Is it safe to leave that endpoint open?',
          'It only reads metadata that is already public in the open source code, and it runs nothing that the caller sends. '
@@ -438,8 +390,11 @@ def render_index(counts, total, endpoint, sandbox, workflow, p):
         '',
         'It begins with two throttles, one per IP address and one for everybody together, and has no authentication, since there is nothing to protect: it reads metadata that is '
         'public in the open source code and runs nothing a caller sends. Everything after that is slots, and nothing else. '
-        'It lists the compiled slots, and for each one it reads the description and the signature, turns the signature tree into Hyperlambda text with **[lambda2hyper]**, '
-        'and returns one object per slot. A Python script then parses that text, since Hyperlambda is a tree and the text is its serialisation, and writes markdown.',
+        'It lists the compiled slots, reads the description and the signature of each, and returns the signature as **nodes**. Magic turns nodes into JSON by itself, '
+        'since a tree of nodes already is a tree of JSON objects, so there is no serialising step, no text format to agree on and nothing to parse. '
+        'One detail shows how it works. A constraint is named after its kind and can occur more than once, which a JSON object cannot hold as a key, '
+        'so the loop in the middle renames every constraint, at any depth, to an unnamed node with its kind as a child, using the `**` selector to reach them all in one expression. '
+        'Magic then writes them as a list. A Python script renders the result as markdown.',
         '',
         '### Get the whole reference yourself',
         '',
@@ -451,8 +406,9 @@ def render_index(counts, total, endpoint, sandbox, workflow, p):
         'curl -s %s' % ENDPOINT_URL,
         '```',
         '',
-        'It returns a JSON array with one object per slot, with the fields `name`, `description` and `signature`. The signature is the contract of the slot written as Hyperlambda text by **[lambda2hyper]**, '
-        'which parses straight back into a tree with **[hyper2lambda]**. With `jq` you can ask it questions.',
+        'It returns a JSON array with one object per slot, with the fields `name`, `description` and `signature`. The signature is the contract of the slot as nested JSON: '
+        '`input` is the value the slot takes, `children` are its arguments, `constraints` are the rules between them, `scope` says where it can be used, and `output` is what it returns. '
+        'Arguments without a name, because they are positional, come as a list. With `jq` you can ask it questions.',
         '',
         '#### List every slot name',
         '',
@@ -469,7 +425,19 @@ def render_index(counts, total, endpoint, sandbox, workflow, p):
         '#### Get the full signature of one slot',
         '',
         '```bash',
-        "curl -s %s | jq -r '.[] | select(.name == \"data.read\") | .signature'" % ENDPOINT_URL,
+        "curl -s %s | jq '.[] | select(.name == \"data.read\") | .signature'" % ENDPOINT_URL,
+        '```',
+        '',
+        '#### List the arguments of a slot',
+        '',
+        '```bash',
+        "curl -s %s | jq -r '.[] | select(.name == \"data.create\") | .signature.children | keys[]'" % ENDPOINT_URL,
+        '```',
+        '',
+        '#### List only the required arguments of a slot',
+        '',
+        '```bash',
+        "curl -s %s | jq -r '.[] | select(.name == \"data.create\") | .signature.children | to_entries[] | select(.value.required == true) | .key'" % ENDPOINT_URL,
         '```',
         '',
         '#### Find the slots whose description mentions something',
@@ -577,7 +545,7 @@ def main():
             f.write(raw(text) + '\n')
         counts.append((ns, len(group)))
 
-    endpoint = read(os.path.join(ROOT, '.github', 'endpoint', 'slots.get.hl'))
+    endpoint = read(os.path.join(ROOT, '.github', 'endpoint', 'slots-nodes.get.hl'))
     sandbox = read(os.path.join(ROOT, '.github', 'endpoint', 'playground.post.hl'))
     workflow = read(os.path.join(ROOT, '.github', 'workflows', 'slot-reference.yml'))
     numbers = dict(policy_numbers(sandbox), **endpoint_numbers(endpoint))

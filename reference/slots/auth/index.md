@@ -14,13 +14,13 @@ Issues a signed JWT carrying the supplied username, roles, and claims; typically
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[username]` | string | yes | Username to put in the ticket. |
-| `[roles]` | lambda | no | Roles to put in the ticket. |
-| `[roles]` / _any node name_ | string | no | List item. Can be repeated. |
 | `[claims]` | lambda | no | Claims to put in the ticket. |
 | `[claims]` / _any node name_ | string | no | Named map entry. Can be repeated. |
-| `[expires]` | DateTime | no | Absolute UTC expiration time. |
 | `[duration]` | long | no | Relative expiration duration in minutes. |
+| `[expires]` | DateTime | no | Absolute UTC expiration time. |
+| `[roles]` | lambda | no | Roles to put in the ticket. |
+| `[roles]` / _any node name_ | string | no | List item. Can be repeated. |
+| `[username]` | string | yes | Username to put in the ticket. |
 
 * **Constraint** (AtMostOneOf): Use either absolute [expires] or relative [duration] (`[expires]`, `[duration]`)
 
@@ -51,8 +51,8 @@ Issues a new JWT with an extended expiration based on the current ticket, so act
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[expires]` | DateTime | no | Absolute UTC expiration time. |
 | `[duration]` | long | no | Relative expiration duration in minutes. |
+| `[expires]` | DateTime | no | Absolute UTC expiration time. |
 
 * **Constraint** (AtMostOneOf): Use either absolute [expires] or relative [duration] (`[expires]`, `[duration]`)
 
@@ -84,10 +84,10 @@ Verifies an externally created JWT token from the required [token] child node, a
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[token]` | string | yes | External JWT token to verify. |
 | `[issuer]` | string | no | Trusted issuer the token's issuer must equal; meta data is never fetched from issuers not supplied by the caller. |
 | `[issuers]` | lambda | no | Trusted issuers, the token's issuer must equal one of them; meta data is never fetched from issuers not supplied by the caller. |
 | `[issuers]` / _any node name_ | string | no | List item. Can be repeated. |
+| `[token]` | string | yes | External JWT token to verify. |
 
 Guide: [How to use [auth.token.verify]](/plugins/magic.lambda.auth/#openid-connect-authtokenverify)
 

@@ -14,8 +14,8 @@ Validates that a date value or resolved expression result is within the allowed 
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[min]` | date | no | Earliest accepted date. |
 | `[max]` | date | no | Latest accepted date. |
+| `[min]` | date | no | Earliest accepted date. |
 
 Guide: [How to use [validators.date]](/plugins/magic.lambda.validators/#how-to-use-validatorsdate)
 
@@ -59,8 +59,8 @@ Validates that an integer value or resolved expression result is within the allo
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[min]` | long | no | Minimum accepted value. |
 | `[max]` | long | no | Maximum accepted value. |
+| `[min]` | long | no | Minimum accepted value. |
 
 Guide: [How to use [validators.integer]](/plugins/magic.lambda.validators/#how-to-use-validatorsinteger)
 
@@ -80,9 +80,9 @@ Validates a reCAPTCHA response token, throwing if validation fails.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[site-key]` | string | yes | reCAPTCHA site key. |
-| `[secret]` | string | yes | reCAPTCHA secret key. |
 | `[min]` | decimal | yes | Minimum acceptable reCAPTCHA score. |
+| `[secret]` | string | yes | reCAPTCHA secret key. |
+| `[site-key]` | string | yes | reCAPTCHA site key. |
 
 Guide: [How to use [validators.recaptcha]](/plugins/magic.lambda.validators/#how-to-use-validatorsrecaptcha)
 
@@ -106,8 +106,8 @@ Validates that a string value or resolved expression result is within the allowe
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[min]` | int | no | Minimum accepted length. Default: `0`. |
 | `[max]` | int | no | Maximum accepted length. Default: `int.MaxValue`. |
+| `[min]` | int | no | Minimum accepted length. Default: `0`. |
 
 Guide: [How to use [validators.string]](/plugins/magic.lambda.validators/#how-to-use-validatorsstring)
 

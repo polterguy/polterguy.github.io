@@ -84,17 +84,23 @@ Reads rows through the current SQL Server connection.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[generate]` | bool | no | Whether to only generate SQL and parameter nodes instead of executing it. Default: `false`. |
-| `[table]` | string | yes | Table name to use in the SQL statement. |
-| `[table]` / `[as]` | string | no | Optional table alias. |
-| `[table]` / `[join]` | string | no | Joined table name. Can be repeated. |
-| `[table]` / `[join]` / `[type]` | string | no | Join type: inner, left, right, or full. Default: `inner`. |
-| `[table]` / `[join]` / `[as]` | string | no | Optional joined table alias. |
-| `[table]` / `[join]` / `[on]` | lambda | yes | Join predicate tree comparing columns (AND-only at the schema level; the SQL builder still accepts hand-written [or] for legacy code). |
-| `[distinct]` | bool | no | Removes duplicate rows from the result set when true. Default: `false`. |
 | `[columns]` | lambda | no | Columns or aggregate expressions to select; omitted or empty means all columns. |
 | `[columns]` / _any node name_ | string | no | Column name or aggregate expression; optional [as] child declares an alias. Can be repeated. |
 | `[columns]` / _any node name_ / `[as]` | string | no | Column alias. |
+| `[distinct]` | bool | no | Removes duplicate rows from the result set when true. Default: `false`. |
+| `[generate]` | bool | no | Whether to only generate SQL and parameter nodes instead of executing it. Default: `false`. |
+| `[group]` | lambda | no | Columns or aggregate expressions to group by. |
+| `[group]` / _any node name_ | string | no | Column name or aggregate expression. Can be repeated. |
+| `[limit]` | long | no | Maximum number of rows to return; omitted defaults to 25 and -1 suppresses the generated limit clause. Default: `25`. |
+| `[offset]` | long | no | Number of rows to skip. Default: `0`. |
+| `[order]` | string | no | Column, comma-separated columns, or aggregate expression to order by. Can be repeated. |
+| `[order]` / `[direction]` | string | no | Order direction for this specific order node. Default: `asc`. |
+| `[table]` | string | yes | Table name to use in the SQL statement. |
+| `[table]` / `[as]` | string | no | Optional table alias. |
+| `[table]` / `[join]` | string | no | Joined table name. Can be repeated. |
+| `[table]` / `[join]` / `[as]` | string | no | Optional joined table alias. |
+| `[table]` / `[join]` / `[on]` | lambda | yes | Join predicate tree comparing columns (AND-only at the schema level; the SQL builder still accepts hand-written [or] for legacy code). |
+| `[table]` / `[join]` / `[type]` | string | no | Join type: inner, left, right, or full. Default: `inner`. |
 | `[where]` | lambda | no | Optional boolean predicate tree. |
 | `[where]` / `[and]` | lambda | no | Boolean AND group. |
 | `[where]` / `[and]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
@@ -102,12 +108,6 @@ Reads rows through the current SQL Server connection.
 | `[where]` / `[or]` | lambda | no | Boolean OR group. |
 | `[where]` / `[or]` / _any node name_ | object | yes | Column condition; suffix the name with .eq, .neq, .gt, .gte, .lt, .lte, .like, .ilike, or .in to select an operator. Can be repeated. |
 | `[where]` / `[or]` / `[and]` | lambda | no | Boolean AND group. Can be repeated. |
-| `[group]` | lambda | no | Columns or aggregate expressions to group by. |
-| `[group]` / _any node name_ | string | no | Column name or aggregate expression. Can be repeated. |
-| `[order]` | string | no | Column, comma-separated columns, or aggregate expression to order by. Can be repeated. |
-| `[order]` / `[direction]` | string | no | Order direction for this specific order node. Default: `asc`. |
-| `[limit]` | long | no | Maximum number of rows to return; omitted defaults to 25 and -1 suppresses the generated limit clause. Default: `25`. |
-| `[offset]` | long | no | Number of rows to skip. Default: `0`. |
 
 _Nodes nested deeper than 3 levels, and nodes that repeat one of their own ancestors, are not listed._
 
@@ -140,9 +140,9 @@ Executes a SELECT query on the current SQL Server connection.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 | `[max]` | long | no | Maximum number of rows to return; omitted or -1 returns all rows. Default: `-1`. |
 | `[multiple-result-sets]` | bool | no | Whether multiple SELECT statements in the SQL input should be returned as separate child result containers. Default: `false`. |
-| _any node name_ | object | no | SQL parameter value; child name is used as the parameter name referenced by the SQL statement. Can be repeated. |
 
 Returned nodes:
 

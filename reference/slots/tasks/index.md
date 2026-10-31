@@ -21,10 +21,10 @@ Saves a named task containing a Hyperlambda body that can later be scheduled or 
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[.lambda]` | lambda | yes | Task body serialized and executed later. |
 | `[description]` | string | no | Optional task description. |
 | `[due]` | DateTime | no | Optional one-time due date. |
 | `[repeats]` | string | no | Optional repeat pattern. |
-| `[.lambda]` | lambda | yes | Task body serialized and executed later. |
 
 Guide: [How to use [tasks.create]](/plugins/magic.lambda.scheduler/#how-to-use-taskscreate)
 
@@ -66,17 +66,17 @@ Returns all stored tasks; supports an optional ID filter and pagination via [lim
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[offset]` | long | no | Number of tasks to skip. |
 | `[limit]` | long | no | Maximum number of tasks to return. |
+| `[offset]` | long | no | Number of tasks to skip. |
 
 Returned nodes:
 
 | Node | Type | Required | Description |
 |---|---|---|---|
 | _unnamed child node_ | lambda | no | One task record returned by [tasks.list]. Can be repeated. |
-| _unnamed child node_ / `[id]` | string | no | Task identifier. |
 | _unnamed child node_ / `[created]` | date | no | Task creation timestamp. |
 | _unnamed child node_ / `[description]` | string | no | Optional task description. |
+| _unnamed child node_ / `[id]` | string | no | Task identifier. |
 
 Guide: [How to use [tasks.list]](/plugins/magic.lambda.scheduler/#how-to-use-taskslist)
 
@@ -110,8 +110,8 @@ Overwrites a stored task's body or description without altering its existing sch
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[.lambda]` | lambda | yes | Task body serialized and executed later. |
 | `[description]` | string | no | Optional task description. |
 | `[due]` | DateTime | no | Optional one-time due date. |
 | `[repeats]` | string | no | Optional repeat pattern. |
-| `[.lambda]` | lambda | yes | Task body serialized and executed later. |
 

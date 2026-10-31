@@ -76,8 +76,8 @@ Creates a named stack context object retrievable with [get-context] while evalua
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[value]` | object | yes | Value stored in the named stack context. |
 | `[.lambda]` | lambda | yes | Body evaluated while the context value is scoped. |
+| `[value]` | object | yes | Value stored in the named stack context. |
 
 Guide: [How to use [context]](/plugins/magic.lambda/types/#how-to-use-context)
 
@@ -103,9 +103,9 @@ Transforms CSV into a lambda hierarchy.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[null-value]` | string | no | String used to represent null values. Default: `[NULL]`. |
 | `[types]` | lambda | no | Column type conversions keyed by column name. |
 | `[types]` / _any node name_ | string | yes | Type name for the column. Can be repeated. |
-| `[null-value]` | string | no | String used to represent null values. Default: `[NULL]`. |
 
 Returned nodes:
 
@@ -279,8 +279,8 @@ Formats a value using a .NET format string and optional culture; useful for curr
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[pattern]` | string | yes | Composite format string. |
 | `[culture]` | string | no | Optional culture name used when formatting. |
+| `[pattern]` | string | yes | Composite format string. |
 
 Guide: [How to use [format]](/plugins/magic.lambda/types/#how-to-use-format)
 
@@ -369,10 +369,10 @@ Transforms HTML into Markdown.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[url]` | string | no | Base URL used when resolving links. |
-| `[images]` | bool | no | Whether images should be emitted. Default: `true`. |
 | `[code]` | bool | no | Whether code blocks should be emitted. Default: `true`. |
+| `[images]` | bool | no | Whether images should be emitted. Default: `true`. |
 | `[lists]` | bool | no | Whether lists should be emitted. Default: `true`. |
+| `[url]` | string | no | Base URL used when resolving links. |
 
 Guide: [How to use [html2markdown]](/plugins/magic.lambda.html/#how-to-use-html2markdown)
 
@@ -894,9 +894,9 @@ Aborts execution by throwing an exception with the given message; optionally att
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[field]` | string | no | Optional form field or control ID associated with the exception. |
 | `[public]` | bool | no | Whether the exception message may be returned to clients. Default: `false`. |
 | `[status]` | int | no | HTTP status code associated with the exception. Default: `500`. |
-| `[field]` | string | no | Optional form field or control ID associated with the exception. |
 
 Guide: [How to use [throw]](/plugins/magic.lambda/exceptions/#how-to-use-throw)
 
@@ -910,9 +910,9 @@ Constructs a TimeSpan value from child nodes.
 |---|---|---|---|
 | `[days]` | int | no | Number of days. Default: `0`. |
 | `[hours]` | int | no | Number of hours. Default: `0`. |
+| `[milliseconds]` | int | no | Number of milliseconds. Default: `0`. |
 | `[minutes]` | int | no | Number of minutes. Default: `0`. |
 | `[seconds]` | int | no | Number of seconds. Default: `0`. |
-| `[milliseconds]` | int | no | Number of milliseconds. Default: `0`. |
 
 Guide: [How to use [time]](/plugins/magic.lambda.dates/#how-to-use-time)
 
@@ -1015,9 +1015,9 @@ Evaluates a lambda with a restricted whitelist of allowed slots.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[.lambda]` | lambda | yes | Executable lambda block. |
 | `[vocabulary]` | lambda | yes | Allowed slot names for the restricted evaluation scope. |
 | `[vocabulary]` / _any node name_ | string | yes | Allowed native slot name (e.g. add, set-value, if) that the body is permitted to invoke. Can be repeated. |
-| `[.lambda]` | lambda | yes | Executable lambda block. |
 
 Guide: [How to use [whitelist]](/plugins/magic.lambda.io/#restricting-file-access-with-whitelist)
 

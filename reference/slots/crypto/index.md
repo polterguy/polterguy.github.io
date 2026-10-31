@@ -40,8 +40,8 @@ Decrypts data using the configured combination algorithm.
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[decryption-key]` | string\|byte[] | yes | Private decryption key. |
-| `[verification-key]` | string\|byte[] | yes | Public key used to verify the signature. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
+| `[verification-key]` | string\|byte[] | yes | Public key used to verify the signature. |
 
 ## [crypto.encrypt]
 
@@ -52,11 +52,11 @@ Encrypts data using the configured combination algorithm.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[signing-key]` | string\|byte[] | yes | Private signing key. |
 | `[encryption-key]` | string\|byte[] | yes | Public encryption key. |
-| `[signing-key-fingerprint]` | string\|byte[] | yes | Fingerprint for the signing key. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 | `[seed]` | string\|byte[] | no | Optional encryption seed. |
+| `[signing-key]` | string\|byte[] | yes | Private signing key. |
+| `[signing-key-fingerprint]` | string\|byte[] | yes | Fingerprint for the signing key. |
 
 ## [crypto.fingerprint]
 
@@ -189,8 +189,8 @@ Returns a cryptographically secure random string or random bytes.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[min]` | int | no | Minimum random length. Default: `10`. |
 | `[max]` | int | no | Maximum random length. |
+| `[min]` | int | no | Minimum random length. Default: `10`. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 | `[seed]` | string | no | Optional deterministic seed. |
 
@@ -217,9 +217,9 @@ Generates a fresh RSA key pair; returns the public key and private key as separa
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[strength]` | int | no | RSA key strength in bits. Default: `2048`. |
-| `[seed]` | string\|byte[] | no | Optional deterministic seed. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
+| `[seed]` | string\|byte[] | no | Optional deterministic seed. |
+| `[strength]` | int | no | RSA key strength in bits. Default: `2048`. |
 
 ## [crypto.rsa.decrypt]
 
@@ -265,9 +265,9 @@ Verifies an RSA signature.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[signature]` | string\|byte[] | yes | RSA signature to verify. |
 | `[public-key]` | string\|byte[] | yes | Public key used to verify the signature. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
+| `[signature]` | string\|byte[] | yes | RSA signature to verify. |
 
 ## [crypto.seed]
 
@@ -286,9 +286,9 @@ Signs data using the configured combination algorithm.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 | `[signing-key]` | string\|byte[] | yes | Private signing key. |
 | `[signing-key-fingerprint]` | string\|byte[] | yes | Fingerprint for the signing key. |
-| `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 
 ## [crypto.verify]
 
@@ -299,6 +299,6 @@ Verifies a signature using the configured combination algorithm.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[verification-key]` | string\|byte[] | yes | Public key used to verify the signature. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
+| `[verification-key]` | string\|byte[] | yes | Public key used to verify the signature. |
 

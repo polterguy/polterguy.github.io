@@ -14,8 +14,8 @@ Compiles C# code from child nodes into an assembly.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[code]` | string | yes | C# source code to compile. |
 | `[assembly-name]` | string | yes | Name of the generated assembly. |
+| `[code]` | string | yes | C# source code to compile. |
 | `[references]` | lambda | yes | Assembly references required by the compilation. |
 | `[references]` / _unnamed child node_ | string | yes | Assembly reference. Can be repeated. |
 

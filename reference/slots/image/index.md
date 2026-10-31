@@ -15,13 +15,13 @@ Renders a bar, stacked, or grouped chart from the supplied series data as a PNG 
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[width]` | int | yes | Chart width in pixels. |
-| `[height]` | int | yes | Chart height in pixels. |
-| `[filename]` | string | no | Optional destination filename. |
 | `[bars]` | lambda | yes | Chart values keyed by label; grouped and stacked charts use nested numeric values. |
 | `[bars]` / _any node name_ | double\|lambda | yes | Bar value or grouped/stacked bar value collection. Can be repeated. |
+| `[filename]` | string | no | Optional destination filename. |
+| `[height]` | int | yes | Chart height in pixels. |
 | `[legend]` | lambda | no | Legend labels required by grouped and stacked charts. |
 | `[legend]` / _unnamed child node_ | string | no | Legend label. Can be repeated. |
+| `[width]` | int | yes | Chart width in pixels. |
 
 Guide: [How to use [image.chart]](/plugins/magic.lambda.image/#how-to-use-imagechart)
 
@@ -34,8 +34,8 @@ Re-encodes an image into a different format (e.g. PNG to JPEG) preserving its pi
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[type]` | string | yes | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
 | `[dest]` | string | no | Optional destination filename; when supplied, the image is saved to disk instead of returned as a stream. |
+| `[type]` | string | yes | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
 
 Guide: [How to use [image.convert]](/plugins/magic.lambda.image/#how-to-use-imageconvert)
 
@@ -48,12 +48,12 @@ Cuts a rectangular region out of an image at the given x, y, width, and height.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[type]` | string | no | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
+| `[bottom]` | int | no | Pixels to crop from the bottom edge. Default: `0`. |
 | `[dest]` | string | no | Optional destination filename; when supplied, the image is saved to disk instead of returned as a stream. |
 | `[left]` | int | no | Pixels to crop from the left edge. Default: `0`. |
-| `[top]` | int | no | Pixels to crop from the top edge. Default: `0`. |
 | `[right]` | int | no | Pixels to crop from the right edge. Default: `0`. |
-| `[bottom]` | int | no | Pixels to crop from the bottom edge. Default: `0`. |
+| `[top]` | int | no | Pixels to crop from the top edge. Default: `0`. |
+| `[type]` | string | no | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
 
 Guide: [How to use [image.crop]](/plugins/magic.lambda.image/#how-to-use-imagecrop)
 
@@ -79,10 +79,10 @@ Resizes an image to the specified width and height; useful for generating thumbn
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[type]` | string | no | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
 | `[dest]` | string | no | Optional destination filename; when supplied, the image is saved to disk instead of returned as a stream. |
-| `[width]` | int | no | Target width in pixels. |
 | `[height]` | int | no | Target height in pixels. |
+| `[type]` | string | no | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
+| `[width]` | int | no | Target width in pixels. |
 
 Guide: [How to use [image.resize]](/plugins/magic.lambda.image/#how-to-use-imageresize)
 

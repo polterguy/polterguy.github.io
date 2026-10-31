@@ -16,7 +16,7 @@ faq:
   - q: "Is it safe to let anybody run code on that server?"
     a: "The sandbox only runs code whose every slot is on a whitelist of 53 slots: introspection, tree handling, strings and arithmetic. Code that touches files, databases, the network, configuration or anything else is rejected before it runs, and every call is rate limited and time limited."
   - q: "Can I get the whole reference as data?"
-    a: "Yes. GET https://hyperlambda.dev/magic/modules/docs/slots returns every compiled slot as a JSON array of objects with the fields name, description and signature, where the signature is the slot's contract written as Hyperlambda text. It needs no account or key. The answer is about 640 KB, so keep a copy rather than asking again."
+    a: "Yes. GET https://hyperlambda.dev/magic/modules/docs/slots-nodes returns every compiled slot as a JSON array of objects with the fields name, description and signature, where the signature is the slot's contract as nested JSON. It needs no account or key. The answer is about 640 KB, so keep a copy rather than asking again."
   - q: "Is it safe to leave that endpoint open?"
     a: "It only reads metadata that is already public in the open source code, and it runs nothing that the caller sends. It is throttled to 10 requests per 60 seconds per IP address and 60 per 60 seconds for everybody together, and answers 429 beyond that."
   - q: "Why does the sandbox show fewer slots than this reference?"
@@ -95,7 +95,7 @@ Hyperlambda is homoiconic. A program is a tree of nodes, and a tree of nodes is 
 This is the complete Hyperlambda file behind the endpoint the pipeline calls. This is dogfooding in its purest form: the language documents itself with its own code.
 
 ```hyperlambda
-// Executable Hyperlambda file that lists every slot registered in the system and, for each slot, returns its name, its description and its signature. Returns a JSON array of objects, each with fields name (string), description (string) and signature (string, being the slot's signature converted to Hyperlambda text). Open to everybody, since it only reads metadata that is public in the open source code and runs no code supplied by the caller. Callers are throttled to 10 requests per 60 seconds per IP address, and everybody together to 60 requests per 60 seconds.
+// Executable Hyperlambda file that lists every slot registered in the system and, for each slot, returns its name, its description and its signature. Returns a JSON array of objects, each with fields name (string), description (string) and signature (the slot's signature as nodes, so it converts to nested JSON). Open to everybody, since it only reads metadata that is public in the open source code and runs no code supplied by the caller. Callers are throttled to 10 requests per 60 seconds per IP address, and everybody together to 60 requests per 60 seconds.
 .arguments
 execution.throttle.create:docs-slots.ip
    limit:int:10
@@ -112,52 +112,78 @@ vocabulary
 for-each:x:@vocabulary/*
    slot.description:x:@.dp/#
    slot.signature:x:@.dp/#
-   lambda2hyper:x:@slot.signature/*
+   /*
+    * The signature is returned as nodes, which Magic converts to nested JSON. A constraint is
+    * named after its kind and can occur more than once, which JSON cannot hold as a key, so each
+    * constraint, at any depth, becomes an unnamed node carrying its kind as a child.
+    */
+   for-each:x:@slot.signature/**/constraints/*
+      get-name:x:@.dp/#
+      unwrap:x:+/*/*
+      add:x:@.dp/#
+         .
+            kind:x:@get-name
+      set-name:x:@.dp/#
+         .:.
    .entry
       .
          name:x:@.dp/#
          description:x:@slot.description
-         signature:x:@lambda2hyper
+         signature
    unwrap:x:@.entry/*/*
+   add:x:@.entry/*/*/signature
+      get-nodes:x:@slot.signature/*
    add:x:@.result
       get-nodes:x:@.entry/*
 return-nodes:x:@.result/*
 ```
 
-It begins with two throttles, one per IP address and one for everybody together, and has no authentication, since there is nothing to protect: it reads metadata that is public in the open source code and runs nothing a caller sends. Everything after that is slots, and nothing else. It lists the compiled slots, and for each one it reads the description and the signature, turns the signature tree into Hyperlambda text with **[lambda2hyper]**, and returns one object per slot. A Python script then parses that text, since Hyperlambda is a tree and the text is its serialisation, and writes markdown.
+It begins with two throttles, one per IP address and one for everybody together, and has no authentication, since there is nothing to protect: it reads metadata that is public in the open source code and runs nothing a caller sends. Everything after that is slots, and nothing else. It lists the compiled slots, reads the description and the signature of each, and returns the signature as **nodes**. Magic turns nodes into JSON by itself, since a tree of nodes already is a tree of JSON objects, so there is no serialising step, no text format to agree on and nothing to parse. One detail shows how it works. A constraint is named after its kind and can occur more than once, which a JSON object cannot hold as a key, so the loop in the middle renames every constraint, at any depth, to an unnamed node with its kind as a child, using the `**` selector to reach them all in one expression. Magic then writes them as a list. A Python script renders the result as markdown.
 
 ### Get the whole reference yourself
 
 The endpoint above is public. There is no account, no key and no secret. To protect the server it is throttled to **10 requests per 60 seconds per IP address**, and to **60 per 60 seconds** for everybody together, and beyond that it answers `429`. The answer is about 640 KB, so keep a copy rather than asking again.
 
 ```bash
-curl -s https://hyperlambda.dev/magic/modules/docs/slots
+curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes
 ```
 
-It returns a JSON array with one object per slot, with the fields `name`, `description` and `signature`. The signature is the contract of the slot written as Hyperlambda text by **[lambda2hyper]**, which parses straight back into a tree with **[hyper2lambda]**. With `jq` you can ask it questions.
+It returns a JSON array with one object per slot, with the fields `name`, `description` and `signature`. The signature is the contract of the slot as nested JSON: `input` is the value the slot takes, `children` are its arguments, `constraints` are the rules between them, `scope` says where it can be used, and `output` is what it returns. Arguments without a name, because they are positional, come as a list. With `jq` you can ask it questions.
 
 #### List every slot name
 
 ```bash
-curl -s https://hyperlambda.dev/magic/modules/docs/slots | jq -r '.[].name'
+curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes | jq -r '.[].name'
 ```
 
 #### Get the description of one slot
 
 ```bash
-curl -s https://hyperlambda.dev/magic/modules/docs/slots | jq -r '.[] | select(.name == "strings.concat") | .description'
+curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes | jq -r '.[] | select(.name == "strings.concat") | .description'
 ```
 
 #### Get the full signature of one slot
 
 ```bash
-curl -s https://hyperlambda.dev/magic/modules/docs/slots | jq -r '.[] | select(.name == "data.read") | .signature'
+curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes | jq '.[] | select(.name == "data.read") | .signature'
+```
+
+#### List the arguments of a slot
+
+```bash
+curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes | jq -r '.[] | select(.name == "data.create") | .signature.children | keys[]'
+```
+
+#### List only the required arguments of a slot
+
+```bash
+curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes | jq -r '.[] | select(.name == "data.create") | .signature.children | to_entries[] | select(.value.required == true) | .key'
 ```
 
 #### Find the slots whose description mentions something
 
 ```bash
-curl -s https://hyperlambda.dev/magic/modules/docs/slots | jq -r '.[] | select((.description // "") | test("rows")) | .name'
+curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes | jq -r '.[] | select((.description // "") | test("rows")) | .name'
 ```
 
 The public sandbox below sees fewer slots than this endpoint. It runs **your** code, so it can only describe the **53 slots** it is itself allowed to call. A slot can only be described by code that is allowed to call it, so a sandbox that described everything could also run everything. Use the endpoint for the whole language, and the sandbox to experiment.

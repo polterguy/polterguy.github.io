@@ -158,8 +158,8 @@ Returns a random number from optional child-node bounds.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[min]` | int | no | Inclusive lower bound; requires [max] and must appear before it. |
 | `[max]` | int | no | Exclusive upper bound; when supplied without [min], the lower bound is 0. |
+| `[min]` | int | no | Inclusive lower bound; requires [max] and must appear before it. |
 
 * **Constraint** (Requires): [min] requires [max] (`[max]`)
 

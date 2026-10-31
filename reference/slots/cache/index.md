@@ -41,8 +41,8 @@ Lists cached keys matching the optional filter.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[offset]` | int | no | Result offset. Default: `0`. |
 | `[limit]` | int | no | Maximum number of items to return. Default: `10`. |
+| `[offset]` | int | no | Result offset. Default: `0`. |
 
 Returned nodes:
 
@@ -62,8 +62,8 @@ Stores a value in the in-memory cache under a key, with an optional sliding expi
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[value]` | string | no | Value to store; omitted or null removes the cached item. |
 | `[expiration]` | long | no | Expiration in seconds. Default: `5`. |
+| `[value]` | string | no | Value to store; omitted or null removes the cached item. |
 
 Guide: [How to use [cache.set]](/plugins/magic.lambda.caching/#how-to-use-cacheset)
 
@@ -76,8 +76,8 @@ Returns a cached value by key if it exists, or creates a new cached item and ret
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[expiration]` | long | no | Expiration in seconds for newly created value. Default: `5`. |
 | `[.lambda]` | lambda | yes | Callback executed to create the cached value when the key is missing. |
+| `[expiration]` | long | no | Expiration in seconds for newly created value. Default: `5`. |
 
 Guide: [How to use [cache.try-get]](/plugins/magic.lambda.caching/#how-to-use-cachetry-get)
 

@@ -14,13 +14,13 @@ Sets a response cookie.
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[value]` | string | yes | Cookie value. |
+| `[domain]` | string | no | Cookie domain. |
 | `[expires]` | DateTime | no | Cookie expiration. |
 | `[http-only]` | bool | no | Whether the cookie is HTTP-only. |
-| `[secure]` | bool | no | Whether the cookie is secure. |
-| `[domain]` | string | no | Cookie domain. |
 | `[path]` | string | no | Cookie path. |
 | `[same-site]` | string | no | Cookie SameSite mode: Strict, Lax, None, or Unspecified. |
+| `[secure]` | bool | no | Whether the cookie is secure. |
+| `[value]` | string | yes | Cookie value. |
 
 ## [response.headers.set]
 
