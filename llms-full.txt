@@ -4276,7 +4276,6 @@ If you wish to do this, you would probably benefit from looking at one of the ex
 implementations, such as the MySQL, SQL Server or PostgreSQL specific implementations.
 
 
-
 ## Topics
 
 * [How to use [data.*]](https://docs.ainiro.io/plugins/magic.data.common/how-to-use-data/) - All of the [data.xxx] slots are actually just polymorphistically evaluating your specialised adapter's slots, such as for instance [data.connect], that will invoke [mysql.connect] if this is your defa
@@ -4580,6 +4579,46 @@ otherwise to null. It also accepts the following arguments.
 * __[generate]__ - If true, only generates the SQL and its parameters instead of executing it, default is false
 * __[return-id]__ - Whether or not to return the ID of the created row, default is true
 
+Below is an example, inserting a new record into the _"actor"_ table of the _"sakila"_ database.
+
+```
+data.connect:sakila
+   data.create
+      table:actor
+      values
+         first_name:John
+         last_name:Doe
+
+// The value of [data.create] becomes the ID of the new record.
+```
+
+
+# How to use [data.delete]
+
+URL: https://docs.ainiro.io/plugins/magic.data.common/data.delete/
+Description: How to use [data.delete] - This slot deletes rows in your database, using the current open connection created by [data.connect].
+
+The reference page of [`data.delete`](https://docs.ainiro.io/reference/slots/data/data.delete/) has its arguments, constraints and declaration.
+
+This slot deletes rows in your database, using the current open connection created by **[data.connect]**. It takes the same arguments as **[sql.delete]**, and its value resolves to the number of rows affected. The **[where]** argument is mandatory, to make it impossible to delete every row in a table by accident.
+
+* __[table]__ - Name of the table to delete from. Mandatory, the slot throws if it is missing
+* __[where]__ - Condition constraining which rows to delete, see the **[where]** documentation below
+* __[database-type]__ - Database adapter to use instead of your default database type
+* __[generate]__ - If true, only generates the SQL and its parameters instead of executing it, default is false
+
+Below is an example.
+
+```
+data.connect:sakila
+   data.delete
+      table:actor
+      where
+         and
+            first_name:John
+            last_name:Doe
+```
+
 
 # How to use [data.execute]
 
@@ -4854,6 +4893,22 @@ constrain the update to any specific row if you leave it out.
 * __[where]__ - Condition constraining which rows to update, see the **[where]** documentation below
 * __[database-type]__ - Database adapter to use instead of your default database type
 * __[generate]__ - If true, only generates the SQL and its parameters instead of executing it, default is false
+
+Below is an example, changing the last name of every actor called John Doe.
+
+```
+data.connect:sakila
+   data.update
+      table:actor
+      values
+         last_name:Smith
+      where
+         and
+            first_name:John
+            last_name:Doe
+
+// The value of [data.update] becomes the number of records affected.
+```
 
 
 # Differences between [join] and [where]
@@ -5729,6 +5784,20 @@ http://localhost:5000/magic/modules/tutorials/foo
 [all of magic.endpoint](https://docs.ainiro.io/plugins/magic.endpoint/) | [Hyperlambda endpoints and arguments &rarr;](https://docs.ainiro.io/plugins/magic.endpoint/hyperlambda-endpoints-and-arguments/)
 
 
+# How to use [endpoints.list]
+
+URL: https://docs.ainiro.io/plugins/magic.endpoint/endpoints.list/
+Description: How to use [endpoints.list] - This slot lists the dynamic Hyperlambda endpoints on your server, with their meta data, such as their path, verb and authorisation requirements.
+
+The reference page of [`endpoints.list`](https://docs.ainiro.io/reference/slots/endpoints/endpoints.list/) has its arguments, constraints and declaration.
+
+This slot lists the dynamic Hyperlambda endpoints on your server, with their meta data, such as their path, verb and authorisation requirements. Below is an example.
+
+```
+endpoints.list
+```
+
+
 # Hyperlambda code behind files
 
 URL: https://docs.ainiro.io/plugins/magic.endpoint/hyperlambda-code-behind-files/
@@ -6038,87 +6107,126 @@ This slot lists all MIME type mappings registered in the current installation, i
 It returns one child node for each mapping, where the name of the child node is the file extension and its value is the MIME type.
 It takes no arguments.
 
+This slot lists the MIME types Magic knows about, as a mapping from file extension to MIME type. Below is an example.
+
+```
+mime.list
+```
+
 
 # How to use [request.cookies.get]
 
 URL: https://docs.ainiro.io/plugins/magic.endpoint/request.cookies.get/
-Description: How to use [request.cookies.get] - Returns the value of a cookie sent by the request
+Description: How to use [request.cookies.get] - This slot returns the value of a cookie sent with the current request.
 
 The reference page of [`request.cookies.get`](https://docs.ainiro.io/reference/slots/request/request.cookies.get/) has its arguments, constraints and declaration.
 
-Returns the value of a cookie sent by the request
+This slot returns the value of a cookie sent with the current request. Below is an example, to use inside of an endpoint.
+
+```
+request.cookies.get:my-cookie
+```
 
 
 # How to use [request.cookies.list]
 
 URL: https://docs.ainiro.io/plugins/magic.endpoint/request.cookies.list/
-Description: How to use [request.cookies.list] - Lists all HTTP request cookies
+Description: How to use [request.cookies.list] - This slot lists all cookies sent with the current request, with each cookie as a child node.
 
 The reference page of [`request.cookies.list`](https://docs.ainiro.io/reference/slots/request/request.cookies.list/) has its arguments, constraints and declaration.
 
-Lists all HTTP request cookies
+This slot lists all cookies sent with the current request, with each cookie as a child node. Below is an example, to use inside of an endpoint.
+
+```
+request.cookies.list
+```
 
 
 # How to use [request.headers.get]
 
 URL: https://docs.ainiro.io/plugins/magic.endpoint/request.headers.get/
-Description: How to use [request.headers.get] - Returns a single HTTP header associated with the request
+Description: How to use [request.headers.get] - This slot returns the value of an HTTP header of the current request.
 
 The reference page of [`request.headers.get`](https://docs.ainiro.io/reference/slots/request/request.headers.get/) has its arguments, constraints and declaration.
 
-Returns a single HTTP header associated with the request
+This slot returns the value of an HTTP header of the current request. Below is an example, to use inside of an endpoint.
+
+```
+request.headers.get:User-Agent
+```
 
 
 # How to use [request.headers.list]
 
 URL: https://docs.ainiro.io/plugins/magic.endpoint/request.headers.list/
-Description: How to use [request.headers.list] - Lists all HTTP request headers sent by the request
+Description: How to use [request.headers.list] - This slot lists all HTTP headers of the current request, with each header as a child node.
 
 The reference page of [`request.headers.list`](https://docs.ainiro.io/reference/slots/request/request.headers.list/) has its arguments, constraints and declaration.
 
-Lists all HTTP request headers sent by the request
+This slot lists all HTTP headers of the current request, with each header as a child node. Below is an example, to use inside of an endpoint.
+
+```
+request.headers.list
+```
 
 
 # How to use [request.host]
 
 URL: https://docs.ainiro.io/plugins/magic.endpoint/request.host/
-Description: How to use [request.host] - Returns the host name associated with the request
+Description: How to use [request.host] - This slot returns the host name of the current request, including the port if it is not the default.
 
 The reference page of [`request.host`](https://docs.ainiro.io/reference/slots/request/request.host/) has its arguments, constraints and declaration.
 
-Returns the host name associated with the request
+This slot returns the host name of the current request, including the port if it is not the default. Below is an example, to use inside of an endpoint.
+
+```
+request.host
+```
 
 
 # How to use [request.ip]
 
 URL: https://docs.ainiro.io/plugins/magic.endpoint/request.ip/
-Description: How to use [request.ip] - Returns the IP address of the HTTP request
+Description: How to use [request.ip] - This slot returns the IP address of the client making the current request.
 
 The reference page of [`request.ip`](https://docs.ainiro.io/reference/slots/request/request.ip/) has its arguments, constraints and declaration.
 
-Returns the IP address of the HTTP request
+This slot returns the IP address of the client making the current request. You can ask for an IPv4 or IPv6 address with the **[version]** argument. Below is an example, to use inside of an endpoint.
+
+```
+request.ip
+
+request.ip
+   version:ipv6
+```
 
 
 # How to use [request.scheme]
 
 URL: https://docs.ainiro.io/plugins/magic.endpoint/request.scheme/
-Description: How to use [request.scheme] - Returns the scheme associated with the request
+Description: How to use [request.scheme] - This slot returns the scheme of the current request, being "http" or "https".
 
 The reference page of [`request.scheme`](https://docs.ainiro.io/reference/slots/request/request.scheme/) has its arguments, constraints and declaration.
 
-Returns the scheme associated with the request
+This slot returns the scheme of the current request, being _"http"_ or _"https"_. Below is an example, to use inside of an endpoint.
+
+```
+request.scheme
+```
 
 
 # How to use [request.url]
 
 URL: https://docs.ainiro.io/plugins/magic.endpoint/request.url/
-Description: How to use [request.url] - If you've got a file called "default.html", and the client is requesting a URL that does not have an associated physical file existing for the absolute path specified - Then your "default.ht...
+Description: How to use [request.url] - This slot returns the URL path of the current request as its value, and each query string parameter as a child node.
 
 The reference page of [`request.url`](https://docs.ainiro.io/reference/slots/request/request.url/) has its arguments, constraints and declaration.
 
-If you've got a file called _"default.html"_, and the client is requesting a URL that does not have an associated physical file existing for the absolute path specified - Then your _"default.html"_ file will resolve the specified URL. Such a _"default.html"_ file can also optionally have a Hyperlambda code behind file, allowing you to serve dynamic content based upon the URL of the request. This allows you to use dynamic URLs, to for instance lookup files from your database and serve back as dynamic content.
+This slot returns the URL path of the current request as its value, and each query string parameter as a child node. Below is an example, to use inside of an endpoint.
 
-If you want to use dynamic pages, you can retrieve the request URL by invoking the **[request.url]** slot to retrieve the request URL.
+```
+request.url
+```
 
 
 # How to use [request.verb]
@@ -6131,27 +6239,29 @@ The reference page of [`request.verb`](https://docs.ainiro.io/reference/slots/re
 This slot returns the HTTP verb (e.g. _"get"_ or _"post"_) of the current incoming request as the value of the slot's node.
 It takes no arguments, and is only meaningful when invoked from within an HTTP request, such as inside of a Hyperlambda endpoint.
 
+This slot returns the HTTP verb of the current request, such as _"get"_ or _"post"_. Below is an example, to use inside of an endpoint.
+
+```
+request.verb
+```
+
 
 # How to use [response.cookies.set]
 
 URL: https://docs.ainiro.io/plugins/magic.endpoint/response.cookies.set/
-Description: How to use [response.cookies.set] - Since cookies have more parameters than just a simple key/value declaration, the [response.cookies.set] slot takes the following arguments.
+Description: How to use [response.cookies.set] - This slot sets a cookie on the response.
 
 The reference page of [`response.cookies.set`](https://docs.ainiro.io/reference/slots/response/response.cookies.set/) has its arguments, constraints and declaration.
 
-Since cookies have more parameters than just a simple key/value declaration, the **[response.cookies.set]**
-slot takes the following arguments.
+This slot sets a cookie on the response. The cookie value is mandatory, and you can also set **[expires]**, **[http-only]**, **[secure]**, **[domain]**, **[path]** and **[same-site]**. Below is an example, to use inside of an endpoint.
 
-* __[value]__ - The string content of your cookie
-* __[expires]__ - Absolute expiration date of your cookie, as a Hyperlambda `date` value
-* __[http-only]__ - Boolean value declaring whether or not the cookie should only be accessible on the server
-* __[secure]__ - Boolean value declaring whether or not cookie should only be transmitted from the client to the server over a secure (https) connection
-* __[domain]__ - Domain value of your cookie
-* __[path]__ - Path value of your cookie
-* __[same-site]__ - Same-site value of your cookie
-
-Only the **[value]** from above is mandatory. To delete a cookie on the client, set the expiration date to a value
-in the past.
+```
+response.cookies.set:my-cookie
+   value:some value
+   http-only:true
+   secure:true
+   same-site:Strict
+```
 
 
 # How to use [response.headers.set]
@@ -6186,21 +6296,32 @@ your `Content-Type` accordingly.
 # How to use [response.status.set]
 
 URL: https://docs.ainiro.io/plugins/magic.endpoint/response.status.set/
-Description: How to use [response.status.set] - Sets the status code (e.g.
+Description: How to use [response.status.set] - This slot sets the HTTP status code returned to the caller, such as 201 for created or 404 for not found.
 
 The reference page of [`response.status.set`](https://docs.ainiro.io/reference/slots/response/response.status.set/) has its arguments, constraints and declaration.
 
-Sets the status code (e.g. 404) on the response object
+This slot sets the HTTP status code returned to the caller, such as 201 for created or 404 for not found. Below is an example, to use inside of an endpoint.
+
+```
+response.status.set:201
+```
 
 
 # How to use [server.ip]
 
 URL: https://docs.ainiro.io/plugins/magic.endpoint/server.ip/
-Description: How to use [server.ip] - Returns the IP address of the server itself
+Description: How to use [server.ip] - This slot returns the local IP address of your server, IPv4 unless you set [version] to "ipv6", which is useful for logging or building absolute URLs.
 
 The reference page of [`server.ip`](https://docs.ainiro.io/reference/slots/server/server.ip/) has its arguments, constraints and declaration.
 
-Returns the IP address of the server itself
+This slot returns the local IP address of your server, IPv4 unless you set **[version]** to _"ipv6"_, which is useful for logging or building absolute URLs. Below is an example.
+
+```
+server.ip
+
+server.ip
+   version:ipv6
+```
 
 
 # Slots related to endpoints and the HTTP context
@@ -6532,6 +6653,22 @@ auth.ticket.verify:root,admin,guest
 
 Like all auth related slots, it only makes sense to invoke from within a context of having an authorised
 user, such as an HTTP endpoint intended to be invoked by an authenticated user.
+
+
+# How to use [auth.token.read]
+
+URL: https://docs.ainiro.io/plugins/magic.lambda.auth/auth.token.read/
+Description: How to use [auth.token.read] - This slot validates a JWT token and verifies that it contains at least one of the roles in its [roles] argument, a comma separated list.
+
+The reference page of [`auth.token.read`](https://docs.ainiro.io/reference/slots/auth/auth.token.read/) has its arguments, constraints and declaration.
+
+This slot validates a JWT token and verifies that it contains at least one of the roles in its **[roles]** argument, a comma separated list. Below is an example.
+
+```
+.token:YOUR_JWT_TOKEN_HERE
+auth.token.read:x:@.token
+   roles:admin, root
+```
 
 
 # How to use [auth.token.verify]
@@ -6896,31 +7033,44 @@ to create default values your code resorts to if the specified configuration set
 # How to use [config.load]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.config/config.load/
-Description: How to use [config.load] - Loads your "appsettings.json" file and returns as a string
+Description: How to use [config.load] - This slot returns the raw content of your "appsettings.json" file as the value of its node.
 
 The reference page of [`config.load`](https://docs.ainiro.io/reference/slots/config/config.load/) has its arguments, constraints and declaration.
 
-Loads your _"appsettings.json"_ file and returns as a string
+This slot returns the raw content of your _"appsettings.json"_ file as the value of its node. Below is an example.
+
+```
+config.load
+```
 
 
 # How to use [config.save]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.config/config.save/
-Description: How to use [config.save] - Saves your "appsettings.json" file, sanity checking it's valid JSON before persisting your file
+Description: How to use [config.save] - This slot saves the JSON you give it as your "appsettings.json" file.
 
 The reference page of [`config.save`](https://docs.ainiro.io/reference/slots/config/config.save/) has its arguments, constraints and declaration.
 
-Saves your _"appsettings.json"_ file, sanity checking it's valid JSON before persisting your file
+This slot saves the JSON you give it as your _"appsettings.json"_ file. The JSON replaces the file entirely, which is why you typically load it with **[config.load]** first, change it, and save the result. Below is an example, saving what was just loaded.
+
+```
+config.load
+config.save:x:@config.load
+```
 
 
 # How to use [config.section]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.config/config.section/
-Description: How to use [config.section] - Returns the specified configuration section from your configuration file with the specified key
+Description: How to use [config.section] - This slot reads one section of your "appsettings.json" file, and returns its keys and nested values as child nodes.
 
 The reference page of [`config.section`](https://docs.ainiro.io/reference/slots/config/config.section/) has its arguments, constraints and declaration.
 
-Returns the specified configuration section from your configuration file with the specified key
+This slot reads one section of your _"appsettings.json"_ file, and returns its keys and nested values as child nodes. Below is an example.
+
+```
+config.section:magic
+```
 
 
 # magic.lambda.crypto
@@ -6985,7 +7135,6 @@ to **[crypto.password.verify]** by for instance adding one random character to i
 `false` from the second invocation.
 Internally these are the slots Magic uses when it creates its JWT authentication database, and stores
 passswords into your Magic database.
-
 
 
 ## Topics
@@ -7434,11 +7583,17 @@ crypto.decrypt:x:-
 # How to use [crypto.fingerprint]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.crypto/crypto.fingerprint/
-Description: How to use [crypto.fingerprint] - Creates a fingerprint of something
+Description: How to use [crypto.fingerprint] - This slot returns the SHA256 fingerprint of its input, formatted as colon separated hexadecimal, which is what you use to identify a public key.
 
 The reference page of [`crypto.fingerprint`](https://docs.ainiro.io/reference/slots/crypto/crypto.fingerprint/) has its arguments, constraints and declaration.
 
-Creates a fingerprint of something
+This slot returns the SHA256 fingerprint of its input, formatted as colon separated hexadecimal, which is what you use to identify a public key. Below is an example, fingerprinting a newly created public key.
+
+```
+crypto.rsa.create-key
+   strength:512
+crypto.fingerprint:x:@crypto.rsa.create-key/*/public
+```
 
 
 # How to use [crypto.get-key]
@@ -7490,41 +7645,57 @@ crypto.verify:x:@crypto.decrypt
 # How to use [crypto.hash.sha1]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.crypto/crypto.hash.sha1/
-Description: How to use [crypto.hash.sha1] - SHA1 hash some message or payload
+Description: How to use [crypto.hash.sha1] - This slot hashes its input using SHA1, and is the same as [crypto.hash] with [algo] set to "sha1".
 
 The reference page of [`crypto.hash.sha1`](https://docs.ainiro.io/reference/slots/crypto/crypto.hash.sha1/) has its arguments, constraints and declaration.
 
-SHA1 hash some message or payload
+This slot hashes its input using SHA1, and is the same as **[crypto.hash]** with **[algo]** set to _"sha1"_. You can also hash a file by passing **[filename]**, and choose the output **[format]**. Below is an example.
+
+```
+crypto.hash.sha1:Hello world
+```
 
 
 # How to use [crypto.hash.sha256]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.crypto/crypto.hash.sha256/
-Description: How to use [crypto.hash.sha256] - SHA256 hash some message or payload
+Description: How to use [crypto.hash.sha256] - This slot hashes its input using SHA256, and is the same as [crypto.hash] with [algo] set to "sha256".
 
 The reference page of [`crypto.hash.sha256`](https://docs.ainiro.io/reference/slots/crypto/crypto.hash.sha256/) has its arguments, constraints and declaration.
 
-SHA256 hash some message or payload
+This slot hashes its input using SHA256, and is the same as **[crypto.hash]** with **[algo]** set to _"sha256"_. You can also hash a file by passing **[filename]**, and choose the output **[format]**. Below is an example.
+
+```
+crypto.hash.sha256:Hello world
+```
 
 
 # How to use [crypto.hash.sha384]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.crypto/crypto.hash.sha384/
-Description: How to use [crypto.hash.sha384] - SHA384 hash some message or payload
+Description: How to use [crypto.hash.sha384] - This slot hashes its input using SHA384, and is the same as [crypto.hash] with [algo] set to "sha384".
 
 The reference page of [`crypto.hash.sha384`](https://docs.ainiro.io/reference/slots/crypto/crypto.hash.sha384/) has its arguments, constraints and declaration.
 
-SHA384 hash some message or payload
+This slot hashes its input using SHA384, and is the same as **[crypto.hash]** with **[algo]** set to _"sha384"_. You can also hash a file by passing **[filename]**, and choose the output **[format]**. Below is an example.
+
+```
+crypto.hash.sha384:Hello world
+```
 
 
 # How to use [crypto.hash.sha512]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.crypto/crypto.hash.sha512/
-Description: How to use [crypto.hash.sha512] - SHA512 hash some message or payload
+Description: How to use [crypto.hash.sha512] - This slot hashes its input using SHA512, and is the same as [crypto.hash] with [algo] set to "sha512".
 
 The reference page of [`crypto.hash.sha512`](https://docs.ainiro.io/reference/slots/crypto/crypto.hash.sha512/) has its arguments, constraints and declaration.
 
-SHA512 hash some message or payload
+This slot hashes its input using SHA512, and is the same as **[crypto.hash]** with **[algo]** set to _"sha512"_. You can also hash a file by passing **[filename]**, and choose the output **[format]**. Below is an example.
+
+```
+crypto.hash.sha512:Hello world
+```
 
 
 # How to use [crypto.hash]
@@ -7594,11 +7765,15 @@ payload, etc.
 # How to use [crypto.hash.md5]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.crypto/crypto.hash5/
-Description: How to use [crypto.hash.md5] - MD5 hash some message or payload
+Description: How to use [crypto.hash.md5] - This slot hashes its input using MD5, and is the same as [crypto.hash] with [algo] set to "md5".
 
 The reference page of [`crypto.hash.md5`](https://docs.ainiro.io/reference/slots/crypto/crypto.hash.md5/) has its arguments, constraints and declaration.
 
-MD5 hash some message or payload
+This slot hashes its input using MD5, and is the same as **[crypto.hash]** with **[algo]** set to _"md5"_. You can also hash a file by passing **[filename]**, and choose the output **[format]**. Below is an example.
+
+```
+crypto.hash.md5:Hello world
+```
 
 
 # How to use [crypto.password.hash]
@@ -7926,11 +8101,19 @@ unpredictable.
 # How to use [crypto.sign]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.crypto/crypto.sign/
-Description: How to use [crypto.sign] - High level slot to sign some message
+Description: How to use [crypto.sign] - This slot signs its input with a private key, and is the high level companion of [crypto.verify].
 
 The reference page of [`crypto.sign`](https://docs.ainiro.io/reference/slots/crypto/crypto.sign/) has its arguments, constraints and declaration.
 
-High level slot to sign some message
+This slot signs its input with a private key, and is the high level companion of **[crypto.verify]**. It needs the private **[signing-key]**, and the **[signing-key-fingerprint]** identifying it. Below is an example.
+
+```
+crypto.rsa.create-key
+   strength:512
+crypto.sign:Some message to sign
+   signing-key:x:@crypto.rsa.create-key/*/private
+   signing-key-fingerprint:x:@crypto.rsa.create-key/*/fingerprint
+```
 
 
 # How to use [crypto.verify]
@@ -8379,6 +8562,16 @@ and is invoked with the time span as its value. It requires the following argume
 The time span is typically a value returned from **[time]**, and the result of the slot is the formatted
 string.
 
+This slot formats a time span as text, with the **[format]** argument. Below is an example, formatting 2 hours and 30 minutes.
+
+```
+time
+   hours:2
+   minutes:30
+time.format:x:-
+   format:c
+```
+
 
 # How to use [time.total-milliseconds]
 
@@ -8390,6 +8583,14 @@ The reference page of [`time.total-milliseconds`](https://docs.ainiro.io/referen
 This slot takes a time span as its value, such as one returned from **[time]**, and returns the total number
 of milliseconds the time span represents. Its value is mandatory, and it can be given either as a constant
 or as an expression.
+
+This slot returns the total number of milliseconds in a time span. Below is an example, returning the number of milliseconds in a minute.
+
+```
+time
+   minutes:1
+time.total-milliseconds:x:-
+```
 
 
 # How to use [time]
@@ -8930,6 +9131,12 @@ The reference page of [`html-decode`](https://docs.ainiro.io/reference/slots/cor
 This slot HTML decodes its value, equivalent of `HttpUtility.HtmlDecode` in C#, turning entities such as
 `&amp;` and `&lt;` back into the characters they represent. The value is mandatory, and can be given as a
 constant or as an expression pointing to a single node. The slot returns the decoded string as its value.
+
+This slot decodes HTML encoded text, turning for instance `&lt;` back into `<`. Below is an example.
+
+```
+html-decode:"&lt;b&gt;Hello &amp; welcome&lt;/b&gt;"
+```
 
 
 # How to use [html2lambda]
@@ -9889,11 +10096,15 @@ during the transformation.
 # How to use [image.size]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.image/image.size/
-Description: How to use [image.size] - Returns the width and height of the specified image
+Description: How to use [image.size] - This slot returns the width and height of an image file, as two child nodes.
 
 The reference page of [`image.size`](https://docs.ainiro.io/reference/slots/image/image.size/) has its arguments, constraints and declaration.
 
-Returns the width and height of the specified image
+This slot returns the width and height of an image file, as two child nodes. Below is an example.
+
+```
+image.size:/misc/logo.png
+```
 
 
 # magic.lambda.io
@@ -10170,6 +10381,12 @@ file's path relative to the root folder of your backend, and accepts the followi
 * **[display-hidden]** - Boolean, defaults to false, which hides files starting with a `.`
 * **[display-system]** - Boolean, defaults to true, and if false hides files inside of _"/system/"_, _"/misc/"_, _"/data/"_ and _"/config/"_
 
+This slot lists every file in a folder and in all of its subfolders, as child nodes holding the path of each file. Hidden files and system folders are left out unless you set **[display-hidden]** or **[display-system]**. Below is an example.
+
+```
+io.file.list-recursively:/misc/
+```
+
 
 # How to use [io.file.list]
 
@@ -10202,15 +10419,25 @@ has the following two children.
 
 As with **[io.file.load]**, you should not use this slot on binary files.
 
+This slot loads every file in a folder and its subfolders, and returns one child node per file, holding its path and content. Below is an example.
+
+```
+io.file.load-recursively:/misc/snippets/
+```
+
 
 # How to use [io.file.load.binary]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.io/io.file.load.binary/
-Description: How to use [io.file.load.binary] - Loads a file from disc on your server as a byte array
+Description: How to use [io.file.load.binary] - This slot loads a file as raw bytes, which is what you use for images, PDF files and other binary content, and sets the value of its node to the bytes.
 
 The reference page of [`io.file.load.binary`](https://docs.ainiro.io/reference/slots/io/io.file.load.binary/) has its arguments, constraints and declaration.
 
-Loads a file from disc on your server as a byte array
+This slot loads a file as raw bytes, which is what you use for images, PDF files and other binary content, and sets the value of its node to the bytes. Below is an example.
+
+```
+io.file.load.binary:/misc/logo.png
+```
 
 
 # How to use [io.file.load]
@@ -10374,11 +10601,17 @@ the file's own trailing whitespace untouched.
 # How to use [io.file.save.binary]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.io/io.file.save.binary/
-Description: How to use [io.file.save.binary] - Saves a file on disc on your server but contrary to the above assumes content to save is binary
+Description: How to use [io.file.save.binary] - This slot saves raw bytes as a file.
 
 The reference page of [`io.file.save.binary`](https://docs.ainiro.io/reference/slots/io/io.file.save.binary/) has its arguments, constraints and declaration.
 
-Saves a file on disc on your server but contrary to the above assumes content to save is binary
+This slot saves raw bytes as a file. The first child node supplies the content, which must be bytes. Below is an example, copying an image.
+
+```
+io.file.load.binary:/misc/logo.png
+io.file.save.binary:/misc/logo-copy.png
+   .:x:@io.file.load.binary
+```
 
 
 # How to use [io.file.save]
@@ -10540,6 +10773,12 @@ path relative to the root folder of your backend, and accepts the following opti
 
 * **[display-hidden]** - Boolean, defaults to false, which hides folders starting with a `.`
 * **[display-system]** - Boolean, defaults to true, and if false hides folders inside of _"/system/"_, _"/misc/"_, _"/data/"_ and _"/config/"_
+
+This slot lists every folder below a folder, at any depth, as child nodes holding the path of each folder. Hidden folders and system folders are left out unless you set **[display-hidden]** or **[display-system]**. Below is an example.
+
+```
+io.folder.list-recursively:/misc/
+```
 
 
 # How to use [io.folder.list]
@@ -10740,6 +10979,14 @@ The slot accepts the following argument.
 
 * __[encoding]__ - Text encoding used to read the stream, defaults to `utf-8`. Streams using another encoding, such as `utf-16` or `iso-8859-1`, are converted to UTF-8 before they are parsed
 
+This slot creates a lambda object from JSON read from a stream, without first loading it into memory as a string. You can pass in an optional **[encoding]**, which defaults to UTF-8. Below is an example, opening a file as a stream.
+
+```
+io.stream.open-file:/misc/data.json
+json2lambda-stream:x:@io.stream.open-file
+io.stream.close:x:@io.stream.open-file
+```
+
 
 # How to use [json2lambda]
 
@@ -10937,21 +11184,31 @@ The above value will for instance log everything except invocations to **[log.de
 # How to use [log.capabilities]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.logging/log.capabilities/
-Description: How to use [log.capabilities] - Returns the capabilities of the log implementation
+Description: How to use [log.capabilities] - This slot tells you what your current log provider can do, for instance if it can filter and if it supports time shifting, as child nodes.
 
 The reference page of [`log.capabilities`](https://docs.ainiro.io/reference/slots/log/log.capabilities/) has its arguments, constraints and declaration.
 
-Returns the capabilities of the log implementation
+This slot tells you what your current log provider can do, for instance if it can filter and if it supports time shifting, as child nodes. Below is an example.
+
+```
+log.capabilities
+```
 
 
 # How to use [log.count]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.logging/log.count/
-Description: How to use [log.count] - Counts number of log items, optionally matching the specified filter condition
+Description: How to use [log.count] - This slot returns the number of log entries, and the number of entries of one type if you pass the type as its value.
 
 The reference page of [`log.count`](https://docs.ainiro.io/reference/slots/log/log.count/) has its arguments, constraints and declaration.
 
-Counts number of log items, optionally matching the specified filter condition
+This slot returns the number of log entries, and the number of entries of one type if you pass the type as its value. Below is an example.
+
+```
+log.count
+
+log.count:error
+```
 
 
 # How to use [log.debug]
@@ -10992,37 +11249,46 @@ The above value will for instance log everything except invocations to **[log.de
 # How to use [log.error]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.logging/log.error/
-Description: How to use [log.error] - The [log.error] and [log.fatal] slots give you the option of logging an exception stack trace, by parametrising your invocation with an [exception] argument, which will not be assumed to be me...
+Description: How to use [log.error] - This slot writes an error level log entry, for exceptions you caught or operations that failed and need a follow up.
 
 The reference page of [`log.error`](https://docs.ainiro.io/reference/slots/log/log.error/) has its arguments, constraints and declaration.
 
-The **[log.error]** and **[log.fatal]** slots give you the option of logging an exception stack trace, by parametrising
-your invocation with an **[exception]** argument, which will _not_ be assumed to be meta information, but rather end up
-in the _"exception"_ column as you create the log item. All other parameters will still be evaluated or used as meta
-information.
+This slot writes an error level log entry, for exceptions you caught or operations that failed and need a follow up. Child nodes become meta data stored with the entry, and you can attach exception text with **[exception]**. The value of the node becomes the ID of the new entry. Below is an example.
+
+```
+log.error:Could not process the order
+   order-id:1234
+   exception:The payment provider did not answer
+```
 
 
 # How to use [log.fatal]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.logging/log.fatal/
-Description: How to use [log.fatal] - The [log.error] and [log.fatal] slots give you the option of logging an exception stack trace, by parametrising your invocation with an [exception] argument, which will not be assumed to be me...
+Description: How to use [log.fatal] - This slot writes a fatal level log entry, which you should reserve for failures that cannot be recovered from and need attention at once.
 
 The reference page of [`log.fatal`](https://docs.ainiro.io/reference/slots/log/log.fatal/) has its arguments, constraints and declaration.
 
-The **[log.error]** and **[log.fatal]** slots give you the option of logging an exception stack trace, by parametrising
-your invocation with an **[exception]** argument, which will _not_ be assumed to be meta information, but rather end up
-in the _"exception"_ column as you create the log item. All other parameters will still be evaluated or used as meta
-information.
+This slot writes a fatal level log entry, which you should reserve for failures that cannot be recovered from and need attention at once. It works like **[log.error]**. Below is an example.
+
+```
+log.fatal:The database is unreachable
+   exception:Connection refused
+```
 
 
 # How to use [log.get]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.logging/log.get/
-Description: How to use [log.get] - Returns the log item with the specified id
+Description: How to use [log.get] - This slot returns one log entry by its ID, as child nodes holding its type, content, time and meta data.
 
 The reference page of [`log.get`](https://docs.ainiro.io/reference/slots/log/log.get/) has its arguments, constraints and declaration.
 
-Returns the log item with the specified id
+This slot returns one log entry by its ID, as child nodes holding its type, content, time and meta data. Below is an example.
+
+```
+log.get:1
+```
 
 
 # How to use [log.info]
@@ -11463,6 +11729,13 @@ The reference page of [`math.ceil`](https://docs.ainiro.io/reference/slots/math/
 This slot rounds its input up to the nearest whole number. The slot takes a numeric value, which can be a
 constant or an expression, and replaces its value with the rounded result.
 
+Below is an example, rounding 2.6 up to 3.
+
+```
+.number:double:2.6
+math.ceil:x:@.number
+```
+
 
 # How to use [math.cos]
 
@@ -11559,6 +11832,13 @@ The reference page of [`math.floor`](https://docs.ainiro.io/reference/slots/math
 
 This slot rounds its input down to the nearest whole number. The slot takes a numeric value, which can be a
 constant or an expression, and replaces its value with the rounded result.
+
+Below is an example, rounding 2.6 down to 2.
+
+```
+.number:double:2.6
+math.floor:x:@.number
+```
 
 
 # How to use [math.increment]
@@ -11674,6 +11954,19 @@ This slot returns a random number. Its behavior depends on how many child nodes 
 
 Child values are converted to `int`.
 
+Below are the three ways to invoke the slot. The first returns a random number between 0 and 1, the second a random integer between 0 and 10, and the third a random integer between 5 and 10.
+
+```
+math.random
+
+math.random
+   max:10
+
+math.random
+   min:5
+   max:10
+```
+
 
 # How to use [math.round]
 
@@ -11684,6 +11977,13 @@ The reference page of [`math.round`](https://docs.ainiro.io/reference/slots/math
 
 This slot rounds its input to the nearest whole number, using .NET's `Math.Round`, which rounds halfway values to the nearest even number. The slot takes a numeric value, which can be a
 constant or an expression, and replaces its value with the rounded result.
+
+Below is an example, rounding 2.6 to 3.
+
+```
+.number:double:2.6
+math.round:x:@.number
+```
 
 
 # How to use [math.sin]
@@ -11897,31 +12197,55 @@ documentation for **[data.connect]**, since it's more or less the exact same doc
 # How to use [mssql.connect]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mssql/mssql.connect/
-Description: How to use [mssql.connect] - Connects to a database
+Description: How to use [mssql.connect] - This slot opens a connection to a Microsoft SQL Server database, and evaluates its lambda object with that connection open.
 
 The reference page of [`mssql.connect`](https://docs.ainiro.io/reference/slots/mssql/mssql.connect/) has its arguments, constraints and declaration.
 
-Connects to a database
+This slot opens a connection to a Microsoft SQL Server database, and evaluates its lambda object with that connection open. It works like **[data.connect]**, except it always uses Microsoft SQL Server. You can pass in only the name of the database, which is substituted for the `{database}` part of the generic connection string in your _"appsettings.json"_ file, or a complete connection string. Below is an example.
+
+```
+mssql.connect:sakila
+   mssql.select:select first_name, last_name from actor limit 5
+```
 
 
 # How to use [mssql.create]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mssql/mssql.create/
-Description: How to use [mssql.create] - Creates a single record in the specified table
+Description: How to use [mssql.create] - This slot inserts a record into a table, generating the SQL for Microsoft SQL Server.
 
 The reference page of [`mssql.create`](https://docs.ainiro.io/reference/slots/mssql/mssql.create/) has its arguments, constraints and declaration.
 
-Creates a single record in the specified table
+This slot inserts a record into a table, generating the SQL for Microsoft SQL Server. It works like **[data.create]**, and its value becomes the ID of the new record unless **[return-id]** is false. Below is an example.
+
+```
+mssql.connect:sakila
+   mssql.create
+      table:actor
+      values
+         first_name:John
+         last_name:Doe
+```
 
 
 # How to use [mssql.delete]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mssql/mssql.delete/
-Description: How to use [mssql.delete] - Deletes a single record in the specified table
+Description: How to use [mssql.delete] - This slot deletes records from a table, generating the SQL for Microsoft SQL Server, and resolves to the number of records affected.
 
 The reference page of [`mssql.delete`](https://docs.ainiro.io/reference/slots/mssql/mssql.delete/) has its arguments, constraints and declaration.
 
-Deletes a single record in the specified table
+This slot deletes records from a table, generating the SQL for Microsoft SQL Server, and resolves to the number of records affected. It works like **[data.delete]**. Always supply **[where]**. Below is an example.
+
+```
+mssql.connect:sakila
+   mssql.delete
+      table:actor
+      where
+         and
+            first_name:John
+            last_name:Doe
+```
 
 
 # How to use [mssql.execute-batch]
@@ -11941,85 +12265,169 @@ difference between this slot and **[mssql.execute]**, which executes its SQL as 
 After execution the slot's value is `null`, and it has one child per executed batch, each containing a
 **[Records affected]** node.
 
+This slot executes a script made of several batches against the open connection. A line containing only `GO` separates one batch from the next, which is what SQL Server tools do, and each batch is executed on its own. The slot adds one child node per batch, telling how many records the batch affected. Below is an example.
+
+```
+mssql.connect:sakila
+   mssql.execute-batch:@"update actor set last_name = 'Smith' where actor_id = 1
+GO
+update actor set last_name = 'Jones' where actor_id = 2"
+
+// The result of the above looks like the following.
+mssql.execute-batch
+   ""
+      Records affected:int:1
+   ""
+      Records affected:int:1
+```
+
 
 # How to use [mssql.execute]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mssql/mssql.execute/
-Description: How to use [mssql.execute] - Executes an arbitrary SQL statement
+Description: How to use [mssql.execute] - This slot executes SQL you do not expect any result from, such as updates and deletes.
 
 The reference page of [`mssql.execute`](https://docs.ainiro.io/reference/slots/mssql/mssql.execute/) has its arguments, constraints and declaration.
 
-Executes an arbitrary SQL statement
+This slot executes SQL you do not expect any result from, such as updates and deletes. It works like **[data.execute]**, except it always uses Microsoft SQL Server. Below is an example.
+
+```
+mssql.connect:sakila
+   mssql.execute:update actor set last_name = 'Smith' where actor_id = 1
+```
 
 
 # How to use [mssql.read]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mssql/mssql.read/
-Description: How to use [mssql.read] - Reads multiple records from the specified table
+Description: How to use [mssql.read] - This slot reads records from a table, generating the SQL for Microsoft SQL Server, and returns them as a lambda object.
 
 The reference page of [`mssql.read`](https://docs.ainiro.io/reference/slots/mssql/mssql.read/) has its arguments, constraints and declaration.
 
-Reads multiple records from the specified table
+This slot reads records from a table, generating the SQL for Microsoft SQL Server, and returns them as a lambda object. It works like **[data.read]**, and limits the result to 25 records unless you supply **[limit]**. Below is an example.
+
+```
+mssql.connect:sakila
+   mssql.read
+      table:actor
+      columns
+         first_name
+         last_name
+      order:last_name
+      limit:5
+```
 
 
 # How to use [mssql.scalar]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mssql/mssql.scalar/
-Description: How to use [mssql.scalar] - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
+Description: How to use [mssql.scalar] - This slot executes SQL returning a single value, such as an aggregate, and sets the value of its own node to the result.
 
 The reference page of [`mssql.scalar`](https://docs.ainiro.io/reference/slots/mssql/mssql.scalar/) has its arguments, constraints and declaration.
 
-Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
+This slot executes SQL returning a single value, such as an aggregate, and sets the value of its own node to the result. It works like **[data.scalar]**, except it always uses Microsoft SQL Server. Below is an example, counting the records of a table.
+
+```
+mssql.connect:sakila
+   mssql.scalar:select count(*) from actor
+```
 
 
 # How to use [mssql.select]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mssql/mssql.select/
-Description: How to use [mssql.select] - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
+Description: How to use [mssql.select] - This slot executes any SQL you give it against the open connection, and returns every record as a lambda object.
 
 The reference page of [`mssql.select`](https://docs.ainiro.io/reference/slots/mssql/mssql.select/) has its arguments, constraints and declaration.
 
-Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
+This slot executes any SQL you give it against the open connection, and returns every record as a lambda object. It works like **[data.select]**, except it always uses Microsoft SQL Server. Below is an example.
+
+```
+mssql.connect:sakila
+   mssql.select:select first_name, last_name from actor limit 2
+
+// The result of the above looks like the following.
+mssql.connect
+   mssql.select
+      ""
+         first_name:PENELOPE
+         last_name:GUINESS
+      ""
+         first_name:NICK
+         last_name:WAHLBERG
+```
 
 
 # How to use [mssql.transaction.commit]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mssql/mssql.transaction.commit/
-Description: How to use [mssql.transaction.commit] - Explicitly commits an open transaction
+Description: How to use [mssql.transaction.commit] - This slot commits the open transaction.
 
 The reference page of [`mssql.transaction.commit`](https://docs.ainiro.io/reference/slots/mssql/mssql.transaction.commit/) has its arguments, constraints and declaration.
 
-Explicitly commits an open transaction
+This slot commits the open transaction. It works like **[data.transaction.commit]**. Without it a transaction is rolled back when it leaves scope. Below is an example.
+
+```
+mssql.connect:sakila
+   mssql.transaction.create
+      mssql.execute:update actor set last_name = 'Smith' where actor_id = 1
+      mssql.transaction.commit
+```
 
 
 # How to use [mssql.transaction.create]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mssql/mssql.transaction.create/
-Description: How to use [mssql.transaction.create] - Creates a new transaction
+Description: How to use [mssql.transaction.create] - This slot creates a database transaction, and evaluates its lambda object inside of it.
 
 The reference page of [`mssql.transaction.create`](https://docs.ainiro.io/reference/slots/mssql/mssql.transaction.create/) has its arguments, constraints and declaration.
 
-Creates a new transaction
+This slot creates a database transaction, and evaluates its lambda object inside of it. It works like **[data.transaction.create]**. Unless the transaction is explicitly committed before it leaves scope, it is rolled back, which is what happens below.
+
+```
+mssql.connect:sakila
+   mssql.transaction.create
+      mssql.execute:update actor set last_name = 'Smith' where actor_id = 1
+```
 
 
 # How to use [mssql.transaction.rollback]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mssql/mssql.transaction.rollback/
-Description: How to use [mssql.transaction.rollback] - Explicitly rolls back an open transaction
+Description: How to use [mssql.transaction.rollback] - This slot explicitly rolls back the open transaction, discarding everything done since it was created.
 
 The reference page of [`mssql.transaction.rollback`](https://docs.ainiro.io/reference/slots/mssql/mssql.transaction.rollback/) has its arguments, constraints and declaration.
 
-Explicitly rolls back an open transaction
+This slot explicitly rolls back the open transaction, discarding everything done since it was created. It works like **[data.transaction.rollback]**. Below is an example.
+
+```
+mssql.connect:sakila
+   mssql.transaction.create
+      mssql.execute:update actor set last_name = 'Smith' where actor_id = 1
+      mssql.transaction.rollback
+```
 
 
 # How to use [mssql.update]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mssql/mssql.update/
-Description: How to use [mssql.update] - Updates a single record in the specified table
+Description: How to use [mssql.update] - This slot updates records in a table, generating the SQL for Microsoft SQL Server, and resolves to the number of records affected.
 
 The reference page of [`mssql.update`](https://docs.ainiro.io/reference/slots/mssql/mssql.update/) has its arguments, constraints and declaration.
 
-Updates a single record in the specified table
+This slot updates records in a table, generating the SQL for Microsoft SQL Server, and resolves to the number of records affected. It works like **[data.update]**. Always supply **[where]**, or every record in the table is updated. Below is an example.
+
+```
+mssql.connect:sakila
+   mssql.update
+      table:actor
+      values
+         last_name:Smith
+      where
+         and
+            first_name:John
+            last_name:Doe
+```
 
 
 # magic.lambda.mysql
@@ -12062,111 +12470,203 @@ documentation for **[data.connect]**, since it's more or less the exact same doc
 # How to use [mysql.connect]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mysql/mysql.connect/
-Description: How to use [mysql.connect] - Connects to a database
+Description: How to use [mysql.connect] - This slot opens a connection to a MySQL database, and evaluates its lambda object with that connection open.
 
 The reference page of [`mysql.connect`](https://docs.ainiro.io/reference/slots/mysql/mysql.connect/) has its arguments, constraints and declaration.
 
-Connects to a database
+This slot opens a connection to a MySQL database, and evaluates its lambda object with that connection open. It works like **[data.connect]**, except it always uses MySQL. You can pass in only the name of the database, which is substituted for the `{database}` part of the generic connection string in your _"appsettings.json"_ file, or a complete connection string. Below is an example.
+
+```
+mysql.connect:sakila
+   mysql.select:select first_name, last_name from actor limit 5
+```
 
 
 # How to use [mysql.create]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mysql/mysql.create/
-Description: How to use [mysql.create] - Creates a single record in the specified table
+Description: How to use [mysql.create] - This slot inserts a record into a table, generating the SQL for MySQL.
 
 The reference page of [`mysql.create`](https://docs.ainiro.io/reference/slots/mysql/mysql.create/) has its arguments, constraints and declaration.
 
-Creates a single record in the specified table
+This slot inserts a record into a table, generating the SQL for MySQL. It works like **[data.create]**, and its value becomes the ID of the new record unless **[return-id]** is false. Below is an example.
+
+```
+mysql.connect:sakila
+   mysql.create
+      table:actor
+      values
+         first_name:John
+         last_name:Doe
+```
 
 
 # How to use [mysql.delete]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mysql/mysql.delete/
-Description: How to use [mysql.delete] - Deletes a single record in the specified table
+Description: How to use [mysql.delete] - This slot deletes records from a table, generating the SQL for MySQL, and resolves to the number of records affected.
 
 The reference page of [`mysql.delete`](https://docs.ainiro.io/reference/slots/mysql/mysql.delete/) has its arguments, constraints and declaration.
 
-Deletes a single record in the specified table
+This slot deletes records from a table, generating the SQL for MySQL, and resolves to the number of records affected. It works like **[data.delete]**. Always supply **[where]**. Below is an example.
+
+```
+mysql.connect:sakila
+   mysql.delete
+      table:actor
+      where
+         and
+            first_name:John
+            last_name:Doe
+```
 
 
 # How to use [mysql.execute]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mysql/mysql.execute/
-Description: How to use [mysql.execute] - Executes an arbitrary SQL statement
+Description: How to use [mysql.execute] - This slot executes SQL you do not expect any result from, such as updates and deletes.
 
 The reference page of [`mysql.execute`](https://docs.ainiro.io/reference/slots/mysql/mysql.execute/) has its arguments, constraints and declaration.
 
-Executes an arbitrary SQL statement
+This slot executes SQL you do not expect any result from, such as updates and deletes. It works like **[data.execute]**, except it always uses MySQL. Below is an example.
+
+```
+mysql.connect:sakila
+   mysql.execute:update actor set last_name = 'Smith' where actor_id = 1
+```
 
 
 # How to use [mysql.read]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mysql/mysql.read/
-Description: How to use [mysql.read] - Reads multiple records from the specified table
+Description: How to use [mysql.read] - This slot reads records from a table, generating the SQL for MySQL, and returns them as a lambda object.
 
 The reference page of [`mysql.read`](https://docs.ainiro.io/reference/slots/mysql/mysql.read/) has its arguments, constraints and declaration.
 
-Reads multiple records from the specified table
+This slot reads records from a table, generating the SQL for MySQL, and returns them as a lambda object. It works like **[data.read]**, and limits the result to 25 records unless you supply **[limit]**. Below is an example.
+
+```
+mysql.connect:sakila
+   mysql.read
+      table:actor
+      columns
+         first_name
+         last_name
+      order:last_name
+      limit:5
+```
 
 
 # How to use [mysql.scalar]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mysql/mysql.scalar/
-Description: How to use [mysql.scalar] - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
+Description: How to use [mysql.scalar] - This slot executes SQL returning a single value, such as an aggregate, and sets the value of its own node to the result.
 
 The reference page of [`mysql.scalar`](https://docs.ainiro.io/reference/slots/mysql/mysql.scalar/) has its arguments, constraints and declaration.
 
-Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
+This slot executes SQL returning a single value, such as an aggregate, and sets the value of its own node to the result. It works like **[data.scalar]**, except it always uses MySQL. Below is an example, counting the records of a table.
+
+```
+mysql.connect:sakila
+   mysql.scalar:select count(*) from actor
+```
 
 
 # How to use [mysql.select]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mysql/mysql.select/
-Description: How to use [mysql.select] - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
+Description: How to use [mysql.select] - This slot executes any SQL you give it against the open connection, and returns every record as a lambda object.
 
 The reference page of [`mysql.select`](https://docs.ainiro.io/reference/slots/mysql/mysql.select/) has its arguments, constraints and declaration.
 
-Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
+This slot executes any SQL you give it against the open connection, and returns every record as a lambda object. It works like **[data.select]**, except it always uses MySQL. Below is an example.
+
+```
+mysql.connect:sakila
+   mysql.select:select first_name, last_name from actor limit 2
+
+// The result of the above looks like the following.
+mysql.connect
+   mysql.select
+      ""
+         first_name:PENELOPE
+         last_name:GUINESS
+      ""
+         first_name:NICK
+         last_name:WAHLBERG
+```
 
 
 # How to use [mysql.transaction.commit]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mysql/mysql.transaction.commit/
-Description: How to use [mysql.transaction.commit] - Explicitly commits an open transaction
+Description: How to use [mysql.transaction.commit] - This slot commits the open transaction.
 
 The reference page of [`mysql.transaction.commit`](https://docs.ainiro.io/reference/slots/mysql/mysql.transaction.commit/) has its arguments, constraints and declaration.
 
-Explicitly commits an open transaction
+This slot commits the open transaction. It works like **[data.transaction.commit]**. Without it a transaction is rolled back when it leaves scope. Below is an example.
+
+```
+mysql.connect:sakila
+   mysql.transaction.create
+      mysql.execute:update actor set last_name = 'Smith' where actor_id = 1
+      mysql.transaction.commit
+```
 
 
 # How to use [mysql.transaction.create]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mysql/mysql.transaction.create/
-Description: How to use [mysql.transaction.create] - Creates a new transaction
+Description: How to use [mysql.transaction.create] - This slot creates a database transaction, and evaluates its lambda object inside of it.
 
 The reference page of [`mysql.transaction.create`](https://docs.ainiro.io/reference/slots/mysql/mysql.transaction.create/) has its arguments, constraints and declaration.
 
-Creates a new transaction
+This slot creates a database transaction, and evaluates its lambda object inside of it. It works like **[data.transaction.create]**. Unless the transaction is explicitly committed before it leaves scope, it is rolled back, which is what happens below.
+
+```
+mysql.connect:sakila
+   mysql.transaction.create
+      mysql.execute:update actor set last_name = 'Smith' where actor_id = 1
+```
 
 
 # How to use [mysql.transaction.rollback]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mysql/mysql.transaction.rollback/
-Description: How to use [mysql.transaction.rollback] - Explicitly rolls back an open transaction
+Description: How to use [mysql.transaction.rollback] - This slot explicitly rolls back the open transaction, discarding everything done since it was created.
 
 The reference page of [`mysql.transaction.rollback`](https://docs.ainiro.io/reference/slots/mysql/mysql.transaction.rollback/) has its arguments, constraints and declaration.
 
-Explicitly rolls back an open transaction
+This slot explicitly rolls back the open transaction, discarding everything done since it was created. It works like **[data.transaction.rollback]**. Below is an example.
+
+```
+mysql.connect:sakila
+   mysql.transaction.create
+      mysql.execute:update actor set last_name = 'Smith' where actor_id = 1
+      mysql.transaction.rollback
+```
 
 
 # How to use [mysql.update]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.mysql/mysql.update/
-Description: How to use [mysql.update] - Updates a single record in the specified table
+Description: How to use [mysql.update] - This slot updates records in a table, generating the SQL for MySQL, and resolves to the number of records affected.
 
 The reference page of [`mysql.update`](https://docs.ainiro.io/reference/slots/mysql/mysql.update/) has its arguments, constraints and declaration.
 
-Updates a single record in the specified table
+This slot updates records in a table, generating the SQL for MySQL, and resolves to the number of records affected. It works like **[data.update]**. Always supply **[where]**, or every record in the table is updated. Below is an example.
+
+```
+mysql.connect:sakila
+   mysql.update
+      table:actor
+      values
+         last_name:Smith
+      where
+         and
+            first_name:John
+            last_name:Doe
+```
 
 
 # magic.lambda.odbc
@@ -12206,71 +12706,121 @@ installing all of these would be impossible for us to do.
 # How to use [odbc.connect]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.odbc/odbc.connect/
-Description: How to use [odbc.connect] - Connects to a database
+Description: How to use [odbc.connect] - This slot opens a connection to a ODBC database, and evaluates its lambda object with that connection open.
 
 The reference page of [`odbc.connect`](https://docs.ainiro.io/reference/slots/odbc/odbc.connect/) has its arguments, constraints and declaration.
 
-Connects to a database
+This slot opens a connection to a ODBC database, and evaluates its lambda object with that connection open. It works like **[data.connect]**, except it always uses ODBC. You can pass in only the name of the database, which is substituted for the `{database}` part of the generic connection string in your _"appsettings.json"_ file, or a complete connection string. Below is an example.
+
+```
+odbc.connect:sakila
+   odbc.select:select first_name, last_name from actor limit 5
+```
 
 
 # How to use [odbc.execute]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.odbc/odbc.execute/
-Description: How to use [odbc.execute] - Executes an arbitrary SQL statement
+Description: How to use [odbc.execute] - This slot executes SQL you do not expect any result from, such as updates and deletes.
 
 The reference page of [`odbc.execute`](https://docs.ainiro.io/reference/slots/odbc/odbc.execute/) has its arguments, constraints and declaration.
 
-Executes an arbitrary SQL statement
+This slot executes SQL you do not expect any result from, such as updates and deletes. It works like **[data.execute]**, except it always uses ODBC. Below is an example.
+
+```
+odbc.connect:sakila
+   odbc.execute:update actor set last_name = 'Smith' where actor_id = 1
+```
 
 
 # How to use [odbc.scalar]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.odbc/odbc.scalar/
-Description: How to use [odbc.scalar] - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
+Description: How to use [odbc.scalar] - This slot executes SQL returning a single value, such as an aggregate, and sets the value of its own node to the result.
 
 The reference page of [`odbc.scalar`](https://docs.ainiro.io/reference/slots/odbc/odbc.scalar/) has its arguments, constraints and declaration.
 
-Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
+This slot executes SQL returning a single value, such as an aggregate, and sets the value of its own node to the result. It works like **[data.scalar]**, except it always uses ODBC. Below is an example, counting the records of a table.
+
+```
+odbc.connect:sakila
+   odbc.scalar:select count(*) from actor
+```
 
 
 # How to use [odbc.select]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.odbc/odbc.select/
-Description: How to use [odbc.select] - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
+Description: How to use [odbc.select] - This slot executes any SQL you give it against the open connection, and returns every record as a lambda object.
 
 The reference page of [`odbc.select`](https://docs.ainiro.io/reference/slots/odbc/odbc.select/) has its arguments, constraints and declaration.
 
-Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
+This slot executes any SQL you give it against the open connection, and returns every record as a lambda object. It works like **[data.select]**, except it always uses ODBC. Below is an example.
+
+```
+odbc.connect:sakila
+   odbc.select:select first_name, last_name from actor limit 2
+
+// The result of the above looks like the following.
+odbc.connect
+   odbc.select
+      ""
+         first_name:PENELOPE
+         last_name:GUINESS
+      ""
+         first_name:NICK
+         last_name:WAHLBERG
+```
 
 
 # How to use [odbc.transaction.commit]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.odbc/odbc.transaction.commit/
-Description: How to use [odbc.transaction.commit] - Explicitly commits an open transaction
+Description: How to use [odbc.transaction.commit] - This slot commits the open transaction.
 
 The reference page of [`odbc.transaction.commit`](https://docs.ainiro.io/reference/slots/odbc/odbc.transaction.commit/) has its arguments, constraints and declaration.
 
-Explicitly commits an open transaction
+This slot commits the open transaction. It works like **[data.transaction.commit]**. Without it a transaction is rolled back when it leaves scope. Below is an example.
+
+```
+odbc.connect:sakila
+   odbc.transaction.create
+      odbc.execute:update actor set last_name = 'Smith' where actor_id = 1
+      odbc.transaction.commit
+```
 
 
 # How to use [odbc.transaction.create]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.odbc/odbc.transaction.create/
-Description: How to use [odbc.transaction.create] - Creates a new transaction
+Description: How to use [odbc.transaction.create] - This slot creates a database transaction, and evaluates its lambda object inside of it.
 
 The reference page of [`odbc.transaction.create`](https://docs.ainiro.io/reference/slots/odbc/odbc.transaction.create/) has its arguments, constraints and declaration.
 
-Creates a new transaction
+This slot creates a database transaction, and evaluates its lambda object inside of it. It works like **[data.transaction.create]**. Unless the transaction is explicitly committed before it leaves scope, it is rolled back, which is what happens below.
+
+```
+odbc.connect:sakila
+   odbc.transaction.create
+      odbc.execute:update actor set last_name = 'Smith' where actor_id = 1
+```
 
 
 # How to use [odbc.transaction.rollback]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.odbc/odbc.transaction.rollback/
-Description: How to use [odbc.transaction.rollback] - Explicitly rolls back an open transaction
+Description: How to use [odbc.transaction.rollback] - This slot explicitly rolls back the open transaction, discarding everything done since it was created.
 
 The reference page of [`odbc.transaction.rollback`](https://docs.ainiro.io/reference/slots/odbc/odbc.transaction.rollback/) has its arguments, constraints and declaration.
 
-Explicitly rolls back an open transaction
+This slot explicitly rolls back the open transaction, discarding everything done since it was created. It works like **[data.transaction.rollback]**. Below is an example.
+
+```
+odbc.connect:sakila
+   odbc.transaction.create
+      odbc.execute:update actor set last_name = 'Smith' where actor_id = 1
+      odbc.transaction.rollback
+```
 
 
 # magic.lambda.openai
@@ -12324,6 +12874,17 @@ exception if any of the three mandatory ones is missing, or if OpenAI responds w
 * __[type]__ - MIME type of the audio, such as `audio/mpeg`. Mandatory.
 * __[language]__ - Optional language hint.
 
+This slot transcribes audio to text using OpenAI Whisper, and sets its value to the transcription. It needs your OpenAI **[key]**, the audio as **[content]**, and its MIME **[type]**, and takes an optional **[language]** hint. Below is an example.
+
+```
+.key:YOUR_OPENAI_API_KEY
+io.file.load.binary:/misc/speech.mp3
+openai.whisper
+   key:x:@.key
+   content:x:@io.file.load.binary
+   type:audio/mpeg
+```
+
 
 # magic.lambda.pdf
 
@@ -12347,6 +12908,14 @@ This slot converts the HTML markup given as its value into a PDF document, and r
 its value. The value can be a constant or an expression. Any images, stylesheets and fonts the HTML references
 are loaded through Hyperlambda's **[io.file.load.binary]** and **[http.get]** slots, instead of directly by the
 PDF library.
+
+This slot converts HTML into a PDF document, and sets the value of its node to the bytes of the PDF. Images and stylesheets the HTML refers to are loaded through the file and HTTP slots, and so obey the whitelist. Below is an example, saving the PDF to disc.
+
+```
+html2pdf:"<h1>Hello world</h1><p>This is a PDF document.</p>"
+io.file.save.binary:/misc/hello.pdf
+   .:x:@html2pdf
+```
 
 
 # How to use [pdf2text]
@@ -12409,111 +12978,203 @@ documentation for **[data.connect]**, since it's more or less the exact same doc
 # How to use [pgsql.connect]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.pgsql/pgsql.connect/
-Description: How to use [pgsql.connect] - Connects to a database
+Description: How to use [pgsql.connect] - This slot opens a connection to a PostgreSQL database, and evaluates its lambda object with that connection open.
 
 The reference page of [`pgsql.connect`](https://docs.ainiro.io/reference/slots/pgsql/pgsql.connect/) has its arguments, constraints and declaration.
 
-Connects to a database
+This slot opens a connection to a PostgreSQL database, and evaluates its lambda object with that connection open. It works like **[data.connect]**, except it always uses PostgreSQL. You can pass in only the name of the database, which is substituted for the `{database}` part of the generic connection string in your _"appsettings.json"_ file, or a complete connection string. Below is an example.
+
+```
+pgsql.connect:sakila
+   pgsql.select:select first_name, last_name from actor limit 5
+```
 
 
 # How to use [pgsql.create]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.pgsql/pgsql.create/
-Description: How to use [pgsql.create] - Creates a single record in the specified table
+Description: How to use [pgsql.create] - This slot inserts a record into a table, generating the SQL for PostgreSQL.
 
 The reference page of [`pgsql.create`](https://docs.ainiro.io/reference/slots/pgsql/pgsql.create/) has its arguments, constraints and declaration.
 
-Creates a single record in the specified table
+This slot inserts a record into a table, generating the SQL for PostgreSQL. It works like **[data.create]**, and its value becomes the ID of the new record unless **[return-id]** is false. Below is an example.
+
+```
+pgsql.connect:sakila
+   pgsql.create
+      table:actor
+      values
+         first_name:John
+         last_name:Doe
+```
 
 
 # How to use [pgsql.delete]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.pgsql/pgsql.delete/
-Description: How to use [pgsql.delete] - Deletes a single record in the specified table
+Description: How to use [pgsql.delete] - This slot deletes records from a table, generating the SQL for PostgreSQL, and resolves to the number of records affected.
 
 The reference page of [`pgsql.delete`](https://docs.ainiro.io/reference/slots/pgsql/pgsql.delete/) has its arguments, constraints and declaration.
 
-Deletes a single record in the specified table
+This slot deletes records from a table, generating the SQL for PostgreSQL, and resolves to the number of records affected. It works like **[data.delete]**. Always supply **[where]**. Below is an example.
+
+```
+pgsql.connect:sakila
+   pgsql.delete
+      table:actor
+      where
+         and
+            first_name:John
+            last_name:Doe
+```
 
 
 # How to use [pgsql.execute]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.pgsql/pgsql.execute/
-Description: How to use [pgsql.execute] - Executes an arbitrary SQL statement
+Description: How to use [pgsql.execute] - This slot executes SQL you do not expect any result from, such as updates and deletes.
 
 The reference page of [`pgsql.execute`](https://docs.ainiro.io/reference/slots/pgsql/pgsql.execute/) has its arguments, constraints and declaration.
 
-Executes an arbitrary SQL statement
+This slot executes SQL you do not expect any result from, such as updates and deletes. It works like **[data.execute]**, except it always uses PostgreSQL. Below is an example.
+
+```
+pgsql.connect:sakila
+   pgsql.execute:update actor set last_name = 'Smith' where actor_id = 1
+```
 
 
 # How to use [pgsql.read]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.pgsql/pgsql.read/
-Description: How to use [pgsql.read] - Reads multiple records from the specified table
+Description: How to use [pgsql.read] - This slot reads records from a table, generating the SQL for PostgreSQL, and returns them as a lambda object.
 
 The reference page of [`pgsql.read`](https://docs.ainiro.io/reference/slots/pgsql/pgsql.read/) has its arguments, constraints and declaration.
 
-Reads multiple records from the specified table
+This slot reads records from a table, generating the SQL for PostgreSQL, and returns them as a lambda object. It works like **[data.read]**, and limits the result to 25 records unless you supply **[limit]**. Below is an example.
+
+```
+pgsql.connect:sakila
+   pgsql.read
+      table:actor
+      columns
+         first_name
+         last_name
+      order:last_name
+      limit:5
+```
 
 
 # How to use [pgsql.scalar]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.pgsql/pgsql.scalar/
-Description: How to use [pgsql.scalar] - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
+Description: How to use [pgsql.scalar] - This slot executes SQL returning a single value, such as an aggregate, and sets the value of its own node to the result.
 
 The reference page of [`pgsql.scalar`](https://docs.ainiro.io/reference/slots/pgsql/pgsql.scalar/) has its arguments, constraints and declaration.
 
-Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
+This slot executes SQL returning a single value, such as an aggregate, and sets the value of its own node to the result. It works like **[data.scalar]**, except it always uses PostgreSQL. Below is an example, counting the records of a table.
+
+```
+pgsql.connect:sakila
+   pgsql.scalar:select count(*) from actor
+```
 
 
 # How to use [pgsql.select]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.pgsql/pgsql.select/
-Description: How to use [pgsql.select] - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
+Description: How to use [pgsql.select] - This slot executes any SQL you give it against the open connection, and returns every record as a lambda object.
 
 The reference page of [`pgsql.select`](https://docs.ainiro.io/reference/slots/pgsql/pgsql.select/) has its arguments, constraints and declaration.
 
-Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
+This slot executes any SQL you give it against the open connection, and returns every record as a lambda object. It works like **[data.select]**, except it always uses PostgreSQL. Below is an example.
+
+```
+pgsql.connect:sakila
+   pgsql.select:select first_name, last_name from actor limit 2
+
+// The result of the above looks like the following.
+pgsql.connect
+   pgsql.select
+      ""
+         first_name:PENELOPE
+         last_name:GUINESS
+      ""
+         first_name:NICK
+         last_name:WAHLBERG
+```
 
 
 # How to use [pgsql.transaction.commit]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.pgsql/pgsql.transaction.commit/
-Description: How to use [pgsql.transaction.commit] - Explicitly commits an open transaction
+Description: How to use [pgsql.transaction.commit] - This slot commits the open transaction.
 
 The reference page of [`pgsql.transaction.commit`](https://docs.ainiro.io/reference/slots/pgsql/pgsql.transaction.commit/) has its arguments, constraints and declaration.
 
-Explicitly commits an open transaction
+This slot commits the open transaction. It works like **[data.transaction.commit]**. Without it a transaction is rolled back when it leaves scope. Below is an example.
+
+```
+pgsql.connect:sakila
+   pgsql.transaction.create
+      pgsql.execute:update actor set last_name = 'Smith' where actor_id = 1
+      pgsql.transaction.commit
+```
 
 
 # How to use [pgsql.transaction.create]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.pgsql/pgsql.transaction.create/
-Description: How to use [pgsql.transaction.create] - Creates a new transaction
+Description: How to use [pgsql.transaction.create] - This slot creates a database transaction, and evaluates its lambda object inside of it.
 
 The reference page of [`pgsql.transaction.create`](https://docs.ainiro.io/reference/slots/pgsql/pgsql.transaction.create/) has its arguments, constraints and declaration.
 
-Creates a new transaction
+This slot creates a database transaction, and evaluates its lambda object inside of it. It works like **[data.transaction.create]**. Unless the transaction is explicitly committed before it leaves scope, it is rolled back, which is what happens below.
+
+```
+pgsql.connect:sakila
+   pgsql.transaction.create
+      pgsql.execute:update actor set last_name = 'Smith' where actor_id = 1
+```
 
 
 # How to use [pgsql.transaction.rollback]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.pgsql/pgsql.transaction.rollback/
-Description: How to use [pgsql.transaction.rollback] - Explicitly rolls back an open transaction
+Description: How to use [pgsql.transaction.rollback] - This slot explicitly rolls back the open transaction, discarding everything done since it was created.
 
 The reference page of [`pgsql.transaction.rollback`](https://docs.ainiro.io/reference/slots/pgsql/pgsql.transaction.rollback/) has its arguments, constraints and declaration.
 
-Explicitly rolls back an open transaction
+This slot explicitly rolls back the open transaction, discarding everything done since it was created. It works like **[data.transaction.rollback]**. Below is an example.
+
+```
+pgsql.connect:sakila
+   pgsql.transaction.create
+      pgsql.execute:update actor set last_name = 'Smith' where actor_id = 1
+      pgsql.transaction.rollback
+```
 
 
 # How to use [pgsql.update]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.pgsql/pgsql.update/
-Description: How to use [pgsql.update] - Updates a single record in the specified table
+Description: How to use [pgsql.update] - This slot updates records in a table, generating the SQL for PostgreSQL, and resolves to the number of records affected.
 
 The reference page of [`pgsql.update`](https://docs.ainiro.io/reference/slots/pgsql/pgsql.update/) has its arguments, constraints and declaration.
 
-Updates a single record in the specified table
+This slot updates records in a table, generating the SQL for PostgreSQL, and resolves to the number of records affected. It works like **[data.update]**. Always supply **[where]**, or every record in the table is updated. Below is an example.
+
+```
+pgsql.connect:sakila
+   pgsql.update
+      table:actor
+      values
+         last_name:Smith
+      where
+         and
+            first_name:John
+            last_name:Doe
+```
 
 
 # magic.lambda.puppeteer
@@ -13072,11 +13733,15 @@ least somewhere between 200 and 400 times faster than MWF, due to not using refl
 # How to use [tasks.count]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.scheduler/tasks.count/
-Description: How to use [tasks.count] - Counts tasks in system
+Description: How to use [tasks.count] - This slot returns the number of scheduled tasks, as its value.
 
 The reference page of [`tasks.count`](https://docs.ainiro.io/reference/slots/tasks/tasks.count/) has its arguments, constraints and declaration.
 
-Counts tasks in system
+This slot returns the number of scheduled tasks, as its value. Below is an example.
+
+```
+tasks.count
+```
 
 
 # How to use [tasks.create]
@@ -13231,11 +13896,15 @@ tasks.list
 # How to use [tasks.schedule.delete]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.scheduler/tasks.schedule.delete/
-Description: How to use [tasks.schedule.delete] - Deletes an existing schedule
+Description: How to use [tasks.schedule.delete] - This slot deletes one schedule by its ID, and leaves the task itself in place.
 
 The reference page of [`tasks.schedule.delete`](https://docs.ainiro.io/reference/slots/tasks/tasks.schedule.delete/) has its arguments, constraints and declaration.
 
-Deletes an existing schedule
+This slot deletes one schedule by its ID, and leaves the task itself in place. Below is an example.
+
+```
+tasks.schedule.delete:42
+```
 
 
 # How to use [tasks.schedule]
@@ -13481,11 +14150,18 @@ pattern declares how many units to count to before executing the task again, fro
 # How to use [tasks.update]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.scheduler/tasks.update/
-Description: How to use [tasks.update] - Updates an existing task
+Description: How to use [tasks.update] - This slot replaces the body, and optionally the description, of an existing task, without changing its schedules.
 
 The reference page of [`tasks.update`](https://docs.ainiro.io/reference/slots/tasks/tasks.update/) has its arguments, constraints and declaration.
 
-Updates an existing task
+This slot replaces the body, and optionally the description, of an existing task, without changing its schedules. Below is an example.
+
+```
+tasks.update:foo-bar-task-1
+   description:An updated description.
+   .lambda
+      log.info:Executing the updated foo-bar-task-1
+```
 
 
 # magic.lambda.slots
@@ -13588,11 +14264,18 @@ execute:foo
 # How to use [function]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.slots/function/
-Description: How to use [function] - Alias for [slots.create]
+Description: How to use [function] - This slot is an alias for [slots.create], and creates a dynamic slot you can invoke with [signal].
 
 The reference page of [`function`](https://docs.ainiro.io/reference/slots/core/function/) has its arguments, constraints and declaration.
 
-Alias for **[slots.create]**
+This slot is an alias for **[slots.create]**, and creates a dynamic slot you can invoke with **[signal]**. Below is an example.
+
+```
+function:foo
+   return:int:57
+
+signal:foo
+```
 
 
 # How to use [return-nodes]
@@ -13638,11 +14321,25 @@ signal:foo
 # How to use [return]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.slots/return/
-Description: How to use [return] - Returns either a list of nodes, or a single value, or both, depending upon the results of its expression,
+Description: How to use [return] - This slot returns a value, or its child nodes, to the nearest caller, such as a dynamic slot being invoked with [signal].
 
 The reference page of [`return`](https://docs.ainiro.io/reference/slots/core/return/) has its arguments, constraints and declaration.
 
-Returns either a list of nodes, or a single value, or both, depending upon the results of its expression,
+This slot returns a value, or its child nodes, to the nearest caller, such as a dynamic slot being invoked with **[signal]**. It combines **[return-value]** and **[return-nodes]**, so you can give it a value, or children, as the two examples below show.
+
+```
+function:foo
+   return:This is the returned value
+
+signal:foo
+
+function:bar
+   return
+      integer-value:int:57
+      string-value:Foo bar
+
+signal:bar
+```
 
 
 # How to use [signal]
@@ -13811,11 +14508,23 @@ try-signal:foo
 # How to use [yield]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.slots/yield/
-Description: How to use [yield] - Alias for [return-nodes] but similarly to [execute] it will [unwrap] all descendant nodes explicitly
+Description: How to use [yield] - This slot returns its child nodes to the caller, after unwrapping any expressions they contain.
 
 The reference page of [`yield`](https://docs.ainiro.io/reference/slots/core/yield/) has its arguments, constraints and declaration.
 
-Alias for **[return-nodes]** but similarly to **[execute]** it will **[unwrap]** all descendant nodes explicitly
+This slot returns its child nodes to the caller, after unwrapping any expressions they contain. It is typically used inside **[map]**, where it returns what each iteration produces. Below is an example, incrementing every number.
+
+```
+.src
+   .:int:1
+   .:int:2
+   .:int:3
+map:x:@.src/*
+   math.increment:x:@.dp/#
+   unwrap:x:+/*
+   yield
+      .:x:@math.increment
+```
 
 
 # magic.lambda.sockets
@@ -14187,6 +14896,35 @@ published to connections explicitly having registered an interest in the `foo.ba
 above example, irrelevant of whether the user belongs to the group or not.
 
 
+# How to use [sockets.users.count]
+
+URL: https://docs.ainiro.io/plugins/magic.lambda.sockets/sockets.users.count/
+Description: How to use [sockets.users.count] - This slot counts the users currently connected through web sockets, and can be narrowed with [filter].
+
+The reference page of [`sockets.users.count`](https://docs.ainiro.io/reference/slots/sockets/sockets.users.count/) has its arguments, constraints and declaration.
+
+This slot counts the users currently connected through web sockets, and can be narrowed with **[filter]**. Below is an example.
+
+```
+sockets.users.count
+```
+
+
+# How to use [sockets.users]
+
+URL: https://docs.ainiro.io/plugins/magic.lambda.sockets/sockets.users/
+Description: How to use [sockets.users] - This slot lists the users currently connected through web sockets.
+
+The reference page of [`sockets.users`](https://docs.ainiro.io/reference/slots/sockets/sockets.users/) has its arguments, constraints and declaration.
+
+This slot lists the users currently connected through web sockets. Each user becomes a child node holding the username and its connections. You can narrow the result with **[filter]**, **[offset]** and **[limit]**. Below is an example.
+
+```
+sockets.users
+   limit:10
+```
+
+
 # magic.lambda.sqlite
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.sqlite/
@@ -14248,51 +14986,84 @@ it for some reasons becomes invalid.
 # How to use [sqlite.connect]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.sqlite/sqlite.connect/
-Description: How to use [sqlite.connect] - Connects to a database
+Description: How to use [sqlite.connect] - This slot opens a connection to a SQLite database, and evaluates its lambda object with that connection open.
 
 The reference page of [`sqlite.connect`](https://docs.ainiro.io/reference/slots/sqlite/sqlite.connect/) has its arguments, constraints and declaration.
 
-Connects to a database
+This slot opens a connection to a SQLite database, and evaluates its lambda object with that connection open. It works like **[data.connect]**, except it always uses SQLite. You can pass in only the name of the database, which is substituted for the `{database}` part of the generic connection string in your _"appsettings.json"_ file, or a complete connection string. Below is an example.
+
+```
+sqlite.connect:sakila
+   sqlite.select:select first_name, last_name from actor limit 5
+```
 
 
 # How to use [sqlite.connections.flush]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.sqlite/sqlite.connections.flush/
-Description: How to use [sqlite.connections.flush] - Flushed cached schemas and connection pools
+Description: How to use [sqlite.connections.flush] - This slot flushes the cached SQLite connections and schemas, which you typically need to do after you have replaced or deleted a database file on disc, since the old connection...
 
 The reference page of [`sqlite.connections.flush`](https://docs.ainiro.io/reference/slots/sqlite/sqlite.connections.flush/) has its arguments, constraints and declaration.
 
-Flushed cached schemas and connection pools
+This slot flushes the cached SQLite connections and schemas, which you typically need to do after you have replaced or deleted a database file on disc, since the old connection pool would otherwise keep pointing at the old file. Below is an example.
+
+```
+sqlite.connections.flush
+```
 
 
 # How to use [sqlite.create]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.sqlite/sqlite.create/
-Description: How to use [sqlite.create] - Creates a single record in the specified table
+Description: How to use [sqlite.create] - This slot inserts a record into a table, generating the SQL for SQLite.
 
 The reference page of [`sqlite.create`](https://docs.ainiro.io/reference/slots/sqlite/sqlite.create/) has its arguments, constraints and declaration.
 
-Creates a single record in the specified table
+This slot inserts a record into a table, generating the SQL for SQLite. It works like **[data.create]**, and its value becomes the ID of the new record unless **[return-id]** is false. Below is an example.
+
+```
+sqlite.connect:sakila
+   sqlite.create
+      table:actor
+      values
+         first_name:John
+         last_name:Doe
+```
 
 
 # How to use [sqlite.delete]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.sqlite/sqlite.delete/
-Description: How to use [sqlite.delete] - Deletes a single record in the specified table
+Description: How to use [sqlite.delete] - This slot deletes records from a table, generating the SQL for SQLite, and resolves to the number of records affected.
 
 The reference page of [`sqlite.delete`](https://docs.ainiro.io/reference/slots/sqlite/sqlite.delete/) has its arguments, constraints and declaration.
 
-Deletes a single record in the specified table
+This slot deletes records from a table, generating the SQL for SQLite, and resolves to the number of records affected. It works like **[data.delete]**. Always supply **[where]**. Below is an example.
+
+```
+sqlite.connect:sakila
+   sqlite.delete
+      table:actor
+      where
+         and
+            first_name:John
+            last_name:Doe
+```
 
 
 # How to use [sqlite.execute]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.sqlite/sqlite.execute/
-Description: How to use [sqlite.execute] - Executes an arbitrary SQL statement
+Description: How to use [sqlite.execute] - This slot executes SQL you do not expect any result from, such as updates and deletes.
 
 The reference page of [`sqlite.execute`](https://docs.ainiro.io/reference/slots/sqlite/sqlite.execute/) has its arguments, constraints and declaration.
 
-Executes an arbitrary SQL statement
+This slot executes SQL you do not expect any result from, such as updates and deletes. It works like **[data.execute]**, except it always uses SQLite. Below is an example.
+
+```
+sqlite.connect:sakila
+   sqlite.execute:update actor set last_name = 'Smith' where actor_id = 1
+```
 
 
 # How to use [sqlite.load-extension]
@@ -14308,75 +15079,146 @@ Loads a SQLite extension into the connection opened by **[sqlite.connect]**. The
 * __[proc]__ - Optional entry point of the extension.
 * __[append-platform]__ - Boolean, defaults to `true`. If true, the slot appends `-arm64` or `-arm` to the filename when running on an ARM64 or ARM processor.
 
+Below is an example, loading an extension from the _"/data/extensions/"_ folder into a connection.
+
+```
+sqlite.connect:sakila
+   sqlite.load-extension
+      file:/data/extensions/vec0
+```
+
 
 # How to use [sqlite.read]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.sqlite/sqlite.read/
-Description: How to use [sqlite.read] - Reads multiple records from the specified table
+Description: How to use [sqlite.read] - This slot reads records from a table, generating the SQL for SQLite, and returns them as a lambda object.
 
 The reference page of [`sqlite.read`](https://docs.ainiro.io/reference/slots/sqlite/sqlite.read/) has its arguments, constraints and declaration.
 
-Reads multiple records from the specified table
+This slot reads records from a table, generating the SQL for SQLite, and returns them as a lambda object. It works like **[data.read]**, and limits the result to 25 records unless you supply **[limit]**. Below is an example.
+
+```
+sqlite.connect:sakila
+   sqlite.read
+      table:actor
+      columns
+         first_name
+         last_name
+      order:last_name
+      limit:5
+```
 
 
 # How to use [sqlite.scalar]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.sqlite/sqlite.scalar/
-Description: How to use [sqlite.scalar] - Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
+Description: How to use [sqlite.scalar] - This slot executes SQL returning a single value, such as an aggregate, and sets the value of its own node to the result.
 
 The reference page of [`sqlite.scalar`](https://docs.ainiro.io/reference/slots/sqlite/sqlite.scalar/) has its arguments, constraints and declaration.
 
-Executes an arbitrary SQL statement, and returns the result as a scalar value to caller
+This slot executes SQL returning a single value, such as an aggregate, and sets the value of its own node to the result. It works like **[data.scalar]**, except it always uses SQLite. Below is an example, counting the records of a table.
+
+```
+sqlite.connect:sakila
+   sqlite.scalar:select count(*) from actor
+```
 
 
 # How to use [sqlite.select]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.sqlite/sqlite.select/
-Description: How to use [sqlite.select] - Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
+Description: How to use [sqlite.select] - This slot executes any SQL you give it against the open connection, and returns every record as a lambda object.
 
 The reference page of [`sqlite.select`](https://docs.ainiro.io/reference/slots/sqlite/sqlite.select/) has its arguments, constraints and declaration.
 
-Executes an arbitrary SQL statement, and returns results of reader as lambda objects to caller
+This slot executes any SQL you give it against the open connection, and returns every record as a lambda object. It works like **[data.select]**, except it always uses SQLite. Below is an example.
+
+```
+sqlite.connect:sakila
+   sqlite.select:select first_name, last_name from actor limit 2
+
+// The result of the above looks like the following.
+sqlite.connect
+   sqlite.select
+      ""
+         first_name:PENELOPE
+         last_name:GUINESS
+      ""
+         first_name:NICK
+         last_name:WAHLBERG
+```
 
 
 # How to use [sqlite.transaction.commit]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.sqlite/sqlite.transaction.commit/
-Description: How to use [sqlite.transaction.commit] - Explicitly commits an open transaction
+Description: How to use [sqlite.transaction.commit] - This slot commits the open transaction.
 
 The reference page of [`sqlite.transaction.commit`](https://docs.ainiro.io/reference/slots/sqlite/sqlite.transaction.commit/) has its arguments, constraints and declaration.
 
-Explicitly commits an open transaction
+This slot commits the open transaction. It works like **[data.transaction.commit]**. Without it a transaction is rolled back when it leaves scope. Below is an example.
+
+```
+sqlite.connect:sakila
+   sqlite.transaction.create
+      sqlite.execute:update actor set last_name = 'Smith' where actor_id = 1
+      sqlite.transaction.commit
+```
 
 
 # How to use [sqlite.transaction.create]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.sqlite/sqlite.transaction.create/
-Description: How to use [sqlite.transaction.create] - Creates a new transaction
+Description: How to use [sqlite.transaction.create] - This slot creates a database transaction, and evaluates its lambda object inside of it.
 
 The reference page of [`sqlite.transaction.create`](https://docs.ainiro.io/reference/slots/sqlite/sqlite.transaction.create/) has its arguments, constraints and declaration.
 
-Creates a new transaction
+This slot creates a database transaction, and evaluates its lambda object inside of it. It works like **[data.transaction.create]**. Unless the transaction is explicitly committed before it leaves scope, it is rolled back, which is what happens below.
+
+```
+sqlite.connect:sakila
+   sqlite.transaction.create
+      sqlite.execute:update actor set last_name = 'Smith' where actor_id = 1
+```
 
 
 # How to use [sqlite.transaction.rollback]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.sqlite/sqlite.transaction.rollback/
-Description: How to use [sqlite.transaction.rollback] - Explicitly rolls back an open transaction
+Description: How to use [sqlite.transaction.rollback] - This slot explicitly rolls back the open transaction, discarding everything done since it was created.
 
 The reference page of [`sqlite.transaction.rollback`](https://docs.ainiro.io/reference/slots/sqlite/sqlite.transaction.rollback/) has its arguments, constraints and declaration.
 
-Explicitly rolls back an open transaction
+This slot explicitly rolls back the open transaction, discarding everything done since it was created. It works like **[data.transaction.rollback]**. Below is an example.
+
+```
+sqlite.connect:sakila
+   sqlite.transaction.create
+      sqlite.execute:update actor set last_name = 'Smith' where actor_id = 1
+      sqlite.transaction.rollback
+```
 
 
 # How to use [sqlite.update]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.sqlite/sqlite.update/
-Description: How to use [sqlite.update] - Updates a single record in the specified table
+Description: How to use [sqlite.update] - This slot updates records in a table, generating the SQL for SQLite, and resolves to the number of records affected.
 
 The reference page of [`sqlite.update`](https://docs.ainiro.io/reference/slots/sqlite/sqlite.update/) has its arguments, constraints and declaration.
 
-Updates a single record in the specified table
+This slot updates records in a table, generating the SQL for SQLite, and resolves to the number of records affected. It works like **[data.update]**. Always supply **[where]**, or every record in the table is updated. Below is an example.
+
+```
+sqlite.connect:sakila
+   sqlite.update
+      table:actor
+      values
+         last_name:Smith
+      where
+         and
+            first_name:John
+            last_name:Doe
+```
 
 
 # magic.lambda.strings
@@ -14483,6 +15325,12 @@ Returns the number of bytes the specified string occupies when UTF-8 encoded, as
 **[strings.length]**, which counts characters, since characters outside the ASCII range occupy more than
 one byte. The slot takes a value, which can be a constant or an expression.
 
+This slot returns the number of bytes a string takes as UTF-8, which differs from its length when it contains multi byte characters. Below is an example.
+
+```
+strings.byte-count:Hello world
+```
+
 
 # How to use [strings.capitalize]
 
@@ -14575,6 +15423,12 @@ The reference page of [`strings.html-decode`](https://docs.ainiro.io/reference/s
 HTML decodes a string, the opposite of **[strings.html-encode]**. The slot requires a value, which can be a
 constant or an expression, and replaces its value with the decoded string.
 
+This slot decodes HTML encoded text, turning for instance `&lt;` back into `<`. Below is an example.
+
+```
+strings.html-decode:"&lt;b&gt;Hello &amp; welcome&lt;/b&gt;"
+```
+
 
 # How to use [strings.html-encode]
 
@@ -14585,6 +15439,12 @@ The reference page of [`strings.html-encode`](https://docs.ainiro.io/reference/s
 
 HTML encodes a string, replacing characters such as `<`, `>`, `&` and `"` with their HTML entities. The slot
 takes a value, which can be a constant or an expression, and replaces its value with the encoded string.
+
+This slot HTML encodes text, turning for instance `<` into `&lt;`, which makes it safe to render inside HTML. Below is an example.
+
+```
+strings.html-encode:"<b>Hello & welcome</b>"
+```
 
 
 # How to use [strings.join]
@@ -15369,6 +16229,35 @@ Also notice that the name of the assembly is not necessary the path of the assem
 Implying the assembly's name and its filename might differ.
 
 
+# How to use [timezone.init]
+
+URL: https://docs.ainiro.io/plugins/magic.lambda.system/timezone.init/
+Description: How to use [timezone.init] - This slot reads the "magic:culture:defaultTimeZone" setting from your "appsettings.json" file, and makes it the default time zone used when dates are converted.
+
+The reference page of [`timezone.init`](https://docs.ainiro.io/reference/slots/timezone/timezone.init/) has its arguments, constraints and declaration.
+
+This slot reads the _"magic:culture:defaultTimeZone"_ setting from your _"appsettings.json"_ file, and makes it the default time zone used when dates are converted. It takes no arguments, and Magic invokes it during startup, but you can also invoke it yourself after changing the setting.
+
+```
+timezone.init
+```
+
+
+# How to use [version]
+
+URL: https://docs.ainiro.io/plugins/magic.lambda.system/version/
+Description: How to use [version] - This slot returns the version of your Magic Cloud as the value of its node.
+
+The reference page of [`version`](https://docs.ainiro.io/reference/slots/core/version/) has its arguments, constraints and declaration.
+
+This slot returns the version of your Magic Cloud as the value of its node. Below is an example.
+
+```
+version
+console.log:x:@version
+```
+
+
 # magic.lambda.threading
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.threading/
@@ -15410,11 +16299,18 @@ cancelled.
 # How to use [execution.throttle.create]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda.threading/execution.throttle.create/
-Description: How to use [execution.throttle.create] - Creates, replaces or deletes a named throttle
+Description: How to use [execution.throttle.create] - This slot creates, or replaces, a named throttle that [execution.throttle] then enforces.
 
 The reference page of [`execution.throttle.create`](https://docs.ainiro.io/reference/slots/execution/execution.throttle.create/) has its arguments, constraints and declaration.
 
-Creates, replaces or deletes a named throttle
+This slot creates, or replaces, a named throttle that **[execution.throttle]** then enforces. It takes a **[limit]**, the number of invocations allowed per **[window]** of seconds, and **[per]**, which decides if the limit is counted per user, per IP address or globally. Invoking it with no arguments deletes the throttle. Below is an example.
+
+```
+// At the top of your endpoint file, allowing 10 invocations per user per minute.
+execution.throttle.create:my-endpoint
+   limit:10
+execution.throttle:my-endpoint
+```
 
 
 # How to use [execution.throttle]
@@ -16956,6 +17852,16 @@ This slot serializes a sequence of float values into raw bytes, which is useful 
 embeddings, into binary APIs. Its value is an expression selecting the nodes containing the float values, each of which
 must be convertible to a float. After invocation, the value of the node is a `byte[]` containing 4 bytes for each float
 value.
+
+Below is an example.
+
+```
+.vector
+   a:float:0.25
+   b:float:0.5
+   c:float:0.75
+floatArray2bytes:x:@.vector/*
+```
 
 
 # How to use [for-each]
