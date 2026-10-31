@@ -14837,10 +14837,10 @@ It begins with two throttles, one per IP address and one for everybody together,
 
 ### Get the whole reference yourself
 
-The endpoint above is public. There is no account, no key and no secret. To protect the server it is throttled to **10 requests per 60 seconds per IP address**, and to **60 per 60 seconds** for everybody together, and beyond that it answers `429`. The answer is about 640 KB, so keep a copy rather than asking again.
+The endpoint above is public. There is no account, no key and no secret. To protect the server it is throttled to **10 requests per 60 seconds per IP address**, and to **60 per 60 seconds** for everybody together, and beyond that it answers `429`. The answer is about 460 KB, so keep a copy rather than asking again.
 
 ```bash
-curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes
+curl -s https://hyperlambda.dev/magic/modules/docs/slots
 ```
 
 It returns a JSON array with one object per slot, with the fields `name`, `description` and `signature`. The signature is the contract of the slot as nested JSON: `input` is the value the slot takes, `children` are its arguments, `constraints` are the rules between them, `scope` says where it can be used, and `output` is what it returns. Arguments without a name, because they are positional, come as a list. With `jq` you can ask it questions.
@@ -14848,37 +14848,37 @@ It returns a JSON array with one object per slot, with the fields `name`, `descr
 #### List every slot name
 
 ```bash
-curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes | jq -r '.[].name'
+curl -s https://hyperlambda.dev/magic/modules/docs/slots | jq -r '.[].name'
 ```
 
 #### Get the description of one slot
 
 ```bash
-curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes | jq -r '.[] | select(.name == "strings.concat") | .description'
+curl -s https://hyperlambda.dev/magic/modules/docs/slots | jq -r '.[] | select(.name == "strings.concat") | .description'
 ```
 
 #### Get the full signature of one slot
 
 ```bash
-curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes | jq '.[] | select(.name == "data.read") | .signature'
+curl -s https://hyperlambda.dev/magic/modules/docs/slots | jq '.[] | select(.name == "data.read") | .signature'
 ```
 
 #### List the arguments of a slot
 
 ```bash
-curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes | jq -r '.[] | select(.name == "data.create") | .signature.children | keys[]'
+curl -s https://hyperlambda.dev/magic/modules/docs/slots | jq -r '.[] | select(.name == "data.create") | .signature.children | keys[]'
 ```
 
 #### List only the required arguments of a slot
 
 ```bash
-curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes | jq -r '.[] | select(.name == "data.create") | .signature.children | to_entries[] | select(.value.required == true) | .key'
+curl -s https://hyperlambda.dev/magic/modules/docs/slots | jq -r '.[] | select(.name == "data.create") | .signature.children | to_entries[] | select(.value.required == true) | .key'
 ```
 
 #### Find the slots whose description mentions something
 
 ```bash
-curl -s https://hyperlambda.dev/magic/modules/docs/slots-nodes | jq -r '.[] | select((.description // "") | test("rows")) | .name'
+curl -s https://hyperlambda.dev/magic/modules/docs/slots | jq -r '.[] | select((.description // "") | test("rows")) | .name'
 ```
 
 The public sandbox below sees fewer slots than this endpoint. It runs **your** code, so it can only describe the **53 slots** it is itself allowed to call. A slot can only be described by code that is allowed to call it, so a sandbox that described everything could also run everything. Use the endpoint for the whole language, and the sandbox to experiment.
@@ -15611,7 +15611,7 @@ The sandbox only runs code whose every slot is on a whitelist of 53 slots: intro
 
 **Can I get the whole reference as data?**
 
-Yes. GET https://hyperlambda.dev/magic/modules/docs/slots-nodes returns every compiled slot as a JSON array of objects with the fields name, description and signature, where the signature is the slot's contract as nested JSON. It needs no account or key. The answer is about 640 KB, so keep a copy rather than asking again.
+Yes. GET https://hyperlambda.dev/magic/modules/docs/slots returns every compiled slot as a JSON array of objects with the fields name, description and signature, where the signature is the slot's contract as nested JSON. It needs no account or key. The answer is about 460 KB, so keep a copy rather than asking again.
 
 **Is it safe to leave that endpoint open?**
 
