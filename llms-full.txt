@@ -312,6 +312,14 @@ Magic is built on JWT authentication and role based access control, with every e
 Yes, Magic is 100% open source. Run it locally with one Docker command, deploy it to any VPS, or use AINIRO.IO's professional hosting - a managed cloudlet with backups and HTTPS out of the box.
 
 
+## For AI agents
+
+Everything in this documentation is available in a form made for agents, without scraping.
+
+* [llms.txt](https://docs.ainiro.io/llms.txt) and [llms-full.txt](https://docs.ainiro.io/llms-full.txt) are the curated index and the whole documentation in one file.
+* [slots-index.json](https://docs.ainiro.io/reference/slots-index.json) lists every slot of Hyperlambda, with links to its reference page and its guide, and [slots.json](https://docs.ainiro.io/reference/slots.json) has every slot with its complete signature. Each slot also has its own `slot.json`, next to its [reference page](https://docs.ainiro.io/reference/slots/).
+* The [agent entry point](https://hyperlambda.dev/.well-known/hyperlambda-agent) lists the live endpoints, the public sandbox where an agent can run Hyperlambda, and the MCP server.
+
 ## The goal of the project
 
 The goal of the project is to make it easier to produce high quality and scalable code, much faster, without security holes, in an extremely scalable runtime. AKA ...
