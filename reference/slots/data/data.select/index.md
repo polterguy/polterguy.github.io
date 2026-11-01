@@ -134,5 +134,5 @@ This is the complete declaration of `data.select`, as the running system describ
 
 ---
 
-[&larr; `data.scalar`](/reference/slots/data/data.scalar/) | [all `data.*` slots](/reference/slots/data/) | [`data.transaction.commit` &rarr;](/reference/slots/data/data.transaction.commit/)
+[&larr; `data.scan`](/reference/slots/data/data.scan/) | [all `data.*` slots](/reference/slots/data/) | [`data.transaction.commit` &rarr;](/reference/slots/data/data.transaction.commit/)
 
