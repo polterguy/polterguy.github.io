@@ -17,7 +17,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[type]` | string | yes | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
+| `[type]` | string | no | Output image format: png, jpeg, or webp. Default: `png`. |
 | `[dest]` | string | no | Optional destination filename; when supplied, the image is saved to disk instead of returned as a stream. |
 
 ### Guide
@@ -46,10 +46,10 @@ This is the complete declaration of `image.convert`, as the running system descr
       "type": {
         "type": "string",
         "kind": "image-format",
-        "description": "Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp",
-        "required": true,
+        "description": "Output image format: png, jpeg, or webp",
+        "required": false,
         "mode": "ValueOrExpression",
-        "cardinality": "ExactlyOne",
+        "cardinality": "ZeroOrOne",
         "default": "png",
         "role": "Option",
         "projection": "Value"

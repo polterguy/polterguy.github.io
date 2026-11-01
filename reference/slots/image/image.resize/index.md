@@ -17,7 +17,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[type]` | string | no | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
+| `[type]` | string | no | Output image format: png, jpeg, or webp. Default: `png`. |
 | `[dest]` | string | no | Optional destination filename; when supplied, the image is saved to disk instead of returned as a stream. |
 | `[width]` | int | no | Target width in pixels. |
 | `[height]` | int | no | Target height in pixels. |
@@ -48,7 +48,7 @@ This is the complete declaration of `image.resize`, as the running system descri
       "type": {
         "type": "string",
         "kind": "image-format",
-        "description": "Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp",
+        "description": "Output image format: png, jpeg, or webp",
         "required": false,
         "mode": "ValueOrExpression",
         "cardinality": "ZeroOrOne",

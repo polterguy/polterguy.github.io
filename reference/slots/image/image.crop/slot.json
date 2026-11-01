@@ -1,6 +1,6 @@
 {
   "name": "image.crop",
-  "description": "Cuts a rectangular region out of an image at the given x, y, width, and height",
+  "description": "Cuts margins off an image, removing the given left, top, right and bottom pixels",
   "signature": {
     "input": {
       "kind": "image-file",
@@ -12,7 +12,7 @@
       "type": {
         "type": "string",
         "kind": "image-format",
-        "description": "Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp",
+        "description": "Output image format: png, jpeg, or webp",
         "required": false,
         "mode": "ValueOrExpression",
         "cardinality": "ZeroOrOne",

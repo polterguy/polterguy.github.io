@@ -1,12 +1,12 @@
 ---
 title: "[image.crop]"
-description: "image.crop is a slot in the image namespace of Magic Cloud. Cuts a rectangular region out of an image at the given x, y, width, and height."
+description: "image.crop is a slot in the image namespace of Magic Cloud. Cuts margins off an image, removing the given left, top, right and bottom pixels."
 generated: true
 llms: false
 slot_json: "/reference/slots/image/image.crop/slot.json"
 ---
 
-`image.crop` is a slot in the `image` namespace, in Hyperlambda, the language of Magic Cloud. Cuts a rectangular region out of an image at the given x, y, width, and height.
+`image.crop` is a slot in the `image` namespace, in Hyperlambda, the language of Magic Cloud. Cuts margins off an image, removing the given left, top, right and bottom pixels.
 
 * **Value** (`image-file`), required: Source image filename or stream to crop
 * **Returns**: Resolves to the cropped image stream unless [dest] is supplied, in which case the cropped image is saved to disk and nothing is returned
@@ -17,7 +17,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[type]` | string | no | Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp. Default: `png`. |
+| `[type]` | string | no | Output image format: png, jpeg, or webp. Default: `png`. |
 | `[dest]` | string | no | Optional destination filename; when supplied, the image is saved to disk instead of returned as a stream. |
 | `[left]` | int | no | Pixels to crop from the left edge. Default: `0`. |
 | `[top]` | int | no | Pixels to crop from the top edge. Default: `0`. |
@@ -38,7 +38,7 @@ This is the complete declaration of `image.crop`, as the running system describe
 ```json
 {
   "name": "image.crop",
-  "description": "Cuts a rectangular region out of an image at the given x, y, width, and height",
+  "description": "Cuts margins off an image, removing the given left, top, right and bottom pixels",
   "signature": {
     "input": {
       "kind": "image-file",
@@ -50,7 +50,7 @@ This is the complete declaration of `image.crop`, as the running system describe
       "type": {
         "type": "string",
         "kind": "image-format",
-        "description": "Output image format: png, jpeg, bmp, gif, tga, pbm, tiff, or webp",
+        "description": "Output image format: png, jpeg, or webp",
         "required": false,
         "mode": "ValueOrExpression",
         "cardinality": "ZeroOrOne",

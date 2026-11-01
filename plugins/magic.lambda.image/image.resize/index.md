@@ -15,7 +15,7 @@ image.resize:/some-image.png
    type:png
 ```
 
-The above will resize the specified image to a width of 250 pixel, converting it to PNG, while keeping the
+The above will resize the specified image to a height of 250 pixel, converting it to PNG, while keeping the
 aspect ratio by calculating the new height automatically. You can provide either of.
 
 * __[width]__ - New width

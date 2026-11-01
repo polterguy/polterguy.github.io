@@ -9854,11 +9854,6 @@ types are as follows.
 
 * png
 * jpeg
-* bmp
-* gif
-* tga
-* pbm
-* tiff
 * webp
 
 In addition you can provide a **[dest]** argument, which if specified, becomes the relative path of where to
@@ -21255,7 +21250,7 @@ Description: The 6 slots named image.* in Magic Cloud and Hyperlambda, each with
 |---|---|
 | [`image.chart`](https://docs.ainiro.io/reference/slots/image/image.chart/) | Renders a bar, stacked, or grouped chart from the supplied series data as a PNG image. |
 | [`image.convert`](https://docs.ainiro.io/reference/slots/image/image.convert/) | Re-encodes an image into a different format (e.g. PNG to JPEG) preserving its pixel content. |
-| [`image.crop`](https://docs.ainiro.io/reference/slots/image/image.crop/) | Cuts a rectangular region out of an image at the given x, y, width, and height. |
+| [`image.crop`](https://docs.ainiro.io/reference/slots/image/image.crop/) | Cuts margins off an image, removing the given left, top, right and bottom pixels. |
 | [`image.generate-qr`](https://docs.ainiro.io/reference/slots/image/image.generate-qr/) | Renders the supplied text or URL into a PNG QR code; commonly used for links and payment codes. |
 | [`image.resize`](https://docs.ainiro.io/reference/slots/image/image.resize/) | Resizes an image to the specified width and height; useful for generating thumbnails or fitting screen sizes. |
 | [`image.size`](https://docs.ainiro.io/reference/slots/image/image.size/) | Returns the width and height of an image. |
