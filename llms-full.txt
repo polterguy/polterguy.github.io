@@ -2880,8 +2880,9 @@ This endpoint is intended for you to consume from your own code.
 ### GET magic/system/auth/can-reset-password
 
 This endpoint returns _"true"_ in its _"result"_ field if the backend is able to send password reset links, otherwise
-_"false"_. It takes no arguments. It returns _"true"_ only if both _"magic:smtp:host"_ and _"magic:smtp:from:address"_
-have been configured, see the _"Configuring password reset"_ section below. The Magic dashboard invokes it to decide
+_"false"_. It takes no arguments. It returns _"true"_ only if _"magic:smtp:host"_, _"magic:smtp:from:address"_,
+_"magic:backend:url"_ and _"magic:frontend:urls"_ have all been configured, see the _"Configuring password reset"_
+section below. The Magic dashboard invokes it to decide
 whether or not to show its _"Forgot password"_ option on the login screen, since offering a link that can never be
 delivered is worse than not offering it.
 
@@ -2968,7 +2969,7 @@ variables override values in this file, with a double underscore replacing each 
 * __"magic:smtp:port"__, __"magic:smtp:secure"__, __"magic:smtp:username"__ and __"magic:smtp:password"__ - How to connect and authenticate towards your SMTP server. These are required by most SMTP providers.
 * __"magic:smtp:from:name"__ - Optional display name for the sender.
 * __"magic:backend:url"__ - The public URL of your backend, for instance _"https://api.example.com"_. Mandatory. The link is built from this value and nothing else, as described below.
-* __"magic:frontend:urls"__ - Optional comma separated list of the origins of your frontends, for instance _"https://dashboard.example.com"_. This is the same setting your backend uses for CORS.
+* __"magic:frontend:urls"__ - Comma separated list of the origins of your frontends, for instance _"https://dashboard.example.com"_. This is the same setting your backend uses for CORS. The endpoint sends nothing, and the dashboard does not offer _"Forgot password"_, unless it is set.
 
 An example configuration might look like the following.
 
@@ -2999,9 +3000,9 @@ An example configuration might look like the following.
 The two URL settings control where the link in the email points, and the difference between them matters.
 
 * The link's token is a session for the user. The _"Host"_ and _"Origin"_ headers of a request to this public endpoint are controlled by whoever sends the request, so trusting them would let an attacker ask for a link for somebody else's account and have the token sent to a domain of their own. For this reason the backend part of the link always comes from __"magic:backend:url"__. If this setting is missing no link is sent, and an error is written to your log.
-* The dashboard part of the link comes from the _"Origin"_ header of the request, but only if it matches, case insensitively, one of the origins in __"magic:frontend:urls"__. If the setting is empty, or the origin is not on the list, the link falls back to __"magic:backend:url"__. You only need to set __"magic:frontend:urls"__ if your dashboard is served from a different origin than your backend.
+* The dashboard part of the link comes from the _"Origin"_ header of the request, but only if it matches, case insensitively, one of the origins in __"magic:frontend:urls"__. If the origin is absent or not on the list, the link falls back to __"magic:backend:url"__. If __"magic:frontend:urls"__ is missing altogether, no link is sent and an error is written to your log, just as when __"magic:backend:url"__ is missing.
 
-If your link is not arriving, check your log. It will tell you if SMTP is not configured, if __"magic:backend:url"__ is missing, or if the user has no email address on file. You can also invoke **[can-reset-password]** to see if SMTP is configured.
+If your link is not arriving, check your log. It will tell you if SMTP is not configured, if __"magic:backend:url"__ is missing, or if the user has no email address on file. You can also invoke **[can-reset-password]** to see if everything required is configured.
 
 ### GET magic/system/auth/verify-ticket
 
