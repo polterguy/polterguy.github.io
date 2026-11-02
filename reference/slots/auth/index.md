@@ -1,13 +1,14 @@
 ---
 title: "auth.* slots"
-description: "The 7 slots named auth.* in Magic Cloud and Hyperlambda, each with its own page."
+description: "The 8 slots named auth.* in Magic Cloud and Hyperlambda, each with its own page."
 generated: true
 ---
 
-7 slots, each with its own page and JSON declaration. See [how this reference is built](/reference/slots/).
+8 slots, each with its own page and JSON declaration. See [how this reference is built](/reference/slots/).
 
 | Slot | Description |
 |---|---|
+| [`auth.jwks`](/reference/slots/auth/auth.jwks/) | Returns a public JSON Web Key Set for the supplied [public-key] arguments, removing duplicates, allowing other systems to verify RS256 tokens created by [auth.ticket.create]. |
 | [`auth.ticket.create`](/reference/slots/auth/auth.ticket.create/) | Issues a signed JWT carrying the supplied username, roles, and claims; typically returned after a successful login. |
 | [`auth.ticket.get`](/reference/slots/auth/auth.ticket.get/) | Returns the current ticket username, roles, and claims. |
 | [`auth.ticket.in-role`](/reference/slots/auth/auth.ticket.in-role/) | Returns true if the current ticket belongs to one of the specified roles. |

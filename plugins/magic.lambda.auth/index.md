@@ -12,7 +12,7 @@ to create and consume JWT tokens, to secure your Magic cloudlet. The project con
 * __[\[auth.ticket.verify\]](/plugins/magic.lambda.auth/auth.ticket.verify/)__ - Verifies a JWT token, and that the user is logged in, in addition to (optionally) that he belongs to one of the roles supplied as a comma separated list of roles
 * __[\[auth.ticket.in-role\]](/plugins/magic.lambda.auth/auth.ticket.in-role/)__ - The same as **[auth.ticket.verify]**, but returns true or false, depending upon whether or not user is in any of the roles provided or not
 * __[\[auth.token.verify\]](/plugins/magic.lambda.auth/auth.token.verify/)__ - This slot accepts an external OpenID Connect token, for then to verify its authenticity and returning its email claim.
-* __[auth.jwks]__ - Returns a public JSON Web Key Set for the RSA public key(s) you supply, allowing other systems to verify RS256 tokens created by Magic
+* __[\[auth.jwks\]](/plugins/magic.lambda.auth/auth.jwks/)__ - Returns a public JSON Web Key Set for the RSA public key(s) you supply, allowing other systems to verify RS256 tokens created by Magic
 
 Notice, you will have to modify your `auth:secret` configuration setting, to provide a unique salt for your installation.
 If you don't do this, some adversary can easily reproduce your tokens, and impersonate your users. Example of

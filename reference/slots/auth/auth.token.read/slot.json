@@ -18,6 +18,16 @@
         "cardinality": "ExactlyOne",
         "role": "Option",
         "projection": "Value"
+      },
+      "public-key": {
+        "type": "string",
+        "kind": "rsa-public-key",
+        "description": "RSA public key as PEM, or DER as base64 or byte[], accepting only RS256 tokens signed by its private half instead of HS256 tokens signed with the auth secret",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
       }
     }
   }

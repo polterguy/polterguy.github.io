@@ -1,10 +1,10 @@
 ---
 title: "git.* slots"
-description: "The 13 slots named git.* in Magic Cloud and Hyperlambda, each with its own page."
+description: "The 15 slots named git.* in Magic Cloud and Hyperlambda, each with its own page."
 generated: true
 ---
 
-13 slots, each with its own page and JSON declaration. See [how this reference is built](/reference/slots/).
+15 slots, each with its own page and JSON declaration. See [how this reference is built](/reference/slots/).
 
 | Slot | Description |
 |---|---|
@@ -16,6 +16,8 @@ generated: true
 | [`git.delete-repo`](/reference/slots/git/git.delete-repo/) | Deletes a local Git repository. |
 | [`git.diff`](/reference/slots/git/git.diff/) | Returns the unified diff between the working tree and HEAD, for the whole repository or one file. |
 | [`git.fetch`](/reference/slots/git/git.fetch/) | Fetches updates from a Git remote. |
+| [`git.log`](/reference/slots/git/git.log/) | Lists commits, one per line as side, hash, author, age and subject separated by tabs, where side is '<' for a commit only on the left of a range and '>' for one only on the right. |
+| [`git.merge`](/reference/slots/git/git.merge/) | Merges a Git branch into the current branch, or aborts a merge that stopped on conflicts. |
 | [`git.pull`](/reference/slots/git/git.pull/) | Pulls updates from a Git remote. |
 | [`git.push`](/reference/slots/git/git.push/) | Pushes changes to a Git remote. |
 | [`git.remote.add`](/reference/slots/git/git.remote.add/) | Adds a Git remote. |

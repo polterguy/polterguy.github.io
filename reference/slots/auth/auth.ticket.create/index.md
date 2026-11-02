@@ -23,6 +23,7 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[claims]` / _any node name_ | string | no | Named map entry. Can be repeated. |
 | `[expires]` | DateTime | no | Absolute UTC expiration time. |
 | `[duration]` | long | no | Relative expiration duration in minutes. |
+| `[private-key]` | string | no | RSA private key as PEM, or DER as base64 or byte[], signing the ticket with RS256 instead of HS256 using the auth secret. |
 
 ### Constraints
 
@@ -36,109 +37,12 @@ Required arguments come first, then the optional ones in the order they are decl
 
 This is the complete declaration of `auth.ticket.create`, as the running system describes it. It is also published as [slot.json](slot.json).
 
-<details markdown="1" class="slot-declaration">
-<summary>JSON declaration</summary>
-
-```json
-{
-  "name": "auth.ticket.create",
-  "description": "Issues a signed JWT carrying the supplied username, roles, and claims; typically returned after a successful login",
-  "signature": {
-    "children": {
-      "username": {
-        "type": "string",
-        "kind": "username",
-        "description": "Username to put in the ticket",
-        "required": true,
-        "mode": "ValueOrExpression",
-        "cardinality": "ExactlyOne",
-        "role": "Option",
-        "projection": "Value"
-      },
-      "roles": {
-        "type": "lambda",
-        "kind": "role-list",
-        "description": "Roles to put in the ticket",
-        "required": false,
-        "mode": "StructuredArguments",
-        "cardinality": "ZeroOrOne",
-        "role": "StructuredObject",
-        "projection": "Children",
-        "children": {
-          "*": {
-            "type": "string",
-            "kind": "role",
-            "description": "List item",
-            "required": false,
-            "mode": "ValueOrExpression",
-            "cardinality": "ZeroOrMore",
-            "role": "Option",
-            "projection": "Value"
-          }
-        }
-      },
-      "claims": {
-        "type": "lambda",
-        "description": "Claims to put in the ticket",
-        "required": false,
-        "mode": "StructuredArguments",
-        "cardinality": "ZeroOrOne",
-        "role": "DynamicMap",
-        "projection": "Children",
-        "children": {
-          "*": {
-            "type": "string",
-            "kind": "jwt-claim",
-            "description": "Named map entry",
-            "required": false,
-            "mode": "ValueOrExpression",
-            "cardinality": "ZeroOrMore",
-            "role": "Option",
-            "projection": "Value"
-          }
-        }
-      },
-      "expires": {
-        "type": "DateTime",
-        "description": "Absolute UTC expiration time",
-        "required": false,
-        "mode": "ValueOrExpression",
-        "cardinality": "ZeroOrOne",
-        "role": "Option",
-        "projection": "Value"
-      },
-      "duration": {
-        "type": "long",
-        "description": "Relative expiration duration in minutes",
-        "required": false,
-        "mode": "ValueOrExpression",
-        "cardinality": "ZeroOrOne",
-        "role": "Option",
-        "projection": "Value"
-      }
-    },
-    "constraints": [
-      {
-        "description": "Use either absolute [expires] or relative [duration]",
-        "values": [
-          "expires",
-          "duration"
-        ],
-        "kind": "AtMostOneOf"
-      }
-    ],
-    "output": {
-      "mode": "Value",
-      "kind": "jwt,text",
-      "description": "Resolves to the created JWT ticket string"
-    }
-  }
-}
-```
-
+<details class="slot-declaration slot-json" data-src="slot.json">
+<summary>JSON declaration (loads when opened)</summary>
+<noscript><p><a href="slot.json">Open the JSON declaration</a>.</p></noscript>
 </details>
 
 ---
 
-[all `auth.*` slots](/reference/slots/auth/) | [`auth.ticket.get` &rarr;](/reference/slots/auth/auth.ticket.get/)
+[&larr; `auth.jwks`](/reference/slots/auth/auth.jwks/) | [all `auth.*` slots](/reference/slots/auth/) | [`auth.ticket.get` &rarr;](/reference/slots/auth/auth.ticket.get/)
 

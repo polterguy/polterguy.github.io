@@ -1,0 +1,23 @@
+{
+  "name": "auth.jwks",
+  "description": "Returns a public JSON Web Key Set for the supplied [public-key] arguments, removing duplicates, allowing other systems to verify RS256 tokens created by [auth.ticket.create]",
+  "signature": {
+    "children": {
+      "public-key": {
+        "type": "string",
+        "kind": "rsa-public-key",
+        "description": "RSA public key as PEM, or DER as base64 or byte[], to include in the key set, repeat for multiple keys",
+        "required": true,
+        "mode": "ValueOrExpression",
+        "cardinality": "OneOrMore",
+        "role": "Option",
+        "projection": "Value"
+      }
+    },
+    "output": {
+      "mode": "Lambda",
+      "kind": "jwks,lambda-tree",
+      "description": "Returns a [keys] node with one child per supplied key, having [kty], [use], [alg], [kid], [n] and [e]"
+    }
+  }
+}

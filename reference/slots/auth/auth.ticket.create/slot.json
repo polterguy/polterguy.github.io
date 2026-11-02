@@ -73,6 +73,16 @@
         "cardinality": "ZeroOrOne",
         "role": "Option",
         "projection": "Value"
+      },
+      "private-key": {
+        "type": "string",
+        "kind": "rsa-private-key",
+        "description": "RSA private key as PEM, or DER as base64 or byte[], signing the ticket with RS256 instead of HS256 using the auth secret",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
       }
     },
     "constraints": [

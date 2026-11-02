@@ -17,6 +17,7 @@ Required arguments come first, then the optional ones in the order they are decl
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[roles]` | string | yes | Comma-separated roles required by the token. |
+| `[public-key]` | string | no | RSA public key as PEM, or DER as base64 or byte[], accepting only RS256 tokens signed by its private half instead of HS256 tokens signed with the auth secret. |
 
 ### Guide
 
@@ -48,6 +49,16 @@ This is the complete declaration of `auth.token.read`, as the running system des
         "required": true,
         "mode": "ValueOrExpression",
         "cardinality": "ExactlyOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "public-key": {
+        "type": "string",
+        "kind": "rsa-public-key",
+        "description": "RSA public key as PEM, or DER as base64 or byte[], accepting only RS256 tokens signed by its private half instead of HS256 tokens signed with the auth secret",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
         "role": "Option",
         "projection": "Value"
       }
