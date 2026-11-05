@@ -62,7 +62,7 @@ _Nodes nested deeper than 6 levels, and nodes that repeat one of their own ances
 
 ### Guide
 
-[How to use `data.read`](/plugins/magic.lambda/data.read/)
+[How to use `data.read`](/plugins/magic.data.common/sql.read/)
 
 ### JSON declaration
 

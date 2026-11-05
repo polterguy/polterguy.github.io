@@ -452,6 +452,12 @@ def collect(magic, names):
             for s_ in json.loads(front.get('slots', '[]')):
                 urls[s_] = url
 
+    # A data.* slot the README has no section for is the database neutral front of the sql.* slot of the same name,
+    # and shares its guide. Without this, a hand written page that merely uses it in a sample would claim it.
+    for name in names:
+        if name.startswith('data.') and name not in urls and 'sql.' + name[5:] in urls:
+            urls[name] = urls['sql.' + name[5:]]
+
     def sources_of(plugin, hand_pages=()):
         r = results.get(plugin)
         found = ([r['intro']] + [u['lines'] for u in r['hub_sections']] + [p_['lines'] for p_ in r['pages']]) if r else []
