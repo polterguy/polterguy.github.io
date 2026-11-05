@@ -3000,7 +3000,7 @@ An example configuration might look like the following.
 The two URL settings control where the link in the email points, and the difference between them matters.
 
 * The link's token is a session for the user. The _"Host"_ and _"Origin"_ headers of a request to this public endpoint are controlled by whoever sends the request, so trusting them would let an attacker ask for a link for somebody else's account and have the token sent to a domain of their own. For this reason the backend part of the link always comes from __"magic:backend:url"__. If this setting is missing no link is sent, and an error is written to your log.
-* The dashboard part of the link comes from the _"Origin"_ header of the request, but only if it matches, case insensitively, one of the origins in __"magic:frontend:urls"__. If the origin is absent or not on the list, the link falls back to __"magic:backend:url"__. If __"magic:frontend:urls"__ is missing altogether, no link is sent and an error is written to your log, just as when __"magic:backend:url"__ is missing.
+* The dashboard part of the link is the first origin in the comma separated __"magic:frontend:urls"__ list. The _"Origin"_ header of the request is deliberately ignored, since it is controlled by the caller. If __"magic:frontend:urls"__ is missing, no link is sent and an error is written to your log, just as when __"magic:backend:url"__ is missing. If your dashboard is served from several origins, put the one that should appear in password reset emails first.
 
 If your link is not arriving, check your log. It will tell you if SMTP is not configured, if __"magic:backend:url"__ is missing, or if the user has no email address on file. You can also invoke **[can-reset-password]** to see if everything required is configured.
 
@@ -6479,7 +6479,7 @@ to create and consume JWT tokens, to secure your Magic cloudlet. The project con
 * __[\[auth.ticket.verify\]](https://docs.ainiro.io/plugins/magic.lambda.auth/auth.ticket.verify/)__ - Verifies a JWT token, and that the user is logged in, in addition to (optionally) that he belongs to one of the roles supplied as a comma separated list of roles
 * __[\[auth.ticket.in-role\]](https://docs.ainiro.io/plugins/magic.lambda.auth/auth.ticket.in-role/)__ - The same as **[auth.ticket.verify]**, but returns true or false, depending upon whether or not user is in any of the roles provided or not
 * __[\[auth.token.verify\]](https://docs.ainiro.io/plugins/magic.lambda.auth/auth.token.verify/)__ - This slot accepts an external OpenID Connect token, for then to verify its authenticity and returning its email claim.
-* __[auth.jwks]__ - Returns a public JSON Web Key Set for the RSA public key(s) you supply, allowing other systems to verify RS256 tokens created by Magic
+* __[\[auth.jwks\]](https://docs.ainiro.io/plugins/magic.lambda.auth/auth.jwks/)__ - Returns a public JSON Web Key Set for the RSA public key(s) you supply, allowing other systems to verify RS256 tokens created by Magic
 
 Notice, you will have to modify your `auth:secret` configuration setting, to provide a unique salt for your installation.
 If you don't do this, some adversary can easily reproduce your tokens, and impersonate your users. Example of
@@ -6649,6 +6649,23 @@ The slot will download well known configurations automatically, in addition to s
 ## Topics
 
 * [RS256 signing and [auth.jwks]](https://docs.ainiro.io/plugins/magic.lambda.auth/rs256-signing-and-auth-jwks/) - By default Magic signs JWT tokens with HS256, using the magic:auth:secret setting.
+
+
+# How to use [auth.jwks]
+
+URL: https://docs.ainiro.io/plugins/magic.lambda.auth/auth.jwks/
+Description: How to use [auth.jwks] - To allow other systems to verify your tokens, you can return a standard JWKS document from an endpoint of your own, by passing one or more public keys into [auth.jwks].
+
+The reference page of [`auth.jwks`](https://docs.ainiro.io/reference/slots/auth/auth.jwks/) has its arguments, constraints and declaration.
+
+To allow other systems to verify your tokens, you can return a standard JWKS document from an endpoint of your own,
+by passing one or more public keys into **[auth.jwks]**.
+
+```
+auth.jwks
+   public-key:x:@.public-key-app-1
+   public-key:x:@.public-key-app-2
+```
 
 
 # How to use [auth.ticket.create]
@@ -6836,7 +6853,7 @@ auth.jwks
 ```
 
 The above returns a **[keys]** node with one child per unique key, having **[kty]**, **[use]**, **[alg]**, **[kid]**,
-**[n]** and **[e]**. If you pass in a private key, only its public half is returned. Notice the following.
+**[n]** and **[e]**. If you pass in a private key, only its public half is returned. Any argument other than **[public-key]** throws, so pass a private key as the value of **[public-key]**. Notice the following.
 
 * Without a **[private-key]** or **[public-key]** everything works exactly as before, using HS256 and the auth secret
 * If you pass in **[private-key]** or **[public-key]** and it has no value, for instance because your expression found no key, the slot throws instead of falling back to the auth secret
@@ -8725,13 +8742,13 @@ project contains the following 16 slots.
 * __[\[git.commit\]](https://docs.ainiro.io/plugins/magic.lambda.git/git.commit/)__ - Adds files and creates a commit
 * __[\[git.push\]](https://docs.ainiro.io/plugins/magic.lambda.git/git.push/)__ - Pushes commits to a remote
 * __[\[git.checkout\]](https://docs.ainiro.io/plugins/magic.lambda.git/git.checkout/)__ - Switches branches (optionally creating a new branch)
-* __[git.merge]__ - Merges a branch into the current branch, or aborts a merge that stalled
+* __[\[git.merge\]](https://docs.ainiro.io/plugins/magic.lambda.git/git.merge/)__ - Merges a branch into the current branch, or aborts a merge that stalled
 * __[\[git.remote.add\]](https://docs.ainiro.io/plugins/magic.lambda.git/git.remote.add/)__ - Adds a Git remote
 * __[\[git.fetch\]](https://docs.ainiro.io/plugins/magic.lambda.git/git.fetch/)__ - Fetches updates from a remote
 * __[\[git.pull\]](https://docs.ainiro.io/plugins/magic.lambda.git/git.pull/)__ - Pulls updates from a remote
 * __[\[git.status\]](https://docs.ainiro.io/plugins/magic.lambda.git/git.status/)__ - Shows repository status
 * __[\[git.diff\]](https://docs.ainiro.io/plugins/magic.lambda.git/git.diff/)__ - Shows working tree changes relative to HEAD
-* __[git.log]__ - Lists commits, one per line
+* __[\[git.log\]](https://docs.ainiro.io/plugins/magic.lambda.git/git.log/)__ - Lists commits, one per line
 * __[\[git.restore\]](https://docs.ainiro.io/plugins/magic.lambda.git/git.restore/)__ - Discards uncommitted changes for one file or the whole repository
 * __[\[git.branch.list\]](https://docs.ainiro.io/plugins/magic.lambda.git/git.branch.list/)__ - Lists branches
 * __[\[github.repo.create\]](https://docs.ainiro.io/plugins/magic.lambda.git/github.repo.create/)__ - Creates a GitHub repository
@@ -8764,29 +8781,6 @@ magic:git:github:api-base
 The `host` value defaults to `github.com` if not provided. The `api-base` value defaults to
 `https://api.github.com`, but should be set to your GitHub Enterprise API base URL if you use it
 (typically `https://your-ghe-domain/api/v3`).
-
-
-## How to use [git.merge]
-
-Merges a branch into the current branch, or aborts a merge that stopped on conflicts. The repo path is the node
-value, and the slot returns the output of the underlying `git merge` command. The merge is created without
-opening a commit message editor.
-
-* __[branch]__ - Branch to merge into the current branch. Mandatory unless **[abort]** is true, and the slot throws an exception if it is missing
-* __[abort]__ - Boolean, default false, aborts a merge that stopped on conflicts instead of merging
-* __[name]__ - Author name for the merge commit
-* __[email]__ - Author email for the merge commit
-
-
-## How to use [git.log]
-
-Lists commits, one per line. The repo path is the node value, and the slot returns the lines as a single string.
-Each line contains the side, the abbreviated hash, the author, the age and the subject of a commit, separated by
-tab characters. The side is `<` for a commit only found on the left side of a range, and `>` for a commit only found
-on the right side of a range.
-
-* __[range]__ - Revision range, such as `HEAD...@{u}` to list the commits that differ from the upstream. If omitted, the commits of the current branch are listed
-* __[limit]__ - Integer, default 30, maximum number of commits to return
 
 
 # How to use [git.branch.list]
@@ -8975,6 +8969,23 @@ git.fetch:/modules/stripe/
    remote:origin
    refspec:main
 ```
+
+
+# How to use [git.merge]
+
+URL: https://docs.ainiro.io/plugins/magic.lambda.git/git.merge/
+Description: How to use [git.merge] - Merges a branch into the current branch, or aborts a merge that stopped on conflicts.
+
+The reference page of [`git.merge`](https://docs.ainiro.io/reference/slots/git/git.merge/) has its arguments, constraints and declaration.
+
+Merges a branch into the current branch, or aborts a merge that stopped on conflicts. The repo path is the node
+value, and the slot returns the output of the underlying `git merge` command. The merge is created without
+opening a commit message editor.
+
+* __[branch]__ - Branch to merge into the current branch. Mandatory unless **[abort]** is true, and the slot throws an exception if it is missing
+* __[abort]__ - Boolean, default false, aborts a merge that stopped on conflicts instead of merging
+* __[name]__ - Author name for the merge commit
+* __[email]__ - Author email for the merge commit
 
 
 # How to use [git.pull]
@@ -10170,7 +10181,7 @@ image.resize:/some-image.png
    type:png
 ```
 
-The above will resize the specified image to a height of 250 pixel, converting it to PNG, while keeping the
+The above will resize the specified image to a width of 250 pixel, converting it to PNG, while keeping the
 aspect ratio by calculating the new height automatically. You can provide either of.
 
 * __[width]__ - New width
@@ -17546,69 +17557,6 @@ conversion to the specified type, and will throw an exception if no conversion i
 for instance try to convert the string of _"foo-bar"_ to an integer.
 
 
-# How to use [data.read]
-
-URL: https://docs.ainiro.io/plugins/magic.lambda/data.read/
-Description: How to use [data.read] - A [vocabulary] entry can optionally declare a value, which pins the slot to that exact argument.
-
-The reference page of [`data.read`](https://docs.ainiro.io/reference/slots/data/data.read/) has its arguments, constraints and declaration.
-
-A **[vocabulary]** entry can optionally declare a _value_, which pins the slot to that exact argument.
-An entry without a value allows the slot with any argument, exactly as above, while an entry with a
-value only allows the slot when its argument matches.
-
-```
-.result
-whitelist
-
-   vocabulary
-      data.connect:chinook
-      data.read
-      return-nodes
-
-   .lambda
-
-      // Legal, since the vocabulary pins [data.connect] to exactly this database.
-      data.connect:chinook
-         data.read
-            table:Artist
-            limit:5
-         return-nodes:x:@data.read/*
-```
-
-With the above vocabulary, `data.connect:northwind` throws, because the argument does not match the
-pin. Repeat the same slot name with different values to allow more than one argument. This is how you
-confine a piece of untrusted Hyperlambda to one specific database, one specific URL, or one specific
-dynamic slot, instead of merely to the _name_ of a slot.
-
-Notice, dynamic slots are pinned the same way, through the slot that invokes them.
-
-```
-vocabulary
-   signal:accounting.report
-   signal:hr.hire
-```
-
-The above allows the caller to invoke those two dynamic slots, and no others.
-
-Files are pinned the same way, through **[execute-file]** and **[io.file.execute]**, which lets you admit
-a specific Hyperlambda file instead of the slots it uses.
-
-```
-vocabulary
-   execute-file:/modules/reports/top-customers.hl
-   io.file.execute:/modules/reports/top-customers.hl
-   io.file.load:/modules/reports/top-customers.hl
-```
-
-The statements inside an admitted file, or inside an admitted dynamic slot, are not restricted by the
-whitelist, so the file can invoke slots that the caller itself cannot. This lets you expose complex business
-logic to untrusted code without exposing the raw resources it works on, as long as you trust the file, and the
-file validates the arguments it is given. The **[io.file.load]** line is optional, and allows the caller to
-read the file's source. Read more in the
-[Sandbox API generator](https://docs.ainiro.io/dashboard/endpoint-generator/#business-logic-without-raw-access).
-
-
 # How to use [default]
 
 URL: https://docs.ainiro.io/plugins/magic.lambda/default/
@@ -20064,21 +20012,21 @@ Description: Reference documentation for Magic Cloud and Hyperlambda, generated 
 URL: https://docs.ainiro.io/reference/slots/
 Description: Every slot in Magic Cloud and Hyperlambda with its arguments and return value, generated by asking the running system about itself.
 
-Every slot in Magic Cloud and Hyperlambda, **406 in total**, with its arguments and return value. Start with the **core keywords**, such as [if] and [for-each], or pick a namespace. Every slot has a page of its own, with its complete JSON declaration. [How this reference is built](#this-reference-was-not-written-it-was-asked-for) is explained further down.
+Every slot in Magic Cloud and Hyperlambda, **408 in total**, with its arguments and return value. Start with the **core keywords**, such as [if] and [for-each], or pick a namespace. Every slot has a page of its own, with its complete JSON declaration. [How this reference is built](#this-reference-was-not-written-it-was-asked-for) is explained further down.
 
 ## Slots by namespace
 
 * [core keywords](https://docs.ainiro.io/reference/slots/core/) - 89 slots
-* [auth.*](https://docs.ainiro.io/reference/slots/auth/) - 7 slots
+* [auth.*](https://docs.ainiro.io/reference/slots/auth/) - 8 slots
 * [cache.*](https://docs.ainiro.io/reference/slots/cache/) - 6 slots
 * [config.*](https://docs.ainiro.io/reference/slots/config/) - 4 slots
 * [console.*](https://docs.ainiro.io/reference/slots/console/) - 1 slot
 * [crypto.*](https://docs.ainiro.io/reference/slots/crypto/) - 24 slots
-* [data.*](https://docs.ainiro.io/reference/slots/data/) - 12 slots
+* [data.*](https://docs.ainiro.io/reference/slots/data/) - 11 slots
 * [date.*](https://docs.ainiro.io/reference/slots/date/) - 6 slots
 * [endpoints.*](https://docs.ainiro.io/reference/slots/endpoints/) - 1 slot
 * [execution.*](https://docs.ainiro.io/reference/slots/execution/) - 4 slots
-* [git.*](https://docs.ainiro.io/reference/slots/git/) - 13 slots
+* [git.*](https://docs.ainiro.io/reference/slots/git/) - 15 slots
 * [github.*](https://docs.ainiro.io/reference/slots/github/) - 3 slots
 * [guid.*](https://docs.ainiro.io/reference/slots/guid/) - 1 slot
 * [http.*](https://docs.ainiro.io/reference/slots/http/) - 5 slots
@@ -20113,7 +20061,7 @@ Every slot in Magic Cloud and Hyperlambda, **406 in total**, with its arguments 
 
 ## This reference was not written. It was asked for.
 
-Every page in this section is generated, and what it is generated from is not the source code but the **running system**. Each slot in Magic Cloud carries its own name, description, arguments and return value as metadata, and Hyperlambda can read that metadata at runtime. Once a week a GitHub Actions workflow asks for it, receives **406 slots**, and renders the pages you are reading. Nobody parses source files, scrapes anything or keeps a second copy that can go stale.
+Every page in this section is generated, and what it is generated from is not the source code but the **running system**. Each slot in Magic Cloud carries its own name, description, arguments and return value as metadata, and Hyperlambda can read that metadata at runtime. Once a week a GitHub Actions workflow asks for it, receives **408 slots**, and renders the pages you are reading. Nobody parses source files, scrapes anything or keeps a second copy that can go stale.
 
 ### Why this is possible: homoiconicity
 
@@ -20171,7 +20119,7 @@ It begins with two throttles, one per IP address and one for everybody together,
 
 ### Get the whole reference yourself
 
-The endpoint above is public. There is no account, no key and no secret. To protect the server it is throttled to **10 requests per 60 seconds per IP address**, and to **60 per 60 seconds** for everybody together, and beyond that it answers `429`. The answer is about 460 KB, so keep a copy rather than asking again.
+The endpoint above is public. There is no account, no key and no secret. To protect the server it is throttled to **10 requests per 60 seconds per IP address**, and to **60 per 60 seconds** for everybody together, and beyond that it answers `429`. The answer is about 450 KB, so keep a copy rather than asking again.
 
 ```bash
 curl -s https://hyperlambda.dev/magic/modules/docs/slots
@@ -20950,7 +20898,7 @@ The sandbox only runs code whose every slot is on a whitelist of 53 slots: intro
 
 **Can I get the whole reference as data?**
 
-Yes. GET https://hyperlambda.dev/magic/modules/docs/slots returns every compiled slot as a JSON array of objects with the fields name, description and signature, where the signature is the slot's contract as nested JSON. It needs no account or key. The answer is about 460 KB, so keep a copy rather than asking again.
+Yes. GET https://hyperlambda.dev/magic/modules/docs/slots returns every compiled slot as a JSON array of objects with the fields name, description and signature, where the signature is the slot's contract as nested JSON. It needs no account or key. The answer is about 450 KB, so keep a copy rather than asking again.
 
 **Is it safe to leave that endpoint open?**
 
@@ -20996,12 +20944,13 @@ The server sits behind Cloudflare, which rejects requests that carry no User-Age
 # auth.* slots
 
 URL: https://docs.ainiro.io/reference/slots/auth/
-Description: The 7 slots named auth.* in Magic Cloud and Hyperlambda, each with its own page.
+Description: The 8 slots named auth.* in Magic Cloud and Hyperlambda, each with its own page.
 
-7 slots, each with its own page and JSON declaration. See [how this reference is built](https://docs.ainiro.io/reference/slots/).
+8 slots, each with its own page and JSON declaration. See [how this reference is built](https://docs.ainiro.io/reference/slots/).
 
 | Slot | Description |
 |---|---|
+| [`auth.jwks`](https://docs.ainiro.io/reference/slots/auth/auth.jwks/) | Returns a public JSON Web Key Set for the supplied [public-key] arguments, removing duplicates, allowing other systems to verify RS256 tokens created by [auth.ticket.create]. |
 | [`auth.ticket.create`](https://docs.ainiro.io/reference/slots/auth/auth.ticket.create/) | Issues a signed JWT carrying the supplied username, roles, and claims; typically returned after a successful login. |
 | [`auth.ticket.get`](https://docs.ainiro.io/reference/slots/auth/auth.ticket.get/) | Returns the current ticket username, roles, and claims. |
 | [`auth.ticket.in-role`](https://docs.ainiro.io/reference/slots/auth/auth.ticket.in-role/) | Returns true if the current ticket belongs to one of the specified roles. |
@@ -21193,9 +21142,9 @@ Description: The 24 slots named crypto.* in Magic Cloud and Hyperlambda, each wi
 # data.* slots
 
 URL: https://docs.ainiro.io/reference/slots/data/
-Description: The 12 slots named data.* in Magic Cloud and Hyperlambda, each with its own page.
+Description: The 11 slots named data.* in Magic Cloud and Hyperlambda, each with its own page.
 
-12 slots, each with its own page and JSON declaration. See [how this reference is built](https://docs.ainiro.io/reference/slots/).
+11 slots, each with its own page and JSON declaration. See [how this reference is built](https://docs.ainiro.io/reference/slots/).
 
 | Slot | Description |
 |---|---|
@@ -21205,7 +21154,6 @@ Description: The 12 slots named data.* in Magic Cloud and Hyperlambda, each with
 | [`data.execute`](https://docs.ainiro.io/reference/slots/data/data.execute/) | Executes SQL against the current database connection. |
 | [`data.read`](https://docs.ainiro.io/reference/slots/data/data.read/) | Selects rows from the current open database connection; returns all columns unless [columns] is supplied and limits to 25 rows unless [limit] is supplied. |
 | [`data.scalar`](https://docs.ainiro.io/reference/slots/data/data.scalar/) | Executes SQL and returns a scalar value from the current database connection. |
-| [`data.scan`](https://docs.ainiro.io/reference/slots/data/data.scan/) | Scans rows from the current open database connection; returns all columns unless [columns] is supplied and limits to 25 rows unless [limit] is supplied. |
 | [`data.select`](https://docs.ainiro.io/reference/slots/data/data.select/) | Executes a query and returns rows from the current database connection. |
 | [`data.transaction.commit`](https://docs.ainiro.io/reference/slots/data/data.transaction.commit/) | Commits the current database transaction using the configured provider. |
 | [`data.transaction.create`](https://docs.ainiro.io/reference/slots/data/data.transaction.create/) | Creates a database transaction using the configured provider. |
@@ -21260,9 +21208,9 @@ Description: The 4 slots named execution.* in Magic Cloud and Hyperlambda, each 
 # git.* slots
 
 URL: https://docs.ainiro.io/reference/slots/git/
-Description: The 13 slots named git.* in Magic Cloud and Hyperlambda, each with its own page.
+Description: The 15 slots named git.* in Magic Cloud and Hyperlambda, each with its own page.
 
-13 slots, each with its own page and JSON declaration. See [how this reference is built](https://docs.ainiro.io/reference/slots/).
+15 slots, each with its own page and JSON declaration. See [how this reference is built](https://docs.ainiro.io/reference/slots/).
 
 | Slot | Description |
 |---|---|
@@ -21274,6 +21222,8 @@ Description: The 13 slots named git.* in Magic Cloud and Hyperlambda, each with 
 | [`git.delete-repo`](https://docs.ainiro.io/reference/slots/git/git.delete-repo/) | Deletes a local Git repository. |
 | [`git.diff`](https://docs.ainiro.io/reference/slots/git/git.diff/) | Returns the unified diff between the working tree and HEAD, for the whole repository or one file. |
 | [`git.fetch`](https://docs.ainiro.io/reference/slots/git/git.fetch/) | Fetches updates from a Git remote. |
+| [`git.log`](https://docs.ainiro.io/reference/slots/git/git.log/) | Lists commits, one per line as side, hash, author, age and subject separated by tabs, where side is '<' for a commit only on the left of a range and '>' for one only on the right. |
+| [`git.merge`](https://docs.ainiro.io/reference/slots/git/git.merge/) | Merges a Git branch into the current branch, or aborts a merge that stopped on conflicts. |
 | [`git.pull`](https://docs.ainiro.io/reference/slots/git/git.pull/) | Pulls updates from a Git remote. |
 | [`git.push`](https://docs.ainiro.io/reference/slots/git/git.push/) | Pushes changes to a Git remote. |
 | [`git.remote.add`](https://docs.ainiro.io/reference/slots/git/git.remote.add/) | Adds a Git remote. |
