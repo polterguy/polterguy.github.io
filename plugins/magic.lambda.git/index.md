@@ -1,6 +1,6 @@
 ---
 title: magic.lambda.git
-moved_anchors: {"how-to-use-gitbranchlist": "/plugins/magic.lambda.git/git.branch.list/", "how-to-use-gitcheckout": "/plugins/magic.lambda.git/git.checkout/", "how-to-use-gitclone-repo": "/plugins/magic.lambda.git/git.clone-repo/", "how-to-use-gitcommit": "/plugins/magic.lambda.git/git.commit/", "how-to-use-gitcreate-repo": "/plugins/magic.lambda.git/git.create-repo/", "how-to-use-gitdelete-repo": "/plugins/magic.lambda.git/git.delete-repo/", "how-to-use-gitdiff": "/plugins/magic.lambda.git/git.diff/", "how-to-use-gitfetch": "/plugins/magic.lambda.git/git.fetch/", "how-to-use-githubrepocreate": "/plugins/magic.lambda.git/github.repo.create/", "how-to-use-githubrepodelete": "/plugins/magic.lambda.git/github.repo.delete/", "how-to-use-githubrepolist": "/plugins/magic.lambda.git/github.repo.list/", "how-to-use-gitpull": "/plugins/magic.lambda.git/git.pull/", "how-to-use-gitpush": "/plugins/magic.lambda.git/git.push/", "how-to-use-gitremoteadd": "/plugins/magic.lambda.git/git.remote.add/", "how-to-use-gitrestore": "/plugins/magic.lambda.git/git.restore/", "how-to-use-gitstatus": "/plugins/magic.lambda.git/git.status/"}
+moved_anchors: {"how-to-use-gitbranchlist": "/plugins/magic.lambda.git/git.branch.list/", "how-to-use-gitcheckout": "/plugins/magic.lambda.git/git.checkout/", "how-to-use-gitclone-repo": "/plugins/magic.lambda.git/git.clone-repo/", "how-to-use-gitcommit": "/plugins/magic.lambda.git/git.commit/", "how-to-use-gitcreate-repo": "/plugins/magic.lambda.git/git.create-repo/", "how-to-use-gitdelete-repo": "/plugins/magic.lambda.git/git.delete-repo/", "how-to-use-gitdiff": "/plugins/magic.lambda.git/git.diff/", "how-to-use-gitfetch": "/plugins/magic.lambda.git/git.fetch/", "how-to-use-githubrepocreate": "/plugins/magic.lambda.git/github.repo.create/", "how-to-use-githubrepodelete": "/plugins/magic.lambda.git/github.repo.delete/", "how-to-use-githubrepolist": "/plugins/magic.lambda.git/github.repo.list/", "how-to-use-gitlog": "/plugins/magic.lambda.git/git.log/", "how-to-use-gitmerge": "/plugins/magic.lambda.git/git.merge/", "how-to-use-gitpull": "/plugins/magic.lambda.git/git.pull/", "how-to-use-gitpush": "/plugins/magic.lambda.git/git.push/", "how-to-use-gitremoteadd": "/plugins/magic.lambda.git/git.remote.add/", "how-to-use-gitrestore": "/plugins/magic.lambda.git/git.restore/", "how-to-use-gitstatus": "/plugins/magic.lambda.git/git.status/"}
 ---
 
 The magic.lambda.git project provides Git and GitHub invocation capabilities for Magic and Hyperlambda. More specifically the
@@ -12,13 +12,13 @@ project contains the following 16 slots.
 * __[\[git.commit\]](/plugins/magic.lambda.git/git.commit/)__ - Adds files and creates a commit
 * __[\[git.push\]](/plugins/magic.lambda.git/git.push/)__ - Pushes commits to a remote
 * __[\[git.checkout\]](/plugins/magic.lambda.git/git.checkout/)__ - Switches branches (optionally creating a new branch)
-* __[git.merge]__ - Merges a branch into the current branch, or aborts a merge that stalled
+* __[\[git.merge\]](/plugins/magic.lambda.git/git.merge/)__ - Merges a branch into the current branch, or aborts a merge that stalled
 * __[\[git.remote.add\]](/plugins/magic.lambda.git/git.remote.add/)__ - Adds a Git remote
 * __[\[git.fetch\]](/plugins/magic.lambda.git/git.fetch/)__ - Fetches updates from a remote
 * __[\[git.pull\]](/plugins/magic.lambda.git/git.pull/)__ - Pulls updates from a remote
 * __[\[git.status\]](/plugins/magic.lambda.git/git.status/)__ - Shows repository status
 * __[\[git.diff\]](/plugins/magic.lambda.git/git.diff/)__ - Shows working tree changes relative to HEAD
-* __[git.log]__ - Lists commits, one per line
+* __[\[git.log\]](/plugins/magic.lambda.git/git.log/)__ - Lists commits, one per line
 * __[\[git.restore\]](/plugins/magic.lambda.git/git.restore/)__ - Discards uncommitted changes for one file or the whole repository
 * __[\[git.branch.list\]](/plugins/magic.lambda.git/git.branch.list/)__ - Lists branches
 * __[\[github.repo.create\]](/plugins/magic.lambda.git/github.repo.create/)__ - Creates a GitHub repository
@@ -51,26 +51,3 @@ magic:git:github:api-base
 The `host` value defaults to `github.com` if not provided. The `api-base` value defaults to
 `https://api.github.com`, but should be set to your GitHub Enterprise API base URL if you use it
 (typically `https://your-ghe-domain/api/v3`).
-
-
-## How to use [git.merge]
-
-Merges a branch into the current branch, or aborts a merge that stopped on conflicts. The repo path is the node
-value, and the slot returns the output of the underlying `git merge` command. The merge is created without
-opening a commit message editor.
-
-* __[branch]__ - Branch to merge into the current branch. Mandatory unless **[abort]** is true, and the slot throws an exception if it is missing
-* __[abort]__ - Boolean, default false, aborts a merge that stopped on conflicts instead of merging
-* __[name]__ - Author name for the merge commit
-* __[email]__ - Author email for the merge commit
-
-
-## How to use [git.log]
-
-Lists commits, one per line. The repo path is the node value, and the slot returns the lines as a single string.
-Each line contains the side, the abbreviated hash, the author, the age and the subject of a commit, separated by
-tab characters. The side is `<` for a commit only found on the left side of a range, and `>` for a commit only found
-on the right side of a range.
-
-* __[range]__ - Revision range, such as `HEAD...@{u}` to list the commits that differ from the upstream. If omitted, the commits of the current branch are listed
-* __[limit]__ - Integer, default 30, maximum number of commits to return

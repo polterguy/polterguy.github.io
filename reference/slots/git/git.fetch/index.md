@@ -78,5 +78,5 @@ This is the complete declaration of `git.fetch`, as the running system describes
 
 ---
 
-[&larr; `git.diff`](/reference/slots/git/git.diff/) | [all `git.*` slots](/reference/slots/git/) | [`git.pull` &rarr;](/reference/slots/git/git.pull/)
+[&larr; `git.diff`](/reference/slots/git/git.diff/) | [all `git.*` slots](/reference/slots/git/) | [`git.log` &rarr;](/reference/slots/git/git.log/)
 

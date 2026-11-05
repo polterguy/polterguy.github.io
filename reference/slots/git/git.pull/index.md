@@ -20,7 +20,10 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[remote]` | string | no | Remote to pull from. Default: `origin`. |
 | `[branch]` | string | no | Branch to pull. |
 | `[rebase]` | bool | no | Use rebase while pulling. Default: `false`. |
+| `[merge]` | bool | no | Merge while pulling, which is what lets a diverged branch be pulled. Default: `false`. |
 | `[ff-only]` | bool | no | Only allow fast-forward pulls. Default: `false`. |
+| `[name]` | string | no | Author name of the merge commit a merging pull creates. |
+| `[email]` | string | no | Author email of the merge commit a merging pull creates. |
 
 ### Guide
 
@@ -76,6 +79,16 @@ This is the complete declaration of `git.pull`, as the running system describes 
         "role": "Option",
         "projection": "Value"
       },
+      "merge": {
+        "type": "bool",
+        "description": "Merge while pulling, which is what lets a diverged branch be pulled",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      },
       "ff-only": {
         "type": "bool",
         "description": "Only allow fast-forward pulls",
@@ -83,6 +96,24 @@ This is the complete declaration of `git.pull`, as the running system describes 
         "mode": "ValueOrExpression",
         "cardinality": "ZeroOrOne",
         "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "name": {
+        "type": "string",
+        "description": "Author name of the merge commit a merging pull creates",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "email": {
+        "type": "string",
+        "description": "Author email of the merge commit a merging pull creates",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
         "role": "Option",
         "projection": "Value"
       }
@@ -100,5 +131,5 @@ This is the complete declaration of `git.pull`, as the running system describes 
 
 ---
 
-[&larr; `git.fetch`](/reference/slots/git/git.fetch/) | [all `git.*` slots](/reference/slots/git/) | [`git.push` &rarr;](/reference/slots/git/git.push/)
+[&larr; `git.merge`](/reference/slots/git/git.merge/) | [all `git.*` slots](/reference/slots/git/) | [`git.push` &rarr;](/reference/slots/git/git.push/)
 

@@ -40,6 +40,16 @@
         "role": "Option",
         "projection": "Value"
       },
+      "merge": {
+        "type": "bool",
+        "description": "Merge while pulling, which is what lets a diverged branch be pulled",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      },
       "ff-only": {
         "type": "bool",
         "description": "Only allow fast-forward pulls",
@@ -47,6 +57,24 @@
         "mode": "ValueOrExpression",
         "cardinality": "ZeroOrOne",
         "default": "false",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "name": {
+        "type": "string",
+        "description": "Author name of the merge commit a merging pull creates",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "email": {
+        "type": "string",
+        "description": "Author email of the merge commit a merging pull creates",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
         "role": "Option",
         "projection": "Value"
       }

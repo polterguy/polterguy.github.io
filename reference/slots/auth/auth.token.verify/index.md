@@ -20,6 +20,9 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[issuer]` | string | no | Trusted issuer the token's issuer must equal; meta data is never fetched from issuers not supplied by the caller. |
 | `[issuers]` | lambda | no | Trusted issuers, the token's issuer must equal one of them; meta data is never fetched from issuers not supplied by the caller. |
 | `[issuers]` / _any node name_ | string | no | List item. Can be repeated. |
+| `[audience]` | string | no | Audience the token must have been issued to, typically the OAuth client ID; not validated unless [audience] or [audiences] is supplied. |
+| `[audiences]` | lambda | no | Audiences the token must have been issued to, it must match one of them; not validated unless [audience] or [audiences] is supplied. |
+| `[audiences]` / _any node name_ | string | no | List item. Can be repeated. |
 
 Guide: [How to use [auth.token.verify]](/plugins/magic.lambda.auth/#openid-connect-authtokenverify)
 
@@ -62,6 +65,35 @@ This is the complete declaration of `auth.token.verify`, as the running system d
       "issuers": {
         "type": "lambda",
         "description": "Trusted issuers, the token's issuer must equal one of them; meta data is never fetched from issuers not supplied by the caller",
+        "required": false,
+        "mode": "StructuredArguments",
+        "cardinality": "ZeroOrOne",
+        "role": "StructuredObject",
+        "projection": "Children",
+        "children": {
+          "*": {
+            "type": "string",
+            "description": "List item",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrMore",
+            "role": "Option",
+            "projection": "Value"
+          }
+        }
+      },
+      "audience": {
+        "type": "string",
+        "description": "Audience the token must have been issued to, typically the OAuth client ID; not validated unless [audience] or [audiences] is supplied",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "audiences": {
+        "type": "lambda",
+        "description": "Audiences the token must have been issued to, it must match one of them; not validated unless [audience] or [audiences] is supplied",
         "required": false,
         "mode": "StructuredArguments",
         "cardinality": "ZeroOrOne",

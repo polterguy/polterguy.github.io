@@ -1,10 +1,10 @@
 ---
 title: "data.* slots"
-description: "The 12 slots named data.* in Magic Cloud and Hyperlambda, each with its own page."
+description: "The 11 slots named data.* in Magic Cloud and Hyperlambda, each with its own page."
 generated: true
 ---
 
-12 slots, each with its own page and JSON declaration. See [how this reference is built](/reference/slots/).
+11 slots, each with its own page and JSON declaration. See [how this reference is built](/reference/slots/).
 
 | Slot | Description |
 |---|---|
@@ -14,7 +14,6 @@ generated: true
 | [`data.execute`](/reference/slots/data/data.execute/) | Executes SQL against the current database connection. |
 | [`data.read`](/reference/slots/data/data.read/) | Selects rows from the current open database connection; returns all columns unless [columns] is supplied and limits to 25 rows unless [limit] is supplied. |
 | [`data.scalar`](/reference/slots/data/data.scalar/) | Executes SQL and returns a scalar value from the current database connection. |
-| [`data.scan`](/reference/slots/data/data.scan/) | Scans rows from the current open database connection; returns all columns unless [columns] is supplied and limits to 25 rows unless [limit] is supplied. |
 | [`data.select`](/reference/slots/data/data.select/) | Executes a query and returns rows from the current database connection. |
 | [`data.transaction.commit`](/reference/slots/data/data.transaction.commit/) | Commits the current database transaction using the configured provider. |
 | [`data.transaction.create`](/reference/slots/data/data.transaction.create/) | Creates a database transaction using the configured provider. |

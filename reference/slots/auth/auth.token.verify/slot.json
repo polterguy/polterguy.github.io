@@ -41,6 +41,35 @@
             "projection": "Value"
           }
         }
+      },
+      "audience": {
+        "type": "string",
+        "description": "Audience the token must have been issued to, typically the OAuth client ID; not validated unless [audience] or [audiences] is supplied",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "audiences": {
+        "type": "lambda",
+        "description": "Audiences the token must have been issued to, it must match one of them; not validated unless [audience] or [audiences] is supplied",
+        "required": false,
+        "mode": "StructuredArguments",
+        "cardinality": "ZeroOrOne",
+        "role": "StructuredObject",
+        "projection": "Children",
+        "children": {
+          "*": {
+            "type": "string",
+            "description": "List item",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrMore",
+            "role": "Option",
+            "projection": "Value"
+          }
+        }
       }
     },
     "output": {
