@@ -19,6 +19,17 @@
         "default": "[NULL]",
         "role": "Option",
         "projection": "Value"
+      },
+      "escape-formulas": {
+        "type": "bool",
+        "kind": "escape-formulas",
+        "description": "Neutralise spreadsheet formula-injection by prefixing cells and headers that begin with a formula character; defaults to true",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "true",
+        "role": "Option",
+        "projection": "Value"
       }
     },
     "output": {

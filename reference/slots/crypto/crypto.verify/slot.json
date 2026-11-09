@@ -9,7 +9,7 @@
       "mode": "ValueOrExpression"
     },
     "children": {
-      "verification-key": {
+      "public-key": {
         "type": "string|byte[]",
         "kind": "crypto-public-key",
         "description": "Public key used to verify the signature",

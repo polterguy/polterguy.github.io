@@ -5,7 +5,7 @@
     "input": {
       "kind": "log-message,text",
       "description": "Log message to write",
-      "required": true,
+      "required": false,
       "mode": "ValueOrExpression"
     },
     "children": {

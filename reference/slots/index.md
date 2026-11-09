@@ -16,7 +16,7 @@ faq:
   - q: "Is it safe to let anybody run code on that server?"
     a: "The sandbox only runs code whose every slot is on a whitelist of 53 slots: introspection, tree handling, strings and arithmetic. Code that touches files, databases, the network, configuration or anything else is rejected before it runs, and every call is rate limited and time limited."
   - q: "Can I get the whole reference as data?"
-    a: "Yes. GET https://hyperlambda.dev/magic/modules/docs/slots returns every compiled slot as a JSON array of objects with the fields name, description and signature, where the signature is the slot's contract as nested JSON. It needs no account or key. The answer is about 450 KB, so keep a copy rather than asking again."
+    a: "Yes. GET https://hyperlambda.dev/magic/modules/docs/slots returns every compiled slot as a JSON array of objects with the fields name, description and signature, where the signature is the slot's contract as nested JSON. It needs no account or key. The answer is about 460 KB, so keep a copy rather than asking again."
   - q: "Is it safe to leave that endpoint open?"
     a: "It only reads metadata that is already public in the open source code, and it runs nothing that the caller sends. It is throttled to 10 requests per 60 seconds per IP address and 60 per 60 seconds for everybody together, and answers 429 beyond that."
   - q: "Why does the sandbox show fewer slots than this reference?"
@@ -146,7 +146,7 @@ It begins with two throttles, one per IP address and one for everybody together,
 
 ### Get the whole reference yourself
 
-The endpoint above is public. There is no account, no key and no secret. To protect the server it is throttled to **10 requests per 60 seconds per IP address**, and to **60 per 60 seconds** for everybody together, and beyond that it answers `429`. The answer is about 450 KB, so keep a copy rather than asking again.
+The endpoint above is public. There is no account, no key and no secret. To protect the server it is throttled to **10 requests per 60 seconds per IP address**, and to **60 per 60 seconds** for everybody together, and beyond that it answers `429`. The answer is about 460 KB, so keep a copy rather than asking again.
 
 ```bash
 curl -s https://hyperlambda.dev/magic/modules/docs/slots

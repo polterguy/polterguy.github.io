@@ -18,8 +18,8 @@ image.resize:/some-image.png
 The above will resize the specified image to a width of 250 pixel, converting it to PNG, while keeping the
 aspect ratio by calculating the new height automatically. You can provide either of.
 
-* __[width]__ - New width
-* __[height]__ - New height
+* __[width]__ - New width, between 1 and 8192 pixels
+* __[height]__ - New height, between 1 and 8192 pixels
 
 You can provide both of the above, but at least one of the above _must_ be specified. If one of the values are
 omitted, it will be calculated by keeping the aspect ratio of the image as is. The **[type]** argument is how

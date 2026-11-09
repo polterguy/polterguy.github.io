@@ -8,7 +8,7 @@ slot_json: "/reference/slots/log/log.error/slot.json"
 
 `log.error` is a slot in the `log` namespace, in Hyperlambda, the language of Magic Cloud. Writes an error-level log entry; use for caught exceptions or failed operations that need follow-up.
 
-* **Value** (`log-message,text`), required: Log message to write
+* **Value** (`log-message,text`), optional: Log message to write
 * **Returns**: Id of the log entry created, or null if the configured log level filtered it out
 
 ### Arguments
@@ -39,7 +39,7 @@ This is the complete declaration of `log.error`, as the running system describes
     "input": {
       "kind": "log-message,text",
       "description": "Log message to write",
-      "required": true,
+      "required": false,
       "mode": "ValueOrExpression"
     },
     "children": {

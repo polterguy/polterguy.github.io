@@ -8,8 +8,16 @@ slot_json: "/reference/slots/core/lambda2html/slot.json"
 
 `lambda2html` is a core slot, one of the keywords of the Hyperlambda language, in Hyperlambda, the language of Magic Cloud. Transforms a lambda hierarchy into HTML.
 
-* **Value** (`html-tree`), required: Expression selecting the lambda hierarchy to transform
+* **Value** (`html-tree`), optional: Expression selecting the lambda hierarchy to transform
 * **Returns**: Resolves to the generated HTML markup
+
+### Arguments
+
+Required arguments come first, then the optional ones in the order they are declared.
+
+| Argument | Type | Required | Description |
+|---|---|---|---|
+| _any node name_ | lambda | no | Nodes to convert, used when the slot has no value. Can be repeated. |
 
 ### Guide
 
@@ -30,8 +38,19 @@ This is the complete declaration of `lambda2html`, as the running system describ
     "input": {
       "kind": "html-tree",
       "description": "Expression selecting the lambda hierarchy to transform",
-      "required": true,
+      "required": false,
       "mode": "Expression"
+    },
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Nodes to convert, used when the slot has no value",
+        "required": false,
+        "mode": "SourceLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "Payload",
+        "projection": "Self"
+      }
     },
     "output": {
       "mode": "Value",

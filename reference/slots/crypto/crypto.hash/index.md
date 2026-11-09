@@ -18,6 +18,7 @@ Required arguments come first, then the optional ones in the order they are decl
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[algorithm]` | string | no | Hash algorithm: md5, sha1, sha256, sha384, or sha512. Default: `sha256`. |
+| `[algo]` | string | no | Short form of [algorithm]. |
 | `[filename]` | string | no | File to hash when no input content is supplied. |
 | `[format]` | string | no | Hash output format: text, raw, or fingerprint. Default: `text`. |
 
@@ -56,6 +57,16 @@ This is the complete declaration of `crypto.hash`, as the running system describ
         "mode": "ValueOrExpression",
         "cardinality": "ZeroOrOne",
         "default": "sha256",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "algo": {
+        "type": "string",
+        "kind": "hash-algorithm",
+        "description": "Short form of [algorithm]",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
         "role": "Option",
         "projection": "Value"
       },

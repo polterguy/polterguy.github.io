@@ -18,7 +18,7 @@ Required arguments come first, then the optional ones in the order they are decl
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[decryption-key]` | string\|byte[] | yes | Private decryption key. |
-| `[verification-key]` | string\|byte[] | yes | Public key used to verify the signature. |
+| `[verify-key]` | string\|byte[] | no | Public key used to verify the signature, if the package is signed. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 
 ### Guide
@@ -54,13 +54,13 @@ This is the complete declaration of `crypto.decrypt`, as the running system desc
         "role": "Option",
         "projection": "Value"
       },
-      "verification-key": {
+      "verify-key": {
         "type": "string|byte[]",
         "kind": "crypto-public-key",
-        "description": "Public key used to verify the signature",
-        "required": true,
+        "description": "Public key used to verify the signature, if the package is signed",
+        "required": false,
         "mode": "ValueOrExpression",
-        "cardinality": "ExactlyOne",
+        "cardinality": "ZeroOrOne",
         "role": "Option",
         "projection": "Value"
       },

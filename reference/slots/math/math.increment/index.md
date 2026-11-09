@@ -17,6 +17,7 @@ Required arguments come first, then the optional ones in the order they are decl
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[step]` | number | no | Amount to add to or subtract from each selected node. Default: `1`. |
+| _any node name_ | number | no | The first child is the step whatever its name, and it is evaluated, so it can be the result of a slot. |
 
 ### Guide
 
@@ -49,6 +50,16 @@ This is the complete declaration of `math.increment`, as the running system desc
         "cardinality": "ZeroOrOne",
         "default": "1",
         "role": "Option",
+        "projection": "Value"
+      },
+      "*": {
+        "type": "number",
+        "description": "The first child is the step whatever its name, and it is evaluated, so it can be the result of a slot",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "evaluation": "EvalSelf",
         "projection": "Value"
       }
     }

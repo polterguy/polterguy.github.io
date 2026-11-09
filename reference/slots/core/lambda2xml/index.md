@@ -8,8 +8,16 @@ slot_json: "/reference/slots/core/lambda2xml/slot.json"
 
 `lambda2xml` is a core slot, one of the keywords of the Hyperlambda language, in Hyperlambda, the language of Magic Cloud. Converts a lambda object to an XML fragment or document.
 
-* **Value** (`xml-tree`), required: Expression selecting a SINGLE lambda root to transform (XML has exactly one document root)
+* **Value** (`xml-tree`), optional: Expression selecting a SINGLE lambda root to transform (XML has exactly one document root)
 * **Returns**: Resolves to the generated XML string
+
+### Arguments
+
+Required arguments come first, then the optional ones in the order they are declared.
+
+| Argument | Type | Required | Description |
+|---|---|---|---|
+| _any node name_ | lambda | no | Nodes to convert, used when the slot has no value. Can be repeated. |
 
 ### Guide
 
@@ -30,8 +38,19 @@ This is the complete declaration of `lambda2xml`, as the running system describe
     "input": {
       "kind": "xml-tree",
       "description": "Expression selecting a SINGLE lambda root to transform (XML has exactly one document root)",
-      "required": true,
+      "required": false,
       "mode": "Expression"
+    },
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Nodes to convert, used when the slot has no value",
+        "required": false,
+        "mode": "SourceLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "Payload",
+        "projection": "Self"
+      }
     },
     "output": {
       "mode": "Value",

@@ -17,6 +17,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
+| `[filter]` | string | no | Optional cache key filter. |
 | `[offset]` | int | no | Result offset. Default: `0`. |
 | `[limit]` | int | no | Maximum number of items to return. Default: `10`. |
 
@@ -51,6 +52,16 @@ This is the complete declaration of `cache.list`, as the running system describe
       "mode": "ValueOrExpression"
     },
     "children": {
+      "filter": {
+        "type": "string",
+        "kind": "cache-key",
+        "description": "Optional cache key filter",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
       "offset": {
         "type": "int",
         "description": "Result offset",

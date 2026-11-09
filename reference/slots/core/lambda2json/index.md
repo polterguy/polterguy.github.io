@@ -8,7 +8,7 @@ slot_json: "/reference/slots/core/lambda2json/slot.json"
 
 `lambda2json` is a core slot, one of the keywords of the Hyperlambda language, in Hyperlambda, the language of Magic Cloud. Transforms a lambda hierarchy into JSON.
 
-* **Value** (`node-list,lambda-tree`), required: Expression selecting the lambda hierarchy to transform
+* **Value** (`node-list,lambda-tree`), optional: Expression selecting the lambda hierarchy to transform
 * **Returns**: Resolves to the generated JSON string
 
 ### Arguments
@@ -18,6 +18,7 @@ Required arguments come first, then the optional ones in the order they are decl
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[format]` | bool | no | Whether to pretty-print the JSON output. Default: `false`. |
+| _any node name_ | lambda | no | Nodes to convert, used when the slot has no value. Can be repeated. |
 
 ### Guide
 
@@ -38,7 +39,7 @@ This is the complete declaration of `lambda2json`, as the running system describ
     "input": {
       "kind": "node-list,lambda-tree",
       "description": "Expression selecting the lambda hierarchy to transform",
-      "required": true,
+      "required": false,
       "mode": "Expression"
     },
     "children": {
@@ -51,6 +52,15 @@ This is the complete declaration of `lambda2json`, as the running system describ
         "default": "false",
         "role": "Option",
         "projection": "Value"
+      },
+      "*": {
+        "type": "lambda",
+        "description": "Nodes to convert, used when the slot has no value",
+        "required": false,
+        "mode": "SourceLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "Payload",
+        "projection": "Self"
       }
     },
     "output": {

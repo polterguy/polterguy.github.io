@@ -9,6 +9,16 @@
       "mode": "ValueOrExpression"
     },
     "children": {
+      "filter": {
+        "type": "string",
+        "kind": "cache-key",
+        "description": "Optional cache key filter",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
       "offset": {
         "type": "int",
         "description": "Result offset",

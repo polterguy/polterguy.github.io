@@ -8,7 +8,7 @@ slot_json: "/reference/slots/tasks/tasks.execute/slot.json"
 
 `tasks.execute` is a slot in the `tasks` namespace, in Hyperlambda, the language of Magic Cloud. Runs a stored task synchronously right now, ignoring its schedule; handy for ad-hoc invocations or testing.
 
-* **Value** (`task-id`), required: Task ID to execute
+* **Value** (`task-id`), optional: Task ID to execute
 
 ### Guide
 
@@ -29,7 +29,7 @@ This is the complete declaration of `tasks.execute`, as the running system descr
     "input": {
       "kind": "task-id",
       "description": "Task ID to execute",
-      "required": true,
+      "required": false,
       "mode": "ValueOrExpression"
     }
   }

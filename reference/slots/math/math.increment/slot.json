@@ -18,6 +18,16 @@
         "default": "1",
         "role": "Option",
         "projection": "Value"
+      },
+      "*": {
+        "type": "number",
+        "description": "The first child is the step whatever its name, and it is evaluated, so it can be the result of a slot",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "evaluation": "EvalSelf",
+        "projection": "Value"
       }
     }
   }

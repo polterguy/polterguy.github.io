@@ -18,6 +18,7 @@ Required arguments come first, then the optional ones in the order they are decl
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[null-value]` | string | no | String used to represent null values. Default: `[NULL]`. |
+| `[escape-formulas]` | bool | no | Neutralise spreadsheet formula-injection by prefixing cells and headers that begin with a formula character; defaults to true. Default: `true`. |
 
 ### Guide
 
@@ -50,6 +51,17 @@ This is the complete declaration of `lambda2csv`, as the running system describe
         "mode": "ValueOrExpression",
         "cardinality": "ZeroOrOne",
         "default": "[NULL]",
+        "role": "Option",
+        "projection": "Value"
+      },
+      "escape-formulas": {
+        "type": "bool",
+        "kind": "escape-formulas",
+        "description": "Neutralise spreadsheet formula-injection by prefixing cells and headers that begin with a formula character; defaults to true",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "true",
         "role": "Option",
         "projection": "Value"
       }

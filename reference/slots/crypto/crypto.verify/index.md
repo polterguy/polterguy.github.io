@@ -17,7 +17,7 @@ Required arguments come first, then the optional ones in the order they are decl
 
 | Argument | Type | Required | Description |
 |---|---|---|---|
-| `[verification-key]` | string\|byte[] | yes | Public key used to verify the signature. |
+| `[public-key]` | string\|byte[] | yes | Public key used to verify the signature. |
 | `[raw]` | bool | no | Whether to return raw bytes instead of encoded text. Default: `false`. |
 
 ### Guide
@@ -43,7 +43,7 @@ This is the complete declaration of `crypto.verify`, as the running system descr
       "mode": "ValueOrExpression"
     },
     "children": {
-      "verification-key": {
+      "public-key": {
         "type": "string|byte[]",
         "kind": "crypto-public-key",
         "description": "Public key used to verify the signature",

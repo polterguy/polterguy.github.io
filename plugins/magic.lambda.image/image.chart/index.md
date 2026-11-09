@@ -15,8 +15,8 @@ This slot allows you to dynamically generate charts, and either save these to di
 
 The primary argument to the slot invocation must be one of the above values, which defines what chart type to generate. Each chart type requires different arguments, but the common arguments are as follows:
 
-* width - Width of chart
-* height - Height of chart
+* width - Width of chart, between 1 and 8192 pixels
+* height - Height of chart, between 1 and 8192 pixels
 * filename - Path and name of file of where to save the chart. If not specified the slot will return the chart as a stream.
 
 The slot will always return the chart as a PNG image, and if you provide a **[filename]** the slot will overwrite any existing files automatically with the same path and filename.

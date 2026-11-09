@@ -15,8 +15,8 @@ generated: true
 | [`crypto.fingerprint`](/reference/slots/crypto/crypto.fingerprint/) | Returns a SHA256 fingerprint of the input, formatted as colon-separated hex; useful for identifying public keys. |
 | [`crypto.get-key`](/reference/slots/crypto/crypto.get-key/) | Returns or derives a cryptographic key. |
 | [`crypto.hash`](/reference/slots/crypto/crypto.hash/) | Hashes input using SHA256 by default, or the supplied [algorithm] child. |
-| [`crypto.hash.md5`](/reference/slots/crypto/crypto.hash.md5/) | Hashes input using the MD5 algorithm. |
-| [`crypto.hash.sha1`](/reference/slots/crypto/crypto.hash.sha1/) | Hashes input using the SHA1 algorithm. |
+| [`crypto.hash.md5`](/reference/slots/crypto/crypto.hash.md5/) | Hashes input using the MD5 algorithm, which is broken for collision resistance and only here for legacy data; use [crypto.password.hash] for passwords. |
+| [`crypto.hash.sha1`](/reference/slots/crypto/crypto.hash.sha1/) | Hashes input using the SHA1 algorithm, which is broken for collision resistance and only here for legacy data; use [crypto.password.hash] for passwords. |
 | [`crypto.hash.sha256`](/reference/slots/crypto/crypto.hash.sha256/) | Hashes input using the SHA256 algorithm. |
 | [`crypto.hash.sha384`](/reference/slots/crypto/crypto.hash.sha384/) | Hashes input using the SHA384 algorithm. |
 | [`crypto.hash.sha512`](/reference/slots/crypto/crypto.hash.sha512/) | Hashes input using the SHA512 algorithm. |

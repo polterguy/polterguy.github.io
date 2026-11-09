@@ -41,6 +41,12 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[message]` / `[reply-to]` / _unnamed child node_ | lambda | no | Structured address containing [email] and optional [name]. Can be repeated. |
 | `[message]` / `[reply-to]` / _unnamed child node_ / `[email]` | string | yes | Email address. |
 | `[message]` / `[reply-to]` / _unnamed child node_ / `[name]` | string | no | Display name. |
+| `[server]` | lambda | no | Connection settings, where anything left out comes from the configured server. |
+| `[server]` / `[host]` | string | no | Host name of the server. |
+| `[server]` / `[port]` | int | no | Port of the server. |
+| `[server]` / `[secure]` | bool | no | Whether to connect securely. |
+| `[server]` / `[username]` | string | no | User name to authenticate with. |
+| `[server]` / `[password]` | string | no | Password to authenticate with. |
 
 _Nodes nested deeper than 6 levels, and nodes that repeat one of their own ancestors, are not listed. The JSON declaration below has all of them._
 

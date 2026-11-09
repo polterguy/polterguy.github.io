@@ -12,7 +12,7 @@ allows you to return its output directly over the HTTP response object, which ag
 back as the response to the caller if you're in a web project of some sort using Magic. The slot takes two arguments.
 
 * Value of node - Mandatory string, or an expression leading to a string, which is to become the content of the generated QR code
-* __[size]__ - Optional argument declaring the size of your QR code
+* __[size]__ - Optional argument declaring the size of your QR code in pixels per module, which must be at least 1, and small enough for the image to be at most 8192 pixels wide
 
 Below is an example of usage
 

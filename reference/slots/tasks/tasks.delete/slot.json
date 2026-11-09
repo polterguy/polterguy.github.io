@@ -5,7 +5,7 @@
     "input": {
       "kind": "task-id",
       "description": "Task ID to delete",
-      "required": true,
+      "required": false,
       "mode": "ValueOrExpression"
     }
   }

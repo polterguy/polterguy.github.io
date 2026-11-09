@@ -5,10 +5,20 @@
     "input": {
       "kind": "task-id",
       "description": "Task ID to create",
-      "required": true,
+      "required": false,
       "mode": "ValueOrExpression"
     },
     "children": {
+      "id": {
+        "type": "string",
+        "kind": "task-id",
+        "description": "Task ID, used in place of the slot's value",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
       "description": {
         "type": "string",
         "kind": "task-description",

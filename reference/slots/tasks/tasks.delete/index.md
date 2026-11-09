@@ -8,7 +8,7 @@ slot_json: "/reference/slots/tasks/tasks.delete/slot.json"
 
 `tasks.delete` is a slot in the `tasks` namespace, in Hyperlambda, the language of Magic Cloud. Removes a stored task by ID along with any of its scheduled future runs.
 
-* **Value** (`task-id`), required: Task ID to delete
+* **Value** (`task-id`), optional: Task ID to delete
 
 ### Guide
 
@@ -29,7 +29,7 @@ This is the complete declaration of `tasks.delete`, as the running system descri
     "input": {
       "kind": "task-id",
       "description": "Task ID to delete",
-      "required": true,
+      "required": false,
       "mode": "ValueOrExpression"
     }
   }

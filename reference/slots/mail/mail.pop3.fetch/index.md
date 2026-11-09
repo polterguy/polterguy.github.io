@@ -17,6 +17,12 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[.lambda]` | lambda | yes | Callback evaluated once per fetched message with [.message] injected. |
 | `[raw]` | bool | no | Whether to pass raw MIME text to the callback. |
 | `[max]` | int | no | Maximum number of messages to fetch. |
+| `[server]` | lambda | no | Connection settings, where anything left out comes from the configured server. |
+| `[server]` / `[host]` | string | no | Host name of the server. |
+| `[server]` / `[port]` | int | no | Port of the server. |
+| `[server]` / `[secure]` | bool | no | Whether to connect securely. |
+| `[server]` / `[username]` | string | no | User name to authenticate with. |
+| `[server]` / `[password]` | string | no | Password to authenticate with. |
 
 ### Guide
 
@@ -52,6 +58,62 @@ This is the complete declaration of `mail.pop3.fetch`, as the running system des
         "cardinality": "ZeroOrOne",
         "role": "Option",
         "projection": "Value"
+      },
+      "server": {
+        "type": "lambda",
+        "description": "Connection settings, where anything left out comes from the configured server",
+        "required": false,
+        "mode": "StructuredArguments",
+        "cardinality": "ZeroOrOne",
+        "role": "StructuredObject",
+        "projection": "StructuredTree",
+        "children": {
+          "host": {
+            "type": "string",
+            "description": "Host name of the server",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrOne",
+            "role": "Option",
+            "projection": "Value"
+          },
+          "port": {
+            "type": "int",
+            "description": "Port of the server",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrOne",
+            "role": "Option",
+            "projection": "Value"
+          },
+          "secure": {
+            "type": "bool",
+            "description": "Whether to connect securely",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrOne",
+            "role": "Option",
+            "projection": "Value"
+          },
+          "username": {
+            "type": "string",
+            "description": "User name to authenticate with",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrOne",
+            "role": "Option",
+            "projection": "Value"
+          },
+          "password": {
+            "type": "string",
+            "description": "Password to authenticate with",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrOne",
+            "role": "Option",
+            "projection": "Value"
+          }
+        }
       },
       ".lambda": {
         "type": "lambda",

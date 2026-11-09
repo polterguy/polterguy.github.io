@@ -45,6 +45,7 @@ Required arguments come first, then the optional ones in the order they are decl
 | `[group]` / _any node name_ | string | no | Column name or aggregate expression. Can be repeated. |
 | `[order]` | string | no | Column, comma-separated columns, or aggregate expression to order by. Can be repeated. |
 | `[order]` / `[direction]` | string | no | Order direction for this specific order node. Default: `asc`. |
+| `[direction]` | string | no | Default order direction. Default: `asc`. |
 | `[limit]` | long | no | Maximum number of rows to return; omitted defaults to 25 and -1 suppresses the generated limit clause. Default: `25`. |
 | `[offset]` | long | no | Number of rows to skip. Default: `0`. |
 

@@ -539,6 +539,62 @@
             }
           }
         }
+      },
+      "server": {
+        "type": "lambda",
+        "description": "Connection settings, where anything left out comes from the configured server",
+        "required": false,
+        "mode": "StructuredArguments",
+        "cardinality": "ZeroOrOne",
+        "role": "StructuredObject",
+        "projection": "StructuredTree",
+        "children": {
+          "host": {
+            "type": "string",
+            "description": "Host name of the server",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrOne",
+            "role": "Option",
+            "projection": "Value"
+          },
+          "port": {
+            "type": "int",
+            "description": "Port of the server",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrOne",
+            "role": "Option",
+            "projection": "Value"
+          },
+          "secure": {
+            "type": "bool",
+            "description": "Whether to connect securely",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrOne",
+            "role": "Option",
+            "projection": "Value"
+          },
+          "username": {
+            "type": "string",
+            "description": "User name to authenticate with",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrOne",
+            "role": "Option",
+            "projection": "Value"
+          },
+          "password": {
+            "type": "string",
+            "description": "Password to authenticate with",
+            "required": false,
+            "mode": "ValueOrExpression",
+            "cardinality": "ZeroOrOne",
+            "role": "Option",
+            "projection": "Value"
+          }
+        }
       }
     }
   }

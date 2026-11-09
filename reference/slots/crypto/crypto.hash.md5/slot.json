@@ -1,6 +1,6 @@
 {
   "name": "crypto.hash.md5",
-  "description": "Hashes input using the MD5 algorithm",
+  "description": "Hashes input using the MD5 algorithm, which is broken for collision resistance and only here for legacy data; use [crypto.password.hash] for passwords",
   "signature": {
     "input": {
       "kind": "text,binary-content",

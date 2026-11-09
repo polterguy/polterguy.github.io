@@ -1,12 +1,12 @@
 ---
 title: "[crypto.hash.sha1]"
-description: "crypto.hash.sha1 is a slot in the crypto namespace of Magic Cloud. Hashes input using the SHA1 algorithm."
+description: "crypto.hash.sha1 is a slot in the crypto namespace of Magic Cloud. Hashes input using the SHA1 algorithm, which is broken for collision resistance and only here for legacy data; use [crypto.password.hash] for passwords."
 generated: true
 llms: false
 slot_json: "/reference/slots/crypto/crypto.hash.sha1/slot.json"
 ---
 
-`crypto.hash.sha1` is a slot in the `crypto` namespace, in Hyperlambda, the language of Magic Cloud. Hashes input using the SHA1 algorithm.
+`crypto.hash.sha1` is a slot in the `crypto` namespace, in Hyperlambda, the language of Magic Cloud. Hashes input using the SHA1 algorithm, which is broken for collision resistance and only here for legacy data; use [crypto.password.hash] for passwords.
 
 * **Value** (`text,binary-content`), optional: String or byte[] content to hash when [filename] is not supplied
 * **Returns**: Resolves to the computed hash as text, raw bytes, or fingerprint according to [format]
@@ -38,7 +38,7 @@ This is the complete declaration of `crypto.hash.sha1`, as the running system de
 ```json
 {
   "name": "crypto.hash.sha1",
-  "description": "Hashes input using the SHA1 algorithm",
+  "description": "Hashes input using the SHA1 algorithm, which is broken for collision resistance and only here for legacy data; use [crypto.password.hash] for passwords",
   "signature": {
     "input": {
       "kind": "text,binary-content",

@@ -8,7 +8,7 @@ slot_json: "/reference/slots/tasks/tasks.create/slot.json"
 
 `tasks.create` is a slot in the `tasks` namespace, in Hyperlambda, the language of Magic Cloud. Saves a named task containing a Hyperlambda body that can later be scheduled or executed on demand.
 
-* **Value** (`task-id`), required: Task ID to create
+* **Value** (`task-id`), optional: Task ID to create
 
 ### Arguments
 
@@ -17,6 +17,7 @@ Required arguments come first, then the optional ones in the order they are decl
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[.lambda]` | lambda | yes | Task body serialized and executed later. |
+| `[id]` | string | no | Task ID, used in place of the slot's value. |
 | `[description]` | string | no | Optional task description. |
 | `[due]` | DateTime | no | Optional one-time due date. |
 | `[repeats]` | string | no | Optional repeat pattern. |
@@ -40,10 +41,20 @@ This is the complete declaration of `tasks.create`, as the running system descri
     "input": {
       "kind": "task-id",
       "description": "Task ID to create",
-      "required": true,
+      "required": false,
       "mode": "ValueOrExpression"
     },
     "children": {
+      "id": {
+        "type": "string",
+        "kind": "task-id",
+        "description": "Task ID, used in place of the slot's value",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
       "description": {
         "type": "string",
         "kind": "task-description",

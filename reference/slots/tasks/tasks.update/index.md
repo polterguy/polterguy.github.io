@@ -17,6 +17,7 @@ Required arguments come first, then the optional ones in the order they are decl
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[.lambda]` | lambda | yes | Task body serialized and executed later. |
+| `[id]` | string | no | Task ID, used in place of the slot's value. |
 | `[description]` | string | no | Optional task description. |
 | `[due]` | DateTime | no | Optional one-time due date. |
 | `[repeats]` | string | no | Optional repeat pattern. |
@@ -44,6 +45,16 @@ This is the complete declaration of `tasks.update`, as the running system descri
       "mode": "ValueOrExpression"
     },
     "children": {
+      "id": {
+        "type": "string",
+        "kind": "task-id",
+        "description": "Task ID, used in place of the slot's value",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "role": "Option",
+        "projection": "Value"
+      },
       "description": {
         "type": "string",
         "kind": "task-description",

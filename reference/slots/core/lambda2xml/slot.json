@@ -5,8 +5,19 @@
     "input": {
       "kind": "xml-tree",
       "description": "Expression selecting a SINGLE lambda root to transform (XML has exactly one document root)",
-      "required": true,
+      "required": false,
       "mode": "Expression"
+    },
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Nodes to convert, used when the slot has no value",
+        "required": false,
+        "mode": "SourceLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "Payload",
+        "projection": "Self"
+      }
     },
     "output": {
       "mode": "Value",

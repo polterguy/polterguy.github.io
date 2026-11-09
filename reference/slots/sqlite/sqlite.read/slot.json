@@ -530,6 +530,15 @@
           }
         }
       },
+      "direction": {
+        "type": "string",
+        "kind": "sort-direction",
+        "description": "Default order direction",
+        "required": false,
+        "mode": "ValueOrExpression",
+        "cardinality": "ZeroOrOne",
+        "default": "asc"
+      },
       "limit": {
         "type": "long",
         "description": "Maximum number of rows to return; omitted defaults to 25 and -1 suppresses the generated limit clause",

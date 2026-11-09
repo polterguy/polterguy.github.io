@@ -8,7 +8,7 @@ slot_json: "/reference/slots/log/log.fatal/slot.json"
 
 `log.fatal` is a slot in the `log` namespace, in Hyperlambda, the language of Magic Cloud. Writes a fatal-level log entry; reserve for unrecoverable failures that warrant immediate attention.
 
-* **Value** (`log-message,text`), required: Log message to write
+* **Value** (`log-message,text`), optional: Log message to write
 * **Returns**: Id of the log entry created, or null if the configured log level filtered it out
 
 ### Arguments
@@ -39,7 +39,7 @@ This is the complete declaration of `log.fatal`, as the running system describes
     "input": {
       "kind": "log-message,text",
       "description": "Log message to write",
-      "required": true,
+      "required": false,
       "mode": "ValueOrExpression"
     },
     "children": {
