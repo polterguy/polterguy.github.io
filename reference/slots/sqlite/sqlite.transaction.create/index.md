@@ -10,6 +10,14 @@ slot_json: "/reference/slots/sqlite/sqlite.transaction.create/slot.json"
 
 * **Scope**: requires `sqlite.connection`; provides `sqlite.transaction` - Requires an open SQLite connection created by [sqlite.connect]
 
+### Arguments
+
+Required arguments come first, then the optional ones in the order they are declared.
+
+| Argument | Type | Required | Description |
+|---|---|---|---|
+| _any node name_ | lambda | no | Executable child slot evaluated while the database connection is open. Can be repeated. |
+
 ### Guide
 
 [How to use `sqlite.transaction.create`](/plugins/magic.lambda.sqlite/sqlite.transaction.create/)
@@ -26,6 +34,18 @@ This is the complete declaration of `sqlite.transaction.create`, as the running 
   "name": "sqlite.transaction.create",
   "description": "Creates a SQLite transaction",
   "signature": {
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Executable child slot evaluated while the database connection is open",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    },
     "scope": {
       "provides": "sqlite.transaction",
       "requires": "sqlite.connection",

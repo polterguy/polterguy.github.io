@@ -17,6 +17,7 @@ Required arguments come first, then the optional ones in the order they are decl
 | Argument | Type | Required | Description |
 |---|---|---|---|
 | `[database-type]` | string | no | Database adapter to use instead of the configured default. |
+| _any node name_ | lambda | no | Executable child slot evaluated while the database connection is open. Can be repeated. |
 
 ### Guide
 
@@ -42,6 +43,16 @@ This is the complete declaration of `data.transaction.create`, as the running sy
         "required": false,
         "mode": "ValueOrExpression",
         "cardinality": "ZeroOrOne"
+      },
+      "*": {
+        "type": "lambda",
+        "description": "Executable child slot evaluated while the database connection is open",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
       }
     },
     "scope": {

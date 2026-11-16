@@ -18,7 +18,7 @@ This project provides math functions to Magic. More specifically, it provides th
 * __[\[math.floor\]](/plugins/magic.lambda.math/math.floor/)__ - Rounds a number down
 * __[\[math.ceil\]](/plugins/magic.lambda.math/math.ceil/)__ - Rounds a number up
 * __[\[math.round\]](/plugins/magic.lambda.math/math.round/)__ - Rounds a number
-* __[\[math.random\]](/plugins/magic.lambda.math/math.random/)__ - Returns a random number from optional child-node bounds
+* __[\[math.random\]](/plugins/magic.lambda.math/math.random/)__ - Returns a random number, an integer between the [min] and [max] children when [max] is given
 
 All of the above besides the two last slots can be given any number of arguments, including as its value,
 and will treat the first argument as the _"base"_, and performing the rest of the arguments self assigning

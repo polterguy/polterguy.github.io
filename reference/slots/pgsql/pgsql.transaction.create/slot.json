@@ -2,6 +2,18 @@
   "name": "pgsql.transaction.create",
   "description": "Creates a PostgreSQL transaction",
   "signature": {
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Executable child slot evaluated while the database connection is open",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    },
     "scope": {
       "provides": "pgsql.transaction",
       "requires": "pgsql.connection",

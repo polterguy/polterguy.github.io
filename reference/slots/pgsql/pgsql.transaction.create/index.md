@@ -10,6 +10,14 @@ slot_json: "/reference/slots/pgsql/pgsql.transaction.create/slot.json"
 
 * **Scope**: requires `pgsql.connection`; provides `pgsql.transaction` - Requires an open PostgreSQL connection created by [pgsql.connect]
 
+### Arguments
+
+Required arguments come first, then the optional ones in the order they are declared.
+
+| Argument | Type | Required | Description |
+|---|---|---|---|
+| _any node name_ | lambda | no | Executable child slot evaluated while the database connection is open. Can be repeated. |
+
 ### Guide
 
 [How to use `pgsql.transaction.create`](/plugins/magic.lambda.pgsql/pgsql.transaction.create/)
@@ -26,6 +34,18 @@ This is the complete declaration of `pgsql.transaction.create`, as the running s
   "name": "pgsql.transaction.create",
   "description": "Creates a PostgreSQL transaction",
   "signature": {
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Executable child slot evaluated while the database connection is open",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    },
     "scope": {
       "provides": "pgsql.transaction",
       "requires": "pgsql.connection",

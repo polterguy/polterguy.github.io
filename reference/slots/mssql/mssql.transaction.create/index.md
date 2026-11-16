@@ -10,6 +10,14 @@ slot_json: "/reference/slots/mssql/mssql.transaction.create/slot.json"
 
 * **Scope**: requires `mssql.connection`; provides `mssql.transaction` - Requires an open SQL Server connection created by [mssql.connect]
 
+### Arguments
+
+Required arguments come first, then the optional ones in the order they are declared.
+
+| Argument | Type | Required | Description |
+|---|---|---|---|
+| _any node name_ | lambda | no | Executable child slot evaluated while the database connection is open. Can be repeated. |
+
 ### Guide
 
 [How to use `mssql.transaction.create`](/plugins/magic.lambda.mssql/mssql.transaction.create/)
@@ -26,6 +34,18 @@ This is the complete declaration of `mssql.transaction.create`, as the running s
   "name": "mssql.transaction.create",
   "description": "Creates a SQL Server transaction",
   "signature": {
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Executable child slot evaluated while the database connection is open",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    },
     "scope": {
       "provides": "mssql.transaction",
       "requires": "mssql.connection",

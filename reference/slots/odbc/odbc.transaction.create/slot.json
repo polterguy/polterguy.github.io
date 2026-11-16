@@ -2,6 +2,18 @@
   "name": "odbc.transaction.create",
   "description": "Creates a ODBC transaction",
   "signature": {
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Executable child slot evaluated while the database connection is open",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    },
     "scope": {
       "provides": "odbc.transaction",
       "requires": "odbc.connection",

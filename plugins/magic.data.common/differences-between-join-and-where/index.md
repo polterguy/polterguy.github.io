@@ -54,4 +54,4 @@ rule of thumb, we encourage users to **[join]** on table columns and add static 
 
 ---
 
-[&larr; Joins](/plugins/magic.data.common/joins/) | [all of magic.data.common](/plugins/magic.data.common/) | ['Namespacing' columns &rarr;](/plugins/magic.data.common/namespacing-columns/)
+[&larr; Paging](/plugins/magic.data.common/paging/) | [all of magic.data.common](/plugins/magic.data.common/) | ['Namespacing' columns &rarr;](/plugins/magic.data.common/namespacing-columns/)

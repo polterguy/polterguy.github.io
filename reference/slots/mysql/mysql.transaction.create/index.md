@@ -10,6 +10,14 @@ slot_json: "/reference/slots/mysql/mysql.transaction.create/slot.json"
 
 * **Scope**: requires `mysql.connection`; provides `mysql.transaction` - Requires an open MySQL connection created by [mysql.connect]
 
+### Arguments
+
+Required arguments come first, then the optional ones in the order they are declared.
+
+| Argument | Type | Required | Description |
+|---|---|---|---|
+| _any node name_ | lambda | no | Executable child slot evaluated while the database connection is open. Can be repeated. |
+
 ### Guide
 
 [How to use `mysql.transaction.create`](/plugins/magic.lambda.mysql/mysql.transaction.create/)
@@ -26,6 +34,18 @@ This is the complete declaration of `mysql.transaction.create`, as the running s
   "name": "mysql.transaction.create",
   "description": "Creates a MySQL transaction",
   "signature": {
+    "children": {
+      "*": {
+        "type": "lambda",
+        "description": "Executable child slot evaluated while the database connection is open",
+        "required": false,
+        "mode": "ExecutableLambda",
+        "cardinality": "ZeroOrMore",
+        "role": "ExecutableBody",
+        "evaluation": "EvalSelf",
+        "projection": "Self"
+      }
+    },
     "scope": {
       "provides": "mysql.transaction",
       "requires": "mysql.connection",
