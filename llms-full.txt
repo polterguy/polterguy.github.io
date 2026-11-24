@@ -1643,6 +1643,29 @@ You have to write _"formal specifications using technical language"_, in order f
 * _"HTTP endpoint that selects rows from Artist table in chinook database, including Album rows for each individual artist. Use ArtistId as foreign key"_
 * _"Executable Hyperlambda file that sends an email using [name], [email], [subject], and [body] arguments. Endpoint can only be executed by root and admin accounts"_
 
+## How accurate is it?
+
+We measure the model behind the generator on 401 plain-English tasks, covering database CRUD, endpoint generators, files, HTTP, cryptography, sandboxes, background tasks, MIME, threads and scraping. Every answer is executed against real databases, files and HTTP endpoints, and it only passes when it does the job. The current model, round 8 of our fine-tune of Google's open Gemma 4 26B-A4B, with about 4 billion parameters active per token, passes **79.2% of all 401 tests** (317.7 on average over three runs). Our previous model, a GPT-4.1-mini fine-tune, passed 60.8%.
+
+To see how that compares with a frontier model in the language it knows best, we gave gpt-6-luna the 277 tasks plain Python can also do, with the same prompts and the same judge, and asked it for Python. Python passed **91.5%** (253.3 of 277) and the generator, writing Hyperlambda, passed **88.8%** (246.0 of 277).
+
+<img src="/assets/images/hyperlambda-generator-eval-overall.webp" alt="Bar chart of the share of 277 shared tests passed, average of three runs: Python written by gpt-6-luna 91.5% (253.3 of 277), Hyperlambda written by the Hyperlambda Generator's model 88.8% (246.0 of 277)" loading="lazy" width="2200" height="840">
+
+| | Run 1 | Run 2 | Run 3 | Average | Pass rate |
+|---|---:|---:|---:|---:|---:|
+| Python, gpt-6-luna | 254 | 253 | 253 | 253.3 | 91.5% |
+| Hyperlambda, the generator | 247 | 245 | 246 | 246.0 | 88.8% |
+
+The gap is 2.7 points, and it is not statistically significant on these tests: only 50 tests split the two sides, 29 that only Python passes against 21 that only Hyperlambda passes. Python is ahead on strings and maths, threads, SQLite transactions and cryptography. The generator is ahead on HTML to Markdown, HTTP APIs and scraping, HTTP verbs and files, the jobs where Hyperlambda has one command for what takes a library and a dozen lines in Python.
+
+<img src="/assets/images/hyperlambda-generator-eval-blocks.webp" alt="Grouped bar chart of pass rate per test block for Python and Hyperlambda, sorted from Python's biggest lead (strings and maths, +7.3 tests) to Hyperlambda's biggest lead (HTML to Markdown, -2.7 tests)" loading="lazy" width="2200" height="1604">
+
+The two sides fail differently. More than a third of Python's failures are Magic conventions the prompts take for granted, such as Magic's Markdown style, rather than wrong code. The generator's failures are real mistakes, spread over transactions, dropped argument declarations, MIME, type conversions, threads and cryptography, and they are what the next training round is aimed at.
+
+<img src="/assets/images/hyperlambda-generator-eval-categories.webp" alt="Two bar charts of failures per run by category. Python, 23.7 failures per run, led by Magic conventions at 37% and output shape at 23%. Hyperlambda, 31.0 failures per run, spread over eight categories with none above 17%" loading="lazy" width="2200" height="1120">
+
+To read these numbers fairly: we wrote the tests ourselves, the generator gets up to three attempts when its answer does not parse, and the 124 tests left out of the Python comparison, which need Magic itself, are where the model is weakest, at 58%. The full method, the failure analysis and every prompt both models got are in [Python 91.5%, Hyperlambda 88.8%: Frontier Results From a Small Lab](https://hyperlambda.dev/blog/python-91-5-percent-hyperlambda-88-8-percent-frontier-results-from-a-small-lab), and you can try the model yourself on the [Natural Language API page](https://hyperlambda.dev/natural-language-api).
+
 ## How to use it
 
 If you go to Hyper IDE for example, and you create a new Hyperlambda file (extension ".hl"), you can simply write normal text into the file, describing what you want the code to do. Then select your text and click the _"Generate"_ button, and your description is sent through our LLM, transforming your English into working Hyperlambda that replaces your selection. This makes the workflow as natural as writing a comment; describe the intent, select it, generate - and the comment becomes code.
@@ -1698,6 +1721,10 @@ The generator is built to be safe to hand to an AI - or to your users - without 
 **What is the Hyperlambda Generator?**
 
 Magic's own proprietary SLM (Small Language Model), fine-tuned with more than 600,000 training snippets, that transforms natural language into working Hyperlambda code in typically 1.5 to 5 seconds.
+
+**How accurate is it?**
+
+On 401 plain-English tests, where every answer is executed and judged by its result, the current model passes 79.2%. On the 277 of those tests plain Python can also do, it passes 88.8%, against 91.5% for the frontier model gpt-6-luna writing Python with the same prompts and the same judge, a gap that is not statistically significant.
 
 **Can it hallucinate function calls?**
 
@@ -4375,7 +4402,7 @@ implementations, such as the MySQL, SQL Server or PostgreSQL specific implementa
 
 * [How to use [data.*]](https://docs.ainiro.io/plugins/magic.data.common/how-to-use-data/) - All of the [data.xxx] slots are actually just polymorphistically evaluating your specialised adapter's slots, such as for instance [data.connect], that will invoke [mysql.connect] if this is your defa
 * [Aggregate results](https://docs.ainiro.io/plugins/magic.data.common/aggregate-results/) - You can also create aggregate results, by simply adding your aggregate as your column, such as the following illustrates.
-* [Joins](https://docs.ainiro.io/plugins/magic.data.common/joins/) - The project supports joins by parametrizing your [sql.read] invocation with [join] arguments, beneath your [table] argument(s).
+* [Paging](https://docs.ainiro.io/plugins/magic.data.common/paging/) - To page your [sql.read] results, use [limit] and [offset], such as the following illustrates.
 * [Differences between [join] and [where]](https://docs.ainiro.io/plugins/magic.data.common/differences-between-join-and-where/) - There is one crucial semantic difference between a [join] condition and a [where] condition, which is that the library assumes a join is always between two columns, while a where always assume you're
 * ['Namespacing' columns](https://docs.ainiro.io/plugins/magic.data.common/namespacing-columns/) - When you're joining results from multiple tables, it's often required that you specify which table you want some resulting column to be fetched from, to avoid confusing your database as to which colum
 * [The [where] argument](https://docs.ainiro.io/plugins/magic.data.common/the-where-argument/) - This argument is common for [sql.update], [sql.delete], and [sql.read], in addition to that a [join] will also be logically parsed much the same way as a [where] argument.
@@ -4389,12 +4416,8 @@ Description: Aggregate results - You can also create aggregate results, by simpl
 
 This page is part of the [magic.data.common](https://docs.ainiro.io/plugins/magic.data.common/) documentation.
 
-## Aggregate results
-
 You can also create aggregate results, by simply adding your aggregate as your column, such as the
-following illustrates. The reasons why this works, is because if the SQL generator finds a parenthesis in your
-column declaration, it will simply ignore parsing that column altogether, and directly inject it into the
-resulting SQL's columns declaration.
+following illustrates.
 
 ```
 sql.read
@@ -4408,63 +4431,47 @@ sql.read
 The above will result in the following SQL.
 
 ```
-select count(*) as count from 'table1'
+select count(*) as 'count' from 'table1'
 ```
+
+A column, **[group]** or **[order]** entry containing a parenthesis is parsed as an expression, and every
+identifier in it is escaped. An expression can call the functions every database has, being `count`, `sum`,
+`avg`, `min`, `max`, `group_concat`, `string_agg`, `round`, `abs`, `coalesce`, `lower`, `upper`, `length` and
+`cast`, plus the functions of the database's own dialect.
+
+* SQLite - `total`, `strftime`, `date`, `datetime`, `julianday`, `ifnull`, `random`, `substr` and `trim`
+* MySQL - `date_format`, `year`, `month`, `day`, `ifnull`, `rand`, `concat`, `substring` and `trim`
+* PostgreSQL - `to_char`, `date_trunc`, `random`, `concat`, `substring` and `trim`
+* SQL Server - `year`, `month`, `day`, `format`, `isnull`, `newid`, `concat`, `substring` and `trim`
+
+Functions can be nested, and combined with `+`, `-`, `*` and `/`, numbers, and string literals in single quotes
+holding letters, digits, spaces and the characters `%-_:/.,`. A column can declare its alias inline, as in
+`count(*) as total`, instead of with an **[as]** argument. The following groups SQLite rows by month.
+
+```
+sql.read
+   table:sales
+   limit:-1
+   columns
+      strftime('%Y-%m', sold)
+         as:month
+      round(sum(amount), 2) as total
+   group
+      strftime('%Y-%m', sold)
+   order:"strftime('%Y-%m', sold)"
+```
+
+Anything else, such as sub-selects, `case` expressions, functions not listed above, or a string literal holding
+a quote, is rejected with an exception, to avoid SQL injection attacks. Use **[data.select]** with plain SQL for
+those.
 
 By setting **[limit]** to _"-1"_, like we do above, we avoid adding the limit parts to our SQL. Unless
 you explicitly specify a limit, the default value will always be 25 to avoid accidentally exhausting your database,
 and/or web server, by selecting all records from a table with millions of records.
 
-
-## Paging
-
-To page your **[sql.read]** results, use **[limit]** and **[offset]**, such as the following illustrates.
-Even though we use _"limit"_ and _"offset"_, the correct syntax will be applied for your database type,
-depending upon which database type you're using - Implying for Microsoft SQL Server, it will inject MS SQL dialect,
-and not MySQL dialect. But the syntax for your lambda object still remains the same, making it simpler to create
-SQL dialect valid for your specific database type 100% transparently.
-
-```
-sql.read
-   table:table1
-   offset:5
-   limit:10
-```
-
-The above will return the following SQL `select * from 'table1' limit 10 offset 5`. If you run the above lambda
-towards Microsoft SQL server, SQL syntax specific for MS SQL will be generated.
-
-
-## Aliasing column results
-
-You can also extract columns with an alias, _"renaming"_ the column in its result, such as the following illustrates.
-
-```
-sql.read
-   table:table1
-   columns
-
-      table1.foo1
-         as:howdy
-
-      table1.foo2
-         as:world
-```
-
-The above Hyperlambda will result in the following SQL.
-
-```sql
-select 'table1'.'foo1' as 'howdy','table1'.'foo2' as 'world'
-   from 'table1' limit 25
-```
-
-Effectively resulting in that you'll have two columns returned after executing the above SQL, which
-are `howdy` and `world`. Combining this with the join features from this project, allows you to create
-any type of _"projections"_ you wish.
-
 ---
 
-[&larr; How to use [data.*]](https://docs.ainiro.io/plugins/magic.data.common/how-to-use-data/) | [all of magic.data.common](https://docs.ainiro.io/plugins/magic.data.common/) | [Joins &rarr;](https://docs.ainiro.io/plugins/magic.data.common/joins/)
+[&larr; How to use [data.*]](https://docs.ainiro.io/plugins/magic.data.common/how-to-use-data/) | [all of magic.data.common](https://docs.ainiro.io/plugins/magic.data.common/) | [Paging &rarr;](https://docs.ainiro.io/plugins/magic.data.common/paging/)
 
 
 # Comparison operators
@@ -5061,7 +5068,7 @@ rule of thumb, we encourage users to **[join]** on table columns and add static 
 
 ---
 
-[&larr; Joins](https://docs.ainiro.io/plugins/magic.data.common/joins/) | [all of magic.data.common](https://docs.ainiro.io/plugins/magic.data.common/) | ['Namespacing' columns &rarr;](https://docs.ainiro.io/plugins/magic.data.common/namespacing-columns/)
+[&larr; Paging](https://docs.ainiro.io/plugins/magic.data.common/paging/) | [all of magic.data.common](https://docs.ainiro.io/plugins/magic.data.common/) | ['Namespacing' columns &rarr;](https://docs.ainiro.io/plugins/magic.data.common/namespacing-columns/)
 
 
 # How to use [data.*]
@@ -5131,115 +5138,6 @@ above example illustrates.
 ---
 
 [all of magic.data.common](https://docs.ainiro.io/plugins/magic.data.common/) | [Aggregate results &rarr;](https://docs.ainiro.io/plugins/magic.data.common/aggregate-results/)
-
-
-# Joins
-
-URL: https://docs.ainiro.io/plugins/magic.data.common/joins/
-Description: Joins - The project supports joins by parametrizing your [sql.read] invocation with [join] arguments, beneath your [table] argument(s).
-
-This page is part of the [magic.data.common](https://docs.ainiro.io/plugins/magic.data.common/) documentation.
-
-The project supports joins by parametrizing your **[sql.read]** invocation with **[join]** arguments, beneath your
-**[table]** argument(s). You can _only_ add **[join]** beneath **[table]** for **[sql.read]** invocations though.
-If you have created the Sakila example database from Oracle, and you're using MySQL as your default database type,
-you can execute the following MySQL join SQL statement to see a fairly complex recursive join.
-
-```
-data.connect:sakila
-   data.read
-
-      columns
-         title
-         description
-         last_name
-         first_name
-
-      table:film
-
-         join:film_actor
-            type:inner
-            on
-               and
-                  film.film_id:film_actor.film_id
-
-            join:actor
-               type:inner
-               on
-                  and
-                     film_actor.actor_id:actor.actor_id
-```
-
-The above lambda assumes you've got Oracle's Sakila database in your MySQL instance. If you only wish to see
-its resulting SQL, add a **[generate]** argument to the above root invocation, and set its value to _"true"_.
-All specialised slots, dynamically building and executing some SQL towards your database, supports
-the **[generate]** argument, allowing you to easily _"debug"_ your SQL statements, and see what they actually do.
-Below is an example of the SQL created by the above invocation if you add a **[generate]** argument to it
-and set its value to boolean `true`.
-
-```sql
-select `film`.`title`, `film`.`description`, `actor`.`last_name`, `actor`.`first_name` from `film`
-   inner join `film_actor` on `film`.`film_id` = `film_actor`.`film_id`
-      inner join `actor` on `film_actor`.`actor_id` = `actor`.`actor_id`
-   limit 25
-```
-
-You can recursively join as many levels as you wish, in addition to also supplying multiple join conditions for
-the same join. An example of the latter can be found below.
-
-```
-sql.read
-   generate:true
-   limit:-1
-   table:table1
-
-      join:table2
-         on
-            and
-               fk1:pk1
-               fk2:pk2
-```
-
-The above lambda will result in the following SQL being generated.
-
-```sql
-select * from 'table1'
-   inner join 'table2' on 'table1'.'fk1' = 'table2'.'pk1' and
-      'table1'.'fk2' = 'table2'.'pk2'
-```
-
-Joining tables works _almost_ the exact same way as using a **[where]** argument, allowing you
-to supply an operator for your join, such as we illustrate below, where we're using the `!=` operator,
-instead of the (default) equality comparison. However, when you create your **[join]** segments
-you can _only_ have columns from tables reference columns from tables, and not add static arguments
-to your join. If you need static arguments you have to add these into your **[where]** parts.
-See the **[where]** criteria for details about comparison operators.
-You can also explicitly choose a **[type]** of join, such as we illustrate below.
-
-```
-sql.read
-   limit:-1
-   table:table1
-
-      join:table2
-         type:inner
-         on
-            and
-               fk1.neq:pk1
-```
-
-The above results in the following SQL.
-
-```sql
-select * from 'table1' inner join 'table2' on 'table1'.'fk1' != 'table2'.'pk1'
-```
-
-The **[type]** argument to your **[join]** arguments, can be _"inner"_, _"full"_, _"left"_ or _"right"_,
-resulting in the equivalent type of join for your SQL.
-
----
-
-[&larr; Aggregate results](https://docs.ainiro.io/plugins/magic.data.common/aggregate-results/) | [all of magic.data.common](https://docs.ainiro.io/plugins/magic.data.common/) | [Differences between [join] and [where] &rarr;](https://docs.ainiro.io/plugins/magic.data.common/differences-between-join-and-where/)
 
 
 # 'Namespacing' columns
@@ -5353,6 +5251,164 @@ allowing you to create complex aggregate results, statistics, joining multiple t
 ---
 
 [&larr; Differences between [join] and [where]](https://docs.ainiro.io/plugins/magic.data.common/differences-between-join-and-where/) | [all of magic.data.common](https://docs.ainiro.io/plugins/magic.data.common/) | [The [where] argument &rarr;](https://docs.ainiro.io/plugins/magic.data.common/the-where-argument/)
+
+
+# Paging
+
+URL: https://docs.ainiro.io/plugins/magic.data.common/paging/
+Description: Paging - To page your [sql.read] results, use [limit] and [offset], such as the following illustrates.
+
+This page is part of the [magic.data.common](https://docs.ainiro.io/plugins/magic.data.common/) documentation.
+
+## Paging
+
+To page your **[sql.read]** results, use **[limit]** and **[offset]**, such as the following illustrates.
+Even though we use _"limit"_ and _"offset"_, the correct syntax will be applied for your database type,
+depending upon which database type you're using - Implying for Microsoft SQL Server, it will inject MS SQL dialect,
+and not MySQL dialect. But the syntax for your lambda object still remains the same, making it simpler to create
+SQL dialect valid for your specific database type 100% transparently.
+
+```
+sql.read
+   table:table1
+   offset:5
+   limit:10
+```
+
+The above will return the following SQL `select * from 'table1' limit 10 offset 5`. If you run the above lambda
+towards Microsoft SQL server, SQL syntax specific for MS SQL will be generated.
+
+
+## Aliasing column results
+
+You can also extract columns with an alias, _"renaming"_ the column in its result, such as the following illustrates.
+
+```
+sql.read
+   table:table1
+   columns
+
+      table1.foo1
+         as:howdy
+
+      table1.foo2
+         as:world
+```
+
+The above Hyperlambda will result in the following SQL.
+
+```sql
+select 'table1'.'foo1' as 'howdy','table1'.'foo2' as 'world'
+   from 'table1' limit 25
+```
+
+Effectively resulting in that you'll have two columns returned after executing the above SQL, which
+are `howdy` and `world`. Combining this with the join features from this project, allows you to create
+any type of _"projections"_ you wish.
+
+
+## Joins
+
+The project supports joins by parametrizing your **[sql.read]** invocation with **[join]** arguments, beneath your
+**[table]** argument(s). You can _only_ add **[join]** beneath **[table]** for **[sql.read]** invocations though.
+If you have created the Sakila example database from Oracle, and you're using MySQL as your default database type,
+you can execute the following MySQL join SQL statement to see a fairly complex recursive join.
+
+```
+data.connect:sakila
+   data.read
+
+      columns
+         title
+         description
+         last_name
+         first_name
+
+      table:film
+
+         join:film_actor
+            type:inner
+            on
+               and
+                  film.film_id:film_actor.film_id
+
+            join:actor
+               type:inner
+               on
+                  and
+                     film_actor.actor_id:actor.actor_id
+```
+
+The above lambda assumes you've got Oracle's Sakila database in your MySQL instance. If you only wish to see
+its resulting SQL, add a **[generate]** argument to the above root invocation, and set its value to _"true"_.
+All specialised slots, dynamically building and executing some SQL towards your database, supports
+the **[generate]** argument, allowing you to easily _"debug"_ your SQL statements, and see what they actually do.
+Below is an example of the SQL created by the above invocation if you add a **[generate]** argument to it
+and set its value to boolean `true`.
+
+```sql
+select `film`.`title`, `film`.`description`, `actor`.`last_name`, `actor`.`first_name` from `film`
+   inner join `film_actor` on `film`.`film_id` = `film_actor`.`film_id`
+      inner join `actor` on `film_actor`.`actor_id` = `actor`.`actor_id`
+   limit 25
+```
+
+You can recursively join as many levels as you wish, in addition to also supplying multiple join conditions for
+the same join. An example of the latter can be found below.
+
+```
+sql.read
+   generate:true
+   limit:-1
+   table:table1
+
+      join:table2
+         on
+            and
+               fk1:pk1
+               fk2:pk2
+```
+
+The above lambda will result in the following SQL being generated.
+
+```sql
+select * from 'table1'
+   inner join 'table2' on 'table1'.'fk1' = 'table2'.'pk1' and
+      'table1'.'fk2' = 'table2'.'pk2'
+```
+
+Joining tables works _almost_ the exact same way as using a **[where]** argument, allowing you
+to supply an operator for your join, such as we illustrate below, where we're using the `!=` operator,
+instead of the (default) equality comparison. However, when you create your **[join]** segments
+you can _only_ have columns from tables reference columns from tables, and not add static arguments
+to your join. If you need static arguments you have to add these into your **[where]** parts.
+See the **[where]** criteria for details about comparison operators.
+You can also explicitly choose a **[type]** of join, such as we illustrate below.
+
+```
+sql.read
+   limit:-1
+   table:table1
+
+      join:table2
+         type:inner
+         on
+            and
+               fk1.neq:pk1
+```
+
+The above results in the following SQL.
+
+```sql
+select * from 'table1' inner join 'table2' on 'table1'.'fk1' != 'table2'.'pk1'
+```
+
+The **[type]** argument to your **[join]** arguments, can be _"inner"_, _"full"_, _"left"_ or _"right"_,
+resulting in the equivalent type of join for your SQL.
+
+---
+
+[&larr; Aggregate results](https://docs.ainiro.io/plugins/magic.data.common/aggregate-results/) | [all of magic.data.common](https://docs.ainiro.io/plugins/magic.data.common/) | [Differences between [join] and [where] &rarr;](https://docs.ainiro.io/plugins/magic.data.common/differences-between-join-and-where/)
 
 
 # How to use [sql.create]
@@ -9487,7 +9543,8 @@ http.get:"https://google.com"
 
 If you don't add an explicit **[headers]** collection the invocation will assume your request payload and
 accepted response is JSON. If you want to change this you'll have to add at least one header to your request,
-at which point the default headers will _not_ be applied.
+at which point the default headers will _not_ be applied. A structured **[payload]** without a `Content-Type`
+header is still sent as JSON, with `Content-Type: application/json`.
 
 
 ## QUERY parameters
@@ -9982,8 +10039,8 @@ This slot allows you to dynamically generate charts, and either save these to di
 
 The primary argument to the slot invocation must be one of the above values, which defines what chart type to generate. Each chart type requires different arguments, but the common arguments are as follows:
 
-* width - Width of chart
-* height - Height of chart
+* width - Width of chart, between 1 and 8192 pixels
+* height - Height of chart, between 1 and 8192 pixels
 * filename - Path and name of file of where to save the chart. If not specified the slot will return the chart as a stream.
 
 The slot will always return the chart as a PNG image, and if you provide a **[filename]** the slot will overwrite any existing files automatically with the same path and filename.
@@ -10151,7 +10208,7 @@ allows you to return its output directly over the HTTP response object, which ag
 back as the response to the caller if you're in a web project of some sort using Magic. The slot takes two arguments.
 
 * Value of node - Mandatory string, or an expression leading to a string, which is to become the content of the generated QR code
-* __[size]__ - Optional argument declaring the size of your QR code
+* __[size]__ - Optional argument declaring the size of your QR code in pixels per module, which must be at least 1, and small enough for the image to be at most 8192 pixels wide
 
 Below is an example of usage
 
@@ -10184,8 +10241,8 @@ image.resize:/some-image.png
 The above will resize the specified image to a width of 250 pixel, converting it to PNG, while keeping the
 aspect ratio by calculating the new height automatically. You can provide either of.
 
-* __[width]__ - New width
-* __[height]__ - New height
+* __[width]__ - New width, between 1 and 8192 pixels
+* __[height]__ - New height, between 1 and 8192 pixels
 
 You can provide both of the above, but at least one of the above _must_ be specified. If one of the values are
 omitted, it will be calculated by keeping the aspect ratio of the image as is. The **[type]** argument is how
@@ -11728,7 +11785,7 @@ This project provides math functions to Magic. More specifically, it provides th
 * __[\[math.floor\]](https://docs.ainiro.io/plugins/magic.lambda.math/math.floor/)__ - Rounds a number down
 * __[\[math.ceil\]](https://docs.ainiro.io/plugins/magic.lambda.math/math.ceil/)__ - Rounds a number up
 * __[\[math.round\]](https://docs.ainiro.io/plugins/magic.lambda.math/math.round/)__ - Rounds a number
-* __[\[math.random\]](https://docs.ainiro.io/plugins/magic.lambda.math/math.random/)__ - Returns a random number from optional child-node bounds
+* __[\[math.random\]](https://docs.ainiro.io/plugins/magic.lambda.math/math.random/)__ - Returns a random number, an integer between the [min] and [max] children when [max] is given
 
 All of the above besides the two last slots can be given any number of arguments, including as its value,
 and will treat the first argument as the _"base"_, and performing the rest of the arguments self assigning
@@ -12047,13 +12104,14 @@ Description: How to use [math.random] - This slot returns a random number.
 
 The reference page of [`math.random`](https://docs.ainiro.io/reference/slots/math/math.random/) has its arguments, constraints and declaration.
 
-This slot returns a random number. Its behavior depends on how many child nodes you give it.
+This slot returns a random number. Its behavior depends on its **[min]** and **[max]** children.
 
 * No children - Returns a random `double` between 0.0 and 1.0.
-* One child - Returns a random integer between 0 and the child's value, where the upper bound is exclusive.
-* Two children - Returns a random integer between the first child's value, inclusive, and the second child's value, exclusive. The children are documented as **[min]** and **[max]**, but the slot uses the first and second child regardless of their names.
+* **[max]** only - Returns a random integer between 0 and **[max]**, where the upper bound is exclusive.
+* **[min]** and **[max]** - Returns a random integer between **[min]**, inclusive, and **[max]**, exclusive.
 
-Child values are converted to `int`.
+Both values are converted to `int`, and either may be an expression, such as `max:x:@.count`. Any other
+child, and **[min]** without **[max]**, throws an exception.
 
 Below are the three ways to invoke the slot. The first returns a random number between 0 and 1, the second a random integer between 0 and 10, and the third a random integer between 5 and 10.
 
@@ -19833,6 +19891,25 @@ allowing code to use existing helpers such as **[get-context]** without exposing
 objects.
 
 
+## Slots a whitelist can never name
+
+A **[whitelist]** restricts the slots a piece of Hyperlambda can invoke, which is how a sandboxed caller is given
+a small vocabulary. A slot that would hand that caller the host itself, such as running a command, loading code,
+minting a ticket or reading secrets, declares so on its `[Slot]` attribute
+
+```csharp
+[Slot(Name = "system.execute", Whitelistable = false)]
+```
+
+`Whitelistable` defaults to `true`. A **[whitelist]** whose **[vocabulary]** names a slot declaring `false` is
+refused when it is created, with `[system.execute] can never be used inside a [whitelist]`. It is declared per slot
+name, so a class declaring several slots can mark only some of them. The declaration is read once at startup by the
+`ISignalsProvider`, never while slots are invoked.
+
+Notice, this only limits what a **[whitelist]** can grant. A trusted file invoked with **[execute-file]** runs
+without the whitelist, so it still calls whatever slots it needs.
+
+
 ## Magic Signals a DSL
 
 A lot of the idea behind Magic Signals is that combined with magic.node,
@@ -20119,7 +20196,7 @@ It begins with two throttles, one per IP address and one for everybody together,
 
 ### Get the whole reference yourself
 
-The endpoint above is public. There is no account, no key and no secret. To protect the server it is throttled to **10 requests per 60 seconds per IP address**, and to **60 per 60 seconds** for everybody together, and beyond that it answers `429`. The answer is about 450 KB, so keep a copy rather than asking again.
+The endpoint above is public. There is no account, no key and no secret. To protect the server it is throttled to **10 requests per 60 seconds per IP address**, and to **60 per 60 seconds** for everybody together, and beyond that it answers `429`. The answer is about 460 KB, so keep a copy rather than asking again.
 
 ```bash
 curl -s https://hyperlambda.dev/magic/modules/docs/slots
@@ -20898,7 +20975,7 @@ The sandbox only runs code whose every slot is on a whitelist of 53 slots: intro
 
 **Can I get the whole reference as data?**
 
-Yes. GET https://hyperlambda.dev/magic/modules/docs/slots returns every compiled slot as a JSON array of objects with the fields name, description and signature, where the signature is the slot's contract as nested JSON. It needs no account or key. The answer is about 450 KB, so keep a copy rather than asking again.
+Yes. GET https://hyperlambda.dev/magic/modules/docs/slots returns every compiled slot as a JSON array of objects with the fields name, description and signature, where the signature is the slot's contract as nested JSON. It needs no account or key. The answer is about 460 KB, so keep a copy rather than asking again.
 
 **Is it safe to leave that endpoint open?**
 
@@ -21120,8 +21197,8 @@ Description: The 24 slots named crypto.* in Magic Cloud and Hyperlambda, each wi
 | [`crypto.fingerprint`](https://docs.ainiro.io/reference/slots/crypto/crypto.fingerprint/) | Returns a SHA256 fingerprint of the input, formatted as colon-separated hex; useful for identifying public keys. |
 | [`crypto.get-key`](https://docs.ainiro.io/reference/slots/crypto/crypto.get-key/) | Returns or derives a cryptographic key. |
 | [`crypto.hash`](https://docs.ainiro.io/reference/slots/crypto/crypto.hash/) | Hashes input using SHA256 by default, or the supplied [algorithm] child. |
-| [`crypto.hash.md5`](https://docs.ainiro.io/reference/slots/crypto/crypto.hash.md5/) | Hashes input using the MD5 algorithm. |
-| [`crypto.hash.sha1`](https://docs.ainiro.io/reference/slots/crypto/crypto.hash.sha1/) | Hashes input using the SHA1 algorithm. |
+| [`crypto.hash.md5`](https://docs.ainiro.io/reference/slots/crypto/crypto.hash.md5/) | Hashes input using the MD5 algorithm, which is broken for collision resistance and only here for legacy data; use [crypto.password.hash] for passwords. |
+| [`crypto.hash.sha1`](https://docs.ainiro.io/reference/slots/crypto/crypto.hash.sha1/) | Hashes input using the SHA1 algorithm, which is broken for collision resistance and only here for legacy data; use [crypto.password.hash] for passwords. |
 | [`crypto.hash.sha256`](https://docs.ainiro.io/reference/slots/crypto/crypto.hash.sha256/) | Hashes input using the SHA256 algorithm. |
 | [`crypto.hash.sha384`](https://docs.ainiro.io/reference/slots/crypto/crypto.hash.sha384/) | Hashes input using the SHA384 algorithm. |
 | [`crypto.hash.sha512`](https://docs.ainiro.io/reference/slots/crypto/crypto.hash.sha512/) | Hashes input using the SHA512 algorithm. |
